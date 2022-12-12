@@ -1,0 +1,362 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe31220559717553000617550020042358131635339417" versao="4.00">
+      <ide>
+        <cUF>31</cUF>
+        <cNF>63533941</cNF>
+        <natOp>VENDA PRODUCAO ST/ VENDA MERC ADQ TERC</natOp>
+        <mod>55</mod>
+        <serie>2</serie>
+        <nNF>4235813</nNF>
+        <dhEmi>2022-05-17T20:21:00-03:00</dhEmi>
+        <dhSaiEnt>2022-05-17T20:21:00-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>1</idDest>
+        <cMunFG>3125101</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>7</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>12.1.027 | 3.0</verProc>
+      </ide>
+      <emit>
+        <CNPJ>59717553000617</CNPJ>
+        <xNome>MULTILASER INDUSTRIAL S.A.</xNome>
+        <xFant>MULTILASER</xFant>
+        <enderEmit>
+          <xLgr>RUA JOSEFHA GOMES DE SOUZA</xLgr>
+          <nro>382</nro>
+          <xBairro>BAIRRO DOS PIRES</xBairro>
+          <cMun>3125101</cMun>
+          <xMun>EXTREMA</xMun>
+          <UF>MG</UF>
+          <CEP>37640000</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3534357500</fone>
+        </enderEmit>
+        <IE>2513474170045</IE>
+        <IM>009538</IM>
+        <CNAE>2622100</CNAE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>28145398000173</CNPJ>
+        <xNome>TXT INFORMATICA LTDA</xNome>
+        <enderDest>
+          <xLgr>RUA CANABRAVA</xLgr>
+          <nro>320</nro>
+          <xBairro>DIVINEIA</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610000</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3888069644</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>0030011730013</IE>
+        <email>MARCELO.XS@HOTMAIL.COM;nfe@multilaser.com.br;ingridsipriano@</email>
+      </dest>
+      <autXML>
+        <CNPJ>17463456001243</CNPJ>
+      </autXML>
+      <det nItem="1">
+        <prod>
+          <cProd>GS0226</cProd>
+          <cEAN>7899838843308</cEAN>
+          <xProd>CABO COAX BLIND RG59 4MM BCO 85% 100M</xProd>
+          <NCM>85444900</NCM>
+          <CEST>1200700</CEST>
+          <cBenef />
+          <CFOP>5401</CFOP>
+          <uCom>RL</uCom>
+          <qCom>2.0000</qCom>
+          <vUnCom>87.19000000</vUnCom>
+          <vProd>174.38</vProd>
+          <cEANTrib>7899838843308</cEANTrib>
+          <uTrib>RL</uTrib>
+          <qTrib>2.0000</qTrib>
+          <vUnTrib>87.19000000</vUnTrib>
+          <indTot>1</indTot>
+          <nFCI>52CA68FD-BF62-43F4-9ECB-C3DA31DE5AD6</nFCI>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS10>
+              <orig>5</orig>
+              <CST>10</CST>
+              <modBC>3</modBC>
+              <vBC>174.38</vBC>
+              <pICMS>18.0000</pICMS>
+              <vICMS>31.39</vICMS>
+              <modBCST>4</modBCST>
+              <pMVAST>40.0000</pMVAST>
+              <vBCST>244.13</vBCST>
+              <pICMSST>18.0000</pICMSST>
+              <vICMSST>12.55</vICMSST>
+            </ICMS10>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPITrib>
+              <CST>50</CST>
+              <vBC>174.38</vBC>
+              <pIPI>0</pIPI>
+              <vIPI>0</vIPI>
+            </IPITrib>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>142.99</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>2.36</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>142.99</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>10.87</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+        <infAdProd>Resolucao do Senado Federal nº 13/12, Numero da FCI 52CA68FD-BF62-43F4-9ECB-C3DA31DE5AD6.</infAdProd>
+      </det>
+      <det nItem="2">
+        <prod>
+          <cProd>GS0471A</cProd>
+          <cEAN>7908414453241</cEAN>
+          <xProd>CAM BUL PLAS 1080P IR 20M 1/3 3.6MM IP66</xProd>
+          <NCM>85258913</NCM>
+          <cBenef />
+          <CFOP>5102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>8.0000</qCom>
+          <vUnCom>97.89000000</vUnCom>
+          <vProd>783.12</vProd>
+          <cEANTrib>7908414453241</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>8.0000</qTrib>
+          <vUnTrib>97.89000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>4</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>783.12</vBC>
+              <pICMS>18.0000</pICMS>
+              <vICMS>140.96</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>53</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>642.16</vBC>
+              <pPIS>1.0000</pPIS>
+              <vPIS>6.42</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>642.16</vBC>
+              <pCOFINS>4.6000</pCOFINS>
+              <vCOFINS>29.54</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="3">
+        <prod>
+          <cProd>GS0481</cProd>
+          <cEAN>7908414420670</cEAN>
+          <xProd>HVR 1080P 08 CANAIS SAIDA BNC</xProd>
+          <NCM>85437039</NCM>
+          <cBenef />
+          <EXTIPI>01</EXTIPI>
+          <CFOP>5101</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>450.19000000</vUnCom>
+          <vProd>450.19</vProd>
+          <cEANTrib>7908414420670</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>450.19000000</vUnTrib>
+          <indTot>1</indTot>
+          <nFCI>D321855C-57A4-4325-9D4C-921906640706</nFCI>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>5</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>450.19</vBC>
+              <pICMS>18.0000</pICMS>
+              <vICMS>81.03</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPITrib>
+              <CST>50</CST>
+              <vBC>450.19</vBC>
+              <pIPI>6.5000</pIPI>
+              <vIPI>29.26</vIPI>
+            </IPITrib>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>369.16</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>6.09</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>369.16</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>28.05</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+        <infAdProd>Resolucao do Senado Federal nº 13/12, Numero da FCI D321855C-57A4-4325-9D4C-921906640706.</infAdProd>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>1407.69</vBC>
+          <vICMS>253.38</vICMS>
+          <vICMSDeson>0</vICMSDeson>
+          <vFCPUFDest>0</vFCPUFDest>
+          <vICMSUFDest>0</vICMSUFDest>
+          <vICMSUFRemet>0</vICMSUFRemet>
+          <vFCP>0</vFCP>
+          <vBCST>244.13</vBCST>
+          <vST>12.55</vST>
+          <vFCPST>0</vFCPST>
+          <vFCPSTRet>0</vFCPSTRet>
+          <vProd>1407.69</vProd>
+          <vFrete>0</vFrete>
+          <vSeg>0</vSeg>
+          <vDesc>0</vDesc>
+          <vII>0</vII>
+          <vIPI>29.26</vIPI>
+          <vIPIDevol>0</vIPIDevol>
+          <vPIS>14.87</vPIS>
+          <vCOFINS>68.46</vCOFINS>
+          <vOutro>0</vOutro>
+          <vNF>1449.50</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>17463456001243</CNPJ>
+          <xNome>PATRUS TRANSPORTES URGENTES LTDA</xNome>
+          <IE>5255693800477</IE>
+          <xEnder>AV JUSCELINO KUBSTCHECK, 970</xEnder>
+          <xMun>POUSO ALEGRE</xMun>
+          <UF>MG</UF>
+        </transporta>
+        <vol>
+          <qVol>1</qVol>
+          <esp>CAIXA</esp>
+          <pesoL>8.500</pesoL>
+          <pesoB>8.510</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>2004235813</nFat>
+          <vOrig>1449.50</vOrig>
+          <vDesc>0</vDesc>
+          <vLiq>1449.50</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2022-06-16</dVenc>
+          <vDup>483.17</vDup>
+        </dup>
+        <dup>
+          <nDup>002</nDup>
+          <dVenc>2022-07-16</dVenc>
+          <vDup>483.17</vDup>
+        </dup>
+        <dup>
+          <nDup>003</nDup>
+          <dVenc>2022-08-15</dVenc>
+          <vDup>483.16</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>15</tPag>
+          <vPag>1449.50</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>CONFIRA SUA MERCADORIA NO RECEBIMENTO, NAO ACEITAREMOS RECLAMACOES POSTERIORES  // CONDICAO:30/60/90 // QTDE. TOTAL=11.  . CONTATO JUNTO AO CONTAS A RECEBER: (011) 3198-5891 . PARA ACIONAR GARANTIA DO PRODUTO FALE COM O SAC (011) 3198-0004 / (011) 3198-0004, PARA RMA DE LOJA (ESTOQUE DE LOJA), ACIONAR (011) 3076-3742 / (011) 3198-5816.ICMS RETIDO NOS TERMOS DO DECRETO 45138 DE 20/07/09-MG.   PROD. FABR. CONF. PROCESSO PROD. BASICO PORT. INTERMINISTERIAL  813 18/09/2015 - 626 13/06/2014 -136 15/03/2019 - 195 26/04/2019 - 273 16/01/2018 - 904 16/01/2018 - 905 16/01/2018 - 914 09/03/2020 -1167 08/11/2013 - 2403 04/05/2017 -1166 08/11/2013 PRODUTO FABRICADO CONFORME PROCESSO PRODUTIVO BASICO PORTARIA INTERMINISTERIAL Nº 23 DE 07/01/09, Nº 404 DE 24/05/2010, Nº 334 DE 18/05/2012 PROD. FABR. CONF. PROCESSO PROD. BASICO PORT. INTERMINISTERIAL  813 18/09/2015 - 626 13/06/2014 -136 15/03/2019 - 195 26/04/2019 - 273 16/01/2018 - 904 16/01/2018 - 905 16/01/2018 - 914 09/03/2020 -1167 08/11/2013 - 2403 04/05/2017 -1166 08/11/2013 PRODUTO FABRICADO CONFORME PROCESSO PRODUTIVO BASICO PORTARIA INTERMINISTERIAL Nº 23 DE 07/01/09, Nº 404 DE 24/05/2010, Nº 334 DE 18/05/2012   [ PRACA DE PAGAMENTO SAO PAULO  - EM CASO DE NAO RECEBER O BOLETO ATE O VENCIMENTO ACESSE O ENDERECO HTTP://SUPORTE.MULTILASER.COM.BR/REVENDEDOR PARA IMPRIMIR A 2ª VIA ]  RESOLUCAO SENADO FEDERAL 13/12 - CLIENTE: 001850524</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>53113791000122</CNPJ>
+        <xContato>Rodrigo de Almeida Sartorio</xContato>
+        <email>resp_tecnico_dfe_protheus@totvs.com.br</email>
+        <fone>1128593904</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe31220559717553000617550020042358131635339417">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>+ewHUj3u6BgLUCOrZwe7l8VRLWs=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>E0FCwfLBVJz4+m3fXHXr5z/C1AvK/BcfKaBcVlO1AkLwxII2nDMHcLaK3MNjCkukM75ecQG0V49ROzkXhT6JiIoR0871bA60q34NLlgMWMtUqRKsl8o1rPt+HPP1JUJUJIG9BE52VCLTSYacUtl2biMUl1OLyMEntzuVfgwfQPRNQgKTk6KtGJWeB3vEz/JdqPlUAV0hyyX6jlE8dCu6kUC5SMx7iw/dmbVFeZafLTR8i2RMxDogC5rnGdMA8Zdu0yHzo5SylOp3XRD5fVHZGwmA6vmASVoAvthLiWgxeCMpK0vBm1GDSKAvjC3+d8w8A7tq+vuBbQlsHH5Zv/KERA==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="ID131224727124673">
+      <tpAmb>1</tpAmb>
+      <verAplic>14.4.65-SE4</verAplic>
+      <chNFe>31220559717553000617550020042358131635339417</chNFe>
+      <dhRecbto>2022-05-17T20:52:43-03:00</dhRecbto>
+      <nProt>131224727124673</nProt>
+      <digVal>+ewHUj3u6BgLUCOrZwe7l8VRLWs=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

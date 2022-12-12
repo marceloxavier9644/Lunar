@@ -1,0 +1,289 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe31220508238299000390550010001160731781454108" versao="4.00">
+      <ide>
+        <cUF>31</cUF>
+        <cNF>78145410</cNF>
+        <natOp>Venda de producao do estabelecimento quando o produto esteja</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>116073</nNF>
+        <dhEmi>2022-05-26T07:57:35-03:00</dhEmi>
+        <dhSaiEnt>2022-05-26T07:57:35-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>1</idDest>
+        <cMunFG>3125101</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>8</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>0</indPres>
+        <procEmi>0</procEmi>
+        <verProc>14.0</verProc>
+      </ide>
+      <emit>
+        <CNPJ>08238299000390</CNPJ>
+        <xNome>CONTROLID IND COM DE HARD E SERV DE TEC LTDA</xNome>
+        <xFant>Control iD MG</xFant>
+        <enderEmit>
+          <xLgr>Rua Josepha Gomes de Souza</xLgr>
+          <nro>298</nro>
+          <xCpl>Galpao 02</xCpl>
+          <xBairro>Pires</xBairro>
+          <cMun>3125101</cMun>
+          <xMun>Extrema</xMun>
+          <UF>MG</UF>
+          <CEP>37640000</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>1130599900</fone>
+        </enderEmit>
+        <IE>0025313720090</IE>
+        <IM>13107</IM>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>28145398000173</CNPJ>
+        <xNome>MARCELO XAVIER DA SILVA 07497828622</xNome>
+        <enderDest>
+          <xLgr>AV. SANTOS DUMONT</xLgr>
+          <nro>1002</nro>
+          <xBairro>DIVINEIA</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38613446</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3836769644</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>0030011730013</IE>
+        <email>marcelo.xs@hotmail.com</email>
+      </dest>
+      <autXML>
+        <CNPJ>34028316264518</CNPJ>
+      </autXML>
+      <det nItem="1">
+        <prod>
+          <cProd>PRINTIDTOUCH</cProd>
+          <cEAN>7898964411665</cEAN>
+          <xProd>Impressora termica nao-fiscal - Control iD -PRINT ID TOUCH</xProd>
+          <NCM>84433299</NCM>
+          <CEST>2101700</CEST>
+          <CFOP>5401</CFOP>
+          <uCom>UN</uCom>
+          <qCom>3</qCom>
+          <vUnCom>486</vUnCom>
+          <vProd>1458.00</vProd>
+          <cEANTrib>7898964411665</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>3</qTrib>
+          <vUnTrib>486</vUnTrib>
+          <vFrete>59.50</vFrete>
+          <indTot>1</indTot>
+          <nItemPed>0</nItemPed>
+        </prod>
+        <imposto>
+          <vTotTrib>437.69</vTotTrib>
+          <ICMS>
+            <ICMS10>
+              <orig>4</orig>
+              <CST>10</CST>
+              <modBC>3</modBC>
+              <vBC>1517.50</vBC>
+              <pICMS>18.00</pICMS>
+              <vICMS>273.15</vICMS>
+              <modBCST>4</modBCST>
+              <pMVAST>25.00</pMVAST>
+              <pRedBCST>0.00</pRedBCST>
+              <vBCST>2081.82</vBCST>
+              <pICMSST>18.00</pICMSST>
+              <vICMSST>101.58</vICMSST>
+            </ICMS10>
+          </ICMS>
+          <IPI>
+            <cEnq>148</cEnq>
+            <IPITrib>
+              <CST>50</CST>
+              <vBC>1517.50</vBC>
+              <pIPI>9.75</pIPI>
+              <vIPI>147.96</vIPI>
+            </IPITrib>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>1517.50</vBC>
+              <pPIS>1.65</pPIS>
+              <vPIS>25.04</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>1517.50</vBC>
+              <pCOFINS>7.60</pCOFINS>
+              <vCOFINS>115.33</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+        <infAdProd>Produto incentivado pela lei no. 8248/91 e dec no. 5906/06, atraves da port. interm. SDP/MDIC 1144 de 14/12/2015 publicada no DOU em 15/12/2015. Bem reconhecido como desenvolvido no pais pela portaria MCTI no. 2667, de 22/05/2019 publicado no DOU em 24/05/2019.</infAdProd>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>1517.50</vBC>
+          <vICMS>273.15</vICMS>
+          <vICMSDeson>0.00</vICMSDeson>
+          <vFCPUFDest>0.00</vFCPUFDest>
+          <vICMSUFDest>0.00</vICMSUFDest>
+          <vICMSUFRemet>0.00</vICMSUFRemet>
+          <vFCP>0.00</vFCP>
+          <vBCST>2081.82</vBCST>
+          <vST>101.58</vST>
+          <vFCPST>0.00</vFCPST>
+          <vFCPSTRet>0.00</vFCPSTRet>
+          <vProd>1458.00</vProd>
+          <vFrete>59.50</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>147.96</vIPI>
+          <vIPIDevol>0.00</vIPIDevol>
+          <vPIS>25.04</vPIS>
+          <vCOFINS>115.33</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>1767.04</vNF>
+          <vTotTrib>437.69</vTotTrib>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>34028316264518</CNPJ>
+          <xNome>EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS</xNome>
+          <IE>ISENTO</IE>
+          <xEnder>Rua Governador Valadares, 112</xEnder>
+          <xMun>Extrema</xMun>
+          <UF>MG</UF>
+        </transporta>
+        <vol>
+          <qVol>1</qVol>
+          <esp>UN</esp>
+          <pesoL>4.950</pesoL>
+          <pesoB>4.950</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>116073</nFat>
+          <vOrig>1767.04</vOrig>
+          <vDesc>0.00</vDesc>
+          <vLiq>1767.04</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2022-06-23</dVenc>
+          <vDup>589.01</vDup>
+        </dup>
+        <dup>
+          <nDup>002</nDup>
+          <dVenc>2022-07-21</dVenc>
+          <vDup>589.01</vDup>
+        </dup>
+        <dup>
+          <nDup>003</nDup>
+          <dVenc>2022-08-18</dVenc>
+          <vDup>589.02</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>15</tPag>
+          <vPag>1767.04</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>Pedido(s) Interno(s): 183425</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>08036704000126</CNPJ>
+        <xContato>Unosol Consultoria</xContato>
+        <email>suporte@unosolucoes.com.br</email>
+        <fone>1140639301</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe31220508238299000390550010001160731781454108">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>9/nXPE1gE7soiA83XkCuApAaGiI=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>M0ccK1tvf3kCo8BSO/TGMoiCCekcitT0IVMiqbzR8beQeE7NaQijmsGOQcInB4/gZr2EL0PXh/G6
+np0JX0DluvPu/UNH1rIYZfDRF61ENmKHPUG8kfFki4DTPa8Qy2I+NJ9CuQYz7HZ7Eq/3HO0DG/74
+KOx0358S6ipHIyrreJz3QadqsKNzIUenB7DwNADUoTCqZyZ7nRCIIigWcCntQyVXZOL4Y3L8Oj7n
+CRAR1uf+gNRCKBwVF2pXkpkTWsRnS82cieLRa0GvzhCQmzVgnqryGAnm2yRucTMN4vjYShBZiBGl
+ZsrNNj41SzMlWeIyEFWiaPTf8XmDA5hTUKO4gA==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>MIIHVjCCBT6gAwIBAgIIEd4iBCZHj7YwDQYJKoZIhvcNAQELBQAwWTELMAkGA1UEBhMCQlIxEzAR
+BgNVBAoTCklDUC1CcmFzaWwxFTATBgNVBAsTDEFDIFNPTFVUSSB2NTEeMBwGA1UEAxMVQUMgU09M
+VVRJIE11bHRpcGxhIHY1MB4XDTIyMDUwMjE4MzYwMFoXDTIzMDUwMjE4MzYwMFowgf4xCzAJBgNV
+BAYTAkJSMRMwEQYDVQQKEwpJQ1AtQnJhc2lsMQswCQYDVQQIEwJTUDESMBAGA1UEBxMJU2FvIFBh
+dWxvMR4wHAYDVQQLExVBQyBTT0xVVEkgTXVsdGlwbGEgdjUxFzAVBgNVBAsTDjA5NDYxNjQ3MDAw
+MTk1MRkwFwYDVQQLExBWaWRlb2NvbmZlcmVuY2lhMRowGAYDVQQLExFDZXJ0aWZpY2FkbyBQSiBB
+MTFJMEcGA1UEAxNAQ09OVFJPTElEIElORFVTVFJJQSwgQ09NRVJDSU8gREUgSEFSRFdBUkUgRSBT
+RVJWSTowODIzODI5OTAwMDM5MDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJbWJEY3
+0oFDb1PJsCE62q1ujkdk1eZqPPDMnn/Q5bH7OmFvFs7JB//lt1e+f2excStqRbd2s4rWyA0W7oSN
+aeHCESj9bP+dIz4DUOrcclLWRVT191uT/MrL9C3rBw7an4VWgDIjzVNUq57MV9u1WsBTdp8Qe/Vs
+8K3XmTyoLZDZ9pywYEx+10h9yZDwJZamGib7bk1+NdRXRILwiRhCHVApCabu6fuO9UleXxubDdED
+08jCuLfDVWSlazQwJl2we6pWLgUWOyuBH++JGmFjQfK3wSjsLX0/UTg7kmIA6yfpvCBTA3MSdPj2
+XYxoRWPEx0WJJNk43lT4UXGrXOaVmUsCAwEAAaOCAnowggJ2MAkGA1UdEwQCMAAwHwYDVR0jBBgw
+FoAUxVLtJYAJ35yCyJ9Hxt20XzHdubEwVAYIKwYBBQUHAQEESDBGMEQGCCsGAQUFBzAChjhodHRw
+Oi8vY2NkLmFjc29sdXRpLmNvbS5ici9sY3IvYWMtc29sdXRpLW11bHRpcGxhLXY1LnA3YjCBtQYD
+VR0RBIGtMIGqgRhtYXJjZWxvQGNvbnRyb2xpZC5jb20uYnKgIAYFYEwBAwKgFxMVTUFSQ0VMTyBK
+T1JHRSBFUFNURUlOoBkGBWBMAQMDoBATDjA4MjM4Mjk5MDAwMzkwoDgGBWBMAQMEoC8TLTA0MTEx
+OTc3MzA0NjUzOTk4MzUwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMKAXBgVgTAEDB6AOEwwwMDAw
+MDAwMDAwMDAwXQYDVR0gBFYwVDBSBgZgTAECASYwSDBGBggrBgEFBQcCARY6aHR0cDovL2NjZC5h
+Y3NvbHV0aS5jb20uYnIvZG9jcy9kcGMtYWMtc29sdXRpLW11bHRpcGxhLnBkZjAdBgNVHSUEFjAU
+BggrBgEFBQcDAgYIKwYBBQUHAwQwgYwGA1UdHwSBhDCBgTA+oDygOoY4aHR0cDovL2NjZC5hY3Nv
+bHV0aS5jb20uYnIvbGNyL2FjLXNvbHV0aS1tdWx0aXBsYS12NS5jcmwwP6A9oDuGOWh0dHA6Ly9j
+Y2QyLmFjc29sdXRpLmNvbS5ici9sY3IvYWMtc29sdXRpLW11bHRpcGxhLXY1LmNybDAdBgNVHQ4E
+FgQUz5I1WnOOTY1gZEpSeXh97Ip/mfQwDgYDVR0PAQH/BAQDAgXgMA0GCSqGSIb3DQEBCwUAA4IC
+AQCAXiVUQEEwc3Cts0iQDr4vhAEE16LFomkXJ+UUxi9UdCJU1zjNiXjiVE21FkGW/oRGFibBuTkR
+naPlNJdDR/bhmRw+TAQgLqRnb4fx3E3TJDvgICkwfVbx+mmU3nvYmcCUIIZpOBVDxMHAeDFldAXS
+JYRQ03suzI/XIqvGw+wIngCfkmqJNeiVBW8eSByBfjtTrCa2v+21bVBc0HDA0C1yhFqJn/EQLvsd
+7nHbFo98VCoxyS8fLTrZ7KLv9xMqYYCRmAHX6UkgoarKtTKUDhXwiqKBH8vB0+2dUaMXaiea1qr8
+QJk8m2rnV02b45b4O638gU53eOQRPfMrDLdA6dyzS5Re8XSx2JOg9YuVJhu+lw83HcX0D8AC7inx
+qJQBuGG9mnmfoJ+amOqJWM6qvoIJC8YL8V3yAD8HjOiYmxFBAI2MoVUpt9Dahc5dpto1+D4RJico
+LDigA+aQQG9IPGO2RbWDdvNnO+AoJzFLBEEuoDy3H4u/jv57MwRPX2mVjn0hayjCXp8k4WdBd1Gi
+Mribp5Yfenk1PNGodRJIq5dvneqa+3CAatWucvQCVwYaUJcs4ugpeJpmJGpx9ihmCs+jaN0U/O+S
+dQQoC4l3y72emMQXo9XS6sieosR11CRtvsboEvxHFyMduLtDdfUwPx5LmFfBbnJHoUvjeKo8RHwL
+rw==</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="ID131224740910535">
+      <tpAmb>1</tpAmb>
+      <verAplic>14.4.65-NI1</verAplic>
+      <chNFe>31220508238299000390550010001160731781454108</chNFe>
+      <dhRecbto>2022-05-26T07:57:33-03:00</dhRecbto>
+      <nProt>131224740910535</nProt>
+      <digVal>9/nXPE1gE7soiA83XkCuApAaGiI=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

@@ -1,0 +1,1807 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lunar</RootNamespace>
+    <AssemblyName>Lunar</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Group 137.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="Syncfusion.BulletGraph.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.BulletGraph.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Calculate.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Calculate.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Chart.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Chart.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Compression.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Core.WinForms, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Core.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Data.WinForms, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Data.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.DataSource.WinForms, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.DataSource.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Diagram.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Diagram.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Diagram.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Diagram.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.DocIO.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.DocIO.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Edit.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Edit.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Gauge.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Gauge.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Grid.Grouping.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Grid.Grouping.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.WinForms, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.GridCommon.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.GridConverter.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.GridConverter.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.GridHelperClasses.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.GridHelperClasses.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Grouping.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Grouping.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.HTMLUI.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.HTMLUI.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.HTMLUI.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.HTMLUI.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Linq.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Linq.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Maps.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Maps.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.OfficeChart.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Pdf.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.PdfViewer.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.PdfViewer.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.PivotAnalysis.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.PivotAnalysis.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.PivotAnalysis.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.PivotAnalysis.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.PivotChart.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.PivotChart.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Presentation.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Presentation.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.ProjIO.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.ProjIO.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Schedule.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Schedule.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Schedule.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Schedule.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Scripting.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Scripting.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.SfBarcode.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGrid.WinForms, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.SfDataGrid.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfDataGridConverter.WinForms, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.SfDataGridConverter.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfInput.WinForms, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.SfInput.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfListView.WinForms, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.SfListView.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfSmithChart.WinForms, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.SfSmithChart.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Spreadsheet.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.Spreadsheet.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.TreeMap.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.TreeMap.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.XlsIO.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.XlsIO.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.Ribbon">
+      <HintPath>..\..\..\..\Users\marce\Downloads\Ribbon_Release_2018-03-19\Ribbon_Release_2018-03-19_NET461\System.Windows.Forms.Ribbon.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\WSCorreios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="RJ_UI\Classes\MenuColorTable.cs" />
+    <Compile Include="RJ_UI\Classes\MenuRenderer.cs" />
+    <Compile Include="RJ_UI\Classes\RjClass.cs" />
+    <Compile Include="RJ_UI\Classes\RJDropdownMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RJ_UI\Classes\RJTextBoxLower.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RJ_UI\Classes\RJTextBoxLower.Designer.cs">
+      <DependentUpon>RJTextBoxLower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RJ_UI\Classes\UppercaseTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telas\ArquivosContabilidade\FrmEnviarArquivosContabilidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ArquivosContabilidade\FrmEnviarArquivosContabilidade.Designer.cs">
+      <DependentUpon>FrmEnviarArquivosContabilidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Bancos\FrmBancosCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Bancos\FrmBancosCadastro.Designer.cs">
+      <DependentUpon>FrmBancosCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Bancos\FrmBancosLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Bancos\FrmBancosLista.Designer.cs">
+      <DependentUpon>FrmBancosLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Bancos\FrmContaBancaria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Bancos\FrmContaBancaria.Designer.cs">
+      <DependentUpon>FrmContaBancaria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Bancos\FrmContaBancariaLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Bancos\FrmContaBancariaLista.Designer.cs">
+      <DependentUpon>FrmContaBancariaLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\BandeirasCartao\FrmBandeiraCartaoCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\BandeirasCartao\FrmBandeiraCartaoCadastro.Designer.cs">
+      <DependentUpon>FrmBandeiraCartaoCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\BandeirasCartao\FrmBandeiraCartaoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\BandeirasCartao\FrmBandeiraCartaoLista.Designer.cs">
+      <DependentUpon>FrmBandeiraCartaoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cidades\FrmPesquisaCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cidades\FrmPesquisaCidade.Designer.cs">
+      <DependentUpon>FrmPesquisaCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\FrmClienteCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\FrmClienteCadastro.Designer.cs">
+      <DependentUpon>FrmClienteCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\FrmClienteLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\FrmClienteLista.Designer.cs">
+      <DependentUpon>FrmClienteLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAnaliseCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAnaliseCliente.Designer.cs">
+      <DependentUpon>FrmAnaliseCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroDependente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroDependente.Designer.cs">
+      <DependentUpon>FrmCadastroDependente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroEnderecoAdicional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroEnderecoAdicional.Designer.cs">
+      <DependentUpon>FrmCadastroEnderecoAdicional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroPropriedade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroPropriedade.Designer.cs">
+      <DependentUpon>FrmCadastroPropriedade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroReferenciaComercial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroReferenciaComercial.Designer.cs">
+      <DependentUpon>FrmCadastroReferenciaComercial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroReferenciaPessoal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroReferenciaPessoal.Designer.cs">
+      <DependentUpon>FrmCadastroReferenciaPessoal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroTelefone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroTelefone.Designer.cs">
+      <DependentUpon>FrmCadastroTelefone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Empresas\FrmCadastroEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Empresas\FrmCadastroEmpresas.Designer.cs">
+      <DependentUpon>FrmCadastroEmpresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Empresas\FrmEmpresaLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Empresas\FrmEmpresaLista.Designer.cs">
+      <DependentUpon>FrmEmpresaLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Financeiro\Cartoes\FrmAdquirenteCartao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Financeiro\Cartoes\FrmAdquirenteCartao.Designer.cs">
+      <DependentUpon>FrmAdquirenteCartao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Financeiro\Cartoes\FrmAdquirenteCartaoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Financeiro\Cartoes\FrmAdquirenteCartaoLista.Designer.cs">
+      <DependentUpon>FrmAdquirenteCartaoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Financeiro\Cartoes\FrmParcelamentoCartao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Financeiro\Cartoes\FrmParcelamentoCartao.Designer.cs">
+      <DependentUpon>FrmParcelamentoCartao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Financeiro\PlanoContas\PlanosPorGrupos\FrmPlanoConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Financeiro\PlanoContas\PlanosPorGrupos\FrmPlanoConta.Designer.cs">
+      <DependentUpon>FrmPlanoConta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmCESTCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmCESTCadastro.Designer.cs">
+      <DependentUpon>FrmCESTCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoFiscalCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoFiscalCadastro.Designer.cs">
+      <DependentUpon>FrmGrupoFiscalCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoProdutoCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoProdutoCadastro.Designer.cs">
+      <DependentUpon>FrmGrupoProdutoCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmMarcaCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmMarcaCadastro.Designer.cs">
+      <DependentUpon>FrmMarcaCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmNCMCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmNCMCadastro.Designer.cs">
+      <DependentUpon>FrmNCMCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmSetorCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmSetorCadastro.Designer.cs">
+      <DependentUpon>FrmSetorCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmSubGrupoCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmSubGrupoCadastro.Designer.cs">
+      <DependentUpon>FrmSubGrupoCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\FrmProdutoCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\FrmProdutoCadastro.Designer.cs">
+      <DependentUpon>FrmProdutoCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\FrmProdutoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\FrmProdutoLista.Designer.cs">
+      <DependentUpon>FrmProdutoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\FrmUnidadeMedidaCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\FrmUnidadeMedidaCadastro.Designer.cs">
+      <DependentUpon>FrmUnidadeMedidaCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\RelatoriosCadastro\dsExtratoProduto.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsExtratoProduto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\RelatoriosCadastro\FrmExtratoProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\RelatoriosCadastro\FrmExtratoProduto.Designer.cs">
+      <DependentUpon>FrmExtratoProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\Reports\Dados\dsCaixa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCaixa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\Reports\FrmRelatorioCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\Reports\FrmRelatorioCaixa.Designer.cs">
+      <DependentUpon>FrmRelatorioCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Compras\FrmLancarNotaFiscalCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Compras\FrmLancarNotaFiscalCompra.Designer.cs">
+      <DependentUpon>FrmLancarNotaFiscalCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Compras\Manifestos\FrmManifesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Compras\Manifestos\FrmManifesto.Designer.cs">
+      <DependentUpon>FrmManifesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Condicionais\dsCondicional.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCondicional.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Condicionais\FrmCondicional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Condicionais\FrmCondicional.Designer.cs">
+      <DependentUpon>FrmCondicional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Condicionais\FrmCondicionalLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Condicionais\FrmCondicionalLista.Designer.cs">
+      <DependentUpon>FrmCondicionalLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Condicionais\FrmDevolucaoCondicional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Condicionais\FrmDevolucaoCondicional.Designer.cs">
+      <DependentUpon>FrmDevolucaoCondicional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Condicionais\FrmImprimirCondicional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Condicionais\FrmImprimirCondicional.Designer.cs">
+      <DependentUpon>FrmImprimirCondicional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasPagar\FrmContaPagarLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasPagar\FrmContaPagarLista.Designer.cs">
+      <DependentUpon>FrmContaPagarLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasPagar\FrmNovaFaturaPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasPagar\FrmNovaFaturaPagar.Designer.cs">
+      <DependentUpon>FrmNovaFaturaPagar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmContaReceberLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmContaReceberLista.Designer.cs">
+      <DependentUpon>FrmContaReceberLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmDescontoLiquidacaoReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmDescontoLiquidacaoReceber.Designer.cs">
+      <DependentUpon>FrmDescontoLiquidacaoReceber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmEnviarLembreteVencimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmEnviarLembreteVencimento.Designer.cs">
+      <DependentUpon>FrmEnviarLembreteVencimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmNovaFatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmNovaFatura.Designer.cs">
+      <DependentUpon>FrmNovaFatura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmValorParcial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\FrmValorParcial.Designer.cs">
+      <DependentUpon>FrmValorParcial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\Reports\FrmRecibo01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\Reports\FrmRecibo01.Designer.cs">
+      <DependentUpon>FrmRecibo01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Dashboards\FrmDashboard1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Dashboards\FrmDashboard1.Designer.cs">
+      <DependentUpon>FrmDashboard1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\Dados\dsBalancoEstoque.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBalancoEstoque.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\Dados\dsInventario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInventario.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\Dados\dsSaldoEstoque.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSaldoEstoque.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmBalancoEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmBalancoEstoque.Designer.cs">
+      <DependentUpon>FrmBalancoEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmBalancoEstoqueLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmBalancoEstoqueLista.Designer.cs">
+      <DependentUpon>FrmBalancoEstoqueLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmGerarInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmGerarInventario.Designer.cs">
+      <DependentUpon>FrmGerarInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmImprimirComparativoBalanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmImprimirComparativoBalanco.Designer.cs">
+      <DependentUpon>FrmImprimirComparativoBalanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmImprimirInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmImprimirInventario.Designer.cs">
+      <DependentUpon>FrmImprimirInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmImprimirSaldoEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmImprimirSaldoEstoque.Designer.cs">
+      <DependentUpon>FrmImprimirSaldoEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmSaldoEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmSaldoEstoque.Designer.cs">
+      <DependentUpon>FrmSaldoEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fiscal\Adicionais\FrmNaturezaOperacaoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\Adicionais\FrmNaturezaOperacaoLista.Designer.cs">
+      <DependentUpon>FrmNaturezaOperacaoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmCartaCorrecao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmCartaCorrecao.Designer.cs">
+      <DependentUpon>FrmCartaCorrecao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmControleNotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmControleNotas.Designer.cs">
+      <DependentUpon>FrmControleNotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmJustificativa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmJustificativa.Designer.cs">
+      <DependentUpon>FrmJustificativa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmNaturezaOperacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmNaturezaOperacao.Designer.cs">
+      <DependentUpon>FrmNaturezaOperacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmNfe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmNfe.Designer.cs">
+      <DependentUpon>FrmNfe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmProdutosNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmProdutosNota.Designer.cs">
+      <DependentUpon>FrmProdutosNota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fiscal\NFeSelecaoItens\FrmSelecionarProdutoParaNfe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\NFeSelecaoItens\FrmSelecionarProdutoParaNfe.Designer.cs">
+      <DependentUpon>FrmSelecionarProdutoParaNfe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.Designer.cs">
+      <DependentUpon>FrmCrediarioOrdemServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FormaPagamentoRecebimento\FrmPagamentoRecebimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\FormaPagamentoRecebimento\FrmPagamentoRecebimento.Designer.cs">
+      <DependentUpon>FrmPagamentoRecebimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Login\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Login\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RJ_UI\Classes\RJButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RJ_UI\Classes\RJCircularPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RJ_UI\Classes\RJTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RJ_UI\Classes\RJTextBox.Designer.cs">
+      <DependentUpon>RJTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Login\FrmRecuperarSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Login\FrmRecuperarSenha.Designer.cs">
+      <DependentUpon>FrmRecuperarSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Login\WelcomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Login\WelcomeForm.Designer.cs">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Orcamentos\dsOrcamentoAvulso.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOrcamentoAvulso.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Orcamentos\FrmImprimirOrcamentoAvulso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Orcamentos\FrmImprimirOrcamentoAvulso.Designer.cs">
+      <DependentUpon>FrmImprimirOrcamentoAvulso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Orcamentos\FrmOrcamentoAvulso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Orcamentos\FrmOrcamentoAvulso.Designer.cs">
+      <DependentUpon>FrmOrcamentoAvulso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOrdemServico.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoProduto.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOrdemServicoProduto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoServico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOrdemServicoServico.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmImpressaoOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmImpressaoOrdemServico.Designer.cs">
+      <DependentUpon>FrmImpressaoOrdemServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmOrdemServico.Designer.cs">
+      <DependentUpon>FrmOrdemServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmOrdemServicoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmOrdemServicoLista.Designer.cs">
+      <DependentUpon>FrmOrdemServicoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\Servicos\FrmServicoCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\Servicos\FrmServicoCadastro.Designer.cs">
+      <DependentUpon>FrmServicoCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\Servicos\FrmServicoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\Servicos\FrmServicoLista.Designer.cs">
+      <DependentUpon>FrmServicoLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\TipoObjetos\FrmTipoObjetoCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\TipoObjetos\FrmTipoObjetoCadastro.Designer.cs">
+      <DependentUpon>FrmTipoObjetoCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ParametroDoSistema\FrmParametroSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ParametroDoSistema\FrmParametroSistema.Designer.cs">
+      <DependentUpon>FrmParametroSistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\PesquisaPadrao\FrmPesquisaPadrao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\PesquisaPadrao\FrmPesquisaPadrao.Designer.cs">
+      <DependentUpon>FrmPesquisaPadrao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Principal\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Principal\FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.Designer.cs">
+      <DependentUpon>FrmPermissaoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\UsuarioRegistro\FrmUsuarioCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\UsuarioRegistro\FrmUsuarioCadastro.Designer.cs">
+      <DependentUpon>FrmUsuarioCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\UsuarioRegistro\FrmUsuarioLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\UsuarioRegistro\FrmUsuarioLista.Designer.cs">
+      <DependentUpon>FrmUsuarioLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\dsVenda.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsVenda.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmAguarde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmAguarde.Designer.cs">
+      <DependentUpon>FrmAguarde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmDescontoTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmDescontoTotal.Designer.cs">
+      <DependentUpon>FrmDescontoTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmExcluirItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmExcluirItem.Designer.cs">
+      <DependentUpon>FrmExcluirItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmImprimirTicketVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmImprimirTicketVenda.Designer.cs">
+      <DependentUpon>FrmImprimirTicketVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\FrmConsultaVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\FrmConsultaVendas.Designer.cs">
+      <DependentUpon>FrmConsultaVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\FrmVendas02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\FrmVendas02.Designer.cs">
+      <DependentUpon>FrmVendas02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmBoleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmBoleto.Designer.cs">
+      <DependentUpon>FrmBoleto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmCartao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmCartao.Designer.cs">
+      <DependentUpon>FrmCartao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmCheque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmCheque.Designer.cs">
+      <DependentUpon>FrmCheque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmCrediario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmCrediario.Designer.cs">
+      <DependentUpon>FrmCrediario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmCreditoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmCreditoCliente.Designer.cs">
+      <DependentUpon>FrmCreditoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmDeposito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmDeposito.Designer.cs">
+      <DependentUpon>FrmDeposito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmDinheiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmDinheiro.Designer.cs">
+      <DependentUpon>FrmDinheiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmPix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\RecebimentoVendas\FrmPix.Designer.cs">
+      <DependentUpon>FrmPix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\VisualizadorPDF\FrmPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\VisualizadorPDF\FrmPDF.Designer.cs">
+      <DependentUpon>FrmPDF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\BoletosJuno\BoletoFacilClient.cs" />
+    <Compile Include="Utils\ConverterMoedaPorExtenso.cs" />
+    <Compile Include="Utils\DropBoxIntegracao\AuthenticationHelper.cs" />
+    <Compile Include="Utils\GenericaDesktop.cs" />
+    <Compile Include="Utils\IntegracaoZAPI\Zapi.cs" />
+    <Compile Include="Utils\OrganizacaoNF\EmitirNFCe.cs" />
+    <Compile Include="Utils\OrganizacaoNF\EmitirNFe.cs" />
+    <Compile Include="Utils\OrganizacaoNF\EmitirNfe2.cs" />
+    <Compile Include="Utils\OrganizacaoNF\Ftp.cs" />
+    <Compile Include="Utils\OrganizacaoNF\LunarApiNotas.cs" />
+    <Compile Include="Utils\OrganizacaoNF\RetCartaCorrecao.cs" />
+    <Compile Include="Utils\OrganizacaoNF\RetConsultaProcessamento.cs" />
+    <Compile Include="Utils\OrganizacaoNF\RetInutilizacao.cs" />
+    <Compile Include="Utils\OrganizacaoNF\RetornoJsonVariados.cs" />
+    <Compile Include="Utils\OrganizacaoNF\ValidadorNotaSaida.cs" />
+    <Compile Include="Utils\Sintegra\GeradorSintegra.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="RJ_UI\Classes\RJTextBoxLower.resx">
+      <DependentUpon>RJTextBoxLower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ArquivosContabilidade\FrmEnviarArquivosContabilidade.resx">
+      <DependentUpon>FrmEnviarArquivosContabilidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Bancos\FrmBancosCadastro.resx">
+      <DependentUpon>FrmBancosCadastro.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Bancos\FrmBancosLista.resx">
+      <DependentUpon>FrmBancosLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Bancos\FrmContaBancaria.resx">
+      <DependentUpon>FrmContaBancaria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Bancos\FrmContaBancariaLista.resx">
+      <DependentUpon>FrmContaBancariaLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\BandeirasCartao\FrmBandeiraCartaoCadastro.resx">
+      <DependentUpon>FrmBandeiraCartaoCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\BandeirasCartao\FrmBandeiraCartaoLista.resx">
+      <DependentUpon>FrmBandeiraCartaoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cidades\FrmPesquisaCidade.resx">
+      <DependentUpon>FrmPesquisaCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\FrmClienteCadastro.resx">
+      <DependentUpon>FrmClienteCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\FrmClienteLista.resx">
+      <DependentUpon>FrmClienteLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAnaliseCliente.resx">
+      <DependentUpon>FrmAnaliseCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroDependente.resx">
+      <DependentUpon>FrmCadastroDependente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroEnderecoAdicional.resx">
+      <DependentUpon>FrmCadastroEnderecoAdicional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroPropriedade.resx">
+      <DependentUpon>FrmCadastroPropriedade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroReferenciaComercial.resx">
+      <DependentUpon>FrmCadastroReferenciaComercial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroReferenciaPessoal.resx">
+      <DependentUpon>FrmCadastroReferenciaPessoal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroTelefone.resx">
+      <DependentUpon>FrmCadastroTelefone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Empresas\FrmCadastroEmpresas.resx">
+      <DependentUpon>FrmCadastroEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Empresas\FrmEmpresaLista.resx">
+      <DependentUpon>FrmEmpresaLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Financeiro\Cartoes\FrmAdquirenteCartao.resx">
+      <DependentUpon>FrmAdquirenteCartao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Financeiro\Cartoes\FrmAdquirenteCartaoLista.resx">
+      <DependentUpon>FrmAdquirenteCartaoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Financeiro\Cartoes\FrmParcelamentoCartao.resx">
+      <DependentUpon>FrmParcelamentoCartao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Financeiro\PlanoContas\PlanosPorGrupos\FrmPlanoConta.resx">
+      <DependentUpon>FrmPlanoConta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmCESTCadastro.resx">
+      <DependentUpon>FrmCESTCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoFiscalCadastro.resx">
+      <DependentUpon>FrmGrupoFiscalCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoProdutoCadastro.resx">
+      <DependentUpon>FrmGrupoProdutoCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmMarcaCadastro.resx">
+      <DependentUpon>FrmMarcaCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmNCMCadastro.resx">
+      <DependentUpon>FrmNCMCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmSetorCadastro.resx">
+      <DependentUpon>FrmSetorCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmSubGrupoCadastro.resx">
+      <DependentUpon>FrmSubGrupoCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\FrmProdutoCadastro.resx">
+      <DependentUpon>FrmProdutoCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\FrmProdutoLista.resx">
+      <DependentUpon>FrmProdutoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\FrmUnidadeMedidaCadastro.resx">
+      <DependentUpon>FrmUnidadeMedidaCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\RelatoriosCadastro\FrmExtratoProduto.resx">
+      <DependentUpon>FrmExtratoProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\RelatoriosCadastro\ReportExtratoProduto.rdlc" />
+    <EmbeddedResource Include="Telas\CaixaConferencia\Reports\FrmRelatorioCaixa.resx">
+      <DependentUpon>FrmRelatorioCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CaixaConferencia\Reports\RelatorioCaixa01.rdlc" />
+    <EmbeddedResource Include="Telas\Compras\FrmLancarNotaFiscalCompra.resx">
+      <DependentUpon>FrmLancarNotaFiscalCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Compras\Manifestos\FrmManifesto.resx">
+      <DependentUpon>FrmManifesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Condicionais\FrmCondicional.resx">
+      <DependentUpon>FrmCondicional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Condicionais\FrmCondicionalLista.resx">
+      <DependentUpon>FrmCondicionalLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Condicionais\FrmDevolucaoCondicional.resx">
+      <DependentUpon>FrmDevolucaoCondicional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Condicionais\FrmImprimirCondicional.resx">
+      <DependentUpon>FrmImprimirCondicional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Condicionais\ReportCondicional01.rdlc" />
+    <EmbeddedResource Include="Telas\ContasPagar\FrmContaPagarLista.resx">
+      <DependentUpon>FrmContaPagarLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasPagar\FrmNovaFaturaPagar.resx">
+      <DependentUpon>FrmNovaFaturaPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasReceber\FrmContaReceberLista.resx">
+      <DependentUpon>FrmContaReceberLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasReceber\FrmDescontoLiquidacaoReceber.resx">
+      <DependentUpon>FrmDescontoLiquidacaoReceber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasReceber\FrmEnviarLembreteVencimento.resx">
+      <DependentUpon>FrmEnviarLembreteVencimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasReceber\FrmNovaFatura.resx">
+      <DependentUpon>FrmNovaFatura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasReceber\FrmValorParcial.resx">
+      <DependentUpon>FrmValorParcial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasReceber\Reports\FrmRecibo01.resx">
+      <DependentUpon>FrmRecibo01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasReceber\Reports\ReciboContaReceber.rdlc" />
+    <EmbeddedResource Include="Telas\Dashboards\FrmDashboard1.resx">
+      <DependentUpon>FrmDashboard1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoques\FrmBalancoEstoque.resx">
+      <DependentUpon>FrmBalancoEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoques\FrmBalancoEstoqueLista.resx">
+      <DependentUpon>FrmBalancoEstoqueLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoques\FrmGerarInventario.resx">
+      <DependentUpon>FrmGerarInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoques\FrmImprimirComparativoBalanco.resx">
+      <DependentUpon>FrmImprimirComparativoBalanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoques\FrmImprimirInventario.resx">
+      <DependentUpon>FrmImprimirInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoques\FrmImprimirSaldoEstoque.resx">
+      <DependentUpon>FrmImprimirSaldoEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoques\FrmSaldoEstoque.resx">
+      <DependentUpon>FrmSaldoEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoques\reportConferenciaBalanco01.rdlc" />
+    <EmbeddedResource Include="Telas\Estoques\reportInventario01.rdlc" />
+    <EmbeddedResource Include="Telas\Estoques\ReportSaldoEstoque01.rdlc" />
+    <EmbeddedResource Include="Telas\Fiscal\Adicionais\FrmNaturezaOperacaoLista.resx">
+      <DependentUpon>FrmNaturezaOperacaoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fiscal\FrmCartaCorrecao.resx">
+      <DependentUpon>FrmCartaCorrecao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fiscal\FrmControleNotas.resx">
+      <DependentUpon>FrmControleNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fiscal\FrmJustificativa.resx">
+      <DependentUpon>FrmJustificativa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fiscal\FrmNaturezaOperacao.resx">
+      <DependentUpon>FrmNaturezaOperacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fiscal\FrmNfe.resx">
+      <DependentUpon>FrmNfe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fiscal\FrmProdutosNota.resx">
+      <DependentUpon>FrmProdutosNota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fiscal\NFeSelecaoItens\FrmSelecionarProdutoParaNfe.resx">
+      <DependentUpon>FrmSelecionarProdutoParaNfe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.resx">
+      <DependentUpon>FrmCrediarioOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\FormaPagamentoRecebimento\FrmPagamentoRecebimento.resx">
+      <DependentUpon>FrmPagamentoRecebimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Login\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RJ_UI\Classes\RJTextBox.resx">
+      <DependentUpon>RJTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Login\FrmRecuperarSenha.resx">
+      <DependentUpon>FrmRecuperarSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Login\WelcomeForm.resx">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Orcamentos\FrmImprimirOrcamentoAvulso.resx">
+      <DependentUpon>FrmImprimirOrcamentoAvulso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Orcamentos\FrmOrcamentoAvulso.resx">
+      <DependentUpon>FrmOrcamentoAvulso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Orcamentos\ReportOrcamentoAvulso.rdlc" />
+    <EmbeddedResource Include="Telas\OrdensDeServico\FrmImpressaoOrdemServico.resx">
+      <DependentUpon>FrmImpressaoOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\FrmOrdemServico.resx">
+      <DependentUpon>FrmOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\FrmOrdemServicoLista.resx">
+      <DependentUpon>FrmOrdemServicoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServico.rdlc" />
+    <EmbeddedResource Include="Telas\OrdensDeServico\Servicos\FrmServicoCadastro.resx">
+      <DependentUpon>FrmServicoCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\Servicos\FrmServicoLista.resx">
+      <DependentUpon>FrmServicoLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\TipoObjetos\FrmTipoObjetoCadastro.resx">
+      <DependentUpon>FrmTipoObjetoCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ParametroDoSistema\FrmParametroSistema.resx">
+      <DependentUpon>FrmParametroSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\PesquisaPadrao\FrmPesquisaPadrao.resx">
+      <DependentUpon>FrmPesquisaPadrao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Principal\FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.resx">
+      <DependentUpon>FrmPermissaoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\UsuarioRegistro\FrmUsuarioCadastro.resx">
+      <DependentUpon>FrmUsuarioCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\UsuarioRegistro\FrmUsuarioLista.resx">
+      <DependentUpon>FrmUsuarioLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmAguarde.resx">
+      <DependentUpon>FrmAguarde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmDescontoTotal.resx">
+      <DependentUpon>FrmDescontoTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmExcluirItem.resx">
+      <DependentUpon>FrmExcluirItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmImprimirTicketVenda.resx">
+      <DependentUpon>FrmImprimirTicketVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\reportTicketVenda.rdlc" />
+    <EmbeddedResource Include="Telas\Vendas\FrmConsultaVendas.resx">
+      <DependentUpon>FrmConsultaVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\FrmVendas02.resx">
+      <DependentUpon>FrmVendas02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmBoleto.resx">
+      <DependentUpon>FrmBoleto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmCartao.resx">
+      <DependentUpon>FrmCartao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmCheque.resx">
+      <DependentUpon>FrmCheque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmCrediario.resx">
+      <DependentUpon>FrmCrediario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmCreditoCliente.resx">
+      <DependentUpon>FrmCreditoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmDeposito.resx">
+      <DependentUpon>FrmDeposito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmDinheiro.resx">
+      <DependentUpon>FrmDinheiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmPix.resx">
+      <DependentUpon>FrmPix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\VisualizadorPDF\FrmPDF.resx">
+      <DependentUpon>FrmPDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.atualizaPagamentoNaEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.atualizaRemessaAgrupadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.bloquearObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaContratoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaDataAtualResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaOpcoesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaPagamentoEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaServicosAdicionaisAtivosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaServicosValorDeclaradoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaServicosXServicosAdicionaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.buscaTarifaValeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.calculaTarifaServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.cancelarObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.cancelarPedidoScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.clienteERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.consultaCEPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.contratoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.dimensaoTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.embalagemLRSMaster.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.enderecoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.fechaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.fechaPlpVariosServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.geraDigitoVerificadorEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.getStatusCartaoPostagemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.getStatusPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.integrarUsuarioScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.mensagemParametrizadaTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.obterClienteAtualizacaoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.obterEmbalagemLRSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.obterMensagemParametrizadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.pesquisarDimensoesServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.pesquisarEmbalagensPorServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.pesquisarParametrosPorDescricaoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.pesquisarServicosAdicionaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.retornoCancelamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.servicoAdicionalTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.servicoAdicionalXML.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.servicoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.solicitaEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.solicitaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.solicitarPostagemScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.solicitaXmlPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.statusCartao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.statusPlp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.tipoEmbalagem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.valePostal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.validaEtiquetaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.validaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.validarPostagemReversaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.validarPostagemSimultaneaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.verificaDisponibilidadeServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.verificaModalTransporteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.VerificaSeTodosObjetosCanceladosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Lunar.gclicx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Telas\Cadastros\Produtos\RelatoriosCadastro\dsExtratoProduto.xsc">
+      <DependentUpon>dsExtratoProduto.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Cadastros\Produtos\RelatoriosCadastro\dsExtratoProduto.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsExtratoProduto.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\Cadastros\Produtos\RelatoriosCadastro\dsExtratoProduto.xss">
+      <DependentUpon>dsExtratoProduto.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\CaixaConferencia\Reports\Dados\dsCaixa.xsc">
+      <DependentUpon>dsCaixa.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\CaixaConferencia\Reports\Dados\dsCaixa.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCaixa.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\CaixaConferencia\Reports\Dados\dsCaixa.xss">
+      <DependentUpon>dsCaixa.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Condicionais\dsCondicional.xsc">
+      <DependentUpon>dsCondicional.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Condicionais\dsCondicional.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCondicional.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\Condicionais\dsCondicional.xss">
+      <DependentUpon>dsCondicional.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Estoques\Dados\dsBalancoEstoque.xsc">
+      <DependentUpon>dsBalancoEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Estoques\Dados\dsBalancoEstoque.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBalancoEstoque.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\Estoques\Dados\dsBalancoEstoque.xss">
+      <DependentUpon>dsBalancoEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Estoques\Dados\dsInventario.xsc">
+      <DependentUpon>dsInventario.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Estoques\Dados\dsInventario.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInventario.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\Estoques\Dados\dsInventario.xss">
+      <DependentUpon>dsInventario.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Estoques\Dados\dsSaldoEstoque.xsc">
+      <DependentUpon>dsSaldoEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Estoques\Dados\dsSaldoEstoque.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSaldoEstoque.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\Estoques\Dados\dsSaldoEstoque.xss">
+      <DependentUpon>dsSaldoEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Orcamentos\dsOrcamentoAvulso.xsc">
+      <DependentUpon>dsOrcamentoAvulso.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Orcamentos\dsOrcamentoAvulso.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOrcamentoAvulso.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\Orcamentos\dsOrcamentoAvulso.xss">
+      <DependentUpon>dsOrcamentoAvulso.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServico.xsc">
+      <DependentUpon>dsOrdemServico.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServico.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOrdemServico.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServico.xss">
+      <DependentUpon>dsOrdemServico.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoProduto.xsc">
+      <DependentUpon>dsOrdemServicoProduto.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoProduto.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOrdemServicoProduto.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoProduto.xss">
+      <DependentUpon>dsOrdemServicoProduto.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoServico.xsc">
+      <DependentUpon>dsOrdemServicoServico.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoServico.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOrdemServicoServico.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoServico.xss">
+      <DependentUpon>dsOrdemServicoServico.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Vendas\Adicionais\dsVenda.xsc">
+      <DependentUpon>dsVenda.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Vendas\Adicionais\dsVenda.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsVenda.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\Vendas\Adicionais\dsVenda.xss">
+      <DependentUpon>dsVenda.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsappCinza2_1.jpeg" />
+    <None Include="Resources\WhatsAppCinza1.png" />
+    <None Include="Resources\whatsapp-logo-icone.png" />
+    <None Include="Resources\XML64x64.png" />
+    <None Include="Resources\XML-PNG-64x64.png" />
+    <None Include="Resources\XML-PNG-32x32.png" />
+    <None Include="Resources\XML_PNG_64x64.png" />
+    <None Include="Connected Services\WSCorreios\configuration91.svcinfo" />
+    <None Include="Connected Services\WSCorreios\configuration.svcinfo" />
+    <None Include="Connected Services\WSCorreios\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Group 137.ico" />
+    <Content Include="only_logo_BR8_1.ico" />
+    <Content Include="Resources\Account Setting.png" />
+    <Content Include="Resources\Address Book.png" />
+    <None Include="Resources\AniversariantesTeste.png" />
+    <Content Include="Resources\Auto archive Setting.png" />
+    <Content Include="Resources\Cancel All2.png" />
+    <Content Include="Resources\catgeroize.png" />
+    <Content Include="Resources\Change View.png" />
+    <Content Include="Resources\clean up2.png" />
+    <Content Include="Resources\Close All Item.png" />
+    <None Include="Resources\Completed-Logo.png" />
+    <None Include="Resources\CloseDark.png" />
+    <None Include="Resources\confirmacao.png" />
+    <Content Include="Resources\Delete_1.png" />
+    <None Include="Resources\DinheiroExemplo1.jpg" />
+    <None Include="Resources\Empresa.png" />
+    <None Include="Resources\Dinheiro01.png" />
+    <Content Include="Resources\Folder Pane.png" />
+    <Content Include="Resources\Folder permission.png" />
+    <Content Include="Resources\Folder permission1.png" />
+    <Content Include="Resources\Folder properties.png" />
+    <Content Include="Resources\Folder properties1.png" />
+    <Content Include="Resources\follow up.png" />
+    <Content Include="Resources\Forward1.png" />
+    <None Include="Resources\Group 137.ico" />
+    <Content Include="Resources\iconelunar.ico" />
+    <Content Include="Resources\icons.png" />
+    <Content Include="Resources\icons1.png" />
+    <Content Include="Resources\icons2.png" />
+    <Content Include="Resources\icons3.png" />
+    <Content Include="Resources\icons4.png" />
+    <None Include="Resources\lunarIcone.ico" />
+    <None Include="Resources\LunarLogoBmp.bmp" />
+    <None Include="Resources\login_black_24dp 1.png" />
+    <None Include="Resources\img-wellcome-sis-lunar.png" />
+    <Content Include="Resources\Mark all as read.png" />
+    <Content Include="Resources\Message Priview.png" />
+    <Content Include="Resources\more.png" />
+    <Content Include="Resources\move.png" />
+    <Content Include="Resources\New folder.png" />
+    <Content Include="Resources\New item1.png" />
+    <Content Include="Resources\New search folder.png" />
+    <None Include="Resources\Only-Logo.png" />
+    <None Include="Resources\Only-Logo-white.png" />
+    <Content Include="Resources\Open in New Window.png" />
+    <Content Include="Resources\Outlook ic-10.png" />
+    <Content Include="Resources\Outlook icon-01.png" />
+    <Content Include="Resources\Outlook icon-02.png" />
+    <Content Include="Resources\Outlook icon-03.png" />
+    <Content Include="Resources\Outlook icon-04.png" />
+    <Content Include="Resources\Outlook icon-05.png" />
+    <Content Include="Resources\Outlook icon-06.png" />
+    <Content Include="Resources\Outlook icon-07.png" />
+    <Content Include="Resources\Outlook icon-08.png" />
+    <Content Include="Resources\Outlook icon-09.png" />
+    <Content Include="Resources\Outlook icon-10.png" />
+    <Content Include="Resources\Outlook icon-12.png" />
+    <None Include="Resources\Produto.png" />
+    <Content Include="Resources\Reading Pane.png" />
+    <Content Include="Resources\Reminder Windows.png" />
+    <Content Include="Resources\Rename folder.png" />
+    <Content Include="Resources\Reset View.png" />
+    <Content Include="Resources\Rules.png" />
+    <Content Include="Resources\Run rules now.png" />
+    <Content Include="Resources\Run rules now2.png" />
+    <Content Include="Resources\Send All.png" />
+    <Content Include="Resources\Send and recive all folder.png" />
+    <Content Include="Resources\Send Group.png" />
+    <Content Include="Resources\Send-Receive group.png" />
+    <Content Include="Resources\Show all A to Z.png" />
+    <Content Include="Resources\show in favorites.png" />
+    <Content Include="Resources\Show Progress.png" />
+    <Content Include="Resources\Team Email.png" />
+    <Content Include="Resources\To Do Bar.png" />
+    <Content Include="Resources\To manger.png" />
+    <Content Include="Resources\Update Folder.png" />
+    <None Include="Resources\User1.png" />
+    <Content Include="Resources\View in server.png" />
+    <Content Include="Resources\View Setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Telas\Cadastros\Modulos\" />
+    <Folder Include="Telas\ContasReceber\Reports\Dados\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LunarBase\LunarBase\LunarBase.csproj">
+      <Project>{aa640c44-8d48-4ae5-b815-f14602833ccd}</Project>
+      <Name>LunarBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WSCorreios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="boletofacilsdk">
+      <Version>1.0.8</Version>
+    </PackageReference>
+    <PackageReference Include="CircularProgressBar">
+      <Version>2.8.0.16</Version>
+    </PackageReference>
+    <PackageReference Include="Cquential.Microsoft.ReportViewer.DataVisualization">
+      <Version>10.0.40219.1</Version>
+    </PackageReference>
+    <PackageReference Include="FiscalBr.Sintegra">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="FontAwesome.Sharp">
+      <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="JWT">
+      <Version>5.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="MetroFramework">
+      <Version>1.2.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Graph.Core">
+      <Version>1.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Identity.Client">
+      <Version>4.44.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms">
+      <Version>150.1484.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.SharePointOnline.CSOM">
+      <Version>16.1.22518.12000</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Web.WebView2">
+      <Version>1.0.864.35</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
+      <Version>10.0.17763.1000</Version>
+    </PackageReference>
+    <PackageReference Include="MySql.Data">
+      <Version>8.0.27</Version>
+    </PackageReference>
+    <PackageReference Include="NHibernate">
+      <Version>5.3.10</Version>
+    </PackageReference>
+    <PackageReference Include="PdfiumViewer">
+      <Version>2.13.0</Version>
+    </PackageReference>
+    <PackageReference Include="PdfiumViewer.Native.x86.v8-xfa">
+      <Version>2018.4.8.256</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Tools.Windows">
+      <Version>19.4.0.38</Version>
+    </PackageReference>
+    <PackageReference Include="System.Net.Http.Json">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Net.WebSockets.Client">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Unimake.Unidanfe">
+      <Version>20220117.1131.32</Version>
+    </PackageReference>
+    <PackageReference Include="Wdc.System.Net.Http.Formatting.NetStandard">
+      <Version>1.0.7</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net">
+      <Version>0.16.8</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

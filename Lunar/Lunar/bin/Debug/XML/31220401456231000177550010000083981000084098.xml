@@ -1,0 +1,211 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe versao="4.00" Id="NFe31220401456231000177550010000083981000084098">
+      <ide>
+        <cUF>31</cUF>
+        <cNF>00008409</cNF>
+        <natOp>VENDA ST</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>8398</nNF>
+        <dhEmi>2022-04-08T10:31:00-03:00</dhEmi>
+        <dhSaiEnt>2022-04-08T10:31:00-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>1</idDest>
+        <cMunFG>3127701</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>8</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>1</indFinal>
+        <indPres>0</indPres>
+        <procEmi>0</procEmi>
+        <verProc>21.02.01</verProc>
+      </ide>
+      <emit>
+        <CNPJ>01456231000177</CNPJ>
+        <xNome>COMERCIAL RX SERVICOS E REPRESENTACAO EIRELI</xNome>
+        <enderEmit>
+          <xLgr>RUA MOACIR PALETA</xLgr>
+          <nro>671</nro>
+          <xBairro>SAO PEDRO</xBairro>
+          <cMun>3127701</cMun>
+          <xMun>GOVERNADOR VALADARES</xMun>
+          <UF>MG</UF>
+          <CEP>35020360</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3332716706</fone>
+        </enderEmit>
+        <IE>0031328710025</IE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>28145398000173</CNPJ>
+        <xNome>TXT INFORMATICA LTDA</xNome>
+        <enderDest>
+          <xLgr>RUA CANABRAVA</xLgr>
+          <nro>320</nro>
+          <xCpl>LOJA 02</xCpl>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610031</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>0030011730013</IE>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>00723</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>CFOA-SM-ASU-80-S-6FO NR-CABO FIBRA OPTICA SM AS80 6FO NR</xProd>
+          <NCM>85447010</NCM>
+          <CEST>1200700</CEST>
+          <CFOP>5405</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>5070.0000000000</vUnCom>
+          <vProd>5070.00</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>5070.0000000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <vTotTrib>2149.68</vTotTrib>
+          <ICMS>
+            <ICMS60>
+              <orig>1</orig>
+              <CST>60</CST>
+            </ICMS60>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>5070.00</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>83.65</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>5070.00</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>385.32</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>0.00</vBC>
+          <vICMS>0.00</vICMS>
+          <vICMSDeson>0.00</vICMSDeson>
+          <vFCP>0.00</vFCP>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vFCPST>0.00</vFCPST>
+          <vFCPSTRet>0.00</vFCPSTRet>
+          <vProd>5070.00</vProd>
+          <vFrete>0.00</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>0.00</vIPI>
+          <vIPIDevol>0.00</vIPIDevol>
+          <vPIS>83.65</vPIS>
+          <vCOFINS>385.32</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>5070.00</vNF>
+          <vTotTrib>2149.68</vTotTrib>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>8398</nFat>
+          <vOrig>5070.00</vOrig>
+          <vDesc>0.00</vDesc>
+          <vLiq>5070.00</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2022-05-08</dVenc>
+          <vDup>1267.50</vDup>
+        </dup>
+        <dup>
+          <nDup>002</nDup>
+          <dVenc>2022-06-08</dVenc>
+          <vDup>1267.50</vDup>
+        </dup>
+        <dup>
+          <nDup>003</nDup>
+          <dVenc>2022-07-08</dVenc>
+          <vDup>1267.50</vDup>
+        </dup>
+        <dup>
+          <nDup>004</nDup>
+          <dVenc>2022-08-08</dVenc>
+          <vDup>1267.50</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>0</indPag>
+          <tPag>01</tPag>
+          <vPag>5070.00</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>MERCADORIA ADQUIRIDA POR SUBST TRIBUTARIA CONF. DECRETO 45136/09 SEF MG</infCpl>
+      </infAdic>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe31220401456231000177550010000083981000084098">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>MQzEJxBXbWhF4HHE+9AC+n/T3Zk=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>O3LxVP6WZQdKk0x7jMoMtvRL0Wyr3WYWeclWX58VPeU3Qgv4L/SK1RG+kgu5UAo45QW2MNolZZ+9u1reL4sYuBHB7guT04aGki43v+NgB7bOB7i6NOGRMYIs31MuScIelyKw79JcHhlewKtYUP1y8z0c9d4LhZBVujQqutTCK+TYSAcdF8qsd61gKeAd13n2ouXJA9R17iKuHlEGqv32oMZxILEkjKEGsvDhthlK0tqdNIKXNfvmtGo4cXcUSFJVKkYKyU8OtM3AnygdTFMbTR3FrLQZPV6O4yRPyNCxhYkZyUdCBzgv/VWh8fTwDozhxQIT2bZ5Dh851f1+d5a7ng==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="ID131224664321759">
+      <tpAmb>1</tpAmb>
+      <verAplic>14.4.65-SE6</verAplic>
+      <chNFe>31220401456231000177550010000083981000084098</chNFe>
+      <dhRecbto>2022-04-08T10:31:00-03:00</dhRecbto>
+      <nProt>131224664321759</nProt>
+      <digVal>MQzEJxBXbWhF4HHE+9AC+n/T3Zk=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

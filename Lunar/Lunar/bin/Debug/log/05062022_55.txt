@@ -1,0 +1,8 @@
+05/06/2022 09:20 - [INUTILIZACAO_DADOS]
+05/06/2022 09:20 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"266","nNFFin":"266"}
+05/06/2022 09:20 - [INUTILIZACAO_RESPOSTA]
+05/06/2022 09:20 - {"status":-999,"motivo":"Erro interno ao processar a requisicao","erro":{"cStat":999,"xMotivo":"241 - Rejeicao: Um numero da faixa ja foi utilizado"}}
+05/06/2022 09:20 - [INUTILIZACAO_DADOS]
+05/06/2022 09:20 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"261","nNFFin":"261"}
+05/06/2022 09:20 - [INUTILIZACAO_RESPOSTA]
+05/06/2022 09:20 - {"status":-999,"motivo":"Erro interno ao processar a requisicao","erro":{"cStat":999,"xMotivo":"241 - Rejeicao: Um numero da faixa ja foi utilizado"}}

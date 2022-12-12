@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.ContaReceber" table="contareceber">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="Descricao" column="DESCRICAO" type="String" length="100"/>
+		<property name="Parcela" column="PARCELA" type="String" length="30"/>
+		<property name="NomeCliente" column="NOMECLIENTE" type="String" length="200"/>
+		<property name="CnpjCliente" column="CNPJCLIENTE" type="String" length="30"/>
+		<property name="EnderecoCliente" column="ENDERECOCLIENTE" type="String" length="200"/>
+		<property name="ValorParcela" column="VALORPARCELA" type="decimal"/>
+		<property name="Multa" column="MULTA" type="decimal"/>
+		<property name="Juro" column="JURO" type="decimal"/>
+		<property name="ValorTotal" column="VALORTOTAL" type="decimal"/>
+		<property name="Recebido" column="RECEBIDO" type="Boolean"/>
+		<property name="Data" column="DATA" type="DateTime"/>
+		<property name="Vencimento" column="VENCIMENTO" type="DateTime"/>
+		<property name="Origem" column="ORIGEM" type="String" length="200"/>
+		<property name="Concluido" column="CONCLUIDO" type="Boolean"/>
+		<property name="Documento" column="DOCUMENTO" type="String" length="100"/>
+		<property name="DescricaoRecebimento" column="DESCRICAORECEBIMENTO" type="String" length="300"/>
+		<property name="DataRecebimento" column="DATARECEBIMENTO" type="DateTime"/>
+		<property name="CaixaRecebimento" column="CAIXARECEBIMENTO" type="String" length="300"/>
+		<property name="ValorRecebido" column="VALORRECEBIDO" type="decimal"/>
+		<property name="DescontoRecebidoBaixa" column="DESCONTORECEBIDOBAIXA" type="decimal"/>
+		<property name="AcrescimoRecebidoBaixa" column="ACRESCIMORECEBIDOBAIXA" type="decimal"/>
+		
+		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_CONTARECEBER_CLIENTE" lazy="false"/>
+		<many-to-one name="FormaPagamento" column="FORMAPAGAMENTO" class="LunarBase.Classes.FormaPagamento" not-null="false" foreign-key="FK_CONTARECEBER_FORMAPAGAMENTO" lazy="false"/>
+		<many-to-one name="Venda" column="VENDA" class="LunarBase.Classes.Venda" not-null="false" foreign-key="FK_CONTARECEBER_VENDA" lazy="false"/>
+		<many-to-one name="VendaFormaPagamento" column="VENDAFORMAPAGAMENTO" class="LunarBase.Classes.VendaFormaPagamento" not-null="false" foreign-key="FK_CONTARECEBER_VENDAFORMAPAGAMENTO" lazy="false"/>
+		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="false" foreign-key="FK_CONTARECEBER_EMPRESAFILIAL" lazy="false"/>
+		<many-to-one name="PlanoConta" column="PLANOCONTA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_CONTARECEBER_PLANOCONTA" lazy="false"/>
+		<many-to-one name="OrdemServico" column="ORDEMSERVICO" class="LunarBase.Classes.OrdemServico" not-null="false" foreign-key="FK_CONTARECEBER_ORDEMSERVICO" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

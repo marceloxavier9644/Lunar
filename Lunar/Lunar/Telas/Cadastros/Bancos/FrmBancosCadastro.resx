@@ -1,0 +1,2893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnCancelar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnCancelar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCancelar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnCancelar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCancelar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>392, 469</value>
+  </data>
+  <data name="btnCancelar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>298, 45</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnCancelar.TabIndex" type="System.Int32, mscorlib">
+    <value>216</value>
+  </data>
+  <data name="btnCancelar.Text" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="&gt;&gt;btnCancelar.Name" xml:space="preserve">
+    <value>btnCancelar</value>
+  </data>
+  <data name="&gt;&gt;btnCancelar.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJButton, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnCancelar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnCancelar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnNovo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnNovo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnNovo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="btnNovo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnNovo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>696, 469</value>
+  </data>
+  <data name="btnNovo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 45</value>
+  </data>
+  <data name="btnNovo.TabIndex" type="System.Int32, mscorlib">
+    <value>215</value>
+  </data>
+  <data name="btnNovo.Text" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="&gt;&gt;btnNovo.Name" xml:space="preserve">
+    <value>btnNovo</value>
+  </data>
+  <data name="&gt;&gt;btnNovo.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJButton, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnNovo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnNovo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="autoLabel26.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel26.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt, style=Bold</value>
+  </data>
+  <data name="autoLabel26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel26.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 58</value>
+  </data>
+  <data name="autoLabel26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 18</value>
+  </data>
+  <data name="autoLabel26.TabIndex" type="System.Int32, mscorlib">
+    <value>254</value>
+  </data>
+  <data name="autoLabel26.Text" xml:space="preserve">
+    <value>Cód Cedente</value>
+  </data>
+  <data name="&gt;&gt;autoLabel26.Name" xml:space="preserve">
+    <value>autoLabel26</value>
+  </data>
+  <data name="&gt;&gt;autoLabel26.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel26.Parent" xml:space="preserve">
+    <value>tabPageAdv3</value>
+  </data>
+  <data name="&gt;&gt;autoLabel26.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rjTextBox21.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox21.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 69</value>
+  </data>
+  <data name="rjTextBox21.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox21.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox21.TabIndex" type="System.Int32, mscorlib">
+    <value>253</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox21.Name" xml:space="preserve">
+    <value>rjTextBox21</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox21.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox21.Parent" xml:space="preserve">
+    <value>tabPageAdv3</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox21.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 316</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 26</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>251</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Remessa de pagamentos</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tabPageAdv3</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="rjTextBox20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 12pt</value>
+  </data>
+  <data name="rjTextBox20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 312</value>
+  </data>
+  <data name="rjTextBox20.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox20.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 35</value>
+  </data>
+  <data name="rjTextBox20.TabIndex" type="System.Int32, mscorlib">
+    <value>252</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox20.Name" xml:space="preserve">
+    <value>rjTextBox20</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox20.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox20.Parent" xml:space="preserve">
+    <value>tabPageAdv3</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox20.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 177</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>284, 26</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>249</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Dados do banco conveniado</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabPageAdv3</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="rjTextBox19.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 12pt</value>
+  </data>
+  <data name="rjTextBox19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 173</value>
+  </data>
+  <data name="rjTextBox19.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox19.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 35</value>
+  </data>
+  <data name="rjTextBox19.TabIndex" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox19.Name" xml:space="preserve">
+    <value>rjTextBox19</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox19.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox19.Parent" xml:space="preserve">
+    <value>tabPageAdv3</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox19.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 20</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>247</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Interassão contábil</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tabPageAdv3</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="rjTextBox18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 12pt</value>
+  </data>
+  <data name="rjTextBox18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="rjTextBox18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox18.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 35</value>
+  </data>
+  <data name="rjTextBox18.TabIndex" type="System.Int32, mscorlib">
+    <value>248</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox18.Name" xml:space="preserve">
+    <value>rjTextBox18</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox18.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox18.Parent" xml:space="preserve">
+    <value>tabPageAdv3</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox18.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tabPageAdv3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 35</value>
+  </data>
+  <data name="tabPageAdv3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>999, 427</value>
+  </data>
+  <data name="tabPageAdv3.TabFont" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="tabPageAdv3.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tabPageAdv3.Text" xml:space="preserve">
+    <value>Adicionais</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv3.Name" xml:space="preserve">
+    <value>tabPageAdv3</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv3.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.TabPageAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv3.Parent" xml:space="preserve">
+    <value>tabControlAdv2</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="metroPanel9.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="radioButtonAdv7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="radioButtonAdv7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>598, 164</value>
+  </data>
+  <data name="radioButtonAdv7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 29</value>
+  </data>
+  <data name="radioButtonAdv7.TabIndex" type="System.Int32, mscorlib">
+    <value>253</value>
+  </data>
+  <data name="radioButtonAdv7.Text" xml:space="preserve">
+    <value>Cobrar com registro</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv7.Name" xml:space="preserve">
+    <value>radioButtonAdv7</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv7.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.RadioButtonAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv7.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonAdv6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="radioButtonAdv6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>598, 122</value>
+  </data>
+  <data name="radioButtonAdv6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 29</value>
+  </data>
+  <data name="radioButtonAdv6.TabIndex" type="System.Int32, mscorlib">
+    <value>252</value>
+  </data>
+  <data name="radioButtonAdv6.Text" xml:space="preserve">
+    <value>Cobrar sem registro</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv6.Name" xml:space="preserve">
+    <value>radioButtonAdv6</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv6.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.RadioButtonAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv6.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButtonAdv5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="radioButtonAdv5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>733, 351</value>
+  </data>
+  <data name="radioButtonAdv5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 29</value>
+  </data>
+  <data name="radioButtonAdv5.TabIndex" type="System.Int32, mscorlib">
+    <value>251</value>
+  </data>
+  <data name="radioButtonAdv5.Text" xml:space="preserve">
+    <value> Boleto pré impresso</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv5.Name" xml:space="preserve">
+    <value>radioButtonAdv5</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv5.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.RadioButtonAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv5.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButtonAdv4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="radioButtonAdv4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>733, 305</value>
+  </data>
+  <data name="radioButtonAdv4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 29</value>
+  </data>
+  <data name="radioButtonAdv4.TabIndex" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <data name="radioButtonAdv4.Text" xml:space="preserve">
+    <value>Imprimir com imagem</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv4.Name" xml:space="preserve">
+    <value>radioButtonAdv4</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv4.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.RadioButtonAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv4.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="radioButtonAdv3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="radioButtonAdv3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>733, 259</value>
+  </data>
+  <data name="radioButtonAdv3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 29</value>
+  </data>
+  <data name="radioButtonAdv3.TabIndex" type="System.Int32, mscorlib">
+    <value>249</value>
+  </data>
+  <data name="radioButtonAdv3.Text" xml:space="preserve">
+    <value>Imprimir meia página</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv3.Name" xml:space="preserve">
+    <value>radioButtonAdv3</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv3.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.RadioButtonAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv3.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="radioButtonAdv2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="radioButtonAdv2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>421, 351</value>
+  </data>
+  <data name="radioButtonAdv2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 29</value>
+  </data>
+  <data name="radioButtonAdv2.TabIndex" type="System.Int32, mscorlib">
+    <value>248</value>
+  </data>
+  <data name="radioButtonAdv2.Text" xml:space="preserve">
+    <value>Boleto em formato de carnê</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv2.Name" xml:space="preserve">
+    <value>radioButtonAdv2</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv2.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.RadioButtonAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv2.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="radioButtonAdv1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="radioButtonAdv1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>421, 305</value>
+  </data>
+  <data name="radioButtonAdv1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 29</value>
+  </data>
+  <data name="radioButtonAdv1.TabIndex" type="System.Int32, mscorlib">
+    <value>247</value>
+  </data>
+  <data name="radioButtonAdv1.Text" xml:space="preserve">
+    <value>Dois boletos por página</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv1.Name" xml:space="preserve">
+    <value>radioButtonAdv1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv1.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.RadioButtonAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv1.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAdv1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>414, 215</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 26</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>245</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Formato do boleto</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="rjTextBox17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 12pt</value>
+  </data>
+  <data name="rjTextBox17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>402, 211</value>
+  </data>
+  <data name="rjTextBox17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox17.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 35</value>
+  </data>
+  <data name="rjTextBox17.TabIndex" type="System.Int32, mscorlib">
+    <value>246</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox17.Name" xml:space="preserve">
+    <value>rjTextBox17</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox17.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox17.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox17.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="radioPF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="radioPF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>421, 259</value>
+  </data>
+  <data name="radioPF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 29</value>
+  </data>
+  <data name="radioPF.TabIndex" type="System.Int32, mscorlib">
+    <value>244</value>
+  </data>
+  <data name="radioPF.Text" xml:space="preserve">
+    <value>Um boleto por página</value>
+  </data>
+  <data name="&gt;&gt;radioPF.Name" xml:space="preserve">
+    <value>radioPF</value>
+  </data>
+  <data name="&gt;&gt;radioPF.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.RadioButtonAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;radioPF.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;radioPF.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="checkBoxAdv1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="checkBoxAdv1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>786, 58</value>
+  </data>
+  <data name="checkBoxAdv1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 27</value>
+  </data>
+  <data name="checkBoxAdv1.TabIndex" type="System.Int32, mscorlib">
+    <value>186</value>
+  </data>
+  <data name="checkBoxAdv1.Text" xml:space="preserve">
+    <value>Homologado</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAdv1.Name" xml:space="preserve">
+    <value>checkBoxAdv1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAdv1.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.CheckBoxAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAdv1.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAdv1.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="autoLabel25.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel25.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>598, 48</value>
+  </data>
+  <data name="autoLabel25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 18</value>
+  </data>
+  <data name="autoLabel25.TabIndex" type="System.Int32, mscorlib">
+    <value>243</value>
+  </data>
+  <data name="autoLabel25.Text" xml:space="preserve">
+    <value>Número do contrato</value>
+  </data>
+  <data name="&gt;&gt;autoLabel25.Name" xml:space="preserve">
+    <value>autoLabel25</value>
+  </data>
+  <data name="&gt;&gt;autoLabel25.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel25.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel25.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="rjTextBox16.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox16.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>585, 58</value>
+  </data>
+  <data name="rjTextBox16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox16.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox16.TabIndex" type="System.Int32, mscorlib">
+    <value>242</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox16.Name" xml:space="preserve">
+    <value>rjTextBox16</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox16.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox16.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox16.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="autoLabel24.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel24.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 154</value>
+  </data>
+  <data name="autoLabel24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 18</value>
+  </data>
+  <data name="autoLabel24.TabIndex" type="System.Int32, mscorlib">
+    <value>241</value>
+  </data>
+  <data name="autoLabel24.Text" xml:space="preserve">
+    <value>Espécie do documento</value>
+  </data>
+  <data name="&gt;&gt;autoLabel24.Name" xml:space="preserve">
+    <value>autoLabel24</value>
+  </data>
+  <data name="&gt;&gt;autoLabel24.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel24.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel24.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="rjTextBox15.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox15.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>399, 164</value>
+  </data>
+  <data name="rjTextBox15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox15.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox15.TabIndex" type="System.Int32, mscorlib">
+    <value>240</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox15.Name" xml:space="preserve">
+    <value>rjTextBox15</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox15.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox15.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox15.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="autoLabel23.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 102</value>
+  </data>
+  <data name="autoLabel23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 18</value>
+  </data>
+  <data name="autoLabel23.TabIndex" type="System.Int32, mscorlib">
+    <value>239</value>
+  </data>
+  <data name="autoLabel23.Text" xml:space="preserve">
+    <value>Convênio líder</value>
+  </data>
+  <data name="&gt;&gt;autoLabel23.Name" xml:space="preserve">
+    <value>autoLabel23</value>
+  </data>
+  <data name="&gt;&gt;autoLabel23.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel23.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel23.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="rjTextBox14.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox14.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>399, 112</value>
+  </data>
+  <data name="rjTextBox14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox14.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox14.TabIndex" type="System.Int32, mscorlib">
+    <value>238</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox14.Name" xml:space="preserve">
+    <value>rjTextBox14</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox14.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox14.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox14.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="autoLabel22.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 48</value>
+  </data>
+  <data name="autoLabel22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 18</value>
+  </data>
+  <data name="autoLabel22.TabIndex" type="System.Int32, mscorlib">
+    <value>237</value>
+  </data>
+  <data name="autoLabel22.Text" xml:space="preserve">
+    <value>Convênio</value>
+  </data>
+  <data name="&gt;&gt;autoLabel22.Name" xml:space="preserve">
+    <value>autoLabel22</value>
+  </data>
+  <data name="&gt;&gt;autoLabel22.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel22.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel22.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="rjTextBox13.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox13.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>399, 58</value>
+  </data>
+  <data name="rjTextBox13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox13.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox13.TabIndex" type="System.Int32, mscorlib">
+    <value>236</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox13.Name" xml:space="preserve">
+    <value>rjTextBox13</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox13.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox13.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox13.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="autoLabel21.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 154</value>
+  </data>
+  <data name="autoLabel21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 18</value>
+  </data>
+  <data name="autoLabel21.TabIndex" type="System.Int32, mscorlib">
+    <value>235</value>
+  </data>
+  <data name="autoLabel21.Text" xml:space="preserve">
+    <value>Tipo de cobrança</value>
+  </data>
+  <data name="&gt;&gt;autoLabel21.Name" xml:space="preserve">
+    <value>autoLabel21</value>
+  </data>
+  <data name="&gt;&gt;autoLabel21.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel21.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel21.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="rjTextBox12.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox12.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 164</value>
+  </data>
+  <data name="rjTextBox12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox12.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox12.TabIndex" type="System.Int32, mscorlib">
+    <value>234</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox12.Name" xml:space="preserve">
+    <value>rjTextBox12</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox12.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox12.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox12.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="autoLabel20.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 102</value>
+  </data>
+  <data name="autoLabel20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 18</value>
+  </data>
+  <data name="autoLabel20.TabIndex" type="System.Int32, mscorlib">
+    <value>233</value>
+  </data>
+  <data name="autoLabel20.Text" xml:space="preserve">
+    <value>Variação</value>
+  </data>
+  <data name="&gt;&gt;autoLabel20.Name" xml:space="preserve">
+    <value>autoLabel20</value>
+  </data>
+  <data name="&gt;&gt;autoLabel20.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel20.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel20.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="rjTextBox11.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox11.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 112</value>
+  </data>
+  <data name="rjTextBox11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox11.TabIndex" type="System.Int32, mscorlib">
+    <value>232</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox11.Name" xml:space="preserve">
+    <value>rjTextBox11</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox11.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox11.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox11.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="autoLabel19.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel19.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 48</value>
+  </data>
+  <data name="autoLabel19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 18</value>
+  </data>
+  <data name="autoLabel19.TabIndex" type="System.Int32, mscorlib">
+    <value>231</value>
+  </data>
+  <data name="autoLabel19.Text" xml:space="preserve">
+    <value>Tipo de carteira</value>
+  </data>
+  <data name="&gt;&gt;autoLabel19.Name" xml:space="preserve">
+    <value>autoLabel19</value>
+  </data>
+  <data name="&gt;&gt;autoLabel19.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel19.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel19.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="rjTextBox10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox10.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 58</value>
+  </data>
+  <data name="rjTextBox10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox10.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox10.TabIndex" type="System.Int32, mscorlib">
+    <value>230</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox10.Name" xml:space="preserve">
+    <value>rjTextBox10</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox10.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox10.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox10.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="autoLabel18.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 306</value>
+  </data>
+  <data name="autoLabel18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 18</value>
+  </data>
+  <data name="autoLabel18.TabIndex" type="System.Int32, mscorlib">
+    <value>229</value>
+  </data>
+  <data name="autoLabel18.Text" xml:space="preserve">
+    <value>Dias p/ negativar</value>
+  </data>
+  <data name="&gt;&gt;autoLabel18.Name" xml:space="preserve">
+    <value>autoLabel18</value>
+  </data>
+  <data name="&gt;&gt;autoLabel18.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel18.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel18.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="rjTextBox9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox9.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 316</value>
+  </data>
+  <data name="rjTextBox9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox9.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox9.TabIndex" type="System.Int32, mscorlib">
+    <value>228</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox9.Name" xml:space="preserve">
+    <value>rjTextBox9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox9.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox9.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox9.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 215</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 26</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>226</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Taxas</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="rjTextBox8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 12pt</value>
+  </data>
+  <data name="rjTextBox8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 211</value>
+  </data>
+  <data name="rjTextBox8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox8.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>375, 35</value>
+  </data>
+  <data name="rjTextBox8.TabIndex" type="System.Int32, mscorlib">
+    <value>227</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox8.Name" xml:space="preserve">
+    <value>rjTextBox8</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox8.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox8.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox8.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="autoLabel17.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 154</value>
+  </data>
+  <data name="autoLabel17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 18</value>
+  </data>
+  <data name="autoLabel17.TabIndex" type="System.Int32, mscorlib">
+    <value>225</value>
+  </data>
+  <data name="autoLabel17.Text" xml:space="preserve">
+    <value>Operação</value>
+  </data>
+  <data name="&gt;&gt;autoLabel17.Name" xml:space="preserve">
+    <value>autoLabel17</value>
+  </data>
+  <data name="&gt;&gt;autoLabel17.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel17.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel17.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="rjTextBox7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox7.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 164</value>
+  </data>
+  <data name="rjTextBox7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox7.TabIndex" type="System.Int32, mscorlib">
+    <value>224</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox7.Name" xml:space="preserve">
+    <value>rjTextBox7</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox7.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox7.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox7.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 8</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 26</value>
+  </data>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>222</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Geral</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="rjTextBox35.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 12pt</value>
+  </data>
+  <data name="rjTextBox35.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 4</value>
+  </data>
+  <data name="rjTextBox35.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox35.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>948, 35</value>
+  </data>
+  <data name="rjTextBox35.TabIndex" type="System.Int32, mscorlib">
+    <value>223</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox35.Name" xml:space="preserve">
+    <value>rjTextBox35</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox35.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox35.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox35.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="autoLabel16.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 249</value>
+  </data>
+  <data name="autoLabel16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 18</value>
+  </data>
+  <data name="autoLabel16.TabIndex" type="System.Int32, mscorlib">
+    <value>196</value>
+  </data>
+  <data name="autoLabel16.Text" xml:space="preserve">
+    <value>Dias de carência</value>
+  </data>
+  <data name="&gt;&gt;autoLabel16.Name" xml:space="preserve">
+    <value>autoLabel16</value>
+  </data>
+  <data name="&gt;&gt;autoLabel16.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel16.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel16.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="rjTextBox6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox6.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 259</value>
+  </data>
+  <data name="rjTextBox6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>195</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox6.Name" xml:space="preserve">
+    <value>rjTextBox6</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox6.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox6.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox6.ZOrder" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="autoLabel15.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 306</value>
+  </data>
+  <data name="autoLabel15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 18</value>
+  </data>
+  <data name="autoLabel15.TabIndex" type="System.Int32, mscorlib">
+    <value>194</value>
+  </data>
+  <data name="autoLabel15.Text" xml:space="preserve">
+    <value>Dias para baixa</value>
+  </data>
+  <data name="&gt;&gt;autoLabel15.Name" xml:space="preserve">
+    <value>autoLabel15</value>
+  </data>
+  <data name="&gt;&gt;autoLabel15.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel15.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel15.ZOrder" xml:space="preserve">
+    <value>37</value>
+  </data>
+  <data name="rjTextBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox5.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 316</value>
+  </data>
+  <data name="rjTextBox5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>193</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox5.Name" xml:space="preserve">
+    <value>rjTextBox5</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox5.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox5.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox5.ZOrder" xml:space="preserve">
+    <value>38</value>
+  </data>
+  <data name="autoLabel14.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 363</value>
+  </data>
+  <data name="autoLabel14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 18</value>
+  </data>
+  <data name="autoLabel14.TabIndex" type="System.Int32, mscorlib">
+    <value>192</value>
+  </data>
+  <data name="autoLabel14.Text" xml:space="preserve">
+    <value>Juros ao Mês</value>
+  </data>
+  <data name="&gt;&gt;autoLabel14.Name" xml:space="preserve">
+    <value>autoLabel14</value>
+  </data>
+  <data name="&gt;&gt;autoLabel14.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel14.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel14.ZOrder" xml:space="preserve">
+    <value>39</value>
+  </data>
+  <data name="rjTextBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 373</value>
+  </data>
+  <data name="rjTextBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>191</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox2.Name" xml:space="preserve">
+    <value>rjTextBox2</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox2.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox2.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox2.ZOrder" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="autoLabel13.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 249</value>
+  </data>
+  <data name="autoLabel13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 18</value>
+  </data>
+  <data name="autoLabel13.TabIndex" type="System.Int32, mscorlib">
+    <value>190</value>
+  </data>
+  <data name="autoLabel13.Text" xml:space="preserve">
+    <value>Taxa de multa</value>
+  </data>
+  <data name="&gt;&gt;autoLabel13.Name" xml:space="preserve">
+    <value>autoLabel13</value>
+  </data>
+  <data name="&gt;&gt;autoLabel13.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel13.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel13.ZOrder" xml:space="preserve">
+    <value>41</value>
+  </data>
+  <data name="rjTextBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 259</value>
+  </data>
+  <data name="rjTextBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>189</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox1.Name" xml:space="preserve">
+    <value>rjTextBox1</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox1.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox1.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox1.ZOrder" xml:space="preserve">
+    <value>42</value>
+  </data>
+  <data name="autoLabel12.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt, style=Bold</value>
+  </data>
+  <data name="autoLabel12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 102</value>
+  </data>
+  <data name="autoLabel12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 18</value>
+  </data>
+  <data name="autoLabel12.TabIndex" type="System.Int32, mscorlib">
+    <value>188</value>
+  </data>
+  <data name="autoLabel12.Text" xml:space="preserve">
+    <value>Num Ultimo Boleto</value>
+  </data>
+  <data name="&gt;&gt;autoLabel12.Name" xml:space="preserve">
+    <value>autoLabel12</value>
+  </data>
+  <data name="&gt;&gt;autoLabel12.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel12.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel12.ZOrder" xml:space="preserve">
+    <value>43</value>
+  </data>
+  <data name="rjTextBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox4.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 112</value>
+  </data>
+  <data name="rjTextBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>187</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox4.Name" xml:space="preserve">
+    <value>rjTextBox4</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox4.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox4.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox4.ZOrder" xml:space="preserve">
+    <value>44</value>
+  </data>
+  <data name="autoLabel11.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt, style=Bold</value>
+  </data>
+  <data name="autoLabel11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 47</value>
+  </data>
+  <data name="autoLabel11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 18</value>
+  </data>
+  <data name="autoLabel11.TabIndex" type="System.Int32, mscorlib">
+    <value>186</value>
+  </data>
+  <data name="autoLabel11.Text" xml:space="preserve">
+    <value>Cód Cedente</value>
+  </data>
+  <data name="&gt;&gt;autoLabel11.Name" xml:space="preserve">
+    <value>autoLabel11</value>
+  </data>
+  <data name="&gt;&gt;autoLabel11.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel11.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel11.ZOrder" xml:space="preserve">
+    <value>45</value>
+  </data>
+  <data name="rjTextBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="rjTextBox3.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rjTextBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="rjTextBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 58</value>
+  </data>
+  <data name="rjTextBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="rjTextBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="rjTextBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="rjTextBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>185</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox3.Name" xml:space="preserve">
+    <value>rjTextBox3</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox3.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox3.Parent" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;rjTextBox3.ZOrder" xml:space="preserve">
+    <value>46</value>
+  </data>
+  <data name="metroPanel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="metroPanel9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="metroPanel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>999, 428</value>
+  </data>
+  <data name="metroPanel9.TabIndex" type="System.Int32, mscorlib">
+    <value>173</value>
+  </data>
+  <data name="&gt;&gt;metroPanel9.Name" xml:space="preserve">
+    <value>metroPanel9</value>
+  </data>
+  <data name="&gt;&gt;metroPanel9.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroPanel9.Parent" xml:space="preserve">
+    <value>tabPageAdv2</value>
+  </data>
+  <data name="&gt;&gt;metroPanel9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageAdv2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 35</value>
+  </data>
+  <data name="tabPageAdv2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>999, 427</value>
+  </data>
+  <data name="tabPageAdv2.TabFont" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="tabPageAdv2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageAdv2.Text" xml:space="preserve">
+    <value>Homologação</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv2.Name" xml:space="preserve">
+    <value>tabPageAdv2</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv2.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.TabPageAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv2.Parent" xml:space="preserve">
+    <value>tabControlAdv2</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkUsarPIX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="chkUsarPIX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>755, 151</value>
+  </data>
+  <data name="chkUsarPIX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 27</value>
+  </data>
+  <data name="chkUsarPIX.TabIndex" type="System.Int32, mscorlib">
+    <value>206</value>
+  </data>
+  <data name="chkUsarPIX.Text" xml:space="preserve">
+    <value>Usar PIX</value>
+  </data>
+  <data name="&gt;&gt;chkUsarPIX.Name" xml:space="preserve">
+    <value>chkUsarPIX</value>
+  </data>
+  <data name="&gt;&gt;chkUsarPIX.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.CheckBoxAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;chkUsarPIX.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;chkUsarPIX.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkUsarPDV.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="chkUsarPDV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>755, 107</value>
+  </data>
+  <data name="chkUsarPDV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 27</value>
+  </data>
+  <data name="chkUsarPDV.TabIndex" type="System.Int32, mscorlib">
+    <value>205</value>
+  </data>
+  <data name="chkUsarPDV.Text" xml:space="preserve">
+    <value>Usar no PDV</value>
+  </data>
+  <data name="&gt;&gt;chkUsarPDV.Name" xml:space="preserve">
+    <value>chkUsarPDV</value>
+  </data>
+  <data name="&gt;&gt;chkUsarPDV.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.CheckBoxAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;chkUsarPDV.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;chkUsarPDV.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkConciliado.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="chkConciliado.Location" type="System.Drawing.Point, System.Drawing">
+    <value>755, 63</value>
+  </data>
+  <data name="chkConciliado.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 27</value>
+  </data>
+  <data name="chkConciliado.TabIndex" type="System.Int32, mscorlib">
+    <value>204</value>
+  </data>
+  <data name="chkConciliado.Text" xml:space="preserve">
+    <value>Conciliado</value>
+  </data>
+  <data name="&gt;&gt;chkConciliado.Name" xml:space="preserve">
+    <value>chkConciliado</value>
+  </data>
+  <data name="&gt;&gt;chkConciliado.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.CheckBoxAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;chkConciliado.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;chkConciliado.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="autoLabel10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 224</value>
+  </data>
+  <data name="autoLabel10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 18</value>
+  </data>
+  <data name="autoLabel10.TabIndex" type="System.Int32, mscorlib">
+    <value>203</value>
+  </data>
+  <data name="autoLabel10.Text" xml:space="preserve">
+    <value>Chave PIX</value>
+  </data>
+  <data name="&gt;&gt;autoLabel10.Name" xml:space="preserve">
+    <value>autoLabel10</value>
+  </data>
+  <data name="&gt;&gt;autoLabel10.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel10.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel10.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="txtChavePIX.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtChavePIX.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtChavePIX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtChavePIX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 235</value>
+  </data>
+  <data name="txtChavePIX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtChavePIX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtChavePIX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>715, 39</value>
+  </data>
+  <data name="txtChavePIX.TabIndex" type="System.Int32, mscorlib">
+    <value>202</value>
+  </data>
+  <data name="&gt;&gt;txtChavePIX.Name" xml:space="preserve">
+    <value>txtChavePIX</value>
+  </data>
+  <data name="&gt;&gt;txtChavePIX.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtChavePIX.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtChavePIX.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="autoLabel9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 170</value>
+  </data>
+  <data name="autoLabel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 18</value>
+  </data>
+  <data name="autoLabel9.TabIndex" type="System.Int32, mscorlib">
+    <value>201</value>
+  </data>
+  <data name="autoLabel9.Text" xml:space="preserve">
+    <value>Nome do cedente</value>
+  </data>
+  <data name="&gt;&gt;autoLabel9.Name" xml:space="preserve">
+    <value>autoLabel9</value>
+  </data>
+  <data name="&gt;&gt;autoLabel9.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel9.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel9.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtNomeCedente.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtNomeCedente.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtNomeCedente.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtNomeCedente.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 181</value>
+  </data>
+  <data name="txtNomeCedente.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtNomeCedente.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtNomeCedente.Size" type="System.Drawing.Size, System.Drawing">
+    <value>713, 39</value>
+  </data>
+  <data name="txtNomeCedente.TabIndex" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="&gt;&gt;txtNomeCedente.Name" xml:space="preserve">
+    <value>txtNomeCedente</value>
+  </data>
+  <data name="&gt;&gt;txtNomeCedente.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtNomeCedente.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtNomeCedente.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="autoLabel7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 116</value>
+  </data>
+  <data name="autoLabel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 18</value>
+  </data>
+  <data name="autoLabel7.TabIndex" type="System.Int32, mscorlib">
+    <value>199</value>
+  </data>
+  <data name="autoLabel7.Text" xml:space="preserve">
+    <value>Nome da conta</value>
+  </data>
+  <data name="&gt;&gt;autoLabel7.Name" xml:space="preserve">
+    <value>autoLabel7</value>
+  </data>
+  <data name="&gt;&gt;autoLabel7.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel7.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel7.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="txtNomeConta.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtNomeConta.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtNomeConta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtNomeConta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 127</value>
+  </data>
+  <data name="txtNomeConta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtNomeConta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtNomeConta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>517, 39</value>
+  </data>
+  <data name="txtNomeConta.TabIndex" type="System.Int32, mscorlib">
+    <value>198</value>
+  </data>
+  <data name="&gt;&gt;txtNomeConta.Name" xml:space="preserve">
+    <value>txtNomeConta</value>
+  </data>
+  <data name="&gt;&gt;txtNomeConta.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtNomeConta.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtNomeConta.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="autoLabel6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 62</value>
+  </data>
+  <data name="autoLabel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 18</value>
+  </data>
+  <data name="autoLabel6.TabIndex" type="System.Int32, mscorlib">
+    <value>197</value>
+  </data>
+  <data name="autoLabel6.Text" xml:space="preserve">
+    <value>Nome da agência</value>
+  </data>
+  <data name="&gt;&gt;autoLabel6.Name" xml:space="preserve">
+    <value>autoLabel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel6.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel6.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel6.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="txtNomeAgencia.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtNomeAgencia.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtNomeAgencia.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtNomeAgencia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 73</value>
+  </data>
+  <data name="txtNomeAgencia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtNomeAgencia.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtNomeAgencia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>517, 39</value>
+  </data>
+  <data name="txtNomeAgencia.TabIndex" type="System.Int32, mscorlib">
+    <value>196</value>
+  </data>
+  <data name="&gt;&gt;txtNomeAgencia.Name" xml:space="preserve">
+    <value>txtNomeAgencia</value>
+  </data>
+  <data name="&gt;&gt;txtNomeAgencia.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtNomeAgencia.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtNomeAgencia.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="autoLabel5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt, style=Bold</value>
+  </data>
+  <data name="autoLabel5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 8</value>
+  </data>
+  <data name="autoLabel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 18</value>
+  </data>
+  <data name="autoLabel5.TabIndex" type="System.Int32, mscorlib">
+    <value>195</value>
+  </data>
+  <data name="autoLabel5.Text" xml:space="preserve">
+    <value>Nome do banco</value>
+  </data>
+  <data name="&gt;&gt;autoLabel5.Name" xml:space="preserve">
+    <value>autoLabel5</value>
+  </data>
+  <data name="&gt;&gt;autoLabel5.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel5.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel5.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="txtNomeBanco.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtNomeBanco.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtNomeBanco.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtNomeBanco.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 19</value>
+  </data>
+  <data name="txtNomeBanco.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtNomeBanco.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtNomeBanco.Size" type="System.Drawing.Size, System.Drawing">
+    <value>583, 39</value>
+  </data>
+  <data name="txtNomeBanco.TabIndex" type="System.Int32, mscorlib">
+    <value>194</value>
+  </data>
+  <data name="&gt;&gt;txtNomeBanco.Name" xml:space="preserve">
+    <value>txtNomeBanco</value>
+  </data>
+  <data name="&gt;&gt;txtNomeBanco.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtNomeBanco.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtNomeBanco.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="autoLabel4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt</value>
+  </data>
+  <data name="autoLabel4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 116</value>
+  </data>
+  <data name="autoLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 18</value>
+  </data>
+  <data name="autoLabel4.TabIndex" type="System.Int32, mscorlib">
+    <value>193</value>
+  </data>
+  <data name="autoLabel4.Text" xml:space="preserve">
+    <value>DV</value>
+  </data>
+  <data name="&gt;&gt;autoLabel4.Name" xml:space="preserve">
+    <value>autoLabel4</value>
+  </data>
+  <data name="&gt;&gt;autoLabel4.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel4.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel4.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="txtDVConta.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtDVConta.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtDVConta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtDVConta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 127</value>
+  </data>
+  <data name="txtDVConta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtDVConta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtDVConta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 39</value>
+  </data>
+  <data name="txtDVConta.TabIndex" type="System.Int32, mscorlib">
+    <value>192</value>
+  </data>
+  <data name="&gt;&gt;txtDVConta.Name" xml:space="preserve">
+    <value>txtDVConta</value>
+  </data>
+  <data name="&gt;&gt;txtDVConta.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtDVConta.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtDVConta.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="autoLabel3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt, style=Bold</value>
+  </data>
+  <data name="autoLabel3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 62</value>
+  </data>
+  <data name="autoLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 18</value>
+  </data>
+  <data name="autoLabel3.TabIndex" type="System.Int32, mscorlib">
+    <value>191</value>
+  </data>
+  <data name="autoLabel3.Text" xml:space="preserve">
+    <value>DV</value>
+  </data>
+  <data name="&gt;&gt;autoLabel3.Name" xml:space="preserve">
+    <value>autoLabel3</value>
+  </data>
+  <data name="&gt;&gt;autoLabel3.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel3.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel3.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="txtDVAgencia.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtDVAgencia.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtDVAgencia.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtDVAgencia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 73</value>
+  </data>
+  <data name="txtDVAgencia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtDVAgencia.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtDVAgencia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 39</value>
+  </data>
+  <data name="txtDVAgencia.TabIndex" type="System.Int32, mscorlib">
+    <value>190</value>
+  </data>
+  <data name="&gt;&gt;txtDVAgencia.Name" xml:space="preserve">
+    <value>txtDVAgencia</value>
+  </data>
+  <data name="&gt;&gt;txtDVAgencia.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtDVAgencia.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtDVAgencia.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="autoLabel2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt, style=Bold</value>
+  </data>
+  <data name="autoLabel2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 116</value>
+  </data>
+  <data name="autoLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 18</value>
+  </data>
+  <data name="autoLabel2.TabIndex" type="System.Int32, mscorlib">
+    <value>189</value>
+  </data>
+  <data name="autoLabel2.Text" xml:space="preserve">
+    <value>N° Conta</value>
+  </data>
+  <data name="&gt;&gt;autoLabel2.Name" xml:space="preserve">
+    <value>autoLabel2</value>
+  </data>
+  <data name="&gt;&gt;autoLabel2.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel2.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel2.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="txtNumConta.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtNumConta.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtNumConta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtNumConta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 127</value>
+  </data>
+  <data name="txtNumConta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtNumConta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtNumConta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 39</value>
+  </data>
+  <data name="txtNumConta.TabIndex" type="System.Int32, mscorlib">
+    <value>188</value>
+  </data>
+  <data name="&gt;&gt;txtNumConta.Name" xml:space="preserve">
+    <value>txtNumConta</value>
+  </data>
+  <data name="&gt;&gt;txtNumConta.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtNumConta.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtNumConta.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="autoLabel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt, style=Bold</value>
+  </data>
+  <data name="autoLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 62</value>
+  </data>
+  <data name="autoLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 18</value>
+  </data>
+  <data name="autoLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>187</value>
+  </data>
+  <data name="autoLabel1.Text" xml:space="preserve">
+    <value>Cód Agência</value>
+  </data>
+  <data name="&gt;&gt;autoLabel1.Name" xml:space="preserve">
+    <value>autoLabel1</value>
+  </data>
+  <data name="&gt;&gt;autoLabel1.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel1.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel1.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="txtCodAgencia.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtCodAgencia.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtCodAgencia.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtCodAgencia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 73</value>
+  </data>
+  <data name="txtCodAgencia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtCodAgencia.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtCodAgencia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 39</value>
+  </data>
+  <data name="txtCodAgencia.TabIndex" type="System.Int32, mscorlib">
+    <value>186</value>
+  </data>
+  <data name="&gt;&gt;txtCodAgencia.Name" xml:space="preserve">
+    <value>txtCodAgencia</value>
+  </data>
+  <data name="&gt;&gt;txtCodAgencia.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtCodAgencia.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtCodAgencia.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="chkAtivo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="chkAtivo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>755, 19</value>
+  </data>
+  <data name="chkAtivo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 27</value>
+  </data>
+  <data name="chkAtivo.TabIndex" type="System.Int32, mscorlib">
+    <value>185</value>
+  </data>
+  <data name="chkAtivo.Text" xml:space="preserve">
+    <value>Ativo</value>
+  </data>
+  <data name="&gt;&gt;chkAtivo.Name" xml:space="preserve">
+    <value>chkAtivo</value>
+  </data>
+  <data name="&gt;&gt;chkAtivo.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.CheckBoxAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;chkAtivo.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;chkAtivo.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="autoLabel8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="autoLabel8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 9.749999pt, style=Bold</value>
+  </data>
+  <data name="autoLabel8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="autoLabel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 8</value>
+  </data>
+  <data name="autoLabel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 18</value>
+  </data>
+  <data name="autoLabel8.TabIndex" type="System.Int32, mscorlib">
+    <value>184</value>
+  </data>
+  <data name="autoLabel8.Text" xml:space="preserve">
+    <value>N° Banco</value>
+  </data>
+  <data name="&gt;&gt;autoLabel8.Name" xml:space="preserve">
+    <value>autoLabel8</value>
+  </data>
+  <data name="&gt;&gt;autoLabel8.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.AutoLabel, Syncfusion.Shared.Base, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;autoLabel8.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;autoLabel8.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="txtID.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="txtID.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtID.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="txtID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 19</value>
+  </data>
+  <data name="txtID.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="txtID.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
+  </data>
+  <data name="txtID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 39</value>
+  </data>
+  <data name="txtID.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;txtID.Name" xml:space="preserve">
+    <value>txtID</value>
+  </data>
+  <data name="&gt;&gt;txtID.Type" xml:space="preserve">
+    <value>Lunar.RJ_UI.Classes.RJTextBox, Lunar, Version=19.2.0.20, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtID.Parent" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;txtID.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="metroPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="metroPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 405</value>
+  </data>
+  <data name="metroPanel6.TabIndex" type="System.Int32, mscorlib">
+    <value>173</value>
+  </data>
+  <data name="&gt;&gt;metroPanel6.Name" xml:space="preserve">
+    <value>metroPanel6</value>
+  </data>
+  <data name="&gt;&gt;metroPanel6.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroPanel6.Parent" xml:space="preserve">
+    <value>tabPageAdv1</value>
+  </data>
+  <data name="&gt;&gt;metroPanel6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageAdv1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 35</value>
+  </data>
+  <data name="tabPageAdv1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>999, 427</value>
+  </data>
+  <data name="tabPageAdv1.TabFont" type="System.Drawing.Font, System.Drawing">
+    <value>Montserrat, 14.25pt</value>
+  </data>
+  <data name="tabPageAdv1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageAdv1.Text" xml:space="preserve">
+    <value>Geral</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv1.Name" xml:space="preserve">
+    <value>tabPageAdv1</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv1.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.TabPageAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv1.Parent" xml:space="preserve">
+    <value>tabControlAdv2</value>
+  </data>
+  <data name="&gt;&gt;tabPageAdv1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="Syncfusion.Tools.Windows" name="Syncfusion.Tools.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+  <data name="tabControlAdv2.ImageAlignmentR" type="Syncfusion.Windows.Forms.Tools.RelativeImageAlignment, Syncfusion.Tools.Windows">
+    <value>RightOfText</value>
+  </data>
+  <data name="tabControlAdv2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControlAdv2.ShowToolTips" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabControlAdv2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1001, 463</value>
+  </data>
+  <data name="tabControlAdv2.TabIndex" type="System.Int32, mscorlib">
+    <value>217</value>
+  </data>
+  <data name="&gt;&gt;tabControlAdv2.Name" xml:space="preserve">
+    <value>tabControlAdv2</value>
+  </data>
+  <data name="&gt;&gt;tabControlAdv2.Type" xml:space="preserve">
+    <value>Syncfusion.Windows.Forms.Tools.TabControlAdv, Syncfusion.Tools.Windows, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89</value>
+  </data>
+  <data name="&gt;&gt;tabControlAdv2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControlAdv2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1001, 535</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Cadastrar novo banco</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmBancosCadastro</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

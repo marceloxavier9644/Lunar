@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.ContaReceberRecebida" table="contareceberrecebida">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="Descricao" column="DESCRICAO" type="String" length="200"/>
+		<property name="ValorRecebido" column="VALORRECEBIDO" type="decimal"/>
+		<property name="ValorOriginal" column="VALORORIGINAL" type="decimal"/>
+		<property name="ValorOriginalComJuros" column="VALORORIGINALCOMJUROS" type="decimal"/>
+		<property name="ValorDesconto" column="VALORDESCONTO" type="decimal"/>
+		<property name="ValorAcrescimo" column="VALORACRESCIMO" type="decimal"/>
+		
+		<many-to-one name="ContaReceber" column="CONTARECEBER" class="LunarBase.Classes.ContaReceber" not-null="false" foreign-key="FK_CONTARECEBERRECEBIDAS_CONTARECEBER" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,245 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe41220430595612000135550010000015921000000010" versao="4.00">
+      <ide>
+        <cUF>41</cUF>
+        <cNF>00000001</cNF>
+        <natOp>VENDAS PRODUCAO ESTAB FORA ESTADO</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>1592</nNF>
+        <dhEmi>2022-04-08T15:24:37-03:00</dhEmi>
+        <dhSaiEnt>2022-04-08T15:24:37-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>4115200</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>0</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <procEmi>0</procEmi>
+        <verProc>1</verProc>
+      </ide>
+      <emit>
+        <CNPJ>30595612000135</CNPJ>
+        <xNome>SBN IND E COM DE ETIQUETAS E ROT LTDA</xNome>
+        <xFant>SBN IND E COM DE ETIQUETAS E ROT LTDA</xFant>
+        <enderEmit>
+          <xLgr>AV TUIUTI</xLgr>
+          <nro>3052</nro>
+          <xCpl>EMPRESA</xCpl>
+          <xBairro>JD NOVO OASIS</xBairro>
+          <cMun>4115200</cMun>
+          <xMun>MARINGA</xMun>
+          <UF>PR</UF>
+          <CEP>87043589</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>4499105148</fone>
+        </enderEmit>
+        <IE>9081961988</IE>
+        <CRT>1</CRT>
+      </emit>
+      <dest>
+        <CNPJ>28145398000173</CNPJ>
+        <xNome>TXT INFORMATICA LTDA</xNome>
+        <enderDest>
+          <xLgr>RUA CANABRAVA</xLgr>
+          <nro>320</nro>
+          <xCpl>LOJA -2</xCpl>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610031</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>38988069644</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>0030011730013</IE>
+      </dest>
+      <entrega>
+        <CNPJ>28145398000173</CNPJ>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA -2</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+      </entrega>
+      <det nItem="1">
+        <prod>
+          <cProd>2326</cProd>
+          <cEAN />
+          <xProd>RIBBON CERA SBN G42 110X74 MT EXTERNO</xProd>
+          <NCM>96121000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>RL</uCom>
+          <qCom>240.0000</qCom>
+          <vUnCom>3.0000</vUnCom>
+          <vProd>720.00</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>RL</uTrib>
+          <qTrib>240.0000</qTrib>
+          <vUnTrib>3.0000</vUnTrib>
+          <vFrete>85.00</vFrete>
+          <indTot>1</indTot>
+          <nItemPed>1</nItemPed>
+        </prod>
+        <imposto>
+          <vTotTrib>0.00</vTotTrib>
+          <ICMS>
+            <ICMSSN101>
+              <orig>0</orig>
+              <CSOSN>101</CSOSN>
+              <pCredSN>1.61</pCredSN>
+              <vCredICMSSN>12.96</vCredICMSSN>
+            </ICMSSN101>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISOutr>
+              <CST>99</CST>
+              <vBC>720.00</vBC>
+              <pPIS>0.00</pPIS>
+              <vPIS>0.00</vPIS>
+            </PISOutr>
+          </PIS>
+          <COFINS>
+            <COFINSOutr>
+              <CST>99</CST>
+              <vBC>720.00</vBC>
+              <pCOFINS>0.00</pCOFINS>
+              <vCOFINS>0.00</vCOFINS>
+            </COFINSOutr>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>0.00</vBC>
+          <vICMS>0.00</vICMS>
+          <vICMSDeson>0</vICMSDeson>
+          <vFCPUFDest>0.00</vFCPUFDest>
+          <vFCP>0.00</vFCP>
+          <vBCST>0</vBCST>
+          <vST>0</vST>
+          <vFCPST>0</vFCPST>
+          <vFCPSTRet>0</vFCPSTRet>
+          <vProd>720.00</vProd>
+          <vFrete>85.00</vFrete>
+          <vSeg>0</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0</vII>
+          <vIPI>0.00</vIPI>
+          <vIPIDevol>0</vIPIDevol>
+          <vPIS>0.00</vPIS>
+          <vCOFINS>0.00</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>805.00</vNF>
+          <vTotTrib>0.00</vTotTrib>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>18016343000100</CNPJ>
+          <xNome>AGEX - ENCOMENDAS URGENTES EIRELI</xNome>
+          <IE>9062837940</IE>
+          <xEnder>AV JOANNA RODRIGUES JONDRAL  250, 1</xEnder>
+          <xMun>LONDRINA</xMun>
+          <UF>PR</UF>
+        </transporta>
+        <retTransp>
+          <vServ>85.00</vServ>
+          <vBCRet>85.00</vBCRet>
+          <pICMSRet>0.00</pICMSRet>
+          <vICMSRet>0.00</vICMSRet>
+          <CFOP>5352</CFOP>
+          <cMunFG>4113700</cMunFG>
+        </retTransp>
+        <vol>
+          <qVol>1</qVol>
+          <esp>CX</esp>
+          <pesoL>0.000</pesoL>
+          <pesoB>25.000</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>1592</nFat>
+          <vOrig>805.00</vOrig>
+          <vDesc>0.00</vDesc>
+          <vLiq>805.00</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2022-05-08</dVenc>
+          <vDup>402.50</vDup>
+        </dup>
+        <dup>
+          <nDup>002</nDup>
+          <dVenc>2022-05-23</dVenc>
+          <vDup>402.50</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <tPag>15</tPag>
+          <vPag>805.00</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>11-DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL QUE PERMITE O APROVEITAMENTO DE CREDITO DE ICMS NO VALOR R$12.96, CORRESPONDENTE A ALIQUOTA DE 1,61% NOS TERMOS DO ART. 23 DA LEI COMPLEMENTAR No 123/2006.;</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>07581016000184</CNPJ>
+        <xContato>DBS INFORMATICA LTDA</xContato>
+        <email>sistemas@dbsti.com.br</email>
+        <fone>4430324301</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe41220430595612000135550010000015921000000010">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>MLPsGJ69AXjQiQAg+NyPZG06x94=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>KFVMTTol009J6TvUMVBTQRHvMS0Fz0314EYmyK3KtmUlMFxdjMPYK22D/ul9Cu73xo89jilKw8dCWpuy9G5aEVhzCjJusS3+Pn0ZgrlAaa8QO3kbwnXF4ZgDLze6KGqg33MUGVrmuTQgYMhasab2q/o2QWfGWlwl25gu7CquIDCX379HVAw2i23Ry2FFlqszbKanSyQ4oonaS6Tvr9OJ6R9GX4O9zHmrrDxP9cluNbilds7NN6D0wZMlquT8LT64eXndVHjALBzQWwgMVByu49AvD2Ij9khZVfJdaIDI7jxL8yH5us/EzfaF+R+t4ALxiSTPLAXzGh6HM3qVey8pLg==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="ID141220082843823">
+      <tpAmb>1</tpAmb>
+      <verAplic>PR-v4_7_58</verAplic>
+      <chNFe>41220430595612000135550010000015921000000010</chNFe>
+      <dhRecbto>2022-04-08T15:28:37-03:00</dhRecbto>
+      <nProt>141220082843823</nProt>
+      <digVal>MLPsGJ69AXjQiQAg+NyPZG06x94=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

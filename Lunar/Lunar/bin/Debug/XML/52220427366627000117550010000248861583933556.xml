@@ -1,0 +1,283 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe>
+    <infNFe Id="NFe52220427366627000117550010000248861583933556" versao="4.00">
+      <ide>
+        <cUF>52</cUF>
+        <cNF>58393355</cNF>
+        <natOp>VENDA</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>24886</nNF>
+        <dhEmi>2022-04-29T11:14:21-03:00</dhEmi>
+        <dhSaiEnt>2022-04-29T11:14:21-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>5201108</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>6</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>S7 2017</verProc>
+      </ide>
+      <emit>
+        <CNPJ>27366627000117</CNPJ>
+        <xNome>GW  WIRELLES  EIRELI  FILIAL MATRIZ</xNome>
+        <xFant>GW WIRELLES</xFant>
+        <enderEmit>
+          <xLgr>AVENIDA WALDOMIRO CORREA NETO</xLgr>
+          <nro>1046</nro>
+          <xCpl>QUADRA 03 LOTE 15 SALA 01</xCpl>
+          <xBairro>JARDIM ALEXANDRINA</xBairro>
+          <cMun>5201108</cMun>
+          <xMun>ANAPOLIS</xMun>
+          <UF>GO</UF>
+          <CEP>75060470</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>6233152795</fone>
+        </enderEmit>
+        <IE>106884034</IE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>28145398000173</CNPJ>
+        <xNome>MARCELO XAVIER DA SILVA 07497828622 - 14255</xNome>
+        <enderDest>
+          <xLgr>AVENIDA SANTOS DUMONT</xLgr>
+          <nro>1002</nro>
+          <xCpl>..</xCpl>
+          <xBairro>DIVINEIA</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38613446</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3898318215</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>0030011730013</IE>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>12111</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>FIBRA CABO DROP 1FO (WEC) 1KM</xProd>
+          <NCM>85447090</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>499.000000</vUnCom>
+          <vProd>499.00</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>499.000000</vUnTrib>
+          <vFrete>47.50</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <vTotTrib>182.53</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>2</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>546.50</vBC>
+              <pICMS>4.00</pICMS>
+              <vICMS>21.86</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>53</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>546.50</vBC>
+              <pPIS>0.65</pPIS>
+              <vPIS>3.55</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>546.50</vBC>
+              <pCOFINS>3.00</pCOFINS>
+              <vCOFINS>16.39</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+        <infAdProd>Prod 12111: ALIQUOTA ICMS CONF. RESOLUCAO 13/2012 DO SENADO FEDERAL..</infAdProd>
+      </det>
+      <det nItem="2">
+        <prod>
+          <cProd>2544</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>CAIXA HERMETICA PADRAO (VOLT) TELECOM (PRETA) (31,5X16X6,8)</xProd>
+          <NCM>39231090</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>3.0000</qCom>
+          <vUnCom>37.200000</vUnCom>
+          <vProd>111.60</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>3.0000</qTrib>
+          <vUnTrib>37.200000</vUnTrib>
+          <vFrete>47.50</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <vTotTrib>53.14</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>159.10</vBC>
+              <pICMS>12.00</pICMS>
+              <vICMS>19.09</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>53</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>159.10</vBC>
+              <pPIS>0.65</pPIS>
+              <vPIS>1.03</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>159.10</vBC>
+              <pCOFINS>3.00</pCOFINS>
+              <vCOFINS>4.77</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>705.60</vBC>
+          <vICMS>40.95</vICMS>
+          <vICMSDeson>0.00</vICMSDeson>
+          <vFCP>0.00</vFCP>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vFCPST>0.00</vFCPST>
+          <vFCPSTRet>0.00</vFCPSTRet>
+          <vProd>610.60</vProd>
+          <vFrete>95.00</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>0.00</vIPI>
+          <vIPIDevol>0.00</vIPIDevol>
+          <vPIS>4.58</vPIS>
+          <vCOFINS>21.16</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>705.60</vNF>
+          <vTotTrib>235.67</vTotTrib>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>05222092000259</CNPJ>
+          <xNome>ACCERT TRANSPORTES E LOGISTICA LTDA</xNome>
+          <IE>103546731</IE>
+          <xEnder>R JAO, SANTA GENOVEVA N.205</xEnder>
+          <xMun>GOIANIA</xMun>
+          <UF>GO</UF>
+        </transporta>
+        <vol>
+          <qVol>2</qVol>
+          <esp>VOL</esp>
+          <pesoL>23.070</pesoL>
+          <pesoB>0.000</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>24886</nFat>
+          <vOrig>705.60</vOrig>
+          <vDesc>0.00</vDesc>
+          <vLiq>705.60</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2022-05-29</dVenc>
+          <vDup>352.80</vDup>
+        </dup>
+        <dup>
+          <nDup>002</nDup>
+          <dVenc>2022-06-28</dVenc>
+          <vDup>352.80</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>15</tPag>
+          <vPag>352.80</vPag>
+        </detPag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>15</tPag>
+          <vPag>352.80</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>PEDIDO 326096  - Total aproximado dos tributos R$ 115.72 Federal e R$ 119.95 Estadual Fonte: IBPT/empresometro.com.br - 21.2.E.</infCpl>
+      </infAdic>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe52220427366627000117550010000248861583933556">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>HVB9civSPLYCZb3VV+Z4lRjxC9Q=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>JICNyYZYP5zet8TTAeWE1cStK0vcwIi0EiCtT97zfhKDw814JGp+7b1YplxuwlTpBAI0vfvDK2Fl/3vz1LybzHlKhlSlEcxZ/n6XINvxeZKw8MaUXKCdSA+OW4G9MuBJ0KMNg+RrRJpfOCSASk+yTOKRenjrm3GhM137Iy32J9BU0H/Qglqlh94hyxabxjhSkx298Age3Uyk1pbFLEVltfkK0PnKYNToyMqu8PTt+jnYc9U27WhZErkjdhQrwyowbjoA2kYrmDnN2A3sx3plT0TnlQd/vfs4LZOg/EYFjC1j+WBpM+Ht/Rafz/ovgLx4pX6j+6NhbzVSr8zMHJyP4Q==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="ID152225072410833">
+      <tpAmb>1</tpAmb>
+      <verAplic>0.0.1</verAplic>
+      <chNFe>52220427366627000117550010000248861583933556</chNFe>
+      <dhRecbto>2022-04-29T11:14:37-03:00</dhRecbto>
+      <nProt>152225072410833</nProt>
+      <digVal>HVB9civSPLYCZb3VV+Z4lRjxC9Q=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

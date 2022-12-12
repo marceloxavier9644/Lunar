@@ -1,0 +1,10 @@
+
+
+Date:2021-10-30 19:20:33,416
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.TemplateWizard.Base.IWizardImplementation                         [(null)]
+Message:System.InvalidOperationException: Coleção foi modificada; talvez a operação de enumeração não seja executada.
+   em System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   em System.Collections.Generic.List`1.Enumerator.MoveNextRare()
+   em Syncfusion.TemplateWizard.Base.IWizardImplementation.RunFinished()

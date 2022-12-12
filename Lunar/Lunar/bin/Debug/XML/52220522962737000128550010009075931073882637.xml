@@ -1,0 +1,249 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe>
+    <infNFe Id="NFe52220522962737000128550010009075931073882637" versao="4.00">
+      <ide>
+        <cUF>52</cUF>
+        <cNF>07388263</cNF>
+        <natOp>Venda de mercadoria adquirida ou recebida de terce</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>907593</nNF>
+        <dhEmi>2022-05-12T10:49:28-03:00</dhEmi>
+        <dhSaiEnt>2022-05-12T10:49:28-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>5210109</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>7</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>3</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>Sabium ERP 16.33 N:2</verProc>
+      </ide>
+      <emit>
+        <CNPJ>22962737000128</CNPJ>
+        <xNome>GAZIN ATACADO CENTRO-OESTE LTDA</xNome>
+        <xFant>GAZIN ATACADO CENTRO-OESTE LTDA</xFant>
+        <enderEmit>
+          <xLgr>RODOVIA GO 330</xLgr>
+          <nro>SN</nro>
+          <xCpl>KM 237</xCpl>
+          <xBairro>SETOR AEROPORTO</xBairro>
+          <cMun>5210109</cMun>
+          <xMun>IPAMERI</xMun>
+          <UF>GO</UF>
+          <CEP>75780000</CEP>
+          <cPais>1058</cPais>
+          <xPais>Brasil</xPais>
+          <fone>6434918150</fone>
+        </enderEmit>
+        <IE>106461141</IE>
+        <IEST>0039028040013</IEST>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>28145398000173</CNPJ>
+        <xNome>TXT INFORMATICA LTDA</xNome>
+        <enderDest>
+          <xLgr>RUA CANABRAVA</xLgr>
+          <nro>320</nro>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610031</CEP>
+          <cPais>1058</cPais>
+          <xPais>Brasil</xPais>
+          <fone>3836764611</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>0030011730013</IE>
+        <email>DINAMICA.UNAI@HOTMAIL.COM</email>
+      </dest>
+      <autXML>
+        <CPF>00581901983</CPF>
+      </autXML>
+      <autXML>
+        <CNPJ>44914992001886</CNPJ>
+      </autXML>
+      <det nItem="1">
+        <prod>
+          <cProd>51636.8.4</cProd>
+          <cEAN>010343958111</cEAN>
+          <xProd>MULTIFUNCIONAL EPSON ECOTANK L3250 WI-FI C11CJ67303 PRETO BIVOLT</xProd>
+          <NCM>84433111</NCM>
+          <CEST>2101600</CEST>
+          <CFOP>6102</CFOP>
+          <uCom>Un</uCom>
+          <qCom>4.0000</qCom>
+          <vUnCom>1109.90</vUnCom>
+          <vProd>4439.60</vProd>
+          <cEANTrib>010343958111</cEANTrib>
+          <uTrib>Un</uTrib>
+          <qTrib>4.0000</qTrib>
+          <vUnTrib>1109.90</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>4</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>4439.60</vBC>
+              <pICMS>12.00</pICMS>
+              <vICMS>532.75</vICMS>
+            </ICMS00>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>3906.85</vBC>
+              <pPIS>1.65</pPIS>
+              <vPIS>64.46</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>3906.85</vBC>
+              <pCOFINS>7.60</pCOFINS>
+              <vCOFINS>296.92</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+        <infAdProd>Portaria Interministerial MCTIC/MDIC n. 4030, de 09/11/2020 - DOU 12/11/2020</infAdProd>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>4439.60</vBC>
+          <vICMS>532.75</vICMS>
+          <vICMSDeson>0</vICMSDeson>
+          <vFCP>0</vFCP>
+          <vBCST>0</vBCST>
+          <vST>0.00</vST>
+          <vFCPST>0</vFCPST>
+          <vFCPSTRet>0</vFCPSTRet>
+          <vProd>4439.60</vProd>
+          <vFrete>0</vFrete>
+          <vSeg>0</vSeg>
+          <vDesc>0</vDesc>
+          <vII>0</vII>
+          <vIPI>0</vIPI>
+          <vIPIDevol>0</vIPIDevol>
+          <vPIS>64.46</vPIS>
+          <vCOFINS>296.92</vCOFINS>
+          <vOutro>0</vOutro>
+          <vNF>4439.60</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>44914992001886</CNPJ>
+          <xNome>RODONAVES TRANSPORTES E ENCOMENDAS LTDA</xNome>
+          <IE>102863849</IE>
+          <xEnder>AVENIDA MARIA ELIAS LISBOA SANTOS, SN - PARQUE INDUSTRIAL VI</xEnder>
+          <xMun>APARECIDA DE GOIANIA</xMun>
+          <UF>GO</UF>
+        </transporta>
+        <vol>
+          <qVol>4</qVol>
+          <pesoL>15.600</pesoL>
+          <pesoB>23.680</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>140001.15107428/140001.15107429</nFat>
+          <vOrig>4517.31</vOrig>
+          <vDesc>0.00</vDesc>
+          <vLiq>4517.31</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2022-06-06</dVenc>
+          <vDup>887.92</vDup>
+        </dup>
+        <dup>
+          <nDup>002</nDup>
+          <dVenc>2022-06-06</dVenc>
+          <vDup>77.71</vDup>
+        </dup>
+        <dup>
+          <nDup>003</nDup>
+          <dVenc>2022-06-13</dVenc>
+          <vDup>887.92</vDup>
+        </dup>
+        <dup>
+          <nDup>004</nDup>
+          <dVenc>2022-06-20</dVenc>
+          <vDup>887.92</vDup>
+        </dup>
+        <dup>
+          <nDup>005</nDup>
+          <dVenc>2022-07-01</dVenc>
+          <vDup>887.92</vDup>
+        </dup>
+        <dup>
+          <nDup>006</nDup>
+          <dVenc>2022-07-04</dVenc>
+          <vDup>887.92</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>05</tPag>
+          <vPag>4439.60</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infAdFisco>SO ACEITAMOS DEVOLUCAO COM UM XEROX DA NOTA DE COMPRA E PRODUTOS TODOS EMBALADOS</infAdFisco>
+        <infCpl>Cliente: TXT INFORMATICA / Vendedor: LAISON KARSTEN (44) 8851-6226 (4616); Processo: 501 / Processo Mestre: 9500; Filial: 1 / Pedido(s): 7813467; / Indicador Forma Pgto = 1 - a prazo / Meio de Pagamento = 05 - Credito Loja; TItulo de ICMS/ST (nao destacado) Cod.: 15107429 - Valor: R$77,71 - Qtd.Parcelas: 1</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>07182507000152</CNPJ>
+        <xContato>Sabium Sistemas</xContato>
+        <email>atendimento@sabium.com.br</email>
+        <fone>4433043800</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe52220522962737000128550010009075931073882637">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>OTBQ/UUmrhF1AxKrSahVuAKoTkg=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>Z33VXHAhhP6WNV5nUE+8Ts07LJqqBBUyNpPCmjfFhPs4153aeg66o8yaAJJs5HWaqlFElhKeTUlReRmq4trj5jrcWISNQ9siVC8RL5BrzimhdBzJRTrawrllvfT5/Mpprp8l1q9NW23UpUavZcS6rsIaBQ7cS6hq53ahCXfI70Kt9+nZNVTt41nI0NGpfM4Rbt3Z5a9vZA+ERWQP6g+VTFZQ42NsdYt1nNJ25MrcQwKzfmB/cDrjAjJFJFBFIjh91hm6/9WZgkGQhUdNoVk5u4eA5Pumcsy9RakU/BOUf+NfzxkBbOAL8X4tyYmZmiDYRWVzKPsc5w32xnH4X2+jLA==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="ID152225113804618">
+      <tpAmb>1</tpAmb>
+      <verAplic>0.0.1</verAplic>
+      <chNFe>52220522962737000128550010009075931073882637</chNFe>
+      <dhRecbto>2022-05-12T10:51:07-03:00</dhRecbto>
+      <nProt>152225113804618</nProt>
+      <digVal>OTBQ/UUmrhF1AxKrSahVuAKoTkg=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

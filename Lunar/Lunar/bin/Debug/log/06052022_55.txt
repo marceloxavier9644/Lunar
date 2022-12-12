@@ -1,0 +1,2738 @@
+06/05/2022 13:31 - [CONSULTA_DADOS]
+06/05/2022 13:31 - {"CNPJ":"28145398000173","nsNRec":null,"tpAmb":"2"}
+06/05/2022 13:31 - [CONSULTA_RESPOSTA]
+06/05/2022 13:31 - {"status":-2,"motivo":"Os campos 'CNPJ' ou 'nsNRec' devem ser informados"}
+06/05/2022 13:32 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 13:32 - [ENVIO_DADOS]
+06/05/2022 13:32 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>155</nNF>
+      <dhEmi>2022-05-06T13:32:13-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>84716053</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>24</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+    </cobr>
+    <pag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 13:32 - [ENVIO_RESPOSTA]
+06/05/2022 13:32 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["detPag : cvc-complex-type.2.4.a: Invalid content was found starting with element 'vTroco'. One of '{\"http://www.portalfiscal.inf.br/nfe\":detPag}' is expected."]}
+06/05/2022 13:32 - [JSON_RETORNO]
+06/05/2022 13:32 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["detPag : cvc-complex-type.2.4.a: Invalid content was found starting with element 'vTroco'. One of '{\"http://www.portalfiscal.inf.br/nfe\":detPag}' is expected."]}
+06/05/2022 13:32 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 13:37 - [CONSULTA_DADOS]
+06/05/2022 13:37 - {"CNPJ":"28145398000173","nsNRec":null,"tpAmb":"2"}
+06/05/2022 13:37 - [CONSULTA_RESPOSTA]
+06/05/2022 13:37 - {"status":-2,"motivo":"Os campos 'CNPJ' ou 'nsNRec' devem ser informados"}
+06/05/2022 13:39 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 13:39 - [ENVIO_DADOS]
+06/05/2022 13:39 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>157</nNF>
+      <dhEmi>2022-05-06T13:39:52-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>84716053</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>26</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>20.00</vPag>
+      </detPag>
+      <vTroco>0.10</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 13:39 - [ENVIO_RESPOSTA]
+06/05/2022 13:39 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5099174"}
+06/05/2022 13:39 - [CONSULTA_DADOS]
+06/05/2022 13:39 - {"CNPJ":"28145398000173","nsNRec":"5099174","tpAmb":"2"}
+06/05/2022 13:39 - [CONSULTA_RESPOSTA]
+06/05/2022 13:39 - {"status":-2,"motivo":"Nao foi possivel carregar o status da NF-e","erro":{"cStat":996,"xMotivo":"Documento ainda nao processado, por favor realize a consulta novamente"}}
+06/05/2022 13:39 - [JSON_RETORNO]
+06/05/2022 13:39 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-2","statusDownload":"","cStat":null,"nProt":"","motivo":"Documento ainda nao processado, por favor realize a consulta novamente","nsNRec":"5099174","erros":null}
+06/05/2022 13:39 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 13:40 - [CONSULTA_DADOS]
+06/05/2022 13:40 - {"CNPJ":"28145398000173","nsNRec":"5099174","tpAmb":"2"}
+06/05/2022 13:40 - [CONSULTA_RESPOSTA]
+06/05/2022 13:40 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001571918307400","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131220145653791","dhRecbto":"2022-05-06T13:39:54-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31220528145398000173550020000001571918307400\"><ide><cUF>31</cUF><cNF>91830740</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>157</nNF><dhEmi>2022-05-06T13:39:52-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>0</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>28145398000173</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>RUA CANABRAVA</xLgr><nro>320</nro><xCpl>LOJA  02</xCpl><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610031</CEP><fone>3836769644</fone></enderEmit><IE>0030011730013</IE><CRT>1</CRT></emit><dest><CPF>07497828622</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA ORLANDO SILVA</xLgr><nro>88</nro><xBairro>SERENATA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38613302</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>1</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>84716053</NCM><CFOP>5102</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>19.90</vUnCom><vProd>19.90</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>19.90</vUnTrib><indTot>1</indTot></prod><imposto><ICMS><ICMSSN102><orig>0</orig><CSOSN>102</CSOSN></ICMSSN102></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>19.90</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>19.90</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>26</nFat><vOrig>19.90</vOrig><vDesc>0.00</vDesc><vLiq>19.90</vLiq></fat><dup><nDup>001</nDup><dVenc>2022-05-06</dVenc><vDup>19.90</vDup></dup></cobr><pag><detPag><tPag>01</tPag><vPag>20.00</vPag></detPag><vTroco>0.10</vTroco></pag><infAdic><infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31220528145398000173550020000001571918307400\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>Im1OqaqTGljWHbqhIEHqp1yJFyI=</DigestValue></Reference></SignedInfo><SignatureValue>DZXb8LIMoTSqlOAeBZg29OwoI7R5FVOtcPVB+eCgHKgnZImfJGrG8HJKDXco3LVaKbqUipqhQ90yxvBnQFl5OLypViC4pXBSymGad5t2O2UPH7l/4BLyPk7HzE+5X9Fhfg0x9c0WWYwUpMI/rlqsBTfs+6E3lpa/BdMRqGfgPOQlFbIfQf7GUhl7DbwgLcT0ZfQZgkr5a0OHA4ymXxCHt8gbhqlKOrU97yjwWXsZXF22DXhHbayvrwBY2ts46Tl26IkGhWi7skvUoAOKQI5/alc7xdcGv1C40d1OHQS5DhhwP7kn+tksYfbFwdVtUYt2M2I/Yw01MYPz+gME307mnw==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><chNFe>31220528145398000173550020000001571918307400</chNFe><dhRecbto>2022-05-06T13:39:54-03:00</dhRecbto><nProt>131220145653791</nProt><digVal>Im1OqaqTGljWHbqhIEHqp1yJFyI=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+06/05/2022 13:43 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 13:43 - [ENVIO_DADOS]
+06/05/2022 13:43 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>158</nNF>
+      <dhEmi>2022-05-06T13:43:16-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>84716053</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>28</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>30.00</vPag>
+      </detPag>
+      <vTroco>10.10</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 13:43 - [ENVIO_RESPOSTA]
+06/05/2022 13:43 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5099227"}
+06/05/2022 13:43 - [CONSULTA_DADOS]
+06/05/2022 13:43 - {"CNPJ":"28145398000173","nsNRec":"5099227","tpAmb":"2"}
+06/05/2022 13:43 - [CONSULTA_RESPOSTA]
+06/05/2022 13:43 - {"status":-2,"motivo":"Nao foi possivel carregar o status da NF-e","erro":{"cStat":996,"xMotivo":"Documento ainda nao processado, por favor realize a consulta novamente"}}
+06/05/2022 13:43 - [JSON_RETORNO]
+06/05/2022 13:43 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-2","statusDownload":"","cStat":null,"nProt":"","motivo":"Documento ainda nao processado, por favor realize a consulta novamente","nsNRec":"5099227","erros":null}
+06/05/2022 13:43 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 13:43 - [CONSULTA_DADOS]
+06/05/2022 13:43 - {"CNPJ":"28145398000173","nsNRec":"5099227","tpAmb":"2"}
+06/05/2022 13:43 - [CONSULTA_RESPOSTA]
+06/05/2022 13:43 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001581282861891","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131220145653833","dhRecbto":"2022-05-06T13:43:19-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31220528145398000173550020000001581282861891\"><ide><cUF>31</cUF><cNF>28286189</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>158</nNF><dhEmi>2022-05-06T13:43:16-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>1</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>28145398000173</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>RUA CANABRAVA</xLgr><nro>320</nro><xCpl>LOJA  02</xCpl><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610031</CEP><fone>3836769644</fone></enderEmit><IE>0030011730013</IE><CRT>1</CRT></emit><dest><CPF>07497828622</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA ORLANDO SILVA</xLgr><nro>88</nro><xBairro>SERENATA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38613302</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>1</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>84716053</NCM><CFOP>5102</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>19.90</vUnCom><vProd>19.90</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>19.90</vUnTrib><indTot>1</indTot></prod><imposto><ICMS><ICMSSN102><orig>0</orig><CSOSN>102</CSOSN></ICMSSN102></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>19.90</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>19.90</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>28</nFat><vOrig>19.90</vOrig><vDesc>0.00</vDesc><vLiq>19.90</vLiq></fat><dup><nDup>001</nDup><dVenc>2022-05-06</dVenc><vDup>19.90</vDup></dup></cobr><pag><detPag><tPag>01</tPag><vPag>30.00</vPag></detPag><vTroco>10.10</vTroco></pag><infAdic><infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31220528145398000173550020000001581282861891\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>Evql9HUiEeTyb/fPey5CgCbGedY=</DigestValue></Reference></SignedInfo><SignatureValue>eEiiKN1TKZfYJB+ccstJTok3BtaN2wjE/XkDalAXjp4iXQxjFuNUiXyZtQPCFCj0aJwmGcW7v3mk9Kz+/WP4oQcORepj1FieLgq5A/U0r5xYQGyGL6kvSLJk5qGOJrsnVNsJT2Ybn/L3OjTE402Sbk5e31Ve/zS+KPwZzFhzF3R4B5GLkOwFYdFm23mlQamK/vFMECR52jrCBvelb1MbXCEAKA8KkHw2p8GfEnGnurivmdXLMidaukqDNcqKKfl3ufCOnlgja57JiMT2GpbggCfcrFzAdhsHH+2Oo6fmTVxQumJhSLP6Ud2fWLD0ZG35cYo38nbFr6tn+qEEGl8Vkg==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIHjjCCBXagAwIBAgIUFAJO4OJtX+o51JKcfOtk2WPThfcwDQYJKoZIhvcNAQELBQAwejELMAkGA1UEBhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxNjA0BgNVBAsTLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFsIGRvIEJyYXNpbCAtIFJGQjEeMBwGA1UEAxMVQUMgRElHSVRBTFNJR04gUkZCIEcyMB4XDTIxMDYwODEzMzIwMloXDTIyMDYwODEzMzIwMlowgeoxCzAJBgNVBAYTAkJSMRMwEQYDVQQKEwpJQ1AtQnJhc2lsMQswCQYDVQQIEwJNRzENMAsGA1UEBxMEVW5haTE2MDQGA1UECxMtU2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgZG8gQnJhc2lsIC0gUkZCMRYwFAYDVQQLEw1SRkIgZS1DTlBKIEExMRcwFQYDVQQLEw4xOTM3MjM2MTAwMDE5NzETMBEGA1UECxMKcHJlc2VuY2lhbDEsMCoGA1UEAxMjVFhUIElORk9STUFUSUNBIExUREE6MjgxNDUzOTgwMDAxNzMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC9jX8ZeqktA+m2GcMNRjhA1tZrfzwBvzlorU3OqYANe/zlMWDe+mVvETqvraOlNEJ/TCqPXjBC+ynMvCbeGbck8HNBEdoGhZvHd9YfxWgqekf6QuNXPQOsHLS/mq6fyD25X6LZqK2g49vO4Ht3e1Y3mT+edrl103KJqfzr1OrW/cnx6vDEyp/XvWlPljFzuQnPl2dT98KXuRjdK5MzY55POvCNnESEWYNXiH2vzTM+ohmBmTj8TYb1NSpUbvLAqLXMK/TnCYhKFuGQAqiA20szRFPIHZYWZZoM+Yr7jlmRU0l1wbyN2ADAahcQqs7eUcU9N1NrJIaAbYNCCDRpaAXVAgMBAAGjggKZMIIClTAOBgNVHQ8BAf8EBAMCBeAwbQYIKwYBBQUHAQEEYTBfMF0GCCsGAQUFBzAChlFodHRwOi8vd3d3LmRpZ2l0YWxzaWduY2VydGlmaWNhZG9yYS5jb20uYnIvcmVwb3NpdG9yaW8vcmZiL0FDRElHSVRBTFNJR05SRkJHMi5wN2IwHwYDVR0jBBgwFoAUyk9DCfZI4ErVb+UtXYdrqSmOR3swXQYDVR0gBFYwVDBSBgZgTAECASwwSDBGBggrBgEFBQcCARY6aHR0cDovL3d3dy5kaWdpdGFsc2lnbmNlcnRpZmljYWRvcmEuY29tLmJyL3JlcG9zaXRvcmlvL3JmYjAJBgNVHRMEAjAAMIGxBgNVHR8EgakwgaYwV6BVoFOGUWh0dHA6Ly93d3cuZGlnaXRhbHNpZ25jZXJ0aWZpY2Fkb3JhLmNvbS5ici9yZXBvc2l0b3Jpby9yZmIvQUNESUdJVEFMU0lHTlJGQkcyLmNybDBLoEmgR4ZFaHR0cDovL3d3dy5kaWdpdGFsdHJ1c3QuY29tLmJyL3JlcG9zaXRvcmlvL3JmYi9BQ0RJR0lUQUxTSUdOUkZCRzIuY3JsMIG1BgNVHREEga0wgaqBFm1hcmNlbG8ueHNAaG90bWFpbC5jb22gOAYFYEwBAwSgLwQtMjcwMjE5ODYwNzQ5NzgyODYyMjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwoCIGBWBMAQMCoBkEF01BUkNFTE8gWEFWSUVSIERBIFNJTFZBoBkGBWBMAQMDoBAEDjI4MTQ1Mzk4MDAwMTczoBcGBWBMAQMHoA4EDDAwMDAwMDAwMDAwMDAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwDQYJKoZIhvcNAQELBQADggIBAJQrCns5BpmFvUigzKszz/IvedD+dipuWecjUuLeyneTQNPRTMetWNVyqMvrXrWTJYTfX1PAoSRhPHAbVcCc34An4mjh0xC/uXcrkObvt87GrkxsmKVDBiegLC7V9+JWQKMrpEvg952/4pdlAYIa4WxHuZZaqPm2JYNSDnl4jnGV9544Sm/F5NfeS4wyTP+1MNqgNVv0t6ObOYbh5g1PzCBEPrzIOcfZ1zhWFidyn12HZreyVV1VDVyFsoNYKO7VcvRVjExHXyL9s1PlZUDiWRJGWdncsQ+U7M+AJskxconqUrK2W8wFytF5NRjbfMCuOCt8vcoPCkrBiYX1J65kJ26rKBNaByX4SUf5AhSefzFckmFB+YBZSX7p9UGHmgOuclHxx0qCH6UOP/n7JDPM4f3nrkgEBkJx8bANbdm5jCyYJWTDLAJ2XGuHZhMsyx7SBbVtTcY7qEsUseTfpa0ZaRqF4SBI3IOuz3MnpG0KCaH/K0OAVqAarf/3zpCeJ93vsxzhkAkgk+TfyjKLs+0ghB9THFqw2eU6CDXXKfdNJa/zwKNBb65MlCzZPt95h9n9zEDBneWhwnvsh1g1sT0XAjjyjAwU+JXtU+bTWK3l5fuzkTzNJnEVkgkfNw8LmyKKp+9gTLwHgYYZRpsz9HaiW3N5Pw4OdnFWRGkjOO3BOh8D</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><chNFe>31220528145398000173550020000001581282861891</chNFe><dhRecbto>2022-05-06T13:43:19-03:00</dhRecbto><nProt>131220145653833</nProt><digVal>Evql9HUiEeTyb/fPey5CgCbGedY=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+06/05/2022 13:43 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 13:43 - [ENVIO_DADOS]
+06/05/2022 13:43 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>159</nNF>
+      <dhEmi>2022-05-06T13:43:42-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>84716053</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>2.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>39.80</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>2.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>39.80</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>39.80</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>29</nFat>
+        <vOrig>39.80</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>39.80</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>39.80</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>50.00</vPag>
+      </detPag>
+      <vTroco>10.20</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 13:43 - [ENVIO_RESPOSTA]
+06/05/2022 13:43 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5099233"}
+06/05/2022 13:43 - [CONSULTA_DADOS]
+06/05/2022 13:43 - {"CNPJ":"28145398000173","nsNRec":"5099233","tpAmb":"2"}
+06/05/2022 13:43 - [CONSULTA_RESPOSTA]
+06/05/2022 13:43 - {"status":-2,"motivo":"Nao foi possivel carregar o status da NF-e","erro":{"cStat":996,"xMotivo":"Documento ainda nao processado, por favor realize a consulta novamente"}}
+06/05/2022 13:43 - [JSON_RETORNO]
+06/05/2022 13:43 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-2","statusDownload":"","cStat":null,"nProt":"","motivo":"Documento ainda nao processado, por favor realize a consulta novamente","nsNRec":"5099233","erros":null}
+06/05/2022 13:43 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 13:43 - [CONSULTA_DADOS]
+06/05/2022 13:43 - {"CNPJ":"28145398000173","nsNRec":"5099233","tpAmb":"2"}
+06/05/2022 13:43 - [CONSULTA_RESPOSTA]
+06/05/2022 13:43 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001591702164575","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131220145653838","dhRecbto":"2022-05-06T13:43:44-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31220528145398000173550020000001591702164575\"><ide><cUF>31</cUF><cNF>70216457</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>159</nNF><dhEmi>2022-05-06T13:43:42-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>5</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>28145398000173</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>RUA CANABRAVA</xLgr><nro>320</nro><xCpl>LOJA  02</xCpl><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610031</CEP><fone>3836769644</fone></enderEmit><IE>0030011730013</IE><CRT>1</CRT></emit><dest><CPF>07497828622</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA ORLANDO SILVA</xLgr><nro>88</nro><xBairro>SERENATA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38613302</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>1</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>84716053</NCM><CFOP>5102</CFOP><uCom>UN</uCom><qCom>2.00</qCom><vUnCom>19.90</vUnCom><vProd>39.80</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>2.00</qTrib><vUnTrib>19.90</vUnTrib><indTot>1</indTot></prod><imposto><ICMS><ICMSSN102><orig>0</orig><CSOSN>102</CSOSN></ICMSSN102></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>39.80</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>39.80</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>29</nFat><vOrig>39.80</vOrig><vDesc>0.00</vDesc><vLiq>39.80</vLiq></fat><dup><nDup>001</nDup><dVenc>2022-05-06</dVenc><vDup>39.80</vDup></dup></cobr><pag><detPag><tPag>01</tPag><vPag>50.00</vPag></detPag><vTroco>10.20</vTroco></pag><infAdic><infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31220528145398000173550020000001591702164575\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>bcPXoJfFKk7ANlRViCb4r4I/2W0=</DigestValue></Reference></SignedInfo><SignatureValue>kfcflIrmGrq+oisBI1D53dbO1r8j5ua9TWc5E+IgU/wmmvx4Bkg5iAYTJxk16y6fO0p07JCHjKJXKQoA4bfNmkyVbZDj3083+zwI8glOhyTIarZ/A+9G4+Z6Yijnft/P9vo3PPw4uP5UyBa/ZscoKhRIgvxGfxpPnG0CPRjhMlX84vCjDhKw+Ec+81uHPgdGaSw0OCvqjUHfGeRxFgWp3/dJDrbaAZS6jQoQ1gw+j6Fc9sYI6KsRax3q3/K/ZEU8oUP22aYIhaPzmvAbMZR/IvADFUotpDdj/iZ5WBQc7q42tpFJhx8JmErQ5o+WNU7ACjgzkwTDkmJCQ06XWgJvsw==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><chNFe>31220528145398000173550020000001591702164575</chNFe><dhRecbto>2022-05-06T13:43:44-03:00</dhRecbto><nProt>131220145653838</nProt><digVal>bcPXoJfFKk7ANlRViCb4r4I/2W0=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+06/05/2022 13:45 - [INUTILIZACAO_DADOS]
+06/05/2022 13:45 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"155","nNFFin":"155"}
+06/05/2022 13:45 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 13:45 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 13:49 - [INUTILIZACAO_DADOS]
+06/05/2022 13:49 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"155","nNFFin":"155"}
+06/05/2022 13:49 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 13:49 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 13:52 - [INUTILIZACAO_DADOS]
+06/05/2022 13:52 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"155","nNFFin":"155"}
+06/05/2022 13:52 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 13:52 - <html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.18.0 (Ubuntu)</center>
+</body>
+</html>
+
+06/05/2022 13:53 - [INUTILIZACAO_DADOS]
+06/05/2022 13:53 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"155","nNFFin":"155"}
+06/05/2022 13:53 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 13:53 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 13:54 - [INUTILIZACAO_DADOS]
+06/05/2022 13:54 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"155","nNFFin":"155"}
+06/05/2022 13:54 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 13:54 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 13:55 - [INUTILIZACAO_DADOS]
+06/05/2022 13:55 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"155","nNFFin":"155"}
+06/05/2022 13:55 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 13:55 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 13:56 - [INUTILIZACAO_DADOS]
+06/05/2022 13:56 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"155","nNFFin":"155"}
+06/05/2022 13:56 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 13:56 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 14:02 - [INUTILIZACAO_DADOS]
+06/05/2022 14:02 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"155","nNFFin":"155"}
+06/05/2022 14:02 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 14:02 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 14:08 - [INUTILIZACAO_DADOS]
+06/05/2022 14:08 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"155","nNFFin":"155"}
+06/05/2022 14:08 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 14:08 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 16:02 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 16:02 - [ENVIO_DADOS]
+06/05/2022 16:02 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>160</nNF>
+      <dhEmi>2022-05-06T16:02:24-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>30</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>20.00</vPag>
+      </detPag>
+      <vTroco>0.10</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 16:02 - [ENVIO_RESPOSTA]
+06/05/2022 16:02 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5101618"}
+06/05/2022 16:02 - [CONSULTA_DADOS]
+06/05/2022 16:02 - {"CNPJ":"28145398000173","nsNRec":"5101618","tpAmb":"2"}
+06/05/2022 16:02 - [CONSULTA_RESPOSTA]
+06/05/2022 16:02 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001601313986320","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:02 - [JSON_RETORNO]
+06/05/2022 16:02 - {"chNFe":"","statusEnvio":"200","statusConsulta":"200","statusDownload":"","cStat":"778","nProt":"","motivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]","nsNRec":"5101618","erros":null}
+06/05/2022 16:02 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 16:03 - [CONSULTA_DADOS]
+06/05/2022 16:03 - {"CNPJ":"28145398000173","nsNRec":"5101618","tpAmb":"2"}
+06/05/2022 16:03 - [CONSULTA_RESPOSTA]
+06/05/2022 16:03 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001601313986320","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:03 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 16:03 - [ENVIO_DADOS]
+06/05/2022 16:03 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>160</nNF>
+      <dhEmi>2022-05-06T16:03:29-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>84716053</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>30</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>20.00</vPag>
+      </detPag>
+      <vTroco>0.10</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 16:03 - [ENVIO_RESPOSTA]
+06/05/2022 16:03 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5101633"}
+06/05/2022 16:03 - [CONSULTA_DADOS]
+06/05/2022 16:03 - {"CNPJ":"28145398000173","nsNRec":"5101633","tpAmb":"2"}
+06/05/2022 16:03 - [CONSULTA_RESPOSTA]
+06/05/2022 16:03 - {"status":-2,"motivo":"Nao foi possivel carregar o status da NF-e","erro":{"cStat":996,"xMotivo":"Documento ainda nao processado, por favor realize a consulta novamente"}}
+06/05/2022 16:03 - [JSON_RETORNO]
+06/05/2022 16:03 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-2","statusDownload":"","cStat":null,"nProt":"","motivo":"Documento ainda nao processado, por favor realize a consulta novamente","nsNRec":"5101633","erros":null}
+06/05/2022 16:03 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 16:03 - [CONSULTA_DADOS]
+06/05/2022 16:03 - {"CNPJ":"28145398000173","nsNRec":"5101633","tpAmb":"2"}
+06/05/2022 16:03 - [CONSULTA_RESPOSTA]
+06/05/2022 16:03 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001601645659770","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131220145655309","dhRecbto":"2022-05-06T16:03:31-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31220528145398000173550020000001601645659770\"><ide><cUF>31</cUF><cNF>64565977</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>160</nNF><dhEmi>2022-05-06T16:03:29-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>0</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>28145398000173</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>RUA CANABRAVA</xLgr><nro>320</nro><xCpl>LOJA  02</xCpl><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610031</CEP><fone>3836769644</fone></enderEmit><IE>0030011730013</IE><CRT>1</CRT></emit><dest><CPF>07497828622</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA ORLANDO SILVA</xLgr><nro>88</nro><xBairro>SERENATA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38613302</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>1</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>84716053</NCM><CFOP>5102</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>19.90</vUnCom><vProd>19.90</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>19.90</vUnTrib><indTot>1</indTot></prod><imposto><ICMS><ICMSSN102><orig>0</orig><CSOSN>102</CSOSN></ICMSSN102></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>19.90</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>19.90</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>30</nFat><vOrig>19.90</vOrig><vDesc>0.00</vDesc><vLiq>19.90</vLiq></fat><dup><nDup>001</nDup><dVenc>2022-05-06</dVenc><vDup>19.90</vDup></dup></cobr><pag><detPag><tPag>01</tPag><vPag>20.00</vPag></detPag><vTroco>0.10</vTroco></pag><infAdic><infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31220528145398000173550020000001601645659770\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>YMblDO4DosbBuGtS8Cvs9cgVbmM=</DigestValue></Reference></SignedInfo><SignatureValue>QbQETij8ObSSnrdc06Ld5yq3h3w0OT4HWVI8nbYJZ35vi38pTsgweEUMLBqJP2bK8FKhMuVvlVD1bI8tEgUq/52fpi7Ax03vShxgJEcE7tm1cLfk1KNI3PsyYb02IFLvPibXH6+Qmi9MIjihq80P1pw7rY5qQ3iKAPy1t5L+oyosM0xsRXGoyX/r7XsFuq8qPFCEKtj7FEdOq+cBGD6AxNzeSKCgWpKbcP8Z7xTNThMghccEozy0698K5dBdbPgyVDX+xBN7cO+5T18SlUirWH6eFFm3kPQqq5MmMb3dqHN1CQco9OqENkz6CdQ1aOyuPcsWQ1WHyo66la2NvWypHQ==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><chNFe>31220528145398000173550020000001601645659770</chNFe><dhRecbto>2022-05-06T16:03:31-03:00</dhRecbto><nProt>131220145655309</nProt><digVal>YMblDO4DosbBuGtS8Cvs9cgVbmM=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+06/05/2022 16:15 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 16:15 - [ENVIO_DADOS]
+06/05/2022 16:15 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>161</nNF>
+      <dhEmi>2022-05-06T16:15:13-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>31</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>20.00</vPag>
+      </detPag>
+      <vTroco>0.10</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 16:15 - [ENVIO_RESPOSTA]
+06/05/2022 16:15 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5101874"}
+06/05/2022 16:15 - [CONSULTA_DADOS]
+06/05/2022 16:15 - {"CNPJ":"28145398000173","nsNRec":"5101874","tpAmb":"2"}
+06/05/2022 16:15 - [CONSULTA_RESPOSTA]
+06/05/2022 16:15 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001611997964576","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:15 - [JSON_RETORNO]
+06/05/2022 16:15 - {"chNFe":"","statusEnvio":"200","statusConsulta":"200","statusDownload":"","cStat":"778","nProt":"","motivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]","nsNRec":"5101874","erros":null}
+06/05/2022 16:15 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 16:15 - [INUTILIZACAO_DADOS]
+06/05/2022 16:15 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"161","nNFFin":"161"}
+06/05/2022 16:15 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 16:15 - {"status":200,"motivo":"Consulta realizada com sucesso","retornoInutNFe":{"cStat":"102","xMotivo":"Inutilizacao de numero homologado","chave":"31222814539800017355002000000161000000161","tpAmb":2,"dhRecbto":"2022-05-06T16:15:22-03:00","nProt":"131220145655460","xmlInut":"<?xml version=\"1.0\" encoding=\"utf-8\"?><ProcInutNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><inutNFe versao=\"4.00\"><infInut Id=\"ID31222814539800017355002000000161000000161\"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>161</nNFIni><nNFFin>161</nNFFin><xJust>NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO</xJust></infInut><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#ID31222814539800017355002000000161000000161\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>vM/jK2R3UF1p2VOVzDURSbJKSkQ=</DigestValue></Reference></SignedInfo><SignatureValue>rWuiEfSMgUGTGCwhyCAVChDbO+5Uw1LW7eNdrULvvp69LePhoshzTzfZtBhV+ZxLdzbS10wlZl3W7M/Sz3I2vKA6XWFTg2xCPCAa6UbjWEagWWIdwKlpTqHCHr8Q2rbXIActtdZ/ymKFb4hvnfc/8sQKMA500fIccSg9F8EC/+2Dic2L9xDwsb9dpoAPwcg3um9EtdTPgddxfT1Oyh5vHkzbqZlv+J4cFLFoih19yjNIWO3E2QEn1MCbqIy0CDH4TL9b4x1s9U4QdXjOlAKJd0H1m0zNVt5ytJo4R2YRaoVFAxB7E1dltOtJbGcGp7dTTYCDWZESzjFiQUbs7ooAGA==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></inutNFe><retInutNFe versao=\"4.00\"><infInut><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><cStat>102</cStat><xMotivo>Inutilizacao de numero homologado</xMotivo><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>161</nNFIni><nNFFin>161</nNFFin><dhRecbto>2022-05-06T16:15:22-03:00</dhRecbto><nProt>131220145655460</nProt></infInut></retInutNFe></ProcInutNFe>"}}
+06/05/2022 16:15 - [INUTILIZACAO_DADOS]
+06/05/2022 16:15 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"161","nNFFin":"161"}
+06/05/2022 16:15 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 16:15 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 16:15 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 16:15 - [ENVIO_DADOS]
+06/05/2022 16:15 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>162</nNF>
+      <dhEmi>2022-05-06T16:15:58-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>32</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>20.00</vPag>
+      </detPag>
+      <vTroco>0.10</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 16:15 - [ENVIO_RESPOSTA]
+06/05/2022 16:15 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5101883"}
+06/05/2022 16:15 - [CONSULTA_DADOS]
+06/05/2022 16:15 - {"CNPJ":"28145398000173","nsNRec":"5101883","tpAmb":"2"}
+06/05/2022 16:16 - [CONSULTA_RESPOSTA]
+06/05/2022 16:16 - {"status":-2,"motivo":"Nao foi possivel carregar o status da NF-e","erro":{"cStat":996,"xMotivo":"Documento ainda nao processado, por favor realize a consulta novamente"}}
+06/05/2022 16:16 - [JSON_RETORNO]
+06/05/2022 16:16 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-2","statusDownload":"","cStat":null,"nProt":"","motivo":"Documento ainda nao processado, por favor realize a consulta novamente","nsNRec":"5101883","erros":null}
+06/05/2022 16:16 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 16:16 - [CONSULTA_DADOS]
+06/05/2022 16:16 - {"CNPJ":"28145398000173","nsNRec":"5101883","tpAmb":"2"}
+06/05/2022 16:16 - [CONSULTA_RESPOSTA]
+06/05/2022 16:16 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001621227768756","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:16 - [CONSULTA_DADOS]
+06/05/2022 16:16 - {"CNPJ":"28145398000173","nsNRec":"5101883","tpAmb":"2"}
+06/05/2022 16:16 - [CONSULTA_RESPOSTA]
+06/05/2022 16:16 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001621227768756","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:16 - [CONSULTA_DADOS]
+06/05/2022 16:16 - {"CNPJ":"28145398000173","nsNRec":"5101883","tpAmb":"2"}
+06/05/2022 16:16 - [CONSULTA_RESPOSTA]
+06/05/2022 16:16 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001621227768756","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:17 - [INUTILIZACAO_DADOS]
+06/05/2022 16:17 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"162","nNFFin":"162"}
+06/05/2022 16:17 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 16:17 - {"status":200,"motivo":"Consulta realizada com sucesso","retornoInutNFe":{"cStat":"102","xMotivo":"Inutilizacao de numero homologado","chave":"31222814539800017355002000000162000000162","tpAmb":2,"dhRecbto":"2022-05-06T16:17:36-03:00","nProt":"131220145655491","xmlInut":"<?xml version=\"1.0\" encoding=\"utf-8\"?><ProcInutNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><inutNFe versao=\"4.00\"><infInut Id=\"ID31222814539800017355002000000162000000162\"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>162</nNFIni><nNFFin>162</nNFFin><xJust>NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO</xJust></infInut><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#ID31222814539800017355002000000162000000162\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>Qj2BIWHfVI2wZSRT4ejV29wjLG4=</DigestValue></Reference></SignedInfo><SignatureValue>R9EaHGv3QuA507lQs1y48fe+oIzAFMlAwErsylJuvLSiKNpbxhQMwg8p9IhIZ/syOoBg4u9nD98YZPrxwEh6G6wxagAgTFgkHhA/CQlYXp96pS8ukaQI5th4mhMmIvFb2Xs2aoEQl9EXz/qT1ppiH6GBEh+A3VApqWAk80F1ifG75DwOwhA82x9+uPSQNP5Y4kIXoHwW5sBwfttYiR+45Xx7CpV4/qACDkCn9r0CmllyOAus7g8JtjqBqkN/YXIDuQLrBCNcXq988L/Rp5KlC21+7IL5/PcxgRkabpv1JLZ8iSiqR51xEM2da0kc0FIxpYSDyIylgadxeL0568vTTA==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></inutNFe><retInutNFe versao=\"4.00\"><infInut><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><cStat>102</cStat><xMotivo>Inutilizacao de numero homologado</xMotivo><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>162</nNFIni><nNFFin>162</nNFFin><dhRecbto>2022-05-06T16:17:36-03:00</dhRecbto><nProt>131220145655491</nProt></infInut></retInutNFe></ProcInutNFe>"}}
+06/05/2022 16:29 - [INUTILIZACAO_DADOS]
+06/05/2022 16:29 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"162","nNFFin":"162"}
+06/05/2022 16:29 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 16:29 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 16:29 - [CONSULTA_DADOS]
+06/05/2022 16:29 - {"CNPJ":"28145398000173","nsNRec":"5101874","tpAmb":"2"}
+06/05/2022 16:29 - [CONSULTA_RESPOSTA]
+06/05/2022 16:29 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001611997964576","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:29 - [CONSULTA_DADOS]
+06/05/2022 16:29 - {"CNPJ":"28145398000173","nsNRec":"5101874","tpAmb":"2"}
+06/05/2022 16:29 - [CONSULTA_RESPOSTA]
+06/05/2022 16:29 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001611997964576","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:30 - [CONSULTA_DADOS]
+06/05/2022 16:30 - {"CNPJ":"28145398000173","nsNRec":"5101883","tpAmb":"2"}
+06/05/2022 16:30 - [CONSULTA_RESPOSTA]
+06/05/2022 16:30 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001621227768756","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:32 - [CONSULTA_DADOS]
+06/05/2022 16:32 - {"CNPJ":"28145398000173","nsNRec":"5101883","tpAmb":"2"}
+06/05/2022 16:32 - [CONSULTA_RESPOSTA]
+06/05/2022 16:32 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001621227768756","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 16:51 - [INUTILIZACAO_DADOS]
+06/05/2022 16:51 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"162","nNFFin":"162"}
+06/05/2022 16:51 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 16:51 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 16:58 - [INUTILIZACAO_DADOS]
+06/05/2022 16:58 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"162","nNFFin":"162"}
+06/05/2022 16:58 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 16:58 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 16:59 - [INUTILIZACAO_DADOS]
+06/05/2022 16:59 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"162","nNFFin":"162"}
+06/05/2022 16:59 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 16:59 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 23:12 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 23:12 - [ENVIO_DADOS]
+06/05/2022 23:12 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>163</nNF>
+      <dhEmi>2022-05-06T23:12:06-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>33</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>19.90</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 23:12 - [ENVIO_RESPOSTA]
+06/05/2022 23:12 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5103591"}
+06/05/2022 23:12 - [CONSULTA_DADOS]
+06/05/2022 23:12 - {"CNPJ":"28145398000173","nsNRec":"5103591","tpAmb":"2"}
+06/05/2022 23:12 - [CONSULTA_RESPOSTA]
+06/05/2022 23:12 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001631389163016","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 23:12 - [JSON_RETORNO]
+06/05/2022 23:12 - {"chNFe":"","statusEnvio":"200","statusConsulta":"200","statusDownload":"","cStat":"778","nProt":"","motivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]","nsNRec":"5103591","erros":null}
+06/05/2022 23:12 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 23:12 - [INUTILIZACAO_DADOS]
+06/05/2022 23:12 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"163","nNFFin":"163"}
+06/05/2022 23:12 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:12 - {"status":200,"motivo":"Consulta realizada com sucesso","retornoInutNFe":{"cStat":"102","xMotivo":"Inutilizacao de numero homologado","chave":"31222814539800017355002000000163000000163","tpAmb":2,"dhRecbto":"2022-05-06T23:12:53-03:00","nProt":"131220145659253","xmlInut":"<?xml version=\"1.0\" encoding=\"utf-8\"?><ProcInutNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><inutNFe versao=\"4.00\"><infInut Id=\"ID31222814539800017355002000000163000000163\"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>163</nNFIni><nNFFin>163</nNFFin><xJust>NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO</xJust></infInut><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#ID31222814539800017355002000000163000000163\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>s4Zy2hLgvh7jGJ6ETRi/nzYEVwg=</DigestValue></Reference></SignedInfo><SignatureValue>A15NRI1TeR6RaeCIN8SoDT7LDid+kWthFTW9uXq5j6mzY1CTlYLSeda7JCvomt9arIxP1t4OjAZJb5pMQ8A0synaYbMgVbdcoEtrp9WcQkAvrGl8jNQeIXWx89LO1IvHw23SrGm2oeIpcInAnRXst/l3q8qJrbWXh1OyjKViWyUrHUN6Ka9ZLkPllNqNXVBJxnbzV2G7t65A3Qd0fbPh9QeZA5c5yxJKGPKRyiVkdobBWjPfoXDPb0v6O0sSvocDjzsG5uAd6OC9l4AispIbtUYSabA408OfCgX0W/sPyYmneSozade5LoVum6vqgfKinEXoaA41YGBdUupBrTrcWA==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></inutNFe><retInutNFe versao=\"4.00\"><infInut><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><cStat>102</cStat><xMotivo>Inutilizacao de numero homologado</xMotivo><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>163</nNFIni><nNFFin>163</nNFFin><dhRecbto>2022-05-06T23:12:53-03:00</dhRecbto><nProt>131220145659253</nProt></infInut></retInutNFe></ProcInutNFe>"}}
+06/05/2022 23:17 - [INUTILIZACAO_DADOS]
+06/05/2022 23:17 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"163","nNFFin":"163"}
+06/05/2022 23:17 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:17 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 23:19 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 23:19 - [ENVIO_DADOS]
+06/05/2022 23:19 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>164</nNF>
+      <dhEmi>2022-05-06T23:19:07-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>34</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>58.00</vPag>
+      </detPag>
+      <vTroco>38.10</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 23:19 - [ENVIO_RESPOSTA]
+06/05/2022 23:19 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5103596"}
+06/05/2022 23:19 - [CONSULTA_DADOS]
+06/05/2022 23:19 - {"CNPJ":"28145398000173","nsNRec":"5103596","tpAmb":"2"}
+06/05/2022 23:19 - [CONSULTA_RESPOSTA]
+06/05/2022 23:19 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001641201469241","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 23:19 - [JSON_RETORNO]
+06/05/2022 23:19 - {"chNFe":"","statusEnvio":"200","statusConsulta":"200","statusDownload":"","cStat":"778","nProt":"","motivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]","nsNRec":"5103596","erros":null}
+06/05/2022 23:19 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 23:19 - [INUTILIZACAO_DADOS]
+06/05/2022 23:19 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"164","nNFFin":"164"}
+06/05/2022 23:19 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:19 - {"status":200,"motivo":"Consulta realizada com sucesso","retornoInutNFe":{"cStat":"102","xMotivo":"Inutilizacao de numero homologado","chave":"31222814539800017355002000000164000000164","tpAmb":2,"dhRecbto":"2022-05-06T23:19:34-03:00","nProt":"131220145659312","xmlInut":"<?xml version=\"1.0\" encoding=\"utf-8\"?><ProcInutNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><inutNFe versao=\"4.00\"><infInut Id=\"ID31222814539800017355002000000164000000164\"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>164</nNFIni><nNFFin>164</nNFFin><xJust>NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO</xJust></infInut><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#ID31222814539800017355002000000164000000164\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>Tiwuk3S8ss5h5bPo9bpi/fHmMmU=</DigestValue></Reference></SignedInfo><SignatureValue>VOCSLQ+JIX2NgSz92Ldi4yV5TKu4oA/iR1IMM9fagC5vv31RLg6K6TxZXRs5aRXm5XL/kRVCgyB6Aqx7vLcLMAGJ4+rbiT3Xa3HgDBFNiTgADcdlg4JokWgMRI0O6nqvoLhHJ8SxN9CTD5IN1wl0SAOlK21fDjlaZGCfZfRlx6F16JciT3vNv9+ArEqq6fUXXA5Zrb2iW2Oc0o0FdCQbLfp+oWpg1nO7F5VJqJHT3DHrNDyuQZ7HDxpl02qcOq3MRxhCTGwHNebf2o6Sbp/q2RXtuW6l+IM9aThpDdnpj1k5gusrjxcOts1y5atDozH8pAflZ0lPLM17abwGnffVeg==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></inutNFe><retInutNFe versao=\"4.00\"><infInut><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><cStat>102</cStat><xMotivo>Inutilizacao de numero homologado</xMotivo><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>164</nNFIni><nNFFin>164</nNFFin><dhRecbto>2022-05-06T23:19:34-03:00</dhRecbto><nProt>131220145659312</nProt></infInut></retInutNFe></ProcInutNFe>"}}
+06/05/2022 23:22 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 23:22 - [ENVIO_DADOS]
+06/05/2022 23:22 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>165</nNF>
+      <dhEmi>2022-05-06T23:22:42-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>2.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>39.80</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>2.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>39.80</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>39.80</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>35</nFat>
+        <vOrig>39.80</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>39.80</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>39.80</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>40.00</vPag>
+      </detPag>
+      <vTroco>0.20</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 23:22 - [ENVIO_RESPOSTA]
+06/05/2022 23:22 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5103597"}
+06/05/2022 23:22 - [CONSULTA_DADOS]
+06/05/2022 23:22 - {"CNPJ":"28145398000173","nsNRec":"5103597","tpAmb":"2"}
+06/05/2022 23:22 - [CONSULTA_RESPOSTA]
+06/05/2022 23:22 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001651474158050","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 23:22 - [JSON_RETORNO]
+06/05/2022 23:22 - {"chNFe":"","statusEnvio":"200","statusConsulta":"200","statusDownload":"","cStat":"778","nProt":"","motivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]","nsNRec":"5103597","erros":null}
+06/05/2022 23:22 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 23:23 - [INUTILIZACAO_DADOS]
+06/05/2022 23:23 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"165","nNFFin":"165"}
+06/05/2022 23:23 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:23 - {"status":200,"motivo":"Consulta realizada com sucesso","retornoInutNFe":{"cStat":"102","xMotivo":"Inutilizacao de numero homologado","chave":"31222814539800017355002000000165000000165","tpAmb":2,"dhRecbto":"2022-05-06T23:23:30-03:00","nProt":"131220145659345","xmlInut":"<?xml version=\"1.0\" encoding=\"utf-8\"?><ProcInutNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><inutNFe versao=\"4.00\"><infInut Id=\"ID31222814539800017355002000000165000000165\"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>165</nNFIni><nNFFin>165</nNFFin><xJust>NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO</xJust></infInut><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#ID31222814539800017355002000000165000000165\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>gXyJtwloRMCpJgIaIgiPboFKCJs=</DigestValue></Reference></SignedInfo><SignatureValue>TW+Nwc4cman/s9fukYDkdJa9wghpG53EhtNvdmbQ6jgKumtRLfdDZcQ23GUKhJT7v+S0wYXL2GNRvdKNbU9Ep838gnvJY5hBdbnZ0c0BCY/jfVNqwEuFR628aDBtTS5l+g9lc7+WR7163ZNTDxVEncXkXKKDET7KgQF2PIcMCaZGsPkn6/IzfQbKB3MPvlKT4O3F+XSoP6WfFqsox5Uk/7F6Hacnkt++o7+XvK6kcPrATa03k4+GOVetujS+1pThffsP+MzBShNlzKRfBNNSS7EUrAMUgzndZ1vRfCXrCGtiK49BS0gECkAYVh5mbvfcfEIFzx3jKayoKmlfcv1R+w==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></inutNFe><retInutNFe versao=\"4.00\"><infInut><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><cStat>102</cStat><xMotivo>Inutilizacao de numero homologado</xMotivo><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>165</nNFIni><nNFFin>165</nNFFin><dhRecbto>2022-05-06T23:23:30-03:00</dhRecbto><nProt>131220145659345</nProt></infInut></retInutNFe></ProcInutNFe>"}}
+06/05/2022 23:25 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 23:25 - [ENVIO_DADOS]
+06/05/2022 23:25 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>166</nNF>
+      <dhEmi>2022-05-06T23:25:21-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>4.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>79.60</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>4.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>79.60</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>79.60</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>36</nFat>
+        <vOrig>79.60</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>79.60</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>79.60</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>03</tPag>
+        <vPag>79.60</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 23:25 - [ENVIO_RESPOSTA]
+06/05/2022 23:25 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5103601"}
+06/05/2022 23:25 - [CONSULTA_DADOS]
+06/05/2022 23:25 - {"CNPJ":"28145398000173","nsNRec":"5103601","tpAmb":"2"}
+06/05/2022 23:25 - [CONSULTA_RESPOSTA]
+06/05/2022 23:25 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001661769133153","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 23:25 - [JSON_RETORNO]
+06/05/2022 23:25 - {"chNFe":"","statusEnvio":"200","statusConsulta":"200","statusDownload":"","cStat":"778","nProt":"","motivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]","nsNRec":"5103601","erros":null}
+06/05/2022 23:25 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 23:25 - [INUTILIZACAO_DADOS]
+06/05/2022 23:25 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"166","nNFFin":"166"}
+06/05/2022 23:25 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:25 - {"status":200,"motivo":"Consulta realizada com sucesso","retornoInutNFe":{"cStat":"102","xMotivo":"Inutilizacao de numero homologado","chave":"31222814539800017355002000000166000000166","tpAmb":2,"dhRecbto":"2022-05-06T23:25:30-03:00","nProt":"131220145659362","xmlInut":"<?xml version=\"1.0\" encoding=\"utf-8\"?><ProcInutNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><inutNFe versao=\"4.00\"><infInut Id=\"ID31222814539800017355002000000166000000166\"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>166</nNFIni><nNFFin>166</nNFFin><xJust>NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO</xJust></infInut><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#ID31222814539800017355002000000166000000166\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>FBB1xsPws37cH06/Hxcmc4Luqhg=</DigestValue></Reference></SignedInfo><SignatureValue>WUke6fZ2Pq16kJsE+9yvXgtqlfTTTra9Wo9Tk02zwJlHszpuDv30WzVnMduBBa2Xxp4DJVlj29lG8N8HmZ28Dkz2/pMMU5HcYSapqidl9tcpJP/RbQ8liyN+3uZQMY6F8vCdiq9rdujeb+sSgGaK1dLPGMHKCX3kOzNEK3jahN2/UkatUNCxUIwBz7E4gAtpWL9w/O9TH2/75DtZX664qQeItIdDfnJXI7GMIBiPT1C790gr9aujXuppi19OnjbMVjHzUsnfUgHmpXCqzYTgcqz4KIH67YN/gVDW9MRr/v24u76aBTiEMq14lidRR3rogZsOIFfqttPPFJDdvRxs/g==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></inutNFe><retInutNFe versao=\"4.00\"><infInut><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><cStat>102</cStat><xMotivo>Inutilizacao de numero homologado</xMotivo><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>166</nNFIni><nNFFin>166</nNFFin><dhRecbto>2022-05-06T23:25:30-03:00</dhRecbto><nProt>131220145659362</nProt></infInut></retInutNFe></ProcInutNFe>"}}
+06/05/2022 23:25 - [CONSULTA_DADOS]
+06/05/2022 23:25 - {"CNPJ":"28145398000173","nsNRec":"5103601","tpAmb":"2"}
+06/05/2022 23:25 - [CONSULTA_RESPOSTA]
+06/05/2022 23:25 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001661769133153","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 23:28 - [CONSULTA_DADOS]
+06/05/2022 23:28 - {"CNPJ":"28145398000173","nsNRec":"5103601","tpAmb":"2"}
+06/05/2022 23:28 - [CONSULTA_RESPOSTA]
+06/05/2022 23:28 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001661769133153","cStat":778,"xMotivo":"Rejeicao: Informado NCM inexistente - [nItem: 1]"}
+06/05/2022 23:28 - [INUTILIZACAO_DADOS]
+06/05/2022 23:28 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"166","nNFFin":"166"}
+06/05/2022 23:28 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:28 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 23:28 - [INUTILIZACAO_DADOS]
+06/05/2022 23:28 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"165","nNFFin":"165"}
+06/05/2022 23:28 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:28 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 23:28 - [INUTILIZACAO_DADOS]
+06/05/2022 23:28 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"164","nNFFin":"164"}
+06/05/2022 23:28 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:28 - {"status":-3,"motivo":"Nao foi possivel realizar a operacao","erro":{"cStat":997,"xMotivo":"Inutilizacao já Processada Anteriomente e Autorizada"}}
+06/05/2022 23:28 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 23:28 - [ENVIO_DADOS]
+06/05/2022 23:28 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>167</nNF>
+      <dhEmi>2022-05-06T23:28:54-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>37</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>19.90</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 23:28 - [ENVIO_RESPOSTA]
+06/05/2022 23:28 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5103602"}
+06/05/2022 23:28 - [CONSULTA_DADOS]
+06/05/2022 23:28 - {"CNPJ":"28145398000173","nsNRec":"5103602","tpAmb":"2"}
+06/05/2022 23:28 - [CONSULTA_RESPOSTA]
+06/05/2022 23:28 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001671499340051","cStat":-1,"xMotivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao"}
+06/05/2022 23:28 - [JSON_RETORNO]
+06/05/2022 23:28 - {"chNFe":"","statusEnvio":"200","statusConsulta":"200","statusDownload":"","cStat":"-1","nProt":"","motivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao","nsNRec":"5103602","erros":null}
+06/05/2022 23:28 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 23:29 - [CONSULTA_DADOS]
+06/05/2022 23:29 - {"CNPJ":"28145398000173","nsNRec":"5103602","tpAmb":"2"}
+06/05/2022 23:29 - [CONSULTA_RESPOSTA]
+06/05/2022 23:29 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001671499340051","cStat":-1,"xMotivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao"}
+06/05/2022 23:29 - [CONSULTA_DADOS]
+06/05/2022 23:29 - {"CNPJ":"28145398000173","nsNRec":"5103602","tpAmb":"2"}
+06/05/2022 23:29 - [CONSULTA_RESPOSTA]
+06/05/2022 23:29 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001671499340051","cStat":-1,"xMotivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao"}
+06/05/2022 23:29 - [CONSULTA_DADOS]
+06/05/2022 23:29 - {"CNPJ":"28145398000173","nsNRec":"5103602","tpAmb":"2"}
+06/05/2022 23:29 - [CONSULTA_RESPOSTA]
+06/05/2022 23:29 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001671499340051","cStat":-1,"xMotivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao"}
+06/05/2022 23:29 - [INUTILIZACAO_DADOS]
+06/05/2022 23:29 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"167","nNFFin":"167"}
+06/05/2022 23:29 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:29 - {"status":-999,"motivo":"Erro interno ao processar a requisicao","erro":{"cStat":999,"xMotivo":"There was no endpoint listening at https://hnfe.fazenda.mg.gov.br/nfe2/services/NFeInutilizacao4 that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details."}}
+06/05/2022 23:29 - [INUTILIZACAO_DADOS]
+06/05/2022 23:29 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"167","nNFFin":"167"}
+06/05/2022 23:29 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:29 - {"status":-999,"motivo":"Erro interno ao processar a requisicao","erro":{"cStat":999,"xMotivo":"There was no endpoint listening at https://hnfe.fazenda.mg.gov.br/nfe2/services/NFeInutilizacao4 that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details."}}
+06/05/2022 23:30 - [INUTILIZACAO_DADOS]
+06/05/2022 23:30 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"167","nNFFin":"167"}
+06/05/2022 23:30 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:30 - {"status":200,"motivo":"Consulta realizada com sucesso","retornoInutNFe":{"cStat":"102","xMotivo":"Inutilizacao de numero homologado","chave":"31222814539800017355002000000167000000167","tpAmb":2,"dhRecbto":"2022-05-06T23:30:05-03:00","nProt":"131220145659381","xmlInut":"<?xml version=\"1.0\" encoding=\"utf-8\"?><ProcInutNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><inutNFe versao=\"4.00\"><infInut Id=\"ID31222814539800017355002000000167000000167\"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>167</nNFIni><nNFFin>167</nNFFin><xJust>NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO</xJust></infInut><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#ID31222814539800017355002000000167000000167\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>0WsmjhdNhiKHxvp5uCzTQ8JPMek=</DigestValue></Reference></SignedInfo><SignatureValue>KxcRP9aj2CwqAsrcH6hShYUtNWFk1pxlt4ntcVDlzsGBO6acbCot11p0HQD4JcEgrTBvIduCAqDa8IGOzcWO0nLV/kqLzDswYxS+MaEwLLab0hvu4ReSfWckZZY1tNL7I5KbccxZAI0hm/mt/E2SfnmRs1OgEI/BC9wLzOJohOhuNTYfufxvuymIUOdFHDlbrTIDhwWljvlylNKV9US7rh/o54G1+r2w6MCW0pH9CTGFDOgqOL+Y6NcAs6pdJVPKvletfcnC/9oLjst6NVH0J5aExWgdzRW9uss/MVayzuUGzc9j3heN431Ad73xnj+9zNV+kvR6fdEaXPeIxoZrFg==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></inutNFe><retInutNFe versao=\"4.00\"><infInut><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><cStat>102</cStat><xMotivo>Inutilizacao de numero homologado</xMotivo><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>167</nNFIni><nNFFin>167</nNFFin><dhRecbto>2022-05-06T23:30:05-03:00</dhRecbto><nProt>131220145659381</nProt></infInut></retInutNFe></ProcInutNFe>"}}
+06/05/2022 23:32 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 23:32 - [ENVIO_DADOS]
+06/05/2022 23:32 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>168</nNF>
+      <dhEmi>2022-05-06T23:32:29-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>4.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>79.60</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>4.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>79.60</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>79.60</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>38</nFat>
+        <vOrig>79.60</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>79.60</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>79.60</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>99</tPag>
+        <xPag>PIX</xPag>
+        <vPag>79.60</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 23:32 - [ENVIO_RESPOSTA]
+06/05/2022 23:32 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5103604"}
+06/05/2022 23:32 - [CONSULTA_DADOS]
+06/05/2022 23:32 - {"CNPJ":"28145398000173","nsNRec":"5103604","tpAmb":"2"}
+06/05/2022 23:32 - [CONSULTA_RESPOSTA]
+06/05/2022 23:32 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001681228007493","cStat":-1,"xMotivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao"}
+06/05/2022 23:32 - [JSON_RETORNO]
+06/05/2022 23:32 - {"chNFe":"","statusEnvio":"200","statusConsulta":"200","statusDownload":"","cStat":"-1","nProt":"","motivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao","nsNRec":"5103604","erros":null}
+06/05/2022 23:32 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 23:32 - [CONSULTA_DADOS]
+06/05/2022 23:32 - {"CNPJ":"28145398000173","nsNRec":"5103604","tpAmb":"2"}
+06/05/2022 23:32 - [CONSULTA_RESPOSTA]
+06/05/2022 23:32 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001681228007493","cStat":-1,"xMotivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao"}
+06/05/2022 23:32 - [CONSULTA_DADOS]
+06/05/2022 23:32 - {"CNPJ":"28145398000173","nsNRec":"5103604","tpAmb":"2"}
+06/05/2022 23:32 - [CONSULTA_RESPOSTA]
+06/05/2022 23:32 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001681228007493","cStat":-1,"xMotivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao"}
+06/05/2022 23:32 - [INUTILIZACAO_DADOS]
+06/05/2022 23:32 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"168","nNFFin":"168"}
+06/05/2022 23:32 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:32 - {"status":-999,"motivo":"Erro interno ao processar a requisicao","erro":{"cStat":999,"xMotivo":"There was no endpoint listening at https://hnfe.fazenda.mg.gov.br/nfe2/services/NFeInutilizacao4 that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details."}}
+06/05/2022 23:32 - [INUTILIZACAO_DADOS]
+06/05/2022 23:32 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"168","nNFFin":"168"}
+06/05/2022 23:32 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:32 - {"status":200,"motivo":"Consulta realizada com sucesso","retornoInutNFe":{"cStat":"102","xMotivo":"Inutilizacao de numero homologado","chave":"31222814539800017355002000000168000000168","tpAmb":2,"dhRecbto":"2022-05-06T23:32:59-03:00","nProt":"131220145659383","xmlInut":"<?xml version=\"1.0\" encoding=\"utf-8\"?><ProcInutNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><inutNFe versao=\"4.00\"><infInut Id=\"ID31222814539800017355002000000168000000168\"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>168</nNFIni><nNFFin>168</nNFFin><xJust>NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO</xJust></infInut><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#ID31222814539800017355002000000168000000168\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>DspM4tuDX3I9lyiyMo5Ln+nNGj0=</DigestValue></Reference></SignedInfo><SignatureValue>GbKLJmcNzSZqKKhb3VYlh6wUuqKmki9Te8V8GhVD1DRadN5UmKFI+v5VRQHRrQVK5K1MgbimNMQgYYrPsqfZMJusj042uW75fozlF8FaAeWFOTVNSR7DOqUuFIsmX4sNVRv6KEwzHHtVPUKEOiYj5IgbWXnDoTMsGBt8Xu1qgRI2H+lo07tI9big8qCE3cTn6WJ92ZSPMBnUq89Ya+sSX8ubhKjNOOYblNGhwktD26OeqIWqe4mpz0haKPPS/DFj/sBCCUN0ITBqYDRdzmn9kylkP1983rdtPeVN9YhMPziHDF548l+8AfLRIBgo+j52eNkCue5Vjgm2nmGnh2Thsw==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></inutNFe><retInutNFe versao=\"4.00\"><infInut><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><cStat>102</cStat><xMotivo>Inutilizacao de numero homologado</xMotivo><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>168</nNFIni><nNFFin>168</nNFFin><dhRecbto>2022-05-06T23:32:59-03:00</dhRecbto><nProt>131220145659383</nProt></infInut></retInutNFe></ProcInutNFe>"}}
+06/05/2022 23:36 - [EMISSAO_SINCRONA_INICIO]
+06/05/2022 23:36 - [ENVIO_DADOS]
+06/05/2022 23:36 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>169</nNF>
+      <dhEmi>2022-05-06T23:36:14-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xCpl>LOJA  02</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>07497828622</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ORLANDO SILVA</xLgr>
+        <nro>88</nro>
+        <xBairro>SERENATA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38613302</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>12345678</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>19.90</vUnCom>
+        <vProd>19.90</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>19.90</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>19.90</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>19.90</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>39</nFat>
+        <vOrig>19.90</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>19.90</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2022-05-06</dVenc>
+        <vDup>19.90</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>20.00</vPag>
+      </detPag>
+      <vTroco>0.10</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+06/05/2022 23:36 - [ENVIO_RESPOSTA]
+06/05/2022 23:36 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"5103606"}
+06/05/2022 23:36 - [CONSULTA_DADOS]
+06/05/2022 23:36 - {"CNPJ":"28145398000173","nsNRec":"5103606","tpAmb":"2"}
+06/05/2022 23:36 - [CONSULTA_RESPOSTA]
+06/05/2022 23:36 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001691734894222","cStat":-1,"xMotivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao"}
+06/05/2022 23:36 - [JSON_RETORNO]
+06/05/2022 23:36 - {"chNFe":"","statusEnvio":"200","statusConsulta":"200","statusDownload":"","cStat":"-1","nProt":"","motivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao","nsNRec":"5103606","erros":null}
+06/05/2022 23:36 - [EMISSAO_SINCRONA_FIM]
+06/05/2022 23:36 - [CONSULTA_DADOS]
+06/05/2022 23:36 - {"CNPJ":"28145398000173","nsNRec":"5103606","tpAmb":"2"}
+06/05/2022 23:36 - [CONSULTA_RESPOSTA]
+06/05/2022 23:36 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000001691734894222","cStat":-1,"xMotivo":"Sem retorno de status da sefaz, possiveis problemas no ambiente de autorizacao"}
+06/05/2022 23:36 - [INUTILIZACAO_DADOS]
+06/05/2022 23:36 - {"cUF":"31","ano":"22","tpAmb":"2","CNPJ":"28145398000173","serie":"2","xJust":"NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO","nNFIni":"169","nNFFin":"169"}
+06/05/2022 23:36 - [INUTILIZACAO_RESPOSTA]
+06/05/2022 23:36 - {"status":200,"motivo":"Consulta realizada com sucesso","retornoInutNFe":{"cStat":"102","xMotivo":"Inutilizacao de numero homologado","chave":"31222814539800017355002000000169000000169","tpAmb":2,"dhRecbto":"2022-05-06T23:36:33-03:00","nProt":"131220145659402","xmlInut":"<?xml version=\"1.0\" encoding=\"utf-8\"?><ProcInutNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><inutNFe versao=\"4.00\"><infInut Id=\"ID31222814539800017355002000000169000000169\"><tpAmb>2</tpAmb><xServ>INUTILIZAR</xServ><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>169</nNFIni><nNFFin>169</nNFFin><xJust>NUMERACAO NAO UTILIZADA,TESTE DE INTEGRACAO</xJust></infInut><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#ID31222814539800017355002000000169000000169\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>yati4WXumA8ryq+9VYbD6ZNmme0=</DigestValue></Reference></SignedInfo><SignatureValue>akDa8N0nFWi/sZ328ACQg4H3yq/lKKSwzdNfT5Ws+IT456arjgPlTrYc1i7qn/KSc50Px6ozANOAKF1kqWbJHJkEqrV6RjQ13Ip5zf2BAeBrfX8Mh7sNictzYhH/y/txMUl4e9RjHCcGBSMEWnDVBK9t6SeVrXQa+UArMstXP/P+pMWCHX4SVpk17lLWIOnhAEf2JOLrqr77aDUhnPsuUV/zNdVB2DAcHYXkUwBBNmHvlt/dIbAs8/7tj+t54bdxse0Z+wYvqw2/CnRgWG/Ocg1dKUDSyIebuNLXhXvBAiYBk67vZZSSXnivPEEGvM+wUsoUZStevy3Sj5NeJB5Q+g==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></inutNFe><retInutNFe versao=\"4.00\"><infInut><tpAmb>2</tpAmb><verAplic>14.4.67-OR3</verAplic><cStat>102</cStat><xMotivo>Inutilizacao de numero homologado</xMotivo><cUF>31</cUF><ano>22</ano><CNPJ>28145398000173</CNPJ><mod>55</mod><serie>2</serie><nNFIni>169</nNFIni><nNFFin>169</nNFFin><dhRecbto>2022-05-06T23:36:33-03:00</dhRecbto><nProt>131220145659402</nProt></infInut></retInutNFe></ProcInutNFe>"}}

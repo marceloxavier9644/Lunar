@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.VendaFormaPagamento" table="vendaformapagamento">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+
+		<property name="ValorRecebido" column="VALORRECEBIDO" type="decimal"/>
+		<property name="Cartao" column="CARTAO" type="Boolean"/>
+		<property name="AutorizacaoCartao" column="AUTORIZACAOCARTAO" type="String"/>
+		<property name="Parcelamento" column="PARCELAMENTO" type="int"/>
+		<property name="TipoCartao" column="TIPOCARTAO" type="String" length="20"/>
+		<property name="Troco" column="TROCO" type="decimal"/>
+		
+		<many-to-one name="ParcelamentoFk" column="PARCELAMENTOFK" class="LunarBase.Classes.Parcelamento" not-null="false" foreign-key="FK_VENDAFORMAPAGAMENTO_PARCELAMENTO" lazy="false"/>
+		<many-to-one name="Venda" column="VENDA" class="LunarBase.Classes.Venda" not-null="false" foreign-key="FK_VENDAFORMAPAGAMENTO_VENDA" lazy="false"/>
+		<many-to-one name="FormaPagamento" column="FORMAPAGAMENTO" class="LunarBase.Classes.FormaPagamento" not-null="false" foreign-key="FK_VENDAFORMAPAGAMENTO_FORMAPAGAMENTO" lazy="false"/>
+		<many-to-one name="AdquirenteCartao" column="ADQUIRENTECARTAO" class="LunarBase.Classes.AdquirenteCartao" not-null="false" foreign-key="FK_VENDAFORMAPAGAMENTO_ADQUIRENTE" lazy="false"/>
+		<many-to-one name="BandeiraCartao" column="BANDEIRACARTAO" class="LunarBase.Classes.BandeiraCartao" not-null="false" foreign-key="FK_VENDAFORMAPAGAMENTO_BANDEIRA" lazy="false"/>
+		<many-to-one name="ContaBancaria" column="CONTABANCARIA" class="LunarBase.Classes.ContaBancaria" not-null="false" foreign-key="FK_VENDAFORMAPAGAMENTO_CONTABANCARIA" lazy="false"/>
+		
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

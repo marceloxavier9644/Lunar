@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCondicional" targetNamespace="http://tempuri.org/dsCondicional.xsd" xmlns:mstns="http://tempuri.org/dsCondicional.xsd" xmlns="http://tempuri.org/dsCondicional.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCondicional" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsCondicional" msprop:Generator_DataSetName="dsCondicional">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Condicional" msprop:Generator_RowEvHandlerName="CondicionalRowChangeEventHandler" msprop:Generator_RowDeletedName="CondicionalRowDeleted" msprop:Generator_RowDeletingName="CondicionalRowDeleting" msprop:Generator_RowEvArgName="CondicionalRowChangeEvent" msprop:Generator_TablePropName="Condicional" msprop:Generator_RowChangedName="CondicionalRowChanged" msprop:Generator_RowChangingName="CondicionalRowChanging" msprop:Generator_TableClassName="CondicionalDataTable" msprop:Generator_RowClassName="CondicionalRow" msprop:Generator_TableVarName="tableCondicional" msprop:Generator_UserTableName="Condicional">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:int" minOccurs="0" />
+              <xs:element name="Cliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_UserColumnName="Cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="Empresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_UserColumnName="Empresa" type="xs:string" minOccurs="0" />
+              <xs:element name="CodProduto" msprop:Generator_ColumnPropNameInRow="CodProduto" msprop:Generator_ColumnPropNameInTable="CodProdutoColumn" msprop:Generator_ColumnVarNameInTable="columnCodProduto" msprop:Generator_UserColumnName="CodProduto" type="xs:string" minOccurs="0" />
+              <xs:element name="ValorUnitarioComDesconto" msprop:Generator_ColumnPropNameInRow="ValorUnitarioComDesconto" msprop:Generator_ColumnPropNameInTable="ValorUnitarioComDescontoColumn" msprop:Generator_ColumnVarNameInTable="columnValorUnitarioComDesconto" msprop:Generator_UserColumnName="ValorUnitarioComDesconto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ValorTotalComDesconto" msprop:Generator_ColumnPropNameInRow="ValorTotalComDesconto" msprop:Generator_ColumnPropNameInTable="ValorTotalComDescontoColumn" msprop:Generator_ColumnVarNameInTable="columnValorTotalComDesconto" msprop:Generator_UserColumnName="ValorTotalComDesconto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DescricaoProduto" msprop:Generator_ColumnPropNameInRow="DescricaoProduto" msprop:Generator_ColumnPropNameInTable="DescricaoProdutoColumn" msprop:Generator_ColumnVarNameInTable="columnDescricaoProduto" msprop:Generator_UserColumnName="DescricaoProduto" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantidade" msprop:Generator_ColumnPropNameInRow="Quantidade" msprop:Generator_ColumnPropNameInTable="QuantidadeColumn" msprop:Generator_ColumnVarNameInTable="columnQuantidade" msprop:Generator_UserColumnName="Quantidade" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

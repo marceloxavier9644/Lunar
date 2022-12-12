@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<sql-query name="inventario">
+		<return alias="estoque" class="LunarBase.Classes.Estoque"/>
+		SELECT Tabela.ID, Tabela.ORIGEM, Tabela.CONCILIADO, Tabela.ENTRADA, Tabela.SAIDA,
+		Tabela.PRODUTO, Tabela.EMPRESAFILIAL, Tabela.DATAENTRADASAIDA, Tabela.DESCRICAO,
+		Tabela.QUANTIDADE,Tabela.DATACADASTRO, Tabela.DATAALTERACAO, Tabela.DATAEXCLUSAO,
+		Tabela.FLAGEXCLUIDO, Tabela.OPERADORCADASTRO, Tabela.OPERADORALTERACAO,
+		Tabela.OPERADOREXCLUSAO,
+		SUM(IF(Tabela.Entrada = true and Tabela.DataEntradaSaida
+		Between '1900-01-01 00:00:00' and :dataInventario, Tabela.Quantidade, 0))
+		- SUM(IF(Tabela.Saida = true and Tabela.DataEntradaSaida Between '1900-01-01 00:00:00'
+		and :dataInventario, Tabela.Quantidade, 0)) AS QUANTIDADEINVENTARIO,
+		Tabela.Produto AS ProdutoSelecionado FROM Estoque as Tabela
+		WHERE Tabela.Conciliado = true and Tabela.EmpresaFilial = :idFilial
+		GROUP BY Tabela.Produto
+	</sql-query>
+</hibernate-mapping>

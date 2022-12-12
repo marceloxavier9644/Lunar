@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<procEventoNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.00">
+  <evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infEvento Id="ID1101113122072814539800017365001000003058147325785001">
+      <cOrgao>31</cOrgao>
+      <tpAmb>2</tpAmb>
+      <CNPJ>28145398000173</CNPJ>
+      <chNFe>31220728145398000173650010000030581473257850</chNFe>
+      <dhEvento>2022-07-18T09:57:56-03:00</dhEvento>
+      <tpEvento>110111</tpEvento>
+      <nSeqEvento>1</nSeqEvento>
+      <verEvento>1.00</verEvento>
+      <detEvento versao="1.00">
+        <descEvento>Cancelamento</descEvento>
+        <nProt>131220026995727</nProt>
+        <xJust>Cancelamento para teste de homologacao de sistema</xJust>
+      </detEvento>
+    </infEvento>
+  </evento>
+  <retEvento xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.00">
+    <infEvento>
+      <tpAmb>2</tpAmb>
+      <verAplic>W-1.5.3</verAplic>
+      <cOrgao>31</cOrgao>
+      <cStat>135</cStat>
+      <xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+      <chNFe>31220728145398000173650010000030581473257850</chNFe>
+      <tpEvento>110111</tpEvento>
+      <nSeqEvento>1</nSeqEvento>
+      <dhRegEvento>2022-07-18T09:57:53-03:00</dhRegEvento>
+      <nProt>131220026995728</nProt>
+    </infEvento>
+  </retEvento>
+</procEventoNFe>

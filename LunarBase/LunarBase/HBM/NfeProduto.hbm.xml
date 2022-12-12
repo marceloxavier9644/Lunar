@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.NfeProduto" table="nfeproduto">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="CProd" column="CPROD" type="String" length="80"/>
+		<property name="CodigoInterno" column="CODIGOINTERNO" type="String" length="80"/>
+		<property name="DescricaoInterna" column="DESCRICAOINTERNA" type="String" length="240"/>
+		<property name="DataEntrada" column="DATAENTRADA" type="DateTime"/>
+		<property name="CEan" column="CEAN" type="String" length="30"/>
+		<property name="XProd" column="XPROD" type="String" length="220"/>
+		<property name="Ncm" column="NCM" type="String" length="20"/>
+		<property name="Cest" column="CEST" type="String" length="30"/>
+		<property name="Cfop" column="CFOP" type="String" length="10"/>
+		<property name="CfopEntrada" column="CFOPENTRADA" type="String" length="10"/>
+		<property name="UCom" column="UCOM" type="String" length="30"/>
+		<property name="UComConvertida" column="UCOMCONVERTIDA" type="String" length="30"/>
+		<property name="QCom" column="QCOM" type="String" length="30"/>
+		<property name="VUnCom" column="VUNCOM" type="decimal"/>
+		<property name="VProd" column="VPROD" type="decimal"/>
+		<property name="CEANTrib" column="CEANTRIB" type="String" length="30"/>
+		<property name="UTrib" column="UTRIB" type="String" length="30"/>
+		<property name="QTrib" column="QTRIB" type="double"/>
+		<property name="VUnTrib" column="VUNTRIB" type="decimal"/>
+		<property name="VDesc" column="VDESC" type="decimal"/>
+		<property name="IndTot" column="INDTOT" type="String" length="30"/>
+		<property name="ModFrete" column="MODFRETE" type="String" length="30"/>
+		<property name="PesoL" column="PESOL" type="String" length="30"/>
+		<property name="PesoB" column="PESOB" type="String" length="30"/>
+		<property name="IndPag" column="INDPAG" type="String" length="30"/>
+		<property name="TPag" column="TPAG" type="String" length="30"/>
+		<property name="VPag" column="VPAG" type="decimal"/>
+		<property name="VFrete" column="VFRETE" type="decimal"/>
+		<property name="VOutro" column="VOUTRO" type="decimal"/>
+		<property name="VSeguro" column="VSEGURO" type="decimal"/>
+			<!-- ICMS -->
+		<property name="OrigemIcms" column="ORIGEMICMS" type="String" length="30"/>
+		<property name="CstIcms" column="CSTICMS" type="String" length="30"/>
+		<property name="VBC" column="VBC" type="decimal"/>
+		<property name="PICMS" column="PICMS" type="String" length="30"/>
+		<property name="VICMS" column="VICMS" type="decimal"/>
+		<property name="ValorIsentoIcms" column="VALORISENTOICMS" type="decimal"/>
+		<property name="OutrosIcms" column="OUTROSICMS" type="decimal"/>
+		<property name="PMVAST" column="PMVAST" type="String" length="30"/>
+		<property name="ModBC" column="MODBC" type="String" length="30"/>
+		<property name="ModBCST" column="MODBCST" type="String" length="30"/>
+		<property name="VICMSDeson" column="VICMSDESON" type="decimal"/>
+		<property name="MotDesIcms" column="MOTDESICMS" type="String" length="30"/>
+
+		<property name="VICMSSubstituto" column="VICMSSUBSTITUTO" type="decimal"/>
+		<property name="VICMSOp" column="VICMSOP" type="decimal"/>
+		<property name="VICMSDif" column="VICMSDIF" type="decimal"/>
+		<property name="VFCPDif" column="VFCPDIF" type="decimal"/>
+		<property name="VFCPEfet" column="VFCPEFET" type="decimal"/>
+		
+		<property name="PDif" column="PDIF" type="String" length="30"/>
+		<property name="PFCPDif" column="PFCPDIF" type="String" length="30"/>
+		<property name="ModBCSpecified" column="MODBCSPECIFIED" type="Boolean"/>
+
+		<property name="VBCSTRet" column="VBCSTRET" type="decimal"/>
+		<property name="VBCFCPSTRet" column="VBCFCPSTRET" type="decimal"/>
+		<property name="PRedBCEfet" column="PREDBCEFET" type="String" length="30"/>
+		
+		<property name="PBCOp" column="PBCOP" type="String" length="30"/>
+		<property name="UFST" column="UFST" type="String" length="30"/>
+
+		<property name="PCredSN" column="PCREDSN" type="String" length="30"/>
+		<property name="VCredICMSSN" column="VCREDICMSSN" type="decimal"/>
+
+		<!--ICMS ST-->
+		<!--<property name="VBCSTRet" column="VBCSTRET" type="decimal"/>-->
+		<property name="VBCST" column="VBCST" type="decimal"/>
+		<property name="PST" column="PST" type="String" length="30"/>
+		<property name="VICMSSt" column="VICMSST" type="decimal"/>
+		<property name="VICMSSTRet" column="VICMSSRET" type="decimal"/>
+		<property name="VBCFCPST" column="VBCFCPST" type="decimal"/>
+		<property name="PFCPSTRet" column="PFCPSTRET" type="String" length="30"/>
+		<property name="VFCPST" column="VFCPST" type="decimal"/>
+		<property name="PRedBC" column="PREDBC" type="String" length="30"/>
+		<property name="VBCEfet" column="VBCEFET" type="decimal"/>
+		<property name="PICMSEfet" column="PICMSEFET" type="String" length="30"/>
+		<property name="VICMSEfet" column="VICMSEFET" type="decimal"/>
+		<property name="VICMSSTDeson" column="VICMSSTDESON" type="decimal"/>
+		<property name="MotDesICMSST" column="MOTDESICMSST" type="String" length="30"/>
+		<property name="PFCP" column="PFCP" type="String" length="30"/>
+		<property name="PFCPST" column="PFCPST" type="String" length="30"/>
+		<property name="PRedBCST" column="PREDBCST" type="String" length="30"/>
+		<property name="VFCP" column="VFCP" type="decimal"/>
+		<property name="VBCFCP" column="VBCFCP" type="decimal"/>
+		<property name="PICMSST" column="PICMSST" type="String" length="30"/>
+		
+		<property name="VBCSTDest" column="VBCSTDEST" type="decimal"/>
+		<property name="VICMSSTDest" column="VICMSSTDEST" type="decimal"/>
+		
+		<!-- IPI -->
+		<property name="CstIpi" column="CSTIPI" type="String" length="30"/>
+		<property name="BaseIpi" column="BASEIPI" type="decimal"/>
+		<property name="AliqIpi" column="ALIQIPI" type="String" length="30"/>
+		<property name="ValorIpi" column="VALORIPI" type="decimal"/>
+		<property name="CodEnqIpi" column="CODENQIPI" type="String" length="30"/>
+		<property name="CodSeloIpi" column="CODSELOIPI" type="String" length="30"/>
+		<property name="QSeloIpi" column="QSELOIPI" type="String" length="30"/>
+		<property name="CnpjProdIpi" column="CNPJPRODIPI" type="String" length="30"/>
+		<property name="QUnidIpi" column="QUNIDIPI" type="String" length="30"/>
+		<property name="VUnidIpi" column="VUNIDIPI" type="decimal"/>
+
+		<!-- PIS -->
+		<property name="CstPis" column="CSTPIS" type="String" length="30"/>
+		<property name="BasePis" column="BASEPIS" type="decimal"/>
+		<property name="AliqPis" column="ALIQPIS" type="String" length="30"/>
+		<property name="ValorPis" column="VALORPIS" type="decimal"/>
+		<property name="ValorIsentoPis" column="VALORISENTOPIS" type="decimal"/>
+		
+		<property name="QBCProdPis" column="QBCPRODPIS" type="String" length="30"/>
+		<property name="VAliqProdPis" column="VALIQPRODPIS" type="decimal"/>
+
+		<property name="IndSomaPISST" column="INDSOMAPISST" type="String" length="30"/>
+		
+		<!-- COFINS -->
+		<property name="CstCofins" column="CSTCOFINS" type="String" length="30"/>
+		<property name="BaseCofins" column="BASECOFINS" type="decimal"/>
+		<property name="AliqCofins" column="ALIQCOFINS" type="String" length="30"/>
+		<property name="ValorCofins" column="VALORCOFINS" type="decimal"/>
+		<property name="ValorIsentoCofins" column="VALORISENTOCOFINS" type="decimal"/>
+		<property name="QBCProdCofins" column="QBCPRODCOFINS" type="String" length="30"/>
+		<property name="VAliqProdCofins" column="VALIQPRODCOFINS" type="decimal"/>
+		<property name="IndSomaCOFINSST" column="INDSOMACOFINSST" type="String" length="30"/>
+
+		<!-- ANP -->
+		<property name="CodAnp" column="CODANP" type="String" length="30"/>
+		<property name="PercGlp" column="PERCGLP" type="double"/>
+		<property name="PercGnn" column="PERCGNN" type="double"/>
+		<property name="PercGni" column="PERCGNI" type="double"/>
+		<property name="ValorPartida" column="VALORPARTIDA" type="decimal"/>
+		<!-- VARIADOS -->
+		<property name="ValorProduto" column="VALORPRODUTO" type="decimal"/>
+		<property name="ValorDesconto" column="VALORDESCONTO" type="decimal"/>
+		<property name="ValorAcrescimo" column="VALORACRESCIMO" type="decimal"/>
+		<property name="ValorFinal" column="VALORFINAL" type="decimal"/>
+
+		<property name="QuantidadeEntrada" column="QUANTIDADEENTRADA" type="double"/>
+		<property name="ProdutoAssociado" column="PRODUTOASSOCIADO" type="String" length="200"/>
+		
+		<many-to-one name="Nfe" column="NFE" class="LunarBase.Classes.Nfe" not-null="true" foreign-key="FK_NFEPRODUTO_NFE" lazy="false"/>
+		<many-to-one name="Produto" column="PRODUTO" class="LunarBase.Classes.Produto" not-null="true" foreign-key="FK_NFEPRODUTO_PRODUTO" lazy="false"/>
+		<property name="Item" column="ITEM" type="String" length="30"/>
+		
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.Pessoa" table="pessoa">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="RazaoSocial" column="RAZAOSOCIAL" type="String" not-null="true" length="80"/>
+		<property name="NomeFantasia" column="NOMEFANTASIA" type="String" length="80"/>
+		<property name="Cnpj" column="CNPJ" type="String" length="14"/>
+		<property name="InscricaoEstadual" column="INSCRICAOESTADUAL" type="String" length="20"/>
+		<property name="Pai" column="PAI" type="String" length="80"/>
+		<property name="Mae" column="MAE" type="String" length="80"/>
+		<property name="Rg" column="RG" type="String" length="20"/>
+		<property name="Email" column="EMAIL" type="String" length="80"/>
+		<property name="Cliente" column="CLIENTE" type="Boolean"/>
+		<property name="Fornecedor" column="FORNECEDOR" type="Boolean"/>
+		<property name="Transportadora" column="TRANSPORTADORA" type="Boolean"/>
+		<property name="Funcionario" column="FUNCIONARIO" type="Boolean"/>
+		<property name="Vendedor" column="VENDEDOR" type="Boolean"/>
+		<property name="Tecnico" column="TECNICO" type="Boolean"/>
+		<property name="Sexo" column="SEXO" type="String" length="1"/>
+		<property name="TipoPessoa" column="TIPOPESSOA" type="String" length="2"/>
+		<property name="DataNascimento" column="DATANASCIMENTO" type="DateTime"/>
+		<property name="Observacoes" column="OBSERVACOES" type="String" length="240"/>
+
+		<property name="LocalTrabalho" column="LOCALTRABALHO" type="String" length="100"/>
+		<property name="FuncaoTrabalho" column="FUNCAOTRABALHO" type="String" length="80"/>
+		<property name="TelefoneTrabalho" column="TELEFONETRABALHO" type="String" length="20"/>
+		<property name="SalarioTrabalho" column="SALARIOTRABALHO" type="String" length="20"/>
+		<property name="TempoTrabalho" column="TEMPOTRABALHO" type="String" length="40"/>
+		<property name="ContatoTrabalho" column="CONTATOTRABALHO" type="String" length="80"/>
+		<property name="LimiteCredito" column="LIMITECREDITO" type="decimal"/>
+		<property name="ReceberLembrete" column="RECEBERLEMBRETE" type="Boolean"/>
+		
+		<many-to-one name="EnderecoPrincipal" column="ENDERECOPRINCIPAL" class="LunarBase.Classes.Endereco" not-null="false" foreign-key="FK_PESSOA_ENDERECOPRINCIPAL" lazy="false"/>
+		<many-to-one name="PessoaTelefone" column="PESSOATELEFONE" class="LunarBase.Classes.PessoaTelefone" not-null="false" foreign-key="FK_PESSOA_FONEPRINCIPAL" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsOrcamentoAvulso" targetNamespace="http://tempuri.org/dsOrcamentoAvulso.xsd" xmlns:mstns="http://tempuri.org/dsOrcamentoAvulso.xsd" xmlns="http://tempuri.org/dsOrcamentoAvulso.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsOrcamentoAvulso" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsOrcamentoAvulso" msprop:Generator_DataSetName="dsOrcamentoAvulso">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OrcamentoAvulso" msprop:Generator_RowEvHandlerName="OrcamentoAvulsoRowChangeEventHandler" msprop:Generator_RowDeletedName="OrcamentoAvulsoRowDeleted" msprop:Generator_RowDeletingName="OrcamentoAvulsoRowDeleting" msprop:Generator_RowEvArgName="OrcamentoAvulsoRowChangeEvent" msprop:Generator_TablePropName="OrcamentoAvulso" msprop:Generator_RowChangedName="OrcamentoAvulsoRowChanged" msprop:Generator_RowChangingName="OrcamentoAvulsoRowChanging" msprop:Generator_TableClassName="OrcamentoAvulsoDataTable" msprop:Generator_RowClassName="OrcamentoAvulsoRow" msprop:Generator_TableVarName="tableOrcamentoAvulso" msprop:Generator_UserTableName="OrcamentoAvulso">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Descricao" msprop:Generator_ColumnPropNameInRow="Descricao" msprop:Generator_ColumnPropNameInTable="DescricaoColumn" msprop:Generator_ColumnVarNameInTable="columnDescricao" msprop:Generator_UserColumnName="Descricao" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantidade" msprop:Generator_ColumnPropNameInRow="Quantidade" msprop:Generator_ColumnPropNameInTable="QuantidadeColumn" msprop:Generator_ColumnVarNameInTable="columnQuantidade" msprop:Generator_UserColumnName="Quantidade" type="xs:double" minOccurs="0" />
+              <xs:element name="ValorUnitario" msprop:Generator_ColumnPropNameInRow="ValorUnitario" msprop:Generator_ColumnPropNameInTable="ValorUnitarioColumn" msprop:Generator_ColumnVarNameInTable="columnValorUnitario" msprop:Generator_UserColumnName="ValorUnitario" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ValorTotal" msprop:Generator_ColumnPropNameInRow="ValorTotal" msprop:Generator_ColumnPropNameInTable="ValorTotalColumn" msprop:Generator_ColumnVarNameInTable="columnValorTotal" msprop:Generator_UserColumnName="ValorTotal" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

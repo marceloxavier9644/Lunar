@@ -1,0 +1,135 @@
+{"CSTPISCOFINS":
+[
+  {
+    "Código": "01",
+    "Descrição": "Operação Tributável com Alíquota Básica"
+  },
+  {
+    "Código": "02",
+    "Descrição": "Operação Tributável com Alíquota Diferenciada"
+  },
+  {
+    "Código": "03",
+    "Descrição": "Operação Tributável com Alíquota por Unidade de Medida de Produto"
+  },
+  {
+    "Código": "04",
+    "Descrição": "Operação Tributável Monofásica – Revenda a Alíquota Zero"
+  },
+  {
+    "Código": "05",
+    "Descrição": "Operação Tributável por Substituição Tributária"
+  },
+  {
+    "Código": "06",
+    "Descrição": "Operação Tributável a Alíquota Zero"
+  },
+  {
+    "Código": "07",
+    "Descrição": "Operação Isenta da Contribuição"
+  },
+  {
+    "Código": "08",
+    "Descrição": "Operação sem Incidência da Contribuição"
+  },
+  {
+    "Código": "09",
+    "Descrição": "Operação com Suspensão da Contribuição"
+  },
+  {
+    "Código": "49",
+    "Descrição": "Outras Operações de Saída"
+  },
+  {
+    "Código": "50",
+    "Descrição": "Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Tributada no Mercado Interno"
+  },
+  {
+    "Código": "51",
+    "Descrição": "Operação com Direito a Crédito – Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno"
+  },
+  {
+    "Código": "52",
+    "Descrição": "Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação"
+  },
+  {
+    "Código": "53",
+    "Descrição": "Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno"
+  },
+  {
+    "Código": "54",
+    "Descrição": "Operação com Direito a Crédito – Vinculada a Receitas Tributadas no Mercado Interno e de Exportação"
+  },
+  {
+    "Código": "55",
+    "Descrição": "Operação com Direito a Crédito – Vinculada a Receitas Não Tributadas no Mercado Interno e de Exportação"
+  },
+  {
+    "Código": "56",
+    "Descrição": "Operação com Direito a Crédito – Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação"
+  },
+  {
+    "Código": "60",
+    "Descrição": "Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno"
+  },
+  {
+    "Código": "61",
+    "Descrição": "Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita Não-Tributada no Mercado Interno"
+  },
+  {
+    "Código": "62",
+    "Descrição": "Crédito Presumido – Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação"
+  },
+  {
+    "Código": "63",
+    "Descrição": "Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno"
+  },
+  {
+    "Código": "64",
+    "Descrição": "Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação"
+  },
+  {
+    "Código": "65",
+    "Descrição": "Crédito Presumido – Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação"
+  },
+  {
+    "Código": "66",
+    "Descrição": "Crédito Presumido – Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno e de Exportação"
+  },
+  {
+    "Código": "67",
+    "Descrição": "Crédito Presumido – Outras Operações"
+  },
+  {
+    "Código": "70",
+    "Descrição": "Operação de Aquisição sem Direito a Crédito"
+  },
+  {
+    "Código": "71",
+    "Descrição": "Operação de Aquisição com Isenção"
+  },
+  {
+    "Código": "72",
+    "Descrição": "Operação de Aquisição com Suspensão"
+  },
+  {
+    "Código": "73",
+    "Descrição": "Operação de Aquisição a Alíquota Zero"
+  },
+  {
+    "Código": "74",
+    "Descrição": "Operação de Aquisição sem Incidência da Contribuição"
+  },
+  {
+    "Código": "75",
+    "Descrição": "Operação de Aquisição por Substituição Tributária"
+  },
+  {
+    "Código": "98",
+    "Descrição": "Outras Operações de Entrada"
+  },
+  {
+    "Código": "99",
+    "Descrição": "Outras Operações"
+  }
+]}

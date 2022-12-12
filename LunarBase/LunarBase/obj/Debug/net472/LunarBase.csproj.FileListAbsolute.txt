@@ -1,0 +1,16 @@
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\LunarBase.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\LunarBase.pdb
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Antlr3.Runtime.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Iesi.Collections.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Newtonsoft.Json.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\NHibernate.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Remotion.Linq.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Remotion.Linq.EagerFetching.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.AssemblyReference.cache
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.AssemblyInfoInputs.cache
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.AssemblyInfo.cs
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.CoreCompileInputs.cache
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.CopyComplete
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.pdb

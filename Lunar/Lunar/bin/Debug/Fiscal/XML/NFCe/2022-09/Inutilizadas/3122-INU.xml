@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProcInutNFe versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <inutNFe versao="4.00">
+    <infInut Id="ID31222814539800017365001000003122000003122">
+      <tpAmb>2</tpAmb>
+      <xServ>INUTILIZAR</xServ>
+      <cUF>31</cUF>
+      <ano>22</ano>
+      <CNPJ>28145398000173</CNPJ>
+      <mod>65</mod>
+      <serie>1</serie>
+      <nNFIni>3122</nNFIni>
+      <nNFFin>3122</nNFFin>
+      <xJust>teste de inutilizacao homologacao</xJust>
+    </infInut>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#ID31222814539800017365001000003122000003122">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>qk4ItV6OvJhICfb8qbLmxpIwBWc=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>GUW7G/T2Fv4RPKRTpbTWBb/xlM0u+JJw1MOoilEL1CK/6cWBhFGUYaQcTzTB777qoVltLlbQxZKXoTmT1u63HQAkuRCoY9+WjqpsSpDXDUVpT/6Yph79nmhBq99Iy4GuK0Rrl5qbPREdMTGms7fXZAAQUFrZxdp81W7JZ+xQf/c+wZOL+XMyyBtBnSriIC1SGfFM8aUorLgPCOJDD0lpJIQ8H5clM+micJeeti8p6QWC1r2mHt5IHu3K4Y9r1hw7hshZBVRoRPCUk9JGf33lIGbDidyfceSIUbrmFDAOEEIT5BMfO/OrKtJAV9NjrB9gUfwFL+zVLiUe2buW3afSGw==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </inutNFe>
+  <retInutNFe versao="4.00">
+    <infInut Id="Id31222814539800017365001000003122000003122">
+      <tpAmb>2</tpAmb>
+      <verAplic>W-1.4.79</verAplic>
+      <cStat>102</cStat>
+      <xMotivo>Inutilização de número homologado</xMotivo>
+      <cUF>31</cUF>
+      <ano>22</ano>
+      <CNPJ>28145398000173</CNPJ>
+      <serie>1</serie>
+      <nNFIni>3122</nNFIni>
+      <nNFFin>3122</nNFFin>
+      <dhRecbto>2022-09-10T10:56:48-03:00</dhRecbto>
+      <nProt>131220027074196</nProt>
+    </infInut>
+  </retInutNFe>
+</ProcInutNFe>
