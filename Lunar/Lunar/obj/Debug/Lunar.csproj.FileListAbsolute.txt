@@ -1,9 +1,16 @@
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Lunar.exe
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\FontAwesome.Sharp.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Iesi.Collections.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\MetroFramework.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\MySql.Data.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\NHibernate.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\LunarBase.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Properties.Resources.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\runtimes\win-arm64\native\WebView2Loader.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\x86\pdfium.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Lunar.exe.config
-C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Lunar.exe
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Lunar.pdb
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Antlr3.Runtime.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\BoletoFacilSDK.dll
@@ -11,17 +18,14 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\BouncyCastle.Crypto.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\CircularProgressBar.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\FiscalBr.Common.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\FiscalBr.Sintegra.dll
-C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\FontAwesome.Sharp.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Google.Protobuf.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Google.Protobuf.pdb
-C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Iesi.Collections.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\JWT.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\K4os.Compression.LZ4.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\K4os.Compression.LZ4.Streams.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\K4os.Hash.xxHash.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\MetroFramework.Design.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\MetroFramework.Fonts.dll
-C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\MetroFramework.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Microsoft.Graph.Core.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Microsoft.Identity.Client.dll
@@ -88,11 +92,9 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Microsoft.SqlServer.Types.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Microsoft.Web.WebView2.Core.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Microsoft.Web.WebView2.WinForms.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Microsoft.Web.WebView2.Wpf.dll
-C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\MySql.Data.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Ubiety.Dns.Core.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\ZstdNet.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Newtonsoft.Json.dll
-C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\NHibernate.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\PdfiumViewer.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\nl\PdfiumViewer.resources.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Remotion.Linq.dll
@@ -120,7 +122,6 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\System.Net.Http.Formatting.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\WinFormAnimation.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\zxing.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\zxing.presentation.dll
-C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\LunarBase.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Syncfusion.BulletGraph.Windows.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Syncfusion.Calculate.Base.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Syncfusion.Chart.Base.dll
@@ -223,6 +224,7 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.csproj.AssemblyReference.ca
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.csproj.SuggestedBindingRedirects.cache
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.exe.config
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.RJ_UI.Classes.RJTextBoxLower.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ArquivosContabilidade.FrmEnviarArquivosContabilidade.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Cadastros.Bancos.FrmBancosCadastro.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Cadastros.Bancos.FrmBancosLista.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Cadastros.Bancos.FrmContaBancaria.resources
@@ -261,6 +263,8 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Compras.FrmLancarNota
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Compras.Manifestos.FrmManifesto.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Condicionais.FrmCondicional.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Condicionais.FrmCondicionalLista.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Condicionais.FrmDevolucaoCondicional.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Condicionais.FrmImprimirCondicional.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasPagar.FrmContaPagarLista.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasPagar.FrmNovaFaturaPagar.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasReceber.FrmContaReceberLista.resources
@@ -288,7 +292,6 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Fiscal.NFeSelecaoIten
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.FormaPagamentoRecebimento.Adicionais.FrmCrediarioOrdemServico.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.FormaPagamentoRecebimento.FrmPagamentoRecebimento.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.FrmLogin.resources
-C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Properties.Resources.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.RJ_UI.Classes.RJTextBox.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Login.FrmRecuperarSenha.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Login.WelcomeForm.resources
@@ -327,6 +330,3 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.csproj.CoreCompileInputs.ca
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.csproj.CopyComplete
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.exe
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.pdb
-C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ArquivosContabilidade.FrmEnviarArquivosContabilidade.resources
-C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Condicionais.FrmImprimirCondicional.resources
-C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Condicionais.FrmDevolucaoCondicional.resources

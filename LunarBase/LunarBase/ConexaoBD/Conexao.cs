@@ -68,7 +68,7 @@ namespace LunarBase.ConexaoBD
                     IDictionary<string, string> props = new Dictionary<string, string>();
                     String connectionString = null;
 
-                    connectionString = "Server=mysql.kooby.com.br;Port=3306;Database=kooby01;User ID=kooby01;Password=lunar123;SslMode = none";
+                    //connectionString = "Server=mysql.kooby.com.br;Port=3306;Database=kooby01;User ID=kooby01;Password=lunar123;SslMode = none";
 
                     //Save in cloud
                     //connectionString = "Server=node85252-lunar.jelastic.saveincloud.net;Port=12087;Database=lunar;Uid=jelastic-6535703;Pwd=R6JbWtucyk9h1LOGjOB1;SslMode=none";
@@ -77,7 +77,7 @@ namespace LunarBase.ConexaoBD
                     //connectionString = @"Server=35.247.215.65;Port=3306;Database=lunar;Uid=marcelo;Pwd=mx123;";
 
                     ////Normal
-                    //connectionString = "Server=" + servidor + ";Port=3306;Database=" + bancoDados + ";User ID=" + usuario + ";Password=" + senha + ";SslMode = none";
+                    connectionString = "Server=" + servidor + ";Port=3306;Database=" + bancoDados + ";User ID=" + usuario + ";Password=" + senha + ";SslMode = none";
 
                     //SessaoVariaveis.stringConexao = connectionString;
                     props.Add("dialect", "NHibernate.Dialect.MySQL5InnoDBDialect");
