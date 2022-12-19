@@ -2,11 +2,11 @@
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using LunarBase.Classes;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using Syncfusion.Windows.Forms.CellGrid.ScrollAxis;
-using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
 using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
@@ -16,10 +16,13 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static LunarBase.Utilidades.ManifestoDownload;
+using Exception = System.Exception;
+using Nfe = LunarBase.Classes.Nfe;
 
 namespace Lunar.Telas.Compras
 {
-    public partial class FrmLancarNotaFiscalCompra : Form
+	public partial class FrmLancarNotaFiscalCompra : Form
 	{
 		Dictionary<RowColumnIndex, Color> colorDict = new Dictionary<RowColumnIndex, Color>();
 		Dictionary<RowColumnIndex, Color> colorDict2 = new Dictionary<RowColumnIndex, Color>();
@@ -1405,13 +1408,19 @@ namespace Lunar.Telas.Compras
 
 				//grava os produtos
 				var records1 = gridProdutos.View.Records;
-				foreach (var record in records1)
+				int cont = 0;
+				decimal calcFreteTotal = 0;
+                NfeProdutoDAO nfeprodDAO = new NfeProdutoDAO();
+                nfeprodDAO.excluirProdutosNfeParaAtualizar(nfe.Id.ToString());
+                foreach (var record in records1)
 				{
+					cont++;
 					//var dataRowView = record.Data as DataRowView;
 					if (record != null)
 					{
 						nfeProd = new NfeProduto();
 						nfeProd = (NfeProduto)record.Data;
+					
 						if (nfeProd != null && !String.IsNullOrEmpty(nfeProd.XProd))
 						{
 							nfeProd.Nfe = nfe;
@@ -1419,8 +1428,32 @@ namespace Lunar.Telas.Compras
 							nfeProd.Produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(nfeProd.CodigoInterno), Sessao.empresaFilialLogada);
 							nfeProd.UComConvertida = nfeProd.Produto.UnidadeMedida.Sigla;
 
-							//ESTOQUE PRODUTO
-							Produto produtoSelecionado = new Produto();
+							//Ratear Frete
+							if(nfe.VFrete > 0)
+							{
+								//Fórmula: (Valor do produto / Valor total dos produtos) x Valor do frete = Valor do rateio
+                                decimal valorFretePorItem = (nfeProd.VProd / nfeProd.Nfe.VProd) * nfe.VFrete;
+								calcFreteTotal = calcFreteTotal + valorFretePorItem;
+                                nfeProd.VFrete = valorFretePorItem;
+								if(cont == records1.Count)
+								{
+									if(calcFreteTotal > nfeProd.Nfe.VFrete)
+									{
+										nfeProd.VFrete = (calcFreteTotal - nfeProd.Nfe.VFrete);
+									}
+									else if(calcFreteTotal < nfeProd.Nfe.VFrete)
+									{
+										nfeProd.VFrete = nfeProd.Nfe.VFrete - calcFreteTotal;
+									}
+								}
+                            }
+							if (nfeProd.VBC < nfeProd.VProd)
+								nfeProd.OutrosIcms = nfeProd.VProd - nfeProd.VBC;
+							else
+								nfeProd.OutrosIcms = nfeProd.VBC;
+                            //nfeProd.OutrosIcms = nfeProd.VProd - nfeProd.VDesc + (nfeProd.VICMSSt + nfeProd.ValorIpi + nfeProd.VFrete); 
+                            //ESTOQUE PRODUTO
+                            Produto produtoSelecionado = new Produto();
 							produtoSelecionado = nfeProd.Produto;
 							produtoSelecionado.Estoque = produtoSelecionado.Estoque + nfeProd.QuantidadeEntrada;
 							produtoSelecionado.EstoqueAuxiliar = produtoSelecionado.EstoqueAuxiliar + nfeProd.QuantidadeEntrada;

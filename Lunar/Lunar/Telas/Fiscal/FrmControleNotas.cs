@@ -727,7 +727,7 @@ namespace Lunar.Telas.Fiscal
             switch (e.KeyCode)
             {
                 case Keys.F2:
-                    geradorSintegra.gerarSintegra(DateTime.Parse("2022-09-01 00:00:00"), DateTime.Parse("2022-09-30"), Sessao.empresaFilialLogada);
+                    geradorSintegra.gerarSintegra(DateTime.Parse("2022-11-01 00:00:00"), DateTime.Parse("2022-11-30"), Sessao.empresaFilialLogada);
                     break;
                 case Keys.F3:
                     imprimir();

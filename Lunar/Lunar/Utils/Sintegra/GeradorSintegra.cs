@@ -14,6 +14,7 @@ namespace Lunar.Utils.Sintegra
 {
     public class GeradorSintegra
     {
+        NfeProdutoDAO nfeProdutoDAO = new NfeProdutoDAO();
         GenericaDesktop generica = new GenericaDesktop();
         NfeController nfeController = new NfeController();
         public void gerarSintegra(DateTime dataInicial, DateTime dataFinal, EmpresaFilial filial)
@@ -87,63 +88,75 @@ namespace Lunar.Utils.Sintegra
                     string situacaoNota = "N";
                     if (nf.Cancelada == true)
                         situacaoNota = "S";
+                    nfeProdutoDAO = new NfeProdutoDAO();
+                    IList<RetProdReg50Sintegra> listaProdutosAgrupadosPorCfop = new List<RetProdReg50Sintegra>();
+                    listaProdutosAgrupadosPorCfop = nfeProdutoDAO.selecionarRegistro50SintegraAgrupadoPorCfop(nf);
 
                     listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nf.Id);
-                    foreach (NfeProduto nfProduto in listaProdutos)
+                    foreach (RetProdReg50Sintegra nfProduto in listaProdutosAgrupadosPorCfop)
                     {
-                        cfop = GenericaDesktop.RemoveCaracteres(nfProduto.CfopEntrada.Trim());
-                        aliq = nfProduto.PICMS.Substring(0,2);
-                        if (String.IsNullOrEmpty(aliq))
-                            aliq = "0";
-                        if (String.IsNullOrEmpty(cfop))
-                            cfop = GenericaDesktop.RemoveCaracteres(nfProduto.Cfop.Trim());
-                    }
-                    registro50.Tipo = "50";
-                    if (emitente.Equals("P"))
-                        registro50.Cnpj = GenericaDesktop.RemoveCaracteres(nf.CnpjDestinatario.Trim());
-                    else
-                        registro50.Cnpj = GenericaDesktop.RemoveCaracteres(nf.CnpjEmitente.Trim());
-
-                    if (emitente.Equals("P"))
-                    {
-                        if (!String.IsNullOrEmpty(nf.Cliente.InscricaoEstadual))
-                            registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Cliente.InscricaoEstadual.Trim());
+                        registro50.Tipo = "50";
+                        if (emitente.Equals("P"))
+                            registro50.Cnpj = GenericaDesktop.RemoveCaracteres(nf.CnpjDestinatario.Trim());
                         else
-                            registro50.InscrEstadual = "ISENTO";
-                    }
-                    else
-                    {
-                        if (nf.Fornecedor != null)
+                            registro50.Cnpj = GenericaDesktop.RemoveCaracteres(nf.CnpjEmitente.Trim());
+
+                        if (emitente.Equals("P"))
                         {
-                            if (!String.IsNullOrEmpty(nf.Fornecedor.InscricaoEstadual))
-                                registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Fornecedor.InscricaoEstadual);
+                            if (!String.IsNullOrEmpty(nf.Cliente.InscricaoEstadual))
+                                registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Cliente.InscricaoEstadual.Trim());
                             else
                                 registro50.InscrEstadual = "ISENTO";
                         }
                         else
-                            registro50.InscrEstadual = "ISENTO";
-                    }
+                        {
+                            if (nf.Fornecedor != null)
+                            {
+                                if (!String.IsNullOrEmpty(nf.Fornecedor.InscricaoEstadual))
+                                    registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Fornecedor.InscricaoEstadual);
+                                else
+                                    registro50.InscrEstadual = "ISENTO";
+                            }
+                            else
+                                registro50.InscrEstadual = "ISENTO";
+                        }
 
-                    registro50.DataEmissaoRecebimento = nf.DataLancamento;
-                    string uf = retornaUF(nf.CUf);
-                    if (String.IsNullOrEmpty(uf))
-                        uf = nf.CUf;
-                    registro50.Uf = uf;
-                    registro50.Modelo = int.Parse(nf.Modelo);
-                    registro50.Serie = nf.Serie;
-                    registro50.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(nf.NNf));
-                    registro50.Cfop = int.Parse(cfop);
-                    registro50.Emitente = emitente;
-                    registro50.ValorTotal = nf.VNf;
-                    registro50.BaseCalculoIcms = nf.VBc;
-                    registro50.ValorIcms = nf.VIcms;
-                    registro50.ValorIsentaOuNaoTributadas = 0;
-                    registro50.ValorOutras = nf.VOutro;
-                    registro50.AliquotaIcms = decimal.Parse(aliq);
-                    registro50.SituacaoNotaFiscal = situacaoNota;
-                    arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro50);
-                    listaSintegra.Add(arquivo);
-                    x.Write(arquivo);
+                        cfop = GenericaDesktop.RemoveCaracteres(nfProduto.cfop.Trim());
+                        aliq = nfProduto.aliquotaIcms.Substring(0,2);
+                        if (String.IsNullOrEmpty(aliq))
+                            aliq = "0";
+                        if (String.IsNullOrEmpty(cfop))
+                            cfop = GenericaDesktop.RemoveCaracteres(nfProduto.cfop.Trim());
+
+                        registro50.DataEmissaoRecebimento = nf.DataLancamento;
+                        string uf = retornaUF(nf.CUf);
+                        if (String.IsNullOrEmpty(uf))
+                            uf = nf.CUf;
+                        registro50.Uf = uf;
+                        registro50.Modelo = int.Parse(nf.Modelo);
+                        registro50.Serie = nf.Serie;
+                        registro50.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(nf.NNf));
+                        registro50.Cfop = int.Parse(cfop);
+                        registro50.Emitente = emitente;
+                        registro50.ValorTotal = nfProduto.valorTotal;
+                        registro50.BaseCalculoIcms = nfProduto.baseCalcIcms;
+                        registro50.ValorIcms = nfProduto.valorIcms;
+                        registro50.ValorIsentaOuNaoTributadas = nfProduto.valorIsentaNaoTributada;
+                        if (nfProduto.baseCalcIcms > 0)
+                        {
+                            if (nfProduto.baseCalcIcms < nfProduto.valorTotal)
+                                registro50.ValorOutras = nfProduto.valorTotal - nfProduto.baseCalcIcms;
+                            else
+                                registro50.ValorOutras = nfProduto.valorOutras;
+                        }
+                        else
+                            registro50.ValorOutras = nfProduto.valorOutras;
+                       registro50.AliquotaIcms = decimal.Parse(aliq);
+                        registro50.SituacaoNotaFiscal = situacaoNota;
+                        arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro50);
+                        listaSintegra.Add(arquivo);
+                        x.Write(arquivo);
+                    }
                 }
             }
 
@@ -168,8 +181,10 @@ namespace Lunar.Utils.Sintegra
                     registro54.Serie = nf.Serie;
                     registro54.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(nf.NNf.Trim()));
                     listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nf.Id);
+                    int contadorProd = 0;
                     foreach (NfeProduto nfProduto in listaProdutos)
                     {
+                        contadorProd++;
                         cfop = GenericaDesktop.RemoveCaracteres(nfProduto.CfopEntrada.Trim());
                         if (String.IsNullOrEmpty(cfop))
                             cfop = GenericaDesktop.RemoveCaracteres(nfProduto.Cfop.Trim());
@@ -191,6 +206,39 @@ namespace Lunar.Utils.Sintegra
                         arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro54);
                         listaSintegra.Add(arquivo);
                         x.Write(arquivo);
+
+                        //GERAR REGISTRO 54 DO FRETE
+                        if(nfProduto.Nfe.VFrete > 0 && contadorProd == listaProdutos.Count)
+                        {
+                            emitente = "P";
+                            if (GenericaDesktop.RemoveCaracteres(nf.CnpjEmitente) != GenericaDesktop.RemoveCaracteres(filial.Cnpj.Trim()))
+                                emitente = "T";
+
+                            registro54.Tipo = "54";
+                            if (emitente.Equals("P"))
+                                registro54.Cnpj = GenericaDesktop.RemoveCaracteres(nf.CnpjDestinatario.Trim());
+                            else
+                                registro54.Cnpj = GenericaDesktop.RemoveCaracteres(nf.CnpjEmitente.Trim());
+
+                            registro54.Modelo = int.Parse(nf.Modelo);
+                            registro54.Serie = nf.Serie;
+                            registro54.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(nf.NNf.Trim()));
+                            registro54.Cfop = int.Parse(GenericaDesktop.RemoveCaracteres(cfop.Trim()));
+                            registro54.Cst = "".PadLeft(3, ' ');
+                            registro54.NumeroItem = 991;
+                            registro54.CodProdutoServico = "";
+                            registro54.Quantidade = decimal.Parse(0.ToString());
+                            registro54.VlProdutoServico = 0;
+                            registro54.VlDescontoDespesaAc = nfProduto.Nfe.VFrete;
+                            registro54.BaseCalculoIcms = 0;
+                            registro54.BaseCalculoIcmsSt = 0;
+                            registro54.VlIpi = 0;
+                            aliq = 0;
+                            registro54.AliquotaIcms = aliq;
+                            arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro54);
+                            listaSintegra.Add(arquivo);
+                            x.Write(arquivo);
+                        }
                     }
                 }
             }
@@ -226,7 +274,7 @@ namespace Lunar.Utils.Sintegra
             }
 
             var registro61R = new FiscalBr.Sintegra.Registro61R();
-            NfeProdutoDAO nfeProdutoDAO = new NfeProdutoDAO();
+            nfeProdutoDAO = new NfeProdutoDAO();
             IList<RetProd> listaCodigos = new List<RetProd>();
             listaCodigos = nfeProdutoDAO.selecionarSomaItensNFCeParaSintegra(dataInicial.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), dataFinal.ToString("yyyy'-'MM'-'dd' '23':'59':'59"), filial);
             if (listaCodigos.Count > 0)

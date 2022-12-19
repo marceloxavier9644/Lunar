@@ -62,6 +62,42 @@ namespace LunarBase.ClassesDAO
             return retorno;
         }
 
+        public IList<RetProdReg50Sintegra> selecionarRegistro50SintegraAgrupadoPorCfop(Nfe nfe)
+        {
+            Session = Conexao.GetSession();
+            String sql = "SELECT sum(nfeproduto.VPROD) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
+                "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
+                "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
+                "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
+                "from `nfeproduto` " +
+                         "INNER JOIN nfe ON nfe.ID = nfeproduto.NFE "+
+                         "INNER JOIN pessoa ON nfe.Fornecedor = pessoa.Id "+
+                 "where nfe = "+nfe.Id+" and NfeProduto.FlagExcluido <> true and nfe.LANCADA = true "+
+                 "GROUP by nfeproduto.CFOPENTRADA";
+            IList<RetProdReg50Sintegra> retorno = Session.CreateSQLQuery(sql).SetResultTransformer(Transformers.AliasToBean<RetProdReg50Sintegra>()).List<RetProdReg50Sintegra>().ToList();
+            return retorno;
+        }
+
+        //Utilizado para gerar o registro 50 por CFOP ao invés de nota unica
+        public class RetProdReg50Sintegra
+        {
+            public String cnpjDestino { get; set; }
+            public String cnpjRemetente { get; set; }
+            public String inscricaoEstadual { get; set; }
+            public DateTime data { get; set; }
+            public String modelo { get; set; }
+            public String serie { get; set; }
+            public String numero { get; set; }
+            public String cfop { get; set; }
+            public decimal valorTotal { get; set; }
+            public decimal baseCalcIcms { get; set; }
+            public decimal valorIcms { get; set; }
+            public decimal valorIsentaNaoTributada { get; set; }
+            public decimal valorOutras { get; set; }
+            public string aliquotaIcms { get; set; }
+        }
+
         public class RetProd
         {
             public String codProd { get; set; }
@@ -77,7 +113,5 @@ namespace LunarBase.ClassesDAO
             //public decimal reducaoBaseCalc { get; set; }
             //public decimal baseIcmsSt { get; set; }
         }
-
- 
     }
 }

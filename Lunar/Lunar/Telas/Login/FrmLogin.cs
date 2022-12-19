@@ -30,7 +30,7 @@ namespace Lunar
         public FrmLogin()
         {
             InitializeComponent();
-            verificaLicencaSistema();
+            //verificaLicencaSistema();
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
         private void ShowMessage(string message)
