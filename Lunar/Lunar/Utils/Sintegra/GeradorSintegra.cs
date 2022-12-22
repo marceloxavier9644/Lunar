@@ -17,13 +17,13 @@ namespace Lunar.Utils.Sintegra
         NfeProdutoDAO nfeProdutoDAO = new NfeProdutoDAO();
         GenericaDesktop generica = new GenericaDesktop();
         NfeController nfeController = new NfeController();
-        public void gerarSintegra(DateTime dataInicial, DateTime dataFinal, EmpresaFilial filial)
+        public void gerarSintegra(DateTime dataInicial, DateTime dataFinal, EmpresaFilial filial, String caminhoSalvar, bool reg74, string dataInventario)
         {
             IList<NfeProduto> listaProdutos = new List<NfeProduto>();
             string cfop = "";
             List<string> listaSintegra = new List<string>();
             StreamWriter x;
-            string folderPath = @"SINTEGRA\" + dataInicial.Year + dataInicial.Month.ToString().PadLeft(2, '0');
+            string folderPath = caminhoSalvar;
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
@@ -296,6 +296,35 @@ namespace Lunar.Utils.Sintegra
                     x.Write(arquivo);
                 }
             }
+            IList<Estoque> listaInventario = new List<Estoque>();
+            if (reg74 == true)
+            {
+                EstoqueDAO estoqueDAO = new EstoqueDAO();
+                listaInventario = estoqueDAO.gerarInventarioPorData(Sessao.empresaFilialLogada, dataInventario);
+                var registro74 = new FiscalBr.Sintegra.Registro74();
+                foreach (Estoque estoque in listaInventario.ToList())
+                {
+                    if (estoque.QuantidadeInventario > 0)
+                    {
+                        registro74.Tipo = "74";
+                        registro74.DataInventario = DateTime.Parse(dataInventario);
+                        registro74.CodigoProduto = estoque.Produto.Id.ToString() + estoque.Produto.IdComplementar;
+                        registro74.Quantidade = decimal.Parse(estoque.QuantidadeInventario.ToString());
+                        registro74.ValorProduto = decimal.Parse(estoque.Produto.ValorCusto.ToString()) * decimal.Parse(estoque.QuantidadeInventario.ToString());
+                        registro74.CodigoPosseMerc = "1";
+                        registro74.CnpjProprietario = Sessao.empresaFilialLogada.Cnpj;
+                        registro74.InscrEstadualProprietario = "".PadLeft(14, ' ');
+                        registro74.UfProprietario = Sessao.empresaFilialLogada.Endereco.Cidade.Estado.Uf;
+                        arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro74);
+                        listaSintegra.Add(arquivo);
+                        x.Write(arquivo);
+                    }
+                    else
+                    {
+                        listaInventario.Remove(estoque);
+                    }
+                }
+            }
 
             var registro75 = new FiscalBr.Sintegra.Registro75();
             listaCodigos = nfeProdutoDAO.selecionarSomaItens55E65ParaSintegraReg75(dataInicial.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), dataFinal.ToString("yyyy'-'MM'-'dd' '23':'59':'59"), filial);
@@ -323,6 +352,42 @@ namespace Lunar.Utils.Sintegra
                 arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro75);
                 listaSintegra.Add(arquivo);
                 x.Write(arquivo);
+                if (listaInventario.Count > 0)
+                {
+                   // IList<Estoque> listaInventario2 = listaInventario;
+
+                    foreach (Estoque est in listaInventario.ToList()) 
+                    {
+                        if (retProd.codProd.ToString().Equals(est.Produto.Id.ToString()))
+                        {
+                            listaInventario.Remove(est);
+                        }
+                        
+                    }
+                }
+            }
+            //Adicionar itens do inventario no registro 75
+            if (reg74 == true)
+            {
+                foreach (Estoque est in listaInventario)
+                {
+                    registro75.Tipo = "75";
+                    registro75.DataInicial = dataInicial;
+                    registro75.DataFinal = dataFinal;
+                    registro75.CodItem = est.Produto.Id.ToString();
+                    registro75.CodNcm = GenericaDesktop.RemoveCaracteres(est.Produto.Ncm.Trim());
+                    registro75.Descricao = est.Produto.Descricao.Trim();
+                    registro75.UnidadeMedida = est.Produto.UnidadeMedida.Sigla;
+                    decimal aliqIpi = 0;
+                    registro75.AliquotaIpi = aliqIpi;
+                    decimal aliqIcm = 0;
+                    registro75.AliquotaIcms = aliqIcm;
+                    registro75.ReducaoBaseIcms = 100;
+                    registro75.BaseCalculoSt = 0;
+                    arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro75);
+                    listaSintegra.Add(arquivo);
+                    x.Write(arquivo);
+                }
             }
 
             arquivo = new FiscalBr.Sintegra.Registro90(GenericaDesktop.RemoveCaracteres(filial.Cnpj), GenericaDesktop.RemoveCaracteres(filial.InscricaoEstadual), listaSintegra).EscreverRegistro90();

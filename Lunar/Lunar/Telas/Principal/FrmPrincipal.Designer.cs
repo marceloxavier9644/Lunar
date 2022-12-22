@@ -61,6 +61,7 @@
             this.bandeirasDeCartãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contaBancáriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EmpresaMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.enviarArquivosContabilidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GrupoUserMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.UsuariosMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ParametrosMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,7 +89,7 @@
             this.dropMenuVendas = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.enviarArquivosContabilidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gerarSintegraTool = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -571,6 +572,7 @@
             this.contaBancáriaToolStripMenuItem,
             this.EmpresaMenu,
             this.enviarArquivosContabilidadeToolStripMenuItem,
+            this.gerarSintegraTool,
             this.GrupoUserMenu,
             this.UsuariosMenu,
             this.ParametrosMenu});
@@ -578,7 +580,7 @@
             this.dropMenuUtilitarios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuUtilitarios.Name = "rjDropdownMenu1";
             this.dropMenuUtilitarios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuUtilitarios.Size = new System.Drawing.Size(286, 202);
+            this.dropMenuUtilitarios.Size = new System.Drawing.Size(286, 224);
             // 
             // btnBalancoEstoque
             // 
@@ -623,6 +625,13 @@
             this.EmpresaMenu.Size = new System.Drawing.Size(285, 22);
             this.EmpresaMenu.Text = "Empresas/Filiais";
             this.EmpresaMenu.Click += new System.EventHandler(this.EmpresaMenu_Click);
+            // 
+            // enviarArquivosContabilidadeToolStripMenuItem
+            // 
+            this.enviarArquivosContabilidadeToolStripMenuItem.Name = "enviarArquivosContabilidadeToolStripMenuItem";
+            this.enviarArquivosContabilidadeToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
+            this.enviarArquivosContabilidadeToolStripMenuItem.Text = "Enviar Arquivos Contabilidade";
+            this.enviarArquivosContabilidadeToolStripMenuItem.Click += new System.EventHandler(this.enviarArquivosContabilidadeToolStripMenuItem_Click);
             // 
             // GrupoUserMenu
             // 
@@ -856,12 +865,12 @@
             this.btnCondicionalMenu.Text = "Condicional";
             this.btnCondicionalMenu.Click += new System.EventHandler(this.btnCondicionalMenu_Click);
             // 
-            // enviarArquivosContabilidadeToolStripMenuItem
+            // gerarSintegraTool
             // 
-            this.enviarArquivosContabilidadeToolStripMenuItem.Name = "enviarArquivosContabilidadeToolStripMenuItem";
-            this.enviarArquivosContabilidadeToolStripMenuItem.Size = new System.Drawing.Size(285, 22);
-            this.enviarArquivosContabilidadeToolStripMenuItem.Text = "Enviar Arquivos Contabilidade";
-            this.enviarArquivosContabilidadeToolStripMenuItem.Click += new System.EventHandler(this.enviarArquivosContabilidadeToolStripMenuItem_Click);
+            this.gerarSintegraTool.Name = "gerarSintegraTool";
+            this.gerarSintegraTool.Size = new System.Drawing.Size(285, 22);
+            this.gerarSintegraTool.Text = "Gerar Sintegra";
+            this.gerarSintegraTool.Click += new System.EventHandler(this.gerarSintegraTool_Click);
             // 
             // FrmPrincipal
             // 
@@ -958,5 +967,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnVendaPDV;
         private System.Windows.Forms.ToolStripMenuItem btnCondicionalMenu;
         private System.Windows.Forms.ToolStripMenuItem enviarArquivosContabilidadeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gerarSintegraTool;
     }
 }

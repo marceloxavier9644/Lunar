@@ -846,6 +846,12 @@
     <Compile Include="Telas\Principal\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Sintegra\FrmGerarSintegra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Sintegra\FrmGerarSintegra.Designer.cs">
+      <DependentUpon>FrmGerarSintegra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1244,6 +1250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Sintegra\FrmGerarSintegra.resx">
+      <DependentUpon>FrmGerarSintegra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.resx">
       <DependentUpon>FrmPermissaoUsuario.cs</DependentUpon>

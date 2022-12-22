@@ -43,6 +43,8 @@ namespace Lunar.Telas.Fiscal
         String xmlStrEnvio = "";
         VendaController vendaController = new VendaController();
         Ftp ftp = new Ftp();
+        DateTime data1 = DateTime.Parse("2022-11-01 00:00:00");
+        DateTime data2 = DateTime.Parse("2022-11-30");
 
         public const string clientId = "1d0b3a89-5c98-49d7-a9da-de69b0516a20";
         public const string MsaReturnUrl = "urn:ietf:wg:oauth:2.0:oob";
@@ -727,7 +729,7 @@ namespace Lunar.Telas.Fiscal
             switch (e.KeyCode)
             {
                 case Keys.F2:
-                    geradorSintegra.gerarSintegra(DateTime.Parse("2022-11-01 00:00:00"), DateTime.Parse("2022-11-30"), Sessao.empresaFilialLogada);
+                    geradorSintegra.gerarSintegra(data1, data2, Sessao.empresaFilialLogada, @"SINTEGRA\" + data1.Year + data1.Month.ToString().PadLeft(2, '0'), false, "2000-01-01 00:00:00");
                     break;
                 case Keys.F3:
                     imprimir();
