@@ -65,7 +65,7 @@ namespace LunarBase.ClassesDAO
         public IList<RetProdReg50Sintegra> selecionarRegistro50SintegraAgrupadoPorCfop(Nfe nfe)
         {
             Session = Conexao.GetSession();
-            String sql = "SELECT sum(nfeproduto.VPROD) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
+            String sql = "SELECT sum(nfeproduto.VPROD) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
                 "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                 "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
                 "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +

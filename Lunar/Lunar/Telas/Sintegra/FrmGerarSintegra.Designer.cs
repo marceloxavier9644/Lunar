@@ -64,7 +64,7 @@
             this.txtDataInicial.Size = new System.Drawing.Size(185, 35);
             this.txtDataInicial.Style.BorderColor = System.Drawing.Color.Silver;
             this.txtDataInicial.Style.FocusedBorderColor = System.Drawing.Color.Silver;
-            this.txtDataInicial.Style.HoverBorderColor = System.Drawing.Color.White;
+            this.txtDataInicial.Style.HoverBorderColor = System.Drawing.Color.Silver;
             this.txtDataInicial.TabIndex = 225;
             // 
             // autoLabel1
@@ -88,8 +88,9 @@
             this.txtDataFinal.Name = "txtDataFinal";
             this.txtDataFinal.Size = new System.Drawing.Size(185, 35);
             this.txtDataFinal.Style.BorderColor = System.Drawing.Color.Silver;
+            this.txtDataFinal.Style.DropDown.HoverForeColor = System.Drawing.Color.Black;
             this.txtDataFinal.Style.FocusedBorderColor = System.Drawing.Color.Silver;
-            this.txtDataFinal.Style.HoverBorderColor = System.Drawing.Color.White;
+            this.txtDataFinal.Style.HoverBorderColor = System.Drawing.Color.Silver;
             this.txtDataFinal.TabIndex = 227;
             // 
             // chkRegistro74
@@ -126,8 +127,8 @@
             this.txtDataInventario.Name = "txtDataInventario";
             this.txtDataInventario.Size = new System.Drawing.Size(185, 35);
             this.txtDataInventario.Style.BorderColor = System.Drawing.Color.Silver;
-            this.txtDataInventario.Style.FocusedBorderColor = System.Drawing.Color.White;
-            this.txtDataInventario.Style.HoverBorderColor = System.Drawing.Color.White;
+            this.txtDataInventario.Style.FocusedBorderColor = System.Drawing.Color.Silver;
+            this.txtDataInventario.Style.HoverBorderColor = System.Drawing.Color.Silver;
             this.txtDataInventario.TabIndex = 249;
             // 
             // autoLabel28

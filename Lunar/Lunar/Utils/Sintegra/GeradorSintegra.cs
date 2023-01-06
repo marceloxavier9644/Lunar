@@ -138,20 +138,25 @@ namespace Lunar.Utils.Sintegra
                         registro50.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(nf.NNf));
                         registro50.Cfop = int.Parse(cfop);
                         registro50.Emitente = emitente;
+                        //registro50.ValorTotal = nfProduto.valorTotal;
                         registro50.ValorTotal = nfProduto.valorTotal;
-                        registro50.BaseCalculoIcms = nfProduto.baseCalcIcms;
-                        registro50.ValorIcms = nfProduto.valorIcms;
-                        registro50.ValorIsentaOuNaoTributadas = nfProduto.valorIsentaNaoTributada;
-                        if (nfProduto.baseCalcIcms > 0)
-                        {
-                            if (nfProduto.baseCalcIcms < nfProduto.valorTotal)
-                                registro50.ValorOutras = nfProduto.valorTotal - nfProduto.baseCalcIcms;
-                            else
-                                registro50.ValorOutras = nfProduto.valorOutras;
-                        }
-                        else
-                            registro50.ValorOutras = nfProduto.valorOutras;
-                       registro50.AliquotaIcms = decimal.Parse(aliq);
+                        //registro50.BaseCalculoIcms = nfProduto.baseCalcIcms;
+                        //registro50.ValorIcms = nfProduto.valorIcms;
+                        //registro50.ValorIsentaOuNaoTributadas = nfProduto.valorIsentaNaoTributada;
+                        registro50.BaseCalculoIcms = 0;
+                        registro50.ValorIcms = 0;
+                        registro50.ValorIsentaOuNaoTributadas = 0;
+                        //if (nfProduto.baseCalcIcms > 0)
+                        //{
+                        //    if (nfProduto.baseCalcIcms < nfProduto.valorTotal)
+                        //        registro50.ValorOutras = nfProduto.valorTotal - nfProduto.baseCalcIcms;
+                        //    else
+                        //        registro50.ValorOutras = nfProduto.valorOutras;
+                        //}
+                        //else
+                       registro50.ValorOutras = nfProduto.valorTotal;
+                        //registro50.AliquotaIcms = decimal.Parse(aliq);
+                        registro50.AliquotaIcms = 0;
                         registro50.SituacaoNotaFiscal = situacaoNota;
                         arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro50);
                         listaSintegra.Add(arquivo);
@@ -193,14 +198,16 @@ namespace Lunar.Utils.Sintegra
                         registro54.NumeroItem = int.Parse(nfProduto.Item);
                         registro54.CodProdutoServico = nfProduto.CodigoInterno;
                         registro54.Quantidade = decimal.Parse(nfProduto.QuantidadeEntrada.ToString());
-                        registro54.VlProdutoServico = nfProduto.VProd;
+                        registro54.VlProdutoServico = (nfProduto.VProd) /*nfProduto.VFrete + nfProduto.VICMSSt*//* - nfProduto.VDesc*/;
                         registro54.VlDescontoDespesaAc = nfProduto.VDesc;
-                        registro54.BaseCalculoIcms = nfProduto.VBC;
-                        registro54.BaseCalculoIcmsSt = nfProduto.VBCST;
+                        //registro54.BaseCalculoIcms = nfProduto.VBC;
+                        //registro54.BaseCalculoIcmsSt = nfProduto.VBCST;
+                        registro54.BaseCalculoIcms = 0;
+                        registro54.BaseCalculoIcmsSt = 0;
                         registro54.VlIpi = nfProduto.ValorIpi;
                         decimal aliq = 0;
-                        if (!string.IsNullOrEmpty(nfProduto.PICMS))
-                            aliq = decimal.Parse(nfProduto.PICMS.Substring(0, 2));
+                        //if (!string.IsNullOrEmpty(nfProduto.PICMS))
+                        //    aliq = decimal.Parse(nfProduto.PICMS.Substring(0, 2));
                         registro54.AliquotaIcms = aliq;
 
                         arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro54);

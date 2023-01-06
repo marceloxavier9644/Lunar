@@ -139,7 +139,7 @@ namespace Lunar.Telas.ContasReceber
             }
             catch (Exception erro)
             {
-
+                GenericaDesktop.ShowErro(erro.Message);
             }
         }
 

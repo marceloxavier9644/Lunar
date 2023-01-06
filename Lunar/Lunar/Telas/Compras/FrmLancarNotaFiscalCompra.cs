@@ -1160,7 +1160,6 @@ namespace Lunar.Telas.Compras
 			if(verificado == false)
             {
 				verificarProdutosCadastrados();
-			
 			}
         }
 
