@@ -46,6 +46,7 @@ namespace Lunar.Telas.OrdensDeServico
         decimal valorProdutosSemDesconto = 0;
         decimal valorDescontoProdutos = 0;
         Nfe nfe = new Nfe();
+        bool produtoNegativo = false;
         public FrmOrdemServicoLista()
         {
             InitializeComponent();
@@ -95,7 +96,7 @@ namespace Lunar.Telas.OrdensDeServico
         private void pesquisarOrdemServico()
         {
             listaOrdemServico = new List<OrdemServico>();
-          
+            produtoNegativo = false;
             string sql = "Select * From OrdemServico Tabela ";
 
             if (!String.IsNullOrEmpty(txtCodDependente.Texts) || !txtDataEntregaInicial.Text.Equals("  /  /    "))
@@ -607,53 +608,63 @@ namespace Lunar.Telas.OrdensDeServico
             valorProdutosSemDesconto = 0;
             ordemServico = new OrdemServico();
             ordemServico = (OrdemServico)grid.SelectedItem;
-            if (ordemServico.Nfe == null)
+            if (ordemServico.Status.Equals("ENCERRADA"))
             {
-                if (GenericaDesktop.ShowConfirmacao("Gerar NFC-e dos produtos da O.S " + ordemServico.Id.ToString() + "?"))
+                if (ordemServico.Nfe == null)
                 {
-                    //se nao tem cliente ja vem validado
-                    bool validaCliente = true;
-                    //enviarNFCe();
-                    if (ordemServico.Cliente != null)
+                    if (GenericaDesktop.ShowConfirmacao("Gerar NFC-e dos produtos da O.S " + ordemServico.Id.ToString() + "?"))
                     {
-                        Pessoa cli = new Pessoa();
-                        cli = ordemServico.Cliente;
-                        validaCliente = validarClienteNFCe(cli);
-                    }
-
-                    ValidadorNotaSaida validador = new ValidadorNotaSaida();
-                    if (validaCliente == true)
-                    {
-                        //Emitir NFCe pela nova classe
-                        EmitirNFCe emitirNFCe = new EmitirNFCe();
-                        carregarListaProdutos();
-                        try
+                        //se nao tem cliente ja vem validado
+                        bool validaCliente = true;
+                        //enviarNFCe();
+                        if (ordemServico.Cliente != null)
                         {
-                            if (validador.validarProdutosNota(listaProdutosNFe))
-                            {
-                                //Concluir a O.S antes de gerar a nota
-                                numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
-                                xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, ordemServico);
-                                if (!String.IsNullOrEmpty(xmlStrEnvio))
-                                {
-                                    enviarXMLNFCeParaApi(xmlStrEnvio);
-                                }
-                                atualizarProximoNumeroNota();
-                            }
+                            Pessoa cli = new Pessoa();
+                            cli = ordemServico.Cliente;
+                            validaCliente = validarClienteNFCe(cli);
                         }
-                        catch (Exception erro)
+
+                        ValidadorNotaSaida validador = new ValidadorNotaSaida();
+                        if (validaCliente == true)
                         {
-                            ordemServico.Nfe = null;
-                            Controller.getInstance().salvar(ordemServico);
-                            GenericaDesktop.ShowErro(erro.Message);
+                            //Emitir NFCe pela nova classe
+                            EmitirNFCe emitirNFCe = new EmitirNFCe();
+                            carregarListaProdutos();
+                            try
+                            {
+                                if (validador.validarProdutosNota(listaProdutosNFe))
+                                {
+                                    if(produtoNegativo == true)
+                                    {
+                                        if(!GenericaDesktop.ShowConfirmacao("Existe produto sem estoque fiscal, deseja continuar assim mesmo?"))
+                                            throw new Exception("Emissão cancelada por \"Erro de Estoque\"");
+                                    }
+                                    //Concluir a O.S antes de gerar a nota
+                                    numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
+                                    xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, ordemServico);
+                                    if (!String.IsNullOrEmpty(xmlStrEnvio))
+                                    {
+                                        enviarXMLNFCeParaApi(xmlStrEnvio);
+                                    }
+                                    atualizarProximoNumeroNota();
+                                }
+                            }
+                            catch (Exception erro)
+                            {
+                                ordemServico.Nfe = null;
+                                Controller.getInstance().salvar(ordemServico);
+                                GenericaDesktop.ShowErro(erro.Message);
+                            }
                         }
                     }
                 }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Ordem de Serviço já possui NF gerada!");
+                }
             }
             else
-            {
-                GenericaDesktop.ShowAlerta("Ordem de Serviço já possui NF gerada!");
-            }
+                GenericaDesktop.ShowAlerta("Para gerar o documento fiscal a Ordem de Serviço deve ta encerrada/faturada!");
         }
 
         private void atualizarProximoNumeroNota()
@@ -1088,7 +1099,10 @@ namespace Lunar.Telas.OrdensDeServico
                 valorFinalNota = valorFinalNota + nfeProduto.ValorFinal;
                 valorProdutosSemDesconto = valorProdutosSemDesconto + nfeProduto.ValorProduto;
                 valorDescontoProdutos = valorDescontoProdutos + nfeProduto.VDesc;
-
+                if(produto.Estoque < VendaItens.Quantidade)
+                {
+                    produtoNegativo = true;
+                }
                 listaProdutosNFe.Add(nfeProduto);
             }
         }
@@ -1104,11 +1118,13 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 GenericaDesktop.ShowAlerta("Para NFCe o cliente selecionado deve ter CPF preenchido corretamente");
                 validacao = false;
+                return false;
             }
             else if (pessoa.Cnpj.Length == 14)
             {
                 GenericaDesktop.ShowAlerta("Em uma NFCe o cliente não pode ser pessoa jurídica, caso precise identificar a pessoa jurídica faça a emissão de uma NFe modelo 55");
                 validacao = false;
+                return false;
             }
             if (!String.IsNullOrEmpty(pessoa.RazaoSocial))
                 validacao = true;
@@ -1116,6 +1132,7 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 GenericaDesktop.ShowAlerta("O endereço do cliente deve ser preenchido completo");
                 validacao = false;
+                return false;
             }
             if (pessoa.EnderecoPrincipal != null)
             {
@@ -1123,21 +1140,25 @@ namespace Lunar.Telas.OrdensDeServico
                 {
                     GenericaDesktop.ShowAlerta("O endereço do cliente deve ser preenchido completo (NOME DA RUA)");
                     validacao = false;
+                    return false;
                 }
                 if (String.IsNullOrEmpty(pessoa.EnderecoPrincipal.Bairro))
                 {
                     GenericaDesktop.ShowAlerta("O endereço do cliente deve ser preenchido completo (BAIRRO)");
                     validacao = false;
+                    return false;
                 }
                 if (String.IsNullOrEmpty(pessoa.EnderecoPrincipal.Numero))
                 {
                     GenericaDesktop.ShowAlerta("O endereço do cliente deve ser preenchido completo (NUMERO)");
                     validacao = false;
+                    return false;
                 }
                 if (String.IsNullOrEmpty(pessoa.EnderecoPrincipal.Cep))
                 {
                     GenericaDesktop.ShowAlerta("O endereço do cliente deve ser preenchido completo (CEP)");
                     validacao = false;
+                    return false;
                 }
             }
             return validacao;
@@ -1150,65 +1171,70 @@ namespace Lunar.Telas.OrdensDeServico
             valorProdutosSemDesconto = 0;
             ordemServico = new OrdemServico();
             ordemServico = (OrdemServico)grid.SelectedItem;
-            if (ordemServico.Nfe == null)
+            if (ordemServico.Status.Equals("ENCERRADA"))
             {
-                if (GenericaDesktop.ShowConfirmacao("Tem certeza que deseja gerar a nota fiscal - NFe modelo 55 ?"))
+                if (ordemServico.Nfe == null)
                 {
-                    //se nao tem cliente ja vem validado
-                    bool validaCliente = false;
-                    //enviarNFCe();
-                    if (ordemServico.Cliente != null)
+                    if (GenericaDesktop.ShowConfirmacao("Tem certeza que deseja gerar a nota fiscal - NFe modelo 55 ?"))
                     {
-                        Pessoa cli = new Pessoa();
-                        cli = ordemServico.Cliente;
-                        validaCliente = validarClienteNFCe(cli);
-
-                        ValidadorNotaSaida validador = new ValidadorNotaSaida();
-                        if (validaCliente == true)
+                        //se nao tem cliente ja vem validado
+                        bool validaCliente = false;
+                        //enviarNFCe();
+                        if (ordemServico.Cliente != null)
                         {
-                            //Emitir NFe pela nova classe
-                            EmitirNFe emitirNFe = new EmitirNFe();
-                            carregarListaProdutos();
-                            try
+                            Pessoa cli = new Pessoa();
+                            cli = ordemServico.Cliente;
+                            validaCliente = validarClienteNFCe(cli);
+
+                            ValidadorNotaSaida validador = new ValidadorNotaSaida();
+                            if (validaCliente == true)
                             {
-                                if (validador.validarProdutosNota(listaProdutosNFe))
+                                //Emitir NFe pela nova classe
+                                EmitirNFe emitirNFe = new EmitirNFe();
+                                carregarListaProdutos();
+                                try
                                 {
-                                    numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFe;
-                                    xmlStrEnvio = emitirNFe.gerarXMLNfe(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, false, "VENDA", ordemServico);
-                                    if (!String.IsNullOrEmpty(xmlStrEnvio))
+                                    if (validador.validarProdutosNota(listaProdutosNFe))
                                     {
-                                        enviarXMLNFeParaApi(xmlStrEnvio);
+                                        numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFe;
+                                        xmlStrEnvio = emitirNFe.gerarXMLNfe(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, false, "VENDA", ordemServico);
+                                        if (!String.IsNullOrEmpty(xmlStrEnvio))
+                                        {
+                                            enviarXMLNFeParaApi(xmlStrEnvio);
+                                        }
                                     }
                                 }
-                            }
-                            catch (Exception erro)
-                            {
-                                if (erro.Message.Contains("Unexpected character encountered while parsing value"))
+                                catch (Exception erro)
                                 {
-                                    NfeController nfeController = new NfeController();
-                                    nfe = nfeController.selecionarNFePorNumeroESerie(numeroNFCe, Sessao.parametroSistema.SerieNFe);
-                                    NfeStatus nfeStatus = new NfeStatus();
-                                    nfeStatus.Id = 2;
-                                    nfe.NfeStatus = (NfeStatus)NfeStatusController.getInstance().selecionar(nfeStatus);
-                                    Controller.getInstance().salvar(nfe);
-                                    Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(Sessao.parametroSistema.ProximoNumeroNFe) + 1).ToString();
-                                    Controller.getInstance().salvar(Sessao.parametroSistema);
-                                    GenericaDesktop.ShowAlerta("Falha de comunicação com a sefaz, tente reenviar a nota pelo modulo de gerenciamento de notas");
+                                    if (erro.Message.Contains("Unexpected character encountered while parsing value"))
+                                    {
+                                        NfeController nfeController = new NfeController();
+                                        nfe = nfeController.selecionarNFePorNumeroESerie(numeroNFCe, Sessao.parametroSistema.SerieNFe);
+                                        NfeStatus nfeStatus = new NfeStatus();
+                                        nfeStatus.Id = 2;
+                                        nfe.NfeStatus = (NfeStatus)NfeStatusController.getInstance().selecionar(nfeStatus);
+                                        Controller.getInstance().salvar(nfe);
+                                        Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(Sessao.parametroSistema.ProximoNumeroNFe) + 1).ToString();
+                                        Controller.getInstance().salvar(Sessao.parametroSistema);
+                                        GenericaDesktop.ShowAlerta("Falha de comunicação com a sefaz, tente reenviar a nota pelo modulo de gerenciamento de notas");
+                                    }
+                                    else
+                                        GenericaDesktop.ShowErro(erro.Message);
                                 }
-                                else
-                                    GenericaDesktop.ShowErro(erro.Message);
                             }
+                            atualizarProximoNumeroNota();
                         }
-                        atualizarProximoNumeroNota();
-                    }
-                    else
-                    {
-                        GenericaDesktop.ShowAlerta("Para emitir NFe deve selecionar um cliente com dados válidos, tendo nome, cpf ou cnpj, endereço completo!");
+                        else
+                        {
+                            GenericaDesktop.ShowAlerta("Para emitir NFe deve selecionar um cliente com dados válidos, tendo nome, cpf ou cnpj, endereço completo!");
+                        }
                     }
                 }
+                else
+                    GenericaDesktop.ShowAlerta("Nota Fiscal já foi gerada, consulta a tela de Monitoramento de Notas");
             }
-            else
-                GenericaDesktop.ShowAlerta("Nota Fiscal já foi gerada, consulta a tela de Monitoramento de Notas");
+                else 
+                    GenericaDesktop.ShowAlerta("Para gerar o documento fiscal a Ordem de Serviço deve ta encerrada/faturada!");
         }
 
         private void enviarXMLNFeParaApi(string xmlNfe)

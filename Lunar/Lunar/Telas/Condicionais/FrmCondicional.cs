@@ -5,7 +5,10 @@ using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using MySqlX.XDevAPI.Relational;
+using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
+using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,6 +20,8 @@ namespace Lunar.Telas.Condicionais
 {
     public partial class FrmCondicional : Form
     {
+        int indexProduto = 0;
+        double quantidadeAtual = 0;
         IList<CondicionalProduto> listaProdutos = new List<CondicionalProduto>();
         Condicional condicional = new Condicional();
         GenericaDesktop genericaDesktop = new GenericaDesktop();
@@ -170,27 +175,93 @@ namespace Lunar.Telas.Condicionais
                 txtPesquisaProduto.SelectAll();
             }
         }
-
+        private bool verificaSeItemJaExiste(Produto produto)
+        {
+            if (gridProdutos.View != null)
+            {
+                var records = gridProdutos.View.Records;
+                foreach (var record in records)
+                {
+                    var dataRowView = record.Data as DataRowView;
+                    if (produto.Id == int.Parse(dataRowView.Row["Codigo"].ToString()))
+                    {
+                        indexProduto = gridProdutos.TableControl.ResolveToRowIndex(record);
+                        quantidadeAtual = double.Parse(dataRowView.Row["Quantidade"].ToString());
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                return false;
+            }
+            else
+                return false;
+        }
         private void inserirItem(Produto produto)
         {
-            txtQuantidadeItem.TextAlign = HorizontalAlignment.Center;
-            txtValorUnitarioItem.TextAlign = HorizontalAlignment.Center;
-            txtValorTotalItem.TextAlign = HorizontalAlignment.Center;
-            try
+            if (verificaSeItemJaExiste(produto) == false)
             {
-                System.Data.DataRow row = dsProdutos.Tables[0].NewRow();
-                row.SetField("Id", 0);
-                row.SetField("Codigo", produto.Id.ToString());
-                row.SetField("Descricao", produto.Descricao);
-                decimal valorUnitForm = decimal.Parse(txtValorUnitarioItem.Texts);
-                row.SetField("ValorUnitario", string.Format("{0:0.00}", valorUnitForm));
-                row.SetField("Quantidade", txtQuantidadeItem.Texts);
-                decimal valorTotal = decimal.Parse(txtValorTotalItem.Texts);
-                row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
-                row.SetField("Desconto", string.Format("{0:0.00}", decimal.Parse(txtDescontoItem.Texts)));
-                row.SetField("Acrescimo", string.Format("{0:0.00}", decimal.Parse(txtAcrescimoItem.Texts)));
-                dsProdutos.Tables[0].Rows.Add(row);
+                txtQuantidadeItem.TextAlign = HorizontalAlignment.Center;
+                txtValorUnitarioItem.TextAlign = HorizontalAlignment.Center;
+                txtValorTotalItem.TextAlign = HorizontalAlignment.Center;
+                try
+                {
+                    System.Data.DataRow row = dsProdutos.Tables[0].NewRow();
+                    row.SetField("Id", 0);
+                    row.SetField("Codigo", produto.Id.ToString());
+                    row.SetField("Descricao", produto.Descricao);
+                    decimal valorUnitForm = decimal.Parse(txtValorUnitarioItem.Texts);
+                    row.SetField("ValorUnitario", string.Format("{0:0.00}", valorUnitForm));
+                    row.SetField("Quantidade", txtQuantidadeItem.Texts);
+                    decimal valorTotal = decimal.Parse(txtValorTotalItem.Texts);
+                    row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
+                    row.SetField("Desconto", string.Format("{0:0.00}", decimal.Parse(txtDescontoItem.Texts)));
+                    row.SetField("Acrescimo", string.Format("{0:0.00}", decimal.Parse(txtAcrescimoItem.Texts)));
+                    dsProdutos.Tables[0].Rows.Add(row);
 
+                    txtPesquisaProduto.Texts = "";
+                    somaEnquantoDigitaItens();
+                    txtQuantidadeItem.Texts = "1";
+                    txtValorUnitarioItem.Texts = "0,00";
+                    txtValorTotalItem.Texts = "0,00";
+                    txtDescontoItem.Texts = "0,00";
+                    txtAcrescimoItem.Texts = "0,00";
+                    txtCodProduto.Texts = "";
+                    txtPesquisaProduto.Focus();
+
+                    this.produto = new Produto();
+
+                    if (this.gridProdutos.View != null)
+                    {
+                        if (this.gridProdutos.View.Records.Count > 0)
+                        {
+                            gridProdutos.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+                            //this.gridProdutos.ColumnSizer = GridLengthUnitType.AutoLastColumnFill;
+                            this.gridProdutos.Columns["Descricao"].AutoSizeColumnsMode = AutoSizeColumnsMode.AllCellsWithLastColumnFill;
+                            gridProdutos.AutoSizeController.Refresh();
+                        }
+                    }
+
+                    txtPesquisaProduto.Focus();
+                }
+                catch
+                {
+                    GenericaDesktop.ShowErro("Insira corretamente o produto, quantidade e valor");
+                }
+            }
+            //Se o produto ja existe no grid vamos apenas alterar a quantidade
+            else
+            {
+                decimal valorUnitForm = decimal.Parse(txtValorUnitarioItem.Texts);
+                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(indexProduto), gridProdutos.Columns["ValorUnitario"].MappingName, string.Format("{0:0.00}", valorUnitForm));
+                double qtd = quantidadeAtual + double.Parse(txtQuantidadeItem.Texts);
+                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(indexProduto), gridProdutos.Columns["Quantidade"].MappingName, qtd.ToString());
+                decimal valorTotal = valorUnitForm * decimal.Parse(qtd.ToString());
+                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(indexProduto), gridProdutos.Columns["ValorTotal"].MappingName, string.Format("{0:0.00}", valorTotal));
+
+                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(indexProduto), gridProdutos.Columns["Desconto"].MappingName, string.Format("{0:0.00}", decimal.Parse(txtDescontoItem.Texts)));
+                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(indexProduto), gridProdutos.Columns["Acrescimo"].MappingName, decimal.Parse(txtAcrescimoItem.Texts));
+                
                 txtPesquisaProduto.Texts = "";
                 somaEnquantoDigitaItens();
                 txtQuantidadeItem.Texts = "1";
@@ -213,13 +284,6 @@ namespace Lunar.Telas.Condicionais
                         gridProdutos.AutoSizeController.Refresh();
                     }
                 }
-
-                txtPesquisaProduto.Focus();
-
-            }
-            catch
-            {
-                GenericaDesktop.ShowErro("Insira corretamente o produto, quantidade e valor");
             }
         }
 

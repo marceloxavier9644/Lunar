@@ -439,6 +439,7 @@
             this.txtVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtVendedor.Texts = "";
             this.txtVendedor.UnderlinedStyle = false;
+            this.txtVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVendedor_KeyPress);
             // 
             // lblAutomatico
             // 
@@ -1808,7 +1809,7 @@
             this.panelPagamentoTotal.Location = new System.Drawing.Point(0, 0);
             this.panelPagamentoTotal.Name = "panelPagamentoTotal";
             this.panelPagamentoTotal.Size = new System.Drawing.Size(999, 537);
-            this.panelPagamentoTotal.TabIndex = 151;
+            this.panelPagamentoTotal.TabIndex = 0;
             this.panelPagamentoTotal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPagamentoTotal_Paint);
             // 
             // autoLabel61
@@ -2246,7 +2247,7 @@
             this.btnCima.Location = new System.Drawing.Point(776, 34);
             this.btnCima.Name = "btnCima";
             this.btnCima.Size = new System.Drawing.Size(39, 39);
-            this.btnCima.TabIndex = 267;
+            this.btnCima.TabIndex = 10;
             this.btnCima.UseVisualStyleBackColor = true;
             this.btnCima.Click += new System.EventHandler(this.btnCima_Click);
             // 
@@ -2704,7 +2705,7 @@
             this.btnBaixo.Location = new System.Drawing.Point(776, 93);
             this.btnBaixo.Name = "btnBaixo";
             this.btnBaixo.Size = new System.Drawing.Size(39, 39);
-            this.btnBaixo.TabIndex = 266;
+            this.btnBaixo.TabIndex = 10;
             this.btnBaixo.UseVisualStyleBackColor = true;
             this.btnBaixo.Click += new System.EventHandler(this.btnBaixo_Click);
             // 

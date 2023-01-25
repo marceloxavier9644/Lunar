@@ -42,7 +42,7 @@
 		
 		<many-to-one name="OrdemServico" column="ORDEMSERVICO" class="LunarBase.Classes.OrdemServico" not-null="true" foreign-key="FK_EXAME_ORDEMSERVICO" lazy="false"/>
 		<many-to-one name="Pessoa" column="PESSOA" class="LunarBase.Classes.Pessoa" not-null="true" foreign-key="FK_EXAME_PESSOA" lazy="false"/>
-		<many-to-one name="Dependente" column="DEPENDENTE" class="LunarBase.Classes.PessoaDependente" not-null="true" foreign-key="FK_EXAME_PESSOADEPENDENTE" lazy="false"/>
+		<many-to-one name="Dependente" column="DEPENDENTE" class="LunarBase.Classes.PessoaDependente" not-null="false" foreign-key="FK_EXAME_PESSOADEPENDENTE" lazy="false"/>
 
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>

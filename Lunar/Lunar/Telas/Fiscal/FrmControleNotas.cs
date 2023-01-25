@@ -1267,10 +1267,16 @@ namespace Lunar.Telas.Fiscal
                                 if (nfe.Modelo.Equals("65"))
                                 {
                                     EmitirNFCe emitirNFCe = new EmitirNFCe();
-                                    if(venda != null)
+                                    if (venda != null)
                                         xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, venda.Cliente, venda, null);
-                                    else if(ordemServico != null)
-                                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, ordemServico.Cliente, null, ordemServico);
+                                    else if (ordemServico != null)
+                                    {
+                                        //Essa configuração foi devido a nf ter a possibilidade de emissão da nota com cliente diferente da O.S
+                                        if(nfe.Cliente == null)
+                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, ordemServico.Cliente, null, ordemServico);
+                                        else
+                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, nfe.Cliente, null, ordemServico);
+                                    }
 
                                     if (!String.IsNullOrEmpty(xmlStrEnvio))
                                     {

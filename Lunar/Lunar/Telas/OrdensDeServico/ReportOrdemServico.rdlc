@@ -2080,13 +2080,12 @@
               </Style>
             </Textbox>
             <Textbox Name="Empresa3">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!Endereco.Value</Value>
+                      <Value>=Parameters!EnderecoEmpresa.Value</Value>
                       <Style>
                         <FontSize>12pt</FontSize>
                       </Style>
@@ -2234,7 +2233,6 @@
               </Style>
             </Textbox>
             <Textbox Name="EnderecoCliente">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -2506,7 +2504,7 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="Endereco">
+    <ReportParameter Name="EnderecoEmpresa">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
@@ -2596,7 +2594,7 @@
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>Endereco</ParameterName>
+          <ParameterName>EnderecoEmpresa</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>

@@ -783,10 +783,10 @@ namespace Lunar.Telas.Fiscal
 
         private void chkGerarFinanceiro_CheckStateChanged(object sender, EventArgs e)
         {
-            if (chkGerarFinanceiro.Checked == true)
-                tabFinanceiro.TabVisible = true;
-            else
-                tabFinanceiro.TabVisible = false;
+            //if (chkGerarFinanceiro.Checked == true)
+            //    tabFinanceiro.TabVisible = true;
+            //else
+            //    tabFinanceiro.TabVisible = false;
         }
 
         private void btnEditarProduto_Click(object sender, EventArgs e)

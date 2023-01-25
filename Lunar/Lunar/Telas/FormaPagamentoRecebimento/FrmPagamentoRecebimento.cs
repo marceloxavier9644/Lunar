@@ -1103,6 +1103,14 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 ordemServico.DataEncerramento = DateTime.Now;
                 ordemServico.Status = "ENCERRADA";
                 Controller.getInstance().salvar(ordemServico);
+                GenericaDesktop generica = new GenericaDesktop();
+                IList<OrdemServicoProduto> listaProdutoOS = new List<OrdemServicoProduto>();
+                OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();
+                listaProdutoOS = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(ordemServico.Id);
+                foreach (OrdemServicoProduto ordemServicoProduto in listaProdutoOS)
+                {
+                    generica.atualizarEstoqueNaoConciliado(ordemServicoProduto.Produto, ordemServicoProduto.Quantidade, false, "O.S " + ordemServico.Id.ToString(), "O.S: " + ordemServico.Id + " CLI: " + ordemServico.Cliente.RazaoSocial, ordemServico.Cliente, DateTime.Now, null);
+                }
                 GenericaDesktop.ShowInfo("Ordem de Serviço encerrada com sucesso");
                 this.Close();
             }

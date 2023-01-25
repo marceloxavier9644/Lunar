@@ -10,7 +10,13 @@ using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.Win32;
+using NHibernate.Mapping;
+using Syncfusion.Data.Extensions;
+using Syncfusion.Windows.Forms.Grid.Grouping;
+using Syncfusion.Windows.Forms.PivotAnalysis;
+using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
+using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,6 +24,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
@@ -41,6 +48,7 @@ namespace Lunar.Telas.OrdensDeServico
         OrdemServicoController ordemServicoController = new OrdemServicoController();
         IList<Anexo> listaAnexo = new List<Anexo>();
         AnexoController anexoController = new AnexoController();
+        Pessoa vendedor = new Pessoa();
         public DialogResult showModalNovo(ref object ordemServico)
         {
             showModal = true;
@@ -332,6 +340,60 @@ namespace Lunar.Telas.OrdensDeServico
             }
         }
 
+        private void pesquisaVendedor()
+        {
+            Object pessoaOjeto = new Pessoa();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtVendedor.Texts + "%' and Tabela.Vendedor = true "))
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmClienteCadastro form = new FrmClienteCadastro();
+                            if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                            {
+                                txtVendedor.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                                vendedor = ((Pessoa)pessoaOjeto);
+                                txtObservacoes.Focus();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtVendedor.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                            vendedor = ((Pessoa)pessoaOjeto);
+                            txtObservacoes.Focus();
+                            break;
+                    }
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
         private void txtCodCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -594,6 +656,8 @@ namespace Lunar.Telas.OrdensDeServico
             }
         }
 
+
+
         private void inserirItem(Produto produto)
         {
             txtQuantidadeItem.TextAlign = HorizontalAlignment.Center;
@@ -664,7 +728,6 @@ namespace Lunar.Telas.OrdensDeServico
                             descontoItem = descontoItem + decimal.Parse(dataRowView.Row["Desconto"].ToString());
                         valorTotalProdutos = valorTotalProdutos + decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
                         pecas = pecas + double.Parse(dataRowView.Row["Quantidade"].ToString());
-
                     }
                     txtValorTotalTodosProdutos.Texts = string.Format("{0:0.00}", valorTotalProdutos);
                     txtTotalGeralProdutoServico.Texts = string.Format("{0:0.00}", valorTotalProdutos + decimal.Parse(txtValorTotalTodosServicos.Texts));
@@ -1493,6 +1556,10 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 ordemServico.Id = 0;
             }
+            if (vendedor != null && !String.IsNullOrEmpty(txtVendedor.Texts))
+                ordemServico.Vendedor = vendedor;
+            else
+                ordemServico.Vendedor = null;
 
             if (!String.IsNullOrEmpty(txtCodCliente.Texts))
             {
@@ -1633,17 +1700,21 @@ namespace Lunar.Telas.OrdensDeServico
                         var dataRowView = record.Data as DataRowView;
                         OrdemServicoExame ordemServicoExame = new OrdemServicoExame();
                         PessoaDependente pessoaDependente = new PessoaDependente();
-                        if (int.Parse(dataRowView.Row["CodDependente"].ToString()) > 0)
+                        try
                         {
-                            pessoaDependente.Id = int.Parse(dataRowView.Row["CodDependente"].ToString());
-                            pessoaDependente = (PessoaDependente)Controller.getInstance().selecionar(pessoaDependente);
-                            if (pessoaDependente != null)
-                                ordemServicoExame.Dependente = pessoaDependente;
+                            if (int.Parse(dataRowView.Row["CodDependente"].ToString()) > 0)
+                            {
+                                pessoaDependente.Id = int.Parse(dataRowView.Row["CodDependente"].ToString());
+                                pessoaDependente = (PessoaDependente)Controller.getInstance().selecionar(pessoaDependente);
+                                if (pessoaDependente != null)
+                                    ordemServicoExame.Dependente = pessoaDependente;
+                                else
+                                    ordemServicoExame.Dependente = null;
+                            }
                             else
-                                ordemServicoExame.Dependente = null; 
+                                ordemServicoExame.Dependente = null;
                         }
-                        else
-                            ordemServicoExame.Dependente = null;
+                        catch { ordemServicoExame.Dependente = null; }
 
                         if (int.Parse(dataRowView.Row["Id"].ToString()) > 0)
                         {
@@ -1922,7 +1993,16 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void btnPesquisaVendedor_Click(object sender, EventArgs e)
         {
+            vendedor = new Pessoa();
+            pesquisaVendedor();
+        }
 
+        private void txtVendedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                pesquisaVendedor();
+            }
         }
     }
 }
