@@ -1,5 +1,6 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.Cadastros.Produtos;
+using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.Vendas.RecebimentoVendas;
@@ -2668,6 +2669,7 @@ namespace Lunar.Telas.Vendas
         {
             try
             {
+                IList<ContaReceber> lisRec = new List<ContaReceber>();
                 //Salva na tabela vendaItens
                 salvarProdutosVenda();
                 //Nota nao foi gerada para ser gerada posteriormente agrupada!
@@ -2690,6 +2692,7 @@ namespace Lunar.Telas.Vendas
                         cr.Concluido = true;
                         cr.Documento = "V" + vendaConclusao.Id + "/" + cr.Parcela;
                         Controller.getInstance().salvar(cr);
+                        lisRec.Add(cr);
                     }
                 }
 
@@ -2703,7 +2706,11 @@ namespace Lunar.Telas.Vendas
                         Controller.getInstance().salvar(cx);
                     }
                 }
-
+                if(lisRec.Count > 0)
+                {
+                    FrmImprimirDuplicata frDup = new FrmImprimirDuplicata(vendaConclusao.Cliente, lisRec);
+                    frDup.ShowDialog();
+                }
                 if (temNota == false)
                 {
                     //Imprimir Ticket

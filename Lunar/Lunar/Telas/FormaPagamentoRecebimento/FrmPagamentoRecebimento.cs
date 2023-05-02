@@ -56,16 +56,16 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 if (parcial == true)
                     btnDesconto.Enabled = false;
             }
-            if(listaPagar.Count > 0)
+            if (listaPagar.Count > 0)
             {
                 this.listaPagar = listaPagar;
                 ajustarListaPagar();
             }
             this.ordemServico = ordemServico;
-            if(ordemServico.Id > 0)
+            if (ordemServico.Id > 0)
                 ajustarOrdemServico();
 
-            if(ativarCrediario == true)
+            if (ativarCrediario == true)
             {
                 btnCrediario.Enabled = true;
                 iconeCrediario.Enabled = true;
@@ -93,34 +93,69 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
 
         private void ajustarOrdemServico()
         {
-            System.Data.DataRow row = dsOrdemServico.Tables[0].NewRow();
-            row.SetField("Id", ordemServico.Id.ToString());
-            row.SetField("Documento", ordemServico.Id);
-            row.SetField("Parcela", 1);
-            decimal valorUnitForm = ordemServico.ValorTotal;
-            row.SetField("ValorParcela", string.Format("{0:0.00}", valorUnitForm));
-            row.SetField("Multa", 0);
-            decimal valorTotal = ordemServico.ValorTotal;
-            row.SetField("Juro", string.Format("{0:0.00}", 0));
-            row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
-            row.SetField("FormaPagamento", string.Format("{0:0.00}", ""));
-            row.SetField("Cliente", string.Format("{0:0.00}", ordemServico.Cliente.RazaoSocial));
-            dsOrdemServico.Tables[0].Rows.Add(row);
-            gridFaturas.DataSource = this.dsOrdemServico;
+            if (origem != "ORDEMSERVICO_SINAL")
+            {
+                System.Data.DataRow row = dsOrdemServico.Tables[0].NewRow();
+                row.SetField("Id", ordemServico.Id.ToString());
+                row.SetField("Documento", ordemServico.Id);
+                row.SetField("Parcela", 1);
+                decimal valorUnitForm = ordemServico.ValorTotal;
+                row.SetField("ValorParcela", string.Format("{0:0.00}", valorUnitForm));
+                row.SetField("Multa", 0);
+                decimal valorTotal = ordemServico.ValorTotal;
+                row.SetField("Juro", string.Format("{0:0.00}", 0));
+                row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
+                row.SetField("FormaPagamento", string.Format("{0:0.00}", ""));
+                row.SetField("Cliente", string.Format("{0:0.00}", ordemServico.Cliente.RazaoSocial));
+                dsOrdemServico.Tables[0].Rows.Add(row);
+                gridFaturas.DataSource = this.dsOrdemServico;
 
-            valorTotal = 0;
-            valorFaltante = 0;
-            valorRecebido = 0;
+                valorTotal = 0;
+                valorFaltante = 0;
+                valorRecebido = 0;
 
-            valorTotal = ordemServico.ValorTotal;
-            clienteLista = ordemServico.Cliente;
-            
-            valorFaltante = valorTotal;
-            valorTotal = Math.Round(valorTotal, 2);
-            lblValorTotal.Text = valorTotal.ToString("C2", CultureInfo.CurrentCulture);
-            lblDesconto.Text = 0.ToString("C2", CultureInfo.CurrentCulture);
-            lblValorFaltante.Text = valorFaltante.ToString("C2", CultureInfo.CurrentCulture);
-            lblValorRecebido.Text = valorRecebido.ToString("C2", CultureInfo.CurrentCulture);
+                valorTotal = ordemServico.ValorTotal;
+                clienteLista = ordemServico.Cliente;
+
+                valorFaltante = valorTotal;
+                valorTotal = Math.Round(valorTotal, 2);
+                lblValorTotal.Text = valorTotal.ToString("C2", CultureInfo.CurrentCulture);
+                lblDesconto.Text = 0.ToString("C2", CultureInfo.CurrentCulture);
+                lblValorFaltante.Text = valorFaltante.ToString("C2", CultureInfo.CurrentCulture);
+                lblValorRecebido.Text = valorRecebido.ToString("C2", CultureInfo.CurrentCulture);
+            }
+            else if (origem.Equals("ORDEMSERVICO_SINAL"))
+            {
+                System.Data.DataRow row = dsOrdemServico.Tables[0].NewRow();
+                row.SetField("Id", ordemServico.Id.ToString());
+                row.SetField("Documento", ordemServico.Id);
+                row.SetField("Parcela", 1);
+                decimal valorUnitForm = Sessao.valorSinalOrdemServico;
+                row.SetField("ValorParcela", string.Format("{0:0.00}", valorUnitForm));
+                row.SetField("Multa", 0);
+                decimal valorTotal = Sessao.valorSinalOrdemServico;
+                row.SetField("Juro", string.Format("{0:0.00}", 0));
+                row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
+                row.SetField("FormaPagamento", string.Format("{0:0.00}", ""));
+                row.SetField("Cliente", string.Format("{0:0.00}", ordemServico.Cliente.RazaoSocial));
+                dsOrdemServico.Tables[0].Rows.Add(row);
+                gridFaturas.DataSource = this.dsOrdemServico;
+
+                //valorTotal = 0;
+                valorFaltante = 0;
+                valorRecebido = 0;
+
+
+                clienteLista = ordemServico.Cliente;
+
+                valorFaltante = valorTotal;
+                valorTotal = Math.Round(valorTotal, 2);
+                lblValorTotal.Text = valorTotal.ToString("C2", CultureInfo.CurrentCulture);
+                lblDesconto.Text = 0.ToString("C2", CultureInfo.CurrentCulture);
+                lblValorFaltante.Text = valorFaltante.ToString("C2", CultureInfo.CurrentCulture);
+                lblValorRecebido.Text = valorRecebido.ToString("C2", CultureInfo.CurrentCulture);
+            }
+            verificarCreditoClienteNaAbertura();
         }
         private void ajustarListaReceber()
         {
@@ -229,8 +264,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         {
             if (decimal.Parse(lblValorFaltante.Text.Replace("R$ ", "")) > 0)
             {
-                if (ordemServico.Id > 0)
+                if (ordemServico.Id > 0 && origem != "ORDEMSERVICO_SINAL")
                     valorTotal = ordemServico.ValorTotal;
+                else if (ordemServico.Id > 0 && origem == "ORDEMSERVICO_SINAL")
+                    valorTotal = Sessao.valorSinalOrdemServico;
                 object vendaFormaPagamento = new VendaFormaPagamento();
                 Sessao.vendasRecebimento_ValorRecebido = 0;
                 Form formBackground = new Form();
@@ -261,7 +298,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 break;
                             case DialogResult.OK:
                                 //MessageBox.Show("Forma Pagamento: " + formaPagamento.Descricao + " Valor: R$ " + valorRecebido);
-                                inserirFormaPagamentoGrid(formaPagamento, valorRecebido, null, null,"",null, null, DateTime.Parse("1900-01-01 00:00:00"), "");
+                                inserirFormaPagamentoGrid(formaPagamento, valorRecebido, null, null, "", null, null, DateTime.Parse("1900-01-01 00:00:00"), "");
                                 break;
                         }
                     }
@@ -287,6 +324,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             {
                 if (ordemServico.Id > 0)
                     valorTotal = ordemServico.ValorTotal;
+                else if (ordemServico.Id > 0 && origem == "ORDEMSERVICO_SINAL")
+                    valorTotal = Sessao.valorSinalOrdemServico;
                 Sessao.vendasRecebimento_ValorRecebido = 0;
                 Form formBackground = new Form();
                 try
@@ -299,7 +338,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         //formBackground.FormBorderStyle = FormBorderStyle.None;
                         formBackground.Opacity = .50d;
                         formBackground.BackColor = Color.Black;
-                      //  formBackground.Left = Top = 10;
+                        //  formBackground.Left = Top = 10;
                         formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
                         formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
                         formBackground.WindowState = FormWindowState.Maximized;
@@ -321,7 +360,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 break;
                             case DialogResult.OK:
                                 //MessageBox.Show("Forma Pagamento: " + formaPagamento.Descricao + " Valor: R$ " + valorRecebido);
-                                inserirFormaPagamentoGrid(formaPagamento, valorRecebido,bandeiraCartao, parcelamento, autorizacao, adquirente, null, DateTime.Parse("1900-01-01 00:00:00"), tipoCartao);
+                                inserirFormaPagamentoGrid(formaPagamento, valorRecebido, bandeiraCartao, parcelamento, autorizacao, adquirente, null, DateTime.Parse("1900-01-01 00:00:00"), tipoCartao);
                                 uu.Dispose();
                                 formBackground.Dispose();
                                 break;
@@ -349,6 +388,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             {
                 if (ordemServico.Id > 0)
                     valorTotal = ordemServico.ValorTotal;
+                else if (ordemServico.Id > 0 && origem == "ORDEMSERVICO_SINAL")
+                    valorTotal = Sessao.valorSinalOrdemServico;
                 Sessao.vendasRecebimento_ValorRecebido = 0;
                 Form formBackground = new Form();
                 try
@@ -407,6 +448,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             {
                 if (ordemServico.Id > 0)
                     valorTotal = ordemServico.ValorTotal;
+                else if (ordemServico.Id > 0 && origem == "ORDEMSERVICO_SINAL")
+                    valorTotal = Sessao.valorSinalOrdemServico;
                 Sessao.vendasRecebimento_ValorRecebido = 0;
                 Form formBackground = new Form();
                 try
@@ -463,6 +506,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             {
                 if (ordemServico.Id > 0)
                     valorTotal = ordemServico.ValorTotal;
+                else if (ordemServico.Id > 0 && origem == "ORDEMSERVICO_SINAL")
+                    valorTotal = Sessao.valorSinalOrdemServico;
                 Sessao.vendasRecebimento_ValorRecebido = 0;
                 Form formBackground = new Form();
                 try
@@ -547,7 +592,23 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 formBackground.Dispose();
                                 break;
                             case DialogResult.OK:
-                                inserirFormaPagamentoGrid(formaPagamento, valorRecebido, null, null, "", null, null, DateTime.Parse("1900-01-01 00:00:00"), "");
+                                bool invalidar = false;
+                                var records = gridRecebimento.View.Records;
+                                foreach (var record in records)
+                                {
+                                    FormaPagamento form = new FormaPagamento();
+                                    Caixa caixa = new Caixa();
+                                    var dataRowView = record.Data as DataRowView;
+                                    form = new FormaPagamento();
+                                    form.Id = int.Parse(dataRowView.Row["Id"].ToString());
+                                    form = (FormaPagamento)Controller.getInstance().selecionar(form);
+                                    if (form.CreditoCliente == true)
+                                        invalidar = true;
+                                }
+                                if (invalidar == false)
+                                    inserirFormaPagamentoGrid(formaPagamento, valorRecebido, null, null, "", null, null, DateTime.Parse("1900-01-01 00:00:00"), "");
+                                else
+                                    GenericaDesktop.ShowErro("Já foi incluso crédito do cliente, para alterar o valor delete o crédito inserido primeiro!");
                                 uu.Dispose();
                                 formBackground.Dispose();
                                 break;
@@ -571,19 +632,19 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         private void inserirFormaPagamentoGrid(FormaPagamento formaPagamento, decimal valorRecebido, BandeiraCartao bandeiraCartao, Parcelamento parcelamento, string autorizacaoCartao, AdquirenteCartao adquirente, ContaBancaria contaBancaria, DateTime dataPix, String tipoCartao)
         {
             int idBandeira = 0;
-            string bandeira = "";;
+            string bandeira = ""; ;
             int idParcela = 0;
             string parcela = "";
             string adqui = "";
             int idConta = 0;
             String dataPixRealizado = "";
 
-            if(bandeiraCartao != null)
+            if (bandeiraCartao != null)
             {
                 idBandeira = bandeiraCartao.Id;
                 bandeira = bandeiraCartao.Descricao;
             }
-            if(parcelamento != null)
+            if (parcelamento != null)
             {
                 idParcela = parcelamento.Id;
                 parcela = parcelamento.Descricao;
@@ -592,7 +653,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 adqui = adquirente.Id.ToString();
             if (contaBancaria != null)
             {
-                idConta = contaBancaria.Id;  
+                idConta = contaBancaria.Id;
             }
             if (dataPix != null && !dataPix.ToShortDateString().Equals("01/01/1900"))
                 dataPixRealizado = dataPix.ToShortDateString();
@@ -611,7 +672,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             row.SetField("DataPix", dataPixRealizado);
             row.SetField("TipoCartao", tipoCartao);
             dsRecebimento.Tables[0].Rows.Add(row);
-            
+
             calcularTotais();
         }
 
@@ -626,9 +687,13 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                     var dataRowView = record.Data as DataRowView;
                     somaValorRecebido = somaValorRecebido + decimal.Parse(dataRowView.Row["Valor"].ToString());
                 }
-                if (ordemServico.Id > 0) valorTotal = ordemServico.ValorTotal;
+                if (ordemServico.Id > 0)
+                    valorTotal = ordemServico.ValorTotal;
+                if (ordemServico.Id > 0 && origem == "ORDEMSERVICO_SINAL")
+                    valorTotal = Sessao.valorSinalOrdemServico;
                 valorFaltante = ((valorTotal - somaValorRecebido) - descontoRecebido + acrescimoRecebido);
-                if(descontoRecebido > 0)
+
+                if (descontoRecebido > 0)
                     lblDesconto.Text = descontoRecebido.ToString("C2", CultureInfo.CurrentCulture);
                 else if (acrescimoRecebido > 0)
                     lblDesconto.Text = acrescimoRecebido.ToString("C2", CultureInfo.CurrentCulture);
@@ -750,26 +815,46 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         {
             if (ordemServico.Id > 0)
                 valorTotal = ordemServico.ValorTotal;
+            else if (ordemServico.Id > 0 && origem == "ORDEMSERVICO_SINAL")
+                valorTotal = Sessao.valorSinalOrdemServico;
             CreditoClienteController creditoClienteController = new CreditoClienteController();
             if (GenericaDesktop.ShowConfirmacao("O cliente é " + clienteLista.RazaoSocial + " CPF/CNPJ: " + clienteLista.Cnpj + "?"))
             {
 
                 IList<CreditoCliente> listaCredito = creditoClienteController.selecionarCreditoPorCliente(clienteLista.Id);
-                if(listaCredito.Count > 0)
+                if (listaCredito.Count > 0)
                 {
                     decimal valorDisponivel = 0;
-                    foreach(CreditoCliente credito in listaCredito)
+                    foreach (CreditoCliente credito in listaCredito)
                     {
                         valorDisponivel = valorDisponivel + (credito.Valor - credito.ValorUtilizado);
                     }
-                    if(valorDisponivel > 0)
+                    if (valorDisponivel > 0)
                     {
-                       if(GenericaDesktop.ShowConfirmacao("Cliente " + clienteLista.RazaoSocial + " possui " + valorDisponivel.ToString("C2", CultureInfo.CurrentCulture) + " deseja utilizar o crédito total?"))
+                        if (GenericaDesktop.ShowConfirmacao("Cliente " + clienteLista.RazaoSocial + " possui " + valorDisponivel.ToString("C2", CultureInfo.CurrentCulture) + " deseja utilizar o crédito total?"))
                         {
-                            FormaPagamento fp = new FormaPagamento();
-                            fp.Id = 8;
-                            fp = (FormaPagamento)Controller.getInstance().selecionar(fp);
-                            inserirFormaPagamentoGrid(fp, valorDisponivel, null, null, "", null, null, DateTime.Parse("1900-01-01 00:00:00"), "");
+                            bool invalidar = false;
+                            var records = gridRecebimento.View.Records;
+                            foreach (var record in records)
+                            {
+                                FormaPagamento formaPagamento = new FormaPagamento();
+                                Caixa caixa = new Caixa();
+                                var dataRowView = record.Data as DataRowView;
+                                formaPagamento = new FormaPagamento();
+                                formaPagamento.Id = int.Parse(dataRowView.Row["Id"].ToString());
+                                formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                                if (formaPagamento.CreditoCliente == true)
+                                    invalidar = true;
+                            }
+                            if (invalidar == true)
+                                GenericaDesktop.ShowErro("Já foi incluso crédito do cliente, para alterar o valor delete o crédito inserido primeiro!");
+                            else
+                            {
+                                FormaPagamento fp = new FormaPagamento();
+                                fp.Id = 8;
+                                fp = (FormaPagamento)Controller.getInstance().selecionar(fp);
+                                inserirFormaPagamentoGrid(fp, valorDisponivel, null, null, "", null, null, DateTime.Parse("1900-01-01 00:00:00"), "");
+                            }
                         }
                         else
                         {
@@ -785,8 +870,45 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             else
             {
                 selecionarCliente();
-                //if(clienteLista != null)
-                //    abrirFormCreditoCliente();
+                ////if(clienteLista != null)
+                ////    abrirFormCreditoCliente();
+            }
+        }
+
+        private void verificarCreditoClienteNaAbertura()
+        {
+            if (origem != "ORDEMSERVICO_SINAL")
+            {
+                if (ordemServico.Id > 0)
+                    valorTotal = ordemServico.ValorTotal;
+                else if (ordemServico.Id > 0 && origem == "ORDEMSERVICO_SINAL")
+                    valorTotal = Sessao.valorSinalOrdemServico;
+                CreditoClienteController creditoClienteController = new CreditoClienteController();
+                IList<CreditoCliente> listaCredito = creditoClienteController.selecionarCreditoPorCliente(clienteLista.Id);
+                if (listaCredito.Count > 0)
+                {
+                    decimal valorDisponivel = 0;
+                    foreach (CreditoCliente credito in listaCredito)
+                    {
+                        valorDisponivel = valorDisponivel + (credito.Valor - credito.ValorUtilizado);
+                    }
+                    if (valorDisponivel > 0)
+                    {
+                        if (GenericaDesktop.ShowConfirmacao("Cliente " + clienteLista.RazaoSocial + " possui " + valorDisponivel.ToString("C2", CultureInfo.CurrentCulture) + " deseja utilizar o crédito total?"))
+                        {
+                            FormaPagamento fp = new FormaPagamento();
+                            fp.Id = 8;
+                            fp = (FormaPagamento)Controller.getInstance().selecionar(fp);
+                            inserirFormaPagamentoGrid(fp, valorDisponivel, null, null, "", null, null, DateTime.Parse("1900-01-01 00:00:00"), "");
+                            //btnCreditoCliente.Enabled = false;
+                            //iconeCredito.Enabled = false;
+                        }
+                        else
+                        {
+                            abrirFormCreditoCliente(valorDisponivel);
+                        }
+                    }
+                }
             }
         }
 
@@ -851,12 +973,288 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         {
             if(listaReceber.Count > 0)
                 concluirRecebimentoContaReceber();
-            if (ordemServico.Id > 0)
+            if (ordemServico.Id > 0 && origem != "ORDEMSERVICO_SINAL")
                 concluirRecebimentoOrdemServico();
-            if(listaPagar.Count > 0)
+            if(ordemServico.Id > 0 && origem.Equals("ORDEMSERVICO_SINAL"))
+                concluirRecebimentoSinalOs();
+            if (listaPagar.Count > 0)
                 concluirRecebimentoContaPagar();
         }
 
+        private void concluirRecebimentoSinalOs()
+        {
+            try
+            {
+                IList<OrdemServicoPagamento> listaOrdemServicoPagamento = new List<OrdemServicoPagamento>();
+                FormaPagamento formaPagamento = new FormaPagamento();
+                //OrdemServicoPagamento ordemServicoPagamento = new OrdemServicoPagamento();
+                decimal valorRecebido = 0;
+
+                var records = gridRecebimento.View.Records;
+                foreach (var record in records)
+                {
+                   // ordemServicoPagamento = new OrdemServicoPagamento();
+                    Caixa caixa = new Caixa();
+                    var dataRowView = record.Data as DataRowView;
+                    formaPagamento = new FormaPagamento();
+                    formaPagamento.Id = int.Parse(dataRowView.Row["Id"].ToString());
+                    formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    if (formaPagamento.Id > 0)
+                    {
+                        //ordemServicoPagamento.DataRecebimento = DateTime.Now;
+                        //ordemServicoPagamento.FormaPagamento = formaPagamento;
+                        //ordemServicoPagamento.OrdemServico = ordemServico;
+                        //ordemServicoPagamento.Troco = 0;
+                        //ordemServicoPagamento.ValorRecebido = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                        valorRecebido = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                        //ordemServicoPagamento.AdquirenteCartao = null;
+                        //ordemServicoPagamento.AutorizacaoCartao = "";
+                        //ordemServicoPagamento.BandeiraCartao = null;
+                        //ordemServicoPagamento.Cartao = false;
+                        //ordemServicoPagamento.ParcelamentoCartao = null;
+                        //ordemServicoPagamento.Parcelas = "";
+                        //ordemServicoPagamento.TipoCartao = "";
+                        caixa.IdOrigem = ordemServico.Id.ToString();
+
+                        //Dinheiro
+                        if (formaPagamento.Id == 1)
+                        {
+                            caixa.Conciliado = true;
+                            caixa.Concluido = true;
+                            caixa.ContaBancaria = null;
+                            caixa.DataLancamento = DateTime.Now;
+                            caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
+                            caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                            caixa.FormaPagamento = formaPagamento;
+                            caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                            caixa.TabelaOrigem = origem;
+                            caixa.Tipo = "E";
+                            caixa.Usuario = Sessao.usuarioLogado;
+                            caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            caixa.Pessoa = ordemServico.Cliente;
+                            Controller.getInstance().salvar(caixa);
+                        }
+                        //Cartão
+                        else if (formaPagamento.Id == 2)
+                        {
+                            BandeiraCartao bandeiraCartao = new BandeiraCartao();
+                            bandeiraCartao.Id = int.Parse(dataRowView.Row["IdBandeira"].ToString());
+                            bandeiraCartao = (BandeiraCartao)Controller.getInstance().selecionar(bandeiraCartao);
+
+                            Parcelamento parcelamento = new Parcelamento();
+                            parcelamento.Id = int.Parse(dataRowView.Row["IdParcelamento"].ToString());
+                            parcelamento = (Parcelamento)Controller.getInstance().selecionar(parcelamento);
+
+                            AdquirenteCartao adquirenteCartao = new AdquirenteCartao();
+                            adquirenteCartao.Id = int.Parse(dataRowView.Row["Adquirente"].ToString());
+                            adquirenteCartao = (AdquirenteCartao)Controller.getInstance().selecionar(adquirenteCartao);
+                            decimal valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+
+                            caixa.Conciliado = true;
+                            caixa.Concluido = true;
+                            caixa.ContaBancaria = null;
+                            caixa.DataLancamento = DateTime.Now;
+                            caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
+                            caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                            caixa.FormaPagamento = formaPagamento;
+                            caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                            caixa.TabelaOrigem = origem;
+                            caixa.Tipo = "E";
+                            caixa.Usuario = Sessao.usuarioLogado;
+                            caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            caixa.Pessoa = ordemServico.Cliente;
+                            Controller.getInstance().salvar(caixa);
+                            //ordemServicoPagamento.AdquirenteCartao = adquirenteCartao;
+                            //ordemServicoPagamento.AutorizacaoCartao = dataRowView.Row["AutorizacaoCartao"].ToString();
+                            //ordemServicoPagamento.BandeiraCartao = bandeiraCartao;
+                            //ordemServicoPagamento.Cartao = true;
+                            //ordemServicoPagamento.ParcelamentoCartao = parcelamento;
+                            //ordemServicoPagamento.Parcelas = parcelamento.Parcelas.ToString();
+                            //ordemServicoPagamento.TipoCartao = dataRowView.Row["TipoCartao"].ToString();
+                        }
+                        //PIX
+                        else if (formaPagamento.Id == 3)
+                        {
+                            ContaBancaria contaBancaria = new ContaBancaria();
+                            contaBancaria.Id = int.Parse(dataRowView.Row["ContaBancaria"].ToString());
+                            contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                            if (ordemServico.Id > 0)
+                            {
+                                caixa.Conciliado = true;
+                                caixa.Concluido = true;
+                                caixa.ContaBancaria = contaBancaria;
+                                caixa.DataLancamento = DateTime.Now;
+                                caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
+                                caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                                caixa.FormaPagamento = formaPagamento;
+                                caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                                caixa.TabelaOrigem = origem;
+                                caixa.Tipo = "E";
+                                caixa.Usuario = Sessao.usuarioLogado;
+                                caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                                caixa.Pessoa = ordemServico.Cliente;
+                               // ordemServicoPagamento.ContaBancaria = contaBancaria;
+                                Controller.getInstance().salvar(caixa);
+                            }
+                        }
+                        //Depósito ou Transferência
+                        else if (formaPagamento.Id == 4)
+                        {
+                            ContaBancaria contaBancaria = new ContaBancaria();
+                            contaBancaria.Id = int.Parse(dataRowView.Row["ContaBancaria"].ToString());
+                            contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                            if (ordemServico.Id > 0)
+                            {
+                                caixa.Conciliado = true;
+                                caixa.Concluido = true;
+                                caixa.ContaBancaria = contaBancaria;
+                                caixa.DataLancamento = DateTime.Now;
+                                caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
+                                caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                                caixa.FormaPagamento = formaPagamento;
+                                caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                                caixa.TabelaOrigem = origem;
+                                caixa.Tipo = "E";
+                                caixa.Usuario = Sessao.usuarioLogado;
+                                caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                                caixa.Pessoa = ordemServico.Cliente;
+                                //ordemServicoPagamento.ContaBancaria = contaBancaria;
+                                Controller.getInstance().salvar(caixa);
+                            }
+                        }
+                        //Crediário
+                        else if (formaPagamento.Id == 6)
+                        {
+                            if (listaCrediario.Count > 0)
+                            {
+                                int c = 0;
+                                foreach (ContaReceber contaReceber in listaCrediario)
+                                {
+                                    c++;
+                                    contaReceber.Concluido = true;
+                                    contaReceber.Parcela = c.ToString();
+                                    contaReceber.Documento = "OS" + ordemServico.Id + "/" + c;
+                                    Controller.getInstance().salvar(contaReceber);
+                                }
+                            }
+                        }
+                        //Cheque
+                        else if (formaPagamento.Id == 7)
+                        {
+                            if (listaCheque.Count > 0)
+                            {
+                                int c = 0;
+                                foreach (Cheque cheque in listaCheque)
+                                {
+                                    c++;
+                                    caixa.Conciliado = true;
+                                    caixa.Concluido = true;
+                                    caixa.ContaBancaria = null;
+                                    caixa.DataLancamento = DateTime.Now;
+                                    caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
+                                    caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                                    caixa.FormaPagamento = formaPagamento;
+                                    caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                                    caixa.TabelaOrigem = origem;
+                                    caixa.Tipo = "E";
+                                    caixa.Usuario = Sessao.usuarioLogado;
+                                    caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                                    caixa.Pessoa = ordemServico.Cliente;
+                                    Controller.getInstance().salvar(caixa);
+                                    Controller.getInstance().salvar(cheque);
+
+                                    ContaReceber contaReceber = new ContaReceber();
+                                    contaReceber.Id = 0;
+                                    contaReceber.NomeCliente = ordemServico.Cliente.RazaoSocial;
+                                    contaReceber.CnpjCliente = ordemServico.Cliente.Cnpj;
+                                    contaReceber.Data = DateTime.Now;
+                                    contaReceber.Descricao = "O.S - " + ordemServico.Id + " - CHEQUE";
+                                    contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
+                                    contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                    contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                    contaReceber.Juro = 0;
+                                    contaReceber.Multa = 0;
+                                    if (ordemServico.Cliente.EnderecoPrincipal != null)
+                                        contaReceber.EnderecoCliente = ordemServico.Cliente.EnderecoPrincipal.Logradouro + ", " + ordemServico.Cliente.EnderecoPrincipal.Numero + " - " + ordemServico.Cliente.EnderecoPrincipal.Complemento;
+                                    else
+                                        contaReceber.EnderecoCliente = "";
+                                    contaReceber.Documento = "OS" + ordemServico.Id + "/" + c;
+                                    contaReceber.FormaPagamento = formaPagamento;
+                                    contaReceber.Recebido = false;
+                                    contaReceber.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
+                                    contaReceber.Venda = null;
+                                    contaReceber.OrdemServico = ordemServico;
+                                    contaReceber.Parcela = c.ToString();
+                                    contaReceber.VendaFormaPagamento = null;
+                                    contaReceber.Cliente = ordemServico.Cliente;
+                                    contaReceber.Origem = "ORDEMSERVICO";
+                                    contaReceber.Concluido = true;
+                                    Controller.getInstance().salvar(contaReceber);
+                                }
+                            }
+                        }
+                        //Crédito Cliente
+                        else if (formaPagamento.Id == 8)
+                        {
+                            caixa.Conciliado = true;
+                            caixa.Concluido = true;
+                            caixa.ContaBancaria = null;
+                            caixa.DataLancamento = DateTime.Now;
+                            caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
+                            caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                            caixa.FormaPagamento = formaPagamento;
+                            caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                            caixa.TabelaOrigem = origem;
+                            caixa.Tipo = "E";
+                            caixa.Usuario = Sessao.usuarioLogado;
+                            caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            caixa.Pessoa = ordemServico.Cliente;
+                            Controller.getInstance().salvar(caixa);
+
+                            CreditoCliente creditoCliente = new CreditoCliente();
+                            creditoCliente.Cliente = clienteLista;
+                            creditoCliente.DataUtilizacao = DateTime.Now;
+                            creditoCliente.EmpresaFilial = Sessao.empresaFilialLogada;
+                            creditoCliente.Origem = origem;
+                            creditoCliente.Valor = 0;
+                            creditoCliente.ValorUtilizado = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            Controller.getInstance().salvar(creditoCliente);
+                        }
+                    }
+                    //listaOrdemServicoPagamento.Add(ordemServicoPagamento);
+                }
+                foreach (OrdemServicoPagamento ordemServicoPagamento1 in listaOrdemServicoPagamento)
+                {
+                    Controller.getInstance().salvar(ordemServicoPagamento1);
+                }
+                //ordemServico.DataEncerramento = DateTime.Now;
+                //ordemServico.Status = "ENCERRADA";
+                //Controller.getInstance().salvar(ordemServico);
+                //GenericaDesktop generica = new GenericaDesktop();
+                //IList<OrdemServicoProduto> listaProdutoOS = new List<OrdemServicoProduto>();
+                //OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();
+                //listaProdutoOS = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(ordemServico.Id);
+                //foreach (OrdemServicoProduto ordemServicoProduto in listaProdutoOS)
+                //{
+                //    generica.atualizarEstoqueNaoConciliado(ordemServicoProduto.Produto, ordemServicoProduto.Quantidade, false, "O.S " + ordemServico.Id.ToString(), "O.S: " + ordemServico.Id + " CLI: " + ordemServico.Cliente.RazaoSocial, ordemServico.Cliente, DateTime.Now, null);
+                //}
+                CreditoCliente credito = new CreditoCliente();
+                credito.Cliente = ordemServico.Cliente;
+                credito.EmpresaFilial = Sessao.empresaFilialLogada;
+                credito.Origem = "ORDEMSERVICO";
+                credito.Valor = valorRecebido;
+                credito.ValorUtilizado = 0;
+                Controller.getInstance().salvar(credito);
+                ordemServico.Entrada = true;
+                Controller.getInstance().salvar(ordemServico);
+                GenericaDesktop.ShowInfo("Entrada registrada com Sucesso!");
+                this.Close();
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowErro("Erro ao encerrar a O.S " + ordemServico.Id + "\n\n" + err.Message);
+            }
+        }
         private void concluirRecebimentoOrdemServico()
         {
             try
@@ -864,7 +1262,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 IList<OrdemServicoPagamento> listaOrdemServicoPagamento = new List<OrdemServicoPagamento>();
                 FormaPagamento formaPagamento = new FormaPagamento();
                 OrdemServicoPagamento ordemServicoPagamento = new OrdemServicoPagamento();
-
+                IList<ContaReceber> lis = new List<ContaReceber>();
                 var records = gridRecebimento.View.Records;
                 foreach (var record in records)
                 {
@@ -1002,12 +1400,14 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             if (listaCrediario.Count > 0)
                             {
                                 int c = 0;
+                                
                                 foreach (ContaReceber contaReceber in listaCrediario)
                                 { c++;
                                     contaReceber.Concluido = true;
                                     contaReceber.Parcela = c.ToString();
                                     contaReceber.Documento = "OS"+ordemServico.Id+"/"+c;
                                     Controller.getInstance().salvar(contaReceber);
+                                    lis.Add(contaReceber);
                                 }
                             }
                         }
@@ -1063,6 +1463,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     contaReceber.Origem = "ORDEMSERVICO";
                                     contaReceber.Concluido = true;
                                     Controller.getInstance().salvar(contaReceber);
+                                    lis.Add(contaReceber);
                                 }
                             }
                         }
@@ -1091,6 +1492,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             creditoCliente.Origem = origem;
                             creditoCliente.Valor = 0;
                             creditoCliente.ValorUtilizado = decimal.Parse(dataRowView.Row["Valor"].ToString());
+
                             Controller.getInstance().salvar(creditoCliente);
                         }
                     }
@@ -1110,6 +1512,11 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 foreach (OrdemServicoProduto ordemServicoProduto in listaProdutoOS)
                 {
                     generica.atualizarEstoqueNaoConciliado(ordemServicoProduto.Produto, ordemServicoProduto.Quantidade, false, "O.S " + ordemServico.Id.ToString(), "O.S: " + ordemServico.Id + " CLI: " + ordemServico.Cliente.RazaoSocial, ordemServico.Cliente, DateTime.Now, null);
+                }
+                if (lis.Count > 0)
+                {
+                    FrmImprimirDuplicata frDup = new FrmImprimirDuplicata(ordemServico.Cliente, lis);
+                    frDup.ShowDialog();
                 }
                 GenericaDesktop.ShowInfo("Ordem de Serviço encerrada com sucesso");
                 this.Close();
@@ -1532,7 +1939,17 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                     {
                         //RECEBIMENTO PARCIAL
                         conta.Documento = conta.Documento + ".1";
-                        conta.ValorParcela = conta.ValorParcela - decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                        //conta.ValorParcela = conta.ValorParcela - decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                        conta.ValorRecebimentoParcial = conta.ValorRecebimentoParcial + decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                        ContaReceberRecebida crr = new ContaReceberRecebida();
+                        crr.ContaReceber = conta;
+                        crr.Descricao = "RECEBIMENTO PARCIAL " + conta.Documento + "/" + conta.Parcela;
+                        crr.ValorAcrescimo = 0;
+                        crr.ValorDesconto = 0;
+                        crr.ValorOriginal = conta.ValorParcela;
+                        crr.ValorOriginalComJuros = conta.ValorParcela + conta.Juro + conta.Multa;
+                        crr.ValorRecebido = decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                        Controller.getInstance().salvar(crr);
                     }
                     Controller.getInstance().salvar(conta); 
                 }

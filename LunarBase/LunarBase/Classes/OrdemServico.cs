@@ -22,6 +22,7 @@ namespace LunarBase.Classes
         private EmpresaFilial filial;
         private Nfe nfe;
         private Pessoa vendedor;
+        private bool entrada;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -55,5 +56,7 @@ namespace LunarBase.Classes
         public virtual Nfe Nfe { get => nfe; set => nfe = value; }
         [Anotacao("Vendedor")]
         public virtual Pessoa Vendedor { get => vendedor; set => vendedor = value; }
+        [Anotacao("Entrada/Sinal")]
+        public virtual bool Entrada { get => entrada; set => entrada = value; }
     }
 }

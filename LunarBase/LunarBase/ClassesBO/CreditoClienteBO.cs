@@ -63,10 +63,6 @@ namespace LunarBase.ClassesBO
             {
                 throw new Exception("O campo \"Descrição\" é obrigatório!");
             }
-            if (creditoCliente.Valor <= 0)
-            {
-                throw new Exception("O campo \"Valor\" é obrigatório ser maior que R$ 0,00!");
-            }
             return true;
         }
 

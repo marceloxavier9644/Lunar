@@ -5,6 +5,8 @@ namespace LunarBase.Utilidades
 {
     public class Sessao
     {
+        public static string _conexaoMySQL;
+
         public static EmpresaFilial empresaFilialLogada;
         public static Usuario usuarioLogado;
 
@@ -27,5 +29,7 @@ namespace LunarBase.Utilidades
         public static bool teveRetornoApi = false;
         public static string serialPainel;
         public static string cnpjRegistro;
+
+        public static decimal valorSinalOrdemServico = 0;
     }
 }

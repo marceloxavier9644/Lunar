@@ -1,8 +1,12 @@
 ﻿using Lunar.Utils;
 using LunarBase.Classes;
+using LunarBase.ConexaoBD;
 using LunarBase.ControllerBO;
+using LunarBase.Utilidades;
+using MySql.Data.MySqlClient;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
+using Syncfusion.WinForms.Core.Utils;
 using Syncfusion.WinForms.DataGridConverter;
 using Syncfusion.XlsIO;
 using System;
@@ -10,7 +14,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.Cadastros.Cliente
@@ -25,13 +28,44 @@ namespace Lunar.Telas.Cadastros.Cliente
             InitializeComponent();
             this.Opacity = 0.0;
         }
+        public DataTable selectProdutos()
+        {
+            try
+            {
+       
+                MySqlConnection con = null;
 
+                String sql = "SELECT * FROM Pessoa Where Pessoa.FlagExcluido <> True";
+                con = new MySqlConnection(Sessao._conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         private void carregarLista()
         {
+            //MySqlConnection con = null;
+            //String sql = "SELECT * FROM Pessoa Where Pessoa.FlagExcluido <> True";
+            //con = new MySqlConnection(Sessao._conexaoMySQL);
+            //MySqlCommand cmd = new MySqlCommand(sql, con);
+            //MySqlDataAdapter da = new MySqlDataAdapter();
+            //da.SelectCommand = cmd;
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+
+
             txtPesquisaCliente.Texts = "";
             listaClientes = pessoaController.selecionarTodasPessoas();
+            MessageBox.Show("Retornou do banco");
             //ajustarLista();        
-            //gridClient.DataSource = listaClientes;
+            //gridClient.DataSource = dt;
 
             sfDataPager1.DataSource = listaClientes;
             if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
@@ -39,7 +73,7 @@ namespace Lunar.Telas.Cadastros.Cliente
             else
                 sfDataPager1.PageSize = 100;
             gridClient.DataSource = sfDataPager1.PagedSource;
-            sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
+            //sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
             txtPesquisaCliente.Focus();
         }
         private void ajustarLista()
@@ -104,6 +138,8 @@ namespace Lunar.Telas.Cadastros.Cliente
 
             if (listaClientes.Count == 0)
             {
+                sfDataPager1.DataSource = null;
+                gridClient.DataSource = null;
                 GenericaDesktop.ShowAlerta("Nenhum registro encontrado!");
                 txtPesquisaCliente.Texts = "";
                 txtPesquisaCliente.PlaceholderText = "";
@@ -168,7 +204,7 @@ namespace Lunar.Telas.Cadastros.Cliente
 
         private void sfDataPager1_OnDemandLoading(object sender, Syncfusion.WinForms.DataPager.Events.OnDemandLoadingEventArgs e)
         {
-            sfDataPager1.LoadDynamicData(e.StartRowIndex, listaClientes.Skip(e.StartRowIndex).Take(e.PageSize));
+           // sfDataPager1.LoadDynamicData(e.StartRowIndex, listaClientes.Skip(e.StartRowIndex).Take(e.PageSize));
         }
 
         private void gridClient_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)

@@ -42,6 +42,8 @@
             this.bindingSourceServico = new System.Windows.Forms.BindingSource(this.components);
             this.dsOrdemServicoServico = new Lunar.Telas.OrdensDeServico.DataSetOrdemServico.dsOrdemServicoServico();
             this.bindingSourceExame = new System.Windows.Forms.BindingSource(this.components);
+            this.dsOrdemServicoExame = new Lunar.Telas.OrdensDeServico.DataSetOrdemServico.dsOrdemServicoExame();
+            this.bindingSourceExame1 = new System.Windows.Forms.BindingSource(this.components);
             this.panelTitleBar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -52,6 +54,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceServico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsOrdemServicoServico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceExame)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsOrdemServicoExame)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceExame1)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
@@ -96,7 +100,7 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             this.btnFechar.IconColor = System.Drawing.Color.White;
             this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFechar.IconSize = 30;
@@ -160,6 +164,16 @@
             this.bindingSourceExame.DataMember = "OrdemServicoExame";
             this.bindingSourceExame.DataSource = this.dsOrdemServico1;
             // 
+            // dsOrdemServicoExame
+            // 
+            this.dsOrdemServicoExame.DataSetName = "dsOrdemServicoExame";
+            this.dsOrdemServicoExame.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingSourceExame1
+            // 
+            this.bindingSourceExame1.DataMember = "Exame";
+            this.bindingSourceExame1.DataSource = this.dsOrdemServicoExame;
+            // 
             // FrmImpressaoOrdemServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,6 +200,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceServico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsOrdemServicoServico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceExame)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsOrdemServicoExame)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceExame1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,5 +221,7 @@
         private System.Windows.Forms.BindingSource bindingSourceExame;
         private DataSetOrdemServico.dsOrdemServicoProduto dsOrdemServicoProduto;
         private DataSetOrdemServico.dsOrdemServicoServico dsOrdemServicoServico;
+        private DataSetOrdemServico.dsOrdemServicoExame dsOrdemServicoExame;
+        private System.Windows.Forms.BindingSource bindingSourceExame1;
     }
 }

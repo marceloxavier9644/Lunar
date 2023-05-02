@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridDateTimeColumn gridDateTimeColumn2 = new Syncfusion.WinForms.DataGrid.GridDateTimeColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn9 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn10 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn4 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn5 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn6 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn11 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn12 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.Windows.Forms.Tools.Office2016ColorfulSplitButtonRenderer office2016ColorfulSplitButtonRenderer1 = new Syncfusion.Windows.Forms.Tools.Office2016ColorfulSplitButtonRenderer();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridDateTimeColumn gridDateTimeColumn1 = new Syncfusion.WinForms.DataGrid.GridDateTimeColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn3 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridCheckBoxColumn gridCheckBoxColumn1 = new Syncfusion.WinForms.DataGrid.GridCheckBoxColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            this.btnImprimir1 = new Syncfusion.Windows.Forms.Tools.SplitButton();
+            this.btnImprimirNF = new Syncfusion.Windows.Forms.Tools.toolstripitem();
+            this.btnImprimirDuplicatas = new Syncfusion.Windows.Forms.Tools.toolstripitem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDataEntregaFinal = new Syncfusion.Windows.Forms.Tools.MaskedEditBox();
             this.autoLabel11 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -78,9 +83,9 @@
             this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEntrada = new FontAwesome.Sharp.IconButton();
             this.btnGerarNFe = new Lunar.RJ_UI.Classes.RJButton();
             this.btnGerarNFCe = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnImprimir = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
             this.btnExportarExcel = new FontAwesome.Sharp.IconButton();
@@ -101,6 +106,48 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnImprimir1
+            // 
+            this.btnImprimir1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnImprimir1.BeforeTouchSize = new System.Drawing.Size(152, 43);
+            this.btnImprimir1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimir1.DropDownIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnImprimir1.DropDownItems.Add(this.btnImprimirNF);
+            this.btnImprimir1.DropDownItems.Add(this.btnImprimirDuplicatas);
+            this.btnImprimir1.DropDownPosition = Syncfusion.Windows.Forms.Tools.Position.Top;
+            this.btnImprimir1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.btnImprimir1.Location = new System.Drawing.Point(469, 18);
+            this.btnImprimir1.MinimumSize = new System.Drawing.Size(75, 23);
+            this.btnImprimir1.Name = "btnImprimir1";
+            office2016ColorfulSplitButtonRenderer1.SplitButton = this.btnImprimir1;
+            this.btnImprimir1.Renderer = office2016ColorfulSplitButtonRenderer1;
+            this.btnImprimir1.ShowDropDownOnButtonClick = false;
+            this.btnImprimir1.Size = new System.Drawing.Size(152, 43);
+            this.btnImprimir1.Style = Syncfusion.Windows.Forms.Tools.SplitButtonVisualStyle.Office2016Colorful;
+            this.btnImprimir1.TabIndex = 256;
+            this.btnImprimir1.Text = "Imprimir";
+            this.btnImprimir1.ThemeName = "Office2016Colorful";
+            this.btnImprimir1.ThemeStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnImprimir1.ThemeStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnImprimir1.DropDowItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.btnImprimir1_DropDowItemClicked);
+            this.btnImprimir1.Click += new System.EventHandler(this.btnImprimir1_Click);
+            // 
+            // btnImprimirNF
+            // 
+            this.btnImprimirNF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirNF.Name = "btnImprimirNF";
+            this.btnImprimirNF.Size = new System.Drawing.Size(23, 23);
+            this.btnImprimirNF.Text = "Imprimir Nota Fiscal";
+            // 
+            // btnImprimirDuplicatas
+            // 
+            this.btnImprimirDuplicatas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnImprimirDuplicatas.Name = "btnImprimirDuplicatas";
+            this.btnImprimirDuplicatas.Size = new System.Drawing.Size(23, 23);
+            this.btnImprimirDuplicatas.Text = "Imprimir Duplicata(s)";
             // 
             // groupBox1
             // 
@@ -721,9 +768,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnImprimir1);
+            this.groupBox2.Controls.Add(this.btnEntrada);
             this.groupBox2.Controls.Add(this.btnGerarNFe);
             this.groupBox2.Controls.Add(this.btnGerarNFCe);
-            this.groupBox2.Controls.Add(this.btnImprimir);
             this.groupBox2.Controls.Add(this.btnExcluir);
             this.groupBox2.Controls.Add(this.btnExportarPDF);
             this.groupBox2.Controls.Add(this.btnExportarExcel);
@@ -735,6 +783,26 @@
             this.groupBox2.Size = new System.Drawing.Size(1121, 73);
             this.groupBox2.TabIndex = 160;
             this.groupBox2.TabStop = false;
+            // 
+            // btnEntrada
+            // 
+            this.btnEntrada.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEntrada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEntrada.FlatAppearance.BorderSize = 0;
+            this.btnEntrada.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEntrada.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEntrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntrada.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
+            this.btnEntrada.IconColor = System.Drawing.Color.CadetBlue;
+            this.btnEntrada.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnEntrada.IconSize = 38;
+            this.btnEntrada.Location = new System.Drawing.Point(111, 23);
+            this.btnEntrada.Name = "btnEntrada";
+            this.btnEntrada.Size = new System.Drawing.Size(36, 34);
+            this.btnEntrada.TabIndex = 255;
+            this.btnEntrada.UseVisualStyleBackColor = true;
+            this.btnEntrada.Click += new System.EventHandler(this.btnEntrada_Click);
             // 
             // btnGerarNFe
             // 
@@ -783,30 +851,6 @@
             this.btnGerarNFCe.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
             this.btnGerarNFCe.UseVisualStyleBackColor = false;
             this.btnGerarNFCe.Click += new System.EventHandler(this.btnGerarNFCe_Click);
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimir.BackColor = System.Drawing.Color.White;
-            this.btnImprimir.BackgroundColor = System.Drawing.Color.White;
-            this.btnImprimir.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnImprimir.BorderRadius = 8;
-            this.btnImprimir.BorderSize = 2;
-            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImprimir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnImprimir.FlatAppearance.BorderSize = 2;
-            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnImprimir.Location = new System.Drawing.Point(469, 16);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(152, 45);
-            this.btnImprimir.TabIndex = 219;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnExcluir
             // 
@@ -936,110 +980,118 @@
             this.grid.AutoGenerateColumns = false;
             this.grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.grid.BackColor = System.Drawing.Color.White;
-            gridTextColumn7.AllowEditing = false;
-            gridTextColumn7.AllowFiltering = true;
-            gridTextColumn7.AllowResizing = true;
-            gridTextColumn7.CellStyle.Font.Size = 12F;
-            gridTextColumn7.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn7.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn7.HeaderStyle.Font.Size = 12F;
-            gridTextColumn7.HeaderText = "Nº O.S";
-            gridTextColumn7.MappingName = "Id";
-            gridDateTimeColumn2.AllowEditing = false;
-            gridDateTimeColumn2.AllowFiltering = true;
-            gridDateTimeColumn2.AllowResizing = true;
-            gridDateTimeColumn2.CellStyle.Font.Size = 12F;
-            gridDateTimeColumn2.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridDateTimeColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridDateTimeColumn2.HeaderStyle.Font.Size = 12F;
-            gridDateTimeColumn2.HeaderText = "Abertura";
-            gridDateTimeColumn2.MappingName = "DataAbertura";
-            gridDateTimeColumn2.MaxDateTime = new System.DateTime(9999, 12, 31, 23, 59, 59, 999);
-            gridTextColumn8.AllowEditing = false;
-            gridTextColumn8.AllowFiltering = true;
-            gridTextColumn8.AllowResizing = true;
-            gridTextColumn8.CellStyle.Font.Size = 12F;
-            gridTextColumn8.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn8.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn8.HeaderStyle.Font.Size = 12F;
-            gridTextColumn8.HeaderText = "Cód";
-            gridTextColumn8.MappingName = "Cliente.Id";
-            gridTextColumn9.AllowEditing = false;
-            gridTextColumn9.AllowFiltering = true;
-            gridTextColumn9.AllowResizing = true;
-            gridTextColumn9.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
-            gridTextColumn9.CellStyle.Font.Size = 12F;
-            gridTextColumn9.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn9.HeaderStyle.Font.Size = 12F;
-            gridTextColumn9.HeaderText = "Cliente";
-            gridTextColumn9.MappingName = "Cliente.RazaoSocial";
-            gridTextColumn10.AllowEditing = false;
-            gridTextColumn10.AllowFiltering = true;
-            gridTextColumn10.AllowResizing = true;
-            gridTextColumn10.CellStyle.Font.Size = 12F;
-            gridTextColumn10.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn10.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn10.HeaderStyle.Font.Size = 12F;
-            gridTextColumn10.HeaderText = "Status";
-            gridTextColumn10.MappingName = "Status";
-            gridNumericColumn4.AllowEditing = false;
-            gridNumericColumn4.AllowFiltering = true;
-            gridNumericColumn4.AllowResizing = true;
-            gridNumericColumn4.CellStyle.Font.Size = 12F;
-            gridNumericColumn4.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Right;
-            gridNumericColumn4.Format = "N2";
-            gridNumericColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn4.HeaderStyle.Font.Size = 12F;
-            gridNumericColumn4.HeaderText = "Produtos";
-            gridNumericColumn4.MappingName = "ValorProduto";
-            gridNumericColumn5.AllowEditing = false;
-            gridNumericColumn5.AllowFiltering = true;
-            gridNumericColumn5.AllowResizing = true;
-            gridNumericColumn5.CellStyle.Font.Size = 12F;
-            gridNumericColumn5.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Right;
-            gridNumericColumn5.Format = "N2";
-            gridNumericColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn5.HeaderStyle.Font.Size = 12F;
-            gridNumericColumn5.HeaderText = "Serviços";
-            gridNumericColumn5.MappingName = "ValorServico";
-            gridNumericColumn6.AllowEditing = false;
-            gridNumericColumn6.AllowFiltering = true;
-            gridNumericColumn6.AllowResizing = true;
-            gridNumericColumn6.CellStyle.Font.Size = 12F;
-            gridNumericColumn6.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Right;
-            gridNumericColumn6.Format = "N2";
-            gridNumericColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn6.HeaderStyle.Font.Size = 12F;
-            gridNumericColumn6.HeaderText = "Total";
-            gridNumericColumn6.MappingName = "ValorTotal";
-            gridTextColumn11.AllowEditing = false;
-            gridTextColumn11.AllowFiltering = true;
-            gridTextColumn11.AllowResizing = true;
-            gridTextColumn11.CellStyle.Font.Size = 12F;
-            gridTextColumn11.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn11.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn11.HeaderStyle.Font.Size = 12F;
-            gridTextColumn11.HeaderText = "Nº NF";
-            gridTextColumn11.MappingName = "Nfe.NNf";
-            gridTextColumn12.AllowEditing = false;
-            gridTextColumn12.AllowFiltering = true;
-            gridTextColumn12.AllowResizing = true;
-            gridTextColumn12.CellStyle.Font.Size = 12F;
-            gridTextColumn12.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn12.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn12.HeaderStyle.Font.Size = 12F;
-            gridTextColumn12.HeaderText = "Modelo NF";
-            gridTextColumn12.MappingName = "Nfe.Modelo";
-            this.grid.Columns.Add(gridTextColumn7);
-            this.grid.Columns.Add(gridDateTimeColumn2);
-            this.grid.Columns.Add(gridTextColumn8);
-            this.grid.Columns.Add(gridTextColumn9);
-            this.grid.Columns.Add(gridTextColumn10);
-            this.grid.Columns.Add(gridNumericColumn4);
-            this.grid.Columns.Add(gridNumericColumn5);
-            this.grid.Columns.Add(gridNumericColumn6);
-            this.grid.Columns.Add(gridTextColumn11);
-            this.grid.Columns.Add(gridTextColumn12);
+            gridTextColumn1.AllowEditing = false;
+            gridTextColumn1.AllowFiltering = true;
+            gridTextColumn1.AllowResizing = true;
+            gridTextColumn1.CellStyle.Font.Size = 12F;
+            gridTextColumn1.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn1.HeaderStyle.Font.Size = 12F;
+            gridTextColumn1.HeaderText = "Nº O.S";
+            gridTextColumn1.MappingName = "Id";
+            gridDateTimeColumn1.AllowEditing = false;
+            gridDateTimeColumn1.AllowFiltering = true;
+            gridDateTimeColumn1.AllowResizing = true;
+            gridDateTimeColumn1.CellStyle.Font.Size = 12F;
+            gridDateTimeColumn1.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridDateTimeColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridDateTimeColumn1.HeaderStyle.Font.Size = 12F;
+            gridDateTimeColumn1.HeaderText = "Abertura";
+            gridDateTimeColumn1.MappingName = "DataAbertura";
+            gridDateTimeColumn1.MaxDateTime = new System.DateTime(9999, 12, 31, 23, 59, 59, 999);
+            gridTextColumn2.AllowEditing = false;
+            gridTextColumn2.AllowFiltering = true;
+            gridTextColumn2.AllowResizing = true;
+            gridTextColumn2.CellStyle.Font.Size = 12F;
+            gridTextColumn2.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn2.HeaderStyle.Font.Size = 12F;
+            gridTextColumn2.HeaderText = "Cód";
+            gridTextColumn2.MappingName = "Cliente.Id";
+            gridTextColumn3.AllowEditing = false;
+            gridTextColumn3.AllowFiltering = true;
+            gridTextColumn3.AllowResizing = true;
+            gridTextColumn3.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+            gridTextColumn3.CellStyle.Font.Size = 12F;
+            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn3.HeaderStyle.Font.Size = 12F;
+            gridTextColumn3.HeaderText = "Cliente";
+            gridTextColumn3.MappingName = "Cliente.RazaoSocial";
+            gridTextColumn4.AllowEditing = false;
+            gridTextColumn4.AllowFiltering = true;
+            gridTextColumn4.AllowResizing = true;
+            gridTextColumn4.CellStyle.Font.Size = 12F;
+            gridTextColumn4.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn4.HeaderStyle.Font.Size = 12F;
+            gridTextColumn4.HeaderText = "Status";
+            gridTextColumn4.MappingName = "Status";
+            gridNumericColumn1.AllowEditing = false;
+            gridNumericColumn1.AllowFiltering = true;
+            gridNumericColumn1.AllowResizing = true;
+            gridNumericColumn1.CellStyle.Font.Size = 12F;
+            gridNumericColumn1.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Right;
+            gridNumericColumn1.Format = "N2";
+            gridNumericColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn1.HeaderStyle.Font.Size = 12F;
+            gridNumericColumn1.HeaderText = "Produtos";
+            gridNumericColumn1.MappingName = "ValorProduto";
+            gridNumericColumn2.AllowEditing = false;
+            gridNumericColumn2.AllowFiltering = true;
+            gridNumericColumn2.AllowResizing = true;
+            gridNumericColumn2.CellStyle.Font.Size = 12F;
+            gridNumericColumn2.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Right;
+            gridNumericColumn2.Format = "N2";
+            gridNumericColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn2.HeaderStyle.Font.Size = 12F;
+            gridNumericColumn2.HeaderText = "Serviços";
+            gridNumericColumn2.MappingName = "ValorServico";
+            gridNumericColumn3.AllowEditing = false;
+            gridNumericColumn3.AllowFiltering = true;
+            gridNumericColumn3.AllowResizing = true;
+            gridNumericColumn3.CellStyle.Font.Size = 12F;
+            gridNumericColumn3.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Right;
+            gridNumericColumn3.Format = "N2";
+            gridNumericColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn3.HeaderStyle.Font.Size = 12F;
+            gridNumericColumn3.HeaderText = "Total";
+            gridNumericColumn3.MappingName = "ValorTotal";
+            gridCheckBoxColumn1.AllowEditing = false;
+            gridCheckBoxColumn1.AllowFiltering = true;
+            gridCheckBoxColumn1.AllowResizing = true;
+            gridCheckBoxColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridCheckBoxColumn1.HeaderStyle.Font.Size = 12F;
+            gridCheckBoxColumn1.HeaderText = "Entrada/Sinal";
+            gridCheckBoxColumn1.MappingName = "Entrada";
+            gridTextColumn5.AllowEditing = false;
+            gridTextColumn5.AllowFiltering = true;
+            gridTextColumn5.AllowResizing = true;
+            gridTextColumn5.CellStyle.Font.Size = 12F;
+            gridTextColumn5.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn5.HeaderStyle.Font.Size = 12F;
+            gridTextColumn5.HeaderText = "Nº NF";
+            gridTextColumn5.MappingName = "Nfe.NNf";
+            gridTextColumn6.AllowEditing = false;
+            gridTextColumn6.AllowFiltering = true;
+            gridTextColumn6.AllowResizing = true;
+            gridTextColumn6.CellStyle.Font.Size = 12F;
+            gridTextColumn6.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn6.HeaderStyle.Font.Size = 12F;
+            gridTextColumn6.HeaderText = "Modelo NF";
+            gridTextColumn6.MappingName = "Nfe.Modelo";
+            this.grid.Columns.Add(gridTextColumn1);
+            this.grid.Columns.Add(gridDateTimeColumn1);
+            this.grid.Columns.Add(gridTextColumn2);
+            this.grid.Columns.Add(gridTextColumn3);
+            this.grid.Columns.Add(gridTextColumn4);
+            this.grid.Columns.Add(gridNumericColumn1);
+            this.grid.Columns.Add(gridNumericColumn2);
+            this.grid.Columns.Add(gridNumericColumn3);
+            this.grid.Columns.Add(gridCheckBoxColumn1);
+            this.grid.Columns.Add(gridTextColumn5);
+            this.grid.Columns.Add(gridTextColumn6);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grid.Location = new System.Drawing.Point(3, 16);
@@ -1131,12 +1183,15 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel10;
         private FontAwesome.Sharp.IconButton btnPesquisaDependente;
         private RJ_UI.Classes.RJTextBox txtCodDependente;
-        private RJ_UI.Classes.RJButton btnImprimir;
         private RJ_UI.Classes.RJButton btnGerarNFe;
         private RJ_UI.Classes.RJButton btnGerarNFCe;
         private Syncfusion.Windows.Forms.Tools.MaskedEditBox txtDataEntregaFinal;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel11;
         private Syncfusion.Windows.Forms.Tools.MaskedEditBox txtDataEntregaInicial;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel58;
+        private FontAwesome.Sharp.IconButton btnEntrada;
+        private Syncfusion.Windows.Forms.Tools.SplitButton btnImprimir1;
+        private Syncfusion.Windows.Forms.Tools.toolstripitem btnImprimirNF;
+        private Syncfusion.Windows.Forms.Tools.toolstripitem btnImprimirDuplicatas;
     }
 }

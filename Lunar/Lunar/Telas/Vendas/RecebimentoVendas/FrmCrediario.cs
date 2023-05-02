@@ -86,6 +86,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                         contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
                         contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
                         contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                        contaReceber.ValorTotalOrigem = decimal.Parse(txtValor.Texts);
                         contaReceber.Juro = 0;
                         contaReceber.Multa = 0;
                         if (venda.Cliente.EnderecoPrincipal != null)

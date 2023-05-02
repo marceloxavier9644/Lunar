@@ -599,6 +599,20 @@
     <Compile Include="Telas\ContasReceber\FrmValorParcial.Designer.cs">
       <DependentUpon>FrmValorParcial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\ContasReceber\Reports\Dados\dsParcelaDuplicata.cs">
+      <DependentUpon>dsParcelaDuplicata.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\Reports\Dados\dsParcelaDuplicata.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsParcelaDuplicata.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\Reports\FrmImprimirDuplicata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\Reports\FrmImprimirDuplicata.Designer.cs">
+      <DependentUpon>FrmImprimirDuplicata.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\ContasReceber\Reports\FrmRecibo01.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -782,6 +796,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsOrdemServico.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoExame.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOrdemServicoExame.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoProduto.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -791,6 +810,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsOrdemServicoServico.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmEntradaValor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmEntradaValor.Designer.cs">
+      <DependentUpon>FrmEntradaValor.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\OrdensDeServico\FrmImpressaoOrdemServico.cs">
       <SubType>Form</SubType>
@@ -969,6 +994,12 @@
     <Compile Include="Utils\ConverterMoedaPorExtenso.cs" />
     <Compile Include="Utils\DropBoxIntegracao\AuthenticationHelper.cs" />
     <Compile Include="Utils\GenericaDesktop.cs" />
+    <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.Designer.cs">
+      <DependentUpon>FrmImportarCSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\IntegracaoZAPI\Zapi.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFCe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFe.cs" />
@@ -1133,6 +1164,11 @@
     <EmbeddedResource Include="Telas\ContasReceber\FrmValorParcial.resx">
       <DependentUpon>FrmValorParcial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataCarne.rdlc" />
+    <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataMercantil.rdlc" />
+    <EmbeddedResource Include="Telas\ContasReceber\Reports\FrmImprimirDuplicata.resx">
+      <DependentUpon>FrmImprimirDuplicata.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\ContasReceber\Reports\FrmRecibo01.resx">
       <DependentUpon>FrmRecibo01.cs</DependentUpon>
     </EmbeddedResource>
@@ -1223,6 +1259,9 @@
       <DependentUpon>FrmOrcamentoAvulso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Orcamentos\ReportOrcamentoAvulso.rdlc" />
+    <EmbeddedResource Include="Telas\OrdensDeServico\FrmEntradaValor.resx">
+      <DependentUpon>FrmEntradaValor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmImpressaoOrdemServico.resx">
       <DependentUpon>FrmImpressaoOrdemServico.cs</DependentUpon>
     </EmbeddedResource>
@@ -1233,6 +1272,7 @@
       <DependentUpon>FrmOrdemServicoLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServico.rdlc" />
+    <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServicoOtica.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\Servicos\FrmServicoCadastro.resx">
       <DependentUpon>FrmServicoCadastro.cs</DependentUpon>
     </EmbeddedResource>
@@ -1308,6 +1348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\VisualizadorPDF\FrmPDF.resx">
       <DependentUpon>FrmPDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\ImportadorSistemas\FrmImportarCSV.resx">
+      <DependentUpon>FrmImportarCSV.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
@@ -1477,6 +1520,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <EmbeddedResource Include="Lunar.gclicx" />
+    <None Include="Properties\DataSources\Lunar.Telas.OrdensDeServico.DataSetOrdemServico.dsOrdemServicoExame.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1518,6 +1562,17 @@
     </None>
     <None Include="Telas\Condicionais\dsCondicional.xss">
       <DependentUpon>dsCondicional.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\ContasReceber\Reports\Dados\dsParcelaDuplicata.xsc">
+      <DependentUpon>dsParcelaDuplicata.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\ContasReceber\Reports\Dados\dsParcelaDuplicata.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsParcelaDuplicata.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\ContasReceber\Reports\Dados\dsParcelaDuplicata.xss">
+      <DependentUpon>dsParcelaDuplicata.xsd</DependentUpon>
     </None>
     <None Include="Telas\Estoques\Dados\dsBalancoEstoque.xsc">
       <DependentUpon>dsBalancoEstoque.xsd</DependentUpon>
@@ -1573,6 +1628,17 @@
     </None>
     <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServico.xss">
       <DependentUpon>dsOrdemServico.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoExame.xsc">
+      <DependentUpon>dsOrdemServicoExame.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoExame.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOrdemServicoExame.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoExame.xss">
+      <DependentUpon>dsOrdemServicoExame.xsd</DependentUpon>
     </None>
     <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoProduto.xsc">
       <DependentUpon>dsOrdemServicoProduto.xsd</DependentUpon>
@@ -1708,7 +1774,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Telas\Cadastros\Modulos\" />
-    <Folder Include="Telas\ContasReceber\Reports\Dados\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LunarBase\LunarBase\LunarBase.csproj">

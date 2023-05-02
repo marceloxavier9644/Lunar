@@ -20,13 +20,26 @@ namespace LunarBase.ClassesDAO
             String sql = "FROM Pessoa as Tabela WHERE Tabela.FlagExcluido <> true " +
                          "order by Tabela.RazaoSocial";
             IList<Pessoa> retorno = Session.CreateQuery(sql).List<Pessoa>();
+            //IList<Pessoa> retorno = Session.CreateSQLQuery(sql).AddEntity(typeof(Pessoa)).List<Pessoa>();
+
             return retorno;
+            //.SetMaxResults(5000)
+        }
+
+        public IList<Pessoa> selecionarPessoasGrid()
+        {
+            Session = Conexao.GetSession();
+            String sql = "FROM Pessoa as Tabela WHERE Tabela.FlagExcluido <> true " +
+                         "order by Tabela.Id Desc";
+            IList<Pessoa> retorno = Session.CreateQuery(sql).SetMaxResults(1000).List<Pessoa>();
+            return retorno;
+            //.SetMaxResults(5000)
         }
 
         public IList<Pessoa> selecionarClientesComVariosFiltros(string valor)
         {
             Session = Conexao.GetSession();
-            String sql = "FROM Pessoa as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + valor + "%' and Tabela.FlagExcluido <> true and " +
+            String sql = "FROM Pessoa as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + valor + "%' and Tabela.FlagExcluido <> true and " +
                          "Tabela.Cliente = true order by Tabela.RazaoSocial";
             IList<Pessoa> retorno = Session.CreateQuery(sql).List<Pessoa>();
             return retorno;
@@ -35,7 +48,7 @@ namespace LunarBase.ClassesDAO
         public IList<Pessoa> selecionarPessoasComVariosFiltros(string valor)
         {
             Session = Conexao.GetSession();
-            String sql = "FROM Pessoa as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + valor + "%' and Tabela.FlagExcluido <> true " +
+            String sql = "FROM Pessoa as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + valor + "%' and Tabela.FlagExcluido <> true " +
                          "order by Tabela.RazaoSocial";
             IList<Pessoa> retorno = Session.CreateQuery(sql).List<Pessoa>();
             return retorno;

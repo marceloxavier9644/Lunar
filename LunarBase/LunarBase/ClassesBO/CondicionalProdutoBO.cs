@@ -76,11 +76,11 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar produtos da condicional! Erro: " + e.Message);
             }
         }
-        public IList<CondicionalProduto> selecionarProdutosCondicionalComVariosFiltros(string valor)
+        public IList<CondicionalProduto> selecionarProdutosCondicionalComVariosFiltros(string valor, int idCondicional)
         {
             try
             {
-                return dao.selecionarProdutosCondicionalComVariosFiltros(valor);
+                return dao.selecionarProdutosCondicionalComVariosFiltros(valor, idCondicional);
             }
             catch (Exception e)
             {

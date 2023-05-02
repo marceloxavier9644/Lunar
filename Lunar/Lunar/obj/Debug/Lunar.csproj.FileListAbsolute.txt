@@ -331,3 +331,6 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.csproj.CopyComplete
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.exe
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.pdb
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Sintegra.FrmGerarSintegra.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.OrdensDeServico.FrmEntradaValor.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasReceber.Reports.FrmImprimirDuplicata.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Utils.ImportadorSistemas.FrmImportarCSV.resources

@@ -42,6 +42,24 @@ namespace LunarBase.ControllerBO
             }
         }
 
+        public IList<Pessoa> selecionarPessoasGrid()
+        {
+            PessoaBO bo = new PessoaBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarPessoasGrid();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
+
         public IList<Pessoa> selecionarClientesComVariosFiltros(string valor)
         {
             PessoaBO bo = new PessoaBO();

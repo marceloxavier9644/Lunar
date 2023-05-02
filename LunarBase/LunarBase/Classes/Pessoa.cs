@@ -35,6 +35,8 @@ namespace LunarBase.Classes
         private string tipoPessoa;
         private string observacoes;
         private bool receberLembrete;
+        private string codigoImportacao;
+        private string tipoParceiroImportado;
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -99,6 +101,10 @@ namespace LunarBase.Classes
         public virtual string Observacoes { get => observacoes; set => observacoes = value; }
         [Anotacao("Lembrete")]
         public virtual bool ReceberLembrete { get => receberLembrete; set => receberLembrete = value; }
+        [Anotacao("Cód Importação")]
+        public virtual string CodigoImportacao { get => codigoImportacao; set => codigoImportacao = value; }
+        [Anotacao("Tipo Parceiro")]
+        public virtual string TipoParceiroImportado { get => tipoParceiroImportado; set => tipoParceiroImportado = value; }
 
         public override string ToString()
         {

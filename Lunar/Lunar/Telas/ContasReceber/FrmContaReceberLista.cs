@@ -177,7 +177,7 @@ namespace Lunar.Telas.ContasReceber
                             decimal juroCalculado = receber.ValorParcela * ((juro / 30) / 100) * diasVencido;
                             //grid.View.GetPropertyAccessProvider().SetValue(grid.GetRecordAtRowIndex(i), grid.Columns["Juro"].MappingName, juroCalculado);
                             receber.Juro = juroCalculado;
-                            decimal valorTotalCalculado = receber.ValorParcela + multaCalculada + juroCalculado;
+                            decimal valorTotalCalculado = (receber.ValorParcela + multaCalculada + juroCalculado - (receber.ValorRecebimentoParcial));
                             // grid.View.GetPropertyAccessProvider().SetValue(grid.GetRecordAtRowIndex(i), grid.Columns["ValorTotal"].MappingName, valorTotalCalculado);
                             receber.ValorTotal = valorTotalCalculado;
                         }
@@ -249,7 +249,7 @@ namespace Lunar.Telas.ContasReceber
             tableSummaryRow1.Name = "TableSummary";
             tableSummaryRow1.ShowSummaryInRow = true;
             tableSummaryRow1.TitleColumnCount = 3;
-            tableSummaryRow1.Title = " Parcelas: {TotalNotas}               Total Sem Juros {ValorTotalSemJuro}                 Total Com Juros {ValorTotalComJuro}";
+            tableSummaryRow1.Title = " Parcelas: {TotalNotas}               Total Sem Juros {ValorTotalSemJuro}                 Total Com Juros - Parciais {ValorTotalComJuro}";
             tableSummaryRow1.Position = VerticalPosition.Bottom;
             tableSummaryRow1.CalculationUnit = Syncfusion.Data.SummaryCalculationUnit.AllRows;
 

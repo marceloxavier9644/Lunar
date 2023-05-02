@@ -18,10 +18,10 @@ namespace LunarBase.ClassesDAO
             IList<CondicionalProduto> retorno = Session.CreateQuery(sql).List<CondicionalProduto>();
             return retorno;
         }
-        public IList<CondicionalProduto> selecionarProdutosCondicionalComVariosFiltros(string valor)
+        public IList<CondicionalProduto> selecionarProdutosCondicionalComVariosFiltros(string valor, int idCondicional)
         {
             Session = Conexao.GetSession();
-            String sql = "FROM CondicionalProduto as Tabela WHERE CONCAT(Tabela.DescricaoProduto, ' ', Tabela.Produto.Id, ' ', Tabela.Produto.Ean, ' ', Tabela.Produto.Referencia, ' ', Tabela.Produto.Ncm) like '%" + valor + "%' and Tabela.FlagExcluido <> true " +
+            String sql = "FROM CondicionalProduto as Tabela WHERE CONCAT(Tabela.DescricaoProduto, ' ', Tabela.Produto.Id, ' ', Tabela.Produto.Ean, ' ', Tabela.Produto.Referencia, ' ', Tabela.Produto.Ncm) like '%" + valor + "%' and Tabela.FlagExcluido <> true and Tabela.Condicional = " + idCondicional + " " +
                          "order by Tabela.DescricaoProduto";
             IList<CondicionalProduto> retorno = Session.CreateQuery(sql).List<CondicionalProduto>();
             return retorno;

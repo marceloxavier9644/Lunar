@@ -178,6 +178,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento.Adicionais
                 contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
                 contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
                 contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                contaReceber.ValorTotalOrigem = decimal.Parse(txtValor.Texts);
                 contaReceber.Juro = 0;
                 contaReceber.Multa = 0;
                 if (ordemServico.Cliente.EnderecoPrincipal != null)
@@ -197,6 +198,14 @@ namespace Lunar.Telas.FormaPagamentoRecebimento.Adicionais
                 listaCrediarioReceber.Add(contaReceber);
             }
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void txtParcelas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                inserirParcelas();
+            }
         }
     }
 }

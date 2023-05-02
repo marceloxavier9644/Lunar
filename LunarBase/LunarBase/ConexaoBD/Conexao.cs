@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using LunarBase.Utilidades;
+using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using System.Windows;
@@ -78,7 +79,7 @@ namespace LunarBase.ConexaoBD
 
                     ////Normal
                     connectionString = "Server=" + servidor + ";Port=3306;Database=" + bancoDados + ";User ID=" + usuario + ";Password=" + senha + ";SslMode = none";
-
+                    Sessao._conexaoMySQL = connectionString;
                     //SessaoVariaveis.stringConexao = connectionString;
                     props.Add("dialect", "NHibernate.Dialect.MySQL5InnoDBDialect");
                     props.Add("connection.driver_class", "NHibernate.Driver.MySqlDataDriver");

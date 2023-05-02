@@ -214,23 +214,30 @@ namespace Lunar.Telas.Compras.Manifestos
 
         private void verificarNotasSefaz()
         {
-            string ultimaDataNotaBaixada = nfeController.selecionarUltimaDataNotaBaixada();
-            if (!String.IsNullOrEmpty(ultimaDataNotaBaixada))
-                ultimaDataNotaBaixada = ultimaDataNotaBaixada.Replace("T", " ").Replace("-03:00", "");
-            else
-                ultimaDataNotaBaixada = DateTime.Now.AddMonths(-2).ToShortDateString();
+            try
+            {
+                string ultimaDataNotaBaixada = nfeController.selecionarUltimaDataNotaBaixada();
+                if (!String.IsNullOrEmpty(ultimaDataNotaBaixada))
+                    ultimaDataNotaBaixada = ultimaDataNotaBaixada.Replace("T", " ").Replace("-03:00", "");
+                else
+                    ultimaDataNotaBaixada = DateTime.Now.AddMonths(-2).ToShortDateString();
 
-            DateTime ultDt = DateTime.Parse(ultimaDataNotaBaixada);
-            if (ultDt < DateTime.Now.AddMonths(-2))
-                ultDt = DateTime.Now.AddMonths(-2);
-            Task<ManifestoDownload.Manifesto> taskNota = Task.Run(() => generica.ConsultaNotas_Manifesto(Sessao.empresaFilialLogada.Cnpj, ultDt));
-            taskNota.Wait();
-            var result = taskNota.Result;
-            if (result != null)
-                inserirNotasNoGrid(result);
-            grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            this.grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
-            this.grid.AutoSizeController.Refresh();
+                DateTime ultDt = DateTime.Parse(ultimaDataNotaBaixada);
+                if (ultDt < DateTime.Now.AddMonths(-2))
+                    ultDt = DateTime.Now.AddMonths(-2);
+                Task<ManifestoDownload.Manifesto> taskNota = Task.Run(() => generica.ConsultaNotas_Manifesto(Sessao.empresaFilialLogada.Cnpj, ultDt));
+                taskNota.Wait();
+                var result = taskNota.Result;
+                if (result != null)
+                    inserirNotasNoGrid(result);
+                grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+                this.grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+                this.grid.AutoSizeController.Refresh();
+            }
+            catch
+            {
+
+            }
         }
 
         private void selecionarNotasBancoDados(string dataInicial, string dataFinal)

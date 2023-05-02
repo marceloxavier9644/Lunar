@@ -189,8 +189,6 @@ namespace Lunar.Telas.Condicionais
                         quantidadeAtual = double.Parse(dataRowView.Row["Quantidade"].ToString());
                         return true;
                     }
-                    else
-                        return false;
                 }
                 return false;
             }

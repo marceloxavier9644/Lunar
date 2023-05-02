@@ -7,6 +7,7 @@ using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using Lunar.Utils.IntegracaoZAPI;
 using LunarBase.Classes;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.Win32;
@@ -134,7 +135,11 @@ namespace Lunar.Telas.OrdensDeServico
             txtNumeroSerie.Texts = ordemServico.NumeroSerie;
             txtObservacoes.Texts = ordemServico.Observacoes;
             txtDataAbertura.Value = ordemServico.DataAbertura;
-
+            if (ordemServico.Vendedor != null)
+            {
+                txtVendedor.Texts = ordemServico.Vendedor.RazaoSocial;
+                vendedor = ordemServico.Vendedor;
+            }
             OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();
             IList<OrdemServicoProduto> listaOrdemProduto = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(ordemServico.Id);
             if(listaOrdemProduto.Count > 0)
@@ -257,6 +262,12 @@ namespace Lunar.Telas.OrdensDeServico
                             gridExames.AutoSizeController.Refresh();
                         }
                     }
+                }
+                if(listaExames.Count == 1)
+                {
+                    gridExames.SelectedIndex = 0;
+                    editarExame();
+                    tabControlAdv1.SelectedTab = tabPrincipal;
                 }
             }
 
@@ -746,7 +757,33 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
+            verificarExamesAoFechar();
             this.Close();
+        }
+
+        private void verificarExamesAoFechar()
+        {
+            //Exames
+            if (gridExames.View != null)
+            {
+                var recordsExames = gridExames.View.Records;
+                if (recordsExames.Count > 0)
+                {
+                    foreach (var record in recordsExames)
+                    {
+                        var dataRowView = record.Data as DataRowView;
+
+                        if (int.Parse(dataRowView.Row["Id"].ToString()) == 0)
+                        { 
+                            if(GenericaDesktop.ShowConfirmacao("Deseja gravar os exames inseridos/alterados? Caso clique em não você irá perder os exames não gravados!"))
+                            {
+                                set_OrdemServico();
+                                this.Close();
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void txtTipoObjeto_KeyPress(object sender, KeyPressEventArgs e)
@@ -1430,6 +1467,20 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 //verifica_posicao_item();
                 System.Data.DataRow row = dsExame.Tables[0].NewRow();
+                int idEdit = -1;
+                if (!String.IsNullOrEmpty(txtIdExame.Texts))
+                    idEdit = int.Parse(txtIdExame.Texts);
+                if(idEdit > 0) 
+                { 
+                    OrdemServicoExame ordemServicoExame = new OrdemServicoExame();
+                    ordemServicoExame.Id = int.Parse(txtIdExame.Texts);
+                    OrdemServicoExameController.getInstance().excluir(ordemServicoExame);
+                    retornarExamesAposEditar();
+                }
+                else if(idEdit == 0)
+                {
+                    dsExame.Tables[0].Rows[gridExames.SelectedIndex].Delete();
+                }
                 row.SetField("Id", "0");
                 row.SetField("CodDependente", txtCodDependente.Texts);
                 row.SetField("Dependente", txtDependente.Texts);
@@ -1484,6 +1535,7 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void limparDadosExame()
         {
+            txtIdExame.Texts = "";
             txtDependente.Texts = "";
             txtCodDependente.Texts = "";
             txtExaminador.Texts = "";
@@ -2004,5 +2056,117 @@ namespace Lunar.Telas.OrdensDeServico
                 pesquisaVendedor();
             }
         }
+
+        private void gridExames_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        {
+            if (gridExames.SelectedIndex >= 0)
+            {
+                editarExame();
+            }
+            else
+                GenericaDesktop.ShowAlerta("Clique na linha do exame que deseja editar!");
+        }
+
+        private void editarExame()
+        {
+            OrdemServicoExame exame = new OrdemServicoExame();
+            var selectedItem = this.gridExames.CurrentItem as DataRowView;
+            var dataRow = (selectedItem as DataRowView).Row;
+            txtDependente.Texts = dataRow["Dependente"].ToString();
+            txtCodDependente.Texts = dataRow["CodDependente"].ToString();
+            txtExaminador.Texts = dataRow["Examinador"].ToString();
+            try { txtDataExame.Value = DateTime.Parse(dataRow["DataExame"].ToString()); } catch { }
+            txtLDEsferico.Texts = dataRow["LDEsferico"].ToString();
+            txtLDCilindrico.Texts = dataRow["LDCilindrico"].ToString();
+            txtLDPosicao.Texts = dataRow["LDPosicao"].ToString();
+            txtLDDp.Texts = dataRow["LDDp"].ToString();
+            txtLDAltura.Texts = dataRow["LDAltura"].ToString();
+            txtLEEsferico.Texts = dataRow["LEEsferico"].ToString();
+            txtLECilindrico.Texts = dataRow["LECilindrico"].ToString();
+            txtLEPosicao.Texts = dataRow["LEPosicao"].ToString();
+            txtLEDp.Texts = dataRow["LEDp"].ToString();
+            txtLEAltura.Texts = dataRow["LEAltura"].ToString();
+            txtPDEsferico.Texts = dataRow["PDEsferico"].ToString();
+            txtPDCilindrico.Texts = dataRow["PDCilindrico"].ToString();
+            txtPDPosicao.Texts = dataRow["PDPosicao"].ToString();
+            txtPDDp.Texts = dataRow["PDDp"].ToString();
+            txtPDAltura.Texts = dataRow["PDAltura"].ToString();
+            txtPEEsferico.Texts = dataRow["PEEsferico"].ToString();
+            txtPECilindrico.Texts = dataRow["PECilindrico"].ToString();
+            txtPEPosicao.Texts = dataRow["PEPosicao"].ToString();
+            txtPEDp.Texts = dataRow["PEDp"].ToString();
+            txtPEAltura.Texts = dataRow["PEAltura"].ToString();
+            txtArmacao.Texts = dataRow["Armacao"].ToString();
+            txtLentes.Texts = dataRow["Lentes"].ToString();
+            txtProximoExame.Text = dataRow["ProximoExame"].ToString();
+            txtAdicao.Texts = dataRow["Adicao"].ToString();
+            txtDataEntrega.Text = dataRow["DataEntrega"].ToString();
+            txtIdExame.Texts = dataRow["Id"].ToString();
+            tabControlAdv1.SelectedTab = tabOtica;
+        }
+
+        private void retornarExamesAposEditar()
+        {
+            //Exames 
+            dsExame.Tables[0].Clear();
+            OrdemServicoExameController ordemServicoExameController = new OrdemServicoExameController();
+            IList<OrdemServicoExame> listaExames = ordemServicoExameController.selecionarExamesPorOrdemServico(ordemServico.Id);
+            if (listaExames.Count > 0)
+            {
+                foreach (OrdemServicoExame ordemServicoExame in listaExames)
+                {
+                    System.Data.DataRow row = dsExame.Tables[0].NewRow();
+                    if (ordemServicoExame.Dependente != null)
+                    {
+                        row.SetField("CodDependente", ordemServicoExame.Dependente.Id.ToString());
+                        row.SetField("Dependente", ordemServicoExame.Dependente.Nome);
+                    }
+                    else
+                    {
+                        row.SetField("CodDependente", "");
+                        row.SetField("Dependente", "");
+                    }
+                    row.SetField("Examinador", ordemServicoExame.Examinador);
+                    row.SetField("DataExame", ordemServicoExame.DataExame.ToShortDateString());
+                    row.SetField("LDEsferico", ordemServicoExame.LdEsferico);
+                    row.SetField("LDCilindrico", ordemServicoExame.LdCilindrico);
+                    row.SetField("LDPosicao", ordemServicoExame.LdPosicao);
+                    row.SetField("LDDp", ordemServicoExame.LdDp);
+                    row.SetField("LDAltura", ordemServicoExame.LdAltura);
+                    row.SetField("LEEsferico", ordemServicoExame.LeEsferico);
+                    row.SetField("LECilindrico", ordemServicoExame.LeCilindrico);
+                    row.SetField("LEPosicao", ordemServicoExame.LePosicao);
+                    row.SetField("LEDp", ordemServicoExame.LeDp);
+                    row.SetField("LEAltura", ordemServicoExame.LeAltura);
+                    row.SetField("PDEsferico", ordemServicoExame.PdEsferico);
+                    row.SetField("PDCilindrico", ordemServicoExame.PdCilindrico);
+                    row.SetField("PDPosicao", ordemServicoExame.PdPosicao);
+                    row.SetField("PDDp", ordemServicoExame.PdDp);
+                    row.SetField("PDAltura", ordemServicoExame.PdAltura);
+                    row.SetField("PEEsferico", ordemServicoExame.PeEsferico);
+                    row.SetField("PECilindrico", ordemServicoExame.PeCilindrico);
+                    row.SetField("PEPosicao", ordemServicoExame.PePosicao);
+                    row.SetField("PEDp", ordemServicoExame.PeDp);
+                    row.SetField("PEAltura", ordemServicoExame.PeAltura);
+                    row.SetField("Armacao", ordemServicoExame.Armacao);
+                    row.SetField("Lentes", ordemServicoExame.Lente);
+                    row.SetField("ProximoExame", ordemServicoExame.ProximoExame);
+                    row.SetField("Adicao", ordemServicoExame.Adicao);
+                    row.SetField("DataEntrega", ordemServicoExame.DataEntrega);
+                    row.SetField("Id", ordemServicoExame.Id.ToString());
+                    dsExame.Tables[0].Rows.Add(row);
+                    if (this.gridExames.View != null)
+                    {
+                        if (this.gridExames.View.Records.Count > 0)
+                        {
+                            gridExames.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+                            this.gridExames.Columns["Dependente"].AutoSizeColumnsMode = AutoSizeColumnsMode.AllCellsWithLastColumnFill;
+                            gridExames.AutoSizeController.Refresh();
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

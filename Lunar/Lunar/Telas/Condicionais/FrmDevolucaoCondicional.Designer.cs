@@ -344,6 +344,7 @@
             this.gridProdutos.Style.CellStyle.Font.Size = 14F;
             this.gridProdutos.Style.HeaderStyle.HoverBackColor = System.Drawing.Color.White;
             this.gridProdutos.TabIndex = 282;
+            this.gridProdutos.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.gridProdutos_QueryRowStyle);
             // 
             // autoLabel3
             // 
@@ -526,7 +527,7 @@
             gridTextColumn16.AllowResizing = true;
             gridTextColumn16.AllowSorting = false;
             gridTextColumn16.CellStyle.Font.Size = 12F;
-            gridTextColumn16.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn16.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             gridTextColumn16.HeaderText = "Data Devolução";
             gridTextColumn16.MappingName = "DataDevolucao";
             this.gridDevolucao.Columns.Add(gridTextColumn11);
@@ -545,6 +546,7 @@
             this.gridDevolucao.Style.CellStyle.Font.Size = 14F;
             this.gridDevolucao.Style.HeaderStyle.HoverBackColor = System.Drawing.Color.White;
             this.gridDevolucao.TabIndex = 291;
+            this.gridDevolucao.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.gridDevolucao_QueryRowStyle);
             // 
             // autoLabel4
             // 

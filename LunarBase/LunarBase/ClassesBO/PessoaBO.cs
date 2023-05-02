@@ -89,6 +89,18 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar pessoas/empresas! Erro: " + e.Message);
             }
         }
+
+        public IList<Pessoa> selecionarPessoasGrid()
+        {
+            try
+            {
+                return dao.selecionarPessoasGrid();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar pessoas/empresas! Erro: " + e.Message);
+            }
+        }
         public IList<Pessoa> selecionarClientesComVariosFiltros(string valor)
         {
             try

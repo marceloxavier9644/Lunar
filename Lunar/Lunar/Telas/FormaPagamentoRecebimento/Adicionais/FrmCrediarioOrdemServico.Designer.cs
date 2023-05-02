@@ -156,6 +156,7 @@
             this.txtParcelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtParcelas.Texts = "";
             this.txtParcelas.UnderlinedStyle = false;
+            this.txtParcelas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtParcelas_KeyPress);
             this.txtParcelas.Leave += new System.EventHandler(this.txtParcelas_Leave);
             // 
             // dsParcelas

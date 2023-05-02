@@ -25,6 +25,8 @@
 		<property name="ValorRecebido" column="VALORRECEBIDO" type="decimal"/>
 		<property name="DescontoRecebidoBaixa" column="DESCONTORECEBIDOBAIXA" type="decimal"/>
 		<property name="AcrescimoRecebidoBaixa" column="ACRESCIMORECEBIDOBAIXA" type="decimal"/>
+		<property name="ValorRecebimentoParcial" column="VALORRECEBIMENTOPARCIAL" type="decimal"/>
+		<property name="ValorTotalOrigem" column="VALORTOTALORIGEM" type="decimal"/>
 		
 		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_CONTARECEBER_CLIENTE" lazy="false"/>
 		<many-to-one name="FormaPagamento" column="FORMAPAGAMENTO" class="LunarBase.Classes.FormaPagamento" not-null="false" foreign-key="FK_CONTARECEBER_FORMAPAGAMENTO" lazy="false"/>

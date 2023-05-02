@@ -12,6 +12,7 @@ using Lunar.Telas.Compras.Manifestos;
 using Lunar.Telas.Condicionais;
 using Lunar.Telas.ContasPagar;
 using Lunar.Telas.ContasReceber;
+using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.Dashboards;
 using Lunar.Telas.Estoques;
 using Lunar.Telas.Fiscal;
@@ -24,6 +25,7 @@ using Lunar.Telas.Sintegra;
 using Lunar.Telas.UsuarioRegistro;
 using Lunar.Telas.Vendas;
 using Lunar.Utils;
+using Lunar.Utils.ImportadorSistemas;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -870,6 +872,50 @@ namespace Lunar.Telas.Principal
             fr.ShowDialog();
             formBackground.Dispose();
             fr.Dispose();
+        }
+
+        private void imprimirDuplicataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            FrmImprimirDuplicata uu = new FrmImprimirDuplicata(null, null);
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            //formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            uu.Owner = formBackground;
+            uu.ShowDialog();
+            formBackground.Dispose();
+            uu.Dispose();
+        }
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            FrmImportarCSV uu = new FrmImportarCSV();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            //formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            uu.Owner = formBackground;
+            uu.ShowDialog();
+            formBackground.Dispose();
+            uu.Dispose();
         }
     }
 }

@@ -23,13 +23,13 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
-        public IList<CondicionalProduto> selecionarProdutosCondicionalComVariosFiltros(string valor)
+        public IList<CondicionalProduto> selecionarProdutosCondicionalComVariosFiltros(string valor, int idCondicional)
         {
             CondicionalProdutoBO bo = new CondicionalProdutoBO();
             Conexao.IniciaTransacao();
             try
             {
-                return bo.selecionarProdutosCondicionalComVariosFiltros(valor);
+                return bo.selecionarProdutosCondicionalComVariosFiltros(valor, idCondicional);
             }
             catch (Exception e)
             {

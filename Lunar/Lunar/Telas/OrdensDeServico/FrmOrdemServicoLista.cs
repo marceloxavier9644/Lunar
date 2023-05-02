@@ -1,4 +1,5 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
+using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas.Adicionais;
@@ -548,6 +549,21 @@ namespace Lunar.Telas.OrdensDeServico
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                ordemServico = new OrdemServico();
+                ordemServico = (OrdemServico)grid.SelectedItem;
+                FrmImpressaoOrdemServico frmImpressaoOrdemServico = new FrmImpressaoOrdemServico(ordemServico);
+                frmImpressaoOrdemServico.ShowDialog();
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Clique primeiro na Ordem de Serviço que deseja imprimir");
+            }
+        }
+
+        private void imprimirOS()
         {
             if (grid.SelectedIndex >= 0)
             {
@@ -1479,6 +1495,198 @@ namespace Lunar.Telas.OrdensDeServico
             else
             {
                 GenericaDesktop.ShowAlerta("Clique primeiro na Ordem de Serviço que deseja imprimir");
+            }
+        }
+
+        private void btnEntrada_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                ordemServico = new OrdemServico();
+                ordemServico = (OrdemServico)grid.SelectedItem;
+                if (ordemServico.Status == "ABERTA")
+                {
+                    Form formBackground = new Form();
+                    FrmEntradaValor uu = new FrmEntradaValor(ordemServico);
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    uu.ShowDialog();
+                    formBackground.Dispose();
+                    uu.Dispose();
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Função válida apenas para O.S em aberto!");
+            }
+        }
+
+        private void btnImprimir1_Click(object sender, EventArgs e)
+        {
+            imprimirOS();
+
+        }
+
+        private void btnImprimir1_DropDowItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string btnClicado = e.ClickedItem.Text;
+            if (btnClicado.Equals("Imprimir Duplicata(s)"))
+            {
+                if (grid.SelectedIndex >= 0)
+                {
+                    ordemServico = new OrdemServico();
+                    ordemServico = (OrdemServico)grid.SelectedItem;
+                    ContaReceberController contaReceberController = new ContaReceberController();
+                    if (ordemServico != null)
+                    {
+                        IList<ContaReceber> lis = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.OrdemServico = " + ordemServico.Id + " and Tabela.FlagExcluido <> True");
+                        if (lis.Count > 0)
+                        {
+                            FrmImprimirDuplicata frDup = new FrmImprimirDuplicata(ordemServico.Cliente, lis);
+                            frDup.ShowDialog();
+                        }
+                        else
+                            GenericaDesktop.ShowAlerta("Não foi encontrado duplicata(s) para essa ordem de serviço!");
+                        
+                    }
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Clique primeiro na Ordem de Serviço que deseja imprimir as duplicatas");
+                }
+            }
+            else if (btnClicado.Equals("Imprimir Nota Fiscal"))
+            {
+                imprimirNF();
+            }
+        }
+
+        private void imprimirNF()
+        {
+            try
+            {
+                if (grid.RowCount > 0 && grid.SelectedItem != null)
+                {
+                    ordemServico = new OrdemServico();
+                    ordemServico = (OrdemServico)grid.SelectedItem;
+                    if (ordemServico.Nfe != null)
+                    {
+                        nfe = ordemServico.Nfe;
+                        if (nfe.Status.Contains("Autorizado o uso"))
+                        {
+                            if (nfe.Modelo.Equals("65"))
+                            {
+                                if (File.Exists(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf"))
+                                {
+                                    //Process.Start(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
+                                    FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
+                                    frmPDF.ShowDialog();
+                                }
+                                else if (nfe.NfeStatus.Id == 6)
+                                {
+                                    if (Directory.Exists(Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs"))
+                                    {
+                                        string caminhoPDF = Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs\" + Sessao.empresaFilialLogada.Cnpj.Trim() + @"\" + nfe.DataCadastro.Year + @"\" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\" + nfe.DataCadastro.Day.ToString().PadLeft(2, '0') + @"\" + nfe.Chave + ".pdf";
+                                        if (File.Exists(caminhoPDF))
+                                        {
+                                            //System.Diagnostics.Process.Start(caminhoPDF);
+                                            FrmPDF frmPDF = new FrmPDF(caminhoPDF);
+                                            frmPDF.ShowDialog();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (nfe.Modelo.Equals("65"))
+                                    {
+                                        NFCeDownloadProc nFCeDownloadProc = new NFCeDownloadProc();
+                                        nFCeDownloadProc = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
+                                        if (nFCeDownloadProc != null)
+                                        {
+                                            gerarPDF2(nFCeDownloadProc.pdf, nfe.Chave, true);
+                                        }
+                                    }
+                                }
+                            }
+                            else if (nfe.Modelo.Equals("55"))
+                            {
+                                if (File.Exists(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf"))
+                                {
+                                    FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf");
+                                    frmPDF.ShowDialog();
+                                    //Process.Start(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf");
+                                }
+                                else
+                                {
+                                    NFeDownloadProc55 nFeDownloadProc55 = new NFeDownloadProc55();
+                                    nFeDownloadProc55 = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
+                                    if (nFeDownloadProc55 != null)
+                                    {
+                                        gerarPDF2(nFeDownloadProc55.pdf, nfe.Chave, true);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                            GenericaDesktop.ShowAlerta("Nota Fiscal não está autorizada, verifique o erro da nota na tela de Monitoramento Fiscal");
+                    }
+                    else
+                        GenericaDesktop.ShowAlerta("O.S sem nota vinculada!");
+                }
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowAlerta("Falha ao imprimir nota. " + erro.Message);
+            } 
+        }
+
+        private void gerarPDF2(String pdf, String chave, bool imprimir)
+        {
+            if (nfe.TipoOperacao == "S" && nfe.Modelo.Equals("65"))
+            {
+                if (!File.Exists(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf"))
+                {
+                    byte[] bytes = Convert.FromBase64String(pdf);
+                    System.IO.FileStream stream = new FileStream(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf", FileMode.CreateNew);
+                    System.IO.BinaryWriter writer =
+                        new BinaryWriter(stream);
+                    writer.Write(bytes, 0, bytes.Length);
+                    writer.Close();
+                }
+                if (imprimir == true)
+                {
+                    //Process.Start(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf");
+                    FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf");
+                    frmPDF.ShowDialog();
+                }
+
+            }
+            else if (nfe.Modelo.Equals("55"))
+            {
+                if (!File.Exists(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf"))
+                {
+                    byte[] bytes = Convert.FromBase64String(pdf);
+                    System.IO.FileStream stream = new FileStream(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf", FileMode.CreateNew);
+                    System.IO.BinaryWriter writer =
+                        new BinaryWriter(stream);
+                    writer.Write(bytes, 0, bytes.Length);
+                    writer.Close();
+                }
+                if (imprimir == true)
+                {
+                    FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf");
+                    frmPDF.ShowDialog();
+                    //Process.Start(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf");
+                }
             }
         }
     }

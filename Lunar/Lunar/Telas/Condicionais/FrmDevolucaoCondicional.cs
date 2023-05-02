@@ -130,7 +130,7 @@ namespace Lunar.Telas.Condicionais
             if (valor.Contains("*"))
                 valor = valor.Substring(valor.IndexOf("*") + 1);
 
-            listaProdutos = condicionalProdutoController.selecionarProdutosCondicionalComVariosFiltros(valor);
+            listaProdutos = condicionalProdutoController.selecionarProdutosCondicionalComVariosFiltros(valor, condicional.Id);
             if (listaProdutos.Count == 1)
             {
                 foreach (CondicionalProduto prod in listaProdutos)
@@ -231,6 +231,7 @@ namespace Lunar.Telas.Condicionais
                     Controller.getInstance().salvar(condicionalDevolucao);
 
                     retornaProdutosDevolvidos();
+                    retornaProdutosCondicional();
 
                     txtPesquisaProduto.Texts = "";
                     txtQuantidadeItem.Texts = "1";
@@ -271,7 +272,7 @@ namespace Lunar.Telas.Condicionais
                 row.SetField("Descricao", condicionalDevolucao1.Produto.Descricao);
                 row.SetField("ItemExcluido", "");
                 row.SetField("QuantidadeDevolvida", condicionalDevolucao1.Quantidade);
-                row.SetField("DataDevolucao", condicionalDevolucao1.DataDevolucao.ToShortDateString());
+                row.SetField("DataDevolucao", condicionalDevolucao1.DataDevolucao.ToShortDateString() + " " + condicionalDevolucao1.DataDevolucao.ToLongTimeString()) ;
                 quantidadeDevolvido = quantidadeDevolvido + condicionalDevolucao1.Quantidade;
                 dsProdutoDevolucao.Tables[0].Rows.Add(row);
             }
@@ -391,6 +392,8 @@ namespace Lunar.Telas.Condicionais
             if (!String.IsNullOrEmpty(txtCodProduto.Texts))
             {
                 inserirItem(condicionalproduto);
+                //Nesse abaixo retorna novamente a lista de produtos da condicional atualizado o saldo
+                retornaProdutosCondicional();
             }
         }
 
@@ -424,7 +427,8 @@ namespace Lunar.Telas.Condicionais
                         lblInformativo.Visible = false;
                     }
                     dsProdutoDevolucao.Tables[0].Rows[gridDevolucao.SelectedIndex].Delete();
-              
+                    //Atualiza saldo abaixo
+                    retornaProdutosCondicional();
                 }
             }
             else
@@ -441,6 +445,22 @@ namespace Lunar.Telas.Condicionais
                 GenericaDesktop.ShowAlerta("Condicional totalmente devolvida e encerrada!");
             }
 
+        }
+
+        private void gridDevolucao_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.Style.BackColor = Color.WhiteSmoke;
+            else
+                e.Style.BackColor = Color.White;
+        }
+
+        private void gridProdutos_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.Style.BackColor = Color.WhiteSmoke;
+            else
+                e.Style.BackColor = Color.White;
         }
     }
 }
