@@ -1425,8 +1425,11 @@ namespace Lunar.Telas.Cadastros.Cliente
             {
                 foreach (Endereco endereco in listaEndereco)
                 {
-                    if(endereco.Id != pessoa.EnderecoPrincipal.Id)
-                        inserirEnderecoGrid(endereco);
+                    if (pessoa.EnderecoPrincipal != null)
+                    {
+                        if (endereco.Id != pessoa.EnderecoPrincipal.Id)
+                            inserirEnderecoGrid(endereco);
+                    }
                 }
             }
         }
@@ -1438,8 +1441,11 @@ namespace Lunar.Telas.Cadastros.Cliente
             {
                 foreach (PessoaTelefone telefone in listaTelefones)
                 {
-                    if (telefone.Id != pessoa.PessoaTelefone.Id)
-                        inserirTelefoneGrid(telefone);
+                    if (pessoa.PessoaTelefone != null)
+                    {
+                        if (telefone.Id != pessoa.PessoaTelefone.Id)
+                            inserirTelefoneGrid(telefone);
+                    }
                 }
             }
         }

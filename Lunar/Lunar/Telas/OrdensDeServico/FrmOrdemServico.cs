@@ -290,11 +290,62 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
-            txtCodCliente.Texts = "";
-            txtCliente.Texts = "";
+            //txtCodCliente.Texts = "";
+           // txtCliente.Texts = "";
             txtCodDependente.Texts = "";
             txtDependente.Texts = "";
-            pesquisaCliente();
+            Pessoa pessoaOjeto = new Pessoa();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(txtCliente.Texts))
+                {
+                    txtCliente.Texts = "";
+                    txtCodCliente.Texts = "";
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal(ref pessoaOjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmClienteCadastro form = new FrmClienteCadastro();
+                            Object pessoaObj = new Pessoa();
+                            if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
+                            {
+                                txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
+                                txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
+                                txtVendedor.Focus();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                            txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                            txtVendedor.Focus();
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
 
         private void pesquisaCliente()
@@ -446,7 +497,7 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 txtCodDependente.Texts = "";
                 txtDependente.Texts = "";
-                pesquisaCliente();
+                btnPesquisaCliente.PerformClick();
             }
         }
 

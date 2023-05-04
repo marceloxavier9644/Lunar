@@ -8,13 +8,9 @@ using LunarBase.Utilidades;
 using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.ContasPagar
@@ -51,14 +47,11 @@ namespace Lunar.Telas.ContasPagar
 
         private void btnPesquisaClienteFornecedor_Click(object sender, EventArgs e)
         {
-            Object pessoaOjeto = new Pessoa();
+            Pessoa pessoaOjeto = new Pessoa();
             Form formBackground = new Form();
             try
             {
-                string sqlAdicional = "";
-                if (!String.IsNullOrEmpty(txtClienteFornecedor.Texts) && String.IsNullOrEmpty(txtCodClienteFornecedor.Texts))
-                    sqlAdicional = "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtClienteFornecedor.Texts + "%'";
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", sqlAdicional))
+                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(txtClienteFornecedor.Texts))
                 {
                     txtCodClienteFornecedor.Texts = "";
                     txtClienteFornecedor.Texts = "";
@@ -75,15 +68,16 @@ namespace Lunar.Telas.ContasPagar
                     formBackground.ShowInTaskbar = false;
                     formBackground.Show();
                     uu.Owner = formBackground;
-                    switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                    switch (uu.showModal(ref pessoaOjeto))
                     {
                         case DialogResult.Ignore:
                             uu.Dispose();
                             FrmClienteCadastro form = new FrmClienteCadastro();
-                            if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                            Object pessoaObj = new Pessoa();
+                            if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
                             {
-                                txtClienteFornecedor.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
-                                txtCodClienteFornecedor.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                                txtClienteFornecedor.Texts = ((Pessoa)pessoaObj).RazaoSocial;
+                                txtCodClienteFornecedor.Texts = ((Pessoa)pessoaObj).Id.ToString();
                                 txtNumeroDocumento.Focus();
                             }
                             form.Dispose();

@@ -37,6 +37,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnConfirmarImportacao = new System.Windows.Forms.Button();
+            this.lblInformacao = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +121,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lblInformacao);
             this.groupBox1.Controls.Add(this.btnConfirmarImportacao);
             this.groupBox1.Location = new System.Drawing.Point(4, 375);
             this.groupBox1.Name = "groupBox1";
@@ -137,6 +139,17 @@
             this.btnConfirmarImportacao.Text = "Confirmar";
             this.btnConfirmarImportacao.UseVisualStyleBackColor = true;
             this.btnConfirmarImportacao.Click += new System.EventHandler(this.btnConfirmarImportacao_Click);
+            // 
+            // lblInformacao
+            // 
+            this.lblInformacao.AutoSize = true;
+            this.lblInformacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformacao.Location = new System.Drawing.Point(8, 36);
+            this.lblInformacao.Name = "lblInformacao";
+            this.lblInformacao.Size = new System.Drawing.Size(94, 20);
+            this.lblInformacao.TabIndex = 12;
+            this.lblInformacao.Text = "Importação:";
+            this.lblInformacao.Visible = false;
             // 
             // FrmImportarCSV
             // 
@@ -160,6 +173,7 @@
             this.Text = "Importação de Dados";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,5 +190,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnConfirmarImportacao;
+        private System.Windows.Forms.Label lblInformacao;
     }
 }

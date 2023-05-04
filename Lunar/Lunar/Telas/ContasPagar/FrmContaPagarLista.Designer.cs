@@ -37,6 +37,7 @@
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn3 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
             this.iconPesquisar = new FontAwesome.Sharp.IconButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -381,6 +382,15 @@
             gridTextColumn6.HeaderStyle.Font.Size = 10F;
             gridTextColumn6.HeaderText = "Histórico";
             gridTextColumn6.MappingName = "Historico";
+            gridTextColumn7.AllowEditing = false;
+            gridTextColumn7.AllowFiltering = true;
+            gridTextColumn7.AllowResizing = true;
+            gridTextColumn7.CellStyle.Font.Size = 12F;
+            gridTextColumn7.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn7.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn7.HeaderStyle.Font.Size = 10F;
+            gridTextColumn7.HeaderText = "Filial";
+            gridTextColumn7.MappingName = "EmpresaFilial";
             this.grid.Columns.Add(gridTextColumn1);
             this.grid.Columns.Add(gridTextColumn2);
             this.grid.Columns.Add(gridTextColumn3);
@@ -390,6 +400,7 @@
             this.grid.Columns.Add(gridNumericColumn2);
             this.grid.Columns.Add(gridNumericColumn3);
             this.grid.Columns.Add(gridTextColumn6);
+            this.grid.Columns.Add(gridTextColumn7);
             this.grid.Location = new System.Drawing.Point(7, 242);
             this.grid.Name = "grid";
             this.grid.SelectionMode = Syncfusion.WinForms.DataGrid.Enums.GridSelectionMode.Extended;

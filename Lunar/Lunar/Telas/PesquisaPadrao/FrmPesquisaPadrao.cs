@@ -46,11 +46,11 @@ namespace Lunar.Telas.PesquisaPadrao
             Sql = "FROM " + Tabela + " as Tabela WHERE Tabela.FlagExcluido <> true ";
             SqlInicial = Sql;
             this.SqlAdicional = sqlAdicional;
-            pesquisar(Tabela, Sql);
+            if(Tabela != "Pessoa" && Tabela != "Produto")
+                pesquisar(Tabela, Sql);
         }
 
         private void pesquisar(string Tabela, string Sql)
-        
         {
             Controller.getInstance();
             String tela = Type.GetType("LunarBase.Classes." + Tabela + ",LunarBase").GetCustomAttributes(typeof(Anotacao), false)[0].ToString();

@@ -59,14 +59,14 @@ namespace Lunar.Telas.Vendas
 
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
-            Object pessoaOjeto = new Pessoa();
+            Pessoa pessoaOjeto = new Pessoa();
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtCliente.Texts + "%'"))
+                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(txtCliente.Texts))
                 {
-                    txtCodCliente.Texts = "";
                     txtCliente.Texts = "";
+                    txtCodCliente.Texts = "";
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
                     formBackground.Opacity = .50d;
@@ -80,16 +80,17 @@ namespace Lunar.Telas.Vendas
                     formBackground.ShowInTaskbar = false;
                     formBackground.Show();
                     uu.Owner = formBackground;
-                    switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                    switch (uu.showModal(ref pessoaOjeto))
                     {
                         case DialogResult.Ignore:
                             uu.Dispose();
                             FrmClienteCadastro form = new FrmClienteCadastro();
-                            if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                            Object pessoaObj = new Pessoa();
+                            if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
                             {
-                                txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
-                                txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
-                                txtCliente.Focus();
+                                txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
+                                txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
+                                pesquisarVendas();
                             }
                             form.Dispose();
                             break;

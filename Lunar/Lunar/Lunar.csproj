@@ -865,6 +865,12 @@
     <Compile Include="Telas\PesquisaPadrao\FrmPesquisaPadrao.Designer.cs">
       <DependentUpon>FrmPesquisaPadrao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\PesquisaPadrao\FrmPesquisaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\PesquisaPadrao\FrmPesquisaPessoa.Designer.cs">
+      <DependentUpon>FrmPesquisaPessoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Principal\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1287,6 +1293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\PesquisaPadrao\FrmPesquisaPadrao.resx">
       <DependentUpon>FrmPesquisaPadrao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\PesquisaPadrao\FrmPesquisaPessoa.resx">
+      <DependentUpon>FrmPesquisaPessoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

@@ -1,12 +1,10 @@
 ﻿using Lunar.Utils;
 using LunarBase.Classes;
-using LunarBase.ConexaoBD;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using MySql.Data.MySqlClient;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
-using Syncfusion.WinForms.Core.Utils;
 using Syncfusion.WinForms.DataGridConverter;
 using Syncfusion.XlsIO;
 using System;
@@ -23,16 +21,17 @@ namespace Lunar.Telas.Cadastros.Cliente
         private IList<Pessoa> listaClientes;
         PessoaController pessoaController = new PessoaController();
         Pessoa pessoa = new Pessoa();
+        bool passou = false;
         public FrmClienteLista()
         {
             InitializeComponent();
             this.Opacity = 0.0;
+            carregarLista();
         }
         public DataTable selectProdutos()
         {
             try
             {
-       
                 MySqlConnection con = null;
 
                 String sql = "SELECT * FROM Pessoa Where Pessoa.FlagExcluido <> True";
@@ -51,6 +50,8 @@ namespace Lunar.Telas.Cadastros.Cliente
         }
         private void carregarLista()
         {
+            //sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
+
             //MySqlConnection con = null;
             //String sql = "SELECT * FROM Pessoa Where Pessoa.FlagExcluido <> True";
             //con = new MySqlConnection(Sessao._conexaoMySQL);
@@ -60,11 +61,9 @@ namespace Lunar.Telas.Cadastros.Cliente
             //DataTable dt = new DataTable();
             //da.Fill(dt);
 
-
             txtPesquisaCliente.Texts = "";
-            listaClientes = pessoaController.selecionarTodasPessoas();
-            MessageBox.Show("Retornou do banco");
-            //ajustarLista();        
+            listaClientes = pessoaController.selecionarPessoasGrid();
+
             //gridClient.DataSource = dt;
 
             sfDataPager1.DataSource = listaClientes;
@@ -73,7 +72,8 @@ namespace Lunar.Telas.Cadastros.Cliente
             else
                 sfDataPager1.PageSize = 100;
             gridClient.DataSource = sfDataPager1.PagedSource;
-            //sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
+          
+          
             txtPesquisaCliente.Focus();
         }
         private void ajustarLista()
@@ -122,19 +122,25 @@ namespace Lunar.Telas.Cadastros.Cliente
 
         private void FrmClienteLista_Load(object sender, EventArgs e)
         {
-            timer1.Start();
+            //timer1.Start();
+            if (passou == false)
+            {
+                passou = true;
+                txtPesquisaCliente.Focus();
+            }
         }
 
         private void PesquisarCliente(string valor)
         {
             listaClientes = pessoaController.selecionarPessoasComVariosFiltros(valor);
-
-            sfDataPager1.DataSource = listaClientes;
             if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
                 sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
             else
                 sfDataPager1.PageSize = 100;
+
+            sfDataPager1.DataSource = listaClientes;
             gridClient.DataSource = sfDataPager1.PagedSource;
+     
 
             if (listaClientes.Count == 0)
             {
@@ -151,7 +157,16 @@ namespace Lunar.Telas.Cadastros.Cliente
         {
             if (e.KeyChar == 13)
             {
-                PesquisarCliente(txtPesquisaCliente.Texts.Trim());
+                if (String.IsNullOrEmpty(txtPesquisaCliente.Texts))
+                {
+                    if (GenericaDesktop.ShowConfirmacao("Sem digitar dados na pesquisa o sistema vai buscar todos clientes/fornecedores e pode demorar um tempo, deseja retornar todos?"))
+                        PesquisarCliente(txtPesquisaCliente.Texts.Trim());
+                    else
+                        txtPesquisaCliente.Focus();
+                }
+                else
+                    PesquisarCliente(txtPesquisaCliente.Texts.Trim());
+
             }
         }
 
@@ -204,7 +219,7 @@ namespace Lunar.Telas.Cadastros.Cliente
 
         private void sfDataPager1_OnDemandLoading(object sender, Syncfusion.WinForms.DataPager.Events.OnDemandLoadingEventArgs e)
         {
-           // sfDataPager1.LoadDynamicData(e.StartRowIndex, listaClientes.Skip(e.StartRowIndex).Take(e.PageSize));
+           //sfDataPager1.LoadDynamicData(e.StartRowIndex, listaClientes.Skip(e.StartRowIndex).Take(e.PageSize));
         }
 
         private void gridClient_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
@@ -320,6 +335,7 @@ namespace Lunar.Telas.Cadastros.Cliente
         {
             var options = new ExcelExportingOptions();
             options.ExcelVersion = ExcelVersion.Excel2013;
+            options.ExportAllPages = true;
             var excelEngine = gridClient.ExportToExcel(gridClient.View, options);
             var workBook = excelEngine.Excel.Workbooks[0];
 
@@ -364,7 +380,7 @@ namespace Lunar.Telas.Cadastros.Cliente
         private void FrmClienteLista_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(new Pen(Color.Gray), 0, 0, this.Width - 1, this.Height - 1);
-            carregarLista();
+            //carregarLista(); aqui deu erro, ficava carregando a todo momento
         }
     }
 }

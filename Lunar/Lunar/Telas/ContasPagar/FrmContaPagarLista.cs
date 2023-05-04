@@ -107,6 +107,7 @@ namespace Lunar.Telas.ContasPagar
                 }
                 else
                 {
+                    GenericaDesktop.ShowAlerta("Nada encontrado :-|");
                     grid.DataSource = null;
                     sfDataPager1.DataSource = null;
                     grid.Refresh();
@@ -129,9 +130,9 @@ namespace Lunar.Telas.ContasPagar
                 }
                 preencherSumario();
             }
-            catch
+            catch (Exception erro)
             {
-
+                GenericaDesktop.ShowErro(erro.Message);
             }
         }
 
@@ -384,14 +385,14 @@ namespace Lunar.Telas.ContasPagar
 
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
-            Object pessoaOjeto = new Pessoa();
+            Pessoa pessoaOjeto = new Pessoa();
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtCliente.Texts + "%'"))
+                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(txtCliente.Texts))
                 {
-                    txtCodCliente.Texts = "";
                     txtCliente.Texts = "";
+                    txtCodCliente.Texts = "";
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
                     formBackground.Opacity = .50d;
@@ -405,23 +406,24 @@ namespace Lunar.Telas.ContasPagar
                     formBackground.ShowInTaskbar = false;
                     formBackground.Show();
                     uu.Owner = formBackground;
-                    switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                    switch (uu.showModal(ref pessoaOjeto))
                     {
                         case DialogResult.Ignore:
                             uu.Dispose();
                             FrmClienteCadastro form = new FrmClienteCadastro();
-                            if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                            Object pessoaObj = new Pessoa();
+                            if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
                             {
-                                txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
-                                txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
-                                txtCliente.Focus();
+                                txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
+                                txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
+                                txtNumeroDocumento.Focus();
                             }
                             form.Dispose();
                             break;
                         case DialogResult.OK:
                             txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
-                            pesquisarContaPagar();
+                            txtNumeroDocumento.Focus();
                             break;
                     }
                     formBackground.Dispose();
@@ -441,47 +443,7 @@ namespace Lunar.Telas.ContasPagar
         {
             if (e.KeyChar == 13)
             {
-                GenericaDesktop generica = new GenericaDesktop();
-                PessoaController pessoaController = new PessoaController();
-                Pessoa pessoa = new Pessoa();
-                if (generica.eNumero(txtCliente.Texts) && txtCliente.Texts.Length <= 5)
-                {
-                    pessoa.Id = int.Parse(txtCliente.Texts);
-                    try
-                    {
-                        pessoa = (Pessoa)Controller.getInstance().selecionar(pessoa);
-                        txtCliente.Texts = pessoa.RazaoSocial;
-                        txtCodCliente.Texts = pessoa.Id.ToString();
-                        btnPesquisar.PerformClick();
-                    }
-                    catch
-                    {
-                        pessoa = null;
-                        txtCodCliente.Texts = "";
-                        GenericaDesktop.ShowAlerta("Nenhuma pessoa/empresa encontrada");
-                        txtCliente.SelectAll();
-                    }
-                }
-                else
-                {
-                    IList<Pessoa> listaPessoa = pessoaController.selecionarPessoasComVariosFiltros(txtCliente.Texts);
-                    if (listaPessoa.Count == 1)
-                    {
-                        foreach (Pessoa pess in listaPessoa)
-                        {
-                            pessoa = pess;
-                            txtCliente.Texts = pess.RazaoSocial;
-                            txtCodCliente.Texts = pess.Id.ToString();
-                            btnPesquisar.PerformClick();
-                        }
-                    }
-                    else if (listaPessoa.Count > 1)
-                    {
-                        btnPesquisaCliente.PerformClick();
-                    }
-                    else
-                        GenericaDesktop.ShowAlerta("Nenhuma pessoa/empresa encontrada");
-                }
+                btnPesquisaCliente.PerformClick();
             }
         }
 

@@ -195,22 +195,14 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
-            txtCodCliente.Texts = "";
-            txtCliente.Texts = "";
-            pesquisaCliente(false);
-        }
-        private void pesquisaCliente(bool ativaFiltroNome)
-        {
-            Object pessoaOjeto = new Pessoa();
+            Pessoa pessoaOjeto = new Pessoa();
             Form formBackground = new Form();
             try
             {
-                String sqlAd = "";
-                if (ativaFiltroNome == true)
-                    sqlAd = "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtCliente.Texts + "%'";
-
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", sqlAd))
+                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(txtCliente.Texts))
                 {
+                    txtCliente.Texts = "";
+                    txtCodCliente.Texts = "";
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
                     formBackground.Opacity = .50d;
@@ -224,24 +216,26 @@ namespace Lunar.Telas.OrdensDeServico
                     formBackground.ShowInTaskbar = false;
                     formBackground.Show();
                     uu.Owner = formBackground;
-                    switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                    switch (uu.showModal(ref pessoaOjeto))
                     {
                         case DialogResult.Ignore:
                             uu.Dispose();
                             FrmClienteCadastro form = new FrmClienteCadastro();
-                            if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                            Object pessoaObj = new Pessoa();
+                            if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
                             {
-                                txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
-                                txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                                txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
+                                txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
+                                txtNumeroOS.Focus();
                             }
                             form.Dispose();
                             break;
                         case DialogResult.OK:
                             txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                            txtNumeroOS.Focus();
                             break;
                     }
-
                     formBackground.Dispose();
                 }
             }
@@ -254,6 +248,61 @@ namespace Lunar.Telas.OrdensDeServico
                 formBackground.Dispose();
             }
         }
+        //private void pesquisaCliente(bool ativaFiltroNome)
+        //{
+        //    Object pessoaOjeto = new Pessoa();
+        //    Form formBackground = new Form();
+        //    try
+        //    {
+        //        String sqlAd = "";
+        //        if (ativaFiltroNome == true)
+        //            sqlAd = "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtCliente.Texts + "%'";
+
+        //        using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", sqlAd))
+        //        {
+        //            formBackground.StartPosition = FormStartPosition.Manual;
+        //            //formBackground.FormBorderStyle = FormBorderStyle.None;
+        //            formBackground.Opacity = .50d;
+        //            formBackground.BackColor = Color.Black;
+        //            //formBackground.Left = Top = 0;
+        //            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+        //            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+        //            formBackground.WindowState = FormWindowState.Maximized;
+        //            formBackground.TopMost = false;
+        //            formBackground.Location = this.Location;
+        //            formBackground.ShowInTaskbar = false;
+        //            formBackground.Show();
+        //            uu.Owner = formBackground;
+        //            switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+        //            {
+        //                case DialogResult.Ignore:
+        //                    uu.Dispose();
+        //                    FrmClienteCadastro form = new FrmClienteCadastro();
+        //                    if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+        //                    {
+        //                        txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+        //                        txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+        //                    }
+        //                    form.Dispose();
+        //                    break;
+        //                case DialogResult.OK:
+        //                    txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+        //                    txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+        //                    break;
+        //            }
+
+        //            formBackground.Dispose();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        formBackground.Dispose();
+        //    }
+        //}
 
         private void pesquisaDependente(bool ativaFiltroNome)
         {
@@ -324,7 +373,7 @@ namespace Lunar.Telas.OrdensDeServico
         {
             if (e.KeyChar == 13)
             {
-                pesquisaCliente(true);
+                btnPesquisaCliente.PerformClick();
             }
         }
 

@@ -334,3 +334,4 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Sintegra.FrmGerarSint
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.OrdensDeServico.FrmEntradaValor.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasReceber.Reports.FrmImprimirDuplicata.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Utils.ImportadorSistemas.FrmImportarCSV.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.PesquisaPadrao.FrmPesquisaPessoa.resources

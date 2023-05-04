@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -77,21 +78,35 @@ namespace Lunar.Utils.ImportadorSistemas
         private void btnConfirmarImportacao_Click(object sender, EventArgs e)
         {
             if (radioClientes.Checked == true)
-                importarClientesFornecedores();
+            {
+                Thread th = new Thread(() => importarClientesFornecedores());
+                th.Start();
+                Application.DoEvents();
+                th.Join();
+            }
         }
 
         private void importarClientesFornecedores()
         {
+         //   lblInformacao.Visible = true;
+            int i = 0;
+          //  lblInformacao.Text = "Importação iniciada...";
             foreach (DataGridViewRow col in dataGridView1.Rows)
             {
+                i++;
                 Pessoa pessoa = new Pessoa();
+             //   lblInformacao.Text = "Importação de Pessoas/Parceiros: " + i + " de " + dataGridView1.Rows.Count;
                 pessoa.Id = 0;
                 pessoa.CodigoImportacao = col.Cells[0].Value.ToString();
+                if (!String.IsNullOrEmpty(pessoa.CodigoImportacao)) 
+                { 
                 pessoa.RazaoSocial = col.Cells[1].Value.ToString();
                 if (String.IsNullOrEmpty(pessoa.RazaoSocial))
                     pessoa.RazaoSocial = "SEM PREENCHIMENTO";
                 pessoa.NomeFantasia = col.Cells[2].Value.ToString();
-                pessoa.Cnpj = col.Cells[4].Value.ToString().Replace("-", "").Replace(".", "").Replace("/", "");
+                pessoa.Cnpj = col.Cells[3].Value.ToString().Replace("-", "").Replace(".", "").Replace("/", "");
+                if(String.IsNullOrEmpty(pessoa.Cnpj))
+                    pessoa.Cnpj = col.Cells[4].Value.ToString().Replace("-", "").Replace(".", "").Replace("/", "");
                 pessoa.Rg = col.Cells[5].Value.ToString();
                 pessoa.InscricaoEstadual = col.Cells[6].Value.ToString();
                 try { pessoa.DataNascimento = DateTime.Parse(col.Cells[7].Value.ToString()); } catch { pessoa.DataNascimento = DateTime.Parse("01-01-1900 00:00:00");}
@@ -116,57 +131,78 @@ namespace Lunar.Utils.ImportadorSistemas
                     pessoa.TipoPessoa = "PJ";
                 pessoa.EnderecoPrincipal = null;
                 pessoa.PessoaTelefone = null;
+                pessoa.Pai = col.Cells[20].Value.ToString();
+                pessoa.Mae = col.Cells[21].Value.ToString();
+                pessoa.Email = col.Cells[22].Value.ToString();
+                pessoa.Observacoes = "PESSOA IMPORTADA DE OUTRO SISTEMA";
+                pessoa.LocalTrabalho = "";
+                pessoa.LimiteCredito = 0;
+                pessoa.FuncaoTrabalho = "";
+                pessoa.TelefoneTrabalho = "";
+                pessoa.TempoTrabalho = "";
+                pessoa.SalarioTrabalho = "0";
+                pessoa.ContatoTrabalho = "";
 
                 Controller.getInstance().salvar(pessoa);
 
-                //apos salvar a pessoa, salva o endereço.
-                Endereco endereco = new Endereco();
-                endereco.Cep = col.Cells[9].Value.ToString().Replace("-", "").Replace(".", "").Replace("/", "");
-                string descCidade = col.Cells[10].Value.ToString().Replace("-", "").Replace(".", "").Replace("/", "");
-                CidadeController cidadeController = new CidadeController();
-                Cidade cidade = new Cidade();
-                try { cidade = cidadeController.selecionarCidadePorDescricao(descCidade); }
-                catch { cidade = cidadeController.selecionarCidadePorDescricaoEUf(descCidade, "MG"); }
-                if (cidade != null)
-                    endereco.Cidade = cidade;
-                else
-                {
-                    cidade = cidadeController.selecionarCidadePorDescricao("UNAI");
-                    endereco.Cidade = cidade;
-                }
-                endereco.Logradouro = col.Cells[11].Value.ToString();
-                if (String.IsNullOrEmpty(endereco.Logradouro))
-                    endereco.Logradouro = "SEM PREENCHIMENTO";
-                endereco.Numero = col.Cells[12].Value.ToString();
-                endereco.Bairro = col.Cells[13].Value.ToString();
-                endereco.Complemento = col.Cells[14].Value.ToString();
-                endereco.EmpresaFilial = Sessao.empresaFilialLogada;
-                endereco.Pessoa = pessoa;
-                
-                Controller.getInstance().salvar(endereco);
-                pessoa.EnderecoPrincipal = endereco;
-                Controller.getInstance().salvar(pessoa);
+                    //apos salvar a pessoa, salva o endereço.
+                    if (pessoa.Id > 0)
+                    {
+                 
+                        Endereco endereco = new Endereco();
+                        endereco.Cep = col.Cells[9].Value.ToString().Replace("-", "").Replace(".", "").Replace("/", "");
+                        string descCidade = col.Cells[10].Value.ToString().Replace("-", "").Replace(".", "").Replace("/", "");
+                        CidadeController cidadeController = new CidadeController();
+                        Cidade cidade = new Cidade();
+                        try { cidade = cidadeController.selecionarCidadePorDescricao(descCidade); }
+                        catch { cidade = cidadeController.selecionarCidadePorDescricaoEUf(descCidade, "MG"); }
+                        if (cidade != null)
+                            endereco.Cidade = cidade;
+                        else
+                        {
+                            cidade = cidadeController.selecionarCidadePorDescricao("UNAI");
+                            endereco.Cidade = cidade;
+                        }
+                        endereco.Logradouro = col.Cells[11].Value.ToString();
+                        if (String.IsNullOrEmpty(endereco.Logradouro))
+                            endereco.Logradouro = "SEM PREENCHIMENTO";
+                        endereco.Numero = col.Cells[12].Value.ToString();
+                        if (String.IsNullOrEmpty(endereco.Numero))
+                            endereco.Numero = "S/N";
+                        endereco.Bairro = col.Cells[13].Value.ToString();
+                        endereco.Complemento = col.Cells[14].Value.ToString();
+                        endereco.EmpresaFilial = Sessao.empresaFilialLogada;
+                        endereco.Referencia = "";
+                        endereco.Pessoa = pessoa;
 
-                //apos salvar endereço salva os telefones
-                if (!String.IsNullOrEmpty(col.Cells[15].Value.ToString()))
-                {
-                    PessoaTelefone pessoaTelefone = new PessoaTelefone();
-                    pessoaTelefone.Pessoa = pessoa;
-                    pessoaTelefone.Telefone = col.Cells[15].Value.ToString();
-                    pessoaTelefone.Observacoes = "IMPORTAÇÃO DE OUTRO SISTEMA";
-                    Controller.getInstance().salvar(pessoaTelefone);
-                }
-                if (!String.IsNullOrEmpty(col.Cells[16].Value.ToString()))
-                {
-                    PessoaTelefone pessoaTelefone = new PessoaTelefone();
-                    pessoaTelefone.Pessoa = pessoa;
-                    pessoaTelefone.Telefone = col.Cells[16].Value.ToString();
-                    pessoaTelefone.Observacoes = "IMPORTAÇÃO DE OUTRO SISTEMA";
-                    Controller.getInstance().salvar(pessoaTelefone);
-                    pessoa.PessoaTelefone = pessoaTelefone;
-                    Controller.getInstance().salvar(pessoa);
-                }
+                        Controller.getInstance().salvar(endereco);
+                        pessoa.EnderecoPrincipal = endereco;
+                        Controller.getInstance().salvar(pessoa);
+               
 
+                        //apos salvar endereço salva os telefones
+                        if (!String.IsNullOrEmpty(col.Cells[15].Value.ToString()))
+                        {
+                            PessoaTelefone pessoaTelefone = new PessoaTelefone();
+                            pessoaTelefone.Pessoa = pessoa;
+                            pessoaTelefone.Ddd = "";
+                            pessoaTelefone.Telefone = col.Cells[15].Value.ToString();
+                            pessoaTelefone.Observacoes = "IMPORTAÇÃO DE OUTRO SISTEMA";
+                            Controller.getInstance().salvar(pessoaTelefone);
+                        }
+                        if (!String.IsNullOrEmpty(col.Cells[16].Value.ToString()))
+                        {
+                            PessoaTelefone pessoaTelefone = new PessoaTelefone();
+                            pessoaTelefone.Pessoa = pessoa;
+                            pessoaTelefone.Ddd = "";
+                            pessoaTelefone.Telefone = col.Cells[16].Value.ToString();
+                            pessoaTelefone.Observacoes = "IMPORTAÇÃO DE OUTRO SISTEMA";
+                            Controller.getInstance().salvar(pessoaTelefone);
+                            pessoa.PessoaTelefone = pessoaTelefone;
+                            Controller.getInstance().salvar(pessoa);
+                        }
+                    }
+                }
             }
             GenericaDesktop.ShowInfo("Importação de Clientes/Fornecedores Realizada com Sucesso!");
         }

@@ -31,7 +31,7 @@ namespace LunarBase.ClassesDAO
             Session = Conexao.GetSession();
             String sql = "FROM Pessoa as Tabela WHERE Tabela.FlagExcluido <> true " +
                          "order by Tabela.Id Desc";
-            IList<Pessoa> retorno = Session.CreateQuery(sql).SetMaxResults(1000).List<Pessoa>();
+            IList<Pessoa> retorno = Session.CreateQuery(sql).SetMaxResults(100).List<Pessoa>();
             return retorno;
             //.SetMaxResults(5000)
         }

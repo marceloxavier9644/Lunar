@@ -901,7 +901,7 @@ namespace Lunar.Telas.Vendas
         {
             if (e.KeyChar == 13)
             {
-                pesquisaCliente();
+                btnPesquisaCliente.PerformClick();
             }
         }
 
@@ -1079,7 +1079,7 @@ namespace Lunar.Telas.Vendas
                         break;
 
                     case Keys.F2:
-                        pesquisaCliente();
+                        btnPesquisaCliente.PerformClick();
                         break;
 
                     case Keys.F1:
@@ -1300,7 +1300,58 @@ namespace Lunar.Telas.Vendas
 
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
-            pesquisaCliente();
+            Pessoa pessoaOjeto = new Pessoa();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(txtPesquisaCliente.Texts))
+                {
+                    txtPesquisaCliente.Texts = "";
+                    txtCodCliente.Texts = "";
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal(ref pessoaOjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmClienteCadastro form = new FrmClienteCadastro();
+                            Object pessoaObj = new Pessoa();
+                            if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
+                            {
+                                txtPesquisaCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
+                                txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
+                                txtNomeVendedor.Focus();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtPesquisaCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                            txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                            txtNomeVendedor.Focus();
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
 
         private void gridProdutos_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)

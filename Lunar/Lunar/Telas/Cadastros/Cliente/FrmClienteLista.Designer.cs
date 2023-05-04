@@ -147,7 +147,7 @@
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel1.Location = new System.Drawing.Point(22, 36);
+            this.autoLabel1.Location = new System.Drawing.Point(12, 27);
             this.autoLabel1.Name = "autoLabel1";
             this.autoLabel1.Size = new System.Drawing.Size(68, 21);
             this.autoLabel1.TabIndex = 211;
@@ -159,7 +159,7 @@
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel15.Location = new System.Drawing.Point(411, 36);
+            this.autoLabel15.Location = new System.Drawing.Point(403, 27);
             this.autoLabel15.Name = "autoLabel15";
             this.autoLabel15.Size = new System.Drawing.Size(94, 21);
             this.autoLabel15.TabIndex = 210;
