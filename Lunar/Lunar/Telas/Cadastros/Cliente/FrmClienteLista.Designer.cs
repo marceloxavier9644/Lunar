@@ -263,6 +263,7 @@
             this.btnExportarPDF.Size = new System.Drawing.Size(36, 34);
             this.btnExportarPDF.TabIndex = 217;
             this.btnExportarPDF.UseVisualStyleBackColor = true;
+            this.btnExportarPDF.Visible = false;
             this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
             // 
             // btnExportarExcel

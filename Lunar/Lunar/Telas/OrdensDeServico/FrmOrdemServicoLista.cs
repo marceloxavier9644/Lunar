@@ -98,11 +98,11 @@ namespace Lunar.Telas.OrdensDeServico
         {
             listaOrdemServico = new List<OrdemServico>();
             produtoNegativo = false;
-            string sql = "Select * From OrdemServico Tabela ";
+            string sql = "Select * From ordemservico Tabela ";
 
             if (!String.IsNullOrEmpty(txtCodDependente.Texts) || !txtDataEntregaInicial.Text.Equals("  /  /    "))
             {
-                sql = sql + "INNER JOIN OrdemServicoExame Exame on Exame.OrdemServico = Tabela.Id ";
+                sql = sql + "INNER JOIN ordemservicoexame Exame on Exame.OrdemServico = Tabela.Id ";
             }
 
             sql = sql + "where Tabela.FlagExcluido <> true ";

@@ -34,10 +34,10 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.radioContasReceber = new System.Windows.Forms.RadioButton();
             this.radioClientes = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioProdutos = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnConfirmarImportacao = new System.Windows.Forms.Button();
             this.lblInformacao = new System.Windows.Forms.Label();
+            this.btnConfirmarImportacao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -73,12 +73,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 107);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(551, 262);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.Visible = false;
@@ -106,16 +109,16 @@
             this.radioClientes.Text = "Clientes";
             this.radioClientes.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioProdutos
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(188, 84);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(67, 17);
-            this.radioButton1.TabIndex = 10;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Produtos";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioProdutos.AutoSize = true;
+            this.radioProdutos.Location = new System.Drawing.Point(188, 84);
+            this.radioProdutos.Name = "radioProdutos";
+            this.radioProdutos.Size = new System.Drawing.Size(67, 17);
+            this.radioProdutos.TabIndex = 10;
+            this.radioProdutos.TabStop = true;
+            this.radioProdutos.Text = "Produtos";
+            this.radioProdutos.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -129,17 +132,6 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
-            // btnConfirmarImportacao
-            // 
-            this.btnConfirmarImportacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmarImportacao.Location = new System.Drawing.Point(425, 31);
-            this.btnConfirmarImportacao.Name = "btnConfirmarImportacao";
-            this.btnConfirmarImportacao.Size = new System.Drawing.Size(134, 32);
-            this.btnConfirmarImportacao.TabIndex = 12;
-            this.btnConfirmarImportacao.Text = "Confirmar";
-            this.btnConfirmarImportacao.UseVisualStyleBackColor = true;
-            this.btnConfirmarImportacao.Click += new System.EventHandler(this.btnConfirmarImportacao_Click);
-            // 
             // lblInformacao
             // 
             this.lblInformacao.AutoSize = true;
@@ -151,6 +143,17 @@
             this.lblInformacao.Text = "Importação:";
             this.lblInformacao.Visible = false;
             // 
+            // btnConfirmarImportacao
+            // 
+            this.btnConfirmarImportacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConfirmarImportacao.Location = new System.Drawing.Point(425, 31);
+            this.btnConfirmarImportacao.Name = "btnConfirmarImportacao";
+            this.btnConfirmarImportacao.Size = new System.Drawing.Size(134, 32);
+            this.btnConfirmarImportacao.TabIndex = 12;
+            this.btnConfirmarImportacao.Text = "Confirmar";
+            this.btnConfirmarImportacao.UseVisualStyleBackColor = true;
+            this.btnConfirmarImportacao.Click += new System.EventHandler(this.btnConfirmarImportacao_Click);
+            // 
             // FrmImportarCSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,7 +161,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(579, 450);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.radioProdutos);
             this.Controls.Add(this.radioContasReceber);
             this.Controls.Add(this.radioClientes);
             this.Controls.Add(this.dataGridView1);
@@ -187,7 +190,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.RadioButton radioContasReceber;
         private System.Windows.Forms.RadioButton radioClientes;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioProdutos;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnConfirmarImportacao;
         private System.Windows.Forms.Label lblInformacao;

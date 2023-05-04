@@ -58,12 +58,16 @@ namespace LunarBase.ConexaoBD
 
                     if (String.IsNullOrEmpty(servidor))
                     {
-                        servidor = "localhost";
-                        usuario = "marcelo";
-                        senha = "mx123";
-                        bancoDados = "lunar";
+                        //servidor = "localhost";
+                        //usuario = "marcelo";
+                        //senha = "mx123";
+                        //bancoDados = "lunar";
 
                         //Online
+                        servidor = "mysql.lunarsoftware.com.br";
+                        usuario = "lunarsoftware01";
+                        senha = "aranha1";
+                        bancoDados = "lunarsoftware01";
                     }
 
                     IDictionary<string, string> props = new Dictionary<string, string>();

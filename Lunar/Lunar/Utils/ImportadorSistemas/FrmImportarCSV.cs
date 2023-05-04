@@ -16,6 +16,8 @@ namespace Lunar.Utils.ImportadorSistemas
 {
     public partial class FrmImportarCSV : Form
     {
+        UnidadeMedidaController unidadeMedidaController = new UnidadeMedidaController();
+        MarcaController marcaController = new MarcaController();
         public FrmImportarCSV()
         {
             InitializeComponent();
@@ -48,8 +50,8 @@ namespace Lunar.Utils.ImportadorSistemas
             //Depois de montado o datatable, vamos para o grid
             //que a fonte de dados para ele exibir, será o datatable que 
             //a gente acabou de criar
-            if(radioClientes.Checked == true)
-                dataGridView1.DataSource = dt;
+            //if(radioClientes.Checked == true)
+            dataGridView1.DataSource = dt;
                 //else
                 //    gridContasReceber.DataSource = dt;
             }
@@ -80,6 +82,13 @@ namespace Lunar.Utils.ImportadorSistemas
             if (radioClientes.Checked == true)
             {
                 Thread th = new Thread(() => importarClientesFornecedores());
+                th.Start();
+                Application.DoEvents();
+                th.Join();
+            }
+            if (radioProdutos.Checked == true)
+            {
+                Thread th = new Thread(() => importarProdutos());
                 th.Start();
                 Application.DoEvents();
                 th.Join();
@@ -205,6 +214,210 @@ namespace Lunar.Utils.ImportadorSistemas
                 }
             }
             GenericaDesktop.ShowInfo("Importação de Clientes/Fornecedores Realizada com Sucesso!");
+        }
+
+        private void importarProdutos()
+        {
+            try
+            {
+                   lblInformacao.Visible = true;
+                int i = 0;
+                  lblInformacao.Text = "Importação iniciada...";
+                foreach (DataGridViewRow col in dataGridView1.Rows)
+                {
+                    i++;
+                    Produto produto = new Produto();
+                       lblInformacao.Text = "Importação de Produtos: " + i + " de " + dataGridView1.Rows.Count;
+                    produto.Id = int.Parse(col.Cells[0].Value.ToString());
+                    if (!String.IsNullOrEmpty(produto.Id.ToString()))
+                    {
+                        produto.Descricao = col.Cells[1].Value.ToString();
+                        if (String.IsNullOrEmpty(produto.Descricao))
+                            produto.Descricao = "SEM PREENCHIMENTO";
+
+                        ProdutoGrupo grupo = new ProdutoGrupo();
+                        grupo.Id = 1;
+                        grupo = (ProdutoGrupo)ProdutoGrupoController.getInstance().selecionar(grupo);
+                        produto.ProdutoGrupo = grupo;
+
+                        UnidadeMedida unidadeMedida = new UnidadeMedida();
+                        if (!String.IsNullOrEmpty(col.Cells[3].Value.ToString()))
+                        {
+                            unidadeMedida = unidadeMedidaController.selecionarUnidadeMedidaPorSigla(col.Cells[3].Value.ToString());
+                            if (unidadeMedida != null)
+                            {
+                                if (unidadeMedida.Id > 0)
+                                    produto.UnidadeMedida = unidadeMedida;
+                            }
+                            else
+                            {
+                                unidadeMedida = unidadeMedidaController.selecionarUnidadeMedidaPorSigla("UN");
+                                if (unidadeMedida.Id > 0)
+                                    produto.UnidadeMedida = unidadeMedida;
+                            }
+                        }
+                        else
+                        {
+                            unidadeMedida = unidadeMedidaController.selecionarUnidadeMedidaPorSigla("UN");
+                            if (unidadeMedida.Id > 0)
+                                produto.UnidadeMedida = unidadeMedida;
+                        }
+
+                        Marca marca = new Marca();
+                        marca = marcaController.selecionarMarcaPorDescricao(col.Cells[4].Value.ToString());
+                        if (marca != null)
+                        {
+                            if (marca.Id > 0)
+                            {
+                                produto.Marca = marca;
+                            }
+                            else
+                            {
+                                if (!String.IsNullOrEmpty(col.Cells[4].Value.ToString()))
+                                {
+                                    marca = new Marca();
+                                    marca.Id = 0;
+                                    marca.Descricao = col.Cells[4].Value.ToString();
+                                    marca.Empresa = Sessao.empresaFilialLogada.Empresa;
+                                    Controller.getInstance().salvar(marca);
+                                    produto.Marca = marca;
+                                }
+                                else
+                                    produto.Marca = null;
+                            }
+                        }
+                        else
+                        {
+                            if (!String.IsNullOrEmpty(col.Cells[4].Value.ToString()))
+                            {
+                                marca = new Marca();
+                                marca.Id = 0;
+                                marca.Descricao = col.Cells[4].Value.ToString();
+                                marca.Empresa = Sessao.empresaFilialLogada.Empresa;
+                                Controller.getInstance().salvar(marca);
+                                produto.Marca = marca;
+                            }
+                            else
+                                produto.Marca = null;
+                        }
+
+                        //Grupo fiscal ICMS
+                        if (col.Cells[5].Value.ToString().Equals("TRIBUTADO"))
+                        {
+                            produto.CstIcms = "102";
+                            produto.OrigemIcms = "0";
+                            produto.PercentualIcms = "18";
+                            produto.CfopVenda = "5102";
+                            GrupoFiscal grupoFiscal = new GrupoFiscal();
+                            grupoFiscal.Id = 1;
+                            grupoFiscal = (GrupoFiscal)GrupoFiscalController.getInstance().selecionar(grupoFiscal);
+                            produto.GrupoFiscal = grupoFiscal;
+                        }
+                        //Grupo fiscal ICMS
+                        if (col.Cells[5].Value.ToString().Equals("SUBSTITUICAO TRIBUTARIA") || col.Cells[4].Value.ToString().Equals("ST"))
+                        {
+                            produto.CstIcms = "500";
+                            produto.OrigemIcms = "0";
+                            produto.PercentualIcms = "0";
+                            produto.CfopVenda = "5405";
+                            GrupoFiscal grupoFiscal = new GrupoFiscal();
+                            grupoFiscal.Id = 2;
+                            grupoFiscal = (GrupoFiscal)GrupoFiscalController.getInstance().selecionar(grupoFiscal);
+                            produto.GrupoFiscal = grupoFiscal;
+                        }
+
+                        produto.Ncm = col.Cells[6].Value.ToString().Trim().Replace(" ", "").Replace("-", "").Replace(".", "");
+                        produto.Ean = col.Cells[7].Value.ToString().Trim().Replace(" ", "").Replace("-", "").Replace(".", "");
+                        produto.Referencia = col.Cells[8].Value.ToString();
+                        if (!String.IsNullOrEmpty(col.Cells[9].Value.ToString()))
+                        {
+                            produto.ValorCusto = decimal.Parse(col.Cells[9].Value.ToString());
+                        }
+                        else
+                            produto.ValorCusto = 1;
+                        if (!String.IsNullOrEmpty(col.Cells[10].Value.ToString()))
+                        {
+                            produto.ValorVenda = decimal.Parse(col.Cells[10].Value.ToString());
+                        }
+                        else
+                            produto.ValorVenda = 1;
+
+                        if (double.Parse(col.Cells[11].Value.ToString()) > 0)
+                            produto.EstoqueAuxiliar = double.Parse(col.Cells[11].Value.ToString());
+                        else
+                            produto.EstoqueAuxiliar = 0;
+                        if (double.Parse(col.Cells[12].Value.ToString()) > 0)
+                            produto.Estoque = double.Parse(col.Cells[12].Value.ToString());
+                        else
+                            produto.Estoque = 0;
+                        produto.Grade = false;
+                        produto.IdComplementar = "";
+                        produto.Observacoes = "IMPORTADO DE OUTRO SISTEMA";
+                        produto.PercentualCofins = "";
+                        produto.PercentualIpi = "";
+                        produto.PercentualPis = "";
+                        produto.PercGlp = 0;
+                        produto.PercGni = 0;
+                        produto.PercGnn = 0;
+                        produto.Pesavel = false;
+                        produto.ProdutoSetor = null;
+                        produto.ProdutoSubGrupo = null;
+                        produto.SolicitaNumeroSerie = false;
+                        produto.TipoProduto = "REVENDA";
+                        produto.ValorPartida = 0;
+                        produto.CodAnp = "";
+                        produto.CodSeloIpi = "";
+                        produto.ControlaEstoque = true;
+                        produto.CstCofins = "99";
+                        produto.CstIpi = "99";
+                        produto.CstPis = "99";
+                        produto.EnqIpi = "999";
+
+                        Controller.getInstance().atualizar(produto);
+                        //ESTOQUE
+                        Estoque estoque = new Estoque();
+                        if (produto.EstoqueAuxiliar > 0)
+                        {
+                            estoque.BalancoEstoque = null;
+                            estoque.Conciliado = false;
+                            estoque.DataEntradaSaida = DateTime.Now;
+                            estoque.Descricao = "IMPORTAÇÃO DE SISTEMA";
+                            estoque.EmpresaFilial = Sessao.empresaFilialLogada;
+                            estoque.Entrada = true;
+                            estoque.Id = 0;
+                            estoque.Origem = "IMPORTACAO";
+                            estoque.Pessoa = null;
+                            estoque.Produto = produto;
+                            estoque.Quantidade = produto.EstoqueAuxiliar;
+                            estoque.QuantidadeInventario = 0;
+                            estoque.Saida = false;
+                            Controller.getInstance().salvar(estoque);
+                        }
+                        if (produto.Estoque > 0)
+                        {
+                            estoque.BalancoEstoque = null;
+                            estoque.Conciliado = true;
+                            estoque.DataEntradaSaida = DateTime.Now;
+                            estoque.Descricao = "IMPORTAÇÃO DE SISTEMA";
+                            estoque.EmpresaFilial = Sessao.empresaFilialLogada;
+                            estoque.Entrada = true;
+                            estoque.Id = 0;
+                            estoque.Origem = "IMPORTACAO";
+                            estoque.Pessoa = null;
+                            estoque.Produto = produto;
+                            estoque.Quantidade = produto.Estoque;
+                            estoque.QuantidadeInventario = 0;
+                            estoque.Saida = false;
+                            Controller.getInstance().salvar(estoque);
+                        }
+                    }
+                }
+                GenericaDesktop.ShowInfo("Importação de Produtos Realizada com Sucesso!");
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowErro("Erro ao Importar Produtos: " + erro.Message);
+            }
         }
     }
 }

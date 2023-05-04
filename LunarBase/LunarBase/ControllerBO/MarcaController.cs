@@ -46,5 +46,23 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+
+        public Marca selecionarMarcaPorDescricao(string descricao)
+        {
+            MarcaBO bo = new MarcaBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarMarcaPorDescricao(descricao);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

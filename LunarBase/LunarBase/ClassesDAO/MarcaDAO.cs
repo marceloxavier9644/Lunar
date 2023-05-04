@@ -18,5 +18,11 @@ namespace LunarBase.ClassesDAO
             IList<Marca> retorno = Session.CreateQuery(sql).List<Marca>();
             return retorno;
         }
+
+        public Marca selecionarMarcaPorDescricao(string descricao)
+        {
+            Session = Conexao.GetSession();
+            return Session.CreateQuery("from Marca as Tabela where Tabela.Descricao = '" + descricao + "' and Tabela.FlagExcluido <> true").UniqueResult<Marca>();
+        }
     }
 }

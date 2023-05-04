@@ -95,5 +95,17 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar marca! Erro: " + e.Message);
             }
         }
+
+        public Marca selecionarMarcaPorDescricao(string descricao)
+        {
+            try
+            {
+                return dao.selecionarMarcaPorDescricao(descricao);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar marca! Erro: " + e.Message);
+            }
+        }
     }
 }
