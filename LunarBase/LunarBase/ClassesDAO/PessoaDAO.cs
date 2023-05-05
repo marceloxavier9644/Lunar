@@ -1,5 +1,6 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ConexaoBD;
+using NHibernate.Criterion;
 
 namespace LunarBase.ClassesDAO
 {
@@ -21,6 +22,23 @@ namespace LunarBase.ClassesDAO
                          "order by Tabela.RazaoSocial";
             IList<Pessoa> retorno = Session.CreateQuery(sql).List<Pessoa>();
             return retorno;
+        }
+
+        public IList<Pessoa> selecionarTodasPessoasPaginando(int paginaAtual, int itensPorPagina, string valor)
+        {
+            Session = Conexao.GetSession();
+            String sql = "FROM Pessoa as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + valor + "%' and Tabela.FlagExcluido <> true " +
+                         "order by Tabela.RazaoSocial";
+            IList<Pessoa> retorno = Session.CreateQuery(sql).SetFirstResult(paginaAtual).SetMaxResults(itensPorPagina).List<Pessoa>();
+            return retorno;
+        }
+        
+        public Int64 totalTodasPessoasPaginando(string valor)
+        {
+            Session = Conexao.GetSession();
+            String sql = "SELECT COUNT(*) FROM Pessoa as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', "+
+                "Tabela.NomeFantasia) like '%" + valor + "%' and Tabela.FlagExcluido <> true ";
+            return Session.CreateQuery(sql).UniqueResult<Int64>();
         }
 
         public IList<Pessoa> selecionarClientesComVariosFiltros(string valor)

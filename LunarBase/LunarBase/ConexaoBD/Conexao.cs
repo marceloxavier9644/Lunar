@@ -57,10 +57,10 @@ namespace LunarBase.ConexaoBD
 
                     if (String.IsNullOrEmpty(servidor))
                     {
-                        servidor = "localhost";
-                        usuario = "marcelo";
-                        senha = "mx123";
-                        bancoDados = "lunar";
+                        servidor = "mysql.lunarsoftware.com.br";
+                        usuario = "lunarsoftware01";
+                        senha = "aranha1";
+                        bancoDados = "lunarsoftware01";
 
                         //Online
                     }
