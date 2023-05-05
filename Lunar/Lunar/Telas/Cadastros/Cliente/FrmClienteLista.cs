@@ -50,30 +50,28 @@ namespace Lunar.Telas.Cadastros.Cliente
         }
         private void carregarLista()
         {
-            //sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
-
-            //MySqlConnection con = null;
-            //String sql = "SELECT * FROM Pessoa Where Pessoa.FlagExcluido <> True";
-            //con = new MySqlConnection(Sessao._conexaoMySQL);
-            //MySqlCommand cmd = new MySqlCommand(sql, con);
-            //MySqlDataAdapter da = new MySqlDataAdapter();
-            //da.SelectCommand = cmd;
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-
             txtPesquisaCliente.Texts = "";
-            listaClientes = pessoaController.selecionarPessoasGrid();
-
-            //gridClient.DataSource = dt;
-
-            sfDataPager1.DataSource = listaClientes;
+            listaClientes = pessoaController.selecionarTodasPessoasPaginando(0, 50, "");
+            //ajustarLista();        
+            //gridClient.DataSource = listaClientes;
+            sfDataPager1.DataSource = new List<int>();
             if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
                 sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
             else
-                sfDataPager1.PageSize = 100;
-            gridClient.DataSource = sfDataPager1.PagedSource;
-          
-          
+                sfDataPager1.PageSize = 50;
+            sfDataPager1.AllowOnDemandPaging = true;
+
+            Int64 totalPessoas = pessoaController.totalTodasPessoasPaginando("");
+            int totalPaginas = (int)Math.Ceiling(Double.Parse((totalPessoas / sfDataPager1.PageSize).ToString()));
+            if (totalPaginas < 1)
+            {
+                totalPaginas = 1;
+            }
+
+            sfDataPager1.PageCount = totalPaginas;
+
+            gridClient.DataSource = listaClientes;
+            //paginacao.OnDemandLoading += sfDataPager1_OnDemandLoading;
             txtPesquisaCliente.Focus();
         }
         private void ajustarLista()
@@ -130,22 +128,30 @@ namespace Lunar.Telas.Cadastros.Cliente
             }
         }
 
-        private void PesquisarCliente(string valor)
+        private void PesquisarCliente(string valor, int paginaAtual)
         {
-            listaClientes = pessoaController.selecionarPessoasComVariosFiltros(valor);
+            //paginacao.DataSource = listaClientes;
             if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
                 sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
             else
-                sfDataPager1.PageSize = 100;
+                sfDataPager1.PageSize = 50;
 
-            sfDataPager1.DataSource = listaClientes;
-            gridClient.DataSource = sfDataPager1.PagedSource;
-     
+            Int64 totalPessoas = pessoaController.totalTodasPessoasPaginando(valor);
+            double totalPaginas = (double)totalPessoas / sfDataPager1.PageSize;
+            if (totalPaginas < 1)
+            {
+                totalPaginas = 1;
+            }
+
+            sfDataPager1.PageCount = (int)Math.Ceiling(totalPaginas);
+            sfDataPager1.Refresh();
+
+
+            listaClientes = pessoaController.selecionarTodasPessoasPaginando(paginaAtual * sfDataPager1.PageSize, sfDataPager1.PageSize, valor);
+            gridClient.DataSource = listaClientes;
 
             if (listaClientes.Count == 0)
             {
-                sfDataPager1.DataSource = null;
-                gridClient.DataSource = null;
                 GenericaDesktop.ShowAlerta("Nenhum registro encontrado!");
                 txtPesquisaCliente.Texts = "";
                 txtPesquisaCliente.PlaceholderText = "";
@@ -160,12 +166,12 @@ namespace Lunar.Telas.Cadastros.Cliente
                 if (String.IsNullOrEmpty(txtPesquisaCliente.Texts))
                 {
                     if (GenericaDesktop.ShowConfirmacao("Sem digitar dados na pesquisa o sistema vai buscar todos clientes/fornecedores e pode demorar um tempo, deseja retornar todos?"))
-                        PesquisarCliente(txtPesquisaCliente.Texts.Trim());
+                        PesquisarCliente(txtPesquisaCliente.Texts.Trim(),0);
                     else
                         txtPesquisaCliente.Focus();
                 }
                 else
-                    PesquisarCliente(txtPesquisaCliente.Texts.Trim());
+                    PesquisarCliente(txtPesquisaCliente.Texts.Trim(),0);
 
             }
         }
@@ -381,6 +387,19 @@ namespace Lunar.Telas.Cadastros.Cliente
         {
             e.Graphics.DrawRectangle(new Pen(Color.Gray), 0, 0, this.Width - 1, this.Height - 1);
             //carregarLista(); aqui deu erro, ficava carregando a todo momento
+        }
+
+        private void paginacao_PageIndexChanged(object sender, Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs e)
+        {
+            PesquisarCliente(txtPesquisaCliente.Texts.Trim(), e.NewPageIndex);
+        }
+
+        private void txtRegistroPorPagina_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                PesquisarCliente(txtPesquisaCliente.Texts.Trim(), 0);
+            }
         }
     }
 }

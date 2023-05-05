@@ -78,6 +78,42 @@ namespace LunarBase.ControllerBO
             }
         }
 
+        public IList<Pessoa> selecionarTodasPessoasPaginando(int paginaAtual, int itensPorPagina, string valor)
+        {
+            PessoaBO bo = new PessoaBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarTodosPaginando(paginaAtual, itensPorPagina, valor);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
+
+        public Int64 totalTodasPessoasPaginando(string valor)
+        {
+            PessoaBO bo = new PessoaBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.totalTodasPessoasPaginando(valor);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
+
         public IList<Pessoa> selecionarPessoasComVariosFiltros(string valor)
         {
             PessoaBO bo = new PessoaBO();

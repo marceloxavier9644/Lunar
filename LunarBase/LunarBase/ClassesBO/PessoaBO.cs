@@ -113,6 +113,34 @@ namespace LunarBase.ClassesBO
             }
         }
 
+        public IList<Pessoa> selecionarTodosPaginando(int paginaAtual, int itensPorPagina, string valor)
+        {
+            dao = new PessoaDAO();
+            try
+            {
+                return dao.selecionarTodasPessoasPaginando(paginaAtual, itensPorPagina, valor);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao selecionar Pessoa!" + e.Message);
+            }
+
+        }
+
+        public Int64 totalTodasPessoasPaginando(string valor)
+        {
+            dao = new PessoaDAO();
+            try
+            {
+                return dao.totalTodasPessoasPaginando(valor);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao totalizar Pessoa!" + e.Message);
+            }
+
+        }
+
         public IList<Pessoa> selecionarPessoasComVariosFiltros(string valor)
         {
             try

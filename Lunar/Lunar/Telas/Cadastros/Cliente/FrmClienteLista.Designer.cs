@@ -145,11 +145,11 @@
             // autoLabel1
             // 
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
             this.autoLabel1.Location = new System.Drawing.Point(12, 27);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(68, 21);
+            this.autoLabel1.Size = new System.Drawing.Size(64, 16);
             this.autoLabel1.TabIndex = 211;
             this.autoLabel1.Text = "Pesquisa";
             // 
@@ -157,11 +157,11 @@
             // 
             this.autoLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
             this.autoLabel15.Location = new System.Drawing.Point(403, 27);
             this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(94, 21);
+            this.autoLabel15.Size = new System.Drawing.Size(90, 16);
             this.autoLabel15.TabIndex = 210;
             this.autoLabel15.Text = "Reg. por Pág.";
             // 
@@ -174,7 +174,7 @@
             this.txtRegistroPorPagina.BorderRadius = 8;
             this.txtRegistroPorPagina.BorderSize = 2;
             this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtRegistroPorPagina.Location = new System.Drawing.Point(403, 48);
             this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
@@ -186,12 +186,13 @@
             this.txtRegistroPorPagina.PlaceholderText = "";
             this.txtRegistroPorPagina.ReadOnly = false;
             this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 44);
+            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
             this.txtRegistroPorPagina.TabIndex = 209;
             this.txtRegistroPorPagina.Tag = "";
             this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtRegistroPorPagina.Texts = "100";
             this.txtRegistroPorPagina.UnderlinedStyle = false;
+            this.txtRegistroPorPagina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRegistroPorPagina_KeyPress);
             // 
             // sfDataPager1
             // 
@@ -203,7 +204,7 @@
             this.sfDataPager1.Name = "sfDataPager1";
             this.sfDataPager1.Size = new System.Drawing.Size(395, 48);
             this.sfDataPager1.TabIndex = 154;
-            this.sfDataPager1.OnDemandLoading += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.OnDemandLoadingEventArgs>(this.sfDataPager1_OnDemandLoading);
+            this.sfDataPager1.PageIndexChanged += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs>(this.paginacao_PageIndexChanged);
             // 
             // txtPesquisaCliente
             // 
@@ -214,7 +215,7 @@
             this.txtPesquisaCliente.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtPesquisaCliente.BorderRadius = 8;
             this.txtPesquisaCliente.BorderSize = 2;
-            this.txtPesquisaCliente.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisaCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPesquisaCliente.Location = new System.Drawing.Point(10, 48);
             this.txtPesquisaCliente.Margin = new System.Windows.Forms.Padding(4);
@@ -225,7 +226,7 @@
             this.txtPesquisaCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtPesquisaCliente.PlaceholderText = "";
             this.txtPesquisaCliente.ReadOnly = false;
-            this.txtPesquisaCliente.Size = new System.Drawing.Size(385, 44);
+            this.txtPesquisaCliente.Size = new System.Drawing.Size(385, 37);
             this.txtPesquisaCliente.TabIndex = 153;
             this.txtPesquisaCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPesquisaCliente.Texts = "";
