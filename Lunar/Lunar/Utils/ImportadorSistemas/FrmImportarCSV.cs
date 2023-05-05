@@ -132,7 +132,8 @@ namespace Lunar.Utils.ImportadorSistemas
                 if (retornoVendedor.Equals("S"))
                 {
                     pessoa.Cliente = true;
-                    pessoa.Fornecedor = true;
+                    pessoa.Fornecedor = false;
+                    pessoa.Vendedor = true;
                 }
                 pessoa.ReceberLembrete = false;
                 pessoa.TipoPessoa = "PF";
