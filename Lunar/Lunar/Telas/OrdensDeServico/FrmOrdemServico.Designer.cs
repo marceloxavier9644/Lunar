@@ -81,12 +81,14 @@
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPrincipal = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPesquisaVendedor = new FontAwesome.Sharp.IconButton();
             this.autoLabel60 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblAutomatico = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtDataAbertura = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.autoLabel59 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.tabControlAdv2 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.btnExcluirProduto = new FontAwesome.Sharp.IconButton();
             this.autoLabel23 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel16 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -95,26 +97,36 @@
             this.autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel11 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnConfirmaItem = new FontAwesome.Sharp.IconButton();
+            this.btnPesquisaProduto = new FontAwesome.Sharp.IconButton();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.btnExcluirServico = new FontAwesome.Sharp.IconButton();
             this.gridServico = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.autoLabel24 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnConfirmaServico = new FontAwesome.Sharp.IconButton();
             this.autoLabel17 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel18 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel19 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel20 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel21 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel22 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnPesquisaServico = new FontAwesome.Sharp.IconButton();
             this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnPesquisaTipoObjeto = new FontAwesome.Sharp.IconButton();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnDadosCliente = new FontAwesome.Sharp.IconButton();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
             this.tabOtica = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.panelPagamentoTotal = new System.Windows.Forms.Panel();
             this.autoLabel61 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnExcluirAnexo = new FontAwesome.Sharp.IconButton();
             this.gridAnexos = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            this.btnAnexo = new FontAwesome.Sharp.IconButton();
             this.txtDataEntrega = new Syncfusion.Windows.Forms.Tools.MaskedEditBox();
             this.txtProximoExame = new Syncfusion.Windows.Forms.Tools.MaskedEditBox();
             this.autoLabel58 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -123,12 +135,15 @@
             this.autoLabel55 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel28 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel54 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnPesquisaDependente = new FontAwesome.Sharp.IconButton();
             this.autoLabel53 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCima = new FontAwesome.Sharp.IconButton();
             this.autoLabel45 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel43 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel51 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel49 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnOculosPerto = new FontAwesome.Sharp.IconButton();
             this.autoLabel41 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel42 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel44 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -138,12 +153,14 @@
             this.autoLabel50 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel52 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnBaixo = new FontAwesome.Sharp.IconButton();
             this.autoLabel36 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel40 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel39 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel37 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel30 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel29 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnOculosLonge = new FontAwesome.Sharp.IconButton();
             this.autoLabel35 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel38 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel34 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -154,6 +171,7 @@
             this.autoLabel27 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel26 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.tabExames = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.btnExcluirExame = new FontAwesome.Sharp.IconButton();
             this.gridExames = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.dsExame = new System.Data.DataSet();
             this.Exame = new System.Data.DataTable();
@@ -202,6 +220,7 @@
             this.dataColumn8 = new System.Data.DataColumn();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.autoLabel25 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnFechar = new FontAwesome.Sharp.IconButton();
             this.dsServico = new System.Data.DataSet();
             this.dataTable2 = new System.Data.DataTable();
             this.dataColumn9 = new System.Data.DataColumn();
@@ -217,25 +236,6 @@
             this.dataColumn47 = new System.Data.DataColumn();
             this.dataColumn48 = new System.Data.DataColumn();
             this.dataColumn49 = new System.Data.DataColumn();
-            this.btnFechar = new FontAwesome.Sharp.IconButton();
-            this.btnPesquisaVendedor = new FontAwesome.Sharp.IconButton();
-            this.btnExcluirProduto = new FontAwesome.Sharp.IconButton();
-            this.btnConfirmaItem = new FontAwesome.Sharp.IconButton();
-            this.btnPesquisaProduto = new FontAwesome.Sharp.IconButton();
-            this.btnExcluirServico = new FontAwesome.Sharp.IconButton();
-            this.btnConfirmaServico = new FontAwesome.Sharp.IconButton();
-            this.btnPesquisaServico = new FontAwesome.Sharp.IconButton();
-            this.btnPesquisaTipoObjeto = new FontAwesome.Sharp.IconButton();
-            this.btnDadosCliente = new FontAwesome.Sharp.IconButton();
-            this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
-            this.btnExcluirAnexo = new FontAwesome.Sharp.IconButton();
-            this.btnAnexo = new FontAwesome.Sharp.IconButton();
-            this.btnPesquisaDependente = new FontAwesome.Sharp.IconButton();
-            this.btnCima = new FontAwesome.Sharp.IconButton();
-            this.btnOculosPerto = new FontAwesome.Sharp.IconButton();
-            this.btnBaixo = new FontAwesome.Sharp.IconButton();
-            this.btnOculosLonge = new FontAwesome.Sharp.IconButton();
-            this.btnExcluirExame = new FontAwesome.Sharp.IconButton();
             this.btnGravar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnGravarEncerrar = new Lunar.RJ_UI.Classes.RJButton();
             this.txtTotalGeralProdutoServico = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -291,6 +291,7 @@
             this.txtExaminador = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtValorTotalTodosServicos = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtValorTotalTodosProdutos = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.lblInformativo = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPrincipal.SuspendLayout();
@@ -355,6 +356,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblInformativo);
             this.panel2.Controls.Add(this.btnPesquisaVendedor);
             this.panel2.Controls.Add(this.autoLabel60);
             this.panel2.Controls.Add(this.txtVendedor);
@@ -384,6 +386,26 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(999, 537);
             this.panel2.TabIndex = 149;
+            // 
+            // btnPesquisaVendedor
+            // 
+            this.btnPesquisaVendedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaVendedor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaVendedor.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaVendedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaVendedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaVendedor.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaVendedor.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaVendedor.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaVendedor.IconSize = 38;
+            this.btnPesquisaVendedor.Location = new System.Drawing.Point(953, 89);
+            this.btnPesquisaVendedor.Name = "btnPesquisaVendedor";
+            this.btnPesquisaVendedor.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaVendedor.TabIndex = 9;
+            this.btnPesquisaVendedor.UseVisualStyleBackColor = true;
+            this.btnPesquisaVendedor.Click += new System.EventHandler(this.btnPesquisaVendedor_Click);
             // 
             // autoLabel60
             // 
@@ -480,6 +502,28 @@
             this.tabPageAdv1.TabIndex = 1;
             this.tabPageAdv1.Text = "Produto [F2]  ";
             this.tabPageAdv1.ThemesEnabled = false;
+            // 
+            // btnExcluirProduto
+            // 
+            this.btnExcluirProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluirProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluirProduto.FlatAppearance.BorderSize = 0;
+            this.btnExcluirProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExcluirProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnExcluirProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirProduto.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnExcluirProduto.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnExcluirProduto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExcluirProduto.IconSize = 30;
+            this.btnExcluirProduto.Location = new System.Drawing.Point(814, 79);
+            this.btnExcluirProduto.Name = "btnExcluirProduto";
+            this.btnExcluirProduto.Size = new System.Drawing.Size(34, 36);
+            this.btnExcluirProduto.TabIndex = 9;
+            this.btnExcluirProduto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcluirProduto.UseVisualStyleBackColor = true;
+            this.btnExcluirProduto.Click += new System.EventHandler(this.btnExcluirProduto_Click);
             // 
             // autoLabel23
             // 
@@ -671,6 +715,48 @@
             this.autoLabel3.TabIndex = 186;
             this.autoLabel3.Text = "Pesquisa de Produto";
             // 
+            // btnConfirmaItem
+            // 
+            this.btnConfirmaItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConfirmaItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirmaItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnConfirmaItem.FlatAppearance.BorderSize = 0;
+            this.btnConfirmaItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnConfirmaItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnConfirmaItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmaItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmaItem.IconChar = FontAwesome.Sharp.IconChar.CircleCheck;
+            this.btnConfirmaItem.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnConfirmaItem.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnConfirmaItem.IconSize = 38;
+            this.btnConfirmaItem.Location = new System.Drawing.Point(762, 79);
+            this.btnConfirmaItem.Name = "btnConfirmaItem";
+            this.btnConfirmaItem.Size = new System.Drawing.Size(46, 38);
+            this.btnConfirmaItem.TabIndex = 8;
+            this.btnConfirmaItem.UseVisualStyleBackColor = true;
+            this.btnConfirmaItem.Click += new System.EventHandler(this.btnConfirmaItem_Click);
+            // 
+            // btnPesquisaProduto
+            // 
+            this.btnPesquisaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPesquisaProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaProduto.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaProduto.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaProduto.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaProduto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaProduto.IconSize = 38;
+            this.btnPesquisaProduto.Location = new System.Drawing.Point(928, 27);
+            this.btnPesquisaProduto.Name = "btnPesquisaProduto";
+            this.btnPesquisaProduto.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaProduto.TabIndex = 2;
+            this.btnPesquisaProduto.UseVisualStyleBackColor = true;
+            this.btnPesquisaProduto.Click += new System.EventHandler(this.btnPesquisaProduto_Click);
+            // 
             // tabPageAdv2
             // 
             this.tabPageAdv2.BackColor = System.Drawing.Color.White;
@@ -703,6 +789,28 @@
             this.tabPageAdv2.TabIndex = 2;
             this.tabPageAdv2.Text = "Serviço [F3]   ";
             this.tabPageAdv2.ThemesEnabled = false;
+            // 
+            // btnExcluirServico
+            // 
+            this.btnExcluirServico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirServico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluirServico.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluirServico.FlatAppearance.BorderSize = 0;
+            this.btnExcluirServico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExcluirServico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnExcluirServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirServico.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnExcluirServico.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnExcluirServico.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExcluirServico.IconSize = 30;
+            this.btnExcluirServico.Location = new System.Drawing.Point(814, 79);
+            this.btnExcluirServico.Name = "btnExcluirServico";
+            this.btnExcluirServico.Size = new System.Drawing.Size(34, 36);
+            this.btnExcluirServico.TabIndex = 9;
+            this.btnExcluirServico.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcluirServico.UseVisualStyleBackColor = true;
+            this.btnExcluirServico.Click += new System.EventHandler(this.btnExcluirServico_Click);
             // 
             // gridServico
             // 
@@ -822,6 +930,27 @@
             this.autoLabel24.TabIndex = 219;
             this.autoLabel24.Text = "Código Serviço";
             // 
+            // btnConfirmaServico
+            // 
+            this.btnConfirmaServico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConfirmaServico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirmaServico.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnConfirmaServico.FlatAppearance.BorderSize = 0;
+            this.btnConfirmaServico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnConfirmaServico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnConfirmaServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmaServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmaServico.IconChar = FontAwesome.Sharp.IconChar.CircleCheck;
+            this.btnConfirmaServico.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnConfirmaServico.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnConfirmaServico.IconSize = 38;
+            this.btnConfirmaServico.Location = new System.Drawing.Point(762, 79);
+            this.btnConfirmaServico.Name = "btnConfirmaServico";
+            this.btnConfirmaServico.Size = new System.Drawing.Size(46, 38);
+            this.btnConfirmaServico.TabIndex = 8;
+            this.btnConfirmaServico.UseVisualStyleBackColor = true;
+            this.btnConfirmaServico.Click += new System.EventHandler(this.btnConfirmaServico_Click);
+            // 
             // autoLabel17
             // 
             this.autoLabel17.BackColor = System.Drawing.Color.Transparent;
@@ -894,6 +1023,27 @@
             this.autoLabel22.TabIndex = 204;
             this.autoLabel22.Text = "Pesquisa de Serviço";
             // 
+            // btnPesquisaServico
+            // 
+            this.btnPesquisaServico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPesquisaServico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaServico.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaServico.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaServico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaServico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaServico.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaServico.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaServico.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaServico.IconSize = 38;
+            this.btnPesquisaServico.Location = new System.Drawing.Point(928, 27);
+            this.btnPesquisaServico.Name = "btnPesquisaServico";
+            this.btnPesquisaServico.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaServico.TabIndex = 2;
+            this.btnPesquisaServico.UseVisualStyleBackColor = true;
+            this.btnPesquisaServico.Click += new System.EventHandler(this.btnPesquisaServico_Click);
+            // 
             // autoLabel8
             // 
             this.autoLabel8.BackColor = System.Drawing.Color.Transparent;
@@ -942,6 +1092,26 @@
             this.autoLabel5.TabIndex = 198;
             this.autoLabel5.Text = "Tipo de Objeto";
             // 
+            // btnPesquisaTipoObjeto
+            // 
+            this.btnPesquisaTipoObjeto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaTipoObjeto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaTipoObjeto.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaTipoObjeto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaTipoObjeto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaTipoObjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaTipoObjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaTipoObjeto.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaTipoObjeto.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaTipoObjeto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaTipoObjeto.IconSize = 38;
+            this.btnPesquisaTipoObjeto.Location = new System.Drawing.Point(321, 89);
+            this.btnPesquisaTipoObjeto.Name = "btnPesquisaTipoObjeto";
+            this.btnPesquisaTipoObjeto.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaTipoObjeto.TabIndex = 5;
+            this.btnPesquisaTipoObjeto.UseVisualStyleBackColor = true;
+            this.btnPesquisaTipoObjeto.Click += new System.EventHandler(this.btnPesquisaTipoObjeto_Click);
+            // 
             // autoLabel4
             // 
             this.autoLabel4.BackColor = System.Drawing.Color.Transparent;
@@ -966,6 +1136,25 @@
             this.autoLabel2.TabIndex = 193;
             this.autoLabel2.Text = "Cliente *";
             // 
+            // btnDadosCliente
+            // 
+            this.btnDadosCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDadosCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDadosCliente.FlatAppearance.BorderSize = 0;
+            this.btnDadosCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDadosCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDadosCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDadosCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDadosCliente.IconChar = FontAwesome.Sharp.IconChar.ListSquares;
+            this.btnDadosCliente.IconColor = System.Drawing.Color.SlateGray;
+            this.btnDadosCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnDadosCliente.IconSize = 38;
+            this.btnDadosCliente.Location = new System.Drawing.Point(958, 35);
+            this.btnDadosCliente.Name = "btnDadosCliente";
+            this.btnDadosCliente.Size = new System.Drawing.Size(36, 34);
+            this.btnDadosCliente.TabIndex = 3;
+            this.btnDadosCliente.UseVisualStyleBackColor = true;
+            // 
             // autoLabel1
             // 
             this.autoLabel1.BackColor = System.Drawing.Color.Transparent;
@@ -977,6 +1166,26 @@
             this.autoLabel1.Size = new System.Drawing.Size(145, 21);
             this.autoLabel1.TabIndex = 189;
             this.autoLabel1.Text = "Nº Ordem de Serviço";
+            // 
+            // btnPesquisaCliente
+            // 
+            this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaCliente.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaCliente.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaCliente.IconSize = 38;
+            this.btnPesquisaCliente.Location = new System.Drawing.Point(805, 35);
+            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
+            this.btnPesquisaCliente.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaCliente.TabIndex = 1;
+            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
+            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
             // 
             // tabOtica
             // 
@@ -1041,6 +1250,28 @@
             this.autoLabel61.TabIndex = 271;
             this.autoLabel61.Text = "Anexos";
             // 
+            // btnExcluirAnexo
+            // 
+            this.btnExcluirAnexo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirAnexo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluirAnexo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluirAnexo.FlatAppearance.BorderSize = 0;
+            this.btnExcluirAnexo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExcluirAnexo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnExcluirAnexo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirAnexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirAnexo.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnExcluirAnexo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnExcluirAnexo.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExcluirAnexo.IconSize = 30;
+            this.btnExcluirAnexo.Location = new System.Drawing.Point(694, 474);
+            this.btnExcluirAnexo.Name = "btnExcluirAnexo";
+            this.btnExcluirAnexo.Size = new System.Drawing.Size(34, 36);
+            this.btnExcluirAnexo.TabIndex = 270;
+            this.btnExcluirAnexo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcluirAnexo.UseVisualStyleBackColor = true;
+            this.btnExcluirAnexo.Click += new System.EventHandler(this.btnExcluirAnexo_Click);
+            // 
             // gridAnexos
             // 
             this.gridAnexos.AccessibleName = "Table";
@@ -1096,6 +1327,26 @@
             this.gridAnexos.TabIndex = 269;
             this.gridAnexos.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.gridAnexos_QueryRowStyle);
             this.gridAnexos.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.gridAnexos_CellDoubleClick);
+            // 
+            // btnAnexo
+            // 
+            this.btnAnexo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAnexo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnAnexo.FlatAppearance.BorderSize = 0;
+            this.btnAnexo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAnexo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAnexo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnexo.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
+            this.btnAnexo.IconColor = System.Drawing.Color.CadetBlue;
+            this.btnAnexo.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnAnexo.IconSize = 37;
+            this.btnAnexo.Location = new System.Drawing.Point(694, 433);
+            this.btnAnexo.Name = "btnAnexo";
+            this.btnAnexo.Size = new System.Drawing.Size(39, 35);
+            this.btnAnexo.TabIndex = 10;
+            this.btnAnexo.UseVisualStyleBackColor = true;
+            this.btnAnexo.Click += new System.EventHandler(this.btnAnexo_Click);
             // 
             // txtDataEntrega
             // 
@@ -1197,6 +1448,26 @@
             this.autoLabel54.TabIndex = 248;
             this.autoLabel54.Text = "Código";
             // 
+            // btnPesquisaDependente
+            // 
+            this.btnPesquisaDependente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaDependente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaDependente.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaDependente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaDependente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaDependente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaDependente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaDependente.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaDependente.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaDependente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaDependente.IconSize = 38;
+            this.btnPesquisaDependente.Location = new System.Drawing.Point(368, 23);
+            this.btnPesquisaDependente.Name = "btnPesquisaDependente";
+            this.btnPesquisaDependente.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaDependente.TabIndex = 1;
+            this.btnPesquisaDependente.UseVisualStyleBackColor = true;
+            this.btnPesquisaDependente.Click += new System.EventHandler(this.btnPesquisaDependente_Click);
+            // 
             // autoLabel53
             // 
             this.autoLabel53.BackColor = System.Drawing.Color.Transparent;
@@ -1243,6 +1514,26 @@
             this.groupBox1.TabIndex = 243;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Perto";
+            // 
+            // btnCima
+            // 
+            this.btnCima.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCima.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCima.FlatAppearance.BorderSize = 0;
+            this.btnCima.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCima.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCima.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCima.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCima.IconChar = FontAwesome.Sharp.IconChar.CircleUp;
+            this.btnCima.IconColor = System.Drawing.Color.SteelBlue;
+            this.btnCima.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnCima.IconSize = 40;
+            this.btnCima.Location = new System.Drawing.Point(776, 34);
+            this.btnCima.Name = "btnCima";
+            this.btnCima.Size = new System.Drawing.Size(39, 39);
+            this.btnCima.TabIndex = 10;
+            this.btnCima.UseVisualStyleBackColor = true;
+            this.btnCima.Click += new System.EventHandler(this.btnCima_Click);
             // 
             // autoLabel45
             // 
@@ -1291,6 +1582,25 @@
             this.autoLabel49.Size = new System.Drawing.Size(60, 21);
             this.autoLabel49.TabIndex = 244;
             this.autoLabel49.Text = "Esférico";
+            // 
+            // btnOculosPerto
+            // 
+            this.btnOculosPerto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOculosPerto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnOculosPerto.FlatAppearance.BorderSize = 0;
+            this.btnOculosPerto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnOculosPerto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnOculosPerto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOculosPerto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOculosPerto.IconChar = FontAwesome.Sharp.IconChar.Glasses;
+            this.btnOculosPerto.IconColor = System.Drawing.Color.SlateGray;
+            this.btnOculosPerto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnOculosPerto.IconSize = 80;
+            this.btnOculosPerto.Location = new System.Drawing.Point(846, 41);
+            this.btnOculosPerto.Name = "btnOculosPerto";
+            this.btnOculosPerto.Size = new System.Drawing.Size(73, 59);
+            this.btnOculosPerto.TabIndex = 266;
+            this.btnOculosPerto.UseVisualStyleBackColor = true;
             // 
             // autoLabel41
             // 
@@ -1424,6 +1734,26 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Longe";
             // 
+            // btnBaixo
+            // 
+            this.btnBaixo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaixo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnBaixo.FlatAppearance.BorderSize = 0;
+            this.btnBaixo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnBaixo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnBaixo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBaixo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBaixo.IconChar = FontAwesome.Sharp.IconChar.CircleDown;
+            this.btnBaixo.IconColor = System.Drawing.Color.SteelBlue;
+            this.btnBaixo.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnBaixo.IconSize = 40;
+            this.btnBaixo.Location = new System.Drawing.Point(776, 93);
+            this.btnBaixo.Name = "btnBaixo";
+            this.btnBaixo.Size = new System.Drawing.Size(39, 39);
+            this.btnBaixo.TabIndex = 10;
+            this.btnBaixo.UseVisualStyleBackColor = true;
+            this.btnBaixo.Click += new System.EventHandler(this.btnBaixo_Click);
+            // 
             // autoLabel36
             // 
             this.autoLabel36.BackColor = System.Drawing.Color.Transparent;
@@ -1495,6 +1825,25 @@
             this.autoLabel29.Size = new System.Drawing.Size(60, 21);
             this.autoLabel29.TabIndex = 244;
             this.autoLabel29.Text = "Esférico";
+            // 
+            // btnOculosLonge
+            // 
+            this.btnOculosLonge.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOculosLonge.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnOculosLonge.FlatAppearance.BorderSize = 0;
+            this.btnOculosLonge.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnOculosLonge.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnOculosLonge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOculosLonge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOculosLonge.IconChar = FontAwesome.Sharp.IconChar.Glasses;
+            this.btnOculosLonge.IconColor = System.Drawing.Color.SlateGray;
+            this.btnOculosLonge.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnOculosLonge.IconSize = 40;
+            this.btnOculosLonge.Location = new System.Drawing.Point(840, 51);
+            this.btnOculosLonge.Name = "btnOculosLonge";
+            this.btnOculosLonge.Size = new System.Drawing.Size(73, 59);
+            this.btnOculosLonge.TabIndex = 265;
+            this.btnOculosLonge.UseVisualStyleBackColor = true;
             // 
             // autoLabel35
             // 
@@ -1619,6 +1968,28 @@
             this.tabExames.TabIndex = 3;
             this.tabExames.Text = "Exames";
             this.tabExames.ThemesEnabled = false;
+            // 
+            // btnExcluirExame
+            // 
+            this.btnExcluirExame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirExame.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluirExame.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluirExame.FlatAppearance.BorderSize = 0;
+            this.btnExcluirExame.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExcluirExame.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnExcluirExame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirExame.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnExcluirExame.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnExcluirExame.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExcluirExame.IconSize = 30;
+            this.btnExcluirExame.Location = new System.Drawing.Point(955, 416);
+            this.btnExcluirExame.Name = "btnExcluirExame";
+            this.btnExcluirExame.Size = new System.Drawing.Size(34, 36);
+            this.btnExcluirExame.TabIndex = 201;
+            this.btnExcluirExame.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcluirExame.UseVisualStyleBackColor = true;
+            this.btnExcluirExame.Click += new System.EventHandler(this.btnExcluirExame_Click);
             // 
             // gridExames
             // 
@@ -2085,6 +2456,27 @@
             this.autoLabel25.TabIndex = 198;
             this.autoLabel25.Text = "Ordem de Serviço";
             // 
+            // btnFechar
+            // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.BackColor = System.Drawing.Color.Transparent;
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFechar.FlatAppearance.BorderSize = 0;
+            this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
+            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
+            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Multiply;
+            this.btnFechar.IconColor = System.Drawing.Color.White;
+            this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFechar.IconSize = 30;
+            this.btnFechar.Location = new System.Drawing.Point(961, 0);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(39, 41);
+            this.btnFechar.TabIndex = 2;
+            this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            // 
             // dsServico
             // 
             this.dsServico.DataSetName = "dsServico";
@@ -2161,396 +2553,6 @@
             // dataColumn49
             // 
             this.dataColumn49.ColumnName = "Caminho";
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.BackColor = System.Drawing.Color.Transparent;
-            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFechar.FlatAppearance.BorderSize = 0;
-            this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
-            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
-            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Multiply;
-            this.btnFechar.IconColor = System.Drawing.Color.White;
-            this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnFechar.IconSize = 30;
-            this.btnFechar.Location = new System.Drawing.Point(961, 0);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(39, 41);
-            this.btnFechar.TabIndex = 2;
-            this.btnFechar.UseVisualStyleBackColor = false;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            // 
-            // btnPesquisaVendedor
-            // 
-            this.btnPesquisaVendedor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaVendedor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaVendedor.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaVendedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaVendedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaVendedor.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaVendedor.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaVendedor.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaVendedor.IconSize = 38;
-            this.btnPesquisaVendedor.Location = new System.Drawing.Point(953, 89);
-            this.btnPesquisaVendedor.Name = "btnPesquisaVendedor";
-            this.btnPesquisaVendedor.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaVendedor.TabIndex = 9;
-            this.btnPesquisaVendedor.UseVisualStyleBackColor = true;
-            this.btnPesquisaVendedor.Click += new System.EventHandler(this.btnPesquisaVendedor_Click);
-            // 
-            // btnExcluirProduto
-            // 
-            this.btnExcluirProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirProduto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluirProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluirProduto.FlatAppearance.BorderSize = 0;
-            this.btnExcluirProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExcluirProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnExcluirProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirProduto.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnExcluirProduto.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.btnExcluirProduto.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnExcluirProduto.IconSize = 30;
-            this.btnExcluirProduto.Location = new System.Drawing.Point(814, 79);
-            this.btnExcluirProduto.Name = "btnExcluirProduto";
-            this.btnExcluirProduto.Size = new System.Drawing.Size(34, 36);
-            this.btnExcluirProduto.TabIndex = 9;
-            this.btnExcluirProduto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluirProduto.UseVisualStyleBackColor = true;
-            this.btnExcluirProduto.Click += new System.EventHandler(this.btnExcluirProduto_Click);
-            // 
-            // btnConfirmaItem
-            // 
-            this.btnConfirmaItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmaItem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfirmaItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnConfirmaItem.FlatAppearance.BorderSize = 0;
-            this.btnConfirmaItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnConfirmaItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnConfirmaItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmaItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmaItem.IconChar = FontAwesome.Sharp.IconChar.CircleCheck;
-            this.btnConfirmaItem.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnConfirmaItem.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnConfirmaItem.IconSize = 38;
-            this.btnConfirmaItem.Location = new System.Drawing.Point(762, 79);
-            this.btnConfirmaItem.Name = "btnConfirmaItem";
-            this.btnConfirmaItem.Size = new System.Drawing.Size(46, 38);
-            this.btnConfirmaItem.TabIndex = 8;
-            this.btnConfirmaItem.UseVisualStyleBackColor = true;
-            this.btnConfirmaItem.Click += new System.EventHandler(this.btnConfirmaItem_Click);
-            // 
-            // btnPesquisaProduto
-            // 
-            this.btnPesquisaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPesquisaProduto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaProduto.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaProduto.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaProduto.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaProduto.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaProduto.IconSize = 38;
-            this.btnPesquisaProduto.Location = new System.Drawing.Point(928, 27);
-            this.btnPesquisaProduto.Name = "btnPesquisaProduto";
-            this.btnPesquisaProduto.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaProduto.TabIndex = 2;
-            this.btnPesquisaProduto.UseVisualStyleBackColor = true;
-            this.btnPesquisaProduto.Click += new System.EventHandler(this.btnPesquisaProduto_Click);
-            // 
-            // btnExcluirServico
-            // 
-            this.btnExcluirServico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirServico.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluirServico.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluirServico.FlatAppearance.BorderSize = 0;
-            this.btnExcluirServico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExcluirServico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnExcluirServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirServico.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnExcluirServico.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.btnExcluirServico.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnExcluirServico.IconSize = 30;
-            this.btnExcluirServico.Location = new System.Drawing.Point(814, 79);
-            this.btnExcluirServico.Name = "btnExcluirServico";
-            this.btnExcluirServico.Size = new System.Drawing.Size(34, 36);
-            this.btnExcluirServico.TabIndex = 9;
-            this.btnExcluirServico.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluirServico.UseVisualStyleBackColor = true;
-            this.btnExcluirServico.Click += new System.EventHandler(this.btnExcluirServico_Click);
-            // 
-            // btnConfirmaServico
-            // 
-            this.btnConfirmaServico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmaServico.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfirmaServico.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnConfirmaServico.FlatAppearance.BorderSize = 0;
-            this.btnConfirmaServico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnConfirmaServico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnConfirmaServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmaServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmaServico.IconChar = FontAwesome.Sharp.IconChar.CircleCheck;
-            this.btnConfirmaServico.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnConfirmaServico.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnConfirmaServico.IconSize = 38;
-            this.btnConfirmaServico.Location = new System.Drawing.Point(762, 79);
-            this.btnConfirmaServico.Name = "btnConfirmaServico";
-            this.btnConfirmaServico.Size = new System.Drawing.Size(46, 38);
-            this.btnConfirmaServico.TabIndex = 8;
-            this.btnConfirmaServico.UseVisualStyleBackColor = true;
-            this.btnConfirmaServico.Click += new System.EventHandler(this.btnConfirmaServico_Click);
-            // 
-            // btnPesquisaServico
-            // 
-            this.btnPesquisaServico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPesquisaServico.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaServico.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaServico.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaServico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaServico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaServico.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaServico.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaServico.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaServico.IconSize = 38;
-            this.btnPesquisaServico.Location = new System.Drawing.Point(928, 27);
-            this.btnPesquisaServico.Name = "btnPesquisaServico";
-            this.btnPesquisaServico.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaServico.TabIndex = 2;
-            this.btnPesquisaServico.UseVisualStyleBackColor = true;
-            this.btnPesquisaServico.Click += new System.EventHandler(this.btnPesquisaServico_Click);
-            // 
-            // btnPesquisaTipoObjeto
-            // 
-            this.btnPesquisaTipoObjeto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaTipoObjeto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaTipoObjeto.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaTipoObjeto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaTipoObjeto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaTipoObjeto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaTipoObjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaTipoObjeto.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaTipoObjeto.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaTipoObjeto.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaTipoObjeto.IconSize = 38;
-            this.btnPesquisaTipoObjeto.Location = new System.Drawing.Point(321, 89);
-            this.btnPesquisaTipoObjeto.Name = "btnPesquisaTipoObjeto";
-            this.btnPesquisaTipoObjeto.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaTipoObjeto.TabIndex = 5;
-            this.btnPesquisaTipoObjeto.UseVisualStyleBackColor = true;
-            this.btnPesquisaTipoObjeto.Click += new System.EventHandler(this.btnPesquisaTipoObjeto_Click);
-            // 
-            // btnDadosCliente
-            // 
-            this.btnDadosCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDadosCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnDadosCliente.FlatAppearance.BorderSize = 0;
-            this.btnDadosCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnDadosCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnDadosCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDadosCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDadosCliente.IconChar = FontAwesome.Sharp.IconChar.ListSquares;
-            this.btnDadosCliente.IconColor = System.Drawing.Color.SlateGray;
-            this.btnDadosCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnDadosCliente.IconSize = 38;
-            this.btnDadosCliente.Location = new System.Drawing.Point(958, 35);
-            this.btnDadosCliente.Name = "btnDadosCliente";
-            this.btnDadosCliente.Size = new System.Drawing.Size(36, 34);
-            this.btnDadosCliente.TabIndex = 3;
-            this.btnDadosCliente.UseVisualStyleBackColor = true;
-            // 
-            // btnPesquisaCliente
-            // 
-            this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaCliente.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaCliente.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaCliente.IconSize = 38;
-            this.btnPesquisaCliente.Location = new System.Drawing.Point(805, 35);
-            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
-            this.btnPesquisaCliente.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaCliente.TabIndex = 1;
-            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
-            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
-            // 
-            // btnExcluirAnexo
-            // 
-            this.btnExcluirAnexo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirAnexo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluirAnexo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluirAnexo.FlatAppearance.BorderSize = 0;
-            this.btnExcluirAnexo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExcluirAnexo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnExcluirAnexo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirAnexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirAnexo.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnExcluirAnexo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.btnExcluirAnexo.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnExcluirAnexo.IconSize = 30;
-            this.btnExcluirAnexo.Location = new System.Drawing.Point(694, 474);
-            this.btnExcluirAnexo.Name = "btnExcluirAnexo";
-            this.btnExcluirAnexo.Size = new System.Drawing.Size(34, 36);
-            this.btnExcluirAnexo.TabIndex = 270;
-            this.btnExcluirAnexo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluirAnexo.UseVisualStyleBackColor = true;
-            this.btnExcluirAnexo.Click += new System.EventHandler(this.btnExcluirAnexo_Click);
-            // 
-            // btnAnexo
-            // 
-            this.btnAnexo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAnexo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnAnexo.FlatAppearance.BorderSize = 0;
-            this.btnAnexo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAnexo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAnexo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnexo.IconChar = FontAwesome.Sharp.IconChar.Paperclip;
-            this.btnAnexo.IconColor = System.Drawing.Color.CadetBlue;
-            this.btnAnexo.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnAnexo.IconSize = 37;
-            this.btnAnexo.Location = new System.Drawing.Point(694, 433);
-            this.btnAnexo.Name = "btnAnexo";
-            this.btnAnexo.Size = new System.Drawing.Size(39, 35);
-            this.btnAnexo.TabIndex = 10;
-            this.btnAnexo.UseVisualStyleBackColor = true;
-            this.btnAnexo.Click += new System.EventHandler(this.btnAnexo_Click);
-            // 
-            // btnPesquisaDependente
-            // 
-            this.btnPesquisaDependente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaDependente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaDependente.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaDependente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaDependente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaDependente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaDependente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaDependente.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaDependente.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaDependente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaDependente.IconSize = 38;
-            this.btnPesquisaDependente.Location = new System.Drawing.Point(368, 23);
-            this.btnPesquisaDependente.Name = "btnPesquisaDependente";
-            this.btnPesquisaDependente.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaDependente.TabIndex = 1;
-            this.btnPesquisaDependente.UseVisualStyleBackColor = true;
-            this.btnPesquisaDependente.Click += new System.EventHandler(this.btnPesquisaDependente_Click);
-            // 
-            // btnCima
-            // 
-            this.btnCima.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCima.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCima.FlatAppearance.BorderSize = 0;
-            this.btnCima.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnCima.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnCima.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCima.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCima.IconChar = FontAwesome.Sharp.IconChar.CircleUp;
-            this.btnCima.IconColor = System.Drawing.Color.SteelBlue;
-            this.btnCima.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnCima.IconSize = 40;
-            this.btnCima.Location = new System.Drawing.Point(776, 34);
-            this.btnCima.Name = "btnCima";
-            this.btnCima.Size = new System.Drawing.Size(39, 39);
-            this.btnCima.TabIndex = 10;
-            this.btnCima.UseVisualStyleBackColor = true;
-            this.btnCima.Click += new System.EventHandler(this.btnCima_Click);
-            // 
-            // btnOculosPerto
-            // 
-            this.btnOculosPerto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOculosPerto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnOculosPerto.FlatAppearance.BorderSize = 0;
-            this.btnOculosPerto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnOculosPerto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnOculosPerto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOculosPerto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOculosPerto.IconChar = FontAwesome.Sharp.IconChar.Glasses;
-            this.btnOculosPerto.IconColor = System.Drawing.Color.SlateGray;
-            this.btnOculosPerto.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnOculosPerto.IconSize = 80;
-            this.btnOculosPerto.Location = new System.Drawing.Point(846, 41);
-            this.btnOculosPerto.Name = "btnOculosPerto";
-            this.btnOculosPerto.Size = new System.Drawing.Size(73, 59);
-            this.btnOculosPerto.TabIndex = 266;
-            this.btnOculosPerto.UseVisualStyleBackColor = true;
-            // 
-            // btnBaixo
-            // 
-            this.btnBaixo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBaixo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnBaixo.FlatAppearance.BorderSize = 0;
-            this.btnBaixo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnBaixo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnBaixo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBaixo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBaixo.IconChar = FontAwesome.Sharp.IconChar.CircleDown;
-            this.btnBaixo.IconColor = System.Drawing.Color.SteelBlue;
-            this.btnBaixo.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnBaixo.IconSize = 40;
-            this.btnBaixo.Location = new System.Drawing.Point(776, 93);
-            this.btnBaixo.Name = "btnBaixo";
-            this.btnBaixo.Size = new System.Drawing.Size(39, 39);
-            this.btnBaixo.TabIndex = 10;
-            this.btnBaixo.UseVisualStyleBackColor = true;
-            this.btnBaixo.Click += new System.EventHandler(this.btnBaixo_Click);
-            // 
-            // btnOculosLonge
-            // 
-            this.btnOculosLonge.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOculosLonge.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnOculosLonge.FlatAppearance.BorderSize = 0;
-            this.btnOculosLonge.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnOculosLonge.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnOculosLonge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOculosLonge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOculosLonge.IconChar = FontAwesome.Sharp.IconChar.Glasses;
-            this.btnOculosLonge.IconColor = System.Drawing.Color.SlateGray;
-            this.btnOculosLonge.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnOculosLonge.IconSize = 40;
-            this.btnOculosLonge.Location = new System.Drawing.Point(840, 51);
-            this.btnOculosLonge.Name = "btnOculosLonge";
-            this.btnOculosLonge.Size = new System.Drawing.Size(73, 59);
-            this.btnOculosLonge.TabIndex = 265;
-            this.btnOculosLonge.UseVisualStyleBackColor = true;
-            // 
-            // btnExcluirExame
-            // 
-            this.btnExcluirExame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirExame.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluirExame.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluirExame.FlatAppearance.BorderSize = 0;
-            this.btnExcluirExame.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExcluirExame.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnExcluirExame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirExame.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnExcluirExame.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.btnExcluirExame.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnExcluirExame.IconSize = 30;
-            this.btnExcluirExame.Location = new System.Drawing.Point(955, 416);
-            this.btnExcluirExame.Name = "btnExcluirExame";
-            this.btnExcluirExame.Size = new System.Drawing.Size(34, 36);
-            this.btnExcluirExame.TabIndex = 201;
-            this.btnExcluirExame.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluirExame.UseVisualStyleBackColor = true;
-            this.btnExcluirExame.Click += new System.EventHandler(this.btnExcluirExame_Click);
             // 
             // btnGravar
             // 
@@ -3930,6 +3932,19 @@
             this.txtValorTotalTodosProdutos.Texts = "0,00";
             this.txtValorTotalTodosProdutos.UnderlinedStyle = false;
             // 
+            // lblInformativo
+            // 
+            this.lblInformativo.BackColor = System.Drawing.Color.Transparent;
+            this.lblInformativo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblInformativo.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformativo.ForeColor = System.Drawing.Color.Red;
+            this.lblInformativo.Location = new System.Drawing.Point(332, 2);
+            this.lblInformativo.Name = "lblInformativo";
+            this.lblInformativo.Size = new System.Drawing.Size(367, 27);
+            this.lblInformativo.TabIndex = 235;
+            this.lblInformativo.Text = "O.S Encerrada, Não Modifique as Informações";
+            this.lblInformativo.Visible = false;
+            // 
             // FrmOrdemServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4206,5 +4221,6 @@
         private FontAwesome.Sharp.IconButton btnExcluirAnexo;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel61;
         private RJ_UI.Classes.RJTextBox txtIdExame;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lblInformativo;
     }
 }

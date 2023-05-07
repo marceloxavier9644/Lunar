@@ -7,6 +7,10 @@ namespace LunarBase.Utilidades
     {
         public static string _conexaoMySQL;
 
+        public static string servidor;
+        public static string usuarioBanco;
+        public static string senhaBanco;
+
         public static EmpresaFilial empresaFilialLogada;
         public static Usuario usuarioLogado;
 

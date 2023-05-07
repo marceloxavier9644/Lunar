@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsContaReceber" targetNamespace="http://tempuri.org/dsContaReceber.xsd" xmlns:mstns="http://tempuri.org/dsContaReceber.xsd" xmlns="http://tempuri.org/dsContaReceber.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsContaReceber" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsContaReceber" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsContaReceber">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ContaReceber" msprop:Generator_RowClassName="ContaReceberRow" msprop:Generator_RowEvHandlerName="ContaReceberRowChangeEventHandler" msprop:Generator_RowDeletedName="ContaReceberRowDeleted" msprop:Generator_RowDeletingName="ContaReceberRowDeleting" msprop:Generator_RowEvArgName="ContaReceberRowChangeEvent" msprop:Generator_TablePropName="ContaReceber" msprop:Generator_RowChangedName="ContaReceberRowChanged" msprop:Generator_UserTableName="ContaReceber" msprop:Generator_RowChangingName="ContaReceberRowChanging" msprop:Generator_TableClassName="ContaReceberDataTable" msprop:Generator_TableVarName="tableContaReceber">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDCliente" msprop:Generator_UserColumnName="IDCliente" msprop:Generator_ColumnPropNameInTable="IDClienteColumn" msprop:Generator_ColumnPropNameInRow="IDCliente" msprop:Generator_ColumnVarNameInTable="columnIDCliente" type="xs:int" minOccurs="0" />
+              <xs:element name="NomeCliente" msprop:Generator_UserColumnName="NomeCliente" msprop:Generator_ColumnPropNameInTable="NomeClienteColumn" msprop:Generator_ColumnPropNameInRow="NomeCliente" msprop:Generator_ColumnVarNameInTable="columnNomeCliente" type="xs:string" minOccurs="0" />
+              <xs:element name="DataOrigem" msprop:Generator_UserColumnName="DataOrigem" msprop:Generator_ColumnPropNameInTable="DataOrigemColumn" msprop:Generator_ColumnPropNameInRow="DataOrigem" msprop:Generator_ColumnVarNameInTable="columnDataOrigem" type="xs:string" minOccurs="0" />
+              <xs:element name="DataVencimento" msprop:Generator_UserColumnName="DataVencimento" msprop:Generator_ColumnPropNameInTable="DataVencimentoColumn" msprop:Generator_ColumnPropNameInRow="DataVencimento" msprop:Generator_ColumnVarNameInTable="columnDataVencimento" type="xs:string" minOccurs="0" />
+              <xs:element name="Documento" msprop:Generator_UserColumnName="Documento" msprop:Generator_ColumnPropNameInTable="DocumentoColumn" msprop:Generator_ColumnPropNameInRow="Documento" msprop:Generator_ColumnVarNameInTable="columnDocumento" type="xs:string" minOccurs="0" />
+              <xs:element name="Parcela" msprop:Generator_UserColumnName="Parcela" msprop:Generator_ColumnPropNameInTable="ParcelaColumn" msprop:Generator_ColumnPropNameInRow="Parcela" msprop:Generator_ColumnVarNameInTable="columnParcela" type="xs:string" minOccurs="0" />
+              <xs:element name="ValorPrincipal" msprop:Generator_UserColumnName="ValorPrincipal" msprop:Generator_ColumnPropNameInTable="ValorPrincipalColumn" msprop:Generator_ColumnPropNameInRow="ValorPrincipal" msprop:Generator_ColumnVarNameInTable="columnValorPrincipal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Multa" msprop:Generator_UserColumnName="Multa" msprop:Generator_ColumnPropNameInTable="MultaColumn" msprop:Generator_ColumnPropNameInRow="Multa" msprop:Generator_ColumnVarNameInTable="columnMulta" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Juro" msprop:Generator_UserColumnName="Juro" msprop:Generator_ColumnPropNameInTable="JuroColumn" msprop:Generator_ColumnPropNameInRow="Juro" msprop:Generator_ColumnVarNameInTable="columnJuro" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ValorTotalComJuro" msprop:Generator_UserColumnName="ValorTotalComJuro" msprop:Generator_ColumnPropNameInTable="ValorTotalComJuroColumn" msprop:Generator_ColumnPropNameInRow="ValorTotalComJuro" msprop:Generator_ColumnVarNameInTable="columnValorTotalComJuro" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Origem" msprop:Generator_UserColumnName="Origem" msprop:Generator_ColumnPropNameInTable="OrigemColumn" msprop:Generator_ColumnPropNameInRow="Origem" msprop:Generator_ColumnVarNameInTable="columnOrigem" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

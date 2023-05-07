@@ -599,6 +599,11 @@
     <Compile Include="Telas\ContasReceber\FrmValorParcial.Designer.cs">
       <DependentUpon>FrmValorParcial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\ContasReceber\Reports\Dados\dsContaReceber.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsContaReceber.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Telas\ContasReceber\Reports\Dados\dsParcelaDuplicata.cs">
       <DependentUpon>dsParcelaDuplicata.xsd</DependentUpon>
     </Compile>
@@ -1170,6 +1175,7 @@
     <EmbeddedResource Include="Telas\ContasReceber\FrmValorParcial.resx">
       <DependentUpon>FrmValorParcial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasReceber\Reports\ContasReceberReport.rdlc" />
     <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataCarne.rdlc" />
     <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataMercantil.rdlc" />
     <EmbeddedResource Include="Telas\ContasReceber\Reports\FrmImprimirDuplicata.resx">
@@ -1572,6 +1578,17 @@
     <None Include="Telas\Condicionais\dsCondicional.xss">
       <DependentUpon>dsCondicional.xsd</DependentUpon>
     </None>
+    <None Include="Telas\ContasReceber\Reports\Dados\dsContaReceber.xsc">
+      <DependentUpon>dsContaReceber.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\ContasReceber\Reports\Dados\dsContaReceber.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsContaReceber.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\ContasReceber\Reports\Dados\dsContaReceber.xss">
+      <DependentUpon>dsContaReceber.xsd</DependentUpon>
+    </None>
     <None Include="Telas\ContasReceber\Reports\Dados\dsParcelaDuplicata.xsc">
       <DependentUpon>dsParcelaDuplicata.xsd</DependentUpon>
     </None>
@@ -1805,6 +1822,9 @@
     </PackageReference>
     <PackageReference Include="Cquential.Microsoft.ReportViewer.DataVisualization">
       <Version>10.0.40219.1</Version>
+    </PackageReference>
+    <PackageReference Include="FirebirdSql.Data.FirebirdClient">
+      <Version>9.1.1</Version>
     </PackageReference>
     <PackageReference Include="FiscalBr.Sintegra">
       <Version>2.0.0</Version>

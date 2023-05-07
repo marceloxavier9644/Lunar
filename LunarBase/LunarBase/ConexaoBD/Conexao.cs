@@ -63,11 +63,16 @@ namespace LunarBase.ConexaoBD
                         //senha = "mx123";
                         //bancoDados = "lunar";
 
+                        servidor = Sessao.servidor;
+                        usuario = Sessao.usuarioBanco;
+                        senha = Sessao.senhaBanco;
+                        bancoDados = "lunar";
+
                         //Online
-                        servidor = "mysql.lunarsoftware.com.br";
-                        usuario = "lunarsoftware01";
-                        senha = "aranha1";
-                        bancoDados = "lunarsoftware01";
+                        //servidor = "mysql.lunarsoftware.com.br";
+                        //usuario = "lunarsoftware01";
+                        //senha = "aranha1";
+                        //bancoDados = "lunarsoftware01";
                     }
 
                     IDictionary<string, string> props = new Dictionary<string, string>();

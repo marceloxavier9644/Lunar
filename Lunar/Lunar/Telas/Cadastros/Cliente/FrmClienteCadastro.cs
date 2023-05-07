@@ -955,6 +955,11 @@ namespace Lunar.Telas.Cadastros.Cliente
                 else
                     pessoa.TipoPessoa = "PJ";
 
+                if (chkSPC.Checked == true)
+                    pessoa.RegistradoSpc = true;
+                if (chkEscritorioCobranca.Checked == true)
+                    pessoa.EscritorioCobranca = true;
+
                 //Dados Básicos
                 pessoa.Cnpj = GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim());
                 pessoa.Email = txtEmail.Texts;
@@ -1380,6 +1385,18 @@ namespace Lunar.Telas.Cadastros.Cliente
                 radioFeminino.Checked = false;
                 radioMasculino.Checked = false;
             }
+
+            //spc
+            if (pessoa.RegistradoSpc == true)
+                chkSPC.Checked = true;
+            else
+                chkSPC.Checked = false;
+            //Escritorio Cobranca
+            if (pessoa.EscritorioCobranca == true)
+                chkEscritorioCobranca.Checked = true;
+            else
+                chkEscritorioCobranca.Checked = false;
+
         }
 
         private void get_referenciaPessoa(Pessoa pessoa)

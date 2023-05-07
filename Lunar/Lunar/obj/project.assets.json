@@ -83,6 +83,19 @@
           "lib/net35/Microsoft.ReportViewer.DataVisualization.dll": {}
         }
       },
+      "FirebirdSql.Data.FirebirdClient/9.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit": "4.7.0",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        }
+      },
       "FiscalBr.Common/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -1073,6 +1086,15 @@
           }
         }
       },
+      "System.Reflection.Emit/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Runtime/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1463,6 +1485,19 @@
         },
         "runtime": {
           "lib/net35/Microsoft.ReportViewer.DataVisualization.dll": {}
+        }
+      },
+      "FirebirdSql.Data.FirebirdClient/9.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit": "4.7.0",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
       "FiscalBr.Common/4.0.0": {
@@ -2421,6 +2456,15 @@
           }
         }
       },
+      "System.Reflection.Emit/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Runtime/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -2777,6 +2821,19 @@
         },
         "runtime": {
           "lib/net35/Microsoft.ReportViewer.DataVisualization.dll": {}
+        }
+      },
+      "FirebirdSql.Data.FirebirdClient/9.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit": "4.7.0",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
       "FiscalBr.Common/4.0.0": {
@@ -3738,6 +3795,15 @@
           }
         }
       },
+      "System.Reflection.Emit/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Runtime/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -4094,6 +4160,19 @@
         },
         "runtime": {
           "lib/net35/Microsoft.ReportViewer.DataVisualization.dll": {}
+        }
+      },
+      "FirebirdSql.Data.FirebirdClient/9.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit": "4.7.0",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
       "FiscalBr.Common/4.0.0": {
@@ -5055,6 +5134,15 @@
           }
         }
       },
+      "System.Reflection.Emit/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Runtime/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -5417,6 +5505,25 @@
         "cquential.microsoft.reportviewer.datavisualization.10.0.40219.1.nupkg.sha512",
         "cquential.microsoft.reportviewer.datavisualization.nuspec",
         "lib/net35/Microsoft.ReportViewer.DataVisualization.dll"
+      ]
+    },
+    "FirebirdSql.Data.FirebirdClient/9.1.1": {
+      "sha512": "hMh6ECbGU9YDRNOSbj8wdr37ssjEwEB2dTU1W1KV9ARBwSQZ2rweZCCyPcf+R1N+XJLGIH4W9l9pIYUwm02EQA==",
+      "type": "package",
+      "path": "firebirdsql.data.firebirdclient/9.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "firebird-logo.png",
+        "firebirdsql.data.firebirdclient.9.1.1.nupkg.sha512",
+        "firebirdsql.data.firebirdclient.nuspec",
+        "lib/net48/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net5.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/net6.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/netstandard2.1/FirebirdSql.Data.FirebirdClient.dll",
+        "license.txt"
       ]
     },
     "FiscalBr.Common/4.0.0": {
@@ -6882,6 +6989,60 @@
         "version.txt"
       ]
     },
+    "System.Reflection.Emit/4.7.0": {
+      "sha512": "VR4kk8XLKebQ4MZuKuIni/7oh+QGFmZW3qORd1GvBq/8026OpW501SzT/oypwiQl4TvT8ErnReh/NzY9u+C6wQ==",
+      "type": "package",
+      "path": "system.reflection.emit/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Reflection.Emit.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.1/System.Reflection.Emit.dll",
+        "lib/netstandard1.1/System.Reflection.Emit.xml",
+        "lib/netstandard1.3/System.Reflection.Emit.dll",
+        "lib/netstandard2.0/System.Reflection.Emit.dll",
+        "lib/netstandard2.0/System.Reflection.Emit.xml",
+        "lib/netstandard2.1/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.1/System.Reflection.Emit.dll",
+        "ref/netstandard1.1/System.Reflection.Emit.xml",
+        "ref/netstandard1.1/de/System.Reflection.Emit.xml",
+        "ref/netstandard1.1/es/System.Reflection.Emit.xml",
+        "ref/netstandard1.1/fr/System.Reflection.Emit.xml",
+        "ref/netstandard1.1/it/System.Reflection.Emit.xml",
+        "ref/netstandard1.1/ja/System.Reflection.Emit.xml",
+        "ref/netstandard1.1/ko/System.Reflection.Emit.xml",
+        "ref/netstandard1.1/ru/System.Reflection.Emit.xml",
+        "ref/netstandard1.1/zh-hans/System.Reflection.Emit.xml",
+        "ref/netstandard1.1/zh-hant/System.Reflection.Emit.xml",
+        "ref/netstandard2.0/System.Reflection.Emit.dll",
+        "ref/netstandard2.0/System.Reflection.Emit.xml",
+        "ref/netstandard2.1/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/System.Reflection.Emit.dll",
+        "runtimes/aot/lib/netcore50/System.Reflection.Emit.xml",
+        "system.reflection.emit.4.7.0.nupkg.sha512",
+        "system.reflection.emit.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Runtime/4.3.0": {
       "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
       "type": "package",
@@ -7604,6 +7765,7 @@
     ".NETFramework,Version=v4.7.2": [
       "CircularProgressBar >= 2.8.0.16",
       "Cquential.Microsoft.ReportViewer.DataVisualization >= 10.0.40219.1",
+      "FirebirdSql.Data.FirebirdClient >= 9.1.1",
       "FiscalBr.Sintegra >= 2.0.0",
       "FontAwesome.Sharp >= 6.1.1",
       "JWT >= 5.1.1",
@@ -7629,41 +7791,39 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\renat\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\marce\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WPF\\19.4.0.38\\ToolboxNuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\RXSystem\\Sistema Marcelo\\Novo Lunar\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
+      "projectUniqueName": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
       "projectName": "Lunar",
-      "projectPath": "C:\\RXSystem\\Sistema Marcelo\\Novo Lunar\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
-      "packagesPath": "C:\\Users\\renat\\.nuget\\packages\\",
-      "outputPath": "C:\\RXSystem\\Sistema Marcelo\\Novo Lunar\\Lunar\\Lunar\\Lunar\\obj\\",
+      "projectPath": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
+      "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
+      "outputPath": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WPF\\19.4.0.38\\ToolboxNuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\renat\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\marce\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Syncfusion Toolbox for WPF.config"
       ],
       "originalTargetFrameworks": [
         "net472"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net472": {
           "projectReferences": {
-            "C:\\RXSystem\\Sistema Marcelo\\Novo Lunar\\Lunar\\LunarBase\\LunarBase\\LunarBase.csproj": {
-              "projectPath": "C:\\RXSystem\\Sistema Marcelo\\Novo Lunar\\Lunar\\LunarBase\\LunarBase\\LunarBase.csproj"
+            "C:\\Desenvolvimento\\Lunar\\LunarBase\\LunarBase\\LunarBase.csproj": {
+              "projectPath": "C:\\Desenvolvimento\\Lunar\\LunarBase\\LunarBase\\LunarBase.csproj"
             }
           }
         }
@@ -7679,6 +7839,10 @@
           "Cquential.Microsoft.ReportViewer.DataVisualization": {
             "target": "Package",
             "version": "[10.0.40219.1, )"
+          },
+          "FirebirdSql.Data.FirebirdClient": {
+            "target": "Package",
+            "version": "[9.1.1, )"
           },
           "FiscalBr.Sintegra": {
             "target": "Package",

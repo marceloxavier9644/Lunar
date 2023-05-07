@@ -7,25 +7,15 @@ using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using Lunar.Utils.IntegracaoZAPI;
 using LunarBase.Classes;
-using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
-using Microsoft.Win32;
-using NHibernate.Mapping;
-using Syncfusion.Data.Extensions;
-using Syncfusion.Windows.Forms.Grid.Grouping;
-using Syncfusion.Windows.Forms.PivotAnalysis;
-using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
-using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
@@ -122,8 +112,22 @@ namespace Lunar.Telas.OrdensDeServico
             }
             lblAutomatico.Visible = true;
             txtDataExame.Value = DateTime.Now;
-
             get_OrdemServico();
+            if(ordemServico.Status == "ENCERRADA") 
+            {
+                lblInformativo.Visible = true;
+                btnGravar.Enabled = false;
+                btnGravarEncerrar.Enabled = false;
+                txtCodProduto.Enabled = false;
+                txtPesquisaProduto.Enabled = false;
+                txtCodServico.Enabled = false;
+                txtPesquisaServico.Enabled = false;
+                btnPesquisaProduto.Enabled = false;
+                btnPesquisaServico.Enabled = false;
+                btnPesquisaCliente.Enabled = false;
+                btnPesquisaDependente.Enabled = false;
+            }
+                
         }
 
         private void get_OrdemServico()
@@ -325,6 +329,10 @@ namespace Lunar.Telas.OrdensDeServico
                             {
                                 txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
                                 txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
+                                if (((Pessoa)pessoaObj).EscritorioCobranca == true)
+                                    GenericaDesktop.ShowAlerta("Cliente Marcado que possui parcela em escritório de cobrança!");
+                                if (((Pessoa)pessoaObj).RegistradoSpc == true)
+                                    GenericaDesktop.ShowAlerta("Cliente marcado que está registrado no SPC/Serasa pela sua empresa!");
                                 txtVendedor.Focus();
                             }
                             form.Dispose();
@@ -332,6 +340,10 @@ namespace Lunar.Telas.OrdensDeServico
                         case DialogResult.OK:
                             txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                            if (((Pessoa)pessoaOjeto).EscritorioCobranca == true)
+                                GenericaDesktop.ShowAlerta("Cliente Marcado que possui parcela em escritório de cobrança!");
+                            if (((Pessoa)pessoaOjeto).RegistradoSpc == true)
+                                GenericaDesktop.ShowAlerta("Cliente marcado que está registrado no SPC/Serasa pela sua empresa!");
                             txtVendedor.Focus();
                             break;
                     }
@@ -472,6 +484,10 @@ namespace Lunar.Telas.OrdensDeServico
                         {
                             txtCliente.Texts = cliente.RazaoSocial;
                             txtCodCliente.Texts = cliente.Id.ToString();
+                            if (cliente.EscritorioCobranca == true)
+                                GenericaDesktop.ShowAlerta("Cliente Marcado que possui parcela em escritório de cobrança!");
+                            if (cliente.RegistradoSpc == true)
+                                GenericaDesktop.ShowAlerta("Cliente marcado que está registrado no SPC/Serasa pela sua empresa!");
                             txtTipoObjeto.Focus();
                         }
                         else
@@ -1992,6 +2008,9 @@ namespace Lunar.Telas.OrdensDeServico
                 case Keys.F3:
                     tabControlAdv2.SelectedTab = tabPageAdv2;
                     txtPesquisaServico.Focus();
+                    break;
+                case Keys.F5:
+                    btnGravar.PerformClick();
                     break;
             }
         }

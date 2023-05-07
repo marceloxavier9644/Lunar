@@ -65,6 +65,8 @@
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabIdentidade = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.chkEscritorioCobranca = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkSPC = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.chkLembreteVencimento = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.lblRazaoSocial = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtRazaoSocial = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -289,6 +291,8 @@
             this.tabControlAdv1.SuspendLayout();
             this.tabIdentidade.SuspendLayout();
             this.metroPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEscritorioCobranca)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLembreteVencimento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioMasculino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioFeminino)).BeginInit();
@@ -375,6 +379,8 @@
             // 
             // metroPanel2
             // 
+            this.metroPanel2.Controls.Add(this.chkEscritorioCobranca);
+            this.metroPanel2.Controls.Add(this.chkSPC);
             this.metroPanel2.Controls.Add(this.chkLembreteVencimento);
             this.metroPanel2.Controls.Add(this.lblRazaoSocial);
             this.metroPanel2.Controls.Add(this.txtRazaoSocial);
@@ -430,15 +436,45 @@
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
+            // chkEscritorioCobranca
+            // 
+            this.chkEscritorioCobranca.BeforeTouchSize = new System.Drawing.Size(188, 30);
+            this.chkEscritorioCobranca.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkEscritorioCobranca.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEscritorioCobranca.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkEscritorioCobranca.Location = new System.Drawing.Point(156, 313);
+            this.chkEscritorioCobranca.Name = "chkEscritorioCobranca";
+            this.chkEscritorioCobranca.Size = new System.Drawing.Size(188, 30);
+            this.chkEscritorioCobranca.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            this.chkEscritorioCobranca.TabIndex = 218;
+            this.chkEscritorioCobranca.TabStop = false;
+            this.chkEscritorioCobranca.Text = "Cobrança Externa";
+            this.chkEscritorioCobranca.ThemeName = "Metro";
+            // 
+            // chkSPC
+            // 
+            this.chkSPC.BeforeTouchSize = new System.Drawing.Size(150, 30);
+            this.chkSPC.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkSPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSPC.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkSPC.Location = new System.Drawing.Point(12, 314);
+            this.chkSPC.Name = "chkSPC";
+            this.chkSPC.Size = new System.Drawing.Size(150, 30);
+            this.chkSPC.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            this.chkSPC.TabIndex = 217;
+            this.chkSPC.TabStop = false;
+            this.chkSPC.Text = "SPC/Serasa";
+            this.chkSPC.ThemeName = "Metro";
+            // 
             // chkLembreteVencimento
             // 
-            this.chkLembreteVencimento.BeforeTouchSize = new System.Drawing.Size(642, 30);
+            this.chkLembreteVencimento.BeforeTouchSize = new System.Drawing.Size(446, 30);
             this.chkLembreteVencimento.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkLembreteVencimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkLembreteVencimento.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkLembreteVencimento.Location = new System.Drawing.Point(352, 313);
+            this.chkLembreteVencimento.Location = new System.Drawing.Point(548, 314);
             this.chkLembreteVencimento.Name = "chkLembreteVencimento";
-            this.chkLembreteVencimento.Size = new System.Drawing.Size(642, 30);
+            this.chkLembreteVencimento.Size = new System.Drawing.Size(446, 30);
             this.chkLembreteVencimento.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
             this.chkLembreteVencimento.TabIndex = 216;
             this.chkLembreteVencimento.Text = " Cliente deseja receber lembrete de vencimento";
@@ -3614,6 +3650,8 @@
             this.tabIdentidade.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
             this.metroPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEscritorioCobranca)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLembreteVencimento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioMasculino)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioFeminino)).EndInit();
@@ -3887,5 +3925,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn3;
         private FontAwesome.Sharp.IconButton btnEditarDependente;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkLembreteVencimento;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkEscritorioCobranca;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkSPC;
     }
 }

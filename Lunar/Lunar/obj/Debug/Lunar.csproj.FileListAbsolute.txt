@@ -673,3 +673,4 @@ C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\Lunar\bin\Debug\Syncfusion.MI
 C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\Lunar\bin\Debug\EnvDTE.xml
 C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\Lunar\bin\Debug\Syncfusion.Grid.Grouping.Windows.XmlSerializers.dll
 C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\Lunar\obj\Debug\Lunar.csproj.CopyComplete
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\FirebirdSql.Data.FirebirdClient.dll

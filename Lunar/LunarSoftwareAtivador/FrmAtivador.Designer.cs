@@ -40,11 +40,20 @@
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtSenha = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtNomeServidor = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtUsuarioBanco = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtSenhaBanco = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.txtSerial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCNPJ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSerialHD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSenha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNomeServidor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUsuarioBanco)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSenhaBanco)).BeginInit();
             this.SuspendLayout();
             // 
             // autoLabel33
@@ -95,10 +104,10 @@
             // 
             this.btnGerarRegistro.AccessibleName = "Button";
             this.btnGerarRegistro.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerarRegistro.Location = new System.Drawing.Point(182, 178);
+            this.btnGerarRegistro.Location = new System.Drawing.Point(182, 209);
             this.btnGerarRegistro.Name = "btnGerarRegistro";
             this.btnGerarRegistro.Size = new System.Drawing.Size(199, 38);
-            this.btnGerarRegistro.TabIndex = 5;
+            this.btnGerarRegistro.TabIndex = 8;
             this.btnGerarRegistro.Text = "Gerar Arquivo de Registro";
             this.btnGerarRegistro.Click += new System.EventHandler(this.btnGerarRegistro_Click);
             // 
@@ -169,12 +178,80 @@
             this.autoLabel4.TabIndex = 270;
             this.autoLabel4.Text = "Senha de Ativação";
             // 
+            // txtNomeServidor
+            // 
+            this.txtNomeServidor.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtNomeServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeServidor.Location = new System.Drawing.Point(12, 160);
+            this.txtNomeServidor.Name = "txtNomeServidor";
+            this.txtNomeServidor.Size = new System.Drawing.Size(210, 26);
+            this.txtNomeServidor.TabIndex = 5;
+            // 
+            // autoLabel5
+            // 
+            this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel5.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel5.Location = new System.Drawing.Point(12, 137);
+            this.autoLabel5.Name = "autoLabel5";
+            this.autoLabel5.Size = new System.Drawing.Size(204, 20);
+            this.autoLabel5.TabIndex = 272;
+            this.autoLabel5.Text = "Ip ou hostname do Servidor";
+            // 
+            // txtUsuarioBanco
+            // 
+            this.txtUsuarioBanco.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtUsuarioBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuarioBanco.Location = new System.Drawing.Point(228, 160);
+            this.txtUsuarioBanco.Name = "txtUsuarioBanco";
+            this.txtUsuarioBanco.Size = new System.Drawing.Size(155, 26);
+            this.txtUsuarioBanco.TabIndex = 6;
+            // 
+            // autoLabel6
+            // 
+            this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel6.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel6.Location = new System.Drawing.Point(228, 137);
+            this.autoLabel6.Name = "autoLabel6";
+            this.autoLabel6.Size = new System.Drawing.Size(136, 20);
+            this.autoLabel6.TabIndex = 274;
+            this.autoLabel6.Text = "Usuário do Banco";
+            // 
+            // txtSenhaBanco
+            // 
+            this.txtSenhaBanco.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtSenhaBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenhaBanco.Location = new System.Drawing.Point(389, 160);
+            this.txtSenhaBanco.Name = "txtSenhaBanco";
+            this.txtSenhaBanco.PasswordChar = '●';
+            this.txtSenhaBanco.Size = new System.Drawing.Size(161, 26);
+            this.txtSenhaBanco.TabIndex = 7;
+            this.txtSenhaBanco.UseSystemPasswordChar = true;
+            // 
+            // autoLabel7
+            // 
+            this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel7.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel7.Location = new System.Drawing.Point(389, 137);
+            this.autoLabel7.Name = "autoLabel7";
+            this.autoLabel7.Size = new System.Drawing.Size(128, 20);
+            this.autoLabel7.TabIndex = 276;
+            this.autoLabel7.Text = "Senha do Banco";
+            // 
             // FrmAtivador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(562, 228);
+            this.ClientSize = new System.Drawing.Size(562, 259);
+            this.Controls.Add(this.txtSenhaBanco);
+            this.Controls.Add(this.autoLabel7);
+            this.Controls.Add(this.txtUsuarioBanco);
+            this.Controls.Add(this.autoLabel6);
+            this.Controls.Add(this.txtNomeServidor);
+            this.Controls.Add(this.autoLabel5);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.autoLabel4);
             this.Controls.Add(this.txtData);
@@ -198,6 +275,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSerialHD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSenha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNomeServidor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUsuarioBanco)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSenhaBanco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,5 +296,11 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSenha;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtNomeServidor;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel5;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtUsuarioBanco;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSenhaBanco;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
     }
 }

@@ -61,5 +61,41 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+
+        public OrdemServico selecionarOrdemServicoPorID(int idOS)
+        {
+            OrdemServicoBO bo = new OrdemServicoBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarOrdemServicoPorID(idOS);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
+
+        public IList<OrdemServico> selecionarTodasOS()
+        {
+            OrdemServicoBO bo = new OrdemServicoBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarTodasOS();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

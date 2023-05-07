@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<procEventoNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.00">
+  <evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infEvento Id="ID1101113123054298844400012765002000000003137606317601">
+      <cOrgao>31</cOrgao>
+      <tpAmb>2</tpAmb>
+      <CNPJ>42988444000127</CNPJ>
+      <chNFe>31230542988444000127650020000000031376063176</chNFe>
+      <dhEvento>2023-05-07T14:16:44-03:00</dhEvento>
+      <tpEvento>110111</tpEvento>
+      <nSeqEvento>1</nSeqEvento>
+      <verEvento>1.00</verEvento>
+      <detEvento versao="1.00">
+        <descEvento>Cancelamento</descEvento>
+        <nProt>131230027503918</nProt>
+        <xJust>TESTE DE CANCELAMENTO</xJust>
+      </detEvento>
+    </infEvento>
+  </evento>
+  <retEvento xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.00">
+    <infEvento>
+      <tpAmb>2</tpAmb>
+      <verAplic>W-1.5.7</verAplic>
+      <cOrgao>31</cOrgao>
+      <cStat>135</cStat>
+      <xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+      <chNFe>31230542988444000127650020000000031376063176</chNFe>
+      <tpEvento>110111</tpEvento>
+      <nSeqEvento>1</nSeqEvento>
+      <dhRegEvento>2023-05-07T14:16:20-03:00</dhRegEvento>
+      <nProt>131230027490776</nProt>
+    </infEvento>
+  </retEvento>
+</procEventoNFe>

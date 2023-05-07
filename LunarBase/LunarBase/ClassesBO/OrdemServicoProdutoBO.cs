@@ -1,6 +1,7 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ClassesDAO;
 using LunarBase.Interface;
+using LunarBase.Utilidades;
 
 namespace LunarBase.ClassesBO
 {
@@ -75,6 +76,18 @@ namespace LunarBase.ClassesBO
             try
             {
                 return dao.selecionarProdutosPorOrdemServico(idOrdemServico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar produtos da O.S! Erro: " + e.Message);
+            }
+        }
+
+        public IList<OrdemServicoProduto> selecionarProdutosVendidosPorPeriodo(EmpresaFilial empresaFilial, String dataInicial, String dataFinal)
+        {
+            try
+            {
+                return dao.selecionarProdutosVendidosPorPeriodo(empresaFilial, dataInicial, dataFinal);
             }
             catch (Exception e)
             {

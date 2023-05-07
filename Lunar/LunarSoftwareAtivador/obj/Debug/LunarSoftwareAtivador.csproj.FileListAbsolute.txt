@@ -230,3 +230,18 @@ C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\LunarSoftwareAtivador\obj\Deb
 C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtivador.csproj.CopyComplete
 C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtivador.exe
 C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtivador.pdb
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\MySql.Data.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Google.Protobuf.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\ZstdNet.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\BouncyCastle.Crypto.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Ubiety.Dns.Core.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Memory.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Buffers.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\K4os.Compression.LZ4.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\K4os.Hash.xxHash.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Numerics.Vectors.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\EnvDTE.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Google.Protobuf.pdb
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Threading.Tasks.Extensions.dll

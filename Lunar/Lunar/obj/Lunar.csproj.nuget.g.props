@@ -5,25 +5,25 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\renat\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\marce\.nuget\packages\;C:\Program Files (x86)\Syncfusion\Essential Studio\WPF\19.4.0.38\ToolboxNuGetPackages</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.4.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.5.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\renat\.nuget\packages\" />
-    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+    <SourceRoot Include="C:\Users\marce\.nuget\packages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Syncfusion\Essential Studio\WPF\19.4.0.38\ToolboxNuGetPackages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)pdfiumviewer.native.x86.v8-xfa\2018.4.8.256\Build\PdfiumViewer.Native.x86.v8-xfa.props" Condition="Exists('$(NuGetPackageRoot)pdfiumviewer.native.x86.v8-xfa\2018.4.8.256\Build\PdfiumViewer.Native.x86.v8-xfa.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.contracts\10.0.17763.1000\build\Microsoft.Windows.SDK.Contracts.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.contracts\10.0.17763.1000\build\Microsoft.Windows.SDK.Contracts.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgSyncfusion_Shared_Base Condition=" '$(PkgSyncfusion_Shared_Base)' == '' ">C:\Users\renat\.nuget\packages\syncfusion.shared.base\19.4.0.38</PkgSyncfusion_Shared_Base>
-    <PkgSyncfusion_Grid_Windows Condition=" '$(PkgSyncfusion_Grid_Windows)' == '' ">C:\Users\renat\.nuget\packages\syncfusion.grid.windows\19.4.0.38</PkgSyncfusion_Grid_Windows>
-    <PkgSyncfusion_Tools_Windows Condition=" '$(PkgSyncfusion_Tools_Windows)' == '' ">C:\Users\renat\.nuget\packages\syncfusion.tools.windows\19.4.0.38</PkgSyncfusion_Tools_Windows>
-    <PkgPdfiumViewer Condition=" '$(PkgPdfiumViewer)' == '' ">C:\Users\renat\.nuget\packages\pdfiumviewer\2.13.0</PkgPdfiumViewer>
-    <PkgMicrosoft_Web_WebView2 Condition=" '$(PkgMicrosoft_Web_WebView2)' == '' ">C:\Users\renat\.nuget\packages\microsoft.web.webview2\1.0.864.35</PkgMicrosoft_Web_WebView2>
-    <PkgMicrosoft_SqlServer_Types Condition=" '$(PkgMicrosoft_SqlServer_Types)' == '' ">C:\Users\renat\.nuget\packages\microsoft.sqlserver.types\14.0.314.76</PkgMicrosoft_SqlServer_Types>
-    <PkgMetroFramework_Design Condition=" '$(PkgMetroFramework_Design)' == '' ">C:\Users\renat\.nuget\packages\metroframework.design\1.2.0.3</PkgMetroFramework_Design>
+    <PkgSyncfusion_Shared_Base Condition=" '$(PkgSyncfusion_Shared_Base)' == '' ">C:\Users\marce\.nuget\packages\syncfusion.shared.base\19.4.0.38</PkgSyncfusion_Shared_Base>
+    <PkgSyncfusion_Grid_Windows Condition=" '$(PkgSyncfusion_Grid_Windows)' == '' ">C:\Users\marce\.nuget\packages\syncfusion.grid.windows\19.4.0.38</PkgSyncfusion_Grid_Windows>
+    <PkgSyncfusion_Tools_Windows Condition=" '$(PkgSyncfusion_Tools_Windows)' == '' ">C:\Users\marce\.nuget\packages\syncfusion.tools.windows\19.4.0.38</PkgSyncfusion_Tools_Windows>
+    <PkgPdfiumViewer Condition=" '$(PkgPdfiumViewer)' == '' ">C:\Users\marce\.nuget\packages\pdfiumviewer\2.13.0</PkgPdfiumViewer>
+    <PkgMicrosoft_Web_WebView2 Condition=" '$(PkgMicrosoft_Web_WebView2)' == '' ">C:\Users\marce\.nuget\packages\microsoft.web.webview2\1.0.864.35</PkgMicrosoft_Web_WebView2>
+    <PkgMicrosoft_SqlServer_Types Condition=" '$(PkgMicrosoft_SqlServer_Types)' == '' ">C:\Users\marce\.nuget\packages\microsoft.sqlserver.types\14.0.314.76</PkgMicrosoft_SqlServer_Types>
+    <PkgMetroFramework_Design Condition=" '$(PkgMetroFramework_Design)' == '' ">C:\Users\marce\.nuget\packages\metroframework.design\1.2.0.3</PkgMetroFramework_Design>
   </PropertyGroup>
 </Project>

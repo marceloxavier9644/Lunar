@@ -12,6 +12,7 @@ namespace Lunar.Telas.Dashboards
     public partial class FrmDashboard1 : Form
     {
         VendaItensController vendaItensController = new VendaItensController();
+        OrdemServicoProdutoController OrdemServicoProdutoController = new OrdemServicoProdutoController();
         VendaController vendaController = new VendaController();
         public FrmDashboard1()
         {
@@ -31,6 +32,19 @@ namespace Lunar.Telas.Dashboards
                     System.Data.DataRow row = dsProduto.Tables[0].NewRow();
                     row.SetField("Descricao", vendaItem.Produto.Id + " - " + vendaItem.DescricaoProduto);
                     row.SetField("Quantidade", vendaItem.Quantidade);
+                    dsProduto.Tables[0].Rows.Add(row);
+                }
+            }
+
+            //Ordem de Serviço
+            IList<OrdemServicoProduto> listaItensOS = OrdemServicoProdutoController.selecionarProdutosVendidosPorPeriodo(Sessao.empresaFilialLogada, "", "");
+            if (listaItensOS.Count > 0)
+            {
+                foreach (OrdemServicoProduto ordemServicoProduto in listaItensOS)
+                {
+                    System.Data.DataRow row = dsProduto.Tables[0].NewRow();
+                    row.SetField("Descricao", ordemServicoProduto.Produto.Id + " - " + ordemServicoProduto.DescricaoProduto);
+                    row.SetField("Quantidade", ordemServicoProduto.Quantidade);
                     dsProduto.Tables[0].Rows.Add(row);
                 }
             }

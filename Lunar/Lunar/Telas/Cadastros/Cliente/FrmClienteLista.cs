@@ -203,7 +203,7 @@ namespace Lunar.Telas.Cadastros.Cliente
                     uu.Owner = formBackground;
                     uu.ShowDialog();
                     formBackground.Dispose();
-                    carregarLista();
+                    //carregarLista();
                 }
             }
             catch (Exception ex)
@@ -263,7 +263,7 @@ namespace Lunar.Telas.Cadastros.Cliente
                     uu.Owner = formBackground;
                     uu.ShowDialog();
                     formBackground.Dispose();
-                    carregarLista();
+                    //carregarLista();
                 }
             }
             catch (Exception ex)

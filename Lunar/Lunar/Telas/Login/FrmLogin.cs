@@ -7,6 +7,7 @@ using LunarBase.Utilidades;
 using LunarBase.Utilidades.LunarNFe;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using NHibernate.Impl;
 using System;
 using System.IO;
 using System.Management;
@@ -22,17 +23,22 @@ namespace Lunar
     public partial class FrmLogin : Syncfusion.Windows.Forms.Office2007Form
     {
         Generica generica = new Generica();
-        EstadoController estadoController = new EstadoController();
-        CidadeController cidadeController = new CidadeController();
-        ValoresPadraoBO valoresPadraoBO = new ValoresPadraoBO();
-        UsuarioController usuarioController = new UsuarioController();
+       
         Thread th;
+        private string servidor = "";
+        private string usuarioBanco = "";
+        private string senhaBanco = "";
         public FrmLogin()
         {
             InitializeComponent();
             verificaLicencaSistema();
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
+
+        //EstadoController estadoController = new EstadoController();
+        //CidadeController cidadeController = new CidadeController();
+        //ValoresPadraoBO valoresPadraoBO = new ValoresPadraoBO();
+        //UsuarioController usuarioController = new UsuarioController();
         private void ShowMessage(string message)
         {
             lblErrorMessage.Text = "    " + message;
@@ -63,6 +69,7 @@ namespace Lunar
             usuario.Senha = GenericaDesktop.Criptografa(txtSenha.Texts);
             try
             {
+                UsuarioController usuarioController = new UsuarioController();
                 Usuario usuarioLogado = usuarioController.selecionarUsuarioPorUsuarioESenha(usuario);
                 if (usuarioLogado != null && usuarioLogado.Id > 0)
                 {
@@ -146,6 +153,7 @@ namespace Lunar
 
                 //Valores Padroes
                 //lblStatus.Text = "Cadastro de usuários: Suporte";
+                ValoresPadraoBO valoresPadraoBO = new ValoresPadraoBO();
                 valoresPadraoBO.gerarUsuarioPadrao();
 
                 //lblStatus.Visible = false;
@@ -311,6 +319,9 @@ namespace Lunar
                 xmlWriter.WriteElementString("AppComon", block);
                 xmlWriter.WriteElementString("AppOper", Generica.Criptografa(cnpj));
                 xmlWriter.WriteElementString("AppClient", Generica.Criptografa(serialPainel));
+                xmlWriter.WriteElementString("Servidor", servidor);
+                xmlWriter.WriteElementString("Usuario", usuarioBanco);
+                xmlWriter.WriteElementString("Senha", Generica.Criptografa(senhaBanco));
                 xmlWriter.WriteEndElement();
                 xmlWriter.Close();
             }
@@ -344,8 +355,18 @@ namespace Lunar
                             serialRegistro = GenericaDesktop.Descriptografa(reader.ReadString());
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppComon")
                             verificaBloqueio = GenericaDesktop.Descriptografa(reader.ReadString());
+                        if (reader.NodeType == XmlNodeType.Element && reader.Name == "Servidor")
+                            servidor = reader.ReadString();
+                        if (reader.NodeType == XmlNodeType.Element && reader.Name == "Usuario")
+                            usuarioBanco = reader.ReadString();
+                        if (reader.NodeType == XmlNodeType.Element && reader.Name == "Senha")
+                            senhaBanco = GenericaDesktop.Descriptografa(reader.ReadString());
                     }
                     reader.Dispose();
+
+                    Sessao.servidor = servidor;
+                    Sessao.usuarioBanco = usuarioBanco;
+                    Sessao.senhaBanco = senhaBanco;
 
                     atualizarLicenca(cnpjClient, serialRegistro, hd);
 
@@ -362,9 +383,18 @@ namespace Lunar
                             serialRegistro = GenericaDesktop.Descriptografa(reader.ReadString());
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppComon")
                             verificaBloqueio = (GenericaDesktop.Descriptografa(reader.ReadString()));
+                        if (reader.NodeType == XmlNodeType.Element && reader.Name == "Servidor")
+                            servidor = reader.ReadString();
+                        if (reader.NodeType == XmlNodeType.Element && reader.Name == "Usuario")
+                            usuarioBanco = reader.ReadString();
+                        if (reader.NodeType == XmlNodeType.Element && reader.Name == "Senha")
+                            senhaBanco = GenericaDesktop.Descriptografa(reader.ReadString());
                     }
                     Sessao.cnpjRegistro = cnpjClient;
                     Sessao.serialPainel = serialRegistro;
+                    Sessao.servidor = servidor;
+                    Sessao.usuarioBanco = usuarioBanco;
+                    Sessao.senhaBanco = senhaBanco;
                     reader.Dispose();
                 }
                 catch (Exception e)
@@ -396,8 +426,8 @@ namespace Lunar
                     }
                     catch (Exception)
                     {
-                        GenericaDesktop.ShowAlerta("Ocorreu uma falha ao validar a chave do sistema. Entre em contato com o administrador!");
-                        Environment.Exit(0);
+                        //GenericaDesktop.ShowAlerta("Ocorreu uma falha ao validar a chave do sistema. Entre em contato com o administrador!");
+                        //Environment.Exit(0);
                     }
 
                     //String[] arrayData = dataXML.Split('/');

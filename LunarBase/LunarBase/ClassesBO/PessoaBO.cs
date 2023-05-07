@@ -207,5 +207,17 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar pessoa! Erro: " + e.Message);
             }
         }
+
+        public Pessoa selecionarPessoaPorCodigoImportado(string codigoImportacao)
+        {
+            try
+            {
+                return dao.selecionarPessoaPorCodigoImportado(codigoImportacao);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar pessoa! Erro: " + e.Message);
+            }
+        }
     }
 }

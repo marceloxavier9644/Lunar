@@ -118,11 +118,35 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar Ordem Serviço! Erro: " + e.Message);
             }
         }
+
+        public IList<OrdemServico> selecionarTodasOS()
+        {
+            try
+            {
+                return dao.selecionarTodasOS();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Ordem Serviço! Erro: " + e.Message);
+            }
+        }
         public OrdemServico selecionarOrdemServicoPorNfe(int idNfe)
         {
             try
             {
                 return dao.selecionarOrdemServicoPorNfe(idNfe);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Ordem de Servico! Erro: " + e.Message);
+            }
+        }
+
+        public OrdemServico selecionarOrdemServicoPorID(int idOS)
+        {
+            try
+            {
+                return dao.selecionarOrdemServicoPorID(idOS);
             }
             catch (Exception e)
             {

@@ -125,7 +125,7 @@ namespace Lunar.Telas.ContasReceber
                     btnReceber.Enabled = false;
                     btnParcial.Enabled = false;
                     btnReceber.BackColor = Color.FromArgb(192, 192, 192);
-                    lblCalculando.Text = "Selecione apenas 1 cliente para liberar os botões de recebimento";
+                    lblCalculando.Text = "Pesquise 1 cliente para liberar os botões de recebimento";
                     lblCalculando.Visible = true;
                 }
                 else
@@ -811,6 +811,14 @@ namespace Lunar.Telas.ContasReceber
         private void txtCliente_Click(object sender, EventArgs e)
         {
             txtCliente.SelectAll();
+        }
+
+        private void grid_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        {
+            var conta = (ContaReceber)grid.SelectedItem;
+            txtCliente.Texts = conta.Cliente.RazaoSocial;
+            txtCodCliente.Texts = conta.Cliente.Id.ToString();
+            btnPesquisar.PerformClick();
         }
     }
 }

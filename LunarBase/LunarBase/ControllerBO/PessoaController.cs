@@ -169,5 +169,23 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+
+        public Pessoa selecionarPessoaPorCodigoImportado(string codigoImportacao)
+        {
+            PessoaBO bo = new PessoaBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarPessoaPorCodigoImportado(codigoImportacao);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

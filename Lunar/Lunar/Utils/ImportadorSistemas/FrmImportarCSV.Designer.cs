@@ -36,8 +36,12 @@
             this.radioClientes = new System.Windows.Forms.RadioButton();
             this.radioProdutos = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFirebird = new System.Windows.Forms.Button();
             this.lblInformacao = new System.Windows.Forms.Label();
             this.btnConfirmarImportacao = new System.Windows.Forms.Button();
+            this.radioOrdemServico = new System.Windows.Forms.RadioButton();
+            this.radioOrdemServicoProdutos = new System.Windows.Forms.RadioButton();
+            this.radioOrdemServicoExame = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -79,9 +83,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 107);
-            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(551, 262);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.Visible = false;
@@ -124,6 +128,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnFirebird);
             this.groupBox1.Controls.Add(this.lblInformacao);
             this.groupBox1.Controls.Add(this.btnConfirmarImportacao);
             this.groupBox1.Location = new System.Drawing.Point(4, 375);
@@ -132,11 +137,22 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
+            // btnFirebird
+            // 
+            this.btnFirebird.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFirebird.Location = new System.Drawing.Point(285, 31);
+            this.btnFirebird.Name = "btnFirebird";
+            this.btnFirebird.Size = new System.Drawing.Size(134, 32);
+            this.btnFirebird.TabIndex = 13;
+            this.btnFirebird.Text = "Firebird Ultra - Puxar O.S";
+            this.btnFirebird.UseVisualStyleBackColor = true;
+            this.btnFirebird.Click += new System.EventHandler(this.btnFirebird_Click);
+            // 
             // lblInformacao
             // 
             this.lblInformacao.AutoSize = true;
             this.lblInformacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInformacao.Location = new System.Drawing.Point(8, 36);
+            this.lblInformacao.Location = new System.Drawing.Point(8, 16);
             this.lblInformacao.Name = "lblInformacao";
             this.lblInformacao.Size = new System.Drawing.Size(94, 20);
             this.lblInformacao.TabIndex = 12;
@@ -154,12 +170,48 @@
             this.btnConfirmarImportacao.UseVisualStyleBackColor = true;
             this.btnConfirmarImportacao.Click += new System.EventHandler(this.btnConfirmarImportacao_Click);
             // 
+            // radioOrdemServico
+            // 
+            this.radioOrdemServico.AutoSize = true;
+            this.radioOrdemServico.Location = new System.Drawing.Point(261, 84);
+            this.radioOrdemServico.Name = "radioOrdemServico";
+            this.radioOrdemServico.Size = new System.Drawing.Size(43, 17);
+            this.radioOrdemServico.TabIndex = 12;
+            this.radioOrdemServico.TabStop = true;
+            this.radioOrdemServico.Text = "O.S";
+            this.radioOrdemServico.UseVisualStyleBackColor = true;
+            // 
+            // radioOrdemServicoProdutos
+            // 
+            this.radioOrdemServicoProdutos.AutoSize = true;
+            this.radioOrdemServicoProdutos.Location = new System.Drawing.Point(310, 84);
+            this.radioOrdemServicoProdutos.Name = "radioOrdemServicoProdutos";
+            this.radioOrdemServicoProdutos.Size = new System.Drawing.Size(88, 17);
+            this.radioOrdemServicoProdutos.TabIndex = 13;
+            this.radioOrdemServicoProdutos.TabStop = true;
+            this.radioOrdemServicoProdutos.Text = "O.S Produtos";
+            this.radioOrdemServicoProdutos.UseVisualStyleBackColor = true;
+            // 
+            // radioOrdemServicoExame
+            // 
+            this.radioOrdemServicoExame.AutoSize = true;
+            this.radioOrdemServicoExame.Location = new System.Drawing.Point(404, 84);
+            this.radioOrdemServicoExame.Name = "radioOrdemServicoExame";
+            this.radioOrdemServicoExame.Size = new System.Drawing.Size(83, 17);
+            this.radioOrdemServicoExame.TabIndex = 14;
+            this.radioOrdemServicoExame.TabStop = true;
+            this.radioOrdemServicoExame.Text = "O.S Exames";
+            this.radioOrdemServicoExame.UseVisualStyleBackColor = true;
+            // 
             // FrmImportarCSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(579, 450);
+            this.Controls.Add(this.radioOrdemServicoExame);
+            this.Controls.Add(this.radioOrdemServicoProdutos);
+            this.Controls.Add(this.radioOrdemServico);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.radioProdutos);
             this.Controls.Add(this.radioContasReceber);
@@ -194,5 +246,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnConfirmarImportacao;
         private System.Windows.Forms.Label lblInformacao;
+        private System.Windows.Forms.Button btnFirebird;
+        private System.Windows.Forms.RadioButton radioOrdemServico;
+        private System.Windows.Forms.RadioButton radioOrdemServicoProdutos;
+        private System.Windows.Forms.RadioButton radioOrdemServicoExame;
     }
 }

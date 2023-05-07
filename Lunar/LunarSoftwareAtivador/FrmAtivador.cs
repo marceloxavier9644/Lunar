@@ -57,14 +57,24 @@ namespace LunarSoftwareAtivador
 
         public string GetHDDSerialNumber(string drive)
         {
-            if (drive == "" || drive == null)
+            try
             {
-                drive = "C";
+                if (drive == "" || drive == null)
+                {
+                    drive = "C";
+                }
+                ManagementObject disk = new ManagementObject("win32_logicaldisk.deviceid=\"" + drive + ":\"");
+                disk.Get();
+                return disk["VolumeSerialNumber"].ToString();
             }
-            ManagementObject disk = new ManagementObject("win32_logicaldisk.deviceid=\"" + drive + ":\"");
-            disk.Get();
-            return disk["VolumeSerialNumber"].ToString();
+            catch (Exception erro)
+            { 
+                GenericaDesktop.ShowErro("Erro ao obter serial do disco: " + erro.Message);
+                return "123456";
+            }
         }
+
+       
         private string Criptografa(String valor)
         {
             Byte[] bytes = System.Text.ASCIIEncoding.ASCII.GetBytes(valor);
@@ -169,6 +179,9 @@ namespace LunarSoftwareAtivador
                     xmlWriter.WriteElementString("AppComon", block);
                     xmlWriter.WriteElementString("AppOper", Criptografa(txtCNPJ.Text));
                     xmlWriter.WriteElementString("AppClient", Criptografa(txtSerial.Text));
+                    xmlWriter.WriteElementString("Servidor", txtNomeServidor.Text.Trim());
+                    xmlWriter.WriteElementString("Usuario", txtUsuarioBanco.Text.Trim());
+                    xmlWriter.WriteElementString("Senha", Criptografa(txtSenhaBanco.Text));
                     xmlWriter.WriteEndElement();
                     xmlWriter.Close();
                     GenericaDesktop.ShowInfo("Chave do sistema gerada com sucesso! Validade Atual da Licenca: " + validade.ToShortDateString());

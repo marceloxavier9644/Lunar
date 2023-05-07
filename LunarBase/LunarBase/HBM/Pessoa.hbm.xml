@@ -33,7 +33,11 @@
 		<property name="ReceberLembrete" column="RECEBERLEMBRETE" type="Boolean"/>
 		<property name="CodigoImportacao" column="CODIGOIMPORTACAO" type="String" length="12"/>
 		<property name="TipoParceiroImportado" column="TIPOPARCEIROIMPORTADO" type="String" length="5"/>
+
+		<property name="RegistradoSpc" column="REGISTRADOSPC" type="Boolean"/>
+		<property name="EscritorioCobranca" column="ESCRITORIOCOBRANCA" type="Boolean"/>
 		
+
 		<many-to-one name="EnderecoPrincipal" column="ENDERECOPRINCIPAL" class="LunarBase.Classes.Endereco" not-null="false" foreign-key="FK_PESSOA_ENDERECOPRINCIPAL" lazy="false"/>
 		<many-to-one name="PessoaTelefone" column="PESSOATELEFONE" class="LunarBase.Classes.PessoaTelefone" not-null="false" foreign-key="FK_PESSOA_FONEPRINCIPAL" lazy="false"/>
 

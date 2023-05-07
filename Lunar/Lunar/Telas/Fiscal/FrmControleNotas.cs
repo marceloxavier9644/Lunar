@@ -1605,66 +1605,131 @@ namespace Lunar.Telas.Fiscal
                     Genericos genericosNF = new Genericos();
                     //CONSULTA NOTA
                     nfe = (Nfe)grid.SelectedItem;
-                    //para modelo 55
-                    if (!String.IsNullOrEmpty(nfe.NsNrec))
+                    if (nfe.Status != "Autorizado o uso da NF-e" && nfe.Status != "Inutilizacao de numero homologada" && !nfe.Status.Contains("cancelada com sucesso"))
                     {
-                        ConsStatusProcessamentoReq consStatusProcessamentoReq = new ConsStatusProcessamentoReq();
-                        consStatusProcessamentoReq.CNPJ = Sessao.empresaFilialLogada.Cnpj;
-                        consStatusProcessamentoReq.nsNRec = nfe.NsNrec;
-                        if (Sessao.parametroSistema.AmbienteProducao == true)
-                            consStatusProcessamentoReq.tpAmb = "1";
-                        else
-                            consStatusProcessamentoReq.tpAmb = "2";
-
-                        RetConsultaProcessamentoNF retConsulta = new RetConsultaProcessamentoNF();
-                        String retornoConsulta = NSSuite.consultarStatusProcessamento(nfe.Modelo, consStatusProcessamentoReq);
-                        if (retornoConsulta != null)
-                            retConsulta = JsonConvert.DeserializeObject<RetConsultaProcessamentoNF>(retornoConsulta);
-                        if (!String.IsNullOrEmpty(retConsulta.chNFe))
-                            nfe.Chave = retConsulta.chNFe;
-                        if (!String.IsNullOrEmpty(retConsulta.xMotivo))
-                            nfe.Status = retConsulta.xMotivo;
-
-                        if (retConsulta.xMotivo != null)
+                        //para modelo 55
+                        if (!String.IsNullOrEmpty(nfe.NsNrec))
                         {
-                            if (retConsulta.xMotivo.Contains("Autorizado o uso"))
-                            {
-                                NfeStatusController nfeStatusController = new NfeStatusController();
-                                nfe.Protocolo = retConsulta.nProt;
-                                nfe.Chave = retConsulta.chNFe;
-                                nfe.CodStatus = retConsulta.cStat;
-                                nfe.Status = retConsulta.xMotivo;
-                                
-                                //Atualizar o estoque se for autorizada
-                                if(nfe.NfeStatus.Id != 1)
-                                {
-                                    NfeProdutoController nfeProdutoController = new NfeProdutoController();
-                                    IList<NfeProduto> listaProd = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
-                                    foreach (NfeProduto nfeProd in listaProd)
-                                    {
-                                        if(nfe.TipoOperacao == "S")
-                                            generica.atualizarEstoqueConciliado(nfeProd.Produto, double.Parse(nfeProd.QCom), false, "CONSULTA_CONTROLE", "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NaturezaOperacao, nfe.Cliente, DateTime.Now, null);
-                                        else if (nfe.TipoOperacao == "E")
-                                            generica.atualizarEstoqueConciliado(nfeProd.Produto, double.Parse(nfeProd.QCom), true, "CONSULTA_CONTROLE", "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NaturezaOperacao, nfe.Cliente, DateTime.Now, null);
+                            ConsStatusProcessamentoReq consStatusProcessamentoReq = new ConsStatusProcessamentoReq();
+                            consStatusProcessamentoReq.CNPJ = Sessao.empresaFilialLogada.Cnpj;
+                            consStatusProcessamentoReq.nsNRec = nfe.NsNrec;
+                            if (Sessao.parametroSistema.AmbienteProducao == true)
+                                consStatusProcessamentoReq.tpAmb = "1";
+                            else
+                                consStatusProcessamentoReq.tpAmb = "2";
 
-                                        //Estoque auxiliar deve ser validado na origem..
-                                        //generica.atualizarEstoqueNaoConciliado(nfeProd.Produto, double.Parse(nfeProd.QCom), false, "CONSULTA_CONTROLE", "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NaturezaOperacao);
+                            RetConsultaProcessamentoNF retConsulta = new RetConsultaProcessamentoNF();
+                            String retornoConsulta = NSSuite.consultarStatusProcessamento(nfe.Modelo, consStatusProcessamentoReq);
+                            if (retornoConsulta != null)
+                                retConsulta = JsonConvert.DeserializeObject<RetConsultaProcessamentoNF>(retornoConsulta);
+                            if (!String.IsNullOrEmpty(retConsulta.chNFe))
+                                nfe.Chave = retConsulta.chNFe;
+                            if (!String.IsNullOrEmpty(retConsulta.xMotivo))
+                                nfe.Status = retConsulta.xMotivo;
+
+                            if (retConsulta.xMotivo != null)
+                            {
+                                if (retConsulta.xMotivo.Contains("Autorizado o uso"))
+                                {
+                                    NfeStatusController nfeStatusController = new NfeStatusController();
+                                    nfe.Protocolo = retConsulta.nProt;
+                                    nfe.Chave = retConsulta.chNFe;
+                                    nfe.CodStatus = retConsulta.cStat;
+                                    nfe.Status = retConsulta.xMotivo;
+
+                                    //Atualizar o estoque se for autorizada
+                                    if (nfe.NfeStatus.Id != 1)
+                                    {
+                                        NfeProdutoController nfeProdutoController = new NfeProdutoController();
+                                        IList<NfeProduto> listaProd = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
+                                        foreach (NfeProduto nfeProd in listaProd)
+                                        {
+                                            if (nfe.TipoOperacao == "S")
+                                                generica.atualizarEstoqueConciliado(nfeProd.Produto, double.Parse(nfeProd.QCom), false, "CONSULTA_CONTROLE", "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NaturezaOperacao, nfe.Cliente, DateTime.Now, null);
+                                            else if (nfe.TipoOperacao == "E")
+                                                generica.atualizarEstoqueConciliado(nfeProd.Produto, double.Parse(nfeProd.QCom), true, "CONSULTA_CONTROLE", "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NaturezaOperacao, nfe.Cliente, DateTime.Now, null);
+
+                                            //Estoque auxiliar deve ser validado na origem..
+                                            //generica.atualizarEstoqueNaoConciliado(nfeProd.Produto, double.Parse(nfeProd.QCom), false, "CONSULTA_CONTROLE", "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NaturezaOperacao);
+                                        }
+                                    }
+                                    NfeStatus nfeStatus = new NfeStatus();
+                                    nfeStatus.Id = 1;
+                                    nfe.NfeStatus = (NfeStatus)nfeStatusController.selecionar(nfeStatus);
+
+                                    if (nfe.Modelo == "55")
+                                    {
+                                        NFeDownloadProc55 nota = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
+                                        var nfeRet = Genericos.LoadFromXMLString<TNfeProc>(nota.xml);
+                                        genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id);
+                                        Controller.getInstance().salvar(nfe);
+                                        generica.gravarXMLNaPasta(retConsulta.xml, retConsulta.chNFe, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.xml");
+
+                                        //EnviaXML PAINEL LUNAR 
+                                        string caminhoNota = @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
+                                        LunarApiNotas lunarApiNotas = new LunarApiNotas();
+                                        string retorno = lunarApiNotas.consultaNotaApi(nfe.CnpjEmitente, nfe.Chave);
+                                        if (retorno.Contains("NENHUMA_NOTA_LOCALIZADA"))
+                                        {
+                                            byte[] arquivo;
+                                            using (var stream = new FileStream(caminhoNota, FileMode.Open, FileAccess.Read))
+                                            {
+                                                using (var reader = new BinaryReader(stream))
+                                                {
+                                                    arquivo = reader.ReadBytes((int)stream.Length);
+                                                    var ret = lunarApiNotas.EnvioNotaParaNuvem(Sessao.empresaFilialLogada.Cnpj, nfe.Chave, "NFE", "AUTORIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    GenericaDesktop.ShowInfo(retConsulta.xMotivo);
+                                }
+                                else if (retConsulta.xMotivo.Contains("Duplicidade de NF-e, com diferenca na Chave de Acesso"))
+                                {
+                                    nfe.Chave = retConsulta.xMotivo.Substring(65, 44);
+                                    nfe.NsNrec = "";
+                                    Controller.getInstance().salvar(nfe);
+                                    if (nfe.Modelo.Equals("55"))
+                                    {
+                                        NFeDownloadProc55 nota = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
+                                        var nfeRet = Genericos.LoadFromXMLString<TNfeProc>(nota.xml);
+                                        genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id);
+                                        generica.gravarXMLNaPasta(nota.xml, nota.chNFe, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.xml");
+                                        btnImprimirNf.PerformClick();
                                     }
                                 }
-                                NfeStatus nfeStatus = new NfeStatus();
-                                nfeStatus.Id = 1;
-                                nfe.NfeStatus = (NfeStatus)nfeStatusController.selecionar(nfeStatus);
-
-                                if (nfe.Modelo == "55")
+                                else
                                 {
-                                    NFeDownloadProc55 nota = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
-                                    var nfeRet = Genericos.LoadFromXMLString<TNfeProc>(nota.xml);
-                                    genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id);
-                                    Controller.getInstance().salvar(nfe);
-                                    generica.gravarXMLNaPasta(retConsulta.xml, retConsulta.chNFe, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.xml");
+                                    GenericaDesktop.ShowAlerta(retConsulta.xMotivo);
+                                }
+                            }
+                            else
+                            {
+                                Controller.getInstance().salvar(nfe);
+                                GenericaDesktop.ShowAlerta(retConsulta.motivo);
+                            }
+                        }
+                        else if (!String.IsNullOrEmpty(nfe.Chave) && nfe.Modelo.Equals("65"))
+                        {
+                            NFCeDownloadProc nFCeDownloadProc = generica.NS_ConsultaStatusNota65(nfe.Chave);
+                            if (nFCeDownloadProc.nfeProc.xMotivo != null)
+                            {
+                                if (nFCeDownloadProc.nfeProc.xMotivo.Contains("Autorizado o uso da"))
+                                {
+                                    //Atualizar o estoque se for autorizada
+                                    if (nfe.NfeStatus.Id != 1)
+                                    {
+                                        NfeProdutoController nfeProdutoController = new NfeProdutoController();
+                                        IList<NfeProduto> listaProd = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
+                                        foreach (NfeProduto nfeProd in listaProd)
+                                        {
+                                            generica.atualizarEstoqueConciliado(nfeProd.Produto, double.Parse(nfeProd.QCom), false, "CONSULTA_CONTROLE", "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NaturezaOperacao, nfe.Cliente, DateTime.Now, null);
+                                        }
+                                    }
 
+                                    modificarNotaParaAutorizado(nFCeDownloadProc, nfe);
                                     //EnviaXML PAINEL LUNAR 
-                                    string caminhoNota = @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
+                                    string caminhoNota = @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
                                     LunarApiNotas lunarApiNotas = new LunarApiNotas();
                                     string retorno = lunarApiNotas.consultaNotaApi(nfe.CnpjEmitente, nfe.Chave);
                                     if (retorno.Contains("NENHUMA_NOTA_LOCALIZADA"))
@@ -1675,84 +1740,24 @@ namespace Lunar.Telas.Fiscal
                                             using (var reader = new BinaryReader(stream))
                                             {
                                                 arquivo = reader.ReadBytes((int)stream.Length);
-                                                var ret = lunarApiNotas.EnvioNotaParaNuvem(Sessao.empresaFilialLogada.Cnpj, nfe.Chave, "NFE", "AUTORIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
+                                                var ret = lunarApiNotas.EnvioNotaParaNuvem(Sessao.empresaFilialLogada.Cnpj, nfe.Chave, "NFCE", "AUTORIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
                                             }
                                         }
                                     }
+                                    GenericaDesktop.ShowInfo(nFCeDownloadProc.nfeProc.xMotivo);
                                 }
-                                GenericaDesktop.ShowInfo(retConsulta.xMotivo);
-                            }
-                            else if (retConsulta.xMotivo.Contains("Duplicidade de NF-e, com diferenca na Chave de Acesso"))
-                            {
-                                nfe.Chave = retConsulta.xMotivo.Substring(65, 44);
-                                nfe.NsNrec = "";
-                                Controller.getInstance().salvar(nfe);
-                                if (nfe.Modelo.Equals("55"))
-                                {
-                                    NFeDownloadProc55 nota = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
-                                    var nfeRet = Genericos.LoadFromXMLString<TNfeProc>(nota.xml);
-                                    genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id);
-                                    generica.gravarXMLNaPasta(nota.xml, nota.chNFe, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.xml");
-                                    btnImprimirNf.PerformClick();
-                                }
-                            }
-                            else
-                            {
-                                GenericaDesktop.ShowAlerta(retConsulta.xMotivo);
                             }
                         }
-                        else
+                        else if (nfe.NfeStatus.Id != 1)
                         {
-                            Controller.getInstance().salvar(nfe);
-                            GenericaDesktop.ShowAlerta(retConsulta.motivo);
+                            GenericaDesktop.ShowAlerta("Tente reenviar a nota para sefaz");
                         }
+                        else if (nfe.NfeStatus.Id == 1)
+                            GenericaDesktop.ShowInfo("Nota Fiscal Autorizada");
+                        pesquisaNotas();
                     }
-                    else if(!String.IsNullOrEmpty(nfe.Chave) && nfe.Modelo.Equals("65"))
-                    {
-                        NFCeDownloadProc nFCeDownloadProc = generica.NS_ConsultaStatusNota65(nfe.Chave);
-                        if (nFCeDownloadProc.nfeProc.xMotivo != null)
-                        {
-                            if (nFCeDownloadProc.nfeProc.xMotivo.Contains("Autorizado o uso da"))
-                            {  
-                                //Atualizar o estoque se for autorizada
-                                if (nfe.NfeStatus.Id != 1)
-                                {
-                                    NfeProdutoController nfeProdutoController = new NfeProdutoController();
-                                    IList<NfeProduto> listaProd = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
-                                    foreach (NfeProduto nfeProd in listaProd)
-                                    {
-                                        generica.atualizarEstoqueConciliado(nfeProd.Produto, double.Parse(nfeProd.QCom), false, "CONSULTA_CONTROLE", "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NaturezaOperacao, nfe.Cliente, DateTime.Now, null);
-                                    }
-                                }
-
-                                modificarNotaParaAutorizado(nFCeDownloadProc, nfe);
-                                //EnviaXML PAINEL LUNAR 
-                                string caminhoNota = @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
-                                LunarApiNotas lunarApiNotas = new LunarApiNotas();
-                                string retorno = lunarApiNotas.consultaNotaApi(nfe.CnpjEmitente, nfe.Chave);
-                                if (retorno.Contains("NENHUMA_NOTA_LOCALIZADA"))
-                                {
-                                    byte[] arquivo;
-                                    using (var stream = new FileStream(caminhoNota, FileMode.Open, FileAccess.Read))
-                                    {
-                                        using (var reader = new BinaryReader(stream))
-                                        {
-                                            arquivo = reader.ReadBytes((int)stream.Length);
-                                            var ret = lunarApiNotas.EnvioNotaParaNuvem(Sessao.empresaFilialLogada.Cnpj, nfe.Chave, "NFCE", "AUTORIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
-                                        }
-                                    }
-                                }
-                                GenericaDesktop.ShowInfo(nFCeDownloadProc.nfeProc.xMotivo);
-                            }
-                        }
-                    }
-                    else if(nfe.NfeStatus.Id != 1)
-                    {
-                        GenericaDesktop.ShowAlerta("Tente reenviar a nota para sefaz");
-                    }
-                    else if(nfe.NfeStatus.Id == 1)
-                        GenericaDesktop.ShowInfo("Nota Fiscal Autorizada");
-                    pesquisaNotas();
+                    else
+                        GenericaDesktop.ShowAlerta("Status Atual: " + nfe.Status);
                 }
                 catch (Exception erro)
                 {

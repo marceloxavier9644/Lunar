@@ -76,5 +76,11 @@ namespace LunarBase.ClassesDAO
             Session = Conexao.GetSession();
             return Session.CreateQuery("from Pessoa as Tabela where Tabela.Cnpj = '" + cpfCNPJ + "' and Tabela.FlagExcluido <> true").UniqueResult<Pessoa>();
         }
+
+        public Pessoa selecionarPessoaPorCodigoImportado(string codigoImportacao)
+        {
+            Session = Conexao.GetSession();
+            return Session.CreateQuery("from Pessoa as Tabela where Tabela.CodigoImportacao = '" + codigoImportacao + "' and Tabela.FlagExcluido <> true").UniqueResult<Pessoa>();
+        }
     }
 }

@@ -1,1 +1,1 @@
-ERRO CONEXAOCould not compile the mapping document: LunarBase.HBM.Produto.hbm.xml
+ERRO CONEXAOAuthentication to host '' for user 'marce' using method 'mysql_native_password' failed with message: Access denied for user 'marce'@'NoteMX' (using password: NO)
