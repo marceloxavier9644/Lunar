@@ -46,8 +46,8 @@ namespace Lunar.Telas.PesquisaPadrao
             Sql = "FROM " + Tabela + " as Tabela WHERE Tabela.FlagExcluido <> true ";
             SqlInicial = Sql;
             this.SqlAdicional = sqlAdicional;
-            if(Tabela != "Pessoa" && Tabela != "Produto")
-                pesquisar(Tabela, Sql);
+            //if(Tabela != "Pessoa") /*&& Tabela != "Produto"*/
+            pesquisar(Tabela, Sql);
         }
 
         private void pesquisar(string Tabela, string Sql)

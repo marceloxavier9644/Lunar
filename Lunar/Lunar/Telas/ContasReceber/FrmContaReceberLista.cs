@@ -40,7 +40,18 @@ namespace Lunar.Telas.ContasReceber
             txtVencimentoInicial.Value = DateTime.Now;
             txtVencimentoFinal.Value = DateTime.Now;
         }
-
+        public FrmContaReceberLista(Pessoa pessoa)
+        {
+            InitializeComponent();
+            txtVencimentoInicial.Value = DateTime.Now;
+            txtVencimentoFinal.Value = DateTime.Now;
+            txtCliente.Texts = pessoa.RazaoSocial;
+            txtCodCliente.Texts = pessoa.Id.ToString();
+            radioAbertas.Checked = true;
+            txtNumeroDocumento.Texts = "";
+            chkAtivarVencimento.Checked = false;
+            pesquisarContaReceber();
+        }
         private void pesquisarContaReceber()
         {
             try
@@ -444,6 +455,15 @@ namespace Lunar.Telas.ContasReceber
                             txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
                             txtNumeroDocumento.Focus();
+                            btnPesquisar.PerformClick();
+                            if(((Pessoa)pessoaOjeto).RegistradoSpc == true)
+                            {
+                                GenericaDesktop.ShowAlerta("Cliente com marcação de registro no SPC/Serasa no cadastro!");
+                            }
+                            if (((Pessoa)pessoaOjeto).EscritorioCobranca == true)
+                            {
+                                GenericaDesktop.ShowAlerta("Cliente com marcação de cobrança externa!");
+                            }
                             break;
                     }
                     formBackground.Dispose();
@@ -819,6 +839,11 @@ namespace Lunar.Telas.ContasReceber
             txtCliente.Texts = conta.Cliente.RazaoSocial;
             txtCodCliente.Texts = conta.Cliente.Id.ToString();
             btnPesquisar.PerformClick();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

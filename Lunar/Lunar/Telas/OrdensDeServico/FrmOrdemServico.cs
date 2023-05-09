@@ -1,5 +1,6 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.Cadastros.Produtos;
+using Lunar.Telas.ContasReceber;
 using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.OrdensDeServico.Servicos;
 using Lunar.Telas.OrdensDeServico.TipoObjetos;
@@ -295,7 +296,8 @@ namespace Lunar.Telas.OrdensDeServico
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
             //txtCodCliente.Texts = "";
-           // txtCliente.Texts = "";
+            // txtCliente.Texts = "";
+            iconeExclamacao.Visible = false;
             txtCodDependente.Texts = "";
             txtDependente.Texts = "";
             Pessoa pessoaOjeto = new Pessoa();
@@ -330,9 +332,15 @@ namespace Lunar.Telas.OrdensDeServico
                                 txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
                                 txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
                                 if (((Pessoa)pessoaObj).EscritorioCobranca == true)
+                                {
                                     GenericaDesktop.ShowAlerta("Cliente Marcado que possui parcela em escritório de cobrança!");
+                                    iconeExclamacao.Visible = true;
+                                }
                                 if (((Pessoa)pessoaObj).RegistradoSpc == true)
+                                {
                                     GenericaDesktop.ShowAlerta("Cliente marcado que está registrado no SPC/Serasa pela sua empresa!");
+                                    iconeExclamacao.Visible = true;
+                                }
                                 txtVendedor.Focus();
                             }
                             form.Dispose();
@@ -341,9 +349,15 @@ namespace Lunar.Telas.OrdensDeServico
                             txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
                             if (((Pessoa)pessoaOjeto).EscritorioCobranca == true)
+                            {
                                 GenericaDesktop.ShowAlerta("Cliente Marcado que possui parcela em escritório de cobrança!");
+                                iconeExclamacao.Visible = true;
+                            }
                             if (((Pessoa)pessoaOjeto).RegistradoSpc == true)
+                            {
                                 GenericaDesktop.ShowAlerta("Cliente marcado que está registrado no SPC/Serasa pela sua empresa!");
+                                iconeExclamacao.Visible = true;
+                            }
                             txtVendedor.Focus();
                             break;
                     }
@@ -420,7 +434,7 @@ namespace Lunar.Telas.OrdensDeServico
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtVendedor.Texts + "%' and Tabela.Vendedor = true "))
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtVendedor.Texts + "%' and Tabela.Vendedor = true "))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -1039,6 +1053,16 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void txtQuantidadeItem_Leave(object sender, EventArgs e)
         {
+            try
+            {
+                if (txtQuantidadeItem.Texts.Substring(0, 1).Equals(","))
+                    throw new Exception();
+                double value = double.Parse(txtQuantidadeItem.Texts); 
+            } 
+            catch 
+            { 
+                GenericaDesktop.ShowAlerta("Quantidade Inválida!");txtQuantidadeItem.Focus(); 
+            }
             calculaTotalItem();
         }
 
@@ -2033,6 +2057,33 @@ namespace Lunar.Telas.OrdensDeServico
                         { 
                             File.Copy(file.FileName, caminhoNovo, true);
                             inserirAnexo(caminhoNovo, num);
+                            //Se Ordem de Serviço está encerrada ele ja grava a imagem
+                            if (!String.IsNullOrEmpty(txtNumeroOS.Texts))
+                            {
+                                //ListaAnexo
+                                if (gridAnexos.View != null)
+                                {
+                                    var recordAnexo = gridAnexos.View.Records;
+                                    if (recordAnexo.Count > 0)
+                                    {
+                                        foreach (var record in recordAnexo)
+                                        {
+                                            var dataRowView = record.Data as DataRowView;
+                                            Anexo anexo = new Anexo();
+                                            anexo = new Anexo();
+                                            if (int.Parse(dataRowView.Row["Id"].ToString()) > 0)
+                                            {
+                                                anexo.Id = int.Parse(dataRowView.Row["Id"].ToString());
+                                            }
+                                            anexo.Codigo = dataRowView.Row["Codigo"].ToString();
+                                            anexo.Caminho = dataRowView.Row["Caminho"].ToString();
+                                            anexo.Filial = Sessao.empresaFilialLogada;
+                                            anexo.OrdemServico = ordemServico;
+                                            Controller.getInstance().salvar(anexo);
+                                        }
+                                    }
+                                }
+                            }
                         } 
                         catch (Exception rrr)
                         {
@@ -2238,5 +2289,95 @@ namespace Lunar.Telas.OrdensDeServico
             }
         }
 
+        private void btnDadosCliente_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtCodCliente.Texts))
+            {
+                Pessoa pessoa = new Pessoa();
+                pessoa.Id = int.Parse(txtCodCliente.Texts);
+                pessoa = (Pessoa)Controller.getInstance().selecionar(pessoa);
+                if(pessoa != null)
+                {
+                    if(pessoa.Id > 0)
+                    {
+                        conferirContaReceber(pessoa);
+                        editarCadastro(pessoa);
+                    }
+                }
+            }
+        }
+        private void editarCadastro(Pessoa pessoa)
+        {
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmClienteCadastro uu = new FrmClienteCadastro(pessoa))
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    uu.ShowDialog();
+                    formBackground.Dispose();
+                    //carregarLista();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+        private void conferirContaReceber(Pessoa pessoa)
+        {
+            Form formBackground = new Form();
+            ContaReceberController contaReceberController = new ContaReceberController();
+            IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela Where Tabela.FlagExcluido <> true and Tabela.Recebido = false");
+            if (listaReceber.Count > 0)
+            {
+                try
+                {
+                    using (FrmContaReceberLista uu = new FrmContaReceberLista(pessoa))
+                    {
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        uu.ShowDialog();
+                        formBackground.Dispose();
+                        //carregarLista();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    formBackground.Dispose();
+                }
+            }
+        }
     }
 }

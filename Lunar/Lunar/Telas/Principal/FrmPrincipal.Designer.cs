@@ -91,6 +91,7 @@
             this.dropMenuVendas = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMovimentoCaixa = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -679,12 +680,13 @@
             this.btnContaReceberLista,
             this.btnLembreteVencimento,
             this.orçamentoAvulsoToolStripMenuItem,
-            this.btnPlanoDecontas1});
+            this.btnPlanoDecontas1,
+            this.btnMovimentoCaixa});
             this.dropMenuFinanceiro.MenuItemHeight = 25;
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 114);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 158);
             // 
             // toolStripMenuItem4
             // 
@@ -881,6 +883,13 @@
             this.btnCondicionalMenu.Text = "Condicional";
             this.btnCondicionalMenu.Click += new System.EventHandler(this.btnCondicionalMenu_Click);
             // 
+            // btnMovimentoCaixa
+            // 
+            this.btnMovimentoCaixa.Name = "btnMovimentoCaixa";
+            this.btnMovimentoCaixa.Size = new System.Drawing.Size(228, 22);
+            this.btnMovimentoCaixa.Text = "Movimento de Caixa";
+            this.btnMovimentoCaixa.Click += new System.EventHandler(this.btnMovimentoCaixa_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -978,5 +987,6 @@
         private System.Windows.Forms.ToolStripMenuItem enviarArquivosContabilidadeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gerarSintegraTool;
         private System.Windows.Forms.ToolStripMenuItem btnImportar;
+        private System.Windows.Forms.ToolStripMenuItem btnMovimentoCaixa;
     }
 }

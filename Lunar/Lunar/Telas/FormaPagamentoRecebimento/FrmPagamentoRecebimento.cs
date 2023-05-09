@@ -1700,13 +1700,20 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             FormaPagamento formaPagamento = new FormaPagamento();
             String descricaoRecebimento = "";
             String parcelas = "";
+            String idRecebido = "";
 
             foreach (ContaReceber contaReceber in listaReceber)
             {
-                if(String.IsNullOrEmpty(parcelas))
+                if (String.IsNullOrEmpty(parcelas))
+                {
                     parcelas = contaReceber.Documento;
+                    idRecebido = contaReceber.Id.ToString();
+                }
                 else
+                {
                     parcelas = parcelas + " - " + contaReceber.Documento;
+                    idRecebido = idRecebido + " - " + contaReceber.Id.ToString();
+                }
 
                 descricaoRecebimento = "REC. " +contaReceber.Cliente.RazaoSocial + " DOCS: " + parcelas;
                 if(parcial == true)
@@ -1739,7 +1746,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.FormaPagamento = formaPagamento;
                         caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
                         caixa.TabelaOrigem = origem;
-                        caixa.IdOrigem = parcelas;
+                        caixa.IdOrigem = idRecebido;
                         caixa.Tipo = "E";
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
@@ -1769,7 +1776,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.FormaPagamento = formaPagamento;
                         caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
                         caixa.TabelaOrigem = origem;
-                        caixa.IdOrigem = parcelas;
+                        caixa.IdOrigem = idRecebido;
                         caixa.Tipo = "E";
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
@@ -1792,7 +1799,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.FormaPagamento = formaPagamento;
                         caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
                         caixa.TabelaOrigem = origem;
-                        caixa.IdOrigem = parcelas;
+                        caixa.IdOrigem = idRecebido;
                         caixa.Tipo = "E";
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
@@ -1815,7 +1822,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.FormaPagamento = formaPagamento;
                         caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
                         caixa.TabelaOrigem = origem;
-                        caixa.IdOrigem = parcelas;
+                        caixa.IdOrigem = idRecebido;
                         caixa.Tipo = "E";
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
@@ -1839,7 +1846,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.FormaPagamento = formaPagamento;
                                 caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
                                 caixa.TabelaOrigem = origem;
-                                caixa.IdOrigem = parcelas;
+                                caixa.IdOrigem = idRecebido;
                                 caixa.Tipo = "E";
                                 caixa.Usuario = Sessao.usuarioLogado;
                                 caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
@@ -1862,7 +1869,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.FormaPagamento = formaPagamento;
                         caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
                         caixa.TabelaOrigem = origem;
-                        caixa.IdOrigem = parcelas;
+                        caixa.IdOrigem = idRecebido;
                         caixa.Tipo = "E";
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
@@ -1903,11 +1910,13 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
 
                     if (parcial == false)
                     {
+                        conta.Multa = decimal.Parse(dataRowView.Row["Multa"].ToString());
+                        conta.Juro = decimal.Parse(dataRowView.Row["Juro"].ToString());
                         conta.Recebido = true;
                         conta.DataRecebimento = DateTime.Now;
                         conta.DescricaoRecebimento = descricaoRecebimento;
                         conta.CaixaRecebimento = caixaID;
-                        conta.Multa = decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                        //conta.Multa = decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
                         //Acréscimo
 
                         if (lblDescAcre.Text.Equals("Desconto"))

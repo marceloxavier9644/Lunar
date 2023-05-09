@@ -12,6 +12,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using Newtonsoft.Json;
+using NHibernate.Impl;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -87,6 +88,9 @@ namespace Lunar.Telas.OrdensDeServico
                     uu.showModalNovo(ref ordemServico);
                     formBackground.Dispose();
                     //btnPesquisar.PerformClick();
+                    txtNumeroOS.Texts = ((OrdemServico)ordemServico).Id.ToString();
+                    pesquisarOrdemServicoPeloID();
+                    txtNumeroOS.Texts = "";
                 }
             }
             catch (Exception ex)

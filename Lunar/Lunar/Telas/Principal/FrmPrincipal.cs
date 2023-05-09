@@ -7,6 +7,7 @@ using Lunar.Telas.Cadastros.Empresas;
 using Lunar.Telas.Cadastros.Financeiro.Cartoes;
 using Lunar.Telas.Cadastros.Financeiro.PlanoContas.PlanosPorGrupos;
 using Lunar.Telas.Cadastros.Produtos;
+using Lunar.Telas.CaixaConferencia;
 using Lunar.Telas.CaixaConferencia.Reports;
 using Lunar.Telas.Compras.Manifestos;
 using Lunar.Telas.Condicionais;
@@ -82,6 +83,13 @@ namespace Lunar.Telas.Principal
             Sessao.empresaFilialLogada = new EmpresaFilial();
             Sessao.empresaFilialLogada.Id = 1;
             Sessao.empresaFilialLogada = (EmpresaFilial)Controller.getInstance().selecionar(Sessao.empresaFilialLogada);
+
+            if (File.Exists(Sessao.parametroSistema.Logo))
+            {
+                panelDesktop.BackColor = Color.White;
+                panelDesktop.BackgroundImageLayout = ImageLayout.Center;
+                panelDesktop.BackgroundImage = Image.FromFile(Sessao.parametroSistema.Logo);
+            }
         }
 
         //Drag Form
@@ -322,9 +330,7 @@ namespace Lunar.Telas.Principal
 
         private void btnDashboards_Click(object sender, EventArgs e)
         {
-            //ActivateButton(sender, RGBColors.color6);
-            //OpenChildForm(new FrmLogin());
-            OpenChildForm(() => new FrmDashboard1(), sender);
+            //OpenChildForm(() => new FrmDashboard1(), sender);
         }
 
         private void btnCliente_Click(object sender, EventArgs e)
@@ -594,7 +600,7 @@ namespace Lunar.Telas.Principal
             //};
             //abrir nscloud
             abrirNsCloud();
-            btnDashboards.PerformClick();
+            //btnDashboards.PerformClick();
         }
 
         private async Task abrirNsCloud()
@@ -899,6 +905,11 @@ namespace Lunar.Telas.Principal
             uu.ShowDialog();
             formBackground.Dispose();
             uu.Dispose();
+        }
+
+        private void btnMovimentoCaixa_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(() => new FrmMovimentoCaixa(), btnFinanceiro);
         }
     }
 }

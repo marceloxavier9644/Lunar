@@ -505,6 +505,18 @@
     <Compile Include="Telas\Cadastros\Produtos\RelatoriosCadastro\FrmExtratoProduto.Designer.cs">
       <DependentUpon>FrmExtratoProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmLancamentoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmLancamentoCaixa.Designer.cs">
+      <DependentUpon>FrmLancamentoCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmMovimentoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmMovimentoCaixa.Designer.cs">
+      <DependentUpon>FrmMovimentoCaixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\CaixaConferencia\Reports\Dados\dsCaixa.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1131,6 +1143,12 @@
       <DependentUpon>FrmExtratoProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Produtos\RelatoriosCadastro\ReportExtratoProduto.rdlc" />
+    <EmbeddedResource Include="Telas\CaixaConferencia\FrmLancamentoCaixa.resx">
+      <DependentUpon>FrmLancamentoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CaixaConferencia\FrmMovimentoCaixa.resx">
+      <DependentUpon>FrmMovimentoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\CaixaConferencia\Reports\FrmRelatorioCaixa.resx">
       <DependentUpon>FrmRelatorioCaixa.cs</DependentUpon>
     </EmbeddedResource>

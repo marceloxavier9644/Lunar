@@ -66,7 +66,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(44, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 18);
+            this.label1.Size = new System.Drawing.Size(107, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "Lunar Software";
             // 
@@ -87,9 +87,9 @@
             this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label2.Location = new System.Drawing.Point(294, 53);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 31);
+            this.label2.Size = new System.Drawing.Size(227, 31);
             this.label2.TabIndex = 2;
-            this.label2.Text = "B E M  V I N D O";
+            this.label2.Text = "B E M  V I N D O ( A )";
             // 
             // lblUserName
             // 
@@ -142,7 +142,7 @@
             this.lblStatus.Location = new System.Drawing.Point(300, 340);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(60, 15);
+            this.lblStatus.Size = new System.Drawing.Size(59, 18);
             this.lblStatus.TabIndex = 23;
             this.lblStatus.Text = "Aguarde...";
             this.lblStatus.Visible = false;

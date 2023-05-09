@@ -1187,7 +1187,8 @@ namespace Lunar.Telas.Cadastros.Cliente
                     else
                     {
                         pessoaTelefone = new PessoaTelefone();
-                        pessoaTelefone = (PessoaTelefone)pessoaTelefoneController.selecionar(pessoa.PessoaTelefone);
+                        if(pessoa.PessoaTelefone != null)
+                            pessoaTelefone = (PessoaTelefone)pessoaTelefoneController.selecionar(pessoa.PessoaTelefone);
 
                         pessoaTelefone.Ddd = GenericaDesktop.RemoveCaracteres(txtDDD.Texts.Trim());
                         pessoaTelefone.Telefone = GenericaDesktop.RemoveCaracteres(txtTelefonePrincipal.Texts.Trim());
