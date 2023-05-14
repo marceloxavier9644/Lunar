@@ -843,7 +843,35 @@ namespace Lunar.Telas.Fiscal
                                             nfStatus = (NfeStatus)Controller.getInstance().selecionar(nfStatus);
                                             nfe.NfeStatus = nfStatus;
                                             Controller.getInstance().salvar(nfe);
-
+                                            OrdemServico os = new OrdemServico();
+                                            OrdemServicoController ordemServicoController = new OrdemServicoController();
+                                            Venda vendaVinculada = new Venda();
+                                            //se tem ordem de serviço com notas vinculadas o sistma deve anular o numero da nfe da o.s
+                                            try
+                                            {
+                                                os = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
+                                                vendaVinculada = vendaController.selecionarVendaPorNF(nfe.Id);
+                                                if (os != null)
+                                                {
+                                                    if (os.Id > 1)
+                                                    {
+                                                        os.Nfe = null;
+                                                        Controller.getInstance().salvar(os);
+                                                    }
+                                                }
+                                                if (vendaVinculada != null)
+                                                {
+                                                    if (vendaVinculada.Id > 1)
+                                                    {
+                                                        vendaVinculada.Nfe = null;
+                                                        Controller.getInstance().salvar(vendaVinculada);
+                                                    }
+                                                }
+                                            }
+                                            catch
+                                            {
+                                                GenericaDesktop.ShowAlerta("Ordem de serviço ainda vinculada a nota fiscal.");
+                                            }
                                             if (nfe.Modelo.Equals("65"))
                                             {
                                                 var nfceCancelada = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj.Trim(), nfe.Chave);
@@ -1895,19 +1923,6 @@ namespace Lunar.Telas.Fiscal
                             FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
                             frmPDF.ShowDialog();
                         }
-                        else if (nfe.NfeStatus.Id == 6)
-                        {
-                            if (Directory.Exists(Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs"))
-                            {
-                                string caminhoPDF = Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs\" + Sessao.empresaFilialLogada.Cnpj.Trim() + @"\" + nfe.DataCadastro.Year + @"\" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\" + nfe.DataCadastro.Day.ToString().PadLeft(2, '0') + @"\" + nfe.Chave + ".pdf";
-                                if (File.Exists(caminhoPDF))
-                                {
-                                    //System.Diagnostics.Process.Start(caminhoPDF);
-                                    FrmPDF frmPDF = new FrmPDF(caminhoPDF);
-                                    frmPDF.ShowDialog();
-                                }
-                            }
-                        }
                         else
                         {
                             if (nfe.Modelo.Equals("65"))
@@ -1920,8 +1935,22 @@ namespace Lunar.Telas.Fiscal
                                 }
                             }
                         }
+                        if (nfe.NfeStatus.Id == 6)
+                        {
+                            if (Directory.Exists(Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs"))
+                            {
+                                string caminhoPDF = Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs\" + Sessao.empresaFilialLogada.Cnpj.Trim() + @"\" + nfe.DataCadastro.Year + @"\" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\" + nfe.DataCadastro.Day.ToString().PadLeft(2, '0') + @"\" + nfe.Chave + ".pdf";
+                                if (File.Exists(caminhoPDF))
+                                {
+                                    //System.Diagnostics.Process.Start(caminhoPDF);
+                                    FrmPDF frmPDF = new FrmPDF(caminhoPDF);
+                                    frmPDF.ShowDialog();
+                                }
+                            }
+                        }
+         
                     }
-                    else if (nfe.Modelo.Equals("55"))
+                    if (nfe.Modelo.Equals("55"))
                     {
                         if (File.Exists(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf"))
                         {

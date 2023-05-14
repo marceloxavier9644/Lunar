@@ -85,7 +85,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 else
                 {
                     txtCpf.Enabled = true;
-                    txtRazaoSocial.Enabled = false;
+                    txtRazaoSocial.Enabled = true;
 
                 }
             }
@@ -168,6 +168,30 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                                 contaReceber.Origem = "VENDA";
                                 contaReceber.Concluido = false;
                                 Controller.getInstance().salvar(contaReceber);
+
+                                Caixa caixa = new Caixa();
+                                caixa.Conciliado = false;
+                                caixa.IdOrigem = venda.Id.ToString();
+                                caixa.ContaBancaria = null;
+                                caixa.DataLancamento = DateTime.Now;
+                                caixa.Descricao = "RECEBIMENTO VENDA " + venda.Id + " NO CHEQUE";
+                                caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                                caixa.FormaPagamento = vendaFormaPagamento.FormaPagamento;
+                                if (venda.PlanoConta != null)
+                                    caixa.PlanoConta = venda.PlanoConta;
+                                else
+                                    caixa.PlanoConta = null;
+                                caixa.TabelaOrigem = "VENDA";
+                                caixa.Tipo = "E";
+                                caixa.Usuario = Sessao.usuarioLogado;
+                                caixa.Valor = vendaFormaPagamento.ValorRecebido;
+                                caixa.Pessoa = null;
+                                if (venda.Cliente != null)
+                                    caixa.Pessoa = venda.Cliente;
+                                caixa.ContaBancaria = null;
+                                caixa.Concluido = false;
+                                Controller.getInstance().salvar(caixa);
+
                             }
                             this.DialogResult = DialogResult.OK;
                         }

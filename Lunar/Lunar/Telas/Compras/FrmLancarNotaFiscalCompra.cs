@@ -982,8 +982,8 @@ namespace Lunar.Telas.Compras
 					switch (uu.showModalNovo(ref produtoObjeto, true))
 					{
 						case DialogResult.Ignore:
-							uu.Dispose();
-							formBackground.Dispose();
+							//uu.Dispose();
+							//formBackground.Dispose();
 							break;
 						case DialogResult.OK:
 							prod = (Produto)produtoObjeto;
@@ -1409,9 +1409,9 @@ namespace Lunar.Telas.Compras
 				var records1 = gridProdutos.View.Records;
 				int cont = 0;
 				decimal calcFreteTotal = 0;
-                NfeProdutoDAO nfeprodDAO = new NfeProdutoDAO();
-                nfeprodDAO.excluirProdutosNfeParaAtualizar(nfe.Id.ToString());
-                foreach (var record in records1)
+				NfeProdutoDAO nfeprodDAO = new NfeProdutoDAO();
+				nfeprodDAO.excluirProdutosNfeParaAtualizar(nfe.Id.ToString());
+				foreach (var record in records1)
 				{
 					cont++;
 					//var dataRowView = record.Data as DataRowView;
@@ -1419,7 +1419,7 @@ namespace Lunar.Telas.Compras
 					{
 						nfeProd = new NfeProduto();
 						nfeProd = (NfeProduto)record.Data;
-					
+
 						if (nfeProd != null && !String.IsNullOrEmpty(nfeProd.XProd))
 						{
 							nfeProd.Nfe = nfe;
@@ -1428,31 +1428,31 @@ namespace Lunar.Telas.Compras
 							nfeProd.UComConvertida = nfeProd.Produto.UnidadeMedida.Sigla;
 
 							//Ratear Frete
-							if(nfe.VFrete > 0)
+							if (nfe.VFrete > 0)
 							{
 								//Fórmula: (Valor do produto / Valor total dos produtos) x Valor do frete = Valor do rateio
-                                decimal valorFretePorItem = (nfeProd.VProd / nfeProd.Nfe.VProd) * nfe.VFrete;
+								decimal valorFretePorItem = (nfeProd.VProd / nfeProd.Nfe.VProd) * nfe.VFrete;
 								calcFreteTotal = calcFreteTotal + valorFretePorItem;
-                                nfeProd.VFrete = valorFretePorItem;
-								if(cont == records1.Count)
+								nfeProd.VFrete = valorFretePorItem;
+								if (cont == records1.Count)
 								{
-									if(calcFreteTotal > nfeProd.Nfe.VFrete)
+									if (calcFreteTotal > nfeProd.Nfe.VFrete)
 									{
 										nfeProd.VFrete = (calcFreteTotal - nfeProd.Nfe.VFrete);
 									}
-									else if(calcFreteTotal < nfeProd.Nfe.VFrete)
+									else if (calcFreteTotal < nfeProd.Nfe.VFrete)
 									{
 										nfeProd.VFrete = nfeProd.Nfe.VFrete - calcFreteTotal;
 									}
 								}
-                            }
+							}
 							if (nfeProd.VBC < nfeProd.VProd)
 								nfeProd.OutrosIcms = nfeProd.VProd - nfeProd.VBC;
 							else
 								nfeProd.OutrosIcms = nfeProd.VBC;
-                            //nfeProd.OutrosIcms = nfeProd.VProd - nfeProd.VDesc + (nfeProd.VICMSSt + nfeProd.ValorIpi + nfeProd.VFrete); 
-                            //ESTOQUE PRODUTO
-                            Produto produtoSelecionado = new Produto();
+							//nfeProd.OutrosIcms = nfeProd.VProd - nfeProd.VDesc + (nfeProd.VICMSSt + nfeProd.ValorIpi + nfeProd.VFrete); 
+							//ESTOQUE PRODUTO
+							Produto produtoSelecionado = new Produto();
 							produtoSelecionado = nfeProd.Produto;
 							produtoSelecionado.Estoque = produtoSelecionado.Estoque + nfeProd.QuantidadeEntrada;
 							produtoSelecionado.EstoqueAuxiliar = produtoSelecionado.EstoqueAuxiliar + nfeProd.QuantidadeEntrada;
@@ -1475,58 +1475,63 @@ namespace Lunar.Telas.Compras
 					}
 				}
 				//gravas as contas pagar
-			    var records2 = gridPagamento.View.Records;
-				if(records2.Count > 0) { 
-					foreach (var record in records2)
+				if (radioDesconsiderar.Checked == false)
+				{
+					var records2 = gridPagamento.View.Records;
+					if (records2.Count > 0)
 					{
-						//var dataRowView = record.Data as DataRowView;
-						if (record != null)
+						foreach (var record in records2)
 						{
-							contaPagar = new ContaPagar();
-							contaPagar = (ContaPagar)record.Data;
-							if (contaPagar != null)
+							//var dataRowView = record.Data as DataRowView;
+							if (record != null)
 							{
-								contaPagar.Nfe = nfe;
-								contaPagar.DataOrigem = DateTime.Parse(txtDataEmissao.Value.ToString());
-								contaPagar.Descricao = "COMPRA PRODUTOS - NF: " + nfe.NNf;
-								contaPagar.EmpresaFilial = Sessao.empresaFilialLogada;
-								FormaPagamento formaPagamento = new FormaPagamento();
-								formaPagamento.Id = int.Parse(txtCodFormaPagamento.Texts);
-								formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
-								contaPagar.FormaPagamento = formaPagamento;
-
-								if (!String.IsNullOrEmpty(txtCodPlanoContas.Texts))
+								contaPagar = new ContaPagar();
+								contaPagar = (ContaPagar)record.Data;
+								if (contaPagar != null)
 								{
-									PlanoConta planoConta = new PlanoConta();
-									planoConta.Id = int.Parse(txtCodPlanoContas.Texts);
-									planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
-									contaPagar.PlanoConta = planoConta;
+									contaPagar.Nfe = nfe;
+									contaPagar.DataOrigem = DateTime.Parse(txtDataEmissao.Value.ToString());
+									contaPagar.Descricao = "COMPRA PRODUTOS - NF: " + nfe.NNf;
+									contaPagar.EmpresaFilial = Sessao.empresaFilialLogada;
+									FormaPagamento formaPagamento = new FormaPagamento();
+									formaPagamento.Id = int.Parse(txtCodFormaPagamento.Texts);
+									formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+									contaPagar.FormaPagamento = formaPagamento;
+
+									if (!String.IsNullOrEmpty(txtCodPlanoContas.Texts))
+									{
+										PlanoConta planoConta = new PlanoConta();
+										planoConta.Id = int.Parse(txtCodPlanoContas.Texts);
+										planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+										contaPagar.PlanoConta = planoConta;
+									}
+
+									contaPagar.Pessoa = pessoa;
+									//if (radioNaoPagas.Checked == true)
+									contaPagar.Pago = false;
+									//else
+									//{
+									//	contaPagar.Pago = true;
+									//	contaPagar.DescricaoPagamento = "PAG. COMPRA NF " + nfe.NNf + " " + nfe.Fornecedor.RazaoSocial;
+									//	contaPagar.DescontoBaixa = 0;
+									//	contaPagar.AcrescimoBaixa = 0;
+									//	contaPagar.DataPagamento = DateTime.Now;
+									//	contaPagar.CaixaPagamento = Sessao.usuarioLogado.Id.ToString() + " - " + Sessao.usuarioLogado.Login;
+									//	contaPagar.ValorPago = contaPagar.ValorTotal;
+
+									//	Caixa caixa = new Caixa();
+									//	caixa.Conciliado = true;
+									//	caixa.Concluido = true;
+									//	caixa.ContaBancaria = 
+									//}
+									if (radioPagas.Checked == true)
+										GenericaDesktop.ShowInfo("Acesse o menu contas a pagar para registrar o pagamento da(s) parcela(s)");
+									Controller.getInstance().salvar(contaPagar);
 								}
-
-								contaPagar.Pessoa = pessoa;
-								//if (radioNaoPagas.Checked == true)
-							    contaPagar.Pago = false;
-								//else
-								//{
-								//	contaPagar.Pago = true;
-								//	contaPagar.DescricaoPagamento = "PAG. COMPRA NF " + nfe.NNf + " " + nfe.Fornecedor.RazaoSocial;
-								//	contaPagar.DescontoBaixa = 0;
-								//	contaPagar.AcrescimoBaixa = 0;
-								//	contaPagar.DataPagamento = DateTime.Now;
-								//	contaPagar.CaixaPagamento = Sessao.usuarioLogado.Id.ToString() + " - " + Sessao.usuarioLogado.Login;
-								//	contaPagar.ValorPago = contaPagar.ValorTotal;
-
-								//	Caixa caixa = new Caixa();
-								//	caixa.Conciliado = true;
-								//	caixa.Concluido = true;
-								//	caixa.ContaBancaria = 
-								//}
-								if (radioPagas.Checked == true)
-									GenericaDesktop.ShowInfo("Acesse o menu contas a pagar para registrar o pagamento da(s) parcela(s)");
-								Controller.getInstance().salvar(contaPagar);
 							}
 						}
 					}
+					return true;
 				}
 				return true;
 			}
@@ -1668,7 +1673,7 @@ namespace Lunar.Telas.Compras
 					txtFormaPagamento.Texts = formaPagamento.Descricao;
 					txtCodFormaPagamento.Texts = formaPagamento.Id.ToString();
 				}
-				else
+				else if(radioPagas.Checked == true)
 				{
 					FormaPagamento formaPagamento = new FormaPagamento();
 					radioPagas.Checked = true;
@@ -1677,7 +1682,13 @@ namespace Lunar.Telas.Compras
 					txtFormaPagamento.Texts = formaPagamento.Descricao;
 					txtCodFormaPagamento.Texts = formaPagamento.Id.ToString();
 				}
-
+				else
+				{
+                    txtFormaPagamento.Texts = "";
+                    txtCodFormaPagamento.Texts = "";
+					txtCodPlanoContas.Texts = "";
+					txtPlanoContas.Texts = "";
+                }
             }
             catch
             {

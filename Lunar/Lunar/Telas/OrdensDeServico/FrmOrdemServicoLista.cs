@@ -11,8 +11,19 @@ using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
+using Microsoft.SharePoint.News.DataModel;
 using Newtonsoft.Json;
 using NHibernate.Impl;
+using Syncfusion.Data;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
+using Syncfusion.Pdf.Grid;
+using Syncfusion.Windows.Forms.PdfViewer;
+using Syncfusion.WinForms.DataGrid;
+using Syncfusion.WinForms.DataGrid.Enums;
+using Syncfusion.WinForms.DataGrid.Styles;
+using Syncfusion.WinForms.DataGridConverter;
+using Syncfusion.XlsIO;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,6 +37,7 @@ using System.Windows.Forms;
 using System.Xml;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static LunarBase.Utilidades.ManifestoDownload;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using Exception = System.Exception;
 
 namespace Lunar.Telas.OrdensDeServico
@@ -50,6 +62,7 @@ namespace Lunar.Telas.OrdensDeServico
         decimal valorDescontoProdutos = 0;
         Nfe nfe = new Nfe();
         bool produtoNegativo = false;
+        Pessoa vendedor = new Pessoa();
         public FrmOrdemServicoLista()
         {
             InitializeComponent();
@@ -124,6 +137,9 @@ namespace Lunar.Telas.OrdensDeServico
             if (!String.IsNullOrEmpty(txtCodCliente.Texts))
                 sql = sql + "and Tabela.Cliente = " + txtCodCliente.Texts + " ";
 
+            if (!String.IsNullOrEmpty(txtCodVendedor.Texts))
+                sql = sql + "and Tabela.Vendedor = " + txtCodVendedor.Texts + " ";
+
             if (!String.IsNullOrEmpty(txtNumeroOS.Texts))
                 sql = sql + "and Tabela.Id = " + txtNumeroOS.Texts + " ";
 
@@ -188,6 +204,7 @@ namespace Lunar.Telas.OrdensDeServico
                 //{
                 //    this.grid.View.Records.CollectionChanged += Records_CollectionChanged;
                 //}
+                preencherSumario();
             }
             else
             {
@@ -378,7 +395,7 @@ namespace Lunar.Telas.OrdensDeServico
             }
         }
 
-        private void txtCliente_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtCliente_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
@@ -386,7 +403,7 @@ namespace Lunar.Telas.OrdensDeServico
             }
         }
 
-        private void txtCodCliente_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtCodCliente_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
@@ -464,7 +481,7 @@ namespace Lunar.Telas.OrdensDeServico
             }
         }
 
-        private void txtNumeroOS_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNumeroOS_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
@@ -562,7 +579,7 @@ namespace Lunar.Telas.OrdensDeServico
             pesquisaDependente(false);
         }
 
-        private void txtDependente_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtDependente_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
@@ -696,6 +713,7 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void btnGerarNFCe_Click(object sender, EventArgs e)
         {
+            Pessoa cliSel = new Pessoa();
             valorFinalNota = 0;
             valorDescontoProdutos = 0;
             valorProdutosSemDesconto = 0;
@@ -718,7 +736,13 @@ namespace Lunar.Telas.OrdensDeServico
                                 cli = ordemServico.Cliente;
                                 validaCliente = validarClienteNFCe(cli);
                             }
-
+                            if (validaCliente == false && GenericaDesktop.ShowConfirmacao("Deseja emitir a nota sem identificar o consumidor?"))
+                            {
+                                cliSel = ordemServico.Cliente;
+                                ordemServico.Cliente = null;
+                                validaCliente = true;
+                                Controller.getInstance().salvar(ordemServico);
+                            }
                             ValidadorNotaSaida validador = new ValidadorNotaSaida();
                             if (validaCliente == true)
                             {
@@ -737,6 +761,12 @@ namespace Lunar.Telas.OrdensDeServico
                                         //Concluir a O.S antes de gerar a nota
                                         numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
                                         xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, ordemServico);
+                                        //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
+                                        if (ordemServico.Cliente == null)
+                                        {
+                                            ordemServico.Cliente = cliSel;
+                                            Controller.getInstance().salvar(ordemServico);
+                                        }
                                         if (!String.IsNullOrEmpty(xmlStrEnvio))
                                         {
                                             enviarXMLNFCeParaApi(xmlStrEnvio);
@@ -810,6 +840,11 @@ namespace Lunar.Telas.OrdensDeServico
                     }
                     Controller.getInstance().salvar(nfe);
 
+                    //selecionar O.S na tela com o numero da NF! 
+                    limpar();
+                    txtNumeroOS.Texts = ordemServico.Id.ToString();
+                    radioTodas.Checked = true;
+                    btnPesquisar.PerformClick();
                     //Estoque
                     GenericaDesktop generica = new GenericaDesktop();
                     foreach (NfeProduto nfeProduto in listaProdutosNFe)
@@ -1659,6 +1694,18 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 imprimirNF();
             }
+            else if (btnClicado.Equals("Imprimir Nº O.S"))
+            {
+                if (grid.SelectedIndex >= 0)
+                {
+                    ordemServico = new OrdemServico();
+                    ordemServico = (OrdemServico)grid.SelectedItem;
+                    FrmImprimirNumeroOS frm = new FrmImprimirNumeroOS(ordemServico.Id.ToString() + " ", ordemServico.Cliente.RazaoSocial);
+                    frm.ShowDialog();
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Clique primeiro na linha da O.S que deseja imprimir!");
+            }
         }
 
         private void imprimirNF()
@@ -1682,19 +1729,6 @@ namespace Lunar.Telas.OrdensDeServico
                                     FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
                                     frmPDF.ShowDialog();
                                 }
-                                else if (nfe.NfeStatus.Id == 6)
-                                {
-                                    if (Directory.Exists(Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs"))
-                                    {
-                                        string caminhoPDF = Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs\" + Sessao.empresaFilialLogada.Cnpj.Trim() + @"\" + nfe.DataCadastro.Year + @"\" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\" + nfe.DataCadastro.Day.ToString().PadLeft(2, '0') + @"\" + nfe.Chave + ".pdf";
-                                        if (File.Exists(caminhoPDF))
-                                        {
-                                            //System.Diagnostics.Process.Start(caminhoPDF);
-                                            FrmPDF frmPDF = new FrmPDF(caminhoPDF);
-                                            frmPDF.ShowDialog();
-                                        }
-                                    }
-                                }
                                 else
                                 {
                                     if (nfe.Modelo.Equals("65"))
@@ -1707,8 +1741,22 @@ namespace Lunar.Telas.OrdensDeServico
                                         }
                                     }
                                 }
+                                if (nfe.NfeStatus.Id == 6)
+                                {
+                                    if (Directory.Exists(Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs"))
+                                    {
+                                        string caminhoPDF = Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs\" + Sessao.empresaFilialLogada.Cnpj.Trim() + @"\" + nfe.DataCadastro.Year + @"\" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\" + nfe.DataCadastro.Day.ToString().PadLeft(2, '0') + @"\" + nfe.Chave + ".pdf";
+                                        if (File.Exists(caminhoPDF))
+                                        {
+                                            //System.Diagnostics.Process.Start(caminhoPDF);
+                                            FrmPDF frmPDF = new FrmPDF(caminhoPDF);
+                                            frmPDF.ShowDialog();
+                                        }
+                                    }
+                                }
+                    
                             }
-                            else if (nfe.Modelo.Equals("55"))
+                            if (nfe.Modelo.Equals("55"))
                             {
                                 if (File.Exists(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf"))
                                 {
@@ -1777,6 +1825,251 @@ namespace Lunar.Telas.OrdensDeServico
                     FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf");
                     frmPDF.ShowDialog();
                     //Process.Start(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf");
+                }
+            }
+        }
+
+        private void pesquisaVendedor()
+        {
+            Object pessoaOjeto = new Pessoa();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtVendedor.Texts + "%' and Tabela.Vendedor = true "))
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmClienteCadastro form = new FrmClienteCadastro();
+                            if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                            {
+                                txtVendedor.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                                txtCodVendedor.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                                vendedor = ((Pessoa)pessoaOjeto);
+                                btnPesquisar.PerformClick();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtVendedor.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                            txtCodVendedor.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                            vendedor = ((Pessoa)pessoaOjeto);
+                            btnPesquisar.PerformClick();
+                            break;
+                    }
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        private void btnPesquisaVendedor_Click(object sender, EventArgs e)
+        {
+            txtCodVendedor.Texts = "";
+            txtVendedor.Texts = "";
+            vendedor = new Pessoa();
+            pesquisaVendedor();
+        }
+
+        private void txtVendedor_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                pesquisaVendedor();
+            }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            limpar();
+        }
+
+        private void limpar()
+        {
+            grid.DataSource = null;
+            sfDataPager1.DataSource = null;
+            grid.Refresh();
+            txtCliente.Texts = "";
+            txtCodCliente.Texts = "";
+            chkAtivarDataAbertura.Checked = false;
+            chkAtivarDataEncerramento.Checked = false;
+            radioAbertas.Checked = true;
+            txtNumeroOS.Texts = "";
+            txtCodVendedor.Texts = "";
+            txtDataEntregaInicial.Text = "";
+            txtDataEntregaFinal.Text = "";
+            txtVendedor.Texts = "";
+            txtCodDependente.Texts = "";
+            txtDependente.Texts = "";
+            txtRegistroPorPagina.Texts = "100";
+            txtCliente.Focus();
+        }
+
+        private void preencherSumario()
+        {
+            GridTableSummaryRow tableSummaryRow1 = new GridTableSummaryRow();
+            tableSummaryRow1.Name = "TableSummary";
+            tableSummaryRow1.ShowSummaryInRow = true;
+            tableSummaryRow1.TitleColumnCount = 3;
+            String vendedorSelecionado = "";
+            String dataSelecionada1 = "";
+            String dataSelecionada2 = "";
+            if (!String.IsNullOrEmpty(txtCodVendedor.Texts))
+                vendedorSelecionado = txtVendedor.Texts;
+            if (chkAtivarDataAbertura.Checked == true)
+            {
+                dataSelecionada1 = DateTime.Parse(txtDataAberturaInicial.Value.ToString()).ToShortDateString();
+                dataSelecionada2 = " A " + DateTime.Parse(txtDataAberturaFinal.Value.ToString()).ToShortDateString();
+            }
+            tableSummaryRow1.Title = " QTD O.S: {TotalNotas}         Total: {ValorTotalSemJuro}       " + vendedorSelecionado + "    " + dataSelecionada1 + dataSelecionada2;
+            tableSummaryRow1.Position = VerticalPosition.Bottom;
+            //tableSummaryRow1.CalculationUnit = Syncfusion.Data.SummaryCalculationUnit.AllRows;
+
+            GridSummaryColumn summaryColumn1 = new GridSummaryColumn();
+            summaryColumn1.Name = "TotalNotas";
+            summaryColumn1.SummaryType = SummaryType.DoubleAggregate;
+            summaryColumn1.Format = "{Count}";
+            summaryColumn1.MappingName = "Id";
+
+            GridSummaryColumn summaryColumn2 = new GridSummaryColumn();
+            summaryColumn2.Name = "ValorTotalSemJuro";
+            summaryColumn2.SummaryType = SummaryType.DoubleAggregate;
+            summaryColumn2.Format = "{Sum:c}";
+            summaryColumn2.MappingName = "ValorTotal";
+
+
+            this.grid.TableSummaryRows.Clear();
+            tableSummaryRow1.SummaryColumns.Add(summaryColumn1);
+            tableSummaryRow1.SummaryColumns.Add(summaryColumn2);
+            this.grid.TableSummaryRows.Add(tableSummaryRow1);
+            this.grid.Style.TableSummaryRowStyle.Font = new GridFontInfo(new Font("Microsoft Sans Serif", 12f, FontStyle.Regular));
+            //this.grid.TableSummaryRows.Add(tableSummaryRow2);
+            //if(chkAtivarDataAbertura.Checked ==  true)
+            //    this.grid.TableSummaryRows.Add(tableSummaryRow3);
+
+            this.grid.Style.TableSummaryRowStyle.BackColor = Color.LightSkyBlue;
+            this.grid.Style.TableSummaryRowStyle.Borders.All = new GridBorder(Color.Black, GridBorderWeight.Medium);
+        }
+
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            var options = new ExcelExportingOptions();
+            options.ExcelVersion = ExcelVersion.Excel2013;
+            options.ExportAllPages = true;
+            options.ExcludeColumns.Add("Entrada");
+            options.ExcludeColumns.Add("Nfe.NNf");
+            options.ExcludeColumns.Add("Nfe.Modelo");
+            options.ExcludeColumns.Add("ValorProduto");
+            options.ExcludeColumns.Add("ValoServico");
+            options.DefaultColumnWidth = 12;
+          
+            var excelEngine = grid.ExportToExcel(grid.View, options);
+            var workBook = excelEngine.Excel.Workbooks[0];
+            workBook.Worksheets[0].UsedRange.BorderInside(ExcelLineStyle.Hair, ExcelKnownColors.Black);
+            workBook.Worksheets[0].UsedRange.BorderAround(ExcelLineStyle.Hair, ExcelKnownColors.Black);
+          
+            SaveFileDialog saveFilterDialog = new SaveFileDialog
+            {
+                FileName = "OrdensDeServiço",
+                FilterIndex = 3,
+                Filter = "Excel 97 a 2003 Files(*.xls)|*.xls|Excel 2007 a 2010 Files(*.xlsx)|*.xlsx|Excel 2013 a 2022 Files(*.xlsx)|*.xlsx"
+            };
+
+            if (saveFilterDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                using (Stream stream = saveFilterDialog.OpenFile())
+                {
+
+                    if (saveFilterDialog.FilterIndex == 1)
+                        workBook.Version = ExcelVersion.Excel97to2003;
+                    else if (saveFilterDialog.FilterIndex == 2)
+                        workBook.Version = ExcelVersion.Excel2010;
+                    else
+                        workBook.Version = ExcelVersion.Excel2013;
+                    workBook.SaveAs(stream);
+                }
+
+                //Message box confirmation to view the created workbook.
+                if (MessageBox.Show(this.grid, "Deseja abrir o arquivo no Excel?", "Arquivo criado com sucesso",
+                                    MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+
+                    //Launching the Excel file using the default Application.[MS Excel Or Free ExcelViewer]
+                    System.Diagnostics.Process.Start(saveFilterDialog.FileName);
+                }
+            }
+        }
+
+        private void btnExportarPDF_Click(object sender, EventArgs e)
+        {
+            var options = new PdfExportingOptions();
+            options.ExportAllPages = true;
+            options.ExcludeColumns.Add("Entrada");
+            options.ExcludeColumns.Add("Nfe.NNf");
+            options.ExcludeColumns.Add("Nfe.Modelo");
+            options.ExcludeColumns.Add("ValorProduto");
+            options.ExcludeColumns.Add("ValorServico");
+            options.AutoColumnWidth = true;
+
+            var document = new Syncfusion.Pdf.PdfDocument();
+            document.PageSettings.Orientation = Syncfusion.Pdf.PdfPageOrientation.Portrait;
+            var page = document.Pages.Add();
+            var PDFGrid = grid.ExportToPdfGrid(grid.View, options);
+            var format = new PdfGridLayoutFormat()
+            {
+                Layout = PdfLayoutType.Paginate,
+                Break = PdfLayoutBreakType.FitPage
+            };
+            //Largura da coluna
+            foreach (PdfGridCell headerCell in PDFGrid.Headers[0].Cells)
+            {
+                if (headerCell.Value.ToString() == grid.Columns[0].HeaderText)
+                {
+                    var index = PDFGrid.Headers[0].Cells.IndexOf(headerCell);
+                    PDFGrid.Columns[index].Width = 50;
+                }
+            }
+
+            PDFGrid.Draw(page, new PointF(), format);
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                FileName = "OrdensDeServiço",
+                Filter = "PDF Files(*.pdf)|*.pdf"
+            };
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (Stream stream = saveFileDialog.OpenFile())
+                {
+                    document.Save(stream);
+                }
+                //Message box confirmation to view the created Pdf file.
+                if (MessageBox.Show("Deseja abrir o arquivo Pdf?", "Pdf criado com sucesso", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    //Launching the Pdf file using the default Application.
+                    System.Diagnostics.Process.Start(saveFileDialog.FileName);
                 }
             }
         }

@@ -186,21 +186,19 @@
             // gridParcelas
             // 
             this.gridParcelas.AccessibleName = "Table";
-            this.gridParcelas.AllowEditing = false;
             this.gridParcelas.AllowSorting = false;
             gridTextColumn1.AllowEditing = false;
             gridTextColumn1.AllowSorting = false;
             gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridTextColumn1.HeaderText = "Parcela";
             gridTextColumn1.MappingName = "PARCELA";
-            gridTextColumn2.AllowEditing = false;
             gridTextColumn2.AllowSorting = false;
             gridTextColumn2.Format = "dd/MM/yyyy";
             gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridTextColumn2.HeaderText = "Vencimento";
             gridTextColumn2.MappingName = "VENCIMENTO";
-            gridTextColumn3.AllowEditing = false;
             gridTextColumn3.AllowSorting = false;
+            gridTextColumn3.Format = "N2";
             gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridTextColumn3.HeaderText = "Valor";
             gridTextColumn3.MappingName = "VALOR";
@@ -214,6 +212,7 @@
             this.gridParcelas.TabIndex = 212;
             this.gridParcelas.Text = "sfDataGrid1";
             this.gridParcelas.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.gridParcelas_QueryRowStyle);
+            this.gridParcelas.CurrentCellEndEdit += new Syncfusion.WinForms.DataGrid.Events.CurrentCellEndEditEventHandler(this.gridParcelas_CurrentCellEndEdit);
             // 
             // txtDataVencimento
             // 

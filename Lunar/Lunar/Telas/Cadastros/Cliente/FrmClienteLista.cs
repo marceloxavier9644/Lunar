@@ -401,5 +401,31 @@ namespace Lunar.Telas.Cadastros.Cliente
                 PesquisarCliente(txtPesquisaCliente.Texts.Trim(), 0);
             }
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (gridClient.SelectedIndex >= 0)
+            {
+                if (GenericaDesktop.ShowConfirmacao("Tem certeza que deseja excluir esta pessoa?"))
+                {
+                    pessoa = new Pessoa();
+                    pessoa = (Pessoa)gridClient.SelectedItem;
+                    ContaReceberController contaReceberController = new ContaReceberController();
+                    IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela Where Tabela.Cliente = " + pessoa.Id.ToString() + " and FlagExcluido <> True");
+                    if (listaReceber.Count > 0)
+                    {
+                        GenericaDesktop.ShowErro("Este cliente possui faturas em aberto, não é possível excluir!");
+                    }
+                    else
+                    {
+                        Controller.getInstance().excluir(pessoa);
+                        GenericaDesktop.ShowInfo("Excluído com Sucesso!");
+                        PesquisarCliente(txtPesquisaCliente.Texts.Trim(), 0);
+                    }
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Clique na linha do cliente que deseja excluir!");
+            }
+        }
     }
 }

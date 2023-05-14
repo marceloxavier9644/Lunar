@@ -18,7 +18,7 @@
 
 		<many-to-one name="Nfe" column="NFE" class="LunarBase.Classes.Nfe" not-null="false" foreign-key="FK_ORDEMSERVICO_NFE" lazy="false"/>
 		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="true" foreign-key="FK_ORDEMSERVICO_OBJETO" lazy="false"/>
-		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="true" foreign-key="FK_ORDEMSERVICO_CLIENTE" lazy="false"/>
+		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_ORDEMSERVICO_CLIENTE" lazy="false"/>
 		<many-to-one name="Filial" column="FILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_ORDEMSERVICO_FILIAL" lazy="false"/>
 		<many-to-one name="Vendedor" column="VENDEDOR" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_ORDEMSERVICO_VENDEDOR" lazy="false"/>
 

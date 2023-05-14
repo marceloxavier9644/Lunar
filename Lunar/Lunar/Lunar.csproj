@@ -840,6 +840,12 @@
     <Compile Include="Telas\OrdensDeServico\FrmImpressaoOrdemServico.Designer.cs">
       <DependentUpon>FrmImpressaoOrdemServico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmImprimirNumeroOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmImprimirNumeroOS.Designer.cs">
+      <DependentUpon>FrmImprimirNumeroOS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\OrdensDeServico\FrmOrdemServico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1195,6 +1201,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\ContasReceber\Reports\ContasReceberReport.rdlc" />
     <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataCarne.rdlc" />
+    <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataDaGraficaModelo01.rdlc" />
     <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataMercantil.rdlc" />
     <EmbeddedResource Include="Telas\ContasReceber\Reports\FrmImprimirDuplicata.resx">
       <DependentUpon>FrmImprimirDuplicata.cs</DependentUpon>
@@ -1295,12 +1302,16 @@
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmImpressaoOrdemServico.resx">
       <DependentUpon>FrmImpressaoOrdemServico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\FrmImprimirNumeroOS.resx">
+      <DependentUpon>FrmImprimirNumeroOS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmOrdemServico.resx">
       <DependentUpon>FrmOrdemServico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmOrdemServicoLista.resx">
       <DependentUpon>FrmOrdemServicoLista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\ImprimirNumeroOS.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServico.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServicoOtica.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\Servicos\FrmServicoCadastro.resx">

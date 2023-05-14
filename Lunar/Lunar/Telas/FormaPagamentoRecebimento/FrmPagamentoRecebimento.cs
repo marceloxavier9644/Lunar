@@ -118,6 +118,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 clienteLista = ordemServico.Cliente;
 
                 valorFaltante = valorTotal;
+                if (valorFaltante == 0)
+                    btnFinalizar.Enabled = true;
                 valorTotal = Math.Round(valorTotal, 2);
                 lblValorTotal.Text = valorTotal.ToString("C2", CultureInfo.CurrentCulture);
                 lblDesconto.Text = 0.ToString("C2", CultureInfo.CurrentCulture);
@@ -176,7 +178,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 decimal valorJuroFormat = contaReceber1.Juro;
                 valorJuroFormat = Math.Round(valorJuroFormat, 2);
                 row.SetField("Juro", string.Format("{0:0.00}", valorJuroFormat));
-                valorTotalFormat = valorUnitForm + valorJuroFormat + valorMultaFormat;
+                valorTotalFormat = valorUnitForm + valorJuroFormat + valorMultaFormat -(contaReceber1.ValorRecebimentoParcial);
                 valorTotalFormat = Math.Round(valorTotalFormat, 2);
                 row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotalFormat));
                 row.SetField("FormaPagamento", contaReceber1.FormaPagamento.Descricao);

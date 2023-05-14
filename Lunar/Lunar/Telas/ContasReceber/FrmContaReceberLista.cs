@@ -174,7 +174,7 @@ namespace Lunar.Telas.ContasReceber
                 {
                     var receber = contaReceber;
                     //var receber = (ContaReceber)record.Data;
-                    
+
                     if (receber.Vencimento < DateTime.Now)
                     {
                         //calcula juro e multa apenas se nao tiver pago
@@ -195,11 +195,19 @@ namespace Lunar.Telas.ContasReceber
                         else
                         {
                             //Se foi pago pega o q esta preenchido
-                            receber.ValorTotal = receber.ValorParcela + receber.Multa + receber.Juro;
+                            receber.ValorTotal = (receber.ValorParcela + receber.Multa + receber.Juro);
                         }
                     }
-                    if(receber.ValorTotal == 0)
+                    else
+                    {
+
+                        decimal valorTotalCalculado = (receber.ValorParcela  - receber.ValorRecebimentoParcial);
+                        receber.ValorTotal = valorTotalCalculado;
+                    }
+                    if (receber.ValorTotal == 0)
+                    {
                         receber.ValorTotal = receber.ValorParcela;
+                    }
                     //grid.View.GetPropertyAccessProvider().SetValue(grid.GetRecordAtRowIndex(i), grid.Columns["ValorTotal"].MappingName, receber.ValorParcela);
                     i++;
                     listaContaReceberCalculado.Add(receber);

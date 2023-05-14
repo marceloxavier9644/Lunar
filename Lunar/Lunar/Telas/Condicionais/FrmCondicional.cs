@@ -441,7 +441,7 @@ namespace Lunar.Telas.Condicionais
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtCliente.Texts + "%' and Tabela.Vendedor = true"))
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtVendedor.Texts + "%' and Tabela.Vendedor = true"))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -489,6 +489,8 @@ namespace Lunar.Telas.Condicionais
 
         private void btnPesquisaVendedor_Click(object sender, EventArgs e)
         {
+            txtCodVendedor.Texts = "";
+            txtVendedor.Texts = "";
             pesquisaVendedor();
         }
 
@@ -776,6 +778,14 @@ namespace Lunar.Telas.Condicionais
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void txtVendedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+            {
+                pesquisaVendedor();
+            }
         }
     }
 }

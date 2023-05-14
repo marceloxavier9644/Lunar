@@ -81,6 +81,7 @@
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPrincipal = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.iconeExclamacao = new FontAwesome.Sharp.IconButton();
             this.lblInformativo = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaVendedor = new FontAwesome.Sharp.IconButton();
             this.autoLabel60 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -292,7 +293,6 @@
             this.txtTotalGeralProdutoServico = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtValorTotalTodosServicos = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtValorTotalTodosProdutos = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.iconeExclamacao = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPrincipal.SuspendLayout();
@@ -389,6 +389,26 @@
             this.panel2.Size = new System.Drawing.Size(999, 537);
             this.panel2.TabIndex = 149;
             // 
+            // iconeExclamacao
+            // 
+            this.iconeExclamacao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeExclamacao.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeExclamacao.FlatAppearance.BorderSize = 0;
+            this.iconeExclamacao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeExclamacao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeExclamacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeExclamacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeExclamacao.IconChar = FontAwesome.Sharp.IconChar.ExclamationCircle;
+            this.iconeExclamacao.IconColor = System.Drawing.Color.Red;
+            this.iconeExclamacao.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeExclamacao.IconSize = 38;
+            this.iconeExclamacao.Location = new System.Drawing.Point(958, 3);
+            this.iconeExclamacao.Name = "iconeExclamacao";
+            this.iconeExclamacao.Size = new System.Drawing.Size(36, 30);
+            this.iconeExclamacao.TabIndex = 236;
+            this.iconeExclamacao.UseVisualStyleBackColor = true;
+            this.iconeExclamacao.Visible = false;
+            // 
             // lblInformativo
             // 
             this.lblInformativo.BackColor = System.Drawing.Color.Transparent;
@@ -458,6 +478,7 @@
             this.txtVendedor.Texts = "";
             this.txtVendedor.UnderlinedStyle = false;
             this.txtVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVendedor_KeyPress);
+            this.txtVendedor.Leave += new System.EventHandler(this.txtVendedor_Leave);
             // 
             // lblAutomatico
             // 
@@ -3947,26 +3968,6 @@
             this.txtValorTotalTodosProdutos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtValorTotalTodosProdutos.Texts = "0,00";
             this.txtValorTotalTodosProdutos.UnderlinedStyle = false;
-            // 
-            // iconeExclamacao
-            // 
-            this.iconeExclamacao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeExclamacao.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeExclamacao.FlatAppearance.BorderSize = 0;
-            this.iconeExclamacao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeExclamacao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeExclamacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeExclamacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeExclamacao.IconChar = FontAwesome.Sharp.IconChar.ExclamationCircle;
-            this.iconeExclamacao.IconColor = System.Drawing.Color.Red;
-            this.iconeExclamacao.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeExclamacao.IconSize = 38;
-            this.iconeExclamacao.Location = new System.Drawing.Point(958, 3);
-            this.iconeExclamacao.Name = "iconeExclamacao";
-            this.iconeExclamacao.Size = new System.Drawing.Size(36, 30);
-            this.iconeExclamacao.TabIndex = 236;
-            this.iconeExclamacao.UseVisualStyleBackColor = true;
-            this.iconeExclamacao.Visible = false;
             // 
             // FrmOrdemServico
             // 

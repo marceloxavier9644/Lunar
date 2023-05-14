@@ -1,6 +1,7 @@
 ﻿using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
+using LunarBase.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -210,6 +211,30 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                         vendaFormaPagamento.AutorizacaoCartao = txtAutorizacao.Texts;
                         vendaFormaPagamento.Venda = venda;
                         Controller.getInstance().salvar(vendaFormaPagamento);
+
+                        Caixa caixa = new Caixa();
+                        caixa.Conciliado = false;
+                        caixa.IdOrigem = venda.Id.ToString();
+                        caixa.ContaBancaria = null;
+                        caixa.DataLancamento = DateTime.Now;
+                        caixa.Descricao = "RECEBIMENTO VENDA " + venda.Id + " NO CARTÃO";
+                        caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                        caixa.FormaPagamento = vendaFormaPagamento.FormaPagamento;
+                        if (venda.PlanoConta != null)
+                            caixa.PlanoConta = venda.PlanoConta;
+                        else
+                            caixa.PlanoConta = null;
+                        caixa.TabelaOrigem = "VENDA";
+                        caixa.Tipo = "E";
+                        caixa.Usuario = Sessao.usuarioLogado;
+                        caixa.Valor = vendaFormaPagamento.ValorRecebido;
+                        caixa.Pessoa = null;
+                        if (venda.Cliente != null)
+                            caixa.Pessoa = venda.Cliente;
+                        caixa.ContaBancaria = null;
+                        caixa.Concluido = false;
+                        Controller.getInstance().salvar(caixa);
+
                         this.DialogResult = DialogResult.OK;
                     }
                     else

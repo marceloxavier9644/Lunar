@@ -111,6 +111,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     caixa.Tipo = "E";
                     caixa.Usuario = Sessao.usuarioLogado;
                     caixa.Valor = vendaFormaPagamento.ValorRecebido;
+                    caixa.Concluido = true;
                     Controller.getInstance().salvar(caixa);
 
                     this.DialogResult = DialogResult.OK;

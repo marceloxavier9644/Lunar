@@ -2379,5 +2379,13 @@ namespace Lunar.Telas.OrdensDeServico
                 }
             }
         }
+
+        private void txtVendedor_Leave(object sender, EventArgs e)
+        {
+            if(vendedor.Id == 0 && !String.IsNullOrEmpty(txtVendedor.Texts))
+            {
+                pesquisaVendedor();
+            }
+        }
     }
 }

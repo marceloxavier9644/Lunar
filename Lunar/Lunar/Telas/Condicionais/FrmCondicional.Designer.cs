@@ -76,10 +76,10 @@
             this.autoLabel12 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtCodProduto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtTotalPeças = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnGravar = new Lunar.RJ_UI.Classes.RJButton();
             this.txtValorTotalTodosProdutos = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCodProduto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtAcrescimoItem = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtDescontoItem = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtQuantidadeItem = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -654,33 +654,6 @@
             this.autoLabel7.TabIndex = 287;
             this.autoLabel7.Text = "Peças";
             // 
-            // txtCodProduto
-            // 
-            this.txtCodProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodProduto.BackColor = System.Drawing.Color.White;
-            this.txtCodProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodProduto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodProduto.BorderRadius = 8;
-            this.txtCodProduto.BorderSize = 2;
-            this.txtCodProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtCodProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodProduto.Location = new System.Drawing.Point(827, 177);
-            this.txtCodProduto.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodProduto.Multiline = false;
-            this.txtCodProduto.Name = "txtCodProduto";
-            this.txtCodProduto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCodProduto.PasswordChar = false;
-            this.txtCodProduto.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtCodProduto.PlaceholderText = "";
-            this.txtCodProduto.ReadOnly = false;
-            this.txtCodProduto.Size = new System.Drawing.Size(94, 37);
-            this.txtCodProduto.TabIndex = 286;
-            this.txtCodProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCodProduto.Texts = "";
-            this.txtCodProduto.UnderlinedStyle = false;
-            this.txtCodProduto.Visible = false;
-            // 
             // txtTotalPeças
             // 
             this.txtTotalPeças.BackColor = System.Drawing.Color.White;
@@ -754,6 +727,33 @@
             this.txtValorTotalTodosProdutos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtValorTotalTodosProdutos.Texts = "0,00";
             this.txtValorTotalTodosProdutos.UnderlinedStyle = false;
+            // 
+            // txtCodProduto
+            // 
+            this.txtCodProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodProduto.BackColor = System.Drawing.Color.White;
+            this.txtCodProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodProduto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodProduto.BorderRadius = 8;
+            this.txtCodProduto.BorderSize = 2;
+            this.txtCodProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtCodProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodProduto.Location = new System.Drawing.Point(827, 177);
+            this.txtCodProduto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodProduto.Multiline = false;
+            this.txtCodProduto.Name = "txtCodProduto";
+            this.txtCodProduto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodProduto.PasswordChar = false;
+            this.txtCodProduto.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodProduto.PlaceholderText = "";
+            this.txtCodProduto.ReadOnly = false;
+            this.txtCodProduto.Size = new System.Drawing.Size(94, 37);
+            this.txtCodProduto.TabIndex = 286;
+            this.txtCodProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodProduto.Texts = "";
+            this.txtCodProduto.UnderlinedStyle = false;
+            this.txtCodProduto.Visible = false;
             // 
             // txtAcrescimoItem
             // 
@@ -962,6 +962,7 @@
             this.txtVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtVendedor.Texts = "";
             this.txtVendedor.UnderlinedStyle = false;
+            this.txtVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVendedor_KeyPress);
             // 
             // txtCodCliente
             // 

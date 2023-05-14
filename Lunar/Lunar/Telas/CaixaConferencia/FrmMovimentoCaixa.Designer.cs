@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn3 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn4 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
             this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -186,6 +186,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnExcluir);
             this.panel3.Controls.Add(this.sfDataPager1);
             this.panel3.Controls.Add(this.panelTitleBar);
             this.panel3.Controls.Add(this.autoLabel10);
@@ -639,13 +640,12 @@
             this.btnExcluir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.btnExcluir.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnExcluir.IconSize = 30;
-            this.btnExcluir.Location = new System.Drawing.Point(554, 23);
+            this.btnExcluir.Location = new System.Drawing.Point(1076, 126);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(34, 36);
             this.btnExcluir.TabIndex = 262;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Visible = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // panel2
@@ -667,41 +667,41 @@
             this.grid.AllowResizingColumns = true;
             this.grid.AutoGenerateColumns = false;
             this.grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridNumericColumn3.AdvancedFilterType = Syncfusion.WinForms.GridCommon.AdvancedFilterType.NumberFilter;
-            gridNumericColumn3.AllowEditing = false;
-            gridNumericColumn3.AllowResizing = true;
-            gridNumericColumn3.CellStyle.Font.Size = 11F;
-            gridNumericColumn3.Format = "0";
-            gridNumericColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn3.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn3.HeaderText = "ID";
-            gridNumericColumn3.MappingName = "Id";
-            gridTextColumn3.AllowEditing = false;
-            gridTextColumn3.AllowResizing = true;
-            gridTextColumn3.CellStyle.Font.Size = 11F;
-            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn3.HeaderStyle.Font.Size = 11F;
-            gridTextColumn3.HeaderText = "Descrição";
-            gridTextColumn3.MappingName = "Descricao";
-            gridNumericColumn4.AllowEditing = false;
-            gridNumericColumn4.AllowResizing = true;
-            gridNumericColumn4.CellStyle.Font.Size = 11F;
-            gridNumericColumn4.Format = "N2";
-            gridNumericColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn4.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn4.HeaderText = "Valor";
-            gridNumericColumn4.MappingName = "Valor";
-            gridTextColumn4.AllowEditing = false;
-            gridTextColumn4.AllowResizing = true;
-            gridTextColumn4.CellStyle.Font.Size = 11F;
-            gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn4.HeaderStyle.Font.Size = 11F;
-            gridTextColumn4.HeaderText = "Forma de Recebimento";
-            gridTextColumn4.MappingName = "FormaPagamento.Descricao";
-            this.grid.Columns.Add(gridNumericColumn3);
-            this.grid.Columns.Add(gridTextColumn3);
-            this.grid.Columns.Add(gridNumericColumn4);
-            this.grid.Columns.Add(gridTextColumn4);
+            gridNumericColumn1.AdvancedFilterType = Syncfusion.WinForms.GridCommon.AdvancedFilterType.NumberFilter;
+            gridNumericColumn1.AllowEditing = false;
+            gridNumericColumn1.AllowResizing = true;
+            gridNumericColumn1.CellStyle.Font.Size = 11F;
+            gridNumericColumn1.Format = "0";
+            gridNumericColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn1.HeaderStyle.Font.Size = 11F;
+            gridNumericColumn1.HeaderText = "ID";
+            gridNumericColumn1.MappingName = "Id";
+            gridTextColumn1.AllowEditing = false;
+            gridTextColumn1.AllowResizing = true;
+            gridTextColumn1.CellStyle.Font.Size = 11F;
+            gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn1.HeaderStyle.Font.Size = 11F;
+            gridTextColumn1.HeaderText = "Descrição";
+            gridTextColumn1.MappingName = "Descricao";
+            gridNumericColumn2.AllowEditing = false;
+            gridNumericColumn2.AllowResizing = true;
+            gridNumericColumn2.CellStyle.Font.Size = 11F;
+            gridNumericColumn2.Format = "N2";
+            gridNumericColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn2.HeaderStyle.Font.Size = 11F;
+            gridNumericColumn2.HeaderText = "Valor";
+            gridNumericColumn2.MappingName = "Valor";
+            gridTextColumn2.AllowEditing = false;
+            gridTextColumn2.AllowResizing = true;
+            gridTextColumn2.CellStyle.Font.Size = 11F;
+            gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn2.HeaderStyle.Font.Size = 11F;
+            gridTextColumn2.HeaderText = "Forma de Recebimento";
+            gridTextColumn2.MappingName = "FormaPagamento.Descricao";
+            this.grid.Columns.Add(gridNumericColumn1);
+            this.grid.Columns.Add(gridTextColumn1);
+            this.grid.Columns.Add(gridNumericColumn2);
+            this.grid.Columns.Add(gridTextColumn2);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 184);
             this.grid.Name = "grid";
@@ -756,7 +756,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnExcluir);
             this.groupBox1.Controls.Add(this.btnReceita);
             this.groupBox1.Controls.Add(this.btnDespesa);
             this.groupBox1.Controls.Add(this.btnExcluir2);

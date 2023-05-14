@@ -371,7 +371,6 @@ namespace Lunar.Telas.CaixaConferencia
             Caixa caixa = new Caixa();
             caixa.Conciliado = true;
             caixa.Concluido = true;
-            caixa.ContaBancaria = null;
             caixa.DataLancamento = DateTime.Parse(txtDataMovimento.Value.ToString());
             caixa.Descricao = "LANÇAMENTO DE DESPESA: " + txtDescricaoResumida.Texts;
             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
@@ -380,6 +379,19 @@ namespace Lunar.Telas.CaixaConferencia
             formaPagamento.Id = 1;
             formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
             caixa.FormaPagamento = formaPagamento;
+
+            if (!String.IsNullOrEmpty(txtCodConta.Texts))
+            {
+                ContaBancaria contaBancaria = new ContaBancaria();
+                contaBancaria.Id = int.Parse(txtCodConta.Texts);
+                contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                if (contaBancaria != null)
+                    caixa.ContaBancaria = contaBancaria;
+                else
+                    caixa.ContaBancaria = null;
+            }
+            else
+                caixa.ContaBancaria = null;
 
             caixa.IdOrigem = "";
             caixa.Pessoa = null;
@@ -421,7 +433,6 @@ namespace Lunar.Telas.CaixaConferencia
             Caixa caixa = new Caixa();
             caixa.Conciliado = true;
             caixa.Concluido = true;
-            caixa.ContaBancaria = null;
             caixa.DataLancamento = DateTime.Parse(txtDataMovimento.Value.ToString());
             caixa.Descricao = "LANÇAMENTO DE RECEITA: " + txtDescricaoResumida.Texts;
             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
@@ -445,6 +456,20 @@ namespace Lunar.Telas.CaixaConferencia
             }
             else
                 caixa.PlanoConta = null;
+
+            if (!String.IsNullOrEmpty(txtCodConta.Texts))
+            {
+                ContaBancaria contaBancaria = new ContaBancaria();
+                contaBancaria.Id = int.Parse(txtCodConta.Texts);
+                contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                if (contaBancaria != null)
+                    caixa.ContaBancaria = contaBancaria;
+                else
+                    caixa.ContaBancaria = null;
+            }
+            else
+                caixa.ContaBancaria = null;
+
             caixa.TabelaOrigem = "LANCAMENTORECEITA";
             caixa.Tipo = "E";
 

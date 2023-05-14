@@ -676,3 +676,4 @@ C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\Lunar\obj\Debug\Lunar.csproj.
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.CaixaConferencia.FrmMovimentoCaixa.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.CaixaConferencia.FrmLancamentoCaixa.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.OrdensDeServico.FrmImprimirNumeroOS.resources

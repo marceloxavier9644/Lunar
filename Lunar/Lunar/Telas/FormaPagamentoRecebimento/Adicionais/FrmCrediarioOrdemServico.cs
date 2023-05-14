@@ -42,6 +42,9 @@ namespace Lunar.Telas.FormaPagamentoRecebimento.Adicionais
             this.valorFaltante = valorFaltante;
             txtValor.TextAlign = HorizontalAlignment.Center;
             this.ordemServico = ordemServico;
+
+            this.gridParcelas.Columns[1].AllowEditing = true;
+            this.gridParcelas.Columns[2].AllowEditing = true;
         }
 
         private void FrmCrediarioOrdemServico_Paint(object sender, PaintEventArgs e)
@@ -164,40 +167,43 @@ namespace Lunar.Telas.FormaPagamentoRecebimento.Adicionais
             fp = (FormaPagamento)Controller.getInstance().selecionar(fp);
             var records = gridParcelas.View.Records;
             this.valor = decimal.Parse(txtValor.Texts);
-            foreach (var record in records)
+            if (validaValorGrid())
             {
-                var dataRowView = record.Data as DataRowView;
+                foreach (var record in records)
+                {
+                    var dataRowView = record.Data as DataRowView;
 
-                ContaReceber contaReceber = new ContaReceber();
-                contaReceber.Id = 0;
+                    ContaReceber contaReceber = new ContaReceber();
+                    contaReceber.Id = 0;
 
-                contaReceber.NomeCliente = ordemServico.Cliente.RazaoSocial;
-                contaReceber.CnpjCliente = ordemServico.Cliente.Cnpj;
-                contaReceber.Data = DateTime.Now;
-                contaReceber.Descricao = "O.S - " + ordemServico.Id;
-                contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
-                contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
-                contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
-                contaReceber.ValorTotalOrigem = decimal.Parse(txtValor.Texts);
-                contaReceber.Juro = 0;
-                contaReceber.Multa = 0;
-                if (ordemServico.Cliente.EnderecoPrincipal != null)
-                    contaReceber.EnderecoCliente = ordemServico.Cliente.EnderecoPrincipal.Logradouro + ", " + ordemServico.Cliente.EnderecoPrincipal.Numero + " - " + ordemServico.Cliente.EnderecoPrincipal.Complemento;
-                else
-                    contaReceber.EnderecoCliente = "";
-                contaReceber.FormaPagamento = fp;
-                contaReceber.Recebido = false;
-                contaReceber.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
-                contaReceber.Venda = null;
-                contaReceber.OrdemServico = ordemServico;
-                contaReceber.Parcela = dataRowView.Row["PARCELA"].ToString();
-                contaReceber.VendaFormaPagamento = null;
-                contaReceber.Cliente = ordemServico.Cliente;
-                contaReceber.Origem = "ORDEMSERVICO";
-                contaReceber.Concluido = false;
-                listaCrediarioReceber.Add(contaReceber);
+                    contaReceber.NomeCliente = ordemServico.Cliente.RazaoSocial;
+                    contaReceber.CnpjCliente = ordemServico.Cliente.Cnpj;
+                    contaReceber.Data = DateTime.Now;
+                    contaReceber.Descricao = "O.S - " + ordemServico.Id;
+                    contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
+                    contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                    contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                    contaReceber.ValorTotalOrigem = decimal.Parse(txtValor.Texts);
+                    contaReceber.Juro = 0;
+                    contaReceber.Multa = 0;
+                    if (ordemServico.Cliente.EnderecoPrincipal != null)
+                        contaReceber.EnderecoCliente = ordemServico.Cliente.EnderecoPrincipal.Logradouro + ", " + ordemServico.Cliente.EnderecoPrincipal.Numero + " - " + ordemServico.Cliente.EnderecoPrincipal.Complemento;
+                    else
+                        contaReceber.EnderecoCliente = "";
+                    contaReceber.FormaPagamento = fp;
+                    contaReceber.Recebido = false;
+                    contaReceber.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
+                    contaReceber.Venda = null;
+                    contaReceber.OrdemServico = ordemServico;
+                    contaReceber.Parcela = dataRowView.Row["PARCELA"].ToString();
+                    contaReceber.VendaFormaPagamento = null;
+                    contaReceber.Cliente = ordemServico.Cliente;
+                    contaReceber.Origem = "ORDEMSERVICO";
+                    contaReceber.Concluido = false;
+                    listaCrediarioReceber.Add(contaReceber);
+                }
+                this.DialogResult = DialogResult.OK;
             }
-            this.DialogResult = DialogResult.OK;
         }
 
         private void txtParcelas_KeyPress(object sender, KeyPressEventArgs e)
@@ -205,6 +211,59 @@ namespace Lunar.Telas.FormaPagamentoRecebimento.Adicionais
             if (e.KeyChar == 13)
             {
                 inserirParcelas();
+            }
+        }
+
+        private bool validaValorGrid()
+        {
+            decimal valor = 0;
+            var records = gridParcelas.View.Records;
+            foreach (var record in records)
+            {
+                var dataRowView = record.Data as DataRowView;
+                valor = valor + decimal.Parse(dataRowView.Row["VALOR"].ToString());
+            }
+            if (valor != decimal.Parse(txtValor.Texts))
+                return false;
+            else
+                return true;
+        }
+
+        private void gridParcelas_CurrentCellEndEdit(object sender, Syncfusion.WinForms.DataGrid.Events.CurrentCellEndEditEventArgs e)
+        {
+            try
+            {
+                decimal valor = decimal.Parse(txtValor.Texts);
+                decimal val = 0;
+                var records = gridParcelas.View.Records;
+                //Ajustar centavos de diferença na última parcela
+                decimal valorCalculo = 0;
+                int linhas = 0;
+                foreach (var record in records)
+                {
+                    linhas++;
+                    var dataRowView = record.Data as DataRowView;
+                    valorCalculo = valorCalculo + decimal.Parse(dataRowView.Row["Valor"].ToString());
+                    if (linhas == records.Count)
+                    {
+                        if (valorCalculo > decimal.Parse(txtValor.Texts))
+                        {
+                            decimal valorCorrecao = valorCalculo - decimal.Parse(txtValor.Texts);
+                            valorCorrecao = decimal.Parse(dataRowView.Row["Valor"].ToString()) - valorCorrecao;
+                            gridParcelas.View.GetPropertyAccessProvider().SetValue(gridParcelas.GetRecordAtRowIndex(linhas), gridParcelas.Columns[2].MappingName, valorCorrecao);
+                        }
+                        else if (valorCalculo < decimal.Parse(txtValor.Texts))
+                        {
+                            decimal valorCorrecao = decimal.Parse(txtValor.Texts) - valorCalculo;
+                            valorCorrecao = valorCorrecao + decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            gridParcelas.View.GetPropertyAccessProvider().SetValue(gridParcelas.GetRecordAtRowIndex(linhas), gridParcelas.Columns[2].MappingName, valorCorrecao);
+                        }
+                    }
+                }
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowAlerta("Erro, confira valor ou outros valores ajustados! " + erro.Message);
             }
         }
     }

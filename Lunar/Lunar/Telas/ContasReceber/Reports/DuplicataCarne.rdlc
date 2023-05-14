@@ -105,7 +105,6 @@
                                 </Image>
                               </ReportItems>
                               <KeepTogether>true</KeepTogether>
-                              <Left>0cm</Left>
                               <Height>3.46793cm</Height>
                               <Width>18.63698cm</Width>
                               <Style>
@@ -913,7 +912,6 @@
                                 <Rectangle Name="Rectangle14">
                                   <KeepTogether>true</KeepTogether>
                                   <Top>4.81775cm</Top>
-                                  <Left>0cm</Left>
                                   <Height>2.07667cm</Height>
                                   <Width>18.6017cm</Width>
                                   <ZIndex>2</ZIndex>
@@ -981,7 +979,6 @@
                             <Rectangle Name="Rectangle8">
                               <ReportItems>
                                 <Textbox Name="CLIENTE">
-                                  <CanGrow>true</CanGrow>
                                   <KeepTogether>true</KeepTogether>
                                   <Paragraphs>
                                     <Paragraph>
@@ -1020,7 +1017,6 @@
                                   </Style>
                                 </Textbox>
                                 <Textbox Name="ENDERECOCLIENTE">
-                                  <CanGrow>true</CanGrow>
                                   <KeepTogether>true</KeepTogether>
                                   <Paragraphs>
                                     <Paragraph>
