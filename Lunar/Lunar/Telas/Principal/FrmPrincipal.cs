@@ -22,9 +22,11 @@ using Lunar.Telas.Orcamentos;
 using Lunar.Telas.OrdensDeServico;
 using Lunar.Telas.OrdensDeServico.Servicos;
 using Lunar.Telas.ParametroDoSistema;
+using Lunar.Telas.RelatoriosDiversos;
 using Lunar.Telas.Sintegra;
 using Lunar.Telas.UsuarioRegistro;
 using Lunar.Telas.Vendas;
+using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
 using Lunar.Utils.ImportadorSistemas;
 using LunarBase.Classes;
@@ -34,6 +36,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -911,5 +914,48 @@ namespace Lunar.Telas.Principal
         {
             OpenChildForm(() => new FrmMovimentoCaixa(), btnFinanceiro);
         }
+
+        private void btnComissoes_Click(object sender, EventArgs e)
+        {
+            DateTime dataInicial = DateTime.Now;
+            DateTime dataFinal = DateTime.Now;
+            Form formBackground = new Form();
+            using (FrmSelecionarData uu = new FrmSelecionarData())
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                //formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                uu.Owner = formBackground;
+                switch (uu.showModalNovo(ref dataInicial, ref dataFinal))
+                {
+                    case DialogResult.Ignore:
+                        uu.Dispose();
+                        break;
+                    case DialogResult.OK:
+                        try
+                        {
+                            FrmComissaoRelatorio01 frmRelComissao = new FrmComissaoRelatorio01(dataInicial.ToString("yyyy-MM-dd"), dataFinal.ToString("yyyy-MM-dd"));
+                            frmRelComissao.ShowDialog();
+                        }
+                        catch
+                        {
+                            GenericaDesktop.ShowErro("Data Inválida");
+                        }
+                        break;
+                }
+                formBackground.Dispose();
+                //OpenChildForm(() => new FrmComissaoRelatorio01(), btnRelatorios);
+            }
+        }
+
     }
 }

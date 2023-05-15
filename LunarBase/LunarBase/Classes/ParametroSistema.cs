@@ -43,6 +43,7 @@ namespace LunarBase.Classes
         private bool autenticacaoTls;
         private string lembreteVencimento;
         private string caminhoAnexo;
+        private double comissao;
 
         public virtual int Id { get => id; set => id = value; }
         public virtual string UltNsu { get => ultNsu; set => ultNsu = value; }
@@ -79,5 +80,6 @@ namespace LunarBase.Classes
         public virtual bool AutenticacaoTls { get => autenticacaoTls; set => autenticacaoTls = value; }
         public virtual string LembreteVencimento { get => lembreteVencimento; set => lembreteVencimento = value; }
         public virtual string CaminhoAnexo { get => caminhoAnexo; set => caminhoAnexo = value; }
+        public virtual double Comissao { get => comissao; set => comissao = value; }
     }
 }

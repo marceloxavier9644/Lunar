@@ -45,7 +45,7 @@ namespace Lunar.Telas.ArquivosContabilidade
             if (!String.IsNullOrEmpty(txtPasta.Texts))
             {
                 LunarApiNotas lunarApiNotas = new LunarApiNotas();
-                var retor = await lunarApiNotas.coletarArquivosContabeis(Sessao.empresaFilialLogada.Cnpj, txtMes.Texts, txtAno.Texts);
+                var retor = await lunarApiNotas.coletarArquivosContabeis(Sessao.empresaFilialLogada.Cnpj, txtMes.Texts, txtAno.Texts, localFilePath);
                 if (File.Exists(retor.ToString()))
                 {
                     GenericaDesktop genericaDesktop = new GenericaDesktop();
@@ -53,7 +53,7 @@ namespace Lunar.Telas.ArquivosContabilidade
                     {
 
                         List<string> listaAnexo = new List<string>();
-                        listaAnexo.Add(localFilePath + fileName);
+                        listaAnexo.Add(retor.ToString());
                         if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.NomeRemetenteEmail))
                             genericaDesktop.enviarEmail(txtEmail.Texts.Trim(), "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia, txtMes.Texts + "/" + txtAno.Texts + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj, "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.", listaAnexo);
                         GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");

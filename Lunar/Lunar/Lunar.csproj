@@ -900,6 +900,23 @@
     <Compile Include="Telas\Principal\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\RelatoriosDiversos\FrmComissaoRelatorio01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\RelatoriosDiversos\FrmComissaoRelatorio01.Designer.cs">
+      <DependentUpon>FrmComissaoRelatorio01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\RelatoriosDiversos\FrmSelecionarData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\RelatoriosDiversos\FrmSelecionarData.Designer.cs">
+      <DependentUpon>FrmSelecionarData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\RelatoriosDiversos\ReportsDiversos\dsComissaoVendedor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsComissaoVendedor.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Sintegra\FrmGerarSintegra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1335,6 +1352,13 @@
     <EmbeddedResource Include="Telas\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\RelatoriosDiversos\FrmComissaoRelatorio01.resx">
+      <DependentUpon>FrmComissaoRelatorio01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\RelatoriosDiversos\FrmSelecionarData.resx">
+      <DependentUpon>FrmSelecionarData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\RelatoriosDiversos\ReportsDiversos\ReportComissao01.rdlc" />
     <EmbeddedResource Include="Telas\Sintegra\FrmGerarSintegra.resx">
       <DependentUpon>FrmGerarSintegra.cs</DependentUpon>
     </EmbeddedResource>
@@ -1716,6 +1740,17 @@
     </None>
     <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoServico.xss">
       <DependentUpon>dsOrdemServicoServico.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\RelatoriosDiversos\ReportsDiversos\dsComissaoVendedor.xsc">
+      <DependentUpon>dsComissaoVendedor.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\RelatoriosDiversos\ReportsDiversos\dsComissaoVendedor.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsComissaoVendedor.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\RelatoriosDiversos\ReportsDiversos\dsComissaoVendedor.xss">
+      <DependentUpon>dsComissaoVendedor.xsd</DependentUpon>
     </None>
     <None Include="Telas\Vendas\Adicionais\dsVenda.xsc">
       <DependentUpon>dsVenda.xsd</DependentUpon>

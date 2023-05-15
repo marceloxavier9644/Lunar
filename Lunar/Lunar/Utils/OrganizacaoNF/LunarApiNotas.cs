@@ -128,7 +128,7 @@ namespace Lunar.Utils.OrganizacaoNF
             }
             return sd;
         }
-        public async Task<string> coletarArquivosContabeis(string cnpj, string mes, string ano)
+        public async Task<string> coletarArquivosContabeis(string cnpj, string mes, string ano, string caminho)
         {
             string url = "https://lunarsoftware.com.br/painel/api/api-invoice-get.php";
             HttpClient httpClient = new HttpClient();
@@ -140,18 +140,18 @@ namespace Lunar.Utils.OrganizacaoNF
             form.Add(new StringContent(ano), "year");
             HttpResponseMessage response = await httpClient.PostAsync(url, form);
 
-            string localFilePath = @"C:\Users\marce\OneDrive\Área de Trabalho\Arquivos\";
+            //string caminho = @"C:\Users\marce\OneDrive\Área de Trabalho\Arquivos\";
             string fileName = mes + ano + ".zip";
 
           
             using (var stream = await response.Content.ReadAsStreamAsync())
             {
-                using (Stream zip = File.OpenWrite(localFilePath + fileName))
+                using (Stream zip = File.OpenWrite(caminho + fileName))
                 {
                     stream.CopyTo(zip);
                 }
             }
-            return localFilePath + fileName;
+            return caminho + fileName;
         }
 
         

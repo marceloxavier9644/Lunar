@@ -35,6 +35,7 @@
 		<property name="AutenticacaoSsl" column="AUTENTICACAOSSL" type="Boolean"/>
 		<property name="AutenticacaoTls" column="AUTENTICACAOTLS" type="Boolean"/>
 		<property name="CaminhoAnexo" column="CAMINHOANEXO" type="String" length="200"/>
+		<property name="Comissao" column="COMISSAO" type="double"/>
 		
 		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="false" foreign-key="FK_PARAMENTROS_TIPOOBJETO" lazy="false"/>
 		<many-to-one name="PlanoContaVenda" column="PLANOCONTAVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTAVENDA" lazy="false"/>

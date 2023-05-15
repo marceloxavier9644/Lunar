@@ -20,6 +20,7 @@
     <None Remove="HBM\Cfop.hbm.xml" />
     <None Remove="HBM\Cheque.hbm.xml" />
     <None Remove="HBM\Cidade.hbm.xml" />
+    <None Remove="HBM\ComissaoVenda.hbm.xml" />
     <None Remove="HBM\Condicional.hbm.xml" />
     <None Remove="HBM\CondicionalDevolucao.hbm.xml" />
     <None Remove="HBM\CondicionalProduto.hbm.xml" />
@@ -58,6 +59,7 @@
     <None Remove="HBM\OrdemServicoProduto.hbm.xml" />
     <None Remove="HBM\OrdemServicoServico.hbm.xml" />
     <None Remove="HBM\OrigemIcms.hbm.xml" />
+    <None Remove="HBM\OSComissao.hbm.xml" />
     <None Remove="HBM\ParametroSistema.hbm.xml" />
     <None Remove="HBM\Parcelamento.hbm.xml" />
     <None Remove="HBM\Pessoa.hbm.xml" />
@@ -87,7 +89,9 @@
     <EmbeddedResource Include="HBM\Anexo.hbm.xml" />
     <EmbeddedResource Include="HBM\BalancoEstoque.hbm.xml" />
     <EmbeddedResource Include="HBM\BalancoEstoqueProduto.hbm.xml" />
+    <EmbeddedResource Include="HBM\ComissaoVenda.hbm.xml" />
     <EmbeddedResource Include="HBM\CondicionalDevolucao.hbm.xml" />
+    <EmbeddedResource Include="HBM\OsComissao.hbm.xml" />
     <EmbeddedResource Include="HBM\Query.hbm.xml" />
     <EmbeddedResource Include="HBM\AdquirenteCartao.hbm.xml" />
     <EmbeddedResource Include="HBM\Anp.hbm.xml" />

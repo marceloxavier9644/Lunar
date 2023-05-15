@@ -1804,7 +1804,7 @@
             this.autoLabel26.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel26.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel26.Location = new System.Drawing.Point(799, 186);
+            this.autoLabel26.Location = new System.Drawing.Point(794, 185);
             this.autoLabel26.Name = "autoLabel26";
             this.autoLabel26.Size = new System.Drawing.Size(107, 16);
             this.autoLabel26.TabIndex = 204;
@@ -2190,7 +2190,7 @@
             this.autoLabel25.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel25.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel25.Location = new System.Drawing.Point(502, 186);
+            this.autoLabel25.Location = new System.Drawing.Point(497, 185);
             this.autoLabel25.Name = "autoLabel25";
             this.autoLabel25.Size = new System.Drawing.Size(53, 16);
             this.autoLabel25.TabIndex = 196;
@@ -2227,7 +2227,7 @@
             this.autoLabel24.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel24.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel24.Location = new System.Drawing.Point(216, 186);
+            this.autoLabel24.Location = new System.Drawing.Point(211, 185);
             this.autoLabel24.Name = "autoLabel24";
             this.autoLabel24.Size = new System.Drawing.Size(106, 16);
             this.autoLabel24.TabIndex = 194;
@@ -2264,7 +2264,7 @@
             this.autoLabel23.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel23.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel23.Location = new System.Drawing.Point(26, 186);
+            this.autoLabel23.Location = new System.Drawing.Point(22, 185);
             this.autoLabel23.Name = "autoLabel23";
             this.autoLabel23.Size = new System.Drawing.Size(50, 16);
             this.autoLabel23.TabIndex = 192;
@@ -2303,7 +2303,7 @@
             this.autoLabel22.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel22.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel22.Location = new System.Drawing.Point(799, 134);
+            this.autoLabel22.Location = new System.Drawing.Point(795, 133);
             this.autoLabel22.Name = "autoLabel22";
             this.autoLabel22.Size = new System.Drawing.Size(61, 16);
             this.autoLabel22.TabIndex = 190;
@@ -2341,7 +2341,7 @@
             this.autoLabel21.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel21.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel21.Location = new System.Drawing.Point(502, 134);
+            this.autoLabel21.Location = new System.Drawing.Point(498, 133);
             this.autoLabel21.Name = "autoLabel21";
             this.autoLabel21.Size = new System.Drawing.Size(52, 16);
             this.autoLabel21.TabIndex = 188;
@@ -2389,7 +2389,7 @@
             this.autoLabel20.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel20.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel20.Location = new System.Drawing.Point(25, 134);
+            this.autoLabel20.Location = new System.Drawing.Point(20, 132);
             this.autoLabel20.Name = "autoLabel20";
             this.autoLabel20.Size = new System.Drawing.Size(117, 16);
             this.autoLabel20.TabIndex = 184;

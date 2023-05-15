@@ -73,6 +73,7 @@
             this.btnLembreteVencimento = new System.Windows.Forms.ToolStripMenuItem();
             this.orçamentoAvulsoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPlanoDecontas1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMovimentoCaixa = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuFiscal = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnComprasFiscal = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEmitirNfe = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,7 +92,7 @@
             this.dropMenuVendas = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnMovimentoCaixa = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnComissoes = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -686,7 +687,7 @@
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 158);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 136);
             // 
             // toolStripMenuItem4
             // 
@@ -722,6 +723,13 @@
             this.btnPlanoDecontas1.Size = new System.Drawing.Size(228, 22);
             this.btnPlanoDecontas1.Text = "Plano de Contas";
             this.btnPlanoDecontas1.Click += new System.EventHandler(this.btnPlanoDecontas1_Click);
+            // 
+            // btnMovimentoCaixa
+            // 
+            this.btnMovimentoCaixa.Name = "btnMovimentoCaixa";
+            this.btnMovimentoCaixa.Size = new System.Drawing.Size(228, 22);
+            this.btnMovimentoCaixa.Text = "Movimento de Caixa";
+            this.btnMovimentoCaixa.Click += new System.EventHandler(this.btnMovimentoCaixa_Click);
             // 
             // dropMenuFiscal
             // 
@@ -803,17 +811,18 @@
             this.dropMenuRelatorios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.estoqueToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.btnComissoes});
             this.dropMenuRelatorios.MenuItemHeight = 25;
             this.dropMenuRelatorios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuRelatorios.Name = "rjDropdownMenu1";
             this.dropMenuRelatorios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuRelatorios.Size = new System.Drawing.Size(135, 70);
+            this.dropMenuRelatorios.Size = new System.Drawing.Size(181, 114);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "Caixa";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -823,7 +832,7 @@
             this.btnGerarInventario,
             this.saldoDeEstoqueToolStripMenuItem});
             this.estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
-            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.estoqueToolStripMenuItem.Text = "Estoque";
             // 
             // btnGerarInventario
@@ -845,7 +854,7 @@
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnConsultaVendasRelatorio});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(134, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "Vendas";
             // 
             // btnConsultaVendasRelatorio
@@ -883,12 +892,12 @@
             this.btnCondicionalMenu.Text = "Condicional";
             this.btnCondicionalMenu.Click += new System.EventHandler(this.btnCondicionalMenu_Click);
             // 
-            // btnMovimentoCaixa
+            // btnComissoes
             // 
-            this.btnMovimentoCaixa.Name = "btnMovimentoCaixa";
-            this.btnMovimentoCaixa.Size = new System.Drawing.Size(228, 22);
-            this.btnMovimentoCaixa.Text = "Movimento de Caixa";
-            this.btnMovimentoCaixa.Click += new System.EventHandler(this.btnMovimentoCaixa_Click);
+            this.btnComissoes.Name = "btnComissoes";
+            this.btnComissoes.Size = new System.Drawing.Size(180, 22);
+            this.btnComissoes.Text = "Comissões";
+            this.btnComissoes.Click += new System.EventHandler(this.btnComissoes_Click);
             // 
             // FrmPrincipal
             // 
@@ -988,5 +997,6 @@
         private System.Windows.Forms.ToolStripMenuItem gerarSintegraTool;
         private System.Windows.Forms.ToolStripMenuItem btnImportar;
         private System.Windows.Forms.ToolStripMenuItem btnMovimentoCaixa;
+        private System.Windows.Forms.ToolStripMenuItem btnComissoes;
     }
 }

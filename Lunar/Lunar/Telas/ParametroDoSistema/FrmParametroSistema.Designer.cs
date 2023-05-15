@@ -153,6 +153,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
+            this.autoLabel37 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtComissaoPadrao = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -1826,6 +1828,8 @@
             // 
             // tabEmpresa
             // 
+            this.tabEmpresa.Controls.Add(this.autoLabel37);
+            this.tabEmpresa.Controls.Add(this.txtComissaoPadrao);
             this.tabEmpresa.Controls.Add(this.autoLabel29);
             this.tabEmpresa.Controls.Add(this.rjTextBox2);
             this.tabEmpresa.Controls.Add(this.autoLabel28);
@@ -2213,6 +2217,42 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
+            // autoLabel37
+            // 
+            this.autoLabel37.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel37.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel37.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel37.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel37.Location = new System.Drawing.Point(27, 203);
+            this.autoLabel37.Name = "autoLabel37";
+            this.autoLabel37.Size = new System.Drawing.Size(332, 21);
+            this.autoLabel37.TabIndex = 220;
+            this.autoLabel37.Text = "Comissão Padrão Por Venda ou Ordem de Serviço";
+            // 
+            // txtComissaoPadrao
+            // 
+            this.txtComissaoPadrao.BackColor = System.Drawing.Color.White;
+            this.txtComissaoPadrao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtComissaoPadrao.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtComissaoPadrao.BorderRadius = 8;
+            this.txtComissaoPadrao.BorderSize = 2;
+            this.txtComissaoPadrao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtComissaoPadrao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtComissaoPadrao.Location = new System.Drawing.Point(16, 219);
+            this.txtComissaoPadrao.Margin = new System.Windows.Forms.Padding(4);
+            this.txtComissaoPadrao.Multiline = false;
+            this.txtComissaoPadrao.Name = "txtComissaoPadrao";
+            this.txtComissaoPadrao.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtComissaoPadrao.PasswordChar = false;
+            this.txtComissaoPadrao.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtComissaoPadrao.PlaceholderText = "";
+            this.txtComissaoPadrao.ReadOnly = false;
+            this.txtComissaoPadrao.Size = new System.Drawing.Size(423, 37);
+            this.txtComissaoPadrao.TabIndex = 219;
+            this.txtComissaoPadrao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtComissaoPadrao.Texts = "";
+            this.txtComissaoPadrao.UnderlinedStyle = false;
+            // 
             // FrmParametroSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2393,5 +2433,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel36;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel37;
+        private RJ_UI.Classes.RJTextBox txtComissaoPadrao;
     }
 }

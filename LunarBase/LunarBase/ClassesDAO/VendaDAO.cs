@@ -1,6 +1,7 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ConexaoBD;
 using NHibernate;
+using static LunarBase.ClassesDAO.OrdemServicoDAO;
 
 namespace LunarBase.ClassesDAO
 {
@@ -40,5 +41,20 @@ namespace LunarBase.ClassesDAO
             IList<Venda> retorno = Session.CreateQuery(sql).List<Venda>();
             return retorno;
         }
+
+        public decimal selecionarValorVendidoPorVendedor(int idCodVendedor, string dataInicial, string dataFinal)
+        {
+            Session = Conexao.GetSession();
+            return Session.CreateSQLQuery("SELECT sum(venda.VALORFINAL)as valor from venda inner join pessoa on pessoa.ID = venda.VENDEDOR where venda.DATAVENDA between '"+dataInicial+" 00:00:00' and '"+dataFinal+" 23:59:59' and venda.FLAGEXCLUIDO <> true and venda.CONCLUIDA = true and venda.VENDEDOR = " + idCodVendedor).SetMaxResults(1).UniqueResult<decimal>();
+        }
+
+        public IList<ComissaoVenda> selecionarComissaoVendaPorSQL(string sql)
+        {
+            Session = Conexao.GetSession();
+            IList<ComissaoVenda> retorno = Session.CreateSQLQuery(sql).AddEntity("v", typeof(ComissaoVenda)).List<ComissaoVenda>();
+            return retorno;
+        }
+
+       
     }
 }

@@ -118,6 +118,8 @@ namespace Lunar.Telas.ParametroDoSistema
                 chkAutenticacaoTLS.Checked = false;
             if (!String.IsNullOrEmpty(parametro.CaminhoAnexo))
                 txtCaminhoAnexos.Texts = parametro.CaminhoAnexo;
+            if(parametro.Comissao != null)
+             txtComissaoPadrao.Texts = parametro.Comissao.ToString();
         }
 
         private void setParametro()
@@ -217,6 +219,10 @@ namespace Lunar.Telas.ParametroDoSistema
             if (chkAutenticacaoTLS.Checked == true)
                 parametro.AutenticacaoTls = true;
             parametro.CaminhoAnexo = txtCaminhoAnexos.Texts;
+            if (!String.IsNullOrEmpty(txtComissaoPadrao.Texts))
+                parametro.Comissao = double.Parse(txtComissaoPadrao.Texts);
+            else
+                parametro.Comissao = 0;
 
             Sessao.parametroSistema = parametro;
         }

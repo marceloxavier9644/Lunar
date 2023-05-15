@@ -13,6 +13,13 @@ namespace LunarBase.ClassesDAO
             return retorno;
         }
 
+        public IList<OsComissao> selecionarOSComissaoPorSQL(string sql)
+        {
+            Session = Conexao.GetSession();
+            IList<OsComissao> retorno = Session.CreateSQLQuery(sql).AddEntity("f", typeof(OsComissao)).List<OsComissao>();
+            return retorno;
+        }
+
         public IList<OrdemServico> selecionarTodasOS()
         {
             Session = Conexao.GetSession();
@@ -30,5 +37,7 @@ namespace LunarBase.ClassesDAO
             Session = Conexao.GetSession();
             return Session.CreateQuery("from OrdemServico as Tabela where Tabela.Id = '" + idOS + "' and Tabela.FlagExcluido <> true").UniqueResult<OrdemServico>();
         }
+
+       
     }
 }
