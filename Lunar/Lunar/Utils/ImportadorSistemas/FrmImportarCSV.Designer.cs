@@ -42,6 +42,10 @@
             this.radioOrdemServico = new System.Windows.Forms.RadioButton();
             this.radioOrdemServicoProdutos = new System.Windows.Forms.RadioButton();
             this.radioOrdemServicoExame = new System.Windows.Forms.RadioButton();
+            this.radioContasPagar = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCaminhoBancoUltra = new System.Windows.Forms.TextBox();
+            this.btnLocalizarBancoUltra = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -82,18 +86,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 107);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 186);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(551, 262);
+            this.dataGridView1.Size = new System.Drawing.Size(551, 183);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.Visible = false;
             // 
             // radioContasReceber
             // 
             this.radioContasReceber.AutoSize = true;
-            this.radioContasReceber.Location = new System.Drawing.Point(80, 84);
+            this.radioContasReceber.Location = new System.Drawing.Point(84, 122);
             this.radioContasReceber.Name = "radioContasReceber";
             this.radioContasReceber.Size = new System.Drawing.Size(102, 17);
             this.radioContasReceber.TabIndex = 9;
@@ -105,7 +109,7 @@
             // 
             this.radioClientes.AutoSize = true;
             this.radioClientes.Checked = true;
-            this.radioClientes.Location = new System.Drawing.Point(12, 84);
+            this.radioClientes.Location = new System.Drawing.Point(16, 122);
             this.radioClientes.Name = "radioClientes";
             this.radioClientes.Size = new System.Drawing.Size(62, 17);
             this.radioClientes.TabIndex = 8;
@@ -116,7 +120,7 @@
             // radioProdutos
             // 
             this.radioProdutos.AutoSize = true;
-            this.radioProdutos.Location = new System.Drawing.Point(188, 84);
+            this.radioProdutos.Location = new System.Drawing.Point(192, 122);
             this.radioProdutos.Name = "radioProdutos";
             this.radioProdutos.Size = new System.Drawing.Size(67, 17);
             this.radioProdutos.TabIndex = 10;
@@ -173,7 +177,7 @@
             // radioOrdemServico
             // 
             this.radioOrdemServico.AutoSize = true;
-            this.radioOrdemServico.Location = new System.Drawing.Point(261, 84);
+            this.radioOrdemServico.Location = new System.Drawing.Point(16, 154);
             this.radioOrdemServico.Name = "radioOrdemServico";
             this.radioOrdemServico.Size = new System.Drawing.Size(43, 17);
             this.radioOrdemServico.TabIndex = 12;
@@ -184,7 +188,7 @@
             // radioOrdemServicoProdutos
             // 
             this.radioOrdemServicoProdutos.AutoSize = true;
-            this.radioOrdemServicoProdutos.Location = new System.Drawing.Point(310, 84);
+            this.radioOrdemServicoProdutos.Location = new System.Drawing.Point(84, 154);
             this.radioOrdemServicoProdutos.Name = "radioOrdemServicoProdutos";
             this.radioOrdemServicoProdutos.Size = new System.Drawing.Size(88, 17);
             this.radioOrdemServicoProdutos.TabIndex = 13;
@@ -195,7 +199,7 @@
             // radioOrdemServicoExame
             // 
             this.radioOrdemServicoExame.AutoSize = true;
-            this.radioOrdemServicoExame.Location = new System.Drawing.Point(404, 84);
+            this.radioOrdemServicoExame.Location = new System.Drawing.Point(192, 154);
             this.radioOrdemServicoExame.Name = "radioOrdemServicoExame";
             this.radioOrdemServicoExame.Size = new System.Drawing.Size(83, 17);
             this.radioOrdemServicoExame.TabIndex = 14;
@@ -203,12 +207,56 @@
             this.radioOrdemServicoExame.Text = "O.S Exames";
             this.radioOrdemServicoExame.UseVisualStyleBackColor = true;
             // 
+            // radioContasPagar
+            // 
+            this.radioContasPagar.AutoSize = true;
+            this.radioContasPagar.Location = new System.Drawing.Point(293, 154);
+            this.radioContasPagar.Name = "radioContasPagar";
+            this.radioContasPagar.Size = new System.Drawing.Size(98, 17);
+            this.radioContasPagar.TabIndex = 15;
+            this.radioContasPagar.TabStop = true;
+            this.radioContasPagar.Text = "Contas a Pagar";
+            this.radioContasPagar.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(259, 20);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Caminho do Banco de Dados Ultra ";
+            // 
+            // txtCaminhoBancoUltra
+            // 
+            this.txtCaminhoBancoUltra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCaminhoBancoUltra.Location = new System.Drawing.Point(12, 90);
+            this.txtCaminhoBancoUltra.Name = "txtCaminhoBancoUltra";
+            this.txtCaminhoBancoUltra.ReadOnly = true;
+            this.txtCaminhoBancoUltra.Size = new System.Drawing.Size(411, 26);
+            this.txtCaminhoBancoUltra.TabIndex = 16;
+            // 
+            // btnLocalizarBancoUltra
+            // 
+            this.btnLocalizarBancoUltra.Location = new System.Drawing.Point(429, 87);
+            this.btnLocalizarBancoUltra.Name = "btnLocalizarBancoUltra";
+            this.btnLocalizarBancoUltra.Size = new System.Drawing.Size(134, 32);
+            this.btnLocalizarBancoUltra.TabIndex = 18;
+            this.btnLocalizarBancoUltra.Text = "Localizar Banco";
+            this.btnLocalizarBancoUltra.UseVisualStyleBackColor = true;
+            this.btnLocalizarBancoUltra.Click += new System.EventHandler(this.btnLocalizarBancoUltra_Click);
+            // 
             // FrmImportarCSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(579, 450);
+            this.Controls.Add(this.btnLocalizarBancoUltra);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtCaminhoBancoUltra);
+            this.Controls.Add(this.radioContasPagar);
             this.Controls.Add(this.radioOrdemServicoExame);
             this.Controls.Add(this.radioOrdemServicoProdutos);
             this.Controls.Add(this.radioOrdemServico);
@@ -250,5 +298,9 @@
         private System.Windows.Forms.RadioButton radioOrdemServico;
         private System.Windows.Forms.RadioButton radioOrdemServicoProdutos;
         private System.Windows.Forms.RadioButton radioOrdemServicoExame;
+        private System.Windows.Forms.RadioButton radioContasPagar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCaminhoBancoUltra;
+        private System.Windows.Forms.Button btnLocalizarBancoUltra;
     }
 }

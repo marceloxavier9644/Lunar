@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmExtratoProduto));
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dsExtratoProduto = new Lunar.Telas.Cadastros.Produtos.RelatoriosCadastro.dsExtratoProduto();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -63,6 +64,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 385);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmExtratoProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Extrato do Produto";

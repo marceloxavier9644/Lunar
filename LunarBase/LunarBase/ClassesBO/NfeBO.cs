@@ -214,5 +214,17 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar Nota Fiscal Com Numero e Serie! Erro: " + e.Message);
             }
         }
+
+        public Nfe selecionarUltimoNumeroNota(string modelo)
+        {
+            try
+            {
+                return dao.selecionarUltimoNumeroNota(modelo);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar ultimo numero de nf! Erro: " + e.Message);
+            }
+        }
     }
 }

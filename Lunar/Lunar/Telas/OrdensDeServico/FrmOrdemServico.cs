@@ -127,6 +127,15 @@ namespace Lunar.Telas.OrdensDeServico
                 btnPesquisaServico.Enabled = false;
                 btnPesquisaCliente.Enabled = false;
                 btnPesquisaDependente.Enabled = false;
+                txtCliente.Enabled = false;
+                txtCodCliente.Enabled = false;
+                txtTipoObjeto.Enabled = false;
+                txtCodTipoObjeto.Enabled = false;
+                btnPesquisaTipoObjeto.Enabled = false;
+                txtVendedor.Enabled = false;
+                btnPesquisaVendedor.Enabled = false;
+                txtObservacoes.Enabled = false;
+
             }
                 
         }
@@ -2034,7 +2043,9 @@ namespace Lunar.Telas.OrdensDeServico
                     txtPesquisaServico.Focus();
                     break;
                 case Keys.F5:
-                    btnGravar.PerformClick();
+                    if (ordemServico.Status != "ENCERRADA")
+                        btnGravar.PerformClick();
+                    else GenericaDesktop.ShowAlerta("Não é possível alterar uma o.s encerrada!");
                     break;
             }
         }

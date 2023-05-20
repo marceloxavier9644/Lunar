@@ -1741,7 +1741,7 @@ namespace Lunar.Utils
             }
             catch (Exception err)
             {
-                gravarLinhaLog("[ERRO_GRAVAR_LINHA_LOG]: GENERICADESKTOP/Ns_ConfirmaNotaManifesto " + err.Message);
+                gravarLinhaLog("[ERRO_GRAVAR_LINHA_LOG]: GENERICADESKTOP/Ns_ConfirmaNotaManifesto " + err.Message, "EXCEPTION_CONFIRMARMANIFESTO");
                 GenericaDesktop.ShowErro(err.Message);
                 return null;
             }
@@ -1786,7 +1786,7 @@ namespace Lunar.Utils
             }
             catch (Exception err)
             {
-                gravarLinhaLog("[ERRO_GRAVAR_LINHA_LOG]: GENERICADESKTOP/Ns_RejeitarNotaManifesto " + err.Message);
+                gravarLinhaLog("[ERRO_GRAVAR_LINHA_LOG]: GENERICADESKTOP/Ns_RejeitarNotaManifesto " + err.Message, "EXCEPTION_REJEITARNOTA");
                 GenericaDesktop.ShowErro(err.Message);
                 return null;
             }
@@ -2022,7 +2022,7 @@ namespace Lunar.Utils
             }
         }
 
-        public static void gravarLinhaLog(string registro)
+        public static void gravarLinhaLog(string registro, string operacaoRealizada)
         {
             string caminho = @".\logs\";
 
@@ -2031,15 +2031,15 @@ namespace Lunar.Utils
 
             try
             {
-                using (StreamWriter outputFile = new StreamWriter(@".\logs\" + DateTime.Now.ToString("MMddyyyy") + ".log", true))
+                using (StreamWriter outputFile = new StreamWriter(@".\logs\" + operacaoRealizada +"_"+ DateTime.Now.ToString("MMddyyyy") + ".log", true))
                 {
-                    outputFile.WriteLine(DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:ffff") + " - " + registro);
+                    outputFile.WriteLine(DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:ffff") + " - \n" + registro);
                 }
             }
 
             catch (Exception ex)
             {
-                gravarLinhaLog("[ERRO_GRAVAR_LINHA_LOG]: " + ex.Message);
+                gravarLinhaLog("[ERRO_GRAVAR_LINHA_LOG]: " + ex.Message, "EXCEPTION " + operacaoRealizada);
             }
 
         }

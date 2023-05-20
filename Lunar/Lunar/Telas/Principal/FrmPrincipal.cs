@@ -9,6 +9,7 @@ using Lunar.Telas.Cadastros.Financeiro.PlanoContas.PlanosPorGrupos;
 using Lunar.Telas.Cadastros.Produtos;
 using Lunar.Telas.CaixaConferencia;
 using Lunar.Telas.CaixaConferencia.Reports;
+using Lunar.Telas.Compras;
 using Lunar.Telas.Compras.Manifestos;
 using Lunar.Telas.Condicionais;
 using Lunar.Telas.ContasPagar;
@@ -957,5 +958,10 @@ namespace Lunar.Telas.Principal
             }
         }
 
+        private void etiquetasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmImprimirEtiquetasOtica frm = new FrmImprimirEtiquetasOtica();
+            frm.ShowDialog();
+        }
     }
 }

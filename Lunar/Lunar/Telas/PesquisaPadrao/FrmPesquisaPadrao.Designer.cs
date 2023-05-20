@@ -323,6 +323,7 @@
             // gridPesquisa
             // 
             this.gridPesquisa.AccessibleName = "Table";
+            this.gridPesquisa.AllowDraggingColumns = true;
             this.gridPesquisa.AllowEditing = false;
             this.gridPesquisa.AllowFiltering = true;
             this.gridPesquisa.AllowResizingColumns = true;
@@ -376,7 +377,7 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             this.btnFechar.IconColor = System.Drawing.Color.White;
             this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFechar.IconSize = 30;

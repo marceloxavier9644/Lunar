@@ -36,7 +36,7 @@
 
 		<property name="RegistradoSpc" column="REGISTRADOSPC" type="Boolean"/>
 		<property name="EscritorioCobranca" column="ESCRITORIOCOBRANCA" type="Boolean"/>
-		
+		<property name="ComissaoVendedor" column="COMISSAOVENDEDOR" type="double"/>
 
 		<many-to-one name="EnderecoPrincipal" column="ENDERECOPRINCIPAL" class="LunarBase.Classes.Endereco" not-null="false" foreign-key="FK_PESSOA_ENDERECOPRINCIPAL" lazy="false"/>
 		<many-to-one name="PessoaTelefone" column="PESSOATELEFONE" class="LunarBase.Classes.PessoaTelefone" not-null="false" foreign-key="FK_PESSOA_FONEPRINCIPAL" lazy="false"/>

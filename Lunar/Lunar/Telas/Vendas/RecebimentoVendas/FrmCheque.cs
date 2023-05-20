@@ -201,38 +201,46 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                             Pessoa pessoa = new Pessoa();
                             PessoaController pessoaController = new PessoaController();
                             pessoa = pessoaController.selecionarPessoaPorCPFCNPJ(GenericaDesktop.RemoveCaracteres(txtCpf.Texts.Trim()));
-                            if (pessoa.Id > 0)
+                            if (pessoa != null)
                             {
-                                fp.Id = 7;
-                                fp = (FormaPagamento)Controller.getInstance().selecionar(fp);
-                                var records = gridParcelas.View.Records;
-                                foreach (var record in records)
+                                if (pessoa.Id > 0)
                                 {
-                                    var dataRowView = record.Data as DataRowView;
+                                    fp.Id = 7;
+                                    fp = (FormaPagamento)Controller.getInstance().selecionar(fp);
+                                    var records = gridParcelas.View.Records;
+                                    foreach (var record in records)
+                                    {
+                                        var dataRowView = record.Data as DataRowView;
 
-                                    Cheque cheque = new Cheque();
-                                    cheque.Descricao = "CHEQUE RECEBIMENTO";
-                                    cheque.Agencia = txtAgencia.Texts;
-                                    cheque.Cnpj = txtCpf.Texts;
-                                    cheque.Conta = txtConta.Texts;
-                                    cheque.DvConta = txtDvConta.Texts;
-                                    cheque.NumeroCheque = dataRowView.Row["NUMEROCHEQUE"].ToString();
-                                    cheque.Parcela = dataRowView.Row["PARCELA"].ToString();
-                                    cheque.RazaoSocial = txtRazaoSocial.Texts;
-                                    cheque.Valor = decimal.Parse(dataRowView.Row["VALOR"].ToString());
-                                    cheque.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
-                                    Banco banco = new Banco();
-                                    banco.Id = int.Parse(txtCodBanco.Texts);
-                                    banco = (Banco)Controller.getInstance().selecionar(banco);
-                                    cheque.Banco = banco;
-                                    cheque.EmpresaFilial = Sessao.empresaFilialLogada;
-                                    cheque.Venda = null;
+                                        Cheque cheque = new Cheque();
+                                        cheque.Descricao = "CHEQUE RECEBIMENTO";
+                                        cheque.Agencia = txtAgencia.Texts;
+                                        cheque.Cnpj = txtCpf.Texts;
+                                        cheque.Conta = txtConta.Texts;
+                                        cheque.DvConta = txtDvConta.Texts;
+                                        cheque.NumeroCheque = dataRowView.Row["NUMEROCHEQUE"].ToString();
+                                        cheque.Parcela = dataRowView.Row["PARCELA"].ToString();
+                                        cheque.RazaoSocial = txtRazaoSocial.Texts;
+                                        cheque.Valor = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                        cheque.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
+                                        Banco banco = new Banco();
+                                        banco.Id = int.Parse(txtCodBanco.Texts);
+                                        banco = (Banco)Controller.getInstance().selecionar(banco);
+                                        cheque.Banco = banco;
+                                        cheque.EmpresaFilial = Sessao.empresaFilialLogada;
+                                        cheque.Venda = null;
 
-                                    cheque.Cliente = pessoa;
-                                    cheque.Concluido = false;
-                                    listaCheque.Add(cheque);
+                                        cheque.Cliente = pessoa;
+                                        cheque.Concluido = false;
+                                        listaCheque.Add(cheque);
+                                    }
+                                    this.DialogResult = DialogResult.OK;
                                 }
-                                this.DialogResult = DialogResult.OK;
+                                else
+                                {
+                                    GenericaDesktop.ShowAlerta("Digite CPF/CNPJ de um cliente já cadastrado no sistema ou cadastre um novo cliente");
+                                    selecionarCliente();
+                                }
                             }
                             else
                             {
@@ -261,11 +269,12 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
 
         private void selecionarCliente()
         {
-            Object pessoaOjeto = new Pessoa();
+            Pessoa pessoaOjeto = new Pessoa();
+            Object pessoaOjeto1 = new Pessoa();
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa",""))
+                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(""))
                 {
                     txtCpf.Texts = "";
                     txtRazaoSocial.Texts = "";
@@ -273,7 +282,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
                     formBackground.Opacity = .50d;
                     formBackground.BackColor = Color.Black;
-                    formBackground.Left = Top = 0;
+                    //formBackground.Left = Top = 0;
                     formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
                     formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
                     formBackground.WindowState = FormWindowState.Maximized;
@@ -282,15 +291,15 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     formBackground.ShowInTaskbar = false;
                     formBackground.Show();
                     uu.Owner = formBackground;
-                    switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                    switch (uu.showModal(ref pessoaOjeto))
                     {
                         case DialogResult.Ignore:
                             uu.Dispose();
                             FrmClienteCadastro form = new FrmClienteCadastro();
-                            if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                            if (form.showModalNovo(ref pessoaOjeto1) == DialogResult.OK)
                             {
-                                txtRazaoSocial.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
-                                txtCpf.Texts = ((Pessoa)pessoaOjeto).Cnpj.ToString();
+                                txtRazaoSocial.Texts = ((Pessoa)pessoaOjeto1).RazaoSocial;
+                                txtCpf.Texts = ((Pessoa)pessoaOjeto1).Cnpj.ToString();
                             }
                             form.Dispose();
                             break;
@@ -483,6 +492,30 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
         private void txtBanco_Click(object sender, EventArgs e)
         {
             btnPesquisaBanco.PerformClick();
+        }
+
+        private void txtCpf_Leave(object sender, EventArgs e)
+        {
+            pesquisarClientePorCNPJ();
+        }
+
+        private void pesquisarClientePorCNPJ()
+        {
+            PessoaController pessoaController = new PessoaController();
+            Pessoa pessoa = new Pessoa();
+            pessoa = pessoaController.selecionarPessoaPorCPFCNPJ(GenericaDesktop.RemoveCaracteres(txtCpf.Texts.Trim()));
+            if (pessoa != null)
+            {
+                if (pessoa.Id > 0)
+                {
+                    txtRazaoSocial.Texts = pessoa.RazaoSocial;
+                }
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Cliente não encontrado, para receber com cheque você precisa selecionar um cliente com cadastro!");
+                selecionarCliente();
+            }
         }
     }
 }

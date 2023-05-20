@@ -342,5 +342,15 @@ namespace Lunar.Telas.Cadastros.Produtos
             else
                 GenericaDesktop.ShowAlerta("Clique na linha do produto que deseja visualizar!");
         }
+
+        private void FrmProdutoLista_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F8:
+                    break;
+            }
+        }
+
     }
 }

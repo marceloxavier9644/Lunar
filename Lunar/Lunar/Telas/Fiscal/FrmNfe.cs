@@ -1735,8 +1735,8 @@ namespace Lunar.Telas.Fiscal
             }
             else if (pessoa.Cnpj.Length == 14)
             {
-                GenericaDesktop.ShowAlerta("Em uma NFe o cliente não pode ser pessoa jurídica, caso precise identificar a pessoa jurídica faça a emissão de uma NFe modelo 55");
-                validacao = false;
+                //GenericaDesktop.ShowAlerta("Em uma NFe o cliente não pode ser pessoa jurídica, caso precise identificar a pessoa jurídica faça a emissão de uma NFe modelo 55");
+                validacao = true;
             }
             if (!String.IsNullOrEmpty(pessoa.RazaoSocial))
                 validacao = true;

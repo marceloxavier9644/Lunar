@@ -37,6 +37,7 @@ using System.Windows.Forms;
 using System.Xml;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static LunarBase.Utilidades.ManifestoDownload;
+using static System.Windows.Forms.Design.AxImporter;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using Exception = System.Exception;
 
@@ -555,6 +556,10 @@ namespace Lunar.Telas.OrdensDeServico
                     {
                         e.Style.TextColor = Color.Red;
                     }
+                    if ((e.RowData as OrdemServico).OperadorCadastro.Equals("1"))
+                    {
+                        (e.RowData as OrdemServico).OperadorCadastro = "";
+                    }
                 }
             }
             catch
@@ -714,6 +719,7 @@ namespace Lunar.Telas.OrdensDeServico
         private void btnGerarNFCe_Click(object sender, EventArgs e)
         {
             Pessoa cliSel = new Pessoa();
+            nfe = new Nfe();
             valorFinalNota = 0;
             valorDescontoProdutos = 0;
             valorProdutosSemDesconto = 0;
@@ -760,6 +766,17 @@ namespace Lunar.Telas.OrdensDeServico
                                         }
                                         //Concluir a O.S antes de gerar a nota
                                         numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
+                                        Nfe nfConferencia = new Nfe();
+                                        NfeController nfeController = new NfeController();
+                                        nfConferencia = nfeController.selecionarUltimoNumeroNota("65");
+                                        if(nfConferencia != null)
+                                        {
+                                            if (nfConferencia.Id > 0)
+                                            {
+                                                if(numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
+                                                    numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
+                                            }
+                                        }
                                         xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, ordemServico);
                                         //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
                                         if (ordemServico.Cliente == null)
@@ -891,7 +908,6 @@ namespace Lunar.Telas.OrdensDeServico
                         }
                     }
                 }
-
                 //Falha conexao
                 else if (retornoNFCe.motivo.Contains("timeout") || retornoNFCe.cStat.Equals("999"))
                 {
@@ -927,6 +943,20 @@ namespace Lunar.Telas.OrdensDeServico
             else
             {
                 gravarXMLNaPasta(xmlStrEnvio, nfe.NNf, @"\XML\Tentativa\NFCe\", nfe.NNf + ".xml", true);
+            }
+            if (retornoNFCe.motivo.Contains("Duplicidade de NF-e com diferença na Chave"))
+            {
+                nfe.NNf = (int.Parse(nfe.NNf) + 1).ToString();
+                nfe.Status = retornoNFCe.motivo;
+                nfe.CodStatus = retornoNFCe.cStat;
+                NfeStatus nfeStatus = new NfeStatus();
+                nfeStatus.Id = 2;
+                nfeStatus = (NfeStatus)Controller.getInstance().selecionar(nfeStatus);
+                if (nfeStatus != null)
+                    nfe.NfeStatus = nfeStatus;
+
+                Controller.getInstance().salvar(nfe);
+                GenericaDesktop.ShowAlerta("Duplicidade de NF-e com diferença na Chave, reenvie a nota no painel de monitoramento fiscal");
             }
         }
 
@@ -1334,6 +1364,17 @@ namespace Lunar.Telas.OrdensDeServico
                                         if (validador.validarProdutosNota(listaProdutosNFe))
                                         {
                                             numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFe;
+                                            Nfe nfConferencia = new Nfe();
+                                            NfeController nfeController = new NfeController();
+                                            nfConferencia = nfeController.selecionarUltimoNumeroNota("55");
+                                            if (nfConferencia != null)
+                                            {
+                                                if (nfConferencia.Id > 0)
+                                                {
+                                                    if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
+                                                        numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
+                                                }
+                                            }
                                             xmlStrEnvio = emitirNFe.gerarXMLNfe(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, false, "VENDA", ordemServico);
                                             if (!String.IsNullOrEmpty(xmlStrEnvio))
                                             {
@@ -1706,6 +1747,31 @@ namespace Lunar.Telas.OrdensDeServico
                 else
                     GenericaDesktop.ShowAlerta("Clique primeiro na linha da O.S que deseja imprimir!");
             }
+            else if (btnClicado.Equals("Imprimir Duplicata Gráfica"))
+            {
+                if (grid.SelectedIndex >= 0)
+                {
+                    ordemServico = new OrdemServico();
+                    ordemServico = (OrdemServico)grid.SelectedItem;
+                    ContaReceberController contaReceberController = new ContaReceberController();
+                    if (ordemServico != null)
+                    {
+                        IList<ContaReceber> lis = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.OrdemServico = " + ordemServico.Id + " and Tabela.FlagExcluido <> True");
+                        if (lis.Count > 0)
+                        {
+                            FrmImprimirDuplicataDaGrafica frDup = new FrmImprimirDuplicataDaGrafica(ordemServico.Cliente, lis);
+                            frDup.ShowDialog();
+                        }
+                        else
+                            GenericaDesktop.ShowAlerta("Não foi encontrado duplicata(s) para essa ordem de serviço!");
+
+                    }
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Clique primeiro na Ordem de Serviço que deseja imprimir as duplicatas");
+                }
+            }
         }
 
         private void imprimirNF()
@@ -2025,7 +2091,7 @@ namespace Lunar.Telas.OrdensDeServico
         private void btnExportarPDF_Click(object sender, EventArgs e)
         {
             var options = new PdfExportingOptions();
-            options.ExportAllPages = true;
+            //options.ExportAllPages = true;
             options.ExcludeColumns.Add("Entrada");
             options.ExcludeColumns.Add("Nfe.NNf");
             options.ExcludeColumns.Add("Nfe.Modelo");
@@ -2033,6 +2099,28 @@ namespace Lunar.Telas.OrdensDeServico
             options.ExcludeColumns.Add("ValorServico");
             options.AutoColumnWidth = true;
 
+            int qtdPaginas = sfDataPager1.PageCount;
+            if (qtdPaginas > 1)
+            {
+                if (GenericaDesktop.ShowConfirmacao("Você possui " + qtdPaginas + " páginas na pesquisa, deseja imprimir todas?"))
+                {
+                    txtRegistroPorPagina.Texts = (qtdPaginas * int.Parse(txtRegistroPorPagina.Texts)).ToString();
+                    btnPesquisar.PerformClick();
+                    btnExportarPDF.PerformClick();
+                }
+                else
+                {
+                    salvarPDF(options);
+                }
+            }
+            else
+            {
+                salvarPDF(options);
+            }
+        }
+
+        private void salvarPDF(PdfExportingOptions options)
+        {
             var document = new Syncfusion.Pdf.PdfDocument();
             document.PageSettings.Orientation = Syncfusion.Pdf.PdfPageOrientation.Portrait;
             var page = document.Pages.Add();

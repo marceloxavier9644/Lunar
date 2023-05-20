@@ -127,6 +127,8 @@
             this.txtCodPlanoContaVendas = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtPlanoContaVendas = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabEmpresa = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.autoLabel37 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtComissaoPadrao = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel29 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.rjTextBox2 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel28 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -153,8 +155,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.autoLabel37 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtComissaoPadrao = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.chkLiberarAlteracaoNumeros = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -181,6 +182,7 @@
             this.tabEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLiberarAlteracaoNumeros)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -251,6 +253,7 @@
             // 
             // tabConfiguracoesFiscais
             // 
+            this.tabConfiguracoesFiscais.Controls.Add(this.chkLiberarAlteracaoNumeros);
             this.tabConfiguracoesFiscais.Controls.Add(this.radioHomologacao);
             this.tabConfiguracoesFiscais.Controls.Add(this.radioProducao);
             this.tabConfiguracoesFiscais.Controls.Add(this.groupBox2);
@@ -427,6 +430,7 @@
             this.txtSerieNFe.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtSerieNFe.BorderRadius = 8;
             this.txtSerieNFe.BorderSize = 2;
+            this.txtSerieNFe.Enabled = false;
             this.txtSerieNFe.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerieNFe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSerieNFe.Location = new System.Drawing.Point(7, 36);
@@ -452,6 +456,7 @@
             this.txtProximoNFe.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtProximoNFe.BorderRadius = 8;
             this.txtProximoNFe.BorderSize = 2;
+            this.txtProximoNFe.Enabled = false;
             this.txtProximoNFe.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProximoNFe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtProximoNFe.Location = new System.Drawing.Point(161, 36);
@@ -629,6 +634,7 @@
             this.txtSerieNFCe.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtSerieNFCe.BorderRadius = 8;
             this.txtSerieNFCe.BorderSize = 2;
+            this.txtSerieNFCe.Enabled = false;
             this.txtSerieNFCe.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerieNFCe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSerieNFCe.Location = new System.Drawing.Point(7, 35);
@@ -653,6 +659,7 @@
             this.txtProximoNFCe.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtProximoNFCe.BorderRadius = 8;
             this.txtProximoNFCe.BorderSize = 2;
+            this.txtProximoNFCe.Enabled = false;
             this.txtProximoNFCe.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProximoNFCe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtProximoNFCe.Location = new System.Drawing.Point(132, 35);
@@ -1849,6 +1856,42 @@
             this.tabEmpresa.Text = "Configurações da Empresa";
             this.tabEmpresa.ThemesEnabled = false;
             // 
+            // autoLabel37
+            // 
+            this.autoLabel37.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel37.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel37.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel37.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel37.Location = new System.Drawing.Point(27, 203);
+            this.autoLabel37.Name = "autoLabel37";
+            this.autoLabel37.Size = new System.Drawing.Size(332, 21);
+            this.autoLabel37.TabIndex = 220;
+            this.autoLabel37.Text = "Comissão Padrão Por Venda ou Ordem de Serviço";
+            // 
+            // txtComissaoPadrao
+            // 
+            this.txtComissaoPadrao.BackColor = System.Drawing.Color.White;
+            this.txtComissaoPadrao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtComissaoPadrao.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtComissaoPadrao.BorderRadius = 8;
+            this.txtComissaoPadrao.BorderSize = 2;
+            this.txtComissaoPadrao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtComissaoPadrao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtComissaoPadrao.Location = new System.Drawing.Point(16, 219);
+            this.txtComissaoPadrao.Margin = new System.Windows.Forms.Padding(4);
+            this.txtComissaoPadrao.Multiline = false;
+            this.txtComissaoPadrao.Name = "txtComissaoPadrao";
+            this.txtComissaoPadrao.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtComissaoPadrao.PasswordChar = false;
+            this.txtComissaoPadrao.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtComissaoPadrao.PlaceholderText = "";
+            this.txtComissaoPadrao.ReadOnly = false;
+            this.txtComissaoPadrao.Size = new System.Drawing.Size(423, 37);
+            this.txtComissaoPadrao.TabIndex = 219;
+            this.txtComissaoPadrao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtComissaoPadrao.Texts = "";
+            this.txtComissaoPadrao.UnderlinedStyle = false;
+            // 
             // autoLabel29
             // 
             this.autoLabel29.BackColor = System.Drawing.Color.Transparent;
@@ -2217,41 +2260,16 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // autoLabel37
+            // chkLiberarAlteracaoNumeros
             // 
-            this.autoLabel37.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel37.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel37.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel37.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel37.Location = new System.Drawing.Point(27, 203);
-            this.autoLabel37.Name = "autoLabel37";
-            this.autoLabel37.Size = new System.Drawing.Size(332, 21);
-            this.autoLabel37.TabIndex = 220;
-            this.autoLabel37.Text = "Comissão Padrão Por Venda ou Ordem de Serviço";
-            // 
-            // txtComissaoPadrao
-            // 
-            this.txtComissaoPadrao.BackColor = System.Drawing.Color.White;
-            this.txtComissaoPadrao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtComissaoPadrao.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtComissaoPadrao.BorderRadius = 8;
-            this.txtComissaoPadrao.BorderSize = 2;
-            this.txtComissaoPadrao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtComissaoPadrao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtComissaoPadrao.Location = new System.Drawing.Point(16, 219);
-            this.txtComissaoPadrao.Margin = new System.Windows.Forms.Padding(4);
-            this.txtComissaoPadrao.Multiline = false;
-            this.txtComissaoPadrao.Name = "txtComissaoPadrao";
-            this.txtComissaoPadrao.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtComissaoPadrao.PasswordChar = false;
-            this.txtComissaoPadrao.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtComissaoPadrao.PlaceholderText = "";
-            this.txtComissaoPadrao.ReadOnly = false;
-            this.txtComissaoPadrao.Size = new System.Drawing.Size(423, 37);
-            this.txtComissaoPadrao.TabIndex = 219;
-            this.txtComissaoPadrao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtComissaoPadrao.Texts = "";
-            this.txtComissaoPadrao.UnderlinedStyle = false;
+            this.chkLiberarAlteracaoNumeros.BeforeTouchSize = new System.Drawing.Size(229, 21);
+            this.chkLiberarAlteracaoNumeros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLiberarAlteracaoNumeros.Location = new System.Drawing.Point(587, 364);
+            this.chkLiberarAlteracaoNumeros.Name = "chkLiberarAlteracaoNumeros";
+            this.chkLiberarAlteracaoNumeros.Size = new System.Drawing.Size(229, 21);
+            this.chkLiberarAlteracaoNumeros.TabIndex = 203;
+            this.chkLiberarAlteracaoNumeros.Text = "Liberar Alteração de Números";
+            this.chkLiberarAlteracaoNumeros.CheckStateChanged += new System.EventHandler(this.chkLiberarAlteracaoNumeros_CheckStateChanged);
             // 
             // FrmParametroSistema
             // 
@@ -2304,6 +2322,7 @@
             this.tabEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLiberarAlteracaoNumeros)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2435,5 +2454,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel36;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel37;
         private RJ_UI.Classes.RJTextBox txtComissaoPadrao;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkLiberarAlteracaoNumeros;
     }
 }

@@ -133,6 +133,13 @@ namespace LunarBase.ClassesDAO
             return Session.CreateQuery(sql).UniqueResult<Nfe>();
         }
 
+        public Nfe selecionarUltimoNumeroNota(string modelo)
+        {
+            String sql = "SELECT * FROM Nfe as Tabela WHERE Tabela.FlagExcluido <> true " +
+                         "and Tabela.Modelo = '"+ modelo + "' and Tabela.Volume <> 'ERRO' order by ABS(NNF) desc";
+            Session = Conexao.GetSession();
+            return Session.CreateSQLQuery(sql).AddEntity(typeof(Nfe)).SetMaxResults(1).UniqueResult<Nfe>();
+        }
         public Nfe selecionarNFePorNumeroESerie(string numeroNFCe, string serie)
         {
             String sql = "FROM Nfe as Tabela WHERE Tabela.FlagExcluido <> true and " +

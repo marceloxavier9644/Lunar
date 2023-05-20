@@ -476,5 +476,40 @@ namespace Lunar.Telas.Estoques
                 GenericaDesktop.ShowAlerta("Clique na linha do balanço que deseja efetivar!");
 
         }
+
+        private void FrmBalancoEstoqueLista_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F8:
+                    ajustarQuantidadeProdutoPeloMovimentoEstoque();
+                    break;
+            }
+        }
+
+        private void ajustarQuantidadeProdutoPeloMovimentoEstoque()
+        {
+            GenericaDesktop generica = new GenericaDesktop();
+            ProdutoController produtoController = new ProdutoController();
+            IList<Produto> listaProd = produtoController.selecionarTodosProdutorPorFilial(Sessao.empresaFilialLogada);
+            if (listaProd.Count > 0)
+            {
+                foreach (Produto prodx in listaProd)
+                {
+                    double estoqueNaoConciliado = prodx.EstoqueAuxiliar;
+                    double estoqueConciliado = prodx.Estoque;
+                    generica.conferirTabelaEstoqueEAtualizarProduto(prodx, Sessao.empresaFilialLogada);
+                    Produto prody = new Produto();
+                    prody.Id = prodx.Id;
+                    prody = (Produto)ProdutoController.getInstance().selecionar(prody);
+                    if(prody.EstoqueAuxiliar != estoqueNaoConciliado || prody.Estoque != estoqueConciliado)
+                    {
+                        GenericaDesktop.gravarLinhaLog(prody.Id + " ...Produto Não Conciliado: " + estoqueNaoConciliado + " Para " + prody.EstoqueAuxiliar + "\n"
+                            + prody.Id + " ...Produto Conciliado: " + estoqueConciliado + " Para " + prody.Estoque, "CONFERENCIA TABELA ESTOQUE");
+                    }
+                }
+                GenericaDesktop.ShowInfo("Ajuste finalizado com sucesso!");
+            }
+        }
     }
 }

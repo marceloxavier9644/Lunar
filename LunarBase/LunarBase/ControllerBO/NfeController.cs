@@ -236,6 +236,23 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+        public Nfe selecionarUltimoNumeroNota(string modelo)
+        {
+            NfeBO bo = new NfeBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarUltimoNumeroNota(modelo);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }
 

@@ -178,7 +178,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 decimal valorJuroFormat = contaReceber1.Juro;
                 valorJuroFormat = Math.Round(valorJuroFormat, 2);
                 row.SetField("Juro", string.Format("{0:0.00}", valorJuroFormat));
-                valorTotalFormat = valorUnitForm + valorJuroFormat + valorMultaFormat -(contaReceber1.ValorRecebimentoParcial);
+                if(parcial == false)
+                    valorTotalFormat = valorUnitForm + valorJuroFormat + valorMultaFormat -(contaReceber1.ValorRecebimentoParcial);
+                else
+                    valorTotalFormat = valorUnitForm + valorJuroFormat + valorMultaFormat;
                 valorTotalFormat = Math.Round(valorTotalFormat, 2);
                 row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotalFormat));
                 row.SetField("FormaPagamento", contaReceber1.FormaPagamento.Descricao);
@@ -208,6 +211,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         {
             btnCreditoCliente.Enabled = false;
             iconeCredito.Enabled = false;
+            btnCheque.Enabled = false;
+            iconeCheque.Enabled = false;
             decimal totalFormatado = 0;
             foreach (ContaPagar contaPagar in listaPagar)
             {
@@ -1266,6 +1271,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 OrdemServicoPagamento ordemServicoPagamento = new OrdemServicoPagamento();
                 IList<ContaReceber> lis = new List<ContaReceber>();
                 var records = gridRecebimento.View.Records;
+                decimal somaTotalRecebido = 0;
                 foreach (var record in records)
                 {
                     ordemServicoPagamento = new OrdemServicoPagamento();
@@ -1274,6 +1280,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                     formaPagamento = new FormaPagamento();
                     formaPagamento.Id = int.Parse(dataRowView.Row["Id"].ToString());
                     formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    somaTotalRecebido = somaTotalRecebido + decimal.Parse(dataRowView.Row["Valor"].ToString());
                     if (formaPagamento.Id > 0)
                     {
                         ordemServicoPagamento.DataRecebimento = DateTime.Now;
@@ -1506,6 +1513,22 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 }
                 ordemServico.DataEncerramento = DateTime.Now;
                 ordemServico.Status = "ENCERRADA";
+                if (descontoRecebido > 0)
+                {
+                    ordemServico.ValorDesconto = descontoRecebido;
+                    ordemServico.ValorTotal = somaTotalRecebido;
+                    decimal descontoPercentualNaOS = ((descontoRecebido * 100) / (ordemServico.ValorTotal+descontoRecebido));
+                    ratearDescontoItens(descontoPercentualNaOS);
+                }
+                if (acrescimoRecebido > 0)
+                {
+                    decimal valorOriginal = ordemServico.ValorTotal;
+                    ordemServico.ValorAcrescimo = acrescimoRecebido;
+                    ordemServico.ValorTotal = somaTotalRecebido;
+                    //decimal acrescimoNaOS = ((acrescimoRecebido * 100) / (ordemServico.ValorTotal + acrescimoRecebido));
+                    decimal acrescimoNaOS = Math.Abs(((valorOriginal - ordemServico.ValorTotal) / valorOriginal) * 100);
+                    ratearDescontoItens(acrescimoNaOS);
+                }
                 Controller.getInstance().salvar(ordemServico);
                 GenericaDesktop generica = new GenericaDesktop();
                 IList<OrdemServicoProduto> listaProdutoOS = new List<OrdemServicoProduto>();
@@ -1526,6 +1549,92 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             catch (Exception err)
             {
                 GenericaDesktop.ShowErro("Erro ao encerrar a O.S " + ordemServico.Id + "\n\n" + err.Message);
+            }
+        }
+
+        private void ratearDescontoItens(decimal percentualDesconto)
+        {
+            int i = 1;
+            //decimal somarDescontoTotal = 0;
+            decimal valorDescontoInformado = 0;
+            IList<OrdemServicoProduto> listaProdutoOS = new List<OrdemServicoProduto>();
+            OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();
+            listaProdutoOS = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(ordemServico.Id);
+            decimal somaDescCalc = 0;
+            decimal somaValorItensComDesconto = 0;
+            if (descontoRecebido > 0)
+            {
+                foreach (OrdemServicoProduto ordemServicoProduto in listaProdutoOS)
+                {
+                    i++;
+                    decimal descontoItem = ordemServicoProduto.ValorTotal * percentualDesconto / 100;
+                    descontoItem = Math.Round(descontoItem, 2);
+                    ordemServicoProduto.Desconto = descontoItem;
+                    ordemServicoProduto.ValorTotal = ordemServicoProduto.ValorTotal - descontoItem;
+                    somaDescCalc = somaDescCalc + descontoItem;
+                    somaValorItensComDesconto = somaValorItensComDesconto + ordemServicoProduto.ValorTotal;
+                    Controller.getInstance().salvar(ordemServicoProduto);
+                }
+            }
+            else if(acrescimoRecebido > 0)
+            {
+                foreach (OrdemServicoProduto ordemServicoProduto in listaProdutoOS)
+                {
+                    i++;
+                    decimal acrescimoItem = ordemServicoProduto.ValorTotal * percentualDesconto / 100;
+                    acrescimoItem = Math.Round(acrescimoItem, 2);
+                    ordemServicoProduto.Acrescimo = acrescimoItem;
+                    ordemServicoProduto.ValorTotal = ordemServicoProduto.ValorTotal + acrescimoItem;
+                    somaDescCalc = somaDescCalc + acrescimoItem;
+                    somaValorItensComDesconto = somaValorItensComDesconto + ordemServicoProduto.ValorTotal;
+                    Controller.getInstance().salvar(ordemServicoProduto);
+                }
+            }
+
+
+                if (ordemServico.ValorTotal != somaValorItensComDesconto)
+                {
+                    //Se deu diferenca de centavos, ajustar no ultimo item
+                    decimal diferenca = ordemServico.ValorTotal - somaValorItensComDesconto;
+                //MessageBox.Show("DIFERENÇA: R$ " + diferenca.ToString());
+
+                int qtd = 0;
+                foreach (OrdemServicoProduto ordemServicoProduto in listaProdutoOS)
+                {
+                    qtd++;
+                    //se é o ultimo item da o.s ajustamos o valor do desconto
+                    if(qtd == listaProdutoOS.Count)
+                    {
+                        if(somaValorItensComDesconto > ordemServico.ValorTotal)
+                        {
+                            if (descontoRecebido > 0)
+                            {
+                                ordemServicoProduto.Desconto = ordemServicoProduto.Desconto + diferenca;
+                                ordemServicoProduto.ValorTotal = ordemServicoProduto.ValorTotal - diferenca;
+                            }
+                            else if(acrescimoRecebido > 0)
+                            {
+                                ordemServicoProduto.Acrescimo = ordemServicoProduto.Acrescimo + diferenca;
+                                ordemServicoProduto.ValorTotal = ordemServicoProduto.ValorTotal - diferenca;
+                            }
+                            Controller.getInstance().salvar(ordemServicoProduto);
+                        }
+                        else if (somaValorItensComDesconto < ordemServico.ValorTotal)
+                        {
+                            if (descontoRecebido > 0)
+                            {
+                                ordemServicoProduto.Desconto = ordemServicoProduto.Desconto - diferenca;
+                                ordemServicoProduto.ValorTotal = ordemServicoProduto.ValorTotal + diferenca;
+                            }
+                            else if (acrescimoRecebido > 0)
+                            {
+                                ordemServicoProduto.Acrescimo = ordemServicoProduto.Acrescimo - diferenca;
+                                ordemServicoProduto.ValorTotal = ordemServicoProduto.ValorTotal + diferenca;
+                            }
+                            Controller.getInstance().salvar(ordemServicoProduto);
+                        }
+                    }
+                }
             }
         }
 

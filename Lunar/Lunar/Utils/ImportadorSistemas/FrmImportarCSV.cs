@@ -17,11 +17,14 @@ namespace Lunar.Utils.ImportadorSistemas
         MarcaController marcaController = new MarcaController();
         PessoaController pessoaController = new PessoaController();
         DataTable dtEmployee = new DataTable();
-        //String conexaoFirebird = "DataSource=localhost; Database=C:\\Ultra_Inst\\Banco\\Gestao.FDB; UserId=SYSDBA; Pwd=masterkey";
-        String conexaoFirebird2 = "User=SYSDBA;Password=masterkey;Database=C:\\Ultra_Inst\\Banco\\Gestao.fdb;DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;\r\nServerType=0;";
+        String caminhoBanco = "C:\\Ultra_Inst\\Banco\\Gestao.fdb";
+        String conexaoFirebird2 = "";
         public FrmImportarCSV()
         {
             InitializeComponent();
+            caminhoBanco = "C:\\Ultra_Inst\\Banco\\Gestao.fdb";
+            txtCaminhoBancoUltra.Text = caminhoBanco;
+            conexaoFirebird2 = "User=SYSDBA;Password=masterkey;Database=" + caminhoBanco + ";DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;\r\nServerType=0;";
         }
 
     private void lerCSV(string path)
@@ -75,7 +78,6 @@ namespace Lunar.Utils.ImportadorSistemas
                     txtCaminhoArquivo.Text = @openFileDialog.FileName;
                     lerCSV(txtCaminhoArquivo.Text);
                 }
-
         }
 
         private void btnConfirmarImportacao_Click(object sender, EventArgs e)
@@ -404,23 +406,24 @@ namespace Lunar.Utils.ImportadorSistemas
                         Controller.getInstance().atualizar(produto);
                         //ESTOQUE
                         Estoque estoque = new Estoque();
-                        if (produto.EstoqueAuxiliar > 0)
-                        {
-                            estoque.BalancoEstoque = null;
-                            estoque.Conciliado = false;
-                            estoque.DataEntradaSaida = DateTime.Now;
-                            estoque.Descricao = "IMPORTAÇÃO DE SISTEMA";
-                            estoque.EmpresaFilial = Sessao.empresaFilialLogada;
-                            estoque.Entrada = true;
-                            estoque.Id = 0;
-                            estoque.Origem = "IMPORTACAO";
-                            estoque.Pessoa = null;
-                            estoque.Produto = produto;
-                            estoque.Quantidade = produto.EstoqueAuxiliar;
-                            estoque.QuantidadeInventario = 0;
-                            estoque.Saida = false;
-                            Controller.getInstance().salvar(estoque);
-                        }
+                        //estoque nao conciliado ja vai junto com o conciliado!
+                        //if (produto.EstoqueAuxiliar > 0)
+                        //{
+                        //    estoque.BalancoEstoque = null;
+                        //    estoque.Conciliado = false;
+                        //    estoque.DataEntradaSaida = DateTime.Now;
+                        //    estoque.Descricao = "IMPORTAÇÃO DE SISTEMA";
+                        //    estoque.EmpresaFilial = Sessao.empresaFilialLogada;
+                        //    estoque.Entrada = true;
+                        //    estoque.Id = 0;
+                        //    estoque.Origem = "IMPORTACAO";
+                        //    estoque.Pessoa = null;
+                        //    estoque.Produto = produto;
+                        //    estoque.Quantidade = produto.EstoqueAuxiliar;
+                        //    estoque.QuantidadeInventario = 0;
+                        //    estoque.Saida = false;
+                        //    Controller.getInstance().salvar(estoque);
+                        //}
                         if (produto.Estoque > 0)
                         {
                             estoque.BalancoEstoque = null;
@@ -559,6 +562,14 @@ namespace Lunar.Utils.ImportadorSistemas
             {
                 lblInformacao.Visible = true;
                 Thread th = new Thread(() => puxarExamesOS());
+                th.Start();
+                Application.DoEvents();
+                th.Join();
+            }
+            if (radioContasPagar.Checked == true)
+            {
+                lblInformacao.Visible = true;
+                Thread th = new Thread(() => puxarContasPagarUltra());
                 th.Start();
                 Application.DoEvents();
                 th.Join();
@@ -778,6 +789,132 @@ namespace Lunar.Utils.ImportadorSistemas
                     }
                 }
                 GenericaDesktop.ShowInfo("Importação de Exames Realizada com Sucesso!");
+            }
+        }
+
+        private void puxarContasPagarUltra()
+        {
+            dataGridView1.Visible = true;
+            FbConnection fbConn = new FbConnection(conexaoFirebird2);
+            FbCommand fbCmd = new FbCommand("select fp.docto, fp.parceiro, fp.data_emissao, fpp.parcela, fpp.data_vencimento,fpp.saldo, fpp.data_quitacao, desp.dscdespesa, fp.historico from faturas_pagar fp inner join faturas_pagar_parcelas fpp on fp.faturas_pagar_id = fpp.faturas_pagar_id INNER JOIN despesas desp on fp.despesa_principal = desp.despesa where fpp.data_quitacao is null and fpp.anovencto = 2023", fbConn);
+
+            try
+            {
+                fbConn.Open();
+                FbDataAdapter fbDa = new FbDataAdapter(fbCmd);
+                dtEmployee = new DataTable();
+                fbDa.Fill(dtEmployee);
+                //dataGridView1.DataSource = dtEmployee;
+
+                //Importar
+                if (dtEmployee.Rows.Count > 0)
+                {
+                    int a = 0;
+                    for (int i = 0; i < dtEmployee.Rows.Count; i++)
+                    {
+                        a++;
+                        lblInformacao.Text = "Contas a Pagar: " + a + " de " + dtEmployee.Rows.Count;
+                        ContaPagar contaPagar = new ContaPagar();
+                        Pessoa pessoa = new Pessoa();
+                        pessoa = pessoaController.selecionarPessoaPorCodigoImportado(dtEmployee.Rows[i]["PARCEIRO"].ToString());
+                        if (pessoa != null)
+                        {
+                            if (pessoa.Id > 0)
+                                contaPagar.Pessoa = pessoa;
+
+                            contaPagar.Id = 0;
+                            contaPagar.AcrescimoBaixa = 0;
+                            contaPagar.CaixaPagamento = "";
+                            contaPagar.DataOrigem = DateTime.Parse(dtEmployee.Rows[i]["DATA_EMISSAO"].ToString());
+                            contaPagar.DataPagamento = DateTime.Parse("1900-01-01 00:00:00");
+                            contaPagar.DescontoBaixa = 0;
+
+                            contaPagar.Descricao = dtEmployee.Rows[i]["HISTORICO"].ToString();
+                            if (String.IsNullOrEmpty(contaPagar.Descricao))
+                                contaPagar.Descricao = "DESCRIÇÃO NÃO PREENCHIDA";
+                            contaPagar.DescricaoPagamento = "";
+                            contaPagar.DVenc = DateTime.Parse(dtEmployee.Rows[i]["DATA_VENCIMENTO"].ToString());
+                            string despesa = dtEmployee.Rows[i]["DSCDESPESA"].ToString();
+                            EmpresaFilialController empresaFilialController = new EmpresaFilialController();
+                            IList<EmpresaFilial> listaEmpresa = empresaFilialController.selecionarTodasFiliais();
+                            if (listaEmpresa.Count == 4)
+                            {
+                                if (despesa.Contains("ARINOS"))
+                                {
+                                    EmpresaFilial empresaFilial = new EmpresaFilial();
+                                    empresaFilial.Id = 2;
+                                    empresaFilial = (EmpresaFilial)Controller.getInstance().selecionar(empresaFilial);
+                                    contaPagar.EmpresaFilial = empresaFilial;
+                                }
+                                else if (despesa.Contains("BURITIS"))
+                                {
+                                    EmpresaFilial empresaFilial = new EmpresaFilial();
+                                    empresaFilial.Id = 3;
+                                    empresaFilial = (EmpresaFilial)Controller.getInstance().selecionar(empresaFilial);
+                                    contaPagar.EmpresaFilial = empresaFilial;
+                                }
+                                else if (despesa.Contains("PARACATU"))
+                                {
+                                    EmpresaFilial empresaFilial = new EmpresaFilial();
+                                    empresaFilial.Id = 4;
+                                    empresaFilial = (EmpresaFilial)Controller.getInstance().selecionar(empresaFilial);
+                                    contaPagar.EmpresaFilial = empresaFilial;
+                                }
+                                else
+                                    contaPagar.EmpresaFilial = Sessao.empresaFilialLogada;
+                            }
+                            else
+                                contaPagar.EmpresaFilial = Sessao.empresaFilialLogada;
+
+                            FormaPagamento forma = new FormaPagamento();
+                            forma.Id = 5;
+                            forma = (FormaPagamento)Controller.getInstance().selecionar(forma);
+                            contaPagar.FormaPagamento = forma;
+
+                            contaPagar.Historico = "IMPORTADO ULTRA";
+                            contaPagar.NDup = dtEmployee.Rows[i]["PARCELA"].ToString();
+                            contaPagar.Nfe = null;
+                            contaPagar.NumeroDocumento = dtEmployee.Rows[i]["DOCTO"].ToString();
+                            contaPagar.Pago = false;
+
+                            contaPagar.Pessoa = pessoa;
+                            PlanoConta planoConta = new PlanoConta();
+                            planoConta.Id = 2;
+                            planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                            contaPagar.PlanoConta = planoConta;
+                            contaPagar.ValorPago = 0;
+                            contaPagar.ValorTotal = decimal.Parse(dtEmployee.Rows[i]["SALDO"].ToString());
+                            contaPagar.VDup = decimal.Parse(dtEmployee.Rows[i]["SALDO"].ToString());
+                            Controller.getInstance().salvar(contaPagar);
+                        }
+                    }
+                }
+            }
+            catch (FbException fbex)
+            {
+                MessageBox.Show("Erro ao acessar o FireBird " + fbex.Message, "Erro");
+            }
+            finally
+            {
+                fbConn.Close();
+            }
+            
+        GenericaDesktop.ShowInfo("Importação de Contas a Pagar Realizada com Sucesso!");
+            
+        }
+
+        private void btnLocalizarBancoUltra_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "FDB Files(*.fdb)|*.fdb|All Files(*.*)|*.*";
+            openFileDialog.FilterIndex = 1;
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.ShowDialog();
+            if (openFileDialog.CheckFileExists)
+            {
+                txtCaminhoBancoUltra.Text = @openFileDialog.FileName;
+                caminhoBanco = txtCaminhoBancoUltra.Text;
+                conexaoFirebird2 = "User=SYSDBA;Password=masterkey;Database=" + caminhoBanco + ";DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;\r\nServerType=0;";
             }
         }
     }

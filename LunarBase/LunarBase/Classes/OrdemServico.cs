@@ -1,4 +1,6 @@
 ﻿using LunarBase.Anotations;
+using NHibernate.Criterion;
+using System.ComponentModel.DataAnnotations;
 
 namespace LunarBase.Classes
 {

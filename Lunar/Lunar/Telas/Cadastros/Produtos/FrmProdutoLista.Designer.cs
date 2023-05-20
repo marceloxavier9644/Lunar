@@ -429,6 +429,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produtos";
             this.Load += new System.EventHandler(this.FrmProdutoLista_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmProdutoLista_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

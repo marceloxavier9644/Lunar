@@ -34,6 +34,15 @@ namespace Lunar.Telas.ParametroDoSistema
             txtProximoNFCe.Texts = parametro.ProximoNumeroNFCe;
             txtProximoNFe.Texts = parametro.ProximoNumeroNFe;
 
+            if (String.IsNullOrEmpty(parametro.SerieNFCe))
+                txtSerieNFCe.Enabled = true;
+            if (String.IsNullOrEmpty(parametro.SerieNFe))
+                txtSerieNFe.Enabled = true;
+            if (String.IsNullOrEmpty(parametro.ProximoNumeroNFCe))
+                txtProximoNFCe.Enabled = true;
+            if (String.IsNullOrEmpty(parametro.ProximoNumeroNFe))
+                txtProximoNFe.Enabled = true;
+
             if (parametro.AmbienteProducao == true)
                 radioProducao.Checked = true;
             else
@@ -765,6 +774,31 @@ namespace Lunar.Telas.ParametroDoSistema
             if (folder.ShowDialog() == DialogResult.OK)
             {
                 txtCaminhoAnexos.Texts = folder.SelectedPath;
+            }
+        }
+
+        private void chkLiberarAlteracaoNumeros_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(chkLiberarAlteracaoNumeros.Checked == true)
+                {
+                    txtSerieNFCe.Enabled = true;
+                    txtSerieNFe.Enabled = true;
+                    txtProximoNFCe.Enabled = true;
+                    txtProximoNFe.Enabled = true;
+                }
+                else
+                {
+                    txtSerieNFCe.Enabled = false;
+                    txtSerieNFe.Enabled = false;
+                    txtProximoNFCe.Enabled = false;
+                    txtProximoNFe.Enabled = false;
+                }
+            }
+            catch
+            {
+
             }
         }
     }

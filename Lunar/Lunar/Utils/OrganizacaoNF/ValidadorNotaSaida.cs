@@ -50,15 +50,15 @@ namespace Lunar.Utils.OrganizacaoNF
                     {
                         throw new Exception("O campo \"Descrição do Produto\" é obrigatório! Código do Produto: " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao);
                     }
-                    if (string.IsNullOrWhiteSpace(nfeProduto.Produto.Ncm))
+                    if (string.IsNullOrWhiteSpace(nfeProduto.Ncm))
                     {
                         throw new Exception("O campo \"NCM do Produto\" é obrigatório! Código do Produto: " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao);
                     }
-                    if (string.IsNullOrWhiteSpace(nfeProduto.Produto.CfopVenda))
+                    if (string.IsNullOrWhiteSpace(nfeProduto.Cfop))
                     {
                         throw new Exception("O campo \"CFOP do Produto\" é obrigatório! Código do Produto: " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao);
                     }
-                    if (string.IsNullOrWhiteSpace(nfeProduto.Produto.CstIcms))
+                    if (string.IsNullOrWhiteSpace(nfeProduto.CstIcms))
                     {
                         throw new Exception("O campo \"CSOSN do Produto\" é obrigatório! Código do Produto: " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao);
                     }
@@ -66,7 +66,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     {
                         throw new Exception("O campo \"Unidade de Medida do Produto\" é obrigatório! Código do Produto: " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao);
                     }
-                    if (nfeProduto.Produto.CfopVenda.Equals("5405") || nfeProduto.Produto.CfopVenda.Equals("6405"))
+                    if (nfeProduto.Cfop.Equals("5405") || nfeProduto.Cfop.Equals("6405"))
                     {
                         if (string.IsNullOrWhiteSpace(nfeProduto.Produto.Cest))
                         {

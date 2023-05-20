@@ -508,34 +508,40 @@ namespace Lunar.Telas.Compras.Manifestos
         
         private void btnLancarNota_Click(object sender, EventArgs e)
         {
-            Nfe nfeGrid = (Nfe)grid.SelectedItem;
-            if (nfeGrid.Lancada == false)
+            if (grid.RowCount > 0 && grid.SelectedItem != null)
             {
-                if (GenericaDesktop.possuiConexaoInternet())
+                Nfe nfeGrid = (Nfe)grid.SelectedItem;
+                if (nfeGrid.Lancada == false)
                 {
-                    NotaUnique notaUnique = new NotaUnique();
-                    notaUnique = generica.ConsultaNotas_Manifesto_Unique(Sessao.empresaFilialLogada.Cnpj, nfeGrid.Chave);
-                    if (notaUnique != null)
+                    if (GenericaDesktop.possuiConexaoInternet())
                     {
-                        TNfeProc nfXML = Genericos.LoadFromXMLString<TNfeProc>(notaUnique.xml);
-                        FrmLancarNotaFiscalCompra frmLancarNota = new FrmLancarNotaFiscalCompra(nfXML, nfeGrid);
-                        frmLancarNota.ShowDialog();
-                        grid.Refresh();
+                        NotaUnique notaUnique = new NotaUnique();
+                        notaUnique = generica.ConsultaNotas_Manifesto_Unique(Sessao.empresaFilialLogada.Cnpj, nfeGrid.Chave);
+                        if (notaUnique != null)
+                        {
+                            TNfeProc nfXML = Genericos.LoadFromXMLString<TNfeProc>(notaUnique.xml);
+                            FrmLancarNotaFiscalCompra frmLancarNota = new FrmLancarNotaFiscalCompra(nfXML, nfeGrid);
+                            frmLancarNota.ShowDialog();
+                            grid.Refresh();
+                        }
+                        else
+                        {
+                            GenericaDesktop.ShowAlerta("XML não disponível para lançamento automático, baixe o xml pelo site da SEFAZ!");
+                        }
                     }
                     else
                     {
-                        GenericaDesktop.ShowAlerta("XML não disponível para lançamento automático, baixe o xml pelo site da SEFAZ!");
+                        GenericaDesktop.ShowAlerta("Instabilidade com sua internet, tente novamente ou verifique a conexão");
                     }
                 }
                 else
-                {
-                    GenericaDesktop.ShowAlerta("Instabilidade com sua internet, tente novamente ou verifique a conexão");
-                }
+                    GenericaDesktop.ShowAlerta("Esta nota fiscal já foi lançada");
+
             }
             else
-                GenericaDesktop.ShowAlerta("Esta nota fiscal já foi lançada");
-
-
+            {
+                GenericaDesktop.ShowAlerta("Selecione uma Nota");
+            }
 
         }
 
@@ -616,7 +622,7 @@ namespace Lunar.Telas.Compras.Manifestos
                     contaPagarDAO.excluirContaPagarNfe(nfeGrid.Id.ToString());
 
                     GenericaDesktop.gravarLinhaLog("[CANCELAMENTO_COMPRA_COM_CONTASPAGAR_NFE]: Usuário: " + Sessao.usuarioLogado.Id + " - " + Sessao.usuarioLogado.Login +
-                        " NFeID: " + nfeGrid.Id + " Chave: " + nfeGrid.Chave);
+                        " NFeID: " + nfeGrid.Id + " Chave: " + nfeGrid.Chave, "CANCELAMENTO COMPRA");
 
                     GenericaDesktop.ShowInfo("Lançamento cancelado com sucesso");
                     grid.Refresh();

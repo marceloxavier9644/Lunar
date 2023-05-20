@@ -39,6 +39,7 @@ namespace LunarBase.Classes
         private string tipoParceiroImportado;
         private bool registradoSpc;
         private bool escritorioCobranca;
+        private double comissaoVendedor;
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -111,6 +112,8 @@ namespace LunarBase.Classes
         public virtual bool RegistradoSpc { get => registradoSpc; set => registradoSpc = value; }
         [Anotacao("Escritorio Cobranca")]
         public virtual bool EscritorioCobranca { get => escritorioCobranca; set => escritorioCobranca = value; }
+        [Anotacao("Comissao")]
+        public virtual double ComissaoVendedor { get => comissaoVendedor; set => comissaoVendedor = value; }
 
         public override string ToString()
         {

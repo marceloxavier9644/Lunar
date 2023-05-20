@@ -215,7 +215,7 @@ namespace Lunar
             {
                 case Keys.F5:
                     lblStatus.Visible = true;
-                    lblStatus.Text = "Aguarde atualizaçaõ...";
+                    lblStatus.Text = "Aguarde atualização...";
                     Controller.getInstanceAtualiza();
                     Controller.getInstance().geraValoresPadrao();
                     lblStatus.Text = "Atualizado...";

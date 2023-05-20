@@ -999,6 +999,13 @@ namespace Lunar.Telas.Cadastros.Cliente
                 else
                     pessoa.ReceberLembrete = false;
 
+                if (!String.IsNullOrEmpty(txtComissao.Texts))
+                {
+                    pessoa.ComissaoVendedor = double.Parse(txtComissao.Texts);
+                }
+                else
+                    pessoa.ComissaoVendedor = 0;
+
                 //Telefones
                 if (gridTelefoneAdicional.RowCount > 0)
                 {
@@ -1316,6 +1323,7 @@ namespace Lunar.Telas.Cadastros.Cliente
             txtMae.Texts = pessoa.Mae;
             txtLocalTrabalho.Texts = pessoa.LocalTrabalho;
             txtFuncao.Texts = pessoa.FuncaoTrabalho;
+            txtComissao.Texts = pessoa.ComissaoVendedor.ToString();
 
             txtDataCadastro.Texts = pessoa.DataCadastro.ToShortDateString();
             txtUsuarioCadastro.Texts = pessoa.OperadorCadastro.ToString();
@@ -1624,6 +1632,32 @@ namespace Lunar.Telas.Cadastros.Cliente
             {
 
             }
+        }
+
+        private void chkVendedor_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkVendedor.Checked == true)
+                {
+                    lblComissao.Visible = true;
+                    txtComissao.Visible = true;
+                }
+                else
+                {
+                    lblComissao.Visible = false;
+                    txtComissao.Visible = false;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txtComissao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            generica.SoNumeroEVirgula(txtComissao.Texts, e);
         }
     }
 }

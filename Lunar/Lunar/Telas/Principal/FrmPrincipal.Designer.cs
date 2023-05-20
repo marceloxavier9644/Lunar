@@ -89,10 +89,11 @@
             this.saldoDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnConsultaVendasRelatorio = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnComissoes = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuVendas = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnComissoes = new System.Windows.Forms.ToolStripMenuItem();
+            this.etiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -812,12 +813,13 @@
             this.toolStripMenuItem1,
             this.estoqueToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.btnComissoes});
+            this.btnComissoes,
+            this.etiquetasToolStripMenuItem});
             this.dropMenuRelatorios.MenuItemHeight = 25;
             this.dropMenuRelatorios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuRelatorios.Name = "rjDropdownMenu1";
             this.dropMenuRelatorios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuRelatorios.Size = new System.Drawing.Size(181, 114);
+            this.dropMenuRelatorios.Size = new System.Drawing.Size(181, 136);
             // 
             // toolStripMenuItem1
             // 
@@ -864,6 +866,13 @@
             this.btnConsultaVendasRelatorio.Text = "Consulta Vendas";
             this.btnConsultaVendasRelatorio.Click += new System.EventHandler(this.btnConsultaVendasRelatorio_Click);
             // 
+            // btnComissoes
+            // 
+            this.btnComissoes.Name = "btnComissoes";
+            this.btnComissoes.Size = new System.Drawing.Size(180, 22);
+            this.btnComissoes.Text = "Comissões";
+            this.btnComissoes.Click += new System.EventHandler(this.btnComissoes_Click);
+            // 
             // dropMenuVendas
             // 
             this.dropMenuVendas.CursorSelecionado = System.Windows.Forms.Cursors.Hand;
@@ -892,12 +901,12 @@
             this.btnCondicionalMenu.Text = "Condicional";
             this.btnCondicionalMenu.Click += new System.EventHandler(this.btnCondicionalMenu_Click);
             // 
-            // btnComissoes
+            // etiquetasToolStripMenuItem
             // 
-            this.btnComissoes.Name = "btnComissoes";
-            this.btnComissoes.Size = new System.Drawing.Size(180, 22);
-            this.btnComissoes.Text = "Comissões";
-            this.btnComissoes.Click += new System.EventHandler(this.btnComissoes_Click);
+            this.etiquetasToolStripMenuItem.Name = "etiquetasToolStripMenuItem";
+            this.etiquetasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.etiquetasToolStripMenuItem.Text = "Etiquetas";
+            this.etiquetasToolStripMenuItem.Click += new System.EventHandler(this.etiquetasToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -998,5 +1007,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnImportar;
         private System.Windows.Forms.ToolStripMenuItem btnMovimentoCaixa;
         private System.Windows.Forms.ToolStripMenuItem btnComissoes;
+        private System.Windows.Forms.ToolStripMenuItem etiquetasToolStripMenuItem;
     }
 }

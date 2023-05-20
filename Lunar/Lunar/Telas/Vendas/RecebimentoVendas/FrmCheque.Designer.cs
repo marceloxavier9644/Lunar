@@ -334,7 +334,7 @@
             this.btnConfirmarCheques.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnConfirmarCheques.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmarCheques.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarCheques.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.btnConfirmarCheques.IconChar = FontAwesome.Sharp.IconChar.CircleCheck;
             this.btnConfirmarCheques.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnConfirmarCheques.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnConfirmarCheques.IconSize = 30;
@@ -434,6 +434,7 @@
             this.txtCpf.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCpf.Texts = "";
             this.txtCpf.UnderlinedStyle = false;
+            this.txtCpf.Leave += new System.EventHandler(this.txtCpf_Leave);
             // 
             // txtNumeroCheque
             // 

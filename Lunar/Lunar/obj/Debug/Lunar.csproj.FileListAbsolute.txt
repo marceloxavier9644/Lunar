@@ -679,3 +679,7 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.CaixaConferencia.FrmL
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.OrdensDeServico.FrmImprimirNumeroOS.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.RelatoriosDiversos.FrmComissaoRelatorio01.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.RelatoriosDiversos.FrmSelecionarData.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasReceber.Reports.FrmImprimirDuplicataDaGrafica.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\BarcodeStandard.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\System.Drawing.Common.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Compras.FrmImprimirEtiquetasOtica.resources

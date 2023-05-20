@@ -1061,6 +1061,33 @@ namespace Lunar.Telas.Fiscal
                                     nfe.IdInut = retorno.retInutNFe.idInut;
                                     Controller.getInstance().salvar(nfe);
 
+                                    try
+                                    {
+                                        OrdemServicoController ordemServicoController = new OrdemServicoController();
+                                        OrdemServico ordem = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
+                                        if (ordem != null)
+                                        {
+                                            if (ordem.Id > 0)
+                                            {
+                                                ordem.Nfe = null;
+                                                Controller.getInstance().salvar(ordem);
+                                            }
+                                        }
+                                        VendaController vendaController = new VendaController();
+                                        Venda venda = vendaController.selecionarVendaPorNF(nfe.Id);
+                                        if(venda != null)
+                                        {
+                                            if(venda.Id > 0)
+                                            {
+                                                venda.Nfe = null;
+                                                Controller.getInstance().salvar(venda);
+                                            }
+                                        }
+                                    }
+                                    catch
+                                    {
+
+                                    }
                                     generica.gravarXMLNaPasta(retorno.retInutNFe.xml,
                                             nfe.Chave, @"Fiscal\XML\NFCe\" + DateTime.Now.Year + "-" + DateTime.Now.Month.ToString().PadLeft(2, '0') + @"\Inutilizadas\", nfe.NNf + @"-INU.xml");
 
@@ -1144,6 +1171,34 @@ namespace Lunar.Telas.Fiscal
                                         nfe.Destinatario = "NF INUTILIZADA";
                                         nfe.IdInut = retorno.retornoInutNFe.idInut;
                                         Controller.getInstance().salvar(nfe);
+                                        //remove o numero da nota da origem
+                                        try
+                                        {
+                                            OrdemServicoController ordemServicoController = new OrdemServicoController();
+                                            OrdemServico ordem = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
+                                            if (ordem != null)
+                                            {
+                                                if (ordem.Id > 0)
+                                                {
+                                                    ordem.Nfe = null;
+                                                    Controller.getInstance().salvar(ordem);
+                                                }
+                                            }
+                                            VendaController vendaController = new VendaController();
+                                            Venda venda = vendaController.selecionarVendaPorNF(nfe.Id);
+                                            if (venda != null)
+                                            {
+                                                if (venda.Id > 0)
+                                                {
+                                                    venda.Nfe = null;
+                                                    Controller.getInstance().salvar(venda);
+                                                }
+                                            }
+                                        }
+                                        catch
+                                        {
+
+                                        }
                                         if (retorno.retornoInutNFe != null)
                                         {
                                             if (retorno.retornoInutNFe.xml != null)

@@ -48,10 +48,16 @@ namespace Lunar.Utils.OrganizacaoNF
                 if (notasReferenciadas != null)
                 {
                     if (notasReferenciadas.Length > 0)
-                        this.notasReferenciadas = notasReferenciadas;
+                    {
+                        if (notasReferenciadas[0] != null)
+                            this.notasReferenciadas = notasReferenciadas;
+                    }
                 }
                 if (frete != null)
-                    this.frete = frete;
+                {
+                    if(frete.transportadora != null)
+                        this.frete = frete;
+                }
                 this.valorFrete = valorFrete;
                 this.valorSeguro = valorSeguro;
                 this.valorOutrasDespesas = valorOutrasDespesas;
@@ -1679,26 +1685,7 @@ namespace Lunar.Utils.OrganizacaoNF
                         CRT = TNFeInfNFeEmitCRT.Item1,
                         enderEmit = enderecoEmitente()
                     },
-                    dest = new TNFeInfNFeDest
-                    {
-                        ItemElementName = ItemChoiceType3.CPF,
-                        Item = cpfDestinatario,
-                        xNome = razaoConsumidor,
-                        indIEDest = TNFeInfNFeDestIndIEDest.Item9,
-                        enderDest = new TEndereco
-                        {
-                            xLgr = nfe.Cliente.EnderecoPrincipal.Logradouro,
-                            nro = nfe.Cliente.EnderecoPrincipal.Numero,
-                            xBairro = nfe.Cliente.EnderecoPrincipal.Bairro,
-                            //ajustar
-                            cMun = nfe.Cliente.EnderecoPrincipal.Cidade.Ibge,
-                            xMun = nfe.Cliente.EnderecoPrincipal.Cidade.Descricao,
-                            UF = tratarCampo.Retornar_TUf(nfe.Cliente.EnderecoPrincipal.Cidade.Estado.Uf),
-                            CEP = (GenericaDesktop.RemoveCaracteres(nfe.Cliente.EnderecoPrincipal.Cep)),
-                            cPais = "1058",
-                            xPais = "Brasil"
-                        }
-                    },
+                    dest = retornarDestinatario(nfe, tpAmbiente),
                     //Produtos
                     det = this.det2,
                     //Totais

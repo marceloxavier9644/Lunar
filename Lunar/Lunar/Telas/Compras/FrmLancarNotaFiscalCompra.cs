@@ -1458,7 +1458,7 @@ namespace Lunar.Telas.Compras
 							produtoSelecionado.EstoqueAuxiliar = produtoSelecionado.EstoqueAuxiliar + nfeProd.QuantidadeEntrada;
 							Controller.getInstance().salvar(produtoSelecionado);
 
-							//MOVIMENTO ESTOQUE
+							//MOVIMENTO ESTOQUE CONCILIADO
 							Estoque estoque = new Estoque();
 							estoque.Produto = produtoSelecionado;
 							estoque.EmpresaFilial = Sessao.empresaFilialLogada;
@@ -1467,10 +1467,28 @@ namespace Lunar.Telas.Compras
 							estoque.DataEntradaSaida = DateTime.Parse(txtDataLancamento.Value.ToString());
 							estoque.Quantidade = nfeProd.QuantidadeEntrada;
 							estoque.Origem = "NOTA FISCAL " + nfe.NNf + " CNPJ: " + nfe.CnpjEmitente;
+							estoque.Descricao = "NOTA DE ENTRADA: " + nfe.NNf;
 							estoque.Conciliado = true;
-							Controller.getInstance().salvar(estoque);
+							if (nfe.Fornecedor != null)
+								estoque.Pessoa = nfe.Fornecedor;
+                            Controller.getInstance().salvar(estoque);
 
-							Controller.getInstance().salvar(nfeProd);
+                            //MOVIMENTO ESTOQUE NAO CONCILIADO
+                            estoque = new Estoque();
+                            estoque.Produto = produtoSelecionado;
+                            estoque.EmpresaFilial = Sessao.empresaFilialLogada;
+                            estoque.Entrada = true;
+                            estoque.Saida = false;
+                            estoque.DataEntradaSaida = DateTime.Parse(txtDataLancamento.Value.ToString());
+                            estoque.Quantidade = nfeProd.QuantidadeEntrada;
+                            estoque.Origem = "NOTA FISCAL " + nfe.NNf + " CNPJ: " + nfe.CnpjEmitente;
+                            estoque.Descricao = "NOTA DE ENTRADA: " + nfe.NNf;
+                            estoque.Conciliado = false;
+                            if (nfe.Fornecedor != null)
+                                estoque.Pessoa = nfe.Fornecedor;
+                            Controller.getInstance().salvar(estoque);
+
+                            Controller.getInstance().salvar(nfeProd);
 						}
 					}
 				}

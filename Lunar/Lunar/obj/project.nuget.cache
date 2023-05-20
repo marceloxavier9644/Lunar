@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "a2Y5qswvr7788xCM8cpp3tjwzem/I4ka78wGYuSfQ6J8lhdhD1E+ZiCqOKOsQN3sSH0gFt/NR0fpEvO1B6HN3w==",
+  "dgSpecHash": "pC60yNu9tbSctZEBaIIrKuuBNmWu76mJg538D7dY9aUJCD8YOTFi6h+IUIXPb1ub6qLb353WxcaylNiAv410bA==",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\marce\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\barcodelib\\2.4.0\\barcodelib.2.4.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\boletofacilsdk\\1.0.8\\boletofacilsdk.1.0.8.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\bouncycastle\\1.8.5\\bouncycastle.1.8.5.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\circularprogressbar\\2.8.0.16\\circularprogressbar.2.8.0.16.nupkg.sha512",
@@ -49,6 +50,7 @@
     "C:\\Users\\marce\\.nuget\\packages\\syncfusion.tools.base\\19.4.0.38\\syncfusion.tools.base.19.4.0.38.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\syncfusion.tools.windows\\19.4.0.38\\syncfusion.tools.windows.19.4.0.38.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.net.http\\4.3.4\\system.net.http.4.3.4.nupkg.sha512",
