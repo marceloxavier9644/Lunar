@@ -82,6 +82,18 @@ namespace LunarBase.ClassesBO
             }
         }
 
+        public IList<NfeProduto> selecionarProdutosPorNumeroNfe(int numeroNfe)
+        {
+            try
+            {
+                return dao.selecionarProdutosPorNumeroNfe(numeroNfe);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar produtos da nfe! Erro: " + e.Message);
+            }
+        }
+
         public IList<NfeProduto> selecionarProdutoPorCNPJeReferencia(string cnpjEmitente, string referencia)
         {
             try

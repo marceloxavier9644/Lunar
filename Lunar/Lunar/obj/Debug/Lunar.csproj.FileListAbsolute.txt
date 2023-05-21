@@ -683,3 +683,4 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasReceber.Reports
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\BarcodeStandard.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\System.Drawing.Common.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Compras.FrmImprimirEtiquetasOtica.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Estoques.FrmEtiquetas.resources

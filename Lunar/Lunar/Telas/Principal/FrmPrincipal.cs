@@ -960,8 +960,27 @@ namespace Lunar.Telas.Principal
 
         private void etiquetasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmImprimirEtiquetasOtica frm = new FrmImprimirEtiquetasOtica();
-            frm.ShowDialog();
+            //FrmImprimirEtiquetasOtica frm = new FrmImprimirEtiquetasOtica();
+            Form formBackground = new Form();
+            FrmEtiquetas uu = new FrmEtiquetas();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            //formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            uu.Owner = formBackground;
+            uu.ShowDialog();
+            formBackground.Dispose();
+            uu.Dispose();
+            //FrmEtiquetas frm = new FrmEtiquetas();
+            //frm.ShowDialog();
         }
     }
 }

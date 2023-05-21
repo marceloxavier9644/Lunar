@@ -686,6 +686,12 @@
     <Compile Include="Telas\Estoques\FrmBalancoEstoqueLista.Designer.cs">
       <DependentUpon>FrmBalancoEstoqueLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Estoques\FrmEtiquetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoques\FrmEtiquetas.Designer.cs">
+      <DependentUpon>FrmEtiquetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Estoques\FrmGerarInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1259,6 +1265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Estoques\FrmBalancoEstoqueLista.resx">
       <DependentUpon>FrmBalancoEstoqueLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoques\FrmEtiquetas.resx">
+      <DependentUpon>FrmEtiquetas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Estoques\FrmGerarInventario.resx">
       <DependentUpon>FrmGerarInventario.cs</DependentUpon>

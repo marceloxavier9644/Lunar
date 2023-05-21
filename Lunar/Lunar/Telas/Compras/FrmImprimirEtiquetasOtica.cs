@@ -15,9 +15,11 @@ namespace Lunar.Telas.Compras
         ProdutoController produtoController = new ProdutoController();
         Ean13 ean13 = new Ean13();
         Produto prod = new Produto();
-        public FrmImprimirEtiquetasOtica()
+        IList<Produto> listaProdutos = new List<Produto>();
+        public FrmImprimirEtiquetasOtica(IList<Produto> listaProdutos)
         {
             InitializeComponent();
+            this.listaProdutos = listaProdutos;
         }
 
         private void gerarEtiquetas()
@@ -28,7 +30,7 @@ namespace Lunar.Telas.Compras
             reportViewer1.ZoomMode = ZoomMode.Percent;
             reportViewer1.ZoomPercent = 100;
             this.reportViewer1.LocalReport.EnableExternalImages = true;
-            IList<Produto> listaProdutos = produtoController.selecionarProdutosComVariosFiltros("LENTE", Sessao.empresaFilialLogada);
+            //IList<Produto> listaProdutos = produtoController.selecionarProdutosComVariosFiltros("LENTE", Sessao.empresaFilialLogada);
             if(listaProdutos.Count > 0)
             {
                 foreach (Produto produto in listaProdutos)
@@ -37,7 +39,10 @@ namespace Lunar.Telas.Compras
                     {
                         using (var bc = new BarcodeLib.Barcode())
                         {
-                            dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, produto.Ean)));
+                            for (int i = 0; i < produto.Estoque; i++)
+                            {
+                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, produto.Ean)));
+                            }
                         }
                     }
                     else
@@ -51,7 +56,10 @@ namespace Lunar.Telas.Compras
                         }
                         using (var bc = new BarcodeLib.Barcode())
                         {
-                            dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, prod.Ean)));
+                            for (int i = 0; i < produto.Estoque; i++)
+                            {
+                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, prod.Ean)));
+                            }
                         }
                     }
                 }

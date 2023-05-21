@@ -14,6 +14,15 @@ namespace LunarBase.ClassesDAO
             IList<NfeProduto> retorno = Session.CreateQuery(sql).List<NfeProduto>();
             return retorno;
         }
+
+        public IList<NfeProduto> selecionarProdutosPorNumeroNfe(int numeroNfe)
+        {
+            Session = Conexao.GetSession();
+            String sql = "Select * FROM NfeProduto as Tabela INNER JOIN Nfe on Tabela.Nfe = Nfe.Id WHERE " +
+                         "Nfe.Nnf = '" + numeroNfe + "' and Nfe.TipoOperacao = 'E' and Nfe.FlagExcluido <> true";
+            IList<NfeProduto> retorno = Session.CreateSQLQuery(sql).AddEntity(typeof(NfeProduto)).List<NfeProduto>();
+            return retorno;
+        }
         public IList<NfeProduto> selecionarProdutoPorCNPJeReferencia(string cnpjEmitente, string referencia)
         {
             Session = Conexao.GetSession();
