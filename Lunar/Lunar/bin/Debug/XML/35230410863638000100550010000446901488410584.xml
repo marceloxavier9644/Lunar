@@ -1,0 +1,277 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe35230410863638000100550010000446901488410584" versao="4.00">
+      <ide>
+        <cUF>35</cUF>
+        <cNF>48841058</cNF>
+        <natOp>SAI VENDAS</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>44690</nNF>
+        <dhEmi>2023-04-18T13:07:08-02:00</dhEmi>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>3550308</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>4</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>0</indPres>
+        <procEmi>0</procEmi>
+        <verProc>3.90.50</verProc>
+      </ide>
+      <emit>
+        <CNPJ>10863638000100</CNPJ>
+        <xNome>NV Acessorios e Oculos Ltda</xNome>
+        <xFant>Vanin</xFant>
+        <enderEmit>
+          <xLgr>R: Cardeal Arcoverde</xLgr>
+          <nro>1749</nro>
+          <xCpl>A 24</xCpl>
+          <xBairro>Pinheiros</xBairro>
+          <cMun>3550308</cMun>
+          <xMun>Sao Paulo</xMun>
+          <UF>SP</UF>
+          <CEP>05407002</CEP>
+          <cPais>1058</cPais>
+          <xPais>Brasil</xPais>
+          <fone>1130402700</fone>
+        </enderEmit>
+        <IE>148621646110</IE>
+        <IM>39229386</IM>
+        <CNAE>4649499</CNAE>
+        <CRT>1</CRT>
+      </emit>
+      <dest>
+        <CNPJ>42988444000127</CNPJ>
+        <xNome>Ronei Js Produtos Opticos Eireli</xNome>
+        <enderDest>
+          <xLgr>Av Governador Valadares</xLgr>
+          <nro>678</nro>
+          <xBairro>Centro</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610000</CEP>
+          <cPais>1058</cPais>
+          <xPais>Brasil</xPais>
+          <fone>3836763246</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>7044597520016</IE>
+        <email>oticavenus@oticavenus.com.br</email>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>0100702</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Cordao Flutuante Sortido c/6 unid</xProd>
+          <NCM>54024400</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>6 pcs</uCom>
+          <qCom>2.0000</qCom>
+          <vUnCom>142.0000</vUnCom>
+          <vProd>284.00</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>6 pcs</uTrib>
+          <qTrib>2.0000</qTrib>
+          <vUnTrib>142.0000</vUnTrib>
+          <vFrete>39.16</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <vTotTrib>12.92</vTotTrib>
+          <ICMS>
+            <ICMSSN101>
+              <orig>1</orig>
+              <CSOSN>101</CSOSN>
+              <pCredSN>1.25</pCredSN>
+              <vCredICMSSN>3.55</vCredICMSSN>
+            </ICMSSN101>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISOutr>
+              <CST>49</CST>
+              <vBC>0.00</vBC>
+              <pPIS>0.00</pPIS>
+              <vPIS>0.00</vPIS>
+            </PISOutr>
+          </PIS>
+          <COFINS>
+            <COFINSOutr>
+              <CST>49</CST>
+              <vBC>0.00</vBC>
+              <pCOFINS>0.00</pCOFINS>
+              <vCOFINS>0.00</vCOFINS>
+            </COFINSOutr>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="2">
+        <prod>
+          <cProd>0101055</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Cordao PP S/T Preto</xProd>
+          <NCM>54026900</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>100 pc</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>49.0000</vUnCom>
+          <vProd>49.00</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>100 pc</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>49.0000</vUnTrib>
+          <vFrete>6.76</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <vTotTrib>2.23</vTotTrib>
+          <ICMS>
+            <ICMSSN101>
+              <orig>0</orig>
+              <CSOSN>101</CSOSN>
+              <pCredSN>1.25</pCredSN>
+              <vCredICMSSN>0.61</vCredICMSSN>
+            </ICMSSN101>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISOutr>
+              <CST>49</CST>
+              <vBC>0.00</vBC>
+              <pPIS>0.00</pPIS>
+              <vPIS>0.00</vPIS>
+            </PISOutr>
+          </PIS>
+          <COFINS>
+            <COFINSOutr>
+              <CST>49</CST>
+              <vBC>0.00</vBC>
+              <pCOFINS>0.00</pCOFINS>
+              <vCOFINS>0.00</vCOFINS>
+            </COFINSOutr>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>0.00</vBC>
+          <vICMS>0.00</vICMS>
+          <vICMSDeson>0.00</vICMSDeson>
+          <vFCPUFDest>0.00</vFCPUFDest>
+          <vICMSUFDest>0.00</vICMSUFDest>
+          <vICMSUFRemet>0.00</vICMSUFRemet>
+          <vFCP>0.00</vFCP>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vFCPST>0.00</vFCPST>
+          <vFCPSTRet>0.00</vFCPSTRet>
+          <vProd>333.00</vProd>
+          <vFrete>45.92</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>0.00</vIPI>
+          <vIPIDevol>0.00</vIPIDevol>
+          <vPIS>0.00</vPIS>
+          <vCOFINS>0.00</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>378.92</vNF>
+          <vTotTrib>15.15</vTotTrib>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>07397048000124</CNPJ>
+          <xNome>CORREIO - EMPRESA BRASILEIRA DE CORREIO [424]</xNome>
+          <IE>145644361111</IE>
+          <xEnder>Rua Joao Moura, 763</xEnder>
+          <xMun>SAO PAULO</xMun>
+          <UF>SP</UF>
+        </transporta>
+        <vol>
+          <qVol>1</qVol>
+          <esp>CAIXA</esp>
+          <nVol>0</nVol>
+          <pesoB>0.360</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>044690</nFat>
+          <vOrig>378.92</vOrig>
+          <vDesc>0.00</vDesc>
+          <vLiq>378.92</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2023-05-18</dVenc>
+          <vDup>378.92</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>01</tPag>
+          <vPag>378.92</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>PEDIDO 60896 FABPermite o Aproveitamento do Credito do ICMS no Valor de RS4.16 correspondente a Aliquota de 1.25%  nos termos do Art.23 da LC 123/2006 Fat. Renata Val aprox dos tributos R$15.15(3.99%)</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>07361429000153</CNPJ>
+        <xContato>Intelecta Tecnologia Ltda</xContato>
+        <email>contato@intelecta.com.br</email>
+        <fone>1131492100</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe35230410863638000100550010000446901488410584">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>t+tZqIzog7AYp+xr4Hq8ea6NQxY=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>Sy4/sCcGqNBE6vLQ290yeNehNu0cP+oIBcgyBmeKc2NHZFfpVtRFymT/hEO4x0IO59iSUzoH44mWGcyHLqn/e/aAM9ZLcm0aAihryYGN21O0/0u3gb5ojSBtVWZ51ui9S38Lep6zoW5s2ooln7po84ucGZi1B0By0r8BX9DmvD+Rl26RYzQAyh+btXhl6Xh4+3r8aN/E0+FmQ/ATyuWqt0HogRS+w6poUoulDqOUFBDd+RyG6vHL+qrAxejgK8kXy9xo66OWMNC9Wuuk2KMO3S21FhfWFEJwej7FnIuI7JSGJQr43eY9YYTgQ1WcEMyKk3GbLkUUtNOBiq9ZPkUNLg==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>MIIIAzCCBeugAwIBAgIIcoJbZCYQ03YwDQYJKoZIhvcNAQELBQAwdTELMAkGA1UEBhMCQlIxEzARBgNVBAoMCklDUC1CcmFzaWwxNjA0BgNVBAsMLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFsIGRvIEJyYXNpbCAtIFJGQjEZMBcGA1UEAwwQQUMgU0VSQVNBIFJGQiB2NTAeFw0yMDA2MjYxNTAwMDBaFw0yMzA2MjYxNTAwMDBaMIIBKzELMAkGA1UEBhMCQlIxCzAJBgNVBAgMAlNQMRIwEAYDVQQHDAlTQU8gUEFVTE8xEzARBgNVBAoMCklDUC1CcmFzaWwxGDAWBgNVBAsMDzAwMDAwMTAwOTY4NzU2NjE2MDQGA1UECwwtU2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgZG8gQnJhc2lsIC0gUkZCMRYwFAYDVQQLDA1SRkIgZS1DTlBKIEEzMRkwFwYDVQQLDBBBQyBTRVJBU0EgUkZCIHY1MRcwFQYDVQQLDA4zMDM0NzIyNDAwMDEzNTETMBEGA1UECwwKUFJFU0VOQ0lBTDEzMDEGA1UEAwwqTlYgQUNFU1NPUklPUyBFIE9DVUxPUyBMVERBOjEwODYzNjM4MDAwMTAwMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlffZbmiLwPsgSfFO4qBYB2jUcR+KU1A0z10zCwZUlNJrzOlcqUYKYP1ZEBPl4BHREgE8HkbE9VaMmD65uXSrquFr4zd7zFAfejOPXKAkiM9oC3Ak2LrMjJH3bPr4m2IBaohBfQLdIv+rcxz1VJyx1bDYkKM4wOQPpgdF+O725xT+Ny65PjjGH7FWdS8AJRahajyjYqx9dSJk9touIitUIHtURMuvpY0wdBQMx/RFrbV0SzaGdogTwwvWQE/n2hxNg7bA7SB2b5iiR/WOq/g75RkratrFfbNV9lgWJLMSm5T4X4g1uRqDZQbAEGB/TFsGP7YrQjuXY1eEERhr/+pUfQIDAQABo4IC3TCCAtkwCQYDVR0TBAIwADAfBgNVHSMEGDAWgBTs8UFRV6jmOules6Ai+QiKtTqHjzCBmQYIKwYBBQUHAQEEgYwwgYkwSAYIKwYBBQUHMAKGPGh0dHA6Ly93d3cuY2VydGlmaWNhZG9kaWdpdGFsLmNvbS5ici9jYWRlaWFzL3NlcmFzYXJmYnY1LnA3YjA9BggrBgEFBQcwAYYxaHR0cDovL29jc3AuY2VydGlmaWNhZG9kaWdpdGFsLmNvbS5ici9zZXJhc2FyZmJ2NTCBrQYDVR0RBIGlMIGigRBBRE1AVkFOSU4uQ09NLkJSoCAGBWBMAQMCoBcTFU1BUklBIERFIEZBVElNQSBWQU5JTqAZBgVgTAEDA6AQEw4xMDg2MzYzODAwMDEwMKA4BgVgTAEDBKAvEy0yNTAzMTk2NDA1MzUwNDc0ODcxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDCgFwYFYEwBAwegDhMMMDAwMDAwMDAwMDAwMHEGA1UdIARqMGgwZgYGYEwBAgMKMFwwWgYIKwYBBQUHAgEWTmh0dHA6Ly9wdWJsaWNhY2FvLmNlcnRpZmljYWRvZGlnaXRhbC5jb20uYnIvcmVwb3NpdG9yaW8vZHBjL2RlY2xhcmFjYW8tcmZiLnBkZjAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwgZ0GA1UdHwSBlTCBkjBKoEigRoZEaHR0cDovL3d3dy5jZXJ0aWZpY2Fkb2RpZ2l0YWwuY29tLmJyL3JlcG9zaXRvcmlvL2xjci9zZXJhc2FyZmJ2NS5jcmwwRKBCoECGPmh0dHA6Ly9sY3IuY2VydGlmaWNhZG9zLmNvbS5ici9yZXBvc2l0b3Jpby9sY3Ivc2VyYXNhcmZidjUuY3JsMB0GA1UdDgQWBBSqCBjDA0utTRGFQLH667RvhiCFCjAOBgNVHQ8BAf8EBAMCBeAwDQYJKoZIhvcNAQELBQADggIBADWEf4HjtpVNH2zb9c/uLr86VQQ6Liq3NZukRoya3zt6HmKWXzM+Nm9hjktzDOWkoi9S4ckaoNv/Xb3P9iHdooGj7mzu1BSP6/hFU1P46cM29Of+G60FWq3rv17P24ZzKK5W+5wZTmCzpRDW2klaj5BNGHCTvFMH50tvokvhERVUICedhRdbY02eBU9R+eoVzbfEzvmcZ8ST6WpNbbXc7BfSzUhQNpyselXTxtWFIsJJXf6XhOvnOHdeFmbQHkz/LlYvd5CkQs8pZJ9g3c7l1kv7NaH90mkDG6AUly0fYvY2kfxoFVFeq6SkQXc+sYGq8/yk2pAcmqvnggHUu2n6DN6mkTSaLSvxIKEOVrYJV84+jJsJsNmTdLcn1C07637OzXfkdJM8CZQkY1M+BWIFomwj4tj4z9DQCTOKi1765mmJHVQrassrllxIyYohcfP2R0MaqDPsLyCWFM4rxEe7a+rg+gJQuUcGydWB+C7fHtUBLiBtGdq3EFqC7FFnzsPRIrn4j4FBb7FyKp8F+bxfJBUCD4b5mSV1dpZN7aeBBes9zCWK1IysFY22nUKAI9DUftg7XoL/cc28snOTgXnc4RTbC+40wik+NnwVeyppvEwXdB034njHN968JxSsNRAc4e2OSmwWrznQZfoZBrHrp35yx69V0FonLCXHK8wqCVBg</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="Id135230585397132">
+      <tpAmb>1</tpAmb>
+      <verAplic>SP_NFE_PL009_V4</verAplic>
+      <chNFe>35230410863638000100550010000446901488410584</chNFe>
+      <dhRecbto>2023-04-18T13:09:12-03:00</dhRecbto>
+      <nProt>135230585397132</nProt>
+      <digVal>t+tZqIzog7AYp+xr4Hq8ea6NQxY=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

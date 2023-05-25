@@ -1,0 +1,339 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe versao="4.00" Id="NFe53230402617371000142550010008824531731445039">
+      <ide>
+        <cUF>53</cUF>
+        <cNF>73144503</cNF>
+        <natOp>VENDA DE MERCADORIAS P/OUTRO ESTADO</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>882453</nNF>
+        <dhEmi>2023-04-28T17:56:19-03:00</dhEmi>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>5300108</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>9</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>3</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>2023.3.29.1723_2233</verProc>
+      </ide>
+      <emit>
+        <CNPJ>02617371000142</CNPJ>
+        <xNome>COMPROL COMERCIO DE PRODUTOS OTICOS</xNome>
+        <xFant>COMPROL SAAN</xFant>
+        <enderEmit>
+          <xLgr>SAAN QUADRA 03 LOTE 105</xLgr>
+          <nro>105</nro>
+          <xCpl>.</xCpl>
+          <xBairro>INDUSTRIAL</xBairro>
+          <cMun>5300108</cMun>
+          <xMun>BRASILIA</xMun>
+          <UF>DF</UF>
+          <CEP>70632340</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>6132260885</fone>
+        </enderEmit>
+        <IE>0731158200149</IE>
+        <IM>0731158200149</IM>
+        <CNAE>3250707</CNAE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>42988444000127</CNPJ>
+        <xNome>RONEI J. S. PRODUTOS OPTICOS LTDA - ME</xNome>
+        <enderDest>
+          <xLgr>AV. GOVERNADOR VALADARES</xLgr>
+          <nro>688</nro>
+          <xCpl>.</xCpl>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610014</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3836763246</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>7044597520016</IE>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>368309</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>F SV ORMA TGEN8 GREY CRIZAL SAPPHIRE HR -0.75 -1.00</xProd>
+          <NCM>90015000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UND</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>112.4500000000</vUnCom>
+          <vProd>112.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UND</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>112.4500000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <vTotTrib>35.36</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>112.45</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>13.49</vICMS>
+            </ICMS00>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>112.45</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>1.86</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>112.45</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>8.55</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="2">
+        <prod>
+          <cProd>368331</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>F SV ORMA TGEN8 GREY CRIZAL SAPPHIRE HR -1.50 -0.50</xProd>
+          <NCM>90015000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UND</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>112.4500000000</vUnCom>
+          <vProd>112.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UND</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>112.4500000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <vTotTrib>35.36</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>112.45</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>13.49</vICMS>
+            </ICMS00>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>112.45</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>1.86</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>112.45</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>8.55</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="3">
+        <prod>
+          <cProd>320471</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>F SV AIRWEAR CRIZAL EASY PRO BCT NG 70 0.00 -0.75</xProd>
+          <NCM>90015000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UND</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>58.4500000000</vUnCom>
+          <vProd>58.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UND</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>58.4500000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <vTotTrib>18.38</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>58.45</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>7.01</vICMS>
+            </ICMS00>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>58.45</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.96</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>58.45</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>4.44</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="4">
+        <prod>
+          <cProd>319137</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>F SV AIRWEAR CRIZAL EASY PRO BCT NG 70 -1.00ESF</xProd>
+          <NCM>90015000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UND</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>58.4500000000</vUnCom>
+          <vProd>58.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UND</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>58.4500000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <vTotTrib>18.38</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>58.45</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>7.01</vICMS>
+            </ICMS00>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>58.45</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.96</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>58.45</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>4.44</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>341.80</vBC>
+          <vICMS>41.00</vICMS>
+          <vICMSDeson>0.00</vICMSDeson>
+          <vFCP>0.00</vFCP>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vFCPST>0.00</vFCPST>
+          <vFCPSTRet>0.00</vFCPSTRet>
+          <vProd>341.80</vProd>
+          <vFrete>0.00</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>0.00</vIPI>
+          <vIPIDevol>0.00</vIPIDevol>
+          <vPIS>5.64</vPIS>
+          <vCOFINS>25.98</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>341.80</vNF>
+          <vTotTrib>107.48</vTotTrib>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>48740351002885</CNPJ>
+          <xNome>BRASPRESS TRANSPORTES</xNome>
+          <IE>066905826</IE>
+          <xEnder>RODOVIA QUARTO ANEL VIARIO 9781</xEnder>
+          <xMun>FORTALEZA</xMun>
+          <UF>CE</UF>
+        </transporta>
+      </transp>
+      <pag>
+        <detPag>
+          <tPag>90</tPag>
+          <vPag>0.00</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>Tributos Totais Incidentes (Lei Federal 12.741/2012): R$107,48Cond. Pagto: BOLETO 3X 28/56/70Vendedor: WEBCliente Nro.: 85O.S. origem: 1623162,1624030Ref.: 8985VEMOS ,9053</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>09321296000117</CNPJ>
+        <xContato>Fabio Augusto Dal Castel</xContato>
+        <email>fc@dataweb.com.br</email>
+        <fone>5130276000</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe53230402617371000142550010008824531731445039">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>rpp1km91WOZoHsJlQtp9QYgk0gE=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>WUgutsMN5JZYj4lXDwgmywT8MKE2Q0lkED5IQXJZpJtf8ivDrhv+n7D/zHqCVL9QJtKziXYlyXAE5eT8k+RAXkDyajz9+8mUIV3VjvyGA75oxubJOb0OW6dUd5NFi1NXqkZWgGOeggpc1D1h2PPi6y9Y1/F78999XzJ/nE6gCNoOaX4i0w0mQTbNF8LSONlm7jeRJmW2tD0r4iMCAsd/0oKlE9M5EpBPtmrm1E3rr+SJ+AtnbKyzkEl7DMrPCzLoUIj7y+Iz8qpihre701vvHQZ5HDteuQq78/FvKhu3243Oqr5qtuK1Win/kXnnbIKt+whujGSQhKB4hawaTTTp8Q==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infProt>
+      <tpAmb>1</tpAmb>
+      <verAplic>SVRS202304261131</verAplic>
+      <chNFe>53230402617371000142550010008824531731445039</chNFe>
+      <dhRecbto>2023-04-28T17:56:20-03:00</dhRecbto>
+      <nProt>353230020496271</nProt>
+      <digVal>rpp1km91WOZoHsJlQtp9QYgk0gE=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

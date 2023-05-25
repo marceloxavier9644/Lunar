@@ -291,6 +291,8 @@ namespace Lunar.Telas.Compras.Reports {
             
             private global::System.Data.DataColumn columnEanImagem;
             
+            private global::System.Data.DataColumn columnIDEtiqueta;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EtiquetaDataTable() {
@@ -374,6 +376,14 @@ namespace Lunar.Telas.Compras.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDEtiquetaColumn {
+                get {
+                    return this.columnIDEtiqueta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +419,7 @@ namespace Lunar.Telas.Compras.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EtiquetaRow AddEtiquetaRow(string CodigoProduto, string Descricao, decimal Valor, string Ean, string Referencia, byte[] EanImagem) {
+            public EtiquetaRow AddEtiquetaRow(string CodigoProduto, string Descricao, decimal Valor, string Ean, string Referencia, byte[] EanImagem, int IDEtiqueta) {
                 EtiquetaRow rowEtiquetaRow = ((EtiquetaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CodigoProduto,
@@ -417,7 +427,8 @@ namespace Lunar.Telas.Compras.Reports {
                         Valor,
                         Ean,
                         Referencia,
-                        EanImagem};
+                        EanImagem,
+                        IDEtiqueta};
                 rowEtiquetaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEtiquetaRow);
                 return rowEtiquetaRow;
@@ -446,6 +457,7 @@ namespace Lunar.Telas.Compras.Reports {
                 this.columnEan = base.Columns["Ean"];
                 this.columnReferencia = base.Columns["Referencia"];
                 this.columnEanImagem = base.Columns["EanImagem"];
+                this.columnIDEtiqueta = base.Columns["IDEtiqueta"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,6 +475,8 @@ namespace Lunar.Telas.Compras.Reports {
                 base.Columns.Add(this.columnReferencia);
                 this.columnEanImagem = new global::System.Data.DataColumn("EanImagem", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEanImagem);
+                this.columnIDEtiqueta = new global::System.Data.DataColumn("IDEtiqueta", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDEtiqueta);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -685,6 +699,22 @@ namespace Lunar.Telas.Compras.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int IDEtiqueta {
+                get {
+                    try {
+                        return ((int)(this[this.tableEtiqueta.IDEtiquetaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'IDEtiqueta\' na tabela \'Etiqueta\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEtiqueta.IDEtiquetaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCodigoProdutoNull() {
                 return this.IsNull(this.tableEtiqueta.CodigoProdutoColumn);
             }
@@ -741,6 +771,18 @@ namespace Lunar.Telas.Compras.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetReferenciaNull() {
                 this[this.tableEtiqueta.ReferenciaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIDEtiquetaNull() {
+                return this.IsNull(this.tableEtiqueta.IDEtiquetaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIDEtiquetaNull() {
+                this[this.tableEtiqueta.IDEtiquetaColumn] = global::System.Convert.DBNull;
             }
         }
         

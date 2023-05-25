@@ -25,6 +25,7 @@ namespace LunarBase.Classes
         private Nfe nfe;
         private Pessoa vendedor;
         private bool entrada;
+        private string operadorEncerramento;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -60,5 +61,7 @@ namespace LunarBase.Classes
         public virtual Pessoa Vendedor { get => vendedor; set => vendedor = value; }
         [Anotacao("Entrada/Sinal")]
         public virtual bool Entrada { get => entrada; set => entrada = value; }
+        [Anotacao("Operador Encerramento")]
+        public virtual string OperadorEncerramento { get => operadorEncerramento; set => operadorEncerramento = value; }
     }
 }

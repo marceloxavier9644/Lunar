@@ -1,0 +1,287 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe32230302745351000319550040004374601897681380" versao="4.00">
+      <ide>
+        <cUF>32</cUF>
+        <cNF>89768138</cNF>
+        <natOp>VENDA DE PRODUCAO DO ESTABELECIMENTO 6101</natOp>
+        <mod>55</mod>
+        <serie>4</serie>
+        <nNF>437460</nNF>
+        <dhEmi>2023-03-31T15:20:00-03:00</dhEmi>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>3205002</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>0</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>12.1.033 | 3.0</verProc>
+      </ide>
+      <emit>
+        <CNPJ>02745351000319</CNPJ>
+        <xNome>JR ADAMVER INDUSTRIA E COMERCIO DE PRODUTOS OTICOS S/A</xNome>
+        <xFant>JR</xFant>
+        <enderEmit>
+          <xLgr>RUA COMENDADOR ALCIDES SIMAO HELOU</xLgr>
+          <nro>1478</nro>
+          <xCpl>GALPAO 5, 6, 7</xCpl>
+          <xBairro>CIVIT II</xBairro>
+          <cMun>3205002</cMun>
+          <xMun>SERRA</xMun>
+          <UF>ES</UF>
+          <CEP>29168090</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>2733285622</fone>
+        </enderEmit>
+        <IE>082723982</IE>
+        <IEST>0010452320135</IEST>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>42988444000127</CNPJ>
+        <xNome>RONEI J.S PRODUTOS OPTICOS LTDA</xNome>
+        <enderDest>
+          <xLgr>AVENIDA GOVERNADOR VALADARES</xLgr>
+          <nro>688</nro>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610014</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3836765065</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>7044597520016</IE>
+        <email>roneijsprodutosopticosltda@hotmail.com;xml@ativalog.com.br;e</email>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>M6098A1456</cProd>
+          <cEAN>7895277097487</cEAN>
+          <xProd>ARMACAO RECEITUARIO MORMAII SWAP NG DUO PRETO FOSCO/L TAM 56</xProd>
+          <NCM>90031100</NCM>
+          <cBenef />
+          <CFOP>6101</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>220.00000000</vUnCom>
+          <vProd>220.00</vProd>
+          <cEANTrib>7895277097487</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>220.00000000</vUnTrib>
+          <indTot>1</indTot>
+          <nFCI>A3BABB61-D62D-48E3-8F47-B0A12D729874</nFCI>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>5</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>220.00</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>26.40</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPITrib>
+              <CST>50</CST>
+              <vBC>220.00</vBC>
+              <pIPI>3.2500</pIPI>
+              <vIPI>7.15</vIPI>
+            </IPITrib>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>193.60</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>3.19</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>193.60</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>14.71</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="2">
+        <prod>
+          <cProd>M6112AA855</cProd>
+          <cEAN>7895277101047</cEAN>
+          <xProd>ARMACAO RECEITUARIO MORMAII SWAP 4 PRETO PAREDE PETROLEO FOSCO/L</xProd>
+          <NCM>90031100</NCM>
+          <cBenef />
+          <CFOP>6101</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>220.00000000</vUnCom>
+          <vProd>220.00</vProd>
+          <cEANTrib>7895277101047</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>220.00000000</vUnTrib>
+          <indTot>1</indTot>
+          <nFCI>E3B4CFD5-13B1-4E8C-BBB5-132D2BCB9961</nFCI>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>5</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>220.00</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>26.40</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPITrib>
+              <CST>50</CST>
+              <vBC>220.00</vBC>
+              <pIPI>3.2500</pIPI>
+              <vIPI>7.15</vIPI>
+            </IPITrib>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>193.60</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>3.20</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>193.60</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>14.72</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>440.00</vBC>
+          <vICMS>52.80</vICMS>
+          <vICMSDeson>0</vICMSDeson>
+          <vFCPUFDest>0</vFCPUFDest>
+          <vICMSUFDest>0</vICMSUFDest>
+          <vICMSUFRemet>0</vICMSUFRemet>
+          <vFCP>0</vFCP>
+          <vBCST>0</vBCST>
+          <vST>0</vST>
+          <vFCPST>0</vFCPST>
+          <vFCPSTRet>0</vFCPSTRet>
+          <vProd>440.00</vProd>
+          <vFrete>0</vFrete>
+          <vSeg>0</vSeg>
+          <vDesc>0</vDesc>
+          <vII>0</vII>
+          <vIPI>14.30</vIPI>
+          <vIPIDevol>0</vIPIDevol>
+          <vPIS>6.39</vPIS>
+          <vCOFINS>29.43</vCOFINS>
+          <vOutro>0</vOutro>
+          <vNF>454.30</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>01125797001198</CNPJ>
+          <xNome>ATIVA DISTRIBUICAO E LOGISTICA LTDA</xNome>
+          <IE>082582580</IE>
+          <xEnder>ROD BR 262, 222 GALPAO 01 MOD 3, 4 E 5</xEnder>
+          <xMun>VIANA</xMun>
+          <UF>ES</UF>
+        </transporta>
+        <vol>
+          <qVol>1</qVol>
+          <esp>CX</esp>
+          <pesoL>0.400</pesoL>
+          <pesoB>0.510</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>004000437460</nFat>
+          <vOrig>454.30</vOrig>
+          <vDesc>0</vDesc>
+          <vLiq>454.30</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2023-07-29</dVenc>
+          <vDup>454.30</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>15</tPag>
+          <vPag>454.30</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infAdFisco>MD-5:94DBB831B0F3C67A412EAC4010EC561F</infAdFisco>
+        <infCpl>Pedido N.890751  Pick: 20230331000228#Valor dos produtos que nao geram financeiro / brindes: R$ 0,00#Produtos que geram financeiro. Total: R$454,30#      Oculos / armacoes: 2 pecas, valor   R$ 440,00    IPI R$ 14,30      =   R$ 454,30    #######</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>53113791000122</CNPJ>
+        <xContato>Rodrigo de Almeida Sartorio</xContato>
+        <email>resp_tecnico_dfe_protheus@totvs.com.br</email>
+        <fone>1128593904</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe32230302745351000319550040004374601897681380">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>g8DR1n/XX5h7TQ2CrVMqnStvETM=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>lSM6nZMvu/VJdaSRZxgKiH+hZAhUQ9Jkf+h0zg5PIGkWgO2mxZcuGU1XybehPMJCVZWtGFafEmLaD6hYf/mbjREUzBvlFuJXtGWgcQHdIw4EONU9ukxLm6OyHLgrszc5ZM6QFPWGmDnZHZebNgHFPXvB1Ye7U9J8KXOmnsSWO3SqF6KFf4QrGaNHwQY/LWpcMI1uu97rWicrKszdfu0JFLu5h5zFRtwe6ZTRg6M7CuuqJTqJKk17cVt9DnCFEm16dQZcB02IWU2O23+UWSzJpMqN8CuDLDiaFduI3Z4DnGMirgUHBZLDbFLAfT89IX2O71Ma2heewGvW0QvyqNrumQ==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infProt>
+      <tpAmb>1</tpAmb>
+      <verAplic>SVRS202303091530</verAplic>
+      <chNFe>32230302745351000319550040004374601897681380</chNFe>
+      <dhRecbto>2023-03-31T15:21:30-03:00</dhRecbto>
+      <nProt>332230025847247</nProt>
+      <digVal>g8DR1n/XX5h7TQ2CrVMqnStvETM=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

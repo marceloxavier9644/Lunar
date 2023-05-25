@@ -1,0 +1,205 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe versao="4.00" Id="NFe35230313528071000103550020002254661004588442">
+      <ide>
+        <cUF>35</cUF>
+        <cNF>00458844</cNF>
+        <natOp>949 - REMESSA DE MATERIAL PROMOCIONAL</natOp>
+        <mod>55</mod>
+        <serie>2</serie>
+        <nNF>225466</nNF>
+        <dhEmi>2023-03-28T17:13:34-03:00</dhEmi>
+        <dhSaiEnt>2023-03-28T17:13:34-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>3518800</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>2</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>1.0</verProc>
+      </ide>
+      <emit>
+        <CNPJ>13528071000103</CNPJ>
+        <xNome>CLI CENTRAL DE LOGISTICA INTEGRADA EIRELI</xNome>
+        <xFant>CLI CENTRAL DE LOGISTICA INTEGRADA EIRELI</xFant>
+        <enderEmit>
+          <xLgr>R JOAQUINA DE JESUS</xLgr>
+          <nro>546</nro>
+          <xCpl>.</xCpl>
+          <xBairro>PARQUE SANTO AGOSTINHO</xBairro>
+          <cMun>3518800</cMun>
+          <xMun>GUARULHOS</xMun>
+          <UF>SP</UF>
+          <CEP>07140233</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>1131243232</fone>
+        </enderEmit>
+        <IE>796481127112</IE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>42988444000127</CNPJ>
+        <xNome>RONEI JS PRODUTOS OPTICOS EIRELI</xNome>
+        <enderDest>
+          <xLgr>AV GOV VALADARES</xLgr>
+          <nro>688</nro>
+          <xCpl>.</xCpl>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>Unai</xMun>
+          <UF>MG</UF>
+          <CEP>38610000</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>38999693816</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>7044597520016</IE>
+      </dest>
+      <entrega>
+        <CNPJ>42988444000127</CNPJ>
+        <xLgr>AV GOV VALADARES</xLgr>
+        <nro>688</nro>
+        <xCpl>.</xCpl>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>Unai</xMun>
+        <UF>MG</UF>
+      </entrega>
+      <det nItem="1">
+        <prod>
+          <cProd>MKT2195</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>ADESIVO DE VITRINE ZVP</xProd>
+          <NCM>49111090</NCM>
+          <CFOP>6949</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>8.8600000000</vUnCom>
+          <vProd>8.86</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>8.8600000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>8.86</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>1.06</vICMS>
+            </ICMS00>
+          </ICMS>
+          <PIS>
+            <PISOutr>
+              <CST>49</CST>
+              <vBC>0.00</vBC>
+              <pPIS>0.0000</pPIS>
+              <vPIS>0.00</vPIS>
+            </PISOutr>
+          </PIS>
+          <COFINS>
+            <COFINSOutr>
+              <CST>49</CST>
+              <vBC>0.00</vBC>
+              <pCOFINS>0.0000</pCOFINS>
+              <vCOFINS>0.00</vCOFINS>
+            </COFINSOutr>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>8.86</vBC>
+          <vICMS>1.06</vICMS>
+          <vICMSDeson>0.00</vICMSDeson>
+          <vFCP>0.00</vFCP>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vFCPST>0.00</vFCPST>
+          <vFCPSTRet>0.00</vFCPSTRet>
+          <vProd>8.86</vProd>
+          <vFrete>0.00</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>0.00</vIPI>
+          <vIPIDevol>0.00</vIPIDevol>
+          <vPIS>0.00</vPIS>
+          <vCOFINS>0.00</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>8.86</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>20147617002276</CNPJ>
+          <xNome>JAMEF TRANSPORTES LTDA</xNome>
+          <IE>114387171114</IE>
+          <xEnder>R Miguel Mentem</xEnder>
+          <xMun>Sao Paulo</xMun>
+          <UF>SP</UF>
+        </transporta>
+        <vol>
+          <qVol>1</qVol>
+          <nVol>0</nVol>
+          <pesoL>0.800</pesoL>
+          <pesoB>0.800</pesoB>
+        </vol>
+      </transp>
+      <pag>
+        <detPag>
+          <tPag>90</tPag>
+          <vPag>0.00</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infAdFisco>POSITIVACAO DE CLIENTES PARCEIROS ZEISS - Ronaldo - 38 999693816 Pedido: 522048 Pre-Nota: 458844 Destinatario: 243345 .Referente NF 1251182,</infAdFisco>
+      </infAdic>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe35230313528071000103550020002254661004588442">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>EDw/j58uGxeu4DWNwV4w+/w8gEA=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>sgP4KfefgqqcetL9gjivN98uFFQ5j2OUCtchRyT89xU8XyLH72+5U552OvcVH0DF5g1XoNlpyF0Zxno+HK7C5AkZofXN7u9xRKaUwfUWQxLj5LT3XuOIle6XZa9JJ9clFuSM2GXMCZZO4YaCGs+By+TJPagfTctD/RxIV27YSrDhkTv50zB7nBvrmNcPMscduTbF7ssG+3r4Q1mV81IrSPzmZu8OvaJwSl/uKwZcFvwCglLS12dJO0QxPqteVAzbV6WUCIkLy8+6ijWQQ6ifOd0/daF1RZdW/GZwnRaEnXXlNjh+etl02HWdbkpJZtKvcSWO/ivyVwEYfNBeYhBQeA==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="Id135230469336202">
+      <tpAmb>1</tpAmb>
+      <verAplic>SP_NFE_PL009_V4</verAplic>
+      <chNFe>35230313528071000103550020002254661004588442</chNFe>
+      <dhRecbto>2023-03-28T17:13:35-03:00</dhRecbto>
+      <nProt>135230469336202</nProt>
+      <digVal>EDw/j58uGxeu4DWNwV4w+/w8gEA=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

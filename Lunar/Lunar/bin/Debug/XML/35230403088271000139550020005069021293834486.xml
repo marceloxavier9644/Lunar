@@ -1,0 +1,229 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe35230403088271000139550020005069021293834486" versao="4.00">
+      <ide>
+        <cUF>35</cUF>
+        <cNF>29383448</cNF>
+        <natOp>VENDA DE PRODUCAO</natOp>
+        <mod>55</mod>
+        <serie>2</serie>
+        <nNF>506902</nNF>
+        <dhEmi>2023-04-28T19:13:02-03:00</dhEmi>
+        <dhSaiEnt>2023-04-29T12:20:27-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>3505708</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>6</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>5.0</verProc>
+      </ide>
+      <emit>
+        <CNPJ>03088271000139</CNPJ>
+        <xNome>SAFILO DO BRASIL LTDA.</xNome>
+        <xFant>SAFILO DO BRASIL LTDA.</xFant>
+        <enderEmit>
+          <xLgr>AV. MARGINAL PROJETADA</xLgr>
+          <nro>1810</nro>
+          <xBairro>JD.MUTINGA</xBairro>
+          <cMun>3505708</cMun>
+          <xMun>BARUERI</xMun>
+          <UF>SP</UF>
+          <CEP>06460200</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+        </enderEmit>
+        <IE>206156398114</IE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>42988444000127</CNPJ>
+        <xNome>RONEI JS PRODUTOS OPTICOS LTDA</xNome>
+        <enderDest>
+          <xLgr>AV GOVERNADOR VALADARES</xLgr>
+          <nro>688</nro>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610014</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3836763246</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>7044597520016</IE>
+        <email>marcelootica@hotmail.com,roneijsprodutosopticosltda@hotmail.</email>
+      </dest>
+      <entrega>
+        <CNPJ>42988444000127</CNPJ>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+      </entrega>
+      <det nItem="1">
+        <prod>
+          <cProd>052823000</cProd>
+          <cEAN>716736699714</cEAN>
+          <xProd>PLD 7040/S 08A 59M9 S</xProd>
+          <NCM>90041000</NCM>
+          <CFOP>6101</CFOP>
+          <uCom>PC</uCom>
+          <qCom>2.00</qCom>
+          <vUnCom>179.925</vUnCom>
+          <vProd>359.85</vProd>
+          <cEANTrib>716736699714</cEANTrib>
+          <uTrib>PC</uTrib>
+          <qTrib>2.00</qTrib>
+          <vUnTrib>179.925</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>359.85</vBC>
+              <pICMS>4.00</pICMS>
+              <vICMS>14.39</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPITrib>
+              <CST>50</CST>
+              <vBC>359.85</vBC>
+              <pIPI>9.75</pIPI>
+              <vIPI>35.08</vIPI>
+            </IPITrib>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>345.46</vBC>
+              <pPIS>1.65</pPIS>
+              <vPIS>5.70</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>345.46</vBC>
+              <pCOFINS>7.60</pCOFINS>
+              <vCOFINS>26.25</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>359.85</vBC>
+          <vICMS>14.39</vICMS>
+          <vICMSDeson>0.00</vICMSDeson>
+          <vFCP>0.00</vFCP>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vFCPST>0.00</vFCPST>
+          <vFCPSTRet>0.00</vFCPSTRet>
+          <vProd>359.85</vProd>
+          <vFrete>0.00</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>35.08</vIPI>
+          <vIPIDevol>0.00</vIPIDevol>
+          <vPIS>5.70</vPIS>
+          <vCOFINS>26.25</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>394.93</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>34028316003129</CNPJ>
+          <xNome>EMPRESA BRAS DE CORREIOS E TELEGRAFOS</xNome>
+          <IE>112388853119</IE>
+          <xEnder>RUA MERGENTHALER 592 BLOCO II - 14O. AND</xEnder>
+          <xMun>SAO PAULO</xMun>
+          <UF>SP</UF>
+        </transporta>
+        <vol>
+          <qVol>1</qVol>
+          <esp>CAIXA DE PAPELAO</esp>
+          <pesoL>0.280</pesoL>
+          <pesoB>0.280</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>0506902</nFat>
+          <vOrig>394.93</vOrig>
+          <vDesc>0.00</vDesc>
+          <vLiq>394.93</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2023-07-27</dVenc>
+          <vDup>394.93</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>15</tPag>
+          <vPag>394.93</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infAdFisco>COD.REPART.FISCAL: PF-10 - BARUERI</infAdFisco>
+        <infCpl>LOCAL DE ENTREGA: Endereco: AV GOVERNADOR VALADARES 688 Bairro/Distrito: CENTRO Municipio: UNAI CEP: 38610014 UF: MG Pais: Brasil Email: roneijsprodutosopticosltda@hotmail.com | Ebq: 829365 / 1 | Ped: 800341 | Ped Cli: 334571397 | Repres: SAFILO DO BRASIL LTDA | Cond Pagto: 30 60 90 120 e 150 DIAS DA | Total Qtdes: 2 | R - Armacao oculos receituario S  Oculos protetor solar |</infCpl>
+      </infAdic>
+      <compra>
+        <xPed>800341</xPed>
+      </compra>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe35230403088271000139550020005069021293834486">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>TuCz310XJefCviBXwlkmQ54NkY4=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>uqTaPbsO3V6Jnskq2rcpIXAanfVIF9zj/Uzmn/EZ9vGWSMiwZxEIpwlaZC5XhBP/Tcu+EKZObhikIrRkm46JbEcFz6yjJtLcYc7BjzXP2aFaqFQiGv5KMhxxIjBdDafwGb7vv++C5PQlu8Phmyvv9OOcloNeA6Zzwbf4aawuMQqhwbfIv0OEe74CXlq70GlOHodfrT0I6wE5TJXc6jUzyWYFlzIZxSXQCbWozNomL+PXNW1y+Nw3tErtKsUE5kmjKpIl7rUrfGorTV6xIjU53nFUK2cw1/YiYO+wVquoxy85zHuXf4/yeaUxunfp6+qfmWtKNkDJojzw3qYrWE1BXw==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="Id135230646473647">
+      <tpAmb>1</tpAmb>
+      <verAplic>SP_NFE_PL009_V4</verAplic>
+      <chNFe>35230403088271000139550020005069021293834486</chNFe>
+      <dhRecbto>2023-04-28T19:14:49-03:00</dhRecbto>
+      <nProt>135230646473647</nProt>
+      <digVal>TuCz310XJefCviBXwlkmQ54NkY4=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

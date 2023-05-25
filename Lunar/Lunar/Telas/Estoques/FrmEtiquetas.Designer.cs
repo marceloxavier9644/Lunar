@@ -57,6 +57,7 @@
             this.txtCodProduto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtProduto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnImprimir = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnLimpar = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -475,11 +476,34 @@
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnLimpar.FlatAppearance.BorderSize = 0;
+            this.btnLimpar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnLimpar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpar.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnLimpar.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.btnLimpar.IconColor = System.Drawing.Color.DarkOliveGreen;
+            this.btnLimpar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnLimpar.IconSize = 40;
+            this.btnLimpar.Location = new System.Drawing.Point(490, 397);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(44, 36);
+            this.btnLimpar.TabIndex = 309;
+            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // FrmEtiquetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 439);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnExcluirProduto);
             this.Controls.Add(this.tabControlAdv1);
             this.Controls.Add(this.panelTitleBar);
@@ -529,5 +553,6 @@
         private System.Data.DataColumn dataColumn7;
         private FontAwesome.Sharp.IconButton btnConfirmaItem;
         private FontAwesome.Sharp.IconButton btnExcluirProduto;
+        private FontAwesome.Sharp.IconButton btnLimpar;
     }
 }

@@ -9,7 +9,7 @@ namespace LunarBase.ClassesDAO
         {
             Session = Conexao.GetSession();
             String sql = "FROM Anexo as Tabela WHERE Tabela.FlagExcluido <> true and " +
-                         "Tabela.OrdemServico = " + idOrdemServico;
+                         "Tabela.OrdemServico = " + idOrdemServico + " order by Tabela.DataCadastro Desc";
             IList<Anexo> retorno = Session.CreateQuery(sql).List<Anexo>();
             return retorno;
         }

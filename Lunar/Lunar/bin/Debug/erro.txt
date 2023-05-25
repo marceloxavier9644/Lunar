@@ -1,1 +1,1 @@
-ERRO CONEXAOCould not find a getter for property 'OrdemServico' in class 'LunarBase.Classes.OsComissao'
+ERRO CONEXAOUnable to connect to any of the specified MySQL hosts.

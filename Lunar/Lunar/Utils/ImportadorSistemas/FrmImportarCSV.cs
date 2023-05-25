@@ -406,24 +406,24 @@ namespace Lunar.Utils.ImportadorSistemas
                         Controller.getInstance().atualizar(produto);
                         //ESTOQUE
                         Estoque estoque = new Estoque();
-                        //estoque nao conciliado ja vai junto com o conciliado!
-                        //if (produto.EstoqueAuxiliar > 0)
-                        //{
-                        //    estoque.BalancoEstoque = null;
-                        //    estoque.Conciliado = false;
-                        //    estoque.DataEntradaSaida = DateTime.Now;
-                        //    estoque.Descricao = "IMPORTAÇÃO DE SISTEMA";
-                        //    estoque.EmpresaFilial = Sessao.empresaFilialLogada;
-                        //    estoque.Entrada = true;
-                        //    estoque.Id = 0;
-                        //    estoque.Origem = "IMPORTACAO";
-                        //    estoque.Pessoa = null;
-                        //    estoque.Produto = produto;
-                        //    estoque.Quantidade = produto.EstoqueAuxiliar;
-                        //    estoque.QuantidadeInventario = 0;
-                        //    estoque.Saida = false;
-                        //    Controller.getInstance().salvar(estoque);
-                        //}
+
+                        if (produto.EstoqueAuxiliar > 0)
+                        {
+                            estoque.BalancoEstoque = null;
+                            estoque.Conciliado = false;
+                            estoque.DataEntradaSaida = DateTime.Now;
+                            estoque.Descricao = "IMPORTAÇÃO DE SISTEMA";
+                            estoque.EmpresaFilial = Sessao.empresaFilialLogada;
+                            estoque.Entrada = true;
+                            estoque.Id = 0;
+                            estoque.Origem = "IMPORTACAO";
+                            estoque.Pessoa = null;
+                            estoque.Produto = produto;
+                            estoque.Quantidade = produto.EstoqueAuxiliar;
+                            estoque.QuantidadeInventario = 0;
+                            estoque.Saida = false;
+                            Controller.getInstance().salvar(estoque);
+                        }
                         if (produto.Estoque > 0)
                         {
                             estoque.BalancoEstoque = null;
@@ -570,6 +570,15 @@ namespace Lunar.Utils.ImportadorSistemas
             {
                 lblInformacao.Visible = true;
                 Thread th = new Thread(() => puxarContasPagarUltra());
+                th.Start();
+                Application.DoEvents();
+                th.Join();
+            }
+            if (radioAnexosOS.Checked == true)
+            {
+                lblInformacao.Visible = true;
+                dataGridView1.Visible = true;
+                Thread th = new Thread(() => puxarAnexosOsUltra());
                 th.Start();
                 Application.DoEvents();
                 th.Join();
@@ -915,6 +924,61 @@ namespace Lunar.Utils.ImportadorSistemas
                 txtCaminhoBancoUltra.Text = @openFileDialog.FileName;
                 caminhoBanco = txtCaminhoBancoUltra.Text;
                 conexaoFirebird2 = "User=SYSDBA;Password=masterkey;Database=" + caminhoBanco + ";DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;\r\nServerType=0;";
+            }
+        }
+
+        private void puxarAnexosOsUltra()
+        {
+            OrdemServicoController ordemServicoController = new OrdemServicoController();
+            
+            FbConnection fbConn = new FbConnection(conexaoFirebird2);
+            FbCommand fbCmd = new FbCommand("select an.arquivo as Descricao, an.datahora as Data, ao.os as OrdemServico from anexos an inner join anexos_os ao on an.anexo_id = ao.anexo_id", fbConn);
+
+            try
+            {
+                fbConn.Open();
+                FbDataAdapter fbDa = new FbDataAdapter(fbCmd);
+                dtEmployee = new DataTable();
+                fbDa.Fill(dtEmployee);
+                dataGridView1.DataSource = dtEmployee;
+
+
+                if (dtEmployee.Rows.Count > 0)
+                {
+                    int a = 0;
+                    for (int i = 0; i < dtEmployee.Rows.Count; i++)
+                    {
+                        a++;
+                        lblInformacao.Text = "Anexos: " + a + " de " + dtEmployee.Rows.Count;
+                        Anexo anexo = new Anexo();
+                        anexo.Caminho = Sessao.parametroSistema.CaminhoAnexo + @"\" + dtEmployee.Rows[i]["Descricao"].ToString();
+                        Random randNum = new Random();
+                        string num = randNum.Next(1000, 1000000).ToString();
+                        anexo.Codigo = "OS_IMPORTADA_" + num;
+                        anexo.DataCadastro = DateTime.Parse(dtEmployee.Rows[i]["Data"].ToString());
+                        anexo.Filial = Sessao.empresaFilialLogada;
+                        IList<OrdemServico> listaOrdemServico = ordemServicoController.selecionarOrdemServicoPorSQL("Select * from OrdemServico as Tabela Where Tabela.NumeroSerie = '"+ (dtEmployee.Rows[i]["OrdemServico"].ToString()) + "'");
+                        if(listaOrdemServico.Count == 1)
+                        {
+                            foreach(OrdemServico os in listaOrdemServico)
+                            {
+                                OrdemServico ordemServico = new OrdemServico();
+                                ordemServico = os;
+                                anexo.OrdemServico = ordemServico;
+                                Controller.getInstance().salvar(anexo);
+                            }
+                        }
+                    }
+                    GenericaDesktop.ShowInfo("Anexo importado com sucesso!");
+                }
+            }
+            catch (FbException fbex)
+            {
+                MessageBox.Show("Erro ao acessar o FireBird " + fbex.Message, "Erro");
+            }
+            finally
+            {
+                fbConn.Close();
             }
         }
     }

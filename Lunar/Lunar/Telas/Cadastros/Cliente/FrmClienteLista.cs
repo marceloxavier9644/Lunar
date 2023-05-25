@@ -263,7 +263,7 @@ namespace Lunar.Telas.Cadastros.Cliente
                     uu.Owner = formBackground;
                     uu.ShowDialog();
                     formBackground.Dispose();
-                    //carregarLista();
+                    PesquisarCliente(pessoa.RazaoSocial, 0);
                 }
             }
             catch (Exception ex)

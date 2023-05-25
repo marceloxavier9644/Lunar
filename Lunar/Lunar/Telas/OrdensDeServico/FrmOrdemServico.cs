@@ -297,6 +297,7 @@ namespace Lunar.Telas.OrdensDeServico
                     row.SetField("Id", anexo.Id.ToString());
                     row.SetField("Codigo", anexo.Codigo);
                     row.SetField("Caminho", anexo.Caminho);
+                    row.SetField("DataCadastro", anexo.DataCadastro.ToShortDateString());
                     dsAnexo.Tables[0].Rows.Add(row);
                 }
             }
@@ -1712,7 +1713,7 @@ namespace Lunar.Telas.OrdensDeServico
                 ordemServico.Vendedor = vendedor;
             else
                 ordemServico.Vendedor = null;
-
+            ordemServico.OperadorCadastro = Sessao.usuarioLogado.Id.ToString();
             if (!String.IsNullOrEmpty(txtCodCliente.Texts))
             {
                 Pessoa pessoa = new Pessoa();
@@ -2063,7 +2064,7 @@ namespace Lunar.Telas.OrdensDeServico
                         string extensao = Path.GetExtension(file.FileName);
                         Random randNum = new Random();
                         string num = randNum.Next(1000, 1000000).ToString();
-                        string caminhoNovo = Sessao.parametroSistema.CaminhoAnexo + @"\OS_" + num + extensao;
+                        string caminhoNovo = Sessao.parametroSistema.CaminhoAnexo + @"\OS_"+txtCodCliente.Texts + "_" + num + extensao;
                         try 
                         { 
                             File.Copy(file.FileName, caminhoNovo, true);
@@ -2117,7 +2118,7 @@ namespace Lunar.Telas.OrdensDeServico
         {
             System.Data.DataRow row = dsAnexo.Tables[0].NewRow();
             row.SetField("Id", 0);
-            row.SetField("Codigo", "OS_" + codigo);
+            row.SetField("Codigo", "OS_" + txtCodCliente.Texts + "_" + codigo);
             row.SetField("Caminho", caminho);
             dsAnexo.Tables[0].Rows.Add(row);
         }

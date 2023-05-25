@@ -184,34 +184,6 @@ namespace Lunar.Telas.Compras.Manifestos
             }
         }
 
-        private void FrmManifesto_Paint(object sender, PaintEventArgs e)
-        {
-            if(primeiraVerificacao == true)
-            {
-                dsManifesto.Tables[0].Clear();
-                this.grid.DataSource = dsManifesto.Tables["Nota"];
-                primeiraVerificacao = false;
-                if (GenericaDesktop.possuiConexaoInternet())
-                    verificarNotasSefaz();
-                else
-                    GenericaDesktop.ShowAlerta("Instabilidade com sua internet para atualização de novas notas, tente novamente ou verifique a conexão");
-
-                //Insere Notas no Grid
-                DateTime primeiroDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-
-                DateTime ultimoDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                ultimoDiaDoMes = ultimoDiaDoMes.AddMonths(1).AddDays(-1);
-
-                txtDataInicial.Text = primeiroDiaDoMes.ToShortDateString();
-                txtDataFinal.Text = ultimoDiaDoMes.ToShortDateString();
-
-                //MessageBox.Show(ultimoDiaDoMes.ToShortDateString());
-
-                selecionarNotasBancoDados(primeiroDiaDoMes.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), ultimoDiaDoMes.ToString("yyyy'-'MM'-'dd' '00':'00':'00"));
-                calculaTotalNotas();
-            }
-        }
-
         private void verificarNotasSefaz()
         {
             try
@@ -728,6 +700,34 @@ namespace Lunar.Telas.Compras.Manifestos
                 {
                     GenericaDesktop.ShowAlerta("Arquivo XML inválido, verifique se selecionou o arquivo correto!");
                 }
+            }
+        }
+
+        private void FrmManifesto_Load(object sender, EventArgs e)
+        {
+            if (primeiraVerificacao == true)
+            {
+                dsManifesto.Tables[0].Clear();
+                this.grid.DataSource = dsManifesto.Tables["Nota"];
+                primeiraVerificacao = false;
+                if (GenericaDesktop.possuiConexaoInternet())
+                    verificarNotasSefaz();
+                else
+                    GenericaDesktop.ShowAlerta("Instabilidade com sua internet para atualização de novas notas, tente novamente ou verifique a conexão");
+
+                //Insere Notas no Grid
+                DateTime primeiroDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+                DateTime ultimoDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                ultimoDiaDoMes = ultimoDiaDoMes.AddMonths(1).AddDays(-1);
+
+                txtDataInicial.Text = primeiroDiaDoMes.ToShortDateString();
+                txtDataFinal.Text = ultimoDiaDoMes.ToShortDateString();
+
+                //MessageBox.Show(ultimoDiaDoMes.ToShortDateString());
+
+                selecionarNotasBancoDados(primeiroDiaDoMes.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), ultimoDiaDoMes.ToString("yyyy'-'MM'-'dd' '00':'00':'00"));
+                calculaTotalNotas();
             }
         }
     }

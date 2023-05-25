@@ -21,6 +21,7 @@
               <xs:element name="Ean" msprop:Generator_ColumnPropNameInTable="EanColumn" msprop:Generator_ColumnPropNameInRow="Ean" msprop:Generator_UserColumnName="Ean" msprop:Generator_ColumnVarNameInTable="columnEan" type="xs:string" minOccurs="0" />
               <xs:element name="Referencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_UserColumnName="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" type="xs:string" minOccurs="0" />
               <xs:element name="EanImagem" msprop:Generator_ColumnPropNameInTable="EanImagemColumn" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="EanImagem" msprop:Generator_UserColumnName="EanImagem" msprop:Generator_ColumnVarNameInTable="columnEanImagem" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="IDEtiqueta" msprop:Generator_ColumnPropNameInRow="IDEtiqueta" msprop:Generator_ColumnPropNameInTable="IDEtiquetaColumn" msprop:Generator_ColumnVarNameInTable="columnIDEtiqueta" msprop:Generator_UserColumnName="IDEtiqueta" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

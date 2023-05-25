@@ -1023,7 +1023,7 @@ namespace Lunar.Telas.Cadastros.Produtos
                 produto.Ncm = txtNCM.Texts;
                 produto.Cest = txtCEST.Texts;
                 produto.TipoProduto = comboTipoProduto.Text;
-
+                produto.IdComplementar = "";
                 //Custo
                 if (!String.IsNullOrEmpty(txtValorCusto.Texts))
                 {

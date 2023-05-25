@@ -1,0 +1,214 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe35230504692027001034550050077651921055521004" versao="4.00">
+      <ide>
+        <cUF>35</cUF>
+        <cNF>05552100</cNF>
+        <natOp>Venda merc.adq.receb.de terceiros</natOp>
+        <mod>55</mod>
+        <serie>5</serie>
+        <nNF>7765192</nNF>
+        <dhEmi>2023-05-22T12:13:25-03:00</dhEmi>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>3552403</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>4</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>SynchroDFe_3.4.4</verProc>
+      </ide>
+      <emit>
+        <CNPJ>04692027001034</CNPJ>
+        <xNome>LUXOTTICA BRASIL PRODUTOS OTICOS E ESPORTIVOS LTDA</xNome>
+        <xFant>CD SUMARE (SP)</xFant>
+        <enderEmit>
+          <xLgr>Avenida Americo Ribeiro dos Santos</xLgr>
+          <nro>S/N</nro>
+          <xBairro>Parque Bandeirantes I ( Nova Veneza</xBairro>
+          <cMun>3552403</cMun>
+          <xMun>Sumare</xMun>
+          <UF>SP</UF>
+          <CEP>13181715</CEP>
+          <xPais>Brasil</xPais>
+          <fone>08007039444</fone>
+        </enderEmit>
+        <IE>671525538110</IE>
+        <IM>105090</IM>
+        <CNAE>4649499</CNAE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>42988444000127</CNPJ>
+        <xNome>RONEI J S PRODUTOS OPTICOS LTDA</xNome>
+        <enderDest>
+          <xLgr>AV GOVERNADOR VALADARES  688</xLgr>
+          <nro>s/n</nro>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3138625</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610014</CEP>
+          <cPais>1058</cPais>
+          <xPais>Brasil</xPais>
+          <fone>3836763246</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>7044597520016</IE>
+        <email>roneijsprodutosopticosltda@hotmail.com</email>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>ZRB416530 622/5A54</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>LENTE</xProd>
+          <NCM>90015000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>2.0000</qCom>
+          <vUnCom>57.0850000000</vUnCom>
+          <vProd>114.17</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>2.0000</qTrib>
+          <vUnTrib>57.0850000000</vUnTrib>
+          <indTot>1</indTot>
+          <xPed>CALL CENTER BR</xPed>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>114.17</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>4.57</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>114.17</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>1.88</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>114.17</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>8.68</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>114.17</vBC>
+          <vICMS>4.57</vICMS>
+          <vICMSDeson>0.00</vICMSDeson>
+          <vFCP>0.00</vFCP>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vFCPST>0.00</vFCPST>
+          <vFCPSTRet>0.00</vFCPSTRet>
+          <vProd>114.17</vProd>
+          <vFrete>0.00</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>0.00</vIPI>
+          <vIPIDevol>0.00</vIPIDevol>
+          <vPIS>1.88</vPIS>
+          <vCOFINS>8.68</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>114.17</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>48740351000165</CNPJ>
+          <xNome>BRASPRESS TRANSPORTES URGENTES LTDA</xNome>
+          <IE>116945108113</IE>
+          <xEnder>R CORONEL MARQUES RIBEIRO 225</xEnder>
+          <xMun>SAO PAULO</xMun>
+          <UF>SP</UF>
+        </transporta>
+        <vol>
+          <qVol>1</qVol>
+          <esp>VOLUME</esp>
+          <pesoL>0.090</pesoL>
+          <pesoB>0.090</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>0000000000</nFat>
+          <vOrig>114.17</vOrig>
+          <vDesc>0.00</vDesc>
+          <vLiq>114.17</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2023-06-21</dVenc>
+          <vDup>114.17</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <tPag>15</tPag>
+          <vPag>114.17</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>Motivo da ordem: Fora de garantia</infCpl>
+      </infAdic>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe35230504692027001034550050077651921055521004">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>D0wQo0AhKoeYvbRpCxVPynR5duU=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>UfzgCB75W6iKvBlPwepuXSmlYBdQf7eCHty9awTzOvMB0FCyCO5lS4ue6MNgPYqspf8DghrlUXH5PXcJ9I6jr5FLlN6wiu0sMzKh9KtenN+SLySok2GqCBCuOz2VKghRnb0s8VlVccA3++GJzYRTglQobhdZKVfafI85pRKohmWV3Eh0z9WQ2RDu7TAYBwKbLcND/wU+/Py54FMfP//P3n6ubNV1VS+47lG9zyEn2CygIZM0RFQaPGjYIxXI5y4il9QmjT2jxuWK7oQ3XEKTWxcjptEEEV5j6UC6N2nB3Oq0e0dCeW+X2Gznmf+GWsgac+f4XabELKj8WwOdd2Oq5g==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="Id135230783387458">
+      <tpAmb>1</tpAmb>
+      <verAplic>SP_NFE_PL009_V4</verAplic>
+      <chNFe>35230504692027001034550050077651921055521004</chNFe>
+      <dhRecbto>2023-05-22T12:19:17-03:00</dhRecbto>
+      <nProt>135230783387458</nProt>
+      <digVal>D0wQo0AhKoeYvbRpCxVPynR5duU=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

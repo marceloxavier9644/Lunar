@@ -15,7 +15,8 @@
 		<property name="DataAbertura" column="DATAABERTURA" type="DateTime"/>
 		<property name="DataEncerramento" column="DATAENCERRAMENTO" type="DateTime"/>
 		<property name="Entrada" column="ENTRADA" type="Boolean"/>
-
+		<property name="OperadorEncerramento" column="OPERADORENCERRAMENTO" type="String" length="80"/>
+		
 		<many-to-one name="Nfe" column="NFE" class="LunarBase.Classes.Nfe" not-null="false" foreign-key="FK_ORDEMSERVICO_NFE" lazy="false"/>
 		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="true" foreign-key="FK_ORDEMSERVICO_OBJETO" lazy="false"/>
 		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_ORDEMSERVICO_CLIENTE" lazy="false"/>

@@ -957,8 +957,13 @@ namespace Lunar.Telas.Cadastros.Cliente
 
                 if (chkSPC.Checked == true)
                     pessoa.RegistradoSpc = true;
+                else
+                    pessoa.RegistradoSpc = false;
+
                 if (chkEscritorioCobranca.Checked == true)
                     pessoa.EscritorioCobranca = true;
+                else
+                    pessoa.EscritorioCobranca = false;
 
                 //Dados Básicos
                 pessoa.Cnpj = GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim());

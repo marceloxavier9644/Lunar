@@ -31,17 +31,21 @@ namespace Lunar.Telas.Compras
             reportViewer1.ZoomPercent = 100;
             this.reportViewer1.LocalReport.EnableExternalImages = true;
             //IList<Produto> listaProdutos = produtoController.selecionarProdutosComVariosFiltros("LENTE", Sessao.empresaFilialLogada);
-            if(listaProdutos.Count > 0)
+
+            if (listaProdutos.Count > 0)
             {
+                int idx = 0;
                 foreach (Produto produto in listaProdutos)
                 {
+                    
                     if (!String.IsNullOrEmpty(produto.Ean))
                     {
                         using (var bc = new BarcodeLib.Barcode())
                         {
                             for (int i = 0; i < produto.Estoque; i++)
                             {
-                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, produto.Ean)));
+                                idx++;
+                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, produto.Ean)), idx);
                             }
                         }
                     }
@@ -58,7 +62,8 @@ namespace Lunar.Telas.Compras
                         {
                             for (int i = 0; i < produto.Estoque; i++)
                             {
-                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, prod.Ean)));
+                                idx++;
+                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, prod.Ean)), idx);
                             }
                         }
                     }

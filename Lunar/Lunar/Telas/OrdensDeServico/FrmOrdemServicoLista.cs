@@ -78,6 +78,10 @@ namespace Lunar.Telas.OrdensDeServico
             abrirNovoCadastro();
         }
 
+        private void criarAgrupamentoGrid()
+        {
+        
+        }
         private void abrirNovoCadastro()
         {
             Form formBackground = new Form();
@@ -2097,7 +2101,11 @@ namespace Lunar.Telas.OrdensDeServico
             options.ExcludeColumns.Add("Nfe.Modelo");
             options.ExcludeColumns.Add("ValorProduto");
             options.ExcludeColumns.Add("ValorServico");
+            options.ExcludeColumns.Add("OperadorCadastro");
+            options.ExcludeColumns.Add("Cliente.Id");
+            options.ExcludeColumns.Add("OperadorEncerramento");
             options.AutoColumnWidth = true;
+            options.FitAllColumnsInOnePage = true;
 
             int qtdPaginas = sfDataPager1.PageCount;
             if (qtdPaginas > 1)

@@ -46,6 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCaminhoBancoUltra = new System.Windows.Forms.TextBox();
             this.btnLocalizarBancoUltra = new System.Windows.Forms.Button();
+            this.radioAnexosOS = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +86,7 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 186);
             this.dataGridView1.Name = "dataGridView1";
@@ -247,12 +249,24 @@
             this.btnLocalizarBancoUltra.UseVisualStyleBackColor = true;
             this.btnLocalizarBancoUltra.Click += new System.EventHandler(this.btnLocalizarBancoUltra_Click);
             // 
+            // radioAnexosOS
+            // 
+            this.radioAnexosOS.AutoSize = true;
+            this.radioAnexosOS.Location = new System.Drawing.Point(408, 154);
+            this.radioAnexosOS.Name = "radioAnexosOS";
+            this.radioAnexosOS.Size = new System.Drawing.Size(81, 17);
+            this.radioAnexosOS.TabIndex = 19;
+            this.radioAnexosOS.TabStop = true;
+            this.radioAnexosOS.Text = "Anexos O.S";
+            this.radioAnexosOS.UseVisualStyleBackColor = true;
+            // 
             // FrmImportarCSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(579, 450);
+            this.Controls.Add(this.radioAnexosOS);
             this.Controls.Add(this.btnLocalizarBancoUltra);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCaminhoBancoUltra);
@@ -302,5 +316,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCaminhoBancoUltra;
         private System.Windows.Forms.Button btnLocalizarBancoUltra;
+        private System.Windows.Forms.RadioButton radioAnexosOS;
     }
 }

@@ -916,6 +916,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         }
                     }
                 }
+               
             }
         }
 
@@ -1513,6 +1514,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 }
                 ordemServico.DataEncerramento = DateTime.Now;
                 ordemServico.Status = "ENCERRADA";
+                ordemServico.OperadorEncerramento = Sessao.usuarioLogado.Id.ToString() + "-" + Sessao.usuarioLogado.Login;
                 if (descontoRecebido > 0)
                 {
                     ordemServico.ValorDesconto = descontoRecebido;

@@ -16,10 +16,12 @@ namespace Lunar.Telas.Estoques
 {
     public partial class FrmEtiquetas : Form
     {
+        GenericaDesktop generica = new GenericaDesktop();
         public FrmEtiquetas()
         {
             InitializeComponent();
             this.grid.DataSource = dsProdutos;
+            txtProduto.Focus();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -56,6 +58,7 @@ namespace Lunar.Telas.Estoques
                     else
                     {
                         txtQuantidade.Focus();
+                        txtProduto.SelectAll();
                     }
                 }
             }
@@ -99,6 +102,7 @@ namespace Lunar.Telas.Estoques
                                 txtCodProduto.Texts = ((Produto)produtoOjeto).Id.ToString();
                                 txtQuantidade.Texts = "1";
                                 txtQuantidade.Focus();
+                                txtProduto.SelectAll();
                                 break;
                         }
 
@@ -205,6 +209,7 @@ namespace Lunar.Telas.Estoques
 
         private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
         {
+            generica.SoNumero(txtQuantidade.Texts, e);
             if (e.KeyChar == 13)
             {
                 btnConfirmaItem.PerformClick();
@@ -221,6 +226,7 @@ namespace Lunar.Telas.Estoques
 
         private void txtCodProduto_KeyPress(object sender, KeyPressEventArgs e)
         {
+            generica.SoNumero(txtCodProduto.Texts, e);
             if (e.KeyChar == 13)
             {
                 try
@@ -292,9 +298,12 @@ namespace Lunar.Telas.Estoques
 
         private void btnExcluirProduto_Click(object sender, EventArgs e)
         {
-            var selectedItem = this.grid.CurrentItem as DataRowView;
-            var dataRow = (selectedItem as DataRowView).Row;
-            dsProdutos.Tables[0].Rows[grid.SelectedIndex].Delete();
+            if (grid.SelectedIndex >= 0)
+            {
+                var selectedItem = this.grid.CurrentItem as DataRowView;
+                var dataRow = (selectedItem as DataRowView).Row;
+                dsProdutos.Tables[0].Rows[grid.SelectedIndex].Delete();
+            }
         }
 
         private void grid_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
@@ -303,6 +312,16 @@ namespace Lunar.Telas.Estoques
                 e.Style.BackColor = Color.WhiteSmoke;
             else
                 e.Style.BackColor = Color.White;
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtCodProduto.Texts = "";
+            txtProduto.Texts = "";
+            txtNotaCompra.Texts = "";
+            txtQuantidade.Texts = "1";
+            dsProdutos.Tables[0].Clear();
+            txtProduto.Focus();
         }
     }
 }

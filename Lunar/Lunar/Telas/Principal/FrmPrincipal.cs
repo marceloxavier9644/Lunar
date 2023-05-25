@@ -94,6 +94,8 @@ namespace Lunar.Telas.Principal
                 panelDesktop.BackgroundImageLayout = ImageLayout.Center;
                 panelDesktop.BackgroundImage = Image.FromFile(Sessao.parametroSistema.Logo);
             }
+
+            lblCaption.Text = "Página Inicial - " + Sessao.usuarioLogado.Login;
         }
 
         //Drag Form
