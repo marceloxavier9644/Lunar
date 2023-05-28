@@ -59,5 +59,23 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+
+        public IList<Caixa> selecionarCaixaPorSqlNativo(String sql)
+        {
+            CaixaBO bo = new CaixaBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarCaixaPorSqlNativo(sql);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

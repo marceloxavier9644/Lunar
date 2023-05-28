@@ -1,6 +1,7 @@
 ﻿using Lunar.Telas.Cadastros.Cidades;
 using Lunar.Telas.Cadastros.Cliente.PessoaAdicionais;
 using Lunar.Utils;
+using Lunar.Utils.IntegracaoZAPI;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
@@ -949,6 +950,9 @@ namespace Lunar.Telas.Cadastros.Cliente
                 pessoa.Tecnico = false;
                 if (chkTecnico.Checked == true)
                     pessoa.Tecnico = true;
+                pessoa.Cobrador = false;
+                if (chkCobrador.Checked == true)
+                    pessoa.Cobrador = true;
 
                 if (radioPF.Checked == true)
                     pessoa.TipoPessoa = "PF";
@@ -1218,6 +1222,7 @@ namespace Lunar.Telas.Cadastros.Cliente
             catch (Exception ex)
             {
                 GenericaDesktop.ShowErro(ex.Message);
+                this.Close();
             }
         }
 
@@ -1384,6 +1389,10 @@ namespace Lunar.Telas.Cadastros.Cliente
                 chkTecnico.Checked = true;
             else
                 chkTecnico.Checked = false;
+            if (pessoa.Cobrador == true)
+                chkCobrador.Checked = true;
+            else
+                chkCobrador.Checked = false;
 
             if (pessoa.TipoPessoa.Equals("PF"))
                 radioPF.Checked = true;

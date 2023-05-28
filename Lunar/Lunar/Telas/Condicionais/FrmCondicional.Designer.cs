@@ -44,7 +44,7 @@
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.autoLabel25 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.lblTitulo = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnFechar = new FontAwesome.Sharp.IconButton();
             this.txtDataAbertura = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.autoLabel59 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -188,7 +188,7 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.panelTitleBar.Controls.Add(this.autoLabel25);
+            this.panelTitleBar.Controls.Add(this.lblTitulo);
             this.panelTitleBar.Controls.Add(this.btnFechar);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
@@ -197,16 +197,16 @@
             this.panelTitleBar.TabIndex = 257;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
-            // autoLabel25
+            // lblTitulo
             // 
-            this.autoLabel25.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel25.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel25.ForeColor = System.Drawing.Color.White;
-            this.autoLabel25.Location = new System.Drawing.Point(5, 1);
-            this.autoLabel25.Name = "autoLabel25";
-            this.autoLabel25.Size = new System.Drawing.Size(140, 35);
-            this.autoLabel25.TabIndex = 198;
-            this.autoLabel25.Text = "Condicional";
+            this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblTitulo.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(5, 1);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(140, 35);
+            this.lblTitulo.TabIndex = 198;
+            this.lblTitulo.Text = "Condicional";
             // 
             // btnFechar
             // 
@@ -1110,7 +1110,7 @@
         private FontAwesome.Sharp.IconButton btnPesquisaCliente;
         private RJ_UI.Classes.RJTextBox txtCliente;
         private System.Windows.Forms.Panel panelTitleBar;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel25;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lblTitulo;
         private FontAwesome.Sharp.IconButton btnFechar;
         private Syncfusion.WinForms.Input.SfDateTimeEdit txtDataAbertura;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel59;

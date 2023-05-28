@@ -28,7 +28,12 @@ namespace Lunar.Telas.CaixaConferencia
             this.tipoLancamento = tipoLancamento;
             //if(tipoLancamento.Equals("ENTRADA"))
             if (tipoLancamento.Equals("SAIDA"))
+            {
                 tabPageAdv1.Text = "Lançamento de Despesa";
+                radioDinheiro.Visible = true;
+                radioDeposito.Visible = true;
+                radioPix.Visible = true;
+            }
             //if (tipoLancamento.Equals("DEPOSITO"))
         }
 
@@ -229,6 +234,16 @@ namespace Lunar.Telas.CaixaConferencia
                         case DialogResult.OK:
                             txtConta.Texts = ((ContaBancaria)contaOjeto).Descricao;
                             txtCodConta.Texts = ((ContaBancaria)contaOjeto).Id.ToString();
+                            if (!String.IsNullOrEmpty(txtCodConta.Texts))
+                            {
+                                radioDinheiro.Checked = false;
+                                radioDinheiro.Enabled = false;
+                            }
+                            else
+                            {
+                                radioDinheiro.Checked = true;
+                                radioDinheiro.Enabled = true;
+                            }
                             txtDataMovimento.Focus();
                             break;
                     }
@@ -368,6 +383,7 @@ namespace Lunar.Telas.CaixaConferencia
 
         private void set_Despesa()
         {
+            bool err = false;
             Caixa caixa = new Caixa();
             caixa.Conciliado = true;
             caixa.Concluido = true;
@@ -376,56 +392,167 @@ namespace Lunar.Telas.CaixaConferencia
             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
 
             FormaPagamento formaPagamento = new FormaPagamento();
-            formaPagamento.Id = 1;
-            formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
-            caixa.FormaPagamento = formaPagamento;
-
-            if (!String.IsNullOrEmpty(txtCodConta.Texts))
+            if (radioDinheiro.Checked == true)
+                formaPagamento.Id = 1;
+            else if (radioPix.Checked == true)
             {
-                ContaBancaria contaBancaria = new ContaBancaria();
-                contaBancaria.Id = int.Parse(txtCodConta.Texts);
-                contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
-                if (contaBancaria != null)
-                    caixa.ContaBancaria = contaBancaria;
+                formaPagamento.Id = 3;
+                if (String.IsNullOrEmpty(txtCodConta.Texts))
+                {
+                    err = true;
+                    GenericaDesktop.ShowAlerta("Selecione uma conta bancária");
+
+                }
+            }
+            else if (radioDeposito.Checked == true)
+                formaPagamento.Id = 4;
+            //Se não for depósito efetua o lançamento
+            if (formaPagamento.Id != 4 && err == false)
+            {
+                formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                caixa.FormaPagamento = formaPagamento;
+                if (!String.IsNullOrEmpty(txtCodConta.Texts))
+                {
+                    ContaBancaria contaBancaria = new ContaBancaria();
+                    contaBancaria.Id = int.Parse(txtCodConta.Texts);
+                    contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                    if (contaBancaria != null)
+                        caixa.ContaBancaria = contaBancaria;
+                    else
+                        caixa.ContaBancaria = null;
+                }
                 else
                     caixa.ContaBancaria = null;
-            }
-            else
-                caixa.ContaBancaria = null;
 
-            caixa.IdOrigem = "";
-            caixa.Pessoa = null;
-            if (!String.IsNullOrEmpty(txtCodPlanoConta.Texts))
-            {
-                PlanoConta planoConta = new PlanoConta();
-                planoConta.Id = int.Parse(txtCodPlanoConta.Texts);
-                planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
-                if (planoConta != null)
-                    caixa.PlanoConta = planoConta;
+                caixa.IdOrigem = "";
+                caixa.Pessoa = null;
+                if (!String.IsNullOrEmpty(txtCodPlanoConta.Texts))
+                {
+                    PlanoConta planoConta = new PlanoConta();
+                    planoConta.Id = int.Parse(txtCodPlanoConta.Texts);
+                    planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                    if (planoConta != null)
+                        caixa.PlanoConta = planoConta;
+                    else
+                        caixa.PlanoConta = null;
+                }
                 else
                     caixa.PlanoConta = null;
-            }
-            else
-                caixa.PlanoConta = null;
-            caixa.TabelaOrigem = "LANCAMENTODESPESA";
-            caixa.Tipo = "S";
+                caixa.TabelaOrigem = "LANCAMENTODESPESA";
+                caixa.Tipo = "S";
 
-            if (!String.IsNullOrEmpty(txtCodUsuario.Texts))
-            {
-                Usuario usuario = new Usuario();
-                usuario.Id = int.Parse(txtCodUsuario.Texts);
-                usuario = (Usuario)Controller.getInstance().selecionar(usuario);
-                if (usuario != null)
-                    caixa.Usuario = usuario;
+                if (!String.IsNullOrEmpty(txtCodUsuario.Texts))
+                {
+                    Usuario usuario = new Usuario();
+                    usuario.Id = int.Parse(txtCodUsuario.Texts);
+                    usuario = (Usuario)Controller.getInstance().selecionar(usuario);
+                    if (usuario != null)
+                        caixa.Usuario = usuario;
+                    else
+                        caixa.Usuario = Sessao.usuarioLogado;
+                }
                 else
                     caixa.Usuario = Sessao.usuarioLogado;
+                caixa.Valor = decimal.Parse(txtValor.Texts);
+                Controller.getInstance().salvar(caixa);
+                GenericaDesktop.ShowInfo("Lançamento Efetuado com Sucesso!");
+                this.Close();
             }
-            else
-                caixa.Usuario = Sessao.usuarioLogado;
-            caixa.Valor = decimal.Parse(txtValor.Texts);
-            Controller.getInstance().salvar(caixa);
-            GenericaDesktop.ShowInfo("Lançamento Efetuado com Sucesso!");
-            this.Close();
+            //Se for depósito (Injetamos o valor na conta e retiramos o valor do caixa)
+            else if(formaPagamento.Id == 4)
+            {
+                formaPagamento.Id = 4;
+                formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                caixa.FormaPagamento = formaPagamento;
+                caixa.Descricao = "LANÇAMENTO DE DEPÓSITO BANCÁRIO: " + txtDescricaoResumida.Texts;
+                if (!String.IsNullOrEmpty(txtCodConta.Texts))
+                {
+                    ContaBancaria contaBancaria = new ContaBancaria();
+                    contaBancaria.Id = int.Parse(txtCodConta.Texts);
+                    contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                    if (contaBancaria != null)
+                        caixa.ContaBancaria = contaBancaria;
+                    caixa.IdOrigem = "";
+                    caixa.Pessoa = null;
+                    if (!String.IsNullOrEmpty(txtCodPlanoConta.Texts))
+                    {
+                        PlanoConta planoConta = new PlanoConta();
+                        planoConta.Id = int.Parse(txtCodPlanoConta.Texts);
+                        planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                        if (planoConta != null)
+                            caixa.PlanoConta = planoConta;
+                        else
+                            caixa.PlanoConta = null;
+                    }
+                    else
+                        caixa.PlanoConta = null;
+                    caixa.TabelaOrigem = "DEPOSITO_BANCARIO";
+                    caixa.Tipo = "E";
+
+                    if (!String.IsNullOrEmpty(txtCodUsuario.Texts))
+                    {
+                        Usuario usuario = new Usuario();
+                        usuario.Id = int.Parse(txtCodUsuario.Texts);
+                        usuario = (Usuario)Controller.getInstance().selecionar(usuario);
+                        if (usuario != null)
+                            caixa.Usuario = usuario;
+                        else
+                            caixa.Usuario = Sessao.usuarioLogado;
+                    }
+                    else
+                        caixa.Usuario = Sessao.usuarioLogado;
+                    caixa.Valor = decimal.Parse(txtValor.Texts);
+                    Controller.getInstance().salvar(caixa);
+
+                    caixa = new Caixa();
+                    caixa.Conciliado = true;
+                    caixa.Concluido = true;
+                    caixa.DataLancamento = DateTime.Parse(txtDataMovimento.Value.ToString());
+                    caixa.Descricao = "LANÇAMENTO DE DEPÓSITO BANCÁRIO: " + txtDescricaoResumida.Texts;
+                    caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                    formaPagamento.Id = 1;
+                    formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    caixa.FormaPagamento = formaPagamento;
+                    caixa.IdOrigem = "";
+                    caixa.Pessoa = null;
+                    if (!String.IsNullOrEmpty(txtCodPlanoConta.Texts))
+                    {
+                        PlanoConta planoConta = new PlanoConta();
+                        planoConta.Id = int.Parse(txtCodPlanoConta.Texts);
+                        planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                        if (planoConta != null)
+                            caixa.PlanoConta = planoConta;
+                        else
+                            caixa.PlanoConta = null;
+                    }
+                    else
+                        caixa.PlanoConta = null;
+                    caixa.TabelaOrigem = "DEPOSITO_BANCARIO";
+                    caixa.Tipo = "S";
+                    if (!String.IsNullOrEmpty(txtCodUsuario.Texts))
+                    {
+                        Usuario usuario = new Usuario();
+                        usuario.Id = int.Parse(txtCodUsuario.Texts);
+                        usuario = (Usuario)Controller.getInstance().selecionar(usuario);
+                        if (usuario != null)
+                            caixa.Usuario = usuario;
+                        else
+                            caixa.Usuario = Sessao.usuarioLogado;
+                    }
+                    else
+                        caixa.Usuario = Sessao.usuarioLogado;
+                    caixa.Valor = decimal.Parse(txtValor.Texts);
+                    Controller.getInstance().salvar(caixa);
+                    GenericaDesktop.ShowInfo("Lançamento Efetuado com Sucesso!");
+
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Selecione a conta bancária para fazer o depósito!");
+                    btnPesquisaConta.PerformClick();
+                }
+
+            }
         }
 
         private void set_Receita()
@@ -611,6 +738,42 @@ namespace Lunar.Telas.CaixaConferencia
                 set_Despesa();
             if (tipoLancamento.Equals("ENTRADA"))
                 set_Receita();
+        }
+
+        private void radioPix_CheckChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(radioPix.Checked == true)
+                {
+                    if (String.IsNullOrEmpty(txtCodConta.Texts))
+                    {
+                        btnPesquisaConta.PerformClick();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void radioDeposito_CheckChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (radioDeposito.Checked == true)
+                {
+                    if (String.IsNullOrEmpty(txtCodConta.Texts))
+                    {
+                        btnPesquisaConta.PerformClick();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

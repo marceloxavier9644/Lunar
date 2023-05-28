@@ -3,11 +3,9 @@ using Lunar.Telas.ContasReceber;
 using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento.Adicionais;
 using Lunar.Telas.PesquisaPadrao;
-using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.Vendas.RecebimentoVendas;
 using Lunar.Utils;
 using LunarBase.Classes;
-using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Syncfusion.WinForms.DataGrid.Interactivity;
@@ -40,6 +38,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         string origem = "";
         decimal descontoPercentual = 0;
         bool parcial = false;
+        Pessoa pessoaCobrador = new Pessoa();
         public FrmPagamentoRecebimento(IList<ContaReceber> listaReceber, IList<ContaPagar> listaPagar, OrdemServico ordemServico, string origem, bool parcial, bool ativarCrediario)
         {
             InitializeComponent();
@@ -161,6 +160,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         }
         private void ajustarListaReceber()
         {
+            btnSelecionarCobrador.Visible = true;
             decimal valorTotalFormat = 0;
             decimal totalFormatado = 0;
             foreach (ContaReceber contaReceber1 in listaReceber)
@@ -1864,6 +1864,11 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
                         caixa.Pessoa = clienteLista;
+                        if(pessoaCobrador != null)
+                        {
+                            if (pessoaCobrador.Id > 0)
+                                caixa.Cobrador = pessoaCobrador;
+                        }
                         Controller.getInstance().salvar(caixa);
                         listaRecebimentosCaixa.Add(caixa);
                     }
@@ -1894,6 +1899,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
                         caixa.Pessoa = clienteLista;
+                        {
+                            if (pessoaCobrador.Id > 0)
+                                caixa.Cobrador = pessoaCobrador;
+                        }
                         Controller.getInstance().salvar(caixa);
                         listaRecebimentosCaixa.Add(caixa);
                     }
@@ -1917,6 +1926,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
                         caixa.Pessoa = clienteLista;
+                        {
+                            if (pessoaCobrador.Id > 0)
+                                caixa.Cobrador = pessoaCobrador;
+                        }
                         Controller.getInstance().salvar(caixa);
                         listaRecebimentosCaixa.Add(caixa);
                     }
@@ -1940,6 +1953,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
                         caixa.Pessoa = clienteLista;
+                        {
+                            if (pessoaCobrador.Id > 0)
+                                caixa.Cobrador = pessoaCobrador;
+                        }
                         Controller.getInstance().salvar(caixa);
                         listaRecebimentosCaixa.Add(caixa);
                     }
@@ -1964,6 +1981,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Usuario = Sessao.usuarioLogado;
                                 caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
                                 caixa.Pessoa = clienteLista;
+                                {
+                                    if (pessoaCobrador.Id > 0)
+                                        caixa.Cobrador = pessoaCobrador;
+                                }
                                 Controller.getInstance().salvar(caixa);
                                 Controller.getInstance().salvar(cheque);
                                 listaRecebimentosCaixa.Add(caixa);
@@ -1987,6 +2008,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
                         caixa.Pessoa = clienteLista;
+                        {
+                            if (pessoaCobrador.Id > 0)
+                                caixa.Cobrador = pessoaCobrador;
+                        }
                         Controller.getInstance().salvar(caixa);
 
                         CreditoCliente creditoCliente = new CreditoCliente();
@@ -2462,6 +2487,69 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         private void iconeCrediario_Click(object sender, EventArgs e)
         {
             abrirFormPagamentoCrediario();
+        }
+
+        private void btnSelecionarCobrador_Click(object sender, EventArgs e)
+        {
+            Object pessoaOjeto = new Pessoa();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa","and Tabela.Cobrador = true"))
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("Pessoa", "and Tabela.Cobrador = true", ref pessoaOjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmClienteCadastro form = new FrmClienteCadastro();
+                            Object pessoaObj = new Pessoa();
+                            if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
+                            {
+                                pessoaCobrador = ((Pessoa)pessoaObj);
+                                lblCobrador.Visible = true;
+                                btnLimparCobrador.Visible = true;
+                                lblCobrador.Text = "COBRADOR: " + pessoaCobrador.RazaoSocial; 
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            pessoaCobrador = ((Pessoa)pessoaOjeto);
+                            lblCobrador.Visible = true;
+                            btnLimparCobrador.Visible = true;
+                            lblCobrador.Text = "COBRADOR: " + pessoaCobrador.RazaoSocial;
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        private void btnLimparCobrador_Click(object sender, EventArgs e)
+        {
+            pessoaCobrador = new Pessoa();
+            lblCobrador.Visible = false;
+            btnLimparCobrador.Visible = false;
         }
     }
 }

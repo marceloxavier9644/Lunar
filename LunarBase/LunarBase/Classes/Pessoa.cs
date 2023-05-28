@@ -24,6 +24,7 @@ namespace LunarBase.Classes
         private bool funcionario;
         private bool vendedor;
         private bool tecnico;
+        private bool cobrador;
         private string sexo;
         private string localTrabalho;
         private string funcaoTrabalho;
@@ -114,6 +115,8 @@ namespace LunarBase.Classes
         public virtual bool EscritorioCobranca { get => escritorioCobranca; set => escritorioCobranca = value; }
         [Anotacao("Comissao")]
         public virtual double ComissaoVendedor { get => comissaoVendedor; set => comissaoVendedor = value; }
+        [Anotacao("Cobrador")]
+        public virtual bool Cobrador { get => cobrador; set => cobrador = value; }
 
         public override string ToString()
         {

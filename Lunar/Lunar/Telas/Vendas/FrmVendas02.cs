@@ -3352,6 +3352,7 @@ namespace Lunar.Telas.Vendas
                     condicional.DataCadastro = DateTime.Now;
                     condicional.OperadorCadastro = Sessao.usuarioLogado.Id.ToString();
                     condicional.ValorTotal = 0; // vai receber a soma nos produtos abaixo
+                    condicional.DataPrevisao = DateTime.Now.AddDays(1);
 
                     IList<CondicionalProduto> listaItensCondicional = new List<CondicionalProduto>();
                     var records = gridProdutos.View.Records;
@@ -3384,7 +3385,7 @@ namespace Lunar.Telas.Vendas
                     //Imprimir condicional
                 }
                 else
-                    GenericaDesktop.ShowAlerta("Para realizar uma condicional coloque cliente e produtos corretamente!");
+                    GenericaDesktop.ShowAlerta("Para realizar uma condicional coloque o cliente e produtos corretamente!");
             }
         }
 

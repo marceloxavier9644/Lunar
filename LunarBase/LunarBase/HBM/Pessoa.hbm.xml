@@ -17,6 +17,7 @@
 		<property name="Transportadora" column="TRANSPORTADORA" type="Boolean"/>
 		<property name="Funcionario" column="FUNCIONARIO" type="Boolean"/>
 		<property name="Vendedor" column="VENDEDOR" type="Boolean"/>
+		<property name="Cobrador" column="COBRADOR" type="Boolean"/>
 		<property name="Tecnico" column="TECNICO" type="Boolean"/>
 		<property name="Sexo" column="SEXO" type="String" length="1"/>
 		<property name="TipoPessoa" column="TIPOPESSOA" type="String" length="2"/>

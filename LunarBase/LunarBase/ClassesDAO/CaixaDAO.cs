@@ -27,7 +27,12 @@ namespace LunarBase.ClassesDAO
             IList<Caixa> retorno = Session.CreateQuery(sql).List<Caixa>();
             return retorno;
         }
-
+        public IList<Caixa> selecionarCaixaPorSqlNativo(string sql)
+        {
+            Session = Conexao.GetSession();
+            IList<Caixa> retorno = Session.CreateSQLQuery(sql).AddEntity(typeof(Caixa)).List<Caixa>();
+            return retorno;
+        }
 
     }
 }

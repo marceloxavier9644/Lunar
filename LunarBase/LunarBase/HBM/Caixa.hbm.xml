@@ -19,6 +19,7 @@
 		<many-to-one name="Usuario" column="USUARIO" class="LunarBase.Classes.Usuario" not-null="true" foreign-key="FK_CAIXA_USUARIO" lazy="false"/>
 		<many-to-one name="ContaBancaria" column="CONTABANCARIA" class="LunarBase.Classes.ContaBancaria" not-null="false" foreign-key="FK_CAIXA_CONTABANCARIA" lazy="false"/>
 		<many-to-one name="Pessoa" column="PESSOA" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_CAIXA_PESSOA" lazy="false"/>
+		<many-to-one name="Cobrador" column="COBRADOR" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_CAIXA_COBRADOR" lazy="false"/>
 
 
 		<!-- Dados do objeto padrão -->

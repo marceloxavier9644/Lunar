@@ -28,37 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn9 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn3 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn4 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn5 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn9 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn10 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn11 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn12 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn13 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn14 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn6 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn15 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn16 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn17 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn18 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn19 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn20 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn21 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn22 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.panelPagamento = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.iconeCrediario = new FontAwesome.Sharp.IconButton();
+            this.btnCrediario = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel19 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.iconBoleto = new FontAwesome.Sharp.IconButton();
+            this.btnBoleto = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel17 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel14 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.iconeCredito = new FontAwesome.Sharp.IconButton();
+            this.btnCreditoCliente = new Lunar.RJ_UI.Classes.RJButton();
+            this.iconeDeposito = new FontAwesome.Sharp.IconButton();
+            this.btnDeposito = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel16 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel13 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel12 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel11 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.lblFormaPagamento = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.iconeCartao = new FontAwesome.Sharp.IconButton();
+            this.btnCartaoCredito = new Lunar.RJ_UI.Classes.RJButton();
+            this.IconeDinheiro = new FontAwesome.Sharp.IconButton();
+            this.btnDinheiro = new Lunar.RJ_UI.Classes.RJButton();
+            this.iconeCheque = new FontAwesome.Sharp.IconButton();
+            this.iconePix = new FontAwesome.Sharp.IconButton();
+            this.btnCheque = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnPIX = new Lunar.RJ_UI.Classes.RJButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblDescAcre = new System.Windows.Forms.Label();
             this.lblDesconto = new System.Windows.Forms.Label();
@@ -108,30 +127,14 @@
             this.dataColumn29 = new System.Data.DataColumn();
             this.dataColumn30 = new System.Data.DataColumn();
             this.dataColumn31 = new System.Data.DataColumn();
-            this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnExcluirRecebimento = new FontAwesome.Sharp.IconButton();
-            this.iconeCrediario = new FontAwesome.Sharp.IconButton();
-            this.iconBoleto = new FontAwesome.Sharp.IconButton();
-            this.iconeCredito = new FontAwesome.Sharp.IconButton();
-            this.iconeDeposito = new FontAwesome.Sharp.IconButton();
-            this.iconeCartao = new FontAwesome.Sharp.IconButton();
-            this.IconeDinheiro = new FontAwesome.Sharp.IconButton();
-            this.iconeCheque = new FontAwesome.Sharp.IconButton();
-            this.iconePix = new FontAwesome.Sharp.IconButton();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.btnDesconto = new Lunar.RJ_UI.Classes.RJButton();
             this.rjTextBox2 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.rjTextBox1 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnFinalizar = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCrediario = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnBoleto = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCreditoCliente = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnDeposito = new Lunar.RJ_UI.Classes.RJButton();
-            this.lblFormaPagamento = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnCartaoCredito = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnDinheiro = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCheque = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnPIX = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnSelecionarCobrador = new Lunar.RJ_UI.Classes.RJButton();
+            this.lblCobrador = new System.Windows.Forms.Label();
+            this.btnLimparCobrador = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelPagamento)).BeginInit();
             this.panelPagamento.SuspendLayout();
@@ -169,6 +172,27 @@
             this.autoLabel2.TabIndex = 198;
             this.autoLabel2.Text = "Pagamento/Recebimento";
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
+            this.btnClose.IconColor = System.Drawing.Color.White;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClose.IconSize = 30;
+            this.btnClose.Location = new System.Drawing.Point(1070, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(39, 41);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // panelPagamento
             // 
             this.panelPagamento.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -203,6 +227,67 @@
             this.panelPagamento.Size = new System.Drawing.Size(599, 270);
             this.panelPagamento.TabIndex = 205;
             // 
+            // autoLabel15
+            // 
+            this.autoLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.autoLabel15.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel15.Location = new System.Drawing.Point(208, 193);
+            this.autoLabel15.Name = "autoLabel15";
+            this.autoLabel15.Size = new System.Drawing.Size(37, 16);
+            this.autoLabel15.TabIndex = 218;
+            this.autoLabel15.Text = "[F11]";
+            // 
+            // iconeCrediario
+            // 
+            this.iconeCrediario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeCrediario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeCrediario.FlatAppearance.BorderSize = 0;
+            this.iconeCrediario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeCrediario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeCrediario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeCrediario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeCrediario.IconChar = FontAwesome.Sharp.IconChar.Handshake;
+            this.iconeCrediario.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
+            this.iconeCrediario.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeCrediario.IconSize = 45;
+            this.iconeCrediario.Location = new System.Drawing.Point(202, 223);
+            this.iconeCrediario.Name = "iconeCrediario";
+            this.iconeCrediario.Size = new System.Drawing.Size(54, 26);
+            this.iconeCrediario.TabIndex = 217;
+            this.iconeCrediario.UseVisualStyleBackColor = true;
+            this.iconeCrediario.Click += new System.EventHandler(this.iconeCrediario_Click);
+            // 
+            // btnCrediario
+            // 
+            this.btnCrediario.BackColor = System.Drawing.Color.White;
+            this.btnCrediario.BackgroundColor = System.Drawing.Color.White;
+            this.btnCrediario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCrediario.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCrediario.BorderRadius = 8;
+            this.btnCrediario.BorderSize = 4;
+            this.btnCrediario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrediario.FlatAppearance.BorderSize = 0;
+            this.btnCrediario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCrediario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCrediario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrediario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrediario.ForeColor = System.Drawing.Color.Black;
+            this.btnCrediario.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCrediario.Location = new System.Drawing.Point(161, 162);
+            this.btnCrediario.Name = "btnCrediario";
+            this.btnCrediario.Size = new System.Drawing.Size(139, 97);
+            this.btnCrediario.TabIndex = 216;
+            this.btnCrediario.Text = "CREDIÁRIO";
+            this.btnCrediario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCrediario.TextColor = System.Drawing.Color.Black;
+            this.btnCrediario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCrediario.UseVisualStyleBackColor = false;
+            this.btnCrediario.Click += new System.EventHandler(this.btnCrediario_Click);
+            // 
             // autoLabel19
             // 
             this.autoLabel19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -216,6 +301,53 @@
             this.autoLabel19.Size = new System.Drawing.Size(37, 16);
             this.autoLabel19.TabIndex = 215;
             this.autoLabel19.Text = "[F10]";
+            // 
+            // iconBoleto
+            // 
+            this.iconBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconBoleto.Enabled = false;
+            this.iconBoleto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconBoleto.FlatAppearance.BorderSize = 0;
+            this.iconBoleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconBoleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconBoleto.IconChar = FontAwesome.Sharp.IconChar.Barcode;
+            this.iconBoleto.IconColor = System.Drawing.Color.Gray;
+            this.iconBoleto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconBoleto.IconSize = 35;
+            this.iconBoleto.Location = new System.Drawing.Point(60, 224);
+            this.iconBoleto.Name = "iconBoleto";
+            this.iconBoleto.Size = new System.Drawing.Size(49, 26);
+            this.iconBoleto.TabIndex = 214;
+            this.iconBoleto.UseVisualStyleBackColor = true;
+            // 
+            // btnBoleto
+            // 
+            this.btnBoleto.BackColor = System.Drawing.Color.White;
+            this.btnBoleto.BackgroundColor = System.Drawing.Color.White;
+            this.btnBoleto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBoleto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnBoleto.BorderRadius = 8;
+            this.btnBoleto.BorderSize = 4;
+            this.btnBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBoleto.Enabled = false;
+            this.btnBoleto.FlatAppearance.BorderSize = 0;
+            this.btnBoleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnBoleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBoleto.ForeColor = System.Drawing.Color.Black;
+            this.btnBoleto.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBoleto.Location = new System.Drawing.Point(12, 162);
+            this.btnBoleto.Name = "btnBoleto";
+            this.btnBoleto.Size = new System.Drawing.Size(139, 97);
+            this.btnBoleto.TabIndex = 210;
+            this.btnBoleto.Text = "BOLETO";
+            this.btnBoleto.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBoleto.TextColor = System.Drawing.Color.Black;
+            this.btnBoleto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBoleto.UseVisualStyleBackColor = false;
             // 
             // autoLabel17
             // 
@@ -240,6 +372,100 @@
             this.autoLabel14.Size = new System.Drawing.Size(30, 16);
             this.autoLabel14.TabIndex = 206;
             this.autoLabel14.Text = "[F9]";
+            // 
+            // iconeCredito
+            // 
+            this.iconeCredito.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeCredito.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeCredito.FlatAppearance.BorderSize = 0;
+            this.iconeCredito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeCredito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeCredito.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
+            this.iconeCredito.IconColor = System.Drawing.Color.Purple;
+            this.iconeCredito.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeCredito.IconSize = 35;
+            this.iconeCredito.Location = new System.Drawing.Point(502, 216);
+            this.iconeCredito.Name = "iconeCredito";
+            this.iconeCredito.Size = new System.Drawing.Size(43, 35);
+            this.iconeCredito.TabIndex = 174;
+            this.iconeCredito.UseVisualStyleBackColor = true;
+            this.iconeCredito.Click += new System.EventHandler(this.iconeCredito_Click);
+            // 
+            // btnCreditoCliente
+            // 
+            this.btnCreditoCliente.BackColor = System.Drawing.Color.White;
+            this.btnCreditoCliente.BackgroundColor = System.Drawing.Color.White;
+            this.btnCreditoCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCreditoCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCreditoCliente.BorderRadius = 8;
+            this.btnCreditoCliente.BorderSize = 4;
+            this.btnCreditoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreditoCliente.FlatAppearance.BorderSize = 0;
+            this.btnCreditoCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCreditoCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCreditoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreditoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreditoCliente.ForeColor = System.Drawing.Color.Black;
+            this.btnCreditoCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCreditoCliente.Location = new System.Drawing.Point(455, 162);
+            this.btnCreditoCliente.Name = "btnCreditoCliente";
+            this.btnCreditoCliente.Size = new System.Drawing.Size(139, 97);
+            this.btnCreditoCliente.TabIndex = 173;
+            this.btnCreditoCliente.Text = "CRÉDITO";
+            this.btnCreditoCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCreditoCliente.TextColor = System.Drawing.Color.Black;
+            this.btnCreditoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCreditoCliente.UseVisualStyleBackColor = false;
+            this.btnCreditoCliente.Click += new System.EventHandler(this.btnCreditoCliente_Click);
+            // 
+            // iconeDeposito
+            // 
+            this.iconeDeposito.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeDeposito.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeDeposito.FlatAppearance.BorderSize = 0;
+            this.iconeDeposito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeDeposito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeDeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeDeposito.IconChar = FontAwesome.Sharp.IconChar.MoneyCheck;
+            this.iconeDeposito.IconColor = System.Drawing.Color.Olive;
+            this.iconeDeposito.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeDeposito.IconSize = 40;
+            this.iconeDeposito.Location = new System.Drawing.Point(509, 119);
+            this.iconeDeposito.Name = "iconeDeposito";
+            this.iconeDeposito.Size = new System.Drawing.Size(33, 27);
+            this.iconeDeposito.TabIndex = 168;
+            this.iconeDeposito.UseVisualStyleBackColor = true;
+            this.iconeDeposito.Click += new System.EventHandler(this.iconeDeposito_Click);
+            // 
+            // btnDeposito
+            // 
+            this.btnDeposito.BackColor = System.Drawing.Color.White;
+            this.btnDeposito.BackgroundColor = System.Drawing.Color.White;
+            this.btnDeposito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeposito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDeposito.BorderRadius = 8;
+            this.btnDeposito.BorderSize = 4;
+            this.btnDeposito.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeposito.FlatAppearance.BorderSize = 0;
+            this.btnDeposito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnDeposito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnDeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeposito.ForeColor = System.Drawing.Color.Black;
+            this.btnDeposito.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDeposito.Location = new System.Drawing.Point(455, 59);
+            this.btnDeposito.Name = "btnDeposito";
+            this.btnDeposito.Size = new System.Drawing.Size(139, 97);
+            this.btnDeposito.TabIndex = 166;
+            this.btnDeposito.Text = "DEPÓSITO";
+            this.btnDeposito.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDeposito.TextColor = System.Drawing.Color.Black;
+            this.btnDeposito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeposito.UseVisualStyleBackColor = false;
+            this.btnDeposito.Click += new System.EventHandler(this.btnDeposito_Click);
             // 
             // autoLabel16
             // 
@@ -288,6 +514,219 @@
             this.autoLabel11.Size = new System.Drawing.Size(30, 16);
             this.autoLabel11.TabIndex = 201;
             this.autoLabel11.Text = "[F6]";
+            // 
+            // lblFormaPagamento
+            // 
+            this.lblFormaPagamento.BackColor = System.Drawing.Color.White;
+            this.lblFormaPagamento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.lblFormaPagamento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.lblFormaPagamento.BorderRadius = 8;
+            this.lblFormaPagamento.BorderSize = 2;
+            this.lblFormaPagamento.Enabled = false;
+            this.lblFormaPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblFormaPagamento.Location = new System.Drawing.Point(12, 8);
+            this.lblFormaPagamento.Margin = new System.Windows.Forms.Padding(4);
+            this.lblFormaPagamento.Multiline = false;
+            this.lblFormaPagamento.Name = "lblFormaPagamento";
+            this.lblFormaPagamento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.lblFormaPagamento.PasswordChar = false;
+            this.lblFormaPagamento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.lblFormaPagamento.PlaceholderText = "";
+            this.lblFormaPagamento.ReadOnly = false;
+            this.lblFormaPagamento.Size = new System.Drawing.Size(582, 38);
+            this.lblFormaPagamento.TabIndex = 203;
+            this.lblFormaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.lblFormaPagamento.Texts = "SELECIONE A FORMA DE PAGAMENTO";
+            this.lblFormaPagamento.UnderlinedStyle = false;
+            // 
+            // iconeCartao
+            // 
+            this.iconeCartao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeCartao.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeCartao.FlatAppearance.BorderSize = 0;
+            this.iconeCartao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeCartao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeCartao.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeCartao.IconChar = FontAwesome.Sharp.IconChar.CreditCardAlt;
+            this.iconeCartao.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
+            this.iconeCartao.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeCartao.IconSize = 40;
+            this.iconeCartao.Location = new System.Drawing.Point(203, 113);
+            this.iconeCartao.Name = "iconeCartao";
+            this.iconeCartao.Size = new System.Drawing.Size(53, 34);
+            this.iconeCartao.TabIndex = 164;
+            this.iconeCartao.UseVisualStyleBackColor = true;
+            this.iconeCartao.Click += new System.EventHandler(this.iconeCartao_Click);
+            // 
+            // btnCartaoCredito
+            // 
+            this.btnCartaoCredito.BackColor = System.Drawing.Color.White;
+            this.btnCartaoCredito.BackgroundColor = System.Drawing.Color.White;
+            this.btnCartaoCredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCartaoCredito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCartaoCredito.BorderRadius = 8;
+            this.btnCartaoCredito.BorderSize = 4;
+            this.btnCartaoCredito.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCartaoCredito.FlatAppearance.BorderSize = 0;
+            this.btnCartaoCredito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCartaoCredito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCartaoCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCartaoCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCartaoCredito.ForeColor = System.Drawing.Color.Black;
+            this.btnCartaoCredito.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCartaoCredito.Location = new System.Drawing.Point(161, 59);
+            this.btnCartaoCredito.Name = "btnCartaoCredito";
+            this.btnCartaoCredito.Size = new System.Drawing.Size(139, 97);
+            this.btnCartaoCredito.TabIndex = 175;
+            this.btnCartaoCredito.Text = "CARTÃO";
+            this.btnCartaoCredito.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCartaoCredito.TextColor = System.Drawing.Color.Black;
+            this.btnCartaoCredito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCartaoCredito.UseVisualStyleBackColor = false;
+            this.btnCartaoCredito.Click += new System.EventHandler(this.btnCartaoCredito_Click);
+            // 
+            // IconeDinheiro
+            // 
+            this.IconeDinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.IconeDinheiro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.IconeDinheiro.FlatAppearance.BorderSize = 0;
+            this.IconeDinheiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.IconeDinheiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.IconeDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IconeDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IconeDinheiro.IconChar = FontAwesome.Sharp.IconChar.MoneyBill1Wave;
+            this.IconeDinheiro.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
+            this.IconeDinheiro.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.IconeDinheiro.IconSize = 40;
+            this.IconeDinheiro.Location = new System.Drawing.Point(50, 115);
+            this.IconeDinheiro.Name = "IconeDinheiro";
+            this.IconeDinheiro.Size = new System.Drawing.Size(49, 27);
+            this.IconeDinheiro.TabIndex = 162;
+            this.IconeDinheiro.UseVisualStyleBackColor = true;
+            this.IconeDinheiro.Click += new System.EventHandler(this.IconeDinheiro_Click);
+            // 
+            // btnDinheiro
+            // 
+            this.btnDinheiro.BackColor = System.Drawing.Color.White;
+            this.btnDinheiro.BackgroundColor = System.Drawing.Color.White;
+            this.btnDinheiro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDinheiro.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDinheiro.BorderRadius = 8;
+            this.btnDinheiro.BorderSize = 4;
+            this.btnDinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDinheiro.FlatAppearance.BorderSize = 0;
+            this.btnDinheiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnDinheiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDinheiro.ForeColor = System.Drawing.Color.Black;
+            this.btnDinheiro.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDinheiro.Location = new System.Drawing.Point(12, 58);
+            this.btnDinheiro.Name = "btnDinheiro";
+            this.btnDinheiro.Size = new System.Drawing.Size(139, 97);
+            this.btnDinheiro.TabIndex = 161;
+            this.btnDinheiro.Text = "DINHEIRO";
+            this.btnDinheiro.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDinheiro.TextColor = System.Drawing.Color.Black;
+            this.btnDinheiro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDinheiro.UseVisualStyleBackColor = false;
+            this.btnDinheiro.Click += new System.EventHandler(this.btnDinheiro_Click);
+            // 
+            // iconeCheque
+            // 
+            this.iconeCheque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeCheque.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeCheque.FlatAppearance.BorderSize = 0;
+            this.iconeCheque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeCheque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeCheque.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
+            this.iconeCheque.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(173)))), ((int)(((byte)(78)))));
+            this.iconeCheque.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeCheque.IconSize = 40;
+            this.iconeCheque.Location = new System.Drawing.Point(354, 223);
+            this.iconeCheque.Name = "iconeCheque";
+            this.iconeCheque.Size = new System.Drawing.Size(39, 26);
+            this.iconeCheque.TabIndex = 172;
+            this.iconeCheque.UseVisualStyleBackColor = true;
+            this.iconeCheque.Click += new System.EventHandler(this.iconeCheque_Click);
+            // 
+            // iconePix
+            // 
+            this.iconePix.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconePix.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconePix.FlatAppearance.BorderSize = 0;
+            this.iconePix.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconePix.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconePix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconePix.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconePix.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
+            this.iconePix.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
+            this.iconePix.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconePix.IconSize = 35;
+            this.iconePix.Location = new System.Drawing.Point(354, 116);
+            this.iconePix.Name = "iconePix";
+            this.iconePix.Size = new System.Drawing.Size(47, 31);
+            this.iconePix.TabIndex = 167;
+            this.iconePix.UseVisualStyleBackColor = true;
+            this.iconePix.Click += new System.EventHandler(this.iconePix_Click);
+            // 
+            // btnCheque
+            // 
+            this.btnCheque.BackColor = System.Drawing.Color.White;
+            this.btnCheque.BackgroundColor = System.Drawing.Color.White;
+            this.btnCheque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCheque.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCheque.BorderRadius = 8;
+            this.btnCheque.BorderSize = 4;
+            this.btnCheque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCheque.FlatAppearance.BorderSize = 0;
+            this.btnCheque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCheque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheque.ForeColor = System.Drawing.Color.Black;
+            this.btnCheque.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCheque.Location = new System.Drawing.Point(308, 162);
+            this.btnCheque.Name = "btnCheque";
+            this.btnCheque.Size = new System.Drawing.Size(139, 97);
+            this.btnCheque.TabIndex = 171;
+            this.btnCheque.Text = "CHEQUE";
+            this.btnCheque.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCheque.TextColor = System.Drawing.Color.Black;
+            this.btnCheque.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCheque.UseVisualStyleBackColor = false;
+            this.btnCheque.Click += new System.EventHandler(this.btnCheque_Click);
+            // 
+            // btnPIX
+            // 
+            this.btnPIX.BackColor = System.Drawing.Color.White;
+            this.btnPIX.BackgroundColor = System.Drawing.Color.White;
+            this.btnPIX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPIX.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPIX.BorderRadius = 8;
+            this.btnPIX.BorderSize = 4;
+            this.btnPIX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPIX.FlatAppearance.BorderSize = 0;
+            this.btnPIX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnPIX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnPIX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPIX.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPIX.ForeColor = System.Drawing.Color.Black;
+            this.btnPIX.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPIX.Location = new System.Drawing.Point(308, 59);
+            this.btnPIX.Name = "btnPIX";
+            this.btnPIX.Size = new System.Drawing.Size(139, 97);
+            this.btnPIX.TabIndex = 165;
+            this.btnPIX.Text = "PIX";
+            this.btnPIX.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPIX.TextColor = System.Drawing.Color.Black;
+            this.btnPIX.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPIX.UseVisualStyleBackColor = false;
+            this.btnPIX.Click += new System.EventHandler(this.btnPIX_Click);
             // 
             // panel4
             // 
@@ -405,49 +844,39 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridFaturas.AutoGenerateColumns = false;
             this.gridFaturas.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn1.AllowEditing = false;
-            gridTextColumn1.AllowGrouping = false;
-            gridTextColumn1.AllowResizing = true;
-            gridTextColumn1.AllowSorting = false;
-            gridTextColumn1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn1.CellStyle.Font.Size = 10F;
-            gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn1.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn1.HeaderStyle.Font.Size = 11F;
-            gridTextColumn1.HeaderText = "Código";
-            gridTextColumn1.MappingName = "Id";
-            gridTextColumn1.Visible = false;
-            gridTextColumn2.AllowEditing = false;
-            gridTextColumn2.AllowGrouping = false;
-            gridTextColumn2.AllowResizing = true;
-            gridTextColumn2.AllowSorting = false;
-            gridTextColumn2.CellStyle.Font.Size = 10F;
-            gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn2.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn2.HeaderStyle.Font.Size = 11F;
-            gridTextColumn2.HeaderText = "Documento";
-            gridTextColumn2.MappingName = "Documento";
-            gridTextColumn3.AllowEditing = false;
-            gridTextColumn3.AllowGrouping = false;
-            gridTextColumn3.AllowResizing = true;
-            gridTextColumn3.AllowSorting = false;
-            gridTextColumn3.CellStyle.Font.Size = 10F;
-            gridTextColumn3.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn3.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn3.HeaderStyle.Font.Size = 11F;
-            gridTextColumn3.HeaderText = "Parcela";
-            gridTextColumn3.MappingName = "Parcela";
-            gridNumericColumn1.AllowEditing = false;
-            gridNumericColumn1.AllowGrouping = false;
-            gridNumericColumn1.AllowResizing = true;
-            gridNumericColumn1.AllowSorting = false;
-            gridNumericColumn1.CellStyle.Font.Size = 10F;
-            gridNumericColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn1.HeaderStyle.Font.Facename = "Montserrat";
-            gridNumericColumn1.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn1.HeaderText = "Valor";
-            gridNumericColumn1.MappingName = "ValorParcela";
+            gridTextColumn7.AllowEditing = false;
+            gridTextColumn7.AllowGrouping = false;
+            gridTextColumn7.AllowResizing = true;
+            gridTextColumn7.AllowSorting = false;
+            gridTextColumn7.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridTextColumn7.CellStyle.Font.Size = 10F;
+            gridTextColumn7.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn7.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn7.HeaderStyle.Font.Size = 11F;
+            gridTextColumn7.HeaderText = "Código";
+            gridTextColumn7.MappingName = "Id";
+            gridTextColumn7.Visible = false;
+            gridTextColumn8.AllowEditing = false;
+            gridTextColumn8.AllowGrouping = false;
+            gridTextColumn8.AllowResizing = true;
+            gridTextColumn8.AllowSorting = false;
+            gridTextColumn8.CellStyle.Font.Size = 10F;
+            gridTextColumn8.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn8.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn8.HeaderStyle.Font.Size = 11F;
+            gridTextColumn8.HeaderText = "Documento";
+            gridTextColumn8.MappingName = "Documento";
+            gridTextColumn9.AllowEditing = false;
+            gridTextColumn9.AllowGrouping = false;
+            gridTextColumn9.AllowResizing = true;
+            gridTextColumn9.AllowSorting = false;
+            gridTextColumn9.CellStyle.Font.Size = 10F;
+            gridTextColumn9.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn9.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn9.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn9.HeaderStyle.Font.Size = 11F;
+            gridTextColumn9.HeaderText = "Parcela";
+            gridTextColumn9.MappingName = "Parcela";
             gridNumericColumn2.AllowEditing = false;
             gridNumericColumn2.AllowGrouping = false;
             gridNumericColumn2.AllowResizing = true;
@@ -456,8 +885,8 @@
             gridNumericColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridNumericColumn2.HeaderStyle.Font.Facename = "Montserrat";
             gridNumericColumn2.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn2.HeaderText = "Multa";
-            gridNumericColumn2.MappingName = "Multa";
+            gridNumericColumn2.HeaderText = "Valor";
+            gridNumericColumn2.MappingName = "ValorParcela";
             gridNumericColumn3.AllowEditing = false;
             gridNumericColumn3.AllowGrouping = false;
             gridNumericColumn3.AllowResizing = true;
@@ -466,8 +895,8 @@
             gridNumericColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridNumericColumn3.HeaderStyle.Font.Facename = "Montserrat";
             gridNumericColumn3.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn3.HeaderText = "Juro";
-            gridNumericColumn3.MappingName = "Juro";
+            gridNumericColumn3.HeaderText = "Multa";
+            gridNumericColumn3.MappingName = "Multa";
             gridNumericColumn4.AllowEditing = false;
             gridNumericColumn4.AllowGrouping = false;
             gridNumericColumn4.AllowResizing = true;
@@ -476,51 +905,61 @@
             gridNumericColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridNumericColumn4.HeaderStyle.Font.Facename = "Montserrat";
             gridNumericColumn4.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn4.HeaderText = "Valor Total";
-            gridNumericColumn4.MappingName = "ValorTotal";
-            gridTextColumn4.AllowEditing = false;
-            gridTextColumn4.AllowGrouping = false;
-            gridTextColumn4.AllowResizing = true;
-            gridTextColumn4.AllowSorting = false;
-            gridTextColumn4.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn4.CellStyle.Font.Size = 10F;
-            gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn4.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn4.HeaderStyle.Font.Size = 11F;
-            gridTextColumn4.HeaderText = "Forma de Pagamento";
-            gridTextColumn4.MappingName = "FormaPagamento";
-            gridTextColumn4.Visible = false;
-            gridTextColumn5.AllowEditing = false;
-            gridTextColumn5.AllowGrouping = false;
-            gridTextColumn5.AllowResizing = true;
-            gridTextColumn5.AllowSorting = false;
-            gridTextColumn5.CellStyle.Font.Size = 10F;
-            gridTextColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn5.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn5.HeaderStyle.Font.Size = 11F;
-            gridTextColumn5.HeaderText = "Cliente";
-            gridTextColumn5.MappingName = "Cliente";
-            gridTextColumn6.AllowEditing = false;
-            gridTextColumn6.AllowGrouping = false;
-            gridTextColumn6.AllowResizing = true;
-            gridTextColumn6.AllowSorting = false;
-            gridTextColumn6.CellStyle.Font.Size = 10F;
-            gridTextColumn6.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn6.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn6.HeaderStyle.Font.Size = 11F;
-            gridTextColumn6.HeaderText = "Desconto ou Acrescimo";
-            gridTextColumn6.MappingName = "DescontoAcrescimo";
-            this.gridFaturas.Columns.Add(gridTextColumn1);
-            this.gridFaturas.Columns.Add(gridTextColumn2);
-            this.gridFaturas.Columns.Add(gridTextColumn3);
-            this.gridFaturas.Columns.Add(gridNumericColumn1);
+            gridNumericColumn4.HeaderText = "Juro";
+            gridNumericColumn4.MappingName = "Juro";
+            gridNumericColumn5.AllowEditing = false;
+            gridNumericColumn5.AllowGrouping = false;
+            gridNumericColumn5.AllowResizing = true;
+            gridNumericColumn5.AllowSorting = false;
+            gridNumericColumn5.CellStyle.Font.Size = 10F;
+            gridNumericColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn5.HeaderStyle.Font.Facename = "Montserrat";
+            gridNumericColumn5.HeaderStyle.Font.Size = 11F;
+            gridNumericColumn5.HeaderText = "Valor Total";
+            gridNumericColumn5.MappingName = "ValorTotal";
+            gridTextColumn10.AllowEditing = false;
+            gridTextColumn10.AllowGrouping = false;
+            gridTextColumn10.AllowResizing = true;
+            gridTextColumn10.AllowSorting = false;
+            gridTextColumn10.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridTextColumn10.CellStyle.Font.Size = 10F;
+            gridTextColumn10.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn10.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn10.HeaderStyle.Font.Size = 11F;
+            gridTextColumn10.HeaderText = "Forma de Pagamento";
+            gridTextColumn10.MappingName = "FormaPagamento";
+            gridTextColumn10.Visible = false;
+            gridTextColumn11.AllowEditing = false;
+            gridTextColumn11.AllowGrouping = false;
+            gridTextColumn11.AllowResizing = true;
+            gridTextColumn11.AllowSorting = false;
+            gridTextColumn11.CellStyle.Font.Size = 10F;
+            gridTextColumn11.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn11.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn11.HeaderStyle.Font.Size = 11F;
+            gridTextColumn11.HeaderText = "Cliente";
+            gridTextColumn11.MappingName = "Cliente";
+            gridTextColumn12.AllowEditing = false;
+            gridTextColumn12.AllowGrouping = false;
+            gridTextColumn12.AllowResizing = true;
+            gridTextColumn12.AllowSorting = false;
+            gridTextColumn12.CellStyle.Font.Size = 10F;
+            gridTextColumn12.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn12.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn12.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn12.HeaderStyle.Font.Size = 11F;
+            gridTextColumn12.HeaderText = "Desconto ou Acrescimo";
+            gridTextColumn12.MappingName = "DescontoAcrescimo";
+            this.gridFaturas.Columns.Add(gridTextColumn7);
+            this.gridFaturas.Columns.Add(gridTextColumn8);
+            this.gridFaturas.Columns.Add(gridTextColumn9);
             this.gridFaturas.Columns.Add(gridNumericColumn2);
             this.gridFaturas.Columns.Add(gridNumericColumn3);
             this.gridFaturas.Columns.Add(gridNumericColumn4);
-            this.gridFaturas.Columns.Add(gridTextColumn4);
-            this.gridFaturas.Columns.Add(gridTextColumn5);
-            this.gridFaturas.Columns.Add(gridTextColumn6);
+            this.gridFaturas.Columns.Add(gridNumericColumn5);
+            this.gridFaturas.Columns.Add(gridTextColumn10);
+            this.gridFaturas.Columns.Add(gridTextColumn11);
+            this.gridFaturas.Columns.Add(gridTextColumn12);
             this.gridFaturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridFaturas.Location = new System.Drawing.Point(5, 438);
             this.gridFaturas.Name = "gridFaturas";
@@ -544,103 +983,103 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridRecebimento.AutoGenerateColumns = false;
             this.gridRecebimento.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn7.AllowEditing = false;
-            gridTextColumn7.AllowGrouping = false;
-            gridTextColumn7.AllowResizing = true;
-            gridTextColumn7.AllowSorting = false;
-            gridTextColumn7.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn7.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn7.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn7.HeaderStyle.Font.Size = 11F;
-            gridTextColumn7.HeaderText = "Código";
-            gridTextColumn7.MappingName = "Id";
-            gridTextColumn8.AllowEditing = false;
-            gridTextColumn8.AllowGrouping = false;
-            gridTextColumn8.AllowResizing = true;
-            gridTextColumn8.AllowSorting = false;
-            gridTextColumn8.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn8.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn8.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn8.HeaderStyle.Font.Size = 11F;
-            gridTextColumn8.HeaderText = "Forma de Pagamento";
-            gridTextColumn8.MappingName = "FormaPagamento";
-            gridNumericColumn5.AllowEditing = false;
-            gridNumericColumn5.AllowGrouping = false;
-            gridNumericColumn5.AllowResizing = true;
-            gridNumericColumn5.AllowSorting = false;
-            gridNumericColumn5.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridNumericColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn5.HeaderStyle.Font.Facename = "Montserrat";
-            gridNumericColumn5.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn5.HeaderText = "Valor Recebido";
-            gridNumericColumn5.MappingName = "Valor";
-            gridTextColumn9.AllowEditing = false;
-            gridTextColumn9.AllowGrouping = false;
-            gridTextColumn9.AllowResizing = true;
-            gridTextColumn9.AllowSorting = false;
-            gridTextColumn9.HeaderText = "IdBandeira";
-            gridTextColumn9.MappingName = "IdBandeira";
-            gridTextColumn9.Visible = false;
-            gridTextColumn10.AllowEditing = false;
-            gridTextColumn10.AllowGrouping = false;
-            gridTextColumn10.AllowResizing = true;
-            gridTextColumn10.AllowSorting = false;
-            gridTextColumn10.HeaderText = "Bandeira";
-            gridTextColumn10.MappingName = "Bandeira";
-            gridTextColumn10.Visible = false;
-            gridTextColumn11.AllowEditing = false;
-            gridTextColumn11.AllowGrouping = false;
-            gridTextColumn11.AllowResizing = true;
-            gridTextColumn11.AllowSorting = false;
-            gridTextColumn11.HeaderText = "ID Parcelamento";
-            gridTextColumn11.MappingName = "IdParcelamento";
-            gridTextColumn11.Visible = false;
-            gridTextColumn12.AllowEditing = false;
-            gridTextColumn12.AllowGrouping = false;
-            gridTextColumn12.AllowResizing = true;
-            gridTextColumn12.AllowSorting = false;
-            gridTextColumn12.HeaderText = "Parcelamento";
-            gridTextColumn12.MappingName = "Parcelamento";
-            gridTextColumn12.Visible = false;
             gridTextColumn13.AllowEditing = false;
             gridTextColumn13.AllowGrouping = false;
             gridTextColumn13.AllowResizing = true;
             gridTextColumn13.AllowSorting = false;
-            gridTextColumn13.HeaderText = "Autorização";
-            gridTextColumn13.MappingName = "AutorizacaoCartao";
-            gridTextColumn13.Visible = false;
+            gridTextColumn13.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridTextColumn13.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn13.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn13.HeaderStyle.Font.Size = 11F;
+            gridTextColumn13.HeaderText = "Código";
+            gridTextColumn13.MappingName = "Id";
             gridTextColumn14.AllowEditing = false;
             gridTextColumn14.AllowGrouping = false;
             gridTextColumn14.AllowResizing = true;
             gridTextColumn14.AllowSorting = false;
-            gridTextColumn14.HeaderText = "Adquirente";
-            gridTextColumn14.MappingName = "Adquirente";
-            gridTextColumn14.Visible = false;
+            gridTextColumn14.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridTextColumn14.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn14.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn14.HeaderStyle.Font.Size = 11F;
+            gridTextColumn14.HeaderText = "Forma de Pagamento";
+            gridTextColumn14.MappingName = "FormaPagamento";
+            gridNumericColumn6.AllowEditing = false;
+            gridNumericColumn6.AllowGrouping = false;
+            gridNumericColumn6.AllowResizing = true;
+            gridNumericColumn6.AllowSorting = false;
+            gridNumericColumn6.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridNumericColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn6.HeaderStyle.Font.Facename = "Montserrat";
+            gridNumericColumn6.HeaderStyle.Font.Size = 11F;
+            gridNumericColumn6.HeaderText = "Valor Recebido";
+            gridNumericColumn6.MappingName = "Valor";
             gridTextColumn15.AllowEditing = false;
             gridTextColumn15.AllowGrouping = false;
             gridTextColumn15.AllowResizing = true;
             gridTextColumn15.AllowSorting = false;
-            gridTextColumn15.HeaderText = "Conta Bancaria";
-            gridTextColumn15.MappingName = "ContaBancaria";
+            gridTextColumn15.HeaderText = "IdBandeira";
+            gridTextColumn15.MappingName = "IdBandeira";
             gridTextColumn15.Visible = false;
             gridTextColumn16.AllowEditing = false;
             gridTextColumn16.AllowGrouping = false;
             gridTextColumn16.AllowResizing = true;
             gridTextColumn16.AllowSorting = false;
-            gridTextColumn16.HeaderText = "Data Pix";
-            gridTextColumn16.MappingName = "DataPix";
+            gridTextColumn16.HeaderText = "Bandeira";
+            gridTextColumn16.MappingName = "Bandeira";
             gridTextColumn16.Visible = false;
-            this.gridRecebimento.Columns.Add(gridTextColumn7);
-            this.gridRecebimento.Columns.Add(gridTextColumn8);
-            this.gridRecebimento.Columns.Add(gridNumericColumn5);
-            this.gridRecebimento.Columns.Add(gridTextColumn9);
-            this.gridRecebimento.Columns.Add(gridTextColumn10);
-            this.gridRecebimento.Columns.Add(gridTextColumn11);
-            this.gridRecebimento.Columns.Add(gridTextColumn12);
+            gridTextColumn17.AllowEditing = false;
+            gridTextColumn17.AllowGrouping = false;
+            gridTextColumn17.AllowResizing = true;
+            gridTextColumn17.AllowSorting = false;
+            gridTextColumn17.HeaderText = "ID Parcelamento";
+            gridTextColumn17.MappingName = "IdParcelamento";
+            gridTextColumn17.Visible = false;
+            gridTextColumn18.AllowEditing = false;
+            gridTextColumn18.AllowGrouping = false;
+            gridTextColumn18.AllowResizing = true;
+            gridTextColumn18.AllowSorting = false;
+            gridTextColumn18.HeaderText = "Parcelamento";
+            gridTextColumn18.MappingName = "Parcelamento";
+            gridTextColumn18.Visible = false;
+            gridTextColumn19.AllowEditing = false;
+            gridTextColumn19.AllowGrouping = false;
+            gridTextColumn19.AllowResizing = true;
+            gridTextColumn19.AllowSorting = false;
+            gridTextColumn19.HeaderText = "Autorização";
+            gridTextColumn19.MappingName = "AutorizacaoCartao";
+            gridTextColumn19.Visible = false;
+            gridTextColumn20.AllowEditing = false;
+            gridTextColumn20.AllowGrouping = false;
+            gridTextColumn20.AllowResizing = true;
+            gridTextColumn20.AllowSorting = false;
+            gridTextColumn20.HeaderText = "Adquirente";
+            gridTextColumn20.MappingName = "Adquirente";
+            gridTextColumn20.Visible = false;
+            gridTextColumn21.AllowEditing = false;
+            gridTextColumn21.AllowGrouping = false;
+            gridTextColumn21.AllowResizing = true;
+            gridTextColumn21.AllowSorting = false;
+            gridTextColumn21.HeaderText = "Conta Bancaria";
+            gridTextColumn21.MappingName = "ContaBancaria";
+            gridTextColumn21.Visible = false;
+            gridTextColumn22.AllowEditing = false;
+            gridTextColumn22.AllowGrouping = false;
+            gridTextColumn22.AllowResizing = true;
+            gridTextColumn22.AllowSorting = false;
+            gridTextColumn22.HeaderText = "Data Pix";
+            gridTextColumn22.MappingName = "DataPix";
+            gridTextColumn22.Visible = false;
             this.gridRecebimento.Columns.Add(gridTextColumn13);
             this.gridRecebimento.Columns.Add(gridTextColumn14);
+            this.gridRecebimento.Columns.Add(gridNumericColumn6);
             this.gridRecebimento.Columns.Add(gridTextColumn15);
             this.gridRecebimento.Columns.Add(gridTextColumn16);
+            this.gridRecebimento.Columns.Add(gridTextColumn17);
+            this.gridRecebimento.Columns.Add(gridTextColumn18);
+            this.gridRecebimento.Columns.Add(gridTextColumn19);
+            this.gridRecebimento.Columns.Add(gridTextColumn20);
+            this.gridRecebimento.Columns.Add(gridTextColumn21);
+            this.gridRecebimento.Columns.Add(gridTextColumn22);
             this.gridRecebimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridRecebimento.Location = new System.Drawing.Point(602, 102);
             this.gridRecebimento.Name = "gridRecebimento";
@@ -845,20 +1284,6 @@
             // 
             this.dataColumn31.ColumnName = "DescontoAcrescimo";
             // 
-            // autoLabel15
-            // 
-            this.autoLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.autoLabel15.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel15.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel15.Location = new System.Drawing.Point(208, 193);
-            this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(37, 16);
-            this.autoLabel15.TabIndex = 218;
-            this.autoLabel15.Text = "[F11]";
-            // 
             // btnExcluirRecebimento
             // 
             this.btnExcluirRecebimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -880,187 +1305,6 @@
             this.btnExcluirRecebimento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcluirRecebimento.UseVisualStyleBackColor = true;
             this.btnExcluirRecebimento.Click += new System.EventHandler(this.btnExcluirRecebimento_Click);
-            // 
-            // iconeCrediario
-            // 
-            this.iconeCrediario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeCrediario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeCrediario.FlatAppearance.BorderSize = 0;
-            this.iconeCrediario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeCrediario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeCrediario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeCrediario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeCrediario.IconChar = FontAwesome.Sharp.IconChar.Handshake;
-            this.iconeCrediario.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
-            this.iconeCrediario.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeCrediario.IconSize = 45;
-            this.iconeCrediario.Location = new System.Drawing.Point(202, 223);
-            this.iconeCrediario.Name = "iconeCrediario";
-            this.iconeCrediario.Size = new System.Drawing.Size(54, 26);
-            this.iconeCrediario.TabIndex = 217;
-            this.iconeCrediario.UseVisualStyleBackColor = true;
-            this.iconeCrediario.Click += new System.EventHandler(this.iconeCrediario_Click);
-            // 
-            // iconBoleto
-            // 
-            this.iconBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconBoleto.Enabled = false;
-            this.iconBoleto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconBoleto.FlatAppearance.BorderSize = 0;
-            this.iconBoleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconBoleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconBoleto.IconChar = FontAwesome.Sharp.IconChar.Barcode;
-            this.iconBoleto.IconColor = System.Drawing.Color.Gray;
-            this.iconBoleto.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconBoleto.IconSize = 35;
-            this.iconBoleto.Location = new System.Drawing.Point(60, 224);
-            this.iconBoleto.Name = "iconBoleto";
-            this.iconBoleto.Size = new System.Drawing.Size(49, 26);
-            this.iconBoleto.TabIndex = 214;
-            this.iconBoleto.UseVisualStyleBackColor = true;
-            // 
-            // iconeCredito
-            // 
-            this.iconeCredito.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeCredito.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeCredito.FlatAppearance.BorderSize = 0;
-            this.iconeCredito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeCredito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeCredito.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
-            this.iconeCredito.IconColor = System.Drawing.Color.Purple;
-            this.iconeCredito.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeCredito.IconSize = 35;
-            this.iconeCredito.Location = new System.Drawing.Point(502, 216);
-            this.iconeCredito.Name = "iconeCredito";
-            this.iconeCredito.Size = new System.Drawing.Size(43, 35);
-            this.iconeCredito.TabIndex = 174;
-            this.iconeCredito.UseVisualStyleBackColor = true;
-            this.iconeCredito.Click += new System.EventHandler(this.iconeCredito_Click);
-            // 
-            // iconeDeposito
-            // 
-            this.iconeDeposito.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeDeposito.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeDeposito.FlatAppearance.BorderSize = 0;
-            this.iconeDeposito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeDeposito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeDeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeDeposito.IconChar = FontAwesome.Sharp.IconChar.MoneyCheck;
-            this.iconeDeposito.IconColor = System.Drawing.Color.Olive;
-            this.iconeDeposito.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeDeposito.IconSize = 40;
-            this.iconeDeposito.Location = new System.Drawing.Point(509, 119);
-            this.iconeDeposito.Name = "iconeDeposito";
-            this.iconeDeposito.Size = new System.Drawing.Size(33, 27);
-            this.iconeDeposito.TabIndex = 168;
-            this.iconeDeposito.UseVisualStyleBackColor = true;
-            this.iconeDeposito.Click += new System.EventHandler(this.iconeDeposito_Click);
-            // 
-            // iconeCartao
-            // 
-            this.iconeCartao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeCartao.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeCartao.FlatAppearance.BorderSize = 0;
-            this.iconeCartao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeCartao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeCartao.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeCartao.IconChar = FontAwesome.Sharp.IconChar.CreditCardAlt;
-            this.iconeCartao.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
-            this.iconeCartao.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeCartao.IconSize = 40;
-            this.iconeCartao.Location = new System.Drawing.Point(203, 113);
-            this.iconeCartao.Name = "iconeCartao";
-            this.iconeCartao.Size = new System.Drawing.Size(53, 34);
-            this.iconeCartao.TabIndex = 164;
-            this.iconeCartao.UseVisualStyleBackColor = true;
-            this.iconeCartao.Click += new System.EventHandler(this.iconeCartao_Click);
-            // 
-            // IconeDinheiro
-            // 
-            this.IconeDinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.IconeDinheiro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.IconeDinheiro.FlatAppearance.BorderSize = 0;
-            this.IconeDinheiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.IconeDinheiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.IconeDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.IconeDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IconeDinheiro.IconChar = FontAwesome.Sharp.IconChar.MoneyBill1Wave;
-            this.IconeDinheiro.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-            this.IconeDinheiro.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.IconeDinheiro.IconSize = 40;
-            this.IconeDinheiro.Location = new System.Drawing.Point(50, 115);
-            this.IconeDinheiro.Name = "IconeDinheiro";
-            this.IconeDinheiro.Size = new System.Drawing.Size(49, 27);
-            this.IconeDinheiro.TabIndex = 162;
-            this.IconeDinheiro.UseVisualStyleBackColor = true;
-            this.IconeDinheiro.Click += new System.EventHandler(this.IconeDinheiro_Click);
-            // 
-            // iconeCheque
-            // 
-            this.iconeCheque.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeCheque.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeCheque.FlatAppearance.BorderSize = 0;
-            this.iconeCheque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeCheque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeCheque.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
-            this.iconeCheque.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(173)))), ((int)(((byte)(78)))));
-            this.iconeCheque.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeCheque.IconSize = 40;
-            this.iconeCheque.Location = new System.Drawing.Point(354, 223);
-            this.iconeCheque.Name = "iconeCheque";
-            this.iconeCheque.Size = new System.Drawing.Size(39, 26);
-            this.iconeCheque.TabIndex = 172;
-            this.iconeCheque.UseVisualStyleBackColor = true;
-            this.iconeCheque.Click += new System.EventHandler(this.iconeCheque_Click);
-            // 
-            // iconePix
-            // 
-            this.iconePix.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconePix.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconePix.FlatAppearance.BorderSize = 0;
-            this.iconePix.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconePix.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconePix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconePix.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconePix.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
-            this.iconePix.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
-            this.iconePix.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconePix.IconSize = 35;
-            this.iconePix.Location = new System.Drawing.Point(354, 116);
-            this.iconePix.Name = "iconePix";
-            this.iconePix.Size = new System.Drawing.Size(47, 31);
-            this.iconePix.TabIndex = 167;
-            this.iconePix.UseVisualStyleBackColor = true;
-            this.iconePix.Click += new System.EventHandler(this.iconePix_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
-            this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnClose.IconSize = 30;
-            this.btnClose.Location = new System.Drawing.Point(1070, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(39, 41);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDesconto
             // 
@@ -1157,246 +1401,61 @@
             this.btnFinalizar.UseVisualStyleBackColor = false;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
-            // btnCrediario
+            // btnSelecionarCobrador
             // 
-            this.btnCrediario.BackColor = System.Drawing.Color.White;
-            this.btnCrediario.BackgroundColor = System.Drawing.Color.White;
-            this.btnCrediario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCrediario.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCrediario.BorderRadius = 8;
-            this.btnCrediario.BorderSize = 4;
-            this.btnCrediario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCrediario.FlatAppearance.BorderSize = 0;
-            this.btnCrediario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCrediario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCrediario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrediario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrediario.ForeColor = System.Drawing.Color.Black;
-            this.btnCrediario.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCrediario.Location = new System.Drawing.Point(161, 162);
-            this.btnCrediario.Name = "btnCrediario";
-            this.btnCrediario.Size = new System.Drawing.Size(139, 97);
-            this.btnCrediario.TabIndex = 216;
-            this.btnCrediario.Text = "CREDIÁRIO";
-            this.btnCrediario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCrediario.TextColor = System.Drawing.Color.Black;
-            this.btnCrediario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCrediario.UseVisualStyleBackColor = false;
-            this.btnCrediario.Click += new System.EventHandler(this.btnCrediario_Click);
+            this.btnSelecionarCobrador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelecionarCobrador.BackColor = System.Drawing.Color.White;
+            this.btnSelecionarCobrador.BackgroundColor = System.Drawing.Color.White;
+            this.btnSelecionarCobrador.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnSelecionarCobrador.BorderRadius = 8;
+            this.btnSelecionarCobrador.BorderSize = 2;
+            this.btnSelecionarCobrador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelecionarCobrador.FlatAppearance.BorderSize = 0;
+            this.btnSelecionarCobrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelecionarCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelecionarCobrador.ForeColor = System.Drawing.Color.Black;
+            this.btnSelecionarCobrador.Location = new System.Drawing.Point(503, 596);
+            this.btnSelecionarCobrador.Name = "btnSelecionarCobrador";
+            this.btnSelecionarCobrador.Size = new System.Drawing.Size(193, 45);
+            this.btnSelecionarCobrador.TabIndex = 234;
+            this.btnSelecionarCobrador.Text = "Selecionar Cobrador(a)";
+            this.btnSelecionarCobrador.TextColor = System.Drawing.Color.Black;
+            this.btnSelecionarCobrador.UseVisualStyleBackColor = false;
+            this.btnSelecionarCobrador.Visible = false;
+            this.btnSelecionarCobrador.Click += new System.EventHandler(this.btnSelecionarCobrador_Click);
             // 
-            // btnBoleto
+            // lblCobrador
             // 
-            this.btnBoleto.BackColor = System.Drawing.Color.White;
-            this.btnBoleto.BackgroundColor = System.Drawing.Color.White;
-            this.btnBoleto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnBoleto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnBoleto.BorderRadius = 8;
-            this.btnBoleto.BorderSize = 4;
-            this.btnBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBoleto.Enabled = false;
-            this.btnBoleto.FlatAppearance.BorderSize = 0;
-            this.btnBoleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnBoleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBoleto.ForeColor = System.Drawing.Color.Black;
-            this.btnBoleto.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBoleto.Location = new System.Drawing.Point(12, 162);
-            this.btnBoleto.Name = "btnBoleto";
-            this.btnBoleto.Size = new System.Drawing.Size(139, 97);
-            this.btnBoleto.TabIndex = 210;
-            this.btnBoleto.Text = "BOLETO";
-            this.btnBoleto.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBoleto.TextColor = System.Drawing.Color.Black;
-            this.btnBoleto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnBoleto.UseVisualStyleBackColor = false;
+            this.lblCobrador.AutoSize = true;
+            this.lblCobrador.Location = new System.Drawing.Point(9, 628);
+            this.lblCobrador.Name = "lblCobrador";
+            this.lblCobrador.Size = new System.Drawing.Size(53, 13);
+            this.lblCobrador.TabIndex = 235;
+            this.lblCobrador.Text = "Cobrador:";
+            this.lblCobrador.Visible = false;
             // 
-            // btnCreditoCliente
+            // btnLimparCobrador
             // 
-            this.btnCreditoCliente.BackColor = System.Drawing.Color.White;
-            this.btnCreditoCliente.BackgroundColor = System.Drawing.Color.White;
-            this.btnCreditoCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCreditoCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCreditoCliente.BorderRadius = 8;
-            this.btnCreditoCliente.BorderSize = 4;
-            this.btnCreditoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreditoCliente.FlatAppearance.BorderSize = 0;
-            this.btnCreditoCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCreditoCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCreditoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreditoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreditoCliente.ForeColor = System.Drawing.Color.Black;
-            this.btnCreditoCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCreditoCliente.Location = new System.Drawing.Point(455, 162);
-            this.btnCreditoCliente.Name = "btnCreditoCliente";
-            this.btnCreditoCliente.Size = new System.Drawing.Size(139, 97);
-            this.btnCreditoCliente.TabIndex = 173;
-            this.btnCreditoCliente.Text = "CRÉDITO";
-            this.btnCreditoCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCreditoCliente.TextColor = System.Drawing.Color.Black;
-            this.btnCreditoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCreditoCliente.UseVisualStyleBackColor = false;
-            this.btnCreditoCliente.Click += new System.EventHandler(this.btnCreditoCliente_Click);
-            // 
-            // btnDeposito
-            // 
-            this.btnDeposito.BackColor = System.Drawing.Color.White;
-            this.btnDeposito.BackgroundColor = System.Drawing.Color.White;
-            this.btnDeposito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDeposito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnDeposito.BorderRadius = 8;
-            this.btnDeposito.BorderSize = 4;
-            this.btnDeposito.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeposito.FlatAppearance.BorderSize = 0;
-            this.btnDeposito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnDeposito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnDeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeposito.ForeColor = System.Drawing.Color.Black;
-            this.btnDeposito.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDeposito.Location = new System.Drawing.Point(455, 59);
-            this.btnDeposito.Name = "btnDeposito";
-            this.btnDeposito.Size = new System.Drawing.Size(139, 97);
-            this.btnDeposito.TabIndex = 166;
-            this.btnDeposito.Text = "DEPÓSITO";
-            this.btnDeposito.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDeposito.TextColor = System.Drawing.Color.Black;
-            this.btnDeposito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDeposito.UseVisualStyleBackColor = false;
-            this.btnDeposito.Click += new System.EventHandler(this.btnDeposito_Click);
-            // 
-            // lblFormaPagamento
-            // 
-            this.lblFormaPagamento.BackColor = System.Drawing.Color.White;
-            this.lblFormaPagamento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.lblFormaPagamento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.lblFormaPagamento.BorderRadius = 8;
-            this.lblFormaPagamento.BorderSize = 2;
-            this.lblFormaPagamento.Enabled = false;
-            this.lblFormaPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFormaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblFormaPagamento.Location = new System.Drawing.Point(12, 8);
-            this.lblFormaPagamento.Margin = new System.Windows.Forms.Padding(4);
-            this.lblFormaPagamento.Multiline = false;
-            this.lblFormaPagamento.Name = "lblFormaPagamento";
-            this.lblFormaPagamento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.lblFormaPagamento.PasswordChar = false;
-            this.lblFormaPagamento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.lblFormaPagamento.PlaceholderText = "";
-            this.lblFormaPagamento.ReadOnly = false;
-            this.lblFormaPagamento.Size = new System.Drawing.Size(582, 38);
-            this.lblFormaPagamento.TabIndex = 203;
-            this.lblFormaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.lblFormaPagamento.Texts = "SELECIONE A FORMA DE PAGAMENTO";
-            this.lblFormaPagamento.UnderlinedStyle = false;
-            // 
-            // btnCartaoCredito
-            // 
-            this.btnCartaoCredito.BackColor = System.Drawing.Color.White;
-            this.btnCartaoCredito.BackgroundColor = System.Drawing.Color.White;
-            this.btnCartaoCredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCartaoCredito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCartaoCredito.BorderRadius = 8;
-            this.btnCartaoCredito.BorderSize = 4;
-            this.btnCartaoCredito.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCartaoCredito.FlatAppearance.BorderSize = 0;
-            this.btnCartaoCredito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCartaoCredito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCartaoCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCartaoCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCartaoCredito.ForeColor = System.Drawing.Color.Black;
-            this.btnCartaoCredito.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCartaoCredito.Location = new System.Drawing.Point(161, 59);
-            this.btnCartaoCredito.Name = "btnCartaoCredito";
-            this.btnCartaoCredito.Size = new System.Drawing.Size(139, 97);
-            this.btnCartaoCredito.TabIndex = 175;
-            this.btnCartaoCredito.Text = "CARTÃO";
-            this.btnCartaoCredito.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCartaoCredito.TextColor = System.Drawing.Color.Black;
-            this.btnCartaoCredito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCartaoCredito.UseVisualStyleBackColor = false;
-            this.btnCartaoCredito.Click += new System.EventHandler(this.btnCartaoCredito_Click);
-            // 
-            // btnDinheiro
-            // 
-            this.btnDinheiro.BackColor = System.Drawing.Color.White;
-            this.btnDinheiro.BackgroundColor = System.Drawing.Color.White;
-            this.btnDinheiro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDinheiro.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnDinheiro.BorderRadius = 8;
-            this.btnDinheiro.BorderSize = 4;
-            this.btnDinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDinheiro.FlatAppearance.BorderSize = 0;
-            this.btnDinheiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnDinheiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDinheiro.ForeColor = System.Drawing.Color.Black;
-            this.btnDinheiro.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDinheiro.Location = new System.Drawing.Point(12, 58);
-            this.btnDinheiro.Name = "btnDinheiro";
-            this.btnDinheiro.Size = new System.Drawing.Size(139, 97);
-            this.btnDinheiro.TabIndex = 161;
-            this.btnDinheiro.Text = "DINHEIRO";
-            this.btnDinheiro.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDinheiro.TextColor = System.Drawing.Color.Black;
-            this.btnDinheiro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDinheiro.UseVisualStyleBackColor = false;
-            this.btnDinheiro.Click += new System.EventHandler(this.btnDinheiro_Click);
-            // 
-            // btnCheque
-            // 
-            this.btnCheque.BackColor = System.Drawing.Color.White;
-            this.btnCheque.BackgroundColor = System.Drawing.Color.White;
-            this.btnCheque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCheque.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCheque.BorderRadius = 8;
-            this.btnCheque.BorderSize = 4;
-            this.btnCheque.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCheque.FlatAppearance.BorderSize = 0;
-            this.btnCheque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCheque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheque.ForeColor = System.Drawing.Color.Black;
-            this.btnCheque.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCheque.Location = new System.Drawing.Point(308, 162);
-            this.btnCheque.Name = "btnCheque";
-            this.btnCheque.Size = new System.Drawing.Size(139, 97);
-            this.btnCheque.TabIndex = 171;
-            this.btnCheque.Text = "CHEQUE";
-            this.btnCheque.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCheque.TextColor = System.Drawing.Color.Black;
-            this.btnCheque.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCheque.UseVisualStyleBackColor = false;
-            this.btnCheque.Click += new System.EventHandler(this.btnCheque_Click);
-            // 
-            // btnPIX
-            // 
-            this.btnPIX.BackColor = System.Drawing.Color.White;
-            this.btnPIX.BackgroundColor = System.Drawing.Color.White;
-            this.btnPIX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPIX.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPIX.BorderRadius = 8;
-            this.btnPIX.BorderSize = 4;
-            this.btnPIX.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPIX.FlatAppearance.BorderSize = 0;
-            this.btnPIX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnPIX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnPIX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPIX.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPIX.ForeColor = System.Drawing.Color.Black;
-            this.btnPIX.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPIX.Location = new System.Drawing.Point(308, 59);
-            this.btnPIX.Name = "btnPIX";
-            this.btnPIX.Size = new System.Drawing.Size(139, 97);
-            this.btnPIX.TabIndex = 165;
-            this.btnPIX.Text = "PIX";
-            this.btnPIX.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPIX.TextColor = System.Drawing.Color.Black;
-            this.btnPIX.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPIX.UseVisualStyleBackColor = false;
-            this.btnPIX.Click += new System.EventHandler(this.btnPIX_Click);
+            this.btnLimparCobrador.BackColor = System.Drawing.Color.White;
+            this.btnLimparCobrador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimparCobrador.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnLimparCobrador.FlatAppearance.BorderSize = 0;
+            this.btnLimparCobrador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnLimparCobrador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnLimparCobrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimparCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimparCobrador.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLimparCobrador.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.btnLimparCobrador.IconColor = System.Drawing.Color.Black;
+            this.btnLimparCobrador.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnLimparCobrador.IconSize = 20;
+            this.btnLimparCobrador.Location = new System.Drawing.Point(5, 600);
+            this.btnLimparCobrador.Name = "btnLimparCobrador";
+            this.btnLimparCobrador.Size = new System.Drawing.Size(27, 25);
+            this.btnLimparCobrador.TabIndex = 245;
+            this.btnLimparCobrador.UseVisualStyleBackColor = false;
+            this.btnLimparCobrador.Visible = false;
+            this.btnLimparCobrador.Click += new System.EventHandler(this.btnLimparCobrador_Click);
             // 
             // FrmPagamentoRecebimento
             // 
@@ -1404,6 +1463,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1111, 650);
+            this.Controls.Add(this.btnLimparCobrador);
+            this.Controls.Add(this.lblCobrador);
+            this.Controls.Add(this.btnSelecionarCobrador);
             this.Controls.Add(this.btnDesconto);
             this.Controls.Add(this.rjTextBox2);
             this.Controls.Add(this.rjTextBox1);
@@ -1436,6 +1498,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsFatura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1524,5 +1587,8 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel15;
         private FontAwesome.Sharp.IconButton iconeCrediario;
         private RJ_UI.Classes.RJButton btnCrediario;
+        private RJ_UI.Classes.RJButton btnSelecionarCobrador;
+        private System.Windows.Forms.Label lblCobrador;
+        private FontAwesome.Sharp.IconButton btnLimparCobrador;
     }
 }

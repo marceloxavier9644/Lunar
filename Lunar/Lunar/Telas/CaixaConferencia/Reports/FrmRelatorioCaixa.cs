@@ -1,4 +1,5 @@
 ﻿using Lunar.Telas.Cadastros.Bancos;
+using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.Cadastros.Empresas;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.UsuarioRegistro;
@@ -84,14 +85,27 @@ namespace Lunar.Telas.CaixaConferencia.Reports
             {
                 sql = sql + "and Tabela.EmpresaFilial = " + txtCodEmpresa.Texts + " ";
             }
+            if (chkApenasCaixaFisico.Checked == true)
+            {
+                sql = sql + "and Tabela.ContaBancaria is null ";
+            }
+            if (chkApenasContasReceber.Checked == true)
+            {
+                sql = sql + "and Tabela.TabelaOrigem = 'CONTARECEBER' ";
+            }
+            if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
+                sql = sql + "and Tabela.Cobrador = " + txtCodCobrador.Texts + " ";
             Microsoft.Reporting.WinForms.ReportDataSource dsOrdem = new Microsoft.Reporting.WinForms.ReportDataSource();
             dsOrdem.Name = "dsCaixa";
             dsOrdem.Value = this.bindingSource1;
             this.reportViewer1.LocalReport.DataSources.Add(dsOrdem);
 
+            string cobradorSelecionado = "";
+            if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
+                cobradorSelecionado = "RECEBIDO POR: " + txtCobrador.Texts;
             ReportParameter[] p = new ReportParameter[5];
             p[0] = (new ReportParameter("Empresa", Sessao.empresaFilialLogada.NomeFantasia));
-            p[1] = (new ReportParameter("Data", DateTime.Parse(txtDataInicial.Value.ToString()).ToShortDateString() + " a " + DateTime.Parse(txtDataFinal.Value.ToString()).ToShortDateString()));
+            p[1] = (new ReportParameter("Data", DateTime.Parse(txtDataInicial.Value.ToString()).ToShortDateString() + " a " + DateTime.Parse(txtDataFinal.Value.ToString()).ToShortDateString() + "\n" + cobradorSelecionado));
             p[2] = (new ReportParameter("Usuario", user + " "));
             p[3] = (new ReportParameter("PlanoConta", plano));
             p[4] = (new ReportParameter("ContaBancaria", conta));
@@ -507,6 +521,201 @@ namespace Lunar.Telas.CaixaConferencia.Reports
             {
                 formBackground.Dispose();
             }
+        }
+
+        private void chkApenasCaixaFisico_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkApenasCaixaFisico.Checked == true)
+                {
+                    txtCodContaBancaria.Texts = "";
+                    txtContaBancaria.Texts = "";
+                    gerarRelatorio();
+                }
+                else if (chkApenasCaixaFisico.Checked == false)
+                    gerarRelatorio();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkApenasContasReceber_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkApenasContasReceber.Checked == true)
+                {
+                    chkApenasCaixaFisico.Checked = false;
+                    gerarRelatorio();
+                }
+                else if (chkApenasContasReceber.Checked == false)
+                    gerarRelatorio();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btnPesquisaCobrador_Click(object sender, EventArgs e)
+        {
+            txtCobrador.Texts = "";
+            txtCodCobrador.Texts = "";
+            Object pessoaOjeto = new Pessoa();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and Tabela.Cobrador = true"))
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("Pessoa", "and Tabela.Cobrador = true", ref pessoaOjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmClienteCadastro form = new FrmClienteCadastro();
+                            Object pessoaObj = new Pessoa();
+                            if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
+                            {
+                                txtCobrador.Texts = ((Pessoa)pessoaObj).RazaoSocial;
+                                txtCodCobrador.Texts = ((Pessoa)pessoaObj).Id.ToString();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtCobrador.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                            txtCodCobrador.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                            gerarRelatorio();
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        private void txtCobrador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (!String.IsNullOrEmpty(txtCobrador.Texts))
+                {
+                    Object pessoaOjeto = new Pessoa();
+                    Form formBackground = new Form();
+                    try
+                    {
+                        using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and Tabela.Cobrador = true and Tabela.RazaoSocial like '%"+txtCobrador.Texts+"%'"))
+                        {
+                            formBackground.StartPosition = FormStartPosition.Manual;
+                            //formBackground.FormBorderStyle = FormBorderStyle.None;
+                            formBackground.Opacity = .50d;
+                            formBackground.BackColor = Color.Black;
+                            //formBackground.Left = Top = 0;
+                            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                            formBackground.WindowState = FormWindowState.Maximized;
+                            formBackground.TopMost = false;
+                            formBackground.Location = this.Location;
+                            formBackground.ShowInTaskbar = false;
+                            formBackground.Show();
+                            uu.Owner = formBackground;
+                            switch (uu.showModal("Pessoa", "and Tabela.Cobrador = true and Tabela.RazaoSocial like '%" + txtCobrador.Texts + "%'", ref pessoaOjeto))
+                            {
+                                case DialogResult.Ignore:
+                                    uu.Dispose();
+                                    FrmClienteCadastro form = new FrmClienteCadastro();
+                                    Object pessoaObj = new Pessoa();
+                                    if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
+                                    {
+                                        txtCobrador.Texts = ((Pessoa)pessoaObj).RazaoSocial;
+                                        txtCodCobrador.Texts = ((Pessoa)pessoaObj).Id.ToString();
+                                    }
+                                    form.Dispose();
+                                    break;
+                                case DialogResult.OK:
+                                    txtCobrador.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                                    txtCodCobrador.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                                    gerarRelatorio();
+                                    break;
+                            }
+                            formBackground.Dispose();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        formBackground.Dispose();
+                    }
+                }
+            }
+        }
+
+        private void txtCodCobrador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+                    if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
+                    {
+                        Pessoa pessoaCobrador = new Pessoa();
+                        pessoaCobrador.Id = int.Parse(txtCodCobrador.Texts);
+                        pessoaCobrador = (Pessoa)PessoaController.getInstance().selecionar(pessoaCobrador);
+                        if (pessoaCobrador != null)
+                        {
+                            if (pessoaCobrador.Id > 0)
+                            {
+                                txtCobrador.Texts = pessoaCobrador.RazaoSocial;
+                                gerarRelatorio();
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtUsuario.Texts = "";
+            txtCodUsuario.Texts = "";
+            txtCodPlanoConta.Texts = "";
+            txtPlanoConta.Texts = "";
+            txtCodContaBancaria.Texts = "";
+            txtContaBancaria.Texts = "";
+            txtCodCobrador.Texts = "";
+            txtCobrador.Texts = "";
+            chkApenasCaixaFisico.Checked = true;
+            chkApenasContasReceber.Checked = false;
+            //txtCodEmpresa.Texts = "";
+           //txtEmpresa.Texts = "";
         }
     }
 }

@@ -623,5 +623,50 @@ namespace Lunar.Telas.ContasPagar
         {
             txtCliente.SelectAll();
         }
+        private void grid_CurrentCellValidating(object sender, Syncfusion.WinForms.DataGrid.Events.CurrentCellValidatingEventArgs e)
+        {
+            if (e.Column.MappingName == "DVenc")
+            {
+                try
+                {
+                    DateTime dataValida = DateTime.Parse(e.NewValue.ToString());
+                    e.IsValid = true;
+                    contaPagar = new ContaPagar();
+                    contaPagar = (ContaPagar)grid.SelectedItem;
+                    GenericaDesktop.gravarLinhaLog("Alteração de Vencimento " + contaPagar.DVenc.ToShortDateString() + " para " + dataValida.ToShortDateString() + " Usuario: " + Sessao.usuarioLogado.Login + " - FORNECEDOR: " + contaPagar.Pessoa.RazaoSocial, "ALTERAÇÃO CONTA A PAGAR ID " + contaPagar.Id);
+                    contaPagar.DVenc = dataValida;
+                    Controller.getInstance().salvar(contaPagar);
+               
+                    GenericaDesktop.ShowInfo("Alterado com Sucesso");
+                }
+                catch
+                {
+                    e.IsValid = false;
+                    e.ErrorMessage = "Data Inválida, digite no formato 00/00/0000";
+
+                }
+            }
+            if (e.Column.MappingName == "ValorTotal")
+            {
+                try
+                {
+                    decimal valorFinal = decimal.Parse(e.NewValue.ToString());
+                    e.IsValid = true;
+                    contaPagar = new ContaPagar();
+                    contaPagar = (ContaPagar)grid.SelectedItem;
+                    GenericaDesktop.gravarLinhaLog("Alteração de Valor " + contaPagar.ValorTotal.ToString() + " para " + valorFinal.ToString() + " Usuario: " + Sessao.usuarioLogado.Login + " - FORNECEDOR: " + contaPagar.Pessoa.RazaoSocial, "ALTERAÇÃO CONTA A PAGAR ID " + contaPagar.Id);
+
+                    contaPagar.ValorTotal = valorFinal;
+                    Controller.getInstance().salvar(contaPagar);
+                    GenericaDesktop.ShowInfo("Alterado com Sucesso");
+                }
+                catch
+                {
+                    e.IsValid = false;
+                    e.ErrorMessage = "Valor Inválido";
+
+                }
+            }
+        }
     }
 }

@@ -289,6 +289,7 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnClose = new FontAwesome.Sharp.IconButton();
+            this.chkCobrador = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabIdentidade.SuspendLayout();
@@ -333,6 +334,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCobrador)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlAdv1
@@ -1260,6 +1262,7 @@
             // metroPanel1
             // 
             this.metroPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.metroPanel1.Controls.Add(this.chkCobrador);
             this.metroPanel1.Controls.Add(this.lblComissao);
             this.metroPanel1.Controls.Add(this.txtComissao);
             this.metroPanel1.Controls.Add(this.chkTecnico);
@@ -1336,7 +1339,7 @@
             this.chkTecnico.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkTecnico.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTecnico.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkTecnico.Location = new System.Drawing.Point(569, 171);
+            this.chkTecnico.Location = new System.Drawing.Point(535, 171);
             this.chkTecnico.Name = "chkTecnico";
             this.chkTecnico.Size = new System.Drawing.Size(201, 30);
             this.chkTecnico.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
@@ -1346,13 +1349,13 @@
             // 
             // chkVendedor
             // 
-            this.chkVendedor.BeforeTouchSize = new System.Drawing.Size(136, 30);
+            this.chkVendedor.BeforeTouchSize = new System.Drawing.Size(120, 30);
             this.chkVendedor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkVendedor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkVendedor.Location = new System.Drawing.Point(569, 135);
+            this.chkVendedor.Location = new System.Drawing.Point(535, 135);
             this.chkVendedor.Name = "chkVendedor";
-            this.chkVendedor.Size = new System.Drawing.Size(136, 30);
+            this.chkVendedor.Size = new System.Drawing.Size(120, 30);
             this.chkVendedor.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
             this.chkVendedor.TabIndex = 184;
             this.chkVendedor.Text = " Vendedor";
@@ -1547,13 +1550,13 @@
             // 
             // chkTransportadora
             // 
-            this.chkTransportadora.BeforeTouchSize = new System.Drawing.Size(188, 30);
+            this.chkTransportadora.BeforeTouchSize = new System.Drawing.Size(164, 30);
             this.chkTransportadora.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkTransportadora.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTransportadora.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkTransportadora.Location = new System.Drawing.Point(375, 171);
+            this.chkTransportadora.Location = new System.Drawing.Point(365, 171);
             this.chkTransportadora.Name = "chkTransportadora";
-            this.chkTransportadora.Size = new System.Drawing.Size(188, 30);
+            this.chkTransportadora.Size = new System.Drawing.Size(164, 30);
             this.chkTransportadora.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
             this.chkTransportadora.TabIndex = 169;
             this.chkTransportadora.Text = " Transportadora";
@@ -1572,13 +1575,13 @@
             // 
             // chkFuncionario
             // 
-            this.chkFuncionario.BeforeTouchSize = new System.Drawing.Size(150, 30);
+            this.chkFuncionario.BeforeTouchSize = new System.Drawing.Size(136, 30);
             this.chkFuncionario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkFuncionario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFuncionario.ForeColor = System.Drawing.SystemColors.ControlText;
             this.chkFuncionario.Location = new System.Drawing.Point(223, 171);
             this.chkFuncionario.Name = "chkFuncionario";
-            this.chkFuncionario.Size = new System.Drawing.Size(150, 30);
+            this.chkFuncionario.Size = new System.Drawing.Size(136, 30);
             this.chkFuncionario.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
             this.chkFuncionario.TabIndex = 167;
             this.chkFuncionario.Text = " Funcionário";
@@ -1601,7 +1604,7 @@
             this.chkFornecedor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFornecedor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkFornecedor.Location = new System.Drawing.Point(375, 135);
+            this.chkFornecedor.Location = new System.Drawing.Point(365, 135);
             this.chkFornecedor.Name = "chkFornecedor";
             this.chkFornecedor.Size = new System.Drawing.Size(147, 30);
             this.chkFornecedor.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
@@ -3674,6 +3677,20 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // chkCobrador
+            // 
+            this.chkCobrador.BeforeTouchSize = new System.Drawing.Size(120, 30);
+            this.chkCobrador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCobrador.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkCobrador.Location = new System.Drawing.Point(661, 135);
+            this.chkCobrador.Name = "chkCobrador";
+            this.chkCobrador.Size = new System.Drawing.Size(120, 30);
+            this.chkCobrador.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            this.chkCobrador.TabIndex = 221;
+            this.chkCobrador.Text = " Cobrador";
+            this.chkCobrador.ThemeName = "Metro";
+            // 
             // FrmClienteCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3741,6 +3758,7 @@
             this.groupBox2.ResumeLayout(false);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCobrador)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3974,5 +3992,6 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkSPC;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblComissao;
         private RJ_UI.Classes.RJTextBox txtComissao;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkCobrador;
     }
 }

@@ -397,7 +397,14 @@ namespace Lunar.Telas.CaixaConferencia
             {
                 sql = sql + "and Tabela.EmpresaFilial = " + txtCodEmpresa.Texts + " ";
             }
-
+            if(chkApenasCaixaFisico.Checked == true)
+            {
+                sql = sql + "and Tabela.ContaBancaria is null ";
+            }
+            if (chkApenasContasReceber.Checked == true)
+            {
+                sql = sql + "and Tabela.TabelaOrigem = 'CONTARECEBER' ";
+            }
             CaixaController caixaController = new CaixaController();
             IList<Caixa> listaCaixa = new List<Caixa>();
             listaCaixa = caixaController.selecionarCaixaPorSql(sql); ;
@@ -608,6 +615,20 @@ namespace Lunar.Telas.CaixaConferencia
                             Controller.getInstance().excluir(caixa);
                             GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
                         }
+                        //DEPOSITO BANCARIO
+                        if (caixa.TabelaOrigem.Equals("DEPOSITO_BANCARIO"))
+                        {
+                            CaixaController caixaController = new CaixaController();
+                            IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSqlNativo("Select * From Caixa Where Caixa.Valor = " + caixa.Valor.ToString().Replace(',','.') + " and Caixa.DataLancamento = '" +caixa.DataLancamento.ToString("yyyy-MM-dd") + "' and Caixa.FlagExcluido <> true and Caixa.TabelaOrigem = 'DEPOSITO_BANCARIO' and Caixa.OperadorCadastro = '"+caixa.OperadorCadastro+"'");
+                            if(listaCaixa.Count == 2)
+                            {
+                                foreach(Caixa cx in listaCaixa)
+                                {
+                                    Controller.getInstance().excluir(cx);
+                                }
+                                GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
+                            }
+                        }
                     }
                     btnPesquisar.PerformClick();
                 }
@@ -692,6 +713,43 @@ namespace Lunar.Telas.CaixaConferencia
             formBackground.Dispose();
             uu.Dispose();
             pesquisar();
+        }
+
+        private void radioApenasCaixaFisico_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkApenasCaixaFisico.Checked == true)
+                {
+                    txtCodContaBancaria.Texts = "";
+                    txtContaBancaria.Texts = "";
+                    pesquisar();
+                }
+                else if (chkApenasCaixaFisico.Checked == false)
+                    pesquisar();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkApenasContasReceber_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkApenasContasReceber.Checked == true)
+                {
+                    chkApenasCaixaFisico.Checked = false;
+                    pesquisar();
+                }
+                else if (chkApenasContasReceber.Checked == false)
+                    pesquisar();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

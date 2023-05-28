@@ -101,5 +101,17 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar Caixa! Erro: " + e.Message);
             }
         }
+
+        public IList<Caixa> selecionarCaixaPorSqlNativo(string sql)
+        {
+            try
+            {
+                return dao.selecionarCaixaPorSqlNativo(sql);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Caixa! Erro: " + e.Message);
+            }
+        }
     }
 }

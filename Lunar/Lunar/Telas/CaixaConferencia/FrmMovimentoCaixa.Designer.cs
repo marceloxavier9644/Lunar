@@ -32,6 +32,7 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
             this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -40,6 +41,7 @@
             this.btnPesquisaEmpresa = new FontAwesome.Sharp.IconButton();
             this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnExcluir = new FontAwesome.Sharp.IconButton();
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.autoLabel25 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -63,18 +65,21 @@
             this.txtCodUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnExcluir = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.btnReceita = new Lunar.RJ_UI.Classes.RJButton();
             this.btnDespesa = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnExcluir2 = new Lunar.RJ_UI.Classes.RJButton();
+            this.chkApenasCaixaFisico = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkApenasContasReceber = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panel3.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasCaixaFisico)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).BeginInit();
             this.SuspendLayout();
             // 
             // autoLabel10
@@ -186,6 +191,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.chkApenasContasReceber);
+            this.panel3.Controls.Add(this.chkApenasCaixaFisico);
             this.panel3.Controls.Add(this.btnExcluir);
             this.panel3.Controls.Add(this.sfDataPager1);
             this.panel3.Controls.Add(this.panelTitleBar);
@@ -218,8 +225,29 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1128, 184);
+            this.panel3.Size = new System.Drawing.Size(1128, 206);
             this.panel3.TabIndex = 1;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluir.FlatAppearance.BorderSize = 0;
+            this.btnExcluir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExcluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnExcluir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnExcluir.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExcluir.IconSize = 30;
+            this.btnExcluir.Location = new System.Drawing.Point(1076, 126);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(34, 36);
+            this.btnExcluir.TabIndex = 262;
+            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // sfDataPager1
             // 
@@ -627,27 +655,6 @@
             this.txtUsuario.UnderlinedStyle = false;
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluir.FlatAppearance.BorderSize = 0;
-            this.btnExcluir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExcluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnExcluir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.btnExcluir.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnExcluir.IconSize = 30;
-            this.btnExcluir.Location = new System.Drawing.Point(1076, 126);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(34, 36);
-            this.btnExcluir.TabIndex = 262;
-            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -698,14 +705,22 @@
             gridTextColumn2.HeaderStyle.Font.Size = 11F;
             gridTextColumn2.HeaderText = "Forma de Recebimento";
             gridTextColumn2.MappingName = "FormaPagamento.Descricao";
+            gridTextColumn3.AllowEditing = false;
+            gridTextColumn3.AllowResizing = true;
+            gridTextColumn3.CellStyle.Font.Size = 11F;
+            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn3.HeaderStyle.Font.Size = 11F;
+            gridTextColumn3.HeaderText = "Conta Bancária";
+            gridTextColumn3.MappingName = "ContaBancaria";
             this.grid.Columns.Add(gridNumericColumn1);
             this.grid.Columns.Add(gridTextColumn1);
             this.grid.Columns.Add(gridNumericColumn2);
             this.grid.Columns.Add(gridTextColumn2);
+            this.grid.Columns.Add(gridTextColumn3);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 184);
+            this.grid.Location = new System.Drawing.Point(0, 206);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(1128, 196);
+            this.grid.Size = new System.Drawing.Size(1128, 174);
             this.grid.TabIndex = 2;
             this.grid.Text = "sfDataGrid1";
             this.grid.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.grid_QueryRowStyle);
@@ -788,6 +803,30 @@
             this.btnExcluir2.UseVisualStyleBackColor = false;
             this.btnExcluir2.Click += new System.EventHandler(this.btnExcluir2_Click);
             // 
+            // chkApenasCaixaFisico
+            // 
+            this.chkApenasCaixaFisico.BeforeTouchSize = new System.Drawing.Size(459, 32);
+            this.chkApenasCaixaFisico.Checked = true;
+            this.chkApenasCaixaFisico.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkApenasCaixaFisico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkApenasCaixaFisico.Location = new System.Drawing.Point(4, 168);
+            this.chkApenasCaixaFisico.Name = "chkApenasCaixaFisico";
+            this.chkApenasCaixaFisico.Size = new System.Drawing.Size(459, 32);
+            this.chkApenasCaixaFisico.TabIndex = 263;
+            this.chkApenasCaixaFisico.Text = "Visualizar Apenas Caixa Físico (Não Apresenta Valor Bancário)";
+            this.chkApenasCaixaFisico.CheckStateChanged += new System.EventHandler(this.radioApenasCaixaFisico_CheckStateChanged);
+            // 
+            // chkApenasContasReceber
+            // 
+            this.chkApenasContasReceber.BeforeTouchSize = new System.Drawing.Size(310, 32);
+            this.chkApenasContasReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkApenasContasReceber.Location = new System.Drawing.Point(469, 168);
+            this.chkApenasContasReceber.Name = "chkApenasContasReceber";
+            this.chkApenasContasReceber.Size = new System.Drawing.Size(310, 32);
+            this.chkApenasContasReceber.TabIndex = 264;
+            this.chkApenasContasReceber.Text = "Visualizar Apenas Recebimento de Notas";
+            this.chkApenasContasReceber.CheckStateChanged += new System.EventHandler(this.chkApenasContasReceber_CheckStateChanged);
+            // 
             // FrmMovimentoCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -806,6 +845,8 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasCaixaFisico)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -849,5 +890,7 @@
         private RJ_UI.Classes.RJButton btnDespesa;
         private System.Windows.Forms.GroupBox groupBox1;
         private RJ_UI.Classes.RJButton btnExcluir2;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasCaixaFisico;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasContasReceber;
     }
 }

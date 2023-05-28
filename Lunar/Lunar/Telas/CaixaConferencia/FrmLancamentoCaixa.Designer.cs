@@ -55,10 +55,16 @@
             this.txtValor = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCodUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.radioPix = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioDeposito = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioDinheiro = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioPix)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioDeposito)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioDinheiro)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -122,6 +128,9 @@
             // tabPageAdv1
             // 
             this.tabPageAdv1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPageAdv1.Controls.Add(this.radioDinheiro);
+            this.tabPageAdv1.Controls.Add(this.radioDeposito);
+            this.tabPageAdv1.Controls.Add(this.radioPix);
             this.tabPageAdv1.Controls.Add(this.autoLabel5);
             this.tabPageAdv1.Controls.Add(this.btnPesquisaPlanoConta);
             this.tabPageAdv1.Controls.Add(this.autoLabel6);
@@ -496,7 +505,7 @@
             this.txtValor.Size = new System.Drawing.Size(198, 37);
             this.txtValor.TabIndex = 7;
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtValor.Texts = "";
+            this.txtValor.Texts = "0";
             this.txtValor.UnderlinedStyle = false;
             this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             this.txtValor.Leave += new System.EventHandler(this.txtValor_Leave);
@@ -552,6 +561,62 @@
             this.txtUsuario.UnderlinedStyle = false;
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
+            // radioPix
+            // 
+            this.radioPix.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.radioPix.BeforeTouchSize = new System.Drawing.Size(70, 26);
+            this.radioPix.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.radioPix.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.radioPix.HotBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.radioPix.Location = new System.Drawing.Point(124, 247);
+            this.radioPix.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioPix.Name = "radioPix";
+            this.radioPix.Size = new System.Drawing.Size(70, 26);
+            this.radioPix.Style = Syncfusion.Windows.Forms.Tools.RadioButtonAdvStyle.Office2016Colorful;
+            this.radioPix.TabIndex = 315;
+            this.radioPix.TabStop = false;
+            this.radioPix.Text = " PIX";
+            this.radioPix.ThemeName = "Office2016Colorful";
+            this.radioPix.Visible = false;
+            this.radioPix.CheckChanged += new System.EventHandler(this.radioPix_CheckChanged);
+            // 
+            // radioDeposito
+            // 
+            this.radioDeposito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.radioDeposito.BeforeTouchSize = new System.Drawing.Size(172, 26);
+            this.radioDeposito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.radioDeposito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.radioDeposito.HotBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.radioDeposito.Location = new System.Drawing.Point(200, 247);
+            this.radioDeposito.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioDeposito.Name = "radioDeposito";
+            this.radioDeposito.Size = new System.Drawing.Size(172, 26);
+            this.radioDeposito.Style = Syncfusion.Windows.Forms.Tools.RadioButtonAdvStyle.Office2016Colorful;
+            this.radioDeposito.TabIndex = 316;
+            this.radioDeposito.TabStop = false;
+            this.radioDeposito.Text = " Depósito Bancário";
+            this.radioDeposito.ThemeName = "Office2016Colorful";
+            this.radioDeposito.Visible = false;
+            this.radioDeposito.CheckChanged += new System.EventHandler(this.radioDeposito_CheckChanged);
+            // 
+            // radioDinheiro
+            // 
+            this.radioDinheiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.radioDinheiro.BeforeTouchSize = new System.Drawing.Size(101, 26);
+            this.radioDinheiro.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.radioDinheiro.Checked = true;
+            this.radioDinheiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.radioDinheiro.HotBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.radioDinheiro.Location = new System.Drawing.Point(17, 247);
+            this.radioDinheiro.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioDinheiro.Name = "radioDinheiro";
+            this.radioDinheiro.Size = new System.Drawing.Size(101, 26);
+            this.radioDinheiro.Style = Syncfusion.Windows.Forms.Tools.RadioButtonAdvStyle.Office2016Colorful;
+            this.radioDinheiro.TabIndex = 317;
+            this.radioDinheiro.Text = " Dinheiro";
+            this.radioDinheiro.ThemeName = "Office2016Colorful";
+            this.radioDinheiro.Visible = false;
+            // 
             // FrmLancamentoCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -572,6 +637,9 @@
             this.tabControlAdv1.ResumeLayout(false);
             this.tabPageAdv1.ResumeLayout(false);
             this.tabPageAdv1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioPix)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioDeposito)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioDinheiro)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -605,5 +673,8 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private RJ_UI.Classes.RJTextBox txtCodPlanoConta;
         private RJ_UI.Classes.RJTextBox txtPlanoContas;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioDeposito;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioPix;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioDinheiro;
     }
 }

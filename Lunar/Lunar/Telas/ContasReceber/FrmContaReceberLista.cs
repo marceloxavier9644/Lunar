@@ -853,5 +853,29 @@ namespace Lunar.Telas.ContasReceber
         {
             this.Close();
         }
+
+        private void grid_CurrentCellValidating(object sender, Syncfusion.WinForms.DataGrid.Events.CurrentCellValidatingEventArgs e)
+        {
+            if (e.Column.MappingName == "Vencimento")
+            {
+                try
+                {
+                    DateTime dataValida = DateTime.Parse(e.NewValue.ToString());
+                    e.IsValid = true;
+                    contaReceber = new ContaReceber();
+                    contaReceber = (ContaReceber)grid.SelectedItem;
+                    GenericaDesktop.gravarLinhaLog("Alteração de Vencimento " + contaReceber.Vencimento.ToShortDateString() + " para " + dataValida.ToShortDateString() + " Usuario: " + Sessao.usuarioLogado.Login + " Cliente: " + contaReceber.Cliente.RazaoSocial, "ALTERAÇÃO CONTA A RECEBER ID " + contaReceber.Id);
+                    contaReceber.Vencimento = dataValida;
+                    Controller.getInstance().salvar(contaReceber);
+                    GenericaDesktop.ShowInfo("Alterado com Sucesso");
+                }
+                catch
+                {
+                    e.IsValid = false;
+                    e.ErrorMessage = "Data Inválida, digite no formato 00/00/0000";
+
+                }
+            }
+        }
     }
 }

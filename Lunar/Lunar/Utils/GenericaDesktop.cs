@@ -2031,7 +2031,7 @@ namespace Lunar.Utils
 
             try
             {
-                using (StreamWriter outputFile = new StreamWriter(@".\logs\" + operacaoRealizada +"_"+ DateTime.Now.ToString("MMddyyyy") + ".log", true))
+                using (StreamWriter outputFile = new StreamWriter(@".\logs\" + operacaoRealizada +"_"+ DateTime.Now.ToString("yyyy-MM-dd") + ".log", true))
                 {
                     outputFile.WriteLine(DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:ffff") + " - \n" + registro);
                 }

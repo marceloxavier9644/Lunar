@@ -21,6 +21,7 @@ namespace LunarBase.Classes
         private ContaBancaria contaBancaria;
         private bool concluido;
         private Pessoa pessoa;
+        private Pessoa cobrador;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -52,6 +53,8 @@ namespace LunarBase.Classes
         public virtual bool Concluido { get => concluido; set => concluido = value; }
         [Anotacao("Pessoa")]
         public virtual Pessoa Pessoa { get => pessoa; set => pessoa = value; }
+        [Anotacao("Cobrador")]
+        public virtual Pessoa Cobrador { get => cobrador; set => cobrador = value; }
 
         public override string ToString()
         {

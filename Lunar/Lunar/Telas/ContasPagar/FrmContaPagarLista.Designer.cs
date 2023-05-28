@@ -272,7 +272,6 @@
             // grid
             // 
             this.grid.AccessibleName = "Table";
-            this.grid.AllowEditing = false;
             this.grid.AllowFiltering = true;
             this.grid.AllowResizingColumns = true;
             this.grid.AllowResizingHiddenColumns = true;
@@ -294,7 +293,6 @@
             gridTextColumn1.HeaderStyle.VerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
             gridTextColumn1.HeaderText = "Emissão";
             gridTextColumn1.MappingName = "DataOrigem";
-            gridTextColumn2.AllowEditing = false;
             gridTextColumn2.AllowFiltering = true;
             gridTextColumn2.AllowResizing = true;
             gridTextColumn2.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
@@ -349,7 +347,6 @@
             gridTextColumn5.HeaderStyle.Font.Size = 10F;
             gridTextColumn5.HeaderText = "Descrição";
             gridTextColumn5.MappingName = "Descricao";
-            gridNumericColumn2.AllowEditing = false;
             gridNumericColumn2.AllowFiltering = true;
             gridNumericColumn2.AllowResizing = true;
             gridNumericColumn2.CellStyle.Font.Size = 12F;
@@ -423,6 +420,7 @@
             this.grid.Text = "Grid Parcelas";
             this.grid.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.grid_QueryRowStyle);
             this.grid.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.grid_CellDoubleClick);
+            this.grid.CurrentCellValidating += new Syncfusion.WinForms.DataGrid.Events.CurrentCellValidatingEventHandler(this.grid_CurrentCellValidating);
             // 
             // autoLabel5
             // 

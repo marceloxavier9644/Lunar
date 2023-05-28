@@ -35,6 +35,11 @@
             this.btnFechar = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.chkApenasContasReceber = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkApenasCaixaFisico = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
+            this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.iconPesquisar = new FontAwesome.Sharp.IconButton();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaEmpresa = new FontAwesome.Sharp.IconButton();
@@ -52,9 +57,11 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dsCaixa = new Lunar.Telas.CaixaConferencia.Reports.Dados.dsCaixa();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
-            this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel11 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnPesquisaCobrador = new FontAwesome.Sharp.IconButton();
+            this.autoLabel12 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtCodCobrador = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCobrador = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCodContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnPesquisar = new Lunar.RJ_UI.Classes.RJButton();
@@ -64,10 +71,13 @@
             this.txtPlanoConta = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCodUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnLimpar = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasCaixaFisico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCaixa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -113,7 +123,7 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             this.btnFechar.IconColor = System.Drawing.Color.White;
             this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFechar.IconSize = 30;
@@ -136,6 +146,14 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnLimpar);
+            this.panel3.Controls.Add(this.autoLabel11);
+            this.panel3.Controls.Add(this.btnPesquisaCobrador);
+            this.panel3.Controls.Add(this.txtCodCobrador);
+            this.panel3.Controls.Add(this.autoLabel12);
+            this.panel3.Controls.Add(this.txtCobrador);
+            this.panel3.Controls.Add(this.chkApenasContasReceber);
+            this.panel3.Controls.Add(this.chkApenasCaixaFisico);
             this.panel3.Controls.Add(this.autoLabel10);
             this.panel3.Controls.Add(this.txtCodContaBancaria);
             this.panel3.Controls.Add(this.btnPesquisaContaBancaria);
@@ -165,8 +183,75 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1024, 141);
+            this.panel3.Size = new System.Drawing.Size(1024, 230);
             this.panel3.TabIndex = 1;
+            // 
+            // chkApenasContasReceber
+            // 
+            this.chkApenasContasReceber.BeforeTouchSize = new System.Drawing.Size(325, 32);
+            this.chkApenasContasReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkApenasContasReceber.Location = new System.Drawing.Point(477, 182);
+            this.chkApenasContasReceber.Name = "chkApenasContasReceber";
+            this.chkApenasContasReceber.Size = new System.Drawing.Size(325, 32);
+            this.chkApenasContasReceber.TabIndex = 266;
+            this.chkApenasContasReceber.Text = "Visualizar Apenas Recebimento de Notas";
+            this.chkApenasContasReceber.CheckStateChanged += new System.EventHandler(this.chkApenasContasReceber_CheckStateChanged);
+            // 
+            // chkApenasCaixaFisico
+            // 
+            this.chkApenasCaixaFisico.BeforeTouchSize = new System.Drawing.Size(459, 32);
+            this.chkApenasCaixaFisico.Checked = true;
+            this.chkApenasCaixaFisico.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkApenasCaixaFisico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkApenasCaixaFisico.Location = new System.Drawing.Point(12, 182);
+            this.chkApenasCaixaFisico.Name = "chkApenasCaixaFisico";
+            this.chkApenasCaixaFisico.Size = new System.Drawing.Size(459, 32);
+            this.chkApenasCaixaFisico.TabIndex = 265;
+            this.chkApenasCaixaFisico.Text = "Visualizar Apenas Caixa Físico (Não Apresenta Valor Bancário)";
+            this.chkApenasCaixaFisico.CheckStateChanged += new System.EventHandler(this.chkApenasCaixaFisico_CheckStateChanged);
+            // 
+            // autoLabel10
+            // 
+            this.autoLabel10.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel10.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel10.Location = new System.Drawing.Point(930, 58);
+            this.autoLabel10.Name = "autoLabel10";
+            this.autoLabel10.Size = new System.Drawing.Size(51, 16);
+            this.autoLabel10.TabIndex = 257;
+            this.autoLabel10.Text = "Código";
+            this.autoLabel10.Visible = false;
+            // 
+            // btnPesquisaContaBancaria
+            // 
+            this.btnPesquisaContaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaContaBancaria.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaContaBancaria.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaContaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaContaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaContaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaContaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaContaBancaria.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaContaBancaria.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaContaBancaria.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaContaBancaria.IconSize = 38;
+            this.btnPesquisaContaBancaria.Location = new System.Drawing.Point(979, 23);
+            this.btnPesquisaContaBancaria.Name = "btnPesquisaContaBancaria";
+            this.btnPesquisaContaBancaria.Size = new System.Drawing.Size(40, 34);
+            this.btnPesquisaContaBancaria.TabIndex = 255;
+            this.btnPesquisaContaBancaria.UseVisualStyleBackColor = true;
+            this.btnPesquisaContaBancaria.Click += new System.EventHandler(this.btnPesquisaContaBancaria_Click);
+            // 
+            // autoLabel9
+            // 
+            this.autoLabel9.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel9.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel9.Location = new System.Drawing.Point(819, 8);
+            this.autoLabel9.Name = "autoLabel9";
+            this.autoLabel9.Size = new System.Drawing.Size(99, 16);
+            this.autoLabel9.TabIndex = 254;
+            this.autoLabel9.Text = "Conta Bancária";
             // 
             // iconPesquisar
             // 
@@ -369,10 +454,10 @@
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.CaixaConferencia.Reports.RelatorioCaixa01.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(3, 147);
+            this.reportViewer1.Location = new System.Drawing.Point(3, 236);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1018, 491);
+            this.reportViewer1.Size = new System.Drawing.Size(1018, 402);
             this.reportViewer1.TabIndex = 0;
             // 
             // dsCaixa
@@ -385,48 +470,97 @@
             this.bindingSource1.DataMember = "Caixa";
             this.bindingSource1.DataSource = this.dsCaixa;
             // 
-            // btnPesquisaContaBancaria
+            // autoLabel11
             // 
-            this.btnPesquisaContaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaContaBancaria.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaContaBancaria.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaContaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaContaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaContaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaContaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaContaBancaria.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaContaBancaria.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaContaBancaria.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaContaBancaria.IconSize = 38;
-            this.btnPesquisaContaBancaria.Location = new System.Drawing.Point(979, 23);
-            this.btnPesquisaContaBancaria.Name = "btnPesquisaContaBancaria";
-            this.btnPesquisaContaBancaria.Size = new System.Drawing.Size(40, 34);
-            this.btnPesquisaContaBancaria.TabIndex = 255;
-            this.btnPesquisaContaBancaria.UseVisualStyleBackColor = true;
-            this.btnPesquisaContaBancaria.Click += new System.EventHandler(this.btnPesquisaContaBancaria_Click);
+            this.autoLabel11.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel11.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel11.Location = new System.Drawing.Point(319, 132);
+            this.autoLabel11.Name = "autoLabel11";
+            this.autoLabel11.Size = new System.Drawing.Size(51, 16);
+            this.autoLabel11.TabIndex = 271;
+            this.autoLabel11.Text = "Código";
             // 
-            // autoLabel9
+            // btnPesquisaCobrador
             // 
-            this.autoLabel9.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel9.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel9.Location = new System.Drawing.Point(819, 8);
-            this.autoLabel9.Name = "autoLabel9";
-            this.autoLabel9.Size = new System.Drawing.Size(99, 16);
-            this.autoLabel9.TabIndex = 254;
-            this.autoLabel9.Text = "Conta Bancária";
+            this.btnPesquisaCobrador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaCobrador.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaCobrador.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaCobrador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCobrador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCobrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaCobrador.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaCobrador.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaCobrador.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaCobrador.IconSize = 38;
+            this.btnPesquisaCobrador.Location = new System.Drawing.Point(268, 147);
+            this.btnPesquisaCobrador.Name = "btnPesquisaCobrador";
+            this.btnPesquisaCobrador.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaCobrador.TabIndex = 270;
+            this.btnPesquisaCobrador.UseVisualStyleBackColor = true;
+            this.btnPesquisaCobrador.Click += new System.EventHandler(this.btnPesquisaCobrador_Click);
             // 
-            // autoLabel10
+            // autoLabel12
             // 
-            this.autoLabel10.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel10.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel10.Location = new System.Drawing.Point(930, 58);
-            this.autoLabel10.Name = "autoLabel10";
-            this.autoLabel10.Size = new System.Drawing.Size(51, 16);
-            this.autoLabel10.TabIndex = 257;
-            this.autoLabel10.Text = "Código";
-            this.autoLabel10.Visible = false;
+            this.autoLabel12.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel12.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel12.Location = new System.Drawing.Point(21, 132);
+            this.autoLabel12.Name = "autoLabel12";
+            this.autoLabel12.Size = new System.Drawing.Size(80, 16);
+            this.autoLabel12.TabIndex = 268;
+            this.autoLabel12.Text = "Cobrador(a)";
+            // 
+            // txtCodCobrador
+            // 
+            this.txtCodCobrador.BackColor = System.Drawing.Color.White;
+            this.txtCodCobrador.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodCobrador.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodCobrador.BorderRadius = 8;
+            this.txtCodCobrador.BorderSize = 2;
+            this.txtCodCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodCobrador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodCobrador.Location = new System.Drawing.Point(311, 144);
+            this.txtCodCobrador.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodCobrador.Multiline = false;
+            this.txtCodCobrador.Name = "txtCodCobrador";
+            this.txtCodCobrador.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodCobrador.PasswordChar = false;
+            this.txtCodCobrador.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodCobrador.PlaceholderText = "";
+            this.txtCodCobrador.ReadOnly = false;
+            this.txtCodCobrador.Size = new System.Drawing.Size(89, 37);
+            this.txtCodCobrador.TabIndex = 269;
+            this.txtCodCobrador.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodCobrador.Texts = "";
+            this.txtCodCobrador.UnderlinedStyle = false;
+            this.txtCodCobrador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodCobrador_KeyPress);
+            // 
+            // txtCobrador
+            // 
+            this.txtCobrador.BackColor = System.Drawing.Color.White;
+            this.txtCobrador.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCobrador.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCobrador.BorderRadius = 8;
+            this.txtCobrador.BorderSize = 2;
+            this.txtCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCobrador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCobrador.Location = new System.Drawing.Point(9, 144);
+            this.txtCobrador.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCobrador.Multiline = false;
+            this.txtCobrador.Name = "txtCobrador";
+            this.txtCobrador.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCobrador.PasswordChar = false;
+            this.txtCobrador.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCobrador.PlaceholderText = "";
+            this.txtCobrador.ReadOnly = false;
+            this.txtCobrador.Size = new System.Drawing.Size(252, 37);
+            this.txtCobrador.TabIndex = 267;
+            this.txtCobrador.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCobrador.Texts = "";
+            this.txtCobrador.UnderlinedStyle = false;
+            this.txtCobrador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCobrador_KeyPress);
             // 
             // txtCodContaBancaria
             // 
@@ -647,6 +781,28 @@
             this.txtUsuario.UnderlinedStyle = false;
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.BackColor = System.Drawing.Color.White;
+            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnLimpar.FlatAppearance.BorderSize = 0;
+            this.btnLimpar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnLimpar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLimpar.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.btnLimpar.IconColor = System.Drawing.Color.Black;
+            this.btnLimpar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnLimpar.IconSize = 35;
+            this.btnLimpar.Location = new System.Drawing.Point(420, 147);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(40, 34);
+            this.btnLimpar.TabIndex = 272;
+            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // FrmRelatorioCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -666,6 +822,8 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasCaixaFisico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCaixa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -710,5 +868,13 @@
         private FontAwesome.Sharp.IconButton btnPesquisaContaBancaria;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel9;
         private RJ_UI.Classes.RJTextBox txtContaBancaria;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasContasReceber;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasCaixaFisico;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel11;
+        private FontAwesome.Sharp.IconButton btnPesquisaCobrador;
+        private RJ_UI.Classes.RJTextBox txtCodCobrador;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel12;
+        private RJ_UI.Classes.RJTextBox txtCobrador;
+        private FontAwesome.Sharp.IconButton btnLimpar;
     }
 }
