@@ -63,15 +63,22 @@ namespace Lunar.Telas.ContasReceber
 
                 listaContaReceber = new List<ContaReceber>();
                 listaContaReceberCalculado = new List<ContaReceber>();
-                string sql = "From ContaReceber Tabela where Tabela.Concluido = true and Tabela.FlagExcluido <> true ";
+                string sql = "Select * From ContaReceber Tabela ";
+                if (chkApenasSPC.Checked == true || chkApenasEscritorioCobranca.Checked == true)
+                {
+                    sql = sql + "Inner Join Pessoa on Tabela.Cliente = Pessoa.Id ";
+                }
+                sql = sql + "where Tabela.Concluido = true and Tabela.FlagExcluido <> true ";
+                if (chkApenasSPC.Checked == true)
+                    sql = sql + "and Pessoa.RegistradoSpc = true ";
+                if (chkApenasEscritorioCobranca.Checked == true)
+                    sql = sql + "and Pessoa.EscritorioCobranca = true ";
                 if (!String.IsNullOrEmpty(txtCodCliente.Texts))
                     sql = sql + "and Tabela.Cliente = " + txtCodCliente.Texts + " ";
 
                 if (!String.IsNullOrEmpty(txtNumeroDocumento.Texts))
                     sql = sql + "and Tabela.Documento like '%" + txtNumeroDocumento.Texts + "%' ";
             
-
-
                 if (radioAbertas.Checked == true)
                     sql = sql + "and Tabela.Recebido <> true ";
                 else
@@ -83,12 +90,15 @@ namespace Lunar.Telas.ContasReceber
                     DateTime dataFin = DateTime.Parse(txtVencimentoFinal.Value.ToString());
                     String dataInicial = dataIni.ToString("yyyy'-'MM'-'dd' '00':'00':'00");
                     String dataFinal = dataFin.ToString("yyyy'-'MM'-'dd' '23':'59':'59");
-
                     sql = sql + "and Tabela.Vencimento BETWEEN '" + dataInicial + "' and '" + dataFinal + "' ";
                 }
 
-                string orderBy = " order by Tabela.Vencimento";
-                listaContaReceber = ContaReceberController.selecionarContaReceberPorSql(sql + orderBy);
+                string orderBy = "order by Tabela.Vencimento";
+
+                if (chkApenasEscritorioCobranca.Checked == true || chkApenasSPC.Checked == true)
+                    orderBy = "order by Pessoa.Id, Tabela.Vencimento";
+                //MessageBox.Show(sql + orderBy);
+                listaContaReceber = ContaReceberController.selecionarContaReceberPorSqlNativo(sql + orderBy);
                 if (listaContaReceber.Count > 0)
                 {
                     //Aqui faz o calculo de juros e multas e joga na nova lista calculado listaContaReceberCalculado
@@ -736,7 +746,27 @@ namespace Lunar.Telas.ContasReceber
 
         private void btnExportarPDF_Click(object sender, EventArgs e)
         {
+            int qtdPaginas = sfDataPager1.PageCount;
+            if (qtdPaginas > 1)
+            {
+                if (GenericaDesktop.ShowConfirmacao("Você possui " + qtdPaginas + " páginas na pesquisa, deseja imprimir todas?"))
+                {
+                    txtRegistroPorPagina.Texts = (qtdPaginas * int.Parse(txtRegistroPorPagina.Texts)).ToString();
+                    btnPesquisar.PerformClick();
+                    exportPDF();
+                }
+                else
+                {
+                    exportPDF();
+                }
+            }        
+        }
+
+        private void exportPDF()
+        {
             var options = new PdfExportingOptions();
+            options.AutoColumnWidth = true;
+            options.FitAllColumnsInOnePage = true;
             var document = new Syncfusion.Pdf.PdfDocument();
             document.PageSettings.Orientation = Syncfusion.Pdf.PdfPageOrientation.Landscape;
             var page = document.Pages.Add();
@@ -777,8 +807,24 @@ namespace Lunar.Telas.ContasReceber
                 }
             }
         }
-
         private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            int qtdPaginas = sfDataPager1.PageCount;
+            if (qtdPaginas > 1)
+            {
+                if (GenericaDesktop.ShowConfirmacao("Você possui " + qtdPaginas + " páginas na pesquisa, deseja imprimir todas?"))
+                {
+                    txtRegistroPorPagina.Texts = (qtdPaginas * int.Parse(txtRegistroPorPagina.Texts)).ToString();
+                    btnPesquisar.PerformClick();
+                    exportarExcel();
+                }
+                else
+                {
+                    exportarExcel();
+                }
+            }
+        }
+        private void exportarExcel()
         {
             var options = new ExcelExportingOptions();
             options.ExcelVersion = ExcelVersion.Excel2013;
@@ -816,7 +862,6 @@ namespace Lunar.Telas.ContasReceber
                 }
             }
         }
-
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             limpar();

@@ -405,6 +405,10 @@ namespace Lunar.Telas.CaixaConferencia
             {
                 sql = sql + "and Tabela.TabelaOrigem = 'CONTARECEBER' ";
             }
+            if (chkApenasDespesas.Checked == true)
+            {
+                sql = sql + "and Tabela.Tipo = 'S' ";
+            }
             CaixaController caixaController = new CaixaController();
             IList<Caixa> listaCaixa = new List<Caixa>();
             listaCaixa = caixaController.selecionarCaixaPorSql(sql); ;
@@ -744,6 +748,24 @@ namespace Lunar.Telas.CaixaConferencia
                     pesquisar();
                 }
                 else if (chkApenasContasReceber.Checked == false)
+                    pesquisar();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkApenasDespesas_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkApenasDespesas.Checked == true)
+                {
+                    chkApenasCaixaFisico.Checked = false;
+                    pesquisar();
+                }
+                else if (chkApenasDespesas.Checked == false)
                     pesquisar();
             }
             catch

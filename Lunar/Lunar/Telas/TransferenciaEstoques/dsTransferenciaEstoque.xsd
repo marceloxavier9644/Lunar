@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsTransferenciaEstoque" targetNamespace="http://tempuri.org/dsTransferenciaEstoque.xsd" xmlns:mstns="http://tempuri.org/dsTransferenciaEstoque.xsd" xmlns="http://tempuri.org/dsTransferenciaEstoque.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsTransferenciaEstoque" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsTransferenciaEstoque" msprop:Generator_DataSetName="dsTransferenciaEstoque">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Transferencia" msprop:Generator_RowEvHandlerName="TransferenciaRowChangeEventHandler" msprop:Generator_RowDeletedName="TransferenciaRowDeleted" msprop:Generator_RowDeletingName="TransferenciaRowDeleting" msprop:Generator_RowEvArgName="TransferenciaRowChangeEvent" msprop:Generator_TablePropName="Transferencia" msprop:Generator_RowChangedName="TransferenciaRowChanged" msprop:Generator_RowChangingName="TransferenciaRowChanging" msprop:Generator_TableClassName="TransferenciaDataTable" msprop:Generator_RowClassName="TransferenciaRow" msprop:Generator_TableVarName="tableTransferencia" msprop:Generator_UserTableName="Transferencia">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodProduto" msprop:Generator_ColumnPropNameInRow="CodProduto" msprop:Generator_ColumnPropNameInTable="CodProdutoColumn" msprop:Generator_ColumnVarNameInTable="columnCodProduto" msprop:Generator_UserColumnName="CodProduto" type="xs:string" minOccurs="0" />
+              <xs:element name="Produto" msprop:Generator_ColumnPropNameInRow="Produto" msprop:Generator_ColumnPropNameInTable="ProdutoColumn" msprop:Generator_ColumnVarNameInTable="columnProduto" msprop:Generator_UserColumnName="Produto" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantidade" msprop:Generator_ColumnPropNameInRow="Quantidade" msprop:Generator_ColumnPropNameInTable="QuantidadeColumn" msprop:Generator_ColumnVarNameInTable="columnQuantidade" msprop:Generator_UserColumnName="Quantidade" type="xs:double" minOccurs="0" />
+              <xs:element name="ValorUnitario" msprop:Generator_ColumnPropNameInRow="ValorUnitario" msprop:Generator_ColumnPropNameInTable="ValorUnitarioColumn" msprop:Generator_ColumnVarNameInTable="columnValorUnitario" msprop:Generator_UserColumnName="ValorUnitario" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Desconto" msprop:Generator_ColumnPropNameInRow="Desconto" msprop:Generator_ColumnPropNameInTable="DescontoColumn" msprop:Generator_ColumnVarNameInTable="columnDesconto" msprop:Generator_UserColumnName="Desconto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ValorFinal" msprop:Generator_ColumnPropNameInRow="ValorFinal" msprop:Generator_ColumnPropNameInTable="ValorFinalColumn" msprop:Generator_ColumnVarNameInTable="columnValorFinal" msprop:Generator_UserColumnName="ValorFinal" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -211,8 +211,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         {
             btnCreditoCliente.Enabled = false;
             iconeCredito.Enabled = false;
-            btnCheque.Enabled = false;
-            iconeCheque.Enabled = false;
+            btnCheque.Enabled = true;
+            iconeCheque.Enabled = true;
             decimal totalFormatado = 0;
             foreach (ContaPagar contaPagar in listaPagar)
             {
@@ -463,7 +463,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 {
                     FormaPagamento formaPagamento = new FormaPagamento();
                     decimal valorRecebido = 0;
-                    using (FrmCheque uu = new FrmCheque(decimal.Parse(lblValorFaltante.Text.Replace("R$ ", "")), listaReceber, ordemServico))
+                    ContaBancaria contSelecionada = new ContaBancaria();
+                    using (FrmCheque uu = new FrmCheque(decimal.Parse(lblValorFaltante.Text.Replace("R$ ", "")), listaReceber, ordemServico, listaPagar))
                     {
                         formBackground.StartPosition = FormStartPosition.Manual;
                         //formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -478,14 +479,14 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         formBackground.ShowInTaskbar = false;
                         formBackground.Show();
                         uu.Owner = formBackground;
-                        switch (uu.showModalReceber(ref formaPagamento, ref valorRecebido, ref listaCheque))
+                        switch (uu.showModalPagar(ref formaPagamento, ref valorRecebido, ref listaCheque, ref contSelecionada))
                         {
                             case DialogResult.Ignore:
                                 uu.Dispose();
                                 formBackground.Dispose();
                                 break;
                             case DialogResult.OK:
-                                inserirFormaPagamentoGrid(formaPagamento, valorRecebido, null, null, "", null, null, DateTime.Parse("1900-01-01 00:00:00"), "");
+                                inserirFormaPagamentoGrid(formaPagamento, valorRecebido, null, null, "", null, contSelecionada, DateTime.Parse("1900-01-01 00:00:00"), "");
                                 uu.Dispose();
                                 formBackground.Dispose();
                                 break;
@@ -2261,11 +2262,14 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         {
                             foreach (Cheque cheque in listaCheque)
                             {
+                                ContaBancaria contaBancaria = new ContaBancaria();
+                                contaBancaria.Id = int.Parse(dataRowView.Row["ContaBancaria"].ToString());
+                                contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                                caixa.ContaBancaria = contaBancaria;
                                 caixa.Conciliado = true;
-                                caixa.Concluido = true;
-                                caixa.ContaBancaria = null;
+                                caixa.Concluido = true;    
                                 caixa.DataLancamento = DateTime.Now;
-                                caixa.Descricao = descricaoPagamento;
+                                caixa.Descricao = descricaoPagamento + " - (CHEQUE)";
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
                                 caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;

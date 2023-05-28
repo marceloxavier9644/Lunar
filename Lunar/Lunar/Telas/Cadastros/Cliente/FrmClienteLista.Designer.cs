@@ -38,6 +38,8 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridCheckBoxColumn gridCheckBoxColumn1 = new Syncfusion.WinForms.DataGrid.GridCheckBoxColumn();
+            Syncfusion.WinForms.DataGrid.GridCheckBoxColumn gridCheckBoxColumn2 = new Syncfusion.WinForms.DataGrid.GridCheckBoxColumn();
             this.dsCliente = new System.Data.DataSet();
             this.Cliente = new System.Data.DataTable();
             this.dataColumn1 = new System.Data.DataColumn();
@@ -458,6 +460,20 @@
             gridTextColumn8.HeaderStyle.Font.Size = 12F;
             gridTextColumn8.HeaderText = "Telefone";
             gridTextColumn8.MappingName = "PessoaTelefone.Telefone";
+            gridCheckBoxColumn1.AllowEditing = false;
+            gridCheckBoxColumn1.AllowFiltering = true;
+            gridCheckBoxColumn1.CellStyle.Font.Size = 12F;
+            gridCheckBoxColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridCheckBoxColumn1.HeaderStyle.Font.Size = 12F;
+            gridCheckBoxColumn1.HeaderText = "SPC/SERASA";
+            gridCheckBoxColumn1.MappingName = "RegistradoSpc";
+            gridCheckBoxColumn2.AllowEditing = false;
+            gridCheckBoxColumn2.AllowFiltering = true;
+            gridCheckBoxColumn2.CellStyle.Font.Size = 12F;
+            gridCheckBoxColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridCheckBoxColumn2.HeaderStyle.Font.Size = 12F;
+            gridCheckBoxColumn2.HeaderText = "Escritório Cobrança";
+            gridCheckBoxColumn2.MappingName = "EscritorioCobranca";
             this.gridClient.Columns.Add(gridNumericColumn1);
             this.gridClient.Columns.Add(gridTextColumn1);
             this.gridClient.Columns.Add(gridTextColumn2);
@@ -467,6 +483,8 @@
             this.gridClient.Columns.Add(gridTextColumn6);
             this.gridClient.Columns.Add(gridTextColumn7);
             this.gridClient.Columns.Add(gridTextColumn8);
+            this.gridClient.Columns.Add(gridCheckBoxColumn1);
+            this.gridClient.Columns.Add(gridCheckBoxColumn2);
             this.gridClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridClient.Location = new System.Drawing.Point(3, 16);

@@ -2,6 +2,7 @@
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Syncfusion.WinForms.DataGrid.Interactivity;
@@ -26,6 +27,8 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
         IList<Cheque> listaCheque = new List<Cheque>();
         IList<ContaReceber> listaReceber = new List<ContaReceber>();
         OrdemServico ordemServico = new OrdemServico();
+        IList<ContaPagar> listaPagar = new List<ContaPagar>();
+        ContaBancaria contaBancaria1 = new ContaBancaria();
         public DialogResult showModalNovo(ref object vendaFormaPagamento)
         {
             showModal = true;
@@ -49,6 +52,19 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             }
             return DialogResult;
         }
+        public DialogResult showModalPagar(ref FormaPagamento formaPagamento, ref decimal valorRecebido, ref IList<Cheque> listaCheque, ref ContaBancaria contaBancaria)
+        {
+            showModal = true;
+            DialogResult = ShowDialog();
+            if (DialogResult == DialogResult.OK)
+            {
+                formaPagamento = this.fp;
+                listaCheque = this.listaCheque;
+                valorRecebido = this.valor;
+                contaBancaria = this.contaBancaria1;
+            }
+            return DialogResult;
+        }
         public FrmCheque(decimal valorFaltante, Venda venda)
         {
             InitializeComponent();
@@ -58,7 +74,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             this.venda = venda;
         }
 
-        public FrmCheque(decimal valorFaltante, IList<ContaReceber> listaReceber, OrdemServico ordemServico)
+        public FrmCheque(decimal valorFaltante, IList<ContaReceber> listaReceber, OrdemServico ordemServico, IList<ContaPagar> listaPagar)
         {
             InitializeComponent();
             lblFaltante.Text = "Valor Faltante: " + valorFaltante.ToString("C2", CultureInfo.CurrentCulture);
@@ -66,6 +82,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             txtValor.TextAlign = HorizontalAlignment.Center;
             this.listaReceber = listaReceber;
             this.ordemServico = ordemServico;
+            this.listaPagar = listaPagar;
         }
 
         private void FrmCheque_Paint(object sender, PaintEventArgs e)
@@ -86,7 +103,86 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 {
                     txtCpf.Enabled = true;
                     txtRazaoSocial.Enabled = true;
+                }
+                if (listaPagar.Count > 0)
+                {
+                    txtDataVencimento.Value = DateTime.Now;
+                    txtDataVencimento.Enabled = false;
+                    txtAgencia.Enabled = false;
+                    txtConta.Enabled = false;
+                    txtDvConta.Enabled = false;
+                    btnPesquisaBanco.Enabled = false;
+                    txtCpf.Enabled = false;
+                    txtRazaoSocial.Enabled = false;
+                    txtCodBanco.Enabled = false;
+                    txtBanco.Enabled = false;
+                    ContaBancariaController contaBancariaController = new ContaBancariaController();
+                    IList<ContaBancaria> listaConta = new List<ContaBancaria>();
+                    listaConta = contaBancariaController.selecionarTodasContasPorFilial(Sessao.empresaFilialLogada.Id);
+                    if (listaConta.Count == 1)
+                    {
+                        foreach(ContaBancaria contaBancaria in listaConta)
+                        {
+                            txtAgencia.Texts = contaBancaria.Agencia;
+                            txtConta.Texts = contaBancaria.Conta;
+                            txtDvConta.Texts = contaBancaria.DvConta;
+                            txtBanco.Texts = contaBancaria.Banco.Descricao;
+                            txtCodBanco.Texts = contaBancaria.Banco.Id.ToString();
+                            txtCpf.Texts = Sessao.empresaFilialLogada.Cnpj;
+                            txtRazaoSocial.Texts = Sessao.empresaFilialLogada.RazaoSocial;
+                            contaBancaria1 = contaBancaria;
+                        }
+                    }
+                    else if (listaConta.Count > 1)
+                    {
+                        Object contaObjeto = new ContaBancaria();
+                        Form formBackground = new Form();
+                        try
+                        {
+                            using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("ContaBancaria", ""))
+                            {
+                                formBackground.StartPosition = FormStartPosition.Manual;
+                                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                                formBackground.Opacity = .50d;
+                                formBackground.BackColor = Color.Black;
+                                //formBackground.Left = Top = 0;
+                                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                                formBackground.WindowState = FormWindowState.Maximized;
+                                formBackground.TopMost = false;
+                                formBackground.Location = this.Location;
+                                formBackground.ShowInTaskbar = false;
+                                formBackground.Show();
+                                uu.Owner = formBackground;
+                                switch (uu.showModal("ContaBancaria", "", ref contaObjeto))
+                                {
+                                    case DialogResult.Ignore:
+                                        uu.Dispose();
+                                        break;
+                                    case DialogResult.OK:
+                                        txtAgencia.Texts = ((ContaBancaria)contaObjeto).Agencia;
+                                        txtConta.Texts = ((ContaBancaria)contaObjeto).Conta;
+                                        txtDvConta.Texts = ((ContaBancaria)contaObjeto).DvConta;
+                                        txtBanco.Texts = ((ContaBancaria)contaObjeto).Banco.Descricao;
+                                        txtCodBanco.Texts = ((ContaBancaria)contaObjeto).Banco.Id.ToString();
+                                        txtCpf.Texts = Sessao.empresaFilialLogada.Cnpj;
+                                        txtRazaoSocial.Texts = Sessao.empresaFilialLogada.RazaoSocial;
+                                        contaBancaria1 = ((ContaBancaria)contaObjeto);
+                                        break;
+                                }
 
+                                formBackground.Dispose();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            formBackground.Dispose();
+                        }
+                    }
                 }
             }
         }
@@ -142,32 +238,33 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                                 Controller.getInstance().salvar(cheque);
                                 Controller.getInstance().salvar(banco);
 
-                                ContaReceber contaReceber = new ContaReceber();
-                                contaReceber.Id = 0;
-                                contaReceber.NomeCliente = venda.Cliente.RazaoSocial;
-                                contaReceber.CnpjCliente = venda.Cliente.Cnpj;
-                                contaReceber.Data = DateTime.Now;
-                                contaReceber.Descricao = "VENDA - " + venda.Id + " - CHEQUE";
-                                contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
-                                contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
-                                contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
-                                contaReceber.Juro = 0;
-                                contaReceber.Multa = 0;
-                                if (venda.Cliente.EnderecoPrincipal != null)
-                                    contaReceber.EnderecoCliente = venda.Cliente.EnderecoPrincipal.Logradouro + ", " + venda.Cliente.EnderecoPrincipal.Numero + " - " + venda.Cliente.EnderecoPrincipal.Complemento;
-                                else
-                                    contaReceber.EnderecoCliente = "";
-                                contaReceber.FormaPagamento = vendaFormaPagamento.FormaPagamento;
-                                contaReceber.Recebido = false;
-                                contaReceber.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
-                                contaReceber.Venda = venda;
-                                contaReceber.Parcela = dataRowView.Row["PARCELA"].ToString();
+                                    ContaReceber contaReceber = new ContaReceber();
+                                    contaReceber.Id = 0;
+                                    contaReceber.NomeCliente = venda.Cliente.RazaoSocial;
+                                    contaReceber.CnpjCliente = venda.Cliente.Cnpj;
+                                    contaReceber.Data = DateTime.Now;
+                                    contaReceber.Descricao = "VENDA - " + venda.Id + " - CHEQUE";
+                                    contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
+                                    contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                    contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                    contaReceber.Juro = 0;
+                                    contaReceber.Multa = 0;
+                                    if (venda.Cliente.EnderecoPrincipal != null)
+                                        contaReceber.EnderecoCliente = venda.Cliente.EnderecoPrincipal.Logradouro + ", " + venda.Cliente.EnderecoPrincipal.Numero + " - " + venda.Cliente.EnderecoPrincipal.Complemento;
+                                    else
+                                        contaReceber.EnderecoCliente = "";
+                                    contaReceber.FormaPagamento = vendaFormaPagamento.FormaPagamento;
+                                    contaReceber.Recebido = false;
+                                    contaReceber.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
+                                    contaReceber.Venda = venda;
+                                    contaReceber.Parcela = dataRowView.Row["PARCELA"].ToString();
 
-                                contaReceber.VendaFormaPagamento = vendaFormaPagamento;
-                                contaReceber.Cliente = venda.Cliente;
-                                contaReceber.Origem = "VENDA";
-                                contaReceber.Concluido = false;
-                                Controller.getInstance().salvar(contaReceber);
+                                    contaReceber.VendaFormaPagamento = vendaFormaPagamento;
+                                    contaReceber.Cliente = venda.Cliente;
+                                    contaReceber.Origem = "VENDA";
+                                    contaReceber.Concluido = false;
+                                    Controller.getInstance().salvar(contaReceber);
+                                
 
                                 Caixa caixa = new Caixa();
                                 caixa.Conciliado = false;
@@ -241,6 +338,39 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                                     GenericaDesktop.ShowAlerta("Digite CPF/CNPJ de um cliente já cadastrado no sistema ou cadastre um novo cliente");
                                     selecionarCliente();
                                 }
+                            }
+                            else if (Sessao.empresaFilialLogada.Cnpj.Equals(GenericaDesktop.RemoveCaracteres(txtCpf.Texts)))
+                            {
+                                fp.Id = 7;
+                                fp = (FormaPagamento)Controller.getInstance().selecionar(fp);
+                                var records = gridParcelas.View.Records;
+                                foreach (var record in records)
+                                {
+                                    var dataRowView = record.Data as DataRowView;
+
+                                    Cheque cheque = new Cheque();
+                                    cheque.Descricao = "CHEQUE PAGAMENTO";
+                                    cheque.Agencia = txtAgencia.Texts;
+                                    cheque.Cnpj = txtCpf.Texts;
+                                    cheque.Conta = txtConta.Texts;
+                                    cheque.DvConta = txtDvConta.Texts;
+                                    cheque.NumeroCheque = dataRowView.Row["NUMEROCHEQUE"].ToString();
+                                    cheque.Parcela = dataRowView.Row["PARCELA"].ToString();
+                                    cheque.RazaoSocial = txtRazaoSocial.Texts;
+                                    cheque.Valor = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                    cheque.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
+                                    Banco banco = new Banco();
+                                    banco.Id = int.Parse(txtCodBanco.Texts);
+                                    banco = (Banco)Controller.getInstance().selecionar(banco);
+                                    cheque.Banco = banco;
+                                    cheque.EmpresaFilial = Sessao.empresaFilialLogada;
+                                    cheque.Venda = null;
+
+                                    cheque.Cliente = null;
+                                    cheque.Concluido = false;
+                                    listaCheque.Add(cheque);
+                                }
+                                this.DialogResult = DialogResult.OK;
                             }
                             else
                             {

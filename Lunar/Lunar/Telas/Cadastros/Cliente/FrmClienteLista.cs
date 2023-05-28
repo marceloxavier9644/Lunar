@@ -236,6 +236,13 @@ namespace Lunar.Telas.Cadastros.Cliente
                 e.Style.BackColor = Color.WhiteSmoke;
             else
                 e.Style.BackColor = Color.White;
+            if ((e.RowData as Pessoa) != null)
+            {
+                if ((e.RowData as Pessoa).RegistradoSpc == true || (e.RowData as Pessoa).EscritorioCobranca == true)
+                {
+                    e.Style.TextColor = Color.Red;
+                }
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

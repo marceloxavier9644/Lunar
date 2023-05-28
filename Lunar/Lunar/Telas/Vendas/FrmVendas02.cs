@@ -2,6 +2,7 @@
 using Lunar.Telas.Cadastros.Produtos;
 using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.PesquisaPadrao;
+using Lunar.Telas.TransferenciaEstoques;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.Vendas.RecebimentoVendas;
 using Lunar.Telas.VisualizadorPDF;
@@ -71,6 +72,32 @@ namespace Lunar.Telas.Vendas
         {
             InitializeComponent();
             bloquearCamposValorQuantidade();
+            btnTransferencia.Visible = false;
+        }
+
+        public FrmVendas02(bool transferencia)
+        {
+            InitializeComponent();
+            bloquearCamposValorQuantidade();
+            btnCondicional.Visible = false;
+            btnFinalizar01.Visible = false;
+            btnFinalizarTela2.Visible = false;
+            this.Text = "Transferência entre Empresas";
+            txtCodCliente.Visible = false;
+            txtPesquisaCliente.Visible = false;
+            autoLabel3.Visible = false;
+            autoLabel4.Visible = false;
+            autoLabel6.Visible = false;
+            btnPesquisaVendedor.Visible = false;
+            btnPesquisaCliente.Visible = false;
+            btnDadosCliente.Visible = false;
+            autoLabel20.Visible = false;
+            btnSelecionarPropriedades.Visible = false;
+            btnSelecionarDependente.Visible = false;
+            rjTextBox2.Visible = false;
+            autoLabel5.Visible = false;
+            txtNomeVendedor.Visible = false;
+            tabPagamento.Visible = false;
         }
         private void txtDinheiro_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -3414,6 +3441,94 @@ namespace Lunar.Telas.Vendas
             }
             else
                 GenericaDesktop.ShowAlerta("Selecione um cliente primeiro");
+        }
+
+        private void btnTransferencia_Click(object sender, EventArgs e)
+        {
+            Object empresaOjeto = new EmpresaFilial();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("EmpresaFilial", ""))
+                {
+                    txtPesquisaCliente.Texts = "";
+                    txtCodCliente.Texts = "";
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("EmpresaFilial", "", ref empresaOjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtPesquisaCliente.Texts = ((EmpresaFilial)empresaOjeto).RazaoSocial;
+                            txtCodCliente.Texts = ((EmpresaFilial)empresaOjeto).Id.ToString();
+                            if(gridProdutos.RowCount > 1)
+                            {
+                                TransferenciaEstoque transferenciaEstoque = new TransferenciaEstoque();
+                                transferenciaEstoque.Data = DateTime.Now;
+                                transferenciaEstoque.Descricao = "TRANSFERENCIA ESTOQUE";
+                                transferenciaEstoque.EmpresaDestino = ((EmpresaFilial)empresaOjeto);
+                                transferenciaEstoque.EmpresaOrigem = Sessao.empresaFilialLogada;
+                                transferenciaEstoque.ValorTotal = decimal.Parse(txtTotalComDesconto.Texts.Replace("R$ ",""));
+                                Controller.getInstance().salvar(transferenciaEstoque);
+
+                                var records = gridProdutos.View.Records;
+                                //int i = 0;
+                                foreach (var record in records)
+                                {
+                                    var dataRowViewXXX = record.Data as DataRowView;
+                                    if (dataRowViewXXX != null && !dataRowViewXXX["ItemExcluido"].ToString().Equals("True"))
+                                    {
+                                        produto = new Produto();
+                                        TransferenciaEstoqueProduto transferenciaEstoqueProduto = new TransferenciaEstoqueProduto();
+                                        produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(dataRowViewXXX.Row["Codigo"].ToString()), Sessao.empresaFilialLogada);
+                                        double quantidade = double.Parse(dataRowViewXXX.Row["Quantidade"].ToString());
+                                        decimal descontoItem = decimal.Parse(dataRowViewXXX.Row["DescontoItem"].ToString());
+                                        produto.ValorVenda = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString());
+                                        transferenciaEstoqueProduto.Produto = produto;
+                                        transferenciaEstoqueProduto.Quantidade = quantidade;
+                                        transferenciaEstoqueProduto.TransferenciaEstoque = transferenciaEstoque;
+                                        transferenciaEstoqueProduto.ValorFinal = ((produto.ValorVenda * decimal.Parse(quantidade.ToString())) - descontoItem);
+                                        transferenciaEstoqueProduto.Desconto = descontoItem;
+                                        transferenciaEstoqueProduto.Acrescimo = 0;
+                                        transferenciaEstoqueProduto.ValorUnitario = produto.ValorVenda;
+                                        Controller.getInstance().salvar(transferenciaEstoqueProduto);
+
+                                        GenericaDesktop genericaDesktop = new GenericaDesktop();
+                                        genericaDesktop.atualizarEstoqueNaoConciliado(produto, quantidade, false, "TRANSFERENCIAESTOQUE", "ENVIO DE MERCADORIA EM TRANSFERENCIA", null, DateTime.Now, null);
+                                    }
+                                }
+                                GenericaDesktop.ShowInfo("Transferência realizada com Sucesso!");
+                                limparCampos();
+                                FrmImprimirTransferencia frmImprimirTransferencia = new FrmImprimirTransferencia(transferenciaEstoque);
+                                frmImprimirTransferencia.ShowDialog();
+                                this.Close();
+                            }
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
     }
 }

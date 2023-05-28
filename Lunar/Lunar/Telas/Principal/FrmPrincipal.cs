@@ -25,6 +25,7 @@ using Lunar.Telas.OrdensDeServico.Servicos;
 using Lunar.Telas.ParametroDoSistema;
 using Lunar.Telas.RelatoriosDiversos;
 using Lunar.Telas.Sintegra;
+using Lunar.Telas.TransferenciaEstoques;
 using Lunar.Telas.UsuarioRegistro;
 using Lunar.Telas.Vendas;
 using Lunar.Telas.Vendas.Adicionais;
@@ -983,6 +984,11 @@ namespace Lunar.Telas.Principal
             uu.Dispose();
             //FrmEtiquetas frm = new FrmEtiquetas();
             //frm.ShowDialog();
+        }
+
+        private void transferênciaFilialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(() => new FrmTransferenciaEstoqueLista(), btnMenuVenda);
         }
     }
 }

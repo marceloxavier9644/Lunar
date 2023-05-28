@@ -104,5 +104,17 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar Conta Receber! Erro: " + e.Message);
             }
         }
+
+        public IList<ContaReceber> selecionarContaReceberPorSqlNativo(string sql)
+        {
+            try
+            {
+                return dao.selecionarContaReceberPorSqlNativo(sql);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Conta Receber! Erro: " + e.Message);
+            }
+        }
     }
 }

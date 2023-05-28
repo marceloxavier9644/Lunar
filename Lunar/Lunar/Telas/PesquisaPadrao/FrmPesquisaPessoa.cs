@@ -128,6 +128,13 @@ namespace Lunar.Telas.PesquisaPadrao
                 e.Style.BackColor = Color.WhiteSmoke;
             else
                 e.Style.BackColor = Color.White;
+            if ((e.RowData as Pessoa) != null)
+            {
+                if ((e.RowData as Pessoa).RegistradoSpc == true || (e.RowData as Pessoa).EscritorioCobranca == true)
+                {
+                    e.Style.TextColor = Color.Red;
+                }
+            }
         }
 
         private void btnNovo_Click(object sender, EventArgs e)

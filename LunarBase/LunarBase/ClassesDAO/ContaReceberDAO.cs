@@ -27,6 +27,11 @@ namespace LunarBase.ClassesDAO
             IList<ContaReceber> retorno = Session.CreateQuery(sql).List<ContaReceber>();
             return retorno;
         }
-
+        public IList<ContaReceber> selecionarContaReceberPorSqlNativo(string sql)
+        {
+            Session = Conexao.GetSession();
+            IList<ContaReceber> retorno = Session.CreateSQLQuery(sql).AddEntity(typeof(ContaReceber)).List<ContaReceber>();
+            return retorno;
+        }
     }
 }

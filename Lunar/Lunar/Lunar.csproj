@@ -946,6 +946,23 @@
     <Compile Include="Telas\Sintegra\FrmGerarSintegra.Designer.cs">
       <DependentUpon>FrmGerarSintegra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\TransferenciaEstoques\dsTransferenciaEstoque.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTransferenciaEstoque.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\TransferenciaEstoques\FrmImprimirTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\TransferenciaEstoques\FrmImprimirTransferencia.Designer.cs">
+      <DependentUpon>FrmImprimirTransferencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\TransferenciaEstoques\FrmTransferenciaEstoqueLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\TransferenciaEstoques\FrmTransferenciaEstoqueLista.Designer.cs">
+      <DependentUpon>FrmTransferenciaEstoqueLista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1395,6 +1412,13 @@
     <EmbeddedResource Include="Telas\Sintegra\FrmGerarSintegra.resx">
       <DependentUpon>FrmGerarSintegra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\TransferenciaEstoques\FrmImprimirTransferencia.resx">
+      <DependentUpon>FrmImprimirTransferencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\TransferenciaEstoques\FrmTransferenciaEstoqueLista.resx">
+      <DependentUpon>FrmTransferenciaEstoqueLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\TransferenciaEstoques\ReportTransferenciaTicket.rdlc" />
     <EmbeddedResource Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.resx">
       <DependentUpon>FrmPermissaoUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -1795,6 +1819,17 @@
     </None>
     <None Include="Telas\RelatoriosDiversos\ReportsDiversos\dsComissaoVendedor.xss">
       <DependentUpon>dsComissaoVendedor.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\TransferenciaEstoques\dsTransferenciaEstoque.xsc">
+      <DependentUpon>dsTransferenciaEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\TransferenciaEstoques\dsTransferenciaEstoque.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTransferenciaEstoque.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\TransferenciaEstoques\dsTransferenciaEstoque.xss">
+      <DependentUpon>dsTransferenciaEstoque.xsd</DependentUpon>
     </None>
     <None Include="Telas\Vendas\Adicionais\dsVenda.xsc">
       <DependentUpon>dsVenda.xsd</DependentUpon>

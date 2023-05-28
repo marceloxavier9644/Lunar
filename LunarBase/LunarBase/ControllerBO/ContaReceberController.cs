@@ -59,5 +59,22 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+        public IList<ContaReceber> selecionarContaReceberPorSqlNativo(string sql)
+        {
+            ContaReceberBO bo = new ContaReceberBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarContaReceberPorSqlNativo(sql);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

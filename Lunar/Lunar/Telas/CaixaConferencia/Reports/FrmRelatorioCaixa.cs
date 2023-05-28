@@ -93,6 +93,10 @@ namespace Lunar.Telas.CaixaConferencia.Reports
             {
                 sql = sql + "and Tabela.TabelaOrigem = 'CONTARECEBER' ";
             }
+            if (chkApenasDespesas.Checked == true)
+            {
+                sql = sql + "and Tabela.Tipo = 'S' ";
+            }
             if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
                 sql = sql + "and Tabela.Cobrador = " + txtCodCobrador.Texts + " ";
             Microsoft.Reporting.WinForms.ReportDataSource dsOrdem = new Microsoft.Reporting.WinForms.ReportDataSource();
@@ -716,6 +720,24 @@ namespace Lunar.Telas.CaixaConferencia.Reports
             chkApenasContasReceber.Checked = false;
             //txtCodEmpresa.Texts = "";
            //txtEmpresa.Texts = "";
+        }
+
+        private void chkApenasDespesas_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkApenasDespesas.Checked == true)
+                {
+                    chkApenasCaixaFisico.Checked = false;
+                    gerarRelatorio();
+                }
+                else if (chkApenasDespesas.Checked == false)
+                    gerarRelatorio();
+            }
+            catch
+            {
+
+            }
         }
     }
 }
