@@ -305,8 +305,8 @@
             this.btnExportarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportarPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportarPDF.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
-            this.btnExportarPDF.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnExportarPDF.IconChar = FontAwesome.Sharp.IconChar.IdCardClip;
+            this.btnExportarPDF.IconColor = System.Drawing.Color.LightSlateGray;
             this.btnExportarPDF.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnExportarPDF.IconSize = 38;
             this.btnExportarPDF.Location = new System.Drawing.Point(96, 23);
@@ -314,7 +314,6 @@
             this.btnExportarPDF.Size = new System.Drawing.Size(36, 34);
             this.btnExportarPDF.TabIndex = 217;
             this.btnExportarPDF.UseVisualStyleBackColor = true;
-            this.btnExportarPDF.Visible = false;
             this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
             // 
             // btnExportarExcel

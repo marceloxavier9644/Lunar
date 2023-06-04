@@ -304,45 +304,12 @@ namespace Lunar.Telas.Cadastros.Cliente
 
         private void btnExportarPDF_Click(object sender, EventArgs e)
         {
-            var options = new PdfExportingOptions();
-            var document = new Syncfusion.Pdf.PdfDocument();
-            document.PageSettings.Orientation = Syncfusion.Pdf.PdfPageOrientation.Landscape;
-            var page = document.Pages.Add();
-            var PDFGrid = gridClient.ExportToPdfGrid(gridClient.View, options);
-            var format = new PdfGridLayoutFormat()
+            if (gridClient.SelectedIndex >= 0)
             {
-                Layout = PdfLayoutType.Paginate,
-                Break = PdfLayoutBreakType.FitPage
-            };
-            //Largura da coluna
-            foreach (PdfGridCell headerCell in PDFGrid.Headers[0].Cells)
-            {
-                if (headerCell.Value.ToString() == gridClient.Columns[5].HeaderText)
-                {
-                    var index = PDFGrid.Headers[0].Cells.IndexOf(headerCell);
-                    PDFGrid.Columns[index].Width = 50;
-                }
-            }
-
-            PDFGrid.Draw(page, new PointF(), format);
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                FileName = "ListaClientes",
-                Filter = "PDF Files(*.pdf)|*.pdf"
-            };
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                using (Stream stream = saveFileDialog.OpenFile())
-                {
-                    document.Save(stream);
-                }
-                //Message box confirmation to view the created Pdf file.
-                if (MessageBox.Show("Deseja abrir o arquivo Pdf?", "Pdf criado com sucesso", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    //Launching the Pdf file using the default Application.
-                    System.Diagnostics.Process.Start(saveFileDialog.FileName);
-                }
+                pessoa = new Pessoa();
+                pessoa = (Pessoa)gridClient.SelectedItem;
+                FrmImprimirFichaSimplificadaCliente fr = new FrmImprimirFichaSimplificadaCliente(pessoa);
+                fr.ShowDialog();
             }
         }
 

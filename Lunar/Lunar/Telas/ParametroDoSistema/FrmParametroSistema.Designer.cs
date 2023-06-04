@@ -35,6 +35,7 @@
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabConfiguracoesFiscais = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.chkLiberarAlteracaoNumeros = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.radioHomologacao = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.radioProducao = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -155,11 +156,12 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.chkLiberarAlteracaoNumeros = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkChequeContaReceber = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabConfiguracoesFiscais.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLiberarAlteracaoNumeros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioHomologacao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioProducao)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -182,7 +184,7 @@
             this.tabEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkLiberarAlteracaoNumeros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -267,6 +269,17 @@
             this.tabConfiguracoesFiscais.TabIndex = 1;
             this.tabConfiguracoesFiscais.Text = "Configurações Fiscais";
             this.tabConfiguracoesFiscais.ThemesEnabled = false;
+            // 
+            // chkLiberarAlteracaoNumeros
+            // 
+            this.chkLiberarAlteracaoNumeros.BeforeTouchSize = new System.Drawing.Size(229, 21);
+            this.chkLiberarAlteracaoNumeros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLiberarAlteracaoNumeros.Location = new System.Drawing.Point(587, 364);
+            this.chkLiberarAlteracaoNumeros.Name = "chkLiberarAlteracaoNumeros";
+            this.chkLiberarAlteracaoNumeros.Size = new System.Drawing.Size(229, 21);
+            this.chkLiberarAlteracaoNumeros.TabIndex = 203;
+            this.chkLiberarAlteracaoNumeros.Text = "Liberar Alteração de Números";
+            this.chkLiberarAlteracaoNumeros.CheckStateChanged += new System.EventHandler(this.chkLiberarAlteracaoNumeros_CheckStateChanged);
             // 
             // radioHomologacao
             // 
@@ -725,6 +738,7 @@
             // 
             // tabContaReceber
             // 
+            this.tabContaReceber.Controls.Add(this.chkChequeContaReceber);
             this.tabContaReceber.Controls.Add(this.autoLabel36);
             this.tabContaReceber.Controls.Add(this.label6);
             this.tabContaReceber.Controls.Add(this.label5);
@@ -2260,16 +2274,21 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // chkLiberarAlteracaoNumeros
+            // chkChequeContaReceber
             // 
-            this.chkLiberarAlteracaoNumeros.BeforeTouchSize = new System.Drawing.Size(229, 21);
-            this.chkLiberarAlteracaoNumeros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkLiberarAlteracaoNumeros.Location = new System.Drawing.Point(587, 364);
-            this.chkLiberarAlteracaoNumeros.Name = "chkLiberarAlteracaoNumeros";
-            this.chkLiberarAlteracaoNumeros.Size = new System.Drawing.Size(229, 21);
-            this.chkLiberarAlteracaoNumeros.TabIndex = 203;
-            this.chkLiberarAlteracaoNumeros.Text = "Liberar Alteração de Números";
-            this.chkLiberarAlteracaoNumeros.CheckStateChanged += new System.EventHandler(this.chkLiberarAlteracaoNumeros_CheckStateChanged);
+            this.chkChequeContaReceber.BeforeTouchSize = new System.Drawing.Size(375, 30);
+            this.chkChequeContaReceber.Checked = true;
+            this.chkChequeContaReceber.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkChequeContaReceber.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkChequeContaReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkChequeContaReceber.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkChequeContaReceber.Location = new System.Drawing.Point(16, 78);
+            this.chkChequeContaReceber.Name = "chkChequeContaReceber";
+            this.chkChequeContaReceber.Size = new System.Drawing.Size(375, 30);
+            this.chkChequeContaReceber.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            this.chkChequeContaReceber.TabIndex = 264;
+            this.chkChequeContaReceber.Text = " Cheque Pré Cair no Contas a Receber";
+            this.chkChequeContaReceber.ThemeName = "Metro";
             // 
             // FrmParametroSistema
             // 
@@ -2292,6 +2311,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).EndInit();
             this.tabControlAdv1.ResumeLayout(false);
             this.tabConfiguracoesFiscais.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkLiberarAlteracaoNumeros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioHomologacao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioProducao)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -2322,7 +2342,7 @@
             this.tabEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkLiberarAlteracaoNumeros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2455,5 +2475,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel37;
         private RJ_UI.Classes.RJTextBox txtComissaoPadrao;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkLiberarAlteracaoNumeros;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkChequeContaReceber;
     }
 }

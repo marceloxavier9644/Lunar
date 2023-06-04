@@ -238,12 +238,14 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                                 Controller.getInstance().salvar(cheque);
                                 Controller.getInstance().salvar(banco);
 
+                                if (Sessao.parametroSistema.ChequeContaReceber == true)
+                                {
                                     ContaReceber contaReceber = new ContaReceber();
                                     contaReceber.Id = 0;
                                     contaReceber.NomeCliente = venda.Cliente.RazaoSocial;
                                     contaReceber.CnpjCliente = venda.Cliente.Cnpj;
                                     contaReceber.Data = DateTime.Now;
-                                    contaReceber.Descricao = "VENDA - " + venda.Id + " - CHEQUE";
+                                    contaReceber.Descricao = "RECEB. CHEQUE";
                                     contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
                                     contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
                                     contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
@@ -264,6 +266,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                                     contaReceber.Origem = "VENDA";
                                     contaReceber.Concluido = false;
                                     Controller.getInstance().salvar(contaReceber);
+                                }
                                 
 
                                 Caixa caixa = new Caixa();

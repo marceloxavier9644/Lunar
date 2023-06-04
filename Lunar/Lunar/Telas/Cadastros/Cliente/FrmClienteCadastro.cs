@@ -1170,11 +1170,12 @@ namespace Lunar.Telas.Cadastros.Cliente
                     //Verificando se quando está editando a pessoa está no mesmo endereço ou se foi atualizado
                     else
                     {
+                        
                         endereco = new Endereco();
-                       
-                            
-                        endereco = (Endereco)enderecoController.selecionar(pessoa.EnderecoPrincipal);
-
+                        if (pessoa.EnderecoPrincipal != null)
+                        {
+                            endereco = (Endereco)enderecoController.selecionar(pessoa.EnderecoPrincipal);
+                        }
                         endereco.Cep = GenericaDesktop.RemoveCaracteres(txtCEP.Texts.Trim());
                         endereco.Logradouro = txtEndereco.Texts.Trim();
                         endereco.Numero = txtNumero.Texts.Trim();

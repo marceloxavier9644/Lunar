@@ -45,6 +45,7 @@
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rjTextBox1 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtPesquisaProdutoPorDescricao = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -300,6 +301,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rjTextBox1);
             this.groupBox1.Controls.Add(this.autoLabel2);
             this.groupBox1.Controls.Add(this.autoLabel1);
             this.groupBox1.Controls.Add(this.txtPesquisaProdutoPorDescricao);
@@ -313,6 +315,34 @@
             this.groupBox1.Size = new System.Drawing.Size(1001, 100);
             this.groupBox1.TabIndex = 159;
             this.groupBox1.TabStop = false;
+            // 
+            // rjTextBox1
+            // 
+            this.rjTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rjTextBox1.BackColor = System.Drawing.Color.White;
+            this.rjTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox1.BorderRadius = 8;
+            this.rjTextBox1.BorderSize = 2;
+            this.rjTextBox1.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox1.Location = new System.Drawing.Point(249, 13);
+            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox1.Multiline = false;
+            this.rjTextBox1.Name = "rjTextBox1";
+            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox1.PasswordChar = false;
+            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox1.PlaceholderText = "";
+            this.rjTextBox1.ReadOnly = false;
+            this.rjTextBox1.Size = new System.Drawing.Size(208, 44);
+            this.rjTextBox1.TabIndex = 214;
+            this.rjTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox1.Texts = "";
+            this.rjTextBox1.UnderlinedStyle = false;
+            this.rjTextBox1.Visible = false;
+            this.rjTextBox1._TextChanged += new System.EventHandler(this.rjTextBox1__TextChanged);
             // 
             // autoLabel2
             // 
@@ -457,5 +487,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private RJ_UI.Classes.RJButton btnExtratoProduto;
+        private RJ_UI.Classes.RJTextBox rjTextBox1;
     }
 }

@@ -1956,6 +1956,11 @@ namespace Lunar.Telas.Vendas
         }
         private void gerarNFCe()
         {
+            ParametroSistema param = new ParametroSistema();
+            param.Id = 1;
+            param = (ParametroSistema)Controller.getInstance().selecionar(param);
+            Sessao.parametroSistema = param;
+
             Sessao.teveRetornoApi = false;
             //se nao tem cliente ja vem validado
             bool validaCliente = true;
@@ -3097,6 +3102,11 @@ namespace Lunar.Telas.Vendas
 
         private void gerarNFE()
         {
+            ParametroSistema param = new ParametroSistema();
+            param.Id = 1;
+            param = (ParametroSistema)Controller.getInstance().selecionar(param);
+            Sessao.parametroSistema = param;
+
             Sessao.teveRetornoApi = false;
             //se nao tem cliente ja vem validado
             bool validaCliente = false;

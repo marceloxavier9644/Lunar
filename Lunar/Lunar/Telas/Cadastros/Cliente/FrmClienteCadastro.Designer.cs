@@ -111,6 +111,7 @@
             this.txtCNPJ = new Lunar.RJ_UI.Classes.RJTextBox();
             this.rjButton4 = new Lunar.RJ_UI.Classes.RJButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.chkCobrador = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.lblComissao = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtComissao = new Lunar.RJ_UI.Classes.RJTextBox();
             this.chkTecnico = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
@@ -289,7 +290,6 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnClose = new FontAwesome.Sharp.IconButton();
-            this.chkCobrador = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabIdentidade.SuspendLayout();
@@ -300,6 +300,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioMasculino)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioFeminino)).BeginInit();
             this.metroPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCobrador)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTecnico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVendedor)).BeginInit();
             this.metroPanel3.SuspendLayout();
@@ -334,7 +335,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkCobrador)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlAdv1
@@ -1292,6 +1292,20 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // chkCobrador
+            // 
+            this.chkCobrador.BeforeTouchSize = new System.Drawing.Size(120, 30);
+            this.chkCobrador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCobrador.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkCobrador.Location = new System.Drawing.Point(661, 135);
+            this.chkCobrador.Name = "chkCobrador";
+            this.chkCobrador.Size = new System.Drawing.Size(120, 30);
+            this.chkCobrador.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            this.chkCobrador.TabIndex = 221;
+            this.chkCobrador.Text = " Cobrador";
+            this.chkCobrador.ThemeName = "Metro";
             // 
             // lblComissao
             // 
@@ -3677,20 +3691,6 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // chkCobrador
-            // 
-            this.chkCobrador.BeforeTouchSize = new System.Drawing.Size(120, 30);
-            this.chkCobrador.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkCobrador.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkCobrador.Location = new System.Drawing.Point(661, 135);
-            this.chkCobrador.Name = "chkCobrador";
-            this.chkCobrador.Size = new System.Drawing.Size(120, 30);
-            this.chkCobrador.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
-            this.chkCobrador.TabIndex = 221;
-            this.chkCobrador.Text = " Cobrador";
-            this.chkCobrador.ThemeName = "Metro";
-            // 
             // FrmClienteCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3719,6 +3719,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioFeminino)).EndInit();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCobrador)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTecnico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVendedor)).EndInit();
             this.metroPanel3.ResumeLayout(false);
@@ -3758,7 +3759,6 @@
             this.groupBox2.ResumeLayout(false);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkCobrador)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -125,6 +125,11 @@ namespace Lunar.Telas.OrdensDeServico
         {
             listaOrdemServico = new List<OrdemServico>();
             produtoNegativo = false;
+            if(!String.IsNullOrEmpty(txtCodCliente.Texts) && radioAbertas.Checked == true)
+                grid.SelectionMode = GridSelectionMode.Multiple;
+            else
+                grid.SelectionMode = GridSelectionMode.Single;
+
             string sql = "Select * From ordemservico Tabela ";
 
             if (!String.IsNullOrEmpty(txtCodDependente.Texts) || !txtDataEntregaInicial.Text.Equals("  /  /    "))
@@ -265,6 +270,7 @@ namespace Lunar.Telas.OrdensDeServico
                             txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
                             txtNumeroOS.Focus();
+                            pesquisarOrdemServico();
                             break;
                     }
                     formBackground.Dispose();
@@ -682,14 +688,59 @@ namespace Lunar.Telas.OrdensDeServico
         {
             if (grid.SelectedIndex >= 0)
             {
-                ordemServico = new OrdemServico();
-                ordemServico = (OrdemServico)grid.SelectedItem;
-                if (!ordemServico.Status.Equals("ENCERRADA"))
+                if (grid.SelectedItems.Count == 1)
                 {
+                    ordemServico = new OrdemServico();
+                    ordemServico = (OrdemServico)grid.SelectedItem;
+                    if (!ordemServico.Status.Equals("ENCERRADA"))
+                    {
+                        Form formBackground = new Form();
+                        IList<ContaReceber> listaReceber = new List<ContaReceber>();
+                        IList<ContaPagar> listaPagar = new List<ContaPagar>();
+                        IList<OrdemServico> listaOs = new List<OrdemServico>();
+                        FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "ORDEMSERVICO", false, true, listaOs);
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        uu.ShowDialog();
+                        formBackground.Dispose();
+                        uu.Dispose();
+                        txtNumeroOS.Texts = ordemServico.Id.ToString();
+                        pesquisarOrdemServicoPeloID();
+                        txtNumeroOS.Texts = "";
+                        // pesquisarOrdemServico();
+                    }
+                    else
+                        GenericaDesktop.ShowAlerta("Ordem de Serviço já está encerrada!");
+                }
+                else if (grid.SelectedItems.Count > 1)
+                {
+                    string client = "";
+                    string idCliente = "";
+                    IList<OrdemServico> listaOS = new List<OrdemServico>();
+                    foreach (var selectedItem in grid.SelectedItems)
+                    {
+                        var ord = selectedItem as OrdemServico;
+                        listaOS.Add(ord);
+                        client = ord.Cliente.RazaoSocial;
+                        idCliente = ord.Cliente.Id.ToString();
+                    }
                     Form formBackground = new Form();
                     IList<ContaReceber> listaReceber = new List<ContaReceber>();
                     IList<ContaPagar> listaPagar = new List<ContaPagar>();
-                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "ORDEMSERVICO", false, true);
+                    //IList<OrdemServico> listaOs = new List<OrdemServico>();
+                    ordemServico = new OrdemServico();
+                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "ORDEMSERVICO", false, true, listaOS);
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
                     formBackground.Opacity = .50d;
@@ -706,22 +757,24 @@ namespace Lunar.Telas.OrdensDeServico
                     uu.ShowDialog();
                     formBackground.Dispose();
                     uu.Dispose();
-                    txtNumeroOS.Texts = ordemServico.Id.ToString();
-                    pesquisarOrdemServicoPeloID();
+                    txtCliente.Texts = client;
+                    txtCodCliente.Texts = idCliente;
+                    radioEncerradas.Checked = true;
                     txtNumeroOS.Texts = "";
-                   // pesquisarOrdemServico();
+                    pesquisarOrdemServico();
                 }
-                else
-                    GenericaDesktop.ShowAlerta("Clique na ordem que deseja encerrar!");
             }
             else
-                GenericaDesktop.ShowAlerta("Ordem de Serviço já está encerrada!");
-
-
+                GenericaDesktop.ShowAlerta("Clique na ordem que deseja encerrar!");
         }
 
         private void btnGerarNFCe_Click(object sender, EventArgs e)
         {
+            ParametroSistema param = new ParametroSistema();
+            param.Id = 1;
+            param = (ParametroSistema)Controller.getInstance().selecionar(param);
+            Sessao.parametroSistema = param;
+
             Pessoa cliSel = new Pessoa();
             nfe = new Nfe();
             valorFinalNota = 0;
@@ -1335,6 +1388,11 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void btnGerarNFe_Click(object sender, EventArgs e)
         {
+            ParametroSistema param = new ParametroSistema();
+            param.Id = 1;
+            param = (ParametroSistema)Controller.getInstance().selecionar(param);
+            Sessao.parametroSistema = param;
+
             valorFinalNota = 0;
             valorDescontoProdutos = 0;
             valorProdutosSemDesconto = 0;
@@ -1995,6 +2053,7 @@ namespace Lunar.Telas.OrdensDeServico
             txtDependente.Texts = "";
             txtRegistroPorPagina.Texts = "100";
             txtCliente.Focus();
+            grid.SelectionMode = GridSelectionMode.Single;
         }
 
         private void preencherSumario()

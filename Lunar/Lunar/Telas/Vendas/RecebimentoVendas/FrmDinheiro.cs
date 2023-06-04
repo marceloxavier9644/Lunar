@@ -22,6 +22,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
         IList<ContaReceber> listaReceber = new List<ContaReceber>();
         IList<ContaPagar> listaPagar = new List<ContaPagar>();
         OrdemServico ordemServico = new OrdemServico();
+        IList<OrdemServico> listaOrdemServico = new List<OrdemServico>();
         bool passou = false;
         public DialogResult showModalNovo(ref object vendaFormaPagamento)
         {
@@ -55,7 +56,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             this.venda = venda;
         }
 
-        public FrmDinheiro(decimal valorFaltante, IList<ContaReceber> listaReceber, OrdemServico ordemServico, IList<ContaPagar> listaPagar)
+        public FrmDinheiro(decimal valorFaltante, IList<ContaReceber> listaReceber, OrdemServico ordemServico, IList<ContaPagar> listaPagar, IList<OrdemServico> listaOrdemServico)
         {
             InitializeComponent();
             lblFaltante.Text = "Valor Faltante: " + valorFaltante.ToString("C2", CultureInfo.CurrentCulture);
@@ -65,6 +66,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             this.listaReceber = listaReceber;
             this.ordemServico = ordemServico;
             this.listaPagar = listaPagar;
+            this.listaOrdemServico = listaOrdemServico;
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -144,7 +146,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 }
 
                 //Ordem de Serviço
-                if (ordemServico.Id > 0)
+                if (ordemServico.Id > 0 || listaOrdemServico.Count > 0)
                 {
                     fp = (FormaPagamento)Controller.getInstance().selecionar(fp);
                     if (decimal.Parse(txtValor.Texts) <= valorFaltante)

@@ -47,6 +47,12 @@ namespace Lunar.Telas.ParametroDoSistema
                 radioProducao.Checked = true;
             else
                 radioHomologacao.Checked = true;
+
+            if (parametro.ChequeContaReceber == true)
+                chkChequeContaReceber.Checked = true;
+            else
+                chkChequeContaReceber.Checked = false;
+
             txtCSC.Texts = parametro.CscNfce;
             txtTokenNFCe.Texts = parametro.TokenNfce;
             txtInformacaoAdicionalNFCe.Texts = parametro.InformacaoAdicionalNFCe;
@@ -155,6 +161,10 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.AlertaEstoqueGerencial = true;
             else
                 parametro.AlertaEstoqueGerencial = false;
+            if (chkChequeContaReceber.Checked == true)
+                parametro.ChequeContaReceber = true;
+            else
+                parametro.ChequeContaReceber = false;
             parametro.Multa = txtMulta.Texts;
             parametro.Juro = txtJuro.Texts;
             parametro.IdInstanciaWhats = txtIdWhatsapp.Texts;

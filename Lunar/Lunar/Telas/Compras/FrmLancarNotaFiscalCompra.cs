@@ -129,24 +129,27 @@ namespace Lunar.Telas.Compras
 			listaContaPagar = new List<ContaPagar>();
 			if (notaXML.NFe.infNFe.cobr != null)
 			{
-				for (int k = 0; k < notaXML.NFe.infNFe.cobr.dup.Length; k++)
+				if (notaXML.NFe.infNFe.cobr.dup != null)
 				{
-					contaPagar = new ContaPagar();
-					contaPagar.NDup = notaXML.NFe.infNFe.cobr.dup[k].nDup;
-					contaPagar.DataOrigem = nfe.DataEmissao;
-					contaPagar.Descricao = "COMPRA NFE: " + nfe.NNf;
-					contaPagar.DVenc = DateTime.Parse(notaXML.NFe.infNFe.cobr.dup[k].dVenc);
-					contaPagar.EmpresaFilial = Sessao.empresaFilialLogada;
-					contaPagar.FormaPagamento = null;
-					contaPagar.Nfe = nfe;
-					contaPagar.NumeroDocumento = nfe.NNf;
-					contaPagar.Pago = false;
-					contaPagar.Pessoa = null;
-					contaPagar.PlanoConta = null;
-					contaPagar.ValorTotal = nfe.VNf;
-					contaPagar.VDup = decimal.Parse(notaXML.NFe.infNFe.cobr.dup[k].vDup.Replace(".",","));
+					for (int k = 0; k < notaXML.NFe.infNFe.cobr.dup.Length; k++)
+					{
+						contaPagar = new ContaPagar();
+						contaPagar.NDup = notaXML.NFe.infNFe.cobr.dup[k].nDup;
+						contaPagar.DataOrigem = nfe.DataEmissao;
+						contaPagar.Descricao = "COMPRA NFE: " + nfe.NNf;
+						contaPagar.DVenc = DateTime.Parse(notaXML.NFe.infNFe.cobr.dup[k].dVenc);
+						contaPagar.EmpresaFilial = Sessao.empresaFilialLogada;
+						contaPagar.FormaPagamento = null;
+						contaPagar.Nfe = nfe;
+						contaPagar.NumeroDocumento = nfe.NNf;
+						contaPagar.Pago = false;
+						contaPagar.Pessoa = null;
+						contaPagar.PlanoConta = null;
+						contaPagar.ValorTotal = nfe.VNf;
+						contaPagar.VDup = decimal.Parse(notaXML.NFe.infNFe.cobr.dup[k].vDup.Replace(".", ","));
 
-					listaContaPagar.Add(contaPagar);
+						listaContaPagar.Add(contaPagar);
+					}
 				}
 				FormaPagamento formaPagamento = new FormaPagamento();
 				if (listaContaPagar.Count > 1)

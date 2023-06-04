@@ -352,5 +352,18 @@ namespace Lunar.Telas.Cadastros.Produtos
             }
         }
 
+        private void rjTextBox1__TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.grid.SearchController.AllowFiltering = true;
+                this.grid.SearchController.Search(rjTextBox1.Texts);
+                rjTextBox1.Focus();
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

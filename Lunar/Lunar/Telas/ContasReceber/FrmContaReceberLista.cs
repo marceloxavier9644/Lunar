@@ -406,7 +406,8 @@ namespace Lunar.Telas.ContasReceber
                 {
                     Form formBackground = new Form();
                     OrdemServico ordemServico = new OrdemServico();
-                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "CONTARECEBER", false, false);
+                    IList<OrdemServico> listaOs = new List<OrdemServico>();
+                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "CONTARECEBER", false, false, listaOs);
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
                     formBackground.Opacity = .50d;
@@ -717,7 +718,8 @@ namespace Lunar.Telas.ContasReceber
                             {
                                 Form formBackground1 = new Form();
                                 OrdemServico ordemServico = new OrdemServico();
-                                FrmPagamentoRecebimento uu1 = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "CONTARECEBER", true, false);
+                                IList<OrdemServico> listaOs = new List<OrdemServico>();
+                                FrmPagamentoRecebimento uu1 = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "CONTARECEBER", true, false, listaOs);
                                 formBackground1.StartPosition = FormStartPosition.Manual;
                                 //formBackground.FormBorderStyle = FormBorderStyle.None;
                                 formBackground1.Opacity = .50d;

@@ -6,6 +6,7 @@ using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.UsuarioRegistro;
 using Lunar.Utils;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.Reporting.WinForms;
@@ -508,21 +509,167 @@ namespace Lunar.Telas.CaixaConferencia
                 int i = 0;
                 if (grid.SelectedItems.Count > 0)
                 {
-                    foreach (var selectedItem in grid.SelectedItems)
-                    {
-                        var caixa = selectedItem as Caixa;
+                    //foreach (var selectedItem in grid.SelectedItems)
+                    //{
+                        var caixa = grid.SelectedItem as Caixa;
 
                         //Ordem Serviço
                         if (caixa.TabelaOrigem.Equals("ORDEMSERVICO"))
                         {
                             OrdemServico ordemServico = new OrdemServico();
+                        if (!caixa.IdOrigem.Contains(","))
+                        {
                             ordemServico.Id = int.Parse(caixa.IdOrigem);
                             ordemServico = (OrdemServico)OrdemServicoController.getInstance().selecionar(ordemServico);
                             if (ordemServico != null)
                             {
                                 if (ordemServico.Id > 0)
                                 {
-
+                                    if (ordemServico.Nfe == null)
+                                    {
+                                        OrdemServicoPagamentoController ordemServicoPagamentoController = new OrdemServicoPagamentoController();
+                                        IList<OrdemServicoPagamento> listaPagamentoOS = ordemServicoPagamentoController.selecionarPagamentoPorOrdemServico(ordemServico.Id);
+                                        if (listaPagamentoOS.Count > 0)
+                                        {
+                                            if (GenericaDesktop.ShowConfirmacao("A Ordem de Serviço " + ordemServico.Id.ToString() + " possui " + listaPagamentoOS.Count + " recebimento(s), deseja excluir?"))
+                                            {
+                                                foreach (OrdemServicoPagamento ordemServicoPagamento in listaPagamentoOS)
+                                                {
+                                                    Controller.getInstance().excluir(ordemServicoPagamento);
+                                                    if (ordemServicoPagamento.FormaPagamento.Id == 8)
+                                                    {
+                                                        CreditoCliente creditoCliente = new CreditoCliente();
+                                                        creditoCliente.Cliente = ordemServicoPagamento.OrdemServico.Cliente;
+                                                        creditoCliente.DataUtilizacao = DateTime.Now;
+                                                        creditoCliente.EmpresaFilial = Sessao.empresaFilialLogada;
+                                                        creditoCliente.Origem = "EXCLUSAO PAGAMENTO O.S " + ordemServico.Id.ToString();
+                                                        creditoCliente.Valor = ordemServicoPagamento.ValorRecebido;
+                                                        creditoCliente.ValorUtilizado = 0;
+                                                        Controller.getInstance().salvar(creditoCliente);
+                                                    }
+                                                }
+                                                ordemServico.Status = "ABERTA";
+                                                Controller.getInstance().salvar(ordemServico);
+                                                CaixaController caixaController = new CaixaController();
+                                                IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.FlagExcluido <> true and Tabela.TabelaOrigem = 'OrdemServico' and Tabela.IdOrigem = " + ordemServico.Id);
+                                                if (listaCaixa != null)
+                                                {
+                                                    if (listaCaixa.Count > 0)
+                                                    {
+                                                        foreach (Caixa caixa1 in listaCaixa)
+                                                        {
+                                                            Controller.getInstance().excluir(caixa1);
+                                                        }
+                                                    }
+                                                }
+                                                ContaReceberController contaReceberController = new ContaReceberController();
+                                                IList<ContaReceber> listaReceber = new List<ContaReceber>();
+                                                listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela where Tabela.OrdemServico = " + ordemServico.Id);
+                                                if (listaReceber.Count > 0)
+                                                {
+                                                    foreach (ContaReceber cr in listaReceber)
+                                                    {
+                                                        Controller.getInstance().excluir(cr);
+                                                    }
+                                                    GenericaDesktop.ShowInfo("Esta O.S possui conta a receber, foram excluídas!");
+                                                }
+                                                GenericaDesktop.ShowInfo("Pagamento da Ordem de Serviço " + ordemServico.Id.ToString() + " excluído com Sucesso, ela foi reaberta!");
+                                                btnPesquisar.PerformClick();
+                                            }
+                                        }
+                                    }
+                                    else
+                                        GenericaDesktop.ShowErro("Ordem de serviço ja possui nota fiscal gerada, não é possível modificar documento fiscal, informações de pagamento ja constam na sefaz");
+                                }
+                            }
+                        }
+                        else if (caixa.IdOrigem.Contains(","))
+                        {
+                            List<string> listExc = new List<string>();
+                            string[] splt = caixa.IdOrigem.Split(',');
+                            for(int a = 0; a < splt.Length; a++)
+                            {   
+                                if(a > 0)
+                                    listExc.Add(splt[a]);
+                            }
+                            foreach(string idOS in listExc) 
+                            { 
+                            ordemServico.Id = int.Parse(idOS);
+                            ordemServico = (OrdemServico)OrdemServicoController.getInstance().selecionar(ordemServico);
+                                if (ordemServico != null)
+                                {
+                                    if (ordemServico.Id > 0)
+                                    {
+                                        if (ordemServico.Nfe == null)
+                                        {
+                                            OrdemServicoPagamentoController ordemServicoPagamentoController = new OrdemServicoPagamentoController();
+                                            IList<OrdemServicoPagamento> listaPagamentoOS = ordemServicoPagamentoController.selecionarPagamentoPorOrdemServico(ordemServico.Id);
+                                            if (listaPagamentoOS.Count > 0)
+                                            {
+                                                foreach (OrdemServicoPagamento ordemServicoPagamento in listaPagamentoOS)
+                                                {
+                                                    Controller.getInstance().excluir(ordemServicoPagamento);
+                                                    if (ordemServicoPagamento.FormaPagamento.Id == 8)
+                                                    {
+                                                        CreditoCliente creditoCliente = new CreditoCliente();
+                                                        creditoCliente.Cliente = ordemServicoPagamento.OrdemServico.Cliente;
+                                                        creditoCliente.DataUtilizacao = DateTime.Now;
+                                                        creditoCliente.EmpresaFilial = Sessao.empresaFilialLogada;
+                                                        creditoCliente.Origem = "EXCLUSAO PAGAMENTO O.S " + ordemServico.Id.ToString();
+                                                        creditoCliente.Valor = ordemServicoPagamento.ValorRecebido;
+                                                        creditoCliente.ValorUtilizado = 0;
+                                                        Controller.getInstance().salvar(creditoCliente);
+                                                    }
+                                                }
+                                                ordemServico.Status = "ABERTA";
+                                                Controller.getInstance().salvar(ordemServico);
+                                                CaixaController caixaController = new CaixaController();
+                                                IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.FlagExcluido <> true and Tabela.TabelaOrigem = 'OrdemServico' and Tabela.IdOrigem = '" + caixa.IdOrigem + "'");
+                                                if (listaCaixa != null)
+                                                {
+                                                    if (listaCaixa.Count > 0)
+                                                    {
+                                                        foreach (Caixa caixa1 in listaCaixa)
+                                                        {
+                                                            Controller.getInstance().excluir(caixa1);
+                                                        }
+                                                    }
+                                                }
+                                                ContaReceberController contaReceberController = new ContaReceberController();
+                                                IList<ContaReceber> listaReceber = new List<ContaReceber>();
+                                                listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela where Tabela.FlagExcluido <> true and Tabela.OrdemServico = " + ordemServico.Id);
+                                                if(listaReceber.Count > 0)
+                                                {
+                                                    foreach(ContaReceber cr in listaReceber)
+                                                    {
+                                                        Controller.getInstance().excluir(cr);
+                                                    }
+                                                    GenericaDesktop.ShowInfo("Esta O.S possui conta a receber, foram excluídas!");
+                                                }
+                                                
+                                            }
+                                        }
+                                        else
+                                            GenericaDesktop.ShowErro("Ordem de serviço ja possui nota fiscal gerada, não é possível modificar documento fiscal, informações de pagamento ja constam na sefaz");
+                                    }
+                                }
+                            }
+                            GenericaDesktop.ShowInfo("Pagamento da Ordem de Serviço " + ordemServico.Id.ToString() + " excluído com Sucesso, ela foi reaberta!");
+                            btnPesquisar.PerformClick();
+                        }
+                   }
+                    //Ordem Serviço Sinal _ Entrada
+                    if (caixa.TabelaOrigem.Equals("ORDEMSERVICO_SINAL"))
+                    {
+                        OrdemServico ordemServico = new OrdemServico();
+                        ordemServico.Id = int.Parse(caixa.IdOrigem);
+                        ordemServico = (OrdemServico)OrdemServicoController.getInstance().selecionar(ordemServico);
+                        if (ordemServico != null)
+                        {
+                            if (ordemServico.Id > 0)
+                            {
+                                if (ordemServico.Nfe == null)
+                                {
                                     OrdemServicoPagamentoController ordemServicoPagamentoController = new OrdemServicoPagamentoController();
                                     IList<OrdemServicoPagamento> listaPagamentoOS = ordemServicoPagamentoController.selecionarPagamentoPorOrdemServico(ordemServico.Id);
                                     if (listaPagamentoOS.Count > 0)
@@ -555,89 +702,116 @@ namespace Lunar.Telas.CaixaConferencia
                                                     Controller.getInstance().excluir(caixa1);
                                                 }
                                             }
+                                            GenericaDesktop genericaDesktop = new GenericaDesktop();
+                                            OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();
+                                            IList<OrdemServicoProduto> listaProdutos = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(ordemServico.Id);
+                                            foreach (OrdemServicoProduto ordemServicoProduto in listaProdutos)
+                                            {
+                                                genericaDesktop.atualizarEstoqueNaoConciliado(ordemServicoProduto.Produto, ordemServicoProduto.Quantidade, true, "CAIXA_EXCLUSAO", "CAIXA EXCLUIDO - OS REABERTA", ordemServico.Cliente, DateTime.Now, null);
+                                            }
+
                                             GenericaDesktop.ShowInfo("Pagamento da Ordem de Serviço " + ordemServico.Id.ToString() + " excluído com Sucesso, ela foi reaberta!");
                                             btnPesquisar.PerformClick();
                                         }
                                     }
-                                }
-                            }
-                        }
-
-                        //CONTA A RECEBER
-                        if (caixa.TabelaOrigem.Equals("CONTARECEBER"))
-                        {
-                            List<string> idReceber = new List<string>();
-                            string original = caixa.IdOrigem;
-                            char[] delimitadores = new char[] { '-' };
-                            string[] strings = original.Split(delimitadores);
-                            foreach (string s in strings)
-                            {
-                                idReceber.Add(s);
-                            }
-                            foreach (String st in idReceber)
-                            {
-                                ContaReceber contaReceber = new ContaReceber();
-                                contaReceber.Id = int.Parse(st);
-                                contaReceber = (ContaReceber)OrdemServicoController.getInstance().selecionar(contaReceber);
-                                if (contaReceber != null)
-                                {
-                                    if (contaReceber.Id > 0)
+                                    ordemServico.Entrada = false;
+                                    Controller.getInstance().salvar(ordemServico);
+                                    CreditoClienteController creditoClienteController = new CreditoClienteController();
+                                    IList<CreditoCliente> listCredit = creditoClienteController.selecionarCreditoPorCliente(ordemServico.Cliente.Id);
+                                    if (listCredit.Count > 0)
                                     {
-                                        if (contaReceber.ValorRecebimentoParcial == 0)
+                                        foreach (CreditoCliente cred in listCredit)
                                         {
-                                            contaReceber.Recebido = false;
-                                            contaReceber.ValorRecebido = 0;
-                                            Controller.getInstance().salvar(contaReceber);
-
-                                            CaixaController caixaController = new CaixaController();
-                                            IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.FlagExcluido <> true and Tabela.TabelaOrigem = 'CONTARECEBER' and Tabela.IdOrigem = '" + original + "' and Tabela.Pessoa = " + contaReceber.Cliente.Id);
-                                            if (listaCaixa.Count > 0)
+                                            if (cred.Valor == caixa.Valor && cred.DataCadastro.ToShortDateString().Equals(caixa.DataCadastro.ToShortDateString()))
                                             {
-                                                foreach (Caixa caixa1 in listaCaixa)
-                                                {
-                                                    Controller.getInstance().excluir(caixa1);
-                                                }
+                                                cred.FlagExcluido = true;
+                                                Controller.getInstance().excluir(cred);
                                             }
                                         }
-                                        else
-                                            GenericaDesktop.ShowErro("Não é possível excluir caixa de parcela que possui recebimento parcial!");
                                     }
+                                    Controller.getInstance().excluir(caixa);
+                                    GenericaDesktop.ShowInfo("Excluido com Sucesso!");
                                 }
                             }
-                            GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
                         }
+                            
+                    }
 
-                        //DESPESA
-                        if (caixa.TabelaOrigem.Equals("LANCAMENTODESPESA"))
+                    //CONTA A RECEBER
+                    if (caixa.TabelaOrigem.Equals("CONTARECEBER"))
+                    {
+                        List<string> idReceber = new List<string>();
+                        string original = caixa.IdOrigem;
+                        char[] delimitadores = new char[] { '-' };
+                        string[] strings = original.Split(delimitadores);
+                        foreach (string s in strings)
                         {
-                            Controller.getInstance().excluir(caixa);
-                            GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
+                            idReceber.Add(s);
                         }
-                        //RECEITA
-                        if (caixa.TabelaOrigem.Equals("LANCAMENTORECEITA"))
+                        foreach (String st in idReceber)
                         {
-                            Controller.getInstance().excluir(caixa);
-                            GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
-                        }
-                        //DEPOSITO BANCARIO
-                        if (caixa.TabelaOrigem.Equals("DEPOSITO_BANCARIO"))
-                        {
-                            CaixaController caixaController = new CaixaController();
-                            IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSqlNativo("Select * From Caixa Where Caixa.Valor = " + caixa.Valor.ToString().Replace(',','.') + " and Caixa.DataLancamento = '" +caixa.DataLancamento.ToString("yyyy-MM-dd") + "' and Caixa.FlagExcluido <> true and Caixa.TabelaOrigem = 'DEPOSITO_BANCARIO' and Caixa.OperadorCadastro = '"+caixa.OperadorCadastro+"'");
-                            if(listaCaixa.Count == 2)
+                            ContaReceber contaReceber = new ContaReceber();
+                            contaReceber.Id = int.Parse(st);
+                            contaReceber = (ContaReceber)OrdemServicoController.getInstance().selecionar(contaReceber);
+                            if (contaReceber != null)
                             {
-                                foreach(Caixa cx in listaCaixa)
+                                if (contaReceber.Id > 0)
                                 {
-                                    Controller.getInstance().excluir(cx);
+                                    if (contaReceber.ValorRecebimentoParcial == 0)
+                                    {
+                                        contaReceber.Recebido = false;
+                                        contaReceber.ValorRecebido = 0;
+                                        Controller.getInstance().salvar(contaReceber);
+
+                                        CaixaController caixaController = new CaixaController();
+                                        IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.FlagExcluido <> true and Tabela.TabelaOrigem = 'CONTARECEBER' and Tabela.IdOrigem = '" + original + "' and Tabela.Pessoa = " + contaReceber.Cliente.Id);
+                                        if (listaCaixa.Count > 0)
+                                        {
+                                            foreach (Caixa caixa1 in listaCaixa)
+                                            {
+                                                Controller.getInstance().excluir(caixa1);
+                                            }
+                                        }
+                                    }
+                                    else
+                                        GenericaDesktop.ShowErro("Não é possível excluir caixa de parcela que possui recebimento parcial!");
                                 }
-                                GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
                             }
+                        }
+                        GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
+                    }
+
+                    //DESPESA
+                    if (caixa.TabelaOrigem.Equals("LANCAMENTODESPESA"))
+                    {
+                        Controller.getInstance().excluir(caixa);
+                        GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
+                    }
+                    //RECEITA
+                    if (caixa.TabelaOrigem.Equals("LANCAMENTORECEITA"))
+                    {
+                        Controller.getInstance().excluir(caixa);
+                        GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
+                    }
+                    //DEPOSITO BANCARIO
+                    if (caixa.TabelaOrigem.Equals("DEPOSITO_BANCARIO"))
+                    {
+                        CaixaController caixaController = new CaixaController();
+                        IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSqlNativo("Select * From Caixa Where Caixa.Valor = " + caixa.Valor.ToString().Replace(',','.') + " and Caixa.DataLancamento = '" +caixa.DataLancamento.ToString("yyyy-MM-dd") + "' and Caixa.FlagExcluido <> true and Caixa.TabelaOrigem = 'DEPOSITO_BANCARIO' and Caixa.OperadorCadastro = '"+caixa.OperadorCadastro+"'");
+                        if(listaCaixa.Count == 2)
+                        {
+                            foreach(Caixa cx in listaCaixa)
+                            {
+                                Controller.getInstance().excluir(cx);
+                            }
+                            GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
                         }
                     }
-                    btnPesquisar.PerformClick();
-                }
-                else
-                    GenericaDesktop.ShowAlerta("Selecione as contas que deseja excluir!");
+                    
+                btnPesquisar.PerformClick();
+            }
+            else
+                GenericaDesktop.ShowAlerta("Selecione as contas que deseja excluir!");
             }
         }
 

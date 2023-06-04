@@ -75,7 +75,7 @@ namespace Lunar.Telas.ContasReceber.Reports
 
                     ReportParameter[] p = new ReportParameter[10];
                     p[0] = (new ReportParameter("DATAEMISSAO", receber.Data.ToShortDateString()));
-                    p[1] = (new ReportParameter("CLIENTE", cliente.RazaoSocial));
+                    p[1] = (new ReportParameter("CLIENTE", cliente.RazaoSocial + " (" + cliente.Id.ToString()+")"));
                     string enderecoClienteFormatado = "";
                     string cidadeCliente = "";
                     string estadoCliente = "";

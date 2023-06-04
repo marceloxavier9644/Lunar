@@ -88,6 +88,13 @@ namespace Lunar.Telas.Compras.Manifestos
                 }
             }
             ultimoNsuSalvo = nfeController.selecionarUltimoNsu();
+
+            ParametroSistema param = new ParametroSistema();
+            param.Id = 1;
+            param = (ParametroSistema)Controller.getInstance().selecionar(param);
+            param.UltNsu = ultimoNsuSalvo.ToString();
+            Controller.getInstance().salvar(param);
+            Sessao.parametroSistema = param;
             if (ultimoNsuSalvo != int.Parse(Sessao.parametroSistema.UltNsu))
                 verificarNotasSefaz();
         }
@@ -723,8 +730,6 @@ namespace Lunar.Telas.Compras.Manifestos
 
                 txtDataInicial.Text = primeiroDiaDoMes.ToShortDateString();
                 txtDataFinal.Text = ultimoDiaDoMes.ToShortDateString();
-
-                //MessageBox.Show(ultimoDiaDoMes.ToShortDateString());
 
                 selecionarNotasBancoDados(primeiroDiaDoMes.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), ultimoDiaDoMes.ToString("yyyy'-'MM'-'dd' '00':'00':'00"));
                 calculaTotalNotas();

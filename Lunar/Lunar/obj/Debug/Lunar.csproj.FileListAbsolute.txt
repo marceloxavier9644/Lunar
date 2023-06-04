@@ -686,3 +686,5 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Compras.FrmImprimirEt
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Estoques.FrmEtiquetas.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.TransferenciaEstoques.FrmImprimirTransferencia.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.TransferenciaEstoques.FrmTransferenciaEstoqueLista.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Fiscal.FrmNotaAgrupada.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Cadastros.Cliente.PessoaAdicionais.FrmImprimirFichaSimplificadaCliente.resources

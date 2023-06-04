@@ -2004,7 +2004,8 @@ namespace Lunar.Telas.OrdensDeServico
                     Form formBackground = new Form();
                     IList<ContaReceber> listaReceber = new List<ContaReceber>();
                     IList<ContaPagar> listaPagar = new List<ContaPagar>();
-                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "ORDEMSERVICO", false, true);
+                    IList<OrdemServico> listaOs = new List<OrdemServico>();
+                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "ORDEMSERVICO", false, true, listaOs);
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
                     formBackground.Opacity = .50d;

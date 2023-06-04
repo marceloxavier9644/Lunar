@@ -356,6 +356,14 @@
     <Compile Include="Telas\Cadastros\Cliente\FrmClienteLista.Designer.cs">
       <DependentUpon>FrmClienteLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\dsClienteSimplificado.cs">
+      <DependentUpon>dsClienteSimplificado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\dsClienteSimplificado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsClienteSimplificado.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAnaliseCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -397,6 +405,12 @@
     </Compile>
     <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroTelefone.Designer.cs">
       <DependentUpon>FrmCadastroTelefone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmImprimirFichaSimplificadaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmImprimirFichaSimplificadaCliente.Designer.cs">
+      <DependentUpon>FrmImprimirFichaSimplificadaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Cadastros\Empresas\FrmCadastroEmpresas.cs">
       <SubType>Form</SubType>
@@ -757,6 +771,12 @@
     </Compile>
     <Compile Include="Telas\Fiscal\FrmNfe.Designer.cs">
       <DependentUpon>FrmNfe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmNotaAgrupada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmNotaAgrupada.Designer.cs">
+      <DependentUpon>FrmNotaAgrupada.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Fiscal\FrmProdutosNota.cs">
       <SubType>Form</SubType>
@@ -1133,6 +1153,7 @@
     <EmbeddedResource Include="Telas\Cadastros\Cliente\FrmClienteLista.resx">
       <DependentUpon>FrmClienteLista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FichaClienteSimples.rdlc" />
     <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAnaliseCliente.resx">
       <DependentUpon>FrmAnaliseCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -1153,6 +1174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroTelefone.resx">
       <DependentUpon>FrmCadastroTelefone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmImprimirFichaSimplificadaCliente.resx">
+      <DependentUpon>FrmImprimirFichaSimplificadaCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Empresas\FrmCadastroEmpresas.resx">
       <DependentUpon>FrmCadastroEmpresas.cs</DependentUpon>
@@ -1321,6 +1345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fiscal\FrmNfe.resx">
       <DependentUpon>FrmNfe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fiscal\FrmNotaAgrupada.resx">
+      <DependentUpon>FrmNotaAgrupada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fiscal\FrmProdutosNota.resx">
       <DependentUpon>FrmProdutosNota.cs</DependentUpon>
@@ -1655,6 +1682,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Telas\Cadastros\Cliente\PessoaAdicionais\dsClienteSimplificado.xsc">
+      <DependentUpon>dsClienteSimplificado.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\Cadastros\Cliente\PessoaAdicionais\dsClienteSimplificado.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsClienteSimplificado.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\Cadastros\Cliente\PessoaAdicionais\dsClienteSimplificado.xss">
+      <DependentUpon>dsClienteSimplificado.xsd</DependentUpon>
+    </None>
     <None Include="Telas\Cadastros\Produtos\RelatoriosCadastro\dsExtratoProduto.xsc">
       <DependentUpon>dsExtratoProduto.xsd</DependentUpon>
     </None>

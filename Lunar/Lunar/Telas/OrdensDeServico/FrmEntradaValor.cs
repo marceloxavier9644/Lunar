@@ -48,7 +48,8 @@ namespace Lunar.Telas.OrdensDeServico
                 IList<ContaReceber> listaReceber = new List<ContaReceber>();
                 IList<ContaPagar> listaPagar = new List<ContaPagar>();
                 Sessao.valorSinalOrdemServico = decimal.Parse(txtValor.Texts);
-                FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "ORDEMSERVICO_SINAL", false, false);
+                IList<OrdemServico> listaOs = new List<OrdemServico>();
+                FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "ORDEMSERVICO_SINAL", false, false, listaOs);
                 formBackground.StartPosition = FormStartPosition.Manual;
                 //formBackground.FormBorderStyle = FormBorderStyle.None;
                 formBackground.Opacity = .50d;

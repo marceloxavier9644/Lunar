@@ -343,7 +343,8 @@ namespace Lunar.Telas.ContasPagar
                 {
                     Form formBackground = new Form();
                     OrdemServico ordemServico = new OrdemServico();
-                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "CONTAPAGAR", false, false);
+                    IList<OrdemServico> listaOs = new List<OrdemServico>();
+                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(listaReceber, listaPagar, ordemServico, "CONTAPAGAR", false, false, listaOs);
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
                     formBackground.Opacity = .50d;
