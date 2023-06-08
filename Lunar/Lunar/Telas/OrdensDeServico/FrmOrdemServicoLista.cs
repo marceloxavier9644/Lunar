@@ -126,7 +126,7 @@ namespace Lunar.Telas.OrdensDeServico
             listaOrdemServico = new List<OrdemServico>();
             produtoNegativo = false;
             if(!String.IsNullOrEmpty(txtCodCliente.Texts) && radioAbertas.Checked == true)
-                grid.SelectionMode = GridSelectionMode.Multiple;
+                grid.SelectionMode = GridSelectionMode.Extended;
             else
                 grid.SelectionMode = GridSelectionMode.Single;
 
@@ -793,18 +793,16 @@ namespace Lunar.Telas.OrdensDeServico
                             //se nao tem cliente ja vem validado
                             bool validaCliente = true;
                             //enviarNFCe();
+                            Pessoa cli = new Pessoa();
                             if (ordemServico.Cliente != null)
                             {
-                                Pessoa cli = new Pessoa();
                                 cli = ordemServico.Cliente;
                                 validaCliente = validarClienteNFCe(cli);
                             }
                             if (validaCliente == false && GenericaDesktop.ShowConfirmacao("Deseja emitir a nota sem identificar o consumidor?"))
                             {
-                                cliSel = ordemServico.Cliente;
-                                ordemServico.Cliente = null;
+                                cli = null;
                                 validaCliente = true;
-                                Controller.getInstance().salvar(ordemServico);
                             }
                             ValidadorNotaSaida validador = new ValidadorNotaSaida();
                             if (validaCliente == true)
@@ -834,13 +832,8 @@ namespace Lunar.Telas.OrdensDeServico
                                                     numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
                                             }
                                         }
-                                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, ordemServico);
+                                        try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, cli, null, ordemServico); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
                                         //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
-                                        if (ordemServico.Cliente == null)
-                                        {
-                                            ordemServico.Cliente = cliSel;
-                                            Controller.getInstance().salvar(ordemServico);
-                                        }
                                         if (!String.IsNullOrEmpty(xmlStrEnvio))
                                         {
                                             enviarXMLNFCeParaApi(xmlStrEnvio);
@@ -1697,6 +1690,7 @@ namespace Lunar.Telas.OrdensDeServico
                         IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.OrdemServico = " + ordemServico.Id);
                         if (listaReceber.Count > 0)
                         {
+                            GenericaDesktop.ShowAlerta("O.S Já foi encerrada e gerado faturas a receber, será excluído as parcelas do contas a receber!");
                             foreach (ContaReceber contaReceber in listaReceber)
                             {
                                 Controller.getInstance().excluir(contaReceber);

@@ -1001,6 +1001,18 @@
     <Compile Include="Telas\UsuarioRegistro\FrmUsuarioLista.Designer.cs">
       <DependentUpon>FrmUsuarioLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\ValeFuncionarios\FrmImpressaoVale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ValeFuncionarios\FrmImpressaoVale.Designer.cs">
+      <DependentUpon>FrmImpressaoVale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ValeFuncionarios\FrmVale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ValeFuncionarios\FrmVale.Designer.cs">
+      <DependentUpon>FrmVale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Vendas\Adicionais\dsVenda.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1455,6 +1467,13 @@
     <EmbeddedResource Include="Telas\UsuarioRegistro\FrmUsuarioLista.resx">
       <DependentUpon>FrmUsuarioLista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ValeFuncionarios\FrmImpressaoVale.resx">
+      <DependentUpon>FrmImpressaoVale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ValeFuncionarios\FrmVale.resx">
+      <DependentUpon>FrmVale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ValeFuncionarios\Vale.rdlc" />
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmAguarde.resx">
       <DependentUpon>FrmAguarde.cs</DependentUpon>
     </EmbeddedResource>

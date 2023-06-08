@@ -95,6 +95,7 @@
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adiantamentoValeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -679,6 +680,7 @@
             this.dropMenuFinanceiro.Font = new System.Drawing.Font("Verdana", 10F);
             this.dropMenuFinanceiro.IsMainMenu = false;
             this.dropMenuFinanceiro.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adiantamentoValeToolStripMenuItem,
             this.toolStripMenuItem4,
             this.btnContaReceberLista,
             this.btnLembreteVencimento,
@@ -689,7 +691,7 @@
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 136);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 180);
             // 
             // toolStripMenuItem4
             // 
@@ -894,7 +896,7 @@
             this.dropMenuVendas.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuVendas.Name = "rjDropdownMenu1";
             this.dropMenuVendas.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuVendas.Size = new System.Drawing.Size(203, 92);
+            this.dropMenuVendas.Size = new System.Drawing.Size(203, 70);
             // 
             // btnVendaPDV
             // 
@@ -916,6 +918,13 @@
             this.transferênciaFilialToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.transferênciaFilialToolStripMenuItem.Text = "Transferência Filial";
             this.transferênciaFilialToolStripMenuItem.Click += new System.EventHandler(this.transferênciaFilialToolStripMenuItem_Click);
+            // 
+            // adiantamentoValeToolStripMenuItem
+            // 
+            this.adiantamentoValeToolStripMenuItem.Name = "adiantamentoValeToolStripMenuItem";
+            this.adiantamentoValeToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.adiantamentoValeToolStripMenuItem.Text = "Adiantamento (Vale)";
+            this.adiantamentoValeToolStripMenuItem.Click += new System.EventHandler(this.adiantamentoValeToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1018,5 +1027,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnComissoes;
         private System.Windows.Forms.ToolStripMenuItem etiquetasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transferênciaFilialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adiantamentoValeToolStripMenuItem;
     }
 }

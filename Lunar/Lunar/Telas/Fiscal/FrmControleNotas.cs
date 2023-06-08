@@ -1688,7 +1688,7 @@ namespace Lunar.Telas.Fiscal
                     Genericos genericosNF = new Genericos();
                     //CONSULTA NOTA
                     nfe = (Nfe)grid.SelectedItem;
-                    if (nfe.Status != "Autorizado o uso da NF-e" && nfe.Status != "Inutilizacao de numero homologada" && !nfe.Status.Contains("cancelada com sucesso"))
+                    if (nfe.Status != "Autorizado o uso da NF-e" && nfe.Status != "Inutilizacao de numero homologado" && !nfe.Status.Contains("cancelada com sucesso"))
                     {
                         //para modelo 55
                         if (!String.IsNullOrEmpty(nfe.NsNrec))
@@ -1838,6 +1838,36 @@ namespace Lunar.Telas.Fiscal
                         else if (nfe.NfeStatus.Id == 1)
                             GenericaDesktop.ShowInfo("Nota Fiscal Autorizada");
                         pesquisaNotas();
+                    }
+                    else if (nfe.Status.Contains("Inutilizacao de numero homolog"))
+                    {
+                        if (nfe.Modelo == "55")
+                        {
+                            var retorno = generica.ns_DownloadEventoInutilizacaoNFE(nfe);
+                            if (retorno.status == 200)
+                            {
+                                if (GenericaDesktop.ShowConfirmacao("Nota Inutilizada, deseja salvar o arquivo xml?")) 
+                                {
+                                    generica.gravarXMLNaPasta(retorno.retInut.xml,
+                                    nfe.Chave, @"Fiscal\XML\NFe\" + retorno.retInut.dhRecbto.Year + "-" + retorno.retInut.dhRecbto.Month.ToString().PadLeft(2, '0') + @"\Inutilizadas\", nfe.NNf + @"-INU.xml");
+
+                                    //EnviaXML PAINEL LUNAR 
+                                    string caminhoX = @"Fiscal\XML\NFe\" + retorno.retInut.dhRecbto.Year + "-" + retorno.retInut.dhRecbto.Month.ToString().PadLeft(2, '0') + @"\Inutilizadas\" + nfe.NNf + @"-INU.xml";
+                                    LunarApiNotas lunarApiNotas = new LunarApiNotas();
+                                    byte[] arquivo;
+                                    using (var stream = new FileStream(caminhoX, FileMode.Open, FileAccess.Read))
+                                    {
+                                        using (var reader = new BinaryReader(stream))
+                                        {
+                                            arquivo = reader.ReadBytes((int)stream.Length);
+                                            var retor = lunarApiNotas.EnvioNotaParaNuvem(nfe.CnpjEmitente, nfe.Chave, "NFE", "INUTILIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
+                                        }
+                                    }
+                                    GenericaDesktop.ShowInfo("XML Salvo em C:\\Lunar\\" + caminhoX);
+                                }
+                            }
+                                
+                        }
                     }
                     else
                         GenericaDesktop.ShowAlerta("Status Atual: " + nfe.Status);

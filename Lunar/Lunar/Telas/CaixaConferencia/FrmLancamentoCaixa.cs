@@ -389,6 +389,10 @@ namespace Lunar.Telas.CaixaConferencia
             caixa.Concluido = true;
             caixa.DataLancamento = DateTime.Parse(txtDataMovimento.Value.ToString());
             caixa.Descricao = "LANÇAMENTO DE DESPESA: " + txtDescricaoResumida.Texts;
+            if(radioDeposito.Checked == true)
+            {
+                caixa.Descricao = "DEPÓSITO BANCÁRIO: " + txtDescricaoResumida.Texts;
+            }
             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
 
             FormaPagamento formaPagamento = new FormaPagamento();

@@ -1498,12 +1498,29 @@ namespace Lunar.Telas.Fiscal
                         }
                     }
                     GenericaDesktop.ShowInfo("Nota autorizada!");
-                    //Grava em Nuvem
-                    //string origem = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + " -" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
-                    //string pastaDropbox = @"XML\NFe\" + nfe.DataEmissao.Year + " - " + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\";
-                    //string arquivo = nfe.Chave + "-procNFe.xml";
-                    //var t = Task.Run(() => DropboxComandos.uploadArquivo(origem, pastaDropbox, arquivo));
-                    //t.Wait();
+                    //EnviaXML PAINEL LUNAR 
+                    try
+                    {
+                        LunarApiNotas lunarApiNotas = new LunarApiNotas();
+                        byte[] arquivo;
+                        using (var stream = new FileStream(caminhoSalvarXml + nfe.Chave + "-procNFe.xml", FileMode.Open, FileAccess.Read))
+                        {
+                            using (var reader = new BinaryReader(stream))
+                            {
+                                arquivo = reader.ReadBytes((int)stream.Length);
+                                var ret = lunarApiNotas.EnvioNotaParaNuvem(nfe.CnpjEmitente, nfe.Chave, "NFE", "AUTORIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
+                                if (ret.ToString().Contains("\"error\":false,\"msg\":\"OK\""))
+                                {
+                                    nfe.Nuvem = true;
+                                    Controller.getInstance().salvar(nfe);
+                                }
+                            }
+                        }
+                    }
+                    catch
+                    {
+
+                    }
 
                     if (File.Exists(caminhoSalvarXml + nfe.Chave + "-procNFe.pdf"))
                     {
