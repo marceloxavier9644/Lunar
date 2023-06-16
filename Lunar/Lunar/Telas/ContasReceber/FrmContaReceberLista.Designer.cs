@@ -81,6 +81,7 @@
             this.btnNovaFatura = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
             this.btnReceber = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnAbater = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasEscritorioCobranca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasSPC)).BeginInit();
@@ -901,12 +902,34 @@
             this.btnReceber.UseVisualStyleBackColor = false;
             this.btnReceber.Click += new System.EventHandler(this.btnReceber_Click);
             // 
+            // btnAbater
+            // 
+            this.btnAbater.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbater.BackColor = System.Drawing.Color.White;
+            this.btnAbater.BackgroundColor = System.Drawing.Color.White;
+            this.btnAbater.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnAbater.BorderRadius = 8;
+            this.btnAbater.BorderSize = 2;
+            this.btnAbater.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbater.FlatAppearance.BorderSize = 0;
+            this.btnAbater.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbater.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbater.ForeColor = System.Drawing.Color.Black;
+            this.btnAbater.Location = new System.Drawing.Point(24, 611);
+            this.btnAbater.Name = "btnAbater";
+            this.btnAbater.Size = new System.Drawing.Size(193, 45);
+            this.btnAbater.TabIndex = 244;
+            this.btnAbater.Text = "Abater com Despesa";
+            this.btnAbater.TextColor = System.Drawing.Color.Black;
+            this.btnAbater.UseVisualStyleBackColor = false;
+            // 
             // FrmContaReceberLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1055, 668);
+            this.Controls.Add(this.btnAbater);
             this.Controls.Add(this.btnParcial);
             this.Controls.Add(this.lblCalculando);
             this.Controls.Add(this.panelTitleBar);
@@ -977,5 +1000,6 @@
         private FontAwesome.Sharp.IconButton btnLimpar;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasEscritorioCobranca;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasSPC;
+        private RJ_UI.Classes.RJButton btnAbater;
     }
 }

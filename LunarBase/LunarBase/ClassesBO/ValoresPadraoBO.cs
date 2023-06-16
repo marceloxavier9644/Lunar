@@ -891,6 +891,19 @@ namespace LunarBase.ClassesBO
                 formaPagamento.CreditoCliente = true;
                 formaPagamento.CodigoSefaz = "05";
                 formaPagamentoController.salvarSeNaoExistir(formaPagamento);
+
+                formaPagamento = new FormaPagamento();
+                formaPagamento.Id = LunarConstantes.FORMAPAGAMENTO_ABATIMENTO;
+                formaPagamento.Descricao = "ABATIMENTO";
+                formaPagamento.Banco = false;
+                formaPagamento.Boleto = false;
+                formaPagamento.Caixa = false;
+                formaPagamento.Cartao = false;
+                formaPagamento.Cheque = false;
+                formaPagamento.Crediario = false;
+                formaPagamento.CreditoCliente = false;
+                formaPagamento.CodigoSefaz = "05";
+                formaPagamentoController.salvarSeNaoExistir(formaPagamento);
             }
             catch
             {

@@ -796,6 +796,12 @@
     <Compile Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.Designer.cs">
       <DependentUpon>FrmCrediarioOrdemServico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmListaPagarAbatimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmListaPagarAbatimento.Designer.cs">
+      <DependentUpon>FrmListaPagarAbatimento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\FormaPagamentoRecebimento\FrmPagamentoRecebimento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -942,6 +948,18 @@
     </Compile>
     <Compile Include="Telas\Principal\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ReciboAvulso1\FrmImprimirReciboAvulso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ReciboAvulso1\FrmImprimirReciboAvulso.Designer.cs">
+      <DependentUpon>FrmImprimirReciboAvulso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ReciboAvulso1\FrmReciboAvulso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ReciboAvulso1\FrmReciboAvulso.Designer.cs">
+      <DependentUpon>FrmReciboAvulso.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\RelatoriosDiversos\FrmComissaoRelatorio01.cs">
       <SubType>Form</SubType>
@@ -1370,6 +1388,9 @@
     <EmbeddedResource Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.resx">
       <DependentUpon>FrmCrediarioOrdemServico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmListaPagarAbatimento.resx">
+      <DependentUpon>FrmListaPagarAbatimento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\FormaPagamentoRecebimento\FrmPagamentoRecebimento.resx">
       <DependentUpon>FrmPagamentoRecebimento.cs</DependentUpon>
     </EmbeddedResource>
@@ -1441,6 +1462,13 @@
     <EmbeddedResource Include="Telas\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ReciboAvulso1\FrmImprimirReciboAvulso.resx">
+      <DependentUpon>FrmImprimirReciboAvulso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ReciboAvulso1\FrmReciboAvulso.resx">
+      <DependentUpon>FrmReciboAvulso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ReciboAvulso1\reciboAvulso.rdlc" />
     <EmbeddedResource Include="Telas\RelatoriosDiversos\FrmComissaoRelatorio01.resx">
       <DependentUpon>FrmComissaoRelatorio01.cs</DependentUpon>
     </EmbeddedResource>

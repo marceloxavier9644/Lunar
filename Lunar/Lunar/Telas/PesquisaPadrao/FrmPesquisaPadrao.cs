@@ -48,6 +48,8 @@ namespace Lunar.Telas.PesquisaPadrao
             this.SqlAdicional = sqlAdicional;
             //if(Tabela != "Pessoa") /*&& Tabela != "Produto"*/
             pesquisar(Tabela, Sql);
+            txtPesquisa.Select();
+            //txtPesquisa.Select();
         }
 
         private void pesquisar(string Tabela, string Sql)
@@ -96,7 +98,7 @@ namespace Lunar.Telas.PesquisaPadrao
                         gridPesquisa.Columns[i].Visible = false;
                     }
                 }
-
+                txtPesquisa.Focus();
 
             }
             catch (Exception e)
@@ -204,7 +206,7 @@ namespace Lunar.Telas.PesquisaPadrao
             {
                 //Limpa o SQL Adicional
                 //SqlAdicional = "";
-                Pesquisar(txtPesquisa.Texts.Trim());
+                Pesquisar(txtPesquisa.Text.Trim());
             }
         }
 
@@ -248,13 +250,13 @@ namespace Lunar.Telas.PesquisaPadrao
             if (Resultado.Count <= 0)
             {
                 GenericaDesktop.ShowAlerta("Nenhum registro encontrado");
-                txtPesquisa.Texts = "";
+                txtPesquisa.Text = "";
                 txtPesquisa.Select();
                 return;
             }
             else
             {
-                txtPesquisa.Texts = "";
+                txtPesquisa.Text = "";
                 gridPesquisa.SelectedIndex = 0;
             }
 
@@ -460,13 +462,21 @@ namespace Lunar.Telas.PesquisaPadrao
         private void btnTodos_Click(object sender, EventArgs e)
         {
             SqlAdicional = "";
-            txtPesquisa.Texts = "";
+            txtPesquisa.Text = "";
             pesquisar(TabelaPesquisa, SqlInicial);
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            Pesquisar(txtPesquisa.Texts.Trim());
+            Pesquisar(txtPesquisa.Text.Trim());
+        }
+
+        private void txtPesquisa_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                Pesquisar(txtPesquisa.Text.Trim());
+            }
         }
     }
 }

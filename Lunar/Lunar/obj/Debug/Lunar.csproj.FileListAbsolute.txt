@@ -690,3 +690,6 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Fiscal.FrmNotaAgrupad
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Cadastros.Cliente.PessoaAdicionais.FrmImprimirFichaSimplificadaCliente.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ValeFuncionarios.FrmVale.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ValeFuncionarios.FrmImpressaoVale.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.FormaPagamentoRecebimento.Adicionais.FrmListaPagarAbatimento.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ReciboAvulso1.FrmImprimirReciboAvulso.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ReciboAvulso1.FrmReciboAvulso.resources

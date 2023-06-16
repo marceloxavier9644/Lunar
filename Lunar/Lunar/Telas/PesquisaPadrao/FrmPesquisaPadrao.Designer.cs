@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new FontAwesome.Sharp.IconButton();
             this.btnTodos = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
-            this.txtPesquisa = new Lunar.RJ_UI.Classes.RJTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnNovo = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
@@ -55,17 +55,27 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPesquisa);
             this.groupBox1.Controls.Add(this.btnPesquisar);
             this.groupBox1.Controls.Add(this.btnTodos);
             this.groupBox1.Controls.Add(this.autoLabel15);
             this.groupBox1.Controls.Add(this.txtRegistroPorPagina);
             this.groupBox1.Controls.Add(this.sfDataPager1);
-            this.groupBox1.Controls.Add(this.txtPesquisa);
             this.groupBox1.Location = new System.Drawing.Point(0, 50);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1001, 94);
             this.groupBox1.TabIndex = 157;
             this.groupBox1.TabStop = false;
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisa.Location = new System.Drawing.Point(12, 38);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(320, 31);
+            this.txtPesquisa.TabIndex = 213;
+            this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress_1);
             // 
             // btnPesquisar
             // 
@@ -160,33 +170,6 @@
             this.sfDataPager1.Size = new System.Drawing.Size(395, 48);
             this.sfDataPager1.TabIndex = 154;
             this.sfDataPager1.OnDemandLoading += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.OnDemandLoadingEventArgs>(this.sfDataPager1_OnDemandLoading);
-            // 
-            // txtPesquisa
-            // 
-            this.txtPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisa.BackColor = System.Drawing.Color.White;
-            this.txtPesquisa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisa.BorderRadius = 8;
-            this.txtPesquisa.BorderSize = 2;
-            this.txtPesquisa.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPesquisa.Location = new System.Drawing.Point(9, 29);
-            this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPesquisa.Multiline = false;
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtPesquisa.PasswordChar = false;
-            this.txtPesquisa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtPesquisa.PlaceholderText = "";
-            this.txtPesquisa.ReadOnly = false;
-            this.txtPesquisa.Size = new System.Drawing.Size(323, 44);
-            this.txtPesquisa.TabIndex = 153;
-            this.txtPesquisa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtPesquisa.Texts = "";
-            this.txtPesquisa.UnderlinedStyle = false;
-            this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
             // 
             // groupBox2
             // 
@@ -333,7 +316,6 @@
             this.gridPesquisa.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridPesquisa.Location = new System.Drawing.Point(3, 16);
             this.gridPesquisa.Name = "gridPesquisa";
-            this.gridPesquisa.SelectionUnit = Syncfusion.WinForms.DataGrid.Enums.SelectionUnit.Cell;
             this.gridPesquisa.Size = new System.Drawing.Size(995, 426);
             this.gridPesquisa.Style.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.gridPesquisa.Style.CellStyle.Font.Facename = "Montserrat";
@@ -422,7 +404,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel15;
         private RJ_UI.Classes.RJTextBox txtRegistroPorPagina;
         private Syncfusion.WinForms.DataPager.SfDataPager sfDataPager1;
-        private RJ_UI.Classes.RJTextBox txtPesquisa;
         private System.Windows.Forms.GroupBox groupBox2;
         private FontAwesome.Sharp.IconButton btnExportarPDF;
         private FontAwesome.Sharp.IconButton btnExportarExcel;
@@ -436,5 +417,6 @@
         private RJ_UI.Classes.RJButton btnNovo;
         private RJ_UI.Classes.RJButton btnTodos;
         private FontAwesome.Sharp.IconButton btnPesquisar;
+        private System.Windows.Forms.TextBox txtPesquisa;
     }
 }

@@ -924,5 +924,6 @@ namespace Lunar.Telas.ContasReceber
                 }
             }
         }
+            
     }
 }

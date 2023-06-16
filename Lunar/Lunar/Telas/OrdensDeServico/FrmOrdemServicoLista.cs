@@ -7,18 +7,13 @@ using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
 using LunarBase.Classes;
-using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
-using Microsoft.SharePoint.News.DataModel;
 using Newtonsoft.Json;
-using NHibernate.Impl;
 using Syncfusion.Data;
-using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
-using Syncfusion.Windows.Forms.PdfViewer;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
 using Syncfusion.WinForms.DataGrid.Styles;
@@ -29,7 +24,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,8 +31,6 @@ using System.Windows.Forms;
 using System.Xml;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static LunarBase.Utilidades.ManifestoDownload;
-using static System.Windows.Forms.Design.AxImporter;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using Exception = System.Exception;
 
 namespace Lunar.Telas.OrdensDeServico
@@ -821,17 +813,17 @@ namespace Lunar.Telas.OrdensDeServico
                                         }
                                         //Concluir a O.S antes de gerar a nota
                                         numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
-                                        Nfe nfConferencia = new Nfe();
-                                        NfeController nfeController = new NfeController();
-                                        nfConferencia = nfeController.selecionarUltimoNumeroNota("65");
-                                        if(nfConferencia != null)
-                                        {
-                                            if (nfConferencia.Id > 0)
-                                            {
-                                                if(numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
-                                                    numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
-                                            }
-                                        }
+                                        //Nfe nfConferencia = new Nfe();
+                                        //NfeController nfeController = new NfeController();
+                                        //nfConferencia = nfeController.selecionarUltimoNumeroNota("65");
+                                        //if(nfConferencia != null)
+                                        //{
+                                        //    if (nfConferencia.Id > 0)
+                                        //    {
+                                        //        if(numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
+                                        //            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
+                                        //    }
+                                        //}
                                         try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, cli, null, ordemServico); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
                                         //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
                                         if (!String.IsNullOrEmpty(xmlStrEnvio))
@@ -1419,17 +1411,17 @@ namespace Lunar.Telas.OrdensDeServico
                                         if (validador.validarProdutosNota(listaProdutosNFe))
                                         {
                                             numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFe;
-                                            Nfe nfConferencia = new Nfe();
-                                            NfeController nfeController = new NfeController();
-                                            nfConferencia = nfeController.selecionarUltimoNumeroNota("55");
-                                            if (nfConferencia != null)
-                                            {
-                                                if (nfConferencia.Id > 0)
-                                                {
-                                                    if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
-                                                        numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
-                                                }
-                                            }
+                                            //Nfe nfConferencia = new Nfe();
+                                            //NfeController nfeController = new NfeController();
+                                            //nfConferencia = nfeController.selecionarUltimoNumeroNota("55");
+                                            //if (nfConferencia != null)
+                                            //{
+                                            //    if (nfConferencia.Id > 0)
+                                            //    {
+                                            //        if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
+                                            //            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
+                                            //    }
+                                            //}
                                             xmlStrEnvio = emitirNFe.gerarXMLNfe(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, false, "VENDA", ordemServico);
                                             if (!String.IsNullOrEmpty(xmlStrEnvio))
                                             {

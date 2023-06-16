@@ -1136,7 +1136,11 @@ namespace Lunar.Telas.Fiscal
                     carregarListaProdutos();
                     if (validador.validarProdutosNota(listaProdutosNFe))
                     {
-                        if(lblNumeroNfe.Text == "0")
+                        ParametroSistema param = new ParametroSistema();
+                        param.Id = 1;
+                        param = (ParametroSistema)Controller.getInstance().selecionar(param);
+                        Sessao.parametroSistema = param;
+                        if (lblNumeroNfe.Text == "0")
                             numeroNFe = Sessao.parametroSistema.ProximoNumeroNFe;
                         else
                             numeroNFe = lblNumeroNfe.Text;

@@ -40,6 +40,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         decimal descontoPercentual = 0;
         bool parcial = false;
         Pessoa pessoaCobrador = new Pessoa();
+        IList<ContaReceber> listaReceberAbatimento = new List<ContaReceber>();
         public FrmPagamentoRecebimento(IList<ContaReceber> listaReceber, IList<ContaPagar> listaPagar, OrdemServico ordemServico, string origem, bool parcial, bool ativarCrediario, IList<OrdemServico> listaOrdemServico)
         {
             InitializeComponent();
@@ -254,6 +255,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
 
         private void ajustarListaPagar()
         {
+            lblF4.Visible = true;
             btnCreditoCliente.Enabled = false;
             iconeCredito.Enabled = false;
             btnCheque.Enabled = true;
@@ -855,6 +857,82 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 case Keys.F3:
                     verificarCreditoCliente();
                     break;
+                case Keys.F4:
+                    verificaContaPagarParaAbatimento();
+                    break;
+            }
+        }
+
+        private void verificaContaPagarParaAbatimento()
+        {
+            if (listaPagar.Count > 0)
+            {
+                bool invalidar = false;
+                var records = gridRecebimento.View.Records;
+                foreach (var record in records)
+                {
+                    FormaPagamento formaPagamento = new FormaPagamento();
+                    Caixa caixa = new Caixa();
+                    var dataRowView = record.Data as DataRowView;
+                    formaPagamento = new FormaPagamento();
+                    formaPagamento.Id = int.Parse(dataRowView.Row["Id"].ToString());
+                    formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    if (formaPagamento.Id == 9)
+                        invalidar = true;
+                }
+                if (invalidar == false)
+                {
+                    ContaReceberController contaReceberController = new ContaReceberController();
+                    IList<ContaReceber> listRec = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.Recebido = false and Tabela.Cliente = " + clienteLista.Id + " and Tabela.FlagExcluido <> true");
+                    Form formBackground = new Form();
+                    if (listRec.Count > 0)
+                    {
+                        try
+                        {
+                            FormaPagamento formaPagamento = new FormaPagamento();
+                            decimal valorRecebido = 0;
+                            using (FrmListaPagarAbatimento uu = new FrmListaPagarAbatimento(listRec, decimal.Parse(lblValorFaltante.Text.Replace("R$ ", "")), clienteLista))
+                            {
+                                formBackground.StartPosition = FormStartPosition.Manual;
+                                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                                formBackground.Opacity = .50d;
+                                formBackground.BackColor = Color.Black;
+                                //formBackground.Left = Top = 0;
+                                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                                formBackground.WindowState = FormWindowState.Maximized;
+                                formBackground.TopMost = false;
+                                formBackground.Location = this.Location;
+                                formBackground.ShowInTaskbar = false;
+                                formBackground.Show();
+                                uu.Owner = formBackground;
+                                switch (uu.showModalNovo(ref valorRecebido, ref listaReceberAbatimento, ref formaPagamento))
+                                {
+                                    case DialogResult.Ignore:
+                                        uu.Dispose();
+                                        formBackground.Dispose();
+                                        break;
+                                    case DialogResult.OK:
+                                        //MessageBox.Show("Forma Pagamento: " + formaPagamento.Descricao + " Valor: R$ " + valorRecebido);
+                                        inserirFormaPagamentoGrid(formaPagamento, valorRecebido, null, null, "", null, null, DateTime.Parse("1900-01-01 00:00:00"), "");
+                                        break;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            formBackground.Dispose();
+                        }
+                    }
+                    else
+                        GenericaDesktop.ShowAlerta("Esta pessoa nao possui fatura lançada para abatimento!");
+                }
+                else
+                    GenericaDesktop.ShowErro("Já foi incluso abatimento, para alterar o valor delete o abatimento inserido primeiro!");
             }
         }
 
@@ -2483,6 +2561,34 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         creditoCliente.ValorUtilizado = decimal.Parse(dataRowView.Row["Valor"].ToString());
                         Controller.getInstance().salvar(creditoCliente);
                         listaRecebimentosCaixa.Add(caixa);
+                    }
+                    //ABATIMENTO DE RECEBER
+                    else if (formaPagamento.Id == 9)
+                    {
+                        caixa.Conciliado = true;
+                        caixa.Concluido = true;
+                        caixa.ContaBancaria = null;
+                        caixa.DataLancamento = DateTime.Now;
+                        caixa.Descricao = "ABATIMENTO FATURA A RECEBER";
+                        caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                        caixa.FormaPagamento = formaPagamento;
+                        caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                        caixa.TabelaOrigem = origem;
+                        caixa.IdOrigem = parcelas;
+                        caixa.Tipo = "E";
+                        caixa.Usuario = Sessao.usuarioLogado;
+                        caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                        caixa.Pessoa = clienteLista;
+                        Controller.getInstance().salvar(caixa);
+
+                        foreach(ContaReceber rec in listaReceberAbatimento)
+                        {
+                            rec.ValorRecebido = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            rec.Recebido = true;
+                            rec.DataRecebimento = DateTime.Now;
+                            rec.DescricaoRecebimento = "REC. ABATIMENTO COM DESPESA";
+                            Controller.getInstance().salvar(rec);
+                        }
                     }
                 }
             }

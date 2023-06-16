@@ -68,6 +68,7 @@
             this.ParametrosMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnImportar = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuFinanceiro = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
+            this.adiantamentoValeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnContaReceberLista = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLembreteVencimento = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,7 +96,7 @@
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adiantamentoValeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reciboAvulsoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -686,12 +687,20 @@
             this.btnLembreteVencimento,
             this.orçamentoAvulsoToolStripMenuItem,
             this.btnPlanoDecontas1,
-            this.btnMovimentoCaixa});
+            this.btnMovimentoCaixa,
+            this.reciboAvulsoToolStripMenuItem});
             this.dropMenuFinanceiro.MenuItemHeight = 25;
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 180);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 202);
+            // 
+            // adiantamentoValeToolStripMenuItem
+            // 
+            this.adiantamentoValeToolStripMenuItem.Name = "adiantamentoValeToolStripMenuItem";
+            this.adiantamentoValeToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.adiantamentoValeToolStripMenuItem.Text = "Adiantamento (Vale)";
+            this.adiantamentoValeToolStripMenuItem.Click += new System.EventHandler(this.adiantamentoValeToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -919,12 +928,12 @@
             this.transferênciaFilialToolStripMenuItem.Text = "Transferência Filial";
             this.transferênciaFilialToolStripMenuItem.Click += new System.EventHandler(this.transferênciaFilialToolStripMenuItem_Click);
             // 
-            // adiantamentoValeToolStripMenuItem
+            // reciboAvulsoToolStripMenuItem
             // 
-            this.adiantamentoValeToolStripMenuItem.Name = "adiantamentoValeToolStripMenuItem";
-            this.adiantamentoValeToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.adiantamentoValeToolStripMenuItem.Text = "Adiantamento (Vale)";
-            this.adiantamentoValeToolStripMenuItem.Click += new System.EventHandler(this.adiantamentoValeToolStripMenuItem_Click);
+            this.reciboAvulsoToolStripMenuItem.Name = "reciboAvulsoToolStripMenuItem";
+            this.reciboAvulsoToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.reciboAvulsoToolStripMenuItem.Text = "Recibo Avulso";
+            this.reciboAvulsoToolStripMenuItem.Click += new System.EventHandler(this.reciboAvulsoToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1028,5 +1037,6 @@
         private System.Windows.Forms.ToolStripMenuItem etiquetasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transferênciaFilialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adiantamentoValeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reciboAvulsoToolStripMenuItem;
     }
 }

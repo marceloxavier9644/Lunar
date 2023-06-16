@@ -87,6 +87,7 @@ namespace LunarBase.Constantes
         public const int FORMAPAGAMENTO_CREDIARIO = 6;
         public const int FORMAPAGAMENTO_CHEQUE = 7;
         public const int FORMAPAGAMENTO_CREDITOCLIENTE = 8;
+        public const int FORMAPAGAMENTO_ABATIMENTO = 9;
 
         //Bandeira Cartão - Padrão
         public const int BANDEIRACARTAO_VISA = 1;

@@ -24,6 +24,8 @@ namespace Lunar.Telas.OrdensDeServico
 {
     public partial class FrmOrdemServico : Form
     {
+        DataRow dataRowEdit;
+        bool editando = false;
         PessoaDependenteController pessoaDependenteController = new PessoaDependenteController();
         GenericaDesktop genericaDesktop = new GenericaDesktop();
         PessoaController pessoaController = new PessoaController();
@@ -768,6 +770,8 @@ namespace Lunar.Telas.OrdensDeServico
             try
             {
                 System.Data.DataRow row = dsProdutos.Tables[0].NewRow();
+                if (editando == true)
+                    dataRowEdit.Delete();
                 row.SetField("Id", 0);
                 row.SetField("Codigo", produto.Id.ToString());
                 row.SetField("Descricao", produto.Descricao);
@@ -789,7 +793,7 @@ namespace Lunar.Telas.OrdensDeServico
                 txtAcrescimoItem.Texts = "0,00";
                 txtCodProduto.Texts = "";
                 txtPesquisaProduto.Focus();
-
+                editando = false;
                 this.produto = new Produto();
 
                 if (this.gridProdutos.View != null)
@@ -927,6 +931,7 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 GenericaDesktop.ShowAlerta("Selecione um produto");
             }
+            
         }
 
         private void panelPagamentoTotal_Paint(object sender, PaintEventArgs e)
@@ -2399,6 +2404,28 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 pesquisaVendedor();
             }
+        }
+
+        private void gridProdutos_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        {
+            editando = true;
+            var selectedItem = this.gridProdutos.CurrentItem as DataRowView;
+            var dataRow = (selectedItem as DataRowView).Row;
+            dataRowEdit = dataRow;
+            var descricao = dataRow["Descricao"].ToString();
+            var quantidade = dataRow["Quantidade"].ToString();
+            var valorUnitario = dataRow["ValorUnitario"].ToString();
+            var valorTotal = dataRow["ValorTotal"].ToString();
+            var codigo = dataRow["Codigo"].ToString();
+
+           // indexEditando = this.gridProdutos.SelectedIndex;
+            txtPesquisaProduto.Texts = descricao;
+            txtCodProduto.Texts = codigo;
+            txtQuantidadeItem.Texts = quantidade;
+            txtValorUnitarioItem.Texts = string.Format("{0:0.00}", valorUnitario);
+            txtValorTotalItem.Texts = string.Format("{0:0.00}", valorTotal);
+            txtValorUnitarioItem.Focus();
+            txtValorUnitarioItem.SelectAll();
         }
     }
 }

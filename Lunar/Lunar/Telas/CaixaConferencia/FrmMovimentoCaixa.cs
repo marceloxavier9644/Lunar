@@ -807,8 +807,27 @@ namespace Lunar.Telas.CaixaConferencia
                             GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
                         }
                     }
-                    
-                btnPesquisar.PerformClick();
+                    //VALE
+                    if (caixa.TabelaOrigem.Contains("VALE"))
+                    {
+                        Controller.getInstance().excluir(caixa);
+                        ContaReceberController contaReceberController = new ContaReceberController();
+                        IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.Documento like '%"+caixa.IdOrigem+"%'");
+                        if (listaReceber.Count == 1)
+                        {
+                            foreach (ContaReceber rec in listaReceber)
+                            {
+                                Controller.getInstance().excluir(rec);
+                            }
+                        }
+                        else
+                        {
+                            GenericaDesktop.ShowAlerta("Falha ao excluir a parcela a receber no nome do funcionário, verifique manualmente!");
+                        }
+                        GenericaDesktop.ShowInfo("Movimentação de Caixa Excluída com Sucesso!");
+                    }
+
+                    btnPesquisar.PerformClick();
             }
             else
                 GenericaDesktop.ShowAlerta("Selecione as contas que deseja excluir!");
