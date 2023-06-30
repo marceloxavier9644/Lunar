@@ -31,10 +31,11 @@ namespace Lunar.Utils.OrganizacaoNF
         Pessoa cliente = null;
         TNFeInfNFeTranspModFrete tipoFrete = new TNFeInfNFeTranspModFrete();
         TNFeInfNFeIdeIndPres tipoPresenca = new TNFeInfNFeIdeIndPres();
+        TNFeInfNFeDetImpostoDevol impostoDevR = new TNFeInfNFeDetImpostoDevol();
         Nfe objetoNfe = new Nfe();
         TNFeInfNFeIdeNFref[] notasReferenciadas = null;
-        decimal valorFrete; 
-        decimal valorSeguro; 
+        decimal valorFrete;
+        decimal valorSeguro;
         decimal valorOutrasDespesas;
         TNFeInfNFeIdeTpNF tpNf = new TNFeInfNFeIdeTpNF();
         Frete frete = new Frete();
@@ -55,7 +56,7 @@ namespace Lunar.Utils.OrganizacaoNF
                 }
                 if (frete != null)
                 {
-                    if(frete.transportadora != null)
+                    if (frete.transportadora != null)
                         this.frete = frete;
                 }
                 this.valorFrete = valorFrete;
@@ -78,7 +79,7 @@ namespace Lunar.Utils.OrganizacaoNF
                 }
                 else if (nfeAux == null && venda != null)
                 {
-                    objetoNfe = AlimentaObjetoNfe_1(valorProdutos, valorNota, valorDescontoTotal, numeroNfe, reenvio, naturezaOperacao);
+                    objetoNfe = AlimentaObjetoNfe_1(valorProdutos, valorNota, valorDescontoTotal, numeroNfe, reenvio, naturezaOperacao, nota.VIpiDevol);
                     venda.Nfe = objetoNfe;
                     Controller.getInstance().salvar(venda);
                 }
@@ -127,7 +128,7 @@ namespace Lunar.Utils.OrganizacaoNF
             }
         }
 
-        private Nfe AlimentaObjetoNfe_1(decimal valorProdutos, decimal valorNota, decimal valorDescontoTotal, string numeroNF, bool reenvio, string naturezaOperacao)
+        private Nfe AlimentaObjetoNfe_1(decimal valorProdutos, decimal valorNota, decimal valorDescontoTotal, string numeroNF, bool reenvio, string naturezaOperacao, decimal valorIpiDevolvido)
         {
             NfeController nfeController = new NfeController();
             Nfe nfe = new Nfe();
@@ -168,7 +169,7 @@ namespace Lunar.Utils.OrganizacaoNF
             nfe.VDesc = valorDescontoTotal;
             nfe.VIi = 0;
             nfe.VIpi = 0;
-            nfe.VIpiDevol = 0;
+            nfe.VIpiDevol = valorIpiDevolvido;
             nfe.VPis = 0;
             nfe.VCofins = 0;
             nfe.VOutro = valorOutrasDespesas;
@@ -191,7 +192,7 @@ namespace Lunar.Utils.OrganizacaoNF
             nfe.FinNfe = natureza.FinalidadeNfe;
             nfe.IndFinal = "1";
             nfe.IndPres = "1";
-            if(string.IsNullOrEmpty(nfe.InfCpl))
+            if (string.IsNullOrEmpty(nfe.InfCpl))
                 nfe.InfCpl = Sessao.parametroSistema.InformacaoAdicionalNFe;
             nfe.ProcEmi = "0";
             nfe.VerProc = "1.0|Lunar";
@@ -207,7 +208,7 @@ namespace Lunar.Utils.OrganizacaoNF
                 nfe.Destinatario = cliente.RazaoSocial;
                 nfe.CnpjDestinatario = GenericaDesktop.RemoveCaracteres(cliente.Cnpj);
             }
-            
+
 
             Controller.getInstance().salvar(nfe);
             return nfe;
@@ -424,7 +425,7 @@ namespace Lunar.Utils.OrganizacaoNF
                                 qTrib = formatMoedaNf(decimal.Parse(produto.QCom)),
                                 vDesc = formatMoedaNf(produto.VDesc),
                                 vUnTrib = formatMoedaNf(produto.VProd),
-                                indTot = TNFeInfNFeDetProdIndTot.Item1, 
+                                indTot = TNFeInfNFeDetProdIndTot.Item1,
                                 vFrete = valorFreteItem,
                                 vOutro = valorOutro,
                                 vSeg = valorSeguro
@@ -472,7 +473,7 @@ namespace Lunar.Utils.OrganizacaoNF
                             //nItemPed = "0"}}
                         },
                         imposto = new TNFeInfNFeDetImposto
-                        { 
+                        {
                             Items = geraImpostoICMS_IPI(produto),
                             PIS = geraImpostoPIS(produto.Produto)[0],
                             COFINS = geraImpostoCofins(produto.Produto)[0],
@@ -555,7 +556,7 @@ namespace Lunar.Utils.OrganizacaoNF
                 };
                 icms = items;
             }
-            
+
             else if (nfeProduto.CstIcms == "500")
             {
                 TNFeInfNFeDetImpostoICMS[] items = new TNFeInfNFeDetImpostoICMS[]
@@ -582,7 +583,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     new TNFeInfNFeDetImpostoICMS
                     {
                         Item = new TNFeInfNFeDetImpostoICMSICMSSN900
-                        {    
+                        {
                             orig = orig,
                             CSOSN = TNFeInfNFeDetImpostoICMSICMSSN900CSOSN.Item900,
                             modBC = TNFeInfNFeDetImpostoICMSICMSSN900ModBC.Item3,
@@ -616,7 +617,7 @@ namespace Lunar.Utils.OrganizacaoNF
                 TIpi ip = new TIpi
                 {
                     cEnq = nfeProduto.CodEnqIpi,
-                    Item = itemIpi 
+                    Item = itemIpi
                 };
                 ipi = ip;
             }
@@ -1400,9 +1401,7 @@ namespace Lunar.Utils.OrganizacaoNF
                         cMunFG = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge,
                         tpImp = TNFeInfNFeIdeTpImp.Item1,
                         tpEmis = TNFeInfNFeIdeTpEmis.Item1,
-
                         tpAmb = tpAmbiente,
-
                         finNFe = retornaFinalidadeNfe(),
                         indFinal = TNFeInfNFeIdeIndFinal.Item1,
                         indPres = tipoPresenca,

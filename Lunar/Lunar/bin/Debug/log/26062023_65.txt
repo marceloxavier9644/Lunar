@@ -1,0 +1,2049 @@
+26/06/2023 11:05 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:05 - [ENVIO_DADOS]
+26/06/2023 11:05 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>2</serie>
+      <nNF>48</nNF>
+      <dhEmi>2023-06-26T11:05:38-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>40045552649</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>AV DELVITO ALVES N?622</xLgr>
+        <nro>622</nro>
+        <xBairro>DIVINEIA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>54</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1000.00</vUnCom>
+        <vProd>1000.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1000.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1000.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1000.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1000.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:05 - [ENVIO_RESPOSTA]
+26/06/2023 11:05 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"Rejeição: Erro não catalogado"}}
+26/06/2023 11:05 - [JSON_RETORNO]
+26/06/2023 11:05 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"Rejeição: Erro não catalogado","nsNRec":null,"erros":null}
+26/06/2023 11:05 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 11:30 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:30 - [ENVIO_DADOS]
+26/06/2023 11:30 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>7</nNF>
+      <dhEmi>2023-06-26T11:30:28-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>11961296659</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ROSITA MARTINS 76</xLgr>
+        <nro>S/N</nro>
+        <xBairro>AGUA BRANCA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>923</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>2.00</qCom>
+        <vUnCom>275.00</vUnCom>
+        <vProd>550.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>2.00</qTrib>
+        <vUnTrib>275.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>275.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>550.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>03</tPag>
+        <vPag>550.00</vPag>
+        <card>
+          <tpIntegra>2</tpIntegra>
+          <CNPJ>01425787000104</CNPJ>
+          <tBand>99</tBand>
+        </card>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:30 - [ENVIO_RESPOSTA]
+26/06/2023 11:30 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"Rejeição: Erro não catalogado"}}
+26/06/2023 11:30 - [JSON_RETORNO]
+26/06/2023 11:30 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"Rejeição: Erro não catalogado","nsNRec":null,"erros":null}
+26/06/2023 11:30 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 11:31 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:31 - [ENVIO_DADOS]
+26/06/2023 11:31 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>8</nNF>
+      <dhEmi>2023-06-26T11:31:30-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>12186883600</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>ORQUIDEAS</xLgr>
+        <nro>20</nro>
+        <xBairro>NAO INFORMADO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>102</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>200.00</vUnCom>
+        <vProd>200.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>200.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>16</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>80.00</vUnCom>
+        <vProd>80.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>80.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>280.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>280.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>99</tPag>
+        <xPag>CREDIÁRIO</xPag>
+        <vPag>280.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:31 - [ENVIO_RESPOSTA]
+26/06/2023 11:31 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"Rejeição: Erro não catalogado"}}
+26/06/2023 11:31 - [JSON_RETORNO]
+26/06/2023 11:31 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"Rejeição: Erro não catalogado","nsNRec":null,"erros":null}
+26/06/2023 11:31 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 11:33 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:33 - [ENVIO_DADOS]
+26/06/2023 11:33 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>9</nNF>
+      <dhEmi>2023-06-26T11:33:42-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>58093940600</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA TRANSAMAZONIA</xLgr>
+        <nro>61</nro>
+        <xBairro>DIVINEIA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2986</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90031100</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>590.00</vUnCom>
+        <vProd>590.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>590.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>590.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>590.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>03</tPag>
+        <vPag>590.00</vPag>
+        <card>
+          <tpIntegra>2</tpIntegra>
+          <CNPJ>01425787000104</CNPJ>
+          <tBand>99</tBand>
+        </card>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:33 - [ENVIO_RESPOSTA]
+26/06/2023 11:33 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"Rejeição: Erro não catalogado"}}
+26/06/2023 11:33 - [JSON_RETORNO]
+26/06/2023 11:33 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"Rejeição: Erro não catalogado","nsNRec":null,"erros":null}
+26/06/2023 11:33 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 11:34 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:34 - [ENVIO_DADOS]
+26/06/2023 11:34 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>10</nNF>
+      <dhEmi>2023-06-26T11:34:11-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>11961296659</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ROSITA MARTINS 76</xLgr>
+        <nro>S/N</nro>
+        <xBairro>AGUA BRANCA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>923</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>2.00</qCom>
+        <vUnCom>275.00</vUnCom>
+        <vProd>550.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>2.00</qTrib>
+        <vUnTrib>275.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>275.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>550.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>03</tPag>
+        <vPag>550.00</vPag>
+        <card>
+          <tpIntegra>2</tpIntegra>
+          <CNPJ>01425787000104</CNPJ>
+          <tBand>99</tBand>
+        </card>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:34 - [ENVIO_RESPOSTA]
+26/06/2023 11:34 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"No corresponding start element is open."}}
+26/06/2023 11:34 - [JSON_RETORNO]
+26/06/2023 11:34 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"No corresponding start element is open.","nsNRec":null,"erros":null}
+26/06/2023 11:34 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 11:37 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:37 - [ENVIO_DADOS]
+26/06/2023 11:37 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>11</nNF>
+      <dhEmi>2023-06-26T11:37:23-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>64392309649</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA OURO PRETO</xLgr>
+        <nro>203</nro>
+        <xBairro>CRUZEIRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610036</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2631</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90041000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>550.00</vUnCom>
+        <vProd>550.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>550.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>50</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>340.00</vUnCom>
+        <vProd>340.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>340.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>890.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>890.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>03</tPag>
+        <vPag>890.00</vPag>
+        <card>
+          <tpIntegra>2</tpIntegra>
+          <CNPJ>01425787000104</CNPJ>
+          <tBand>99</tBand>
+        </card>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:37 - [ENVIO_RESPOSTA]
+26/06/2023 11:37 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"Rejeição: Erro não catalogado"}}
+26/06/2023 11:37 - [JSON_RETORNO]
+26/06/2023 11:37 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"Rejeição: Erro não catalogado","nsNRec":null,"erros":null}
+26/06/2023 11:37 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 11:40 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:40 - [ENVIO_DADOS]
+26/06/2023 11:40 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>12</nNF>
+      <dhEmi>2023-06-26T11:40:11-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>02920313606</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA JOSE ANTONIO SOARES</xLgr>
+        <nro>94</nro>
+        <xBairro>SAGARANA II</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2318</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90031910</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>698.00</vUnCom>
+        <vProd>698.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>698.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>50</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>302.00</vUnCom>
+        <vProd>302.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>302.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1000.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1000.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>03</tPag>
+        <vPag>1000.00</vPag>
+        <card>
+          <tpIntegra>2</tpIntegra>
+          <CNPJ>01425787000104</CNPJ>
+          <tBand>99</tBand>
+        </card>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:40 - [ENVIO_RESPOSTA]
+26/06/2023 11:40 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"Rejeição: Erro não catalogado"}}
+26/06/2023 11:40 - [JSON_RETORNO]
+26/06/2023 11:40 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"Rejeição: Erro não catalogado","nsNRec":null,"erros":null}
+26/06/2023 11:40 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 11:49 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:49 - [ENVIO_DADOS]
+26/06/2023 11:49 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>13</nNF>
+      <dhEmi>2023-06-26T11:49:11-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <det nItem="1">
+      <prod>
+        <cProd>152</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>228.19</vUnCom>
+        <vProd>228.19</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>228.19</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>184</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>PR</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>600.00</vUnCom>
+        <vProd>600.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>PR</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>600.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="3">
+      <prod>
+        <cProd>2</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CEST>0,000</CEST>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>200.00</vUnCom>
+        <vProd>200.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>200.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="4">
+      <prod>
+        <cProd>230</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>PR</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1500.00</vUnCom>
+        <vProd>1500.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>PR</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1500.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>2528.19</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>2528.19</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>17</tPag>
+        <vPag>2528.19</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:49 - [ENVIO_RESPOSTA]
+26/06/2023 11:49 - {"status":-995,"motivo":"Documento invalido de acordo com a validacao contra o XSD","erros":["CEST : cvc-pattern-valid: Value '0,000' is not facet-valid with respect to pattern '[0-9]{7}' for type '#AnonType_CESTproddetinfNFeTNFe'."]}
+26/06/2023 11:49 - [JSON_RETORNO]
+26/06/2023 11:49 - {"chNFe":"","statusEnvio":"-995","statusConsulta":null,"statusDownload":"","cStat":"","nProt":"","motivo":"Documento invalido de acordo com a validacao contra o XSD","nsNRec":null,"erros":["CEST : cvc-pattern-valid: Value '0,000' is not facet-valid with respect to pattern '[0-9]{7}' for type '#AnonType_CESTproddetinfNFeTNFe'."]}
+26/06/2023 11:49 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 11:49 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:49 - [ENVIO_DADOS]
+26/06/2023 11:49 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>14</nNF>
+      <dhEmi>2023-06-26T11:49:27-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <det nItem="1">
+      <prod>
+        <cProd>1782</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90039090</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>130.00</vUnCom>
+        <vProd>130.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>130.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>130.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>130.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>17</tPag>
+        <vPag>130.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:49 - [ENVIO_RESPOSTA]
+26/06/2023 11:49 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"Rejeição: Erro não catalogado"}}
+26/06/2023 11:49 - [JSON_RETORNO]
+26/06/2023 11:49 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"Rejeição: Erro não catalogado","nsNRec":null,"erros":null}
+26/06/2023 11:49 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 11:55 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 11:55 - [ENVIO_DADOS]
+26/06/2023 11:55 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>15</nNF>
+      <dhEmi>2023-06-26T11:55:43-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>13681799679</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA ALBA GONZAGA 100 AP 405</xLgr>
+        <nro>S/N</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1138</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>190.00</vUnCom>
+        <vProd>190.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>190.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>190.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>190.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>03</tPag>
+        <vPag>190.00</vPag>
+        <card>
+          <tpIntegra>2</tpIntegra>
+          <CNPJ>01425787000104</CNPJ>
+          <tBand>99</tBand>
+        </card>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 11:55 - [ENVIO_RESPOSTA]
+26/06/2023 11:55 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"Rejeição: Erro não catalogado"}}
+26/06/2023 11:55 - [JSON_RETORNO]
+26/06/2023 11:55 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"Rejeição: Erro não catalogado","nsNRec":null,"erros":null}
+26/06/2023 11:55 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 12:20 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 12:20 - [ENVIO_DADOS]
+26/06/2023 12:20 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>16</nNF>
+      <dhEmi>2023-06-26T12:20:30-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <det nItem="1">
+      <prod>
+        <cProd>1071</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>700.00</vUnCom>
+        <vProd>700.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>700.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>700.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>700.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>03</tPag>
+        <vPag>700.00</vPag>
+        <card>
+          <tpIntegra>2</tpIntegra>
+          <CNPJ>01425787000104</CNPJ>
+          <tBand>99</tBand>
+        </card>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 12:20 - [ENVIO_RESPOSTA]
+26/06/2023 12:20 - {"status":-100,"motivo":"NFC-e nao autorizada","nfeProc":{"cStat":999,"xMotivo":"Rejeição: Erro não catalogado"}}
+26/06/2023 12:20 - [JSON_RETORNO]
+26/06/2023 12:20 - {"chNFe":"","statusEnvio":"-100","statusConsulta":null,"statusDownload":"","cStat":"999","nProt":"","motivo":"Rejeição: Erro não catalogado","nsNRec":null,"erros":null}
+26/06/2023 12:20 - [EMISSAO_SINCRONA_FIM]
+26/06/2023 12:20 - [EMISSAO_SINCRONA_INICIO]
+26/06/2023 12:20 - [ENVIO_DADOS]
+26/06/2023 12:20 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>65</mod>
+      <serie>4</serie>
+      <nNF>16</nNF>
+      <dhEmi>2023-06-26T12:20:40-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>4</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>28145398000173</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>RUA CANABRAVA</xLgr>
+        <nro>320</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610031</CEP>
+        <fone>3836769644</fone>
+      </enderEmit>
+      <IE>0030011730013</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF />
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA RODA VIVA</xLgr>
+        <nro>34</nro>
+        <xBairro>NAO INFORMADO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>1071</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>700.00</vUnCom>
+        <vProd>700.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>700.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>700.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>700.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+26/06/2023 12:20 - [ENVIO_RESPOSTA]
+26/06/2023 12:20 - {"status":-995,"motivo":"Documento invalido de acordo com a validacao contra o XSD","erros":["O campo 'CPF' foi preenchido incorretamente com o valor ' '. Este campo deve ser preenchido com um CPF de 11 digitos. Este campo e obrigatorio.","detPag : cvc-complex-type.2.4.a: Invalid content was found starting with element 'vTroco'. One of '{\"http://www.portalfiscal.inf.br/nfe\":detPag}' is expected."]}
+26/06/2023 12:20 - [JSON_RETORNO]
+26/06/2023 12:20 - {"chNFe":"","statusEnvio":"-995","statusConsulta":null,"statusDownload":"","cStat":"","nProt":"","motivo":"Documento invalido de acordo com a validacao contra o XSD","nsNRec":null,"erros":["O campo 'CPF' foi preenchido incorretamente com o valor ' '. Este campo deve ser preenchido com um CPF de 11 digitos. Este campo e obrigatorio.","detPag : cvc-complex-type.2.4.a: Invalid content was found starting with element 'vTroco'. One of '{\"http://www.portalfiscal.inf.br/nfe\":detPag}' is expected."]}
+26/06/2023 12:20 - [EMISSAO_SINCRONA_FIM]

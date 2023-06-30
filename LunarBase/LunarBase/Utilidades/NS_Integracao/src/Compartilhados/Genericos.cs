@@ -3,6 +3,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 public class Genericos
@@ -33,6 +35,7 @@ public class Genericos
         //    serializer.Serialize(stringwriter, NFCe);
         //    return stringwriter.ToString();
         //}
+
         var serializer = new XmlSerializer(typeof(TNFe));
         var memorystream = new MemoryStream();
         Encoding utf8WithoutBom = new UTF8Encoding(false);
@@ -42,6 +45,74 @@ public class Genericos
         var streamreader = new StreamReader(memorystream, System.Text.Encoding.UTF8);
         var utf8encodedxml = streamreader.ReadToEnd();
         return utf8encodedxml;
+    }
+
+    public static string ClasseParaArquivoXml<TNFe>(TNFe objeto, string arquivo)
+    {
+        var dir = Path.GetDirectoryName(arquivo);
+        if (dir != null && !Directory.Exists(dir))
+        {
+            //throw new DirectoryNotFoundException("Diretório " + dir + " não encontrado!");
+            Directory.CreateDirectory(dir);
+        }
+
+        var xml = ClasseParaXmlString(objeto);
+        try
+        {
+            var stw = new StreamWriter(arquivo);
+            stw.WriteLine(xml);
+            stw.Close();
+            return xml;
+        }
+        catch (Exception)
+        {
+            throw new Exception("Não foi possível criar o arquivo " + arquivo + "!");
+            return "";
+        }
+    }
+    public static string ClasseParaXmlString<T>(T objeto)
+    {
+        XElement xml;
+        var keyNomeClasseEmUso = typeof(T).FullName;
+        var ser = BuscarNoCache(keyNomeClasseEmUso, typeof(T));
+
+        using (var memory = new MemoryStream())
+        {
+            using (TextReader tr = new StreamReader(memory, Encoding.UTF8))
+            {
+                ser.Serialize(memory, objeto);
+                memory.Position = 0;
+                xml = XElement.Load(tr);
+                xml.Attributes().Where(x => x.Name.LocalName.Equals("xsd") || x.Name.LocalName.Equals("xsi")).Remove();
+            }
+        }
+        return XElement.Parse(xml.ToString()).ToString(SaveOptions.DisableFormatting);
+    }
+
+    private static readonly Hashtable CacheSerializers = new Hashtable();
+    private static XmlSerializer BuscarNoCache(string chave, Type type)
+    {
+        //codigo performatico pois na maioria das vezes já vai estar no cache.
+        //https://github.com/ZeusAutomacao/DFe.NET/issues/1146
+        if (CacheSerializers.Contains(chave))
+        {
+            return (XmlSerializer)CacheSerializers[chave];
+        }
+
+        //lock por conta de ambientes de alta concorrência (lock no type pois se for type diferente pode ser outro lock separado que não vai prejudicar)
+        //https://github.com/ZeusAutomacao/DFe.NET/issues/1146
+        lock (type)
+        {
+            if (CacheSerializers.Contains(chave))
+            {
+                return (XmlSerializer)CacheSerializers[chave];
+            }
+
+            var ser = XmlSerializer.FromTypes(new[] { type })[0];
+            CacheSerializers.Add(chave, ser);
+
+            return ser;
+        }
     }
 
     public static T LoadFromXMLString<T>(string xmlText)

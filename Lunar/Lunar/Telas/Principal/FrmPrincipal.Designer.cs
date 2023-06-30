@@ -75,11 +75,13 @@
             this.orçamentoAvulsoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPlanoDecontas1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMovimentoCaixa = new System.Windows.Forms.ToolStripMenuItem();
+            this.reciboAvulsoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuFiscal = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnComprasFiscal = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEmitirNfe = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMonitoramentoFiscal = new System.Windows.Forms.ToolStripMenuItem();
             this.btnNaturezaOperacao = new System.Windows.Forms.ToolStripMenuItem();
+            this.notaFiscalAgrupadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuServico = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnOrdemServico = new System.Windows.Forms.ToolStripMenuItem();
             this.btnServico = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +98,6 @@
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reciboAvulsoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -693,7 +694,7 @@
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 202);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 180);
             // 
             // adiantamentoValeToolStripMenuItem
             // 
@@ -744,6 +745,13 @@
             this.btnMovimentoCaixa.Text = "Movimento de Caixa";
             this.btnMovimentoCaixa.Click += new System.EventHandler(this.btnMovimentoCaixa_Click);
             // 
+            // reciboAvulsoToolStripMenuItem
+            // 
+            this.reciboAvulsoToolStripMenuItem.Name = "reciboAvulsoToolStripMenuItem";
+            this.reciboAvulsoToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.reciboAvulsoToolStripMenuItem.Text = "Recibo Avulso";
+            this.reciboAvulsoToolStripMenuItem.Click += new System.EventHandler(this.reciboAvulsoToolStripMenuItem_Click);
+            // 
             // dropMenuFiscal
             // 
             this.dropMenuFiscal.CursorSelecionado = System.Windows.Forms.Cursors.Hand;
@@ -753,12 +761,13 @@
             this.btnComprasFiscal,
             this.btnEmitirNfe,
             this.btnMonitoramentoFiscal,
-            this.btnNaturezaOperacao});
+            this.btnNaturezaOperacao,
+            this.notaFiscalAgrupadaToolStripMenuItem});
             this.dropMenuFiscal.MenuItemHeight = 25;
             this.dropMenuFiscal.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFiscal.Name = "rjDropdownMenu1";
             this.dropMenuFiscal.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFiscal.Size = new System.Drawing.Size(327, 92);
+            this.dropMenuFiscal.Size = new System.Drawing.Size(327, 114);
             // 
             // btnComprasFiscal
             // 
@@ -787,6 +796,13 @@
             this.btnNaturezaOperacao.Size = new System.Drawing.Size(326, 22);
             this.btnNaturezaOperacao.Text = "Natureza Operação";
             this.btnNaturezaOperacao.Click += new System.EventHandler(this.btnNaturezaOperacao_Click);
+            // 
+            // notaFiscalAgrupadaToolStripMenuItem
+            // 
+            this.notaFiscalAgrupadaToolStripMenuItem.Name = "notaFiscalAgrupadaToolStripMenuItem";
+            this.notaFiscalAgrupadaToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
+            this.notaFiscalAgrupadaToolStripMenuItem.Text = "Nota Fiscal das Vendas";
+            this.notaFiscalAgrupadaToolStripMenuItem.Click += new System.EventHandler(this.notaFiscalAgrupadaToolStripMenuItem_Click);
             // 
             // dropMenuServico
             // 
@@ -928,13 +944,6 @@
             this.transferênciaFilialToolStripMenuItem.Text = "Transferência Filial";
             this.transferênciaFilialToolStripMenuItem.Click += new System.EventHandler(this.transferênciaFilialToolStripMenuItem_Click);
             // 
-            // reciboAvulsoToolStripMenuItem
-            // 
-            this.reciboAvulsoToolStripMenuItem.Name = "reciboAvulsoToolStripMenuItem";
-            this.reciboAvulsoToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.reciboAvulsoToolStripMenuItem.Text = "Recibo Avulso";
-            this.reciboAvulsoToolStripMenuItem.Click += new System.EventHandler(this.reciboAvulsoToolStripMenuItem_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1038,5 +1047,6 @@
         private System.Windows.Forms.ToolStripMenuItem transferênciaFilialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adiantamentoValeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reciboAvulsoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notaFiscalAgrupadaToolStripMenuItem;
     }
 }

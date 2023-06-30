@@ -248,8 +248,11 @@ namespace Lunar.Telas.Fiscal.NFeSelecaoItens
                 row.SetField("vFrete", "0");
                 row.SetField("vOutro", "0");
                 row.SetField("vSeguro", "0");
-                row.SetField("Observacao", txtObservacaoProduto.Texts); 
-                
+                row.SetField("Observacao", txtObservacaoProduto.Texts);
+                row.SetField("ValorIPI", txtValorIPI.Texts);
+                row.SetField("ValorIpiDevolvido", txtValorIpiDevolvido.Texts);
+                row.SetField("PercentualMercadoriaDevolvida", txtPercentualMercadoriaDevolvida.Texts);
+
                 dsProduto.Tables[0].Rows.Add(row);
  
                 txtPesquisaProduto.Texts = "";
@@ -308,6 +311,8 @@ namespace Lunar.Telas.Fiscal.NFeSelecaoItens
             txtValorICMSREt.Texts = "0,00";
             txtPercentualFCPRet.Texts = "0";
             txtPercStConsumidor.Texts = "0";
+            txtPercentualMercadoriaDevolvida.Texts = "0";
+            txtValorIpiDevolvido.Texts = "0,00";
         }
         private void somaEnquantoDigita()
         {
@@ -998,6 +1003,8 @@ namespace Lunar.Telas.Fiscal.NFeSelecaoItens
             txtValorICMSREt.Texts = dataRow["ValorICMSRet"].ToString();
             txtPercentualFCPRet.Texts = dataRow["PercentualFCPRet"].ToString();
             txtPercStConsumidor.Texts = dataRow["PercentualSTCons"].ToString();
+            txtValorIpiDevolvido.Texts = dataRow["ValorIpiDevolvido"].ToString();
+            txtPercentualMercadoriaDevolvida.Texts = dataRow["PercentualMercadoriaDevolvida"].ToString();
         }
 
         //private void carregarListaProdutos()

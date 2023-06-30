@@ -1201,6 +1201,12 @@ namespace Lunar.Telas.Compras
 								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["DescricaoInterna"].MappingName, prod.Descricao);
 								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
 								gridProdutos.Refresh();
+								if(string.IsNullOrEmpty(prod.Ncm))
+								{
+                                    NfeProduto nnfeProd = (NfeProduto)gridProdutos.SelectedItem;
+									prod.Ncm = nnfeProd.Ncm;
+									Controller.getInstance().salvar(prod);
+                                }
 								verificarProdutosCadastrados();
 								break;
 						}
@@ -1501,18 +1507,21 @@ namespace Lunar.Telas.Compras
 					var records2 = gridPagamento.View.Records;
 					if (records2.Count > 0)
 					{
+						int a = 0;
 						foreach (var record in records2)
 						{
 							//var dataRowView = record.Data as DataRowView;
 							if (record != null)
 							{
-								contaPagar = new ContaPagar();
+								a++;
+                                contaPagar = new ContaPagar();
 								contaPagar = (ContaPagar)record.Data;
 								if (contaPagar != null)
 								{
 									contaPagar.Nfe = nfe;
 									contaPagar.DataOrigem = DateTime.Parse(txtDataEmissao.Value.ToString());
-									contaPagar.Descricao = "COMPRA PRODUTOS - NF: " + nfe.NNf;
+									contaPagar.Descricao = "COMPRA PRODUTOS - NF: " + nfe.NNf + " PARC. " + a + " DE " + records2.Count;
+
 									contaPagar.EmpresaFilial = Sessao.empresaFilialLogada;
 									FormaPagamento formaPagamento = new FormaPagamento();
 									formaPagamento.Id = int.Parse(txtCodFormaPagamento.Texts);

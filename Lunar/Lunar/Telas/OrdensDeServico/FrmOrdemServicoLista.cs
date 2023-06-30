@@ -813,18 +813,25 @@ namespace Lunar.Telas.OrdensDeServico
                                         }
                                         //Concluir a O.S antes de gerar a nota
                                         numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
-                                        //Nfe nfConferencia = new Nfe();
-                                        //NfeController nfeController = new NfeController();
-                                        //nfConferencia = nfeController.selecionarUltimoNumeroNota("65");
-                                        //if(nfConferencia != null)
-                                        //{
-                                        //    if (nfConferencia.Id > 0)
-                                        //    {
-                                        //        if(numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
-                                        //            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
-                                        //    }
-                                        //}
-                                        try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, cli, null, ordemServico); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
+                                        NfeController nfeController = new NfeController();
+                                        Nfe notaTeste = nfeController.selecionarNFCePorNumeroESerie(numeroNFCe, Sessao.parametroSistema.SerieNFCe);
+                                        if(notaTeste != null)
+                                        {
+                                            if(notaTeste.Id > 0)
+                                            {
+                                                Nfe nfConferencia = new Nfe();
+                                                nfConferencia = nfeController.selecionarUltimoNumeroNota("65");
+                                                if (nfConferencia != null)
+                                                {
+                                                    if (nfConferencia.Id > 0)
+                                                    {
+                                                        if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
+                                                            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, cli, null, ordemServico, null); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
                                         //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
                                         if (!String.IsNullOrEmpty(xmlStrEnvio))
                                         {
@@ -861,8 +868,9 @@ namespace Lunar.Telas.OrdensDeServico
             //ATUALIZA NUMERO DA NOTA 
             ParametroSistema param = new ParametroSistema();
             param = Sessao.parametroSistema;
+            
             if (nfe.Modelo.Equals("65"))
-                param.ProximoNumeroNFCe = (int.Parse(nfe.NNf) + 1).ToString();
+                param.ProximoNumeroNFCe = (int.Parse(numeroNFCe) + 1).ToString();
             if (nfe.Modelo.Equals("55"))
                 param.ProximoNumeroNFe = (int.Parse(nfe.NNf) + 1).ToString();
             Controller.getInstance().salvar(param);
@@ -956,7 +964,6 @@ namespace Lunar.Telas.OrdensDeServico
                     //gerar em contigencia
                     gravarXMLNaPasta(xmlNfce, numeroNFCe, @"\XML\Tentativa\NFCe\", numeroNFCe, true);
                 }
-
                 else
                 {
                     String erros = "";
@@ -1297,14 +1304,14 @@ namespace Lunar.Telas.OrdensDeServico
                 nfeProduto.ValorAcrescimo = 0;
                 nfeProduto.ValorCofins = 0;
                 nfeProduto.ValorDesconto = descontoItem;
-                nfeProduto.ValorFinal = (produto.ValorVenda * decimal.Parse(quantidade.ToString())) - descontoItem;
+                nfeProduto.ValorFinal = produto.ValorVenda - descontoItem;
                 nfeProduto.UComConvertida = produto.UnidadeMedida.Sigla;
                 nfeProduto.ValorIpi = 0;
                 nfeProduto.ValorPis = 0;
                 nfeProduto.ValorProduto = produto.ValorVenda;
 
-                valorFinalNota = valorFinalNota + nfeProduto.ValorFinal;
-                valorProdutosSemDesconto = valorProdutosSemDesconto + nfeProduto.ValorProduto;
+                valorFinalNota = (valorFinalNota + (nfeProduto.ValorFinal * decimal.Parse(quantidade.ToString())));
+                valorProdutosSemDesconto = valorProdutosSemDesconto + nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString());
                 valorDescontoProdutos = valorDescontoProdutos + nfeProduto.VDesc;
                 if(produto.Estoque < VendaItens.Quantidade)
                 {
@@ -1439,7 +1446,7 @@ namespace Lunar.Telas.OrdensDeServico
                                             nfeStatus.Id = 2;
                                             nfe.NfeStatus = (NfeStatus)NfeStatusController.getInstance().selecionar(nfeStatus);
                                             Controller.getInstance().salvar(nfe);
-                                            Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(Sessao.parametroSistema.ProximoNumeroNFe) + 1).ToString();
+                                            Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(numeroNFCe) + 1).ToString();
                                             Controller.getInstance().salvar(Sessao.parametroSistema);
                                             GenericaDesktop.ShowAlerta("Falha de comunicação com a sefaz, tente reenviar a nota pelo modulo de gerenciamento de notas");
                                         }

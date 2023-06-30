@@ -996,6 +996,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             {
                 foreach (OrdemServico or in listaOrdemServico)
                 {
+                    clienteLista = or.Cliente;
                     valorTotal = valorTotal + or.ValorTotal;
                 }
             }
@@ -2651,6 +2652,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         conta.NumeroDocumento = conta.NumeroDocumento + ".1";
                         conta.ValorTotal = conta.ValorTotal - decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
                     }
+                    
                     Controller.getInstance().salvar(conta);
                 }
                 GenericaDesktop.ShowInfo("Pagamento confirmado com sucesso");
@@ -3176,6 +3178,11 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             }
             GenericaDesktop.ShowInfo("Ordem de Serviço encerrada com sucesso");
             this.Close(); 
+        }
+
+        private void autoLabel17_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

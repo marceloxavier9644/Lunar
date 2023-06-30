@@ -214,10 +214,11 @@ namespace Lunar.Telas.Cadastros.Empresas
                 endereco.EmpresaFilial = null;
                 endereco.Referencia = txtReferencia.Texts;
                 endereco.Complemento = txtComplemento.Texts;
-                endereco.Cidade = cidadePrincipal;
+                if (cidadePrincipal != null)
+                    endereco.Cidade = cidadePrincipal;
                 endereco.Cep = GenericaDesktop.RemoveCaracteres(txtCEP.Texts);
                 endereco.Bairro = txtBairro.Texts;
-          
+                
 
                 Controller.getInstance().salvar(endereco);
             }
@@ -479,6 +480,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                             txtUF.Texts = ((Cidade)cidadeObjeto).Estado.Uf;
                             cidade = ((Cidade)cidadeObjeto);
                             txtNomeResponsavel.Focus();
+                            cidadePrincipal = cidade;
                             break;
                     }
 

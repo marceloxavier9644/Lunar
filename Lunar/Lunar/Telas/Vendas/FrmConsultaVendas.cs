@@ -335,7 +335,7 @@ namespace Lunar.Telas.Vendas
                             {
                                 //Concluir a venda antes de gerar a nota
                                 numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
-                                xmlStrEnvio = emitirNFCe.gerarXMLNfce(venda.ValorProdutos, venda.ValorFinal, venda.ValorDesconto, numeroNFCe, listaProdutosNFe, venda.Cliente, venda, null);
+                                xmlStrEnvio = emitirNFCe.gerarXMLNfce(venda.ValorProdutos, venda.ValorFinal, venda.ValorDesconto, numeroNFCe, listaProdutosNFe, venda.Cliente, venda, null, null);
                                 if (!String.IsNullOrEmpty(xmlStrEnvio))
                                 {
                                     enviarXMLNFCeParaApi(xmlStrEnvio);

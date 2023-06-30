@@ -38,108 +38,165 @@ namespace Lunar.Telas.CaixaConferencia.Reports
 
         private void gerarRelatorio()
         {
-            dsCaixa.Tables[0].Clear();
-            this.reportViewer1.RefreshReport();
-            Usuario usuario = new Usuario();
-            PlanoConta planoConta = new PlanoConta();
-            ContaBancaria contaBancaria = new ContaBancaria();
-            String conta = "";
-            String user = "";
-            String plano = "";
-
-            string sql = "From Caixa Tabela where Tabela.FlagExcluido <> true and Tabela.Concluido = true ";
-            DateTime dataInicial = DateTime.Parse(txtDataInicial.Value.ToString());
-            DateTime dataFinal = DateTime.Parse(txtDataFinal.Value.ToString());
-            sql = sql + "and Tabela.DataLancamento between '" + dataInicial.ToString("yyyy-MM-dd") + " 00:00:00' and '" + dataFinal.ToString("yyyy-MM-dd") + " 23:59:59' ";
-            if (!String.IsNullOrEmpty(txtCodPlanoConta.Texts))
+            try
             {
-                planoConta.Id = int.Parse(txtCodPlanoConta.Texts);
-                planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
-                if (planoConta != null)
-                {
-                    plano = "PLANO DE CONTAS: " + planoConta.Descricao;
-                    sql = sql + "and Tabela.PlanoConta = " + txtCodPlanoConta.Texts + " ";
-                }
-            }
-            if (!String.IsNullOrEmpty(txtCodUsuario.Texts))
-            {
-                usuario.Id = int.Parse(txtCodUsuario.Texts);
-                usuario = (Usuario)Controller.getInstance().selecionar(usuario);
-                if (usuario != null)
-                {
-                    user = "CAIXA: " + usuario.Login + "  ";
-                    sql = sql + "and Tabela.Usuario = " + txtCodUsuario.Texts + " ";
-                }
-            }
-            if (!String.IsNullOrEmpty(txtCodContaBancaria.Texts))
-            {
-                contaBancaria.Id = int.Parse(txtCodContaBancaria.Texts);
-                contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
-                if (contaBancaria != null)
-                {
-                    conta = "CONTA BANCÁRIA: " + contaBancaria.Descricao + "  " + contaBancaria.Conta + "-" + contaBancaria.DvConta;
-                    sql = sql + "and Tabela.ContaBancaria = " + txtCodContaBancaria.Texts + " ";
-                }
-            }
-            if (!String.IsNullOrEmpty(txtCodEmpresa.Texts))
-            {
-                sql = sql + "and Tabela.EmpresaFilial = " + txtCodEmpresa.Texts + " ";
-            }
-            if (chkApenasCaixaFisico.Checked == true)
-            {
-                sql = sql + "and Tabela.ContaBancaria is null ";
-            }
-            if (chkApenasContasReceber.Checked == true)
-            {
-                sql = sql + "and Tabela.TabelaOrigem = 'CONTARECEBER' ";
-            }
-            if (chkApenasDespesas.Checked == true)
-            {
-                sql = sql + "and Tabela.Tipo = 'S' ";
-            }
-            if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
-                sql = sql + "and Tabela.Cobrador = " + txtCodCobrador.Texts + " ";
-            Microsoft.Reporting.WinForms.ReportDataSource dsOrdem = new Microsoft.Reporting.WinForms.ReportDataSource();
-            dsOrdem.Name = "dsCaixa";
-            dsOrdem.Value = this.bindingSource1;
-            this.reportViewer1.LocalReport.DataSources.Add(dsOrdem);
-
-            string cobradorSelecionado = "";
-            if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
-                cobradorSelecionado = "RECEBIDO POR: " + txtCobrador.Texts;
-            ReportParameter[] p = new ReportParameter[5];
-            p[0] = (new ReportParameter("Empresa", Sessao.empresaFilialLogada.NomeFantasia));
-            p[1] = (new ReportParameter("Data", DateTime.Parse(txtDataInicial.Value.ToString()).ToShortDateString() + " a " + DateTime.Parse(txtDataFinal.Value.ToString()).ToShortDateString() + "\n" + cobradorSelecionado));
-            p[2] = (new ReportParameter("Usuario", user + " "));
-            p[3] = (new ReportParameter("PlanoConta", plano));
-            p[4] = (new ReportParameter("ContaBancaria", conta));
-            reportViewer1.LocalReport.SetParameters(p);
-
-            CaixaController caixaController = new CaixaController();
-            IList<Caixa> listaCaixa = new List<Caixa>();
-            listaCaixa = caixaController.selecionarCaixaPorSql(sql); ;
-
-            //listaCaixa = caixaController.selecionarCaixaPorUsuarioEDataCadastro(Sessao.usuarioLogado.Id, DateTime.Now.AddDays(-2).ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd")); ;
-            if (listaCaixa.Count > 0)
-            {
-                foreach (Caixa caixa in listaCaixa)
-                {
-                    string tipoValor = "ENTRADA";
-                    if (caixa.Tipo.Equals("S"))
-                    {
-                        tipoValor = "SAÍDA";
-                        caixa.Valor = -(caixa.Valor);
-                    }
-
-                    dsCaixa.Caixa.AddCaixaRow(caixa.Id.ToString(), caixa.Descricao, caixa.Valor, tipoValor, caixa.DataLancamento.ToShortDateString(), caixa.FormaPagamento.Id.ToString() + " - " + caixa.FormaPagamento.Descricao, caixa.FormaPagamento.Descricao, "", "", "", int.Parse(caixa.OperadorCadastro));
-                }
-                this.reportViewer1.Visible = true;
+                dsCaixa.Tables[0].Clear();
                 this.reportViewer1.RefreshReport();
+                Usuario usuario = new Usuario();
+                PlanoConta planoConta = new PlanoConta();
+                ContaBancaria contaBancaria = new ContaBancaria();
+                String conta = "";
+                String user = "";
+                String plano = "";
+
+                string sql = "From Caixa Tabela where Tabela.FlagExcluido <> true and Tabela.Concluido = true ";
+                DateTime dataInicial = DateTime.Parse(txtDataInicial.Value.ToString());
+                DateTime dataFinal = DateTime.Parse(txtDataFinal.Value.ToString());
+                sql = sql + "and Tabela.DataLancamento between '" + dataInicial.ToString("yyyy-MM-dd") + " 00:00:00' and '" + dataFinal.ToString("yyyy-MM-dd") + " 23:59:59' ";
+                if (!String.IsNullOrEmpty(txtCodPlanoConta.Texts))
+                {
+                    planoConta.Id = int.Parse(txtCodPlanoConta.Texts);
+                    planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                    if (planoConta != null)
+                    {
+                        plano = "PLANO DE CONTAS: " + planoConta.Descricao;
+                        sql = sql + "and Tabela.PlanoConta = " + txtCodPlanoConta.Texts + " ";
+                    }
+                }
+                if (!String.IsNullOrEmpty(txtCodUsuario.Texts))
+                {
+                    usuario.Id = int.Parse(txtCodUsuario.Texts);
+                    usuario = (Usuario)Controller.getInstance().selecionar(usuario);
+                    if (usuario != null)
+                    {
+                        user = "CAIXA: " + usuario.Login + "  ";
+                        sql = sql + "and Tabela.Usuario = " + txtCodUsuario.Texts + " ";
+                    }
+                }
+                if (!String.IsNullOrEmpty(txtCodContaBancaria.Texts))
+                {
+                    contaBancaria.Id = int.Parse(txtCodContaBancaria.Texts);
+                    contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                    if (contaBancaria != null)
+                    {
+                        conta = "CONTA BANCÁRIA: " + contaBancaria.Descricao + "  " + contaBancaria.Conta + "-" + contaBancaria.DvConta;
+                        sql = sql + "and Tabela.ContaBancaria = " + txtCodContaBancaria.Texts + " ";
+                    }
+                }
+                if (!String.IsNullOrEmpty(txtCodEmpresa.Texts))
+                {
+                    sql = sql + "and Tabela.EmpresaFilial = " + txtCodEmpresa.Texts + " ";
+                }
+                if (chkApenasCaixaFisico.Checked == true)
+                {
+                    sql = sql + "and Tabela.ContaBancaria is null ";
+                }
+                if (chkApenasContasReceber.Checked == true)
+                {
+                    sql = sql + "and Tabela.TabelaOrigem = 'CONTARECEBER' ";
+                }
+                if (chkApenasDespesas.Checked == true)
+                {
+                    sql = sql + "and Tabela.Tipo = 'S' ";
+                }
+                if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
+                    sql = sql + "and Tabela.Cobrador = " + txtCodCobrador.Texts + " ";
+                Microsoft.Reporting.WinForms.ReportDataSource dsOrdem = new Microsoft.Reporting.WinForms.ReportDataSource();
+                //MessageBox.Show(sql);
+                dsOrdem.Name = "dsCaixa";
+                dsOrdem.Value = this.bindingSource1;
+                this.reportViewer1.LocalReport.DataSources.Add(dsOrdem);
+
+                string cobradorSelecionado = "";
+                if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
+                    cobradorSelecionado = "RECEBIDO POR: " + txtCobrador.Texts;
+                ReportParameter[] p = new ReportParameter[5];
+                p[0] = (new ReportParameter("Empresa", Sessao.empresaFilialLogada.NomeFantasia));
+                p[1] = (new ReportParameter("Data", DateTime.Parse(txtDataInicial.Value.ToString()).ToShortDateString() + " a " + DateTime.Parse(txtDataFinal.Value.ToString()).ToShortDateString() + "\n" + cobradorSelecionado));
+                p[2] = (new ReportParameter("Usuario", user + " "));
+                p[3] = (new ReportParameter("PlanoConta", plano));
+                p[4] = (new ReportParameter("ContaBancaria", conta));
+                reportViewer1.LocalReport.SetParameters(p);
+
+                CaixaController caixaController = new CaixaController();
+                IList<Caixa> listaCaixa = new List<Caixa>();
+                listaCaixa = caixaController.selecionarCaixaPorSql(sql); ;
+
+                //troco fixo
+                TrocoFixoController trocoFixoController = new TrocoFixoController();
+                IList<TrocoFixo> listaTroco = trocoFixoController.selecionarTodosTrocoFixoPorEmpresaFilial();
+                decimal valorTroco = 0;
+                if (listaTroco != null)
+                {
+                    if (listaTroco.Count > 0)
+                    {
+                        foreach (TrocoFixo troco in listaTroco)
+                        {
+                            if (!String.IsNullOrEmpty(txtCodUsuario.Texts))
+                            {
+                                if (troco.Usuario.Id == int.Parse(txtCodUsuario.Texts))
+                                {
+                                    valorTroco = valorTroco + troco.Valor;
+                                }
+                            }
+                            else
+                            {
+                                valorTroco = valorTroco + troco.Valor;
+                            }
+                        }
+                        Caixa caixa = new Caixa();
+                        caixa.Id = 1;
+                        caixa.Cobrador = null;
+                        caixa.Conciliado = true;
+                        caixa.Concluido = true;
+                        caixa.ContaBancaria = null;
+                        caixa.DataLancamento = DateTime.Now;
+                        caixa.Descricao = "TROCO FIXO";
+                        caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                        caixa.FlagExcluido = false;
+                        FormaPagamento formaPagamento = new FormaPagamento();
+                        formaPagamento.Id = 1;
+                        formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                        caixa.FormaPagamento = formaPagamento;
+                        caixa.FormaPagamento = formaPagamento;
+                        caixa.IdOrigem = "";
+                        caixa.Pessoa = null;
+                        caixa.PlanoConta = null;
+                        caixa.TabelaOrigem = "TROCOFIXO";
+                        caixa.Tipo = "E";
+                        caixa.Usuario = null;
+                        caixa.Valor = valorTroco;
+                        caixa.OperadorCadastro = "1";
+                        listaCaixa.Add(caixa);
+                    }
+                }
+
+                //listaCaixa = caixaController.selecionarCaixaPorUsuarioEDataCadastro(Sessao.usuarioLogado.Id, DateTime.Now.AddDays(-2).ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd")); ;
+                if (listaCaixa.Count > 0)
+                {
+                    foreach (Caixa caixa in listaCaixa)
+                    {
+                        string tipoValor = "ENTRADA";
+                        if (caixa.Tipo.Equals("S"))
+                        {
+                            tipoValor = "SAÍDA";
+                            caixa.Valor = -(caixa.Valor);
+                        }
+
+                        dsCaixa.Caixa.AddCaixaRow(caixa.Id.ToString(), caixa.Descricao, caixa.Valor, tipoValor, caixa.DataLancamento.ToShortDateString(), caixa.FormaPagamento.Id.ToString() + " - " + caixa.FormaPagamento.Descricao, caixa.FormaPagamento.Descricao, "", "", "", int.Parse(caixa.OperadorCadastro));
+                    }
+                    this.reportViewer1.Visible = true;
+                    this.reportViewer1.RefreshReport();
+                }
+                else
+                {
+                    this.reportViewer1.Visible = false;
+                    GenericaDesktop.ShowAlerta("Nenhum registro encontrado");
+                }
             }
-            else
+            catch (Exception erro)
             {
-                this.reportViewer1.Visible = false;
-                GenericaDesktop.ShowAlerta("Nenhum registro encontrado");
+                GenericaDesktop.ShowErro(erro.Message);
             }
         }
 

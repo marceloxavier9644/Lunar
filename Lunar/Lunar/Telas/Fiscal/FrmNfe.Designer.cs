@@ -70,6 +70,8 @@
             this.gridProdutos = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.autoLabel47 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtIpiDevolvido = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnEditarProduto = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel22 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel21 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -222,11 +224,15 @@
             this.dataColumn39 = new System.Data.DataColumn();
             this.dataColumn40 = new System.Data.DataColumn();
             this.dataColumn41 = new System.Data.DataColumn();
+            this.dataColumn42 = new System.Data.DataColumn();
+            this.dataColumn43 = new System.Data.DataColumn();
             this.labelN = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblNumeroNfe = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnGravar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnPreVisualizar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnEmitirNfe = new Lunar.RJ_UI.Classes.RJButton();
+            this.autoLabel48 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtValorIpi = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -863,6 +869,10 @@
             // 
             // tabPageAdv1
             // 
+            this.tabPageAdv1.Controls.Add(this.autoLabel48);
+            this.tabPageAdv1.Controls.Add(this.txtValorIpi);
+            this.tabPageAdv1.Controls.Add(this.autoLabel47);
+            this.tabPageAdv1.Controls.Add(this.txtIpiDevolvido);
             this.tabPageAdv1.Controls.Add(this.btnEditarProduto);
             this.tabPageAdv1.Controls.Add(this.autoLabel22);
             this.tabPageAdv1.Controls.Add(this.autoLabel21);
@@ -897,6 +907,43 @@
             this.tabPageAdv1.Text = "Nota Fiscal Eletrônica";
             this.tabPageAdv1.ThemesEnabled = false;
             // 
+            // autoLabel47
+            // 
+            this.autoLabel47.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel47.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel47.Location = new System.Drawing.Point(696, 429);
+            this.autoLabel47.Name = "autoLabel47";
+            this.autoLabel47.Size = new System.Drawing.Size(53, 16);
+            this.autoLabel47.TabIndex = 281;
+            this.autoLabel47.Text = "IPI Dev.";
+            // 
+            // txtIpiDevolvido
+            // 
+            this.txtIpiDevolvido.BackColor = System.Drawing.Color.White;
+            this.txtIpiDevolvido.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtIpiDevolvido.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtIpiDevolvido.BorderRadius = 8;
+            this.txtIpiDevolvido.BorderSize = 2;
+            this.txtIpiDevolvido.Enabled = false;
+            this.txtIpiDevolvido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIpiDevolvido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtIpiDevolvido.Location = new System.Drawing.Point(691, 441);
+            this.txtIpiDevolvido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIpiDevolvido.Multiline = false;
+            this.txtIpiDevolvido.Name = "txtIpiDevolvido";
+            this.txtIpiDevolvido.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtIpiDevolvido.PasswordChar = false;
+            this.txtIpiDevolvido.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtIpiDevolvido.PlaceholderText = "";
+            this.txtIpiDevolvido.ReadOnly = false;
+            this.txtIpiDevolvido.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtIpiDevolvido.Size = new System.Drawing.Size(105, 37);
+            this.txtIpiDevolvido.TabIndex = 280;
+            this.txtIpiDevolvido.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtIpiDevolvido.Texts = "0,00";
+            this.txtIpiDevolvido.UnderlinedStyle = false;
+            // 
             // btnEditarProduto
             // 
             this.btnEditarProduto.BackColor = System.Drawing.Color.White;
@@ -923,7 +970,7 @@
             this.autoLabel22.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel22.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel22.Location = new System.Drawing.Point(671, 429);
+            this.autoLabel22.Location = new System.Drawing.Point(573, 429);
             this.autoLabel22.Name = "autoLabel22";
             this.autoLabel22.Size = new System.Drawing.Size(51, 16);
             this.autoLabel22.TabIndex = 278;
@@ -934,7 +981,7 @@
             this.autoLabel21.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel21.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel21.Location = new System.Drawing.Point(516, 429);
+            this.autoLabel21.Location = new System.Drawing.Point(435, 429);
             this.autoLabel21.Name = "autoLabel21";
             this.autoLabel21.Size = new System.Drawing.Size(112, 16);
             this.autoLabel21.TabIndex = 276;
@@ -945,7 +992,7 @@
             this.autoLabel20.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel20.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel20.Location = new System.Drawing.Point(361, 429);
+            this.autoLabel20.Location = new System.Drawing.Point(322, 429);
             this.autoLabel20.Name = "autoLabel20";
             this.autoLabel20.Size = new System.Drawing.Size(38, 16);
             this.autoLabel20.TabIndex = 274;
@@ -956,7 +1003,7 @@
             this.autoLabel19.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel19.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel19.Location = new System.Drawing.Point(826, 429);
+            this.autoLabel19.Location = new System.Drawing.Point(892, 429);
             this.autoLabel19.Name = "autoLabel19";
             this.autoLabel19.Size = new System.Drawing.Size(89, 16);
             this.autoLabel19.TabIndex = 272;
@@ -967,7 +1014,7 @@
             this.autoLabel18.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel18.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel18.Location = new System.Drawing.Point(206, 429);
+            this.autoLabel18.Location = new System.Drawing.Point(189, 429);
             this.autoLabel18.Name = "autoLabel18";
             this.autoLabel18.Size = new System.Drawing.Size(65, 16);
             this.autoLabel18.TabIndex = 270;
@@ -993,7 +1040,7 @@
             this.txtSeguro.BorderSize = 2;
             this.txtSeguro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSeguro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSeguro.Location = new System.Drawing.Point(666, 441);
+            this.txtSeguro.Location = new System.Drawing.Point(568, 441);
             this.txtSeguro.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeguro.Multiline = false;
             this.txtSeguro.Name = "txtSeguro";
@@ -1003,7 +1050,7 @@
             this.txtSeguro.PlaceholderText = "";
             this.txtSeguro.ReadOnly = false;
             this.txtSeguro.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSeguro.Size = new System.Drawing.Size(147, 37);
+            this.txtSeguro.Size = new System.Drawing.Size(115, 37);
             this.txtSeguro.TabIndex = 277;
             this.txtSeguro.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtSeguro.Texts = "0,00";
@@ -1020,7 +1067,7 @@
             this.txtOutrasDepesas.BorderSize = 2;
             this.txtOutrasDepesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutrasDepesas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtOutrasDepesas.Location = new System.Drawing.Point(511, 441);
+            this.txtOutrasDepesas.Location = new System.Drawing.Point(430, 441);
             this.txtOutrasDepesas.Margin = new System.Windows.Forms.Padding(4);
             this.txtOutrasDepesas.Multiline = false;
             this.txtOutrasDepesas.Name = "txtOutrasDepesas";
@@ -1030,7 +1077,7 @@
             this.txtOutrasDepesas.PlaceholderText = "";
             this.txtOutrasDepesas.ReadOnly = false;
             this.txtOutrasDepesas.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtOutrasDepesas.Size = new System.Drawing.Size(147, 37);
+            this.txtOutrasDepesas.Size = new System.Drawing.Size(130, 37);
             this.txtOutrasDepesas.TabIndex = 275;
             this.txtOutrasDepesas.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtOutrasDepesas.Texts = "0,00";
@@ -1047,7 +1094,7 @@
             this.txtFrete.BorderSize = 2;
             this.txtFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFrete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtFrete.Location = new System.Drawing.Point(356, 441);
+            this.txtFrete.Location = new System.Drawing.Point(317, 441);
             this.txtFrete.Margin = new System.Windows.Forms.Padding(4);
             this.txtFrete.Multiline = false;
             this.txtFrete.Name = "txtFrete";
@@ -1057,7 +1104,7 @@
             this.txtFrete.PlaceholderText = "";
             this.txtFrete.ReadOnly = false;
             this.txtFrete.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtFrete.Size = new System.Drawing.Size(147, 37);
+            this.txtFrete.Size = new System.Drawing.Size(105, 37);
             this.txtFrete.TabIndex = 273;
             this.txtFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtFrete.Texts = "0,00";
@@ -1075,7 +1122,7 @@
             this.txtTotalNota.Enabled = false;
             this.txtTotalNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTotalNota.Location = new System.Drawing.Point(821, 441);
+            this.txtTotalNota.Location = new System.Drawing.Point(887, 441);
             this.txtTotalNota.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalNota.Multiline = false;
             this.txtTotalNota.Name = "txtTotalNota";
@@ -1085,7 +1132,7 @@
             this.txtTotalNota.PlaceholderText = "";
             this.txtTotalNota.ReadOnly = false;
             this.txtTotalNota.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTotalNota.Size = new System.Drawing.Size(166, 37);
+            this.txtTotalNota.Size = new System.Drawing.Size(116, 37);
             this.txtTotalNota.TabIndex = 271;
             this.txtTotalNota.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtTotalNota.Texts = "0,00";
@@ -1101,7 +1148,7 @@
             this.txtDesconto.Enabled = false;
             this.txtDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDesconto.Location = new System.Drawing.Point(201, 441);
+            this.txtDesconto.Location = new System.Drawing.Point(184, 441);
             this.txtDesconto.Margin = new System.Windows.Forms.Padding(4);
             this.txtDesconto.Multiline = false;
             this.txtDesconto.Name = "txtDesconto";
@@ -1111,7 +1158,7 @@
             this.txtDesconto.PlaceholderText = "";
             this.txtDesconto.ReadOnly = false;
             this.txtDesconto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDesconto.Size = new System.Drawing.Size(147, 37);
+            this.txtDesconto.Size = new System.Drawing.Size(125, 37);
             this.txtDesconto.TabIndex = 269;
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDesconto.Texts = "0,00";
@@ -1139,7 +1186,7 @@
             this.txtTotalProduto.PlaceholderText = "";
             this.txtTotalProduto.ReadOnly = false;
             this.txtTotalProduto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTotalProduto.Size = new System.Drawing.Size(166, 37);
+            this.txtTotalProduto.Size = new System.Drawing.Size(149, 37);
             this.txtTotalProduto.TabIndex = 263;
             this.txtTotalProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtTotalProduto.Texts = "0,00";
@@ -1561,6 +1608,7 @@
             this.autoLabel46.Size = new System.Drawing.Size(51, 16);
             this.autoLabel46.TabIndex = 279;
             this.autoLabel46.Text = "Código";
+            this.autoLabel46.Visible = false;
             // 
             // txtCodProduto
             // 
@@ -1587,6 +1635,7 @@
             this.txtCodProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodProduto.Texts = "";
             this.txtCodProduto.UnderlinedStyle = false;
+            this.txtCodProduto.Visible = false;
             // 
             // btnPesquisaProduto
             // 
@@ -1607,6 +1656,7 @@
             this.btnPesquisaProduto.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaProduto.TabIndex = 277;
             this.btnPesquisaProduto.UseVisualStyleBackColor = true;
+            this.btnPesquisaProduto.Visible = false;
             // 
             // autoLabel45
             // 
@@ -1619,6 +1669,7 @@
             this.autoLabel45.Size = new System.Drawing.Size(169, 16);
             this.autoLabel45.TabIndex = 276;
             this.autoLabel45.Text = "Pesquisa Nota por Produto";
+            this.autoLabel45.Visible = false;
             // 
             // txtProduto
             // 
@@ -1645,6 +1696,7 @@
             this.txtProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtProduto.Texts = "";
             this.txtProduto.UnderlinedStyle = false;
+            this.txtProduto.Visible = false;
             // 
             // btnRemoverReferencia
             // 
@@ -3095,7 +3147,9 @@
             this.dataColumn38,
             this.dataColumn39,
             this.dataColumn40,
-            this.dataColumn41});
+            this.dataColumn41,
+            this.dataColumn42,
+            this.dataColumn43});
             this.Produtos.TableName = "Produto";
             // 
             // dataColumn4
@@ -3259,6 +3313,14 @@
             // 
             this.dataColumn41.ColumnName = "Observacao";
             // 
+            // dataColumn42
+            // 
+            this.dataColumn42.ColumnName = "PercentualMercadoriaDevolvida";
+            // 
+            // dataColumn43
+            // 
+            this.dataColumn43.ColumnName = "ValorIpiDevolvido";
+            // 
             // labelN
             // 
             this.labelN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -3345,6 +3407,43 @@
             this.btnEmitirNfe.TextColor = System.Drawing.Color.White;
             this.btnEmitirNfe.UseVisualStyleBackColor = false;
             this.btnEmitirNfe.Click += new System.EventHandler(this.btnEmitirNfe_Click);
+            // 
+            // autoLabel48
+            // 
+            this.autoLabel48.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel48.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel48.Location = new System.Drawing.Point(809, 429);
+            this.autoLabel48.Name = "autoLabel48";
+            this.autoLabel48.Size = new System.Drawing.Size(22, 16);
+            this.autoLabel48.TabIndex = 283;
+            this.autoLabel48.Text = "IPI";
+            // 
+            // txtValorIpi
+            // 
+            this.txtValorIpi.BackColor = System.Drawing.Color.White;
+            this.txtValorIpi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorIpi.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorIpi.BorderRadius = 8;
+            this.txtValorIpi.BorderSize = 2;
+            this.txtValorIpi.Enabled = false;
+            this.txtValorIpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorIpi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtValorIpi.Location = new System.Drawing.Point(804, 441);
+            this.txtValorIpi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtValorIpi.Multiline = false;
+            this.txtValorIpi.Name = "txtValorIpi";
+            this.txtValorIpi.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtValorIpi.PasswordChar = false;
+            this.txtValorIpi.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtValorIpi.PlaceholderText = "";
+            this.txtValorIpi.ReadOnly = false;
+            this.txtValorIpi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtValorIpi.Size = new System.Drawing.Size(75, 37);
+            this.txtValorIpi.TabIndex = 282;
+            this.txtValorIpi.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtValorIpi.Texts = "0,00";
+            this.txtValorIpi.UnderlinedStyle = false;
             // 
             // FrmNfe
             // 
@@ -3609,5 +3708,11 @@
         private RJ_UI.Classes.RJTextBox txtProduto;
         private RJ_UI.Classes.RJTextBox txtCodProduto;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel46;
+        private System.Data.DataColumn dataColumn42;
+        private System.Data.DataColumn dataColumn43;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel47;
+        private RJ_UI.Classes.RJTextBox txtIpiDevolvido;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel48;
+        private RJ_UI.Classes.RJTextBox txtValorIpi;
     }
 }

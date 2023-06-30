@@ -1037,5 +1037,25 @@ namespace Lunar.Telas.Principal
             formBackground.Dispose();
             uu.Dispose();
         }
+
+        private void notaFiscalAgrupadaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            FrmNotaAgrupada uu = new FrmNotaAgrupada();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            uu.Owner = formBackground;
+            uu.ShowDialog();
+            formBackground.Dispose();
+            uu.Dispose();
+        }
     }
 }

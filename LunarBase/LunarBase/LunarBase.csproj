@@ -80,6 +80,7 @@
     <None Remove="HBM\TipoObjeto.hbm.xml" />
     <None Remove="HBM\TransferenciaEstoque.hbm.xml" />
     <None Remove="HBM\TransferenciaEstoqueProduto.hbm.xml" />
+    <None Remove="HBM\TrocoFixo.hbm.xml" />
     <None Remove="HBM\UnidadeMedida.hbm.xml" />
     <None Remove="HBM\Usuario.hbm.xml" />
     <None Remove="HBM\Venda.hbm.xml" />
@@ -160,6 +161,7 @@
     <EmbeddedResource Include="HBM\TipoObjeto.hbm.xml" />
     <EmbeddedResource Include="HBM\TransferenciaEstoque.hbm.xml" />
     <EmbeddedResource Include="HBM\TransferenciaEstoqueProduto.hbm.xml" />
+    <EmbeddedResource Include="HBM\TrocoFixo.hbm.xml" />
     <EmbeddedResource Include="HBM\UnidadeMedida.hbm.xml" />
     <EmbeddedResource Include="HBM\Usuario.hbm.xml" />
     <EmbeddedResource Include="HBM\Venda.hbm.xml" />

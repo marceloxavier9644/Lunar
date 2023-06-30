@@ -107,6 +107,7 @@ namespace LunarBase.Classes
         private string cnpjProdIpi;
         private string qUnidIpi;
         private decimal vUnidIpi;
+        private decimal vipiDevolvido;
         //PIS
         private string cstPis;
         private decimal basePis;
@@ -272,5 +273,6 @@ namespace LunarBase.Classes
         public virtual decimal VOutro { get => vOutro; set => vOutro = value; }
         public virtual decimal VSeguro { get => vSeguro; set => vSeguro = value; }
         public virtual string UComConvertida { get => uComConvertida; set => uComConvertida = value; }
+        public virtual decimal VipiDevolvido { get => vipiDevolvido; set => vipiDevolvido = value; }
     }
 }

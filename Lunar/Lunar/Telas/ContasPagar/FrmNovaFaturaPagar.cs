@@ -426,7 +426,7 @@ namespace Lunar.Telas.ContasPagar
                         contaPagar.Pessoa = cliente;
                         //contaPagar. = cliente.Cnpj;
                         contaPagar.DataOrigem = DateTime.Parse(txtDataEmissao.Value.ToString());
-                        contaPagar.Descricao = "LANÇAMENTO DE CONTA A PAGAR";
+                        contaPagar.Descricao = "LANÇAMENTO DE CONTA A PAGAR " + i + " DE "+ records.Count;
                         if (!String.IsNullOrEmpty(txtDescricao.Texts))
                             contaPagar.Historico = txtDescricao.Texts;
                         contaPagar.NumeroDocumento = "CP" + txtNumeroDocumento.Texts + "/" + i;

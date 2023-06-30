@@ -8,6 +8,7 @@ using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using Lunar.Utils.IntegracaoZAPI;
 using LunarBase.Classes;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Syncfusion.WinForms.DataGrid.Enums;
@@ -24,6 +25,7 @@ namespace Lunar.Telas.OrdensDeServico
 {
     public partial class FrmOrdemServico : Form
     {
+        int idEdicaoProduto = 0;
         DataRow dataRowEdit;
         bool editando = false;
         PessoaDependenteController pessoaDependenteController = new PessoaDependenteController();
@@ -770,9 +772,14 @@ namespace Lunar.Telas.OrdensDeServico
             try
             {
                 System.Data.DataRow row = dsProdutos.Tables[0].NewRow();
-                if (editando == true)
-                    dataRowEdit.Delete();
                 row.SetField("Id", 0);
+                if (editando == true)
+                {
+                    dataRowEdit.Delete();
+                    if(idEdicaoProduto > 0)
+                        row.SetField("Id", idEdicaoProduto);
+                }
+                idEdicaoProduto = 0;
                 row.SetField("Codigo", produto.Id.ToString());
                 row.SetField("Descricao", produto.Descricao);
                 decimal valorUnitForm = decimal.Parse(txtValorUnitarioItem.Texts);
@@ -931,7 +938,6 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 GenericaDesktop.ShowAlerta("Selecione um produto");
             }
-            
         }
 
         private void panelPagamentoTotal_Paint(object sender, PaintEventArgs e)
@@ -2412,6 +2418,8 @@ namespace Lunar.Telas.OrdensDeServico
             var selectedItem = this.gridProdutos.CurrentItem as DataRowView;
             var dataRow = (selectedItem as DataRowView).Row;
             dataRowEdit = dataRow;
+            idEdicaoProduto = 0;
+            try { idEdicaoProduto = int.Parse(dataRow["Id"].ToString()); } catch { }
             var descricao = dataRow["Descricao"].ToString();
             var quantidade = dataRow["Quantidade"].ToString();
             var valorUnitario = dataRow["ValorUnitario"].ToString();

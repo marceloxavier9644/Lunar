@@ -945,11 +945,12 @@ namespace Lunar.Telas.Vendas
             lblDependente.Text = "";
             lblDependente.Visible = false;
 
-            Object pessoaOjeto = new Pessoa();
+            Pessoa pessoaOjeto = new Pessoa();
+            Object pessoaOjeto1 = new Pessoa();
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtPesquisaCliente.Texts + "%'"))
+                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(txtPesquisaCliente.Texts))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -964,17 +965,17 @@ namespace Lunar.Telas.Vendas
                     formBackground.ShowInTaskbar = false;
                     formBackground.Show();
                     uu.Owner = formBackground;
-                    switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                    switch (uu.showModal(ref pessoaOjeto))
                     {
                         case DialogResult.Ignore:
                             uu.Dispose();
                             FrmClienteCadastro form = new FrmClienteCadastro();
-                            if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                            if (form.showModalNovo(ref pessoaOjeto1) == DialogResult.OK)
                             {
-                                txtPesquisaCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
-                                txtClienteAbaPagamento.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
-                                txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
-                                verificarPropriedadesCliente(((Pessoa)pessoaOjeto));
+                                txtPesquisaCliente.Texts = ((Pessoa)pessoaOjeto1).RazaoSocial;
+                                txtClienteAbaPagamento.Texts = ((Pessoa)pessoaOjeto1).RazaoSocial;
+                                txtCodCliente.Texts = ((Pessoa)pessoaOjeto1).Id.ToString();
+                                verificarPropriedadesCliente(((Pessoa)pessoaOjeto1));
                                 txtPesquisaProduto.Focus();
                             }
                             form.Dispose();
@@ -1997,7 +1998,7 @@ namespace Lunar.Telas.Vendas
                                     numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
                             }
                         }
-                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorTotal, valorComDesconto, decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFCe, listaProdutosNFe, venda.Cliente, venda, null);
+                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorTotal, valorComDesconto, decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFCe, listaProdutosNFe, venda.Cliente, venda, null, null);
                         if (!String.IsNullOrEmpty(xmlStrEnvio))
                         {
                             enviarXMLNFCeParaApi(xmlStrEnvio);
@@ -3116,7 +3117,7 @@ namespace Lunar.Telas.Vendas
                 cli.Id = int.Parse(txtCodCliente.Texts);
                 cli = (Pessoa)pessoaController.selecionar(cli);
 
-                if (!String.IsNullOrEmpty(lblIdPropriedade.Text))
+                if (!String.IsNullOrEmpty(lblIdPropriedade.Text) && lblIdPropriedade.Text != "ID Propriedade")
                 {
                     cli.InscricaoEstadual = lblInscricaoEstadual.Text.Replace("Inscrição Estadual: ", "");
                     PessoaPropriedade pessoaPropriedade = new PessoaPropriedade();

@@ -412,24 +412,59 @@ namespace Lunar.Telas.CaixaConferencia
             }
             CaixaController caixaController = new CaixaController();
             IList<Caixa> listaCaixa = new List<Caixa>();
-            listaCaixa = caixaController.selecionarCaixaPorSql(sql); ;
+            listaCaixa = caixaController.selecionarCaixaPorSql(sql);
+            TrocoFixoController trocoFixoController = new TrocoFixoController();
+            IList<TrocoFixo> listaTroco = trocoFixoController.selecionarTodosTrocoFixoPorEmpresaFilial();
+            decimal valorTroco = 0;
+            if (listaTroco != null)
+            {
+                if (listaTroco.Count > 0)
+                {
+                    foreach (TrocoFixo troco in listaTroco)
+                    {
+                        if (!String.IsNullOrEmpty(txtCodUsuario.Texts))
+                        {
+                            if(troco.Usuario.Id == int.Parse(txtCodUsuario.Texts))
+                            {
+                                valorTroco = valorTroco + troco.Valor;
+                            }
+                        }
+                        else
+                        {
+                            valorTroco = valorTroco + troco.Valor;
+                        }
+                    }
+                    Caixa caixa = new Caixa();
+                    caixa.Cobrador = null;
+                    caixa.Conciliado = true;
+                    caixa.Concluido = true;
+                    caixa.ContaBancaria = null;
+                    caixa.DataLancamento = DateTime.Now;
+                    caixa.Descricao = "TROCO FIXO";
+                    caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                    caixa.FlagExcluido = false;
+                    FormaPagamento formaPagamento = new FormaPagamento();
+                    formaPagamento.Id = 1;
+                    formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    caixa.FormaPagamento = formaPagamento;
+                    caixa.FormaPagamento = formaPagamento;
+                    caixa.IdOrigem = "";
+                    caixa.Pessoa = null;
+                    caixa.PlanoConta = null;
+                    caixa.TabelaOrigem = "TROCOFIXO";
+                    caixa.Tipo = "E";
+                    caixa.Usuario = null;
+                    caixa.Valor = valorTroco;
+                    listaCaixa.Add(caixa);
+                }
+            }
 
             if (listaCaixa.Count > 0)
             {
+                
                 sfDataPager1.DataSource = listaCaixa;
                 sfDataPager1.PageSize = 10000;
                 grid.DataSource = sfDataPager1.PagedSource;
-                //foreach (Caixa caixa in listaCaixa)
-                //{
-                //string tipoValor = "ENTRADA";
-                //if (caixa.Tipo.Equals("S"))
-                //{
-                //    tipoValor = "SAÍDA";
-                //    caixa.Valor = -(caixa.Valor);
-                //}
-
-                //  dsCaixa.Caixa.AddCaixaRow(caixa.Id.ToString(), caixa.Descricao, caixa.Valor, tipoValor, caixa.DataLancamento.ToShortDateString(), caixa.FormaPagamento.Id.ToString() + " - " + caixa.FormaPagamento.Descricao, caixa.FormaPagamento.Descricao, "", "", "", int.Parse(caixa.OperadorCadastro));
-                //}
             }
             else
             {
@@ -792,6 +827,26 @@ namespace Lunar.Telas.CaixaConferencia
                     {
                         Controller.getInstance().excluir(caixa);
                         GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
+                    }
+                    //TROCO FIXO
+                    if (caixa.TabelaOrigem.Equals("TROCOFIXO"))
+                    {
+                        if(GenericaDesktop.ShowConfirmacao("O sistema vai eliminar todos os troco fixo cadastrados, ok?"))
+                        {
+                            TrocoFixoController trocoFixoController = new TrocoFixoController();
+                            IList<TrocoFixo> listaTroco = trocoFixoController.selecionarTodosTrocoFixoPorEmpresaFilial();
+                            if (listaTroco != null)
+                            {
+                                if(listaTroco.Count > 0)
+                                {
+                                    foreach(TrocoFixo troco in listaTroco)
+                                    {
+                                        Controller.getInstance().excluir(troco);
+                                    }
+                                    GenericaDesktop.ShowInfo("Troco Fixo Excluído com Sucesso!");
+                                }
+                            }
+                        }
                     }
                     //DEPOSITO BANCARIO
                     if (caixa.TabelaOrigem.Equals("DEPOSITO_BANCARIO"))

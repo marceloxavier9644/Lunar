@@ -1,4 +1,0 @@
-28/05/2022 19:46 - [CONSULTA_DADOS]
-28/05/2022 19:46 - {"CNPJ":"28145398000173","nsNRec":"5233475","tpAmb":"2"}
-28/05/2022 19:46 - [CONSULTA_RESPOSTA]
-28/05/2022 19:46 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31220528145398000173550020000002291457834190","cStat":600,"xMotivo":"Rejeicao: CSOSN incompativel na operacao com Nao Contribuinte - [nItem:1]"}

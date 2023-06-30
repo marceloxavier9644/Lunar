@@ -5675,7 +5675,6 @@ namespace LunarBase.Utilidades.NFe40Modelo
             }
         }
 
-        //marcelo analise impostos
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ICMS", typeof(TNFeInfNFeDetImpostoICMS))]
         [System.Xml.Serialization.XmlElementAttribute("II", typeof(TNFeInfNFeDetImpostoII))]

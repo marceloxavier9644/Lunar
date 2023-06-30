@@ -39,6 +39,7 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn9 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
             this.iconPesquisar = new FontAwesome.Sharp.IconButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -399,6 +400,14 @@
             gridTextColumn8.HeaderStyle.Font.Size = 10F;
             gridTextColumn8.HeaderText = "Filial";
             gridTextColumn8.MappingName = "EmpresaFilial";
+            gridTextColumn9.AllowFiltering = true;
+            gridTextColumn9.AllowResizing = true;
+            gridTextColumn9.CellStyle.Font.Size = 12F;
+            gridTextColumn9.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn9.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn9.HeaderStyle.Font.Size = 10F;
+            gridTextColumn9.HeaderText = "Plano de Contas";
+            gridTextColumn9.MappingName = "PlanoConta.Descricao";
             this.grid.Columns.Add(gridTextColumn1);
             this.grid.Columns.Add(gridTextColumn2);
             this.grid.Columns.Add(gridTextColumn3);
@@ -410,6 +419,7 @@
             this.grid.Columns.Add(gridTextColumn6);
             this.grid.Columns.Add(gridTextColumn7);
             this.grid.Columns.Add(gridTextColumn8);
+            this.grid.Columns.Add(gridTextColumn9);
             this.grid.Location = new System.Drawing.Point(7, 242);
             this.grid.Name = "grid";
             this.grid.SelectionMode = Syncfusion.WinForms.DataGrid.Enums.GridSelectionMode.Extended;

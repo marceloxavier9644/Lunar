@@ -21,7 +21,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
@@ -31,6 +30,7 @@ namespace Lunar.Telas.Fiscal
 {
     public partial class FrmNfe : Form
     {
+        EmitirNfe3 emitirNFe3 = new EmitirNfe3();
         string numeroNFe = "";
         NaturezaOperacao naturezaOperacaoSelecionado = new NaturezaOperacao();
         Pessoa clienteSelecionado = new Pessoa();
@@ -212,6 +212,9 @@ namespace Lunar.Telas.Fiscal
                 row.SetField("vFrete", nfeProduto.VFrete.ToString("N2"));
                 row.SetField("vOutro", nfeProduto.VOutro.ToString("N2"));
                 row.SetField("vSeguro", nfeProduto.VSeguro.ToString("N2"));
+                row.SetField("ValorIpiDevolvido", nfeProduto.VipiDevolvido.ToString("N2"));
+                row.SetField("PercentualMercadoriaDevolvida", "100");
+                
                 dsProduto.Tables[0].Rows.Add(row);
 
                 this.produto = new Produto();
@@ -590,6 +593,8 @@ namespace Lunar.Telas.Fiscal
                 double pecas = 0;
                 var records = gridProdutos.View.Records;
                 decimal descontoItem = 0;
+                decimal valorIpiDev = 0;
+                decimal valorIpi = 0;
                 foreach (var record in records)
                 {
                     var dataRowView = record.Data as DataRowView;
@@ -597,6 +602,8 @@ namespace Lunar.Telas.Fiscal
                     descontoItem = descontoItem + decimal.Parse(dataRowView.Row["DescontoItem"].ToString());
                     valorTotal = valorTotal + decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
                     pecas = pecas + double.Parse(dataRowView.Row["Quantidade"].ToString());
+                    valorIpiDev = valorIpiDev + decimal.Parse(dataRowView.Row["ValorIpiDevolvido"].ToString());
+                    valorIpi = valorIpi + decimal.Parse(dataRowView.Row["ValorIPI"].ToString());
                 }
 
                 txtDesconto.Enabled = true;
@@ -634,6 +641,19 @@ namespace Lunar.Telas.Fiscal
                     decimal percentual = (decimal.Parse(txtSeguro.Texts.Replace("R$ ", "")) * 100 / valorTotal);
                     ratearSeguroItens(percentual);
                     valorComDesconto = valorComDesconto + decimal.Parse(txtSeguro.Texts.Replace("R$ ", ""));
+                }
+                if (!String.IsNullOrEmpty(txtIpiDevolvido.Texts))
+                {
+                  if(valorIpiDev > 0)
+                    {
+                        txtIpiDevolvido.Texts = valorIpiDev.ToString("C2", CultureInfo.CurrentCulture);
+                        valorComDesconto = valorComDesconto + valorIpiDev;
+                    }
+                }
+                if(valorIpi > 0)
+                {
+                    txtValorIpi.Texts = valorIpi.ToString("C2", CultureInfo.CurrentCulture);
+                    valorComDesconto = valorComDesconto + valorIpi;
                 }
                 txtTotalNota.Texts = valorComDesconto.ToString("C2", CultureInfo.CurrentCulture);
             }
@@ -1000,7 +1020,10 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.CodSeloIpi = produto.CodSeloIpi;
                     nfeProduto.CstCofins = produto.CstCofins;
                     nfeProduto.CstIcms = dataRowViewXXX.Row["CstIcms"].ToString().Trim();
-                    nfeProduto.CstIpi = produto.CstIpi;
+                    if(decimal.Parse(txtValorIpi.Texts.Replace("R$ ", "")) > 0)
+                        nfeProduto.CstIpi = "99";
+                    else
+                        nfeProduto.CstIpi = produto.CstIpi;
                     nfeProduto.CstPis = produto.CstPis;
                     string orig = "0";
                     if (!String.IsNullOrEmpty(produto.OrigemIcms))
@@ -1022,7 +1045,7 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.VFrete = decimal.Parse(dataRowViewXXX.Row["vFrete"].ToString().Trim());
                     nfeProduto.VOutro = decimal.Parse(dataRowViewXXX.Row["vOutro"].ToString().Trim());
                     nfeProduto.VSeguro = decimal.Parse(dataRowViewXXX.Row["vSeguro"].ToString().Trim());
-
+                    nfeProduto.VipiDevolvido = decimal.Parse(dataRowViewXXX.Row["ValorIpiDevolvido"].ToString().Trim());
                     listaProdutosNFe.Add(nfeProduto);
                 }
             }
@@ -1121,7 +1144,6 @@ namespace Lunar.Telas.Fiscal
         private void btnEmitirNfe_Click(object sender, EventArgs e)
         {
             bool validaCliente = false;
-            //enviarNFCe();
             if (!String.IsNullOrEmpty(txtCodCliente.Texts))
             {
                 Pessoa cli = new Pessoa();
@@ -1144,11 +1166,9 @@ namespace Lunar.Telas.Fiscal
                             numeroNFe = Sessao.parametroSistema.ProximoNumeroNFe;
                         else
                             numeroNFe = lblNumeroNfe.Text;
+
+                        //TNFeInfNFeIdeIndPres presenca = retornaPresencaCliente();
                         TNFeInfNFeTranspModFrete frete = retornaFrete();
-                        TNFeInfNFeIdeIndPres presenca = retornaPresencaCliente();
-                        TNFeInfNFeIdeNFref[] tNFeInfNFeIdeNFref = new TNFeInfNFeIdeNFref[gridNotaReferenciada.RowCount];
-                 
-                
                         Frete fr = new Frete();
                         if (!frete.ToString().Equals("Item9"))
                         {
@@ -1177,34 +1197,29 @@ namespace Lunar.Telas.Fiscal
                         decimal fret = 0;
                         decimal segur = 0;
                         decimal outr = 0;
-                        
-                   
                         if (!String.IsNullOrEmpty(txtFrete.Texts)) 
                             fret = decimal.Parse(txtFrete.Texts);
                         if (!String.IsNullOrEmpty(txtSeguro.Texts))
                             segur = decimal.Parse(txtSeguro.Texts);
                         if (!String.IsNullOrEmpty(txtOutrasDepesas.Texts))
                             outr = decimal.Parse(txtOutrasDepesas.Texts);
-                        TNFeInfNFeIdeTpNF tpNF = new TNFeInfNFeIdeTpNF();
-                        if (radioEntrada.Checked == true)
-                            tpNF = TNFeInfNFeIdeTpNF.Item0;
-                        else
-                            tpNF = TNFeInfNFeIdeTpNF.Item1;
-
+                       
                         nfe = alimentaNfe();
 
                         NfeProdutoDAO nfeProdutoDAO = new NfeProdutoDAO();
                         NfeReferenciaDAO nfeReferenciaDAO = new NfeReferenciaDAO();
                         nfeProdutoDAO.excluirProdutosNfeParaAtualizar(nfe.Id.ToString());
                         nfeReferenciaDAO.excluirReferenciaNfeParaAtualizar(nfe.Id.ToString());
-
+                        //Notas referenciadas
+                        TNFeInfNFeIdeNFref[] tNFeInfNFeIdeNFref = new TNFeInfNFeIdeNFref[gridNotaReferenciada.RowCount];
                         tNFeInfNFeIdeNFref = retornarNotasReferenciadas();
 
-                        string xmlStrEnvio = emitirNFe2.gerarXMLNfe(decimal.Parse(txtTotalProduto.Texts.Replace("R$ ", "")), decimal.Parse(txtTotalNota.Texts.Replace("R$ ", "")), decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFe, listaProdutosNFe, cli, null, false, naturezaOperacaoSelecionado.Descricao, frete, presenca, tNFeInfNFeIdeNFref, fret, segur, outr, tpNF, fr, naturezaOperacaoSelecionado, nfe);
+                        //string xmlStrEnvio = emitirNFe2.gerarXMLNfe(decimal.Parse(txtTotalProduto.Texts.Replace("R$ ", "")), decimal.Parse(txtTotalNota.Texts.Replace("R$ ", "")), decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFe, listaProdutosNFe, cli, null, false, naturezaOperacaoSelecionado.Descricao, frete, presenca, tNFeInfNFeIdeNFref, fret, segur, outr, tpNF, fr, naturezaOperacaoSelecionado, nfe);
+                        string xmlStrEnvio = emitirNFe3.gerarXML(nfe, fr, false, null, null, listaProdutosNFe, tNFeInfNFeIdeNFref, null, false);
+
                         if (!String.IsNullOrEmpty(xmlStrEnvio))
                         {
                             enviarXMLNFeParaApi(xmlStrEnvio);
-                            //limparCampos();
                         }
                         //somente atualiza o numero se for uma nota nova, se for reenvio ou edição nao atualiza
                         if(atualizaNumeroNota == true)
@@ -1276,8 +1291,8 @@ namespace Lunar.Telas.Fiscal
             nfe.VSeg = decimal.Parse(txtSeguro.Texts.Replace("R$ ", ""));
             nfe.VDesc = decimal.Parse(txtDesconto.Texts.Replace("R$ ", ""));
             nfe.VIi = 0;
-            nfe.VIpi = 0;
-            nfe.VIpiDevol = 0;
+            nfe.VIpi = decimal.Parse(txtValorIpi.Texts.Replace("R$ ", ""));
+            nfe.VIpiDevol = decimal.Parse(txtIpiDevolvido.Texts.Replace("R$ ", ""));
             nfe.VPis = 0;
             nfe.VCofins = 0;
             nfe.VOutro = decimal.Parse(txtOutrasDepesas.Texts.Replace("R$ ", ""));
@@ -1487,7 +1502,6 @@ namespace Lunar.Telas.Fiscal
                             {
                                 generica.atualizarEstoqueNaoConciliado(nfeP.Produto, double.Parse(nfeP.QCom), false, "NFE " + nfe.Id.ToString(), "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + txtNaturezaOperacao.Texts, nfe.Cliente, DateTime.Now, null);
                                 generica.atualizarEstoqueConciliado(nfeP.Produto, double.Parse(nfeP.QCom), false, "NFE " + nfe.Id.ToString(), "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + txtNaturezaOperacao.Texts, nfe.Cliente, DateTime.Now, null);
-
                             }
                         }
                         else
@@ -1637,17 +1651,27 @@ namespace Lunar.Telas.Fiscal
                         }
                     }
                 }
+                String erros = "";
+                if (retornoNFCe.erros != null) 
+                {
+            
+                    if (retornoNFCe.erros.Count > 0)
+                    {
+                        foreach (string msgErro in retornoNFCe.erros)
+                        {
+                            if (String.IsNullOrEmpty(erros))
+                                erros = msgErro;
+                            else
+                                erros = erros + "\n" + msgErro; 
+                        }
+                    }
+                }
+                if (String.IsNullOrEmpty(erros))
+                    erros = retornoNFCe.motivo;
+                try {  GenericaDesktop.ShowAlerta(erros); } catch { };
                 //se a nota continua nao autorizada, verifica se teve erros
                 if (String.IsNullOrEmpty(nfe.Chave) || nfe.Chave.Equals("123"))
                 {
-                    String erros = "";
-                    if (retornoNFCe.erros != null)
-                    {
-                        for (int xx = 0; xx < retornoNFCe.erros.Count; xx++)
-                        {
-                            erros = erros + " " + retornoNFCe.erros[xx];
-                        }
-                    }
                     NfeStatus nfeStatus1 = new NfeStatus();
                     nfeStatus1.Id = 2;
                     nfe.NfeStatus = (NfeStatus)NfeStatusController.getInstance().selecionar(nfeStatus1);
@@ -1664,15 +1688,14 @@ namespace Lunar.Telas.Fiscal
                         nfe.Chave = retConsulta.chNFe;
                     }
                     Controller.getInstance().salvar(nfe);
-                    GenericaDesktop.ShowAlerta("Erro na Nota Fiscal, possívelmente falha na sefaz, tente reenviar a nota posteriormente: (" + retConsulta.cStat + " " + retConsulta.xMotivo + ") na tela de gerenciamento de notas você poderá reenviar a nota para sefaz!");
-                    if(!String.IsNullOrEmpty(erros))
-                        GenericaDesktop.ShowAlerta("Erro na Nota Fiscal: " + retornoNFCe.cStat + " " + retornoNFCe.motivo + "\n\n" + erros);
+                    GenericaDesktop.ShowAlerta("Corrija a nota e tente reenviar posteriormente: (" + retConsulta.cStat + " " + retConsulta.xMotivo + ") na tela de gerenciamento de notas você poderá reenviar a nota para sefaz!");
                 }
                 this.Close();
             }
             else
             {
                 GenericaDesktop.ShowAlerta("Erro na Nota Fiscal: Verifique sua conexão com a internet, após normalizar acesse o menu de gerenciamento de notas para reenviar a mesma!");
+                this.Close();
 
             }
         }
@@ -2006,7 +2029,7 @@ namespace Lunar.Telas.Fiscal
                     ValidadorNotaSaida validador = new ValidadorNotaSaida();
                     if (validaCliente == true)
                     {
-                        EmitirNfe2 emitirNFe = new EmitirNfe2();
+                        EmitirNfe3 emitirNFe = new EmitirNfe3();
                         carregarListaProdutos();
                         if (validador.validarProdutosNota(listaProdutosNFe))
                         {
@@ -2066,7 +2089,7 @@ namespace Lunar.Telas.Fiscal
                             
                             tNFeInfNFeIdeNFref = retornarNotasReferenciadas();
 
-                            string xmlStrEnvio = emitirNFe.gerarXMLNfe(decimal.Parse(txtTotalProduto.Texts.Replace("R$ ", "")), decimal.Parse(txtTotalNota.Texts.Replace("R$ ", "")), decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFe, listaProdutosNFe, cli, null, false, naturezaOperacaoSelecionado.Descricao, frete, presenca, tNFeInfNFeIdeNFref, fret, segur, outr, tpNF, fr, naturezaOperacaoSelecionado, nfe);
+                            string xmlStrEnvio = emitirNFe.gerarXML(nfe, fr, false, null, null, listaProdutosNFe, tNFeInfNFeIdeNFref, null, false);
                             if (!String.IsNullOrEmpty(xmlStrEnvio))
                             {
                                 EmitirSincronoRetNFCe retornoNFCe = new EmitirSincronoRetNFCe();

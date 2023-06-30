@@ -1,4 +1,5 @@
 ﻿using LunarBase.Classes;
+using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
@@ -6,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
@@ -25,11 +27,14 @@ namespace Lunar.Utils.OrganizacaoNF
         // NfeProduto nfeProduto = new NfeProduto();
         string xmlString = "";
         Pessoa cliente = null;
-        public string gerarXMLNfce(decimal valorProdutos, decimal valorNota, decimal valorDescontoTotal, string numeroNfe, IList<NfeProduto> listProdutos, Pessoa cliente, Venda venda, OrdemServico ordemServico)
+        Nfe objetoNfe = new Nfe();
+        FormaPagamento formaPagamento = new FormaPagamento();
+        public string gerarXMLNfce(decimal valorProdutos, decimal valorNota, decimal valorDescontoTotal, string numeroNfe, IList<NfeProduto> listProdutos, Pessoa cliente, Venda venda, OrdemServico ordemServico, FormaPagamento formaPagamento)
         {
             try
             {
-                Nfe objetoNfe = new Nfe();
+                this.formaPagamento = formaPagamento;
+                objetoNfe = new Nfe();
                 if (cliente != null)
                     this.cliente = cliente;
                 objetoNfe = AlimentaObjetoNfe_1(valorProdutos, valorNota, valorDescontoTotal, numeroNfe);
@@ -1510,7 +1515,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     return detPag2;
                 }
                 //GERAR PAGAMENTO DE O.S
-                else
+                else if (listaPagamentoOs.Count > 0)
                 {
                     decimal valorRecebidoSomado = 0;
                     int pass = 0;
@@ -1518,7 +1523,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     detPag2 = new TNFeInfNFePagDetPag[listaPagamentoOs.Count];
                     foreach (OrdemServicoPagamento vendaFormaPagamento in listaPagamentoOs)
                     {
-                        
+
                         //essa funcao aqui é apenas pra separar o valor do serviço, senao o valor de troco daria erro
                         if (vendaFormaPagamento.OrdemServico.ValorProduto < vendaFormaPagamento.ValorRecebido && listaPagamentoOs.Count == 1)
                         {
@@ -1528,27 +1533,27 @@ namespace Lunar.Utils.OrganizacaoNF
                         //cada forma
                         //else if(vendaFormaPagamento.OrdemServico.ValorProduto > vendaFormaPagamento.ValorRecebido)
                         //{
-                            if (vendaFormaPagamento.OrdemServico.ValorServico > 0 && listaPagamentoOs.Count > 1)
-                            {
+                        if (vendaFormaPagamento.OrdemServico.ValorServico > 0 && listaPagamentoOs.Count > 1)
+                        {
                             pass++;
-                                decimal percentual = ((vendaFormaPagamento.ValorRecebido / vendaFormaPagamento.OrdemServico.ValorTotal) * 100);
-                                vendaFormaPagamento.ValorRecebido = ((percentual / 100) * vendaFormaPagamento.OrdemServico.ValorProduto);
+                            decimal percentual = ((vendaFormaPagamento.ValorRecebido / vendaFormaPagamento.OrdemServico.ValorTotal) * 100);
+                            vendaFormaPagamento.ValorRecebido = ((percentual / 100) * vendaFormaPagamento.OrdemServico.ValorProduto);
                             valorRecebidoSomado = valorRecebidoSomado + vendaFormaPagamento.ValorRecebido;
                             if (pass == listaPagamentoOs.Count)
                             {
                                 //Se é a ultima forma de pagamento deve arredonar os valores
-                                if(valorRecebidoSomado < vendaFormaPagamento.OrdemServico.ValorProduto)
+                                if (valorRecebidoSomado < vendaFormaPagamento.OrdemServico.ValorProduto)
                                 {
                                     decimal diferenca = vendaFormaPagamento.OrdemServico.ValorProduto - valorRecebidoSomado;
                                     vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.ValorRecebido + diferenca;
                                 }
-                                else if(valorRecebidoSomado > vendaFormaPagamento.OrdemServico.ValorProduto)
+                                else if (valorRecebidoSomado > vendaFormaPagamento.OrdemServico.ValorProduto)
                                 {
-                                    decimal diferenca =  valorRecebidoSomado - vendaFormaPagamento.OrdemServico.ValorProduto;
+                                    decimal diferenca = valorRecebidoSomado - vendaFormaPagamento.OrdemServico.ValorProduto;
                                     vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.ValorRecebido - diferenca;
                                 }
                             }
-                            }
+                        }
                         //}
 
                         //Funcao para gerar o troco certinho na nfce
@@ -1634,6 +1639,89 @@ namespace Lunar.Utils.OrganizacaoNF
                     }
                     return detPag2;
                 }
+                //pagamento de nota agrupada
+                else
+                {
+                    i = 0;
+                    detPag = new TNFeInfNFePagDetPag[1];
+                    detPag2 = new TNFeInfNFePagDetPag[1];
+                    i++;
+                    string creditoDebito = "";
+                    TNFeInfNFePagDetPagIndPag indPagamento;
+                    if (formaPagamento.Boleto || formaPagamento.Cheque || formaPagamento.Crediario)
+                        indPagamento = TNFeInfNFePagDetPagIndPag.Item1;
+                    else
+                        indPagamento = TNFeInfNFePagDetPagIndPag.Item0;
+
+                    if (formaPagamento.Cartao == true)
+                    {
+                        AdquirenteCartao adquirenteCartao = new AdquirenteCartao();
+                        AdquirenteCartaoController adquirenteCartaoController = new AdquirenteCartaoController();
+                        IList<AdquirenteCartao> listaAdquirentes = adquirenteCartaoController.selecionarTodasAdquirentes();
+                        if (listaAdquirentes.Count > 0)
+                        {
+                            foreach (AdquirenteCartao adquirente in listaAdquirentes)
+                            {
+                                adquirenteCartao = adquirente;
+                            }
+                        }
+
+                        if (formaPagamento.Descricao.Contains("Crédito") || formaPagamento.Descricao.Equals("CARTAO") || formaPagamento.Descricao.Equals("CARTÃO"))
+                        {
+                            creditoDebito = "03";
+                            indPagamento = TNFeInfNFePagDetPagIndPag.Item1;
+                        }
+                        //Debito
+                        else
+                        {
+                            creditoDebito = "04";
+                            indPagamento = TNFeInfNFePagDetPagIndPag.Item0;
+                        }
+
+                        detPag = new TNFeInfNFePagDetPag[]
+                        {
+                            new TNFeInfNFePagDetPag
+                            {
+                                indPag = indPagamento,
+                                tPag = creditoDebito,
+                                vPag = formatMoedaNf(objetoNfe.VNf),
+                                card = new TNFeInfNFePagDetPagCard
+                                {
+                                    tpIntegra = TNFeInfNFePagDetPagCardTpIntegra.Item2,
+                                    CNPJ = adquirenteCartao.Cnpj,
+                                    tBand = "99"
+                                }
+                            }
+                        };
+                    }
+                    else if (formaPagamento.CodigoSefaz.Equals("99"))
+                    {
+                        detPag = new TNFeInfNFePagDetPag[]
+                                            {
+                            new TNFeInfNFePagDetPag
+                            {
+                                indPag = indPagamento,
+                                xPag = GenericaDesktop.RemoveCaracteres(formaPagamento.Descricao),
+                                tPag = formaPagamento.CodigoSefaz,
+                                vPag = formatMoedaNf(objetoNfe.VNf),
+                            }
+                        };
+                    }
+                    else
+                    {
+                        detPag = new TNFeInfNFePagDetPag[]
+                        {
+                            new TNFeInfNFePagDetPag
+                            {
+                                indPag = indPagamento,
+                                tPag = formaPagamento.CodigoSefaz,
+                                vPag = formatMoedaNf(objetoNfe.VNf)
+                            }
+                        };
+                    }
+                }
+                detPag2[i - 1] = detPag[0];
+                return detPag2;
             }
             catch (Exception erro)
             {

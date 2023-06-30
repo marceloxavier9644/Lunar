@@ -13,6 +13,7 @@ using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
+using Syncfusion.WinForms.DataGrid.Interactivity;
 using Syncfusion.WinForms.DataGridConverter;
 using Syncfusion.XlsIO;
 using System;
@@ -179,6 +180,7 @@ namespace Lunar.Telas.Fiscal
                 IList<Nfe> listaNotasContigencia = nfeController.selecionarNotasSaidaEmContigenciaPorPeriodo(dataInicial, dataFinal);
                 foreach (Nfe nfe in listaNotasContigencia)
                 {
+                    lblReenviando.Text = "Reenviando Notas em Contigência + (" + listaNotasContigencia.Count + ")";
                     String caminhoArquivoContigencia = Sessao.parametroSistema.PastaRemessaNsCloud + @"\Contingencias\nao_autorizadas\" + nfe.DataEmissao.Year + @"\" + nfe.DataEmissao.Month.ToString() + @"\NFe" + nfe.Chave + ".xml";
                     if (File.Exists(caminhoArquivoContigencia))
                     {
@@ -545,14 +547,11 @@ namespace Lunar.Telas.Fiscal
                         if ((e.RowData as Nfe).NfeStatus.Id == 6)
                             e.Style.TextColor = Color.FromArgb(153, 0, 153);
                     }
-                    //if ((e.RowData as Nfe).PossuiCartaCorrecao == true)
-                    //{
-                    //grid.View.GetPropertyAccessProvider().SetValue(grid.GetRecordAtRowIndex(e.RowIndex), grid.Columns["PrintCCe"].MappingName, "Imprimir CC-e");
 
-                    // }
-                    //else
-                    //    grid.View.GetPropertyAccessProvider().SetValue(grid.GetRecordAtRowIndex(e.RowIndex), grid.Columns["PrintCCe"].MappingName, "");
-                }
+                        // }
+                        //else
+                        //    grid.View.GetPropertyAccessProvider().SetValue(grid.GetRecordAtRowIndex(e.RowIndex), grid.Columns["PrintCCe"].MappingName, "");
+                    }
             }
             catch
             {
@@ -1010,6 +1009,17 @@ namespace Lunar.Telas.Fiscal
             if (grid.RowCount > 0 && grid.SelectedItem != null)
             {
                 nfe = (Nfe)grid.SelectedItem;
+                if(nfe.NfeStatus == null)
+                {
+                    if(nfe.Status.Equals("Preparando Envio..."))
+                    {
+                        NfeStatus nfeStatus = new NfeStatus();
+                        nfeStatus.Id = 2;
+                        nfeStatus = (NfeStatus)Controller.getInstance().selecionar(nfeStatus);
+                        nfe.NfeStatus = nfeStatus;
+                        Controller.getInstance().salvar(nfe);
+                    }
+                }
                 if (nfe.NfeStatus.Id != 1)
                 {
                     if (GenericaDesktop.ShowConfirmacao("Deseja realmente inutilizar o número " + nfe.NNf + " ?"))
@@ -1312,6 +1322,17 @@ namespace Lunar.Telas.Fiscal
             {
                 string retorno = "";
                 nfe = (Nfe)grid.SelectedItem;
+                if (nfe.NfeStatus == null)
+                {
+                    if (nfe.Status.Equals("Preparando Envio..."))
+                    {
+                        NfeStatus nfeStatus = new NfeStatus();
+                        nfeStatus.Id = 2;
+                        nfeStatus = (NfeStatus)Controller.getInstance().selecionar(nfeStatus);
+                        nfe.NfeStatus = nfeStatus;
+                        Controller.getInstance().salvar(nfe);
+                    }
+                }
                 if (nfe.NfeStatus != null)
                 {
                     if (nfe.NfeStatus.Id == 2)
@@ -1351,14 +1372,14 @@ namespace Lunar.Telas.Fiscal
                                 {
                                     EmitirNFCe emitirNFCe = new EmitirNFCe();
                                     if (venda != null)
-                                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, venda.Cliente, venda, null);
+                                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, venda.Cliente, venda, null, null);
                                     else if (ordemServico != null)
                                     {
                                         //Essa configuração foi devido a nf ter a possibilidade de emissão da nota com cliente diferente da O.S
                                         if(nfe.Cliente == null)
-                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, ordemServico.Cliente, null, ordemServico);
+                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, ordemServico.Cliente, null, ordemServico, null);
                                         else
-                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, nfe.Cliente, null, ordemServico);
+                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, nfe.Cliente, null, ordemServico, null);
                                     }
 
                                     if (!String.IsNullOrEmpty(xmlStrEnvio))
@@ -1497,6 +1518,14 @@ namespace Lunar.Telas.Fiscal
                             }
                         }
                     }
+                    else if(nfe.NfeStatus.Id == 6)
+                    {
+                        DateTime primeiroDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                        DateTime ultimoDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                        ultimoDiaDoMes = ultimoDiaDoMes.AddMonths(1).AddDays(-1);
+                        reenviarNotasEmContigencia(primeiroDiaDoMes.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), ultimoDiaDoMes.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
+                        btnPesquisar.PerformClick();
+                    }
                     else
                         GenericaDesktop.ShowAlerta("Só é possível reenviar uma nota que esteja com status de rejeição!");
                     //Verifica se houve falha do sistema e confere na pasta de contigencia se a nota esta em contigencia
@@ -1588,7 +1617,11 @@ namespace Lunar.Telas.Fiscal
         private void grid_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
         {
             nfe = (Nfe)grid.SelectedItem;
-            if (nfe.Modelo == "55") {
+            OrdemServicoController ordemServicoController = new OrdemServicoController();
+            OrdemServico ordem = new OrdemServico();
+            ordem = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
+            if (nfe.Modelo == "55" && ordem.Id <= 0)
+            {
                 if (nfe.NfeStatus != null)
                 {
                     if (nfe.NfeStatus.Id != 2)
@@ -1654,7 +1687,7 @@ namespace Lunar.Telas.Fiscal
                     uu.Dispose();
                     formBackground.Dispose();
                     pesquisaNotas();
-                } 
+                }
             }
             else
             {
@@ -1831,13 +1864,15 @@ namespace Lunar.Telas.Fiscal
                                 }
                             }
                         }
-                        else if (nfe.NfeStatus.Id != 1)
+                        else if (nfe.NfeStatus != null)
                         {
-                            GenericaDesktop.ShowAlerta("Tente reenviar a nota para sefaz");
+                            if (nfe.NfeStatus.Id != 1)
+                                GenericaDesktop.ShowAlerta("Tente reenviar a nota para sefaz");
+
+                            else if (nfe.NfeStatus.Id == 1)
+                                GenericaDesktop.ShowInfo("Nota Fiscal Autorizada");
+                            pesquisaNotas();
                         }
-                        else if (nfe.NfeStatus.Id == 1)
-                            GenericaDesktop.ShowInfo("Nota Fiscal Autorizada");
-                        pesquisaNotas();
                     }
                     else if (nfe.Status.Contains("Inutilizacao de numero homolog"))
                     {
@@ -2332,9 +2367,10 @@ namespace Lunar.Telas.Fiscal
                                         if (enviado == false)
                                             erro++;
                                     }
-                                    if (erro == 0)
-                                        GenericaDesktop.ShowInfo(sucesso + " Email(s) enviado(s) com sucesso!");
-                                    else if (erro > 0)
+                                    //if (erro == 0)
+                                    //    GenericaDesktop.ShowInfo(sucesso + " Email(s) enviado(s) com sucesso!");
+                                    //else
+                                    if (erro > 0)
                                         GenericaDesktop.ShowInfo(sucesso + " Email(s) enviado(s) com sucesso!\n" + erro + " Email com falha no envio!");
                                 }
                             }

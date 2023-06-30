@@ -1140,6 +1140,7 @@
     <Compile Include="Utils\OrganizacaoNF\EmitirNFCe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNfe2.cs" />
+    <Compile Include="Utils\OrganizacaoNF\EmitirNfe3.cs" />
     <Compile Include="Utils\OrganizacaoNF\Ftp.cs" />
     <Compile Include="Utils\OrganizacaoNF\LunarApiNotas.cs" />
     <Compile Include="Utils\OrganizacaoNF\RetCartaCorrecao.cs" />

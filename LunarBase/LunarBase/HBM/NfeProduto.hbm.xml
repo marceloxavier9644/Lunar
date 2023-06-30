@@ -104,6 +104,8 @@
 		<property name="CnpjProdIpi" column="CNPJPRODIPI" type="String" length="30"/>
 		<property name="QUnidIpi" column="QUNIDIPI" type="String" length="30"/>
 		<property name="VUnidIpi" column="VUNIDIPI" type="decimal"/>
+		<property name="VipiDevolvido" column="VIPIDEVOLVIDO" type="decimal"/>
+		
 
 		<!-- PIS -->
 		<property name="CstPis" column="CSTPIS" type="String" length="30"/>

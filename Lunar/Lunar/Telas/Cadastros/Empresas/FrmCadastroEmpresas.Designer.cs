@@ -89,6 +89,7 @@
             this.txtReferencia = new Lunar.RJ_UI.Classes.RJTextBox();
             this.RJtx = new Lunar.RJ_UI.Classes.RJButton();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.chkOtica = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.btnConfirmaCertificado = new FontAwesome.Sharp.IconButton();
             this.autoLabel24 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtSenhaCertificado = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -103,7 +104,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
-            this.chkOtica = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -145,7 +145,7 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             this.btnFechar.IconColor = System.Drawing.Color.White;
             this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFechar.IconSize = 30;
@@ -258,7 +258,7 @@
             this.btnPesquisaCidade.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPesquisaCidade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisaCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaCidade.IconChar = FontAwesome.Sharp.IconChar.SearchLocation;
+            this.btnPesquisaCidade.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlassLocation;
             this.btnPesquisaCidade.IconColor = System.Drawing.Color.SlateGray;
             this.btnPesquisaCidade.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnPesquisaCidade.IconSize = 38;
@@ -1160,6 +1160,7 @@
             this.txtCidade.BorderRadius = 8;
             this.txtCidade.BorderSize = 2;
             this.txtCidade.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCidade.Enabled = false;
             this.txtCidade.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCidade.Location = new System.Drawing.Point(543, 281);
@@ -1275,6 +1276,15 @@
             this.tabPageAdv2.TabIndex = 2;
             this.tabPageAdv2.Text = "Fiscal";
             this.tabPageAdv2.ThemesEnabled = false;
+            // 
+            // chkOtica
+            // 
+            this.chkOtica.BeforeTouchSize = new System.Drawing.Size(313, 30);
+            this.chkOtica.Location = new System.Drawing.Point(14, 162);
+            this.chkOtica.Name = "chkOtica";
+            this.chkOtica.Size = new System.Drawing.Size(313, 30);
+            this.chkOtica.TabIndex = 270;
+            this.chkOtica.Text = "Habilitar Módulo de O.S Ótica";
             // 
             // btnConfirmaCertificado
             // 
@@ -1536,15 +1546,6 @@
             this.btnCancelar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // chkOtica
-            // 
-            this.chkOtica.BeforeTouchSize = new System.Drawing.Size(313, 30);
-            this.chkOtica.Location = new System.Drawing.Point(14, 162);
-            this.chkOtica.Name = "chkOtica";
-            this.chkOtica.Size = new System.Drawing.Size(313, 30);
-            this.chkOtica.TabIndex = 270;
-            this.chkOtica.Text = "Habilitar Módulo de O.S Ótica";
             // 
             // FrmCadastroEmpresas
             // 
