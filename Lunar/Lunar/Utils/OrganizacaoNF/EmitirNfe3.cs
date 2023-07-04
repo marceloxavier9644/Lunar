@@ -158,7 +158,10 @@ namespace Lunar.Utils.OrganizacaoNF
                 ide.idDest = TNFeInfNFeIdeIdDest.Item2;
             ide.cMunFG = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge;
             ide.tpImp = TNFeInfNFeIdeTpImp.Item1;
-            ide.tpEmis = TNFeInfNFeIdeTpEmis.Item1;
+            if(nfe.TpEmis.Equals("6"))
+                ide.tpEmis = TNFeInfNFeIdeTpEmis.Item6;
+            else
+                ide.tpEmis = TNFeInfNFeIdeTpEmis.Item1;
             if (Sessao.parametroSistema.AmbienteProducao == true)
                 ide.tpAmb = TAmb.Item1;
             else

@@ -65,7 +65,9 @@
             this.txtDataInicial = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtPesquisa = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.btnEmail = new Syncfusion.Windows.Forms.Tools.toolstripitem();
             this.iconEmail = new FontAwesome.Sharp.IconButton();
@@ -78,9 +80,8 @@
             this.btnReenviar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnInutilizar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
-            this.txtPesquisa = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnPastaArquivo = new Lunar.RJ_UI.Classes.RJButton();
+            this.chkSVCAN = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -99,6 +100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radio55)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radio65)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImprimirCCe
@@ -155,6 +157,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.chkSVCAN);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -489,6 +492,31 @@
             this.autoLabel1.TabIndex = 219;
             this.autoLabel1.Text = "Pesquisa";
             // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.BackColor = System.Drawing.Color.White;
+            this.txtPesquisa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesquisa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesquisa.BorderRadius = 8;
+            this.txtPesquisa.BorderSize = 2;
+            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPesquisa.Location = new System.Drawing.Point(8, 20);
+            this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPesquisa.Multiline = false;
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtPesquisa.PasswordChar = false;
+            this.txtPesquisa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtPesquisa.PlaceholderText = "";
+            this.txtPesquisa.ReadOnly = false;
+            this.txtPesquisa.Size = new System.Drawing.Size(434, 37);
+            this.txtPesquisa.TabIndex = 0;
+            this.txtPesquisa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPesquisa.Texts = "";
+            this.txtPesquisa.UnderlinedStyle = false;
+            this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
+            // 
             // autoLabel15
             // 
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -499,6 +527,34 @@
             this.autoLabel15.Size = new System.Drawing.Size(90, 16);
             this.autoLabel15.TabIndex = 218;
             this.autoLabel15.Text = "Reg. por Pág.";
+            // 
+            // txtRegistroPorPagina
+            // 
+            this.txtRegistroPorPagina.BackColor = System.Drawing.Color.White;
+            this.txtRegistroPorPagina.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtRegistroPorPagina.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtRegistroPorPagina.BorderRadius = 8;
+            this.txtRegistroPorPagina.BorderSize = 2;
+            this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRegistroPorPagina.Location = new System.Drawing.Point(450, 20);
+            this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRegistroPorPagina.Multiline = false;
+            this.txtRegistroPorPagina.Name = "txtRegistroPorPagina";
+            this.txtRegistroPorPagina.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtRegistroPorPagina.PasswordChar = false;
+            this.txtRegistroPorPagina.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtRegistroPorPagina.PlaceholderText = "";
+            this.txtRegistroPorPagina.ReadOnly = false;
+            this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
+            this.txtRegistroPorPagina.TabIndex = 1;
+            this.txtRegistroPorPagina.Tag = "";
+            this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtRegistroPorPagina.Texts = "100";
+            this.txtRegistroPorPagina.UnderlinedStyle = false;
+            this.txtRegistroPorPagina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRegistroPorPagina_KeyPress);
             // 
             // grid
             // 
@@ -851,59 +907,6 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtPesquisa
-            // 
-            this.txtPesquisa.BackColor = System.Drawing.Color.White;
-            this.txtPesquisa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisa.BorderRadius = 8;
-            this.txtPesquisa.BorderSize = 2;
-            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPesquisa.Location = new System.Drawing.Point(8, 20);
-            this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPesquisa.Multiline = false;
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtPesquisa.PasswordChar = false;
-            this.txtPesquisa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtPesquisa.PlaceholderText = "";
-            this.txtPesquisa.ReadOnly = false;
-            this.txtPesquisa.Size = new System.Drawing.Size(434, 37);
-            this.txtPesquisa.TabIndex = 0;
-            this.txtPesquisa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtPesquisa.Texts = "";
-            this.txtPesquisa.UnderlinedStyle = false;
-            this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
-            // 
-            // txtRegistroPorPagina
-            // 
-            this.txtRegistroPorPagina.BackColor = System.Drawing.Color.White;
-            this.txtRegistroPorPagina.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtRegistroPorPagina.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtRegistroPorPagina.BorderRadius = 8;
-            this.txtRegistroPorPagina.BorderSize = 2;
-            this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRegistroPorPagina.Location = new System.Drawing.Point(450, 20);
-            this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
-            this.txtRegistroPorPagina.Multiline = false;
-            this.txtRegistroPorPagina.Name = "txtRegistroPorPagina";
-            this.txtRegistroPorPagina.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtRegistroPorPagina.PasswordChar = false;
-            this.txtRegistroPorPagina.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtRegistroPorPagina.PlaceholderText = "";
-            this.txtRegistroPorPagina.ReadOnly = false;
-            this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
-            this.txtRegistroPorPagina.TabIndex = 1;
-            this.txtRegistroPorPagina.Tag = "";
-            this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtRegistroPorPagina.Texts = "100";
-            this.txtRegistroPorPagina.UnderlinedStyle = false;
-            this.txtRegistroPorPagina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRegistroPorPagina_KeyPress);
-            // 
             // btnPastaArquivo
             // 
             this.btnPastaArquivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -925,6 +928,16 @@
             this.btnPastaArquivo.TabIndex = 235;
             this.btnPastaArquivo.TextColor = System.Drawing.Color.Black;
             this.btnPastaArquivo.UseVisualStyleBackColor = false;
+            // 
+            // chkSVCAN
+            // 
+            this.chkSVCAN.BeforeTouchSize = new System.Drawing.Size(253, 32);
+            this.chkSVCAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSVCAN.Location = new System.Drawing.Point(765, 80);
+            this.chkSVCAN.Name = "chkSVCAN";
+            this.chkSVCAN.Size = new System.Drawing.Size(253, 32);
+            this.chkSVCAN.TabIndex = 236;
+            this.chkSVCAN.Text = "Contingência SVC-AN (MOD 55)";
             // 
             // FrmControleNotas
             // 
@@ -973,6 +986,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radio55)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radio65)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1023,5 +1037,6 @@
         private RJ_UI.Classes.RJButton btnEnviarWhats;
         private FontAwesome.Sharp.IconButton iconPastaArquivo;
         private RJ_UI.Classes.RJButton btnPastaArquivo;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkSVCAN;
     }
 }

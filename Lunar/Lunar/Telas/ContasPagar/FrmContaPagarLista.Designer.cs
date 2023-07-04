@@ -339,7 +339,6 @@
             gridTextColumn4.HeaderStyle.Font.Size = 10F;
             gridTextColumn4.HeaderText = "CPF/CNPJ";
             gridTextColumn4.MappingName = "Pessoa.Cnpj";
-            gridTextColumn5.AllowEditing = false;
             gridTextColumn5.AllowFiltering = true;
             gridTextColumn5.AllowResizing = true;
             gridTextColumn5.CellStyle.Font.Size = 12F;

@@ -129,6 +129,8 @@ namespace Lunar.Telas.Fiscal
                 txtTransportadora.Texts = nfe.Transportadora.RazaoSocial;
                 txtCodTransportadora.Texts = nfe.Transportadora.Id.ToString();
             }
+            if (nfe.TpEmis.Equals("6"))
+                chkSVCAN.Checked = true;
             txtCodigoAntt.Texts = nfe.CodigoAntt;
             txtQtdVolume.Texts = nfe.Volume;
             txtEspecie.Texts = nfe.Especie;
@@ -1315,6 +1317,8 @@ namespace Lunar.Telas.Fiscal
             }
             nfe.TpImp = "1";
             nfe.TpEmis = "1";
+            if(chkSVCAN.Checked == true)
+                nfe.TpEmis = "6";
             if (Sessao.parametroSistema.AmbienteProducao == true)
                 nfe.TpAmb = "1";
             else

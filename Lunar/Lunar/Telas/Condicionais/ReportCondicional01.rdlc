@@ -98,12 +98,12 @@
                                 <TextRun>
                                   <Value>CÓD</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -132,7 +132,7 @@
                                 <TextRun>
                                   <Value>PRODUTO</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -166,7 +166,7 @@
                                 <TextRun>
                                   <Value>UNIT.</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -200,7 +200,7 @@
                                 <TextRun>
                                   <Value>QTD</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -234,7 +234,7 @@
                                 <TextRun>
                                   <Value>TOTAL</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -273,7 +273,7 @@
                                 <TextRun>
                                   <Value>=Fields!CodProduto.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -308,7 +308,7 @@
                                 <TextRun>
                                   <Value>=Fields!DescricaoProduto.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -335,7 +335,6 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="ValorUnitarioComDesconto">
-                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -343,7 +342,7 @@
                                 <TextRun>
                                   <Value>=Fields!ValorUnitarioComDesconto.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <Format>'R$' #,0.00</Format>
                                   </Style>
                                 </TextRun>
@@ -372,7 +371,6 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Quantidade">
-                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -380,7 +378,7 @@
                                 <TextRun>
                                   <Value>=Fields!Quantidade.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -407,7 +405,6 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="ValorTotalComDesconto">
-                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -415,7 +412,7 @@
                                 <TextRun>
                                   <Value>=Fields!ValorTotalComDesconto.Value</Value>
                                   <Style>
-                                    <FontSize>6pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <Format>'R$' #,0.00</Format>
                                   </Style>
                                 </TextRun>
@@ -556,7 +553,6 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox27">
-                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -564,7 +560,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Quantidade.Value)</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -591,7 +587,6 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox28">
-                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -599,7 +594,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!ValorTotalComDesconto.Value)</Value>
                                   <Style>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <Format>'R$' #,0.00</Format>
                                   </Style>
                                 </TextRun>
@@ -1015,6 +1010,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox23</rd:DefaultName>
               <Top>2.85405cm</Top>
+              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>9</ZIndex>
@@ -1088,7 +1084,6 @@
               </Paragraphs>
               <rd:DefaultName>Id</rd:DefaultName>
               <Top>4.13138cm</Top>
-              <Left>0cm</Left>
               <Height>0.63853cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>11</ZIndex>

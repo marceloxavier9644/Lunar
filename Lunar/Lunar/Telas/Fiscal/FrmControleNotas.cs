@@ -1322,6 +1322,9 @@ namespace Lunar.Telas.Fiscal
             {
                 string retorno = "";
                 nfe = (Nfe)grid.SelectedItem;
+                if (chkSVCAN.Checked == true && nfe.Modelo.Equals("55"))
+                    nfe.TpEmis = "6";
+                Controller.getInstance().salvar(nfe);
                 if (nfe.NfeStatus == null)
                 {
                     if (nfe.Status.Equals("Preparando Envio..."))
@@ -1517,6 +1520,10 @@ namespace Lunar.Telas.Fiscal
                                 }
                             }
                         }
+                        else if (venda == null & ordemServico == null)
+                        {
+                            GenericaDesktop.ShowAlerta("Dê 2 cliques na nota fiscal e selecione a opção de enviar nota!");
+                        }
                     }
                     else if(nfe.NfeStatus.Id == 6)
                     {
@@ -1620,7 +1627,7 @@ namespace Lunar.Telas.Fiscal
             OrdemServicoController ordemServicoController = new OrdemServicoController();
             OrdemServico ordem = new OrdemServico();
             ordem = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
-            if (nfe.Modelo == "55" && ordem.Id <= 0)
+            if (nfe.Modelo == "55" && ordem == null)
             {
                 if (nfe.NfeStatus != null)
                 {

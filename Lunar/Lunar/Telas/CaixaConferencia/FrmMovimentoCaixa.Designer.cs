@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn3 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn4 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
             this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -41,6 +42,7 @@
             this.btnPesquisaEmpresa = new FontAwesome.Sharp.IconButton();
             this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.chkApenasDespesas = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.chkApenasContasReceber = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.chkApenasCaixaFisico = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.btnExcluir = new FontAwesome.Sharp.IconButton();
@@ -72,16 +74,16 @@
             this.btnReceita = new Lunar.RJ_UI.Classes.RJButton();
             this.btnDespesa = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAjustarCobrador = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExcluir2 = new Lunar.RJ_UI.Classes.RJButton();
-            this.chkApenasDespesas = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasCaixaFisico)).BeginInit();
             this.panelTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).BeginInit();
             this.SuspendLayout();
             // 
             // autoLabel10
@@ -230,6 +232,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1128, 206);
             this.panel3.TabIndex = 1;
+            // 
+            // chkApenasDespesas
+            // 
+            this.chkApenasDespesas.BeforeTouchSize = new System.Drawing.Size(160, 32);
+            this.chkApenasDespesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkApenasDespesas.Location = new System.Drawing.Point(772, 168);
+            this.chkApenasDespesas.Name = "chkApenasDespesas";
+            this.chkApenasDespesas.Size = new System.Drawing.Size(160, 32);
+            this.chkApenasDespesas.TabIndex = 265;
+            this.chkApenasDespesas.Text = "Apenas Despesas";
+            this.chkApenasDespesas.CheckStateChanged += new System.EventHandler(this.chkApenasDespesas_CheckStateChanged);
             // 
             // chkApenasContasReceber
             // 
@@ -701,49 +714,57 @@
             this.grid.AllowResizingColumns = true;
             this.grid.AutoGenerateColumns = false;
             this.grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridNumericColumn3.AdvancedFilterType = Syncfusion.WinForms.GridCommon.AdvancedFilterType.NumberFilter;
-            gridNumericColumn3.AllowEditing = false;
-            gridNumericColumn3.AllowResizing = true;
-            gridNumericColumn3.CellStyle.Font.Size = 11F;
-            gridNumericColumn3.Format = "0";
-            gridNumericColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn3.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn3.HeaderText = "ID";
-            gridNumericColumn3.MappingName = "Id";
+            gridNumericColumn1.AdvancedFilterType = Syncfusion.WinForms.GridCommon.AdvancedFilterType.NumberFilter;
+            gridNumericColumn1.AllowEditing = false;
+            gridNumericColumn1.AllowResizing = true;
+            gridNumericColumn1.CellStyle.Font.Size = 11F;
+            gridNumericColumn1.Format = "0";
+            gridNumericColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn1.HeaderStyle.Font.Size = 11F;
+            gridNumericColumn1.HeaderText = "ID";
+            gridNumericColumn1.MappingName = "Id";
+            gridTextColumn1.AllowEditing = false;
+            gridTextColumn1.AllowResizing = true;
+            gridTextColumn1.CellStyle.Font.Size = 11F;
+            gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn1.HeaderStyle.Font.Size = 11F;
+            gridTextColumn1.HeaderText = "Descrição";
+            gridTextColumn1.MappingName = "Descricao";
+            gridNumericColumn2.AllowEditing = false;
+            gridNumericColumn2.AllowResizing = true;
+            gridNumericColumn2.CellStyle.Font.Size = 11F;
+            gridNumericColumn2.Format = "N2";
+            gridNumericColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn2.HeaderStyle.Font.Size = 11F;
+            gridNumericColumn2.HeaderText = "Valor";
+            gridNumericColumn2.MappingName = "Valor";
+            gridTextColumn2.AllowEditing = false;
+            gridTextColumn2.AllowResizing = true;
+            gridTextColumn2.CellStyle.Font.Size = 11F;
+            gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn2.HeaderStyle.Font.Size = 11F;
+            gridTextColumn2.HeaderText = "Forma de Recebimento";
+            gridTextColumn2.MappingName = "FormaPagamento.Descricao";
+            gridTextColumn3.AllowEditing = false;
+            gridTextColumn3.AllowResizing = true;
+            gridTextColumn3.CellStyle.Font.Size = 11F;
+            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn3.HeaderStyle.Font.Size = 11F;
+            gridTextColumn3.HeaderText = "Conta Bancária";
+            gridTextColumn3.MappingName = "ContaBancaria";
             gridTextColumn4.AllowEditing = false;
             gridTextColumn4.AllowResizing = true;
             gridTextColumn4.CellStyle.Font.Size = 11F;
             gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridTextColumn4.HeaderStyle.Font.Size = 11F;
-            gridTextColumn4.HeaderText = "Descrição";
-            gridTextColumn4.MappingName = "Descricao";
-            gridNumericColumn4.AllowEditing = false;
-            gridNumericColumn4.AllowResizing = true;
-            gridNumericColumn4.CellStyle.Font.Size = 11F;
-            gridNumericColumn4.Format = "N2";
-            gridNumericColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn4.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn4.HeaderText = "Valor";
-            gridNumericColumn4.MappingName = "Valor";
-            gridTextColumn5.AllowEditing = false;
-            gridTextColumn5.AllowResizing = true;
-            gridTextColumn5.CellStyle.Font.Size = 11F;
-            gridTextColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn5.HeaderStyle.Font.Size = 11F;
-            gridTextColumn5.HeaderText = "Forma de Recebimento";
-            gridTextColumn5.MappingName = "FormaPagamento.Descricao";
-            gridTextColumn6.AllowEditing = false;
-            gridTextColumn6.AllowResizing = true;
-            gridTextColumn6.CellStyle.Font.Size = 11F;
-            gridTextColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn6.HeaderStyle.Font.Size = 11F;
-            gridTextColumn6.HeaderText = "Conta Bancária";
-            gridTextColumn6.MappingName = "ContaBancaria";
-            this.grid.Columns.Add(gridNumericColumn3);
+            gridTextColumn4.HeaderText = "Cobrador(a)";
+            gridTextColumn4.MappingName = "Cobrador.RazaoSocial";
+            this.grid.Columns.Add(gridNumericColumn1);
+            this.grid.Columns.Add(gridTextColumn1);
+            this.grid.Columns.Add(gridNumericColumn2);
+            this.grid.Columns.Add(gridTextColumn2);
+            this.grid.Columns.Add(gridTextColumn3);
             this.grid.Columns.Add(gridTextColumn4);
-            this.grid.Columns.Add(gridNumericColumn4);
-            this.grid.Columns.Add(gridTextColumn5);
-            this.grid.Columns.Add(gridTextColumn6);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 206);
             this.grid.Name = "grid";
@@ -798,6 +819,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAjustarCobrador);
             this.groupBox1.Controls.Add(this.btnReceita);
             this.groupBox1.Controls.Add(this.btnDespesa);
             this.groupBox1.Controls.Add(this.btnExcluir2);
@@ -807,6 +829,28 @@
             this.groupBox1.Size = new System.Drawing.Size(1128, 71);
             this.groupBox1.TabIndex = 157;
             this.groupBox1.TabStop = false;
+            // 
+            // btnAjustarCobrador
+            // 
+            this.btnAjustarCobrador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAjustarCobrador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnAjustarCobrador.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnAjustarCobrador.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAjustarCobrador.BorderRadius = 8;
+            this.btnAjustarCobrador.BorderSize = 0;
+            this.btnAjustarCobrador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAjustarCobrador.FlatAppearance.BorderSize = 0;
+            this.btnAjustarCobrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAjustarCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjustarCobrador.ForeColor = System.Drawing.Color.White;
+            this.btnAjustarCobrador.Location = new System.Drawing.Point(416, 14);
+            this.btnAjustarCobrador.Name = "btnAjustarCobrador";
+            this.btnAjustarCobrador.Size = new System.Drawing.Size(172, 45);
+            this.btnAjustarCobrador.TabIndex = 264;
+            this.btnAjustarCobrador.Text = "Ajustar Cobrador(a)";
+            this.btnAjustarCobrador.TextColor = System.Drawing.Color.White;
+            this.btnAjustarCobrador.UseVisualStyleBackColor = false;
+            this.btnAjustarCobrador.Click += new System.EventHandler(this.btnAjustarCobrador_Click);
             // 
             // btnExcluir2
             // 
@@ -830,17 +874,6 @@
             this.btnExcluir2.UseVisualStyleBackColor = false;
             this.btnExcluir2.Click += new System.EventHandler(this.btnExcluir2_Click);
             // 
-            // chkApenasDespesas
-            // 
-            this.chkApenasDespesas.BeforeTouchSize = new System.Drawing.Size(160, 32);
-            this.chkApenasDespesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkApenasDespesas.Location = new System.Drawing.Point(772, 168);
-            this.chkApenasDespesas.Name = "chkApenasDespesas";
-            this.chkApenasDespesas.Size = new System.Drawing.Size(160, 32);
-            this.chkApenasDespesas.TabIndex = 265;
-            this.chkApenasDespesas.Text = "Apenas Despesas";
-            this.chkApenasDespesas.CheckStateChanged += new System.EventHandler(this.chkApenasDespesas_CheckStateChanged);
-            // 
             // FrmMovimentoCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -854,6 +887,7 @@
             this.Text = "Movimento de Caixa";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasCaixaFisico)).EndInit();
             this.panelTitleBar.ResumeLayout(false);
@@ -861,7 +895,6 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -908,5 +941,6 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasCaixaFisico;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasContasReceber;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasDespesas;
+        private RJ_UI.Classes.RJButton btnAjustarCobrador;
     }
 }

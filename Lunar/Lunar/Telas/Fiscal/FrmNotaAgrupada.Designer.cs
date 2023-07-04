@@ -45,6 +45,7 @@
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPesquisar = new FontAwesome.Sharp.IconButton();
+            this.btnPesquisar2 = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtDataFinal = new Syncfusion.WinForms.Input.SfDateTimeEdit();
@@ -87,7 +88,6 @@
             this.btnGerarNFe = new Lunar.RJ_UI.Classes.RJButton();
             this.btnGerarNFCe = new Lunar.RJ_UI.Classes.RJButton();
             this.btnRemoverProduto = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnPesquisar2 = new Lunar.RJ_UI.Classes.RJButton();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -175,6 +175,27 @@
             this.btnPesquisar.TabIndex = 236;
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // btnPesquisar2
+            // 
+            this.btnPesquisar2.BackColor = System.Drawing.Color.White;
+            this.btnPesquisar2.BackgroundColor = System.Drawing.Color.White;
+            this.btnPesquisar2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisar2.BorderRadius = 8;
+            this.btnPesquisar2.BorderSize = 2;
+            this.btnPesquisar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisar2.FlatAppearance.BorderSize = 0;
+            this.btnPesquisar2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisar2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisar2.ForeColor = System.Drawing.Color.Black;
+            this.btnPesquisar2.Location = new System.Drawing.Point(326, 50);
+            this.btnPesquisar2.Name = "btnPesquisar2";
+            this.btnPesquisar2.Size = new System.Drawing.Size(53, 50);
+            this.btnPesquisar2.TabIndex = 237;
+            this.btnPesquisar2.TextColor = System.Drawing.Color.Black;
+            this.btnPesquisar2.UseVisualStyleBackColor = false;
             // 
             // autoLabel4
             // 
@@ -303,33 +324,42 @@
             // 
             this.gridProdutos.AccessibleName = "Table";
             this.gridProdutos.AllowEditing = false;
+            this.gridProdutos.AllowFiltering = true;
             this.gridProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridProdutos.AutoGenerateColumns = false;
+            this.gridProdutos.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             gridTextColumn4.AllowEditing = false;
+            gridTextColumn4.AllowFiltering = true;
             gridTextColumn4.HeaderText = "Cód Produto";
             gridTextColumn4.MappingName = "Produto.Id";
             gridTextColumn5.AllowEditing = false;
+            gridTextColumn5.AllowFiltering = true;
             gridTextColumn5.HeaderText = "Descrição";
             gridTextColumn5.MappingName = "DescricaoProduto";
             gridNumericColumn2.AllowEditing = false;
+            gridNumericColumn2.AllowFiltering = true;
             gridNumericColumn2.Format = "N";
             gridNumericColumn2.HeaderText = "Valor Unitário";
             gridNumericColumn2.MappingName = "ValorUnitario";
             gridNumericColumn3.AllowEditing = false;
+            gridNumericColumn3.AllowFiltering = true;
             gridNumericColumn3.Format = "0";
             gridNumericColumn3.HeaderText = "Quantidade";
             gridNumericColumn3.MappingName = "Quantidade";
             gridNumericColumn4.AllowEditing = false;
+            gridNumericColumn4.AllowFiltering = true;
             gridNumericColumn4.Format = "N";
             gridNumericColumn4.HeaderText = "Desconto";
             gridNumericColumn4.MappingName = "Desconto";
             gridNumericColumn5.AllowEditing = false;
+            gridNumericColumn5.AllowFiltering = true;
             gridNumericColumn5.Format = "N";
             gridNumericColumn5.HeaderText = "Valor Total";
             gridNumericColumn5.MappingName = "ValorTotal";
             gridNumericColumn6.AllowEditing = false;
+            gridNumericColumn6.AllowFiltering = true;
             gridNumericColumn6.Format = "0";
             gridNumericColumn6.HeaderText = "Estoque";
             gridNumericColumn6.MappingName = "Produto.Estoque";
@@ -971,27 +1001,6 @@
             this.btnRemoverProduto.TextColor = System.Drawing.Color.Black;
             this.btnRemoverProduto.UseVisualStyleBackColor = false;
             this.btnRemoverProduto.Click += new System.EventHandler(this.btnRemoverProduto_Click);
-            // 
-            // btnPesquisar2
-            // 
-            this.btnPesquisar2.BackColor = System.Drawing.Color.White;
-            this.btnPesquisar2.BackgroundColor = System.Drawing.Color.White;
-            this.btnPesquisar2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisar2.BorderRadius = 8;
-            this.btnPesquisar2.BorderSize = 2;
-            this.btnPesquisar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisar2.FlatAppearance.BorderSize = 0;
-            this.btnPesquisar2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisar2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisar2.ForeColor = System.Drawing.Color.Black;
-            this.btnPesquisar2.Location = new System.Drawing.Point(326, 50);
-            this.btnPesquisar2.Name = "btnPesquisar2";
-            this.btnPesquisar2.Size = new System.Drawing.Size(53, 50);
-            this.btnPesquisar2.TabIndex = 237;
-            this.btnPesquisar2.TextColor = System.Drawing.Color.Black;
-            this.btnPesquisar2.UseVisualStyleBackColor = false;
             // 
             // FrmNotaAgrupada
             // 

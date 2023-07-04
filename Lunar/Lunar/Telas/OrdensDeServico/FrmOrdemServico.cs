@@ -137,7 +137,7 @@ namespace Lunar.Telas.OrdensDeServico
                 txtCodTipoObjeto.Enabled = false;
                 btnPesquisaTipoObjeto.Enabled = false;
                 txtVendedor.Enabled = false;
-                btnPesquisaVendedor.Enabled = false;
+                //btnPesquisaVendedor.Enabled = false;
                 txtObservacoes.Enabled = false;
 
             }
@@ -2192,6 +2192,19 @@ namespace Lunar.Telas.OrdensDeServico
         {
             vendedor = new Pessoa();
             pesquisaVendedor();
+            if(ordemServico.Status == "ENCERRADA")
+            {
+                if(vendedor != null)
+                {
+                    if(vendedor.Id > 0)
+                    {
+                        ordemServico.Vendedor = vendedor;
+                        Controller.getInstance().salvar(ordemServico);
+                        GenericaDesktop.ShowInfo("Vendedor Ajustado com Sucesso!");
+                        this.Close();
+                    }
+                }
+            }
         }
 
         private void txtVendedor_KeyPress(object sender, KeyPressEventArgs e)

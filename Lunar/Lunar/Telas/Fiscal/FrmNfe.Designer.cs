@@ -70,6 +70,8 @@
             this.gridProdutos = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.autoLabel48 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtValorIpi = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel47 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtIpiDevolvido = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnEditarProduto = new Lunar.RJ_UI.Classes.RJButton();
@@ -231,8 +233,7 @@
             this.btnGravar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnPreVisualizar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnEmitirNfe = new Lunar.RJ_UI.Classes.RJButton();
-            this.autoLabel48 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtValorIpi = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.chkSVCAN = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -266,6 +267,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NotaReferenciada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Produtos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -314,6 +316,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkSVCAN);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnDadosCliente);
@@ -906,6 +909,43 @@
             this.tabPageAdv1.TabIndex = 1;
             this.tabPageAdv1.Text = "Nota Fiscal Eletrônica";
             this.tabPageAdv1.ThemesEnabled = false;
+            // 
+            // autoLabel48
+            // 
+            this.autoLabel48.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel48.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel48.Location = new System.Drawing.Point(809, 429);
+            this.autoLabel48.Name = "autoLabel48";
+            this.autoLabel48.Size = new System.Drawing.Size(22, 16);
+            this.autoLabel48.TabIndex = 283;
+            this.autoLabel48.Text = "IPI";
+            // 
+            // txtValorIpi
+            // 
+            this.txtValorIpi.BackColor = System.Drawing.Color.White;
+            this.txtValorIpi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorIpi.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorIpi.BorderRadius = 8;
+            this.txtValorIpi.BorderSize = 2;
+            this.txtValorIpi.Enabled = false;
+            this.txtValorIpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorIpi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtValorIpi.Location = new System.Drawing.Point(804, 441);
+            this.txtValorIpi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtValorIpi.Multiline = false;
+            this.txtValorIpi.Name = "txtValorIpi";
+            this.txtValorIpi.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtValorIpi.PasswordChar = false;
+            this.txtValorIpi.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtValorIpi.PlaceholderText = "";
+            this.txtValorIpi.ReadOnly = false;
+            this.txtValorIpi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtValorIpi.Size = new System.Drawing.Size(75, 37);
+            this.txtValorIpi.TabIndex = 282;
+            this.txtValorIpi.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtValorIpi.Texts = "0,00";
+            this.txtValorIpi.UnderlinedStyle = false;
             // 
             // autoLabel47
             // 
@@ -3408,42 +3448,15 @@
             this.btnEmitirNfe.UseVisualStyleBackColor = false;
             this.btnEmitirNfe.Click += new System.EventHandler(this.btnEmitirNfe_Click);
             // 
-            // autoLabel48
+            // chkSVCAN
             // 
-            this.autoLabel48.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel48.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel48.Location = new System.Drawing.Point(809, 429);
-            this.autoLabel48.Name = "autoLabel48";
-            this.autoLabel48.Size = new System.Drawing.Size(22, 16);
-            this.autoLabel48.TabIndex = 283;
-            this.autoLabel48.Text = "IPI";
-            // 
-            // txtValorIpi
-            // 
-            this.txtValorIpi.BackColor = System.Drawing.Color.White;
-            this.txtValorIpi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtValorIpi.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtValorIpi.BorderRadius = 8;
-            this.txtValorIpi.BorderSize = 2;
-            this.txtValorIpi.Enabled = false;
-            this.txtValorIpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorIpi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValorIpi.Location = new System.Drawing.Point(804, 441);
-            this.txtValorIpi.Margin = new System.Windows.Forms.Padding(4);
-            this.txtValorIpi.Multiline = false;
-            this.txtValorIpi.Name = "txtValorIpi";
-            this.txtValorIpi.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtValorIpi.PasswordChar = false;
-            this.txtValorIpi.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtValorIpi.PlaceholderText = "";
-            this.txtValorIpi.ReadOnly = false;
-            this.txtValorIpi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtValorIpi.Size = new System.Drawing.Size(75, 37);
-            this.txtValorIpi.TabIndex = 282;
-            this.txtValorIpi.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtValorIpi.Texts = "0,00";
-            this.txtValorIpi.UnderlinedStyle = false;
+            this.chkSVCAN.BeforeTouchSize = new System.Drawing.Size(194, 32);
+            this.chkSVCAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSVCAN.Location = new System.Drawing.Point(801, 164);
+            this.chkSVCAN.Name = "chkSVCAN";
+            this.chkSVCAN.Size = new System.Drawing.Size(194, 32);
+            this.chkSVCAN.TabIndex = 263;
+            this.chkSVCAN.Text = "Contingência SVC-AN";
             // 
             // FrmNfe
             // 
@@ -3505,6 +3518,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NotaReferenciada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Produtos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3714,5 +3728,6 @@
         private RJ_UI.Classes.RJTextBox txtIpiDevolvido;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel48;
         private RJ_UI.Classes.RJTextBox txtValorIpi;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkSVCAN;
     }
 }

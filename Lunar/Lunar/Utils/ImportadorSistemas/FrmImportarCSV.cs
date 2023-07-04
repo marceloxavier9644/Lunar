@@ -677,8 +677,9 @@ namespace Lunar.Utils.ImportadorSistemas
                             int a = 0;
                             for (int i = 0; i < dtEmployee.Rows.Count; i++)
                             {
+                        
                                 a++;
-                                lblInformacao.Text = "Produtos da Ordem de Serviço: " + a + " de " + listaOrdem.Count;
+                                lblInformacao.Text = "Produtos da Ordem de Serviço: " + a + " de " + dtEmployee.Rows.Count;
                                 OrdemServicoProduto ordemServicoProduto = new OrdemServicoProduto();
                                 ordemServicoProduto.Id = 0;
                                 ordemServicoProduto.Acrescimo = 0;
@@ -688,13 +689,19 @@ namespace Lunar.Utils.ImportadorSistemas
                                 if (String.IsNullOrEmpty(ordemServicoProduto.DescricaoProduto))
                                     ordemServicoProduto.DescricaoProduto = "NÃO PREENCHIDO";
                                 ordemServicoProduto.OrdemServico = ordemServico;
-                                ordemServicoProduto.Produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(Convert.ToInt32(dtEmployee.Rows[i]["PRODUTO"]), Sessao.empresaFilialLogada);
-                                if (ordemServicoProduto.Produto != null)
+                                int cod = 0;
+                                //tratando para nao vir null em produtos possivelmente exluidos!
+                                try { cod = Convert.ToInt32(dtEmployee.Rows[i]["PRODUTO"]); } catch { cod = 0; }
+                                if (cod > 0)
                                 {
-                                    ordemServicoProduto.Quantidade = double.Parse(dtEmployee.Rows[i]["QTD"].ToString());
-                                    ordemServicoProduto.ValorTotal = decimal.Parse(dtEmployee.Rows[i]["LIQUIDO"].ToString());
-                                    ordemServicoProduto.ValorUnitario = decimal.Parse(dtEmployee.Rows[i]["UNITARIO"].ToString());
-                                    Controller.getInstance().salvar(ordemServicoProduto);
+                                    ordemServicoProduto.Produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(Convert.ToInt32(dtEmployee.Rows[i]["PRODUTO"]), Sessao.empresaFilialLogada);
+                                    if (ordemServicoProduto.Produto != null)
+                                    {
+                                        ordemServicoProduto.Quantidade = double.Parse(dtEmployee.Rows[i]["QTD"].ToString());
+                                        ordemServicoProduto.ValorTotal = decimal.Parse(dtEmployee.Rows[i]["LIQUIDO"].ToString());
+                                        ordemServicoProduto.ValorUnitario = decimal.Parse(dtEmployee.Rows[i]["UNITARIO"].ToString());
+                                        Controller.getInstance().salvar(ordemServicoProduto);
+                                    }
                                 }
                             }
                         }

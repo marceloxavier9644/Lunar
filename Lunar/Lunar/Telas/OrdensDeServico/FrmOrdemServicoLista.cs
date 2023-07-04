@@ -2,6 +2,7 @@
 using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
+using Lunar.Telas.ValeFuncionarios;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
@@ -563,6 +564,7 @@ namespace Lunar.Telas.OrdensDeServico
                         (e.RowData as OrdemServico).OperadorCadastro = "";
                     }
                 }
+  
             }
             catch
             {
@@ -627,13 +629,13 @@ namespace Lunar.Telas.OrdensDeServico
                     uu.Owner = formBackground;
                     uu.ShowDialog();
                     formBackground.Dispose();
-                    txtCodCliente.Texts = "";
-                    txtCliente.Texts = "";
-                    txtCodDependente.Texts = "";
-                    txtDependente.Texts = "";
-                    txtNumeroOS.Texts = ordemServico.Id.ToString();
-                    pesquisarOrdemServicoPeloID();
-                    txtNumeroOS.Texts = "";
+                    //txtCodCliente.Texts = "";
+                    //txtCliente.Texts = "";
+                    //txtCodDependente.Texts = "";
+                    //txtDependente.Texts = "";
+                    //txtNumeroOS.Texts = ordemServico.Id.ToString();
+                    //pesquisarOrdemServicoPeloID();
+                    //txtNumeroOS.Texts = "";
                 }
             }
             catch (Exception ex)
@@ -1390,8 +1392,8 @@ namespace Lunar.Telas.OrdensDeServico
             valorProdutosSemDesconto = 0;
             ordemServico = new OrdemServico();
             ordemServico = (OrdemServico)grid.SelectedItem;
-            if (ordemServico.Observacoes != "IMPORTADO ULTRA")
-            {
+            //if (ordemServico.Observacoes != "IMPORTADO ULTRA")
+            //{
                 if (ordemServico.Status.Equals("ENCERRADA"))
                 {
                     if (ordemServico.Nfe == null)
@@ -1467,11 +1469,11 @@ namespace Lunar.Telas.OrdensDeServico
                 }
                 else
                     GenericaDesktop.ShowAlerta("Para gerar o documento fiscal a Ordem de Serviço deve ta encerrada/faturada!");
-            }
-            else
-            {
-                GenericaDesktop.ShowAlerta("Não é possível gerar nota de Ordem de Serviço feita no outro sistema!");
-            }
+            //}
+            //else
+            //{
+            //    GenericaDesktop.ShowAlerta("Não é possível gerar nota de Ordem de Serviço feita no outro sistema!");
+            //}
         }
 
         private void enviarXMLNFeParaApi(string xmlNfe)
@@ -2218,6 +2220,60 @@ namespace Lunar.Telas.OrdensDeServico
                 {
                     //Launching the Pdf file using the default Application.
                     System.Diagnostics.Process.Start(saveFileDialog.FileName);
+                }
+            }
+        }
+
+        private void FrmOrdemServicoLista_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                case Keys.F2:
+                    abrirHistorico();
+                    break;
+            }
+        }
+
+        private void abrirHistorico()
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                OrdemServico ordemServico = new OrdemServico();
+                ordemServico = (OrdemServico)grid.SelectedItem;
+                Form formBackground = new Form();
+                try
+                {
+                    //FrmImprimirEtiquetasOtica frm = new FrmImprimirEtiquetasOtica();
+            
+                    FrmHistoricoOS uu = new FrmHistoricoOS(ordemServico);
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    uu.ShowDialog();
+                    formBackground.Dispose();
+                    uu.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    formBackground.Dispose();
                 }
             }
         }

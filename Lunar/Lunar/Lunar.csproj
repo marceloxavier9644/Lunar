@@ -883,6 +883,12 @@
     <Compile Include="Telas\OrdensDeServico\FrmEntradaValor.Designer.cs">
       <DependentUpon>FrmEntradaValor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmHistoricoOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmHistoricoOS.Designer.cs">
+      <DependentUpon>FrmHistoricoOS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\OrdensDeServico\FrmImpressaoOrdemServico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1426,6 +1432,9 @@
     <EmbeddedResource Include="Telas\Orcamentos\ReportOrcamentoAvulso.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmEntradaValor.resx">
       <DependentUpon>FrmEntradaValor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\FrmHistoricoOS.resx">
+      <DependentUpon>FrmHistoricoOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmImpressaoOrdemServico.resx">
       <DependentUpon>FrmImpressaoOrdemServico.cs</DependentUpon>

@@ -361,6 +361,9 @@ namespace Lunar.Telas.ContasPagar
                     uu.ShowDialog();
                     formBackground.Dispose();
                     uu.Dispose();
+                    txtCodCliente.Texts = "";
+                    txtCliente.Texts = "";
+
                     btnPesquisar.PerformClick();
                 }
                 else
@@ -637,7 +640,7 @@ namespace Lunar.Telas.ContasPagar
                     GenericaDesktop.gravarLinhaLog("Alteração de Vencimento " + contaPagar.DVenc.ToShortDateString() + " para " + dataValida.ToShortDateString() + " Usuario: " + Sessao.usuarioLogado.Login + " - FORNECEDOR: " + contaPagar.Pessoa.RazaoSocial, "ALTERAÇÃO CONTA A PAGAR ID " + contaPagar.Id);
                     contaPagar.DVenc = dataValida;
                     Controller.getInstance().salvar(contaPagar);
-               
+
                     GenericaDesktop.ShowInfo("Alterado com Sucesso");
                 }
                 catch
@@ -665,6 +668,27 @@ namespace Lunar.Telas.ContasPagar
                 {
                     e.IsValid = false;
                     e.ErrorMessage = "Valor Inválido";
+
+                }
+            }
+            if (e.Column.MappingName == "Descricao")
+            {
+                try
+                {
+                    string descricao = e.NewValue.ToString();
+                    e.IsValid = true;
+                    contaPagar = new ContaPagar();
+                    contaPagar = (ContaPagar)grid.SelectedItem;
+                    GenericaDesktop.gravarLinhaLog("Alteração de Descrição " + contaPagar.Descricao + " para " + descricao + " Usuario: " + Sessao.usuarioLogado.Login + " - FORNECEDOR: " + contaPagar.Pessoa.RazaoSocial, "ALTERAÇÃO CONTA A PAGAR ID " + contaPagar.Id);
+                    contaPagar.Descricao = descricao;
+                    Controller.getInstance().salvar(contaPagar);
+
+                    GenericaDesktop.ShowInfo("Alterado com Sucesso");
+                }
+                catch
+                {
+                    e.IsValid = false;
+                    e.ErrorMessage = "Descrição Inválida!";
 
                 }
             }

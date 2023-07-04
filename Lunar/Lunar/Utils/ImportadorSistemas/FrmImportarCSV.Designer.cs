@@ -150,7 +150,7 @@
             this.btnFirebird.Name = "btnFirebird";
             this.btnFirebird.Size = new System.Drawing.Size(134, 32);
             this.btnFirebird.TabIndex = 13;
-            this.btnFirebird.Text = "Firebird Ultra - Puxar O.S";
+            this.btnFirebird.Text = "Firebird Ultra - Puxar";
             this.btnFirebird.UseVisualStyleBackColor = true;
             this.btnFirebird.Click += new System.EventHandler(this.btnFirebird_Click);
             // 
