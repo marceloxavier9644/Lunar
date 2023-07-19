@@ -136,7 +136,7 @@ namespace LunarBase.ClassesDAO
         public Nfe selecionarUltimoNumeroNota(string modelo)
         {
             String sql = "SELECT * FROM Nfe as Tabela WHERE Tabela.FlagExcluido <> true " +
-                         "and Tabela.Modelo = '"+ modelo + "' order by ABS(NNF) desc";
+                         "and Tabela.Modelo = '"+ modelo + "' and Tabela.CnpjEmitente = '"+Sessao.empresaFilialLogada.Cnpj+"' order by ABS(NNF) desc";
             Session = Conexao.GetSession();
             return Session.CreateSQLQuery(sql).AddEntity(typeof(Nfe)).SetMaxResults(1).UniqueResult<Nfe>();
         }

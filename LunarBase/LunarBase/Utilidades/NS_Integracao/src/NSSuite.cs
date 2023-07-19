@@ -1283,7 +1283,8 @@ public class NSSuite
         }
         else
         {
-            MessageBox.Show("Ocorreu um erro, veja o retorno da API para mais informações");
+            //desabilitei pq tava dando em todo reenvio de nota
+            //MessageBox.Show("Ocorreu um erro, veja o retorno da API para mais informações");
         }
 
         return resposta;
@@ -1440,8 +1441,8 @@ public class NSSuite
                 if (exibeNaTela) Process.Start(caminho + tpEventoSalvar + chave + nSeqEvento + "-procEven.pdf");
             }
         }
-        else
-            MessageBox.Show("Ocorreu um erro, veja o retorno da API para mais informações");
+        //else
+        //    MessageBox.Show("Ocorreu um erro, veja o retorno da API para mais informações");
     }
 
     public static string cancelarDocumento(string modelo, CancelarReq CancelarReq, string cnpjEmitente, bool a3)

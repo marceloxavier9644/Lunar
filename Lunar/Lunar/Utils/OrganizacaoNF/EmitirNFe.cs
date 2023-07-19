@@ -145,7 +145,15 @@ namespace Lunar.Utils.OrganizacaoNF
             nfe.TpNf = "1";
             nfe.IdDest = "1";
             nfe.TpImp = "1";
-            nfe.TpEmis = "1";
+            if (nfe.TpEmis != null)
+            {
+                if (nfe.TpEmis.Equals("6"))
+                    nfe.TpEmis = "6";
+                else
+                    nfe.TpEmis = "1";
+            }
+            else
+                nfe.TpEmis = "1";
             if (Sessao.parametroSistema.AmbienteProducao == true)
                 nfe.TpAmb = "1";
             else
@@ -1325,7 +1333,7 @@ namespace Lunar.Utils.OrganizacaoNF
                         idDest = TNFeInfNFeIdeIdDest.Item1,
                         cMunFG = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge,
                         tpImp = TNFeInfNFeIdeTpImp.Item1,
-                        tpEmis = TNFeInfNFeIdeTpEmis.Item1,
+                        tpEmis = retornarTipoEmissao(nfe),
 
                         tpAmb = tpAmbiente,
 
@@ -1391,6 +1399,17 @@ namespace Lunar.Utils.OrganizacaoNF
             return NFCeXML;
         }
 
+        private TNFeInfNFeIdeTpEmis retornarTipoEmissao(Nfe nfe)
+        {
+            TNFeInfNFeIdeTpEmis tpEmiss = new TNFeInfNFeIdeTpEmis();
+            if (nfe.TpEmis.Equals("6"))
+                tpEmiss = TNFeInfNFeIdeTpEmis.Item6;
+            else
+                tpEmiss = TNFeInfNFeIdeTpEmis.Item1;
+
+            return tpEmiss;
+
+        }
         private TNFeInfNFeDest retornarDestinatario(Nfe nfe, TAmb tpAmbiente)
         {
             string razaoConsumidor = nfe.Destinatario;

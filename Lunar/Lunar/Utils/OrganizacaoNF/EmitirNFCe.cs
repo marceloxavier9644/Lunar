@@ -1209,7 +1209,7 @@ namespace Lunar.Utils.OrganizacaoNF
                         ItemElementName = ItemChoiceType3.CPF,
                         Item = cpfDestinatario,
                         xNome = razaoConsumidor,
-                        indIEDest = TNFeInfNFeDestIndIEDest.Item9,
+                        indIEDest = retornarTipoIE(),
                         enderDest = new TEndereco
                         {
                             xLgr = nfe.Cliente.EnderecoPrincipal.Logradouro,
@@ -1254,7 +1254,27 @@ namespace Lunar.Utils.OrganizacaoNF
             string NFCeXML = Genericos.NFCeToXML(NFCe);
             return NFCeXML;
         }
-
+        private TNFeInfNFeDestIndIEDest retornarTipoIE()
+        {
+            if (cliente != null)
+            {
+                if (cliente.Id > 0)
+                {
+                    if (!String.IsNullOrEmpty(cliente.InscricaoEstadual) && !cliente.InscricaoEstadual.Equals("ISENTO"))
+                    {
+                        return TNFeInfNFeDestIndIEDest.Item1;
+                    }
+                    else if (cliente.InscricaoEstadual.Equals("ISENTO"))
+                        return TNFeInfNFeDestIndIEDest.Item2;
+                    else
+                        return TNFeInfNFeDestIndIEDest.Item9;
+                }
+                else
+                    return TNFeInfNFeDestIndIEDest.Item9;
+            }
+            else
+                return TNFeInfNFeDestIndIEDest.Item9;
+        }
         private string gerarNFCeSemConsumidor_4(Nfe nfe, TAmb tpAmbiente, Venda venda, OrdemServico ordemServico)
         {
             VendaFormaPagamentoController vendaFormaPagamentoController = new VendaFormaPagamentoController();

@@ -1323,8 +1323,11 @@ namespace Lunar.Telas.Fiscal
                 string retorno = "";
                 nfe = (Nfe)grid.SelectedItem;
                 if (chkSVCAN.Checked == true && nfe.Modelo.Equals("55"))
+                {
                     nfe.TpEmis = "6";
-                Controller.getInstance().salvar(nfe);
+                        Controller.getInstance().salvar(nfe);
+                }
+            
                 if (nfe.NfeStatus == null)
                 {
                     if (nfe.Status.Equals("Preparando Envio..."))

@@ -1457,7 +1457,7 @@ namespace Lunar.Telas.Fiscal
             return tipoPresenca;
         }
 
-        private void enviarXMLNFeParaApi(string xmlNfe)
+        public void enviarXMLNFeParaApi(string xmlNfe)
         {
             RetConsultaProcessamentoNF retConsulta = new RetConsultaProcessamentoNF();
             NfeStatus nfeStatus = new NfeStatus();

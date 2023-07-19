@@ -1279,8 +1279,8 @@ namespace Lunar.Telas.OrdensDeServico
                 nfeProduto.VProd = produto.ValorVenda;
                 nfeProduto.QTrib = quantidade;
                 nfeProduto.VDesc = descontoItem;
-                nfeProduto.DescricaoInterna = produto.Descricao;
-                nfeProduto.XProd = produto.Descricao;
+                nfeProduto.DescricaoInterna = produto.Descricao.Trim();
+                nfeProduto.XProd = produto.Descricao.Trim();
                 nfeProduto.CodigoInterno = produto.Id.ToString();
                 nfeProduto.CEan = "";
                 nfeProduto.CEANTrib = "";
@@ -1336,12 +1336,12 @@ namespace Lunar.Telas.OrdensDeServico
                 validacao = false;
                 return false;
             }
-            else if (pessoa.Cnpj.Length == 14)
-            {
-                GenericaDesktop.ShowAlerta("Em uma NFCe o cliente não pode ser pessoa jurídica, caso precise identificar a pessoa jurídica faça a emissão de uma NFe modelo 55");
-                validacao = false;
-                return false;
-            }
+            //else if (pessoa.Cnpj.Length == 14)
+            //{
+            //    GenericaDesktop.ShowAlerta("Em uma NFCe o cliente não pode ser pessoa jurídica, caso precise identificar a pessoa jurídica faça a emissão de uma NFe modelo 55");
+            //    validacao = false;
+            //    return false;
+            //}
             if (!String.IsNullOrEmpty(pessoa.RazaoSocial))
                 validacao = true;
             if (pessoa.EnderecoPrincipal == null)
@@ -2244,37 +2244,42 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 OrdemServico ordemServico = new OrdemServico();
                 ordemServico = (OrdemServico)grid.SelectedItem;
-                Form formBackground = new Form();
-                try
+                if (ordemServico.Status.Equals("ENCERRADA"))
                 {
-                    //FrmImprimirEtiquetasOtica frm = new FrmImprimirEtiquetasOtica();
-            
-                    FrmHistoricoOS uu = new FrmHistoricoOS(ordemServico);
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    //formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    //formBackground.Left = Top = 0;
-                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = false;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-                    uu.Owner = formBackground;
-                    uu.ShowDialog();
-                    formBackground.Dispose();
-                    uu.Dispose();
+                    Form formBackground = new Form();
+                    try
+                    {
+                        //FrmImprimirEtiquetasOtica frm = new FrmImprimirEtiquetasOtica();
+
+                        FrmHistoricoOS uu = new FrmHistoricoOS(ordemServico);
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        uu.ShowDialog();
+                        formBackground.Dispose();
+                        uu.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        formBackground.Dispose();
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    formBackground.Dispose();
-                }
+                else
+                    GenericaDesktop.ShowAlerta("É possível ver histórico de pagamento apenas de Ordem de Serviço encerrada!");
             }
         }
     }

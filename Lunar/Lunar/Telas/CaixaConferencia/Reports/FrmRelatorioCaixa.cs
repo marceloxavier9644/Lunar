@@ -97,7 +97,7 @@ namespace Lunar.Telas.CaixaConferencia.Reports
                 }
                 if (chkApenasDespesas.Checked == true)
                 {
-                    sql = sql + "and Tabela.Tipo = 'S' ";
+                    sql = sql + "and Tabela.Tipo = 'S' and Tabela.TabelaOrigem <> 'DEPOSITO_BANCARIO' ";
                 }
                 if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
                     sql = sql + "and Tabela.Cobrador = " + txtCodCobrador.Texts + " ";

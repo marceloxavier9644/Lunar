@@ -250,6 +250,7 @@ namespace Lunar.Utils.ImportadorSistemas
             {
                 int i = 0;
                   lblInformacao.Text = "Importação iniciada...";
+                MessageBox.Show("Para evitar erros remova o auto increment do ID na tabela produto");
                 foreach (DataGridViewRow col in dataGridView1.Rows)
                 {
                     i++;
