@@ -1,0 +1,1010 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe33230719300038000108550010022749891952646662" versao="4.00">
+      <ide>
+        <cUF>33</cUF>
+        <cNF>95264666</cNF>
+        <natOp>VENDAS DE MERC. ADQUIRIDAS E/OU RECEBIDAS DE TERCEIROS</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>2274989</nNF>
+        <dhEmi>2023-07-10T07:38:00-03:00</dhEmi>
+        <dhSaiEnt>2023-07-10T07:38:00-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>3304557</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>2</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>12.1.2210 | 3.0</verProc>
+      </ide>
+      <emit>
+        <CNPJ>19300038000108</CNPJ>
+        <xNome>HTK LENTES OFTALMICAS S.A.</xNome>
+        <xFant>HTK</xFant>
+        <enderEmit>
+          <xLgr>RUA SINIMBU</xLgr>
+          <nro>486</nro>
+          <xBairro>SAO CRISTOVAO</xBairro>
+          <cMun>3304557</cMun>
+          <xMun>RIO DE JANEIRO</xMun>
+          <UF>RJ</UF>
+          <CEP>20910180</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>552125896961</fone>
+        </enderEmit>
+        <IE>86614685</IE>
+        <IM>05952212</IM>
+        <CNAE>3250707</CNAE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>44816075000110</CNPJ>
+        <xNome>RONALDO JOSE DA SILVA SOBRINHO LTDA</xNome>
+        <enderDest>
+          <xLgr>RUA GOIAS</xLgr>
+          <nro>280</nro>
+          <xCpl>A</xCpl>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3147006</cMun>
+          <xMun>PARACATU</xMun>
+          <UF>MG</UF>
+          <CEP>38600126</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3836763246</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>0042384800043</IE>
+        <email>roneijsprodutosopticosltda@hotmail.com</email>
+      </dest>
+      <entrega>
+        <CNPJ>44816075000110</CNPJ>
+        <xNome>RONALDO JOSE DA SILVA SOBRINHO LTDA</xNome>
+        <xLgr>avenida governador valadares</xLgr>
+        <nro>688</nro>
+        <xBairro>centro</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>unai</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <cPais>1058</cPais>
+        <xPais>BRASIL</xPais>
+        <fone>3836763246</fone>
+        <email>roneijsprodutosopticosltda@hotmail.com</email>
+        <IE>0042384800043</IE>
+      </entrega>
+      <det nItem="1">
+        <prod>
+          <cProd>FS56PB704649</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente VS 1.56 Foto Fil. Azul Dia 70 Esf.-1.00 Cil.-0.25</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>37.45000000</vUnCom>
+          <vProd>37.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>37.45000000</vUnTrib>
+          <vFrete>3.05</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>40.50</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>1.62</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>38.88</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.64</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>38.88</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>2.95</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="2">
+        <prod>
+          <cProd>FS56PB704848</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente VS 1.56 Foto Fil. Azul Dia 70 Esf.-0.50 Cil.-0.50</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>37.45000000</vUnCom>
+          <vProd>37.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>37.45000000</vUnTrib>
+          <vFrete>3.06</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>40.51</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>1.62</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>38.89</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.64</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>38.89</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>2.96</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="3">
+        <prod>
+          <cProd>FS56EB655250</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente V.S. 1.56 Filtro Azul c/A.R. Dia 65 Esf.+0.50 Cil. 0.00</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>5.0000</qCom>
+          <vUnCom>15.45000000</vUnCom>
+          <vProd>77.25</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>5.0000</qTrib>
+          <vUnTrib>15.45000000</vUnTrib>
+          <vFrete>6.30</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>83.55</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>3.34</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>80.21</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>1.33</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>80.21</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>6.10</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="4">
+        <prod>
+          <cProd>FS56EB655246</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente V.S. 1.56 Filtro Azul c/A.R. Dia 65 Esf.+0.50 Cil.-1.00</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>15.45000000</vUnCom>
+          <vProd>15.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>15.45000000</vUnTrib>
+          <vFrete>1.26</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>16.71</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.67</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>16.04</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.26</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>16.04</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.22</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="5">
+        <prod>
+          <cProd>FS56EB655345</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente V.S. 1.56 Filtro Azul c/A.R. Dia 65 Esf.+0.75 Cil.-1.25</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>2.0000</qCom>
+          <vUnCom>15.45000000</vUnCom>
+          <vProd>30.90</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>2.0000</qTrib>
+          <vUnTrib>15.45000000</vUnTrib>
+          <vFrete>2.52</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>33.42</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>1.34</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>32.08</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.53</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>32.08</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>2.43</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="6">
+        <prod>
+          <cProd>FS56EB655445</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente V.S. 1.56 Filtro Azul c/A.R. Dia 65 Esf.+1.00 Cil.-1.25</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>15.45000000</vUnCom>
+          <vProd>15.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>15.45000000</vUnTrib>
+          <vFrete>1.26</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>16.71</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.67</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>16.04</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.27</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>16.04</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.22</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="7">
+        <prod>
+          <cProd>FS56EB704944</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente V.S. 1.56 Filtro Azul c/A.R. Dia 70 Esf.-0.25 Cil.-1.50</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>4.0000</qCom>
+          <vUnCom>15.45000000</vUnCom>
+          <vProd>61.80</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>4.0000</qTrib>
+          <vUnTrib>15.45000000</vUnTrib>
+          <vFrete>5.04</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>66.84</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>2.67</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>64.17</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>1.05</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>64.17</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>4.88</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="8">
+        <prod>
+          <cProd>FS59AA753845</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Vis Simp 1.59 Poly c/A.R. Dia 70 Esf.-3.00 Cil.-1.25</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>8.40000000</vUnCom>
+          <vProd>8.40</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>8.40000000</vUnTrib>
+          <vFrete>0.69</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>9.09</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.36</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>8.73</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.15</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>8.73</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>0.66</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="9">
+        <prod>
+          <cProd>FS59AA753440</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Vis Simp 1.59 Poly c/A.R. Dia 70 Esf.-4.00 Cil.-2.50</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>25.25000000</vUnCom>
+          <vProd>25.25</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>25.25000000</vUnTrib>
+          <vFrete>2.06</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>27.31</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>1.10</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>26.21</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.43</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>26.21</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>2.00</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="10">
+        <prod>
+          <cProd>FS59EB703950</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente VS 1.59 Poly Filtro Azul AR Dia 70 Esf.-2.75 Cil. 0.00</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>19.95000000</vUnCom>
+          <vProd>19.95</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>19.95000000</vUnTrib>
+          <vFrete>1.63</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>21.58</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.86</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>20.72</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.34</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>20.72</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.57</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="11">
+        <prod>
+          <cProd>FS59EB703948</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente VS 1.59 Poly Filtro Azul AR Dia 70 Esf.-2.75 Cil.-0.50</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>19.95000000</vUnCom>
+          <vProd>19.95</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>19.95000000</vUnTrib>
+          <vFrete>1.63</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>21.58</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.86</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>20.72</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.34</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>20.72</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.57</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="12">
+        <prod>
+          <cProd>FS59EB704243</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente VS 1.59 Poly Filtro Azul AR Dia 70 Esf.-2.00 Cil.-1.75</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>19.95000000</vUnCom>
+          <vProd>19.95</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>19.95000000</vUnTrib>
+          <vFrete>1.63</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>21.58</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.87</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>20.71</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.35</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>20.71</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.58</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="13">
+        <prod>
+          <cProd>FS59EB704143</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente VS 1.59 Poly Filtro Azul AR Dia 70 Esf.-2.25 Cil.-1.75</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>19.95000000</vUnCom>
+          <vProd>19.95</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>19.95000000</vUnTrib>
+          <vFrete>1.62</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>21.57</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.86</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>20.71</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.34</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>20.71</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.57</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="14">
+        <prod>
+          <cProd>FS59BB705047</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>L HTK VS ACBD 1.59 Poli FA AR AZ Dia 70 Esf. 0 Cil. -0.75</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>19.95000000</vUnCom>
+          <vProd>19.95</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>19.95000000</vUnTrib>
+          <vFrete>1.63</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>21.58</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.86</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>20.72</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.34</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>20.72</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.58</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="15">
+        <prod>
+          <cProd>FS59BB705046</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>L HTK VS ACBD 1.59 Poli FA AR AZ Dia 70 Esf. 0 Cil. -1</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>19.95000000</vUnCom>
+          <vProd>19.95</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>19.95000000</vUnTrib>
+          <vFrete>1.62</vFrete>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>21.57</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.86</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>20.71</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.34</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>20.71</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.57</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>464.10</vBC>
+          <vICMS>18.56</vICMS>
+          <vICMSDeson>0</vICMSDeson>
+          <vFCPUFDest>0</vFCPUFDest>
+          <vICMSUFDest>0</vICMSUFDest>
+          <vICMSUFRemet>0</vICMSUFRemet>
+          <vFCP>0</vFCP>
+          <vBCST>0</vBCST>
+          <vST>0</vST>
+          <vFCPST>0</vFCPST>
+          <vFCPSTRet>0</vFCPSTRet>
+          <vProd>429.10</vProd>
+          <vFrete>35.00</vFrete>
+          <vSeg>0</vSeg>
+          <vDesc>0</vDesc>
+          <vII>0</vII>
+          <vIPI>0</vIPI>
+          <vIPIDevol>0</vIPIDevol>
+          <vPIS>7.35</vPIS>
+          <vCOFINS>33.86</vCOFINS>
+          <vOutro>0</vOutro>
+          <vNF>464.10</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>34028316000294</CNPJ>
+          <xNome>EMP BRASILEIRA DE CORREIOS E TELEGRAFOS</xNome>
+          <IE>81613524</IE>
+          <xEnder>AV PRESIDENTE VARGAS, 3077</xEnder>
+          <xMun>RIO DE JANEIRO</xMun>
+          <UF>RJ</UF>
+        </transporta>
+        <vol>
+          <qVol>1</qVol>
+          <esp>CAIXA</esp>
+          <pesoL>0.430</pesoL>
+          <pesoB>0.430</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>1002274989</nFat>
+          <vOrig>464.10</vOrig>
+          <vDesc>0</vDesc>
+          <vLiq>464.10</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2023-08-31</dVenc>
+          <vDup>154.70</vDup>
+        </dup>
+        <dup>
+          <nDup>002</nDup>
+          <dVenc>2023-10-02</dVenc>
+          <vDup>154.70</vDup>
+        </dup>
+        <dup>
+          <nDup>003</nDup>
+          <dVenc>2023-10-30</dVenc>
+          <vDup>154.70</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>15</tPag>
+          <vPag>464.10</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>Ped HTK MG18210032 Ped Cliente GP7510 Faturamento sera Realizado no dia 01/08/23</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>53113791000122</CNPJ>
+        <xContato>Rodrigo de Almeida Sartorio</xContato>
+        <email>resp_tecnico_dfe_protheus@totvs.com.br</email>
+        <fone>1128593904</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe33230719300038000108550010022749891952646662">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>WHCgUxM4rYFt8fYzK5np/mpe3h8=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>QTM4TsMe3DRtbzMZLUVvJzME+frNgHMqmxpqTI6x9JHHaON2zWIxXxkKbDTP1h6F3GfuojNQIDNhB+3zHJiNB0R0Uxk+ZlKANgdz8eL+BvAp31JvzIvfWZDfJFQ/xWF0y4mW8Gfkqr1PQC+bPP1WTa950787r5IVZ1VUZyLLhwGbZlk5DhdrMyQI/h6gYHQTlqJ87Ew8pq16zjTT3eHyWy+traaGmPh6Xe4S9Ev+/BXyBfRs/PlBANPiu3ueFOvQ6GH+sUtmQw3onVx4Raf0477zpwD6b2F+XrJ5uKqkTceSMmp7FKYPI1+s/aMhmDOnglooACLZpH7Msquz+AhuvQ==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infProt>
+      <tpAmb>1</tpAmb>
+      <verAplic>SVRS202306130906</verAplic>
+      <chNFe>33230719300038000108550010022749891952646662</chNFe>
+      <dhRecbto>2023-07-10T07:39:09-03:00</dhRecbto>
+      <nProt>333230143062744</nProt>
+      <digVal>WHCgUxM4rYFt8fYzK5np/mpe3h8=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

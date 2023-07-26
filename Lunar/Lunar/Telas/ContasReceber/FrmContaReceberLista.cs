@@ -1,4 +1,5 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
+using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
@@ -757,11 +758,11 @@ namespace Lunar.Telas.ContasReceber
                     btnPesquisar.PerformClick();
                     exportPDF();
                 }
-                else
-                {
-                    exportPDF();
-                }
-            }        
+            }
+            else
+            {
+                exportPDF();
+            }
         }
 
         private void exportPDF()
@@ -820,10 +821,10 @@ namespace Lunar.Telas.ContasReceber
                     btnPesquisar.PerformClick();
                     exportarExcel();
                 }
-                else
-                {
-                    exportarExcel();
-                }
+            }
+            else
+            {
+                exportarExcel();
             }
         }
         private void exportarExcel()
@@ -924,6 +925,16 @@ namespace Lunar.Telas.ContasReceber
                 }
             }
         }
-            
+
+        private void btnExtratoCliente_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtCodCliente.Texts))
+            {
+                FrmExtratoCliente frm = new FrmExtratoCliente(listaContaReceberCalculado);
+                frm.ShowDialog();
+            }
+            else
+                GenericaDesktop.ShowAlerta("Selecione um cliente para conseguir gerar o extrato!");
+        }
     }
 }

@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Syncfusion.Data;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
+using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
 using Syncfusion.WinForms.DataGrid.Interactivity;
@@ -1353,25 +1354,29 @@ namespace Lunar.Telas.Fiscal
                         venda = vendaController.selecionarVendaPorNF(nfe.Id);
                         OrdemServico ordemServico = null;
                         ordemServico = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
+
+                        //Verifica valores dos produtos
+                        IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
+                        foreach (NfeProduto nfeProduto in listaProdutos)
+                        {
+                            totalNotaSemDesconto = (totalNotaSemDesconto + nfeProduto.VProd) * decimal.Parse(nfeProduto.QCom);
+                            totalDesconto = totalDesconto + nfeProduto.VDesc;
+                            nfeProduto.Ncm = nfeProduto.Produto.Ncm;
+                            nfeProduto.Cest = nfeProduto.Produto.Cest;
+                            nfeProduto.Cfop = nfeProduto.Produto.CfopVenda;
+                            nfeProduto.CodAnp = nfeProduto.Produto.CodAnp;
+                            nfeProduto.CstIcms = nfeProduto.Produto.CstIcms;
+                            nfeProduto.CstPis = nfeProduto.Produto.CstPis;
+                            nfeProduto.CstCofins = nfeProduto.Produto.CstCofins;
+                            nfeProduto.CstIpi = nfeProduto.Produto.CstIpi;
+                            Controller.getInstance().salvar(nfeProduto);
+                        }
+                        totalNotaComDesconto = totalNotaSemDesconto - totalDesconto;
+                        //Reenvia nota
                         if (venda != null || ordemServico != null)
                         {
-                            IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
-                            foreach (NfeProduto nfeProduto in listaProdutos)
-                            {
-                                totalNotaSemDesconto = (totalNotaSemDesconto + nfeProduto.VProd) * decimal.Parse(nfeProduto.QCom);
-                                totalDesconto = totalDesconto + nfeProduto.VDesc;
-                                nfeProduto.Ncm = nfeProduto.Produto.Ncm;
-                                nfeProduto.Cest = nfeProduto.Produto.Cest;
-                                nfeProduto.Cfop = nfeProduto.Produto.CfopVenda;
-                                nfeProduto.CodAnp = nfeProduto.Produto.CodAnp;
-                                nfeProduto.CstIcms = nfeProduto.Produto.CstIcms;
-                                nfeProduto.CstPis = nfeProduto.Produto.CstPis;
-                                nfeProduto.CstCofins = nfeProduto.Produto.CstCofins;
-                                nfeProduto.CstIpi = nfeProduto.Produto.CstIpi;
-                                Controller.getInstance().salvar(nfeProduto);
-                            }
                             IList<NfeProduto> listaProdutosAtualizados = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
-                            totalNotaComDesconto = totalNotaSemDesconto - totalDesconto;
+                            //totalNotaComDesconto = totalNotaSemDesconto - totalDesconto;
                             if (venda != null || ordemServico != null)
                             {
                                 if (nfe.Modelo.Equals("65"))
@@ -1523,7 +1528,45 @@ namespace Lunar.Telas.Fiscal
                                 }
                             }
                         }
-                        else if (venda == null & ordemServico == null)
+                        //Se for uma nota gerada na tela de geracao de notas agrupadas
+                        else if (venda == null && ordemServico == null && nfe.Modelo == "65")
+                        {
+                            FormaPagamento formaPag = new FormaPagamento();
+                            NfePagamentoController nfePagamentoController = new NfePagamentoController();
+                            IList<NfePagamento> listaPagamento = nfePagamentoController.selecionarPagamentoPorNfe(nfe.Id);
+                            if (listaPagamento.Count > 0)
+                            {
+                                foreach(NfePagamento nfePagamento in listaPagamento)
+                                {
+                                    formaPag = nfePagamento.FormaPagamento;
+                                }
+                            }
+                            EmitirNFCe emitirNFCe = new EmitirNFCe();
+                            if (nfe.Cliente == null)
+                                xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutos, nfe.Cliente, null, null, formaPag);
+                            else
+                                xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutos, nfe.Cliente, null, null, formaPag);
+                            if (!String.IsNullOrEmpty(xmlStrEnvio))
+                            {
+                                retorno = emitirNFCe.ReenviarXMLApi(xmlStrEnvio, nfe);
+                            }
+                            if (retorno.Contains("Autorizada com Sucesso"))
+                            {
+                                string caminhoX = @"Fiscal\XML\NFCe\" + nfe.DataCadastro.Year + "-" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
+                                LunarApiNotas lunarApiNotas = new LunarApiNotas();
+                                byte[] arquivo;
+                                using (var stream = new FileStream(caminhoX, FileMode.Open, FileAccess.Read))
+                                {
+                                    using (var reader = new BinaryReader(stream))
+                                    {
+                                        arquivo = reader.ReadBytes((int)stream.Length);
+                                        var retor = lunarApiNotas.EnvioNotaParaNuvem(Sessao.empresaFilialLogada.Cnpj, nfe.Chave, "NFCE", "AUTORIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
+                                    }
+                                }
+                                pesquisaNotas();
+                            }
+                        }
+                        else
                         {
                             GenericaDesktop.ShowAlerta("Dê 2 cliques na nota fiscal e selecione a opção de enviar nota!");
                         }

@@ -758,8 +758,8 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.VProd = ordemServicoProduto.ValorUnitario;
                     nfeProduto.QTrib = quantidade;
                     nfeProduto.VDesc = descontoItem;
-                    nfeProduto.DescricaoInterna = produto.Descricao;
-                    nfeProduto.XProd = produto.Descricao;
+                    nfeProduto.DescricaoInterna = produto.Descricao.Trim();
+                    nfeProduto.XProd = produto.Descricao.Trim();
                     nfeProduto.CodigoInterno = produto.Id.ToString();
                     nfeProduto.CEan = "";
                     nfeProduto.CEANTrib = "";
@@ -1279,77 +1279,98 @@ namespace Lunar.Telas.Fiscal
             String xmlStrEnvio = "";
             nfe = new Nfe();
             bool validaCliente = true;
-            cli = new Pessoa();
-            cli.Id = int.Parse(txtCodCliente.Texts);
-            cli = (Pessoa)PessoaController.getInstance().selecionar(cli);
-            validaCliente = validarClienteNFCe(cli);
-            if (validaCliente == false && GenericaDesktop.ShowConfirmacao("Deseja emitir a nota sem identificar o consumidor?"))
+            if (!string.IsNullOrEmpty(txtCodCliente.Texts))
             {
-                cli = null;
-                validaCliente = true;
-            }
-            ValidadorNotaSaida validador = new ValidadorNotaSaida();
-            if (validaCliente == true)
-            {
-                //Emitir NFCe pela nova classe
-                EmitirNFCe emitirNFCe = new EmitirNFCe();
-                carregarListaProdutos();
-                try
+                if (!string.IsNullOrEmpty(txtCodFormaPagamento.Texts))
                 {
-                    if (validador.validarProdutosNota(listaProdutosNFe))
+                    cli = new Pessoa();
+                    cli.Id = int.Parse(txtCodCliente.Texts);
+                    cli = (Pessoa)PessoaController.getInstance().selecionar(cli);
+                    validaCliente = validarClienteNFCe(cli);
+                    if (validaCliente == false && GenericaDesktop.ShowConfirmacao("Deseja emitir a nota sem identificar o consumidor?"))
                     {
-                        numeroNFe = Sessao.parametroSistema.ProximoNumeroNFCe;
-                        FormaPagamento formaPagamento = new FormaPagamento();
-                        formaPagamento.Id = int.Parse(txtCodFormaPagamento.Texts);
-                        formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
-
-                        decimal valorProdutos = 0;
-                        decimal valorDesconto = 0;
-                        decimal valorTotalComDesconto = 0;
-                        foreach(NfeProduto nfeProduto in listaProdutosNFe)
+                        cli = null;
+                        validaCliente = true;
+                    }
+                    ValidadorNotaSaida validador = new ValidadorNotaSaida();
+                    if (validaCliente == true)
+                    {
+                        //Emitir NFCe pela nova classe
+                        EmitirNFCe emitirNFCe = new EmitirNFCe();
+                        carregarListaProdutos();
+                        try
                         {
-                            if(nfeProduto.ValorProduto > 0)
-                                valorProdutos = valorProdutos + nfeProduto.ValorProduto;
-                            else
-                                valorProdutos = valorProdutos + nfeProduto.VProd;
-                            valorDesconto = valorDesconto + nfeProduto.ValorDesconto;
-                            valorTotalComDesconto = valorTotalComDesconto + nfeProduto.ValorFinal;
-                        }
-                        nfe.Modelo = "65";
-                        nfe.VProd = valorProdutos;
-                        nfe.VDesc = valorDesconto;
-                        nfe.VNf = valorTotalComDesconto;
-                        try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(nfe.VProd, nfe.VNf, nfe.VDesc, numeroNFe, listaProdutosNFe, cli, null, null, formaPagamento); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
-
-                        if (!String.IsNullOrEmpty(xmlStrEnvio))
-                        {
-                            enviarXMLNFCeParaApi(xmlStrEnvio);
-                        }
-                        if(ordem!= null)
-                        {
-                            if(ordem.Id > 0)
+                            if (validador.validarProdutosNota(listaProdutosNFe))
                             {
-                                ordem.Nfe = nfe;
-                                Controller.getInstance().salvar(ordem);
+                                numeroNFe = Sessao.parametroSistema.ProximoNumeroNFCe;
+                                FormaPagamento formaPagamento = new FormaPagamento();
+                                formaPagamento.Id = int.Parse(txtCodFormaPagamento.Texts);
+                                formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+
+                                decimal valorProdutos = 0;
+                                decimal valorDesconto = 0;
+                                decimal valorTotalComDesconto = 0;
+                                foreach (NfeProduto nfeProduto in listaProdutosNFe)
+                                {
+                                    if (nfeProduto.ValorProduto > 0)
+                                        valorProdutos = valorProdutos + nfeProduto.ValorProduto;
+                                    else
+                                        valorProdutos = (valorProdutos + (nfeProduto.VProd * decimal.Parse(nfeProduto.QCom)));
+                                    valorDesconto = valorDesconto + nfeProduto.ValorDesconto;
+                                    valorTotalComDesconto = valorTotalComDesconto + nfeProduto.ValorFinal;
+                                }
+                                nfe.Modelo = "65";
+                                nfe.VProd = valorProdutos;
+                                nfe.VDesc = valorDesconto;
+                                nfe.VNf = valorTotalComDesconto;
+                                try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(nfe.VProd, nfe.VNf, nfe.VDesc, numeroNFe, listaProdutosNFe, cli, null, null, formaPagamento); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
+
+                                if (!String.IsNullOrEmpty(xmlStrEnvio))
+                                {
+                                    enviarXMLNFCeParaApi(xmlStrEnvio);
+                                }
+                                if (ordem != null)
+                                {
+                                    if (ordem.Id > 0)
+                                    {
+                                        if (ordem.ValorProduto == nfe.VNf)
+                                        {
+                                            ordem.Nfe = nfe;
+                                            Controller.getInstance().salvar(ordem);
+                                        }
+                                    }
+                                }
+                                //Nfe pagamento
+                                NfePagamento nfePagamento = new NfePagamento();
+                                nfePagamento.Descricao = "PAGAMENTO NFE " + nfe.NNf;
+                                nfePagamento.Origem = "NOTA FISCAL AGRUPADA";
+                                nfePagamento.Nfe = nfe;
+                                nfePagamento.FormaPagamento = formaPagamento;
+                                Controller.getInstance().salvar(nfePagamento);
+
+                                Sessao.parametroSistema.ProximoNumeroNFCe = (int.Parse(numeroNFe) + 1).ToString();
+                                Controller.getInstance().salvar(Sessao.parametroSistema);
+                                listaProdutos = new List<OrdemServicoProduto>();
+                                listaProdutosNFe = new List<NfeProduto>();
+                                ordem = new OrdemServico();
+                                gridProdutos.DataSource = null;
+                                gridProdutos.Refresh();
+                                btnPesquisar.PerformClick();
                             }
                         }
-                        Sessao.parametroSistema.ProximoNumeroNFCe = (int.Parse(numeroNFe) + 1).ToString();
-                        Controller.getInstance().salvar(Sessao.parametroSistema);
-                        listaProdutos = new List<OrdemServicoProduto>();
-                        listaProdutosNFe = new List<NfeProduto>();
-                        ordem = new OrdemServico();
-                        gridProdutos.DataSource = null;
-                        gridProdutos.Refresh();
-                        btnPesquisar.PerformClick();
+                        catch (Exception erro)
+                        {
+                            ordem.Nfe = null;
+                            Controller.getInstance().salvar(ordem);
+                            GenericaDesktop.ShowErro(erro.Message);
+                        }
                     }
                 }
-                catch (Exception erro)
-                {
-                    ordem.Nfe = null;
-                    Controller.getInstance().salvar(ordem);
-                    GenericaDesktop.ShowErro(erro.Message);
-                }
+                else
+                    GenericaDesktop.ShowAlerta("Preencha uma forma de Pagamento!");
             }
+            else
+                GenericaDesktop.ShowAlerta("Preencha um cliente!");
         }
         private void atualizarProximoNumeroNota()
         {

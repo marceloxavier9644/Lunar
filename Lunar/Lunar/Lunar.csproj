@@ -649,6 +649,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsParcelaDuplicata.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Telas\ContasReceber\Reports\FrmExtratoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasReceber\Reports\FrmExtratoCliente.Designer.cs">
+      <DependentUpon>FrmExtratoCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\ContasReceber\Reports\FrmImprimirDuplicata.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1325,6 +1331,10 @@
     <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataCarne.rdlc" />
     <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataDaGraficaModelo01.rdlc" />
     <EmbeddedResource Include="Telas\ContasReceber\Reports\DuplicataMercantil.rdlc" />
+    <EmbeddedResource Include="Telas\ContasReceber\Reports\ExtratoCliente01.rdlc" />
+    <EmbeddedResource Include="Telas\ContasReceber\Reports\FrmExtratoCliente.resx">
+      <DependentUpon>FrmExtratoCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\ContasReceber\Reports\FrmImprimirDuplicata.resx">
       <DependentUpon>FrmImprimirDuplicata.cs</DependentUpon>
     </EmbeddedResource>

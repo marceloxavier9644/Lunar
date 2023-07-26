@@ -82,6 +82,7 @@
             this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
             this.btnReceber = new Lunar.RJ_UI.Classes.RJButton();
             this.btnAbater = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnExtratoCliente = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasEscritorioCobranca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasSPC)).BeginInit();
@@ -507,7 +508,7 @@
             this.lblCalculando.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblCalculando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCalculando.ForeColor = System.Drawing.Color.Red;
-            this.lblCalculando.Location = new System.Drawing.Point(91, 580);
+            this.lblCalculando.Location = new System.Drawing.Point(165, 580);
             this.lblCalculando.Name = "lblCalculando";
             this.lblCalculando.Size = new System.Drawing.Size(175, 16);
             this.lblCalculando.TabIndex = 242;
@@ -923,12 +924,34 @@
             this.btnAbater.TextColor = System.Drawing.Color.Black;
             this.btnAbater.UseVisualStyleBackColor = false;
             // 
+            // btnExtratoCliente
+            // 
+            this.btnExtratoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExtratoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExtratoCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExtratoCliente.FlatAppearance.BorderSize = 0;
+            this.btnExtratoCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExtratoCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnExtratoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExtratoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtratoCliente.IconChar = FontAwesome.Sharp.IconChar.FileInvoice;
+            this.btnExtratoCliente.IconColor = System.Drawing.Color.Olive;
+            this.btnExtratoCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExtratoCliente.IconSize = 38;
+            this.btnExtratoCliente.Location = new System.Drawing.Point(91, 571);
+            this.btnExtratoCliente.Name = "btnExtratoCliente";
+            this.btnExtratoCliente.Size = new System.Drawing.Size(36, 34);
+            this.btnExtratoCliente.TabIndex = 245;
+            this.btnExtratoCliente.UseVisualStyleBackColor = true;
+            this.btnExtratoCliente.Click += new System.EventHandler(this.btnExtratoCliente_Click);
+            // 
             // FrmContaReceberLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1055, 668);
+            this.Controls.Add(this.btnExtratoCliente);
             this.Controls.Add(this.btnAbater);
             this.Controls.Add(this.btnParcial);
             this.Controls.Add(this.lblCalculando);
@@ -1001,5 +1024,6 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasEscritorioCobranca;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasSPC;
         private RJ_UI.Classes.RJButton btnAbater;
+        private FontAwesome.Sharp.IconButton btnExtratoCliente;
     }
 }

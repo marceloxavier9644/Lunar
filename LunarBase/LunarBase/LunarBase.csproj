@@ -50,6 +50,7 @@
     <None Remove="HBM\Ncm.hbm.xml" />
     <None Remove="HBM\Nfe.hbm.xml" />
     <None Remove="HBM\NfeCce.hbm.xml" />
+    <None Remove="HBM\NfePagamento.hbm.xml" />
     <None Remove="HBM\NfeProduto.hbm.xml" />
     <None Remove="HBM\NfeReferencia.hbm.xml" />
     <None Remove="HBM\NfeStatus.hbm.xml" />
@@ -94,6 +95,7 @@
     <EmbeddedResource Include="HBM\BalancoEstoqueProduto.hbm.xml" />
     <EmbeddedResource Include="HBM\ComissaoVenda.hbm.xml" />
     <EmbeddedResource Include="HBM\CondicionalDevolucao.hbm.xml" />
+    <EmbeddedResource Include="HBM\NfePagamento.hbm.xml" />
     <EmbeddedResource Include="HBM\OsComissao.hbm.xml" />
     <EmbeddedResource Include="HBM\Query.hbm.xml" />
     <EmbeddedResource Include="HBM\AdquirenteCartao.hbm.xml" />
