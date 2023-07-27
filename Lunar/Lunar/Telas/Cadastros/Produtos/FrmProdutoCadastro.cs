@@ -67,6 +67,9 @@ namespace Lunar.Telas.Cadastros.Produtos
         {
             InitializeComponent();
 
+            gerarCombustivel();
+            gerarCoresVeiculos();
+            gerarDadosVeiculos();
             gerarTiposDeProdutos();
             this.produto = produto;
             get_Produto(produto);
@@ -82,8 +85,103 @@ namespace Lunar.Telas.Cadastros.Produtos
 
             }
             iniciarTributosPadroes();
+
         }
 
+        private void gerarDadosVeiculos()
+        {
+            List<string> listaCambio = new List<string>();
+            listaCambio.Add("0-NÃO APLICÁVEL");
+            listaCambio.Add("1-MANUAL");
+            listaCambio.Add("2-AUTOMÁTICO");
+            listaCambio.Add("3-AUTOMATIZADO");
+            listaCambio.Add("4-CVT");
+            comboTipoCambio.DataSource = listaCambio;
+            comboTipoCambio.SelectedIndex = 0;
+
+            List<string> listaEspecie = new List<string>();
+            listaEspecie.Add("01-PASSAGEIRO");
+            listaEspecie.Add("02-CARGA");
+            listaEspecie.Add("03-MISTO");
+            listaEspecie.Add("04-TRAÇÃO");
+            listaEspecie.Add("05-ESPECIAL");
+            comboEspecie.DataSource = listaEspecie;
+            comboEspecie.SelectedIndex = 0;
+
+            List<string> listaTipoVeiculo = new List<string>();
+            listaTipoVeiculo.Add("02-CICLOMOTOR");
+            listaTipoVeiculo.Add("03-MOTONETA");
+            listaTipoVeiculo.Add("04-MOTOCICLETA");
+            listaTipoVeiculo.Add("05-TRICICLO");
+            listaTipoVeiculo.Add("06-AUTOMÓVEL");
+            listaTipoVeiculo.Add("07-MICRO-ÔNIBUS");
+            listaTipoVeiculo.Add("08-ÔNIBUS");
+            listaTipoVeiculo.Add("10-REBOQUE");
+            listaTipoVeiculo.Add("11-SEMIRREBOQUE");
+            listaTipoVeiculo.Add("13-CAMIONETA");
+            listaTipoVeiculo.Add("14-CAMINHÃO");
+            listaTipoVeiculo.Add("15-CARROÇA");
+            listaTipoVeiculo.Add("17-CAMINHÃO TRATOR");
+            listaTipoVeiculo.Add("18-TRATOR DE RODAS");
+            listaTipoVeiculo.Add("19-TRATOR DE ESTEIRAS");
+            listaTipoVeiculo.Add("20-TRATOR MISTO");
+            listaTipoVeiculo.Add("21-QUADRICICLO");
+            listaTipoVeiculo.Add("22-CHASSI/PLATAFORMA");
+            listaTipoVeiculo.Add("23-CAMINHONETE");
+            listaTipoVeiculo.Add("25-UTILITÁRIO");
+            listaTipoVeiculo.Add("26-MOTOR-CASA");
+            comboTipoVeiculo.DataSource = listaTipoVeiculo;
+            comboTipoVeiculo.SelectedIndex = 0;
+        }
+        private void gerarCombustivel()
+        {
+            List<string> lista = new List<string>();
+            lista.Add("01-ÁLCOOL");
+            lista.Add("02-GASOLINA");
+            lista.Add("03-DIESEL");
+            lista.Add("04-GASOGÊNIO");
+            lista.Add("05-GÁS METANO");
+            lista.Add("06-ELÉTRICO/FONTE INTERNA");
+            lista.Add("07-ELÉTRICO/FONTE EXTERNA");
+            lista.Add("08-GASOLINA/GÁS NATURAL COMBUSTÍVEL");
+            lista.Add("09-ÁLCOOL/GÁS NATURAL COMBUSTÍVEL");
+            lista.Add("10-DIESEL/GÁS NATURAL COMBUSTÍVEL");
+            lista.Add("11-VIDE/CAMPO/OBSERVAÇÃO");
+            lista.Add("12-ÁLCOOL/GNV");
+            lista.Add("13-GASOLINA/GNV");
+            lista.Add("14-DIESEL/GNV");
+            lista.Add("15-GNV");
+            lista.Add("16-ÁLCOOL/GASOLINA");
+            lista.Add("17-GASOLINA/ÁLCOOL/GÁS NATURAL");
+            lista.Add("18-GASOLINA/ELÉTRICO");
+            comboCombustivel.DataSource = lista;
+            comboCombustivel.SelectedIndex = 0;
+        }
+        private void gerarCoresVeiculos()
+        {
+            List<string> tiposDeProduto = new List<string>();
+            tiposDeProduto.Add("01-AMARELO");
+            tiposDeProduto.Add("02-AZUL");
+            tiposDeProduto.Add("03-BEGE");
+            tiposDeProduto.Add("04-BRANCA");
+            tiposDeProduto.Add("05-CINZA");
+            tiposDeProduto.Add("06-DOURADA");
+            tiposDeProduto.Add("07-GRENÁ");
+            tiposDeProduto.Add("08-LARANJA");
+            tiposDeProduto.Add("09-MARROM");
+            tiposDeProduto.Add("10-PRATA");
+            tiposDeProduto.Add("11-PRETA");
+            tiposDeProduto.Add("12-ROSA");
+            tiposDeProduto.Add("13-ROXA");
+            tiposDeProduto.Add("14-VERDE");
+            tiposDeProduto.Add("15-VERMELHA");
+            tiposDeProduto.Add("16-FANTASIA");
+            comboCorDenatran.DataSource = tiposDeProduto;
+            comboCorDenatran.SelectedIndex = 0;
+
+            comboCorMontadora.DataSource = tiposDeProduto;
+            comboCorMontadora.SelectedIndex = 0;
+        }
         private void gerarTiposDeProdutos()
         {
             List<string> tiposDeProduto = new List<string>();
@@ -211,6 +309,50 @@ namespace Lunar.Telas.Cadastros.Produtos
                 txtPercGni.Texts = produto.PercGni.ToString();
             if (produto.ValorPartida > 0)
                 txtValorPartida.Texts = produto.ValorPartida.ToString("C2", CultureInfo.CurrentCulture).Replace("R$ ", "");
+
+
+            //Veiculo
+            if (produto.Veiculo == true)
+            {
+                tabPageAdv3.TabVisible = true;
+                chkVeiculo.Checked = true;
+            }
+            else
+            {
+                chkVeiculo.Checked = false;
+                tabPageAdv3.TabVisible = false;
+            }
+            comboCorMontadora.Text = produto.CorMontadora;
+            comboCorDenatran.Text = produto.CorDenatran;
+            txtTipoPintura.Texts = produto.TipoPintura;
+
+            txtPotenciaCv.Texts = produto.PotenciaCv;
+            txtCilindradaCc.Texts = produto.CilindradaCc;
+            txtNumeroMotor.Texts =  produto.NumeroMotor;
+            comboCombustivel.Text = produto.Combustivel;
+            comboTipoCambio.Text = produto.TipoCambio;
+            comboTipoEntrada.Text = produto.TipoEntrada;
+            txtAno.Texts = produto.AnoVeiculo;
+            txtModelo.Texts = produto.ModeloVeiculo;
+            txtMarcaModelo.Texts = produto.MarcaModelo;
+            comboEspecie.Text = produto.EspecieVeiculo;
+            txtLotacao.Texts = produto.LotacaoVeiculo;
+            comboTipoVeiculo.Text = produto.TipoVeiculo;
+            txtPlaca.Texts = produto.Placa;
+            txtRenavam.Texts = produto.Renavam;
+            txtChassi.Texts = produto.Chassi;
+            comboCondicaoVeiculo.Text = produto.CondicaoVeiculo;
+            txtDistanciaEixos.Texts = produto.DistanciaEixo;
+            txtCapacidadeMaximaTracao.Texts = produto.CapacidadeTracao;
+            txtPesoLiquidoVeiculo.Texts = produto.PesoLiquidoVeiculo;
+            txtPesoBrutoVeiculo.Texts = produto.PesoBrutoVeiculo;
+            comboCondicaoProduto.Text = produto.CondicaoProduto;
+            comboRestricaoVeiculo.Text = produto.RestricaoVeiculo;
+            txtKmEntrada.Texts = produto.KmEntrada;
+            if (produto.VeiculoNovo == true)
+                chkVeiculoNovo.Checked = true;
+            else
+                chkVeiculoNovo.Checked = false;
         }
 
         private void btnPesquisaUnidadeMedida_Click(object sender, EventArgs e)
@@ -1084,7 +1226,41 @@ namespace Lunar.Telas.Cadastros.Produtos
                 produto.Empresa = Sessao.empresaFilialLogada.Empresa;
                 produto.EmpresaFilial = Sessao.empresaFilialLogada;
 
-                //produtoController.salvar(produto);
+                //Veiculo
+                if (chkVeiculo.Checked == true)
+                    produto.Veiculo = true;
+                else
+                    produto.Veiculo = false;
+                produto.CorMontadora = comboCorMontadora.Text;
+                produto.CorDenatran = comboCorDenatran.Text;
+                produto.TipoPintura = txtTipoPintura.Texts;
+                produto.PotenciaCv = txtPotenciaCv.Texts;
+                produto.CilindradaCc = txtCilindradaCc.Texts;
+                produto.NumeroMotor = txtNumeroMotor.Texts;
+                produto.Combustivel = comboCombustivel.Text;
+                produto.TipoCambio = comboTipoCambio.Text;
+                produto.TipoEntrada = comboTipoEntrada.Text;
+                produto.AnoVeiculo = txtAno.Texts;
+                produto.ModeloVeiculo = txtModelo.Texts;
+                produto.MarcaModelo = txtMarcaModelo.Texts;
+                produto.EspecieVeiculo = comboEspecie.Text;
+                produto.LotacaoVeiculo = txtLotacao.Texts;
+                produto.TipoVeiculo = comboTipoVeiculo.Text;
+                produto.Placa = txtPlaca.Texts;
+                produto.Renavam = txtRenavam.Texts;
+                produto.Chassi = txtChassi.Texts;
+                produto.CondicaoVeiculo = comboCondicaoVeiculo.Text;
+                produto.DistanciaEixo = txtDistanciaEixos.Texts;
+                produto.CapacidadeTracao = txtCapacidadeMaximaTracao.Texts;
+                produto.PesoLiquidoVeiculo = txtPesoLiquidoVeiculo.Texts;
+                produto.PesoBrutoVeiculo = txtPesoBrutoVeiculo.Texts;
+                produto.CondicaoProduto = comboCondicaoProduto.Text;
+                produto.RestricaoVeiculo = comboRestricaoVeiculo.Text;
+                produto.KmEntrada = txtKmEntrada.Texts;
+                if(chkVeiculoNovo.Checked == true)
+                    produto.VeiculoNovo = true;
+                else
+                    produto.VeiculoNovo = false;
 
                 //SALVA NA TABELA ESTOQUE O NOVO SALDO PRODUTO CASO O PRODUTO SEJA UM NOVO CADASTRO
                 if (String.IsNullOrEmpty(txtID.Texts))
@@ -2002,6 +2178,21 @@ namespace Lunar.Telas.Cadastros.Produtos
                 {
                     btnPesquisaGrupoFiscal.PerformClick();
                 }
+            }
+        }
+
+        private void chkVeiculo_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkVeiculo.Checked == true)
+                    tabPageAdv3.TabVisible = true;
+                else
+                    tabPageAdv3.TabVisible = false;
+            }
+            catch
+            {
+
             }
         }
     }

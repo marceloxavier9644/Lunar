@@ -255,6 +255,7 @@
             this.tabControlAdv2 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.metroPanel6 = new MetroFramework.Controls.MetroPanel();
+            this.chkVeiculo = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.txtID = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel66 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.chkProdutoPesavel = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
@@ -381,14 +382,69 @@
             this.txtCSOSN = new Lunar.RJ_UI.Classes.RJTextBox();
             this.rjTextBox35 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabPageAdv3 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.chkVeiculoNovo = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.autoLabel97 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel96 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboRestricaoVeiculo = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.autoLabel95 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboCondicaoProduto = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.autoLabel94 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel93 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel92 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel91 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel90 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboCondicaoVeiculo = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.autoLabel89 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel88 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel87 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel86 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboTipoVeiculo = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.autoLabel85 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel84 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboEspecie = new Syncfusion.WinForms.ListView.SfComboBox();
             this.autoLabel75 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.rjTextBox4 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel74 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.rjTextBox3 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.autoLabel83 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboTipoEntrada = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.autoLabel82 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboTipoCambio = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.autoLabel81 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboCombustivel = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.autoLabel80 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel79 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel78 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel77 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboCorDenatran = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.autoLabel76 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboCorMontadora = new Syncfusion.WinForms.ListView.SfComboBox();
             this.autoLabel73 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.rjTextBox2 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel72 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.rjTextBox1 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtKmEntrada = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox25 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox24 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtPesoBrutoVeiculo = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtPesoLiquidoVeiculo = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCapacidadeMaximaTracao = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtDistanciaEixos = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox19 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtChassi = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtRenavam = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtPlaca = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox15 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtLotacao = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox13 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtMarcaModelo = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtModelo = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox12 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox11 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox10 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCilindradaCc = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtPotenciaCv = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtNumeroMotor = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox6 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox5 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtAno = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtTipoPintura = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnSalva = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancela = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsTelefone)).BeginInit();
@@ -433,6 +489,7 @@
             this.tabControlAdv2.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
             this.metroPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVeiculo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkProdutoPesavel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkProdutoComGrade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkControlaEstoque)).BeginInit();
@@ -441,6 +498,17 @@
             this.tabPageAdv2.SuspendLayout();
             this.metroPanel9.SuspendLayout();
             this.tabPageAdv3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVeiculoNovo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboRestricaoVeiculo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCondicaoProduto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCondicaoVeiculo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboTipoVeiculo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboEspecie)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboTipoEntrada)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboTipoCambio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCombustivel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCorDenatran)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCorMontadora)).BeginInit();
             this.SuspendLayout();
             // 
             // cidadeDataGridViewTextBoxColumn
@@ -3355,6 +3423,7 @@
             // 
             // metroPanel6
             // 
+            this.metroPanel6.Controls.Add(this.chkVeiculo);
             this.metroPanel6.Controls.Add(this.autoLabel8);
             this.metroPanel6.Controls.Add(this.txtID);
             this.metroPanel6.Controls.Add(this.autoLabel66);
@@ -3428,6 +3497,23 @@
             this.metroPanel6.VerticalScrollbarBarColor = true;
             this.metroPanel6.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel6.VerticalScrollbarSize = 10;
+            // 
+            // chkVeiculo
+            // 
+            this.chkVeiculo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.chkVeiculo.BeforeTouchSize = new System.Drawing.Size(249, 27);
+            this.chkVeiculo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.chkVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkVeiculo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.chkVeiculo.HotBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.chkVeiculo.Location = new System.Drawing.Point(542, 387);
+            this.chkVeiculo.Name = "chkVeiculo";
+            this.chkVeiculo.Size = new System.Drawing.Size(249, 27);
+            this.chkVeiculo.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Office2016White;
+            this.chkVeiculo.TabIndex = 274;
+            this.chkVeiculo.Text = " Veículo/Bicicleta Elétrica";
+            this.chkVeiculo.ThemeName = "Office2016White";
+            this.chkVeiculo.CheckStateChanged += new System.EventHandler(this.chkVeiculo_CheckStateChanged);
             // 
             // txtID
             // 
@@ -5879,14 +5965,69 @@
             // 
             // tabPageAdv3
             // 
+            this.tabPageAdv3.Controls.Add(this.chkVeiculoNovo);
+            this.tabPageAdv3.Controls.Add(this.autoLabel97);
+            this.tabPageAdv3.Controls.Add(this.autoLabel96);
+            this.tabPageAdv3.Controls.Add(this.comboRestricaoVeiculo);
+            this.tabPageAdv3.Controls.Add(this.autoLabel95);
+            this.tabPageAdv3.Controls.Add(this.comboCondicaoProduto);
+            this.tabPageAdv3.Controls.Add(this.autoLabel94);
+            this.tabPageAdv3.Controls.Add(this.autoLabel93);
+            this.tabPageAdv3.Controls.Add(this.autoLabel92);
+            this.tabPageAdv3.Controls.Add(this.autoLabel91);
+            this.tabPageAdv3.Controls.Add(this.autoLabel90);
+            this.tabPageAdv3.Controls.Add(this.comboCondicaoVeiculo);
+            this.tabPageAdv3.Controls.Add(this.autoLabel89);
+            this.tabPageAdv3.Controls.Add(this.autoLabel88);
+            this.tabPageAdv3.Controls.Add(this.autoLabel87);
+            this.tabPageAdv3.Controls.Add(this.autoLabel86);
+            this.tabPageAdv3.Controls.Add(this.comboTipoVeiculo);
+            this.tabPageAdv3.Controls.Add(this.autoLabel85);
+            this.tabPageAdv3.Controls.Add(this.autoLabel84);
+            this.tabPageAdv3.Controls.Add(this.comboEspecie);
             this.tabPageAdv3.Controls.Add(this.autoLabel75);
-            this.tabPageAdv3.Controls.Add(this.rjTextBox4);
             this.tabPageAdv3.Controls.Add(this.autoLabel74);
-            this.tabPageAdv3.Controls.Add(this.rjTextBox3);
+            this.tabPageAdv3.Controls.Add(this.autoLabel83);
+            this.tabPageAdv3.Controls.Add(this.comboTipoEntrada);
+            this.tabPageAdv3.Controls.Add(this.autoLabel82);
+            this.tabPageAdv3.Controls.Add(this.comboTipoCambio);
+            this.tabPageAdv3.Controls.Add(this.autoLabel81);
+            this.tabPageAdv3.Controls.Add(this.comboCombustivel);
+            this.tabPageAdv3.Controls.Add(this.autoLabel80);
+            this.tabPageAdv3.Controls.Add(this.autoLabel79);
+            this.tabPageAdv3.Controls.Add(this.autoLabel78);
+            this.tabPageAdv3.Controls.Add(this.autoLabel77);
+            this.tabPageAdv3.Controls.Add(this.comboCorDenatran);
+            this.tabPageAdv3.Controls.Add(this.autoLabel76);
+            this.tabPageAdv3.Controls.Add(this.comboCorMontadora);
             this.tabPageAdv3.Controls.Add(this.autoLabel73);
-            this.tabPageAdv3.Controls.Add(this.rjTextBox2);
             this.tabPageAdv3.Controls.Add(this.autoLabel72);
-            this.tabPageAdv3.Controls.Add(this.rjTextBox1);
+            this.tabPageAdv3.Controls.Add(this.txtKmEntrada);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox25);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox24);
+            this.tabPageAdv3.Controls.Add(this.txtPesoBrutoVeiculo);
+            this.tabPageAdv3.Controls.Add(this.txtPesoLiquidoVeiculo);
+            this.tabPageAdv3.Controls.Add(this.txtCapacidadeMaximaTracao);
+            this.tabPageAdv3.Controls.Add(this.txtDistanciaEixos);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox19);
+            this.tabPageAdv3.Controls.Add(this.txtChassi);
+            this.tabPageAdv3.Controls.Add(this.txtRenavam);
+            this.tabPageAdv3.Controls.Add(this.txtPlaca);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox15);
+            this.tabPageAdv3.Controls.Add(this.txtLotacao);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox13);
+            this.tabPageAdv3.Controls.Add(this.txtMarcaModelo);
+            this.tabPageAdv3.Controls.Add(this.txtModelo);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox12);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox11);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox10);
+            this.tabPageAdv3.Controls.Add(this.txtCilindradaCc);
+            this.tabPageAdv3.Controls.Add(this.txtPotenciaCv);
+            this.tabPageAdv3.Controls.Add(this.txtNumeroMotor);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox6);
+            this.tabPageAdv3.Controls.Add(this.rjTextBox5);
+            this.tabPageAdv3.Controls.Add(this.txtAno);
+            this.tabPageAdv3.Controls.Add(this.txtTipoPintura);
             this.tabPageAdv3.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPageAdv3.Image = null;
             this.tabPageAdv3.ImageSize = new System.Drawing.Size(16, 16);
@@ -5896,9 +6037,359 @@
             this.tabPageAdv3.Size = new System.Drawing.Size(974, 494);
             this.tabPageAdv3.TabFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.tabPageAdv3.TabIndex = 4;
-            this.tabPageAdv3.TabVisible = false;
-            this.tabPageAdv3.Text = "Ecommerce";
+            this.tabPageAdv3.Text = "Veículo";
             this.tabPageAdv3.ThemesEnabled = false;
+            // 
+            // chkVeiculoNovo
+            // 
+            this.chkVeiculoNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.chkVeiculoNovo.BeforeTouchSize = new System.Drawing.Size(158, 27);
+            this.chkVeiculoNovo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.chkVeiculoNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkVeiculoNovo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.chkVeiculoNovo.HotBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.chkVeiculoNovo.Location = new System.Drawing.Point(800, 450);
+            this.chkVeiculoNovo.Name = "chkVeiculoNovo";
+            this.chkVeiculoNovo.Size = new System.Drawing.Size(158, 27);
+            this.chkVeiculoNovo.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Office2016White;
+            this.chkVeiculoNovo.TabIndex = 26;
+            this.chkVeiculoNovo.Text = " Veículo Novo";
+            this.chkVeiculoNovo.ThemeName = "Office2016White";
+            // 
+            // autoLabel97
+            // 
+            this.autoLabel97.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel97.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel97.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel97.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel97.Location = new System.Drawing.Point(636, 380);
+            this.autoLabel97.Name = "autoLabel97";
+            this.autoLabel97.Size = new System.Drawing.Size(76, 16);
+            this.autoLabel97.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel97.TabIndex = 325;
+            this.autoLabel97.Text = "Km Entrada";
+            this.autoLabel97.ThemeName = "Office2016White";
+            this.autoLabel97.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel96
+            // 
+            this.autoLabel96.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel96.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel96.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel96.Location = new System.Drawing.Point(636, 319);
+            this.autoLabel96.Name = "autoLabel96";
+            this.autoLabel96.Size = new System.Drawing.Size(65, 16);
+            this.autoLabel96.TabIndex = 323;
+            this.autoLabel96.Text = "Restrição";
+            // 
+            // comboRestricaoVeiculo
+            // 
+            this.comboRestricaoVeiculo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboRestricaoVeiculo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboRestricaoVeiculo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboRestricaoVeiculo.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboRestricaoVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboRestricaoVeiculo.Location = new System.Drawing.Point(646, 345);
+            this.comboRestricaoVeiculo.MaxDropDownItems = 15;
+            this.comboRestricaoVeiculo.Name = "comboRestricaoVeiculo";
+            this.comboRestricaoVeiculo.Size = new System.Drawing.Size(297, 28);
+            this.comboRestricaoVeiculo.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboRestricaoVeiculo.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboRestricaoVeiculo.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboRestricaoVeiculo.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboRestricaoVeiculo.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboRestricaoVeiculo.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboRestricaoVeiculo.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboRestricaoVeiculo.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboRestricaoVeiculo.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboRestricaoVeiculo.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboRestricaoVeiculo.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboRestricaoVeiculo.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboRestricaoVeiculo.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboRestricaoVeiculo.TabIndex = 24;
+            this.comboRestricaoVeiculo.ThemeName = "Office2016White";
+            this.comboRestricaoVeiculo.ToolTipOption.ShadowVisible = false;
+            this.comboRestricaoVeiculo.Watermark = "Selecione";
+            // 
+            // autoLabel95
+            // 
+            this.autoLabel95.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel95.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel95.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel95.Location = new System.Drawing.Point(636, 255);
+            this.autoLabel95.Name = "autoLabel95";
+            this.autoLabel95.Size = new System.Drawing.Size(115, 16);
+            this.autoLabel95.TabIndex = 320;
+            this.autoLabel95.Text = "Condição Produto";
+            // 
+            // comboCondicaoProduto
+            // 
+            this.comboCondicaoProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboCondicaoProduto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboCondicaoProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboCondicaoProduto.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboCondicaoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoProduto.Location = new System.Drawing.Point(646, 281);
+            this.comboCondicaoProduto.MaxDropDownItems = 15;
+            this.comboCondicaoProduto.Name = "comboCondicaoProduto";
+            this.comboCondicaoProduto.Size = new System.Drawing.Size(297, 28);
+            this.comboCondicaoProduto.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCondicaoProduto.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCondicaoProduto.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboCondicaoProduto.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboCondicaoProduto.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboCondicaoProduto.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboCondicaoProduto.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboCondicaoProduto.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoProduto.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoProduto.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboCondicaoProduto.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoProduto.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoProduto.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboCondicaoProduto.TabIndex = 23;
+            this.comboCondicaoProduto.ThemeName = "Office2016White";
+            this.comboCondicaoProduto.ToolTipOption.ShadowVisible = false;
+            this.comboCondicaoProduto.Watermark = "Selecione";
+            // 
+            // autoLabel94
+            // 
+            this.autoLabel94.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel94.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel94.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel94.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel94.Location = new System.Drawing.Point(801, 192);
+            this.autoLabel94.Name = "autoLabel94";
+            this.autoLabel94.Size = new System.Drawing.Size(102, 16);
+            this.autoLabel94.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel94.TabIndex = 317;
+            this.autoLabel94.Text = "Peso Bruto (ton)";
+            this.autoLabel94.ThemeName = "Office2016White";
+            this.autoLabel94.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel93
+            // 
+            this.autoLabel93.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel93.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel93.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel93.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel93.Location = new System.Drawing.Point(636, 192);
+            this.autoLabel93.Name = "autoLabel93";
+            this.autoLabel93.Size = new System.Drawing.Size(92, 16);
+            this.autoLabel93.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel93.TabIndex = 315;
+            this.autoLabel93.Text = "Peso Líq. (ton)";
+            this.autoLabel93.ThemeName = "Office2016White";
+            this.autoLabel93.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel92
+            // 
+            this.autoLabel92.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel92.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel92.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel92.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel92.Location = new System.Drawing.Point(801, 132);
+            this.autoLabel92.Name = "autoLabel92";
+            this.autoLabel92.Size = new System.Drawing.Size(142, 16);
+            this.autoLabel92.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel92.TabIndex = 313;
+            this.autoLabel92.Text = "Cap. Máx. Tração (ton)";
+            this.autoLabel92.ThemeName = "Office2016White";
+            this.autoLabel92.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel91
+            // 
+            this.autoLabel91.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel91.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel91.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel91.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel91.Location = new System.Drawing.Point(636, 131);
+            this.autoLabel91.Name = "autoLabel91";
+            this.autoLabel91.Size = new System.Drawing.Size(125, 16);
+            this.autoLabel91.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel91.TabIndex = 311;
+            this.autoLabel91.Text = "Dist. Entre Eixos (m)";
+            this.autoLabel91.ThemeName = "Office2016White";
+            this.autoLabel91.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel90
+            // 
+            this.autoLabel90.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel90.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel90.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel90.Location = new System.Drawing.Point(636, 68);
+            this.autoLabel90.Name = "autoLabel90";
+            this.autoLabel90.Size = new System.Drawing.Size(65, 16);
+            this.autoLabel90.TabIndex = 309;
+            this.autoLabel90.Text = "Condição";
+            // 
+            // comboCondicaoVeiculo
+            // 
+            this.comboCondicaoVeiculo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboCondicaoVeiculo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboCondicaoVeiculo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboCondicaoVeiculo.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboCondicaoVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoVeiculo.Location = new System.Drawing.Point(646, 94);
+            this.comboCondicaoVeiculo.MaxDropDownItems = 15;
+            this.comboCondicaoVeiculo.Name = "comboCondicaoVeiculo";
+            this.comboCondicaoVeiculo.Size = new System.Drawing.Size(299, 28);
+            this.comboCondicaoVeiculo.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCondicaoVeiculo.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCondicaoVeiculo.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboCondicaoVeiculo.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboCondicaoVeiculo.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboCondicaoVeiculo.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboCondicaoVeiculo.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboCondicaoVeiculo.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoVeiculo.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoVeiculo.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboCondicaoVeiculo.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoVeiculo.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCondicaoVeiculo.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboCondicaoVeiculo.TabIndex = 18;
+            this.comboCondicaoVeiculo.ThemeName = "Office2016White";
+            this.comboCondicaoVeiculo.ToolTipOption.ShadowVisible = false;
+            this.comboCondicaoVeiculo.Watermark = "Selecione";
+            // 
+            // autoLabel89
+            // 
+            this.autoLabel89.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel89.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel89.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel89.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel89.Location = new System.Drawing.Point(636, 5);
+            this.autoLabel89.Name = "autoLabel89";
+            this.autoLabel89.Size = new System.Drawing.Size(48, 16);
+            this.autoLabel89.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel89.TabIndex = 306;
+            this.autoLabel89.Text = "Chassi";
+            this.autoLabel89.ThemeName = "Office2016White";
+            this.autoLabel89.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel88
+            // 
+            this.autoLabel88.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel88.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel88.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel88.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel88.Location = new System.Drawing.Point(344, 380);
+            this.autoLabel88.Name = "autoLabel88";
+            this.autoLabel88.Size = new System.Drawing.Size(66, 16);
+            this.autoLabel88.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel88.TabIndex = 304;
+            this.autoLabel88.Text = "Renavam";
+            this.autoLabel88.ThemeName = "Office2016White";
+            this.autoLabel88.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel87
+            // 
+            this.autoLabel87.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel87.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel87.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel87.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel87.Location = new System.Drawing.Point(344, 319);
+            this.autoLabel87.Name = "autoLabel87";
+            this.autoLabel87.Size = new System.Drawing.Size(42, 16);
+            this.autoLabel87.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel87.TabIndex = 302;
+            this.autoLabel87.Text = "Placa";
+            this.autoLabel87.ThemeName = "Office2016White";
+            this.autoLabel87.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel86
+            // 
+            this.autoLabel86.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel86.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel86.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel86.Location = new System.Drawing.Point(344, 255);
+            this.autoLabel86.Name = "autoLabel86";
+            this.autoLabel86.Size = new System.Drawing.Size(102, 16);
+            this.autoLabel86.TabIndex = 300;
+            this.autoLabel86.Text = "Tipo de Veículo";
+            // 
+            // comboTipoVeiculo
+            // 
+            this.comboTipoVeiculo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboTipoVeiculo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboTipoVeiculo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboTipoVeiculo.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboTipoVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoVeiculo.Location = new System.Drawing.Point(354, 281);
+            this.comboTipoVeiculo.MaxDropDownItems = 15;
+            this.comboTipoVeiculo.Name = "comboTipoVeiculo";
+            this.comboTipoVeiculo.Size = new System.Drawing.Size(262, 28);
+            this.comboTipoVeiculo.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboTipoVeiculo.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboTipoVeiculo.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboTipoVeiculo.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboTipoVeiculo.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboTipoVeiculo.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboTipoVeiculo.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboTipoVeiculo.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoVeiculo.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoVeiculo.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboTipoVeiculo.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoVeiculo.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoVeiculo.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboTipoVeiculo.TabIndex = 14;
+            this.comboTipoVeiculo.ThemeName = "Office2016White";
+            this.comboTipoVeiculo.ToolTipOption.ShadowVisible = false;
+            this.comboTipoVeiculo.Watermark = "Selecione";
+            // 
+            // autoLabel85
+            // 
+            this.autoLabel85.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel85.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel85.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel85.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel85.Location = new System.Drawing.Point(344, 192);
+            this.autoLabel85.Name = "autoLabel85";
+            this.autoLabel85.Size = new System.Drawing.Size(56, 16);
+            this.autoLabel85.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel85.TabIndex = 297;
+            this.autoLabel85.Text = "Lotação";
+            this.autoLabel85.ThemeName = "Office2016White";
+            this.autoLabel85.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel84
+            // 
+            this.autoLabel84.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel84.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel84.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel84.Location = new System.Drawing.Point(344, 132);
+            this.autoLabel84.Name = "autoLabel84";
+            this.autoLabel84.Size = new System.Drawing.Size(57, 16);
+            this.autoLabel84.TabIndex = 295;
+            this.autoLabel84.Text = "Espécie";
+            // 
+            // comboEspecie
+            // 
+            this.comboEspecie.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboEspecie.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboEspecie.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboEspecie.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboEspecie.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboEspecie.Location = new System.Drawing.Point(354, 158);
+            this.comboEspecie.MaxDropDownItems = 15;
+            this.comboEspecie.Name = "comboEspecie";
+            this.comboEspecie.Size = new System.Drawing.Size(262, 28);
+            this.comboEspecie.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboEspecie.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboEspecie.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboEspecie.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboEspecie.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboEspecie.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboEspecie.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboEspecie.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboEspecie.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboEspecie.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboEspecie.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboEspecie.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboEspecie.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboEspecie.TabIndex = 12;
+            this.comboEspecie.ThemeName = "Office2016White";
+            this.comboEspecie.ToolTipOption.ShadowVisible = false;
+            this.comboEspecie.Watermark = "Selecione";
             // 
             // autoLabel75
             // 
@@ -5906,40 +6397,14 @@
             this.autoLabel75.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel75.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.autoLabel75.Location = new System.Drawing.Point(450, 15);
+            this.autoLabel75.Location = new System.Drawing.Point(344, 68);
             this.autoLabel75.Name = "autoLabel75";
-            this.autoLabel75.Size = new System.Drawing.Size(39, 16);
+            this.autoLabel75.Size = new System.Drawing.Size(95, 16);
             this.autoLabel75.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
-            this.autoLabel75.TabIndex = 188;
-            this.autoLabel75.Text = "Peso";
+            this.autoLabel75.TabIndex = 292;
+            this.autoLabel75.Text = "Marca/Modelo";
             this.autoLabel75.ThemeName = "Office2016White";
             this.autoLabel75.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
-            // 
-            // rjTextBox4
-            // 
-            this.rjTextBox4.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.rjTextBox4.BackColor = System.Drawing.Color.White;
-            this.rjTextBox4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox4.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox4.BorderRadius = 8;
-            this.rjTextBox4.BorderSize = 2;
-            this.rjTextBox4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rjTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox4.Location = new System.Drawing.Point(447, 25);
-            this.rjTextBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox4.Multiline = false;
-            this.rjTextBox4.Name = "rjTextBox4";
-            this.rjTextBox4.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox4.PasswordChar = false;
-            this.rjTextBox4.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox4.PlaceholderText = "";
-            this.rjTextBox4.ReadOnly = false;
-            this.rjTextBox4.Size = new System.Drawing.Size(138, 37);
-            this.rjTextBox4.TabIndex = 187;
-            this.rjTextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox4.Texts = "";
-            this.rjTextBox4.UnderlinedStyle = false;
             // 
             // autoLabel74
             // 
@@ -5947,40 +6412,259 @@
             this.autoLabel74.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel74.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel74.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.autoLabel74.Location = new System.Drawing.Point(304, 15);
+            this.autoLabel74.Location = new System.Drawing.Point(490, 7);
             this.autoLabel74.Name = "autoLabel74";
-            this.autoLabel74.Size = new System.Drawing.Size(39, 16);
+            this.autoLabel74.Size = new System.Drawing.Size(53, 16);
             this.autoLabel74.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
-            this.autoLabel74.TabIndex = 186;
-            this.autoLabel74.Text = "Peso";
+            this.autoLabel74.TabIndex = 290;
+            this.autoLabel74.Text = "Modelo";
             this.autoLabel74.ThemeName = "Office2016White";
             this.autoLabel74.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
             // 
-            // rjTextBox3
+            // autoLabel83
             // 
-            this.rjTextBox3.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.rjTextBox3.BackColor = System.Drawing.Color.White;
-            this.rjTextBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox3.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox3.BorderRadius = 8;
-            this.rjTextBox3.BorderSize = 2;
-            this.rjTextBox3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rjTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox3.Location = new System.Drawing.Point(301, 25);
-            this.rjTextBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox3.Multiline = false;
-            this.rjTextBox3.Name = "rjTextBox3";
-            this.rjTextBox3.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox3.PasswordChar = false;
-            this.rjTextBox3.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox3.PlaceholderText = "";
-            this.rjTextBox3.ReadOnly = false;
-            this.rjTextBox3.Size = new System.Drawing.Size(138, 37);
-            this.rjTextBox3.TabIndex = 185;
-            this.rjTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox3.Texts = "";
-            this.rjTextBox3.UnderlinedStyle = false;
+            this.autoLabel83.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel83.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel83.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel83.Location = new System.Drawing.Point(8, 380);
+            this.autoLabel83.Name = "autoLabel83";
+            this.autoLabel83.Size = new System.Drawing.Size(104, 16);
+            this.autoLabel83.TabIndex = 288;
+            this.autoLabel83.Text = "Tipo de Entrada";
+            // 
+            // comboTipoEntrada
+            // 
+            this.comboTipoEntrada.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboTipoEntrada.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboTipoEntrada.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboTipoEntrada.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboTipoEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoEntrada.Location = new System.Drawing.Point(18, 406);
+            this.comboTipoEntrada.MaxDropDownItems = 15;
+            this.comboTipoEntrada.Name = "comboTipoEntrada";
+            this.comboTipoEntrada.Size = new System.Drawing.Size(312, 28);
+            this.comboTipoEntrada.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboTipoEntrada.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboTipoEntrada.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboTipoEntrada.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboTipoEntrada.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboTipoEntrada.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboTipoEntrada.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboTipoEntrada.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoEntrada.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoEntrada.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboTipoEntrada.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoEntrada.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoEntrada.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboTipoEntrada.TabIndex = 8;
+            this.comboTipoEntrada.ThemeName = "Office2016White";
+            this.comboTipoEntrada.ToolTipOption.ShadowVisible = false;
+            this.comboTipoEntrada.Watermark = "Selecione";
+            // 
+            // autoLabel82
+            // 
+            this.autoLabel82.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel82.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel82.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel82.Location = new System.Drawing.Point(8, 319);
+            this.autoLabel82.Name = "autoLabel82";
+            this.autoLabel82.Size = new System.Drawing.Size(104, 16);
+            this.autoLabel82.TabIndex = 285;
+            this.autoLabel82.Text = "Tipo de Câmbio";
+            // 
+            // comboTipoCambio
+            // 
+            this.comboTipoCambio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboTipoCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboTipoCambio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboTipoCambio.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboTipoCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoCambio.Location = new System.Drawing.Point(18, 345);
+            this.comboTipoCambio.MaxDropDownItems = 15;
+            this.comboTipoCambio.Name = "comboTipoCambio";
+            this.comboTipoCambio.Size = new System.Drawing.Size(312, 28);
+            this.comboTipoCambio.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboTipoCambio.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboTipoCambio.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboTipoCambio.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboTipoCambio.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboTipoCambio.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboTipoCambio.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboTipoCambio.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoCambio.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoCambio.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboTipoCambio.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoCambio.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTipoCambio.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboTipoCambio.TabIndex = 7;
+            this.comboTipoCambio.ThemeName = "Office2016White";
+            this.comboTipoCambio.ToolTipOption.ShadowVisible = false;
+            this.comboTipoCambio.Watermark = "Selecione";
+            // 
+            // autoLabel81
+            // 
+            this.autoLabel81.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel81.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel81.Location = new System.Drawing.Point(8, 255);
+            this.autoLabel81.Name = "autoLabel81";
+            this.autoLabel81.Size = new System.Drawing.Size(81, 16);
+            this.autoLabel81.TabIndex = 282;
+            this.autoLabel81.Text = "Combustível";
+            // 
+            // comboCombustivel
+            // 
+            this.comboCombustivel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboCombustivel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboCombustivel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboCombustivel.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboCombustivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCombustivel.Location = new System.Drawing.Point(18, 281);
+            this.comboCombustivel.MaxDropDownItems = 15;
+            this.comboCombustivel.Name = "comboCombustivel";
+            this.comboCombustivel.Size = new System.Drawing.Size(312, 28);
+            this.comboCombustivel.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCombustivel.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCombustivel.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboCombustivel.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboCombustivel.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboCombustivel.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboCombustivel.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboCombustivel.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCombustivel.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCombustivel.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboCombustivel.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCombustivel.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCombustivel.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboCombustivel.TabIndex = 6;
+            this.comboCombustivel.ThemeName = "Office2016White";
+            this.comboCombustivel.ToolTipOption.ShadowVisible = false;
+            this.comboCombustivel.Watermark = "Selecione";
+            // 
+            // autoLabel80
+            // 
+            this.autoLabel80.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel80.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel80.Location = new System.Drawing.Point(232, 132);
+            this.autoLabel80.Name = "autoLabel80";
+            this.autoLabel80.Size = new System.Drawing.Size(72, 16);
+            this.autoLabel80.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel80.TabIndex = 279;
+            this.autoLabel80.Text = "Cilind. (CC)";
+            this.autoLabel80.ThemeName = "Office2016White";
+            this.autoLabel80.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel79
+            // 
+            this.autoLabel79.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel79.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel79.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel79.Location = new System.Drawing.Point(120, 132);
+            this.autoLabel79.Name = "autoLabel79";
+            this.autoLabel79.Size = new System.Drawing.Size(59, 16);
+            this.autoLabel79.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel79.TabIndex = 277;
+            this.autoLabel79.Text = "Pot. (CV)";
+            this.autoLabel79.ThemeName = "Office2016White";
+            this.autoLabel79.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel78
+            // 
+            this.autoLabel78.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel78.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel78.Location = new System.Drawing.Point(8, 192);
+            this.autoLabel78.Name = "autoLabel78";
+            this.autoLabel78.Size = new System.Drawing.Size(78, 16);
+            this.autoLabel78.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel78.TabIndex = 275;
+            this.autoLabel78.Text = "Nº do Motor";
+            this.autoLabel78.ThemeName = "Office2016White";
+            this.autoLabel78.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel77
+            // 
+            this.autoLabel77.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel77.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel77.Location = new System.Drawing.Point(8, 68);
+            this.autoLabel77.Name = "autoLabel77";
+            this.autoLabel77.Size = new System.Drawing.Size(94, 16);
+            this.autoLabel77.TabIndex = 273;
+            this.autoLabel77.Text = "Cor (Denatran)";
+            // 
+            // comboCorDenatran
+            // 
+            this.comboCorDenatran.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboCorDenatran.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboCorDenatran.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboCorDenatran.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboCorDenatran.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorDenatran.Location = new System.Drawing.Point(18, 94);
+            this.comboCorDenatran.MaxDropDownItems = 15;
+            this.comboCorDenatran.Name = "comboCorDenatran";
+            this.comboCorDenatran.Size = new System.Drawing.Size(312, 28);
+            this.comboCorDenatran.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCorDenatran.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCorDenatran.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboCorDenatran.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboCorDenatran.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboCorDenatran.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboCorDenatran.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboCorDenatran.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorDenatran.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorDenatran.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboCorDenatran.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorDenatran.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorDenatran.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboCorDenatran.TabIndex = 1;
+            this.comboCorDenatran.ThemeName = "Office2016White";
+            this.comboCorDenatran.ToolTipOption.ShadowVisible = false;
+            this.comboCorDenatran.Watermark = "Selecione";
+            // 
+            // autoLabel76
+            // 
+            this.autoLabel76.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel76.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel76.Location = new System.Drawing.Point(8, 7);
+            this.autoLabel76.Name = "autoLabel76";
+            this.autoLabel76.Size = new System.Drawing.Size(104, 16);
+            this.autoLabel76.TabIndex = 270;
+            this.autoLabel76.Text = "Cor (Montadora)";
+            // 
+            // comboCorMontadora
+            // 
+            this.comboCorMontadora.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboCorMontadora.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboCorMontadora.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboCorMontadora.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboCorMontadora.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorMontadora.Location = new System.Drawing.Point(18, 33);
+            this.comboCorMontadora.MaxDropDownItems = 15;
+            this.comboCorMontadora.Name = "comboCorMontadora";
+            this.comboCorMontadora.Size = new System.Drawing.Size(312, 28);
+            this.comboCorMontadora.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCorMontadora.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboCorMontadora.Style.DropDownStyle.BorderColor = System.Drawing.Color.Black;
+            this.comboCorMontadora.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboCorMontadora.Style.EditorStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.comboCorMontadora.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboCorMontadora.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboCorMontadora.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorMontadora.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorMontadora.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboCorMontadora.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorMontadora.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboCorMontadora.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboCorMontadora.TabIndex = 0;
+            this.comboCorMontadora.ThemeName = "Office2016White";
+            this.comboCorMontadora.ToolTipOption.ShadowVisible = false;
+            this.comboCorMontadora.Watermark = "Selecione";
             // 
             // autoLabel73
             // 
@@ -5988,40 +6672,14 @@
             this.autoLabel73.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel73.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel73.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.autoLabel73.Location = new System.Drawing.Point(158, 15);
+            this.autoLabel73.Location = new System.Drawing.Point(344, 7);
             this.autoLabel73.Name = "autoLabel73";
-            this.autoLabel73.Size = new System.Drawing.Size(39, 16);
+            this.autoLabel73.Size = new System.Drawing.Size(31, 16);
             this.autoLabel73.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
             this.autoLabel73.TabIndex = 184;
-            this.autoLabel73.Text = "Peso";
+            this.autoLabel73.Text = "Ano";
             this.autoLabel73.ThemeName = "Office2016White";
             this.autoLabel73.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
-            // 
-            // rjTextBox2
-            // 
-            this.rjTextBox2.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.rjTextBox2.BackColor = System.Drawing.Color.White;
-            this.rjTextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox2.BorderRadius = 8;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rjTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox2.Location = new System.Drawing.Point(155, 25);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox2.PlaceholderText = "";
-            this.rjTextBox2.ReadOnly = false;
-            this.rjTextBox2.Size = new System.Drawing.Size(138, 37);
-            this.rjTextBox2.TabIndex = 183;
-            this.rjTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = false;
             // 
             // autoLabel72
             // 
@@ -6029,40 +6687,690 @@
             this.autoLabel72.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel72.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel72.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.autoLabel72.Location = new System.Drawing.Point(12, 15);
+            this.autoLabel72.Location = new System.Drawing.Point(8, 131);
             this.autoLabel72.Name = "autoLabel72";
-            this.autoLabel72.Size = new System.Drawing.Size(81, 16);
+            this.autoLabel72.Size = new System.Drawing.Size(98, 16);
             this.autoLabel72.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
             this.autoLabel72.TabIndex = 182;
-            this.autoLabel72.Text = "Valor P/ Site";
+            this.autoLabel72.Text = "Tipo de Pintura";
             this.autoLabel72.ThemeName = "Office2016White";
             this.autoLabel72.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
             // 
-            // rjTextBox1
+            // txtKmEntrada
             // 
-            this.rjTextBox1.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.rjTextBox1.BackColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox1.BorderRadius = 8;
-            this.rjTextBox1.BorderSize = 2;
-            this.rjTextBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox1.Location = new System.Drawing.Point(9, 25);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox1.Multiline = false;
-            this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox1.PasswordChar = false;
-            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox1.PlaceholderText = "";
-            this.rjTextBox1.ReadOnly = false;
-            this.rjTextBox1.Size = new System.Drawing.Size(138, 37);
-            this.rjTextBox1.TabIndex = 181;
-            this.rjTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox1.Texts = "";
-            this.rjTextBox1.UnderlinedStyle = false;
+            this.txtKmEntrada.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtKmEntrada.BackColor = System.Drawing.Color.White;
+            this.txtKmEntrada.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtKmEntrada.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtKmEntrada.BorderRadius = 8;
+            this.txtKmEntrada.BorderSize = 2;
+            this.txtKmEntrada.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtKmEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKmEntrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtKmEntrada.Location = new System.Drawing.Point(636, 400);
+            this.txtKmEntrada.Margin = new System.Windows.Forms.Padding(4);
+            this.txtKmEntrada.Multiline = false;
+            this.txtKmEntrada.Name = "txtKmEntrada";
+            this.txtKmEntrada.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtKmEntrada.PasswordChar = false;
+            this.txtKmEntrada.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtKmEntrada.PlaceholderText = "";
+            this.txtKmEntrada.ReadOnly = false;
+            this.txtKmEntrada.Size = new System.Drawing.Size(322, 37);
+            this.txtKmEntrada.TabIndex = 25;
+            this.txtKmEntrada.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtKmEntrada.Texts = "0";
+            this.txtKmEntrada.UnderlinedStyle = false;
+            // 
+            // rjTextBox25
+            // 
+            this.rjTextBox25.BackColor = System.Drawing.Color.White;
+            this.rjTextBox25.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox25.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox25.BorderRadius = 8;
+            this.rjTextBox25.BorderSize = 2;
+            this.rjTextBox25.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox25.Location = new System.Drawing.Point(636, 339);
+            this.rjTextBox25.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox25.Multiline = false;
+            this.rjTextBox25.Name = "rjTextBox25";
+            this.rjTextBox25.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox25.PasswordChar = false;
+            this.rjTextBox25.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox25.PlaceholderText = "";
+            this.rjTextBox25.ReadOnly = false;
+            this.rjTextBox25.Size = new System.Drawing.Size(322, 37);
+            this.rjTextBox25.TabIndex = 322;
+            this.rjTextBox25.Tag = "";
+            this.rjTextBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox25.Texts = "";
+            this.rjTextBox25.UnderlinedStyle = false;
+            // 
+            // rjTextBox24
+            // 
+            this.rjTextBox24.BackColor = System.Drawing.Color.White;
+            this.rjTextBox24.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox24.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox24.BorderRadius = 8;
+            this.rjTextBox24.BorderSize = 2;
+            this.rjTextBox24.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox24.Location = new System.Drawing.Point(636, 275);
+            this.rjTextBox24.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox24.Multiline = false;
+            this.rjTextBox24.Name = "rjTextBox24";
+            this.rjTextBox24.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox24.PasswordChar = false;
+            this.rjTextBox24.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox24.PlaceholderText = "";
+            this.rjTextBox24.ReadOnly = false;
+            this.rjTextBox24.Size = new System.Drawing.Size(322, 37);
+            this.rjTextBox24.TabIndex = 319;
+            this.rjTextBox24.Tag = "";
+            this.rjTextBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox24.Texts = "";
+            this.rjTextBox24.UnderlinedStyle = false;
+            // 
+            // txtPesoBrutoVeiculo
+            // 
+            this.txtPesoBrutoVeiculo.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtPesoBrutoVeiculo.BackColor = System.Drawing.Color.White;
+            this.txtPesoBrutoVeiculo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesoBrutoVeiculo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesoBrutoVeiculo.BorderRadius = 8;
+            this.txtPesoBrutoVeiculo.BorderSize = 2;
+            this.txtPesoBrutoVeiculo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtPesoBrutoVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesoBrutoVeiculo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPesoBrutoVeiculo.Location = new System.Drawing.Point(801, 212);
+            this.txtPesoBrutoVeiculo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPesoBrutoVeiculo.Multiline = false;
+            this.txtPesoBrutoVeiculo.Name = "txtPesoBrutoVeiculo";
+            this.txtPesoBrutoVeiculo.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtPesoBrutoVeiculo.PasswordChar = false;
+            this.txtPesoBrutoVeiculo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtPesoBrutoVeiculo.PlaceholderText = "";
+            this.txtPesoBrutoVeiculo.ReadOnly = false;
+            this.txtPesoBrutoVeiculo.Size = new System.Drawing.Size(157, 37);
+            this.txtPesoBrutoVeiculo.TabIndex = 22;
+            this.txtPesoBrutoVeiculo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPesoBrutoVeiculo.Texts = "";
+            this.txtPesoBrutoVeiculo.UnderlinedStyle = false;
+            // 
+            // txtPesoLiquidoVeiculo
+            // 
+            this.txtPesoLiquidoVeiculo.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtPesoLiquidoVeiculo.BackColor = System.Drawing.Color.White;
+            this.txtPesoLiquidoVeiculo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesoLiquidoVeiculo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesoLiquidoVeiculo.BorderRadius = 8;
+            this.txtPesoLiquidoVeiculo.BorderSize = 2;
+            this.txtPesoLiquidoVeiculo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtPesoLiquidoVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesoLiquidoVeiculo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPesoLiquidoVeiculo.Location = new System.Drawing.Point(636, 212);
+            this.txtPesoLiquidoVeiculo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPesoLiquidoVeiculo.Multiline = false;
+            this.txtPesoLiquidoVeiculo.Name = "txtPesoLiquidoVeiculo";
+            this.txtPesoLiquidoVeiculo.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtPesoLiquidoVeiculo.PasswordChar = false;
+            this.txtPesoLiquidoVeiculo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtPesoLiquidoVeiculo.PlaceholderText = "";
+            this.txtPesoLiquidoVeiculo.ReadOnly = false;
+            this.txtPesoLiquidoVeiculo.Size = new System.Drawing.Size(157, 37);
+            this.txtPesoLiquidoVeiculo.TabIndex = 21;
+            this.txtPesoLiquidoVeiculo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPesoLiquidoVeiculo.Texts = "";
+            this.txtPesoLiquidoVeiculo.UnderlinedStyle = false;
+            // 
+            // txtCapacidadeMaximaTracao
+            // 
+            this.txtCapacidadeMaximaTracao.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtCapacidadeMaximaTracao.BackColor = System.Drawing.Color.White;
+            this.txtCapacidadeMaximaTracao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCapacidadeMaximaTracao.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCapacidadeMaximaTracao.BorderRadius = 8;
+            this.txtCapacidadeMaximaTracao.BorderSize = 2;
+            this.txtCapacidadeMaximaTracao.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCapacidadeMaximaTracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCapacidadeMaximaTracao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCapacidadeMaximaTracao.Location = new System.Drawing.Point(801, 151);
+            this.txtCapacidadeMaximaTracao.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCapacidadeMaximaTracao.Multiline = false;
+            this.txtCapacidadeMaximaTracao.Name = "txtCapacidadeMaximaTracao";
+            this.txtCapacidadeMaximaTracao.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCapacidadeMaximaTracao.PasswordChar = false;
+            this.txtCapacidadeMaximaTracao.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCapacidadeMaximaTracao.PlaceholderText = "";
+            this.txtCapacidadeMaximaTracao.ReadOnly = false;
+            this.txtCapacidadeMaximaTracao.Size = new System.Drawing.Size(157, 37);
+            this.txtCapacidadeMaximaTracao.TabIndex = 20;
+            this.txtCapacidadeMaximaTracao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCapacidadeMaximaTracao.Texts = "";
+            this.txtCapacidadeMaximaTracao.UnderlinedStyle = false;
+            // 
+            // txtDistanciaEixos
+            // 
+            this.txtDistanciaEixos.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtDistanciaEixos.BackColor = System.Drawing.Color.White;
+            this.txtDistanciaEixos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDistanciaEixos.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDistanciaEixos.BorderRadius = 8;
+            this.txtDistanciaEixos.BorderSize = 2;
+            this.txtDistanciaEixos.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDistanciaEixos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDistanciaEixos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDistanciaEixos.Location = new System.Drawing.Point(636, 151);
+            this.txtDistanciaEixos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDistanciaEixos.Multiline = false;
+            this.txtDistanciaEixos.Name = "txtDistanciaEixos";
+            this.txtDistanciaEixos.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtDistanciaEixos.PasswordChar = false;
+            this.txtDistanciaEixos.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtDistanciaEixos.PlaceholderText = "";
+            this.txtDistanciaEixos.ReadOnly = false;
+            this.txtDistanciaEixos.Size = new System.Drawing.Size(157, 37);
+            this.txtDistanciaEixos.TabIndex = 19;
+            this.txtDistanciaEixos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtDistanciaEixos.Texts = "";
+            this.txtDistanciaEixos.UnderlinedStyle = false;
+            // 
+            // rjTextBox19
+            // 
+            this.rjTextBox19.BackColor = System.Drawing.Color.White;
+            this.rjTextBox19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox19.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox19.BorderRadius = 8;
+            this.rjTextBox19.BorderSize = 2;
+            this.rjTextBox19.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox19.Location = new System.Drawing.Point(636, 88);
+            this.rjTextBox19.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox19.Multiline = false;
+            this.rjTextBox19.Name = "rjTextBox19";
+            this.rjTextBox19.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox19.PasswordChar = false;
+            this.rjTextBox19.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox19.PlaceholderText = "";
+            this.rjTextBox19.ReadOnly = false;
+            this.rjTextBox19.Size = new System.Drawing.Size(322, 37);
+            this.rjTextBox19.TabIndex = 308;
+            this.rjTextBox19.Tag = "";
+            this.rjTextBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox19.Texts = "";
+            this.rjTextBox19.UnderlinedStyle = false;
+            // 
+            // txtChassi
+            // 
+            this.txtChassi.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtChassi.BackColor = System.Drawing.Color.White;
+            this.txtChassi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtChassi.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtChassi.BorderRadius = 8;
+            this.txtChassi.BorderSize = 2;
+            this.txtChassi.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtChassi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChassi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtChassi.Location = new System.Drawing.Point(636, 25);
+            this.txtChassi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtChassi.Multiline = false;
+            this.txtChassi.Name = "txtChassi";
+            this.txtChassi.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtChassi.PasswordChar = false;
+            this.txtChassi.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtChassi.PlaceholderText = "";
+            this.txtChassi.ReadOnly = false;
+            this.txtChassi.Size = new System.Drawing.Size(322, 37);
+            this.txtChassi.TabIndex = 17;
+            this.txtChassi.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtChassi.Texts = "";
+            this.txtChassi.UnderlinedStyle = false;
+            // 
+            // txtRenavam
+            // 
+            this.txtRenavam.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtRenavam.BackColor = System.Drawing.Color.White;
+            this.txtRenavam.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtRenavam.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtRenavam.BorderRadius = 8;
+            this.txtRenavam.BorderSize = 2;
+            this.txtRenavam.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtRenavam.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRenavam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRenavam.Location = new System.Drawing.Point(344, 400);
+            this.txtRenavam.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRenavam.Multiline = false;
+            this.txtRenavam.Name = "txtRenavam";
+            this.txtRenavam.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtRenavam.PasswordChar = false;
+            this.txtRenavam.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtRenavam.PlaceholderText = "";
+            this.txtRenavam.ReadOnly = false;
+            this.txtRenavam.Size = new System.Drawing.Size(284, 37);
+            this.txtRenavam.TabIndex = 16;
+            this.txtRenavam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtRenavam.Texts = "";
+            this.txtRenavam.UnderlinedStyle = false;
+            // 
+            // txtPlaca
+            // 
+            this.txtPlaca.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtPlaca.BackColor = System.Drawing.Color.White;
+            this.txtPlaca.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPlaca.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPlaca.BorderRadius = 8;
+            this.txtPlaca.BorderSize = 2;
+            this.txtPlaca.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtPlaca.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlaca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPlaca.Location = new System.Drawing.Point(344, 339);
+            this.txtPlaca.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPlaca.Multiline = false;
+            this.txtPlaca.Name = "txtPlaca";
+            this.txtPlaca.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtPlaca.PasswordChar = false;
+            this.txtPlaca.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtPlaca.PlaceholderText = "";
+            this.txtPlaca.ReadOnly = false;
+            this.txtPlaca.Size = new System.Drawing.Size(284, 37);
+            this.txtPlaca.TabIndex = 15;
+            this.txtPlaca.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPlaca.Texts = "";
+            this.txtPlaca.UnderlinedStyle = false;
+            // 
+            // rjTextBox15
+            // 
+            this.rjTextBox15.BackColor = System.Drawing.Color.White;
+            this.rjTextBox15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox15.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox15.BorderRadius = 8;
+            this.rjTextBox15.BorderSize = 2;
+            this.rjTextBox15.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox15.Location = new System.Drawing.Point(344, 275);
+            this.rjTextBox15.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox15.Multiline = false;
+            this.rjTextBox15.Name = "rjTextBox15";
+            this.rjTextBox15.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox15.PasswordChar = false;
+            this.rjTextBox15.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox15.PlaceholderText = "";
+            this.rjTextBox15.ReadOnly = false;
+            this.rjTextBox15.Size = new System.Drawing.Size(284, 37);
+            this.rjTextBox15.TabIndex = 299;
+            this.rjTextBox15.Tag = "";
+            this.rjTextBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox15.Texts = "";
+            this.rjTextBox15.UnderlinedStyle = false;
+            // 
+            // txtLotacao
+            // 
+            this.txtLotacao.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtLotacao.BackColor = System.Drawing.Color.White;
+            this.txtLotacao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtLotacao.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtLotacao.BorderRadius = 8;
+            this.txtLotacao.BorderSize = 2;
+            this.txtLotacao.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtLotacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLotacao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtLotacao.Location = new System.Drawing.Point(344, 212);
+            this.txtLotacao.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLotacao.Multiline = false;
+            this.txtLotacao.Name = "txtLotacao";
+            this.txtLotacao.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtLotacao.PasswordChar = false;
+            this.txtLotacao.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtLotacao.PlaceholderText = "";
+            this.txtLotacao.ReadOnly = false;
+            this.txtLotacao.Size = new System.Drawing.Size(284, 37);
+            this.txtLotacao.TabIndex = 13;
+            this.txtLotacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtLotacao.Texts = "";
+            this.txtLotacao.UnderlinedStyle = false;
+            // 
+            // rjTextBox13
+            // 
+            this.rjTextBox13.BackColor = System.Drawing.Color.White;
+            this.rjTextBox13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox13.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox13.BorderRadius = 8;
+            this.rjTextBox13.BorderSize = 2;
+            this.rjTextBox13.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox13.Location = new System.Drawing.Point(344, 152);
+            this.rjTextBox13.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox13.Multiline = false;
+            this.rjTextBox13.Name = "rjTextBox13";
+            this.rjTextBox13.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox13.PasswordChar = false;
+            this.rjTextBox13.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox13.PlaceholderText = "";
+            this.rjTextBox13.ReadOnly = false;
+            this.rjTextBox13.Size = new System.Drawing.Size(284, 37);
+            this.rjTextBox13.TabIndex = 294;
+            this.rjTextBox13.Tag = "";
+            this.rjTextBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox13.Texts = "";
+            this.rjTextBox13.UnderlinedStyle = false;
+            // 
+            // txtMarcaModelo
+            // 
+            this.txtMarcaModelo.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtMarcaModelo.BackColor = System.Drawing.Color.White;
+            this.txtMarcaModelo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtMarcaModelo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtMarcaModelo.BorderRadius = 8;
+            this.txtMarcaModelo.BorderSize = 2;
+            this.txtMarcaModelo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtMarcaModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMarcaModelo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtMarcaModelo.Location = new System.Drawing.Point(344, 88);
+            this.txtMarcaModelo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMarcaModelo.Multiline = false;
+            this.txtMarcaModelo.Name = "txtMarcaModelo";
+            this.txtMarcaModelo.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtMarcaModelo.PasswordChar = false;
+            this.txtMarcaModelo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtMarcaModelo.PlaceholderText = "";
+            this.txtMarcaModelo.ReadOnly = false;
+            this.txtMarcaModelo.Size = new System.Drawing.Size(284, 37);
+            this.txtMarcaModelo.TabIndex = 11;
+            this.txtMarcaModelo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtMarcaModelo.Texts = "";
+            this.txtMarcaModelo.UnderlinedStyle = false;
+            // 
+            // txtModelo
+            // 
+            this.txtModelo.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtModelo.BackColor = System.Drawing.Color.White;
+            this.txtModelo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtModelo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtModelo.BorderRadius = 8;
+            this.txtModelo.BorderSize = 2;
+            this.txtModelo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtModelo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtModelo.Location = new System.Drawing.Point(490, 27);
+            this.txtModelo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtModelo.Multiline = false;
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtModelo.PasswordChar = false;
+            this.txtModelo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtModelo.PlaceholderText = "";
+            this.txtModelo.ReadOnly = false;
+            this.txtModelo.Size = new System.Drawing.Size(138, 37);
+            this.txtModelo.TabIndex = 10;
+            this.txtModelo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtModelo.Texts = "";
+            this.txtModelo.UnderlinedStyle = false;
+            // 
+            // rjTextBox12
+            // 
+            this.rjTextBox12.BackColor = System.Drawing.Color.White;
+            this.rjTextBox12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox12.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox12.BorderRadius = 8;
+            this.rjTextBox12.BorderSize = 2;
+            this.rjTextBox12.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox12.Location = new System.Drawing.Point(8, 400);
+            this.rjTextBox12.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox12.Multiline = false;
+            this.rjTextBox12.Name = "rjTextBox12";
+            this.rjTextBox12.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox12.PasswordChar = false;
+            this.rjTextBox12.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox12.PlaceholderText = "";
+            this.rjTextBox12.ReadOnly = false;
+            this.rjTextBox12.Size = new System.Drawing.Size(328, 37);
+            this.rjTextBox12.TabIndex = 287;
+            this.rjTextBox12.Tag = "";
+            this.rjTextBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox12.Texts = "";
+            this.rjTextBox12.UnderlinedStyle = false;
+            // 
+            // rjTextBox11
+            // 
+            this.rjTextBox11.BackColor = System.Drawing.Color.White;
+            this.rjTextBox11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox11.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox11.BorderRadius = 8;
+            this.rjTextBox11.BorderSize = 2;
+            this.rjTextBox11.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox11.Location = new System.Drawing.Point(8, 339);
+            this.rjTextBox11.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox11.Multiline = false;
+            this.rjTextBox11.Name = "rjTextBox11";
+            this.rjTextBox11.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox11.PasswordChar = false;
+            this.rjTextBox11.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox11.PlaceholderText = "";
+            this.rjTextBox11.ReadOnly = false;
+            this.rjTextBox11.Size = new System.Drawing.Size(328, 37);
+            this.rjTextBox11.TabIndex = 284;
+            this.rjTextBox11.Tag = "";
+            this.rjTextBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox11.Texts = "";
+            this.rjTextBox11.UnderlinedStyle = false;
+            // 
+            // rjTextBox10
+            // 
+            this.rjTextBox10.BackColor = System.Drawing.Color.White;
+            this.rjTextBox10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox10.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox10.BorderRadius = 8;
+            this.rjTextBox10.BorderSize = 2;
+            this.rjTextBox10.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox10.Location = new System.Drawing.Point(8, 275);
+            this.rjTextBox10.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox10.Multiline = false;
+            this.rjTextBox10.Name = "rjTextBox10";
+            this.rjTextBox10.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox10.PasswordChar = false;
+            this.rjTextBox10.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox10.PlaceholderText = "";
+            this.rjTextBox10.ReadOnly = false;
+            this.rjTextBox10.Size = new System.Drawing.Size(328, 37);
+            this.rjTextBox10.TabIndex = 281;
+            this.rjTextBox10.Tag = "";
+            this.rjTextBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox10.Texts = "";
+            this.rjTextBox10.UnderlinedStyle = false;
+            // 
+            // txtCilindradaCc
+            // 
+            this.txtCilindradaCc.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtCilindradaCc.BackColor = System.Drawing.Color.White;
+            this.txtCilindradaCc.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCilindradaCc.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCilindradaCc.BorderRadius = 8;
+            this.txtCilindradaCc.BorderSize = 2;
+            this.txtCilindradaCc.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCilindradaCc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCilindradaCc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCilindradaCc.Location = new System.Drawing.Point(232, 152);
+            this.txtCilindradaCc.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCilindradaCc.Multiline = false;
+            this.txtCilindradaCc.Name = "txtCilindradaCc";
+            this.txtCilindradaCc.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCilindradaCc.PasswordChar = false;
+            this.txtCilindradaCc.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCilindradaCc.PlaceholderText = "";
+            this.txtCilindradaCc.ReadOnly = false;
+            this.txtCilindradaCc.Size = new System.Drawing.Size(104, 37);
+            this.txtCilindradaCc.TabIndex = 4;
+            this.txtCilindradaCc.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCilindradaCc.Texts = "";
+            this.txtCilindradaCc.UnderlinedStyle = false;
+            // 
+            // txtPotenciaCv
+            // 
+            this.txtPotenciaCv.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtPotenciaCv.BackColor = System.Drawing.Color.White;
+            this.txtPotenciaCv.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPotenciaCv.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPotenciaCv.BorderRadius = 8;
+            this.txtPotenciaCv.BorderSize = 2;
+            this.txtPotenciaCv.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtPotenciaCv.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPotenciaCv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPotenciaCv.Location = new System.Drawing.Point(120, 152);
+            this.txtPotenciaCv.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPotenciaCv.Multiline = false;
+            this.txtPotenciaCv.Name = "txtPotenciaCv";
+            this.txtPotenciaCv.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtPotenciaCv.PasswordChar = false;
+            this.txtPotenciaCv.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtPotenciaCv.PlaceholderText = "";
+            this.txtPotenciaCv.ReadOnly = false;
+            this.txtPotenciaCv.Size = new System.Drawing.Size(104, 37);
+            this.txtPotenciaCv.TabIndex = 3;
+            this.txtPotenciaCv.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPotenciaCv.Texts = "";
+            this.txtPotenciaCv.UnderlinedStyle = false;
+            // 
+            // txtNumeroMotor
+            // 
+            this.txtNumeroMotor.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtNumeroMotor.BackColor = System.Drawing.Color.White;
+            this.txtNumeroMotor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtNumeroMotor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtNumeroMotor.BorderRadius = 8;
+            this.txtNumeroMotor.BorderSize = 2;
+            this.txtNumeroMotor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtNumeroMotor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumeroMotor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtNumeroMotor.Location = new System.Drawing.Point(8, 212);
+            this.txtNumeroMotor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNumeroMotor.Multiline = false;
+            this.txtNumeroMotor.Name = "txtNumeroMotor";
+            this.txtNumeroMotor.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtNumeroMotor.PasswordChar = false;
+            this.txtNumeroMotor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtNumeroMotor.PlaceholderText = "";
+            this.txtNumeroMotor.ReadOnly = false;
+            this.txtNumeroMotor.Size = new System.Drawing.Size(328, 37);
+            this.txtNumeroMotor.TabIndex = 5;
+            this.txtNumeroMotor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtNumeroMotor.Texts = "";
+            this.txtNumeroMotor.UnderlinedStyle = false;
+            // 
+            // rjTextBox6
+            // 
+            this.rjTextBox6.BackColor = System.Drawing.Color.White;
+            this.rjTextBox6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox6.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox6.BorderRadius = 8;
+            this.rjTextBox6.BorderSize = 2;
+            this.rjTextBox6.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox6.Location = new System.Drawing.Point(8, 88);
+            this.rjTextBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox6.Multiline = false;
+            this.rjTextBox6.Name = "rjTextBox6";
+            this.rjTextBox6.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox6.PasswordChar = false;
+            this.rjTextBox6.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox6.PlaceholderText = "";
+            this.rjTextBox6.ReadOnly = false;
+            this.rjTextBox6.Size = new System.Drawing.Size(328, 37);
+            this.rjTextBox6.TabIndex = 272;
+            this.rjTextBox6.Tag = "";
+            this.rjTextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox6.Texts = "";
+            this.rjTextBox6.UnderlinedStyle = false;
+            // 
+            // rjTextBox5
+            // 
+            this.rjTextBox5.BackColor = System.Drawing.Color.White;
+            this.rjTextBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox5.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox5.BorderRadius = 8;
+            this.rjTextBox5.BorderSize = 2;
+            this.rjTextBox5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox5.Location = new System.Drawing.Point(8, 27);
+            this.rjTextBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox5.Multiline = false;
+            this.rjTextBox5.Name = "rjTextBox5";
+            this.rjTextBox5.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox5.PasswordChar = false;
+            this.rjTextBox5.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox5.PlaceholderText = "";
+            this.rjTextBox5.ReadOnly = false;
+            this.rjTextBox5.Size = new System.Drawing.Size(328, 37);
+            this.rjTextBox5.TabIndex = 269;
+            this.rjTextBox5.Tag = "";
+            this.rjTextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox5.Texts = "";
+            this.rjTextBox5.UnderlinedStyle = false;
+            // 
+            // txtAno
+            // 
+            this.txtAno.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtAno.BackColor = System.Drawing.Color.White;
+            this.txtAno.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtAno.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtAno.BorderRadius = 8;
+            this.txtAno.BorderSize = 2;
+            this.txtAno.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtAno.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtAno.Location = new System.Drawing.Point(344, 27);
+            this.txtAno.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAno.Multiline = false;
+            this.txtAno.Name = "txtAno";
+            this.txtAno.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtAno.PasswordChar = false;
+            this.txtAno.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtAno.PlaceholderText = "";
+            this.txtAno.ReadOnly = false;
+            this.txtAno.Size = new System.Drawing.Size(138, 37);
+            this.txtAno.TabIndex = 9;
+            this.txtAno.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtAno.Texts = "";
+            this.txtAno.UnderlinedStyle = false;
+            // 
+            // txtTipoPintura
+            // 
+            this.txtTipoPintura.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtTipoPintura.BackColor = System.Drawing.Color.White;
+            this.txtTipoPintura.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTipoPintura.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTipoPintura.BorderRadius = 8;
+            this.txtTipoPintura.BorderSize = 2;
+            this.txtTipoPintura.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtTipoPintura.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTipoPintura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTipoPintura.Location = new System.Drawing.Point(8, 151);
+            this.txtTipoPintura.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTipoPintura.Multiline = false;
+            this.txtTipoPintura.Name = "txtTipoPintura";
+            this.txtTipoPintura.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTipoPintura.PasswordChar = false;
+            this.txtTipoPintura.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtTipoPintura.PlaceholderText = "";
+            this.txtTipoPintura.ReadOnly = false;
+            this.txtTipoPintura.Size = new System.Drawing.Size(104, 37);
+            this.txtTipoPintura.TabIndex = 2;
+            this.txtTipoPintura.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtTipoPintura.Texts = "L";
+            this.txtTipoPintura.UnderlinedStyle = false;
             // 
             // btnSalva
             // 
@@ -6176,6 +7484,7 @@
             this.tabPageAdv1.ResumeLayout(false);
             this.metroPanel6.ResumeLayout(false);
             this.metroPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVeiculo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkProdutoPesavel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkProdutoComGrade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkControlaEstoque)).EndInit();
@@ -6186,6 +7495,17 @@
             this.metroPanel9.PerformLayout();
             this.tabPageAdv3.ResumeLayout(false);
             this.tabPageAdv3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVeiculoNovo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboRestricaoVeiculo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCondicaoProduto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCondicaoVeiculo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboTipoVeiculo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboEspecie)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboTipoEntrada)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboTipoCambio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCombustivel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCorDenatran)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboCorMontadora)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -6522,12 +7842,68 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel70;
         private RJ_UI.Classes.RJTextBox txtPercGni;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel72;
-        private RJ_UI.Classes.RJTextBox rjTextBox1;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel75;
-        private RJ_UI.Classes.RJTextBox rjTextBox4;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel74;
-        private RJ_UI.Classes.RJTextBox rjTextBox3;
+        private RJ_UI.Classes.RJTextBox txtTipoPintura;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel73;
-        private RJ_UI.Classes.RJTextBox rjTextBox2;
+        private RJ_UI.Classes.RJTextBox txtAno;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel77;
+        private Syncfusion.WinForms.ListView.SfComboBox comboCorDenatran;
+        private RJ_UI.Classes.RJTextBox rjTextBox6;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel76;
+        private Syncfusion.WinForms.ListView.SfComboBox comboCorMontadora;
+        private RJ_UI.Classes.RJTextBox rjTextBox5;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel80;
+        private RJ_UI.Classes.RJTextBox txtCilindradaCc;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel79;
+        private RJ_UI.Classes.RJTextBox txtPotenciaCv;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel78;
+        private RJ_UI.Classes.RJTextBox txtNumeroMotor;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel74;
+        private RJ_UI.Classes.RJTextBox txtModelo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel83;
+        private Syncfusion.WinForms.ListView.SfComboBox comboTipoEntrada;
+        private RJ_UI.Classes.RJTextBox rjTextBox12;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel82;
+        private Syncfusion.WinForms.ListView.SfComboBox comboTipoCambio;
+        private RJ_UI.Classes.RJTextBox rjTextBox11;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel81;
+        private Syncfusion.WinForms.ListView.SfComboBox comboCombustivel;
+        private RJ_UI.Classes.RJTextBox rjTextBox10;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel84;
+        private Syncfusion.WinForms.ListView.SfComboBox comboEspecie;
+        private RJ_UI.Classes.RJTextBox rjTextBox13;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel75;
+        private RJ_UI.Classes.RJTextBox txtMarcaModelo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel85;
+        private RJ_UI.Classes.RJTextBox txtLotacao;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel86;
+        private Syncfusion.WinForms.ListView.SfComboBox comboTipoVeiculo;
+        private RJ_UI.Classes.RJTextBox rjTextBox15;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel95;
+        private Syncfusion.WinForms.ListView.SfComboBox comboCondicaoProduto;
+        private RJ_UI.Classes.RJTextBox rjTextBox24;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel94;
+        private RJ_UI.Classes.RJTextBox txtPesoBrutoVeiculo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel93;
+        private RJ_UI.Classes.RJTextBox txtPesoLiquidoVeiculo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel92;
+        private RJ_UI.Classes.RJTextBox txtCapacidadeMaximaTracao;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel91;
+        private RJ_UI.Classes.RJTextBox txtDistanciaEixos;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel90;
+        private Syncfusion.WinForms.ListView.SfComboBox comboCondicaoVeiculo;
+        private RJ_UI.Classes.RJTextBox rjTextBox19;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel89;
+        private RJ_UI.Classes.RJTextBox txtChassi;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel88;
+        private RJ_UI.Classes.RJTextBox txtRenavam;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel87;
+        private RJ_UI.Classes.RJTextBox txtPlaca;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkVeiculoNovo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel97;
+        private RJ_UI.Classes.RJTextBox txtKmEntrada;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel96;
+        private Syncfusion.WinForms.ListView.SfComboBox comboRestricaoVeiculo;
+        private RJ_UI.Classes.RJTextBox rjTextBox25;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkVeiculo;
     }
 }

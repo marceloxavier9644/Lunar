@@ -39,7 +39,37 @@
 		<property name="ValorPartida" column="VALORPARTIDA" type="decimal"/>
 		<property name="IdComplementar" column="IDCOMPLEMENTAR" type="String" length="25"/>
 		
-
+		<!--Veiculo-->
+		<property name="Veiculo" column="VEICULO" type="Boolean"/>
+		<property name="CorMontadora" column="CORMONTADORA" type="String" length="40"/>
+		<property name="CorDenatran" column="CORDENATRAN" type="String" length="40"/>
+		<property name="TipoPintura" column="TIPOPINTURA" type="String" length="100"/>
+		<property name="PotenciaCv" column="POTENCIACV" type="String" length="100"/>
+		<property name="CilindradaCc" column="CILINDRADACC" type="String" length="100"/>
+		<property name="NumeroMotor" column="NUMEROMOTOR" type="String" length="100"/>
+		<property name="Combustivel" column="COMBUSTIVEL" type="String" length="100"/>
+		<property name="TipoCambio" column="TIPOCAMBIO" type="String" length="100"/>
+		<property name="TipoEntrada" column="TIPOENTRADA" type="String" length="100"/>
+		<property name="AnoVeiculo" column="ANOVEICULO" type="String" length="100"/>
+		<property name="ModeloVeiculo" column="MODELOVEICULO" type="String" length="100"/>
+		<property name="MarcaModelo" column="MARCAMODELO" type="String" length="100"/>
+		<property name="EspecieVeiculo" column="ESPECIEVEICULO" type="String" length="100"/>
+		<property name="LotacaoVeiculo" column="LOTACAOVEICULO" type="String" length="100"/>
+		<property name="TipoVeiculo" column="TIPOVEICULO" type="String" length="100"/>
+		<property name="Placa" column="PLACA" type="String" length="100"/>
+		<property name="Renavam" column="RENAVAM" type="String" length="100"/>
+		<property name="Chassi" column="CHASSI" type="String" length="100"/>
+		<property name="CondicaoVeiculo" column="CONDICAOVEICULO" type="String" length="100"/>
+		<property name="DistanciaEixo" column="DISTANCIAEIXO" type="String" length="100"/>
+		<property name="CapacidadeTracao" column="CAPACIDADETRACAO" type="String" length="100"/>
+		<property name="PesoLiquidoVeiculo" column="PESOLIQUIDOVEICULO" type="String" length="100"/>
+		<property name="PesoBrutoVeiculo" column="PESOBRUTOVEICULO" type="String" length="100"/>
+		<property name="CondicaoProduto" column="CONDICAOPRODUTO" type="String" length="100"/>
+		<property name="RestricaoVeiculo" column="RESTRICAOVEICULO" type="String" length="100"/>
+		<property name="KmEntrada" column="KMENTRADA" type="String" length="100"/>
+		<property name="VeiculoNovo" column="VEICULONOVO" type="Boolean"/>
+		<!--Fim Veiculo-->
+		
 		<many-to-one name="UnidadeMedida" column="UNIDADEMEDIDA" class="LunarBase.Classes.UnidadeMedida" not-null="false" foreign-key="FK_PRODUTO_UNIDADEMEDIDA" lazy="false"/>
 		<many-to-one name="ProdutoSetor" column="PRODUTOSETOR" class="LunarBase.Classes.ProdutoSetor" not-null="false" foreign-key="FK_PRODUTO_PRODUTOSETOR" lazy="false"/>
 		<many-to-one name="Marca" column="MARCA" class="LunarBase.Classes.Marca" not-null="false" foreign-key="FK_PRODUTO_MARCA" lazy="false"/>
