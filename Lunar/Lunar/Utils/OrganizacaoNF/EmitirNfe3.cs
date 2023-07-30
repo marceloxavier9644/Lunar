@@ -307,7 +307,6 @@ namespace Lunar.Utils.OrganizacaoNF
             NfeProdutoController nfeProdutoController = new NfeProdutoController();
             IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
             det = new TNFeInfNFeDet[listaProdutos.Count];
-
             int i = 0;
             int y = 0;
             foreach (NfeProduto produto in listaProdutos)
@@ -357,7 +356,68 @@ namespace Lunar.Utils.OrganizacaoNF
                     det[y].prod.vDesc = formatMoedaNf(produto.VDesc);
                 det[y].prod.vUnTrib = formatMoedaNf(produto.VProd);
                 det[y].prod.indTot = TNFeInfNFeDetProdIndTot.Item1;
-                if(produto.VFrete > 0)
+
+                //Veiculo ou Bicicleta Elétrica
+                if (produto.Produto.Veiculo == true)
+                {
+                    TNFeInfNFeDetProdVeicProd[] veic = new TNFeInfNFeDetProdVeicProd[1];
+                    veic[0] = new TNFeInfNFeDetProdVeicProd();
+                    veic[0].anoFab = produto.Produto.AnoVeiculo.Trim();
+                    veic[0].anoMod = produto.Produto.ModeloVeiculo;
+                    veic[0].cCor = produto.Produto.CorMontadora.Substring(0, 2);
+                    veic[0].cCorDENATRAN = produto.Produto.CorDenatran.Substring(0, 2);
+                    veic[0].chassi = produto.Produto.Chassi;
+                    veic[0].cilin = produto.Produto.CilindradaCc;
+                    veic[0].cMod = produto.Produto.MarcaModelo;
+                    veic[0].CMT = produto.Produto.CapacidadeTracao;
+                    if (produto.Produto.CondicaoProduto.Substring(0, 1).Equals("1"))
+                        veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item1;
+                    else if (produto.Produto.CondicaoProduto.Substring(0, 1).Equals("2"))
+                        veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item2;
+                    else
+                        veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item3;
+                    veic[0].dist = produto.Produto.DistanciaEixo;
+                    veic[0].espVeic = produto.Produto.EspecieVeiculo.Substring(1, 1);
+                    veic[0].lota = produto.Produto.LotacaoVeiculo;
+                    veic[0].nMotor = produto.Produto.NumeroMotor;
+                    veic[0].nSerie = "0";
+                    veic[0].pesoB = formatPeso(decimal.Parse(produto.Produto.PesoBrutoVeiculo));
+                    veic[0].pesoL = formatPeso(decimal.Parse(produto.Produto.PesoLiquidoVeiculo));
+                    veic[0].pot = produto.Produto.PotenciaCv;
+                    veic[0].tpComb = produto.Produto.Combustivel.Substring(0, 2);
+                    //venda concessionária
+                    veic[0].tpOp = TNFeInfNFeDetProdVeicProdTpOp.Item1;
+                    veic[0].tpPint = produto.Produto.TipoPintura.Substring(0, 1);
+                    if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("0"))
+                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item0;
+                    else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("1"))
+                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item1;
+                    else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("2"))
+                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item2;
+                    else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("3"))
+                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item3;
+                    else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("4"))
+                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item4;
+                    else
+                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item9;
+                    veic[0].tpVeic = produto.Produto.TipoVeiculo.Substring(0, 2);
+                    if (produto.Produto.CondicaoVeiculo.Substring(0, 1).Equals("N"))
+                        veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.N;
+                    else if (produto.Produto.CondicaoVeiculo.Substring(0, 1).Equals("R"))
+                        veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.R;
+                    else
+                        veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.N;
+                    veic[0].xCor = produto.Produto.CorMontadora;
+                    det[y].prod.Items = veic;
+                    //det[y].infAdProd = veic[0].ToString();
+                }
+               
+                //Fim cadastro veiculo ou Bicicleta Elétrica
+
+                //Observacoes Item
+                //TNFeInfNFeDetObsItem obsItem = new TNFeInfNFeDetObsItem();
+
+                if (produto.VFrete > 0)
                     det[y].prod.vFrete = valorFreteItem;
                 if(produto.VOutro > 0)
                     det[y].prod.vOutro = valorOutro;

@@ -44,6 +44,7 @@
             this.Name = "FrmPDF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualizador de PDF - Lunar Software";
+            this.Load += new System.EventHandler(this.FrmPDF_Load);
             this.ResumeLayout(false);
 
         }

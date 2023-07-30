@@ -60,7 +60,12 @@ namespace Lunar.Telas.Cadastros.Produtos
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             iniciarTributosPadroes();
+            gerarCombustivel();
+            gerarCoresVeiculos();
+            gerarDadosVeiculos();
             gerarTiposDeProdutos();
+            //aba veiculo nao apresenta se nao marcar o checkbox veiculo
+            tabPageAdv3.TabVisible = false;
         }
 
         public FrmProdutoCadastro(Produto produto, bool inserindoNotaFiscal)
@@ -71,13 +76,16 @@ namespace Lunar.Telas.Cadastros.Produtos
             gerarCoresVeiculos();
             gerarDadosVeiculos();
             gerarTiposDeProdutos();
+            //aba veiculo nao apresenta se nao marcar o checkbox veiculo
+            tabPageAdv3.TabVisible = false;
+
             this.produto = produto;
             get_Produto(produto);
             this.FormBorderStyle = FormBorderStyle.None;
             txtDescricao.Focus();
             txtDescricao.Select();
 
-            if(inserindoNotaFiscal == true)
+            if (inserindoNotaFiscal == true)
             {
                 txtValorVenda.BorderColor = Color.Red;
                 txtEstoque.ReadOnly = true;
@@ -86,6 +94,36 @@ namespace Lunar.Telas.Cadastros.Produtos
             }
             iniciarTributosPadroes();
 
+        }
+
+        public FrmProdutoCadastro(Produto produto, bool inserindoNotaFiscal, bool veiculo)
+        {
+            InitializeComponent();
+
+            gerarCombustivel();
+            gerarCoresVeiculos();
+            gerarDadosVeiculos();
+            gerarTiposDeProdutos();
+            //aba veiculo nao apresenta se nao marcar o checkbox veiculo
+            tabPageAdv3.TabVisible = false;
+
+            this.produto = produto;
+            get_Produto(produto);
+            this.FormBorderStyle = FormBorderStyle.None;
+            txtDescricao.Focus();
+            txtDescricao.Select();
+
+            if (inserindoNotaFiscal == true)
+            {
+                txtValorVenda.BorderColor = Color.Red;
+                txtEstoque.ReadOnly = true;
+                txtEstoqueAuxiliar.ReadOnly = true;
+            }
+            iniciarTributosPadroes();
+            if(veiculo == true)
+            {
+                tabControlAdv2.SelectedTab = tabPageAdv3;
+            }
         }
 
         private void gerarDadosVeiculos()
@@ -97,7 +135,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             listaCambio.Add("3-AUTOMATIZADO");
             listaCambio.Add("4-CVT");
             comboTipoCambio.DataSource = listaCambio;
-            comboTipoCambio.SelectedIndex = 0;
+            comboTipoCambio.SelectedIndex = -1;
 
             List<string> listaEspecie = new List<string>();
             listaEspecie.Add("01-PASSAGEIRO");
@@ -106,7 +144,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             listaEspecie.Add("04-TRAÇÃO");
             listaEspecie.Add("05-ESPECIAL");
             comboEspecie.DataSource = listaEspecie;
-            comboEspecie.SelectedIndex = 0;
+            comboEspecie.SelectedIndex = -1;
 
             List<string> listaTipoVeiculo = new List<string>();
             listaTipoVeiculo.Add("02-CICLOMOTOR");
@@ -131,7 +169,30 @@ namespace Lunar.Telas.Cadastros.Produtos
             listaTipoVeiculo.Add("25-UTILITÁRIO");
             listaTipoVeiculo.Add("26-MOTOR-CASA");
             comboTipoVeiculo.DataSource = listaTipoVeiculo;
-            comboTipoVeiculo.SelectedIndex = 0;
+            comboTipoVeiculo.SelectedIndex = -1;
+
+            List<string> listaCondicaoVeiculo = new List<string>();
+            listaCondicaoVeiculo.Add("R-REMARCADO");
+            listaCondicaoVeiculo.Add("N-NORMAL");
+            comboCondicaoVeiculo.DataSource = listaCondicaoVeiculo;
+            comboCondicaoVeiculo.SelectedIndex = -1;
+
+            List<string> listaCondicao = new List<string>();
+            listaCondicao.Add("1-ACABADO");
+            listaCondicao.Add("2-INACABADO");
+            listaCondicao.Add("3-SEMI-ACABADO");
+            comboCondicaoProduto.DataSource = listaCondicao;
+            comboCondicaoProduto.SelectedIndex = -1;
+
+            List<string> listaRestricao = new List<string>();
+            listaRestricao.Add("0-NÃO HÁ");
+            listaRestricao.Add("1-ALIENACAO FIDUCIARIA");
+            listaRestricao.Add("2-ARRENDAMENTO MERCANTIL");
+            listaRestricao.Add("3-RESERVA DE DOMINIO");
+            listaRestricao.Add("4-PENHOR DE VEICULOS");
+            listaRestricao.Add("9-OUTRAS");
+            comboRestricaoVeiculo.DataSource = listaRestricao;
+            comboRestricaoVeiculo.SelectedIndex = -1;
         }
         private void gerarCombustivel()
         {
@@ -155,7 +216,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             lista.Add("17-GASOLINA/ÁLCOOL/GÁS NATURAL");
             lista.Add("18-GASOLINA/ELÉTRICO");
             comboCombustivel.DataSource = lista;
-            comboCombustivel.SelectedIndex = 0;
+            comboCombustivel.SelectedIndex = -1;
         }
         private void gerarCoresVeiculos()
         {
@@ -177,10 +238,10 @@ namespace Lunar.Telas.Cadastros.Produtos
             tiposDeProduto.Add("15-VERMELHA");
             tiposDeProduto.Add("16-FANTASIA");
             comboCorDenatran.DataSource = tiposDeProduto;
-            comboCorDenatran.SelectedIndex = 0;
+            comboCorDenatran.SelectedIndex = -1;
 
             comboCorMontadora.DataSource = tiposDeProduto;
-            comboCorMontadora.SelectedIndex = 0;
+            comboCorMontadora.SelectedIndex = -1;
         }
         private void gerarTiposDeProdutos()
         {
@@ -191,6 +252,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             tiposDeProduto.Add("ATIVO IMOBILIZADO");
             comboTipoProduto.DataSource = tiposDeProduto;
             comboTipoProduto.SelectedIndex = 0;
+            //MessageBox.Show(tiposDeProduto.Count.ToString());
         }
 
         private void get_Produto(Produto produto)
@@ -332,8 +394,8 @@ namespace Lunar.Telas.Cadastros.Produtos
             comboCombustivel.Text = produto.Combustivel;
             comboTipoCambio.Text = produto.TipoCambio;
             comboTipoEntrada.Text = produto.TipoEntrada;
-            txtAno.Texts = produto.AnoVeiculo;
-            txtModelo.Texts = produto.ModeloVeiculo;
+            txtAnoFabricacao.Texts = produto.AnoVeiculo;
+            txtAnoModelo.Texts = produto.ModeloVeiculo;
             txtMarcaModelo.Texts = produto.MarcaModelo;
             comboEspecie.Text = produto.EspecieVeiculo;
             txtLotacao.Texts = produto.LotacaoVeiculo;
@@ -1074,7 +1136,7 @@ namespace Lunar.Telas.Cadastros.Produtos
 
         private void comboTipoProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtEstoque.Focus();           
+            try { txtEstoque.Focus(); } catch { }    
         }
 
         private void set_Produto()
@@ -1240,8 +1302,8 @@ namespace Lunar.Telas.Cadastros.Produtos
                 produto.Combustivel = comboCombustivel.Text;
                 produto.TipoCambio = comboTipoCambio.Text;
                 produto.TipoEntrada = comboTipoEntrada.Text;
-                produto.AnoVeiculo = txtAno.Texts;
-                produto.ModeloVeiculo = txtModelo.Texts;
+                produto.AnoVeiculo = txtAnoFabricacao.Texts;
+                produto.ModeloVeiculo = txtAnoModelo.Texts;
                 produto.MarcaModelo = txtMarcaModelo.Texts;
                 produto.EspecieVeiculo = comboEspecie.Text;
                 produto.LotacaoVeiculo = txtLotacao.Texts;

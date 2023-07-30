@@ -16,6 +16,7 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)pdfiumviewer.native.x86.v8-xfa\2018.4.8.256\Build\PdfiumViewer.Native.x86.v8-xfa.props" Condition="Exists('$(NuGetPackageRoot)pdfiumviewer.native.x86.v8-xfa\2018.4.8.256\Build\PdfiumViewer.Native.x86.v8-xfa.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.contracts\10.0.17763.1000\build\Microsoft.Windows.SDK.Contracts.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.contracts\10.0.17763.1000\build\Microsoft.Windows.SDK.Contracts.props')" />
+    <Import Project="$(NuGetPackageRoot)fastreport.opensource\2023.2.24\buildTransitive\FastReport.OpenSource.props" Condition="Exists('$(NuGetPackageRoot)fastreport.opensource\2023.2.24\buildTransitive\FastReport.OpenSource.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgSyncfusion_Shared_Base Condition=" '$(PkgSyncfusion_Shared_Base)' == '' ">C:\Users\marce\.nuget\packages\syncfusion.shared.base\19.4.0.38</PkgSyncfusion_Shared_Base>

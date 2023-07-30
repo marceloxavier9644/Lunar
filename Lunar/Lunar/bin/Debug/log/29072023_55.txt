@@ -1,0 +1,2926 @@
+29/07/2023 12:19 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 12:19 - [ENVIO_DADOS]
+29/07/2023 12:19 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>20</nNF>
+      <dhEmi>2023-07-29T12:19:40-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9980</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 12:19 - [ENVIO_RESPOSTA]
+29/07/2023 12:19 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:19 - [JSON_RETORNO]
+29/07/2023 12:19 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:19 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 12:31 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 12:31 - [ENVIO_DADOS]
+29/07/2023 12:31 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>21</nNF>
+      <dhEmi>2023-07-29T12:31:32-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9980</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 12:31 - [ENVIO_RESPOSTA]
+29/07/2023 12:31 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:31 - [JSON_RETORNO]
+29/07/2023 12:31 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:31 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 12:46 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 12:46 - [ENVIO_DADOS]
+29/07/2023 12:46 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>30</nNF>
+      <dhEmi>2023-07-29T12:46:02-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9980</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 12:46 - [ENVIO_RESPOSTA]
+29/07/2023 12:46 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:46 - [JSON_RETORNO]
+29/07/2023 12:46 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:46 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 12:46 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 12:46 - [ENVIO_DADOS]
+29/07/2023 12:46 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>31</nNF>
+      <dhEmi>2023-07-29T12:46:56-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9980</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 12:46 - [ENVIO_RESPOSTA]
+29/07/2023 12:46 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:46 - [JSON_RETORNO]
+29/07/2023 12:46 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:46 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 12:50 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 12:50 - [ENVIO_DADOS]
+29/07/2023 12:50 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>32</nNF>
+      <dhEmi>2023-07-29T12:50:44-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9980</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 12:50 - [ENVIO_RESPOSTA]
+29/07/2023 12:50 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:50 - [JSON_RETORNO]
+29/07/2023 12:50 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:50 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 12:51 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 12:51 - [ENVIO_DADOS]
+29/07/2023 12:51 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>33</nNF>
+      <dhEmi>2023-07-29T12:51:40-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9980</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 12:51 - [ENVIO_RESPOSTA]
+29/07/2023 12:51 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:51 - [JSON_RETORNO]
+29/07/2023 12:51 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["det : cvc-complex-type.2.4.a: Invalid content was found starting with element 'total'. One of '{\"http://www.portalfiscal.inf.br/nfe\":retirada, \"http://www.portalfiscal.inf.br/nfe\":entrega, \"http://www.portalfiscal.inf.br/nfe\":autXML, \"http://www.portalfiscal.inf.br/nfe\":det}' is expected."]}
+29/07/2023 12:51 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 12:58 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 12:58 - [ENVIO_DADOS]
+29/07/2023 12:58 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>34</nNF>
+      <dhEmi>2023-07-29T12:58:07-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>01</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+      <impostoDevol />
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9980</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 12:58 - [ENVIO_RESPOSTA]
+29/07/2023 12:58 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["chassi : cvc-length-valid: Value '1254K258954' with length = '11' is not facet-valid with respect to length '17' for type '#AnonType_chassiveicProdproddetinfNFeTNFe'.","espVeic : cvc-pattern-valid: Value '01' is not facet-valid with respect to pattern '[0-9]{1}' for type '#AnonType_espVeicveicProdproddetinfNFeTNFe'.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 12:58 - [JSON_RETORNO]
+29/07/2023 12:58 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["chassi : cvc-length-valid: Value '1254K258954' with length = '11' is not facet-valid with respect to length '17' for type '#AnonType_chassiveicProdproddetinfNFeTNFe'.","espVeic : cvc-pattern-valid: Value '01' is not facet-valid with respect to pattern '[0-9]{1}' for type '#AnonType_espVeicveicProdproddetinfNFeTNFe'.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 12:58 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 12:58 - [CONSULTA_DADOS]
+29/07/2023 12:58 - {"CNPJ":"42988444000127","nsNRec":null,"tpAmb":"2"}
+29/07/2023 12:58 - [CONSULTA_RESPOSTA]
+29/07/2023 12:58 - {"status":-2,"motivo":"Os campos 'CNPJ' ou 'nsNRec' devem ser informados"}
+29/07/2023 12:59 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 12:59 - [ENVIO_DADOS]
+29/07/2023 12:59 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>34</nNF>
+      <dhEmi>2023-07-29T12:59:05-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>01</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+      <impostoDevol />
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>01</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+      <impostoDevol />
+    </det>
+    <det nItem="3">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>01</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+      <impostoDevol />
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>3.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>3.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9980</nFat>
+        <vOrig>3.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>3.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>3.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 12:59 - [ENVIO_RESPOSTA]
+29/07/2023 12:59 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["espVeic : cvc-pattern-valid: Value '01' is not facet-valid with respect to pattern '[0-9]{1}' for type '#AnonType_espVeicveicProdproddetinfNFeTNFe'.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected.","espVeic : cvc-pattern-valid: Value '01' is not facet-valid with respect to pattern '[0-9]{1}' for type '#AnonType_espVeicveicProdproddetinfNFeTNFe'.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected.","espVeic : cvc-pattern-valid: Value '01' is not facet-valid with respect to pattern '[0-9]{1}' for type '#AnonType_espVeicveicProdproddetinfNFeTNFe'.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 12:59 - [JSON_RETORNO]
+29/07/2023 12:59 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["espVeic : cvc-pattern-valid: Value '01' is not facet-valid with respect to pattern '[0-9]{1}' for type '#AnonType_espVeicveicProdproddetinfNFeTNFe'.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected.","espVeic : cvc-pattern-valid: Value '01' is not facet-valid with respect to pattern '[0-9]{1}' for type '#AnonType_espVeicveicProdproddetinfNFeTNFe'.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected.","espVeic : cvc-pattern-valid: Value '01' is not facet-valid with respect to pattern '[0-9]{1}' for type '#AnonType_espVeicveicProdproddetinfNFeTNFe'.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 12:59 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 13:00 - [CONSULTA_DADOS]
+29/07/2023 13:00 - {"CNPJ":"42988444000127","nsNRec":null,"tpAmb":"2"}
+29/07/2023 13:00 - [CONSULTA_RESPOSTA]
+29/07/2023 13:00 - {"status":-2,"motivo":"Os campos 'CNPJ' ou 'nsNRec' devem ser informados"}
+29/07/2023 13:00 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 13:00 - [ENVIO_DADOS]
+29/07/2023 13:00 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>34</nNF>
+      <dhEmi>2023-07-29T13:00:04-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>1</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+      <impostoDevol />
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>1</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+      <impostoDevol />
+    </det>
+    <det nItem="3">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>1</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+      <impostoDevol />
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>3.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>3.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9980</nFat>
+        <vOrig>3.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>3.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>3.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 13:00 - [ENVIO_RESPOSTA]
+29/07/2023 13:00 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 13:00 - [JSON_RETORNO]
+29/07/2023 13:00 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected.","pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 13:00 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 13:01 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 13:01 - [ENVIO_DADOS]
+29/07/2023 13:01 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>35</nNF>
+      <dhEmi>2023-07-29T13:01:21-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>1</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+      <impostoDevol />
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9981</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 13:01 - [ENVIO_RESPOSTA]
+29/07/2023 13:01 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 13:01 - [JSON_RETORNO]
+29/07/2023 13:01 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 13:01 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 13:02 - [CONSULTA_DADOS]
+29/07/2023 13:02 - {"CNPJ":"42988444000127","nsNRec":null,"tpAmb":"2"}
+29/07/2023 13:02 - [CONSULTA_RESPOSTA]
+29/07/2023 13:02 - {"status":-2,"motivo":"Os campos 'CNPJ' ou 'nsNRec' devem ser informados"}
+29/07/2023 13:02 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 13:02 - [ENVIO_DADOS]
+29/07/2023 13:02 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>35</nNF>
+      <dhEmi>2023-07-29T13:02:18-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>1</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+      <impostoDevol />
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9981</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 13:02 - [ENVIO_RESPOSTA]
+29/07/2023 13:02 - {"status":-2,"motivo":"NFe invalido de acordo com a validacao contra schema","erros":["pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 13:02 - [JSON_RETORNO]
+29/07/2023 13:02 - {"chNFe":"","statusEnvio":"-2","statusConsulta":"","statusDownload":"","cStat":"","nProt":"","motivo":"NFe invalido de acordo com a validacao contra schema","nsNRec":"","erros":["pDevol : cvc-complex-type.2.4.b: The content of element 'impostoDevol' is not complete. One of '{\"http://www.portalfiscal.inf.br/nfe\":pDevol}' is expected."]}
+29/07/2023 13:02 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 13:04 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 13:04 - [ENVIO_DADOS]
+29/07/2023 13:04 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>36</nNF>
+      <dhEmi>2023-07-29T13:04:17-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>2000.00</vUnCom>
+        <vProd>2000.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>2000.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>1</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>2000.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>2000.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9982</nFat>
+        <vOrig>2000.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>2000.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>2000.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>2000.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 13:04 - [ENVIO_RESPOSTA]
+29/07/2023 13:04 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"8637273"}
+29/07/2023 13:04 - [CONSULTA_DADOS]
+29/07/2023 13:04 - {"CNPJ":"42988444000127","nsNRec":"8637273","tpAmb":"2"}
+29/07/2023 13:04 - [CONSULTA_RESPOSTA]
+29/07/2023 13:04 - {"status":-2,"motivo":"Nao foi possivel carregar o status da NF-e","erro":{"cStat":996,"xMotivo":"Documento ainda nao processado, por favor realize a consulta novamente"}}
+29/07/2023 13:04 - [JSON_RETORNO]
+29/07/2023 13:04 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-2","statusDownload":"","cStat":null,"nProt":"","motivo":"Documento ainda nao processado, por favor realize a consulta novamente","nsNRec":"8637273","erros":null}
+29/07/2023 13:04 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 13:04 - [CONSULTA_DADOS]
+29/07/2023 13:04 - {"CNPJ":"42988444000127","nsNRec":"8637273","tpAmb":"2"}
+29/07/2023 13:04 - [CONSULTA_RESPOSTA]
+29/07/2023 13:04 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31230742988444000127550020000000361433902084","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131230147543295","dhRecbto":"2023-07-29T13:04:18-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31230742988444000127550020000000361433902084\"><ide><cUF>31</cUF><cNF>43390208</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>36</nNF><dhEmi>2023-07-29T13:04:17-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>4</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>05228258698</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>R JOAO PATRICIO</xLgr><nro>81</nro><xBairro>ITAEMA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610000</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>2000.00</vUnCom><vProd>2000.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>2000.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025412</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>2000.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>2000.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>9982</nFat><vOrig>2000.00</vOrig><vDesc>0.00</vDesc><vLiq>2000.00</vLiq></fat><dup><nDup>001</nDup><dVenc>2023-07-29</dVenc><vDup>2000.00</vDup></dup></cobr><pag><detPag><tPag>01</tPag><vPag>2000.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31230742988444000127550020000000361433902084\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>46Qcc8nqAn91FEC1fpK/HRLw0Ok=</DigestValue></Reference></SignedInfo><SignatureValue>kFAZwaFmuixY51tWANVxa24/qo61B/stmUSTxa2M+xE99wc68wqzUZnKJMRxl4t0dxwZGInwvkVsIK63s3IS4dgV+Mc1FJDFbglgPXayIkt84+jEif0ObFl2hSDWZUzzKOGfRzQVnEz18d4muYem1o6UVvzdhQnht2PtAJWQZ6gL1OLPqzcpVVxd7kOkE+2ynIooOpNbZViQ74GEiPy0aSNaN9MEu//SRT/YxMs9EsmkOu3fefPwmWDlxd0dfWO5bJjcOOjs9pm9gH7+pLx9AiJ6BxRORhF84ZkI2dD5s9dILt1ywL/lZMFX9jWOx9l3SYZCqQehIojnFtCE7qnGbQ==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>J-3.1.11</verAplic><chNFe>31230742988444000127550020000000361433902084</chNFe><dhRecbto>2023-07-29T13:04:18-03:00</dhRecbto><nProt>131230147543295</nProt><digVal>46Qcc8nqAn91FEC1fpK/HRLw0Ok=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+29/07/2023 14:24 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 14:24 - [ENVIO_DADOS]
+29/07/2023 14:24 - <NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe versao="4.00"><ide><cUF>31</cUF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>39</nNF><dhEmi>2023-07-29T14:24:23-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>0</indPres><procEmi>0</procEmi><verProc>4.00</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>04266571607</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA JACANA</xLgr><nro>520</nro><xBairro>DIVINEIA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610000</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem="1"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>1.00</vUnCom><vProd>1.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>1.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025412</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>1.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>1.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>39</nFat><vOrig>1.00</vOrig><vDesc>0.00</vDesc><vLiq>1.00</vLiq></fat></cobr><pag><detPag><tPag>01</tPag><vPag>1.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL NÃO GERA DIREITO A CRÉDITO FISCAL DE IPI</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe></NFe>
+29/07/2023 14:24 - [ENVIO_RESPOSTA]
+29/07/2023 14:24 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"8637461"}
+29/07/2023 14:24 - [CONSULTA_DADOS]
+29/07/2023 14:24 - {"CNPJ":"42988444000127","nsNRec":"8637461","tpAmb":"2"}
+29/07/2023 14:24 - [CONSULTA_RESPOSTA]
+29/07/2023 14:24 - {"status":-2,"motivo":"Nao foi possivel carregar o status da NF-e","erro":{"cStat":996,"xMotivo":"Documento ainda nao processado, por favor realize a consulta novamente"}}
+29/07/2023 14:24 - [JSON_RETORNO]
+29/07/2023 14:24 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-2","statusDownload":"","cStat":null,"nProt":"","motivo":"Documento ainda nao processado, por favor realize a consulta novamente","nsNRec":"8637461","erros":null}
+29/07/2023 14:24 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 14:24 - [CONSULTA_DADOS]
+29/07/2023 14:24 - {"CNPJ":"42988444000127","nsNRec":"8637461","tpAmb":"2"}
+29/07/2023 14:24 - [CONSULTA_RESPOSTA]
+29/07/2023 14:24 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31230742988444000127550020000000391904383644","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131230147543315","dhRecbto":"2023-07-29T14:24:25-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31230742988444000127550020000000391904383644\"><ide><cUF>31</cUF><cNF>90438364</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>39</nNF><dhEmi>2023-07-29T14:24:23-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>4</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>0</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>04266571607</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA JACANA</xLgr><nro>520</nro><xBairro>DIVINEIA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610000</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>1.00</vUnCom><vProd>1.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>1.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025412</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>1.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>1.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>39</nFat><vOrig>1.00</vOrig><vDesc>0.00</vDesc><vLiq>1.00</vLiq></fat></cobr><pag><detPag><tPag>01</tPag><vPag>1.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL NÃO GERA DIREITO A CRÉDITO FISCAL DE IPI</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31230742988444000127550020000000391904383644\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>qbUtk0X5R+Sx0Zk13jjHdq+Qxrc=</DigestValue></Reference></SignedInfo><SignatureValue>dX3KIIoAgQCCDxkfl3s46+oovlDYtkceROAIKWh/XmBDucTqs3vh9HFfVAZ1aa0/zL3pD63pAJA3H/LR78a/1mrzvkr7dbJnQotKq1R+kfyUzQLkhtMsHukkqoje3E+R7Xlpzi7pNkfVs3rLisEXWOa+fuT2GHmnP79PuxXmEbdsvmlq9xBqURA4MqgadiJJqLH4/wghtX0nYPaLP627IIr7NgfvgV7+q1akglr3gSpB0fs4ufUIzUKLqLacY2oJr0GvvEgqckgExNgdMTHHSioZ+U+DC0uhrLex6Xk2SZMYMgZJMg7Fm7oRg0ltgGv1gBo9DOzFIZiEA2xJFE5FYg==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>J-3.1.11</verAplic><chNFe>31230742988444000127550020000000391904383644</chNFe><dhRecbto>2023-07-29T14:24:25-03:00</dhRecbto><nProt>131230147543315</nProt><digVal>qbUtk0X5R+Sx0Zk13jjHdq+Qxrc=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+29/07/2023 14:25 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 14:25 - [ENVIO_DADOS]
+29/07/2023 14:25 - <NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe versao="4.00"><ide><cUF>31</cUF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>40</nNF><dhEmi>2023-07-29T14:25:44-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>0</indPres><procEmi>0</procEmi><verProc>4.00</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>05425568630</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA VENUS</xLgr><nro>147</nro><xBairro>PARQUE CANABRAVA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38612281</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem="1"><prod><cProd>924</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>90015000</NCM><CFOP>5102</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>270.00</vUnCom><vProd>270.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>270.00</vUnTrib><indTot>1</indTot></prod><imposto><ICMS><ICMSSN102><orig>0</orig><CSOSN>102</CSOSN></ICMSSN102></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><det nItem="2"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>234.00</vUnCom><vProd>234.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>234.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025412</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>504.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>504.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>40</nFat><vOrig>504.00</vOrig><vDesc>0.00</vDesc><vLiq>504.00</vLiq></fat></cobr><pag><detPag><tPag>99</tPag><xPag>CREDIÁRIO</xPag><vPag>504.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL NÃO GERA DIREITO A CRÉDITO FISCAL DE IPI</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe></NFe>
+29/07/2023 14:25 - [ENVIO_RESPOSTA]
+29/07/2023 14:25 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"8637466"}
+29/07/2023 14:25 - [CONSULTA_DADOS]
+29/07/2023 14:25 - {"CNPJ":"42988444000127","nsNRec":"8637466","tpAmb":"2"}
+29/07/2023 14:25 - [CONSULTA_RESPOSTA]
+29/07/2023 14:25 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31230742988444000127550020000000401563117258","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131230147543316","dhRecbto":"2023-07-29T14:25:44-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31230742988444000127550020000000401563117258\"><ide><cUF>31</cUF><cNF>56311725</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>40</nNF><dhEmi>2023-07-29T14:25:44-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>8</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>0</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>05425568630</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA VENUS</xLgr><nro>147</nro><xBairro>PARQUE CANABRAVA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38612281</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>924</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>90015000</NCM><CFOP>5102</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>270.00</vUnCom><vProd>270.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>270.00</vUnTrib><indTot>1</indTot></prod><imposto><ICMS><ICMSSN102><orig>0</orig><CSOSN>102</CSOSN></ICMSSN102></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><det nItem=\"2\"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>234.00</vUnCom><vProd>234.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>234.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025412</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>504.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>504.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>40</nFat><vOrig>504.00</vOrig><vDesc>0.00</vDesc><vLiq>504.00</vLiq></fat></cobr><pag><detPag><tPag>99</tPag><xPag>CREDIÁRIO</xPag><vPag>504.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL NÃO GERA DIREITO A CRÉDITO FISCAL DE IPI</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31230742988444000127550020000000401563117258\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>h+3VJT1BBN6AEgSi8A6ym1d0B/4=</DigestValue></Reference></SignedInfo><SignatureValue>BTmisdl/nO8q5ao4ezORdkH7USLFRxNDjw9j9uMV7F4d//S0i7FJz+G0FcBMHG1GWD2HU7e6aN0TbmU72OBDZuOoql/b4V+YymcgBJHjiAM9v7gVQF7hzuBdfOTnvCdv7rF5YyzAWGW5bYAq8GzuPYu0GJEQfioqgRlfxPbkmFZPKlktCK2Sw2pk+SMUjuO5j2KwRlZuOZiAxpUi8I/RWWltgLCENVKZDYB05IynsL7af04w+k+lHMSCNVT+JXhARvswdiCBo/QUC/lIHj/K7EtUyxE9DNxsefZZnMm75Onib0lwi3LBVaMY5yB5mPePyB/SSuQSWj2eByB525GcRA==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>J-3.1.11</verAplic><chNFe>31230742988444000127550020000000401563117258</chNFe><dhRecbto>2023-07-29T14:25:44-03:00</dhRecbto><nProt>131230147543316</nProt><digVal>h+3VJT1BBN6AEgSi8A6ym1d0B/4=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+29/07/2023 14:25 - [DOWNLOAD_DADOS]
+29/07/2023 14:25 - {"chNFe":"31230742988444000127550020000000401563117258","printCEAN":false,"tpDown":"XP","tpAmb":"2"}
+29/07/2023 14:25 - [DOWNLOAD_STATUS]
+29/07/2023 14:25 - 200
+29/07/2023 14:25 - [JSON_RETORNO]
+29/07/2023 14:25 - {"chNFe":"31230742988444000127550020000000401563117258","statusEnvio":"200","statusConsulta":"200","statusDownload":"200","cStat":"100","nProt":"131230147543316","motivo":"Autorizado o uso da NF-e","nsNRec":"8637466","erros":null}
+29/07/2023 14:25 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 14:27 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 14:27 - [ENVIO_DADOS]
+29/07/2023 14:27 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>360</nNF>
+      <dhEmi>2023-07-29T14:27:31-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>100.00</vUnCom>
+        <vProd>100.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>100.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025412</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>1</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>100.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>100.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>16</nFat>
+        <vOrig>100.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>100.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>100.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>100.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 14:27 - [ENVIO_RESPOSTA]
+29/07/2023 14:27 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"8637470"}
+29/07/2023 14:27 - [CONSULTA_DADOS]
+29/07/2023 14:27 - {"CNPJ":"42988444000127","nsNRec":"8637470","tpAmb":"2"}
+29/07/2023 14:27 - [CONSULTA_RESPOSTA]
+29/07/2023 14:27 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31230742988444000127550020000003601502534133","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131230147543317","dhRecbto":"2023-07-29T14:27:32-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31230742988444000127550020000003601502534133\"><ide><cUF>31</cUF><cNF>50253413</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>360</nNF><dhEmi>2023-07-29T14:27:31-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>3</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>05228258698</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>R JOAO PATRICIO</xLgr><nro>81</nro><xBairro>ITAEMA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610000</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>100.00</vUnCom><vProd>100.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>100.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025412</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>100.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>100.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>16</nFat><vOrig>100.00</vOrig><vDesc>0.00</vDesc><vLiq>100.00</vLiq></fat><dup><nDup>001</nDup><dVenc>2023-07-29</dVenc><vDup>100.00</vDup></dup></cobr><pag><detPag><tPag>01</tPag><vPag>100.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31230742988444000127550020000003601502534133\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>ChdMaDMADEyeUZZLxa5KsjHRNuU=</DigestValue></Reference></SignedInfo><SignatureValue>fMjcYv2Wus8Dg7uPbaFn7/eDDKaVRFPjH4chwk5CJqkmvoqkdRaSiPzkXvqBb6VklCZZDliVDezZgN+pTBEDw5Z45UbAOIu9ZsC4CGelXBaSpEuYutxIiP8t+i0R27242JvdwZ4y+vuRuHLF4dkRBXM4osdSb4bh2B8hM5u2Q3KU8J5Xzp1BCuZBL443B7K4USZzgdWfyr5SHXkV93cR9cWqzuvSKSgTdBbZBU59qNCXhP10B+paSiJvYEfhbPPSxRh7aLNI8pzKOMJ2gNCtb2IreJnFqJuuI22vdA8Z+7hwKUb85SfUQL+9Qzs5XkRpEDYgFQXPd6b6yK0hrCSMBg==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>J-3.1.11</verAplic><chNFe>31230742988444000127550020000003601502534133</chNFe><dhRecbto>2023-07-29T14:27:32-03:00</dhRecbto><nProt>131230147543317</nProt><digVal>ChdMaDMADEyeUZZLxa5KsjHRNuU=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+29/07/2023 14:27 - [DOWNLOAD_DADOS]
+29/07/2023 14:27 - {"chNFe":"31230742988444000127550020000003601502534133","printCEAN":false,"tpDown":"XP","tpAmb":"2"}
+29/07/2023 14:27 - [DOWNLOAD_STATUS]
+29/07/2023 14:27 - 200
+29/07/2023 14:27 - [JSON_RETORNO]
+29/07/2023 14:27 - {"chNFe":"31230742988444000127550020000003601502534133","statusEnvio":"200","statusConsulta":"200","statusDownload":"200","cStat":"100","nProt":"131230147543317","motivo":"Autorizado o uso da NF-e","nsNRec":"8637470","erros":null}
+29/07/2023 14:27 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 14:49 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 14:49 - [ENVIO_DADOS]
+29/07/2023 14:49 - <NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe versao="4.00"><ide><cUF>31</cUF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>361</nNF><dhEmi>2023-07-29T14:49:48-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>0</indPres><procEmi>0</procEmi><verProc>4.00</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>51176971620</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA PATOS DE MINAS</xLgr><nro>255</nro><xBairro>JARDIM</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610000</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem="1"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>2.00</vUnCom><vProd>2.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>2.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025412</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto><infAdProd>LunarBase.Utilidades.NFe40Modelo.TNFeInfNFeDetProdVeicProd</infAdProd></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>2.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>2.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>361</nFat><vOrig>2.00</vOrig><vDesc>0.00</vDesc><vLiq>2.00</vLiq></fat></cobr><pag><detPag><tPag>99</tPag><xPag>CREDIÁRIO</xPag><vPag>2.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL NÃO GERA DIREITO A CRÉDITO FISCAL DE IPI</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe></NFe>
+29/07/2023 14:49 - [ENVIO_RESPOSTA]
+29/07/2023 14:49 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"8637514"}
+29/07/2023 14:49 - [CONSULTA_DADOS]
+29/07/2023 14:49 - {"CNPJ":"42988444000127","nsNRec":"8637514","tpAmb":"2"}
+29/07/2023 14:49 - [CONSULTA_RESPOSTA]
+29/07/2023 14:49 - {"status":-2,"motivo":"Nao foi possivel carregar o status da NF-e","erro":{"cStat":996,"xMotivo":"Documento ainda nao processado, por favor realize a consulta novamente"}}
+29/07/2023 14:49 - [JSON_RETORNO]
+29/07/2023 14:49 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-2","statusDownload":"","cStat":null,"nProt":"","motivo":"Documento ainda nao processado, por favor realize a consulta novamente","nsNRec":"8637514","erros":null}
+29/07/2023 14:49 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 14:49 - [CONSULTA_DADOS]
+29/07/2023 14:49 - {"CNPJ":"42988444000127","nsNRec":"8637514","tpAmb":"2"}
+29/07/2023 14:49 - [CONSULTA_RESPOSTA]
+29/07/2023 14:49 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31230742988444000127550020000003611425044812","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131230147543318","dhRecbto":"2023-07-29T14:49:50-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31230742988444000127550020000003611425044812\"><ide><cUF>31</cUF><cNF>42504481</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>361</nNF><dhEmi>2023-07-29T14:49:48-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>2</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>0</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>51176971620</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA PATOS DE MINAS</xLgr><nro>255</nro><xBairro>JARDIM</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610000</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>2.00</vUnCom><vProd>2.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>2.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025412</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto><infAdProd>LunarBase.Utilidades.NFe40Modelo.TNFeInfNFeDetProdVeicProd</infAdProd></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>2.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>2.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>361</nFat><vOrig>2.00</vOrig><vDesc>0.00</vDesc><vLiq>2.00</vLiq></fat></cobr><pag><detPag><tPag>99</tPag><xPag>CREDIÁRIO</xPag><vPag>2.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL NÃO GERA DIREITO A CRÉDITO FISCAL DE IPI</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31230742988444000127550020000003611425044812\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>pjusfzcek+qf4HZsD4EH9DXaItE=</DigestValue></Reference></SignedInfo><SignatureValue>GVatOOcm+nwITzf/pS8q7Jd5KMCaIHG07nXH1v7J3Gmy7H2jCRZNCrlJnda9TMSddjnoVlf3sQJukQ26Y+H5/pF48oXaBpvy8qAuCJOynTw+i7rOYkZKXiRGPsS75XEg/cv7+IUtUe/G32N1PQ6cLJrG10fcwIcWdOTUczpcFCCnfYrD8htAsUhoXDDJPJiu2kR+pWQM4fZGqDsDpjKhu2FykMMS3zVd8/o5im4mkAyBwDCgr93wXPXRRNTKKeCjctMRAozsO7OtL3G0XWdy+pPlJ6MjkB8d8GtVEJG1uIoKCpj2NHtqvFHRpFLcOZgpjtXaAMu3OSPXRjE5yRrBmw==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIHUTCCBTmgAwIBAgIIIHMiCSBBw54wDQYJKoZIhvcNAQELBQAwWTELMAkGA1UEBhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxFTATBgNVBAsTDEFDIFNPTFVUSSB2NTEeMBwGA1UEAxMVQUMgU09MVVRJIE11bHRpcGxhIHY1MB4XDTIyMDkyMDIwMDgwMFoXDTIzMDkyMDIwMDgwMFowgeIxCzAJBgNVBAYTAkJSMRMwEQYDVQQKEwpJQ1AtQnJhc2lsMQswCQYDVQQIEwJNRzENMAsGA1UEBxMEVW5haTEeMBwGA1UECxMVQUMgU09MVVRJIE11bHRpcGxhIHY1MRcwFQYDVQQLEw4yOTE4NjYxMjAwMDEwMDETMBEGA1UECxMKUHJlc2VuY2lhbDEaMBgGA1UECxMRQ2VydGlmaWNhZG8gUEogQTExODA2BgNVBAMTL1JPTkVJIEpTIFBST0RVVE9TIE9QVElDT1MgRUlSRUxJOjQyOTg4NDQ0MDAwMTI3MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlUjtui0IUK2jAQ+A60UhwUBkUBOI1cFmFEeAD3HpFL2SG6QW/iCrw7JBG7aH/mlQ5AcrZUGGzQ238MhUe6z4v9tbeYwH1kqHuRSStaOmoBvOVp3XLG7mbpREM8km2wp8w9MY1kaue7MGIFsodNud/4vLjppFTc2kBbsC24Jz/iv1Fqv+mDcII5OhE+zs3wd6ovDcdtZYIHXnXoNKxR8l0pT1h0rf4F25aPNphz+U3JcIN6a6G3NsYhDTVgiSQpn4Y1NCV+blFujpLgnalBeHZfs7DC9Uul5KD13gNlvzCo3TDHw55uTH+lNrZHKjaCTfBoDCibwco7t2Tt0p71GdFQIDAQABo4ICkTCCAo0wCQYDVR0TBAIwADAfBgNVHSMEGDAWgBTFUu0lgAnfnILIn0fG3bRfMd25sTBUBggrBgEFBQcBAQRIMEYwRAYIKwYBBQUHMAKGOGh0dHA6Ly9jY2QuYWNzb2x1dGkuY29tLmJyL2xjci9hYy1zb2x1dGktbXVsdGlwbGEtdjUucDdiMIHMBgNVHREEgcQwgcGBJnJvbmVpanNwcm9kdXRvc29wdGljb3NsdGRhQGhvdG1haWwuY29toCkGBWBMAQMCoCATHlJPTkFMRE8gSk9TRSBEQSBTSUxWQSBTT0JSSU5IT6AZBgVgTAEDA6AQEw40Mjk4ODQ0NDAwMDEyN6A4BgVgTAEDBKAvEy0yNzA0MjAwMjEyMjg4NjkwNjU4MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDCgFwYFYEwBAwegDhMMMDAwMDAwMDAwMDAwMF0GA1UdIARWMFQwUgYGYEwBAgEmMEgwRgYIKwYBBQUHAgEWOmh0dHA6Ly9jY2QuYWNzb2x1dGkuY29tLmJyL2RvY3MvZHBjLWFjLXNvbHV0aS1tdWx0aXBsYS5wZGYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMEMIGMBgNVHR8EgYQwgYEwPqA8oDqGOGh0dHA6Ly9jY2QuYWNzb2x1dGkuY29tLmJyL2xjci9hYy1zb2x1dGktbXVsdGlwbGEtdjUuY3JsMD+gPaA7hjlodHRwOi8vY2NkMi5hY3NvbHV0aS5jb20uYnIvbGNyL2FjLXNvbHV0aS1tdWx0aXBsYS12NS5jcmwwHQYDVR0OBBYEFJlADkXsjEUrUT01MjkqpuvxQimyMA4GA1UdDwEB/wQEAwIF4DANBgkqhkiG9w0BAQsFAAOCAgEACLvGBWK1rO1Hvsk5O40QHalgo55bMwGMC2qjHVR5MjVv0E1l/zspDEBYe18qEYqKFt8NfjKFgoTuRd7s8fUdkVoZSOaw5LQetIbqUAXnj7Kgc/4eQJrD642PPx7jnigyndPIvwv3TfC2UuXwlTKaTGzuOBtrAAll+LHxmlezQy8k5d9Og3yEG9UQggKfVL19GnHBCJ60mxUXOYpuKUaAFn+kBj7kOdOtja1nEZQM3NdgG2gRa1IGZyTuH+DqV8ipJaq4gbbDMSVDpLTFD2/wHkLjRcIEpjEVLTQtYnftTPwDjcOZcMwm1wXfhwrFoE5A96qc0UI4RR6MAml0bw2PSntVTOTSUQzVZ7tnMDhHidmSxj4RtxZhPxu4oXFZgUXb5REGd8f5tj5dgCshLywA9S30Fp9U/IyN1dStrx5mLUCZcHrYyFVSQDWIEbnu7ABI1YHrEfSmHqCyUrwIegjolYEQA8eWKFJ27VUiBvDnsTg9BZgRb/H7v6DZlnqRzvLbT8d+WggDCkaWq3Dg0e6kSgWOEwjQSNrYxTb0CAlPJzzwbT0y3mfY0mxZC36AJ1occZp8FkfxRgUzjonRzj0OKeL72zYf5hiNlPwqMV2G2hwSGSXZy6Uy3H/+O+qZYGu/3hBt4fWXAthmb27cwpJDS6Lkkf7U6m9UfQ1aWOQiiFs=</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>J-3.1.11</verAplic><chNFe>31230742988444000127550020000003611425044812</chNFe><dhRecbto>2023-07-29T14:49:50-03:00</dhRecbto><nProt>131230147543318</nProt><digVal>pjusfzcek+qf4HZsD4EH9DXaItE=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+29/07/2023 15:11 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 15:11 - [ENVIO_DADOS]
+29/07/2023 15:11 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>362</nNF>
+      <dhEmi>2023-07-29T15:11:04-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>52387178300</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>RUA RIO</xLgr>
+        <nro>990</nro>
+        <xBairro>NAO INFORMADO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025415</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>1</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>1.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>1.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>17</nFat>
+        <vOrig>1.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>1.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>1.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>1.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 15:11 - [ENVIO_RESPOSTA]
+29/07/2023 15:11 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"8637550"}
+29/07/2023 15:11 - [CONSULTA_DADOS]
+29/07/2023 15:11 - {"CNPJ":"42988444000127","nsNRec":"8637550","tpAmb":"2"}
+29/07/2023 15:11 - [CONSULTA_RESPOSTA]
+29/07/2023 15:11 - {"status":-2,"motivo":"Nao foi possivel carregar o status da NF-e","erro":{"cStat":996,"xMotivo":"Documento ainda nao processado, por favor realize a consulta novamente"}}
+29/07/2023 15:11 - [JSON_RETORNO]
+29/07/2023 15:11 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-2","statusDownload":"","cStat":null,"nProt":"","motivo":"Documento ainda nao processado, por favor realize a consulta novamente","nsNRec":"8637550","erros":null}
+29/07/2023 15:11 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 15:11 - [CONSULTA_DADOS]
+29/07/2023 15:11 - {"CNPJ":"42988444000127","nsNRec":"8637550","tpAmb":"2"}
+29/07/2023 15:11 - [CONSULTA_RESPOSTA]
+29/07/2023 15:11 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31230742988444000127550020000003621837161198","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131230147543320","dhRecbto":"2023-07-29T15:11:06-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31230742988444000127550020000003621837161198\"><ide><cUF>31</cUF><cNF>83716119</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>362</nNF><dhEmi>2023-07-29T15:11:04-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>8</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>52387178300</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>RUA RIO</xLgr><nro>990</nro><xBairro>NAO INFORMADO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610000</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>1.00</vUnCom><vProd>1.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>1.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025415</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>1.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>1.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>17</nFat><vOrig>1.00</vOrig><vDesc>0.00</vDesc><vLiq>1.00</vLiq></fat><dup><nDup>001</nDup><dVenc>2023-07-29</dVenc><vDup>1.00</vDup></dup></cobr><pag><detPag><tPag>01</tPag><vPag>1.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31230742988444000127550020000003621837161198\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>TBY7hMqVwxo6esdxbPNXPmiYZAk=</DigestValue></Reference></SignedInfo><SignatureValue>RgnvraPedGJJRt4UObhZN1aIGJ3owjl04iCxS+zgPrZ284I72W29krCzvG2fKO5b+pDtlzsrc2yN/xCiLn8n6u669Wrr0HAfi/+l2JpMEznm7SCK2OtiRSG+dfDG5p+yLVres+pMfcRsgn/wjUF99ydY6yTAS37G0FhRigG672oYuq0NsoUSGC/f8e3ZLFrUFxHMDE/+y1kBmq3UJxCzsr/3Oilnd84aD5QKgbtAkFESowh+9/5EGFLbSiMjr76uzUp9Ol64NuTUmyjgLadcuD0pUbs3CKB8JW9PfFcDErkoRCB6WO9gSqMJvSMvmEwSG8d/X4kKDfYD7uxpnSj7XA==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>J-3.1.11</verAplic><chNFe>31230742988444000127550020000003621837161198</chNFe><dhRecbto>2023-07-29T15:11:06-03:00</dhRecbto><nProt>131230147543320</nProt><digVal>TBY7hMqVwxo6esdxbPNXPmiYZAk=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}
+29/07/2023 21:30 - [EMISSAO_SINCRONA_INICIO]
+29/07/2023 21:30 - [ENVIO_DADOS]
+29/07/2023 21:30 - <?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <cUF>31</cUF>
+      <natOp>VENDA</natOp>
+      <mod>55</mod>
+      <serie>2</serie>
+      <nNF>363</nNF>
+      <dhEmi>2023-07-29T21:30:37-03:00</dhEmi>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3170404</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <tpAmb>2</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>4.00</verProc>
+    </ide>
+    <emit>
+      <CNPJ>42988444000127</CNPJ>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderEmit>
+        <xLgr>AV GOVERNADOR VALADARES</xLgr>
+        <nro>688</nro>
+        <xBairro>CENTRO</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <fone>3836763246</fone>
+      </enderEmit>
+      <IE>7044597520016</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05228258698</CPF>
+      <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+      <enderDest>
+        <xLgr>R JOAO PATRICIO</xLgr>
+        <nro>81</nro>
+        <xBairro>ITAEMA</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>UNAI</xMun>
+        <UF>MG</UF>
+        <CEP>38610000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>2362</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>71132000</NCM>
+        <CEST>1600500</CEST>
+        <CFOP>5405</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>1.00</vUnCom>
+        <vProd>1.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>1.00</vUnTrib>
+        <indTot>1</indTot>
+        <veicProd>
+          <tpOp>1</tpOp>
+          <chassi>1254K258954025415</chassi>
+          <cCor>03</cCor>
+          <xCor>03-BEGE</xCor>
+          <pot>10</pot>
+          <cilin>10</cilin>
+          <pesoL>0.000</pesoL>
+          <pesoB>0.000</pesoB>
+          <nSerie>0</nSerie>
+          <tpComb>02</tpComb>
+          <nMotor>12345678</nMotor>
+          <CMT>123</CMT>
+          <dist>1233</dist>
+          <anoMod>2023</anoMod>
+          <anoFab>2023</anoFab>
+          <tpPint>S</tpPint>
+          <tpVeic>03</tpVeic>
+          <espVeic>1</espVeic>
+          <VIN>N</VIN>
+          <condVeic>1</condVeic>
+          <cMod>123453</cMod>
+          <cCorDENATRAN>05</cCorDENATRAN>
+          <lota>1</lota>
+          <tpRest>0</tpRest>
+        </veicProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN500>
+            <orig>0</orig>
+            <CSOSN>500</CSOSN>
+            <vBCSTRet>0.00</vBCSTRet>
+            <pST>0.00</pST>
+            <vICMSSubstituto>0.00</vICMSSubstituto>
+            <vICMSSTRet>0.00</vICMSSTRet>
+          </ICMSSN500>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <det nItem="2">
+      <prod>
+        <cProd>16</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+        <NCM>90015000</NCM>
+        <CFOP>5102</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1.00</qCom>
+        <vUnCom>80.00</vUnCom>
+        <vProd>80.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1.00</qTrib>
+        <vUnTrib>80.00</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pPIS>0.00</pPIS>
+            <vPIS>0.00</vPIS>
+          </PISOutr>
+        </PIS>
+        <COFINS>
+          <COFINSOutr>
+            <CST>99</CST>
+            <vBC>0.00</vBC>
+            <pCOFINS>0.00</pCOFINS>
+            <vCOFINS>0.00</vCOFINS>
+          </COFINSOutr>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCPUFDest>0.00</vFCPUFDest>
+        <vICMSUFDest>0.00</vICMSUFDest>
+        <vICMSUFRemet>0.00</vICMSUFRemet>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>81.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>81.00</vNF>
+        <vTotTrib>0.00</vTotTrib>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <cobr>
+      <fat>
+        <nFat>9983</nFat>
+        <vOrig>81.00</vOrig>
+        <vDesc>0.00</vDesc>
+        <vLiq>81.00</vLiq>
+      </fat>
+      <dup>
+        <nDup>001</nDup>
+        <dVenc>2023-07-29</dVenc>
+        <vDup>81.00</vDup>
+      </dup>
+    </cobr>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>81.00</vPag>
+      </detPag>
+      <vTroco>0.00</vTroco>
+    </pag>
+    <infAdic>
+      <infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl>
+    </infAdic>
+    <infRespTec>
+      <CNPJ>28145398000173</CNPJ>
+      <xContato>MARCELO XAVIER</xContato>
+      <email>marcelo.xs@hotmail.com</email>
+      <fone>3836769644</fone>
+    </infRespTec>
+  </infNFe>
+</NFe>
+29/07/2023 21:30 - [ENVIO_RESPOSTA]
+29/07/2023 21:30 - {"status":200,"motivo":"NF-e enviado para Sefaz","nsNRec":"8638204"}
+29/07/2023 21:30 - [CONSULTA_DADOS]
+29/07/2023 21:30 - {"CNPJ":"42988444000127","nsNRec":"8638204","tpAmb":"2"}
+29/07/2023 21:30 - [CONSULTA_RESPOSTA]
+29/07/2023 21:30 - {"status":-999,"motivo":"Erro interno ao processar a requisicao","erro":{"cStat":999,"xMotivo":"Root element is missing."}}
+29/07/2023 21:30 - [JSON_RETORNO]
+29/07/2023 21:30 - {"chNFe":"","statusEnvio":"200","statusConsulta":"-999","statusDownload":"","cStat":"","nProt":"","motivo":"Erro interno ao processar a requisicao","nsNRec":"8638204","erros":null}
+29/07/2023 21:30 - [EMISSAO_SINCRONA_FIM]
+29/07/2023 21:30 - [CONSULTA_DADOS]
+29/07/2023 21:30 - {"CNPJ":"42988444000127","nsNRec":"8638204","tpAmb":"2"}
+29/07/2023 21:30 - [CONSULTA_RESPOSTA]
+29/07/2023 21:30 - {"status":-999,"motivo":"Erro interno ao processar a requisicao","erro":{"cStat":999,"xMotivo":"Root element is missing."}}
+29/07/2023 21:31 - [CONSULTA_DADOS]
+29/07/2023 21:31 - {"CNPJ":"42988444000127","nsNRec":"8638204","tpAmb":"2"}
+29/07/2023 21:31 - [CONSULTA_RESPOSTA]
+29/07/2023 21:31 - {"status":200,"motivo":"Consulta realizada com sucesso","chNFe":"31230742988444000127550020000003631242799495","cStat":100,"xMotivo":"Autorizado o uso da NF-e","nProt":"131230147543373","dhRecbto":"2023-07-29T21:30:38-03:00","xml":"<?xml version=\"1.0\" encoding=\"utf-8\"?><nfeProc versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\"><NFe><infNFe versao=\"4.00\" Id=\"NFe31230742988444000127550020000003631242799495\"><ide><cUF>31</cUF><cNF>24279949</cNF><natOp>VENDA</natOp><mod>55</mod><serie>2</serie><nNF>363</nNF><dhEmi>2023-07-29T21:30:37-03:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>3170404</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>5</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>1</indPres><procEmi>0</procEmi><verProc>4.00|NS_API</verProc></ide><emit><CNPJ>42988444000127</CNPJ><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderEmit><xLgr>AV GOVERNADOR VALADARES</xLgr><nro>688</nro><xBairro>CENTRO</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610014</CEP><fone>3836763246</fone></enderEmit><IE>7044597520016</IE><CRT>1</CRT></emit><dest><CPF>05228258698</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>R JOAO PATRICIO</xLgr><nro>81</nro><xBairro>ITAEMA</xBairro><cMun>3170404</cMun><xMun>UNAI</xMun><UF>MG</UF><CEP>38610000</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem=\"1\"><prod><cProd>2362</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>71132000</NCM><CEST>1600500</CEST><CFOP>5405</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>1.00</vUnCom><vProd>1.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>1.00</vUnTrib><indTot>1</indTot><veicProd><tpOp>1</tpOp><chassi>1254K258954025415</chassi><cCor>03</cCor><xCor>03-BEGE</xCor><pot>10</pot><cilin>10</cilin><pesoL>0.000</pesoL><pesoB>0.000</pesoB><nSerie>0</nSerie><tpComb>02</tpComb><nMotor>12345678</nMotor><CMT>123</CMT><dist>1233</dist><anoMod>2023</anoMod><anoFab>2023</anoFab><tpPint>S</tpPint><tpVeic>03</tpVeic><espVeic>1</espVeic><VIN>N</VIN><condVeic>1</condVeic><cMod>123453</cMod><cCorDENATRAN>05</cCorDENATRAN><lota>1</lota><tpRest>0</tpRest></veicProd></prod><imposto><ICMS><ICMSSN500><orig>0</orig><CSOSN>500</CSOSN><vBCSTRet>0.00</vBCSTRet><pST>0.00</pST><vICMSSubstituto>0.00</vICMSSubstituto><vICMSSTRet>0.00</vICMSSTRet></ICMSSN500></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><det nItem=\"2\"><prod><cProd>16</cProd><cEAN>SEM GTIN</cEAN><xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd><NCM>90015000</NCM><CFOP>5102</CFOP><uCom>UN</uCom><qCom>1.00</qCom><vUnCom>80.00</vUnCom><vProd>80.00</vProd><cEANTrib>SEM GTIN</cEANTrib><uTrib>UN</uTrib><qTrib>1.00</qTrib><vUnTrib>80.00</vUnTrib><indTot>1</indTot></prod><imposto><ICMS><ICMSSN102><orig>0</orig><CSOSN>102</CSOSN></ICMSSN102></ICMS><PIS><PISOutr><CST>99</CST><vBC>0.00</vBC><pPIS>0.00</pPIS><vPIS>0.00</vPIS></PISOutr></PIS><COFINS><COFINSOutr><CST>99</CST><vBC>0.00</vBC><pCOFINS>0.00</pCOFINS><vCOFINS>0.00</vCOFINS></COFINSOutr></COFINS></imposto></det><total><ICMSTot><vBC>0.00</vBC><vICMS>0.00</vICMS><vICMSDeson>0.00</vICMSDeson><vFCPUFDest>0.00</vFCPUFDest><vICMSUFDest>0.00</vICMSUFDest><vICMSUFRemet>0.00</vICMSUFRemet><vFCP>0.00</vFCP><vBCST>0.00</vBCST><vST>0.00</vST><vFCPST>0.00</vFCPST><vFCPSTRet>0.00</vFCPSTRet><vProd>81.00</vProd><vFrete>0.00</vFrete><vSeg>0.00</vSeg><vDesc>0.00</vDesc><vII>0.00</vII><vIPI>0.00</vIPI><vIPIDevol>0.00</vIPIDevol><vPIS>0.00</vPIS><vCOFINS>0.00</vCOFINS><vOutro>0.00</vOutro><vNF>81.00</vNF><vTotTrib>0.00</vTotTrib></ICMSTot></total><transp><modFrete>9</modFrete></transp><cobr><fat><nFat>9983</nFat><vOrig>81.00</vOrig><vDesc>0.00</vDesc><vLiq>81.00</vLiq></fat><dup><nDup>001</nDup><dVenc>2023-07-29</dVenc><vDup>81.00</vDup></dup></cobr><pag><detPag><tPag>01</tPag><vPag>81.00</vPag></detPag><vTroco>0.00</vTroco></pag><infAdic><infCpl>OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE!!!</infCpl></infAdic><infRespTec><CNPJ>28145398000173</CNPJ><xContato>MARCELO XAVIER</xContato><email>marcelo.xs@hotmail.com</email><fone>3836769644</fone></infRespTec></infNFe><Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\" /><Reference URI=\"#NFe31230742988444000127550020000003631242799495\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\" /><Transform Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315\" /></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\" /><DigestValue>zdn1ElT5QCVS6/gAKNMN7AWQAto=</DigestValue></Reference></SignedInfo><SignatureValue>YHNcUK+NBGUriij+SzUwHnUgLaO8ujA068cBEvIaU8WMJT0pCCKQ1QqN9RjyMa1Y/dDJLIFCj1P0YHeilbLzWxWDfzpxgYxKNgQzqTAyflJMN85rv1OppKp/lCC3X9N0+TcjQEKylsThd4Xp+5LMvl/185cE8sF1cS4qxFTWxvtlXYPGftbqFwPBVHhpa6oE9vXOV3iIJ1RGyql9JCSLP0b18mjMw+nhMKF1y6wquMYp4Q6cCWRp9DlG0Do0HwS5xVuG33brj02kshpG7qUi+pt24nJdAJJ4JbgiQxh3/4xJ3rqYGwW3oY8TTXFdUEYFe+4Epn1XUXD3GkGJEiAaLg==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao=\"4.00\"><infProt><tpAmb>2</tpAmb><verAplic>J-3.1.11</verAplic><chNFe>31230742988444000127550020000003631242799495</chNFe><dhRecbto>2023-07-29T21:30:38-03:00</dhRecbto><nProt>131230147543373</nProt><digVal>zdn1ElT5QCVS6/gAKNMN7AWQAto=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>"}

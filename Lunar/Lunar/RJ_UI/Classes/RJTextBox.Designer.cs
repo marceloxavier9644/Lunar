@@ -51,6 +51,7 @@ namespace Lunar.RJ_UI.Classes
             // 
             // RJTextBox
             // 
+        
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.textBox1);

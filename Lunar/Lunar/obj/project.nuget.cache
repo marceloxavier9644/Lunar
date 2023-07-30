@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pC60yNu9tbSctZEBaIIrKuuBNmWu76mJg538D7dY9aUJCD8YOTFi6h+IUIXPb1ub6qLb353WxcaylNiAv410bA==",
+  "dgSpecHash": "enHp1tAjj5nJzduG6AN0APC1cKXVVbbt7whWtdI95F1J3mXKsqwJ0HS4jNWF6mGIeeH3zD7atranDmgRGS+MCA==",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,8 @@
     "C:\\Users\\marce\\.nuget\\packages\\circularprogressbar\\2.8.0.16\\circularprogressbar.2.8.0.16.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\cquential.microsoft.reportviewer.common\\10.0.40219.1\\cquential.microsoft.reportviewer.common.10.0.40219.1.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\cquential.microsoft.reportviewer.datavisualization\\10.0.40219.1\\cquential.microsoft.reportviewer.datavisualization.10.0.40219.1.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\fastreport.compat\\2023.1.8\\fastreport.compat.2023.1.8.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\fastreport.opensource\\2023.2.24\\fastreport.opensource.2023.2.24.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\firebirdsql.data.firebirdclient\\9.1.1\\firebirdsql.data.firebirdclient.9.1.1.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\fiscalbr.common\\4.0.0\\fiscalbr.common.4.0.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\fiscalbr.sintegra\\2.0.0\\fiscalbr.sintegra.2.0.0.nupkg.sha512",

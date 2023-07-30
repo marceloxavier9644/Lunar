@@ -13,6 +13,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using Newtonsoft.Json;
+using NSSuite_CSharp.src.JSON.NFe;
 using Syncfusion.Data;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
@@ -31,6 +32,7 @@ using System.Windows.Forms;
 using System.Xml;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static LunarBase.Utilidades.ManifestoDownload;
+using Nfe = LunarBase.Classes.Nfe;
 
 namespace Lunar.Telas.Vendas
 {
@@ -770,9 +772,15 @@ namespace Lunar.Telas.Vendas
             listaProdutos = produtoController.selecionarProdutosComVariosFiltros(valor, Sessao.empresaFilialLogada);
             if (listaProdutos.Count == 1)
             {
+        
                 desbloquearCamposValorQuantidade();
                 foreach (Produto prod in listaProdutos)
                 {
+                    if(prod.Veiculo == true)
+                    {
+                        FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
+                        frmProdutoCadastro.ShowDialog();
+                    }
                     txtPesquisaProduto.Texts = prod.Descricao;
                     txtQuantidade.Texts = "1";
                     txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
@@ -832,6 +840,11 @@ namespace Lunar.Telas.Vendas
                                         txtQuantidade.Focus();
                                         txtQuantidade.SelectAll();
                                     }
+                                    if (((Produto)produtoOjeto).Veiculo == true)
+                                    {
+                                        FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
+                                        frmProdutoCadastro.ShowDialog();
+                                    }
                                 }
                                 form.Dispose();
                                 break;
@@ -850,6 +863,11 @@ namespace Lunar.Telas.Vendas
                                 {
                                     txtQuantidade.Focus();
                                     txtQuantidade.SelectAll();
+                                }
+                                if (((Produto)produtoOjeto).Veiculo == true)
+                                {
+                                    FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
+                                    frmProdutoCadastro.ShowDialog();
                                 }
                                 break;
                         }
@@ -1987,17 +2005,17 @@ namespace Lunar.Telas.Vendas
                         //Concluir a venda antes de gerar a nota
                         concluirVenda(venda, true);
                         numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
-                        Nfe nfConferencia = new Nfe();
-                        NfeController nfeController = new NfeController();
-                        nfConferencia = nfeController.selecionarUltimoNumeroNota("65");
-                        if (nfConferencia != null)
-                        {
-                            if (nfConferencia.Id > 0)
-                            {
-                                if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
-                                    numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
-                            }
-                        }
+                        //LunarBase.Classes.Nfe nfConferencia = new Nfe();
+                        //NfeController nfeController = new NfeController();
+                        //nfConferencia = nfeController.selecionarUltimoNumeroNota("65");
+                        //if (nfConferencia != null)
+                        //{
+                        //    if (nfConferencia.Id > 0)
+                        //    {
+                        //        if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
+                        //            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
+                        //    }
+                        //}
                         xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorTotal, valorComDesconto, decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFCe, listaProdutosNFe, venda.Cliente, venda, null, null);
                         if (!String.IsNullOrEmpty(xmlStrEnvio))
                         {
@@ -3141,17 +3159,17 @@ namespace Lunar.Telas.Vendas
                         {
                             concluirVenda(venda, true);
                             numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFe;
-                            Nfe nfConferencia = new Nfe();
-                            NfeController nfeController = new NfeController();
-                            nfConferencia = nfeController.selecionarUltimoNumeroNota("55");
-                            if (nfConferencia != null)
-                            {
-                                if (nfConferencia.Id > 0)
-                                {
-                                    if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
-                                        numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
-                                }
-                            }
+                            //Nfe nfConferencia = new Nfe();
+                            //NfeController nfeController = new NfeController();
+                            //nfConferencia = nfeController.selecionarUltimoNumeroNota("55");
+                            //if (nfConferencia != null)
+                            //{
+                            //    if (nfConferencia.Id > 0)
+                            //    {
+                            //        if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
+                            //            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
+                            //    }
+                            //}
                             xmlStrEnvio = emitirNFe.gerarXMLNfe(valorTotal, valorComDesconto, decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFCe, listaProdutosNFe, cli, venda, false, "VENDA", null);
                             if (!String.IsNullOrEmpty(xmlStrEnvio))
                             {

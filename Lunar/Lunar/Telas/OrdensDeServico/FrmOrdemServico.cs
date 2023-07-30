@@ -766,6 +766,11 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void inserirItem(Produto produto)
         {
+            if (produto.Veiculo == true)
+            {
+                FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(produto, false, true);
+                frmProdutoCadastro.ShowDialog();
+            }
             txtQuantidadeItem.TextAlign = HorizontalAlignment.Center;
             txtValorUnitarioItem.TextAlign = HorizontalAlignment.Center;
             txtValorTotalItem.TextAlign = HorizontalAlignment.Center;

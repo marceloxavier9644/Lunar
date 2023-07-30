@@ -742,6 +742,12 @@
     <Compile Include="Telas\Estoques\FrmSaldoEstoque.Designer.cs">
       <DependentUpon>FrmSaldoEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\FastReportTestes\FrmFastTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\FastReportTestes\FrmFastTest.Designer.cs">
+      <DependentUpon>FrmFastTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Fiscal\Adicionais\FrmNaturezaOperacaoLista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1375,6 +1381,9 @@
     <EmbeddedResource Include="Telas\Estoques\reportConferenciaBalanco01.rdlc" />
     <EmbeddedResource Include="Telas\Estoques\reportInventario01.rdlc" />
     <EmbeddedResource Include="Telas\Estoques\ReportSaldoEstoque01.rdlc" />
+    <EmbeddedResource Include="Telas\FastReportTestes\FrmFastTest.resx">
+      <DependentUpon>FrmFastTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fiscal\Adicionais\FrmNaturezaOperacaoLista.resx">
       <DependentUpon>FrmNaturezaOperacaoLista.cs</DependentUpon>
     </EmbeddedResource>
@@ -2073,6 +2082,9 @@
     </PackageReference>
     <PackageReference Include="Cquential.Microsoft.ReportViewer.DataVisualization">
       <Version>10.0.40219.1</Version>
+    </PackageReference>
+    <PackageReference Include="FastReport.OpenSource">
+      <Version>2023.2.24</Version>
     </PackageReference>
     <PackageReference Include="FirebirdSql.Data.FirebirdClient">
       <Version>9.1.1</Version>

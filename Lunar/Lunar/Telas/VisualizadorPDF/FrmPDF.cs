@@ -33,5 +33,11 @@ namespace Lunar.Telas.VisualizadorPDF
         {
             this.Close();
         }
+
+        private void FrmPDF_Load(object sender, EventArgs e)
+        {
+
+
+        }
     }
 }

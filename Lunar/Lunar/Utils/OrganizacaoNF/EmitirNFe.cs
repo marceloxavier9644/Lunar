@@ -76,7 +76,7 @@ namespace Lunar.Utils.OrganizacaoNF
                 else
                     tpamb = TAmb.Item2;
                 //Aqui ja alimente o det2 por completo.
-                geraProdutosNFe_3(listProdutos);
+                geraProdutosNFe_33(listProdutos);
 
                 if (cliente != null)
                     xmlString = gerarNFeComConsumidor_4(objetoNfe, tpamb, venda, ordemServico);
@@ -460,6 +460,128 @@ namespace Lunar.Utils.OrganizacaoNF
                     }
                     det2[i - 1] = det[0];
                 }
+                return det2;
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowErro("Falha ao inserir itens na emissão de nota " + erro.Message);
+                return null;
+            }
+        }
+        private string formatPeso(decimal valor)
+        {
+            try
+            {
+                string valorFormatado = String.Format("{0:0.000}", valor);
+                return valorFormatado.Replace(",", ".");
+            }
+            catch
+            {
+                return valor.ToString();
+            }
+        }
+        private TNFeInfNFeDet[] geraProdutosNFe_33(IList<NfeProduto> listaProdutos)
+        {
+            try
+            {
+                det = new TNFeInfNFeDet[listaProdutos.Count];
+                det2 = new TNFeInfNFeDet[listaProdutos.Count];
+
+                int i = -1;
+                int y = 0;
+                foreach (NfeProduto produto in listaProdutos)
+                {
+                    i++;
+                    y++;
+                    det[i] = new TNFeInfNFeDet();
+                    det[i].prod = new TNFeInfNFeDetProd();
+                    det[i].imposto = new TNFeInfNFeDetImposto();
+                    //det[i].impostoDevol = new TNFeInfNFeDetImpostoDevol();
+                    string cest = null;
+                    if (!String.IsNullOrEmpty(produto.Cest))
+                        cest = produto.Cest;
+                    string descricaoProduto = produto.Produto.Descricao;
+                    if (Sessao.parametroSistema.AmbienteProducao == false)
+                        descricaoProduto = "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
+
+                        det[i].nItem = y.ToString();
+                        det[i].prod.cEAN = "SEM GTIN";
+
+                        det[i].prod.cEANTrib = "SEM GTIN";
+                        det[i].prod.cProd = produto.Produto.Id.ToString();
+                        det[i].prod.xProd = descricaoProduto;
+                        det[i].prod.NCM = produto.Ncm;
+                        det[i].prod.CEST = cest;
+                        det[i].prod.CFOP = produto.Produto.CfopVenda;
+                        det[i].prod.uCom = produto.Produto.UnidadeMedida.Sigla;
+                        det[i].prod.qCom = formatMoedaNf(decimal.Parse(produto.QCom));
+                        det[i].prod.vUnCom = formatMoedaNf(produto.VProd);
+                        det[i].prod.vProd = formatMoedaNf(produto.VProd * decimal.Parse(produto.QCom));
+                        det[i].prod.uTrib = produto.Produto.UnidadeMedida.Sigla;
+                        det[i].prod.qTrib = formatMoedaNf(decimal.Parse(produto.QCom));
+                        if(produto.VDesc > 0)
+                            det[i].prod.vDesc = formatMoedaNf(produto.VDesc);
+                        det[i].prod.vUnTrib = formatMoedaNf(produto.VProd);
+                        det[i].prod.indTot = TNFeInfNFeDetProdIndTot.Item1;
+                    //Veiculo ou Bicicleta Elétrica
+                    if (produto.Produto.Veiculo == true)
+                    {
+                        TNFeInfNFeDetProdVeicProd[] veic = new TNFeInfNFeDetProdVeicProd[1];
+                        veic[0] = new TNFeInfNFeDetProdVeicProd();
+                        veic[0].anoFab = produto.Produto.AnoVeiculo.Trim();
+                        veic[0].anoMod = produto.Produto.ModeloVeiculo;
+                        veic[0].cCor = produto.Produto.CorMontadora.Substring(0, 2);
+                        veic[0].cCorDENATRAN = produto.Produto.CorDenatran.Substring(0, 2);
+                        veic[0].chassi = produto.Produto.Chassi;
+                        veic[0].cilin = produto.Produto.CilindradaCc;
+                        veic[0].cMod = produto.Produto.MarcaModelo;
+                        veic[0].CMT = produto.Produto.CapacidadeTracao;
+                        if (produto.Produto.CondicaoProduto.Substring(0, 1).Equals("1"))
+                            veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item1;
+                        else if (produto.Produto.CondicaoProduto.Substring(0, 1).Equals("2"))
+                            veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item2;
+                        else
+                            veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item3;
+                        veic[0].dist = produto.Produto.DistanciaEixo;
+                        veic[0].espVeic = produto.Produto.EspecieVeiculo.Substring(1, 1);
+                        veic[0].lota = produto.Produto.LotacaoVeiculo;
+                        veic[0].nMotor = produto.Produto.NumeroMotor;
+                        veic[0].nSerie = "0";
+                        veic[0].pesoB = formatPeso(decimal.Parse(produto.Produto.PesoBrutoVeiculo));
+                        veic[0].pesoL = formatPeso(decimal.Parse(produto.Produto.PesoLiquidoVeiculo));
+                        veic[0].pot = produto.Produto.PotenciaCv;
+                        veic[0].tpComb = produto.Produto.Combustivel.Substring(0, 2);
+                        //venda concessionária
+                        veic[0].tpOp = TNFeInfNFeDetProdVeicProdTpOp.Item1;
+                        veic[0].tpPint = produto.Produto.TipoPintura.Substring(0, 1);
+                        if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("0"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item0;
+                        else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("1"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item1;
+                        else if(produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("2"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item2;
+                        else if(produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("3"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item3;
+                        else if(produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("4"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item4;
+                        else
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item9;
+                        veic[0].tpVeic = produto.Produto.TipoVeiculo.Substring(0, 2);
+                        if (produto.Produto.CondicaoVeiculo.Substring(0, 1).Equals("N"))
+                            veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.N;
+                        else if (produto.Produto.CondicaoVeiculo.Substring(0, 1).Equals("R"))
+                            veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.R;
+                        else
+                            veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.N;
+                        veic[0].xCor = produto.Produto.CorMontadora;
+                        det[i].prod.Items = veic;
+                    }
+                        det[i].imposto.Items = geraImpostoICMS(produto.Produto);
+                        det[i].imposto.PIS = geraImpostoPIS(produto.Produto)[0];
+                        det[i].imposto.COFINS = geraImpostoCofins(produto.Produto)[0];
+                    }
+                //det2[i - 1] = det[0];
+                det2 = det;
                 return det2;
             }
             catch (Exception erro)
@@ -1265,7 +1387,6 @@ namespace Lunar.Utils.OrganizacaoNF
                 throw new Exception("O Produto " + produto.Id.ToString() + " - " + produto.Descricao + " Está sem CST de COFINS ou está inválido, favor corrigir este produto em Cadastro de produtos, aba de tributação!");
             }
         }
-
         private string gerarNFeComConsumidor_4(Nfe nfe, TAmb tpAmbiente, Venda venda, OrdemServico ordemServico)
         {
             valorJaRecebido = 0;

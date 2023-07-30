@@ -695,3 +695,6 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ReciboAvulso1.FrmImpr
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ReciboAvulso1.FrmReciboAvulso.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.OrdensDeServico.FrmHistoricoOS.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasReceber.Reports.FrmExtratoCliente.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\FastReport.Compat.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\FastReport.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.FastReportTestes.FrmFastTest.resources
