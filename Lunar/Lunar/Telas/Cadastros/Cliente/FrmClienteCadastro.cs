@@ -1337,7 +1337,8 @@ namespace Lunar.Telas.Cadastros.Cliente
             txtComissao.Texts = pessoa.ComissaoVendedor.ToString();
 
             txtDataCadastro.Texts = pessoa.DataCadastro.ToShortDateString();
-            txtUsuarioCadastro.Texts = pessoa.OperadorCadastro.ToString();
+            if(pessoa.OperadorCadastro != null)
+                txtUsuarioCadastro.Texts = pessoa.OperadorCadastro.ToString();
             if (pessoa.DataAlteracao != null)
             {
                 txtUltimaAlteracao.Texts = pessoa.DataAlteracao.ToShortDateString();

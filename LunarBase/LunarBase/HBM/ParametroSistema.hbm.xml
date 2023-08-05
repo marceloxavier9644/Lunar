@@ -37,6 +37,8 @@
 		<property name="CaminhoAnexo" column="CAMINHOANEXO" type="String" length="200"/>
 		<property name="Comissao" column="COMISSAO" type="double"/>
 		<property name="ChequeContaReceber" column="CHEQUECONTARECEBER" type="Boolean"/>
+		<property name="ModeloEtiquetaPadrao" column="MODELOETIQUETAPADRAO" type="String" length="200"/>
+		<property name="ModeloEtiquetaNumeroOs" column="MODELOETIQUETANUMEROOS" type="String" length="200"/>
 		
 
 		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="false" foreign-key="FK_PARAMENTROS_TIPOOBJETO" lazy="false"/>

@@ -1298,6 +1298,7 @@
     <EmbeddedResource Include="Telas\Compras\Manifestos\FrmManifesto.resx">
       <DependentUpon>FrmManifesto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Compras\Reports\ReportEtiquetasOtica2.rdlc" />
     <EmbeddedResource Include="Telas\Compras\Reports\ReportEtiquetasOtica.rdlc" />
     <EmbeddedResource Include="Telas\Condicionais\FrmCondicional.resx">
       <DependentUpon>FrmCondicional.cs</DependentUpon>
@@ -1467,6 +1468,7 @@
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmOrdemServicoLista.resx">
       <DependentUpon>FrmOrdemServicoLista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\ImprimirNumeroOS2.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\ImprimirNumeroOS.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServico.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServicoOtica.rdlc" />
@@ -2082,9 +2084,6 @@
     </PackageReference>
     <PackageReference Include="Cquential.Microsoft.ReportViewer.DataVisualization">
       <Version>10.0.40219.1</Version>
-    </PackageReference>
-    <PackageReference Include="FastReport.OpenSource">
-      <Version>2023.2.24</Version>
     </PackageReference>
     <PackageReference Include="FirebirdSql.Data.FirebirdClient">
       <Version>9.1.1</Version>

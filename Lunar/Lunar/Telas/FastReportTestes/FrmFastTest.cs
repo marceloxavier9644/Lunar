@@ -1,5 +1,4 @@
-﻿using FastReport;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,9 +19,6 @@ namespace Lunar.Telas.FastReportTestes
 
         private void gerarRelatorio()
         {
-            Report report = new Report();
-            report.Load("your_report.frx");
-            report.RegisterData(dsOrdemServico);
             
 
 

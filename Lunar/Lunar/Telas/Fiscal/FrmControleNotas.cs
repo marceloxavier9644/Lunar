@@ -2618,5 +2618,47 @@ namespace Lunar.Telas.Fiscal
                 }
             }
         }
+
+        private void btnConferirXmlNuvem_Click(object sender, EventArgs e)
+        {
+            GenericaDesktop genericaDesktop = new GenericaDesktop();
+            IList<Nfe> listaNotas = new List<Nfe>();
+            DateTime dataInicial = DateTime.Parse(txtDataInicial.Value.ToString());
+            DateTime dataFinal = DateTime.Parse(txtDataFinal.Value.ToString());
+            listaNotas = nfeController.selecionarNotasEmitidasPorPeriodo(dataInicial.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), dataFinal.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
+            if(listaNotas.Count > 0)
+            {
+                foreach(Nfe nfe in listaNotas)
+                {
+                    if (nfe.Modelo.Equals("65") && nfe.Status.Contains("Autorizado o uso"))
+                    {
+                        //Verifica se nota existe no painel Lunar
+                        LunarApiNotas lunarApiNotas = new LunarApiNotas();
+                        string retorno = lunarApiNotas.consultaNotaApi(nfe.CnpjEmitente, nfe.Chave);
+                        if (retorno.Contains("NENHUMA_NOTA_LOCALIZADA"))
+                        {
+                            //Entra na API, faz o download do XML e joga no painel Lunar
+                            NFCeDownloadProc nfceDownload = genericaDesktop.ConsultaNFCeEmitida(nfe.EmpresaFilial.Cnpj, nfe.Chave.Trim());
+                            if (nfceDownload.motivo.Contains("realizado com sucesso"))
+                            {
+                                generica.gravarXMLNaPasta(nfceDownload.nfeProc.xml, nfe.Chave, @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFCe.xml");
+                                //EnviaXML PAINEL LUNAR 
+                                string caminhoX = @"Fiscal\XML\NFCe\" + nfe.DataCadastro.Year + "-" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
+                                byte[] arquivo;
+                                using (var stream = new FileStream(caminhoX, FileMode.Open, FileAccess.Read))
+                                {
+                                    using (var reader = new BinaryReader(stream))
+                                    {
+                                        arquivo = reader.ReadBytes((int)stream.Length);
+                                        var retor = lunarApiNotas.EnvioNotaParaNuvem(Sessao.empresaFilialLogada.Cnpj, nfe.Chave, "NFCE", "AUTORIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                GenericaDesktop.ShowInfo("Notas Enviadas para Nuvem com Sucesso!");
+            }
+        }
     }
 }

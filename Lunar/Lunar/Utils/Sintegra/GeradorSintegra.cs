@@ -2,10 +2,12 @@
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using Syncfusion.XlsIO.FormatParser.FormatTokens;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using static LunarBase.ClassesDAO.NfeProdutoDAO;
@@ -88,10 +90,11 @@ namespace Lunar.Utils.Sintegra
                     string situacaoNota = "N";
                     if (nf.Cancelada == true)
                         situacaoNota = "S";
+          
                     nfeProdutoDAO = new NfeProdutoDAO();
                     IList<RetProdReg50Sintegra> listaProdutosAgrupadosPorCfop = new List<RetProdReg50Sintegra>();
                     listaProdutosAgrupadosPorCfop = nfeProdutoDAO.selecionarRegistro50SintegraAgrupadoPorCfop(nf);
-
+             
                     listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nf.Id);
                     foreach (RetProdReg50Sintegra nfProduto in listaProdutosAgrupadosPorCfop)
                     {
@@ -103,17 +106,27 @@ namespace Lunar.Utils.Sintegra
 
                         if (emitente.Equals("P"))
                         {
-                            if (!String.IsNullOrEmpty(nf.Cliente.InscricaoEstadual))
-                                registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Cliente.InscricaoEstadual.Trim());
-                            else
-                                registro50.InscrEstadual = "ISENTO";
+                            if (nf.Cliente != null)
+                            {
+                                if (!String.IsNullOrEmpty(nf.Cliente.InscricaoEstadual))
+                                    registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Cliente.InscricaoEstadual.Trim());/*.PadLeft(14, '0');*/
+                                else
+                                    registro50.InscrEstadual = "ISENTO";
+                            }
+                            else if(nf.Fornecedor != null)
+                            {
+                                if (!String.IsNullOrEmpty(nf.Fornecedor.InscricaoEstadual))
+                                    registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Fornecedor.InscricaoEstadual.Trim());/*PadLeft(14, '0');*/
+                                else
+                                    registro50.InscrEstadual = "ISENTO";
+                            }
                         }
                         else
                         {
                             if (nf.Fornecedor != null)
                             {
                                 if (!String.IsNullOrEmpty(nf.Fornecedor.InscricaoEstadual))
-                                    registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Fornecedor.InscricaoEstadual);
+                                    registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Fornecedor.InscricaoEstadual.Trim());/*PadLeft(14, '0');*/
                                 else
                                     registro50.InscrEstadual = "ISENTO";
                             }
@@ -122,23 +135,61 @@ namespace Lunar.Utils.Sintegra
                         }
 
                         cfop = GenericaDesktop.RemoveCaracteres(nfProduto.cfop.Trim());
-                        aliq = nfProduto.aliquotaIcms.Substring(0,2);
+                        if (nfProduto.aliquotaIcms == null)
+                            aliq = "0";
+                        else if (nfProduto.aliquotaIcms.Length >= 2)
+                            aliq = nfProduto.aliquotaIcms.Substring(0, 2);
+                        else
+                            aliq = "0";
                         if (String.IsNullOrEmpty(aliq))
                             aliq = "0";
                         if (String.IsNullOrEmpty(cfop))
                             cfop = GenericaDesktop.RemoveCaracteres(nfProduto.cfop.Trim());
 
                         registro50.DataEmissaoRecebimento = nf.DataLancamento;
-                        string uf = retornaUF(nf.CUf);
+                        if (emitente.Equals("P"))
+                        { 
+                            if(nf.CnpjDestinatario != nf.CnpjEmitente)
+                            {
+                                if(nf.Fornecedor != null)
+                                {
+                                    if (nf.Fornecedor.EnderecoPrincipal != null)
+                                        nf.CUf = nf.Fornecedor.EnderecoPrincipal.Cidade.Estado.Uf;
+                                }
+                                else if (nf.Cliente != null)
+                                {
+                                    if(nf.Cliente.EnderecoPrincipal != null)
+                                        nf.CUf = nf.Cliente.EnderecoPrincipal.Cidade.Estado.Uf;
+                                }
+                            }
+                        }
+                            string uf = retornaUF(nf.CUf);
                         if (String.IsNullOrEmpty(uf))
                             uf = nf.CUf;
                         registro50.Uf = uf;
                         registro50.Modelo = int.Parse(nf.Modelo);
                         registro50.Serie = nf.Serie;
-                        registro50.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(nf.NNf));
+                        string numeroNota = GenericaDesktop.RemoveCaracteres(nf.NNf);
+                        if (GenericaDesktop.RemoveCaracteres(nf.NNf).Length > 6) 
+                        {
+                            int cont = GenericaDesktop.RemoveCaracteres(nf.NNf).Length;
+                            int inicio = cont - 6;
+                            numeroNota = GenericaDesktop.RemoveCaracteres(nf.NNf).Substring(inicio, cont-inicio);
+                        }
+                        registro50.Numero = int.Parse(numeroNota);
+                        if (String.IsNullOrEmpty(cfop))
+                        {
+                            GenericaDesktop.ShowAlerta("Nota de entrada sem CFOP de Entrada: " + nf.NNf);
+                            cfop = "2102";
+                        }
                         registro50.Cfop = int.Parse(cfop);
                         registro50.Emitente = emitente;
                         //registro50.ValorTotal = nfProduto.valorTotal;
+                        //GenericaDesktop.gravarLinhaLog("SOMA REGISTRO 50 SINTEGRA", nfProduto.valorTotal.ToString("C"));
+                        using (StreamWriter writer = new StreamWriter(@".\logs\"+"registro50.txt", true))
+                        {
+                            writer.WriteLine(nfProduto.valorTotal.ToString("C") + ";" + nf.NNf + ";" + nf.TipoOperacao);
+                        }
                         registro50.ValorTotal = nfProduto.valorTotal;
                         //registro50.BaseCalculoIcms = nfProduto.baseCalcIcms;
                         //registro50.ValorIcms = nfProduto.valorIcms;
@@ -184,7 +235,14 @@ namespace Lunar.Utils.Sintegra
 
                     registro54.Modelo = int.Parse(nf.Modelo);
                     registro54.Serie = nf.Serie;
-                    registro54.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(nf.NNf.Trim()));
+                    string numeroNota = GenericaDesktop.RemoveCaracteres(nf.NNf);
+                    if (GenericaDesktop.RemoveCaracteres(nf.NNf).Length > 6)
+                    {
+                        int cont = GenericaDesktop.RemoveCaracteres(nf.NNf).Length;
+                        int inicio = cont - 6;
+                        numeroNota = GenericaDesktop.RemoveCaracteres(nf.NNf).Substring(inicio, cont - inicio);
+                    }
+                    registro54.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(numeroNota));
                     listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nf.Id);
                     int contadorProd = 0;
                     foreach (NfeProduto nfProduto in listaProdutos)
@@ -198,7 +256,7 @@ namespace Lunar.Utils.Sintegra
                         registro54.NumeroItem = int.Parse(nfProduto.Item);
                         registro54.CodProdutoServico = nfProduto.CodigoInterno;
                         registro54.Quantidade = decimal.Parse(nfProduto.QuantidadeEntrada.ToString());
-                        registro54.VlProdutoServico = (nfProduto.VProd) /*nfProduto.VFrete + nfProduto.VICMSSt*//* - nfProduto.VDesc*/;
+                        registro54.VlProdutoServico = (nfProduto.VProd - nfProduto.VDesc) /*nfProduto.VFrete + nfProduto.VICMSSt*//* - nfProduto.VDesc*/;
                         registro54.VlDescontoDespesaAc = nfProduto.VDesc;
                         //registro54.BaseCalculoIcms = nfProduto.VBC;
                         //registro54.BaseCalculoIcmsSt = nfProduto.VBCST;
@@ -229,7 +287,8 @@ namespace Lunar.Utils.Sintegra
 
                             registro54.Modelo = int.Parse(nf.Modelo);
                             registro54.Serie = nf.Serie;
-                            registro54.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(nf.NNf.Trim()));
+             
+                            registro54.Numero = int.Parse(GenericaDesktop.RemoveCaracteres(numeroNota));
                             registro54.Cfop = int.Parse(GenericaDesktop.RemoveCaracteres(cfop.Trim()));
                             registro54.Cst = "".PadLeft(3, ' ');
                             registro54.NumeroItem = 991;

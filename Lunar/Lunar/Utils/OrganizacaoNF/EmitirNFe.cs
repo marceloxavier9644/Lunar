@@ -484,6 +484,7 @@ namespace Lunar.Utils.OrganizacaoNF
         {
             try
             {
+                string dadosVeiculo = "";
                 det = new TNFeInfNFeDet[listaProdutos.Count];
                 det2 = new TNFeInfNFeDet[listaProdutos.Count];
 
@@ -575,8 +576,40 @@ namespace Lunar.Utils.OrganizacaoNF
                             veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.N;
                         veic[0].xCor = produto.Produto.CorMontadora;
                         det[i].prod.Items = veic;
+                        //Funcao pra sair por baixo do produto
+                        int caract = veic[0].xCor.Length;
+                        dadosVeiculo = "TIPO DA OPERAÇÃO: " + "0 - OUTROS" + " " +
+                    "CHASSI: " + produto.Produto.Chassi + " " +
+                    "CÓD. COR: " + produto.Produto.CorMontadora.Substring(0, 2) + " " +
+                    "NOME COR: " + produto.Produto.CorMontadora + " " +
+                    "POT. MOTOR: " + produto.Produto.PotenciaCv + " " +
+                    "CC: " + produto.Produto.CilindradaCc + " " +
+                    "PESO LIQ: " + formatPeso(decimal.Parse(produto.Produto.PesoLiquidoVeiculo)) + " " +
+                    "PESO BRUTO: " + formatPeso(decimal.Parse(produto.Produto.PesoBrutoVeiculo)) + " " +
+                    //"Nº DE SÉRIE: 0 \n " +
+                    "COMBUSTÍVEL: " + produto.Produto.Combustivel + " " +
+                    "Nº MOTOR: " + produto.Produto.NumeroMotor + " " +
+                    "CAP. MÁX. TRAÇÃO: " + produto.Produto.CapacidadeTracao + " " +
+                    "DIST. EIXOS: " + produto.Produto.DistanciaEixo + " " +
+                    "ANO MODELO: " + produto.Produto.ModeloVeiculo + " " +
+                    "ANO FABRICAÇÃO: " + produto.Produto.AnoVeiculo + " " +
+                    "TIPO PINTURA: " + produto.Produto.TipoPintura + " " +
+                    "TIPO VEÍCULO: " + produto.Produto.TipoVeiculo + " " +
+                    "ESP. VEÍCULO: " + produto.Produto.EspecieVeiculo + " " +
+                    "VIN: " + produto.Produto.CondicaoVeiculo + " " +
+                    "COND. DO VEÍCULO: " + produto.Produto.CondicaoProduto + " " +
+                    "CÓD. MARCA MODELO: " + produto.Produto.MarcaModelo + " " +
+                    "CÓD COR DENATRAN: " + produto.Produto.CorDenatran + " " +
+                    "CAP. MÁX. LOTAÇÃO: " + produto.Produto.LotacaoVeiculo + " " +
+                    "REST.: " + produto.Produto.RestricaoVeiculo;
                     }
-                        det[i].imposto.Items = geraImpostoICMS(produto.Produto);
+
+                    //Funcao pra sair por baixo do produto
+                    if (!String.IsNullOrEmpty(dadosVeiculo) && produto.Produto.Veiculo == true)
+                    {
+                        det[i].infAdProd = dadosVeiculo;
+                    }
+                    det[i].imposto.Items = geraImpostoICMS(produto.Produto);
                         det[i].imposto.PIS = geraImpostoPIS(produto.Produto)[0];
                         det[i].imposto.COFINS = geraImpostoCofins(produto.Produto)[0];
                     }

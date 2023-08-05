@@ -59,9 +59,12 @@
             this.txtSerieNFCe = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtProximoNFCe = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabEstoque = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.txtEtiquetaPadrao = new System.Windows.Forms.TextBox();
+            this.autoLabel38 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.chkAlertaEstoqueGerencial = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.chkAlertaEstoqueFiscal = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.tabContaReceber = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.chkChequeContaReceber = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.autoLabel36 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -156,7 +159,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.chkChequeContaReceber = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.txtEtiquetaImprimirNumeroOs = new System.Windows.Forms.TextBox();
+            this.autoLabel39 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -170,6 +174,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAlertaEstoqueGerencial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAlertaEstoqueFiscal)).BeginInit();
             this.tabContaReceber.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).BeginInit();
             this.tabOrdemServico.SuspendLayout();
             this.tabWhatsapp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkEnvioAgradecimentoCompraWhats)).BeginInit();
@@ -184,7 +189,6 @@
             this.tabEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -692,6 +696,10 @@
             // 
             // tabEstoque
             // 
+            this.tabEstoque.Controls.Add(this.txtEtiquetaImprimirNumeroOs);
+            this.tabEstoque.Controls.Add(this.autoLabel39);
+            this.tabEstoque.Controls.Add(this.txtEtiquetaPadrao);
+            this.tabEstoque.Controls.Add(this.autoLabel38);
             this.tabEstoque.Controls.Add(this.chkAlertaEstoqueGerencial);
             this.tabEstoque.Controls.Add(this.chkAlertaEstoqueFiscal);
             this.tabEstoque.Image = null;
@@ -703,6 +711,27 @@
             this.tabEstoque.TabIndex = 2;
             this.tabEstoque.Text = "Estoque";
             this.tabEstoque.ThemesEnabled = false;
+            // 
+            // txtEtiquetaPadrao
+            // 
+            this.txtEtiquetaPadrao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEtiquetaPadrao.Location = new System.Drawing.Point(45, 66);
+            this.txtEtiquetaPadrao.Name = "txtEtiquetaPadrao";
+            this.txtEtiquetaPadrao.Size = new System.Drawing.Size(325, 26);
+            this.txtEtiquetaPadrao.TabIndex = 204;
+            this.txtEtiquetaPadrao.Text = "ReportEtiquetasOtica2.rdlc";
+            // 
+            // autoLabel38
+            // 
+            this.autoLabel38.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel38.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel38.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel38.Location = new System.Drawing.Point(44, 47);
+            this.autoLabel38.Name = "autoLabel38";
+            this.autoLabel38.Size = new System.Drawing.Size(101, 16);
+            this.autoLabel38.TabIndex = 203;
+            this.autoLabel38.Text = "EtiquetaPadrão";
             // 
             // chkAlertaEstoqueGerencial
             // 
@@ -761,6 +790,22 @@
             this.tabContaReceber.TabIndex = 3;
             this.tabContaReceber.Text = "Contas a Receber";
             this.tabContaReceber.ThemesEnabled = false;
+            // 
+            // chkChequeContaReceber
+            // 
+            this.chkChequeContaReceber.BeforeTouchSize = new System.Drawing.Size(375, 30);
+            this.chkChequeContaReceber.Checked = true;
+            this.chkChequeContaReceber.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkChequeContaReceber.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkChequeContaReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkChequeContaReceber.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkChequeContaReceber.Location = new System.Drawing.Point(16, 78);
+            this.chkChequeContaReceber.Name = "chkChequeContaReceber";
+            this.chkChequeContaReceber.Size = new System.Drawing.Size(375, 30);
+            this.chkChequeContaReceber.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            this.chkChequeContaReceber.TabIndex = 264;
+            this.chkChequeContaReceber.Text = " Cheque Pré Cair no Contas a Receber";
+            this.chkChequeContaReceber.ThemeName = "Metro";
             // 
             // autoLabel36
             // 
@@ -2274,21 +2319,26 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // chkChequeContaReceber
+            // txtEtiquetaImprimirNumeroOs
             // 
-            this.chkChequeContaReceber.BeforeTouchSize = new System.Drawing.Size(375, 30);
-            this.chkChequeContaReceber.Checked = true;
-            this.chkChequeContaReceber.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkChequeContaReceber.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkChequeContaReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkChequeContaReceber.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkChequeContaReceber.Location = new System.Drawing.Point(16, 78);
-            this.chkChequeContaReceber.Name = "chkChequeContaReceber";
-            this.chkChequeContaReceber.Size = new System.Drawing.Size(375, 30);
-            this.chkChequeContaReceber.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
-            this.chkChequeContaReceber.TabIndex = 264;
-            this.chkChequeContaReceber.Text = " Cheque Pré Cair no Contas a Receber";
-            this.chkChequeContaReceber.ThemeName = "Metro";
+            this.txtEtiquetaImprimirNumeroOs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEtiquetaImprimirNumeroOs.Location = new System.Drawing.Point(45, 117);
+            this.txtEtiquetaImprimirNumeroOs.Name = "txtEtiquetaImprimirNumeroOs";
+            this.txtEtiquetaImprimirNumeroOs.Size = new System.Drawing.Size(325, 26);
+            this.txtEtiquetaImprimirNumeroOs.TabIndex = 206;
+            this.txtEtiquetaImprimirNumeroOs.Text = "ImprimirNumeroOS2.rdlc";
+            // 
+            // autoLabel39
+            // 
+            this.autoLabel39.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel39.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel39.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel39.Location = new System.Drawing.Point(44, 98);
+            this.autoLabel39.Name = "autoLabel39";
+            this.autoLabel39.Size = new System.Drawing.Size(236, 16);
+            this.autoLabel39.TabIndex = 205;
+            this.autoLabel39.Text = "EtiquetaPadrão (Imprimir Nº O.S Otica)";
             // 
             // FrmParametroSistema
             // 
@@ -2319,10 +2369,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabEstoque.ResumeLayout(false);
+            this.tabEstoque.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAlertaEstoqueGerencial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAlertaEstoqueFiscal)).EndInit();
             this.tabContaReceber.ResumeLayout(false);
             this.tabContaReceber.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).EndInit();
             this.tabOrdemServico.ResumeLayout(false);
             this.tabOrdemServico.PerformLayout();
             this.tabWhatsapp.ResumeLayout(false);
@@ -2342,7 +2394,6 @@
             this.tabEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2476,5 +2527,9 @@
         private RJ_UI.Classes.RJTextBox txtComissaoPadrao;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkLiberarAlteracaoNumeros;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkChequeContaReceber;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel38;
+        private System.Windows.Forms.TextBox txtEtiquetaPadrao;
+        private System.Windows.Forms.TextBox txtEtiquetaImprimirNumeroOs;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel39;
     }
 }

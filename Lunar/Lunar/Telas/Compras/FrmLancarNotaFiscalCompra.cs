@@ -990,11 +990,14 @@ namespace Lunar.Telas.Compras
 							break;
 						case DialogResult.OK:
 							prod = (Produto)produtoObjeto;
-							gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["CodigoInterno"].MappingName, prod.Id.ToString());
-							gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["DescricaoInterna"].MappingName, prod.Descricao);
-							gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
-							gridProdutos.Refresh();
-                            verificarProdutosCadastrados();
+							if (prod.Id > 0)
+							{
+								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["CodigoInterno"].MappingName, prod.Id.ToString());
+								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["DescricaoInterna"].MappingName, prod.Descricao);
+								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
+								gridProdutos.Refresh();
+								verificarProdutosCadastrados();
+							}
                             //foreach (var selectedItem in gridProdutos.SelectedItems)
                             //{
                             //    var index = gridProdutos.TableControl.ResolveToRowIndex(selectedItem);
@@ -1237,6 +1240,10 @@ namespace Lunar.Telas.Compras
 					{
 						nfeProd = (NfeProduto)gridProdutos.SelectedItem;
 						nfeProd.QuantidadeEntrada = double.Parse(e.NewValue.ToString());
+						//Produto prod = new Produto();
+						//prod = nfeProd.Produto;
+      //                  prod.ValorCusto = nfeProd.VProd / decimal.Parse(nfeProd.QuantidadeEntrada.ToString());
+						//Controller.getInstance().salvar(prod);
 					}
 					else
 					{
@@ -1465,7 +1472,9 @@ namespace Lunar.Telas.Compras
 							produtoSelecionado = nfeProd.Produto;
 							produtoSelecionado.Estoque = produtoSelecionado.Estoque + nfeProd.QuantidadeEntrada;
 							produtoSelecionado.EstoqueAuxiliar = produtoSelecionado.EstoqueAuxiliar + nfeProd.QuantidadeEntrada;
-							Controller.getInstance().salvar(produtoSelecionado);
+							produtoSelecionado.ValorCusto = nfeProd.VProd / decimal.Parse(nfeProd.QuantidadeEntrada.ToString());
+
+                            Controller.getInstance().salvar(produtoSelecionado);
 
 							//MOVIMENTO ESTOQUE CONCILIADO
 							Estoque estoque = new Estoque();

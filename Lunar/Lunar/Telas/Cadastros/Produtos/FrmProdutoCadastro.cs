@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace Lunar.Telas.Cadastros.Produtos
 {
@@ -2251,6 +2252,44 @@ namespace Lunar.Telas.Cadastros.Produtos
                     tabPageAdv3.TabVisible = true;
                 else
                     tabPageAdv3.TabVisible = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txtChassi_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(txtChassi.Texts))
+                {
+                    if (txtChassi.Texts.Length != 17)
+                    {
+                        GenericaDesktop.ShowAlerta("Número do Chassi deve ter 17 dígitos!");
+                        txtChassi.Focus();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txtTipoPintura_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(txtTipoPintura.Texts))
+                {
+                    if (txtTipoPintura.Texts.Length != 1)
+                    {
+                        GenericaDesktop.ShowAlerta("Tipo de Pintura deve ter apenas 1 dígito, Geralmente S ou M, confirme com a contabilidade!");
+                        txtTipoPintura.Focus();
+                    }
+                }
             }
             catch
             {

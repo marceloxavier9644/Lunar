@@ -2058,7 +2058,8 @@ namespace Lunar.Telas.Vendas
                     nfeProduto.Cfop = produto.CfopVenda;
                     nfeProduto.CProd = produto.Id.ToString();
                     nfeProduto.Nfe = null;
-                    nfeProduto.VProd = produto.ValorVenda;
+                    nfeProduto.VProd = produto.ValorVenda * decimal.Parse(quantidade.ToString());
+                    nfeProduto.VUnCom = produto.ValorVenda;
                     nfeProduto.QTrib = quantidade;
                     nfeProduto.VDesc = descontoItem;
                     nfeProduto.DescricaoInterna = produto.Descricao;

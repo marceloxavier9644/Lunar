@@ -988,7 +988,7 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.Cfop = dataRowViewXXX.Row["CfopVenda"].ToString().Trim();
                     nfeProduto.CProd = produto.Id.ToString();
                     nfeProduto.Nfe = null;//
-                    nfeProduto.VProd = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString());
+                    nfeProduto.VProd = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString()) * decimal.Parse(quantidade.ToString());
                     nfeProduto.QTrib = quantidade;
                     nfeProduto.VDesc = descontoItem;
                     nfeProduto.DescricaoInterna = produto.Descricao;
@@ -1016,7 +1016,7 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.VBC = decimal.Parse(dataRowViewXXX.Row["BaseCalcICMS"].ToString().Trim());
                     nfeProduto.PICMS = dataRowViewXXX.Row["PercentualICMS"].ToString().Trim();
                     nfeProduto.VICMS = decimal.Parse(dataRowViewXXX.Row["ValorICMS"].ToString().Trim());
-
+                    nfeProduto.VUnCom = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString());
                     nfeProduto.CodAnp = produto.CodAnp;
                     nfeProduto.CodEnqIpi = produto.EnqIpi;
                     nfeProduto.CodSeloIpi = produto.CodSeloIpi;
@@ -1079,7 +1079,7 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.Cfop = dataRowViewXXX.Row["CfopVenda"].ToString().Trim();
                     nfeProduto.CProd = produto.Id.ToString();
                     nfeProduto.Nfe = null;//
-                    nfeProduto.VProd = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString());
+                    nfeProduto.VProd = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString()) * decimal.Parse(quantidade.ToString());
                     nfeProduto.QTrib = quantidade;
                     nfeProduto.VDesc = descontoItem;
                     nfeProduto.DescricaoInterna = produto.Descricao;

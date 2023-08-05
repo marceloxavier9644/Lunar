@@ -30,6 +30,7 @@ namespace Lunar.Telas.Compras
             reportViewer1.ZoomMode = ZoomMode.Percent;
             reportViewer1.ZoomPercent = 100;
             this.reportViewer1.LocalReport.EnableExternalImages = true;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.Compras.Reports." + Sessao.parametroSistema.ModeloEtiquetaPadrao;
             //IList<Produto> listaProdutos = produtoController.selecionarProdutosComVariosFiltros("LENTE", Sessao.empresaFilialLogada);
 
             if (listaProdutos.Count > 0)

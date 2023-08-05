@@ -45,7 +45,8 @@ namespace LunarBase.Classes
         private string caminhoAnexo;
         private double comissao;
         private bool chequeContaReceber;
-
+        private string modeloEtiquetaPadrao;
+        private string modeloEtiquetaNumeroOs;
         public virtual int Id { get => id; set => id = value; }
         public virtual string UltNsu { get => ultNsu; set => ultNsu = value; }
         public virtual string ProximoNumeroNFCe { get => proximoNumeroNFCe; set => proximoNumeroNFCe = value; }
@@ -83,5 +84,7 @@ namespace LunarBase.Classes
         public virtual string CaminhoAnexo { get => caminhoAnexo; set => caminhoAnexo = value; }
         public virtual double Comissao { get => comissao; set => comissao = value; }
         public virtual bool ChequeContaReceber { get => chequeContaReceber; set => chequeContaReceber = value; }
+        public virtual string ModeloEtiquetaPadrao { get => modeloEtiquetaPadrao; set => modeloEtiquetaPadrao = value; }
+        public virtual string ModeloEtiquetaNumeroOs { get => modeloEtiquetaNumeroOs; set => modeloEtiquetaNumeroOs = value; }
     }
 }

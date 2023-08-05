@@ -135,6 +135,11 @@ namespace Lunar.Telas.ParametroDoSistema
                 txtCaminhoAnexos.Texts = parametro.CaminhoAnexo;
             if(parametro.Comissao != null)
              txtComissaoPadrao.Texts = parametro.Comissao.ToString();
+
+            if(parametro.ModeloEtiquetaPadrao != null)
+                txtEtiquetaPadrao.Text = parametro.ModeloEtiquetaPadrao;
+            if (parametro.ModeloEtiquetaNumeroOs != null)
+                txtEtiquetaImprimirNumeroOs.Text = parametro.ModeloEtiquetaNumeroOs;
         }
 
         private void setParametro()
@@ -242,6 +247,9 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.Comissao = double.Parse(txtComissaoPadrao.Texts);
             else
                 parametro.Comissao = 0;
+
+            parametro.ModeloEtiquetaPadrao = txtEtiquetaPadrao.Text.Trim();
+            parametro.ModeloEtiquetaNumeroOs = txtEtiquetaImprimirNumeroOs.Text.Trim();
 
             Sessao.parametroSistema = parametro;
         }

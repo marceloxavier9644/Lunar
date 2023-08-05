@@ -733,7 +733,8 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.Ncm = produto.Ncm;
                     nfeProduto.Cest = produto.Cest;
                     nfeProduto.Cfop = produto.CfopVenda.Trim();
-                    if(cli != null)
+                    nfeProduto.VUnCom = ordemServicoProduto.ValorUnitario;
+                    if (cli != null)
                     {
                         if (cli.Id > 0)
                         {
@@ -755,7 +756,7 @@ namespace Lunar.Telas.Fiscal
                     }
                     nfeProduto.CProd = produto.Id.ToString();
                     nfeProduto.Nfe = null;//
-                    nfeProduto.VProd = ordemServicoProduto.ValorUnitario;
+                    nfeProduto.VProd = ordemServicoProduto.ValorUnitario * decimal.Parse(quantidade.ToString());
                     nfeProduto.QTrib = quantidade;
                     nfeProduto.VDesc = descontoItem;
                     nfeProduto.DescricaoInterna = produto.Descricao.Trim();

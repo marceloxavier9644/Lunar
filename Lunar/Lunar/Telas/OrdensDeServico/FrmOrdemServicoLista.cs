@@ -1276,7 +1276,7 @@ namespace Lunar.Telas.OrdensDeServico
                 nfeProduto.Cfop = produto.CfopVenda;
                 nfeProduto.CProd = produto.Id.ToString();
                 nfeProduto.Nfe = null;
-                nfeProduto.VProd = produto.ValorVenda;
+                nfeProduto.VProd = produto.ValorVenda * decimal.Parse(quantidade.ToString());
                 nfeProduto.QTrib = quantidade;
                 nfeProduto.VDesc = descontoItem;
                 nfeProduto.DescricaoInterna = produto.Descricao.Trim();
@@ -1311,6 +1311,7 @@ namespace Lunar.Telas.OrdensDeServico
                 nfeProduto.ValorIpi = 0;
                 nfeProduto.ValorPis = 0;
                 nfeProduto.ValorProduto = produto.ValorVenda;
+                nfeProduto.VUnCom = produto.ValorVenda;
 
                 valorFinalNota = (valorFinalNota + (nfeProduto.ValorFinal * decimal.Parse(quantidade.ToString())));
                 valorProdutosSemDesconto = valorProdutosSemDesconto + nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString());

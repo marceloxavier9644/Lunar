@@ -111,10 +111,6 @@
               "target": "Package",
               "version": "[10.0.40219.1, )"
             },
-            "FastReport.OpenSource": {
-              "target": "Package",
-              "version": "[2023.2.24, )"
-            },
             "FirebirdSql.Data.FirebirdClient": {
               "target": "Package",
               "version": "[9.1.1, )"

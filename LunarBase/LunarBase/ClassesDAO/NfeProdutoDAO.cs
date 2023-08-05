@@ -49,10 +49,10 @@ namespace LunarBase.ClassesDAO
         public IList<RetProd> selecionarSomaItensNFCeParaSintegra(string dataInicial, string dataFinal, EmpresaFilial filial)
         {
             Session = Conexao.GetSession();
-            String sql = "SELECT nfeproduto.PRODUTO as codprod, SUM(nfeproduto.VPROD) as valor, sum(nfeproduto.QuantidadeEntrada) as quantidade, " +
+            String sql = "SELECT cast(nfeproduto.PRODUTO as Char(255)) as codprod, SUM(nfeproduto.VPROD - nfeproduto.VDESC) as valor, sum(nfeproduto.QuantidadeEntrada) as quantidade, " +
                 "sum(nfeproduto.VBC) as baseCalc, nfeProduto.Ncm as ncm, nfeProduto.XProd as descricao, nfeProduto.UComConvertida as unidadeMedida, " +
                 "nfeProduto.AliqIpi as aliquotaIpi, nfeProduto.PIcms as aliquotaIcms FROM `NfeProduto` INNER JOIN nfe nf ON nfeproduto.NFE = nf.ID " +
-                "WHERE nfeproduto.FLAGEXCLUIDO <> true and nf.EmpresaFilial = " + filial.Id + " and nf.FLAGEXCLUIDO <> true and nf.Modelo = '65' and nf.DATAEMISSAO BETWEEN '" + dataInicial+"' and '"+dataFinal+ "' group by nfeproduto.Produto";
+                "WHERE nfeproduto.FLAGEXCLUIDO <> true and nf.EmpresaFilial = " + filial.Id + " and nf.FLAGEXCLUIDO <> true and nf.Modelo = '65' and nf.DATAEMISSAO BETWEEN '" + dataInicial+"' and '"+dataFinal+ "' and nf.Lancada = true group by nfeproduto.Produto";
             IList<RetProd> retorno = Session.CreateSQLQuery(sql).SetResultTransformer(Transformers.AliasToBean<RetProd>()).List<RetProd>().ToList();
             return retorno;
         }
@@ -66,7 +66,7 @@ namespace LunarBase.ClassesDAO
                 "sum(nfeproduto.VBC) as baseCalc, nfeProduto.Ncm as ncm, nfeProduto.XProd as descricao, nfeProduto.UComConvertida as unidadeMedida, " +
                 "nfeProduto.AliqIpi as aliquotaIpi, nfeProduto.PIcms as aliquotaIcms FROM `NfeProduto` " +
                 "INNER JOIN nfe nf ON nfeproduto.NFE = nf.ID WHERE nfeproduto.FLAGEXCLUIDO <> true " +
-                "and nf.FLAGEXCLUIDO <> true and nf.EmpresaFilial = " + filial.Id + " and nf.DATALANCAMENTO BETWEEN '" + dataInicial + "' and '" + dataFinal + "' group by nfeproduto.Produto";
+                "and nf.FLAGEXCLUIDO <> true and nf.EmpresaFilial = " + filial.Id + " and nf.DATALANCAMENTO BETWEEN '" + dataInicial + "' and '" + dataFinal + "' and nf.Lancada = true group by nfeproduto.Produto";
             IList<RetProd> retorno = Session.CreateSQLQuery(sql).SetResultTransformer(Transformers.AliasToBean<RetProd>()).List<RetProd>().ToList();
             return retorno;
         }
@@ -74,16 +74,62 @@ namespace LunarBase.ClassesDAO
         public IList<RetProdReg50Sintegra> selecionarRegistro50SintegraAgrupadoPorCfop(Nfe nfe)
         {
             Session = Conexao.GetSession();
-            String sql = "SELECT sum(nfeproduto.VPROD) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
-                "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
-                "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
-                "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
-                "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
-                "from `nfeproduto` " +
-                         "INNER JOIN nfe ON nfe.ID = nfeproduto.NFE "+
-                         "INNER JOIN pessoa ON nfe.Fornecedor = pessoa.Id "+
-                 "where nfe = "+nfe.Id+" and NfeProduto.FlagExcluido <> true and nfe.LANCADA = true "+
-                 "GROUP by nfeproduto.CFOPENTRADA";
+            String sql = "";
+            if(nfe.NNf == "359")
+                sql = "";
+            if (nfe.Fornecedor != null && nfe.TipoOperacao == "E")
+            {
+                sql = "SELECT sum(nfeproduto.VUNCOM) * Cast(nfeproduto.QCOM as DECIMAL(7,2)) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
+                    "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                    "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
+                    "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
+                    "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
+                    "from `nfeproduto` " +
+                             "INNER JOIN nfe ON nfe.ID = nfeproduto.NFE " +
+                             "INNER JOIN pessoa ON nfe.Fornecedor = pessoa.Id " +
+                     "where nfe = " + nfe.Id + " and NfeProduto.FlagExcluido <> true and nfe.LANCADA = true " +
+                     "GROUP by nfeproduto.CFOPENTRADA";
+            }
+            else if(nfe.Cliente != null && nfe.TipoOperacao == "E")
+            {
+                sql = "SELECT sum(nfeproduto.VUNCOM) * Cast(nfeproduto.QCOM as DECIMAL(7,2)) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
+                                   "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                                   "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
+                                   "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
+                                   "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
+                                   "from `nfeproduto` " +
+                                            "INNER JOIN nfe ON nfe.ID = nfeproduto.NFE " +
+                                            "INNER JOIN pessoa ON nfe.Cliente = pessoa.Id " +
+                                    "where nfe = " + nfe.Id + " and NfeProduto.FlagExcluido <> true and nfe.LANCADA = true " +
+                                    "GROUP by nfeproduto.CFOP";
+            }
+            else if (nfe.Fornecedor != null && nfe.TipoOperacao == "S")
+            {
+                sql = "SELECT sum(nfeproduto.VALORFINAL) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
+                           "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                           "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
+                           "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
+                           "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
+                           "from `nfeproduto` " +
+                                    "INNER JOIN nfe ON nfe.ID = nfeproduto.NFE " +
+                                    "INNER JOIN pessoa ON nfe.Fornecedor = pessoa.Id " +
+                            "where nfe = " + nfe.Id + " and NfeProduto.FlagExcluido <> true and nfe.LANCADA = true " +
+                            "GROUP by nfeproduto.CFOPENTRADA";
+            }
+            else if (nfe.Cliente != null && nfe.TipoOperacao == "S")
+            {
+                sql = "SELECT sum(nfeproduto.VALORFINAL) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
+                                   "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                                   "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
+                                   "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
+                                   "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
+                                   "from `nfeproduto` " +
+                                            "INNER JOIN nfe ON nfe.ID = nfeproduto.NFE " +
+                                            "INNER JOIN pessoa ON nfe.Cliente = pessoa.Id " +
+                                    "where nfe = " + nfe.Id + " and NfeProduto.FlagExcluido <> true and nfe.LANCADA = true " +
+                                    "GROUP by nfeproduto.CFOP";
+
+            }
             IList<RetProdReg50Sintegra> retorno = Session.CreateSQLQuery(sql).SetResultTransformer(Transformers.AliasToBean<RetProdReg50Sintegra>()).List<RetProdReg50Sintegra>().ToList();
             return retorno;
         }
@@ -109,7 +155,7 @@ namespace LunarBase.ClassesDAO
 
         public class RetProd
         {
-            public String codProd { get; set; }
+            public string codProd { get; set; } // era string
             public decimal valor { get; set; }
             public double quantidade { get; set; }
             public decimal baseCalc { get; set; }

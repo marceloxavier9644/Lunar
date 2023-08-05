@@ -3,6 +3,7 @@ using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
+using NHibernate.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -304,6 +305,7 @@ namespace Lunar.Utils.OrganizacaoNF
 
         private void gerarProdutos()
         {
+            string dadosVeiculo = "";
             NfeProdutoController nfeProdutoController = new NfeProdutoController();
             IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
             det = new TNFeInfNFeDet[listaProdutos.Count];
@@ -386,7 +388,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     veic[0].pot = produto.Produto.PotenciaCv;
                     veic[0].tpComb = produto.Produto.Combustivel.Substring(0, 2);
                     //venda concessionária
-                    veic[0].tpOp = TNFeInfNFeDetProdVeicProdTpOp.Item1;
+                    veic[0].tpOp = TNFeInfNFeDetProdVeicProdTpOp.Item0;
                     veic[0].tpPint = produto.Produto.TipoPintura.Substring(0, 1);
                     if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("0"))
                         veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item0;
@@ -410,6 +412,33 @@ namespace Lunar.Utils.OrganizacaoNF
                     veic[0].xCor = produto.Produto.CorMontadora;
                     det[y].prod.Items = veic;
                     //det[y].infAdProd = veic[0].ToString();
+
+                    //Funcao pra sair por baixo do produto
+                    int caract = veic[0].xCor.Length;
+                    dadosVeiculo = "TIPO DA OPERAÇÃO: " + "0 - OUTROS" + " " +
+                    "CHASSI: " + produto.Produto.Chassi + " " +
+                    "CÓD. COR: " + produto.Produto.CorMontadora.Substring(0, 2) + " " +
+                    "NOME COR: " + produto.Produto.CorMontadora + " " +
+                    "POT. MOTOR: " + produto.Produto.PotenciaCv + " " +
+                    "CC: " + produto.Produto.CilindradaCc + " " +
+                    "PESO LIQ: " + formatPeso(decimal.Parse(produto.Produto.PesoLiquidoVeiculo)) + " " +
+                    "PESO BRUTO: " + formatPeso(decimal.Parse(produto.Produto.PesoBrutoVeiculo)) + " " +
+                    //"Nº DE SÉRIE: 0 \n " +
+                    "COMBUSTÍVEL: " + produto.Produto.Combustivel + " " +
+                    "Nº MOTOR: " + produto.Produto.NumeroMotor + " " +
+                    "CAP. MÁX. TRAÇÃO: " + produto.Produto.CapacidadeTracao + " " +
+                    "DIST. EIXOS: " + produto.Produto.DistanciaEixo + " " +
+                    "ANO MODELO: " + produto.Produto.ModeloVeiculo + " " +
+                    "ANO FABRICAÇÃO: " + produto.Produto.AnoVeiculo + " " +
+                    "TIPO PINTURA: " + produto.Produto.TipoPintura + " " +
+                    "TIPO VEÍCULO: " + produto.Produto.TipoVeiculo + " " +
+                    "ESP. VEÍCULO: " + produto.Produto.EspecieVeiculo + " " +
+                    "VIN: " + produto.Produto.CondicaoVeiculo + " " +
+                    "COND. DO VEÍCULO: " + produto.Produto.CondicaoProduto + " " +
+                    "CÓD. MARCA MODELO: " + produto.Produto.MarcaModelo + " " +
+                    "CÓD COR DENATRAN: " + produto.Produto.CorDenatran + " " +
+                    "CAP. MÁX. LOTAÇÃO: " + produto.Produto.LotacaoVeiculo + " " +
+                    "REST.: " + produto.Produto.RestricaoVeiculo;
                 }
                
                 //Fim cadastro veiculo ou Bicicleta Elétrica
@@ -423,6 +452,10 @@ namespace Lunar.Utils.OrganizacaoNF
                     det[y].prod.vOutro = valorOutro;
                 if (produto.VSeguro > 0)
                     det[y].prod.vSeg = valorSeguro;
+                if (!String.IsNullOrEmpty(dadosVeiculo) && produto.Produto.Veiculo == true)
+                {
+                    det[y].infAdProd = dadosVeiculo;
+                }
                 det[y].imposto = new TNFeInfNFeDetImposto();
                 det[y].imposto.Items = geraImpostoICMS_IPI(produto);
                 det[y].imposto.PIS = geraImpostoPIS(produto.Produto)[0];

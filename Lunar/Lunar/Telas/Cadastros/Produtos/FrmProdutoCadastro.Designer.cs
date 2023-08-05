@@ -6939,6 +6939,7 @@
             this.txtChassi.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtChassi.Texts = "";
             this.txtChassi.UnderlinedStyle = false;
+            this.txtChassi.Leave += new System.EventHandler(this.txtChassi_Leave);
             // 
             // txtRenavam
             // 
@@ -7381,6 +7382,7 @@
             this.txtTipoPintura.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtTipoPintura.Texts = "S";
             this.txtTipoPintura.UnderlinedStyle = false;
+            this.txtTipoPintura.Leave += new System.EventHandler(this.txtTipoPintura_Leave);
             // 
             // btnSalva
             // 

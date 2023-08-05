@@ -57,6 +57,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     nfeProduto.DataEntrada = objetoNfe.DataLancamento;
                     nfeProduto.UComConvertida = nfeProduto.UCom;
                     nfeProduto.QuantidadeEntrada = double.Parse(nfeProduto.QCom);
+        
                     Controller.getInstance().salvar(nfeProduto);
                 }
 

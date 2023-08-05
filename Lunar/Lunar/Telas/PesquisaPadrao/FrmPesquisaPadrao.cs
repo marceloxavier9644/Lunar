@@ -237,6 +237,10 @@ namespace Lunar.Telas.PesquisaPadrao
                 }
             }
             colunas = "CONCAT(" + colunas + ") like '%" + valor + "%'";
+            if(TabelaPesquisa.Equals("Produto"))
+                colunas = "CONCAT(Tabela.Id, ' ',Tabela.Descricao, ' ',Tabela.Ean, ' ',Tabela.ValorVenda, ' ', Tabela.Ncm, ' ', Tabela.Referencia) like '%" + valor + "%'";
+
+            //CONCAT(, ' ',Tabela.Id, ' ',Tabela.Descricao, ' ',Tabela.Ean, ' ',Tabela.ValorVenda
             string val = colunas.Substring(7, 5);
             if (val.Equals(", ' '"))
                 colunas = colunas.Remove(7, 6);

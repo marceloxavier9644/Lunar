@@ -72,7 +72,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>3.82759cm</Height>
+                  <Height>4.09217cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -258,7 +258,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dsEtiquetaOtica</DataSetName>
-            <Height>7.71296cm</Height>
+            <Height>7.97754cm</Height>
             <Width>1.10765cm</Width>
             <Style>
               <Border>
@@ -273,7 +273,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>7.71296cm</Height>
+        <Height>7.97754cm</Height>
         <Style />
       </Body>
       <Width>1.10765cm</Width>

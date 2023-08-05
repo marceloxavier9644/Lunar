@@ -96,46 +96,6 @@
           "lib/net35/Microsoft.ReportViewer.DataVisualization.dll": {}
         }
       },
-      "FastReport.Compat/2023.1.8": {
-        "type": "package",
-        "compile": {
-          "lib/net40/FastReport.Compat.dll": {}
-        },
-        "runtime": {
-          "lib/net40/FastReport.Compat.dll": {}
-        }
-      },
-      "FastReport.OpenSource/2023.2.24": {
-        "type": "package",
-        "dependencies": {
-          "FastReport.Compat": "[2023.1.8]"
-        },
-        "frameworkAssemblies": [
-          "Accessibility",
-          "System",
-          "System.Data",
-          "System.Drawing",
-          "System.Security",
-          "System.Windows.Forms",
-          "System.Xml"
-        ],
-        "compile": {
-          "lib/net462/FastReport.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net462/FastReport.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/FastReport.OpenSource.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/FastReport.OpenSource.props": {}
-        }
-      },
       "FirebirdSql.Data.FirebirdClient/9.1.1": {
         "type": "package",
         "dependencies": {
@@ -1567,46 +1527,6 @@
           "lib/net35/Microsoft.ReportViewer.DataVisualization.dll": {}
         }
       },
-      "FastReport.Compat/2023.1.8": {
-        "type": "package",
-        "compile": {
-          "lib/net40/FastReport.Compat.dll": {}
-        },
-        "runtime": {
-          "lib/net40/FastReport.Compat.dll": {}
-        }
-      },
-      "FastReport.OpenSource/2023.2.24": {
-        "type": "package",
-        "dependencies": {
-          "FastReport.Compat": "[2023.1.8]"
-        },
-        "frameworkAssemblies": [
-          "Accessibility",
-          "System",
-          "System.Data",
-          "System.Drawing",
-          "System.Security",
-          "System.Windows.Forms",
-          "System.Xml"
-        ],
-        "compile": {
-          "lib/net462/FastReport.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net462/FastReport.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/FastReport.OpenSource.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/FastReport.OpenSource.props": {}
-        }
-      },
       "FirebirdSql.Data.FirebirdClient/9.1.1": {
         "type": "package",
         "dependencies": {
@@ -2968,46 +2888,6 @@
         },
         "runtime": {
           "lib/net35/Microsoft.ReportViewer.DataVisualization.dll": {}
-        }
-      },
-      "FastReport.Compat/2023.1.8": {
-        "type": "package",
-        "compile": {
-          "lib/net40/FastReport.Compat.dll": {}
-        },
-        "runtime": {
-          "lib/net40/FastReport.Compat.dll": {}
-        }
-      },
-      "FastReport.OpenSource/2023.2.24": {
-        "type": "package",
-        "dependencies": {
-          "FastReport.Compat": "[2023.1.8]"
-        },
-        "frameworkAssemblies": [
-          "Accessibility",
-          "System",
-          "System.Data",
-          "System.Drawing",
-          "System.Security",
-          "System.Windows.Forms",
-          "System.Xml"
-        ],
-        "compile": {
-          "lib/net462/FastReport.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net462/FastReport.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/FastReport.OpenSource.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/FastReport.OpenSource.props": {}
         }
       },
       "FirebirdSql.Data.FirebirdClient/9.1.1": {
@@ -4374,46 +4254,6 @@
         },
         "runtime": {
           "lib/net35/Microsoft.ReportViewer.DataVisualization.dll": {}
-        }
-      },
-      "FastReport.Compat/2023.1.8": {
-        "type": "package",
-        "compile": {
-          "lib/net40/FastReport.Compat.dll": {}
-        },
-        "runtime": {
-          "lib/net40/FastReport.Compat.dll": {}
-        }
-      },
-      "FastReport.OpenSource/2023.2.24": {
-        "type": "package",
-        "dependencies": {
-          "FastReport.Compat": "[2023.1.8]"
-        },
-        "frameworkAssemblies": [
-          "Accessibility",
-          "System",
-          "System.Data",
-          "System.Drawing",
-          "System.Security",
-          "System.Windows.Forms",
-          "System.Xml"
-        ],
-        "compile": {
-          "lib/net462/FastReport.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net462/FastReport.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/FastReport.OpenSource.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/FastReport.OpenSource.props": {}
         }
       },
       "FirebirdSql.Data.FirebirdClient/9.1.1": {
@@ -5787,51 +5627,6 @@
         "cquential.microsoft.reportviewer.datavisualization.10.0.40219.1.nupkg.sha512",
         "cquential.microsoft.reportviewer.datavisualization.nuspec",
         "lib/net35/Microsoft.ReportViewer.DataVisualization.dll"
-      ]
-    },
-    "FastReport.Compat/2023.1.8": {
-      "sha512": "GFvZwuKkUJ21nd26IKu8iGb8uXUQ5/98Cl76cLDsvcrXC3HqdPht1AfIALP9to6ov26ZAFuqxnwwSeDL+5AXfw==",
-      "type": "package",
-      "path": "fastreport.compat/2023.1.8",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.md",
-        "build/netcoreapp3.0/FastReport.Compat.targets",
-        "build/netcoreapp3.0/lib/Any/FastReport.Compat.dll",
-        "build/netcoreapp3.0/lib/Win/FastReport.Compat.dll",
-        "buildTransitive/netcoreapp3.0/FastReport.Compat.targets",
-        "fastreport.compat.2023.1.8.nupkg.sha512",
-        "fastreport.compat.nuspec",
-        "frlogo192.png",
-        "lib/net40/FastReport.Compat.dll",
-        "lib/net5.0-windows7.0/FastReport.Compat.dll",
-        "lib/netcoreapp3.0/_._",
-        "lib/netstandard2.0/FastReport.Compat.dll",
-        "lib/netstandard2.1/FastReport.Compat.dll",
-        "runtimes/any/lib/netcoreapp3.0/FastReport.Compat.dll"
-      ]
-    },
-    "FastReport.OpenSource/2023.2.24": {
-      "sha512": "NJrImZsGQAWT9EHflFgUUzr+oGieCHXHEt5FJcoQb9GyhbvtFkazfyEBXKMGuAZ93Npc40aibaOWbw80Lakr9g==",
-      "type": "package",
-      "path": "fastreport.opensource/2023.2.24",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "FastReport MIT license.md",
-        "build/FastReport.OpenSource.props",
-        "buildMultiTargeting/FastReport.OpenSource.props",
-        "buildTransitive/FastReport.OpenSource.props",
-        "fastreport.opensource.2023.2.24.nupkg.sha512",
-        "fastreport.opensource.nuspec",
-        "frlogo192.png",
-        "lib/net462/FastReport.dll",
-        "lib/net462/FastReport.xml",
-        "lib/netstandard2.0/FastReport.dll",
-        "lib/netstandard2.0/FastReport.xml",
-        "lib/netstandard2.1/FastReport.dll",
-        "lib/netstandard2.1/FastReport.xml"
       ]
     },
     "FirebirdSql.Data.FirebirdClient/9.1.1": {
@@ -8135,7 +7930,6 @@
       "BarcodeLib >= 2.4.0",
       "CircularProgressBar >= 2.8.0.16",
       "Cquential.Microsoft.ReportViewer.DataVisualization >= 10.0.40219.1",
-      "FastReport.OpenSource >= 2023.2.24",
       "FirebirdSql.Data.FirebirdClient >= 9.1.1",
       "FiscalBr.Sintegra >= 2.0.0",
       "FontAwesome.Sharp >= 6.1.1",
@@ -8214,10 +8008,6 @@
           "Cquential.Microsoft.ReportViewer.DataVisualization": {
             "target": "Package",
             "version": "[10.0.40219.1, )"
-          },
-          "FastReport.OpenSource": {
-            "target": "Package",
-            "version": "[2023.2.24, )"
           },
           "FirebirdSql.Data.FirebirdClient": {
             "target": "Package",
