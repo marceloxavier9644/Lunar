@@ -104,6 +104,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnPesquisaCnpj = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -199,7 +200,7 @@
             this.lblInscricaoEstadual.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblInscricaoEstadual.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInscricaoEstadual.ForeColor = System.Drawing.Color.Black;
-            this.lblInscricaoEstadual.Location = new System.Drawing.Point(433, 3);
+            this.lblInscricaoEstadual.Location = new System.Drawing.Point(473, 4);
             this.lblInscricaoEstadual.Name = "lblInscricaoEstadual";
             this.lblInscricaoEstadual.Size = new System.Drawing.Size(127, 21);
             this.lblInscricaoEstadual.TabIndex = 212;
@@ -491,6 +492,7 @@
             // 
             // tabPageAdv1
             // 
+            this.tabPageAdv1.Controls.Add(this.btnPesquisaCnpj);
             this.tabPageAdv1.Controls.Add(this.txtDataAbertura);
             this.tabPageAdv1.Controls.Add(this.autoLabel42);
             this.tabPageAdv1.Controls.Add(this.autoLabel17);
@@ -797,7 +799,7 @@
             this.txtInscricaoEstadual.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtInscricaoEstadual.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInscricaoEstadual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtInscricaoEstadual.Location = new System.Drawing.Point(420, 19);
+            this.txtInscricaoEstadual.Location = new System.Drawing.Point(462, 19);
             this.txtInscricaoEstadual.Margin = new System.Windows.Forms.Padding(4);
             this.txtInscricaoEstadual.Multiline = false;
             this.txtInscricaoEstadual.Name = "txtInscricaoEstadual";
@@ -806,7 +808,7 @@
             this.txtInscricaoEstadual.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtInscricaoEstadual.PlaceholderText = "";
             this.txtInscricaoEstadual.ReadOnly = false;
-            this.txtInscricaoEstadual.Size = new System.Drawing.Size(331, 44);
+            this.txtInscricaoEstadual.Size = new System.Drawing.Size(289, 44);
             this.txtInscricaoEstadual.TabIndex = 2;
             this.txtInscricaoEstadual.Tag = "";
             this.txtInscricaoEstadual.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -1547,6 +1549,26 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // btnPesquisaCnpj
+            // 
+            this.btnPesquisaCnpj.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaCnpj.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaCnpj.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaCnpj.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCnpj.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCnpj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaCnpj.IconChar = FontAwesome.Sharp.IconChar.BuildingCircleArrowRight;
+            this.btnPesquisaCnpj.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaCnpj.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaCnpj.IconSize = 38;
+            this.btnPesquisaCnpj.Location = new System.Drawing.Point(419, 26);
+            this.btnPesquisaCnpj.Name = "btnPesquisaCnpj";
+            this.btnPesquisaCnpj.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaCnpj.TabIndex = 258;
+            this.btnPesquisaCnpj.UseVisualStyleBackColor = true;
+            this.btnPesquisaCnpj.Click += new System.EventHandler(this.btnPesquisaCnpj_Click);
+            // 
             // FrmCadastroEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1654,5 +1676,6 @@
         private RJ_UI.Classes.RJTextBox txtSenhaCertificado;
         private FontAwesome.Sharp.IconButton btnConfirmaCertificado;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkOtica;
+        private FontAwesome.Sharp.IconButton btnPesquisaCnpj;
     }
 }

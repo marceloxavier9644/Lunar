@@ -1,4 +1,5 @@
 ﻿using Lunar.Telas.VisualizadorPDF;
+using Lunar.Utils.SintegrawsConsultas;
 using LunarBase.Classes;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
@@ -11,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -400,7 +402,46 @@ namespace Lunar.Utils
             }
         }
 
-        public async Task<ManifestoDownload.Manifesto> ConsultaNotas_Manifesto(string CNPJ, DateTime dataInicial)
+        public SintegraConsultaCnpj consultaCNPJSintegraWS(String cnpj)
+        {
+            String token = "A9F4A8B9-F9EA-4B5E-8A77-4577C43139F4";
+            String plugin = "ST";
+            SintegraConsultaCnpj sintegra = new SintegraConsultaCnpj();
+
+            using (HttpClient client = new HttpClient())
+            {
+                String url = "https://www.sintegraws.com.br/api/v1/execute-api.php?token=" + token + "&cnpj=" + cnpj + "&plugin=" + plugin;
+                var response = client.GetAsync(url).Result;
+                using (HttpContent content = response.Content)
+                {
+                    var result = content.ReadAsStringAsync();
+                    string jsonRetorno = result.Result;
+                    
+                    sintegra = (SintegraConsultaCnpj)JsonConvert.DeserializeObject(jsonRetorno);
+                    if (sintegra.code != null)
+                    {
+                        if (sintegra.code.Equals("0"))
+                        {
+                            return sintegra;
+                            //Console.WriteLine("Nome empresarial: " + sintegra.nome_empresarial);
+                        }
+                        else
+                        {
+                            MessageBox.Show(jsonRetorno);
+                            return null;
+                            //Console.WriteLine("Erro: " + sintegra.message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(jsonRetorno);
+                        return null;
+                    }
+                }
+            }
+        }
+
+                public async Task<ManifestoDownload.Manifesto> ConsultaNotas_Manifesto(string CNPJ, DateTime dataInicial)
         {
             try
             {

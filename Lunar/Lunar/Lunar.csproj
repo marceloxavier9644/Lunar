@@ -1166,6 +1166,7 @@
     <Compile Include="Utils\OrganizacaoNF\RetInutilizacao.cs" />
     <Compile Include="Utils\OrganizacaoNF\RetornoJsonVariados.cs" />
     <Compile Include="Utils\OrganizacaoNF\ValidadorNotaSaida.cs" />
+    <Compile Include="Utils\SintegrawsConsultas\SintegraConsultaCnpj.cs" />
     <Compile Include="Utils\Sintegra\GeradorSintegra.cs" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="RJ_UI\Classes\RJTextBoxLower.resx">

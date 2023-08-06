@@ -1,5 +1,6 @@
 ﻿using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
+using Lunar.Utils.SintegrawsConsultas;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -70,65 +71,7 @@ namespace Lunar.Telas.Cadastros.Empresas
         }
         private void txtCNPJ_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                if (!String.IsNullOrEmpty(txtCNPJ.Texts))
-                {
-                    empresaFilial = new EmpresaFilial();
-                    empresaFilial = empresaFilialController.selecionarEmpresaFilialPorCPFCNPJ(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()));
-                    if (empresaFilial == null)
-                    {
-                        if (Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 14 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
-                        {
-                            Ns_ConsultaCNPJ.Rootobject consulta = new Ns_ConsultaCNPJ.Rootobject();
-                            consulta = generica.consultarCNPJJson("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
-                            txtRazaoSocial.Texts = consulta.retConsCad.infCons.infCad[0].xNome;
-                            txtNomeFantasia.Texts = consulta.retConsCad.infCons.infCad[0].xFant;
-                            txtCEP.Texts = consulta.retConsCad.infCons.infCad[0].ender.CEP;
-                            txtDataAbertura.Value = DateTime.Parse(consulta.retConsCad.infCons.infCad[0].dIniAtiv);
-                            txtEndereco.Texts = consulta.retConsCad.infCons.infCad[0].ender.xLgr;
-                            txtNumero.Texts = consulta.retConsCad.infCons.infCad[0].ender.nro;
-                            txtComplemento.Texts = consulta.retConsCad.infCons.infCad[0].ender.xCpl;
-                            txtBairro.Texts = consulta.retConsCad.infCons.infCad[0].ender.xBairro;
-                            txtInscricaoEstadual.Texts = consulta.retConsCad.infCons.infCad[0].IE;
-                            txtCNAE.Texts = consulta.retConsCad.infCons.infCad[0].CNAE.ToString();
-
-                            cidade = new Cidade();
-                            cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(consulta.retConsCad.infCons.infCad[0].ender.xMun, consulta.retConsCad.infCons.infCad[0].ender.cMun);
-                            if (cidade != null)
-                            {
-                                txtCidade.Texts = cidade.Descricao;
-                                txtUF.Texts = cidade.Estado.Uf;
-                                cidadePrincipal = cidade;
-                            }
-                           
-                            txtEmail.Focus();
-                        }
-                        else if (txtCNPJ.Texts.Trim().Length == 11 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
-                        {
-                            txtCNPJ.Texts = generica.FormatarCPF(txtCNPJ.Texts);
-                        }
-                        else if (txtCNPJ.Texts.Trim().Length == 0)
-                        {
-
-                        }
-                        else
-                        {
-                            GenericaDesktop.ShowAlerta("Documento inválido!");
-                            txtCNPJ.Texts = "";
-                        }
-                    }
-                    else if (empresaFilial != null && String.IsNullOrEmpty(txtID.Texts))
-                    {
-                        GenericaDesktop.ShowAlerta("Empresa já possui cadastro no sistema!");
-                        get_Filial(empresaFilial);
-                    }
-                }
-            }
-            catch (Exception erro)
-            {
-                GenericaDesktop.ShowErro(erro.Message);
-            }
+          
         }
 
         private void get_Filial(EmpresaFilial empresaFilial)
@@ -675,6 +618,75 @@ namespace Lunar.Telas.Cadastros.Empresas
                     GenericaDesktop.ShowAlerta("Selecione um certificado digital na lupa de pesquisa");
 
                 
+            }
+        }
+
+        private void btnPesquisaCnpj_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(txtCNPJ.Texts))
+                {
+                    empresaFilial = new EmpresaFilial();
+                    empresaFilial = empresaFilialController.selecionarEmpresaFilialPorCPFCNPJ(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()));
+                    if (empresaFilial == null)
+                    {
+                        if (Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 14 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
+                        {
+                            //Ns_ConsultaCNPJ.Rootobject consulta = new Ns_ConsultaCNPJ.Rootobject();
+                            //consulta = generica.consultarCNPJJson("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
+                            SintegraConsultaCnpj consulta = new SintegraConsultaCnpj();
+                            consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
+                            txtRazaoSocial.Texts = consulta.nome_empresarial;
+                            txtNomeFantasia.Texts = consulta.nome_fantasia;
+                            txtCEP.Texts = consulta.cep;
+                            txtDataAbertura.Value = DateTime.Parse(consulta.data_inicio_atividade);
+                            txtEndereco.Texts = consulta.logradouro;
+                            txtNumero.Texts = consulta.numero;
+                            txtComplemento.Texts = consulta.complemento;
+                            txtBairro.Texts = consulta.bairro;
+                            txtInscricaoEstadual.Texts = consulta.inscricao_estadual;
+                            txtCNAE.Texts = consulta.cnae_principal.code;
+
+                            cidade = new Cidade();
+                            cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(consulta.municipio, consulta.ibge.codigo_municipio);
+                            if (cidade != null)
+                            {
+                                txtCidade.Texts = cidade.Descricao;
+                                txtUF.Texts = cidade.Estado.Uf;
+                                cidadePrincipal = cidade;
+                            }
+
+                            txtEmail.Focus();
+                        }
+                        else if (txtCNPJ.Texts.Trim().Length == 11 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
+                        {
+                            txtCNPJ.Texts = generica.FormatarCPF(txtCNPJ.Texts);
+                        }
+                        else if (txtCNPJ.Texts.Trim().Length == 0)
+                        {
+
+                        }
+                        else
+                        {
+                            GenericaDesktop.ShowAlerta("Documento inválido!");
+                            txtCNPJ.Texts = "";
+                        }
+                    }
+                    else if (empresaFilial != null && String.IsNullOrEmpty(txtID.Texts))
+                    {
+                        GenericaDesktop.ShowAlerta("Empresa já possui cadastro no sistema!");
+                        get_Filial(empresaFilial);
+                    }
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Preencha o cnpj antes de clicar na pesquisa");
+                }
+            }
+            catch
+            {
+                GenericaDesktop.ShowErro("Falha na consulta automática de dados do cnpj, preencha os dados manualmente");
             }
         }
     }
