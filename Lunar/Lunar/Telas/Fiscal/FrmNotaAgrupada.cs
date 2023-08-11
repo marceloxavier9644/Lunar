@@ -1316,9 +1316,9 @@ namespace Lunar.Telas.Fiscal
                                     if (nfeProduto.ValorProduto > 0)
                                         valorProdutos = valorProdutos + nfeProduto.ValorProduto;
                                     else
-                                        valorProdutos = (valorProdutos + (nfeProduto.VProd * decimal.Parse(nfeProduto.QCom)));
+                                        valorProdutos = (valorProdutos + (nfeProduto.VUnCom * decimal.Parse(nfeProduto.QCom)));
                                     valorDesconto = valorDesconto + nfeProduto.ValorDesconto;
-                                    valorTotalComDesconto = valorTotalComDesconto + nfeProduto.ValorFinal;
+                                    valorTotalComDesconto = ((valorTotalComDesconto + nfeProduto.ValorFinal) - valorDesconto);
                                 }
                                 nfe.Modelo = "65";
                                 nfe.VProd = valorProdutos;

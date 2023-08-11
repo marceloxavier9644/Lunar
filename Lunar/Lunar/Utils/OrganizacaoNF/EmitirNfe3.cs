@@ -350,13 +350,13 @@ namespace Lunar.Utils.OrganizacaoNF
                 det[y].prod.CFOP = produto.Cfop;
                 det[y].prod.uCom = produto.Produto.UnidadeMedida.Sigla;
                 det[y].prod.qCom = formatMoedaNf(decimal.Parse(produto.QCom));
-                det[y].prod.vUnCom = formatMoedaNf(produto.VProd);
-                det[y].prod.vProd = formatMoedaNf(produto.VProd * decimal.Parse(produto.QCom));
+                det[y].prod.vUnCom = formatMoedaNf(produto.VUnCom);
+                det[y].prod.vProd = formatMoedaNf(produto.VUnCom * decimal.Parse(produto.QCom));
                 det[y].prod.uTrib = produto.Produto.UnidadeMedida.Sigla;
                 det[y].prod.qTrib = formatMoedaNf(decimal.Parse(produto.QCom));
                 if(produto.VDesc > 0)
                     det[y].prod.vDesc = formatMoedaNf(produto.VDesc);
-                det[y].prod.vUnTrib = formatMoedaNf(produto.VProd);
+                det[y].prod.vUnTrib = formatMoedaNf(produto.VUnCom);
                 det[y].prod.indTot = TNFeInfNFeDetProdIndTot.Item1;
 
                 //Veiculo ou Bicicleta Elétrica

@@ -1356,10 +1356,11 @@ namespace Lunar.Telas.Fiscal
                         ordemServico = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
 
                         //Verifica valores dos produtos
+
                         IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
                         foreach (NfeProduto nfeProduto in listaProdutos)
                         {
-                            totalNotaSemDesconto = (totalNotaSemDesconto + nfeProduto.VProd) * decimal.Parse(nfeProduto.QCom);
+                            totalNotaSemDesconto = (totalNotaSemDesconto + nfeProduto.VUnCom) * decimal.Parse(nfeProduto.QCom);
                             totalDesconto = totalDesconto + nfeProduto.VDesc;
                             nfeProduto.Ncm = nfeProduto.Produto.Ncm;
                             nfeProduto.Cest = nfeProduto.Produto.Cest;
@@ -1369,9 +1370,13 @@ namespace Lunar.Telas.Fiscal
                             nfeProduto.CstPis = nfeProduto.Produto.CstPis;
                             nfeProduto.CstCofins = nfeProduto.Produto.CstCofins;
                             nfeProduto.CstIpi = nfeProduto.Produto.CstIpi;
+                     
                             Controller.getInstance().salvar(nfeProduto);
                         }
+                      
                         totalNotaComDesconto = totalNotaSemDesconto - totalDesconto;
+                        nfe.VNf = totalNotaComDesconto;
+                        Controller.getInstance().salvar(nfe); 
                         //Reenvia nota
                         if (venda != null || ordemServico != null)
                         {
@@ -1774,7 +1779,7 @@ namespace Lunar.Telas.Fiscal
                     Genericos genericosNF = new Genericos();
                     //CONSULTA NOTA
                     nfe = (Nfe)grid.SelectedItem;
-                    if (nfe.Status != "Autorizado o uso da NF-e" && nfe.Status != "Inutilizacao de numero homologado" && !nfe.Status.Contains("cancelada com sucesso"))
+                    if (nfe.Status != "Autorizado o uso da NF-e" && nfe.Status != "Inutilizacao de Numero homologado" && !nfe.Status.Contains("cancelada com sucesso"))
                     {
                         //para modelo 55
                         if (!String.IsNullOrEmpty(nfe.NsNrec))
@@ -1927,7 +1932,7 @@ namespace Lunar.Telas.Fiscal
                             pesquisaNotas();
                         }
                     }
-                    else if (nfe.Status.Contains("Inutilizacao de numero homolog"))
+                    else if (nfe.Status.Contains("Inutilizacao"))
                     {
                         if (nfe.Modelo == "55")
                         {

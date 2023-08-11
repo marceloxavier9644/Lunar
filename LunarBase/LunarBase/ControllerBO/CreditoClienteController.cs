@@ -23,5 +23,22 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+        public IList<CreditoCliente> selecionarCreditoPorClienteEOrigem(int idCliente, string tabelaOrigem, string idOrigem)
+        {
+            CreditoClienteBO bo = new CreditoClienteBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarCreditoPorClienteEOrigem(idCliente, tabelaOrigem, idOrigem);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

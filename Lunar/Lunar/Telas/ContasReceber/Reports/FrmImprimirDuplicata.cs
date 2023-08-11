@@ -1,5 +1,6 @@
 ﻿using Lunar.Utils;
 using LunarBase.Classes;
+using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.Reporting.WinForms;
 using System;
@@ -36,12 +37,28 @@ namespace Lunar.Telas.ContasReceber.Reports
             String cpfCliente = "";
             string cepCliente = "";
             int cont = 0;
+            decimal valorSinalEntrada = 0;
             foreach (ContaReceber receber in listaContaReceber) 
             {
                 cont++;
                 if (cont == listaContaReceber.Count)
                 {
-
+                    if(receber.OrdemServico != null)
+                    {
+                        if (receber.OrdemServico.Entrada == true)
+                        {
+                            CreditoClienteController creditoClienteController = new CreditoClienteController();
+                            CreditoCliente creditoCliente = new CreditoCliente();
+                            IList<CreditoCliente> listaCredito = creditoClienteController.selecionarCreditoPorClienteEOrigem(receber.OrdemServico.Cliente.Id, "ORDEMSERVICO", receber.OrdemServico.Id.ToString());
+                            if(listaCredito.Count > 0)
+                            {
+                                foreach(CreditoCliente credit in listaCredito)
+                                {
+                                    valorSinalEntrada = valorSinalEntrada + credit.Valor;
+                                }
+                            }
+                        }
+                    }
                     //CNPJ DA EMPRESA
                     if (receber.EmpresaFilial.Cnpj.Length == 14)
                     {
@@ -105,7 +122,7 @@ namespace Lunar.Telas.ContasReceber.Reports
                 }
 
                 dsParcelaDuplicata.Duplicata.AddDuplicataRow(int.Parse(receber.Parcela), 
-                    receber.ValorParcela, receber.ValorTotalOrigem, receber.Vencimento.ToShortDateString(), 
+                    receber.ValorParcela, receber.ValorTotalOrigem + valorSinalEntrada, receber.Vencimento.ToShortDateString(), 
                     receber.Id.ToString(), receber.Documento, ConverterMoedaPorExtenso.toExtenso(receber.ValorParcela));
             }
             this.reportViewer1.RefreshReport();

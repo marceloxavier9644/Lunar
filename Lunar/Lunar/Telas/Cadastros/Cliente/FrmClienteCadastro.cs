@@ -2,6 +2,7 @@
 using Lunar.Telas.Cadastros.Cliente.PessoaAdicionais;
 using Lunar.Utils;
 using Lunar.Utils.IntegracaoZAPI;
+using Lunar.Utils.SintegrawsConsultas;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
@@ -166,24 +167,26 @@ namespace Lunar.Telas.Cadastros.Cliente
                             if (radioPJ.Checked == false)
                                 radioPJ.Checked = true;
 
-                            Ns_ConsultaCNPJ.Rootobject consulta = new Ns_ConsultaCNPJ.Rootobject();
-                            consulta = generica.consultarCNPJJson("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
-                            txtRazaoSocial.Texts = consulta.retConsCad.infCons.infCad[0].xNome;
-                            txtNomeFantasia.Texts = consulta.retConsCad.infCons.infCad[0].xFant;
-                            txtCEP.Texts = consulta.retConsCad.infCons.infCad[0].ender.CEP;
-                            txtDataNascimento.Value = DateTime.Parse(consulta.retConsCad.infCons.infCad[0].dIniAtiv);
-                            txtEndereco.Texts = consulta.retConsCad.infCons.infCad[0].ender.xLgr;
-                            txtNumero.Texts = consulta.retConsCad.infCons.infCad[0].ender.nro;
-                            txtComplemento.Texts = consulta.retConsCad.infCons.infCad[0].ender.xCpl;
-                            txtBairro.Texts = consulta.retConsCad.infCons.infCad[0].ender.xBairro;
-                            txtInscricaoProdutor.Texts = consulta.retConsCad.infCons.infCad[0].IE;
+                            SintegraConsultaCnpj consulta = new SintegraConsultaCnpj();
+                            consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
+                            txtRazaoSocial.Texts = consulta.nome_empresarial;
+                            txtNomeFantasia.Texts = consulta.nome_fantasia;
+                            txtCEP.Texts = consulta.cep;
+                           // txtDataAbertura.Value = DateTime.Parse(consulta.data_inicio_atividade);
+                            txtEndereco.Texts = consulta.logradouro;
+                            txtNumero.Texts = consulta.numero;
+                            txtComplemento.Texts = consulta.complemento;
+                            txtBairro.Texts = consulta.bairro;
+                            txtInscricaoProdutor.Texts = consulta.inscricao_estadual;
+                            //txtCNAE.Texts = consulta.cnae_principal.code;
 
                             cidade = new Cidade();
-                            cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(consulta.retConsCad.infCons.infCad[0].ender.xMun, consulta.retConsCad.infCons.infCad[0].ender.cMun);
+                            cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(consulta.municipio, consulta.ibge.codigo_municipio);
                             if (cidade != null)
                             {
                                 txtCidade.Texts = cidade.Descricao;
                                 txtUF.Texts = cidade.Estado.Uf;
+                                //cidadePrincipal = cidade;
                             }
                             txtDDD.Focus();
                         }
@@ -296,7 +299,7 @@ namespace Lunar.Telas.Cadastros.Cliente
 
         private void txtCEP_Leave(object sender, EventArgs e)
         {
-            pesquisarCEP();
+            
         }
 
         private void pesquisarCEP()
@@ -1674,6 +1677,11 @@ namespace Lunar.Telas.Cadastros.Cliente
         private void txtComissao_KeyPress(object sender, KeyPressEventArgs e)
         {
             generica.SoNumeroEVirgula(txtComissao.Texts, e);
+        }
+
+        private void btnPesquisaCep_Click(object sender, EventArgs e)
+        {
+            pesquisarCEP();
         }
     }
 }

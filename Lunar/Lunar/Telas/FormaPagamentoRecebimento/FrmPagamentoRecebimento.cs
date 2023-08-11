@@ -1463,6 +1463,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 credito.Cliente = ordemServico.Cliente;
                 credito.EmpresaFilial = Sessao.empresaFilialLogada;
                 credito.Origem = "ORDEMSERVICO";
+                credito.IdOrigem = ordemServico.Id.ToString();
                 credito.Valor = valorRecebido;
                 credito.ValorUtilizado = 0;
                 Controller.getInstance().salvar(credito);

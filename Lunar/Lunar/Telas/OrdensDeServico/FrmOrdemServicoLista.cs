@@ -1262,6 +1262,7 @@ namespace Lunar.Telas.OrdensDeServico
             int i = 0;
             foreach (var VendaItens in listaProdutoOrdemServico)
             {
+       
                 i++;
                 nfeProduto = new NfeProduto();
                 Produto produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(VendaItens.Produto.Id, Sessao.empresaFilialLogada);
@@ -1313,7 +1314,7 @@ namespace Lunar.Telas.OrdensDeServico
                 nfeProduto.ValorProduto = produto.ValorVenda;
                 nfeProduto.VUnCom = produto.ValorVenda;
 
-                valorFinalNota = (valorFinalNota + (nfeProduto.ValorFinal * decimal.Parse(quantidade.ToString())));
+                valorFinalNota = (valorFinalNota + (nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString())));
                 valorProdutosSemDesconto = valorProdutosSemDesconto + nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString());
                 valorDescontoProdutos = valorDescontoProdutos + nfeProduto.VDesc;
                 if(produto.Estoque < VendaItens.Quantidade)

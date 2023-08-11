@@ -77,5 +77,17 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar Crédito! Erro: " + e.Message);
             }
         }
+
+        public IList<CreditoCliente> selecionarCreditoPorClienteEOrigem(int idCliente, string tabelaOrigem, string idOrigem)
+        {
+            try
+            {
+                return dao.selecionarCreditoPorClienteEOrigem(idCliente, tabelaOrigem, idOrigem);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Crédito! Erro: " + e.Message);
+            }
+        }
     }
 }

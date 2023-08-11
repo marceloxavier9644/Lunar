@@ -65,5 +65,10 @@ namespace Lunar.Telas.ReciboAvulso1
                     break;
             }
         }
+
+        private void txtCpf_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            generica.SoNumero(txtCpf.Text, e);
+        }
     }
 }

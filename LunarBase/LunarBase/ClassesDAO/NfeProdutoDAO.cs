@@ -75,12 +75,9 @@ namespace LunarBase.ClassesDAO
         {
             Session = Conexao.GetSession();
             String sql = "";
-            if(nfe.NNf == "359")
-                sql = "";
             if (nfe.Fornecedor != null && nfe.TipoOperacao == "E")
             {
-                sql = "SELECT sum(nfeproduto.VUNCOM) * Cast(nfeproduto.QCOM as DECIMAL(7,2)) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
-                    "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                sql = "SELECT nfe.VNf as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                     "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
                     "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
                     "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
@@ -92,8 +89,7 @@ namespace LunarBase.ClassesDAO
             }
             else if(nfe.Cliente != null && nfe.TipoOperacao == "E")
             {
-                sql = "SELECT sum(nfeproduto.VUNCOM) * Cast(nfeproduto.QCOM as DECIMAL(7,2)) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
-                                   "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                sql = "SELECT nfe.VNf as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                                    "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
                                    "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
                                    "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
@@ -105,23 +101,23 @@ namespace LunarBase.ClassesDAO
             }
             else if (nfe.Fornecedor != null && nfe.TipoOperacao == "S")
             {
-                sql = "SELECT sum(nfeproduto.VALORFINAL) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
-                           "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                sql = "SELECT SUM(((nfeproduto.VALORFINAL * Cast((nfeproduto.QCOM) as DECIMAL(7,2)) + nfeproduto.VFRETE + nfeproduto.VICMSST + " +
+                    "nfeproduto.VALORIPI) - nfeproduto.VDESC)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                            "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
-                           "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
+                           "nfe.NNf as numero, nfeProduto.Cfop as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
                            "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
                            "from `nfeproduto` " +
                                     "INNER JOIN nfe ON nfe.ID = nfeproduto.NFE " +
                                     "INNER JOIN pessoa ON nfe.Fornecedor = pessoa.Id " +
                             "where nfe = " + nfe.Id + " and NfeProduto.FlagExcluido <> true and nfe.LANCADA = true " +
-                            "GROUP by nfeproduto.CFOPENTRADA";
+                            "GROUP by nfeproduto.CFOP";
             }
             else if (nfe.Cliente != null && nfe.TipoOperacao == "S")
             {
-                sql = "SELECT sum(nfeproduto.VALORFINAL) - SUM(nfeproduto.VDESC) + (sum(nfeproduto.VICMSST) + sum(nfeproduto.VALORIPI) " +
-                                   "+ sum(nfeproduto.VFRETE)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                sql = "SELECT SUM(((nfeproduto.VALORFINAL * Cast((nfeproduto.QCOM) as DECIMAL(7,2)) + nfeproduto.VFRETE + nfeproduto.VICMSST + " +
+                    "nfeproduto.VALORIPI) - nfeproduto.VDESC)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                                    "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
-                                   "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
+                                   "nfe.NNf as numero, nfeProduto.Cfop as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
                                    "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
                                    "from `nfeproduto` " +
                                             "INNER JOIN nfe ON nfe.ID = nfeproduto.NFE " +
@@ -151,6 +147,7 @@ namespace LunarBase.ClassesDAO
             public decimal valorIsentaNaoTributada { get; set; }
             public decimal valorOutras { get; set; }
             public string aliquotaIcms { get; set; }
+         
         }
 
         public class RetProd

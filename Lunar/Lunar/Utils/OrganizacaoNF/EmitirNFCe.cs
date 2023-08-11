@@ -258,12 +258,12 @@ namespace Lunar.Utils.OrganizacaoNF
                                 CFOP = produto.Produto.CfopVenda,
                                 uCom = produto.Produto.UnidadeMedida.Sigla,
                                 qCom = formatMoedaNf(decimal.Parse(produto.QCom)),
-                                vUnCom = formatMoedaNf(produto.VProd),
-                                vProd = formatMoedaNf(produto.VProd * decimal.Parse(produto.QCom)),
+                                vUnCom = formatMoedaNf(produto.VUnCom),
+                                vProd = formatMoedaNf(produto.VUnCom * decimal.Parse(produto.QCom)),
                                 uTrib = produto.Produto.UnidadeMedida.Sigla,
                                 qTrib = formatMoedaNf(decimal.Parse(produto.QCom)),
                                 vDesc = formatMoedaNf(produto.VDesc),
-                                vUnTrib = formatMoedaNf(produto.VProd),
+                                vUnTrib = formatMoedaNf(produto.VUnCom),
 
                                 indTot = TNFeInfNFeDetProdIndTot.Item1
                                 //nItemPed = "0"}}
@@ -297,11 +297,11 @@ namespace Lunar.Utils.OrganizacaoNF
                             CFOP = produto.Produto.CfopVenda,
                             uCom = produto.Produto.UnidadeMedida.Sigla,
                             qCom = formatMoedaNf(decimal.Parse(produto.QCom)),
-                            vUnCom = formatMoedaNf(produto.VProd),
-                            vProd = formatMoedaNf(produto.VProd * decimal.Parse(produto.QCom)),
+                            vUnCom = formatMoedaNf(produto.VUnCom),
+                            vProd = formatMoedaNf(produto.VUnCom * decimal.Parse(produto.QCom)),
                             uTrib = produto.Produto.UnidadeMedida.Sigla,
                             qTrib = formatMoedaNf(decimal.Parse(produto.QCom)),
-                            vUnTrib = formatMoedaNf(produto.VProd),
+                            vUnTrib = formatMoedaNf(produto.VUnCom),
                             indTot = TNFeInfNFeDetProdIndTot.Item1
                             //nItemPed = "0"}}
                         },

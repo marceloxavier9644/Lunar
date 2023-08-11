@@ -177,11 +177,12 @@ namespace Lunar.Utils.Sintegra
                             numeroNota = GenericaDesktop.RemoveCaracteres(nf.NNf).Substring(inicio, cont-inicio);
                         }
                         registro50.Numero = int.Parse(numeroNota);
-                        if (String.IsNullOrEmpty(cfop))
+                        if (String.IsNullOrEmpty(cfop) && nf.TipoOperacao.Equals("E"))
                         {
-                            GenericaDesktop.ShowAlerta("Nota de entrada sem CFOP de Entrada: " + nf.NNf);
-                            cfop = "2102";
+                            GenericaDesktop.ShowAlerta("Nota de entrada sem CFOP de Entrada: " + nf.NNf + " Operação de " + nf.TipoOperacao + " ID: " + nf.Id);
+                            //cfop = "2102";
                         }
+                        
                         registro50.Cfop = int.Parse(cfop);
                         registro50.Emitente = emitente;
                         //registro50.ValorTotal = nfProduto.valorTotal;
@@ -256,7 +257,7 @@ namespace Lunar.Utils.Sintegra
                         registro54.NumeroItem = int.Parse(nfProduto.Item);
                         registro54.CodProdutoServico = nfProduto.CodigoInterno;
                         registro54.Quantidade = decimal.Parse(nfProduto.QuantidadeEntrada.ToString());
-                        registro54.VlProdutoServico = (nfProduto.VProd - nfProduto.VDesc) /*nfProduto.VFrete + nfProduto.VICMSSt*//* - nfProduto.VDesc*/;
+                        registro54.VlProdutoServico = ((nfProduto.VProd + nfProduto.VFrete + nfProduto.VICMSSt) - nfProduto.VDesc);
                         registro54.VlDescontoDespesaAc = nfProduto.VDesc;
                         //registro54.BaseCalculoIcms = nfProduto.VBC;
                         //registro54.BaseCalculoIcmsSt = nfProduto.VBCST;

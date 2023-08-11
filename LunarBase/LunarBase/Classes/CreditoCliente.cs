@@ -13,6 +13,7 @@ namespace LunarBase.Classes
         private DateTime dataUtilizacao;
         private Pessoa cliente;
         private EmpresaFilial empresaFilial;
+        private string idOrigem;
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -28,6 +29,8 @@ namespace LunarBase.Classes
         public virtual decimal ValorUtilizado { get => valorUtilizado; set => valorUtilizado = value; }
         [Anotacao("Data Utilização")]
         public virtual DateTime DataUtilizacao { get => dataUtilizacao; set => dataUtilizacao = value; }
+        [Anotacao("ID Origem")]
+        public virtual string IdOrigem { get => idOrigem; set => idOrigem = value; }
 
         public override string ToString()
         {

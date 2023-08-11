@@ -64,7 +64,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.54882cm</Width>
+                  <Width>0.73403cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.55883cm</Width>
@@ -72,7 +72,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>3.58947cm</Height>
+                  <Height>2.66343cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -147,11 +147,12 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>3.88537cm</Height>
+                  <Height>2.7212cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Ean1">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -165,7 +166,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -201,7 +202,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -260,8 +261,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dsEtiquetaOtica</DataSetName>
-            <Height>7.47484cm</Height>
-            <Width>1.10765cm</Width>
+            <Height>5.38463cm</Height>
+            <Width>1.29286cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -278,7 +279,7 @@
         <Height>7.47484cm</Height>
         <Style />
       </Body>
-      <Width>1.10765cm</Width>
+      <Width>1.29286cm</Width>
       <Page>
         <PageHeight>8cm</PageHeight>
         <PageWidth>9cm</PageWidth>

@@ -8,6 +8,7 @@
 		<property name="Valor" column="VALOR" type="decimal"/>
 		<property name="ValorUtilizado" column="VALORUTILIZADO" type="decimal"/>
 		<property name="DataUtilizacao" column="DATAUTILIZACAO" type="DateTime"/>
+		<property name="IdOrigem" column="IDORIGEM" type="String" length="150"/>
 		
 		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="true" foreign-key="FK_CREDITOCLIENTE_PESSOA" lazy="false"/>
 		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_CREDITOCLIENTE_FILIAL" lazy="false"/>
