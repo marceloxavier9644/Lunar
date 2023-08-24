@@ -4,7 +4,7 @@
 		<id name="Id" column="ID" type="int">
 			<generator class="native" />
 		</id>
-		<property name="Descricao" column="DESCRICAO" type="String" length="200"/>
+		<property name="Descricao" column="DESCRICAO" type="String" length="900"/>
 		<property name="Valor" column="VALOR" type="decimal"/>
 		<property name="Tipo" column="TIPO" type="String" length="1"/>
 		<property name="TabelaOrigem" column="TABELAORIGEM" type="String" length="100"/>

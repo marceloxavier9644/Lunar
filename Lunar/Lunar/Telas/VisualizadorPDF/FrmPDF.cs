@@ -1,5 +1,6 @@
 ﻿using PdfiumViewer;
 using System;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.VisualizadorPDF
@@ -26,6 +27,10 @@ namespace Lunar.Telas.VisualizadorPDF
             byte[] bytes = System.IO.File.ReadAllBytes(caminhoPDF);
             var stream = new System.IO.MemoryStream(bytes);
             PdfDocument pdfDocument = PdfDocument.Load(stream);
+
+            //teste largura
+         
+
             pdf.Document = pdfDocument;
         }
 

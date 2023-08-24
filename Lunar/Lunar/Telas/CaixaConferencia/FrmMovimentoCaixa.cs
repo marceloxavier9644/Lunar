@@ -861,6 +861,12 @@ namespace Lunar.Telas.CaixaConferencia
                             }
                             GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
                         }
+                        else
+                        {
+                            //MessageBox.Show(caixa.Id.ToString());
+                            Controller.getInstance().excluir(caixa);
+                            GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
+                        }
                     }
                     //VALE
                     if (caixa.TabelaOrigem.Contains("VALE"))

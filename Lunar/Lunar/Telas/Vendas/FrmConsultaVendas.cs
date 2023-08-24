@@ -428,7 +428,7 @@ namespace Lunar.Telas.Vendas
                 nfeProduto.Cfop = produto.CfopVenda;
                 nfeProduto.CProd = produto.Id.ToString();
                 nfeProduto.Nfe = null;
-                nfeProduto.VProd = produto.ValorVenda;
+                nfeProduto.VProd = produto.ValorVenda * decimal.Parse(quantidade.ToString());
                 nfeProduto.QTrib = quantidade;
                 nfeProduto.VDesc = descontoItem;
                 nfeProduto.DescricaoInterna = produto.Descricao;
@@ -436,13 +436,15 @@ namespace Lunar.Telas.Vendas
                 nfeProduto.CodigoInterno = produto.Id.ToString();
                 nfeProduto.CEan = "";
                 nfeProduto.CEANTrib = "";
-                nfeProduto.CfopEntrada = "";
+                nfeProduto.CfopEntrada = produto.CfopVenda;
                 nfeProduto.AliqCofins = produto.PercentualCofins;
                 nfeProduto.AliqIpi = produto.PercentualIpi;
                 nfeProduto.AliqPis = produto.PercentualPis;
                 nfeProduto.BaseCofins = 0;
                 nfeProduto.BaseIpi = 0;
                 nfeProduto.BasePis = 0;
+                nfeProduto.VUnCom = produto.ValorVenda;
+                nfeProduto.VUnTrib = produto.ValorVenda;
                 nfeProduto.CodAnp = produto.CodAnp;
                 nfeProduto.CodEnqIpi = produto.EnqIpi;
                 nfeProduto.CodSeloIpi = produto.CodSeloIpi;

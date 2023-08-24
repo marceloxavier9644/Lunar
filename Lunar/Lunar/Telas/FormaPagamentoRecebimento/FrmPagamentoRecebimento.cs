@@ -1098,11 +1098,12 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
 
         private void selecionarCliente()
         {
-            Object pessoaOjeto = new Pessoa();
+            object pessoaOjeto = new Pessoa();
+            Pessoa pessoaX = new Pessoa();
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", ""))
+                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(""))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -1117,7 +1118,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                     formBackground.ShowInTaskbar = false;
                     formBackground.Show();
                     uu.Owner = formBackground;
-                    switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                    switch (uu.showModal(ref pessoaX))
                     {
                         case DialogResult.Ignore:
                             uu.Dispose();
@@ -1130,7 +1131,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             form.Dispose();
                             break;
                         case DialogResult.OK:
-                            clienteLista = ((Pessoa)pessoaOjeto);
+                            clienteLista = pessoaX;
                             verificarCreditoCliente();
                             break;
                     }
