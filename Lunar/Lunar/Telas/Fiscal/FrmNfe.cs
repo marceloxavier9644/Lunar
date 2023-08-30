@@ -1048,6 +1048,7 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.VOutro = decimal.Parse(dataRowViewXXX.Row["vOutro"].ToString().Trim());
                     nfeProduto.VSeguro = decimal.Parse(dataRowViewXXX.Row["vSeguro"].ToString().Trim());
                     nfeProduto.VipiDevolvido = decimal.Parse(dataRowViewXXX.Row["ValorIpiDevolvido"].ToString().Trim());
+                    nfeProduto.InfAdProd = dataRowViewXXX.Row["Observacao"].ToString();
                     listaProdutosNFe.Add(nfeProduto);
                 }
             }

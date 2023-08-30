@@ -66,6 +66,16 @@ namespace LunarBase.ClassesBO
             return true;
         }
 
-      
+        public IList<ContaReceberRecebida> selecionarContaReceberRecebidaPorSql(string sql)
+        {
+            try
+            {
+                return dao.selecionarContaReceberRecebidaPorSql(sql);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Conta Receber Recebida! Erro: " + e.Message);
+            }
+        }
     }
 }

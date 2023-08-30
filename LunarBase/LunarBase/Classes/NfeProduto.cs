@@ -37,7 +37,7 @@ namespace LunarBase.Classes
         private decimal vFrete;
         private decimal vOutro;
         private decimal vSeguro;
-
+        private string infAdProd;
         //ICMS
         private string origemIcms;
         private string cstIcms;
@@ -274,5 +274,6 @@ namespace LunarBase.Classes
         public virtual decimal VSeguro { get => vSeguro; set => vSeguro = value; }
         public virtual string UComConvertida { get => uComConvertida; set => uComConvertida = value; }
         public virtual decimal VipiDevolvido { get => vipiDevolvido; set => vipiDevolvido = value; }
+        public virtual string InfAdProd { get => infAdProd; set => infAdProd = value; }
     }
 }

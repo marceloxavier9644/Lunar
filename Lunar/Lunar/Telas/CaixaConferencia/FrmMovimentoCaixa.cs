@@ -5,6 +5,7 @@ using Lunar.Telas.Orcamentos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.UsuarioRegistro;
 using Lunar.Utils;
+using Lunar.Utils.GalaxyPay_API;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
@@ -809,11 +810,30 @@ namespace Lunar.Telas.CaixaConferencia
                                         }
                                     }
                                     else
-                                        GenericaDesktop.ShowErro("Não é possível excluir caixa de parcela que possui recebimento parcial!");
+                                    {
+                                        //GenericaDesktop.ShowErro("Não é possível excluir caixa de parcela que possui recebimento parcial!");
+                                        
+                                        ContaReceberRecebidaController contaReceberRecebidaController = new ContaReceberRecebidaController();
+                                        IList<ContaReceberRecebida> listaRecebidas = contaReceberRecebidaController.selecionarContaReceberRecebidaPorSql("From ContaReceberRecebida crr Where crr.FlagExcluido <> true and crr.DataCadastro between '"+caixa.DataLancamento.ToString("yyyy-MM-dd")+" 00:00:00' and '"+caixa.DataLancamento.ToString("yyyy-MM-dd")+" 23:59:59' and crr.ContaReceber = " + contaReceber.Id + " and crr.ValorRecebido = " + caixa.Valor.ToString().Replace(',','.'));
+                                        if(listaRecebidas.Count == 1)
+                                        {
+                                            foreach(ContaReceberRecebida contaReceberRecebida in listaRecebidas)
+                                            {
+                                                Controller.getInstance().excluir(contaReceberRecebida);
+                                                contaReceber.ValorRecebimentoParcial = contaReceber.ValorRecebimentoParcial - contaReceberRecebida.ValorRecebido;
+                                                Controller.getInstance().salvar(contaReceber);
+                                            }
+                                            Controller.getInstance().excluir(caixa);
+                                            GenericaDesktop.ShowInfo("Registro Excluído com Sucesso!");
+                                        }
+                                        else
+                                        {
+                                            GenericaDesktop.ShowAlerta("Não é possível excluir esta parcial, existe 2 parciais no mesmo dia com o mesmo valor, solicite suporte ao revendedor do sistema!");
+                                        }
+                                    }
                                 }
                             }
                         }
-                        GenericaDesktop.ShowInfo("Movimentação Excluída com Sucesso!");
                     }
 
                     //DESPESA
@@ -1108,6 +1128,22 @@ namespace Lunar.Telas.CaixaConferencia
             finally
             {
                 formBackground.Dispose();
+            }
+        }
+
+        private void btnTesteBoleto_Click(object sender, EventArgs e)
+        {
+            String novoCadastro = "";
+            GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+            string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+            Pessoa pessoa = new Pessoa();
+            PessoaController pessoaController = new PessoaController();
+            pessoa = pessoaController.selecionarPessoaPorCPFCNPJ("07497828622");
+
+            if (!String.IsNullOrEmpty(tokenAcessoGalaxyPay))
+            {
+                string ret = galaxyPayApiIntegracao.GalaxyPay_ListarCliente("07497828622", pessoa);
+
             }
         }
     }

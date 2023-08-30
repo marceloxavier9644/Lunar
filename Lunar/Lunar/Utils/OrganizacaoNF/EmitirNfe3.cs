@@ -358,6 +358,10 @@ namespace Lunar.Utils.OrganizacaoNF
                     det[y].prod.vDesc = formatMoedaNf(produto.VDesc);
                 det[y].prod.vUnTrib = formatMoedaNf(produto.VUnCom);
                 det[y].prod.indTot = TNFeInfNFeDetProdIndTot.Item1;
+                
+                //Informacao adicional item
+                if(!String.IsNullOrEmpty(produto.InfAdProd))
+                    det[y].infAdProd = produto.InfAdProd;
 
                 //Veiculo ou Bicicleta Elétrica
                 if (produto.Produto.Veiculo == true)

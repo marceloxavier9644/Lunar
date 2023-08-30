@@ -74,6 +74,7 @@
             this.btnReceita = new Lunar.RJ_UI.Classes.RJButton();
             this.btnDespesa = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTesteBoleto = new Lunar.RJ_UI.Classes.RJButton();
             this.btnAjustarCobrador = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExcluir2 = new Lunar.RJ_UI.Classes.RJButton();
             this.panel3.SuspendLayout();
@@ -819,6 +820,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTesteBoleto);
             this.groupBox1.Controls.Add(this.btnAjustarCobrador);
             this.groupBox1.Controls.Add(this.btnReceita);
             this.groupBox1.Controls.Add(this.btnDespesa);
@@ -829,6 +831,28 @@
             this.groupBox1.Size = new System.Drawing.Size(1128, 71);
             this.groupBox1.TabIndex = 157;
             this.groupBox1.TabStop = false;
+            // 
+            // btnTesteBoleto
+            // 
+            this.btnTesteBoleto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTesteBoleto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnTesteBoleto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnTesteBoleto.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnTesteBoleto.BorderRadius = 8;
+            this.btnTesteBoleto.BorderSize = 0;
+            this.btnTesteBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTesteBoleto.FlatAppearance.BorderSize = 0;
+            this.btnTesteBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTesteBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTesteBoleto.ForeColor = System.Drawing.Color.White;
+            this.btnTesteBoleto.Location = new System.Drawing.Point(238, 14);
+            this.btnTesteBoleto.Name = "btnTesteBoleto";
+            this.btnTesteBoleto.Size = new System.Drawing.Size(172, 45);
+            this.btnTesteBoleto.TabIndex = 265;
+            this.btnTesteBoleto.Text = "Teste Boletos";
+            this.btnTesteBoleto.TextColor = System.Drawing.Color.White;
+            this.btnTesteBoleto.UseVisualStyleBackColor = false;
+            this.btnTesteBoleto.Click += new System.EventHandler(this.btnTesteBoleto_Click);
             // 
             // btnAjustarCobrador
             // 
@@ -942,5 +966,6 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasContasReceber;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasDespesas;
         private RJ_UI.Classes.RJButton btnAjustarCobrador;
+        private RJ_UI.Classes.RJButton btnTesteBoleto;
     }
 }

@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LunarBase.Classes;
+using LunarBase.ConexaoBD;
 
 namespace LunarBase.ClassesDAO
 {
     public class ContaReceberRecebidaDAO : BaseDAO
     {
+        public IList<ContaReceberRecebida> selecionarContaReceberRecebidaPorSql(string sql)
+        {
+            Session = Conexao.GetSession();
+            IList<ContaReceberRecebida> retorno = Session.CreateQuery(sql).List<ContaReceberRecebida>();
+            return retorno;
+        }
     }
 }

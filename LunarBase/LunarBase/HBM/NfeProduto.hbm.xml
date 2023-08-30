@@ -34,7 +34,9 @@
 		<property name="VFrete" column="VFRETE" type="decimal"/>
 		<property name="VOutro" column="VOUTRO" type="decimal"/>
 		<property name="VSeguro" column="VSEGURO" type="decimal"/>
-			<!-- ICMS -->
+		<property name="InfAdProd" column="INFADPROD" type="String" length="500"/>
+		
+		<!-- ICMS -->
 		<property name="OrigemIcms" column="ORIGEMICMS" type="String" length="30"/>
 		<property name="CstIcms" column="CSTICMS" type="String" length="30"/>
 		<property name="VBC" column="VBC" type="decimal"/>

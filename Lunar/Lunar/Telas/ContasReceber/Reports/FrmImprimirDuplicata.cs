@@ -41,24 +41,30 @@ namespace Lunar.Telas.ContasReceber.Reports
             foreach (ContaReceber receber in listaContaReceber) 
             {
                 cont++;
-                if (cont == listaContaReceber.Count)
+
+                //Verifica se tem entrada para sair no total da nota
+                if (cont == 1)
                 {
-                    if(receber.OrdemServico != null)
+                    if (receber.OrdemServico != null)
                     {
                         if (receber.OrdemServico.Entrada == true)
                         {
                             CreditoClienteController creditoClienteController = new CreditoClienteController();
                             CreditoCliente creditoCliente = new CreditoCliente();
                             IList<CreditoCliente> listaCredito = creditoClienteController.selecionarCreditoPorClienteEOrigem(receber.OrdemServico.Cliente.Id, "ORDEMSERVICO", receber.OrdemServico.Id.ToString());
-                            if(listaCredito.Count > 0)
+                            if (listaCredito.Count > 0)
                             {
-                                foreach(CreditoCliente credit in listaCredito)
+                                foreach (CreditoCliente credit in listaCredito)
                                 {
                                     valorSinalEntrada = valorSinalEntrada + credit.Valor;
                                 }
                             }
                         }
                     }
+                }
+
+                if (cont == listaContaReceber.Count)
+                {
                     //CNPJ DA EMPRESA
                     if (receber.EmpresaFilial.Cnpj.Length == 14)
                     {

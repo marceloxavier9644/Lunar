@@ -64,7 +64,10 @@ namespace Lunar.Telas.Compras
                             for (int i = 0; i < produto.Estoque; i++)
                             {
                                 idx++;
-                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, prod.Ean)), idx);
+                                string descricao = produto.Descricao;
+                                if (produto.Descricao.Length > 35)
+                                    descricao = produto.Descricao.Substring(0, 35);
+                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, prod.Ean)), idx);
                             }
                         }
                     }

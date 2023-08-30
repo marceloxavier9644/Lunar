@@ -1144,9 +1144,8 @@
     <Compile Include="Telas\VisualizadorPDF\FrmPDF.Designer.cs">
       <DependentUpon>FrmPDF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\BoletosJuno\BoletoFacilClient.cs" />
     <Compile Include="Utils\ConverterMoedaPorExtenso.cs" />
-    <Compile Include="Utils\DropBoxIntegracao\AuthenticationHelper.cs" />
+    <Compile Include="Utils\GalaxyPay_API\GalaxyPayApiIntegracao.cs" />
     <Compile Include="Utils\GenericaDesktop.cs" />
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.cs">
       <SubType>Form</SubType>
@@ -1299,6 +1298,7 @@
     <EmbeddedResource Include="Telas\Compras\Manifestos\FrmManifesto.resx">
       <DependentUpon>FrmManifesto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Compras\Reports\ReportEtiquetasOtica3.rdlc" />
     <EmbeddedResource Include="Telas\Compras\Reports\ReportEtiquetasOtica2.rdlc" />
     <EmbeddedResource Include="Telas\Compras\Reports\ReportEtiquetasOtica.rdlc" />
     <EmbeddedResource Include="Telas\Condicionais\FrmCondicional.resx">

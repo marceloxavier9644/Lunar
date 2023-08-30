@@ -48,9 +48,9 @@ namespace Lunar.Telas.ContasReceber.Reports
             foreach (ContaReceber receber in listaContaReceber)
             {
                 cont++;
-                if (cont == listaContaReceber.Count)
+                //Verifica se tem entrada para sair no total da nota
+                if (cont == 1)
                 {
-                    //Calcula o valor da entrada
                     if (receber.OrdemServico != null)
                     {
                         if (receber.OrdemServico.Entrada == true)
@@ -67,6 +67,9 @@ namespace Lunar.Telas.ContasReceber.Reports
                             }
                         }
                     }
+                }
+                if (cont == listaContaReceber.Count)
+                {
                     //CNPJ DA EMPRESA
                     if (receber.EmpresaFilial.Cnpj.Length == 14)
                     {
