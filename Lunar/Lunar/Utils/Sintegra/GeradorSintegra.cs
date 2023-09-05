@@ -77,12 +77,21 @@ namespace Lunar.Utils.Sintegra
 
             var registro50 = new FiscalBr.Sintegra.Registro50();
             IList<Nfe> listaNotas = new List<Nfe>();
+            int contNotaEntrada = 0;
             listaNotas = nfeController.selecionarNotasEntradaESaidaPorPeriodoParaSintegraReg5054(dataInicial.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), dataFinal.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
             if (listaNotas.Count > 0)
             {
                 NfeProdutoController nfeProdutoController = new NfeProdutoController();
                 foreach (Nfe nf in listaNotas)
                 {
+                    string a = "";
+                    if (nf.NNf.Equals("2388780"))
+                        a = "a";
+                    //SIMULACAO PARA CONFERIR REGISTROS DE ENTRADA NO LOG
+                    if (nf.Lancada == true && nf.TipoOperacao.Equals("E"))
+                        GenericaDesktop.gravarLinhaLog("REGISTRO50_ENTRADA", contNotaEntrada++ + " Notas de Entrada Nº " + nf.NNf);
+
+
                     string emitente = "P";
                     if (GenericaDesktop.RemoveCaracteres(nf.CnpjEmitente) != GenericaDesktop.RemoveCaracteres(filial.Cnpj.Trim()))
                         emitente = "T";
@@ -133,7 +142,6 @@ namespace Lunar.Utils.Sintegra
                             else
                                 registro50.InscrEstadual = "ISENTO";
                         }
-
                         cfop = GenericaDesktop.RemoveCaracteres(nfProduto.cfop.Trim());
                         if (nfProduto.aliquotaIcms == null)
                             aliq = "0";
@@ -402,7 +410,7 @@ namespace Lunar.Utils.Sintegra
                 registro75.DataFinal = dataFinal;
                 registro75.CodItem = retProd.codProd.ToString();
                 registro75.CodNcm = GenericaDesktop.RemoveCaracteres(retProd.ncm.Trim());
-                registro75.Descricao = retProd.descricao.Trim();
+                registro75.Descricao = GenericaDesktop.RemoveAcentos(GenericaDesktop.RemoveCaracteres(retProd.descricao.Trim()));
                 registro75.UnidadeMedida = retProd.unidadeMedida;
 
                 decimal aliqIpi = 0;

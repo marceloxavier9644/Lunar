@@ -1133,7 +1133,6 @@ namespace Lunar.Telas.CaixaConferencia
 
         private void btnTesteBoleto_Click(object sender, EventArgs e)
         {
-            String novoCadastro = "";
             GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
             string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
             Pessoa pessoa = new Pessoa();
@@ -1143,7 +1142,14 @@ namespace Lunar.Telas.CaixaConferencia
             if (!String.IsNullOrEmpty(tokenAcessoGalaxyPay))
             {
                 string ret = galaxyPayApiIntegracao.GalaxyPay_ListarCliente("07497828622", pessoa);
-
+                if (ret.Equals("1"))
+                {
+                    ContaReceberController contaReceberController = new ContaReceberController();
+                    IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela Where Tabela.Cliente = " + pessoa.Id.ToString() + " and Tabela.FlagExcluido <> True");
+                    
+                    string retornoBoletos = galaxyPayApiIntegracao.GalaxyPay_GerarBoleto(pessoa, listaReceber);
+                    GenericaDesktop.ShowInfo(retornoBoletos + " Boleto(s) Gerado(s) com Sucesso!");
+                }
             }
         }
     }

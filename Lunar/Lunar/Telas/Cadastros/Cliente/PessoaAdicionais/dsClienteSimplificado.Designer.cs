@@ -303,6 +303,8 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais {
             
             private global::System.Data.DataColumn columnCep;
             
+            private global::System.Data.DataColumn columnDataCadastro;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ClienteDataTable() {
@@ -434,6 +436,14 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DataCadastroColumn {
+                get {
+                    return this.columnDataCadastro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -469,7 +479,7 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ClienteRow AddClienteRow(int Id, string Nome, string Cpf, string Endereco, string Complemento, string Bairro, string Cidade, string Uf, string Fone, string Pai, string Mae, string Cep) {
+            public ClienteRow AddClienteRow(int Id, string Nome, string Cpf, string Endereco, string Complemento, string Bairro, string Cidade, string Uf, string Fone, string Pai, string Mae, string Cep, string DataCadastro) {
                 ClienteRow rowClienteRow = ((ClienteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -483,7 +493,8 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais {
                         Fone,
                         Pai,
                         Mae,
-                        Cep};
+                        Cep,
+                        DataCadastro};
                 rowClienteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowClienteRow);
                 return rowClienteRow;
@@ -518,6 +529,7 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais {
                 this.columnPai = base.Columns["Pai"];
                 this.columnMae = base.Columns["Mae"];
                 this.columnCep = base.Columns["Cep"];
+                this.columnDataCadastro = base.Columns["DataCadastro"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -547,6 +559,8 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais {
                 base.Columns.Add(this.columnMae);
                 this.columnCep = new global::System.Data.DataColumn("Cep", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCep);
+                this.columnDataCadastro = new global::System.Data.DataColumn("DataCadastro", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDataCadastro);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -881,6 +895,22 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string DataCadastro {
+                get {
+                    try {
+                        return ((string)(this[this.tableCliente.DataCadastroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'DataCadastro\' na tabela \'Cliente\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCliente.DataCadastroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIdNull() {
                 return this.IsNull(this.tableCliente.IdColumn);
             }
@@ -1021,6 +1051,18 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCepNull() {
                 this[this.tableCliente.CepColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDataCadastroNull() {
+                return this.IsNull(this.tableCliente.DataCadastroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDataCadastroNull() {
+                this[this.tableCliente.DataCadastroColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -36,6 +36,7 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
@@ -211,6 +212,16 @@
             gridTextColumn6.HeaderStyle.Font.Size = 10F;
             gridTextColumn6.HeaderText = "Manifesto";
             gridTextColumn6.MappingName = "Manifesto";
+            gridTextColumn7.AllowEditing = false;
+            gridTextColumn7.AllowFiltering = true;
+            gridTextColumn7.AllowResizing = true;
+            gridTextColumn7.CellStyle.Font.Size = 10F;
+            gridTextColumn7.Format = "dd/MM/yyyy";
+            gridTextColumn7.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn7.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn7.HeaderStyle.Font.Size = 10F;
+            gridTextColumn7.HeaderText = "Data Lançamento";
+            gridTextColumn7.MappingName = "DataLancamento";
             this.grid.Columns.Add(gridTextColumn1);
             this.grid.Columns.Add(gridNumericColumn1);
             this.grid.Columns.Add(gridCheckBoxColumn1);
@@ -219,6 +230,7 @@
             this.grid.Columns.Add(gridTextColumn4);
             this.grid.Columns.Add(gridTextColumn5);
             this.grid.Columns.Add(gridTextColumn6);
+            this.grid.Columns.Add(gridTextColumn7);
             this.grid.Location = new System.Drawing.Point(12, 170);
             this.grid.Name = "grid";
             this.grid.SelectionUnit = Syncfusion.WinForms.DataGrid.Enums.SelectionUnit.Cell;

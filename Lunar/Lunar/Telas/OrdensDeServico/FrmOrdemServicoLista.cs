@@ -1314,7 +1314,7 @@ namespace Lunar.Telas.OrdensDeServico
                 nfeProduto.ValorProduto = produto.ValorVenda;
                 nfeProduto.VUnCom = produto.ValorVenda;
 
-                valorFinalNota = (valorFinalNota + (nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString())));
+                valorFinalNota = (valorFinalNota + (nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString()))) - descontoItem;
                 valorProdutosSemDesconto = valorProdutosSemDesconto + nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString());
                 valorDescontoProdutos = valorDescontoProdutos + nfeProduto.VDesc;
                 if(produto.Estoque < VendaItens.Quantidade)

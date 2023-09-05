@@ -77,7 +77,7 @@ namespace LunarBase.ClassesDAO
             String sql = "";
             if (nfe.Fornecedor != null && nfe.TipoOperacao == "E")
             {
-                sql = "SELECT nfe.VNf as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                sql = "SELECT sum((nfeproduto.VUNCOM * Cast((nfeproduto.QCOM) as DECIMAL(7,2))) + nfeproduto.VICMSST + nfeproduto.VFRETE + nfeproduto.VALORIPI - nfeproduto.VDESC) as ValorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                     "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
                     "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
                     "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +

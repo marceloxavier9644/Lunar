@@ -1260,6 +1260,12 @@ namespace Lunar.Telas.Compras
 			}
 			if (e.Column.MappingName == "CfopEntrada")
             {
+				if (String.IsNullOrEmpty(e.NewValue.ToString()))
+				{
+                    e.IsValid = false;
+                    e.ErrorMessage = "Preencha o CFOP de Entrada deste produto, dúvida consulte o contador!";
+                    desabilitarTodosBotoes();
+                }
 				Cfop cfop = new Cfop();
 				CfopController cfopController = new CfopController();
 				IList<Cfop> listaCFOP = cfopController.selecionarCfopPorCfop(e.NewValue.ToString());

@@ -9,13 +9,13 @@
               <Width>3.21437cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>7.34313cm</Width>
+              <Width>6.52292cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>3.18792cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.00813cm</Width>
+              <Width>4.93417cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -564,10 +564,48 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <ColSpan>3</ColSpan>
                   </CellContents>
                 </TablixCell>
-                <TablixCell />
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox10">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>DATA CADASTRO: </Value>
+                              <Style>
+                                <FontSize>14pt</FontSize>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>=Fields!DataCadastro.Value</Value>
+                              <Style>
+                                <FontSize>14pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>2</ColSpan>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell />
               </TablixCells>
             </TablixRow>
@@ -610,8 +648,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsClienteSimplificado</DataSetName>
-        <Height>5.90018cm</Height>
-        <Width>17.75355cm</Width>
+        <Height>5.90016cm</Height>
+        <Width>17.85938cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -782,7 +820,7 @@
     <Height>4.45833in</Height>
     <Style />
   </Body>
-  <Width>6.98959in</Width>
+  <Width>7.03125in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -856,6 +894,10 @@
         </Field>
         <Field Name="Cep">
           <DataField>Cep</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DataCadastro">
+          <DataField>DataCadastro</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

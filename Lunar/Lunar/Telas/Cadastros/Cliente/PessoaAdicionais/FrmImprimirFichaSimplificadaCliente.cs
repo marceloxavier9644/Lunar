@@ -48,7 +48,7 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais
             {
                 telefone = GenericaDesktop.formatarFone(pessoa.PessoaTelefone.Ddd + pessoa.PessoaTelefone.Telefone);
             }
-            dsClienteSimplificado.Cliente.AddClienteRow(pessoa.Id, pessoa.RazaoSocial, cnpj, endereco, "", bairro, cidade, uf, telefone, pessoa.Pai, pessoa.Mae, cep);
+            dsClienteSimplificado.Cliente.AddClienteRow(pessoa.Id, pessoa.RazaoSocial, cnpj, endereco, "", bairro, cidade, uf, telefone, pessoa.Pai, pessoa.Mae, cep, pessoa.DataCadastro.ToShortDateString());
             this.reportViewer1.RefreshReport();
         }
     }

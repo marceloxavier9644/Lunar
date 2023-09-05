@@ -934,6 +934,11 @@ namespace Lunar.Telas.Cadastros.Cliente
                     pessoa = (Pessoa)pessoaController.selecionar(pessoa);
                 }
 
+                if (pessoa != null)
+                {
+                    if(pessoa.Id > 0)
+                        try { pessoa.DataCadastro = DateTime.Parse(txtDataCadastro.Texts); } catch { }
+                }
                 //Tipo de Pessoa e função
                 pessoa.Cliente = false;
                 if (chkCliente.Checked == true)
