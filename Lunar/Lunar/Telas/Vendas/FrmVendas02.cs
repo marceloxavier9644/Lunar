@@ -2128,6 +2128,7 @@ namespace Lunar.Telas.Vendas
                         nfe.Protocolo = retornoNFCe.nProt;
                         nfe.Chave = retornoNFCe.chNFe;
                     }
+                    nfe.Lancada = true;
                     Controller.getInstance().salvar(nfe);
                     
                     //Estoque
@@ -3247,6 +3248,7 @@ namespace Lunar.Telas.Vendas
                         nfe.Protocolo = retornoNFCe.nProt;
                         nfe.Chave = retornoNFCe.chNFe;
                     }
+                    nfe.Lancada = true;
                     Controller.getInstance().salvar(nfe);
                     
                     //Estoque

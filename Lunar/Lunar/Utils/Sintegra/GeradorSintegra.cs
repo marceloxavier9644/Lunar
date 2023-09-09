@@ -80,17 +80,17 @@ namespace Lunar.Utils.Sintegra
             int contNotaEntrada = 0;
             listaNotas = nfeController.selecionarNotasEntradaESaidaPorPeriodoParaSintegraReg5054(dataInicial.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), dataFinal.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
             if (listaNotas.Count > 0)
-            {
+            {                    
+                //Deletar log Para Gerar novo
+                if (File.Exists(@".\logs\" + "registro50.txt"))
+                    try { File.Delete(@".\logs\" + "registro50.txt"); } catch { }
+
                 NfeProdutoController nfeProdutoController = new NfeProdutoController();
                 foreach (Nfe nf in listaNotas)
                 {
                     string a = "";
-                    if (nf.NNf.Equals("2388780"))
+                    if (nf.NNf.Equals("32"))
                         a = "a";
-                    //SIMULACAO PARA CONFERIR REGISTROS DE ENTRADA NO LOG
-                    if (nf.Lancada == true && nf.TipoOperacao.Equals("E"))
-                        GenericaDesktop.gravarLinhaLog("REGISTRO50_ENTRADA", contNotaEntrada++ + " Notas de Entrada Nº " + nf.NNf);
-
 
                     string emitente = "P";
                     if (GenericaDesktop.RemoveCaracteres(nf.CnpjEmitente) != GenericaDesktop.RemoveCaracteres(filial.Cnpj.Trim()))
@@ -103,7 +103,7 @@ namespace Lunar.Utils.Sintegra
                     nfeProdutoDAO = new NfeProdutoDAO();
                     IList<RetProdReg50Sintegra> listaProdutosAgrupadosPorCfop = new List<RetProdReg50Sintegra>();
                     listaProdutosAgrupadosPorCfop = nfeProdutoDAO.selecionarRegistro50SintegraAgrupadoPorCfop(nf);
-             
+
                     listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nf.Id);
                     foreach (RetProdReg50Sintegra nfProduto in listaProdutosAgrupadosPorCfop)
                     {
@@ -195,6 +195,7 @@ namespace Lunar.Utils.Sintegra
                         registro50.Emitente = emitente;
                         //registro50.ValorTotal = nfProduto.valorTotal;
                         //GenericaDesktop.gravarLinhaLog("SOMA REGISTRO 50 SINTEGRA", nfProduto.valorTotal.ToString("C"));
+
                         using (StreamWriter writer = new StreamWriter(@".\logs\"+"registro50.txt", true))
                         {
                             writer.WriteLine(nfProduto.valorTotal.ToString("C") + ";" + nf.NNf + ";" + nf.TipoOperacao);
@@ -323,6 +324,8 @@ namespace Lunar.Utils.Sintegra
             DateTime dataInserida = DateTime.Now.AddYears(-100);
             if (listaNFCe.Count > 0)
             {
+                if (File.Exists(@".\logs\" + "registro61.txt"))
+                    try { File.Delete(@".\logs\" + "registro61.txt"); } catch { }
                 NfeDAO nfeDAO = new NfeDAO();
                 foreach (Nfe nf65 in listaNFCe)
                 {
@@ -341,6 +344,12 @@ namespace Lunar.Utils.Sintegra
                         registro61.Outras = nfeDAO.selecionarSomaValorNota65Dia(nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '23':'59':'59").Replace(".", ","));
                         registro61.Aliquota = 0;
                         arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro61);
+
+                        using (StreamWriter writer = new StreamWriter(@".\logs\" + "registro61.txt", true))
+                        {
+                            writer.WriteLine(registro61.ValorTotal.ToString("C") + ";" + nf65.NNf + ";" + nf65.TipoOperacao + ";" + nf65.DataEmissao.ToShortDateString());
+                        }
+
                         listaSintegra.Add(arquivo);
                         x.Write(arquivo);
                     }

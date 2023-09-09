@@ -1799,6 +1799,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     nfeStatus.Id = 1;
                     nfe.NfeStatus = (NfeStatus)nfeStatusController.selecionar(nfeStatus);
                     nfe.Status = "Autorizado o uso da NF-e";
+                    nfe.Lancada = true;
                     Genericos genericosNF = new Genericos();
                     NFCeDownloadProc nota = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
                     var nfeRet = Genericos.LoadFromXMLString<TNfeProc>(nota.nfeProc.xml);

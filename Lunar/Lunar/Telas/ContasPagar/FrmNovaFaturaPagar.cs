@@ -21,6 +21,9 @@ namespace Lunar.Telas.ContasPagar
         GenericaDesktop generica = new GenericaDesktop();
         bool showModal = false;
         IList<ContaPagar> listaContaPagar = new List<ContaPagar>();
+        bool editando = false;
+        int idEdicao = 0;
+        ContaPagar contaPagarEditando = new ContaPagar();
         public DialogResult showModalNovo(ref IList<ContaPagar> listaContaPagar)
         {
             showModal = true;
@@ -38,6 +41,46 @@ namespace Lunar.Telas.ContasPagar
             txtEmpresa.Texts = Sessao.empresaFilialLogada.NomeFantasia;
             txtCodEmpresa.Texts = Sessao.empresaFilialLogada.Id.ToString();
             txtClienteFornecedor.Focus();
+        }
+
+        public FrmNovaFaturaPagar(ContaPagar contaPagar)
+        {
+            InitializeComponent();
+            editando = true;
+            idEdicao = contaPagar.Id;
+            contaPagarEditando = contaPagar;
+            get_ContaPagar(contaPagar);
+        }
+
+        private void get_ContaPagar(ContaPagar contaPagar)
+        {
+            //txtValorTotal.Enabled = false;
+            txtParcelas.Enabled = false;
+            txtDataEmissao.Enabled = false;
+            txtPrimeiroVencimento.Enabled = false;
+
+            txtCodEmpresa.Texts = contaPagar.EmpresaFilial.Id.ToString();
+            txtEmpresa.Texts = contaPagar.EmpresaFilial.RazaoSocial;
+            txtClienteFornecedor.Texts = contaPagar.Pessoa.RazaoSocial;
+            txtCodClienteFornecedor.Texts = contaPagar.Pessoa.Id.ToString();
+            txtDataEmissao.Value = contaPagar.DataOrigem;
+            txtNumeroDocumento.Texts = contaPagar.NumeroDocumento;
+            txtValorTotal.Texts = string.Format("{0:0.00}", contaPagar.ValorTotal);
+            txtParcelas.Texts = "1";
+            txtPrimeiroVencimento.Value = contaPagar.DVenc;
+            if (contaPagar.FormaPagamento != null)
+            {
+                txtFormaPagamento.Texts = contaPagar.FormaPagamento.Descricao;
+                txtCodFormaPagamento.Texts = contaPagar.FormaPagamento.Id.ToString();
+            }
+            if (contaPagar.PlanoConta != null)
+            {
+                txtPlanoContas.Texts = contaPagar.PlanoConta.Descricao;
+                txtCodPlanoContas.Texts = contaPagar.PlanoConta.Id.ToString();
+            }
+            txtDescricao.Texts = contaPagar.Historico;
+            if (validarCampos())
+                inserirParcelas();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -106,6 +149,11 @@ namespace Lunar.Telas.ContasPagar
             try
             {
                 txtValorTotal.Texts = string.Format("{0:0.00}", decimal.Parse(txtValorTotal.Texts));
+                if(editando == true)
+                {
+                    if(validarCampos())
+                        inserirParcelas();
+                }
             }
             catch
             {
@@ -418,6 +466,12 @@ namespace Lunar.Telas.ContasPagar
                     i++;
                     var dataRowView = record.Data as DataRowView;
                     ContaPagar contaPagar = new ContaPagar();
+                    if (editando == true)
+                    {
+                        contaPagar = contaPagarEditando;
+                        contaPagar.Id = idEdicao;
+                    }
+
                     Pessoa cliente = new Pessoa();
                     cliente.Id = int.Parse(txtCodClienteFornecedor.Texts);
                     cliente = (Pessoa)Controller.getInstance().selecionar(cliente);
@@ -426,10 +480,14 @@ namespace Lunar.Telas.ContasPagar
                         contaPagar.Pessoa = cliente;
                         //contaPagar. = cliente.Cnpj;
                         contaPagar.DataOrigem = DateTime.Parse(txtDataEmissao.Value.ToString());
-                        contaPagar.Descricao = "LANÇAMENTO DE CONTA A PAGAR " + i + " DE "+ records.Count;
+                        if(editando == false)
+                            contaPagar.Descricao = "LANÇAMENTO DE CONTA A PAGAR " + i + " DE "+ records.Count;
                         if (!String.IsNullOrEmpty(txtDescricao.Texts))
                             contaPagar.Historico = txtDescricao.Texts;
-                        contaPagar.NumeroDocumento = "CP" + txtNumeroDocumento.Texts + "/" + i;
+                        if (editando == false)
+                            contaPagar.NumeroDocumento = "CP" + txtNumeroDocumento.Texts + "/" + i;
+                        else
+                            contaPagar.NumeroDocumento = txtNumeroDocumento.Texts;
                         EmpresaFilial empresaFilial = new EmpresaFilial();
                         if (!String.IsNullOrEmpty(txtCodEmpresa.Texts))
                         {
@@ -462,6 +520,8 @@ namespace Lunar.Telas.ContasPagar
                 }
                 GenericaDesktop.ShowInfo("Lançamento efetuado com sucesso");
                 limparCampos();
+                if (editando == true)
+                    this.Close();
             }
         }
 

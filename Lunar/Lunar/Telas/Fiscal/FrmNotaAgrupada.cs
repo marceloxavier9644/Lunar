@@ -1025,6 +1025,7 @@ namespace Lunar.Telas.Fiscal
                         nfe.Protocolo = retornoNFCe.nProt;
                         nfe.Chave = retornoNFCe.chNFe;
                     }
+                    nfe.Lancada = true;
                     Controller.getInstance().salvar(nfe);
                     armazenaXmlAutorizadoNoBanco();
                     //ATUALIZAR ESTOQUE
@@ -1413,6 +1414,7 @@ namespace Lunar.Telas.Fiscal
                         nfe.Protocolo = retornoNFCe.nProt;
                         nfe.Chave = retornoNFCe.chNFe;
                     }
+                    nfe.Lancada = true;
                     Controller.getInstance().salvar(nfe);
 
                     btnPesquisar.PerformClick();

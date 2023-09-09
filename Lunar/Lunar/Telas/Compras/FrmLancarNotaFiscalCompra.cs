@@ -1414,7 +1414,7 @@ namespace Lunar.Telas.Compras
 					nfeProd = (NfeProduto)record.Data;
 					if (nfeProd != null)
 					{
-						if (String.IsNullOrWhiteSpace(nfeProd.CodigoInterno) && !String.IsNullOrEmpty(nfeProd.XProd) && String.IsNullOrEmpty(nfeProd.CfopEntrada))
+						if (String.IsNullOrWhiteSpace(nfeProd.CodigoInterno) || String.IsNullOrEmpty(nfeProd.XProd) || String.IsNullOrEmpty(nfeProd.CfopEntrada))
 						{
 							produtosValidos = false;
 						}
@@ -1460,12 +1460,14 @@ namespace Lunar.Telas.Compras
 								{
 									if (calcFreteTotal > nfeProd.Nfe.VFrete)
 									{
-										nfeProd.VFrete = (calcFreteTotal - nfeProd.Nfe.VFrete);
+                                        valorFretePorItem = valorFretePorItem - (calcFreteTotal - nfeProd.Nfe.VFrete);
+                                        nfeProd.VFrete = valorFretePorItem;
 									}
 									else if (calcFreteTotal < nfeProd.Nfe.VFrete)
 									{
-										nfeProd.VFrete = nfeProd.Nfe.VFrete - calcFreteTotal;
-									}
+										valorFretePorItem = valorFretePorItem + (nfeProd.Nfe.VFrete - calcFreteTotal);
+										nfeProd.VFrete = valorFretePorItem;
+                                    }
 								}
 							}
 							if (nfeProd.VBC < nfeProd.VProd)
@@ -1582,7 +1584,7 @@ namespace Lunar.Telas.Compras
 			}
 			else
 			{
-				GenericaDesktop.ShowErro("Existem produtos sem cadastrar ou selecionar, favor conferir!");
+				GenericaDesktop.ShowErro("Verifique o lançamento dos produtos e CFOP de Entrada!");
 				return false;
 			}
 		}

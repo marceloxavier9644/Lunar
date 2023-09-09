@@ -1393,7 +1393,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     contaReceber.Documento = "OS" + ordemServico.Id + "/" + c;
                                     contaReceber.FormaPagamento = formaPagamento;
                                     contaReceber.Recebido = false;
-                                    contaReceber.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
+                                    contaReceber.Vencimento = cheque.Vencimento;
                                     contaReceber.Venda = null;
                                     contaReceber.OrdemServico = ordemServico;
                                     contaReceber.Parcela = c.ToString();

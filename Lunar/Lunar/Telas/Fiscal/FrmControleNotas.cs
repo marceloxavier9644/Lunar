@@ -256,6 +256,8 @@ namespace Lunar.Telas.Fiscal
 
                 nfe.Status = nFCeDownloadProc.nfeProc.xMotivo;
                 nfe.CodStatus = "100";
+                nfe.DataLancamento = nFCeDownloadProc.nfeProc.dhRecbto;
+                nfe.DhSaiEnt = nFCeDownloadProc.nfeProc.dhRecbto.ToString();
                 nfeStatus = new NfeStatus();
                 nfeStatus.Id = 1;
                 nfe.NfeStatus = (NfeStatus)nfeStatusController.selecionar(nfeStatus);
@@ -1404,6 +1406,8 @@ namespace Lunar.Telas.Fiscal
                                     }
                                     if (retorno.Contains("Autorizada com Sucesso"))
                                     {
+                                        nfe.Lancada = true;
+                                        Controller.getInstance().salvar(nfe);
                                         string caminhoX = @"Fiscal\XML\NFCe\" + nfe.DataCadastro.Year + "-" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" +nfe.Chave + "-procNFCe.xml";
                                         LunarApiNotas lunarApiNotas = new LunarApiNotas();
                                         byte[] arquivo;
@@ -1443,6 +1447,7 @@ namespace Lunar.Telas.Fiscal
                                             nfe.Chave = retConsulta.chNFe;
                                             nfe.CodStatus = retConsulta.cStat;
                                             nfe.Status = retConsulta.xMotivo;
+                                            nfe.Lancada = true;
                                             NfeStatus nfeStatus = new NfeStatus();
                                             nfeStatus.Id = 1;
                                             nfe.NfeStatus = (NfeStatus)nfeStatusController.selecionar(nfeStatus);
@@ -1482,6 +1487,8 @@ namespace Lunar.Telas.Fiscal
                                             }
                                             if (retorno.Contains("Autorizada com Sucesso"))
                                             {
+                                                nfe.Lancada = true;
+                                                Controller.getInstance().salvar(nfe);
                                                 string caminhoX = @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
                                                 LunarApiNotas lunarApiNotas = new LunarApiNotas();
                                                 byte[] arquivo;
@@ -1810,7 +1817,9 @@ namespace Lunar.Telas.Fiscal
                                     nfe.Chave = retConsulta.chNFe;
                                     nfe.CodStatus = retConsulta.cStat;
                                     nfe.Status = retConsulta.xMotivo;
-
+                                    nfe.Lancada = true;
+                                    nfe.DataLancamento = retConsulta.dhRecbto;
+                                    nfe.DhSaiEnt = retConsulta.dhRecbto.ToString();
                                     //Atualizar o estoque se for autorizada
                                     if (nfe.NfeStatus.Id != 1)
                                     {

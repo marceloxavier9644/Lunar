@@ -49,6 +49,9 @@ namespace Lunar.Telas.ContasPagar
         {
             try
             {
+                grid.AllowEditing = true;
+                if (radioPagas.Checked == true)
+                    grid.AllowEditing = false;
                 listaContaPagar = new List<ContaPagar>();
                 listaContaPagarCalculado = new List<ContaPagar>();
                 string sql = "From ContaPagar Tabela where Tabela.FlagExcluido <> true ";
@@ -691,6 +694,66 @@ namespace Lunar.Telas.ContasPagar
                     e.ErrorMessage = "Descrição Inválida!";
 
                 }
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+            if (grid.SelectedItems.Count == 1)
+            {
+                var conta = (ContaPagar)grid.SelectedItem;
+                if (conta.Pago == false)
+                {
+                    Form formBackground = new Form();
+                    try
+                    {
+                        using (FrmNovaFaturaPagar uu = new FrmNovaFaturaPagar(conta))
+                        {
+                            formBackground.StartPosition = FormStartPosition.Manual;
+                            //formBackground.FormBorderStyle = FormBorderStyle.None;
+                            formBackground.Opacity = .50d;
+                            formBackground.BackColor = Color.Black;
+                            //formBackground.Left = Top = 0;
+                            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                            formBackground.WindowState = FormWindowState.Maximized;
+                            formBackground.TopMost = false;
+                            formBackground.Location = this.Location;
+                            formBackground.ShowInTaskbar = false;
+                            formBackground.Show();
+                            uu.Owner = formBackground;
+                            switch (uu.showModalNovo(ref listaContaPagar))
+                            {
+                                case DialogResult.Ignore:
+                                    uu.Dispose();
+                                    formBackground.Dispose();
+                                    btnPesquisar.PerformClick();
+                                    txtCliente.Focus();
+                                    break;
+                                case DialogResult.OK:
+                                    btnPesquisar.PerformClick();
+                                    break;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        formBackground.Dispose();
+                    }
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("É Possível Editar Apenas Faturas em Aberto!");
+                }
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Selecione Apenas 1 Fatura para Editar!");
             }
         }
     }

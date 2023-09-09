@@ -907,6 +907,7 @@ namespace Lunar.Telas.OrdensDeServico
                         nfe.Protocolo = retornoNFCe.nProt;
                         nfe.Chave = retornoNFCe.chNFe;
                     }
+                    nfe.Lancada = true;
                     Controller.getInstance().salvar(nfe);
 
                     //selecionar O.S na tela com o numero da NF! 
@@ -1517,6 +1518,7 @@ namespace Lunar.Telas.OrdensDeServico
                         nfe.Protocolo = retornoNFCe.nProt;
                         nfe.Chave = retornoNFCe.chNFe;
                     }
+                    nfe.Lancada = true;
                     Controller.getInstance().salvar(nfe);
 
                     //Estoque

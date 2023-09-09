@@ -52,7 +52,7 @@ namespace LunarBase.ClassesDAO
             String sql = "SELECT cast(nfeproduto.PRODUTO as Char(255)) as codprod, SUM(nfeproduto.VPROD - nfeproduto.VDESC) as valor, sum(nfeproduto.QuantidadeEntrada) as quantidade, " +
                 "sum(nfeproduto.VBC) as baseCalc, nfeProduto.Ncm as ncm, nfeProduto.XProd as descricao, nfeProduto.UComConvertida as unidadeMedida, " +
                 "nfeProduto.AliqIpi as aliquotaIpi, nfeProduto.PIcms as aliquotaIcms FROM `NfeProduto` INNER JOIN nfe nf ON nfeproduto.NFE = nf.ID " +
-                "WHERE nfeproduto.FLAGEXCLUIDO <> true and nf.EmpresaFilial = " + filial.Id + " and nf.FLAGEXCLUIDO <> true and nf.Modelo = '65' and nf.DATAEMISSAO BETWEEN '" + dataInicial+"' and '"+dataFinal+ "' and nf.Lancada = true group by nfeproduto.Produto";
+                "WHERE nfeproduto.FLAGEXCLUIDO <> true and nf.NfeStatus = 1 and nf.EmpresaFilial = " + filial.Id + " and nf.FLAGEXCLUIDO <> true and nf.Modelo = '65' and nf.DATAEMISSAO BETWEEN '" + dataInicial+"' and '"+dataFinal+ "' and nf.Lancada = true group by nfeproduto.Produto";
             IList<RetProd> retorno = Session.CreateSQLQuery(sql).SetResultTransformer(Transformers.AliasToBean<RetProd>()).List<RetProd>().ToList();
             return retorno;
         }
@@ -66,7 +66,7 @@ namespace LunarBase.ClassesDAO
                 "sum(nfeproduto.VBC) as baseCalc, nfeProduto.Ncm as ncm, nfeProduto.XProd as descricao, nfeProduto.UComConvertida as unidadeMedida, " +
                 "nfeProduto.AliqIpi as aliquotaIpi, nfeProduto.PIcms as aliquotaIcms FROM `NfeProduto` " +
                 "INNER JOIN nfe nf ON nfeproduto.NFE = nf.ID WHERE nfeproduto.FLAGEXCLUIDO <> true " +
-                "and nf.FLAGEXCLUIDO <> true and nf.EmpresaFilial = " + filial.Id + " and nf.DATALANCAMENTO BETWEEN '" + dataInicial + "' and '" + dataFinal + "' and nf.Lancada = true group by nfeproduto.Produto";
+                "and nf.FLAGEXCLUIDO <> true and nf.NfeStatus = 1 and nf.EmpresaFilial = " + filial.Id + " and nf.DATALANCAMENTO BETWEEN '" + dataInicial + "' and '" + dataFinal + "' and nf.Lancada = true group by nfeproduto.Produto";
             IList<RetProd> retorno = Session.CreateSQLQuery(sql).SetResultTransformer(Transformers.AliasToBean<RetProd>()).List<RetProd>().ToList();
             return retorno;
         }
@@ -114,7 +114,7 @@ namespace LunarBase.ClassesDAO
             }
             else if (nfe.Cliente != null && nfe.TipoOperacao == "S")
             {
-                sql = "SELECT SUM(((nfeproduto.VALORFINAL * Cast((nfeproduto.QCOM) as DECIMAL(7,2)) + nfeproduto.VFRETE + nfeproduto.VICMSST + " +
+                sql = "SELECT SUM(((nfeproduto.VUNCOM * Cast((nfeproduto.QCOM) as DECIMAL(7,2)) + nfeproduto.VFRETE + nfeproduto.VICMSST + " +
                     "nfeproduto.VALORIPI) - nfeproduto.VDESC)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                                    "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
                                    "nfe.NNf as numero, nfeProduto.Cfop as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
