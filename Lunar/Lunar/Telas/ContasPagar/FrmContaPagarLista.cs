@@ -1,4 +1,5 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
+using Lunar.Telas.ContasPagar.Relatorios;
 using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
@@ -518,45 +519,10 @@ namespace Lunar.Telas.ContasPagar
 
         private void btnExportarPDF_Click(object sender, EventArgs e)
         {
-            var options = new PdfExportingOptions();
-            var document = new Syncfusion.Pdf.PdfDocument();
-            document.PageSettings.Orientation = Syncfusion.Pdf.PdfPageOrientation.Landscape;
-            var page = document.Pages.Add();
-            var PDFGrid = grid.ExportToPdfGrid(grid.View, options);
-            var format = new PdfGridLayoutFormat()
+            if(listaContaPagar.Count > 0)
             {
-                Layout = PdfLayoutType.Paginate,
-                Break = PdfLayoutBreakType.FitPage
-            };
-            //Largura da coluna
-            foreach (PdfGridCell headerCell in PDFGrid.Headers[0].Cells)
-            {
-                if (headerCell.Value.ToString() == grid.Columns[0].HeaderText)
-                {
-                    var index = PDFGrid.Headers[0].Cells.IndexOf(headerCell);
-                    PDFGrid.Columns[index].Width = 50;
-                }
-            }
-
-            PDFGrid.Draw(page, new PointF(), format);
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                FileName = "ContasPagar",
-                Filter = "PDF Files(*.pdf)|*.pdf"
-            };
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                using (Stream stream = saveFileDialog.OpenFile())
-                {
-                    document.Save(stream);
-                }
-                //Message box confirmation to view the created Pdf file.
-                if (MessageBox.Show("Deseja abrir o arquivo Pdf?", "Pdf criado com sucesso", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    //Launching the Pdf file using the default Application.
-                    System.Diagnostics.Process.Start(saveFileDialog.FileName);
-                }
+                FrmRelatorioContaPagar frm = new FrmRelatorioContaPagar(listaContaPagar);
+                frm.ShowDialog();
             }
         }
 

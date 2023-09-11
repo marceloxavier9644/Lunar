@@ -936,5 +936,10 @@ namespace Lunar.Telas.ContasReceber
             else
                 GenericaDesktop.ShowAlerta("Selecione um cliente para conseguir gerar o extrato!");
         }
+
+        private void btnAbater_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

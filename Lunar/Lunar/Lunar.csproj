@@ -606,6 +606,17 @@
     <Compile Include="Telas\ContasPagar\FrmNovaFaturaPagar.Designer.cs">
       <DependentUpon>FrmNovaFaturaPagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\ContasPagar\Relatorios\dsContaPagar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsContaPagar.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ContasPagar\Relatorios\FrmRelatorioContaPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ContasPagar\Relatorios\FrmRelatorioContaPagar.Designer.cs">
+      <DependentUpon>FrmRelatorioContaPagar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\ContasReceber\FrmContaReceberLista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1321,6 +1332,10 @@
     <EmbeddedResource Include="Telas\ContasPagar\FrmNovaFaturaPagar.resx">
       <DependentUpon>FrmNovaFaturaPagar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasPagar\Relatorios\FrmRelatorioContaPagar.resx">
+      <DependentUpon>FrmRelatorioContaPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ContasPagar\Relatorios\RelatorioPagar01.rdlc" />
     <EmbeddedResource Include="Telas\ContasReceber\FrmContaReceberLista.resx">
       <DependentUpon>FrmContaReceberLista.cs</DependentUpon>
     </EmbeddedResource>
@@ -1816,6 +1831,17 @@
     </None>
     <None Include="Telas\Condicionais\dsCondicional.xss">
       <DependentUpon>dsCondicional.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\ContasPagar\Relatorios\dsContaPagar.xsc">
+      <DependentUpon>dsContaPagar.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\ContasPagar\Relatorios\dsContaPagar.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsContaPagar.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\ContasPagar\Relatorios\dsContaPagar.xss">
+      <DependentUpon>dsContaPagar.xsd</DependentUpon>
     </None>
     <None Include="Telas\ContasReceber\Reports\Dados\dsContaReceber.xsc">
       <DependentUpon>dsContaReceber.xsd</DependentUpon>

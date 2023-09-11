@@ -923,6 +923,8 @@
             this.btnAbater.Text = "Abater com Despesa";
             this.btnAbater.TextColor = System.Drawing.Color.Black;
             this.btnAbater.UseVisualStyleBackColor = false;
+            this.btnAbater.Visible = false;
+            this.btnAbater.Click += new System.EventHandler(this.btnAbater_Click);
             // 
             // btnExtratoCliente
             // 

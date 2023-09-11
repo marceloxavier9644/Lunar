@@ -136,7 +136,7 @@ namespace Lunar.Telas.OrdensDeServico
                 txtTipoObjeto.Enabled = false;
                 txtCodTipoObjeto.Enabled = false;
                 btnPesquisaTipoObjeto.Enabled = false;
-                txtVendedor.Enabled = false;
+                //txtVendedor.Enabled = false;
                 //btnPesquisaVendedor.Enabled = false;
                 txtObservacoes.Enabled = false;
 
