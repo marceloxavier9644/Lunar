@@ -1,5 +1,7 @@
 ﻿using LunarBase.Classes;
+using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +10,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Web.Script.Serialization;
 using ZXing.Aztec.Internal;
+using static Lunar.Utils.GalaxyPay_API.RetornoBoletoGerado;
+using static LunarBase.Utilidades.ClasseRetornoJson.InutilizacaoNFCe;
 
 namespace Lunar.Utils.GalaxyPay_API
 {
@@ -26,7 +30,7 @@ namespace Lunar.Utils.GalaxyPay_API
         public string GalaxyPay_TokenAcesso()
         {
             try
-            {               
+            {
                 String url = "https://api.galaxpay.com.br/v2/token";
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "POST";
@@ -85,7 +89,7 @@ namespace Lunar.Utils.GalaxyPay_API
         {
             try
             {
-                String url = "https://api.galaxpay.com.br/v2/customers?documents="+cpfCnpj+ "&startAt=0&limit=100";
+                String url = "https://api.galaxpay.com.br/v2/customers?documents=" + cpfCnpj + "&startAt=0&limit=100";
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "GET";
                 requisicaoWeb.Headers.Add("Authorization", "Bearer " + tokenAcesso);
@@ -103,7 +107,7 @@ namespace Lunar.Utils.GalaxyPay_API
                         if (totalQtdFoundInPage.Equals("0"))
                         {
                             string retornoCadastro = GalaxyPay_CadastrarCliente(pessoa);
-                            if(retornoCadastro.Equals("True"))
+                            if (retornoCadastro.Equals("True"))
                                 totalQtdFoundInPage = "1";
                         }
                         else if (totalQtdFoundInPage.Equals("1"))
@@ -119,7 +123,7 @@ namespace Lunar.Utils.GalaxyPay_API
             {
                 GenericaDesktop.ShowAlerta("Erro ao localizar cliente no sistema Galaxy Pay: " + err.Message);
                 return "";
-                
+
             }
         }
 
@@ -193,7 +197,7 @@ namespace Lunar.Utils.GalaxyPay_API
             try
             {
                 Address address = new Address();
-                String url = "https://api.galaxpay.com.br/v2/customers/"+pessoa.Id + "/myId";
+                String url = "https://api.galaxpay.com.br/v2/customers/" + pessoa.Id + "/myId";
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "PUT";
                 requisicaoWeb.ContentType = "application/json";
@@ -253,11 +257,11 @@ namespace Lunar.Utils.GalaxyPay_API
             }
         }
 
-        public string GalaxyPay_GerarBoleto(Pessoa pessoa, IList<ContaReceber> listaContaReceber)
+        public string GalaxyPay_GerarBoleto(Pessoa pessoa, ContaReceber contaReceber)
         {
+            int contagemOk = 0;
             try
             {
-                int contagemOk = 0;
                 string retornoBoletosValidos = "";
                 Address address = new Address();
                 String url = "https://api.galaxpay.com.br/v2/charges";
@@ -269,53 +273,57 @@ namespace Lunar.Utils.GalaxyPay_API
                 arrayEmail[0] = pessoa.Email;
 
                 Charges charges = new Charges();
-                foreach (ContaReceber contaReceber in listaContaReceber)
+                charges.myId = contaReceber.Id.ToString();
+                charges.value = int.Parse(contaReceber.ValorParcela.ToString("F").Replace(",", ""));
+                charges.payday = contaReceber.Vencimento.ToString("yyyy-MM-dd");
+                charges.payedOutsideGalaxPay = false; // paga fora do sistema?
+                charges.mainPaymentMethodId = "boleto";
+                //Cliente
+                charges.Customer = new Customer();
+                charges.Customer.myId = pessoa.Id.ToString();
+                charges.Customer.name = pessoa.RazaoSocial;
+                charges.Customer.document = GenericaDesktop.RemoveCaracteres(pessoa.Cnpj);
+                charges.Customer.emails = arrayEmail;
+                //Boleto
+                charges.PaymentMethodBoleto = new Paymentmethodboleto();
+                if (!String.IsNullOrEmpty(Sessao.parametroSistema.Multa.ToString()))
+                    charges.PaymentMethodBoleto.fine = int.Parse(Sessao.parametroSistema.Multa.ToString().Replace(".", ""));
+                if (!String.IsNullOrEmpty(Sessao.parametroSistema.Juro.ToString()))
+                    charges.PaymentMethodBoleto.interest = int.Parse(Sessao.parametroSistema.Juro.ToString().Replace(".", ""));
+                charges.PaymentMethodBoleto.deadlineDays = 59;
+
+                using (var streamWriter = new StreamWriter(requisicaoWeb.GetRequestStream()))
                 {
-                    charges.myId = contaReceber.Id.ToString();
-                    charges.value = int.Parse(contaReceber.ValorParcela.ToString("F").Replace(",", ""));
-                    charges.payday = contaReceber.Vencimento.ToString("yyyy-MM-dd");
-                    charges.payedOutsideGalaxPay = false; // paga fora do sistema?
-                    charges.mainPaymentMethodId = "boleto";
-                    //Cliente
-                    charges.Customer = new Customer();
-                    charges.Customer.myId = pessoa.Id.ToString();
-                    charges.Customer.name = pessoa.RazaoSocial;
-                    charges.Customer.document = GenericaDesktop.RemoveCaracteres(pessoa.Cnpj);
-                    charges.Customer.emails = arrayEmail;
-                    //Boleto
-                    charges.PaymentMethodBoleto = new Paymentmethodboleto();
-                    if (!String.IsNullOrEmpty(Sessao.parametroSistema.Multa.ToString()))
-                        charges.PaymentMethodBoleto.fine = int.Parse(Sessao.parametroSistema.Multa.ToString().Replace(".", ""));
-                    if (!String.IsNullOrEmpty(Sessao.parametroSistema.Juro.ToString()))
-                        charges.PaymentMethodBoleto.interest = int.Parse(Sessao.parametroSistema.Juro.ToString().Replace(".", ""));
-                    charges.PaymentMethodBoleto.deadlineDays = 59;
-
-                    using (var streamWriter = new StreamWriter(requisicaoWeb.GetRequestStream()))
+                    string json = new JavaScriptSerializer().Serialize(new
                     {
-                        string json = new JavaScriptSerializer().Serialize(new
-                        {
-                            myId = charges.myId,
-                            value = charges.value,
-                            payday = charges.payday,
-                            payedOutsideGalaxPay = charges.payedOutsideGalaxPay,
-                            mainPaymentMethodId = charges.mainPaymentMethodId,
-                            Customer = charges.Customer,
-                            PaymentMethodBoleto = charges.PaymentMethodBoleto
-                        });
+                        myId = charges.myId,
+                        value = charges.value,
+                        payday = charges.payday,
+                        payedOutsideGalaxPay = charges.payedOutsideGalaxPay,
+                        mainPaymentMethodId = charges.mainPaymentMethodId,
+                        Customer = charges.Customer,
+                        PaymentMethodBoleto = charges.PaymentMethodBoleto
+                    });
 
-                        streamWriter.Write(json);
-                    }
-                    var httpResponse = (HttpWebResponse)requisicaoWeb.GetResponse();
-                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    streamWriter.Write(json);
+                }
+                var httpResponse = (HttpWebResponse)requisicaoWeb.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    streamReader.Close();
+                    //var retorno = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(result);
+                    var ret = JsonConvert.DeserializeObject<RetBoleto>(result);
+                    string retornoString = "";
+
+                    if (ret != null)
                     {
-                        var result = streamReader.ReadToEnd();
-                        streamReader.Close();
-                        var retorno = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(result);
-                        string retornoString = "";
-                     
-                        if (retorno != null)
+                        retornoString = ret.type.ToString();
+                        if (retornoString.Equals("True"))
                         {
-                            retornoString = retorno["type"].ToString();
+                            contaReceber.IdBoleto = ret.Charge.galaxPayId.ToString();
+                            contaReceber.BoletoGerado = true;
+                            Controller.getInstance().salvar(contaReceber);
                             contagemOk++;
                         }
                     }
@@ -324,8 +332,8 @@ namespace Lunar.Utils.GalaxyPay_API
             }
             catch (Exception err)
             {
-                GenericaDesktop.ShowErro("Falha ao Cadastrar Cliente no Sistema da Galaxy Pay: " + err.Message);
-                return "";
+                GenericaDesktop.ShowErro("Falha ao Gerar Boleto no Sistema da Galaxy Pay: " + err.Message);
+                return contagemOk.ToString();
             }
         }
 
@@ -339,6 +347,107 @@ namespace Lunar.Utils.GalaxyPay_API
             public string city { get; set; }
             public string state { get; set; }
         }
+
+        public string GalaxyPay_ObterPDFUnico(ContaReceber contaReceber)
+        {
+            try
+            {
+                Address address = new Address();
+                String url = "https://api.galaxpay.com.br/v2/boletos/charges";
+                var requisicaoWeb = WebRequest.CreateHttp(url);
+                requisicaoWeb.Method = "POST";
+                requisicaoWeb.ContentType = "application/json";
+                requisicaoWeb.Headers.Add("Authorization", "Bearer " + tokenAcesso);
+                //ImpressaoBoletos impressaoBoletos = new ImpressaoBoletos();
+                //impressaoBoletos.myIds[0] = contaReceber.Id.ToString();
+                //impressaoBoletos.order = "transactionPayday.asc";
+                string[] arrayFatura = new string[1];
+                arrayFatura[0] = contaReceber.Id.ToString();
+                using (var streamWriter = new StreamWriter(requisicaoWeb.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        myIds = arrayFatura,
+                        order = "transactionPayday.asc"
+                    });
+
+                    streamWriter.Write(json);
+                }
+                var httpResponse = (HttpWebResponse)requisicaoWeb.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    streamReader.Close();
+                   // var retorno = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(result);
+                    var retPDFX = JsonConvert.DeserializeObject<RetPDF>(result);
+                    string retornoString = "";
+                    if (retPDFX != null)
+                        retornoString = retPDFX.Boleto.pdf;
+                    return retornoString;
+                }
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowErro("Falha ao Cadastrar Cliente no Sistema da Galaxy Pay: " + err.Message);
+                return "";
+            }
+        }
+
+        public string GalaxyPay_ObterPDFLista(string[] arrayFatura)
+        {
+            try
+            {
+                Address address = new Address();
+                String url = "https://api.galaxpay.com.br/v2/boletos/charges";
+                var requisicaoWeb = WebRequest.CreateHttp(url);
+                requisicaoWeb.Method = "POST";
+                requisicaoWeb.ContentType = "application/json";
+                requisicaoWeb.Headers.Add("Authorization", "Bearer " + tokenAcesso);
+                //ImpressaoBoletos impressaoBoletos = new ImpressaoBoletos();
+                //impressaoBoletos.myIds[0] = contaReceber.Id.ToString();
+                //impressaoBoletos.order = "transactionPayday.asc";
+         
+                using (var streamWriter = new StreamWriter(requisicaoWeb.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        myIds = arrayFatura,
+                        order = "transactionPayday.asc"
+                    });
+
+                    streamWriter.Write(json);
+                }
+                var httpResponse = (HttpWebResponse)requisicaoWeb.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    streamReader.Close();
+                    // var retorno = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(result);
+                    var retPDFX = JsonConvert.DeserializeObject<RetPDF>(result);
+                    string retornoString = "";
+                    if (retPDFX != null)
+                        retornoString = retPDFX.Boleto.pdf;
+                    return retornoString;
+                }
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowErro("Falha ao Cadastrar Cliente no Sistema da Galaxy Pay: " + err.Message);
+                return "";
+            }
+        }
+
+
+        public class RetPDF
+        {
+            public Boleto Boleto { get; set; }
+        }
+
+        public class Boleto
+        {
+            public string pdf { get; set; }
+        }
+
 
     }
 }

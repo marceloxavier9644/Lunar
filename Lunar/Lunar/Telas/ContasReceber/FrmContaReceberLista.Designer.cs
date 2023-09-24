@@ -45,6 +45,7 @@
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn9 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn10 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridCheckBoxColumn gridCheckBoxColumn1 = new Syncfusion.WinForms.DataGrid.GridCheckBoxColumn();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmContaReceberLista));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkApenasEscritorioCobranca = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
@@ -83,6 +84,7 @@
             this.btnReceber = new Lunar.RJ_UI.Classes.RJButton();
             this.btnAbater = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExtratoCliente = new FontAwesome.Sharp.IconButton();
+            this.btnImprimirBoleto = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasEscritorioCobranca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasSPC)).BeginInit();
@@ -712,6 +714,14 @@
             gridTextColumn7.HeaderStyle.Font.Size = 10F;
             gridTextColumn7.HeaderText = "Data Recebimento";
             gridTextColumn7.MappingName = "DataRecebimento";
+            gridCheckBoxColumn1.AllowFiltering = true;
+            gridCheckBoxColumn1.AllowResizing = true;
+            gridCheckBoxColumn1.CellStyle.Font.Size = 12F;
+            gridCheckBoxColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridCheckBoxColumn1.HeaderStyle.Font.Facename = "Montserrat";
+            gridCheckBoxColumn1.HeaderStyle.Font.Size = 10F;
+            gridCheckBoxColumn1.HeaderText = "Boleto";
+            gridCheckBoxColumn1.MappingName = "BoletoGerado";
             this.grid.Columns.Add(gridTextColumn1);
             this.grid.Columns.Add(gridTextColumn2);
             this.grid.Columns.Add(gridTextColumn3);
@@ -729,6 +739,7 @@
             this.grid.Columns.Add(gridNumericColumn9);
             this.grid.Columns.Add(gridNumericColumn10);
             this.grid.Columns.Add(gridTextColumn7);
+            this.grid.Columns.Add(gridCheckBoxColumn1);
             this.grid.Location = new System.Drawing.Point(7, 236);
             this.grid.Name = "grid";
             this.grid.SelectionMode = Syncfusion.WinForms.DataGrid.Enums.GridSelectionMode.Extended;
@@ -947,12 +958,34 @@
             this.btnExtratoCliente.UseVisualStyleBackColor = true;
             this.btnExtratoCliente.Click += new System.EventHandler(this.btnExtratoCliente_Click);
             // 
+            // btnImprimirBoleto
+            // 
+            this.btnImprimirBoleto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImprimirBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimirBoleto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnImprimirBoleto.FlatAppearance.BorderSize = 0;
+            this.btnImprimirBoleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirBoleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirBoleto.IconChar = FontAwesome.Sharp.IconChar.Barcode;
+            this.btnImprimirBoleto.IconColor = System.Drawing.Color.DarkSlateGray;
+            this.btnImprimirBoleto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnImprimirBoleto.IconSize = 38;
+            this.btnImprimirBoleto.Location = new System.Drawing.Point(133, 571);
+            this.btnImprimirBoleto.Name = "btnImprimirBoleto";
+            this.btnImprimirBoleto.Size = new System.Drawing.Size(36, 34);
+            this.btnImprimirBoleto.TabIndex = 246;
+            this.btnImprimirBoleto.UseVisualStyleBackColor = true;
+            this.btnImprimirBoleto.Click += new System.EventHandler(this.btnImprimirBoleto_Click);
+            // 
             // FrmContaReceberLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1055, 668);
+            this.Controls.Add(this.btnImprimirBoleto);
             this.Controls.Add(this.btnExtratoCliente);
             this.Controls.Add(this.btnAbater);
             this.Controls.Add(this.btnParcial);
@@ -1027,5 +1060,6 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasSPC;
         private RJ_UI.Classes.RJButton btnAbater;
         private FontAwesome.Sharp.IconButton btnExtratoCliente;
+        private FontAwesome.Sharp.IconButton btnImprimirBoleto;
     }
 }

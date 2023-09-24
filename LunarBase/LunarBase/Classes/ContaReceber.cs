@@ -37,6 +37,8 @@ namespace LunarBase.Classes
         private decimal acrescimoRecebidoBaixa;
         private decimal valorRecebimentoParcial;
         private decimal valorTotalOrigem;
+        private bool boletoGerado;
+        private string idBoleto;
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -101,6 +103,12 @@ namespace LunarBase.Classes
         [Anotacao("Valor Total Origem")]
         [OcultarEmGridsEPesquisas]
         public virtual decimal ValorTotalOrigem { get => valorTotalOrigem; set => valorTotalOrigem = value; }
+        [Anotacao("Boleto Gerado")]
+        [OcultarEmGridsEPesquisas]
+        public virtual bool BoletoGerado { get => boletoGerado; set => boletoGerado = value; }
+        [Anotacao("Boleto ID")]
+        [OcultarEmGridsEPesquisas]
+        public virtual string IdBoleto { get => idBoleto; set => idBoleto = value; }
 
         public override string ToString()
         {

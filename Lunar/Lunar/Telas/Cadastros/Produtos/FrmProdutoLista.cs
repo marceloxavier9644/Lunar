@@ -365,5 +365,27 @@ namespace Lunar.Telas.Cadastros.Produtos
 
             }
         }
+
+        private void btnExcluirProduto_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                produto = new Produto();
+                produto = (Produto)grid.SelectedItem;
+                if(produto.Estoque <= 0)
+                {
+                    if(GenericaDesktop.ShowConfirmacao("Deseja excluir o produto " + produto.Id.ToString() + "?"))
+                    {
+                        Controller.getInstance().excluir(produto);
+                        GenericaDesktop.ShowInfo("Excluído com Sucesso");
+                        PesquisarProdutoPorDescricao(txtPesquisaProdutoPorDescricao.Texts.Trim());
+                    }
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Não é possível excluir um produto que tenha estoque contábil!");
+            }
+            else
+                GenericaDesktop.ShowAlerta("Clique na linha do produto que deseja excluir!");
+        }
     }
 }

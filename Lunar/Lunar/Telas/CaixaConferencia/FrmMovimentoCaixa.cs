@@ -1146,9 +1146,23 @@ namespace Lunar.Telas.CaixaConferencia
                 {
                     ContaReceberController contaReceberController = new ContaReceberController();
                     IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela Where Tabela.Cliente = " + pessoa.Id.ToString() + " and Tabela.FlagExcluido <> True");
-                    
-                    string retornoBoletos = galaxyPayApiIntegracao.GalaxyPay_GerarBoleto(pessoa, listaReceber);
-                    GenericaDesktop.ShowInfo(retornoBoletos + " Boleto(s) Gerado(s) com Sucesso!");
+                    string retornoBoletos = "";
+                    int contagem = 0;
+                    foreach (ContaReceber contaReceber in listaReceber)
+                    {
+                        if (contaReceber.BoletoGerado == false)
+                        {
+                            retornoBoletos = galaxyPayApiIntegracao.GalaxyPay_GerarBoleto(pessoa, contaReceber);
+                            if (retornoBoletos.Equals("1"))
+                                contagem++;
+                        }
+                        else
+                            GenericaDesktop.ShowAlerta(contaReceber.Documento + " - Essa fatura já possui boleto gerado, cancele o boleto que já existe ou utilize o boleto que foi gerado anteriormente!");
+                    }
+                    if (contagem > 0)
+                        GenericaDesktop.ShowInfo(contagem + " Boleto(s) Gerado(s) com Sucesso!");
+                    else
+                        GenericaDesktop.ShowAlerta("Falha ao gerar boletos");
                 }
             }
         }

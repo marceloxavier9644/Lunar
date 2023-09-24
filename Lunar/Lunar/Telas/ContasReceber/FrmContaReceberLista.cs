@@ -3,6 +3,7 @@ using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
+using Lunar.Utils.GalaxyPay_API;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
@@ -159,7 +160,7 @@ namespace Lunar.Telas.ContasReceber
                     lblCalculando.Visible = false;
                 }
             }
-            catch (Exception erro)
+            catch (System.Exception erro)
             {
                 GenericaDesktop.ShowErro(erro.Message);
             }
@@ -939,6 +940,45 @@ namespace Lunar.Telas.ContasReceber
 
         private void btnAbater_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnImprimirBoleto_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedItems.Count == 1)
+            {
+                contaReceber = new ContaReceber();
+                contaReceber = (ContaReceber)grid.SelectedItem;
+                if (contaReceber.BoletoGerado == true)
+                {
+                    GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                    string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                    string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFUnico(contaReceber);
+                    if (!String.IsNullOrEmpty(link))
+                        System.Diagnostics.Process.Start(link);
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Fatura Não Possui Boleto Gerado");
+            }
+            else if (grid.SelectedItems.Count > 1)
+            {
+                string[] arrayFatura = new string[grid.SelectedItems.Count];
+                int i = 0;
+                foreach (var selectedItem in grid.SelectedItems)
+                {
+                    var conta = selectedItem as ContaReceber;
+                    if(conta.BoletoGerado == true)
+                    {
+                        arrayFatura[i] = conta.Id.ToString();
+                        i++;
+                    }
+                }
+                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(arrayFatura);
+                if (!String.IsNullOrEmpty(link))
+                    System.Diagnostics.Process.Start(link);
+            }
 
         }
     }
