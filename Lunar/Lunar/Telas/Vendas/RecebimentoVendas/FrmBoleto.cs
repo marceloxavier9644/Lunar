@@ -8,6 +8,8 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -24,6 +26,9 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
         VendaFormaPagamento vendaFormaPagamento = new VendaFormaPagamento();
         Venda venda = new Venda();
         GenericaDesktop generica = new GenericaDesktop();
+        OrdemServico ordemservico = new OrdemServico();
+        FormaPagamento fp = new FormaPagamento();
+        IList<ContaReceber> listaBoletoReceber = new List<ContaReceber>();
         public DialogResult showModalNovo(ref object vendaFormaPagamento)
         {
             showModal = true;
@@ -31,6 +36,19 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             if (DialogResult == DialogResult.OK)
             {
                 vendaFormaPagamento = this.vendaFormaPagamento;
+            }
+            return DialogResult;
+        }
+
+        public DialogResult showModalReceber(ref FormaPagamento formaPagamento, ref decimal valorRecebido, ref IList<ContaReceber> listaBoletoReceber)
+        {
+            showModal = true;
+            DialogResult = ShowDialog();
+            if (DialogResult == DialogResult.OK)
+            {
+                formaPagamento = this.fp;
+                listaBoletoReceber = this.listaBoletoReceber;
+                valorRecebido = this.valor;
             }
             return DialogResult;
         }
@@ -42,6 +60,16 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             this.valorFaltante = valorFaltante;
             txtValor.TextAlign = HorizontalAlignment.Center;
             this.venda = venda;
+        }
+
+        public FrmBoleto(decimal valorFaltante, OrdemServico ordemservico)
+        {
+            InitializeComponent();
+
+            lblFaltante.Text = "Valor Faltante: " + valorFaltante.ToString("C2", CultureInfo.CurrentCulture);
+            this.valorFaltante = valorFaltante;
+            txtValor.TextAlign = HorizontalAlignment.Center;
+            this.ordemservico = ordemservico;
         }
 
         private void FrmBoleto_Paint(object sender, PaintEventArgs e)
@@ -63,51 +91,107 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             {
                 if (decimal.Parse(txtValor.Texts) <= valorFaltante)
                 {
-                    this.valor = decimal.Parse(txtValor.Texts);
-                    FormaPagamento formaPagamento = new FormaPagamento();
-                    formaPagamento.Id = 5;
-                    vendaFormaPagamento.FormaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
-                    vendaFormaPagamento.Parcelamento = int.Parse(txtParcelas.Texts);
-                    vendaFormaPagamento.ValorRecebido = valor;
-                    vendaFormaPagamento.Cartao = false;
-                    vendaFormaPagamento.AutorizacaoCartao = "";
-                    vendaFormaPagamento.Venda = venda;
-                    vendaFormaPagamento.TipoCartao = "";
-                    vendaFormaPagamento.ParcelamentoFk = null;
-                    Controller.getInstance().salvar(vendaFormaPagamento);
-
-                    var records = gridParcelas.View.Records;
-                    foreach (var record in records)
+                    if (venda != null)
                     {
-                        var dataRowView = record.Data as DataRowView;
+                        if (venda.Id > 0)
+                        {
+                            this.valor = decimal.Parse(txtValor.Texts);
+                            FormaPagamento formaPagamento = new FormaPagamento();
+                            formaPagamento.Id = 5;
+                            vendaFormaPagamento.FormaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                            vendaFormaPagamento.Parcelamento = int.Parse(txtParcelas.Texts);
+                            vendaFormaPagamento.ValorRecebido = valor;
+                            vendaFormaPagamento.Cartao = false;
+                            vendaFormaPagamento.AutorizacaoCartao = "";
+                            vendaFormaPagamento.Venda = venda;
+                            vendaFormaPagamento.TipoCartao = "";
+                            vendaFormaPagamento.ParcelamentoFk = null;
+                            Controller.getInstance().salvar(vendaFormaPagamento);
 
-                        ContaReceber contaReceber = new ContaReceber();
-                        contaReceber.Id = 0;
-                        contaReceber.NomeCliente = venda.Cliente.RazaoSocial;
-                        contaReceber.CnpjCliente = venda.Cliente.Cnpj;
-                        contaReceber.Data = DateTime.Now;
-                        contaReceber.Descricao = "VENDA - " + venda.Id;
-                        contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
-                        contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
-                        contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
-                        contaReceber.Juro = 0;
-                        contaReceber.Multa = 0;
-                        if (venda.Cliente.EnderecoPrincipal != null)
-                            contaReceber.EnderecoCliente = venda.Cliente.EnderecoPrincipal.Logradouro + ", " + venda.Cliente.EnderecoPrincipal.Numero + " - " + venda.Cliente.EnderecoPrincipal.Complemento;
-                        else
-                            contaReceber.EnderecoCliente = "";
-                        contaReceber.FormaPagamento = vendaFormaPagamento.FormaPagamento;
-                        contaReceber.Recebido = false;
-                        contaReceber.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
-                        contaReceber.Venda = venda;
-                        contaReceber.Parcela = dataRowView.Row["PARCELA"].ToString();
-                        contaReceber.VendaFormaPagamento = vendaFormaPagamento;
-                        contaReceber.Cliente = venda.Cliente;
-                        contaReceber.Origem = "VENDA";
-                        contaReceber.Concluido = false;
-                        Controller.getInstance().salvar(contaReceber);
+                            var records = gridParcelas.View.Records;
+                            foreach (var record in records)
+                            {
+                                var dataRowView = record.Data as DataRowView;
+
+                                ContaReceber contaReceber = new ContaReceber();
+                                contaReceber.Id = 0;
+                                contaReceber.NomeCliente = venda.Cliente.RazaoSocial;
+                                contaReceber.CnpjCliente = venda.Cliente.Cnpj;
+                                contaReceber.Data = DateTime.Now;
+                                contaReceber.Descricao = "VENDA - " + venda.Id;
+                                contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
+                                contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                contaReceber.ValorTotalOrigem = valor;
+                                contaReceber.Juro = 0;
+                                contaReceber.Multa = 0;
+                                if (venda.Cliente.EnderecoPrincipal != null)
+                                    contaReceber.EnderecoCliente = venda.Cliente.EnderecoPrincipal.Logradouro + ", " + venda.Cliente.EnderecoPrincipal.Numero + " - " + venda.Cliente.EnderecoPrincipal.Complemento;
+                                else
+                                    contaReceber.EnderecoCliente = "";
+                                contaReceber.FormaPagamento = vendaFormaPagamento.FormaPagamento;
+                                contaReceber.Recebido = false;
+                                contaReceber.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
+                                contaReceber.Venda = venda;
+                                contaReceber.Parcela = dataRowView.Row["PARCELA"].ToString();
+                                contaReceber.VendaFormaPagamento = vendaFormaPagamento;
+                                contaReceber.Cliente = venda.Cliente;
+                                contaReceber.Origem = "VENDA";
+                                contaReceber.Concluido = false;
+                                Controller.getInstance().salvar(contaReceber);
+                            }
+                            this.DialogResult = DialogResult.OK;
+                        }
                     }
-                    this.DialogResult = DialogResult.OK;
+                    if (ordemservico != null)
+                    {
+                        if (ordemservico.Id > 0)
+                        {
+                            this.valor = decimal.Parse(txtValor.Texts);
+                            FormaPagamento formaPagamento = new FormaPagamento();
+                            formaPagamento.Id = 5;
+                            formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                            this.fp = formaPagamento;
+
+                            listaBoletoReceber = new List<ContaReceber>();
+                            var records = gridParcelas.View.Records;
+                            foreach (var record in records)
+                            {
+                                var dataRowView = record.Data as DataRowView;
+
+                                ContaReceber contaReceber = new ContaReceber();
+                                contaReceber.Id = 0;
+                                contaReceber.NomeCliente = ordemservico.Cliente.RazaoSocial;
+                                contaReceber.CnpjCliente = ordemservico.Cliente.Cnpj;
+                                contaReceber.Data = DateTime.Now;
+                                contaReceber.Descricao = "ORDEMSERVICO - " + ordemservico.Id;
+                                contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
+                                contaReceber.ValorParcela = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                contaReceber.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                contaReceber.ValorTotalOrigem = valor;
+                                contaReceber.Juro = 0;
+                                contaReceber.Multa = 0;
+                                if (ordemservico.Cliente.EnderecoPrincipal != null)
+                                    contaReceber.EnderecoCliente = ordemservico.Cliente.EnderecoPrincipal.Logradouro + ", " + ordemservico.Cliente.EnderecoPrincipal.Numero + " - " + ordemservico.Cliente.EnderecoPrincipal.Complemento;
+                                else
+                                    contaReceber.EnderecoCliente = "";
+                                contaReceber.FormaPagamento = formaPagamento;
+                                contaReceber.Recebido = false;
+                                contaReceber.Vencimento = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
+                                contaReceber.Venda = null;
+                                contaReceber.Parcela = dataRowView.Row["PARCELA"].ToString();
+                                contaReceber.VendaFormaPagamento = null;
+                                contaReceber.Cliente = ordemservico.Cliente;
+                                contaReceber.Origem = "ORDEMSERVICO";
+                                contaReceber.Concluido = false;
+                                contaReceber.BoletoGerado = false; // vao ser gerados na proxima tela ao finalizar
+                                contaReceber.IdBoleto = "0";
+                                contaReceber.OrdemServico = ordemservico;
+                                listaBoletoReceber.Add(contaReceber);
+                            }
+                            this.DialogResult = DialogResult.OK;
+                        }
+                    }
                 }
                 else
                 {

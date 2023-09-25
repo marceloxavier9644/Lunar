@@ -19,8 +19,8 @@ namespace Lunar.Utils.GalaxyPay_API
     public class GalaxyPayApiIntegracao
     {
         //Cliente
-        string galaxId = "39694";
-        string galaxHash = "R040H6XbRsNtKoG3IdYi9w7qKh50UeWu1xKp62Qy";
+        string galaxId = Sessao.parametroSistema.IdGalaxyPay;
+        string galaxHash = Sessao.parametroSistema.TokenGalaxyPay;
 
         //TXT Parceiro
         string galaxIdParceiro = "39087";
@@ -137,13 +137,14 @@ namespace Lunar.Utils.GalaxyPay_API
                 requisicaoWeb.Method = "POST";
                 requisicaoWeb.ContentType = "application/json";
                 requisicaoWeb.Headers.Add("Authorization", "Bearer " + tokenAcesso);
+                string[] arrayEmail = new string[1];
                 if (String.IsNullOrEmpty(pessoa.Email))
                 {
-                    GenericaDesktop.ShowAlerta("Informe um email no cadastro do cliente!");
-                    return "";
+                    GenericaDesktop.ShowAlerta("Cliente não possui um e-mail no cadastro, NÃO será disparado o Boleto no e-mail automaticamente!");
+                    arrayEmail[0] = Sessao.empresaFilialLogada.Email;
                 }
-                string[] arrayEmail = new string[1];
-                arrayEmail[0] = pessoa.Email;
+                else
+                    arrayEmail[0] = pessoa.Email;
                 if (pessoa.EnderecoPrincipal != null)
                 {
                     address.zipCode = GenericaDesktop.RemoveCaracteres(pessoa.EnderecoPrincipal.Cep);

@@ -140,6 +140,14 @@ namespace Lunar.Telas.ParametroDoSistema
                 txtEtiquetaPadrao.Text = parametro.ModeloEtiquetaPadrao;
             if (parametro.ModeloEtiquetaNumeroOs != null)
                 txtEtiquetaImprimirNumeroOs.Text = parametro.ModeloEtiquetaNumeroOs;
+            if (parametro.TokenGalaxyPay != null)
+                txtTokenGalaxyPay.Texts = parametro.TokenGalaxyPay;
+            if (parametro.IdGalaxyPay != null)
+                txtIdGalaxyPay.Texts = parametro.IdGalaxyPay;
+            if (parametro.IntegracaoGalaxyPay == true)
+                chkIntegracaoGalaxyPay.Checked = true;
+            else
+                chkIntegracaoGalaxyPay.Checked = false;
         }
 
         private void setParametro()
@@ -250,6 +258,12 @@ namespace Lunar.Telas.ParametroDoSistema
 
             parametro.ModeloEtiquetaPadrao = txtEtiquetaPadrao.Text.Trim();
             parametro.ModeloEtiquetaNumeroOs = txtEtiquetaImprimirNumeroOs.Text.Trim();
+            parametro.TokenGalaxyPay = txtTokenGalaxyPay.Texts.Trim();
+            parametro.IdGalaxyPay = txtIdGalaxyPay.Texts.Trim();
+            if (chkIntegracaoGalaxyPay.Checked == true)
+                parametro.IntegracaoGalaxyPay = true;
+            else
+                parametro.IntegracaoGalaxyPay = false;
 
             Sessao.parametroSistema = parametro;
         }
@@ -812,6 +826,27 @@ namespace Lunar.Telas.ParametroDoSistema
                     txtSerieNFe.Enabled = false;
                     txtProximoNFCe.Enabled = false;
                     txtProximoNFe.Enabled = false;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkIntegracaoGalaxyPay_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkIntegracaoGalaxyPay.Checked == true)
+                {
+                    txtTokenGalaxyPay.Enabled = true;
+                    txtIdGalaxyPay.Enabled = true;
+                }
+                else
+                {
+                    txtTokenGalaxyPay.Enabled = false;
+                    txtIdGalaxyPay.Enabled = false;
                 }
             }
             catch

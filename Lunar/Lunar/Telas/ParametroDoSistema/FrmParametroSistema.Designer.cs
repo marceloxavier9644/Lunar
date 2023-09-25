@@ -59,6 +59,8 @@
             this.txtSerieNFCe = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtProximoNFCe = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabEstoque = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.txtEtiquetaImprimirNumeroOs = new System.Windows.Forms.TextBox();
+            this.autoLabel39 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtEtiquetaPadrao = new System.Windows.Forms.TextBox();
             this.autoLabel38 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.chkAlertaEstoqueGerencial = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
@@ -159,8 +161,11 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.txtEtiquetaImprimirNumeroOs = new System.Windows.Forms.TextBox();
-            this.autoLabel39 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.chkIntegracaoGalaxyPay = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.autoLabel40 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtTokenGalaxyPay = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.autoLabel41 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtIdGalaxyPay = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -189,6 +194,7 @@
             this.tabEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIntegracaoGalaxyPay)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -712,6 +718,27 @@
             this.tabEstoque.Text = "Estoque";
             this.tabEstoque.ThemesEnabled = false;
             // 
+            // txtEtiquetaImprimirNumeroOs
+            // 
+            this.txtEtiquetaImprimirNumeroOs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEtiquetaImprimirNumeroOs.Location = new System.Drawing.Point(45, 117);
+            this.txtEtiquetaImprimirNumeroOs.Name = "txtEtiquetaImprimirNumeroOs";
+            this.txtEtiquetaImprimirNumeroOs.Size = new System.Drawing.Size(325, 26);
+            this.txtEtiquetaImprimirNumeroOs.TabIndex = 206;
+            this.txtEtiquetaImprimirNumeroOs.Text = "ImprimirNumeroOS2.rdlc";
+            // 
+            // autoLabel39
+            // 
+            this.autoLabel39.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel39.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel39.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel39.Location = new System.Drawing.Point(44, 98);
+            this.autoLabel39.Name = "autoLabel39";
+            this.autoLabel39.Size = new System.Drawing.Size(236, 16);
+            this.autoLabel39.TabIndex = 205;
+            this.autoLabel39.Text = "EtiquetaPadrão (Imprimir Nº O.S Otica)";
+            // 
             // txtEtiquetaPadrao
             // 
             this.txtEtiquetaPadrao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -767,6 +794,11 @@
             // 
             // tabContaReceber
             // 
+            this.tabContaReceber.Controls.Add(this.autoLabel41);
+            this.tabContaReceber.Controls.Add(this.txtIdGalaxyPay);
+            this.tabContaReceber.Controls.Add(this.autoLabel40);
+            this.tabContaReceber.Controls.Add(this.txtTokenGalaxyPay);
+            this.tabContaReceber.Controls.Add(this.chkIntegracaoGalaxyPay);
             this.tabContaReceber.Controls.Add(this.chkChequeContaReceber);
             this.tabContaReceber.Controls.Add(this.autoLabel36);
             this.tabContaReceber.Controls.Add(this.label6);
@@ -803,7 +835,7 @@
             this.chkChequeContaReceber.Name = "chkChequeContaReceber";
             this.chkChequeContaReceber.Size = new System.Drawing.Size(375, 30);
             this.chkChequeContaReceber.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
-            this.chkChequeContaReceber.TabIndex = 264;
+            this.chkChequeContaReceber.TabIndex = 2;
             this.chkChequeContaReceber.Text = " Cheque Pré Cair no Contas a Receber";
             this.chkChequeContaReceber.ThemeName = "Metro";
             // 
@@ -881,7 +913,7 @@
             this.txtLembreteVencimento.Multiline = true;
             this.txtLembreteVencimento.Name = "txtLembreteVencimento";
             this.txtLembreteVencimento.Size = new System.Drawing.Size(594, 107);
-            this.txtLembreteVencimento.TabIndex = 221;
+            this.txtLembreteVencimento.TabIndex = 6;
             this.txtLembreteVencimento.Text = resources.GetString("txtLembreteVencimento.Text");
             // 
             // autoLabel35
@@ -939,7 +971,7 @@
             this.txtJuro.PlaceholderText = "";
             this.txtJuro.ReadOnly = false;
             this.txtJuro.Size = new System.Drawing.Size(146, 37);
-            this.txtJuro.TabIndex = 200;
+            this.txtJuro.TabIndex = 1;
             this.txtJuro.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtJuro.Texts = "1";
             this.txtJuro.UnderlinedStyle = false;
@@ -964,7 +996,7 @@
             this.txtMulta.PlaceholderText = "";
             this.txtMulta.ReadOnly = false;
             this.txtMulta.Size = new System.Drawing.Size(146, 37);
-            this.txtMulta.TabIndex = 198;
+            this.txtMulta.TabIndex = 0;
             this.txtMulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtMulta.Texts = "2";
             this.txtMulta.UnderlinedStyle = false;
@@ -2319,26 +2351,94 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // txtEtiquetaImprimirNumeroOs
+            // chkIntegracaoGalaxyPay
             // 
-            this.txtEtiquetaImprimirNumeroOs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEtiquetaImprimirNumeroOs.Location = new System.Drawing.Point(45, 117);
-            this.txtEtiquetaImprimirNumeroOs.Name = "txtEtiquetaImprimirNumeroOs";
-            this.txtEtiquetaImprimirNumeroOs.Size = new System.Drawing.Size(325, 26);
-            this.txtEtiquetaImprimirNumeroOs.TabIndex = 206;
-            this.txtEtiquetaImprimirNumeroOs.Text = "ImprimirNumeroOS2.rdlc";
+            this.chkIntegracaoGalaxyPay.BeforeTouchSize = new System.Drawing.Size(315, 30);
+            this.chkIntegracaoGalaxyPay.Checked = true;
+            this.chkIntegracaoGalaxyPay.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkIntegracaoGalaxyPay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkIntegracaoGalaxyPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkIntegracaoGalaxyPay.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkIntegracaoGalaxyPay.Location = new System.Drawing.Point(16, 114);
+            this.chkIntegracaoGalaxyPay.Name = "chkIntegracaoGalaxyPay";
+            this.chkIntegracaoGalaxyPay.Size = new System.Drawing.Size(315, 30);
+            this.chkIntegracaoGalaxyPay.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            this.chkIntegracaoGalaxyPay.TabIndex = 3;
+            this.chkIntegracaoGalaxyPay.Text = " Integração com API GalaxyPay";
+            this.chkIntegracaoGalaxyPay.ThemeName = "Metro";
+            this.chkIntegracaoGalaxyPay.CheckStateChanged += new System.EventHandler(this.chkIntegracaoGalaxyPay_CheckStateChanged);
             // 
-            // autoLabel39
+            // autoLabel40
             // 
-            this.autoLabel39.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel39.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel39.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel39.Location = new System.Drawing.Point(44, 98);
-            this.autoLabel39.Name = "autoLabel39";
-            this.autoLabel39.Size = new System.Drawing.Size(236, 16);
-            this.autoLabel39.TabIndex = 205;
-            this.autoLabel39.Text = "EtiquetaPadrão (Imprimir Nº O.S Otica)";
+            this.autoLabel40.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel40.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel40.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel40.Location = new System.Drawing.Point(131, 151);
+            this.autoLabel40.Name = "autoLabel40";
+            this.autoLabel40.Size = new System.Drawing.Size(175, 16);
+            this.autoLabel40.TabIndex = 267;
+            this.autoLabel40.Text = "Token da Conta Galaxy Pay";
+            // 
+            // txtTokenGalaxyPay
+            // 
+            this.txtTokenGalaxyPay.BackColor = System.Drawing.Color.White;
+            this.txtTokenGalaxyPay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTokenGalaxyPay.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTokenGalaxyPay.BorderRadius = 8;
+            this.txtTokenGalaxyPay.BorderSize = 2;
+            this.txtTokenGalaxyPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTokenGalaxyPay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTokenGalaxyPay.Location = new System.Drawing.Point(124, 161);
+            this.txtTokenGalaxyPay.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTokenGalaxyPay.Multiline = false;
+            this.txtTokenGalaxyPay.Name = "txtTokenGalaxyPay";
+            this.txtTokenGalaxyPay.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTokenGalaxyPay.PasswordChar = false;
+            this.txtTokenGalaxyPay.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtTokenGalaxyPay.PlaceholderText = "";
+            this.txtTokenGalaxyPay.ReadOnly = false;
+            this.txtTokenGalaxyPay.Size = new System.Drawing.Size(375, 37);
+            this.txtTokenGalaxyPay.TabIndex = 5;
+            this.txtTokenGalaxyPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtTokenGalaxyPay.Texts = "";
+            this.txtTokenGalaxyPay.UnderlinedStyle = false;
+            // 
+            // autoLabel41
+            // 
+            this.autoLabel41.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel41.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel41.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel41.Location = new System.Drawing.Point(23, 151);
+            this.autoLabel41.Name = "autoLabel41";
+            this.autoLabel41.Size = new System.Drawing.Size(20, 16);
+            this.autoLabel41.TabIndex = 269;
+            this.autoLabel41.Text = "ID";
+            // 
+            // txtIdGalaxyPay
+            // 
+            this.txtIdGalaxyPay.BackColor = System.Drawing.Color.White;
+            this.txtIdGalaxyPay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtIdGalaxyPay.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtIdGalaxyPay.BorderRadius = 8;
+            this.txtIdGalaxyPay.BorderSize = 2;
+            this.txtIdGalaxyPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdGalaxyPay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtIdGalaxyPay.Location = new System.Drawing.Point(16, 161);
+            this.txtIdGalaxyPay.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIdGalaxyPay.Multiline = false;
+            this.txtIdGalaxyPay.Name = "txtIdGalaxyPay";
+            this.txtIdGalaxyPay.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtIdGalaxyPay.PasswordChar = false;
+            this.txtIdGalaxyPay.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtIdGalaxyPay.PlaceholderText = "";
+            this.txtIdGalaxyPay.ReadOnly = false;
+            this.txtIdGalaxyPay.Size = new System.Drawing.Size(100, 37);
+            this.txtIdGalaxyPay.TabIndex = 4;
+            this.txtIdGalaxyPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtIdGalaxyPay.Texts = "";
+            this.txtIdGalaxyPay.UnderlinedStyle = false;
             // 
             // FrmParametroSistema
             // 
@@ -2394,6 +2494,7 @@
             this.tabEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIntegracaoGalaxyPay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2531,5 +2632,10 @@
         private System.Windows.Forms.TextBox txtEtiquetaPadrao;
         private System.Windows.Forms.TextBox txtEtiquetaImprimirNumeroOs;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel39;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkIntegracaoGalaxyPay;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel40;
+        private RJ_UI.Classes.RJTextBox txtTokenGalaxyPay;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel41;
+        private RJ_UI.Classes.RJTextBox txtIdGalaxyPay;
     }
 }

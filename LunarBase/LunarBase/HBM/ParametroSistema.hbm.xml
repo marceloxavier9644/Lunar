@@ -39,8 +39,10 @@
 		<property name="ChequeContaReceber" column="CHEQUECONTARECEBER" type="Boolean"/>
 		<property name="ModeloEtiquetaPadrao" column="MODELOETIQUETAPADRAO" type="String" length="200"/>
 		<property name="ModeloEtiquetaNumeroOs" column="MODELOETIQUETANUMEROOS" type="String" length="200"/>
+		<property name="TokenGalaxyPay" column="TOKENGALAXYPAY" type="String" length="100"/>
+		<property name="IdGalaxyPay" column="IDGALAXYPAY" type="String" length="50"/>
+		<property name="IntegracaoGalaxyPay" column="INTEGRACAOGALAXYPAY" type="Boolean"/>
 		
-
 		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="false" foreign-key="FK_PARAMENTROS_TIPOOBJETO" lazy="false"/>
 		<many-to-one name="PlanoContaVenda" column="PLANOCONTAVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTAVENDA" lazy="false"/>
 		<many-to-one name="PlanoContaCompraRevenda" column="PLANOCONTACOMPRAREVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTACOMPRAREVENDA" lazy="false"/>

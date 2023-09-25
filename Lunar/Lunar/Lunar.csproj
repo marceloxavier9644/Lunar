@@ -1158,6 +1158,7 @@
     <Compile Include="Utils\ConverterMoedaPorExtenso.cs" />
     <Compile Include="Utils\GalaxyPay_API\Charges.cs" />
     <Compile Include="Utils\GalaxyPay_API\GalaxyPayApiIntegracao.cs" />
+    <Compile Include="Utils\GalaxyPay_API\GerarBoletoGalaxyPay.cs" />
     <Compile Include="Utils\GalaxyPay_API\RetornoBoletoGerado.cs" />
     <Compile Include="Utils\GenericaDesktop.cs" />
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.cs">

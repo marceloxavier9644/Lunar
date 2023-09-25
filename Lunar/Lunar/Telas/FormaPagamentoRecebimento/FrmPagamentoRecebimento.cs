@@ -5,6 +5,7 @@ using Lunar.Telas.FormaPagamentoRecebimento.Adicionais;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas.RecebimentoVendas;
 using Lunar.Utils;
+using Lunar.Utils.GalaxyPay_API;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -860,6 +861,9 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 case Keys.F4:
                     verificaContaPagarParaAbatimento();
                     break;
+                case Keys.F10:
+                    abrirFormPagamentoBoleto();
+                    break;
             }
         }
 
@@ -1637,6 +1641,28 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 }
                                 ordemServicoPagamento.ContaBancaria = contaBancaria;
                                 Controller.getInstance().salvar(caixa);
+                            }
+                        }
+                        //Boleto
+                        else if (formaPagamento.Id == 5)
+                        {
+                            GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
+                            Pessoa clienteBoleto = new Pessoa();
+                            if (listaCrediario.Count > 0)
+                            {
+                                int c = 0;
+
+                                foreach (ContaReceber contaReceber in listaCrediario)
+                                {
+                                    c++;
+                                    contaReceber.Concluido = true;
+                                    contaReceber.Parcela = c.ToString();
+                                    contaReceber.Documento = "OS" + ordemServico.Id + "/" + c;
+                                    Controller.getInstance().salvar(contaReceber);
+                                    lis.Add(contaReceber);
+                                    clienteBoleto = contaReceber.Cliente;
+                                }
+                                gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
                             }
                         }
                         //Crediário
@@ -3185,6 +3211,86 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         private void autoLabel17_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBoleto_Click(object sender, EventArgs e)
+        {
+            abrirFormPagamentoBoleto();
+        }
+        private void abrirFormPagamentoBoleto()
+        {
+            var records = gridRecebimento.View.Records;
+            bool jaPossuiBoleto = false;
+            foreach (var record in records)
+            {
+                var dataRowView = record.Data as DataRowView;
+                int idForma = int.Parse(dataRowView.Row["Id"].ToString());
+                if (idForma == 5)
+                    jaPossuiBoleto = true;
+            }
+            if (jaPossuiBoleto == false)
+            {
+                listaCrediario = new List<ContaReceber>();
+                if (decimal.Parse(lblValorFaltante.Text.Replace("R$ ", "")) > 0)
+                {
+                    Sessao.vendasRecebimento_ValorRecebido = 0;
+                    Form formBackground = new Form();
+                    try
+                    {
+                        FormaPagamento formaPagamento = new FormaPagamento();
+                        decimal valorRecebido = 0;
+                        using (FrmBoleto uu = new FrmBoleto(decimal.Parse(lblValorFaltante.Text.Replace("R$ ", "")), ordemServico))
+                        {
+                            formBackground.StartPosition = FormStartPosition.Manual;
+                            //formBackground.FormBorderStyle = FormBorderStyle.None;
+                            formBackground.Opacity = .50d;
+                            formBackground.BackColor = Color.Black;
+                            //  formBackground.Left = Top = 10;
+                            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                            formBackground.WindowState = FormWindowState.Maximized;
+                            formBackground.TopMost = false;
+                            formBackground.Location = this.Location;
+                            formBackground.ShowInTaskbar = false;
+                            formBackground.Show();
+                            uu.Owner = formBackground;
+                            ContaBancaria contaBancaria = new ContaBancaria();
+                            DateTime dataPix = new DateTime();
+                            switch (uu.showModalReceber(ref formaPagamento, ref valorRecebido, ref listaCrediario))
+                            {
+                                case DialogResult.Ignore:
+                                    uu.Dispose();
+                                    formBackground.Dispose();
+                                    break;
+                                case DialogResult.OK:
+                                    inserirFormaPagamentoGrid(formaPagamento, valorRecebido, null, null, "", null, contaBancaria, dataPix, "");
+                                    uu.Dispose();
+                                    formBackground.Dispose();
+                                    break;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        formBackground.Dispose();
+                    }
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("O valor total ja foi recebido!");
+                }
+            }
+            else
+                GenericaDesktop.ShowAlerta("Ja foi registrado uma forma de pagamento como boleto, não é possível utilizar a msm forma 2x");
+        }
+
+        private void iconBoleto_Click(object sender, EventArgs e)
+        {
+            abrirFormPagamentoBoleto();
         }
     }
 }
