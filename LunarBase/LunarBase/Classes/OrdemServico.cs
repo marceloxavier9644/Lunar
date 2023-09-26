@@ -26,6 +26,7 @@ namespace LunarBase.Classes
         private Pessoa vendedor;
         private bool entrada;
         private string operadorEncerramento;
+        private string qrCodePix;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -63,5 +64,7 @@ namespace LunarBase.Classes
         public virtual bool Entrada { get => entrada; set => entrada = value; }
         [Anotacao("Operador Encerramento")]
         public virtual string OperadorEncerramento { get => operadorEncerramento; set => operadorEncerramento = value; }
+        [Anotacao("QR Code Pix")]
+        public virtual string QrCodePix { get => qrCodePix; set => qrCodePix = value; }
     }
 }

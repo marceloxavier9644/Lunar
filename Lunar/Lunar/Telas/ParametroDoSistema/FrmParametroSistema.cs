@@ -1,4 +1,5 @@
-﻿using Lunar.Telas.OrdensDeServico.TipoObjetos;
+﻿using Lunar.Telas.Cadastros.Bancos;
+using Lunar.Telas.OrdensDeServico.TipoObjetos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using Lunar.Utils.IntegracaoZAPI;
@@ -148,6 +149,11 @@ namespace Lunar.Telas.ParametroDoSistema
                 chkIntegracaoGalaxyPay.Checked = true;
             else
                 chkIntegracaoGalaxyPay.Checked = false;
+            if(parametro.ContaBancariaVinculadaApi != null)
+            {
+                txtContaBancariaVinculadaAPI.Texts = parametro.ContaBancariaVinculadaApi.Descricao;
+                txtCodContaBancariaVinculadaAPI.Texts = parametro.ContaBancariaVinculadaApi.Id.ToString();
+            }
         }
 
         private void setParametro()
@@ -264,7 +270,16 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.IntegracaoGalaxyPay = true;
             else
                 parametro.IntegracaoGalaxyPay = false;
-
+            if (!String.IsNullOrEmpty(txtCodContaBancariaVinculadaAPI.Texts))
+            {
+                ContaBancaria contaBancaria = new ContaBancaria();
+                contaBancaria.Id = int.Parse(txtCodContaBancariaVinculadaAPI.Texts);
+                contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                parametro.ContaBancariaVinculadaApi = contaBancaria;
+            }
+            else
+                parametro.ContaBancariaVinculadaApi = null;
+            
             Sessao.parametroSistema = parametro;
         }
 
@@ -852,6 +867,60 @@ namespace Lunar.Telas.ParametroDoSistema
             catch
             {
 
+            }
+        }
+
+        private void btnPesquisaContaBancaria_Click(object sender, EventArgs e)
+        {
+            Object objeto = new ContaBancaria();
+
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("ContaBancaria", ""))
+                {
+                    txtCodContaBancariaVinculadaAPI.Texts = "";
+                    txtContaBancariaVinculadaAPI.Texts = "";
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("PlanoConta", "", ref objeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmContaBancaria form = new FrmContaBancaria();
+                            if (form.showModal(ref objeto) == DialogResult.OK)
+                            {
+                                txtContaBancariaVinculadaAPI.Texts = ((ContaBancaria)objeto).Descricao;
+                                txtCodContaBancariaVinculadaAPI.Texts = ((ContaBancaria)objeto).Id.ToString();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtContaBancariaVinculadaAPI.Texts = ((ContaBancaria)objeto).Descricao;
+                            txtCodContaBancariaVinculadaAPI.Texts = ((ContaBancaria)objeto).Id.ToString();
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
             }
         }
     }

@@ -16,6 +16,7 @@
 		<property name="Cancelado" column="CANCELADO" type="Boolean"/>
 		<property name="Concluida" column="CONCLUIDA" type="Boolean"/>
 		<property name="Quantidade" column="QUANTIDADE" type="int"/>
+		<property name="QrCodePix" column="QRCODEPIX" type="String" length="200"/>
 		
 		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_VENDA_CLIENTE" lazy="false"/>
 		<many-to-one name="Vendedor" column="VENDEDOR" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_VENDA_VENDEDOR" lazy="false"/>

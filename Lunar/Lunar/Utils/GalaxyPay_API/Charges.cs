@@ -18,7 +18,8 @@
 
     public class Customer
     {
-        public string myId { get; set; }
+       // public string myId { get; set; }
+        public int galaxPayId { get; set; }
         public string name { get; set; }
         public string document { get; set; }
         public string[] emails { get; set; }

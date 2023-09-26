@@ -78,13 +78,13 @@
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.btnExportarExcel = new FontAwesome.Sharp.IconButton();
             this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
+            this.btnExtratoCliente = new FontAwesome.Sharp.IconButton();
+            this.btnImprimirBoleto = new FontAwesome.Sharp.IconButton();
+            this.btnRetornoBoletos = new Lunar.RJ_UI.Classes.RJButton();
             this.btnParcial = new Lunar.RJ_UI.Classes.RJButton();
             this.btnNovaFatura = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
             this.btnReceber = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnAbater = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnExtratoCliente = new FontAwesome.Sharp.IconButton();
-            this.btnImprimirBoleto = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasEscritorioCobranca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasSPC)).BeginInit();
@@ -826,6 +826,71 @@
             this.btnExportarPDF.UseVisualStyleBackColor = true;
             this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
             // 
+            // btnExtratoCliente
+            // 
+            this.btnExtratoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExtratoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExtratoCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExtratoCliente.FlatAppearance.BorderSize = 0;
+            this.btnExtratoCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExtratoCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnExtratoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExtratoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtratoCliente.IconChar = FontAwesome.Sharp.IconChar.FileInvoice;
+            this.btnExtratoCliente.IconColor = System.Drawing.Color.Olive;
+            this.btnExtratoCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExtratoCliente.IconSize = 38;
+            this.btnExtratoCliente.Location = new System.Drawing.Point(91, 571);
+            this.btnExtratoCliente.Name = "btnExtratoCliente";
+            this.btnExtratoCliente.Size = new System.Drawing.Size(36, 34);
+            this.btnExtratoCliente.TabIndex = 245;
+            this.btnExtratoCliente.UseVisualStyleBackColor = true;
+            this.btnExtratoCliente.Click += new System.EventHandler(this.btnExtratoCliente_Click);
+            // 
+            // btnImprimirBoleto
+            // 
+            this.btnImprimirBoleto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImprimirBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimirBoleto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnImprimirBoleto.FlatAppearance.BorderSize = 0;
+            this.btnImprimirBoleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirBoleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirBoleto.IconChar = FontAwesome.Sharp.IconChar.Barcode;
+            this.btnImprimirBoleto.IconColor = System.Drawing.Color.DarkSlateGray;
+            this.btnImprimirBoleto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnImprimirBoleto.IconSize = 38;
+            this.btnImprimirBoleto.Location = new System.Drawing.Point(133, 571);
+            this.btnImprimirBoleto.Name = "btnImprimirBoleto";
+            this.btnImprimirBoleto.Size = new System.Drawing.Size(36, 34);
+            this.btnImprimirBoleto.TabIndex = 246;
+            this.btnImprimirBoleto.UseVisualStyleBackColor = true;
+            this.btnImprimirBoleto.Click += new System.EventHandler(this.btnImprimirBoleto_Click);
+            // 
+            // btnRetornoBoletos
+            // 
+            this.btnRetornoBoletos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRetornoBoletos.BackColor = System.Drawing.Color.White;
+            this.btnRetornoBoletos.BackgroundColor = System.Drawing.Color.White;
+            this.btnRetornoBoletos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnRetornoBoletos.BorderRadius = 8;
+            this.btnRetornoBoletos.BorderSize = 2;
+            this.btnRetornoBoletos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRetornoBoletos.Enabled = false;
+            this.btnRetornoBoletos.FlatAppearance.BorderSize = 0;
+            this.btnRetornoBoletos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetornoBoletos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetornoBoletos.ForeColor = System.Drawing.Color.Black;
+            this.btnRetornoBoletos.Location = new System.Drawing.Point(24, 611);
+            this.btnRetornoBoletos.Name = "btnRetornoBoletos";
+            this.btnRetornoBoletos.Size = new System.Drawing.Size(193, 45);
+            this.btnRetornoBoletos.TabIndex = 244;
+            this.btnRetornoBoletos.Text = "Retorno de Boletos";
+            this.btnRetornoBoletos.TextColor = System.Drawing.Color.Black;
+            this.btnRetornoBoletos.UseVisualStyleBackColor = false;
+            this.btnRetornoBoletos.Click += new System.EventHandler(this.btnAbater_Click);
+            // 
             // btnParcial
             // 
             this.btnParcial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -914,71 +979,6 @@
             this.btnReceber.UseVisualStyleBackColor = false;
             this.btnReceber.Click += new System.EventHandler(this.btnReceber_Click);
             // 
-            // btnAbater
-            // 
-            this.btnAbater.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAbater.BackColor = System.Drawing.Color.White;
-            this.btnAbater.BackgroundColor = System.Drawing.Color.White;
-            this.btnAbater.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnAbater.BorderRadius = 8;
-            this.btnAbater.BorderSize = 2;
-            this.btnAbater.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbater.FlatAppearance.BorderSize = 0;
-            this.btnAbater.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbater.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbater.ForeColor = System.Drawing.Color.Black;
-            this.btnAbater.Location = new System.Drawing.Point(24, 611);
-            this.btnAbater.Name = "btnAbater";
-            this.btnAbater.Size = new System.Drawing.Size(193, 45);
-            this.btnAbater.TabIndex = 244;
-            this.btnAbater.Text = "Abater com Despesa";
-            this.btnAbater.TextColor = System.Drawing.Color.Black;
-            this.btnAbater.UseVisualStyleBackColor = false;
-            this.btnAbater.Visible = false;
-            this.btnAbater.Click += new System.EventHandler(this.btnAbater_Click);
-            // 
-            // btnExtratoCliente
-            // 
-            this.btnExtratoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExtratoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExtratoCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExtratoCliente.FlatAppearance.BorderSize = 0;
-            this.btnExtratoCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExtratoCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnExtratoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExtratoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExtratoCliente.IconChar = FontAwesome.Sharp.IconChar.FileInvoice;
-            this.btnExtratoCliente.IconColor = System.Drawing.Color.Olive;
-            this.btnExtratoCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnExtratoCliente.IconSize = 38;
-            this.btnExtratoCliente.Location = new System.Drawing.Point(91, 571);
-            this.btnExtratoCliente.Name = "btnExtratoCliente";
-            this.btnExtratoCliente.Size = new System.Drawing.Size(36, 34);
-            this.btnExtratoCliente.TabIndex = 245;
-            this.btnExtratoCliente.UseVisualStyleBackColor = true;
-            this.btnExtratoCliente.Click += new System.EventHandler(this.btnExtratoCliente_Click);
-            // 
-            // btnImprimirBoleto
-            // 
-            this.btnImprimirBoleto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnImprimirBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImprimirBoleto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnImprimirBoleto.FlatAppearance.BorderSize = 0;
-            this.btnImprimirBoleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnImprimirBoleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnImprimirBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirBoleto.IconChar = FontAwesome.Sharp.IconChar.Barcode;
-            this.btnImprimirBoleto.IconColor = System.Drawing.Color.DarkSlateGray;
-            this.btnImprimirBoleto.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnImprimirBoleto.IconSize = 38;
-            this.btnImprimirBoleto.Location = new System.Drawing.Point(133, 571);
-            this.btnImprimirBoleto.Name = "btnImprimirBoleto";
-            this.btnImprimirBoleto.Size = new System.Drawing.Size(36, 34);
-            this.btnImprimirBoleto.TabIndex = 246;
-            this.btnImprimirBoleto.UseVisualStyleBackColor = true;
-            this.btnImprimirBoleto.Click += new System.EventHandler(this.btnImprimirBoleto_Click);
-            // 
             // FrmContaReceberLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -987,7 +987,7 @@
             this.ClientSize = new System.Drawing.Size(1055, 668);
             this.Controls.Add(this.btnImprimirBoleto);
             this.Controls.Add(this.btnExtratoCliente);
-            this.Controls.Add(this.btnAbater);
+            this.Controls.Add(this.btnRetornoBoletos);
             this.Controls.Add(this.btnParcial);
             this.Controls.Add(this.lblCalculando);
             this.Controls.Add(this.panelTitleBar);
@@ -1058,7 +1058,7 @@
         private FontAwesome.Sharp.IconButton btnLimpar;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasEscritorioCobranca;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasSPC;
-        private RJ_UI.Classes.RJButton btnAbater;
+        private RJ_UI.Classes.RJButton btnRetornoBoletos;
         private FontAwesome.Sharp.IconButton btnExtratoCliente;
         private FontAwesome.Sharp.IconButton btnImprimirBoleto;
     }

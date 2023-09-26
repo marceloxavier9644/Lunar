@@ -49,6 +49,7 @@
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnPixQR = new FontAwesome.Sharp.IconButton();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.txtCodigoQrCode = new Lunar.RJ_UI.Classes.RJTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.comboBanco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsConta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ContaBancaria)).BeginInit();
@@ -326,12 +327,38 @@
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // txtCodigoQrCode
+            // 
+            this.txtCodigoQrCode.BackColor = System.Drawing.Color.White;
+            this.txtCodigoQrCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodigoQrCode.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodigoQrCode.BorderRadius = 8;
+            this.txtCodigoQrCode.BorderSize = 2;
+            this.txtCodigoQrCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoQrCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodigoQrCode.Location = new System.Drawing.Point(477, 18);
+            this.txtCodigoQrCode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigoQrCode.Multiline = false;
+            this.txtCodigoQrCode.Name = "txtCodigoQrCode";
+            this.txtCodigoQrCode.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodigoQrCode.PasswordChar = false;
+            this.txtCodigoQrCode.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtCodigoQrCode.PlaceholderText = "";
+            this.txtCodigoQrCode.ReadOnly = false;
+            this.txtCodigoQrCode.Size = new System.Drawing.Size(323, 29);
+            this.txtCodigoQrCode.TabIndex = 176;
+            this.txtCodigoQrCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodigoQrCode.Texts = "";
+            this.txtCodigoQrCode.UnderlinedStyle = false;
+            this.txtCodigoQrCode.Visible = false;
+            // 
             // FrmPix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(838, 402);
+            this.Controls.Add(this.txtCodigoQrCode);
             this.Controls.Add(this.btnPixQR);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label7);
@@ -386,5 +413,6 @@
         private System.Windows.Forms.Label label7;
         private RJ_UI.Classes.RJTextBox txtValor;
         private FontAwesome.Sharp.IconButton btnPixQR;
+        private RJ_UI.Classes.RJTextBox txtCodigoQrCode;
     }
 }

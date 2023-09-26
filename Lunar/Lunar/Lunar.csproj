@@ -1071,6 +1071,12 @@
     <Compile Include="Telas\Vendas\Adicionais\FrmAguarde.Designer.cs">
       <DependentUpon>FrmAguarde.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmAguarde2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmAguarde2.Designer.cs">
+      <DependentUpon>FrmAguarde2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Vendas\Adicionais\FrmDescontoTotal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1157,7 +1163,11 @@
     </Compile>
     <Compile Include="Utils\ConverterMoedaPorExtenso.cs" />
     <Compile Include="Utils\GalaxyPay_API\Charges.cs" />
+    <Compile Include="Utils\GalaxyPay_API\CustomerEdicao.cs" />
+    <Compile Include="Utils\GalaxyPay_API\CustomerRetorno.cs" />
+    <Compile Include="Utils\GalaxyPay_API\GalaxPay_RetornoPixGerado.cs" />
     <Compile Include="Utils\GalaxyPay_API\GalaxyPayApiIntegracao.cs" />
+    <Compile Include="Utils\GalaxyPay_API\GalaxyPay_RetornoStatusBoletos.cs" />
     <Compile Include="Utils\GalaxyPay_API\GerarBoletoGalaxyPay.cs" />
     <Compile Include="Utils\GalaxyPay_API\RetornoBoletoGerado.cs" />
     <Compile Include="Utils\GenericaDesktop.cs" />
@@ -1554,6 +1564,9 @@
     <EmbeddedResource Include="Telas\ValeFuncionarios\Vale.rdlc" />
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmAguarde.resx">
       <DependentUpon>FrmAguarde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmAguarde2.resx">
+      <DependentUpon>FrmAguarde2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmDescontoTotal.resx">
       <DependentUpon>FrmDescontoTotal.cs</DependentUpon>
@@ -2129,6 +2142,9 @@
     </PackageReference>
     <PackageReference Include="MetroFramework">
       <Version>1.2.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core">
+      <Version>5.2.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Graph.Core">
       <Version>1.4.0</Version>

@@ -1195,3 +1195,1149 @@
         <maxBackupFiles>10</maxBackupFiles>
     </log>
 </userConfiguration> 
+2023-09-25 10:17:28,233 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 10:17:28,264 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 15:39:17,382 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 15:39:17,414 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 16:39:36,648 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 16:39:36,664 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunica��o com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 16:47:21,770 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 16:47:21,802 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 16:47:22,005 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 16:48:36,858 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 16:48:36,880 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 16:48:37,128 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:01:40,250 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:01:40,269 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:01:40,502 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:09:02,179 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:09:02,203 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:09:02,421 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:11:46,605 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:11:46,625 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:11:46,885 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:13:32,805 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:13:32,825 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:13:33,034 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:16:02,782 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:16:02,801 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:16:03,026 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:18:42,755 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:18:42,771 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:18:43,037 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:20:53,736 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:20:53,755 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:20:53,975 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:25:55,030 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:25:55,061 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:25:55,326 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:31:17,442 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:31:17,463 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:31:17,680 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 17:40:14,069 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 17:40:14,092 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-25 17:40:14,323 - [ERROR] [main (App.java:69)] : A aplicacao nao sera inicializada pois ja esta em execucao ou houve algum erro ao criar o lock de SingleInstance 
+2023-09-25 18:54:43,386 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-25 18:54:43,403 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-26 09:28:04,079 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-26 09:28:04,111 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 
+2023-09-26 13:59:21,769 - [INFO ] [main (App.java:81)] : Carregando configuracoes da aplicacao 
+2023-09-26 13:59:21,835 - [INFO ] [main (AppConfiguration.java:139)] : Configuracao carregada
+<userConfiguration>
+    <usarServerTls>0</usarServerTls>
+    <chaveEquipamento>C090E960FD9FF31CAC87</chaveEquipamento>
+    <identificacaoEquipamento>NotebookDesenvolvimento</identificacaoEquipamento>
+    <tipoAmbiente>2</tipoAmbiente>
+    <atualizarAplicacaoAuto>1</atualizarAplicacaoAuto>
+    <exibeNotificacoes>0</exibeNotificacoes>
+    <exibeNotificacoesErros>0</exibeNotificacoesErros>
+    <atualizarAutomaticamente>1</atualizarAutomaticamente>
+    <assinaturaLocal>false</assinaturaLocal>
+    <contingenciaAuto>1</contingenciaAuto>
+    <contingenciaMotivoPadrao>Problema de Comunicação com a Sefaz</contingenciaMotivoPadrao>
+    <contingenciaFusoHorario>-03:00</contingenciaFusoHorario>
+    <contingenciaRetArquivoIndividual>0</contingenciaRetArquivoIndividual>
+    <infoViaContingenciaLida>0</infoViaContingenciaLida>
+    <imprimirUmaViaDeContingencia>0</imprimirUmaViaDeContingencia>
+    <tpCaminhoBackupDocumentos>CAMD</tpCaminhoBackupDocumentos>
+    <caminhoBackupDocumentos></caminhoBackupDocumentos>
+    <caminhoDocumentosContingencia></caminhoDocumentosContingencia>
+    <impressao>
+        <modoDeImpressao>0</modoDeImpressao>
+        <visualizarImpressao>0</visualizarImpressao>
+        <impressoraPorta></impressoraPorta>
+        <produtosLinhas>1</produtosLinhas>
+        <imprimeDescProduto>0</imprimeDescProduto>
+        <abreGaveta>0</abreGaveta>
+        <salvarPDF>1</salvarPDF>
+        <tamanhoPapel>80mm</tamanhoPapel>
+        <formatoLayout>1</formatoLayout>
+        <exibeMsgTimeoutImpressao>1</exibeMsgTimeoutImpressao>
+    </impressao>
+    <proxyServidor></proxyServidor>
+    <proxyPorta></proxyPorta>
+    <proxyUsuario></proxyUsuario>
+    <proxySenha></proxySenha>
+    <velocidadeInternet>2</velocidadeInternet>
+    <esperaProcessamentoArquivoRemessas>0</esperaProcessamentoArquivoRemessas>
+    <emissores>
+        <emissor>
+            <identificacao>TXT INFORMATICA LTDA</identificacao>
+            <cnpj>28145398000173</cnpj>
+            <CSCs>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>1</tipoAmbiente>
+                </codigo>
+                <codigo>
+                    <id>000001</id>
+                    <csc>337c66bdaaf2f08183968198bb839397</csc>
+                    <tipoAmbiente>2</tipoAmbiente>
+                </codigo>
+            </CSCs>
+        </emissor>
+    </emissores>
+    <log>
+        <level>DEBUG</level>
+        <maxFileSize>25MB</maxFileSize>
+        <maxBackupFiles>10</maxBackupFiles>
+    </log>
+</userConfiguration> 

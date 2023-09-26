@@ -2,6 +2,7 @@
 using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
+using Lunar.Telas.RelatoriosDiversos;
 using Lunar.Utils;
 using Lunar.Utils.GalaxyPay_API;
 using LunarBase.Classes;
@@ -22,6 +23,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
 
 namespace Lunar.Telas.ContasReceber
 {
@@ -41,6 +43,10 @@ namespace Lunar.Telas.ContasReceber
             InitializeComponent();
             txtVencimentoInicial.Value = DateTime.Now;
             txtVencimentoFinal.Value = DateTime.Now;
+            if(Sessao.parametroSistema.IntegracaoGalaxyPay == true)
+            {
+                btnRetornoBoletos.Enabled = true;
+            }
         }
         public FrmContaReceberLista(Pessoa pessoa)
         {
@@ -53,6 +59,10 @@ namespace Lunar.Telas.ContasReceber
             txtNumeroDocumento.Texts = "";
             chkAtivarVencimento.Checked = false;
             pesquisarContaReceber();
+            if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
+            {
+                btnRetornoBoletos.Enabled = true;
+            }
         }
         private void pesquisarContaReceber()
         {
@@ -103,11 +113,6 @@ namespace Lunar.Telas.ContasReceber
                 listaContaReceber = ContaReceberController.selecionarContaReceberPorSqlNativo(sql + orderBy);
                 if (listaContaReceber.Count > 0)
                 {
-                    //Aqui faz o calculo de juros e multas e joga na nova lista calculado listaContaReceberCalculado
-                    //Thread th = new Thread(() => calculaTotalNotas());
-                    //th.Start();
-                    //Application.DoEvents();
-                    //th.Join();
                     calculaTotalNotas();
                     sfDataPager1.DataSource = listaContaReceberCalculado;
 
@@ -940,7 +945,65 @@ namespace Lunar.Telas.ContasReceber
 
         private void btnAbater_Click(object sender, EventArgs e)
         {
-
+            DateTime dataInicial = DateTime.Now;
+            DateTime dataFinal = DateTime.Now;
+            Form formBackground = new Form();
+            using (FrmSelecionarData uu = new FrmSelecionarData("RETORNOBOLETOS"))
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                //formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                uu.Owner = formBackground;
+                switch (uu.showModalNovo(ref dataInicial, ref dataFinal))
+                {
+                    case DialogResult.Ignore:
+                        uu.Dispose();
+                        break;
+                    case DialogResult.OK:
+                        try
+                        {
+                            GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                            GalaxyPay_RetornoStatus retGalaxy = galaxyPayApiIntegracao.GalaxyPay_ListarTransacoes(dataInicial.ToString("yyyy-MM-dd"), dataFinal.ToString("yyyy-MM-dd"));
+                            if (retGalaxy != null)
+                            {
+                                if (retGalaxy.Transactions != null)
+                                {
+                                    if (retGalaxy.Transactions.Length > 0)
+                                    {
+                                        IList<ContaReceber> listaReceberRec = new List<ContaReceber>();
+                                        for (int x = 0; x < retGalaxy.Transactions.Length; x++)
+                                        {
+                                            if (retGalaxy.Transactions[x].chargeMyId != null)
+                                            {
+                                                ContaReceber contaReceber = new ContaReceber();
+                                                contaReceber.Id = int.Parse(retGalaxy.Transactions[x].chargeMyId);
+                                                contaReceber = (ContaReceber)Controller.getInstance().selecionar(contaReceber);
+                                                listaReceberRec.Add(contaReceber);
+                                            }
+                                            listaContaReceber = listaReceberRec;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            GenericaDesktop.ShowErro("Data Inválida");
+                        }
+                        break;
+                }
+                formBackground.Dispose();
+                //OpenChildForm(() => new FrmComissaoRelatorio01(), btnRelatorios);
+            }
         }
 
         private void btnImprimirBoleto_Click(object sender, EventArgs e)

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Lunar.Utils.GalaxyPay_API
 {
@@ -16,7 +17,7 @@ namespace Lunar.Utils.GalaxyPay_API
             if (!String.IsNullOrEmpty(tokenAcessoGalaxyPay))
             {
                 Thread.Sleep(3000);
-                string ret = galaxyPayApiIntegracao.GalaxyPay_ListarCliente(GenericaDesktop.RemoveCaracteres(pessoa.Cnpj.Trim()), pessoa);
+                Task<string> ret = galaxyPayApiIntegracao.GalaxyPay_ListarCliente(GenericaDesktop.RemoveCaracteres(pessoa.Cnpj.Trim()), pessoa);
                 if (ret.Equals("1"))
                 {
                     string retornoBoletos = "";

@@ -48,7 +48,9 @@
 		<many-to-one name="PlanoContaCompraRevenda" column="PLANOCONTACOMPRAREVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTACOMPRAREVENDA" lazy="false"/>
 		<many-to-one name="PlanoContaCompraImobilizado" column="PLANOCONTACOMPRAIMOBILIZADO" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTACOMPRAIMOBILIZADO" lazy="false"/>
 		<many-to-one name="PlanoContaUsoConsumo" column="PLANOCONTAUSOCONSUMO" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTAUSOCONSUMO" lazy="false"/>
+		<many-to-one name="ContaBancariaVinculadaApi" column="CONTABANCARIAVINCULADAAPI" class="LunarBase.Classes.ContaBancaria" not-null="false" foreign-key="FK_PARAMENTROS_CONTABANCARIAAPI" lazy="false"/>
 
+		
 
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>

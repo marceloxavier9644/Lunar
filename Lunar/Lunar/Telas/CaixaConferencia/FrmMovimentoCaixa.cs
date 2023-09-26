@@ -1141,7 +1141,7 @@ namespace Lunar.Telas.CaixaConferencia
 
             if (!String.IsNullOrEmpty(tokenAcessoGalaxyPay))
             {
-                string ret = galaxyPayApiIntegracao.GalaxyPay_ListarCliente("07497828622", pessoa);
+                Task<string> ret = galaxyPayApiIntegracao.GalaxyPay_ListarCliente("07497828622", pessoa);
                 if (ret.Equals("1"))
                 {
                     ContaReceberController contaReceberController = new ContaReceberController();

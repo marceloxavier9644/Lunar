@@ -25,6 +25,7 @@ namespace LunarBase.Classes
         private Nfe nfe;
         private int quantidade;
         private PessoaDependente pessoaDependente;
+        private string qrCodePix;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -66,6 +67,9 @@ namespace LunarBase.Classes
         [Anotacao("Dependente")]
         [OcultarEmGridsEPesquisas]
         public virtual PessoaDependente PessoaDependente { get => pessoaDependente; set => pessoaDependente = value; }
+        [Anotacao("QR CODE")]
+        [OcultarEmGridsEPesquisas]
+        public virtual string QrCodePix { get => qrCodePix; set => qrCodePix = value; }
 
         //Pre venda
         //Condicional

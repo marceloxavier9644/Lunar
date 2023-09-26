@@ -1,5 +1,6 @@
 ﻿using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
+using Lunar.Utils.GalaxyPay_API;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -236,23 +238,180 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 return valor.ToString();
             }
         }
+        //private async void gerarQRCODE()
+        //{
+        //    if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
+        //    {
+        //        //GenericaDesktop.ShowAlerta("Funcionalidade não configurada!");
+        //        String origem = "";
+        //        String idOrigem = "";
+        //        Pessoa pessoa = new Pessoa();
+        //        if (venda != null)
+        //        {
+        //            if (venda.Id > 0)
+        //            {
+        //                idOrigem = venda.Id.ToString();
+        //                origem = "VENDA";
+        //                if (venda.Cliente != null)
+        //                    pessoa = venda.Cliente;
+        //            }
+        //        }
+        //        if (ordemServico != null)
+        //        {
+        //            if (ordemServico.Id > 0)
+        //            {
+        //                idOrigem = ordemServico.Id.ToString();
+        //                origem = "ORDEMSERVICO";
+        //                if (ordemServico.Cliente != null)
+        //                    pessoa = ordemServico.Cliente;
+        //            }
+        //        }
+        //        if (pessoa != null)
+        //        {
+        //            if (pessoa.Id > 0)
+        //            {
+
+        //            }
+        //            else
+        //                pessoa = null;
+        //        }
+        //        if (pessoa != null)
+        //        {
+        //            if (!String.IsNullOrEmpty(pessoa.Cnpj))
+        //            {
+        //                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+        //                Task<string> linkGerado = galaxyPayApiIntegracao.GalaxyPay_GerarPix(origem, idOrigem, valorFaltante, pessoa);
+        //                    if (!String.IsNullOrEmpty(linkGerado.ToString()))
+        //                    {
+        //                        picQRCode.Image = GerarQRCode(190, 190, linkGerado.ToString());
+        //                //        //Simulacao de recebimento
+        //                //         verificaRecebimento(retorno, retornoToken["token"]);
+        //                    }
+        //            }
+        //            else
+        //                GenericaDesktop.ShowAlerta("O Cliente deve possuir CPF ou CNPJ cadastrado");
+        //        }
+        //        else
+        //            GenericaDesktop.ShowAlerta("Para gerar o QR CODE o sistema bancário exige os dados do cliente, selecione ou cadastre o cliente!");
+        //    }
+        //    else
+        //        GenericaDesktop.ShowAlerta("Funcionalidade não configurada!");
+        //}
+
         private async void gerarQRCODE()
         {
-            GenericaDesktop.ShowAlerta("Funcionalidade não configurada!");
-            //var retornoToken = generica.anagu_LoginPIX();
-            //if (retornoToken != null)
-            //{
-            //    string valor = formatMoedaNf(decimal.Parse(txtValor.Texts.Replace("R$ ", "")));
-            //    var retorno = generica.anagu_GerarPIX(venda.Cliente, venda, valor, retornoToken["token"]);
-            //    if (!String.IsNullOrEmpty(retorno))
-            //    {
-            //        picQRCode.Image = GerarQRCode(190, 190, retorno);
+            if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
+            {
+                // Crie uma instância do formulário de "Aguarde..."
+                FrmAguarde2 aguardeForm = new FrmAguarde2();
 
-            //        //Simulacao de recebimento
-            //         verificaRecebimento(retorno, retornoToken["token"]);
-            //    }
-            //}
+                try
+                {
+                    aguardeForm.SetMensagemAguarde("Aguarde... Processando...");
+
+                    // Exiba o formulário como um diálogo modal em uma nova thread
+                    Thread thread = new Thread(() =>
+                    {
+                        aguardeForm.ShowDialog();
+                    });
+
+                    thread.Start();
+
+                    String origem = "";
+                    String idOrigem = "";
+                    Pessoa pessoa = new Pessoa();
+
+                    if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
+                    {
+                        if (venda != null)
+                        {
+                            if (venda.Id > 0)
+                            {
+                                idOrigem = venda.Id.ToString();
+                                origem = "VENDA";
+                                if (venda.Cliente != null)
+                                    pessoa = venda.Cliente;
+                            }
+                        }
+                        if (ordemServico != null)
+                        {
+                            if (ordemServico.Id > 0)
+                            {
+                                idOrigem = ordemServico.Id.ToString();
+                                origem = "ORDEMSERVICO";
+                                if (ordemServico.Cliente != null)
+                                    pessoa = ordemServico.Cliente;
+                            }
+                        }
+                        if (pessoa != null)
+                        {
+                            if (pessoa.Id > 0)
+                            {
+
+                            }
+                            else
+                                pessoa = null;
+                        }
+
+                        if (pessoa != null)
+                        {
+                            if (!String.IsNullOrEmpty(pessoa.Cnpj))
+                            {
+                                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+
+                                // Inicie a tarefa assíncrona
+                                string linkGerado = await galaxyPayApiIntegracao.GalaxyPay_GerarPix(origem, idOrigem, valorFaltante, pessoa);
+
+                                // Aguarde a conclusão da tarefa assíncrona
+                                if (!String.IsNullOrEmpty(linkGerado))
+                                {
+                                    picQRCode.Image = GerarQRCode(190, 190, linkGerado);
+                                    txtCodigoQrCode.Texts = linkGerado;
+                                    txtCodigoQrCode.Visible = true;
+                                    if (origem.Equals("VENDA"))
+                                    {
+                                        venda.QrCodePix = linkGerado;
+                                        Controller.getInstance().salvar(venda);
+                                    }
+                                    else if (origem.Equals("ORDEMSERVICO"))
+                                    {
+                                        ordemServico.QrCodePix = linkGerado;
+                                        Controller.getInstance().salvar(ordemServico);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                GenericaDesktop.ShowAlerta("O Cliente deve possuir CPF ou CNPJ cadastrado");
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                        GenericaDesktop.ShowAlerta("Funcionalidade não configurada! Para gerar o QR CODE é necessário configurar a integração bancária, entre em contato com o Suporte Técnico!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Lide com exceções, se houver alguma
+                    GenericaDesktop.ShowErro(ex.Message);
+                }
+                finally
+                {
+                    // Feche o formulário de "Aguarde..." usando Invoke
+                    aguardeForm.Invoke(new Action(() =>
+                    {
+                        aguardeForm.Close();
+                    }));
+                }
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Funcionalidade não configurada!");
+            }
         }
+
 
         private async Task verificaRecebimento(string qrCode, string token)
         {

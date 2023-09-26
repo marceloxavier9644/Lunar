@@ -18,6 +18,14 @@ namespace Lunar.Telas.Vendas.Adicionais
             nf = nfe;
         }
 
+        public FrmAguarde()
+        {
+            InitializeComponent();
+            circularProgressBar1.Value = 0;
+            circularProgressBar1.Minimum = 0;
+            circularProgressBar1.Maximum = 100;
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblStatus.Visible = true;

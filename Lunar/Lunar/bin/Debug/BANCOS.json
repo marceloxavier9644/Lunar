@@ -1065,6 +1065,11 @@
     "CodIspb": 91884981
   },
   {
+    "CodBanco": 999,
+    "Descricao": "GALAXYPAY",
+    "CodIspb": 00000000
+  },
+  {
     "CodBanco": 117,
     "Descricao": "ADVANCED CC LTDA",
     "CodIspb": 92856905

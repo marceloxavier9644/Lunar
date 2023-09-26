@@ -926,7 +926,7 @@ namespace Lunar.Telas.Principal
             DateTime dataInicial = DateTime.Now;
             DateTime dataFinal = DateTime.Now;
             Form formBackground = new Form();
-            using (FrmSelecionarData uu = new FrmSelecionarData())
+            using (FrmSelecionarData uu = new FrmSelecionarData("COMISSAO"))
             {
                 formBackground.StartPosition = FormStartPosition.Manual;
                 //formBackground.FormBorderStyle = FormBorderStyle.None;

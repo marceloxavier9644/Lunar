@@ -1,7 +1,7 @@
 ﻿namespace Lunar.Utils.GalaxyPay_API
 {
-    public class RetornoBoletoGerado 
-    { 
+    public class RetornoBoletoGerado
+    {
         public class RetBoleto
         {
             public bool type { get; set; }
@@ -94,5 +94,9 @@
             public bool sent { get; set; }
             public object approved { get; set; }
         }
+
+
+       
+
     }
 }

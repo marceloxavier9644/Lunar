@@ -50,6 +50,7 @@ namespace LunarBase.Classes
         private string tokenGalaxyPay;
         private string idGalaxyPay;
         private bool integracaoGalaxyPay;
+        private ContaBancaria contaBancariaVinculadaApi;
         public virtual int Id { get => id; set => id = value; }
         public virtual string UltNsu { get => ultNsu; set => ultNsu = value; }
         public virtual string ProximoNumeroNFCe { get => proximoNumeroNFCe; set => proximoNumeroNFCe = value; }
@@ -92,5 +93,6 @@ namespace LunarBase.Classes
         public virtual string TokenGalaxyPay { get => tokenGalaxyPay; set => tokenGalaxyPay = value; }
         public virtual string IdGalaxyPay { get => idGalaxyPay; set => idGalaxyPay = value; }
         public virtual bool IntegracaoGalaxyPay { get => integracaoGalaxyPay; set => integracaoGalaxyPay = value; }
+        public virtual ContaBancaria ContaBancariaVinculadaApi { get => contaBancariaVinculadaApi; set => contaBancariaVinculadaApi = value; }
     }
 }

@@ -20,13 +20,21 @@ namespace Lunar.Telas.RelatoriosDiversos
             }
             return DialogResult;
         }
-        public FrmSelecionarData()
+        public FrmSelecionarData(string origem)
         {
             InitializeComponent();
-            string primeiroDiaMesAnterior = string.Concat("01/", DateTime.Now.AddMonths(-1).ToString("MM/yyyy"));
-            DateTime ultimoDiaMesAnterior = DateTime.Parse(string.Concat("01/", DateTime.Now.ToString("MM/yyyy")));
-            txtDataInicial.Value = DateTime.Parse(primeiroDiaMesAnterior);
-            txtDataFinal.Value = ultimoDiaMesAnterior.AddDays(-1);
+            if (origem.Equals("COMISSAO"))
+            {
+                string primeiroDiaMesAnterior = string.Concat("01/", DateTime.Now.AddMonths(-1).ToString("MM/yyyy"));
+                DateTime ultimoDiaMesAnterior = DateTime.Parse(string.Concat("01/", DateTime.Now.ToString("MM/yyyy")));
+                txtDataInicial.Value = DateTime.Parse(primeiroDiaMesAnterior);
+                txtDataFinal.Value = ultimoDiaMesAnterior.AddDays(-1);
+            }
+            if (origem.Equals("RETORNOBOLETOS"))
+            {
+                txtDataInicial.Value = DateTime.Now.AddDays(-1);
+                txtDataFinal.Value = DateTime.Now;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

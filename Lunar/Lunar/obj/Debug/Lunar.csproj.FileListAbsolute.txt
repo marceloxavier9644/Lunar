@@ -697,3 +697,5 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.OrdensDeServico.FrmHi
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasReceber.Reports.FrmExtratoCliente.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.FastReportTestes.FrmFastTest.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasPagar.Relatorios.FrmRelatorioContaPagar.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\System.Web.Http.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Vendas.Adicionais.FrmAguarde2.resources
