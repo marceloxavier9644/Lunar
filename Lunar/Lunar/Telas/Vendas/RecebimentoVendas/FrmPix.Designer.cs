@@ -32,7 +32,6 @@
             this.lblFaltante = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBanco = new Syncfusion.WinForms.ListView.SfComboBox();
             this.txtData = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.label2 = new System.Windows.Forms.Label();
             this.dsConta = new System.Data.DataSet();
@@ -45,12 +44,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.picQRCode = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtValor = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnPixQR = new FontAwesome.Sharp.IconButton();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.btnCopiaQr = new FontAwesome.Sharp.IconButton();
+            this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
+            this.txtCodContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCodigoQrCode = new Lunar.RJ_UI.Classes.RJTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBanco)).BeginInit();
+            this.txtValor = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsConta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ContaBancaria)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -100,35 +102,6 @@
             this.label6.Size = new System.Drawing.Size(137, 24);
             this.label6.TabIndex = 168;
             this.label6.Text = "Conta Bancária";
-            // 
-            // comboBanco
-            // 
-            this.comboBanco.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBanco.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.comboBanco.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBanco.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
-            this.comboBanco.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.comboBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBanco.Location = new System.Drawing.Point(84, 280);
-            this.comboBanco.MaxDropDownItems = 15;
-            this.comboBanco.Name = "comboBanco";
-            this.comboBanco.Size = new System.Drawing.Size(349, 28);
-            this.comboBanco.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.comboBanco.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
-            this.comboBanco.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
-            this.comboBanco.Style.DropDownStyle.BorderColor = System.Drawing.Color.White;
-            this.comboBanco.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
-            this.comboBanco.Style.EditorStyle.BorderColor = System.Drawing.Color.White;
-            this.comboBanco.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
-            this.comboBanco.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
-            this.comboBanco.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBanco.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBanco.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.comboBanco.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBanco.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBanco.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
-            this.comboBanco.TabIndex = 166;
-            this.comboBanco.ToolTipOption.ShadowVisible = false;
             // 
             // txtData
             // 
@@ -242,6 +215,160 @@
             this.label7.TabIndex = 173;
             this.label7.Text = "[F3]";
             // 
+            // btnPixQR
+            // 
+            this.btnPixQR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPixQR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPixQR.FlatAppearance.BorderSize = 0;
+            this.btnPixQR.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPixQR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPixQR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPixQR.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPixQR.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
+            this.btnPixQR.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
+            this.btnPixQR.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPixQR.IconSize = 35;
+            this.btnPixQR.Location = new System.Drawing.Point(386, 139);
+            this.btnPixQR.Name = "btnPixQR";
+            this.btnPixQR.Size = new System.Drawing.Size(47, 31);
+            this.btnPixQR.TabIndex = 175;
+            this.btnPixQR.TabStop = false;
+            this.btnPixQR.UseVisualStyleBackColor = true;
+            this.btnPixQR.Click += new System.EventHandler(this.btnPixQR_Click);
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFechar.FlatAppearance.BorderSize = 0;
+            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFechar.Image = global::Lunar.Properties.Resources.CloseDark;
+            this.btnFechar.Location = new System.Drawing.Point(812, -3);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(30, 31);
+            this.btnFechar.TabIndex = 156;
+            this.btnFechar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            // 
+            // btnCopiaQr
+            // 
+            this.btnCopiaQr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCopiaQr.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCopiaQr.FlatAppearance.BorderSize = 0;
+            this.btnCopiaQr.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCopiaQr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCopiaQr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopiaQr.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopiaQr.IconChar = FontAwesome.Sharp.IconChar.Copy;
+            this.btnCopiaQr.IconColor = System.Drawing.Color.Salmon;
+            this.btnCopiaQr.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnCopiaQr.IconSize = 35;
+            this.btnCopiaQr.Location = new System.Drawing.Point(766, 18);
+            this.btnCopiaQr.Name = "btnCopiaQr";
+            this.btnCopiaQr.Size = new System.Drawing.Size(33, 31);
+            this.btnCopiaQr.TabIndex = 177;
+            this.btnCopiaQr.TabStop = false;
+            this.btnCopiaQr.UseVisualStyleBackColor = true;
+            this.btnCopiaQr.Visible = false;
+            this.btnCopiaQr.Click += new System.EventHandler(this.btnCopiaQr_Click);
+            // 
+            // btnPesquisaContaBancaria
+            // 
+            this.btnPesquisaContaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaContaBancaria.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaContaBancaria.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaContaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaContaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaContaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaContaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaContaBancaria.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaContaBancaria.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaContaBancaria.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaContaBancaria.IconSize = 38;
+            this.btnPesquisaContaBancaria.Location = new System.Drawing.Point(297, 282);
+            this.btnPesquisaContaBancaria.Name = "btnPesquisaContaBancaria";
+            this.btnPesquisaContaBancaria.Size = new System.Drawing.Size(40, 34);
+            this.btnPesquisaContaBancaria.TabIndex = 260;
+            this.btnPesquisaContaBancaria.UseVisualStyleBackColor = true;
+            // 
+            // txtCodContaBancaria
+            // 
+            this.txtCodContaBancaria.BackColor = System.Drawing.Color.White;
+            this.txtCodContaBancaria.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodContaBancaria.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodContaBancaria.BorderRadius = 8;
+            this.txtCodContaBancaria.BorderSize = 2;
+            this.txtCodContaBancaria.Enabled = false;
+            this.txtCodContaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodContaBancaria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodContaBancaria.Location = new System.Drawing.Point(344, 279);
+            this.txtCodContaBancaria.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodContaBancaria.Multiline = false;
+            this.txtCodContaBancaria.Name = "txtCodContaBancaria";
+            this.txtCodContaBancaria.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodContaBancaria.PasswordChar = false;
+            this.txtCodContaBancaria.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodContaBancaria.PlaceholderText = "";
+            this.txtCodContaBancaria.ReadOnly = false;
+            this.txtCodContaBancaria.Size = new System.Drawing.Size(89, 37);
+            this.txtCodContaBancaria.TabIndex = 261;
+            this.txtCodContaBancaria.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodContaBancaria.Texts = "";
+            this.txtCodContaBancaria.UnderlinedStyle = false;
+            // 
+            // txtContaBancaria
+            // 
+            this.txtContaBancaria.BackColor = System.Drawing.Color.White;
+            this.txtContaBancaria.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtContaBancaria.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtContaBancaria.BorderRadius = 8;
+            this.txtContaBancaria.BorderSize = 2;
+            this.txtContaBancaria.Enabled = false;
+            this.txtContaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContaBancaria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtContaBancaria.Location = new System.Drawing.Point(84, 279);
+            this.txtContaBancaria.Margin = new System.Windows.Forms.Padding(4);
+            this.txtContaBancaria.Multiline = false;
+            this.txtContaBancaria.Name = "txtContaBancaria";
+            this.txtContaBancaria.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtContaBancaria.PasswordChar = false;
+            this.txtContaBancaria.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtContaBancaria.PlaceholderText = "";
+            this.txtContaBancaria.ReadOnly = false;
+            this.txtContaBancaria.Size = new System.Drawing.Size(206, 37);
+            this.txtContaBancaria.TabIndex = 258;
+            this.txtContaBancaria.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtContaBancaria.Texts = "";
+            this.txtContaBancaria.UnderlinedStyle = false;
+            // 
+            // txtCodigoQrCode
+            // 
+            this.txtCodigoQrCode.BackColor = System.Drawing.Color.White;
+            this.txtCodigoQrCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodigoQrCode.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodigoQrCode.BorderRadius = 8;
+            this.txtCodigoQrCode.BorderSize = 2;
+            this.txtCodigoQrCode.Enabled = false;
+            this.txtCodigoQrCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoQrCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodigoQrCode.Location = new System.Drawing.Point(477, 18);
+            this.txtCodigoQrCode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigoQrCode.Multiline = false;
+            this.txtCodigoQrCode.Name = "txtCodigoQrCode";
+            this.txtCodigoQrCode.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodigoQrCode.PasswordChar = false;
+            this.txtCodigoQrCode.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtCodigoQrCode.PlaceholderText = "";
+            this.txtCodigoQrCode.ReadOnly = false;
+            this.txtCodigoQrCode.Size = new System.Drawing.Size(282, 29);
+            this.txtCodigoQrCode.TabIndex = 176;
+            this.txtCodigoQrCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodigoQrCode.Texts = "";
+            this.txtCodigoQrCode.UnderlinedStyle = false;
+            this.txtCodigoQrCode.Visible = false;
+            // 
             // txtValor
             // 
             this.txtValor.BackColor = System.Drawing.Color.White;
@@ -290,74 +417,16 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // btnPixQR
-            // 
-            this.btnPixQR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPixQR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPixQR.FlatAppearance.BorderSize = 0;
-            this.btnPixQR.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPixQR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPixQR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPixQR.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixQR.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
-            this.btnPixQR.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
-            this.btnPixQR.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPixQR.IconSize = 35;
-            this.btnPixQR.Location = new System.Drawing.Point(386, 139);
-            this.btnPixQR.Name = "btnPixQR";
-            this.btnPixQR.Size = new System.Drawing.Size(47, 31);
-            this.btnPixQR.TabIndex = 175;
-            this.btnPixQR.TabStop = false;
-            this.btnPixQR.UseVisualStyleBackColor = true;
-            this.btnPixQR.Click += new System.EventHandler(this.btnPixQR_Click);
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFechar.FlatAppearance.BorderSize = 0;
-            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
-            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFechar.Image = global::Lunar.Properties.Resources.CloseDark;
-            this.btnFechar.Location = new System.Drawing.Point(812, -3);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(30, 31);
-            this.btnFechar.TabIndex = 156;
-            this.btnFechar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFechar.UseVisualStyleBackColor = true;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            // 
-            // txtCodigoQrCode
-            // 
-            this.txtCodigoQrCode.BackColor = System.Drawing.Color.White;
-            this.txtCodigoQrCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodigoQrCode.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodigoQrCode.BorderRadius = 8;
-            this.txtCodigoQrCode.BorderSize = 2;
-            this.txtCodigoQrCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoQrCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodigoQrCode.Location = new System.Drawing.Point(477, 18);
-            this.txtCodigoQrCode.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodigoQrCode.Multiline = false;
-            this.txtCodigoQrCode.Name = "txtCodigoQrCode";
-            this.txtCodigoQrCode.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCodigoQrCode.PasswordChar = false;
-            this.txtCodigoQrCode.PlaceholderColor = System.Drawing.Color.Black;
-            this.txtCodigoQrCode.PlaceholderText = "";
-            this.txtCodigoQrCode.ReadOnly = false;
-            this.txtCodigoQrCode.Size = new System.Drawing.Size(323, 29);
-            this.txtCodigoQrCode.TabIndex = 176;
-            this.txtCodigoQrCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCodigoQrCode.Texts = "";
-            this.txtCodigoQrCode.UnderlinedStyle = false;
-            this.txtCodigoQrCode.Visible = false;
-            // 
             // FrmPix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(838, 402);
+            this.Controls.Add(this.txtCodContaBancaria);
+            this.Controls.Add(this.btnPesquisaContaBancaria);
+            this.Controls.Add(this.txtContaBancaria);
+            this.Controls.Add(this.btnCopiaQr);
             this.Controls.Add(this.txtCodigoQrCode);
             this.Controls.Add(this.btnPixQR);
             this.Controls.Add(this.txtValor);
@@ -365,7 +434,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBanco);
             this.Controls.Add(this.txtData);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblFaltante);
@@ -379,7 +447,6 @@
             this.Text = "FrmPix";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmPix_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPix_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.comboBanco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsConta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ContaBancaria)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -397,7 +464,6 @@
         private System.Windows.Forms.Label lblFaltante;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private Syncfusion.WinForms.ListView.SfComboBox comboBanco;
         private Syncfusion.WinForms.Input.SfDateTimeEdit txtData;
         private System.Windows.Forms.Label label2;
         private RJ_UI.Classes.RJButton btnConfirmar;
@@ -414,5 +480,9 @@
         private RJ_UI.Classes.RJTextBox txtValor;
         private FontAwesome.Sharp.IconButton btnPixQR;
         private RJ_UI.Classes.RJTextBox txtCodigoQrCode;
+        private FontAwesome.Sharp.IconButton btnCopiaQr;
+        private RJ_UI.Classes.RJTextBox txtCodContaBancaria;
+        private FontAwesome.Sharp.IconButton btnPesquisaContaBancaria;
+        private RJ_UI.Classes.RJTextBox txtContaBancaria;
     }
 }

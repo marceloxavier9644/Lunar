@@ -17,6 +17,7 @@ using static Lunar.Utils.GalaxyPay_API.CustomerRetorno;
 using static Lunar.Utils.GalaxyPay_API.GalaxPay_RetornoPixGerado;
 using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
 using static Lunar.Utils.GalaxyPay_API.RetornoBoletoGerado;
+using static Lunar.Utils.GalaxyPay_API.RetornoPagamentoPix;
 
 namespace Lunar.Utils.GalaxyPay_API
 {
@@ -650,6 +651,32 @@ namespace Lunar.Utils.GalaxyPay_API
                 return null;
             }
         }
+
+        public async Task<GalaxPayRetornoPix> GalaxyPay_ListarRetornoTransacoesPixAsync(string dataInicial, string dataFinal, string myIdTransacao)
+        {
+            try
+            {
+                String url = "https://api.galaxpay.com.br/v2/transactions?chargeMyIds=" + myIdTransacao + "&status=payedPix&startAt=0&limit=100";
+                var requisicaoWeb = WebRequest.CreateHttp(url);
+                requisicaoWeb.Method = "GET";
+                requisicaoWeb.Headers.Add("Authorization", "Bearer " + tokenAcesso);
+
+                using (var httpResponse = (HttpWebResponse)await requisicaoWeb.GetResponseAsync())
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = await streamReader.ReadToEndAsync();
+                    GalaxPayRetornoPix retStatus = JsonConvert.DeserializeObject<GalaxPayRetornoPix>(result);
+                    return retStatus;
+                }
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowAlerta("Erro ao ler retorno do sistema Galaxy Pay: " + err.Message);
+                return null;
+            }
+        }
+
+
         public class RetPDF
         {
             public Boleto Boleto { get; set; }

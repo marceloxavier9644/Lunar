@@ -8,14 +8,22 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
+using static Lunar.Utils.GalaxyPay_API.RetornoPagamentoPix;
 
 namespace Lunar.Telas.Vendas.RecebimentoVendas
 {
     public partial class FrmPix : Form
     {
+        bool pagamentoConcluido = false;
+        bool qrSucesso = false;
+        GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+        String origem = "";
+        String idOrigem = "";
         bool passou = false;
         decimal valorFaltante = 0;
         bool showModal = false;
@@ -61,17 +69,12 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             IList<ContaBancaria> lista = ContaBancariaController.selecionarTodasContas();
             if (lista.Count > 0)
             {
-                foreach (ContaBancaria contaBancaria in lista)
+                if (Sessao.parametroSistema.ContaBancariaVinculadaApi != null)
                 {
-                    DataRow drs = dsConta.Tables[0].NewRow();
-                    drs.SetField("ID", contaBancaria.Id);
-                    drs.SetField("CONTA", contaBancaria.Descricao);
-                    dsConta.Tables[0].Rows.Add(drs);
+
+                    txtCodContaBancaria.Texts = Sessao.parametroSistema.ContaBancariaVinculadaApi.Id.ToString();
+                    txtContaBancaria.Texts = Sessao.parametroSistema.ContaBancariaVinculadaApi.Descricao;
                 }
-                comboBanco.DisplayMember = "CONTA";
-                comboBanco.ValueMember = "ID";
-                comboBanco.DataSource = dsConta.Tables[0];
-                comboBanco.SelectedIndex = 0;
             }
             else
             {
@@ -93,17 +96,12 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             IList<ContaBancaria> lista = ContaBancariaController.selecionarTodasContas();
             if (lista.Count > 0)
             {
-                foreach (ContaBancaria contaBancaria in lista)
+                if (Sessao.parametroSistema.ContaBancariaVinculadaApi != null)
                 {
-                    DataRow drs = dsConta.Tables[0].NewRow();
-                    drs.SetField("ID", contaBancaria.Id);
-                    drs.SetField("CONTA", contaBancaria.Descricao);
-                    dsConta.Tables[0].Rows.Add(drs);
+
+                    txtCodContaBancaria.Texts = Sessao.parametroSistema.ContaBancariaVinculadaApi.Id.ToString();
+                    txtContaBancaria.Texts = Sessao.parametroSistema.ContaBancariaVinculadaApi.Descricao;
                 }
-                comboBanco.DisplayMember = "CONTA";
-                comboBanco.ValueMember = "ID";
-                comboBanco.DataSource = dsConta.Tables[0];
-                comboBanco.SelectedIndex = 0;
             }
             else
             {
@@ -145,7 +143,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                         vendaFormaPagamento.ValorRecebido = valor;
 
                         ContaBancaria contaBancaria = new ContaBancaria();
-                        contaBancaria.Id = int.Parse(comboBanco.SelectedValue.ToString());
+                        contaBancaria.Id = int.Parse(txtCodContaBancaria.Texts.ToString());
                         vendaFormaPagamento.ContaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
 
                         vendaFormaPagamento.Cartao = false;
@@ -180,7 +178,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     {
                         this.fp.Id = 3;
                         this.fp = (FormaPagamento)Controller.getInstance().selecionar(fp);
-                        this.contaBancaria.Id = int.Parse(comboBanco.SelectedValue.ToString());
+                        this.contaBancaria.Id = int.Parse(txtCodContaBancaria.Texts.ToString());
                         this.contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
                         this.valor = decimal.Parse(txtValor.Texts);
                         this.dataPix = DateTime.Parse(txtData.Value.ToString());
@@ -238,68 +236,10 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 return valor.ToString();
             }
         }
-        //private async void gerarQRCODE()
-        //{
-        //    if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
-        //    {
-        //        //GenericaDesktop.ShowAlerta("Funcionalidade não configurada!");
-        //        String origem = "";
-        //        String idOrigem = "";
-        //        Pessoa pessoa = new Pessoa();
-        //        if (venda != null)
-        //        {
-        //            if (venda.Id > 0)
-        //            {
-        //                idOrigem = venda.Id.ToString();
-        //                origem = "VENDA";
-        //                if (venda.Cliente != null)
-        //                    pessoa = venda.Cliente;
-        //            }
-        //        }
-        //        if (ordemServico != null)
-        //        {
-        //            if (ordemServico.Id > 0)
-        //            {
-        //                idOrigem = ordemServico.Id.ToString();
-        //                origem = "ORDEMSERVICO";
-        //                if (ordemServico.Cliente != null)
-        //                    pessoa = ordemServico.Cliente;
-        //            }
-        //        }
-        //        if (pessoa != null)
-        //        {
-        //            if (pessoa.Id > 0)
-        //            {
 
-        //            }
-        //            else
-        //                pessoa = null;
-        //        }
-        //        if (pessoa != null)
-        //        {
-        //            if (!String.IsNullOrEmpty(pessoa.Cnpj))
-        //            {
-        //                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
-        //                Task<string> linkGerado = galaxyPayApiIntegracao.GalaxyPay_GerarPix(origem, idOrigem, valorFaltante, pessoa);
-        //                    if (!String.IsNullOrEmpty(linkGerado.ToString()))
-        //                    {
-        //                        picQRCode.Image = GerarQRCode(190, 190, linkGerado.ToString());
-        //                //        //Simulacao de recebimento
-        //                //         verificaRecebimento(retorno, retornoToken["token"]);
-        //                    }
-        //            }
-        //            else
-        //                GenericaDesktop.ShowAlerta("O Cliente deve possuir CPF ou CNPJ cadastrado");
-        //        }
-        //        else
-        //            GenericaDesktop.ShowAlerta("Para gerar o QR CODE o sistema bancário exige os dados do cliente, selecione ou cadastre o cliente!");
-        //    }
-        //    else
-        //        GenericaDesktop.ShowAlerta("Funcionalidade não configurada!");
-        //}
-
-        private async void gerarQRCODE()
+        private async Task gerarQRCODE()
         {
+            qrSucesso = false;
             if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
             {
                 // Crie uma instância do formulário de "Aguarde..."
@@ -317,8 +257,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
 
                     thread.Start();
 
-                    String origem = "";
-                    String idOrigem = "";
+
                     Pessoa pessoa = new Pessoa();
 
                     if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
@@ -357,17 +296,17 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                         {
                             if (!String.IsNullOrEmpty(pessoa.Cnpj))
                             {
-                                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
-
                                 // Inicie a tarefa assíncrona
                                 string linkGerado = await galaxyPayApiIntegracao.GalaxyPay_GerarPix(origem, idOrigem, valorFaltante, pessoa);
 
                                 // Aguarde a conclusão da tarefa assíncrona
                                 if (!String.IsNullOrEmpty(linkGerado))
                                 {
+                                    qrSucesso = true;
                                     picQRCode.Image = GerarQRCode(190, 190, linkGerado);
                                     txtCodigoQrCode.Texts = linkGerado;
                                     txtCodigoQrCode.Visible = true;
+                                    btnCopiaQr.Visible = true;
                                     if (origem.Equals("VENDA"))
                                     {
                                         venda.QrCodePix = linkGerado;
@@ -403,26 +342,12 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     aguardeForm.Invoke(new Action(() =>
                     {
                         aguardeForm.Close();
-                    }));
+                    }));                   
                 }
             }
             else
             {
                 GenericaDesktop.ShowAlerta("Funcionalidade não configurada!");
-            }
-        }
-
-
-        private async Task verificaRecebimento(string qrCode, string token)
-        {
-            await Task.Delay(5000);
-            //Verificar retorno
-            string resultPagamento = generica.anagu_SimularRecebimentoPix(qrCode, token);
-            if (resultPagamento.Contains("Pagamento efetuado com sucesso"))
-            {
-                picQRCode.Image = Lunar.Properties.Resources.confirmacao;
-                await Task.Delay(2000);
-                btnConfirmar.PerformClick();
             }
         }
 
@@ -441,17 +366,6 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             {
                 throw;
             }
-        }
-
-        private void MostrarTelaCarregando()
-        {
-            //_FormCarregando = new FrmAguarde("5000");
-            //_FormCarregando.TopMost = true;
-            //_FormCarregando.ShowDialog();
-        }
-        private void btnPixQR_Click(object sender, EventArgs e)
-        {
-            gerarQRCODE();
         }
 
         private void txtValor_Leave(object sender, EventArgs e)
@@ -475,6 +389,72 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             generica.SoNumeroEVirgula(txtValor.Texts, e);
             if (e.KeyChar == 13)
                 btnConfirmar.PerformClick();
+        }
+
+        private async void btnPixQR_Click(object sender, EventArgs e)
+        {
+            await VerificarPagamentoPixAsync();
+            if (pagamentoConcluido == true)
+                btnConfirmar.PerformClick();
+        }
+
+        private async Task VerificarPagamentoPixAsync()
+        {
+            origem = "";
+            idOrigem = "";
+            txtValor.Enabled = false;
+            btnConfirmar.Enabled = false;
+
+            // Gere o QR code para pagamento Pix
+            await gerarQRCODE();
+
+            if (qrSucesso == true)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(10));
+
+                pagamentoConcluido = false;
+
+                while (!pagamentoConcluido)
+                {
+                    // Espere um curto período antes de iniciar a verificação
+                    // Verifique o status da transação Pix
+                    GalaxPayRetornoPix galaxyPay_RetornoStatus = await galaxyPayApiIntegracao.GalaxyPay_ListarRetornoTransacoesPixAsync(DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"), origem + "_" + idOrigem);
+
+                    // Aqui você pode verificar o status da transação e tomar medidas com base nele
+                    // Por exemplo, se o status for "payedPix", o pagamento foi concluído com sucesso
+                    // Você pode definir a lógica apropriada para processar o pagamento aqui
+
+                    if (galaxyPay_RetornoStatus != null)
+                    {
+                        if (galaxyPay_RetornoStatus.totalQtdFoundInPage > 0)
+                        {
+                            foreach (var transaction in galaxyPay_RetornoStatus.Transactions)
+                            {
+                                if (transaction.status == "payedPix")
+                                {
+                                    // O pagamento Pix foi concluído
+                                    GenericaDesktop.ShowInfo("Pagamento Confirmado!");
+                                    pagamentoConcluido = true;
+                                    break; // Saia do loop
+                                }
+                            }
+                        }
+                    }
+
+                    if (!pagamentoConcluido)
+                    {
+                        // Aguarde um curto período antes de verificar novamente
+                        await Task.Delay(TimeSpan.FromSeconds(6));
+                    }
+                }
+            }
+
+            // O pagamento Pix foi concluído, você pode executar a lógica adicional aqui
+        }
+
+        private void btnCopiaQr_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtCodigoQrCode.Texts);
         }
     }
 }

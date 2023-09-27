@@ -50,6 +50,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnVerificarPix = new FontAwesome.Sharp.IconButton();
             this.btnPesquisaVender = new FontAwesome.Sharp.IconButton();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -130,6 +131,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnVerificarPix);
             this.groupBox1.Controls.Add(this.btnPesquisaVender);
             this.groupBox1.Controls.Add(this.autoLabel6);
             this.groupBox1.Controls.Add(this.txtVendedor);
@@ -151,6 +153,27 @@
             this.groupBox1.Size = new System.Drawing.Size(1001, 180);
             this.groupBox1.TabIndex = 244;
             this.groupBox1.TabStop = false;
+            // 
+            // btnVerificarPix
+            // 
+            this.btnVerificarPix.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerificarPix.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnVerificarPix.FlatAppearance.BorderSize = 0;
+            this.btnVerificarPix.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnVerificarPix.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnVerificarPix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerificarPix.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerificarPix.IconChar = FontAwesome.Sharp.IconChar.RodSnake;
+            this.btnVerificarPix.IconColor = System.Drawing.Color.SlateGray;
+            this.btnVerificarPix.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnVerificarPix.IconSize = 38;
+            this.btnVerificarPix.Location = new System.Drawing.Point(956, 140);
+            this.btnVerificarPix.Name = "btnVerificarPix";
+            this.btnVerificarPix.Size = new System.Drawing.Size(36, 34);
+            this.btnVerificarPix.TabIndex = 247;
+            this.btnVerificarPix.UseVisualStyleBackColor = true;
+            this.btnVerificarPix.Visible = false;
+            this.btnVerificarPix.Click += new System.EventHandler(this.btnVerificarPix_Click);
             // 
             // btnPesquisaVender
             // 
@@ -1025,5 +1048,6 @@
         private Syncfusion.WinForms.DataGrid.SfDataGrid gridProduto;
         private FontAwesome.Sharp.IconButton iconeTicket;
         private RJ_UI.Classes.RJButton btnTicket;
+        private FontAwesome.Sharp.IconButton btnVerificarPix;
     }
 }

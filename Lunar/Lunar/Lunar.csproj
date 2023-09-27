@@ -1170,6 +1170,7 @@
     <Compile Include="Utils\GalaxyPay_API\GalaxyPay_RetornoStatusBoletos.cs" />
     <Compile Include="Utils\GalaxyPay_API\GerarBoletoGalaxyPay.cs" />
     <Compile Include="Utils\GalaxyPay_API\RetornoBoletoGerado.cs" />
+    <Compile Include="Utils\GalaxyPay_API\RetornoPagamentoPix.cs" />
     <Compile Include="Utils\GenericaDesktop.cs" />
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.cs">
       <SubType>Form</SubType>

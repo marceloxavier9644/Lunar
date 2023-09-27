@@ -3,6 +3,7 @@ using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
+using Lunar.Utils.GalaxyPay_API;
 using Lunar.Utils.OrganizacaoNF;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
@@ -22,6 +23,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
+using static Lunar.Utils.GalaxyPay_API.RetornoPagamentoPix;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static LunarBase.Utilidades.ManifestoDownload;
 
@@ -1150,5 +1153,63 @@ namespace Lunar.Telas.Vendas
             reimprimirTicket();
         }
 
+        private async void btnVerificarPix_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                venda = (Venda)grid.SelectedItem;
+                if (!String.IsNullOrEmpty(venda.QrCodePix))
+                {
+                    if (venda == null)
+                    {
+                        GenericaDesktop.ShowAlerta("Selecione uma venda.");
+                        return;
+                    }
+
+                    GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                    galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+
+                    DateTime dataInicial = DateTime.Now;
+                    DateTime dataFinal = DateTime.Now;
+                    string myIdTransacao = "VENDA_" + venda.Id.ToString();
+
+                    GalaxPayRetornoPix galaxyPay_RetornoPix = await galaxyPayApiIntegracao.GalaxyPay_ListarRetornoTransacoesPixAsync(
+                        dataInicial.ToString("yyyy-MM-dd"), dataFinal.ToString("yyyy-MM-dd"), myIdTransacao);
+
+                    if (galaxyPay_RetornoPix != null && galaxyPay_RetornoPix.Transactions != null)
+                    {
+                        foreach (var transaction in galaxyPay_RetornoPix.Transactions)
+                        {
+                            if (transaction.chargeMyId != null)
+                            {
+                                if (transaction.status.Equals("payedPix"))
+                                {
+                                    GenericaDesktop.ShowInfo("Pagamento Confirmado!");
+                                }
+                                else
+                                {
+                                    GenericaDesktop.ShowAlerta("O Pagamento ainda não foi Confirmado :-(");
+                                }
+                            }
+                        }
+
+                        if (galaxyPay_RetornoPix.totalQtdFoundInPage == 0)
+                        {
+                            GenericaDesktop.ShowAlerta("O Pagamento ainda não foi Confirmado :-(");
+                        }
+                    }
+                    else
+                    {
+                        GenericaDesktop.ShowAlerta("O Pagamento ainda não foi Confirmado :-(");
+                    }
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Essa venda não teve geração de QRCODE PIX");
+            }
+            catch (Exception ex)
+            {
+                GenericaDesktop.ShowErro("Ocorreu um erro: " + ex.Message);
+            }
+        }
     }
 }
