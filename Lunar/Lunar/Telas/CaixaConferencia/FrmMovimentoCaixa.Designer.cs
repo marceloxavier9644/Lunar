@@ -50,33 +50,33 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.autoLabel25 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnFechar = new FontAwesome.Sharp.IconButton();
-            this.txtCodContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnPesquisar = new Lunar.RJ_UI.Classes.RJButton();
-            this.txtCodEmpresa = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtEmpresa = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaPlanoConta = new FontAwesome.Sharp.IconButton();
-            this.txtCodPlanoConta = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtPlanoConta = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtDataInicial = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtDataFinal = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaUsuario = new FontAwesome.Sharp.IconButton();
-            this.txtCodUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            this.btnReceita = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnDespesa = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnTesteBoleto = new Lunar.RJ_UI.Classes.RJButton();
             this.btnAjustarCobrador = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnReceita = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnDespesa = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExcluir2 = new Lunar.RJ_UI.Classes.RJButton();
+            this.txtCodContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnPesquisar = new Lunar.RJ_UI.Classes.RJButton();
+            this.txtCodEmpresa = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtEmpresa = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCodPlanoConta = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtPlanoConta = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCodUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).BeginInit();
@@ -343,6 +343,343 @@
             this.btnFechar.TabIndex = 2;
             this.btnFechar.UseVisualStyleBackColor = false;
             // 
+            // autoLabel5
+            // 
+            this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel5.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel5.Location = new System.Drawing.Point(705, 44);
+            this.autoLabel5.Name = "autoLabel5";
+            this.autoLabel5.Size = new System.Drawing.Size(51, 16);
+            this.autoLabel5.TabIndex = 245;
+            this.autoLabel5.Text = "Código";
+            // 
+            // btnPesquisaPlanoConta
+            // 
+            this.btnPesquisaPlanoConta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaPlanoConta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaPlanoConta.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaPlanoConta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaPlanoConta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaPlanoConta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaPlanoConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaPlanoConta.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaPlanoConta.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaPlanoConta.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaPlanoConta.IconSize = 38;
+            this.btnPesquisaPlanoConta.Location = new System.Drawing.Point(662, 61);
+            this.btnPesquisaPlanoConta.Name = "btnPesquisaPlanoConta";
+            this.btnPesquisaPlanoConta.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaPlanoConta.TabIndex = 244;
+            this.btnPesquisaPlanoConta.UseVisualStyleBackColor = true;
+            this.btnPesquisaPlanoConta.Click += new System.EventHandler(this.btnPesquisaPlanoConta_Click);
+            // 
+            // autoLabel6
+            // 
+            this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel6.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel6.Location = new System.Drawing.Point(403, 44);
+            this.autoLabel6.Name = "autoLabel6";
+            this.autoLabel6.Size = new System.Drawing.Size(106, 16);
+            this.autoLabel6.TabIndex = 242;
+            this.autoLabel6.Text = "Plano de Contas";
+            // 
+            // txtDataInicial
+            // 
+            this.txtDataInicial.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDataInicial.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
+            this.txtDataInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtDataInicial.Location = new System.Drawing.Point(4, 127);
+            this.txtDataInicial.Name = "txtDataInicial";
+            this.txtDataInicial.Size = new System.Drawing.Size(179, 35);
+            this.txtDataInicial.Style.BorderColor = System.Drawing.Color.Silver;
+            this.txtDataInicial.Style.FocusedBorderColor = System.Drawing.Color.Silver;
+            this.txtDataInicial.Style.HoverBorderColor = System.Drawing.Color.Silver;
+            this.txtDataInicial.TabIndex = 237;
+            this.txtDataInicial.Value = new System.DateTime(2022, 4, 2, 0, 0, 0, 0);
+            // 
+            // autoLabel4
+            // 
+            this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel4.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel4.Location = new System.Drawing.Point(189, 108);
+            this.autoLabel4.Name = "autoLabel4";
+            this.autoLabel4.Size = new System.Drawing.Size(105, 16);
+            this.autoLabel4.TabIndex = 240;
+            this.autoLabel4.Text = "Data Caixa Final";
+            // 
+            // txtDataFinal
+            // 
+            this.txtDataFinal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDataFinal.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
+            this.txtDataFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataFinal.Location = new System.Drawing.Point(189, 127);
+            this.txtDataFinal.Name = "txtDataFinal";
+            this.txtDataFinal.Size = new System.Drawing.Size(174, 35);
+            this.txtDataFinal.Style.BorderColor = System.Drawing.Color.Silver;
+            this.txtDataFinal.Style.FocusedBorderColor = System.Drawing.Color.White;
+            this.txtDataFinal.Style.HoverBorderColor = System.Drawing.Color.Silver;
+            this.txtDataFinal.TabIndex = 238;
+            this.txtDataFinal.Value = new System.DateTime(2022, 4, 2, 0, 0, 0, 0);
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel3.Location = new System.Drawing.Point(4, 108);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(110, 16);
+            this.autoLabel3.TabIndex = 239;
+            this.autoLabel3.Text = "Data Caixa Inicial";
+            // 
+            // autoLabel2
+            // 
+            this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel2.Location = new System.Drawing.Point(306, 44);
+            this.autoLabel2.Name = "autoLabel2";
+            this.autoLabel2.Size = new System.Drawing.Size(51, 16);
+            this.autoLabel2.TabIndex = 236;
+            this.autoLabel2.Text = "Código";
+            // 
+            // btnPesquisaUsuario
+            // 
+            this.btnPesquisaUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaUsuario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaUsuario.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaUsuario.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaUsuario.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaUsuario.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaUsuario.IconSize = 38;
+            this.btnPesquisaUsuario.Location = new System.Drawing.Point(263, 61);
+            this.btnPesquisaUsuario.Name = "btnPesquisaUsuario";
+            this.btnPesquisaUsuario.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaUsuario.TabIndex = 235;
+            this.btnPesquisaUsuario.UseVisualStyleBackColor = true;
+            this.btnPesquisaUsuario.Click += new System.EventHandler(this.btnPesquisaUsuario_Click);
+            // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel1.Location = new System.Drawing.Point(4, 44);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(54, 16);
+            this.autoLabel1.TabIndex = 233;
+            this.autoLabel1.Text = "Usuário";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.grid);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1128, 380);
+            this.panel2.TabIndex = 3;
+            // 
+            // grid
+            // 
+            this.grid.AccessibleName = "Table";
+            this.grid.AllowEditing = false;
+            this.grid.AllowResizingColumns = true;
+            this.grid.AutoGenerateColumns = false;
+            this.grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridNumericColumn1.AdvancedFilterType = Syncfusion.WinForms.GridCommon.AdvancedFilterType.NumberFilter;
+            gridNumericColumn1.AllowEditing = false;
+            gridNumericColumn1.AllowResizing = true;
+            gridNumericColumn1.CellStyle.Font.Size = 11F;
+            gridNumericColumn1.Format = "0";
+            gridNumericColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn1.HeaderStyle.Font.Size = 11F;
+            gridNumericColumn1.HeaderText = "ID";
+            gridNumericColumn1.MappingName = "Id";
+            gridTextColumn1.AllowEditing = false;
+            gridTextColumn1.AllowResizing = true;
+            gridTextColumn1.CellStyle.Font.Size = 11F;
+            gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn1.HeaderStyle.Font.Size = 11F;
+            gridTextColumn1.HeaderText = "Descrição";
+            gridTextColumn1.MappingName = "Descricao";
+            gridNumericColumn2.AllowEditing = false;
+            gridNumericColumn2.AllowResizing = true;
+            gridNumericColumn2.CellStyle.Font.Size = 11F;
+            gridNumericColumn2.Format = "N2";
+            gridNumericColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn2.HeaderStyle.Font.Size = 11F;
+            gridNumericColumn2.HeaderText = "Valor";
+            gridNumericColumn2.MappingName = "Valor";
+            gridTextColumn2.AllowEditing = false;
+            gridTextColumn2.AllowResizing = true;
+            gridTextColumn2.CellStyle.Font.Size = 11F;
+            gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn2.HeaderStyle.Font.Size = 11F;
+            gridTextColumn2.HeaderText = "Forma de Recebimento";
+            gridTextColumn2.MappingName = "FormaPagamento.Descricao";
+            gridTextColumn3.AllowEditing = false;
+            gridTextColumn3.AllowResizing = true;
+            gridTextColumn3.CellStyle.Font.Size = 11F;
+            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn3.HeaderStyle.Font.Size = 11F;
+            gridTextColumn3.HeaderText = "Conta Bancária";
+            gridTextColumn3.MappingName = "ContaBancaria";
+            gridTextColumn4.AllowEditing = false;
+            gridTextColumn4.AllowResizing = true;
+            gridTextColumn4.CellStyle.Font.Size = 11F;
+            gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn4.HeaderStyle.Font.Size = 11F;
+            gridTextColumn4.HeaderText = "Cobrador(a)";
+            gridTextColumn4.MappingName = "Cobrador.RazaoSocial";
+            this.grid.Columns.Add(gridNumericColumn1);
+            this.grid.Columns.Add(gridTextColumn1);
+            this.grid.Columns.Add(gridNumericColumn2);
+            this.grid.Columns.Add(gridTextColumn2);
+            this.grid.Columns.Add(gridTextColumn3);
+            this.grid.Columns.Add(gridTextColumn4);
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(0, 206);
+            this.grid.Name = "grid";
+            this.grid.Size = new System.Drawing.Size(1128, 174);
+            this.grid.TabIndex = 2;
+            this.grid.Text = "sfDataGrid1";
+            this.grid.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.grid_QueryRowStyle);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnTesteBoleto);
+            this.groupBox1.Controls.Add(this.btnAjustarCobrador);
+            this.groupBox1.Controls.Add(this.btnReceita);
+            this.groupBox1.Controls.Add(this.btnDespesa);
+            this.groupBox1.Controls.Add(this.btnExcluir2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(0, 386);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1128, 71);
+            this.groupBox1.TabIndex = 157;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnTesteBoleto
+            // 
+            this.btnTesteBoleto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTesteBoleto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnTesteBoleto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnTesteBoleto.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnTesteBoleto.BorderRadius = 8;
+            this.btnTesteBoleto.BorderSize = 0;
+            this.btnTesteBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTesteBoleto.FlatAppearance.BorderSize = 0;
+            this.btnTesteBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTesteBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTesteBoleto.ForeColor = System.Drawing.Color.White;
+            this.btnTesteBoleto.Location = new System.Drawing.Point(238, 14);
+            this.btnTesteBoleto.Name = "btnTesteBoleto";
+            this.btnTesteBoleto.Size = new System.Drawing.Size(172, 45);
+            this.btnTesteBoleto.TabIndex = 265;
+            this.btnTesteBoleto.Text = "Teste Boletos";
+            this.btnTesteBoleto.TextColor = System.Drawing.Color.White;
+            this.btnTesteBoleto.UseVisualStyleBackColor = false;
+            this.btnTesteBoleto.Visible = false;
+            this.btnTesteBoleto.Click += new System.EventHandler(this.btnTesteBoleto_Click);
+            // 
+            // btnAjustarCobrador
+            // 
+            this.btnAjustarCobrador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAjustarCobrador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnAjustarCobrador.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnAjustarCobrador.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAjustarCobrador.BorderRadius = 8;
+            this.btnAjustarCobrador.BorderSize = 0;
+            this.btnAjustarCobrador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAjustarCobrador.FlatAppearance.BorderSize = 0;
+            this.btnAjustarCobrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAjustarCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjustarCobrador.ForeColor = System.Drawing.Color.White;
+            this.btnAjustarCobrador.Location = new System.Drawing.Point(416, 14);
+            this.btnAjustarCobrador.Name = "btnAjustarCobrador";
+            this.btnAjustarCobrador.Size = new System.Drawing.Size(172, 45);
+            this.btnAjustarCobrador.TabIndex = 264;
+            this.btnAjustarCobrador.Text = "Ajustar Cobrador(a)";
+            this.btnAjustarCobrador.TextColor = System.Drawing.Color.White;
+            this.btnAjustarCobrador.UseVisualStyleBackColor = false;
+            this.btnAjustarCobrador.Click += new System.EventHandler(this.btnAjustarCobrador_Click);
+            // 
+            // btnReceita
+            // 
+            this.btnReceita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReceita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnReceita.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnReceita.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnReceita.BorderRadius = 8;
+            this.btnReceita.BorderSize = 0;
+            this.btnReceita.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReceita.FlatAppearance.BorderSize = 0;
+            this.btnReceita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReceita.ForeColor = System.Drawing.Color.White;
+            this.btnReceita.Location = new System.Drawing.Point(950, 14);
+            this.btnReceita.Name = "btnReceita";
+            this.btnReceita.Size = new System.Drawing.Size(172, 45);
+            this.btnReceita.TabIndex = 155;
+            this.btnReceita.Text = "Lançar Receita";
+            this.btnReceita.TextColor = System.Drawing.Color.White;
+            this.btnReceita.UseVisualStyleBackColor = false;
+            this.btnReceita.Click += new System.EventHandler(this.btnReceita_Click);
+            // 
+            // btnDespesa
+            // 
+            this.btnDespesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDespesa.BackColor = System.Drawing.Color.RosyBrown;
+            this.btnDespesa.BackgroundColor = System.Drawing.Color.RosyBrown;
+            this.btnDespesa.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnDespesa.BorderRadius = 8;
+            this.btnDespesa.BorderSize = 0;
+            this.btnDespesa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDespesa.FlatAppearance.BorderSize = 0;
+            this.btnDespesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDespesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDespesa.ForeColor = System.Drawing.Color.Black;
+            this.btnDespesa.Location = new System.Drawing.Point(772, 14);
+            this.btnDespesa.Name = "btnDespesa";
+            this.btnDespesa.Size = new System.Drawing.Size(172, 45);
+            this.btnDespesa.TabIndex = 156;
+            this.btnDespesa.Text = "Lançar Despesa";
+            this.btnDespesa.TextColor = System.Drawing.Color.Black;
+            this.btnDespesa.UseVisualStyleBackColor = false;
+            this.btnDespesa.Click += new System.EventHandler(this.btnDespesa_Click);
+            // 
+            // btnExcluir2
+            // 
+            this.btnExcluir2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluir2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnExcluir2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnExcluir2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnExcluir2.BorderRadius = 8;
+            this.btnExcluir2.BorderSize = 0;
+            this.btnExcluir2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir2.FlatAppearance.BorderSize = 0;
+            this.btnExcluir2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir2.ForeColor = System.Drawing.Color.White;
+            this.btnExcluir2.Location = new System.Drawing.Point(594, 14);
+            this.btnExcluir2.Name = "btnExcluir2";
+            this.btnExcluir2.Size = new System.Drawing.Size(172, 45);
+            this.btnExcluir2.TabIndex = 263;
+            this.btnExcluir2.Text = "Excluir Movimento";
+            this.btnExcluir2.TextColor = System.Drawing.Color.White;
+            this.btnExcluir2.UseVisualStyleBackColor = false;
+            this.btnExcluir2.Click += new System.EventHandler(this.btnExcluir2_Click);
+            // 
             // txtCodContaBancaria
             // 
             this.txtCodContaBancaria.BackColor = System.Drawing.Color.White;
@@ -464,37 +801,6 @@
             this.txtEmpresa.UnderlinedStyle = false;
             this.txtEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmpresa_KeyPress);
             // 
-            // autoLabel5
-            // 
-            this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel5.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel5.Location = new System.Drawing.Point(705, 44);
-            this.autoLabel5.Name = "autoLabel5";
-            this.autoLabel5.Size = new System.Drawing.Size(51, 16);
-            this.autoLabel5.TabIndex = 245;
-            this.autoLabel5.Text = "Código";
-            // 
-            // btnPesquisaPlanoConta
-            // 
-            this.btnPesquisaPlanoConta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaPlanoConta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaPlanoConta.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaPlanoConta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaPlanoConta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaPlanoConta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaPlanoConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaPlanoConta.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaPlanoConta.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaPlanoConta.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaPlanoConta.IconSize = 38;
-            this.btnPesquisaPlanoConta.Location = new System.Drawing.Point(662, 61);
-            this.btnPesquisaPlanoConta.Name = "btnPesquisaPlanoConta";
-            this.btnPesquisaPlanoConta.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaPlanoConta.TabIndex = 244;
-            this.btnPesquisaPlanoConta.UseVisualStyleBackColor = true;
-            this.btnPesquisaPlanoConta.Click += new System.EventHandler(this.btnPesquisaPlanoConta_Click);
-            // 
             // txtCodPlanoConta
             // 
             this.txtCodPlanoConta.BackColor = System.Drawing.Color.White;
@@ -519,17 +825,6 @@
             this.txtCodPlanoConta.Texts = "";
             this.txtCodPlanoConta.UnderlinedStyle = false;
             // 
-            // autoLabel6
-            // 
-            this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(403, 44);
-            this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(106, 16);
-            this.autoLabel6.TabIndex = 242;
-            this.autoLabel6.Text = "Plano de Contas";
-            // 
             // txtPlanoConta
             // 
             this.txtPlanoConta.BackColor = System.Drawing.Color.White;
@@ -553,87 +848,6 @@
             this.txtPlanoConta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPlanoConta.Texts = "";
             this.txtPlanoConta.UnderlinedStyle = false;
-            // 
-            // txtDataInicial
-            // 
-            this.txtDataInicial.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtDataInicial.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
-            this.txtDataInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtDataInicial.Location = new System.Drawing.Point(4, 127);
-            this.txtDataInicial.Name = "txtDataInicial";
-            this.txtDataInicial.Size = new System.Drawing.Size(179, 35);
-            this.txtDataInicial.Style.BorderColor = System.Drawing.Color.Silver;
-            this.txtDataInicial.Style.FocusedBorderColor = System.Drawing.Color.Silver;
-            this.txtDataInicial.Style.HoverBorderColor = System.Drawing.Color.Silver;
-            this.txtDataInicial.TabIndex = 237;
-            this.txtDataInicial.Value = new System.DateTime(2022, 4, 2, 0, 0, 0, 0);
-            // 
-            // autoLabel4
-            // 
-            this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel4.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel4.Location = new System.Drawing.Point(189, 108);
-            this.autoLabel4.Name = "autoLabel4";
-            this.autoLabel4.Size = new System.Drawing.Size(105, 16);
-            this.autoLabel4.TabIndex = 240;
-            this.autoLabel4.Text = "Data Caixa Final";
-            // 
-            // txtDataFinal
-            // 
-            this.txtDataFinal.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtDataFinal.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
-            this.txtDataFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataFinal.Location = new System.Drawing.Point(189, 127);
-            this.txtDataFinal.Name = "txtDataFinal";
-            this.txtDataFinal.Size = new System.Drawing.Size(174, 35);
-            this.txtDataFinal.Style.BorderColor = System.Drawing.Color.Silver;
-            this.txtDataFinal.Style.FocusedBorderColor = System.Drawing.Color.White;
-            this.txtDataFinal.Style.HoverBorderColor = System.Drawing.Color.Silver;
-            this.txtDataFinal.TabIndex = 238;
-            this.txtDataFinal.Value = new System.DateTime(2022, 4, 2, 0, 0, 0, 0);
-            // 
-            // autoLabel3
-            // 
-            this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel3.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel3.Location = new System.Drawing.Point(4, 108);
-            this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(110, 16);
-            this.autoLabel3.TabIndex = 239;
-            this.autoLabel3.Text = "Data Caixa Inicial";
-            // 
-            // autoLabel2
-            // 
-            this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel2.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel2.Location = new System.Drawing.Point(306, 44);
-            this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(51, 16);
-            this.autoLabel2.TabIndex = 236;
-            this.autoLabel2.Text = "Código";
-            // 
-            // btnPesquisaUsuario
-            // 
-            this.btnPesquisaUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaUsuario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaUsuario.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaUsuario.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaUsuario.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaUsuario.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaUsuario.IconSize = 38;
-            this.btnPesquisaUsuario.Location = new System.Drawing.Point(263, 61);
-            this.btnPesquisaUsuario.Name = "btnPesquisaUsuario";
-            this.btnPesquisaUsuario.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaUsuario.TabIndex = 235;
-            this.btnPesquisaUsuario.UseVisualStyleBackColor = true;
-            this.btnPesquisaUsuario.Click += new System.EventHandler(this.btnPesquisaUsuario_Click);
             // 
             // txtCodUsuario
             // 
@@ -660,17 +874,6 @@
             this.txtCodUsuario.UnderlinedStyle = false;
             this.txtCodUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodUsuario_KeyPress);
             // 
-            // autoLabel1
-            // 
-            this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel1.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel1.Location = new System.Drawing.Point(4, 44);
-            this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(54, 16);
-            this.autoLabel1.TabIndex = 233;
-            this.autoLabel1.Text = "Usuário";
-            // 
             // txtUsuario
             // 
             this.txtUsuario.BackColor = System.Drawing.Color.White;
@@ -695,208 +898,6 @@
             this.txtUsuario.Texts = "";
             this.txtUsuario.UnderlinedStyle = false;
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.grid);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1128, 380);
-            this.panel2.TabIndex = 3;
-            // 
-            // grid
-            // 
-            this.grid.AccessibleName = "Table";
-            this.grid.AllowEditing = false;
-            this.grid.AllowResizingColumns = true;
-            this.grid.AutoGenerateColumns = false;
-            this.grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridNumericColumn1.AdvancedFilterType = Syncfusion.WinForms.GridCommon.AdvancedFilterType.NumberFilter;
-            gridNumericColumn1.AllowEditing = false;
-            gridNumericColumn1.AllowResizing = true;
-            gridNumericColumn1.CellStyle.Font.Size = 11F;
-            gridNumericColumn1.Format = "0";
-            gridNumericColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn1.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn1.HeaderText = "ID";
-            gridNumericColumn1.MappingName = "Id";
-            gridTextColumn1.AllowEditing = false;
-            gridTextColumn1.AllowResizing = true;
-            gridTextColumn1.CellStyle.Font.Size = 11F;
-            gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn1.HeaderStyle.Font.Size = 11F;
-            gridTextColumn1.HeaderText = "Descrição";
-            gridTextColumn1.MappingName = "Descricao";
-            gridNumericColumn2.AllowEditing = false;
-            gridNumericColumn2.AllowResizing = true;
-            gridNumericColumn2.CellStyle.Font.Size = 11F;
-            gridNumericColumn2.Format = "N2";
-            gridNumericColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn2.HeaderStyle.Font.Size = 11F;
-            gridNumericColumn2.HeaderText = "Valor";
-            gridNumericColumn2.MappingName = "Valor";
-            gridTextColumn2.AllowEditing = false;
-            gridTextColumn2.AllowResizing = true;
-            gridTextColumn2.CellStyle.Font.Size = 11F;
-            gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn2.HeaderStyle.Font.Size = 11F;
-            gridTextColumn2.HeaderText = "Forma de Recebimento";
-            gridTextColumn2.MappingName = "FormaPagamento.Descricao";
-            gridTextColumn3.AllowEditing = false;
-            gridTextColumn3.AllowResizing = true;
-            gridTextColumn3.CellStyle.Font.Size = 11F;
-            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn3.HeaderStyle.Font.Size = 11F;
-            gridTextColumn3.HeaderText = "Conta Bancária";
-            gridTextColumn3.MappingName = "ContaBancaria";
-            gridTextColumn4.AllowEditing = false;
-            gridTextColumn4.AllowResizing = true;
-            gridTextColumn4.CellStyle.Font.Size = 11F;
-            gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn4.HeaderStyle.Font.Size = 11F;
-            gridTextColumn4.HeaderText = "Cobrador(a)";
-            gridTextColumn4.MappingName = "Cobrador.RazaoSocial";
-            this.grid.Columns.Add(gridNumericColumn1);
-            this.grid.Columns.Add(gridTextColumn1);
-            this.grid.Columns.Add(gridNumericColumn2);
-            this.grid.Columns.Add(gridTextColumn2);
-            this.grid.Columns.Add(gridTextColumn3);
-            this.grid.Columns.Add(gridTextColumn4);
-            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 206);
-            this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(1128, 174);
-            this.grid.TabIndex = 2;
-            this.grid.Text = "sfDataGrid1";
-            this.grid.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.grid_QueryRowStyle);
-            // 
-            // btnReceita
-            // 
-            this.btnReceita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReceita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnReceita.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnReceita.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnReceita.BorderRadius = 8;
-            this.btnReceita.BorderSize = 0;
-            this.btnReceita.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReceita.FlatAppearance.BorderSize = 0;
-            this.btnReceita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReceita.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReceita.ForeColor = System.Drawing.Color.White;
-            this.btnReceita.Location = new System.Drawing.Point(950, 14);
-            this.btnReceita.Name = "btnReceita";
-            this.btnReceita.Size = new System.Drawing.Size(172, 45);
-            this.btnReceita.TabIndex = 155;
-            this.btnReceita.Text = "Lançar Receita";
-            this.btnReceita.TextColor = System.Drawing.Color.White;
-            this.btnReceita.UseVisualStyleBackColor = false;
-            this.btnReceita.Click += new System.EventHandler(this.btnReceita_Click);
-            // 
-            // btnDespesa
-            // 
-            this.btnDespesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDespesa.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnDespesa.BackgroundColor = System.Drawing.Color.RosyBrown;
-            this.btnDespesa.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnDespesa.BorderRadius = 8;
-            this.btnDespesa.BorderSize = 0;
-            this.btnDespesa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDespesa.FlatAppearance.BorderSize = 0;
-            this.btnDespesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDespesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDespesa.ForeColor = System.Drawing.Color.Black;
-            this.btnDespesa.Location = new System.Drawing.Point(772, 14);
-            this.btnDespesa.Name = "btnDespesa";
-            this.btnDespesa.Size = new System.Drawing.Size(172, 45);
-            this.btnDespesa.TabIndex = 156;
-            this.btnDespesa.Text = "Lançar Despesa";
-            this.btnDespesa.TextColor = System.Drawing.Color.Black;
-            this.btnDespesa.UseVisualStyleBackColor = false;
-            this.btnDespesa.Click += new System.EventHandler(this.btnDespesa_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnTesteBoleto);
-            this.groupBox1.Controls.Add(this.btnAjustarCobrador);
-            this.groupBox1.Controls.Add(this.btnReceita);
-            this.groupBox1.Controls.Add(this.btnDespesa);
-            this.groupBox1.Controls.Add(this.btnExcluir2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 386);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1128, 71);
-            this.groupBox1.TabIndex = 157;
-            this.groupBox1.TabStop = false;
-            // 
-            // btnTesteBoleto
-            // 
-            this.btnTesteBoleto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTesteBoleto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnTesteBoleto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnTesteBoleto.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnTesteBoleto.BorderRadius = 8;
-            this.btnTesteBoleto.BorderSize = 0;
-            this.btnTesteBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTesteBoleto.FlatAppearance.BorderSize = 0;
-            this.btnTesteBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTesteBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTesteBoleto.ForeColor = System.Drawing.Color.White;
-            this.btnTesteBoleto.Location = new System.Drawing.Point(238, 14);
-            this.btnTesteBoleto.Name = "btnTesteBoleto";
-            this.btnTesteBoleto.Size = new System.Drawing.Size(172, 45);
-            this.btnTesteBoleto.TabIndex = 265;
-            this.btnTesteBoleto.Text = "Teste Boletos";
-            this.btnTesteBoleto.TextColor = System.Drawing.Color.White;
-            this.btnTesteBoleto.UseVisualStyleBackColor = false;
-            this.btnTesteBoleto.Click += new System.EventHandler(this.btnTesteBoleto_Click);
-            // 
-            // btnAjustarCobrador
-            // 
-            this.btnAjustarCobrador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAjustarCobrador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnAjustarCobrador.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnAjustarCobrador.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnAjustarCobrador.BorderRadius = 8;
-            this.btnAjustarCobrador.BorderSize = 0;
-            this.btnAjustarCobrador.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAjustarCobrador.FlatAppearance.BorderSize = 0;
-            this.btnAjustarCobrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjustarCobrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAjustarCobrador.ForeColor = System.Drawing.Color.White;
-            this.btnAjustarCobrador.Location = new System.Drawing.Point(416, 14);
-            this.btnAjustarCobrador.Name = "btnAjustarCobrador";
-            this.btnAjustarCobrador.Size = new System.Drawing.Size(172, 45);
-            this.btnAjustarCobrador.TabIndex = 264;
-            this.btnAjustarCobrador.Text = "Ajustar Cobrador(a)";
-            this.btnAjustarCobrador.TextColor = System.Drawing.Color.White;
-            this.btnAjustarCobrador.UseVisualStyleBackColor = false;
-            this.btnAjustarCobrador.Click += new System.EventHandler(this.btnAjustarCobrador_Click);
-            // 
-            // btnExcluir2
-            // 
-            this.btnExcluir2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluir2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.btnExcluir2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.btnExcluir2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnExcluir2.BorderRadius = 8;
-            this.btnExcluir2.BorderSize = 0;
-            this.btnExcluir2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluir2.FlatAppearance.BorderSize = 0;
-            this.btnExcluir2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir2.ForeColor = System.Drawing.Color.White;
-            this.btnExcluir2.Location = new System.Drawing.Point(594, 14);
-            this.btnExcluir2.Name = "btnExcluir2";
-            this.btnExcluir2.Size = new System.Drawing.Size(172, 45);
-            this.btnExcluir2.TabIndex = 263;
-            this.btnExcluir2.Text = "Excluir Movimento";
-            this.btnExcluir2.TextColor = System.Drawing.Color.White;
-            this.btnExcluir2.UseVisualStyleBackColor = false;
-            this.btnExcluir2.Click += new System.EventHandler(this.btnExcluir2_Click);
             // 
             // FrmMovimentoCaixa
             // 

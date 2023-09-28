@@ -8,7 +8,7 @@ namespace Lunar.Utils.GalaxyPay_API
 {
     public class GerarBoletoGalaxyPay
     {
-        public void gerarBoletoAvulsoGalaxyPay(IList<ContaReceber> listaReceber, Pessoa pessoa)
+        public async void gerarBoletoAvulsoGalaxyPay(IList<ContaReceber> listaReceber, Pessoa pessoa)
         {
             string[] arrayFatura = new string[listaReceber.Count];
             GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
@@ -17,7 +17,7 @@ namespace Lunar.Utils.GalaxyPay_API
             if (!String.IsNullOrEmpty(tokenAcessoGalaxyPay))
             {
                 Thread.Sleep(3000);
-                Task<string> ret = galaxyPayApiIntegracao.GalaxyPay_ListarCliente(GenericaDesktop.RemoveCaracteres(pessoa.Cnpj.Trim()), pessoa);
+                string ret = await galaxyPayApiIntegracao.GalaxyPay_ListarCliente(GenericaDesktop.RemoveCaracteres(pessoa.Cnpj.Trim()), pessoa);
                 if (ret.Equals("1"))
                 {
                     string retornoBoletos = "";

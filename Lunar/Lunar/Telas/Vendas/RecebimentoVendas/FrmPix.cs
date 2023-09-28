@@ -342,7 +342,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     aguardeForm.Invoke(new Action(() =>
                     {
                         aguardeForm.Close();
-                    }));                   
+                    }));
                 }
             }
             else
@@ -350,6 +350,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 GenericaDesktop.ShowAlerta("Funcionalidade não configurada!");
             }
         }
+
 
         public Bitmap GerarQRCode(int width, int height, string text)
         {
@@ -395,7 +396,10 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
         {
             await VerificarPagamentoPixAsync();
             if (pagamentoConcluido == true)
-                btnConfirmar.PerformClick();
+            {
+                btnConfirmar.Enabled = true;
+                btnConfirmar.PerformClick();                
+            }
         }
 
         private async Task VerificarPagamentoPixAsync()
@@ -444,7 +448,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     if (!pagamentoConcluido)
                     {
                         // Aguarde um curto período antes de verificar novamente
-                        await Task.Delay(TimeSpan.FromSeconds(6));
+                        await Task.Delay(TimeSpan.FromSeconds(4));
                     }
                 }
             }
