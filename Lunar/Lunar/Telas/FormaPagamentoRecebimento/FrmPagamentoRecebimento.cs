@@ -2415,7 +2415,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 if (String.IsNullOrEmpty(parcelas))
                     parcelas = contaPagar.NumeroDocumento;
                 else
-                    parcelas = parcelas + " - " + contaPagar.NumeroDocumento;
+                    parcelas = parcelas + " - " + contaPagar.Id;
 
                 descricaoPagamento = "PAG. " + contaPagar.Pessoa.RazaoSocial + " DOCS: " + parcelas;
                 //if (parcial == true)

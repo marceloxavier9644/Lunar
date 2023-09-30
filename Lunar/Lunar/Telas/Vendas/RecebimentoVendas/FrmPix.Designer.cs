@@ -292,6 +292,7 @@
             this.btnPesquisaContaBancaria.Size = new System.Drawing.Size(40, 34);
             this.btnPesquisaContaBancaria.TabIndex = 260;
             this.btnPesquisaContaBancaria.UseVisualStyleBackColor = true;
+            this.btnPesquisaContaBancaria.Click += new System.EventHandler(this.btnPesquisaContaBancaria_Click);
             // 
             // txtCodContaBancaria
             // 

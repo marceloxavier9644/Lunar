@@ -1,6 +1,7 @@
 ﻿using Lunar.Telas.Cadastros.Bancos;
 using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.Cadastros.Empresas;
+using Lunar.Telas.ContasReceber.Reports.Dados;
 using Lunar.Telas.Orcamentos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.UsuarioRegistro;
@@ -906,6 +907,35 @@ namespace Lunar.Telas.CaixaConferencia
                             GenericaDesktop.ShowAlerta("Falha ao excluir a parcela a receber no nome do funcionário, verifique manualmente!");
                         }
                         GenericaDesktop.ShowInfo("Movimentação de Caixa Excluída com Sucesso!");
+                    }
+                    if (caixa.TabelaOrigem.Equals("CONTAPAGAR"))
+                    {
+                        List<string> idPagar = new List<string>();
+                        string original = caixa.IdOrigem;
+                        char[] delimitadores = new char[] { '-' };
+                        string[] strings = original.Split(delimitadores);
+                        foreach (string s in strings)
+                        {
+                            idPagar.Add(s.Trim());
+                        }
+                        foreach (String st in idPagar)
+                        {
+                            ContaPagar contaPagar = new ContaPagar();
+                            contaPagar.Id = int.Parse(st);
+                            contaPagar = (ContaPagar)ContaPagarController.getInstance().selecionar(contaPagar);
+                            contaPagar.Pago = false;
+                            contaPagar.ValorPago = 0;
+
+                            CaixaController caixaController = new CaixaController();
+                            IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.FlagExcluido <> true and Tabela.TabelaOrigem = 'CONTAPAGAR' and Tabela.IdOrigem = '" + original + "' and Tabela.Pessoa = " + contaPagar.Pessoa.Id);
+                            if (listaCaixa.Count > 0)
+                            {
+                                foreach (Caixa caixa1 in listaCaixa)
+                                {
+                                    Controller.getInstance().excluir(caixa1);
+                                }
+                            }
+                        }
                     }
 
                     btnPesquisar.PerformClick();

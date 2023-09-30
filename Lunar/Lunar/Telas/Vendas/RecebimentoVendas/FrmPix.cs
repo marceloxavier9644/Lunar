@@ -1,4 +1,6 @@
-﻿using Lunar.Telas.Vendas.Adicionais;
+﻿using Lunar.Telas.Cadastros.Bancos;
+using Lunar.Telas.PesquisaPadrao;
+using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
 using Lunar.Utils.GalaxyPay_API;
 using LunarBase.Classes;
@@ -98,7 +100,6 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             {
                 if (Sessao.parametroSistema.ContaBancariaVinculadaApi != null)
                 {
-
                     txtCodContaBancaria.Texts = Sessao.parametroSistema.ContaBancariaVinculadaApi.Id.ToString();
                     txtContaBancaria.Texts = Sessao.parametroSistema.ContaBancariaVinculadaApi.Descricao;
                 }
@@ -247,7 +248,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
 
                 try
                 {
-                    aguardeForm.SetMensagemAguarde("Aguarde... Processando...");
+                    aguardeForm.SetMensagemAguarde("Aguarde, Processando...");
 
                     // Exiba o formulário como um diálogo modal em uma nova thread
                     Thread thread = new Thread(() =>
@@ -338,11 +339,12 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 }
                 finally
                 {
-                    // Feche o formulário de "Aguarde..." usando Invoke
-                    aguardeForm.Invoke(new Action(() =>
-                    {
-                        aguardeForm.Close();
-                    }));
+                        // Feche o formulário de "Aguarde..." usando Invoke
+                        aguardeForm.Invoke(new Action(() =>
+                        {
+                            aguardeForm.Close();
+                        })); 
+
                 }
             }
             else
@@ -459,6 +461,60 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
         private void btnCopiaQr_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(txtCodigoQrCode.Texts);
+        }
+
+        private void btnPesquisaContaBancaria_Click(object sender, EventArgs e)
+        {
+            Object objeto = new ContaBancaria();
+
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("ContaBancaria", ""))
+                {
+                    txtCodContaBancaria.Texts = "";
+                    txtContaBancaria.Texts = "";
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("PlanoConta", "", ref objeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmContaBancaria form = new FrmContaBancaria();
+                            if (form.showModal(ref objeto) == DialogResult.OK)
+                            {
+                                txtContaBancaria.Texts = ((ContaBancaria)objeto).Descricao;
+                                txtCodContaBancaria.Texts = ((ContaBancaria)objeto).Id.ToString();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtContaBancaria.Texts = ((ContaBancaria)objeto).Descricao;
+                            txtCodContaBancaria.Texts = ((ContaBancaria)objeto).Id.ToString();
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
     }
 }

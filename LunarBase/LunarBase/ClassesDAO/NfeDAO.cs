@@ -143,7 +143,7 @@ namespace LunarBase.ClassesDAO
         public Nfe selecionarNFePorNumeroESerie(string numeroNFCe, string serie)
         {
             String sql = "FROM Nfe as Tabela WHERE Tabela.FlagExcluido <> true and " +
-                         "Tabela.NNf = '" + numeroNFCe + "' and Tabela.Serie = '" + serie + "' and Tabela.Modelo = '55' order by Tabela.DataEmissao desc";
+                         "Tabela.NNf = '" + numeroNFCe + "' and Tabela.Serie = '" + serie + "' and Tabela.CnpjEmitente = '"+Sessao.empresaFilialLogada.Cnpj+"' and Tabela.Modelo = '55' order by Tabela.DataEmissao desc";
 
             Session = Conexao.GetSession();
             return Session.CreateQuery(sql).UniqueResult<Nfe>();
