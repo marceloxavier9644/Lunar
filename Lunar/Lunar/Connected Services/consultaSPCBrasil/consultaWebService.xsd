@@ -1,0 +1,2431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://webservice.consulta.spcjava.spcbrasil.org/" targetNamespace="http://webservice.consulta.spcjava.spcbrasil.org/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="codigo-produto" nillable="true" type="xs:string" />
+  <xs:element name="filtro" nillable="true" type="tns:Filtro-Consulta" />
+  <xs:element name="filtro-biometria" nillable="true" type="tns:Filtro-Consulta-Biometria" />
+  <xs:element name="filtro-complementar" nillable="true" type="tns:Filtro-Consulta-Complementar" />
+  <xs:element name="filtro-score" nillable="true" type="tns:Filtro-Consulta-Score" />
+  <xs:element name="produto" nillable="true" type="tns:Produto" />
+  <xs:element name="produtos" nillable="true" type="tns:Lista-Produto" />
+  <xs:element name="resultado" nillable="true" type="tns:Resultado-Consulta" />
+  <xs:element name="resultadoConsultaBiometria" nillable="true" type="tns:Resultado-Consulta-Biometria" />
+  <xs:element name="resultadoConsultaScore" nillable="true" type="tns:Resultado-Consulta-Score" />
+  <xs:complexType name="Filtro-Consulta-Score">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="numero-protocolo" type="xs:long" />
+      <xs:element minOccurs="0" name="numero-documento" type="xs:string" />
+      <xs:element minOccurs="0" name="codigo-produto-principal" type="xs:long" />
+      <xs:element minOccurs="0" name="tipo-pessoa" type="xs:string" />
+      <xs:element maxOccurs="unbounded" name="horizonte-score" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Resultado-Consulta-Score">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cnpj-consultado" type="tns:Cnpj" />
+      <xs:element minOccurs="0" name="cpf-consultado" type="tns:Cpf" />
+      <xs:element minOccurs="0" name="spc-score-12-meses" type="xs:anyType" />
+      <xs:element minOccurs="0" name="spc-score-3-meses" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Cnpj">
+    <xs:sequence />
+    <xs:attribute name="numero" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Cpf">
+    <xs:sequence />
+    <xs:attribute name="regiao-origem" type="xs:string" />
+    <xs:attribute name="numero" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Filtro-Consulta-Biometria">
+    <xs:sequence>
+      <xs:element name="codigo-acompanhamento-analise" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Resultado-Consulta-Biometria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cpf-consumidor" type="xs:string" />
+      <xs:element minOccurs="0" name="data-consulta" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="descricao-score-biometrico" type="xs:string" />
+      <xs:element minOccurs="0" name="nome-consumidor" type="xs:string" />
+      <xs:element minOccurs="0" name="score-biometrico" type="xs:string" />
+      <xs:element minOccurs="0" name="sexo-consumidor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Filtro-Consulta">
+    <xs:sequence>
+      <xs:element name="codigo-produto" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo-consumidor" type="tns:Tipo-Pessoa" />
+      <xs:element minOccurs="0" name="documento-consumidor" type="xs:string" />
+      <xs:element minOccurs="0" name="cep-consumidor" type="xs:string" />
+      <xs:element minOccurs="0" name="telefone-consultar" type="tns:Telefone-Filtro" />
+      <xs:element minOccurs="0" name="utiliza-CMC7" type="xs:boolean" />
+      <xs:element minOccurs="0" name="banco-cheque-inicial" type="xs:int" />
+      <xs:element minOccurs="0" name="agencia-cheque-inicial" type="xs:int" />
+      <xs:element minOccurs="0" name="conta-corrente-cheque-inicial" type="xs:long" />
+      <xs:element minOccurs="0" name="digito-conta-corrente-cheque-inicial" type="xs:string" />
+      <xs:element minOccurs="0" name="numero-cheque-inicial" type="xs:int" />
+      <xs:element minOccurs="0" name="digito-cheque-inicial" type="xs:int" />
+      <xs:element minOccurs="0" name="cmc71-cheque-inicial" type="xs:string" />
+      <xs:element minOccurs="0" name="cmc72-cheque-inicial" type="xs:string" />
+      <xs:element minOccurs="0" name="cmc73-cheque-inicial" type="xs:string" />
+      <xs:element minOccurs="0" name="quantidade-cheque" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="cheque-detalhado" type="tns:Cheque-Filtro" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="codigo-insumo-opcional" type="xs:long" />
+      <xs:element minOccurs="0" name="cep-origem" type="xs:string" />
+      <xs:element minOccurs="0" name="codigo-estacao-consultante" type="xs:string" />
+      <xs:element minOccurs="0" name="numero-rg" type="xs:string" />
+      <xs:element minOccurs="0" name="data-nascimento-rg" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="uf-emissao-rg" type="xs:string" />
+      <xs:element minOccurs="0" name="chassi" type="xs:string" />
+      <xs:element minOccurs="0" name="renavam" type="xs:string" />
+      <xs:element minOccurs="0" name="motor" type="xs:string" />
+      <xs:element minOccurs="0" name="numero-caixa-cambio" type="xs:string" />
+      <xs:element minOccurs="0" name="placa" type="xs:string" />
+      <xs:element minOccurs="0" name="sigla-estadual-auto" type="xs:string" />
+      <xs:element minOccurs="0" name="codigo-setor-sar" type="xs:long" />
+      <xs:element minOccurs="0" name="codigo-executiva-sar" type="xs:string" />
+      <xs:element minOccurs="0" name="codigo-imagem-biometria-facial" type="xs:string" />
+      <xs:element minOccurs="0" name="nome-biometria-facial" type="xs:string" />
+      <xs:element minOccurs="0" name="sexo-biometria-facial" type="xs:string" />
+      <xs:element minOccurs="0" name="data-limite-historico-pagamento" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="consulta-unica" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Telefone-Filtro">
+    <xs:sequence>
+      <xs:element name="ddd" type="xs:int" />
+      <xs:element name="numero" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Cheque-Filtro">
+    <xs:sequence>
+      <xs:element name="numero" type="xs:int" />
+      <xs:element name="digito" type="xs:int" />
+      <xs:element name="data-deposito" type="xs:dateTime" />
+      <xs:element name="valor" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Resultado-Consulta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="protocolo" type="tns:Protocolo-Consulta" />
+      <xs:element minOccurs="0" name="operador" type="tns:Operador" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mensagem-base-externa" type="tns:mensagemBaseExterna" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="base-inoperante" type="xs:string" />
+      <xs:element minOccurs="0" name="consumidor" type="tns:Resultado-Consumidor" />
+      <xs:element minOccurs="0" name="grafia-pj" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="endereco-cep-consultado" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="telefone-consultado" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="telefone-vinculado-consumidor" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="telefone-vinculado-assinante-consultado" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="ultimo-telefone-informado" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="ultimo-endereco-informado" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="participacao-empresa" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="socio" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="administrador" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="alerta-documento" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="spc" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="cheque-lojista" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="ccf" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="contra-ordem-documento-diferente" type="tns:Resultado-Insumo-Contra-Ordem" />
+      <xs:element minOccurs="0" name="contra-ordem-agencia-diferente" type="tns:Resultado-Insumo-Contra-Ordem" />
+      <xs:element minOccurs="0" name="contra-ordem-agencia-conta-diferente" type="tns:Resultado-Insumo-Contra-Ordem" />
+      <xs:element minOccurs="0" name="acao" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="protesto" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="contra-ordem" type="tns:Resultado-Insumo-Contra-Ordem" />
+      <xs:element minOccurs="0" name="contumacia" type="tns:Resultado-Insumo-Contumacia" />
+      <xs:element minOccurs="0" name="credito-concedido" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="banco-agencia-conta-documento-diferente" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="dados-agencia-bancaria" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="consulta-realizada" type="tns:Resultado-Insumo-Consulta-Realizada" />
+      <xs:element minOccurs="0" name="informacao-poder-judiciario" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="riskscoring-6-meses" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="riskscoring-12-meses" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="cheque-sem-fundo-achei" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="cheque-sem-fundo-achei-ccf" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="contumacia-srs" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="participacao-falencia" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="restricao-financeira" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="pendencia-financeira" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="cheque-sem-fundo-varejo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="contra-ordem-srs" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="contra-ordem-documento-diferente-srs" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="cheque-outras-ocorrencias-srs" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="cheque-consulta-online-srs" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="consulta-realizada-cheque" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="referenciais-negocios-por-faixa" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="historico-pagamento-por-faixa" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="relacionamento-mais-antigo-com-fornecedores" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="registro-consulta" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="ultimas-consultas" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="capital-social" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="antecessora" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="atividade-empresa" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="filial" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="informacoes-adicionais" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="incorporacao-fusao-cisao" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="principais-produtos" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mensagem-complementar" type="tns:Mensagem-Complementar" />
+      <xs:element minOccurs="0" name="spc-score-3-meses" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="spc-score-12-meses" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="spc-obito" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="confirmacao-rg" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="renavam-federal" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="roubo-furto" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="dpvat" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="gravame" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="renavam-estadual" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="localizaVeiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="renda-presumida-spc" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="limite-credito-sugerido" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="ocupacao" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="informacoes-complementares" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="telefone-alternativo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="alerta-obito" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="alerta-identidade" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="faturamento-presumido" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="limite-credito-pj" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="gasto-estimado-pj" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="quadro-social-mais-completo-pj" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="risco-credito-pj" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="perfil-financeiro-pj" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="gasto-estimado-pf" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="indice-relacionamento-mercado-pf" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="indice-relacionamento-mercado-pj" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="limite-credito-sugerido-sar" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="comprometimento-renda-mensal-pf" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="collection-score-plus" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="biometria-facial" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="decodificador-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="precificador-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="rodas-pneus-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="restricao-estadual-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="debito-estadual-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="indicio-sinistro-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="leilao-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="historico-km-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="historico-avarias-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="base-nacional-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="restricao-nacional-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="roubo-furto-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="recall-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="parecer-tecnico-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="gravame-veiculo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="score-cadastro-positivo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="indice-pontualidade-pagamento-cadastro-positivo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="indice-comportamento-gastos-cadastro-positivo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="movimentacao-cadastro-positivo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="historico-pagamento-cadastro-positivo" type="tns:Resultado-Insumo" />
+      <xs:element minOccurs="0" name="indice-consulta-realizada-por-segmento-cadastro-positivo" type="tns:Resultado-Insumo" />
+    </xs:sequence>
+    <xs:attribute name="restricao" type="xs:boolean" />
+    <xs:attribute name="data" type="xs:dateTime" />
+  </xs:complexType>
+  <xs:complexType name="Protocolo-Consulta">
+    <xs:sequence />
+    <xs:attribute name="numero" type="xs:long" />
+    <xs:attribute name="digito" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Operador">
+    <xs:sequence />
+    <xs:attribute name="codigo" type="xs:string" />
+    <xs:attribute name="nome" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="mensagemBaseExterna">
+    <xs:sequence />
+    <xs:attribute name="origem-base-externa" type="tns:baseExternaAgente" />
+    <xs:attribute name="mensagem-base-externa" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Resultado-Consumidor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="consumidor-pessoa-fisica" type="tns:Pessoa-Fisica" />
+      <xs:element minOccurs="0" name="consumidor-pessoa-juridica" type="tns:Pessoa-Juridica" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Pessoa-Fisica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cpf" type="tns:Cpf" />
+      <xs:element minOccurs="0" name="situacao-cpf" type="tns:Situacao-Documento-WS" />
+      <xs:element minOccurs="0" name="estado-rg" type="tns:Estado" />
+      <xs:element minOccurs="0" name="endereco" type="tns:Endereco" />
+      <xs:element minOccurs="0" name="telefone-residencial" type="tns:Telefone" />
+      <xs:element minOccurs="0" name="telefone-celular" type="tns:Telefone" />
+      <xs:element minOccurs="0" name="telefone-comercial" type="tns:Telefone" />
+      <xs:element minOccurs="0" name="fax" type="tns:Telefone" />
+      <xs:element minOccurs="0" name="nacionalidade" type="tns:Pais" />
+    </xs:sequence>
+    <xs:attribute name="data-expedicao-rg" type="xs:dateTime" />
+    <xs:attribute name="data-nascimento" type="xs:dateTime" />
+    <xs:attribute name="email" type="xs:string" />
+    <xs:attribute name="estado-civil" type="tns:Estado-Civil" />
+    <xs:attribute name="idade" type="xs:int" />
+    <xs:attribute name="nome" type="xs:string" />
+    <xs:attribute name="nome-mae" type="xs:string" />
+    <xs:attribute name="nome-pai" type="xs:string" />
+    <xs:attribute name="nome-social" type="xs:string" />
+    <xs:attribute name="numero-rg" type="xs:string" />
+    <xs:attribute name="numero-titulo-eleitor" type="xs:long" />
+    <xs:attribute name="pessoa-estrangeira" type="xs:boolean" />
+    <xs:attribute name="sexo" type="tns:Sexo" />
+    <xs:attribute name="signo" type="tns:Signo" />
+  </xs:complexType>
+  <xs:complexType name="Situacao-Documento-WS">
+    <xs:sequence />
+    <xs:attribute name="descricao-situacao" type="xs:string" />
+    <xs:attribute name="data-situacao" type="xs:dateTime" />
+    <xs:attribute name="uf" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Estado">
+    <xs:sequence />
+    <xs:attribute name="sigla-uf" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Endereco">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cidade" type="tns:Cidade" />
+    </xs:sequence>
+    <xs:attribute name="logradouro" type="xs:string" />
+    <xs:attribute name="numero" type="xs:string" />
+    <xs:attribute name="complemento" type="xs:string" />
+    <xs:attribute name="bairro" type="xs:string" />
+    <xs:attribute name="cep" type="tns:Cep" />
+  </xs:complexType>
+  <xs:complexType name="Cidade">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="estado" type="tns:Estado" />
+    </xs:sequence>
+    <xs:attribute name="nome" type="xs:string" />
+  </xs:complexType>
+  <xs:simpleType name="Cep">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  <xs:complexType name="Telefone">
+    <xs:sequence />
+    <xs:attribute name="numero-ddd" type="xs:int" />
+    <xs:attribute name="numero" type="xs:long" />
+  </xs:complexType>
+  <xs:complexType name="Pais">
+    <xs:sequence />
+    <xs:attribute name="nome" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Pessoa-Juridica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cnpj" type="tns:Cnpj" />
+      <xs:element minOccurs="0" name="situacao-cnpj" type="tns:Situacao-Documento-WS" />
+      <xs:element minOccurs="0" name="situacao-inscricao-estadual" type="tns:Situacao-Documento-WS" />
+      <xs:element minOccurs="0" name="endereco" type="tns:Endereco" />
+      <xs:element minOccurs="0" name="telefone" type="tns:Telefone" />
+      <xs:element minOccurs="0" name="fax" type="tns:Telefone" />
+      <xs:element minOccurs="0" name="natureza-juridica" type="tns:Natureza-Juridica" />
+      <xs:element minOccurs="0" name="atividade-economica-principal" type="tns:Ramo-Atividade" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="atividade-economica-secundaria" type="tns:Ramo-Atividade" />
+    </xs:sequence>
+    <xs:attribute name="data-fundacao" type="xs:dateTime" />
+    <xs:attribute name="data-ultimo-registro" type="xs:dateTime" />
+    <xs:attribute name="email" type="xs:string" />
+    <xs:attribute name="home-page" type="xs:string" />
+    <xs:attribute name="inscricao-estadual" type="xs:long" />
+    <xs:attribute name="nome-comercial" type="xs:string" />
+    <xs:attribute name="numero-NIRE-NIRC" type="xs:long" />
+    <xs:attribute name="numero-ultimo-registro" type="xs:string" />
+    <xs:attribute name="razao-social" type="xs:string" />
+    <xs:attribute name="razao-social-anterior" type="xs:string" />
+    <xs:attribute name="valor-capital-social" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Natureza-Juridica">
+    <xs:sequence />
+    <xs:attribute name="descricao" type="xs:string" />
+    <xs:attribute name="codigo" type="xs:long" />
+  </xs:complexType>
+  <xs:complexType name="Ramo-Atividade">
+    <xs:sequence />
+    <xs:attribute name="descricao" type="xs:string" />
+    <xs:attribute name="codigo" type="xs:long" />
+  </xs:complexType>
+  <xs:complexType name="Resultado-Insumo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resumo" type="tns:Resumo-Insumo" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="detalhe-grafia-pj" type="tns:Grafia-PJ" />
+        <xs:element name="detalhe-spc" type="tns:Insumo-SPC" />
+        <xs:element name="detalhe-cheque-lojista" type="tns:Insumo-Cheque-Lojista" />
+        <xs:element name="detalhe-ccf" type="tns:Insumo-CCF" />
+        <xs:element name="detalhe-contra-ordem" type="tns:Insumo-Contra-Ordem" />
+        <xs:element name="detalhe-contra-ordem-documento-diferente" type="tns:Insumo-Contra-Ordem-Documento-Diferente" />
+        <xs:element name="detalhe-contra-ordem-agencia-conta-diferente" type="tns:Insumo-Contra-Ordem-Agencia-Conta-Diferente" />
+        <xs:element name="detalhe-contra-ordem-agencia-diferente" type="tns:Insumo-Contra-Ordem-Agencia-Diferente" />
+        <xs:element name="detalhe-contumacia" type="tns:Insumo-Contumacia" />
+        <xs:element name="detalhe-dados-agencia-bancaria" type="tns:Dados-Agencia-Bancaria" />
+        <xs:element name="detalhe-banco-agencia-conta-documento-diferente" type="tns:Agencia-Conta-Documento-Diferente" />
+        <xs:element name="detalhe-consulta-realizada" type="tns:Insumo-Consulta-Realizada" />
+        <xs:element name="detalhe-credito-concedido" type="tns:Insumo-Credito-Concedido" />
+        <xs:element name="detalhe-alerta-documento" type="tns:Insumo-Alerta-Documento" />
+        <xs:element name="detalhe-acao" type="tns:Insumo-Acao" />
+        <xs:element name="detalhe-protesto" type="tns:Insumo-Protesto" />
+        <xs:element name="detalhe-participacao-empresa" type="tns:Insumo-Participacao-Empresas" />
+        <xs:element name="detalhe-socio" type="tns:Insumo-Quadro-Societario" />
+        <xs:element name="detalhe-administrador" type="tns:Insumo-Quadro-Administrativo" />
+        <xs:element name="detalhe-endereco-cep-consultado" type="tns:Insumo-Endereco-CEP-Consultado" />
+        <xs:element name="detalhe-telefone-consultado" type="tns:Insumo-Dados-Telefone-Consultado" />
+        <xs:element name="detalhe-telefone-vinculado-consumidor" type="tns:Insumo-Telefone-Vinculado-Consumidor" />
+        <xs:element name="detalhe-telefone-vinculado-assinante-consultado" type="tns:Insumo-Telefone-Vinculado-Assinante-Consultado" />
+        <xs:element name="detalhe-ultimo-telefone-informado" type="tns:Insumo-Telefone-Consultado" />
+        <xs:element name="detalhe-ultimo-endereco-informado" type="tns:Insumo-Ocorrencia-Consumidor" />
+        <xs:element name="detalhe-informacao-poder-judiciario" type="tns:Insumo-Informacao-Poder-Judiciario" />
+        <xs:element name="detalhe-riskscoring-6-meses" type="tns:Insumo-Riskscoring-6-Meses" />
+        <xs:element name="detalhe-riskscoring-12-meses" type="tns:Insumo-Riskscoring-12-Meses" />
+        <xs:element name="detalhe-cheque-sem-fundo-achei" type="tns:Insumo-Cheque-Sem-Fundo-Achei" />
+        <xs:element name="detalhe-cheque-sem-fundo-achei-ccf" type="tns:Insumo-Cheque-Sem-Fundo-Achei-CCF" />
+        <xs:element name="detalhe-contumacia-srs" type="tns:Insumo-Contumacia-SRS" />
+        <xs:element name="detalhe-participacao-falencia" type="tns:Insumo-Participacao-Falencia" />
+        <xs:element name="detalhe-divida-vencida" type="tns:Insumo-Divida-Vencida" />
+        <xs:element name="detalhe-restricao-financeira" type="tns:Insumo-Restricao-Financeira" />
+        <xs:element name="detalhe-pendencia-financeira" type="tns:Insumo-Pendencia-Financeira" />
+        <xs:element name="detalhe-cheque-sem-fundo-varejo" type="tns:Insumo-Cheque-Sem-Fundo-Varejo" />
+        <xs:element name="detalhe-contra-ordem-srs" type="tns:Insumo-Contra-Ordem-SRS" />
+        <xs:element name="detalhe-contra-ordem-documento-diferente-srs" type="tns:Insumo-Contra-Ordem-Documento-Diferente-SRS" />
+        <xs:element name="detalhe-cheque-outras-ocorrencias-srs" type="tns:Insumo-Cheque-Outras-Ocorrencias-SRS" />
+        <xs:element name="detalhe-cheque-consulta-online-srs" type="tns:Insumo-Cheque-Consulta-Online-SRS" />
+        <xs:element name="detalhe-consulta-realizada-cheque" type="tns:Insumo-Consulta-Realizada-Cheque" />
+        <xs:element name="detalhe-referenciais-negocios-por-faixa" type="tns:Insumo-Referenciais-Negocios-PorFaixa" />
+        <xs:element name="detalhe-historico-pagamento-por-faixa" type="tns:Insumo-Historico-Pagamento-Por-Faixa" />
+        <xs:element name="detalhe-historico-cheque" type="tns:Insumo-Historico-Cheque" />
+        <xs:element name="detalhe-historico-cheque-documento-diferente" type="tns:Insumo-Historico-Cheque-Documento-Diferente" />
+        <xs:element name="detalhe-historico-conta-corrente" type="tns:Insumo-Historico-Conta-Corrente" />
+        <xs:element name="detalhe-relacionamento-mais-antigo-com-fornecedores" type="tns:Insumo-Relacionamento-Mais-Antigo-Com-Fornecedores" />
+        <xs:element name="detalhe-registro-consulta" type="tns:Insumo-Registro-Consultas" />
+        <xs:element name="detalhe-ultimas-consultas" type="tns:Insumo-Ultimas-Consultas" />
+        <xs:element name="detalhe-capital-social" type="tns:Insumo-Capital-Social" />
+        <xs:element name="detalhe-antecessora" type="tns:Insumo-Antecessora" />
+        <xs:element name="detalhe-atividade-empresa" type="tns:Insumo-Atividade-Empresa" />
+        <xs:element name="detalhe-filial" type="tns:Insumo-Filial" />
+        <xs:element name="detalhe-informacoes-adicionais" type="tns:Insumo-Informacoes-Adicionais" />
+        <xs:element name="detalhe-incorporacao-fusao-cisao" type="tns:Insumo-Incorporacao-Fusao-Cisao" />
+        <xs:element name="detalhe-principais-produtos" type="tns:Insumo-Principais-Produtos" />
+        <xs:element name="detalhe-spc-score-3-meses" type="tns:Insumo-SPC-Score-3-Meses" />
+        <xs:element name="detalhe-spc-score-12-meses" type="tns:Insumo-SPC-Score-12-Meses" />
+        <xs:element name="detalhe-spc-obito" type="tns:Insumo-Obito" />
+        <xs:element name="detalhe-confirmacao-rg" type="tns:Insumo-Rg" />
+        <xs:element name="detalhe-renavam-federal" type="tns:Insumo-Renavam-Federal" />
+        <xs:element name="detalhe-renavam-estadual" type="tns:Insumo-Renavam-Estadual" />
+        <xs:element name="detalhe-dpvat" type="tns:Insumo-Dpvat" />
+        <xs:element name="detalhe-gravame" type="tns:Insumo-Gravame" />
+        <xs:element name="detalhe-localizaVeiculo" type="tns:Insumo-SPCAutoLocaliza" />
+        <xs:element name="detalhe-roubo-furto" type="tns:Insumo-Historico-Roubo-Furto" />
+        <xs:element name="detalhe-renda-presumida-spc" type="tns:Insumo-Renda-Presumida-Spc" />
+        <xs:element name="detalhe-limite-credito-sugerido" type="tns:Insumo-Limite-Credito-Sugerido" />
+        <xs:element name="detalhe-ocupacao" type="tns:Insumo-Ocupacao" />
+        <xs:element name="detalhe-informacoes-complementares" type="tns:Insumo-Informacoes-Complementares" />
+        <xs:element name="detalhe-telefone-alternativo" type="tns:Insumo-Telefone-Alternativo" />
+        <xs:element name="detalhe-alerta-obito" type="tns:Insumo-Alerta-Obito" />
+        <xs:element name="detalhe-alerta-identidade" type="tns:Insumo-Alerta-Identidade" />
+        <xs:element name="detalhe-limite-credito-pj" type="tns:Insumo-Limite-Credito-PJ" />
+        <xs:element name="detalhe-faturamento-presumido" type="tns:Insumo-Faturamento-Presumido" />
+        <xs:element name="detalhe-gasto-estimado-pj" type="tns:Insumo-Gasto-Estimado-PJ" />
+        <xs:element name="detalhe-risco-credito-pj" type="tns:Insumo-Risco-Credito-PJ" />
+        <xs:element name="detalhe-perfil-financeiro-pj" type="tns:Insumo-Perfil-Financeiro-PJ" />
+        <xs:element name="detalhe-quadro-social-mais-completo-pj" type="tns:Insumo-Quadro-Social-Mais-Completo-PJ" />
+        <xs:element name="detalhe-gasto-estimado-pf" type="tns:Insumo-Gasto-Estimado-PF" />
+        <xs:element name="detalhe-indice-relacionamento-mercado-pf" type="tns:Insumo-Indice-Relacionamento-Mercado-PF" />
+        <xs:element name="detalhe-indice-relacionamento-mercado-pj" type="tns:Insumo-Indice-Relacionamento-Mercado-PJ" />
+        <xs:element name="detalhe-limite-credito-sugerido-sar" type="tns:Limite-Credito-Sugerido-Sar" />
+        <xs:element name="detalhe-comprometimento-renda-mensal-pf" type="tns:Insumo-Comprometimento-Renda-Mensal-PF" />
+        <xs:element name="detalhe-collection-score-plus" type="tns:collection-score-plus" />
+        <xs:element name="detalhe-biometria-facial" type="tns:Insumo-Biometria-Facial" />
+        <xs:element name="detalhe-decodificador-veiculo" type="tns:Insumo-Decodificador" />
+        <xs:element name="detalhe-precificador-veiculo" type="tns:Insumo-Precificador" />
+        <xs:element name="detalhe-rodas-pneus-veiculo" type="tns:Insumo-Rodas-Pneus" />
+        <xs:element name="detalhe-restricao-estadual-veiculo" type="tns:Insumo-Restricao-Estadual" />
+        <xs:element name="detalhe-debito-estadual-veiculo" type="tns:Insumo-Debito-Estadual" />
+        <xs:element name="detalhe-indicio-sinistro-veiculo" type="tns:Insumo-Indicio-Sinistro" />
+        <xs:element name="detalhe-leilao-veiculo" type="tns:Insumo-Leilao" />
+        <xs:element name="detalhe-historico-km-veiculo" type="tns:Insumo-Historico-Km" />
+        <xs:element name="detalhe-historico-avarias-veiculo" type="tns:Insumo-Historico-Avaria" />
+        <xs:element name="detalhe-base-nacional-veiculo" type="tns:Insumo-Nacional" />
+        <xs:element name="detalhe-restricao-nacional-veiculo" type="tns:Insumo-Restricao-Nacional" />
+        <xs:element name="detalhe-roubo-furto-veiculo" type="tns:Insumo-Roubo-Furto" />
+        <xs:element name="detalhe-recall-veiculo" type="tns:Insumo-Recall" />
+        <xs:element name="detalhe-parecer-tecnico-veiculo" type="tns:Insumo-Parecer-Tecnico" />
+        <xs:element name="detalhe-gravame-veiculo" type="tns:Insumo-SPCAutoGravame" />
+        <xs:element name="detalhe-score-cadastro-positivo" type="tns:Insumo-Score-Cadastro-Positivo" />
+        <xs:element name="detalhe-movimentacao-cadastro-positivo" type="tns:Insumo-Movimentacao-Cadastro-Positivo" />
+        <xs:element name="detalhe-indice-pontualidade-pagamento-cadastro-positivo" type="tns:Insumo-Indice-Pontualidade-Pagamento-Cadastro-Positivo" />
+        <xs:element name="detalhe-indice-comportamento-gastos-cadastro-positivo" type="tns:Insumo-Indice-Comportamento-Gastos-Cadastro-Positivo" />
+        <xs:element name="detalhe-indice-consulta-realizada-por-segmento-cadastro-positivo" type="tns:Insumo-Indice-Consulta-Realizada-Por-Segmento-Cadastro-Positivo" />
+        <xs:element name="detalhe-historico-pagamento-cadastro-positivo" type="tns:Insumo-Historico-Pagamento-Cadastro-Positivo" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="mensagem-alerta" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Resumo-Insumo">
+    <xs:sequence />
+    <xs:attribute name="quantidade-total" type="xs:int" />
+    <xs:attribute name="mesano-primeira-ocorrencia" type="xs:string" />
+    <xs:attribute name="mesano-ultima-ocorrencia" type="xs:string" />
+    <xs:attribute name="data-primeira-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="data-ultima-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="valor-total" type="xs:decimal" />
+    <xs:attribute name="valor-ultima-ocorrencia" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Grafia-PJ">
+    <xs:sequence />
+    <xs:attribute name="razao-social" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-SPC">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cidade-associado" type="tns:Cidade" />
+      <xs:element minOccurs="0" name="telefone-associado" type="tns:Telefone" />
+    </xs:sequence>
+    <xs:attribute name="nome-associado" type="xs:string" />
+    <xs:attribute name="codigo-entidade" type="xs:long" />
+    <xs:attribute name="conta-contrato" type="xs:string" />
+    <xs:attribute name="data-inclusao" type="xs:dateTime" />
+    <xs:attribute name="data-vencimento" type="xs:dateTime" />
+    <xs:attribute name="reservado" type="xs:string" />
+    <xs:attribute name="nome-entidade" type="xs:string" />
+    <xs:attribute name="contrato" type="xs:string" />
+    <xs:attribute name="registro-instituicao-financeira" type="tns:simNao" />
+    <xs:attribute name="registro-relevante" type="tns:simNao" />
+    <xs:attribute name="comprador-fiador-avalista" type="xs:string" />
+    <xs:attribute name="valor" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Cheque-Lojista">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alinea" type="tns:Alinea" />
+      <xs:element minOccurs="0" name="cheque-inicial" type="tns:Cheque-Lojista" />
+      <xs:element minOccurs="0" name="cheque-final" type="tns:Cheque-Final" />
+      <xs:element minOccurs="0" name="cidade-associado" type="tns:Cidade" />
+      <xs:element minOccurs="0" name="telefone-associado" type="tns:Telefone" />
+    </xs:sequence>
+    <xs:attribute name="nome-associado" type="xs:string" />
+    <xs:attribute name="codigo-entidade" type="xs:long" />
+    <xs:attribute name="data-inclusao" type="xs:dateTime" />
+    <xs:attribute name="nome-entidade" type="xs:string" />
+    <xs:attribute name="informante" type="xs:string" />
+    <xs:attribute name="origem" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Alinea">
+    <xs:sequence />
+    <xs:attribute name="codigo" type="xs:long" />
+    <xs:attribute name="descricao" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Cheque-Lojista">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Cheque">
+        <xs:sequence />
+        <xs:attribute name="data-emissao" type="xs:dateTime" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Cheque">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dados-bancarios" type="tns:Dados-Bancarios" />
+    </xs:sequence>
+    <xs:attribute name="numero" type="xs:int" />
+    <xs:attribute name="digito" type="xs:int" />
+    <xs:attribute name="valor" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Dados-Bancarios">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="endereco" type="tns:Endereco" />
+      <xs:element minOccurs="0" name="banco" type="tns:Banco" />
+      <xs:element minOccurs="0" name="telefone" type="tns:Telefone" />
+      <xs:element minOccurs="0" name="fax" type="tns:Telefone" />
+    </xs:sequence>
+    <xs:attribute name="numero-agencia" type="xs:int" />
+    <xs:attribute name="nome-agencia" type="xs:string" />
+    <xs:attribute name="numero-conta-corrente" type="xs:string" />
+    <xs:attribute name="digito-conta-corrente" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Banco">
+    <xs:sequence />
+    <xs:attribute name="codigo" type="xs:int" />
+    <xs:attribute name="nome" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Cheque-Final">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Cheque">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-CCF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="motivo" type="tns:Alinea" />
+      <xs:element minOccurs="0" name="ultimo-cheque" type="tns:Cheque" />
+    </xs:sequence>
+    <xs:attribute name="data-ultimo-cheque" type="xs:dateTime" />
+    <xs:attribute name="origem" type="xs:string" />
+    <xs:attribute name="quantidade" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Contra-Ordem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="motivo" type="tns:Alinea" />
+      <xs:element minOccurs="0" name="cheque-inicial" type="tns:Cheque-Contra-Ordem" />
+      <xs:element minOccurs="0" name="cheque-final" type="tns:Cheque-Final" />
+    </xs:sequence>
+    <xs:attribute name="data-inclusao" type="xs:dateTime" />
+    <xs:attribute name="data-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="origem" type="xs:string" />
+    <xs:attribute name="informante" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Cheque-Contra-Ordem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Cheque">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Contra-Ordem-Documento-Diferente">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Contra-Ordem">
+        <xs:sequence />
+        <xs:attribute name="documento" type="xs:string" />
+        <xs:attribute name="codigo-tipo-documento" type="xs:int" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Contra-Ordem-Agencia-Conta-Diferente">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Contra-Ordem-Documento-Diferente">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Contra-Ordem-Agencia-Diferente">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Contra-Ordem-Documento-Diferente">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Contumacia">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Contra-Ordem">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Dados-Agencia-Bancaria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dados-bancarios" type="tns:Dados-Bancarios" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Agencia-Conta-Documento-Diferente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dados-bancarios" type="tns:Dados-Bancarios" />
+    </xs:sequence>
+    <xs:attribute name="documento" type="xs:string" />
+    <xs:attribute name="origem" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Consulta-Realizada">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="origem-associado" type="tns:Cidade" />
+    </xs:sequence>
+    <xs:attribute name="nome-associado" type="xs:string" />
+    <xs:attribute name="data-consulta" type="xs:dateTime" />
+    <xs:attribute name="nome-entidade-origem" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Credito-Concedido">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="numero_contrato" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ano-vencimento" type="xs:int" />
+    <xs:attribute name="mes-vencimento" type="xs:int" />
+    <xs:attribute name="quantidade-credito" type="xs:int" />
+    <xs:attribute name="valor" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Alerta-Documento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tipo-documento-alerta" type="tns:Tipo-Documento-Alerta" />
+    </xs:sequence>
+    <xs:attribute name="data-inclusao" type="xs:dateTime" />
+    <xs:attribute name="data-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="entidade-origem" type="xs:string" />
+    <xs:attribute name="motivo" type="xs:string" />
+    <xs:attribute name="observacao" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Tipo-Documento-Alerta">
+    <xs:sequence />
+    <xs:attribute name="data-emissao-novo-documento" type="xs:dateTime" />
+    <xs:attribute name="nome" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Acao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vara" type="tns:Vara" />
+      <xs:element minOccurs="0" name="tipo-acao" type="tns:Tipo-Acao" />
+    </xs:sequence>
+    <xs:attribute name="data-acao" type="xs:dateTime" />
+    <xs:attribute name="data-inclusao" type="xs:dateTime" />
+    <xs:attribute name="distrito" type="xs:string" />
+    <xs:attribute name="nome-autor" type="xs:string" />
+    <xs:attribute name="valor-acao" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Vara">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="comarca" type="tns:Cidade" />
+    </xs:sequence>
+    <xs:attribute name="nome" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Tipo-Acao">
+    <xs:sequence />
+    <xs:attribute name="descricao" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Protesto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cartorio" type="tns:Cartorio" />
+      <xs:element minOccurs="0" name="natureza-anotacao" type="tns:Natureza-Anotacao" />
+      <xs:element minOccurs="0" name="subjudice" type="tns:Subjudice" />
+      <xs:element minOccurs="0" name="moeda" type="tns:Moeda" />
+    </xs:sequence>
+    <xs:attribute name="carta-anuencia" type="tns:Carta-Anuencia" />
+    <xs:attribute name="data-carta-anuencia" type="xs:dateTime" />
+    <xs:attribute name="data-inclusao" type="xs:dateTime" />
+    <xs:attribute name="data-protesto" type="xs:dateTime" />
+    <xs:attribute name="requerente-credor" type="xs:string" />
+    <xs:attribute name="numero-protesto" type="xs:string" />
+    <xs:attribute name="valor" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Cartorio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cidade" type="tns:Cidade" />
+    </xs:sequence>
+    <xs:attribute name="nome" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Natureza-Anotacao">
+    <xs:sequence />
+    <xs:attribute name="descricao-natureza-anotacao" type="xs:string" />
+    <xs:attribute name="descricao-complementar-natureza-anotacao" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Subjudice">
+    <xs:sequence />
+    <xs:attribute name="praca-subjudice" type="xs:string" />
+    <xs:attribute name="distrito-subjudice" type="xs:string" />
+    <xs:attribute name="vara-subjudice" type="xs:string" />
+    <xs:attribute name="data-subjudice" type="xs:dateTime" />
+    <xs:attribute name="processo-subjudice" type="xs:string" />
+    <xs:attribute name="mensagem-subjudice" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Moeda">
+    <xs:sequence />
+    <xs:attribute name="simbolo" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Participacao-Empresas">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Quadro-Societario">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="participante" type="tns:Insumo-Quadro-Societario" />
+        </xs:sequence>
+        <xs:attribute name="indicador-restricao" type="xs:boolean" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Quadro-Societario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nacionalidade" type="tns:Pais" />
+      <xs:element minOccurs="0" name="estado-EMBRATEL" type="tns:Estado" />
+    </xs:sequence>
+    <xs:attribute name="cargo-administracao" type="xs:string" />
+    <xs:attribute name="cargo-direcao" type="xs:string" />
+    <xs:attribute name="condicao" type="xs:string" />
+    <xs:attribute name="data-entrada" type="xs:dateTime" />
+    <xs:attribute name="data-saida" type="xs:dateTime" />
+    <xs:attribute name="documento" type="xs:string" />
+    <xs:attribute name="municipio-EMBRATEL" type="xs:string" />
+    <xs:attribute name="nome" type="xs:string" />
+    <xs:attribute name="porcentual-participacao" type="xs:decimal" />
+    <xs:attribute name="situacao-documento" type="xs:string" />
+    <xs:attribute name="tipo-relacionamento" type="xs:string" />
+    <xs:attribute name="data-ultima-atualizacao" type="xs:dateTime" />
+    <xs:attribute name="valor-participacao" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Quadro-Administrativo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Quadro-Societario">
+        <xs:sequence />
+        <xs:attribute name="estado-civil" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Endereco-CEP-Consultado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="endereco" type="tns:Endereco" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Dados-Telefone-Consultado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="assinante" type="tns:Assinante-Telefone" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Assinante-Telefone">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="telefone" type="tns:Telefone" />
+      <xs:element minOccurs="0" name="endereco" type="tns:Endereco-Assinante-Telefone" />
+    </xs:sequence>
+    <xs:attribute name="nome" type="xs:string" />
+    <xs:attribute name="tempo-instalacao" type="xs:string" />
+    <xs:attribute name="tipo-telefone" type="tns:Tipo-Assinante-Telefone" />
+  </xs:complexType>
+  <xs:complexType name="Endereco-Assinante-Telefone">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Endereco">
+        <xs:sequence />
+        <xs:attribute name="tipo-logradouro" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Telefone-Vinculado-Consumidor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="assinante" type="tns:Assinante-Telefone" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Telefone-Vinculado-Assinante-Consultado">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Telefone-Vinculado-Consumidor">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Telefone-Consultado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="telefone" type="tns:Telefone" />
+    </xs:sequence>
+    <xs:attribute name="data-primeira-consulta" type="xs:dateTime" />
+    <xs:attribute name="data-ultima-consulta" type="xs:dateTime" />
+    <xs:attribute name="quantidade-consulta" type="xs:long" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Ocorrencia-Consumidor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="endereco" type="tns:Endereco-Ocorrencia-Consumidor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Endereco-Ocorrencia-Consumidor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Endereco">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Informacao-Poder-Judiciario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vara" type="tns:Vara" />
+    </xs:sequence>
+    <xs:attribute name="data-documento" type="xs:dateTime" />
+    <xs:attribute name="data-inclusao" type="xs:dateTime" />
+    <xs:attribute name="data-vencimento" type="xs:dateTime" />
+    <xs:attribute name="entidade-origem" type="xs:string" />
+    <xs:attribute name="numero-processo" type="xs:string" />
+    <xs:attribute name="valor" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Riskscoring-6-Meses">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="horizonte-tempo" type="xs:int" />
+      <xs:element minOccurs="0" name="mensagem-interpretacao" type="xs:string" />
+      <xs:element minOccurs="0" name="mensagem-prinad" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mensagem-riskscoring" type="tns:Mensagem-Riskscoring" />
+    </xs:sequence>
+    <xs:attribute name="data-fator" type="xs:dateTime" />
+    <xs:attribute name="fator-prinad" type="xs:decimal" />
+    <xs:attribute name="fator-riskscoring" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Mensagem-Riskscoring">
+    <xs:sequence />
+    <xs:attribute name="data-mensagem-riskscoring" type="xs:dateTime" />
+    <xs:attribute name="texto-mensagem-riskscoring" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Riskscoring-12-Meses">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Riskscoring-6-Meses">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Cheque-Sem-Fundo-Achei">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cheque" type="tns:Cheque" />
+      <xs:element minOccurs="0" name="cidade" type="tns:Cidade" />
+      <xs:element minOccurs="0" name="natureza-anotacao" type="tns:Natureza-Anotacao" />
+      <xs:element minOccurs="0" name="alinea" type="tns:Alinea" />
+      <xs:element minOccurs="0" name="moeda" type="tns:Moeda" />
+    </xs:sequence>
+    <xs:attribute name="data-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="quantidade-banco" type="xs:int" />
+    <xs:attribute name="titularidade-conta-corrente" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Cheque-Sem-Fundo-Achei-CCF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cheque" type="tns:Cheque" />
+      <xs:element minOccurs="0" name="cidade" type="tns:Cidade" />
+      <xs:element minOccurs="0" name="natureza-anotacao" type="tns:Natureza-Anotacao" />
+    </xs:sequence>
+    <xs:attribute name="data-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="numero-cheque" type="xs:string" />
+    <xs:attribute name="quantidade-banco" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Contumacia-SRS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cheque-inicial" type="tns:Cheque" />
+      <xs:element minOccurs="0" name="cheque-final" type="tns:Cheque" />
+    </xs:sequence>
+    <xs:attribute name="data-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="motivo" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Participacao-Falencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tipo-acao" type="tns:Tipo-Acao" />
+      <xs:element minOccurs="0" name="natureza-anotacao" type="tns:Natureza-Anotacao" />
+      <xs:element minOccurs="0" name="vara-civel" type="tns:Vara" />
+    </xs:sequence>
+    <xs:attribute name="data-acao" type="xs:dateTime" />
+    <xs:attribute name="descricao-tipo-participacao" type="xs:string" />
+    <xs:attribute name="empresa-participacao" type="xs:string" />
+    <xs:attribute name="qualificacao-participante-empresa-falida" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Divida-Vencida">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="natureza-anotacao" type="tns:Natureza-Anotacao" />
+      <xs:element minOccurs="0" name="moeda" type="tns:Moeda" />
+      <xs:element minOccurs="0" name="subjudice" type="tns:Subjudice" />
+    </xs:sequence>
+    <xs:attribute name="data-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="instituicao-financeira" type="xs:string" />
+    <xs:attribute name="local" type="xs:string" />
+    <xs:attribute name="modalidade" type="xs:string" />
+    <xs:attribute name="titulo" type="xs:string" />
+    <xs:attribute name="valor-divida" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Restricao-Financeira">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="natureza-anotacao" type="tns:Natureza-Anotacao" />
+      <xs:element minOccurs="0" name="subjudice" type="tns:Subjudice" />
+      <xs:element minOccurs="0" name="dados-bancarios" type="tns:Dados-Bancarios" />
+      <xs:element minOccurs="0" name="cidade" type="tns:Cidade" />
+    </xs:sequence>
+    <xs:attribute name="avalista" type="xs:boolean" />
+    <xs:attribute name="contrato" type="xs:string" />
+    <xs:attribute name="data-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="filial" type="xs:string" />
+    <xs:attribute name="indicador-subjudice" type="xs:boolean" />
+    <xs:attribute name="origem" type="xs:string" />
+    <xs:attribute name="titulo-ocorrencia" type="xs:string" />
+    <xs:attribute name="valor-pendencia" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Pendencia-Financeira">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="moeda" type="tns:Moeda" />
+      <xs:element minOccurs="0" name="natureza-anotacao" type="tns:Natureza-Anotacao" />
+      <xs:element minOccurs="0" name="subjudice" type="tns:Subjudice" />
+      <xs:element minOccurs="0" name="cidade" type="tns:Cidade" />
+    </xs:sequence>
+    <xs:attribute name="avalista" type="xs:boolean" />
+    <xs:attribute name="contrato" type="xs:string" />
+    <xs:attribute name="data-ocorrencia" type="xs:dateTime" />
+    <xs:attribute name="filial" type="xs:string" />
+    <xs:attribute name="indicador-subjudice" type="xs:boolean" />
+    <xs:attribute name="origem" type="xs:string" />
+    <xs:attribute name="titulo-ocorrencia" type="xs:string" />
+    <xs:attribute name="valor-pendencia" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Cheque-Sem-Fundo-Varejo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dados-bancarios" type="tns:Dados-Bancarios" />
+      <xs:element minOccurs="0" name="cidade-ocorrencia" type="tns:Cidade" />
+    </xs:sequence>
+    <xs:attribute name="data-ocorrencia-mais-recente" type="xs:dateTime" />
+    <xs:attribute name="numero-loja" type="xs:int" />
+    <xs:attribute name="origem-ocorrencia-mais-recente" type="xs:string" />
+    <xs:attribute name="quantidade-cheques" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Contra-Ordem-SRS">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Contumacia-SRS">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Contra-Ordem-Documento-Diferente-SRS">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Contra-Ordem-SRS">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Cheque-Outras-Ocorrencias-SRS">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Contumacia-SRS">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Cheque-Consulta-Online-SRS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ocorrencia-recheque-online" type="tns:Ocorrencia-Recheque-Online" />
+    </xs:sequence>
+    <xs:attribute name="data-situacao-conta-corrente" type="xs:dateTime" />
+    <xs:attribute name="mensagem-situacao-conta-corrente" type="xs:string" />
+    <xs:attribute name="tipo-documento-identificacao" type="xs:string" />
+    <xs:attribute name="tipo-pessoa-recheque-online" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Ocorrencia-Recheque-Online">
+    <xs:sequence />
+    <xs:attribute name="banco-participacao-recheque-online" type="xs:string" />
+    <xs:attribute name="mensagem-indisponibilidade" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Consulta-Realizada-Cheque">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="referencia-comercial" type="tns:Referencia-Comercial" />
+    </xs:sequence>
+    <xs:attribute name="data-emissao-primeiro-cheque" type="xs:dateTime" />
+    <xs:attribute name="data-emissao-ultimo-cheque" type="xs:dateTime" />
+    <xs:attribute name="total-cheques-a-prazo-emitidos" type="xs:int" />
+    <xs:attribute name="total-cheques-a-prazo-entre-31-e-60dias" type="xs:int" />
+    <xs:attribute name="total-cheques-a-prazo-entre-61-e-90dias" type="xs:int" />
+    <xs:attribute name="total-cheques-a-prazo-ultimos-30dias" type="xs:int" />
+    <xs:attribute name="total-cheques-a-vista" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Referencia-Comercial">
+    <xs:sequence />
+    <xs:attribute name="data-consulta-cheque" type="xs:dateTime" />
+    <xs:attribute name="nome-empresa-consultante" type="xs:string" />
+    <xs:attribute name="ordem-consulta" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Referenciais-Negocios-PorFaixa">
+    <xs:sequence />
+    <xs:attribute name="codigo-faixa-media-potencial" type="xs:string" />
+    <xs:attribute name="codigo-faixa-valor-potencial" type="xs:string" />
+    <xs:attribute name="data-potencial" type="xs:dateTime" />
+    <xs:attribute name="descricao-faixa-media-potencial" type="xs:string" />
+    <xs:attribute name="descricao-faixa-valor-potencial" type="xs:string" />
+    <xs:attribute name="descricao-negocio" type="xs:string" />
+    <xs:attribute name="segmento-origem-informacao" type="xs:string" />
+    <xs:attribute name="valor-faixa-media-potencial-ate" type="xs:decimal" />
+    <xs:attribute name="valor-faixa-media-potencial-de" type="xs:decimal" />
+    <xs:attribute name="valor-potenical-ate" type="xs:decimal" />
+    <xs:attribute name="valor-pontencial-de" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Historico-Pagamento-Por-Faixa">
+    <xs:sequence />
+    <xs:attribute name="codigo-faixa" type="xs:string" />
+    <xs:attribute name="descricao-faixa" type="xs:string" />
+    <xs:attribute name="descricao-periodo" type="xs:string" />
+    <xs:attribute name="percentual-periodo-ate" type="xs:decimal" />
+    <xs:attribute name="percentual-periodo-de" type="xs:decimal" />
+    <xs:attribute name="quantidade-fontes" type="xs:int" />
+    <xs:attribute name="quantidade-periodo-ate" type="xs:int" />
+    <xs:attribute name="quantidade-periodo-de" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Historico-Cheque">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cheque-consultado" type="tns:Cheque" />
+    </xs:sequence>
+    <xs:attribute name="data-consulta-mais-antiga" type="xs:dateTime" />
+    <xs:attribute name="data-consulta-mais-recente" type="xs:dateTime" />
+    <xs:attribute name="nome-empresa-ultima-consulta" type="xs:string" />
+    <xs:attribute name="quantidade-consultas" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Historico-Cheque-Documento-Diferente">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Historico-Cheque">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Historico-Conta-Corrente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ultimo-cheque-consultado" type="tns:Cheque" />
+    </xs:sequence>
+    <xs:attribute name="data-consulta-mais-antiga" type="xs:dateTime" />
+    <xs:attribute name="data-consulta-mais-recente" type="xs:dateTime" />
+    <xs:attribute name="quantidade-consultas" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Relacionamento-Mais-Antigo-Com-Fornecedores">
+    <xs:sequence />
+    <xs:attribute name="data-relacionamento-mais-antigo" type="xs:dateTime" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Registro-Consultas">
+    <xs:sequence />
+    <xs:attribute name="data-consulta" type="xs:dateTime" />
+    <xs:attribute name="quantidade-consulta-banco" type="xs:int" />
+    <xs:attribute name="quantidade-consulta-empresa" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Ultimas-Consultas">
+    <xs:sequence />
+    <xs:attribute name="cnpj-cliente" type="xs:string" />
+    <xs:attribute name="data-consulta" type="xs:dateTime" />
+    <xs:attribute name="nome-cliente-consultante" type="xs:string" />
+    <xs:attribute name="quantidade-consulta" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Capital-Social">
+    <xs:sequence />
+    <xs:attribute name="nacionalidade" type="xs:string" />
+    <xs:attribute name="natureza" type="xs:string" />
+    <xs:attribute name="origem" type="xs:string" />
+    <xs:attribute name="data-ultima-atualizacao" type="xs:dateTime" />
+    <xs:attribute name="valor-capital-autorizado" type="xs:decimal" />
+    <xs:attribute name="valor-capital-realizado" type="xs:decimal" />
+    <xs:attribute name="valor-capital-social" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Antecessora">
+    <xs:sequence />
+    <xs:attribute name="data-motivo" type="xs:dateTime" />
+    <xs:attribute name="razao-social-anterior" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Atividade-Empresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ramo-atividade" type="tns:Ramo-Atividade" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="atividades-economicas-secundarias" type="tns:Ramo-Atividade" />
+    </xs:sequence>
+    <xs:attribute name="numero-cnae" type="xs:string" />
+    <xs:attribute name="percentual-compra" type="xs:double" />
+    <xs:attribute name="percentual-vendas" type="xs:double" />
+    <xs:attribute name="quantidade-empregados" type="xs:int" />
+    <xs:attribute name="quantidade-filiais" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Filial">
+    <xs:sequence />
+    <xs:attribute name="codigo-embratel" type="xs:string" />
+    <xs:attribute name="nome-filial" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Informacoes-Adicionais">
+    <xs:sequence />
+    <xs:attribute name="frase-status-empresa" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Incorporacao-Fusao-Cisao">
+    <xs:sequence />
+    <xs:attribute name="data-atualizacao" type="xs:dateTime" />
+    <xs:attribute name="mensagem-observacoes" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Principais-Produtos">
+    <xs:sequence />
+    <xs:attribute name="descricao-principais-produtos" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-SPC-Score-3-Meses">
+    <xs:sequence />
+    <xs:attribute name="classe" type="xs:string" />
+    <xs:attribute name="horizonte" type="xs:int" use="required" />
+    <xs:attribute name="mesagem-interpretativa-score" type="xs:string" />
+    <xs:attribute name="mesagem-interpretativa-probabilidade" type="xs:string" />
+    <xs:attribute name="mesagem-semaforo" type="xs:string" />
+    <xs:attribute name="probabilidade" type="xs:double" />
+    <xs:attribute name="score" type="xs:int" use="required" />
+    <xs:attribute name="segmento-score" type="xs:string" />
+    <xs:attribute name="tipo-cliente-score" type="tns:Tipo-Cliente-Score" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-SPC-Score-12-Meses">
+    <xs:sequence />
+    <xs:attribute name="classe" type="xs:string" />
+    <xs:attribute name="horizonte" type="xs:int" use="required" />
+    <xs:attribute name="mesagem-interpretativa-score" type="xs:string" />
+    <xs:attribute name="mesagem-interpretativa-probabilidade" type="xs:string" />
+    <xs:attribute name="mesagem-semaforo" type="xs:string" />
+    <xs:attribute name="probabilidade" type="xs:double" />
+    <xs:attribute name="score" type="xs:int" use="required" />
+    <xs:attribute name="segmento-score" type="xs:string" />
+    <xs:attribute name="tipo-cliente-score" type="tns:Tipo-Cliente-Score" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Obito">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cartorio-obito" type="tns:Cartorio-Obito" />
+    </xs:sequence>
+    <xs:attribute name="data-obito" type="xs:dateTime" />
+    <xs:attribute name="msg-obito" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Cartorio-Obito">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Rg">
+    <xs:sequence />
+    <xs:attribute name="foto" type="xs:string" />
+    <xs:attribute name="municipio" type="xs:string" />
+    <xs:attribute name="nome-pai" type="xs:string" />
+    <xs:attribute name="nome-mae" type="xs:string" />
+    <xs:attribute name="data-nascimento-rg" type="xs:dateTime" />
+    <xs:attribute name="nome" type="xs:string" />
+    <xs:attribute name="uf-emissao-rg" type="xs:string" />
+    <xs:attribute name="numero-rg" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Renavam-Federal">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="uf-placa" type="xs:string" />
+        <xs:attribute name="motor" type="xs:string" />
+        <xs:attribute name="caixa-cambio" type="xs:string" />
+        <xs:attribute name="renavam" type="xs:int" />
+        <xs:attribute name="municipio" type="xs:string" />
+        <xs:attribute name="situacao-veiculo" type="xs:string" />
+        <xs:attribute name="remarcacao-chassi" type="xs:string" />
+        <xs:attribute name="tipo-montagem" type="xs:string" />
+        <xs:attribute name="tipo-veiculo" type="xs:string" />
+        <xs:attribute name="marca-modelo" type="xs:string" />
+        <xs:attribute name="especie-veiculo" type="xs:string" />
+        <xs:attribute name="tipo-carroceria" type="xs:string" />
+        <xs:attribute name="cor-veiculo" type="xs:string" />
+        <xs:attribute name="ano-modelo" type="xs:int" />
+        <xs:attribute name="ano-fabricacao" type="xs:int" />
+        <xs:attribute name="potencia-veiculo" type="xs:int" />
+        <xs:attribute name="cilindradas" type="xs:int" />
+        <xs:attribute name="combustivel" type="xs:string" />
+        <xs:attribute name="tracao-veiculo" type="xs:decimal" />
+        <xs:attribute name="peso-bruto-veiculo" type="xs:decimal" />
+        <xs:attribute name="capacidade-carga" type="xs:decimal" />
+        <xs:attribute name="procedencia" type="xs:string" />
+        <xs:attribute name="documento-proprietario" type="xs:string" />
+        <xs:attribute name="nome-proprietario" type="xs:string" />
+        <xs:attribute name="numero-carroceria" type="xs:string" />
+        <xs:attribute name="quantidade-passageiros" type="xs:int" />
+        <xs:attribute name="restricao1" type="xs:string" />
+        <xs:attribute name="restricao2" type="xs:string" />
+        <xs:attribute name="restricao3" type="xs:string" />
+        <xs:attribute name="restricao4" type="xs:string" />
+        <xs:attribute name="numero-eixo" type="xs:int" />
+        <xs:attribute name="numero-eixo-traseiro" type="xs:string" />
+        <xs:attribute name="numero-eixo-auxiliar" type="xs:string" />
+        <xs:attribute name="documento-importador" type="xs:string" />
+        <xs:attribute name="nome-importador" type="xs:string" />
+        <xs:attribute name="liberado-pelo-orgao" type="xs:string" />
+        <xs:attribute name="numero-reda-aduaneiro" type="xs:string" />
+        <xs:attribute name="numero-declar-importacao" type="xs:string" />
+        <xs:attribute name="data-registro-aduaneira" type="xs:string" />
+        <xs:attribute name="numero-id-faturado" type="xs:string" />
+        <xs:attribute name="nome-faturado" type="xs:string" />
+        <xs:attribute name="uf-dest-faturamento" type="xs:string" />
+        <xs:attribute name="data-limite-rest-trib" type="xs:string" />
+        <xs:attribute name="tipo-operacao-imp-veiculo" type="xs:string" />
+        <xs:attribute name="numero-processo-importacao" type="xs:string" />
+        <xs:attribute name="data-ultima-atualizacao" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="abstractInsumoSPCAuto" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idAgenteGerador" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Renavam-Estadual">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="uf-placa" type="xs:string" />
+        <xs:attribute name="motor" type="xs:string" />
+        <xs:attribute name="caixa-cambio" type="xs:string" />
+        <xs:attribute name="renavam" type="xs:int" />
+        <xs:attribute name="municipio" type="xs:string" />
+        <xs:attribute name="situacao-veiculo" type="xs:string" />
+        <xs:attribute name="remarcacao-chassi" type="xs:string" />
+        <xs:attribute name="categoria-veiculo" type="xs:string" />
+        <xs:attribute name="tipo-veiculo" type="xs:string" />
+        <xs:attribute name="marca-modelo" type="xs:string" />
+        <xs:attribute name="especie-veiculo" type="xs:string" />
+        <xs:attribute name="tipo-carroceria" type="xs:string" />
+        <xs:attribute name="cor-veiculo" type="xs:string" />
+        <xs:attribute name="ano-modelo" type="xs:int" />
+        <xs:attribute name="ano-fabricacao" type="xs:int" />
+        <xs:attribute name="potencia-veiculo" type="xs:int" />
+        <xs:attribute name="cilindradas" type="xs:int" />
+        <xs:attribute name="combustivel" type="xs:string" />
+        <xs:attribute name="tracao-veiculo" type="xs:decimal" />
+        <xs:attribute name="peso-bruto-veiculo" type="xs:decimal" />
+        <xs:attribute name="capacidade-carga" type="xs:decimal" />
+        <xs:attribute name="procedencia" type="xs:string" />
+        <xs:attribute name="documento-proprietario" type="xs:string" />
+        <xs:attribute name="numero-carroceria" type="xs:string" />
+        <xs:attribute name="quantidade-passageiros" type="xs:int" />
+        <xs:attribute name="restricao1" type="xs:string" />
+        <xs:attribute name="restricao2" type="xs:string" />
+        <xs:attribute name="restricao3" type="xs:string" />
+        <xs:attribute name="restricao4" type="xs:string" />
+        <xs:attribute name="numero-eixo" type="xs:int" />
+        <xs:attribute name="numero-eixo-traseiro" type="xs:string" />
+        <xs:attribute name="numero-eixo-auxiliar" type="xs:string" />
+        <xs:attribute name="nome-proprietario" type="xs:string" />
+        <xs:attribute name="debito-ipva" type="xs:string" />
+        <xs:attribute name="descricao-debito-ipva" type="xs:string" />
+        <xs:attribute name="debito-multas" type="xs:string" />
+        <xs:attribute name="descricao-debito-multas" type="xs:string" />
+        <xs:attribute name="data-limite-rest-trib" type="xs:string" />
+        <xs:attribute name="data-ultima-atualizacao" type="xs:string" />
+        <xs:attribute name="debito-dpvat" type="xs:string" />
+        <xs:attribute name="debito-licenciamento" type="xs:string" />
+        <xs:attribute name="montagem" type="xs:string" />
+        <xs:attribute name="uf" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Dpvat">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="nome-proprietario" type="xs:string" />
+        <xs:attribute name="documento" type="xs:string" />
+        <xs:attribute name="renavam" type="xs:int" />
+        <xs:attribute name="numero-dut" type="xs:int" />
+        <xs:attribute name="uf" type="xs:string" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="exercicio" type="xs:int" />
+        <xs:attribute name="data-pagamento" type="xs:string" />
+        <xs:attribute name="data-processamento" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Gravame">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="remarcacao-chassi" type="xs:string" />
+        <xs:attribute name="renavam" type="xs:int" />
+        <xs:attribute name="status-veiculo" type="xs:string" />
+        <xs:attribute name="uf-placa" type="xs:string" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="uf-licenciamento" type="xs:string" />
+        <xs:attribute name="documento-financiado" type="xs:string" />
+        <xs:attribute name="nome-financiado" type="xs:string" />
+        <xs:attribute name="nome-agente" type="xs:string" />
+        <xs:attribute name="documento-agente" type="xs:string" />
+        <xs:attribute name="data-inclusao-gravame" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-SPCAutoLocaliza">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="nome-proprietario" type="xs:string" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="renavam" type="xs:int" />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="numero-dut" type="xs:int" />
+        <xs:attribute name="ano-exercicio" type="xs:int" />
+        <xs:attribute name="data-processamento" type="xs:string" />
+        <xs:attribute name="id-pagamento-dut" type="xs:int" />
+        <xs:attribute name="numero-banco" type="xs:int" />
+        <xs:attribute name="uf-dut" type="xs:string" />
+        <xs:attribute name="documento" type="xs:string" />
+        <xs:attribute name="data-emissao-guia" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Historico-Roubo-Furto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="uf-placa" type="xs:string" />
+        <xs:attribute name="municipio-emplacamento" type="xs:string" />
+        <xs:attribute name="marca-modelo" type="xs:string" />
+        <xs:attribute name="cor-veiculo" type="xs:string" />
+        <xs:attribute name="ano-modelo" type="xs:string" />
+        <xs:attribute name="ano-fabricacao" type="xs:string" />
+        <xs:attribute name="ocorrencia" type="xs:string" />
+        <xs:attribute name="data-ocorrencia" type="xs:string" />
+        <xs:attribute name="boletim-ocorrencia" type="xs:string" />
+        <xs:attribute name="ano-ocorrencia" type="xs:string" />
+        <xs:attribute name="uf-ocorrencia" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Renda-Presumida-Spc">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="faixa-renda" type="tns:faixa-renda-presumida" />
+    </xs:sequence>
+    <xs:attribute name="mensagem-fornecedor" type="xs:string" />
+    <xs:attribute name="mediana" type="xs:double" />
+  </xs:complexType>
+  <xs:complexType name="faixa-renda-presumida">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+    </xs:sequence>
+    <xs:attribute name="descricao" type="xs:string" />
+    <xs:attribute name="probabilidade" type="xs:double" use="required" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Limite-Credito-Sugerido">
+    <xs:sequence />
+    <xs:attribute name="mensagem" type="xs:string" />
+    <xs:attribute name="limite-sugerido" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Ocupacao">
+    <xs:sequence />
+    <xs:attribute name="escolaridade" type="xs:string" />
+    <xs:attribute name="profissao" type="xs:string" />
+    <xs:attribute name="cargo" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Informacoes-Complementares">
+    <xs:sequence />
+    <xs:attribute name="numero-funcionarios" type="xs:string" />
+    <xs:attribute name="porte-empresa" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Telefone-Alternativo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="telefone" type="tns:Telefone" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Alerta-Obito">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="alertas" type="tns:Observacao-Alerta-Obito" />
+    </xs:sequence>
+    <xs:attribute name="msg-obito" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Observacao-Alerta-Obito">
+    <xs:sequence />
+    <xs:attribute name="codigo-alerta" type="xs:string" />
+    <xs:attribute name="mensagem" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Alerta-Identidade">
+    <xs:sequence />
+    <xs:attribute name="mensagem" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Limite-Credito-PJ">
+    <xs:sequence />
+    <xs:attribute name="data-calculo" type="xs:dateTime" />
+    <xs:attribute name="valor-limite-credito" type="xs:decimal" />
+    <xs:attribute name="mensagem" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Faturamento-Presumido">
+    <xs:sequence />
+    <xs:attribute name="valor-faturamento" type="xs:decimal" />
+    <xs:attribute name="mensagem" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Gasto-Estimado-PJ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mensagem" type="tns:Mensagem-Gasto-Estimado-PJ" />
+      <xs:element minOccurs="0" name="valor" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Mensagem-Gasto-Estimado-PJ">
+    <xs:sequence />
+    <xs:attribute name="retorno" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Risco-Credito-PJ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pontuacao" type="xs:int" />
+      <xs:element minOccurs="0" name="probabilidadeInadimplencia" type="xs:string" />
+      <xs:element minOccurs="0" name="mensagemRetorno" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Perfil-Financeiro-PJ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="frase-conclusao" type="tns:perfilFinanceiroFraseConclusao" />
+      <xs:element minOccurs="0" name="perfil-financeiro-identificacao-empresa" type="tns:perfilFinanceiroIdentificacaoEmpresa" />
+      <xs:element minOccurs="0" name="perfil-financeiro-contas-ativo" type="tns:perfilFinanceiroContasAtivo" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="perfil-financeiro-contas-ativos" type="tns:perfilFinanceiroContasAtivo" />
+      <xs:element minOccurs="0" name="perfil-financeiro-contas-passivo" type="tns:perfilFinanceiroContasPassivo" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="perfil-financeiros-contas-passivos" type="tns:perfilFinanceiroContasPassivo" />
+      <xs:element minOccurs="0" name="perfil-financeiro-resultado" type="tns:perfilFinanceiroResultado" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="perfil-financeiro-resultados" type="tns:perfilFinanceiroResultado" />
+      <xs:element minOccurs="0" name="perfil-financeiro-identificacao-balanco" type="tns:perfilFinanceiroIdentificacaoBalanco" />
+      <xs:element minOccurs="0" name="perfil-financeiro-indices-integrado" type="tns:perfilFinanceiroIndicesFinanceiroIntegrado" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="perfil-financeiro-indices-integrados" type="tns:perfilFinanceiroIndicesFinanceiroIntegrado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="perfilFinanceiroFraseConclusao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bloco" type="xs:string" />
+      <xs:element minOccurs="0" name="fraseConclusao" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="perfilFinanceiroIdentificacaoEmpresa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bloco" type="xs:string" />
+      <xs:element minOccurs="0" name="cnpj" type="xs:string" />
+      <xs:element minOccurs="0" name="dataAtualizacao" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="razaoSocial" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="perfilFinanceiroContasAtivo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bloco" type="xs:string" />
+      <xs:element minOccurs="0" name="clientes" type="xs:string" />
+      <xs:element minOccurs="0" name="codigoNivelConta" type="xs:string" />
+      <xs:element minOccurs="0" name="estoques" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeConta" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroConta" type="xs:string" />
+      <xs:element minOccurs="0" name="sinal" type="xs:string" />
+      <xs:element minOccurs="0" name="valor" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="perfilFinanceiroContasPassivo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bloco" type="xs:string" />
+      <xs:element minOccurs="0" name="codigoNivelConta" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeConta" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroConta" type="xs:string" />
+      <xs:element minOccurs="0" name="sinal" type="xs:string" />
+      <xs:element minOccurs="0" name="valor" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="perfilFinanceiroResultado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bloco" type="xs:string" />
+      <xs:element minOccurs="0" name="codigoNivelConta" type="xs:string" />
+      <xs:element minOccurs="0" name="nomeConta" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroConta" type="xs:string" />
+      <xs:element minOccurs="0" name="sinal" type="xs:string" />
+      <xs:element minOccurs="0" name="valor" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="perfilFinanceiroIdentificacaoBalanco">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bloco" type="xs:string" />
+      <xs:element minOccurs="0" name="dataBalanco" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="descricaoUnidade" type="xs:string" />
+      <xs:element minOccurs="0" name="padraoContabil" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoDemonstrativo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="perfilFinanceiroIndicesFinanceiroIntegrado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="desCategoriaIndice" type="xs:string" />
+      <xs:element minOccurs="0" name="formatoDoIndice" type="xs:string" />
+      <xs:element minOccurs="0" name="indiceDoBalanco" type="xs:string" />
+      <xs:element minOccurs="0" name="indiceDoBalancoPadrao" type="xs:string" />
+      <xs:element minOccurs="0" name="qtdDecimal" type="xs:int" />
+      <xs:element minOccurs="0" name="qtdInteiro" type="xs:int" />
+      <xs:element minOccurs="0" name="sinalDoIndiceBalanco" type="xs:string" />
+      <xs:element minOccurs="0" name="sinalDoIndiceBalancoPadrao" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Quadro-Social-Mais-Completo-PJ">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="controle-societario" type="tns:Registro-Quadro-Social-Mais-Completo-PJ" />
+      <xs:element minOccurs="0" name="mensagem" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="quadro-administrativo" type="tns:Registro-Quadro-Social-Mais-Completo-PJ" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Registro-Quadro-Social-Mais-Completo-PJ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="detalhes-socio-1" type="tns:Detalhe1QuadroSocialMaisCompletoPJ" />
+      <xs:element minOccurs="0" name="detalhes-socio-2" type="tns:Detalhe2QuadroSocialMaisCompletoPJ" />
+      <xs:element minOccurs="0" name="administrativo" type="tns:QuadroAdministrativoQuadroSocialMaisCompletoPJ" />
+      <xs:element minOccurs="0" name="informacoes-adicionais-1" type="tns:InformacoesAdicionais1Socios" />
+      <xs:element minOccurs="0" name="informacoes-adicionais-2" type="tns:InformacoesAdicionais2Socios" />
+      <xs:element minOccurs="0" name="informacoes-adicionais-3" type="tns:InformacoesAdicionais3Socios" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="restricoes" type="tns:Restricao" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="sem-restricoes" type="tns:SemRestricao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Detalhe1QuadroSocialMaisCompletoPJ">
+    <xs:sequence />
+    <xs:attribute name="dataEntrada" type="xs:dateTime" />
+    <xs:attribute name="documento" type="xs:string" />
+    <xs:attribute name="nacionalidade" type="xs:string" />
+    <xs:attribute name="nome" type="xs:string" />
+    <xs:attribute name="percentual" type="xs:double" />
+    <xs:attribute name="tipoPessoa" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Detalhe2QuadroSocialMaisCompletoPJ">
+    <xs:sequence />
+    <xs:attribute name="percentualCapitalVotante" type="xs:double" />
+  </xs:complexType>
+  <xs:complexType name="QuadroAdministrativoQuadroSocialMaisCompletoPJ">
+    <xs:sequence />
+    <xs:attribute name="cargo" type="xs:string" />
+    <xs:attribute name="documento" type="xs:string" />
+    <xs:attribute name="nacionalidade" type="xs:string" />
+    <xs:attribute name="nome" type="xs:string" />
+    <xs:attribute name="tipoPessoa" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="InformacoesAdicionais1Socios">
+    <xs:sequence />
+    <xs:attribute name="cidade" type="xs:string" />
+    <xs:attribute name="dataNascimento" type="xs:dateTime" />
+    <xs:attribute name="documento" type="xs:string" />
+    <xs:attribute name="cep" type="xs:string" />
+    <xs:attribute name="rg" type="xs:string" />
+    <xs:attribute name="ddd" type="xs:string" />
+    <xs:attribute name="uf" type="xs:string" />
+    <xs:attribute name="vinculo" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="InformacoesAdicionais2Socios">
+    <xs:sequence />
+    <xs:attribute name="logradouro" type="xs:string" />
+    <xs:attribute name="bairro" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="InformacoesAdicionais3Socios">
+    <xs:sequence />
+    <xs:attribute name="nome" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Restricao">
+    <xs:sequence />
+    <xs:attribute name="dataUltimaOcorrencia" type="xs:dateTime" />
+    <xs:attribute name="descricao" type="xs:string" />
+    <xs:attribute name="quantidadeOcorrencias" type="xs:int" />
+    <xs:attribute name="valorTotalOcorrencia" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="SemRestricao">
+    <xs:sequence />
+    <xs:attribute name="descricao" type="xs:string" />
+    <xs:attribute name="mensagem" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Gasto-Estimado-PF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mensagem" type="tns:Mensagem-Gasto-Estimado-PF" />
+      <xs:element minOccurs="0" name="valor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Mensagem-Gasto-Estimado-PF">
+    <xs:sequence />
+    <xs:attribute name="retorno" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Indice-Relacionamento-Mercado-PF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mensagem" type="tns:Mensagem-Indice-Relacionamento-Mercado-PF" />
+      <xs:element minOccurs="0" name="valor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Mensagem-Indice-Relacionamento-Mercado-PF">
+    <xs:sequence />
+    <xs:attribute name="retorno" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Indice-Relacionamento-Mercado-PJ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mensagem" type="tns:Mensagem-Indice-Relacionamento-Mercado-PJ" />
+      <xs:element minOccurs="0" name="valor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Mensagem-Indice-Relacionamento-Mercado-PJ">
+    <xs:sequence />
+    <xs:attribute name="retorno" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Limite-Credito-Sugerido-Sar">
+    <xs:sequence />
+    <xs:attribute name="classificacao" type="xs:string" />
+    <xs:attribute name="data-validade" type="xs:string" />
+    <xs:attribute name="limite-credito" type="xs:decimal" />
+    <xs:attribute name="mensagem" type="xs:string" />
+    <xs:attribute name="quantidade-cheque-sem-fundo-candidato" type="xs:int" />
+    <xs:attribute name="quantidade-cheque-sustado-candidato" type="xs:int" />
+    <xs:attribute name="quantidade-debito-candidato" type="xs:int" />
+    <xs:attribute name="valor-total-debito-candidato" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Comprometimento-Renda-Mensal-PF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mensagem" type="tns:Mensagem-Comprometimento-Renda-Mensal-PF" />
+      <xs:element minOccurs="0" name="faixa" type="xs:string" />
+      <xs:element minOccurs="0" name="percentual" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Mensagem-Comprometimento-Renda-Mensal-PF">
+    <xs:sequence />
+    <xs:attribute name="retorno" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="collection-score-plus">
+    <xs:sequence />
+    <xs:attribute name="classe" type="xs:string" />
+    <xs:attribute name="mesagem-interpretativa-score" type="xs:string" />
+    <xs:attribute name="mesagem-interpretativa-probabilidade" type="xs:string" />
+    <xs:attribute name="mesagem-semaforo" type="xs:string" />
+    <xs:attribute name="probabilidade" type="xs:double" />
+    <xs:attribute name="score" type="xs:int" use="required" />
+    <xs:attribute name="segmento-score" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Biometria-Facial">
+    <xs:sequence />
+    <xs:attribute name="codigo-acompanhamento-analise" type="xs:string" />
+    <xs:attribute name="cpf-consumifor" type="xs:string" />
+    <xs:attribute name="data-consulta" type="xs:dateTime" />
+    <xs:attribute name="descricao-score-biometrico" type="xs:string" />
+    <xs:attribute name="nome-consumidor" type="xs:string" />
+    <xs:attribute name="score-biometrico" type="xs:string" />
+    <xs:attribute name="sexo-consumidor" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Decodificador">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="consulta-id" type="xs:string" />
+        <xs:attribute name="decodificador-id" type="xs:string" />
+        <xs:attribute name="fornecedor-id" type="xs:string" />
+        <xs:attribute name="cliente-id" type="xs:string" />
+        <xs:attribute name="usuario" type="xs:string" />
+        <xs:attribute name="chassi-consulta" type="xs:string" />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="fabricante" type="xs:string" />
+        <xs:attribute name="marca" type="xs:string" />
+        <xs:attribute name="modelo" type="xs:string" />
+        <xs:attribute name="ano-fabricacao" type="xs:string" />
+        <xs:attribute name="ano-modelo" type="xs:string" />
+        <xs:attribute name="combustivel" type="xs:string" />
+        <xs:attribute name="regiao-geografica" type="xs:string" />
+        <xs:attribute name="pais" type="xs:string" />
+        <xs:attribute name="local-da-fabrica" type="xs:string" />
+        <xs:attribute name="veiculo" type="xs:string" />
+        <xs:attribute name="versao" type="xs:string" />
+        <xs:attribute name="motor" type="xs:string" />
+        <xs:attribute name="tracao" type="xs:string" />
+        <xs:attribute name="transmissao" type="xs:string" />
+        <xs:attribute name="portas" type="xs:string" />
+        <xs:attribute name="tipo-da-carroceria" type="xs:string" />
+        <xs:attribute name="erro-consulta" type="xs:string" />
+        <xs:attribute name="decodificacao" type="xs:string" />
+        <xs:attribute name="dados-origem" type="xs:string" />
+        <xs:attribute name="data-inclusao" type="xs:string" />
+        <xs:attribute name="retorno" type="xs:string" />
+        <xs:attribute name="retorno-xml" type="xs:string" />
+        <xs:attribute name="codigo-molicar" type="xs:string" />
+        <xs:attribute name="valor-molicar" type="xs:string" />
+        <xs:attribute name="conclusao" type="xs:string" />
+        <xs:attribute name="digito-verificador" type="xs:string" />
+        <xs:attribute name="verificacao-do-serial" type="xs:string" />
+        <xs:attribute name="quantidade-de-irregularidades" type="xs:string" />
+        <xs:attribute name="tipo-de-freio" type="xs:string" />
+        <xs:attribute name="peso-bruto" type="xs:string" />
+        <xs:attribute name="comprimento" type="xs:string" />
+        <xs:attribute name="classificacao" type="xs:string" />
+        <xs:attribute name="origem-xml" type="xs:string" />
+        <xs:attribute name="tipo-do-motor" type="xs:string" />
+        <xs:attribute name="mes-de-producao" type="xs:string" />
+        <xs:attribute name="categoria-descricao" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Precificador">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="tabela-fipe" type="tns:TabelaFipe" />
+          <xs:element minOccurs="0" name="tabela-molicar" type="tns:TabelaMolicar" />
+        </xs:sequence>
+        <xs:attribute name="consulta-id" type="xs:string" />
+        <xs:attribute name="precificador-id" type="xs:decimal" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="data-inclusao" type="xs:string" />
+        <xs:attribute name="fornecedor-id" type="xs:string" />
+        <xs:attribute name="cliente-id" type="xs:string" />
+        <xs:attribute name="placa-consulta" type="xs:string" />
+        <xs:attribute name="chassi-consulta" type="xs:string" />
+        <xs:attribute name="codigo-fipe" type="xs:string" />
+        <xs:attribute name="fabricante-fipe" type="xs:string" />
+        <xs:attribute name="modelo-fipe" type="xs:string" />
+        <xs:attribute name="ano-modelo-fipe" type="xs:string" />
+        <xs:attribute name="combustivel-fipe" type="xs:string" />
+        <xs:attribute name="preco-fipe" type="xs:string" />
+        <xs:attribute name="preco-medio" type="xs:string" />
+        <xs:attribute name="vigencia" type="xs:string" />
+        <xs:attribute name="quantidade-de-registros" type="xs:string" />
+        <xs:attribute name="usuario" type="xs:string" />
+        <xs:attribute name="retorno" type="xs:string" />
+        <xs:attribute name="dados-origem" type="xs:string" />
+        <xs:attribute name="retorno-xml" type="xs:string" />
+        <xs:attribute name="origem-xml" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TabelaFipe">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoRetorno" type="xs:int" />
+      <xs:element minOccurs="0" name="DescricaoRetorno" type="xs:string" />
+      <xs:element minOccurs="0" name="QtdRegistros" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Registro" type="tns:RegistroTabelaFipe" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RegistroTabelaFipe">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo-fipe" type="xs:string" />
+      <xs:element minOccurs="0" name="fabricante" type="xs:string" />
+      <xs:element minOccurs="0" name="modelo" type="xs:string" />
+      <xs:element minOccurs="0" name="ano" type="xs:int" />
+      <xs:element minOccurs="0" name="combustivel" type="xs:string" />
+      <xs:element minOccurs="0" name="numero-passageiros" type="xs:int" />
+      <xs:element minOccurs="0" name="valor" type="xs:decimal" />
+      <xs:element minOccurs="0" name="valor-formatado" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TabelaMolicar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoRetorno" type="xs:int" />
+      <xs:element minOccurs="0" name="DescricaoRetorno" type="xs:string" />
+      <xs:element minOccurs="0" name="QtdRegistros" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Registro" type="tns:RegistroTabelaMolicar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RegistroTabelaMolicar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo-molicar" type="xs:string" />
+      <xs:element minOccurs="0" name="fabricante" type="xs:string" />
+      <xs:element minOccurs="0" name="modelo" type="xs:string" />
+      <xs:element minOccurs="0" name="ano" type="xs:int" />
+      <xs:element minOccurs="0" name="combustivel" type="xs:string" />
+      <xs:element minOccurs="0" name="numero-passageiros" type="xs:int" />
+      <xs:element minOccurs="0" name="valor" type="xs:decimal" />
+      <xs:element minOccurs="0" name="valor-formatado" type="xs:string" />
+      <xs:element minOccurs="0" name="versao" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Rodas-Pneus">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="itens-rodas-pneus" type="tns:item-rodas-pneus" />
+        </xs:sequence>
+        <xs:attribute name="ConsultaID" type="xs:string" />
+        <xs:attribute name="Placa" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="item-rodas-pneus">
+    <xs:sequence />
+    <xs:attribute name="aro-off-set" type="xs:string" />
+    <xs:attribute name="aro-tamanho" type="xs:string" />
+    <xs:attribute name="furacao-da-roda" type="xs:string" />
+    <xs:attribute name="parafuso-porca-hex" type="xs:string" />
+    <xs:attribute name="parafuso-porca-tipo-rosca" type="xs:string" />
+    <xs:attribute name="parafuso-porca-torque" type="xs:string" />
+    <xs:attribute name="pneu-info" type="xs:string" />
+    <xs:attribute name="medida-do-cubo" type="xs:string" />
+    <xs:attribute name="modelo-descricao" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Restricao-Estadual">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="restricao1" type="xs:string" />
+        <xs:attribute name="restricao2" type="xs:string" />
+        <xs:attribute name="restricao3" type="xs:string" />
+        <xs:attribute name="restricao4" type="xs:string" />
+        <xs:attribute name="debito-ipva" type="xs:string" />
+        <xs:attribute name="descricao-debito-ipva" type="xs:string" />
+        <xs:attribute name="debito-multas" type="xs:string" />
+        <xs:attribute name="descricao-debito-multas" type="xs:string" />
+        <xs:attribute name="data-limite-rest-trib" type="xs:string" />
+        <xs:attribute name="data-ultima-atualizacao" type="xs:string" />
+        <xs:attribute name="debito-dpvat" type="xs:string" />
+        <xs:attribute name="debito-licenciamento" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Debito-Estadual">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="debito-ipva" type="xs:string" />
+        <xs:attribute name="descricao-debito-ipva" type="xs:string" />
+        <xs:attribute name="debito-multas" type="xs:string" />
+        <xs:attribute name="descricao-debito-multas" type="xs:string" />
+        <xs:attribute name="data-limite-rest-trib" type="xs:string" />
+        <xs:attribute name="data-ultima-atualizacao" type="xs:string" />
+        <xs:attribute name="debito-dpvat" type="xs:string" />
+        <xs:attribute name="debito-licenciamento" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Indicio-Sinistro">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="ConsultaID" type="xs:string" />
+        <xs:attribute name="IndicioSinistroID" type="xs:string" />
+        <xs:attribute name="Placa" type="xs:string" />
+        <xs:attribute name="Chassi" type="xs:string" />
+        <xs:attribute name="IndicioSinistro" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Leilao">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="leilao-model" type="tns:leilao-model" />
+        </xs:sequence>
+        <xs:attribute name="consulta-id" type="xs:string" />
+        <xs:attribute name="consulta-id-ref" type="xs:string" />
+        <xs:attribute name="data-consulta" type="xs:string" />
+        <xs:attribute name="leilao-id" type="xs:string" />
+        <xs:attribute name="cliente-id" type="xs:string" />
+        <xs:attribute name="fornecedor-id" type="xs:string" />
+        <xs:attribute name="placa-consulta" type="xs:string" />
+        <xs:attribute name="chassi-consulta" type="xs:string" />
+        <xs:attribute name="data-inclusao" type="xs:string" />
+        <xs:attribute name="dados-origem" type="xs:string" />
+        <xs:attribute name="erro-consulta" type="xs:string" />
+        <xs:attribute name="retorno-xml" type="xs:string" />
+        <xs:attribute name="origem-xml" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="leilao-model">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="item-leilao" type="tns:DTO_Leilao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DTO_Leilao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="consulta-id" type="xs:string" />
+      <xs:element minOccurs="0" name="consulta-id-ref" type="xs:string" />
+      <xs:element minOccurs="0" name="data-consulta" type="xs:string" />
+      <xs:element minOccurs="0" name="leilaoid" type="xs:string" />
+      <xs:element minOccurs="0" name="cliente-id" type="xs:string" />
+      <xs:element minOccurs="0" name="fornecedor-id" type="xs:string" />
+      <xs:element minOccurs="0" name="placa-consulta" type="xs:string" />
+      <xs:element minOccurs="0" name="chassi-consulta" type="xs:string" />
+      <xs:element minOccurs="0" name="data-inclusao" type="xs:string" />
+      <xs:element minOccurs="0" name="dados-origem" type="xs:string" />
+      <xs:element minOccurs="0" name="erro-consulta" type="xs:string" />
+      <xs:element minOccurs="0" name="ano-fabricacao" type="xs:string" />
+      <xs:element minOccurs="0" name="ano-modelo" type="xs:string" />
+      <xs:element minOccurs="0" name="categoria" type="xs:string" />
+      <xs:element minOccurs="0" name="chassi" type="xs:string" />
+      <xs:element minOccurs="0" name="combustivel" type="xs:string" />
+      <xs:element minOccurs="0" name="comitente" type="xs:string" />
+      <xs:element minOccurs="0" name="condicoes-veiculo" type="xs:string" />
+      <xs:element minOccurs="0" name="cor" type="xs:string" />
+      <xs:element minOccurs="0" name="data-leilao" type="xs:string" />
+      <xs:element minOccurs="0" name="leilao-fornecedor-id" type="xs:string" />
+      <xs:element minOccurs="0" name="leiloeiro" type="xs:string" />
+      <xs:element minOccurs="0" name="lote" type="xs:string" />
+      <xs:element minOccurs="0" name="marca" type="xs:string" />
+      <xs:element minOccurs="0" name="modelo" type="xs:string" />
+      <xs:element minOccurs="0" name="nr-cambio" type="xs:string" />
+      <xs:element minOccurs="0" name="nr-carroceria" type="xs:string" />
+      <xs:element minOccurs="0" name="nr-eixo-traseiro" type="xs:string" />
+      <xs:element minOccurs="0" name="nr-Motor" type="xs:string" />
+      <xs:element minOccurs="0" name="veiculo-id" type="xs:string" />
+      <xs:element minOccurs="0" name="patio" type="xs:string" />
+      <xs:element minOccurs="0" name="placa" type="xs:string" />
+      <xs:element minOccurs="0" name="qtde-eixos" type="xs:string" />
+      <xs:element minOccurs="0" name="renavam" type="xs:string" />
+      <xs:element minOccurs="0" name="situacao-chassi" type="xs:string" />
+      <xs:element minOccurs="0" name="dados-retorno" type="xs:string" />
+      <xs:element minOccurs="0" name="retorno" type="xs:string" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+      <xs:element minOccurs="0" name="url-foto1" type="xs:string" />
+      <xs:element minOccurs="0" name="url-foto2" type="xs:string" />
+      <xs:element minOccurs="0" name="url-foto3" type="xs:string" />
+      <xs:element minOccurs="0" name="url-foto4" type="xs:string" />
+      <xs:element minOccurs="0" name="leilao-foto" type="tns:DTO_LeilaoFoto" />
+      <xs:element minOccurs="0" name="retorno-xml" type="xs:string" />
+      <xs:element minOccurs="0" name="origem-xml" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="itens" type="tns:DTO_Leilao" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DTO_LeilaoFoto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LeilaoID" type="xs:string" />
+      <xs:element minOccurs="0" name="FotoID" type="xs:string" />
+      <xs:element minOccurs="0" name="FotoOrigem" type="xs:string" />
+      <xs:element minOccurs="0" name="DataInclusao" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Historico-Km">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="itens" type="tns:item-historico-km" />
+        </xs:sequence>
+        <xs:attribute name="ConsultaID" type="xs:string" />
+        <xs:attribute name="qtde-registros" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="item-historico-km">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="historico-km-id" type="xs:string" />
+      <xs:element minOccurs="0" name="valor-data-coleta" type="xs:string" />
+      <xs:element name="km" type="xs:int" />
+      <xs:element minOccurs="0" name="canal" type="xs:string" />
+      <xs:element minOccurs="0" name="dataColeta" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Historico-Avaria">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="hist-avaria-item" type="tns:Hist-AvariaItem" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:Hist-AvariaItem" />
+        </xs:sequence>
+        <xs:attribute name="retorno" type="xs:string" />
+        <xs:attribute name="retorno-xml" type="xs:string" />
+        <xs:attribute name="erro-consulta" type="xs:string" />
+        <xs:attribute name="consulta-id" type="xs:string" />
+        <xs:attribute name="fornecedor-id" type="xs:string" />
+        <xs:attribute name="cliente-id" type="xs:string" />
+        <xs:attribute name="usuario" type="xs:string" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="data-inclusao" type="xs:string" />
+        <xs:attribute name="placa-consulta" type="xs:string" />
+        <xs:attribute name="chassi-consulta" type="xs:string" />
+        <xs:attribute name="origem-xml" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Hist-AvariaItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="historico-avaria-id" type="xs:string" />
+      <xs:element minOccurs="0" name="peca-id" type="xs:string" />
+      <xs:element minOccurs="0" name="peca-descricao" type="xs:string" />
+      <xs:element minOccurs="0" name="avaria-id" type="xs:string" />
+      <xs:element minOccurs="0" name="avaria-descricao" type="xs:string" />
+      <xs:element name="data-coleta" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Nacional">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="COMUNICACAOVENDA" type="tns:Comunicacao-venda" />
+          <xs:element minOccurs="0" name="RestricaoJudicial" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="ConsultaID" type="xs:string" />
+        <xs:attribute name="Placa" type="xs:string" />
+        <xs:attribute name="Chassi" type="xs:string" />
+        <xs:attribute name="Tipo" type="xs:string" />
+        <xs:attribute name="Marca" type="xs:string" />
+        <xs:attribute name="Modelo" type="xs:string" />
+        <xs:attribute name="NrMotor" type="xs:string" />
+        <xs:attribute name="Municipio" type="xs:string" />
+        <xs:attribute name="UF" type="xs:string" />
+        <xs:attribute name="Renavam" type="xs:string" />
+        <xs:attribute name="Procedencia" type="xs:string" />
+        <xs:attribute name="Especie" type="xs:string" />
+        <xs:attribute name="Categoria" type="xs:string" />
+        <xs:attribute name="AnoFabricacao" type="xs:string" />
+        <xs:attribute name="Cor" type="xs:string" />
+        <xs:attribute name="Combustivel" type="xs:string" />
+        <xs:attribute name="CapPassageiros" type="xs:string" />
+        <xs:attribute name="CapCarga" type="xs:string" />
+        <xs:attribute name="Potencia" type="xs:string" />
+        <xs:attribute name="Cilindrada" type="xs:string" />
+        <xs:attribute name="QtdeEixos" type="xs:string" />
+        <xs:attribute name="NrCarroceria" type="xs:string" />
+        <xs:attribute name="NrEixoTraseiro" type="xs:string" />
+        <xs:attribute name="CapTracao" type="xs:string" />
+        <xs:attribute name="ChassiRemarcado" type="xs:string" />
+        <xs:attribute name="Montagem" type="xs:string" />
+        <xs:attribute name="Situacao" type="xs:string" />
+        <xs:attribute name="Ocorrencia" type="xs:string" />
+        <xs:attribute name="Restricao1" type="xs:string" />
+        <xs:attribute name="DataAtualizacao" type="xs:string" />
+        <xs:attribute name="AnoModelo" type="xs:string" />
+        <xs:attribute name="NrCambio" type="xs:string" />
+        <xs:attribute name="PesoBruto" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Comunicacao-venda">
+    <xs:sequence />
+    <xs:attribute name="Comunicacao" type="xs:string" />
+    <xs:attribute name="DataComunicacao" type="xs:string" />
+    <xs:attribute name="DataVenda" type="xs:string" />
+    <xs:attribute name="Comprador" type="xs:string" />
+    <xs:attribute name="CPFCNPJComprador" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Restricao-Nacional">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="Restricao1" type="xs:string" />
+        <xs:attribute name="RestricaoJudicial" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Roubo-Furto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Nacional">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="restricao-furto" type="tns:Restricao-Furto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Restricao-Furto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Insumo-Nacional">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item-roubo-furto" type="tns:RF" />
+        </xs:sequence>
+        <xs:attribute name="restricao" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RF">
+    <xs:sequence />
+    <xs:attribute name="CategoriaOcorrencia" type="xs:string" />
+    <xs:attribute name="AnoOcorrencia" type="xs:string" />
+    <xs:attribute name="OrgaoSeguranca" type="xs:string" />
+    <xs:attribute name="Boletim" type="xs:string" />
+    <xs:attribute name="NumeroOcorrencia" type="xs:string" />
+    <xs:attribute name="TipoDeclaracao" type="xs:string" />
+    <xs:attribute name="DataOcorrencia" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Recall">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="itens-recall" type="tns:DetalhesRecall" />
+        </xs:sequence>
+        <xs:attribute name="ano-modelo" type="xs:string" />
+        <xs:attribute name="marca" type="xs:string" />
+        <xs:attribute name="modelo" type="xs:string" />
+        <xs:attribute name="retorno" type="xs:string" />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="retorno-xml" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DetalhesRecall">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cd-procon" type="xs:string" />
+      <xs:element minOccurs="0" name="cnpj" type="xs:string" />
+      <xs:element minOccurs="0" name="defeito" type="xs:string" />
+      <xs:element minOccurs="0" name="divisao" type="xs:string" />
+      <xs:element minOccurs="0" name="razao-social" type="xs:string" />
+      <xs:element minOccurs="0" name="risco" type="xs:string" />
+      <xs:element minOccurs="0" name="texto-completo" type="xs:string" />
+      <xs:element minOccurs="0" name="inicio-campanha" type="xs:string" />
+      <xs:element minOccurs="0" name="extension-data" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Parecer-Tecnico">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="retorno" type="xs:string" />
+        <xs:attribute name="consulta-id" type="xs:string" />
+        <xs:attribute name="parecer-tecnico-descricao" type="xs:string" />
+        <xs:attribute name="parecer-tecnico" type="xs:string" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="observacao" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-SPCAutoGravame">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractInsumoSPCAuto">
+        <xs:sequence />
+        <xs:attribute name="consulta-id" type="xs:string" />
+        <xs:attribute name="nome-financiado" type="xs:string" />
+        <xs:attribute name="doc-financiado" type="xs:string" />
+        <xs:attribute name="chassi" type="xs:string" />
+        <xs:attribute name="renavam" type="xs:string" />
+        <xs:attribute name="placa" type="xs:string" />
+        <xs:attribute name="uf-placa" type="xs:string" />
+        <xs:attribute name="remarcado" type="xs:string" />
+        <xs:attribute name="uf-licenciamento" type="xs:string" />
+        <xs:attribute name="financeira" type="xs:string" />
+        <xs:attribute name="doc-financeira" type="xs:string" />
+        <xs:attribute name="cod-financeira" type="xs:string" />
+        <xs:attribute name="data-consulta" type="xs:string" />
+        <xs:attribute name="data-status" type="xs:string" />
+        <xs:attribute name="situacao" type="xs:string" />
+        <xs:attribute name="origem" type="xs:string" />
+        <xs:attribute name="ano-fabricacao" type="xs:string" />
+        <xs:attribute name="ano-modelo" type="xs:string" />
+        <xs:attribute name="cnpj-agente" type="xs:string" />
+        <xs:attribute name="numero-gravame" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Insumo-Score-Cadastro-Positivo">
+    <xs:sequence />
+    <xs:attribute name="indice-risco-credito-score" type="tns:Indice-Risco-Credito-Score-Cadastro-Positivo" />
+    <xs:attribute name="mensagem" type="xs:string" />
+    <xs:attribute name="mensagem-status" type="xs:string" />
+    <xs:attribute name="probabilidadeInadimplencia" type="xs:decimal" />
+    <xs:attribute name="score" type="xs:int" use="required" />
+    <xs:attribute name="score-maximo-escala" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Movimentacao-Cadastro-Positivo">
+    <xs:sequence />
+    <xs:attribute name="ano-entrada" type="xs:int" />
+    <xs:attribute name="ano-saida" type="xs:int" />
+    <xs:attribute name="mensagem-status" type="xs:string" />
+    <xs:attribute name="mes-entrada" type="xs:int" />
+    <xs:attribute name="mes-saida" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Indice-Pontualidade-Pagamento-Cadastro-Positivo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="segmentos" type="tns:Segmento-Pontualidade-Pagamento-Cadastro-Positivo" />
+    </xs:sequence>
+    <xs:attribute name="mensagem-status" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Segmento-Pontualidade-Pagamento-Cadastro-Positivo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="periodos" type="tns:Periodo-Pontualidade-Pagamento-Cadastro-Positivo" />
+    </xs:sequence>
+    <xs:attribute name="nome" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Periodo-Pontualidade-Pagamento-Cadastro-Positivo">
+    <xs:sequence />
+    <xs:attribute name="pagamento-comprovado" type="xs:boolean" use="required" />
+    <xs:attribute name="descricao" type="tns:Identificacao-Periodo-Pagamento-Cadastro-Positivo" />
+    <xs:attribute name="porcentual" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Indice-Comportamento-Gastos-Cadastro-Positivo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="segmentos" type="tns:Segmento-Comportamento-Gastos-Cadastro-Positivo" />
+    </xs:sequence>
+    <xs:attribute name="gasto-total-final" type="xs:decimal" />
+    <xs:attribute name="gasto-total-inicial" type="xs:decimal" />
+    <xs:attribute name="mensagem-status" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Segmento-Comportamento-Gastos-Cadastro-Positivo">
+    <xs:sequence />
+    <xs:attribute name="nome" type="xs:string" />
+    <xs:attribute name="porcentual-representatividade" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Indice-Consulta-Realizada-Por-Segmento-Cadastro-Positivo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="consultas-por-ramo-atividade-por-mes" type="tns:Ramo-Atividade-Consulta-Cadastro-Positivo" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="total-consultas-por-mes" type="tns:Mes-Ano-Consulta-Cadastro-Positivo" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ultimas-consultas" type="tns:Consulta-Realizada-Segmento-Cadastro-Positivo" />
+    </xs:sequence>
+    <xs:attribute name="total-geral-consultas" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="Ramo-Atividade-Consulta-Cadastro-Positivo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ramo-atividade" type="tns:Ramo-Atividade" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="numero-consultas-por-mes" type="tns:Mes-Ano-Consulta-Cadastro-Positivo" />
+    </xs:sequence>
+    <xs:attribute name="numero-total-consultas" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="Mes-Ano-Consulta-Cadastro-Positivo">
+    <xs:sequence />
+    <xs:attribute name="ano" type="xs:int" />
+    <xs:attribute name="mes" type="xs:int" />
+    <xs:attribute name="nome-mes" type="xs:string" />
+    <xs:attribute name="numero-consultas" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="Consulta-Realizada-Segmento-Cadastro-Positivo">
+    <xs:sequence />
+    <xs:attribute name="data-consulta-mais-recente" type="xs:dateTime" />
+    <xs:attribute name="mesAno" type="xs:string" />
+    <xs:attribute name="quantidade-consultas" type="xs:int" />
+    <xs:attribute name="ramo-atividade" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Historico-Pagamento-Cadastro-Positivo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="grupos-sumarizacao" type="tns:Grupo-Sumarizacao-Historico-Cadastro-Positivo" />
+    </xs:sequence>
+    <xs:attribute name="mensagem-status" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Grupo-Sumarizacao-Historico-Cadastro-Positivo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ultimas-operacoes-com-pagamento" type="tns:Operacao-Resumida-Historico-Sumarizado" />
+    </xs:sequence>
+    <xs:attribute name="data-ultima-atualizacao" type="xs:dateTime" />
+    <xs:attribute name="media-saldo-utilizado" type="xs:decimal" />
+    <xs:attribute name="media-valor-minimo-faturas" type="xs:decimal" />
+    <xs:attribute name="media-valor-pagamentos" type="xs:decimal" />
+    <xs:attribute name="media-valor-parcelas" type="xs:decimal" />
+    <xs:attribute name="media-valor-total-faturas" type="xs:decimal" />
+    <xs:attribute name="agrupamento" type="xs:string" />
+    <xs:attribute name="quantidade-meses" type="xs:int" />
+    <xs:attribute name="quantidade-operacoes" type="xs:int" />
+    <xs:attribute name="soma-saldo-utilizado" type="xs:decimal" />
+    <xs:attribute name="soma-valor-minimo-faturas" type="xs:decimal" />
+    <xs:attribute name="soma-valor-pagamentos" type="xs:decimal" />
+    <xs:attribute name="soma-valor-parcelas" type="xs:decimal" />
+    <xs:attribute name="soma-valor-total-faturas" type="xs:decimal" />
+    <xs:attribute name="soma-valor-operacoes" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Operacao-Resumida-Historico-Sumarizado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ultimo-pagamento" type="tns:Pagamento-Operacao-Historico-Sumarizado" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="pagamentos-anteriores" type="tns:Pagamento-Operacao-Historico-Sumarizado" />
+    </xs:sequence>
+    <xs:attribute name="codigo-tipo-fonte" type="xs:string" />
+    <xs:attribute name="data-ultima-atualizacao-fonte" type="xs:dateTime" />
+    <xs:attribute name="nome-tipo-fonte" type="xs:string" />
+    <xs:attribute name="numero-contrato" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Pagamento-Operacao-Historico-Sumarizado">
+    <xs:sequence />
+    <xs:attribute name="data-pagamento" type="xs:dateTime" />
+    <xs:attribute name="data-vencimento" type="xs:dateTime" />
+    <xs:attribute name="quantidade-parcelas-pagar" type="xs:int" />
+    <xs:attribute name="quantidade-parcelas-vencer" type="xs:int" />
+    <xs:attribute name="saldo-utilizado" type="xs:decimal" />
+    <xs:attribute name="tipo-pagamento" type="xs:string" />
+    <xs:attribute name="valor-minimo-fatura" type="xs:decimal" />
+    <xs:attribute name="valor-pagamento" type="xs:decimal" />
+    <xs:attribute name="valor-parcela" type="xs:decimal" />
+    <xs:attribute name="valor-total-fatura" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="Resultado-Insumo-Contra-Ordem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Resultado-Insumo">
+        <xs:sequence />
+        <xs:attribute name="quantidade-taloes-contra-ordenados" type="xs:int" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Resultado-Insumo-Contumacia">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Resultado-Insumo">
+        <xs:sequence />
+        <xs:attribute name="data-final-periodo-consultado" type="xs:dateTime" />
+        <xs:attribute name="data-inicial-periodo-consultado" type="xs:dateTime" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Resultado-Insumo-Consulta-Realizada">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Resultado-Insumo">
+        <xs:sequence />
+        <xs:attribute name="quantidade-dias-consultados" type="xs:int" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Mensagem-Complementar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="mensagem" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="origem" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Filtro-Consulta-Complementar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="numero-protocolo" type="xs:long" />
+      <xs:element minOccurs="0" name="numero-documento-socio" type="xs:string" />
+      <xs:element minOccurs="0" name="codigo-produto-principal" type="xs:long" />
+      <xs:element minOccurs="0" name="tipo-pessoa" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Lista-Produto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="produto" type="tns:Produto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Produto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="parametro" type="tns:Parametro-Produto" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="insumo-opcional" type="tns:Insumo-Produto" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="insumo-retorno" type="tns:Insumo-Produto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Parametro-Produto">
+    <xs:sequence />
+    <xs:attribute name="nome" type="xs:string" />
+    <xs:attribute name="obrigatorio" type="xs:boolean" use="required" />
+  </xs:complexType>
+  <xs:complexType name="Insumo-Produto">
+    <xs:sequence />
+    <xs:attribute name="nome" type="xs:string" />
+    <xs:attribute name="codigo" type="xs:long" />
+    <xs:attribute name="opcional" type="xs:boolean" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="Tipo-Pessoa">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="F" />
+      <xs:enumeration value="J" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="baseExternaAgente">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SRF" />
+      <xs:enumeration value="RENIC" />
+      <xs:enumeration value="USEFN" />
+      <xs:enumeration value="ACSP" />
+      <xs:enumeration value="EQUIF" />
+      <xs:enumeration value="SRASA_TRADUTOR_CONCENTRE" />
+      <xs:enumeration value="SRASA_RELATO" />
+      <xs:enumeration value="SRASA_CHEQUENET" />
+      <xs:enumeration value="SRASA_CONCTR" />
+      <xs:enumeration value="FORNECEDOR_INTEGRACAO" />
+      <xs:enumeration value="FORNECEDOR_INTEGRACAO_CHEQUE" />
+      <xs:enumeration value="SSPDSCE" />
+      <xs:enumeration value="SSPGO" />
+      <xs:enumeration value="SSPMT" />
+      <xs:enumeration value="CHECKAUTO" />
+      <xs:enumeration value="SRASA_CREDNET" />
+      <xs:enumeration value="SRASA_CREDIT_BUREAU" />
+      <xs:enumeration value="ASSECC_FONE" />
+      <xs:enumeration value="FIBER_RENDA_PRESUMIDA" />
+      <xs:enumeration value="IBOPE" />
+      <xs:enumeration value="RENDA_PRESUMIDA" />
+      <xs:enumeration value="CARFACTS" />
+      <xs:enumeration value="CADPS" />
+      <xs:enumeration value="CADPS_PONTUALIDADE_PAGAMENTO" />
+      <xs:enumeration value="CADPS_COMPORTAMENTO_GASTOS" />
+      <xs:enumeration value="CADPS_MOVIMENTACAO" />
+      <xs:enumeration value="CADPS_SCORE" />
+      <xs:enumeration value="UNICHECK" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Estado-Civil">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SOLTEIRO" />
+      <xs:enumeration value="CASADO" />
+      <xs:enumeration value="SEPARADO_JUDICIALMENTE" />
+      <xs:enumeration value="DIVORCIADO" />
+      <xs:enumeration value="VIUVO" />
+      <xs:enumeration value="UNIAO_ESTAVEL" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Sexo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MASCULINO" />
+      <xs:enumeration value="FEMININO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Signo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CAPRICORNIO" />
+      <xs:enumeration value="AQUARIO" />
+      <xs:enumeration value="PEIXES" />
+      <xs:enumeration value="ARIES" />
+      <xs:enumeration value="TOURO" />
+      <xs:enumeration value="GEMEOS" />
+      <xs:enumeration value="CANCER" />
+      <xs:enumeration value="LEAO" />
+      <xs:enumeration value="VIRGEM" />
+      <xs:enumeration value="LIBRA" />
+      <xs:enumeration value="ESCORPIAO" />
+      <xs:enumeration value="SAGITARIO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="simNao">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SIM" />
+      <xs:enumeration value="NAO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Carta-Anuencia">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREDOR" />
+      <xs:enumeration value="CREDOR_ELETRONICA" />
+      <xs:enumeration value="DEVEDOR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Tipo-Assinante-Telefone">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Celular" />
+      <xs:enumeration value="Fixo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Tipo-Cliente-Score">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NAO_RESTRITO" />
+      <xs:enumeration value="NOVO" />
+      <xs:enumeration value="RESTRITO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Indice-Risco-Credito-Score-Cadastro-Positivo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MINIMO" />
+      <xs:enumeration value="BAIXO" />
+      <xs:enumeration value="MEDIO" />
+      <xs:enumeration value="ALTO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Identificacao-Periodo-Pagamento-Cadastro-Positivo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PAGAMENTO_EM_DIA" />
+      <xs:enumeration value="PAGAMENTO_ATE_15_DIAS" />
+      <xs:enumeration value="PAGAMENTO_ENTRE_15_E_30_DIAS_APOS_VENCIMENTO" />
+      <xs:enumeration value="PAGAMENTO_ENTRE_30_E_90_DIAS_APOS_VENCIMENTO" />
+      <xs:enumeration value="PAGAMENTO_ACIMA_DE_90_DIAS_APOS_VENCIMENTO" />
+      <xs:enumeration value="SEM_INFORMACOES_PAGAMENTO_ATE_30_DIAS_APOS_VENCIMENTO" />
+      <xs:enumeration value="SEM_INFORMACOES_PAGAMENTO_ACIMA_DE_30_DIAS_APOS_VENCIMENTO" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

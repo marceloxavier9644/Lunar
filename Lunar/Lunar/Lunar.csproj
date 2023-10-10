@@ -276,6 +276,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\consultaSPCBrasil\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\WSCorreios\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1192,6 +1197,8 @@
     <Compile Include="Utils\OrganizacaoNF\ValidadorNotaSaida.cs" />
     <Compile Include="Utils\SintegrawsConsultas\SintegraConsultaCnpj.cs" />
     <Compile Include="Utils\Sintegra\GeradorSintegra.cs" />
+    <Compile Include="Utils\SPCBrasilIntegracao\ConsultaSpcBrasilLunar.cs" />
+    <Compile Include="Utils\SPCBrasilIntegracao\CustomMessageInspector.cs" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="RJ_UI\Classes\RJTextBoxLower.resx">
       <DependentUpon>RJTextBoxLower.cs</DependentUpon>
@@ -1616,6 +1623,40 @@
       <DependentUpon>FrmImportarCSV.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Connected Services\consultaSPCBrasil\consultaWebService.wsdl" />
+    <None Include="Connected Services\consultaSPCBrasil\consultaWebService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.consultaBiometriaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.consultaComplementarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.consultarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.consultaScoreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.detalharProdutoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.listarProdutosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.Produto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.ResultadoConsulta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.ResultadoConsultaBiometria.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.ResultadoConsultaScore.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
     <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.atualizaPagamentoNaEntregaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -2020,6 +2061,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\consultaSPCBrasil\configuration91.svcinfo" />
+    <None Include="Connected Services\consultaSPCBrasil\configuration.svcinfo" />
+    <None Include="Connected Services\consultaSPCBrasil\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Group 137.ico" />
     <Content Include="only_logo_BR8_1.ico" />
     <Content Include="Resources\Account Setting.png" />
@@ -2114,6 +2161,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\consultaSPCBrasil\" />
     <WCFMetadataStorage Include="Connected Services\WSCorreios\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,27 +1,20 @@
-﻿using Lunar.Telas.Cadastros.Bancos;
-using Lunar.Telas.Cadastros.Cliente;
+﻿using Lunar.consultaSPCBrasil;
+using Lunar.Telas.Cadastros.Bancos;
 using Lunar.Telas.Cadastros.Empresas;
-using Lunar.Telas.ContasReceber.Reports.Dados;
-using Lunar.Telas.Orcamentos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.UsuarioRegistro;
 using Lunar.Utils;
-using Lunar.Utils.GalaxyPay_API;
 using LunarBase.Classes;
-using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
-using Microsoft.Reporting.WinForms;
-using MySql.Data.MySqlClient.Memcached;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ServiceModel;
+using System.ServiceModel.Dispatcher;
+using System.ServiceModel.Description;
+using Lunar.Utils.SPCBrasilIntegracao;
 
 namespace Lunar.Telas.CaixaConferencia
 {
@@ -400,7 +393,7 @@ namespace Lunar.Telas.CaixaConferencia
             {
                 sql = sql + "and Tabela.EmpresaFilial = " + txtCodEmpresa.Texts + " ";
             }
-            if(chkApenasCaixaFisico.Checked == true)
+            if (chkApenasCaixaFisico.Checked == true)
             {
                 sql = sql + "and Tabela.ContaBancaria is null ";
             }
@@ -426,7 +419,7 @@ namespace Lunar.Telas.CaixaConferencia
                     {
                         if (!String.IsNullOrEmpty(txtCodUsuario.Texts))
                         {
-                            if(troco.Usuario.Id == int.Parse(txtCodUsuario.Texts))
+                            if (troco.Usuario.Id == int.Parse(txtCodUsuario.Texts))
                             {
                                 valorTroco = valorTroco + troco.Valor;
                             }
@@ -463,7 +456,7 @@ namespace Lunar.Telas.CaixaConferencia
 
             if (listaCaixa.Count > 0)
             {
-                
+
                 sfDataPager1.DataSource = listaCaixa;
                 sfDataPager1.PageSize = 10000;
                 grid.DataSource = sfDataPager1.PagedSource;
@@ -548,12 +541,12 @@ namespace Lunar.Telas.CaixaConferencia
                 {
                     //foreach (var selectedItem in grid.SelectedItems)
                     //{
-                        var caixa = grid.SelectedItem as Caixa;
+                    var caixa = grid.SelectedItem as Caixa;
 
-                        //Ordem Serviço
-                        if (caixa.TabelaOrigem.Equals("ORDEMSERVICO"))
-                        {
-                            OrdemServico ordemServico = new OrdemServico();
+                    //Ordem Serviço
+                    if (caixa.TabelaOrigem.Equals("ORDEMSERVICO"))
+                    {
+                        OrdemServico ordemServico = new OrdemServico();
                         if (!caixa.IdOrigem.Contains(","))
                         {
                             ordemServico.Id = int.Parse(caixa.IdOrigem);
@@ -624,15 +617,15 @@ namespace Lunar.Telas.CaixaConferencia
                         {
                             List<string> listExc = new List<string>();
                             string[] splt = caixa.IdOrigem.Split(',');
-                            for(int a = 0; a < splt.Length; a++)
-                            {   
-                                if(a > 0)
+                            for (int a = 0; a < splt.Length; a++)
+                            {
+                                if (a > 0)
                                     listExc.Add(splt[a]);
                             }
-                            foreach(string idOS in listExc) 
-                            { 
-                            ordemServico.Id = int.Parse(idOS);
-                            ordemServico = (OrdemServico)OrdemServicoController.getInstance().selecionar(ordemServico);
+                            foreach (string idOS in listExc)
+                            {
+                                ordemServico.Id = int.Parse(idOS);
+                                ordemServico = (OrdemServico)OrdemServicoController.getInstance().selecionar(ordemServico);
                                 if (ordemServico != null)
                                 {
                                     if (ordemServico.Id > 0)
@@ -675,15 +668,15 @@ namespace Lunar.Telas.CaixaConferencia
                                                 ContaReceberController contaReceberController = new ContaReceberController();
                                                 IList<ContaReceber> listaReceber = new List<ContaReceber>();
                                                 listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela where Tabela.FlagExcluido <> true and Tabela.OrdemServico = " + ordemServico.Id);
-                                                if(listaReceber.Count > 0)
+                                                if (listaReceber.Count > 0)
                                                 {
-                                                    foreach(ContaReceber cr in listaReceber)
+                                                    foreach (ContaReceber cr in listaReceber)
                                                     {
                                                         Controller.getInstance().excluir(cr);
                                                     }
                                                     GenericaDesktop.ShowInfo("Esta O.S possui conta a receber, foram excluídas!");
                                                 }
-                                                
+
                                             }
                                         }
                                         else
@@ -694,7 +687,7 @@ namespace Lunar.Telas.CaixaConferencia
                             GenericaDesktop.ShowInfo("Pagamento da Ordem de Serviço " + ordemServico.Id.ToString() + " excluído com Sucesso, ela foi reaberta!");
                             btnPesquisar.PerformClick();
                         }
-                   }
+                    }
                     //Ordem Serviço Sinal _ Entrada
                     if (caixa.TabelaOrigem.Equals("ORDEMSERVICO_SINAL"))
                     {
@@ -771,7 +764,7 @@ namespace Lunar.Telas.CaixaConferencia
                                 }
                             }
                         }
-                            
+
                     }
 
                     //CONTA A RECEBER
@@ -813,12 +806,12 @@ namespace Lunar.Telas.CaixaConferencia
                                     else
                                     {
                                         //GenericaDesktop.ShowErro("Não é possível excluir caixa de parcela que possui recebimento parcial!");
-                                        
+
                                         ContaReceberRecebidaController contaReceberRecebidaController = new ContaReceberRecebidaController();
-                                        IList<ContaReceberRecebida> listaRecebidas = contaReceberRecebidaController.selecionarContaReceberRecebidaPorSql("From ContaReceberRecebida crr Where crr.FlagExcluido <> true and crr.DataCadastro between '"+caixa.DataLancamento.ToString("yyyy-MM-dd")+" 00:00:00' and '"+caixa.DataLancamento.ToString("yyyy-MM-dd")+" 23:59:59' and crr.ContaReceber = " + contaReceber.Id + " and crr.ValorRecebido = " + caixa.Valor.ToString().Replace(',','.'));
-                                        if(listaRecebidas.Count == 1)
+                                        IList<ContaReceberRecebida> listaRecebidas = contaReceberRecebidaController.selecionarContaReceberRecebidaPorSql("From ContaReceberRecebida crr Where crr.FlagExcluido <> true and crr.DataCadastro between '" + caixa.DataLancamento.ToString("yyyy-MM-dd") + " 00:00:00' and '" + caixa.DataLancamento.ToString("yyyy-MM-dd") + " 23:59:59' and crr.ContaReceber = " + contaReceber.Id + " and crr.ValorRecebido = " + caixa.Valor.ToString().Replace(',', '.'));
+                                        if (listaRecebidas.Count == 1)
                                         {
-                                            foreach(ContaReceberRecebida contaReceberRecebida in listaRecebidas)
+                                            foreach (ContaReceberRecebida contaReceberRecebida in listaRecebidas)
                                             {
                                                 Controller.getInstance().excluir(contaReceberRecebida);
                                                 contaReceber.ValorRecebimentoParcial = contaReceber.ValorRecebimentoParcial - contaReceberRecebida.ValorRecebido;
@@ -852,15 +845,15 @@ namespace Lunar.Telas.CaixaConferencia
                     //TROCO FIXO
                     if (caixa.TabelaOrigem.Equals("TROCOFIXO"))
                     {
-                        if(GenericaDesktop.ShowConfirmacao("O sistema vai eliminar todos os troco fixo cadastrados, ok?"))
+                        if (GenericaDesktop.ShowConfirmacao("O sistema vai eliminar todos os troco fixo cadastrados, ok?"))
                         {
                             TrocoFixoController trocoFixoController = new TrocoFixoController();
                             IList<TrocoFixo> listaTroco = trocoFixoController.selecionarTodosTrocoFixoPorEmpresaFilial();
                             if (listaTroco != null)
                             {
-                                if(listaTroco.Count > 0)
+                                if (listaTroco.Count > 0)
                                 {
-                                    foreach(TrocoFixo troco in listaTroco)
+                                    foreach (TrocoFixo troco in listaTroco)
                                     {
                                         Controller.getInstance().excluir(troco);
                                     }
@@ -873,10 +866,10 @@ namespace Lunar.Telas.CaixaConferencia
                     if (caixa.TabelaOrigem.Equals("DEPOSITO_BANCARIO"))
                     {
                         CaixaController caixaController = new CaixaController();
-                        IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSqlNativo("Select * From Caixa Where Caixa.Valor = " + caixa.Valor.ToString().Replace(',','.') + " and Caixa.DataLancamento = '" +caixa.DataLancamento.ToString("yyyy-MM-dd") + "' and Caixa.FlagExcluido <> true and Caixa.TabelaOrigem = 'DEPOSITO_BANCARIO' and Caixa.OperadorCadastro = '"+caixa.OperadorCadastro+"'");
-                        if(listaCaixa.Count == 2)
+                        IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSqlNativo("Select * From Caixa Where Caixa.Valor = " + caixa.Valor.ToString().Replace(',', '.') + " and Caixa.DataLancamento = '" + caixa.DataLancamento.ToString("yyyy-MM-dd") + "' and Caixa.FlagExcluido <> true and Caixa.TabelaOrigem = 'DEPOSITO_BANCARIO' and Caixa.OperadorCadastro = '" + caixa.OperadorCadastro + "'");
+                        if (listaCaixa.Count == 2)
                         {
-                            foreach(Caixa cx in listaCaixa)
+                            foreach (Caixa cx in listaCaixa)
                             {
                                 Controller.getInstance().excluir(cx);
                             }
@@ -894,7 +887,7 @@ namespace Lunar.Telas.CaixaConferencia
                     {
                         Controller.getInstance().excluir(caixa);
                         ContaReceberController contaReceberController = new ContaReceberController();
-                        IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.Documento like '%"+caixa.IdOrigem+"%'");
+                        IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.Documento like '%" + caixa.IdOrigem + "%'");
                         if (listaReceber.Count == 1)
                         {
                             foreach (ContaReceber rec in listaReceber)
@@ -939,9 +932,9 @@ namespace Lunar.Telas.CaixaConferencia
                     }
 
                     btnPesquisar.PerformClick();
-            }
-            else
-                GenericaDesktop.ShowAlerta("Selecione as contas que deseja excluir!");
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Selecione as contas que deseja excluir!");
             }
         }
 
@@ -1138,15 +1131,15 @@ namespace Lunar.Telas.CaixaConferencia
                             if (grid.SelectedItems.Count > 0)
                             {
                                 var caixa = grid.SelectedItem as Caixa;
-                                if(GenericaDesktop.ShowConfirmacao("Deseja inserir o cobrador(a) " + pessoaCobrador.RazaoSocial + " no lancamento selecionado?"))
+                                if (GenericaDesktop.ShowConfirmacao("Deseja inserir o cobrador(a) " + pessoaCobrador.RazaoSocial + " no lancamento selecionado?"))
                                 {
                                     caixa.Cobrador = pessoaCobrador;
                                     Controller.getInstance().salvar(caixa);
                                     GenericaDesktop.ShowInfo("Ajustado com Sucesso");
                                 }
                             }
-                    
-                                break;
+
+                            break;
                     }
                     formBackground.Dispose();
                 }
@@ -1163,38 +1156,51 @@ namespace Lunar.Telas.CaixaConferencia
 
         private void btnTesteBoleto_Click(object sender, EventArgs e)
         {
-            GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
-            string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
-            Pessoa pessoa = new Pessoa();
-            PessoaController pessoaController = new PessoaController();
-            pessoa = pessoaController.selecionarPessoaPorCPFCNPJ("07497828622");
+            string usuario = "10535935";
+            string senha = "temp@1234";
 
-            if (!String.IsNullOrEmpty(tokenAcessoGalaxyPay))
+            consultaSPCBrasil.consultaWebServiceClient client = new consultaWebServiceClient();
+            client.ClientCredentials.UserName.UserName = usuario;
+            client.ClientCredentials.UserName.Password = senha;
+            //Homologação
+            client.Endpoint.Address = new EndpointAddress("https://treina.spc.org.br:443/spc/remoting/ws/consulta/consultaWebService");
+
+            //Produção
+            //client.Endpoint.Address = new EndpointAddress("https://servicos.spc.org.br/spc/remoting/ws/consulta/consultaWebService");
+
+            var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
+            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
+            binding.SendTimeout = TimeSpan.FromMinutes(5);
+            binding.MaxReceivedMessageSize = 10485760;
+
+            //Codigo Para visualizar o xml de requisicao e de resposta, para possivel suporte no SPC BRASIL
+            CustomMessageInspector messageInspector = new CustomMessageInspector();
+            client.Endpoint.Behaviors.Add(new CustomEndpointBehavior(messageInspector));
+
+            client.Endpoint.Binding = binding;
+
+            try
             {
-                Task<string> ret = galaxyPayApiIntegracao.GalaxyPay_ListarCliente("07497828622", pessoa);
-                if (ret.Equals("1"))
-                {
-                    ContaReceberController contaReceberController = new ContaReceberController();
-                    IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela Where Tabela.Cliente = " + pessoa.Id.ToString() + " and Tabela.FlagExcluido <> True");
-                    string retornoBoletos = "";
-                    int contagem = 0;
-                    foreach (ContaReceber contaReceber in listaReceber)
-                    {
-                        if (contaReceber.BoletoGerado == false)
-                        {
-                            retornoBoletos = galaxyPayApiIntegracao.GalaxyPay_GerarBoleto(pessoa, contaReceber);
-                            if (retornoBoletos.Equals("1"))
-                                contagem++;
-                        }
-                        else
-                            GenericaDesktop.ShowAlerta(contaReceber.Documento + " - Essa fatura já possui boleto gerado, cancele o boleto que já existe ou utilize o boleto que foi gerado anteriormente!");
-                    }
-                    if (contagem > 0)
-                        GenericaDesktop.ShowInfo(contagem + " Boleto(s) Gerado(s) com Sucesso!");
-                    else
-                        GenericaDesktop.ShowAlerta("Falha ao gerar boletos");
-                }
+
+                Lunar.consultaSPCBrasil.FiltroConsulta filtroConsulta = new Lunar.consultaSPCBrasil.FiltroConsulta();
+                filtroConsulta.tipoconsumidorSpecified = true;
+                filtroConsulta.tipoconsumidor = TipoPessoa.F;
+                filtroConsulta.documentoconsumidor = "02358474703";
+                filtroConsulta.codigoproduto = "12";
+                Lunar.consultaSPCBrasil.ResultadoConsulta res = client.consultar(filtroConsulta);
+
+            }
+            catch (FaultException er)
+            {
+                GenericaDesktop.ShowAlerta(er.Message);
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowAlerta(erro.Message);
             }
         }
+
+     
+
     }
 }

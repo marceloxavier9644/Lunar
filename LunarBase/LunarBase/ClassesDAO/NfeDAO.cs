@@ -1,6 +1,8 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ConexaoBD;
 using LunarBase.Utilidades;
+using NHibernate.Mapping;
+using System.Reflection;
 
 namespace LunarBase.ClassesDAO
 {
@@ -147,6 +149,14 @@ namespace LunarBase.ClassesDAO
 
             Session = Conexao.GetSession();
             return Session.CreateQuery(sql).UniqueResult<Nfe>();
+        }
+
+        public void updateNotasAutorizadasComoLancadas(string dataInicial, string dataFinal)
+        {
+            Session = Conexao.GetSession();
+            String sql = "UPDATE Nfe as Tabela SET Tabela.Lancada = true where Tabela.Modelo = '55' and Tabela.Lancada = false and Tabela.Status = 'Autorizado o uso da NF-e' and Tabela.CnpjEmitente = '" + Sessao.empresaFilialLogada.Cnpj+"' " +
+                         "and Tabela.DataLancamento Between '" + dataInicial + "' and '" + dataFinal + "'";
+            Session.CreateQuery(sql).ExecuteUpdate();
         }
     }
 }

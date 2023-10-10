@@ -78,6 +78,11 @@ namespace Lunar.Utils.Sintegra
             var registro50 = new FiscalBr.Sintegra.Registro50();
             IList<Nfe> listaNotas = new List<Nfe>();
             int contNotaEntrada = 0;
+
+            //Verificacao de segurança em erro de notas com status de autorizada nao estavam como "lancadas"
+            NfeDAO nfeDAO1 = new NfeDAO();
+            nfeDAO1.updateNotasAutorizadasComoLancadas(dataInicial.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), dataFinal.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
+            
             listaNotas = nfeController.selecionarNotasEntradaESaidaPorPeriodoParaSintegraReg5054(dataInicial.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), dataFinal.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
             if (listaNotas.Count > 0)
             {                    
@@ -89,7 +94,7 @@ namespace Lunar.Utils.Sintegra
                 foreach (Nfe nf in listaNotas)
                 {
                     string a = "";
-                    if (nf.NNf.Equals("32"))
+                    if (nf.NNf.Equals("2356572"))
                         a = "a";
 
                     string emitente = "P";
