@@ -15,6 +15,9 @@ using System.ServiceModel;
 using System.ServiceModel.Dispatcher;
 using System.ServiceModel.Description;
 using Lunar.Utils.SPCBrasilIntegracao;
+using Lunar.Telas.SPCs;
+using System.Threading.Tasks;
+using Lunar.Telas.Vendas.Adicionais;
 
 namespace Lunar.Telas.CaixaConferencia
 {
@@ -1156,51 +1159,112 @@ namespace Lunar.Telas.CaixaConferencia
 
         private void btnTesteBoleto_Click(object sender, EventArgs e)
         {
-            string usuario = "10535935";
-            string senha = "temp@1234";
+            //string usuario = "10535935";
+            //string senha = "temp@1234";
 
-            consultaSPCBrasil.consultaWebServiceClient client = new consultaWebServiceClient();
-            client.ClientCredentials.UserName.UserName = usuario;
-            client.ClientCredentials.UserName.Password = senha;
-            //Homologação
-            client.Endpoint.Address = new EndpointAddress("https://treina.spc.org.br:443/spc/remoting/ws/consulta/consultaWebService");
+            //consultaSPCBrasil.consultaWebServiceClient client = new consultaWebServiceClient();
+            //client.ClientCredentials.UserName.UserName = usuario;
+            //client.ClientCredentials.UserName.Password = senha;
+            ////Homologação
+            //client.Endpoint.Address = new EndpointAddress("https://treina.spc.org.br:443/spc/remoting/ws/consulta/consultaWebService");
 
-            //Produção
-            //client.Endpoint.Address = new EndpointAddress("https://servicos.spc.org.br/spc/remoting/ws/consulta/consultaWebService");
+            ////Produção
+            ////client.Endpoint.Address = new EndpointAddress("https://servicos.spc.org.br/spc/remoting/ws/consulta/consultaWebService");
 
-            var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
-            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
-            binding.SendTimeout = TimeSpan.FromMinutes(5);
-            binding.MaxReceivedMessageSize = 10485760;
+            //var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
+            //binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
+            //binding.SendTimeout = TimeSpan.FromMinutes(5);
+            //binding.MaxReceivedMessageSize = 10485760;
 
-            //Codigo Para visualizar o xml de requisicao e de resposta, para possivel suporte no SPC BRASIL
-            CustomMessageInspector messageInspector = new CustomMessageInspector();
-            client.Endpoint.Behaviors.Add(new CustomEndpointBehavior(messageInspector));
+            ////Codigo Para visualizar o xml de requisicao e de resposta, para possivel suporte no SPC BRASIL
+            //CustomMessageInspector messageInspector = new CustomMessageInspector();
+            //client.Endpoint.Behaviors.Add(new CustomEndpointBehavior(messageInspector));
 
-            client.Endpoint.Binding = binding;
+            //client.Endpoint.Binding = binding;
+
+            //try
+            //{
+
+            //    Lunar.consultaSPCBrasil.FiltroConsulta filtroConsulta = new Lunar.consultaSPCBrasil.FiltroConsulta();
+            //    filtroConsulta.tipoconsumidorSpecified = true;
+            //    filtroConsulta.tipoconsumidor = TipoPessoa.F;
+            //    filtroConsulta.documentoconsumidor = "22222222222";
+            //    //se for consulta pessoa juridica é outro codigo, atentar a isso.
+            //    filtroConsulta.codigoproduto = "128";
+            //    Lunar.consultaSPCBrasil.ResultadoConsulta res = client.consultar(filtroConsulta);
+
+            //    FrmResultadoConsultaSPC frmResultadoConsultaSPC = new FrmResultadoConsultaSPC(res);
+            //    frmResultadoConsultaSPC.ShowDialog();
+            //}
+            //catch (FaultException er)
+            //{
+            //    GenericaDesktop.ShowAlerta(er.Message);
+            //}
+            //catch (Exception erro)
+            //{
+            //    GenericaDesktop.ShowAlerta(erro.Message);
+            //}
+            consultaSPCTeste();
+        }
+
+        private async void consultaSPCTeste()
+        {
+            // Exibir o formulário de aguarde
+            FrmAguarde formAguarde = new FrmAguarde();
+            formAguarde.Show();
 
             try
             {
+                string usuario = "10535935";
+                string senha = "temp@1234";
+
+                consultaSPCBrasil.consultaWebServiceClient client = new consultaWebServiceClient();
+                client.ClientCredentials.UserName.UserName = usuario;
+                client.ClientCredentials.UserName.Password = senha;
+                client.Endpoint.Address = new EndpointAddress("https://treina.spc.org.br:443/spc/remoting/ws/consulta/consultaWebService");
+
+                var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
+                binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
+                binding.SendTimeout = TimeSpan.FromMinutes(5);
+                binding.MaxReceivedMessageSize = 10485760;
+
+                CustomMessageInspector messageInspector = new CustomMessageInspector();
+                client.Endpoint.Behaviors.Add(new CustomEndpointBehavior(messageInspector));
+
+                client.Endpoint.Binding = binding;
 
                 Lunar.consultaSPCBrasil.FiltroConsulta filtroConsulta = new Lunar.consultaSPCBrasil.FiltroConsulta();
                 filtroConsulta.tipoconsumidorSpecified = true;
                 filtroConsulta.tipoconsumidor = TipoPessoa.F;
-                filtroConsulta.documentoconsumidor = "02358474703";
-                filtroConsulta.codigoproduto = "12";
-                Lunar.consultaSPCBrasil.ResultadoConsulta res = client.consultar(filtroConsulta);
+                filtroConsulta.documentoconsumidor = "22222222222";
+                filtroConsulta.codigoproduto = "128";
 
+                // Executar a consulta em uma thread separada usando async/await
+                Lunar.consultaSPCBrasil.ResultadoConsulta res = await Task.Run(() => client.consultar(filtroConsulta));
+
+                // Esconder o formulário de aguarde
+                formAguarde.Close();
+
+                FrmResultadoConsultaSPC frmResultadoConsultaSPC = new FrmResultadoConsultaSPC(res);
+                frmResultadoConsultaSPC.ShowDialog();
             }
             catch (FaultException er)
             {
+                // Esconder o formulário de aguarde em caso de erro
+                formAguarde.Close();
+
                 GenericaDesktop.ShowAlerta(er.Message);
             }
             catch (Exception erro)
             {
+                // Esconder o formulário de aguarde em caso de erro
+                formAguarde.Close();
+
                 GenericaDesktop.ShowAlerta(erro.Message);
             }
         }
 
-     
+
 
     }
 }

@@ -1,8 +1,12 @@
-﻿using Lunar.Telas.Cadastros.Cidades;
+﻿using Lunar.consultaSPCBrasil;
+using Lunar.Telas.Cadastros.Cidades;
 using Lunar.Telas.Cadastros.Cliente.PessoaAdicionais;
+using Lunar.Telas.SPCs;
+using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
 using Lunar.Utils.IntegracaoZAPI;
 using Lunar.Utils.SintegrawsConsultas;
+using Lunar.Utils.SPCBrasilIntegracao;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
@@ -13,7 +17,11 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.ServiceModel;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cidade = LunarBase.Classes.Cidade;
+using Endereco = LunarBase.Classes.Endereco;
 
 namespace Lunar.Telas.Cadastros.Cliente
 {
@@ -487,6 +495,10 @@ namespace Lunar.Telas.Cadastros.Cliente
         {
             this.Opacity = 0.0;
             timer1.Start();
+            if(!String.IsNullOrEmpty(Sessao.parametroSistema.ConsultaPadraoSpcBrasil) && !String.IsNullOrEmpty(Sessao.parametroSistema.UsuarioWebServiceSpcBrasil))
+            {
+                btnSPCBrasil.Visible = true;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -1687,6 +1699,81 @@ namespace Lunar.Telas.Cadastros.Cliente
         private void btnPesquisaCep_Click(object sender, EventArgs e)
         {
             pesquisarCEP();
+        }
+
+        private void btnSPCBrasil_Click(object sender, EventArgs e)
+        {
+            consultaSPC();
+        }
+        private async void consultaSPC()
+        {
+            // Exibir o formulário de aguarde
+            FrmAguarde formAguarde = new FrmAguarde();
+            formAguarde.Show();
+
+            try
+            {
+                string usuario = Sessao.parametroSistema.UsuarioWebServiceSpcBrasil;
+                string senha = GenericaDesktop.Descriptografa(Sessao.parametroSistema.SenhaWebServiceSpcBrasil);
+
+                consultaSPCBrasil.consultaWebServiceClient client = new consultaWebServiceClient();
+                client.ClientCredentials.UserName.UserName = usuario;
+                client.ClientCredentials.UserName.Password = senha;
+                if(Sessao.parametroSistema.AmbienteSpcBrasil.Equals("PRODUCAO"))
+                    client.Endpoint.Address = new EndpointAddress("https://servicos.spc.org.br/spc/remoting/ws/consulta/consultaWebService");
+                else
+                    client.Endpoint.Address = new EndpointAddress("https://treina.spc.org.br:443/spc/remoting/ws/consulta/consultaWebService");
+
+                var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
+                binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
+                binding.SendTimeout = TimeSpan.FromMinutes(5);
+                binding.MaxReceivedMessageSize = 10485760;
+
+                CustomMessageInspector messageInspector = new CustomMessageInspector();
+                client.Endpoint.Behaviors.Add(new CustomEndpointBehavior(messageInspector));
+
+                client.Endpoint.Binding = binding;
+                Lunar.consultaSPCBrasil.FiltroConsulta filtroConsulta = new Lunar.consultaSPCBrasil.FiltroConsulta();
+                
+                //Pessoa fisica ou juridica
+                if (GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 11)
+                {
+                    filtroConsulta.tipoconsumidorSpecified = true;
+                    filtroConsulta.tipoconsumidor = TipoPessoa.F;
+                    filtroConsulta.documentoconsumidor = GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim());
+                    filtroConsulta.codigoproduto = Sessao.parametroSistema.ConsultaPadraoSpcBrasil;
+                }
+                else if (GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 14)
+                {
+                    filtroConsulta.tipoconsumidorSpecified = true;
+                    filtroConsulta.tipoconsumidor = TipoPessoa.J;
+                    filtroConsulta.documentoconsumidor = GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim());
+                    filtroConsulta.codigoproduto = "14";
+                }
+
+                    // Executar a consulta em uma thread separada usando async/await
+                Lunar.consultaSPCBrasil.ResultadoConsulta res = await Task.Run(() => client.consultar(filtroConsulta));
+
+                // Esconder o formulário de aguarde
+                formAguarde.Close();
+
+                FrmResultadoConsultaSPC frmResultadoConsultaSPC = new FrmResultadoConsultaSPC(res);
+                frmResultadoConsultaSPC.ShowDialog();
+            }
+            catch (FaultException er)
+            {
+                // Esconder o formulário de aguarde em caso de erro
+                formAguarde.Close();
+
+                GenericaDesktop.ShowAlerta(er.Message);
+            }
+            catch (Exception erro)
+            {
+                // Esconder o formulário de aguarde em caso de erro
+                formAguarde.Close();
+
+                GenericaDesktop.ShowAlerta(erro.Message);
+            }
         }
     }
 }

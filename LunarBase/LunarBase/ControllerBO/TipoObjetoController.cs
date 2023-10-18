@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LunarBase.ControllerBO
 {
-    internal class TipoObjetoController : Controller
+    public class TipoObjetoController : Controller
     {
     }
 }

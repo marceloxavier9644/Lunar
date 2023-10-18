@@ -136,6 +136,7 @@ namespace Lunar.Telas.OrdensDeServico
                 txtTipoObjeto.Enabled = false;
                 txtCodTipoObjeto.Enabled = false;
                 btnPesquisaTipoObjeto.Enabled = false;
+                btnGravarExame.Enabled = false;
                 //txtVendedor.Enabled = false;
                 //btnPesquisaVendedor.Enabled = false;
                 txtObservacoes.Enabled = false;
@@ -864,7 +865,7 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            verificarExamesAoFechar();
+            //verificarExamesAoFechar();
             this.Close();
         }
 

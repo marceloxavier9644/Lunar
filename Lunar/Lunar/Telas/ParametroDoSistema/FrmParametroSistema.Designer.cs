@@ -66,6 +66,11 @@
             this.chkAlertaEstoqueGerencial = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.chkAlertaEstoqueFiscal = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.tabContaReceber = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.autoLabel42 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtCodContaBancariaVinculadaAPI = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
+            this.autoLabel43 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtContaBancariaVinculadaAPI = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel41 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtIdGalaxyPay = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel40 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -166,11 +171,17 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.autoLabel42 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtCodContaBancariaVinculadaAPI = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
-            this.autoLabel43 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtContaBancariaVinculadaAPI = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.autoLabel44 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel45 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtSenhaSpcBrasil = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtUsuarioSPCBRASIL = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.radioSPC12 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioSPC128 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioSPC127 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.chkProducaoSPC = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkHomologacaoSPC = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.autoLabel46 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -200,6 +211,12 @@
             this.tabEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC128)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC127)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkProducaoSPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHomologacaoSPC)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -832,6 +849,98 @@
             this.tabContaReceber.TabIndex = 3;
             this.tabContaReceber.Text = "Contas a Receber";
             this.tabContaReceber.ThemesEnabled = false;
+            // 
+            // autoLabel42
+            // 
+            this.autoLabel42.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel42.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel42.Location = new System.Drawing.Point(764, 147);
+            this.autoLabel42.Name = "autoLabel42";
+            this.autoLabel42.Size = new System.Drawing.Size(51, 16);
+            this.autoLabel42.TabIndex = 274;
+            this.autoLabel42.Text = "Código";
+            // 
+            // txtCodContaBancariaVinculadaAPI
+            // 
+            this.txtCodContaBancariaVinculadaAPI.BackColor = System.Drawing.Color.White;
+            this.txtCodContaBancariaVinculadaAPI.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodContaBancariaVinculadaAPI.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodContaBancariaVinculadaAPI.BorderRadius = 8;
+            this.txtCodContaBancariaVinculadaAPI.BorderSize = 2;
+            this.txtCodContaBancariaVinculadaAPI.Enabled = false;
+            this.txtCodContaBancariaVinculadaAPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodContaBancariaVinculadaAPI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodContaBancariaVinculadaAPI.Location = new System.Drawing.Point(764, 161);
+            this.txtCodContaBancariaVinculadaAPI.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodContaBancariaVinculadaAPI.Multiline = false;
+            this.txtCodContaBancariaVinculadaAPI.Name = "txtCodContaBancariaVinculadaAPI";
+            this.txtCodContaBancariaVinculadaAPI.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodContaBancariaVinculadaAPI.PasswordChar = false;
+            this.txtCodContaBancariaVinculadaAPI.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodContaBancariaVinculadaAPI.PlaceholderText = "";
+            this.txtCodContaBancariaVinculadaAPI.ReadOnly = false;
+            this.txtCodContaBancariaVinculadaAPI.Size = new System.Drawing.Size(89, 37);
+            this.txtCodContaBancariaVinculadaAPI.TabIndex = 273;
+            this.txtCodContaBancariaVinculadaAPI.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodContaBancariaVinculadaAPI.Texts = "";
+            this.txtCodContaBancariaVinculadaAPI.UnderlinedStyle = false;
+            // 
+            // btnPesquisaContaBancaria
+            // 
+            this.btnPesquisaContaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaContaBancaria.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaContaBancaria.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaContaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaContaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaContaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaContaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaContaBancaria.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaContaBancaria.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaContaBancaria.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaContaBancaria.IconSize = 38;
+            this.btnPesquisaContaBancaria.Location = new System.Drawing.Point(717, 164);
+            this.btnPesquisaContaBancaria.Name = "btnPesquisaContaBancaria";
+            this.btnPesquisaContaBancaria.Size = new System.Drawing.Size(40, 34);
+            this.btnPesquisaContaBancaria.TabIndex = 272;
+            this.btnPesquisaContaBancaria.UseVisualStyleBackColor = true;
+            this.btnPesquisaContaBancaria.Click += new System.EventHandler(this.btnPesquisaContaBancaria_Click);
+            // 
+            // autoLabel43
+            // 
+            this.autoLabel43.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel43.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel43.Location = new System.Drawing.Point(507, 147);
+            this.autoLabel43.Name = "autoLabel43";
+            this.autoLabel43.Size = new System.Drawing.Size(186, 16);
+            this.autoLabel43.TabIndex = 271;
+            this.autoLabel43.Text = "Conta Bancária Vinculada API";
+            // 
+            // txtContaBancariaVinculadaAPI
+            // 
+            this.txtContaBancariaVinculadaAPI.BackColor = System.Drawing.Color.White;
+            this.txtContaBancariaVinculadaAPI.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtContaBancariaVinculadaAPI.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtContaBancariaVinculadaAPI.BorderRadius = 8;
+            this.txtContaBancariaVinculadaAPI.BorderSize = 2;
+            this.txtContaBancariaVinculadaAPI.Enabled = false;
+            this.txtContaBancariaVinculadaAPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContaBancariaVinculadaAPI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtContaBancariaVinculadaAPI.Location = new System.Drawing.Point(507, 161);
+            this.txtContaBancariaVinculadaAPI.Margin = new System.Windows.Forms.Padding(4);
+            this.txtContaBancariaVinculadaAPI.Multiline = false;
+            this.txtContaBancariaVinculadaAPI.Name = "txtContaBancariaVinculadaAPI";
+            this.txtContaBancariaVinculadaAPI.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtContaBancariaVinculadaAPI.PasswordChar = false;
+            this.txtContaBancariaVinculadaAPI.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtContaBancariaVinculadaAPI.PlaceholderText = "";
+            this.txtContaBancariaVinculadaAPI.ReadOnly = false;
+            this.txtContaBancariaVinculadaAPI.Size = new System.Drawing.Size(203, 37);
+            this.txtContaBancariaVinculadaAPI.TabIndex = 270;
+            this.txtContaBancariaVinculadaAPI.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtContaBancariaVinculadaAPI.Texts = "";
+            this.txtContaBancariaVinculadaAPI.UnderlinedStyle = false;
             // 
             // autoLabel41
             // 
@@ -2025,6 +2134,15 @@
             // 
             // tabEmpresa
             // 
+            this.tabEmpresa.Controls.Add(this.autoLabel46);
+            this.tabEmpresa.Controls.Add(this.panel1);
+            this.tabEmpresa.Controls.Add(this.radioSPC127);
+            this.tabEmpresa.Controls.Add(this.radioSPC128);
+            this.tabEmpresa.Controls.Add(this.radioSPC12);
+            this.tabEmpresa.Controls.Add(this.txtUsuarioSPCBRASIL);
+            this.tabEmpresa.Controls.Add(this.txtSenhaSpcBrasil);
+            this.tabEmpresa.Controls.Add(this.autoLabel45);
+            this.tabEmpresa.Controls.Add(this.autoLabel44);
             this.tabEmpresa.Controls.Add(this.autoLabel37);
             this.tabEmpresa.Controls.Add(this.txtComissaoPadrao);
             this.tabEmpresa.Controls.Add(this.autoLabel29);
@@ -2450,97 +2568,157 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // autoLabel42
+            // autoLabel44
             // 
-            this.autoLabel42.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel42.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel42.Location = new System.Drawing.Point(764, 147);
-            this.autoLabel42.Name = "autoLabel42";
-            this.autoLabel42.Size = new System.Drawing.Size(51, 16);
-            this.autoLabel42.TabIndex = 274;
-            this.autoLabel42.Text = "Código";
+            this.autoLabel44.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel44.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel44.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel44.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel44.Location = new System.Drawing.Point(16, 284);
+            this.autoLabel44.Name = "autoLabel44";
+            this.autoLabel44.Size = new System.Drawing.Size(220, 21);
+            this.autoLabel44.TabIndex = 222;
+            this.autoLabel44.Text = "Usuário Web Service SPC BRASIL";
             // 
-            // txtCodContaBancariaVinculadaAPI
+            // autoLabel45
             // 
-            this.txtCodContaBancariaVinculadaAPI.BackColor = System.Drawing.Color.White;
-            this.txtCodContaBancariaVinculadaAPI.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodContaBancariaVinculadaAPI.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodContaBancariaVinculadaAPI.BorderRadius = 8;
-            this.txtCodContaBancariaVinculadaAPI.BorderSize = 2;
-            this.txtCodContaBancariaVinculadaAPI.Enabled = false;
-            this.txtCodContaBancariaVinculadaAPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodContaBancariaVinculadaAPI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodContaBancariaVinculadaAPI.Location = new System.Drawing.Point(764, 161);
-            this.txtCodContaBancariaVinculadaAPI.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodContaBancariaVinculadaAPI.Multiline = false;
-            this.txtCodContaBancariaVinculadaAPI.Name = "txtCodContaBancariaVinculadaAPI";
-            this.txtCodContaBancariaVinculadaAPI.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCodContaBancariaVinculadaAPI.PasswordChar = false;
-            this.txtCodContaBancariaVinculadaAPI.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtCodContaBancariaVinculadaAPI.PlaceholderText = "";
-            this.txtCodContaBancariaVinculadaAPI.ReadOnly = false;
-            this.txtCodContaBancariaVinculadaAPI.Size = new System.Drawing.Size(89, 37);
-            this.txtCodContaBancariaVinculadaAPI.TabIndex = 273;
-            this.txtCodContaBancariaVinculadaAPI.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCodContaBancariaVinculadaAPI.Texts = "";
-            this.txtCodContaBancariaVinculadaAPI.UnderlinedStyle = false;
+            this.autoLabel45.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel45.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel45.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel45.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel45.Location = new System.Drawing.Point(285, 284);
+            this.autoLabel45.Name = "autoLabel45";
+            this.autoLabel45.Size = new System.Drawing.Size(213, 21);
+            this.autoLabel45.TabIndex = 224;
+            this.autoLabel45.Text = "Senha Web Service SPC BRASIL";
             // 
-            // btnPesquisaContaBancaria
+            // txtSenhaSpcBrasil
             // 
-            this.btnPesquisaContaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaContaBancaria.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaContaBancaria.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaContaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaContaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaContaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaContaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaContaBancaria.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaContaBancaria.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaContaBancaria.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaContaBancaria.IconSize = 38;
-            this.btnPesquisaContaBancaria.Location = new System.Drawing.Point(717, 164);
-            this.btnPesquisaContaBancaria.Name = "btnPesquisaContaBancaria";
-            this.btnPesquisaContaBancaria.Size = new System.Drawing.Size(40, 34);
-            this.btnPesquisaContaBancaria.TabIndex = 272;
-            this.btnPesquisaContaBancaria.UseVisualStyleBackColor = true;
-            this.btnPesquisaContaBancaria.Click += new System.EventHandler(this.btnPesquisaContaBancaria_Click);
+            this.txtSenhaSpcBrasil.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSenhaSpcBrasil.BorderColor = System.Drawing.Color.Lavender;
+            this.txtSenhaSpcBrasil.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtSenhaSpcBrasil.BorderRadius = 0;
+            this.txtSenhaSpcBrasil.BorderSize = 2;
+            this.txtSenhaSpcBrasil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenhaSpcBrasil.ForeColor = System.Drawing.Color.DimGray;
+            this.txtSenhaSpcBrasil.Location = new System.Drawing.Point(285, 309);
+            this.txtSenhaSpcBrasil.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSenhaSpcBrasil.Multiline = false;
+            this.txtSenhaSpcBrasil.Name = "txtSenhaSpcBrasil";
+            this.txtSenhaSpcBrasil.Padding = new System.Windows.Forms.Padding(7);
+            this.txtSenhaSpcBrasil.PasswordChar = true;
+            this.txtSenhaSpcBrasil.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txtSenhaSpcBrasil.PlaceholderText = "";
+            this.txtSenhaSpcBrasil.ReadOnly = false;
+            this.txtSenhaSpcBrasil.Size = new System.Drawing.Size(250, 31);
+            this.txtSenhaSpcBrasil.TabIndex = 225;
+            this.txtSenhaSpcBrasil.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtSenhaSpcBrasil.Texts = "";
+            this.txtSenhaSpcBrasil.UnderlinedStyle = false;
             // 
-            // autoLabel43
+            // txtUsuarioSPCBRASIL
             // 
-            this.autoLabel43.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel43.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel43.Location = new System.Drawing.Point(507, 147);
-            this.autoLabel43.Name = "autoLabel43";
-            this.autoLabel43.Size = new System.Drawing.Size(186, 16);
-            this.autoLabel43.TabIndex = 271;
-            this.autoLabel43.Text = "Conta Bancária Vinculada API";
+            this.txtUsuarioSPCBRASIL.BackColor = System.Drawing.SystemColors.Window;
+            this.txtUsuarioSPCBRASIL.BorderColor = System.Drawing.Color.Lavender;
+            this.txtUsuarioSPCBRASIL.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtUsuarioSPCBRASIL.BorderRadius = 0;
+            this.txtUsuarioSPCBRASIL.BorderSize = 2;
+            this.txtUsuarioSPCBRASIL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuarioSPCBRASIL.ForeColor = System.Drawing.Color.DimGray;
+            this.txtUsuarioSPCBRASIL.Location = new System.Drawing.Point(16, 309);
+            this.txtUsuarioSPCBRASIL.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsuarioSPCBRASIL.Multiline = false;
+            this.txtUsuarioSPCBRASIL.Name = "txtUsuarioSPCBRASIL";
+            this.txtUsuarioSPCBRASIL.Padding = new System.Windows.Forms.Padding(7);
+            this.txtUsuarioSPCBRASIL.PasswordChar = false;
+            this.txtUsuarioSPCBRASIL.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txtUsuarioSPCBRASIL.PlaceholderText = "";
+            this.txtUsuarioSPCBRASIL.ReadOnly = false;
+            this.txtUsuarioSPCBRASIL.Size = new System.Drawing.Size(250, 31);
+            this.txtUsuarioSPCBRASIL.TabIndex = 226;
+            this.txtUsuarioSPCBRASIL.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtUsuarioSPCBRASIL.Texts = "";
+            this.txtUsuarioSPCBRASIL.UnderlinedStyle = false;
             // 
-            // txtContaBancariaVinculadaAPI
+            // radioSPC12
             // 
-            this.txtContaBancariaVinculadaAPI.BackColor = System.Drawing.Color.White;
-            this.txtContaBancariaVinculadaAPI.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtContaBancariaVinculadaAPI.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtContaBancariaVinculadaAPI.BorderRadius = 8;
-            this.txtContaBancariaVinculadaAPI.BorderSize = 2;
-            this.txtContaBancariaVinculadaAPI.Enabled = false;
-            this.txtContaBancariaVinculadaAPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContaBancariaVinculadaAPI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtContaBancariaVinculadaAPI.Location = new System.Drawing.Point(507, 161);
-            this.txtContaBancariaVinculadaAPI.Margin = new System.Windows.Forms.Padding(4);
-            this.txtContaBancariaVinculadaAPI.Multiline = false;
-            this.txtContaBancariaVinculadaAPI.Name = "txtContaBancariaVinculadaAPI";
-            this.txtContaBancariaVinculadaAPI.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtContaBancariaVinculadaAPI.PasswordChar = false;
-            this.txtContaBancariaVinculadaAPI.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtContaBancariaVinculadaAPI.PlaceholderText = "";
-            this.txtContaBancariaVinculadaAPI.ReadOnly = false;
-            this.txtContaBancariaVinculadaAPI.Size = new System.Drawing.Size(203, 37);
-            this.txtContaBancariaVinculadaAPI.TabIndex = 270;
-            this.txtContaBancariaVinculadaAPI.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtContaBancariaVinculadaAPI.Texts = "";
-            this.txtContaBancariaVinculadaAPI.UnderlinedStyle = false;
+            this.radioSPC12.BeforeTouchSize = new System.Drawing.Size(99, 21);
+            this.radioSPC12.Checked = true;
+            this.radioSPC12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioSPC12.Location = new System.Drawing.Point(16, 347);
+            this.radioSPC12.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioSPC12.Name = "radioSPC12";
+            this.radioSPC12.Size = new System.Drawing.Size(99, 21);
+            this.radioSPC12.TabIndex = 227;
+            this.radioSPC12.Text = "SPC (12)";
+            // 
+            // radioSPC128
+            // 
+            this.radioSPC128.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.radioSPC128.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioSPC128.Location = new System.Drawing.Point(307, 347);
+            this.radioSPC128.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioSPC128.Name = "radioSPC128";
+            this.radioSPC128.Size = new System.Drawing.Size(152, 21);
+            this.radioSPC128.TabIndex = 228;
+            this.radioSPC128.TabStop = false;
+            this.radioSPC128.Text = "SPC PLUS (128)";
+            // 
+            // radioSPC127
+            // 
+            this.radioSPC127.BeforeTouchSize = new System.Drawing.Size(194, 21);
+            this.radioSPC127.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioSPC127.Location = new System.Drawing.Point(112, 347);
+            this.radioSPC127.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioSPC127.Name = "radioSPC127";
+            this.radioSPC127.Size = new System.Drawing.Size(194, 21);
+            this.radioSPC127.TabIndex = 229;
+            this.radioSPC127.TabStop = false;
+            this.radioSPC127.Text = "SPC MIX PLUS. (127)";
+            // 
+            // chkProducaoSPC
+            // 
+            this.chkProducaoSPC.BeforeTouchSize = new System.Drawing.Size(94, 21);
+            this.chkProducaoSPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkProducaoSPC.Location = new System.Drawing.Point(3, 3);
+            this.chkProducaoSPC.Name = "chkProducaoSPC";
+            this.chkProducaoSPC.Size = new System.Drawing.Size(94, 21);
+            this.chkProducaoSPC.TabIndex = 230;
+            this.chkProducaoSPC.Text = "Produção";
+            this.chkProducaoSPC.CheckStateChanged += new System.EventHandler(this.chkProducaoSPC_CheckStateChanged);
+            // 
+            // chkHomologacaoSPC
+            // 
+            this.chkHomologacaoSPC.BeforeTouchSize = new System.Drawing.Size(122, 21);
+            this.chkHomologacaoSPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkHomologacaoSPC.Location = new System.Drawing.Point(3, 30);
+            this.chkHomologacaoSPC.Name = "chkHomologacaoSPC";
+            this.chkHomologacaoSPC.Size = new System.Drawing.Size(122, 21);
+            this.chkHomologacaoSPC.TabIndex = 231;
+            this.chkHomologacaoSPC.Text = "Homologação";
+            this.chkHomologacaoSPC.CheckStateChanged += new System.EventHandler(this.chkHomologacaoSPC_CheckStateChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.chkProducaoSPC);
+            this.panel1.Controls.Add(this.chkHomologacaoSPC);
+            this.panel1.Location = new System.Drawing.Point(551, 309);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(147, 63);
+            this.panel1.TabIndex = 232;
+            // 
+            // autoLabel46
+            // 
+            this.autoLabel46.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel46.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel46.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel46.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel46.Location = new System.Drawing.Point(551, 284);
+            this.autoLabel46.Name = "autoLabel46";
+            this.autoLabel46.Size = new System.Drawing.Size(76, 21);
+            this.autoLabel46.TabIndex = 233;
+            this.autoLabel46.Text = "Ambiente";
             // 
             // FrmParametroSistema
             // 
@@ -2597,6 +2775,12 @@
             this.tabEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC128)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC127)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkProducaoSPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHomologacaoSPC)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2744,5 +2928,16 @@
         private FontAwesome.Sharp.IconButton btnPesquisaContaBancaria;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel43;
         private RJ_UI.Classes.RJTextBox txtContaBancariaVinculadaAPI;
+        private RJ_UI.Classes.RJTextBox txtUsuarioSPCBRASIL;
+        private RJ_UI.Classes.RJTextBox txtSenhaSpcBrasil;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel45;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel44;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioSPC12;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioSPC127;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioSPC128;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkHomologacaoSPC;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkProducaoSPC;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel46;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -77,6 +77,7 @@
     <None Remove="HBM\Query.hbm.xml" />
     <None Remove="HBM\RegimeEmpresa.hbm.xml" />
     <None Remove="HBM\Servico.hbm.xml" />
+    <None Remove="HBM\Spc.hbm.xml" />
     <None Remove="HBM\TabelaPreco.hbm.xml" />
     <None Remove="HBM\TipoObjeto.hbm.xml" />
     <None Remove="HBM\TransferenciaEstoque.hbm.xml" />
@@ -159,6 +160,7 @@
     <EmbeddedResource Include="HBM\ProdutoSubGrupo.hbm.xml" />
     <EmbeddedResource Include="HBM\RegimeEmpresa.hbm.xml" />
     <EmbeddedResource Include="HBM\Servico.hbm.xml" />
+    <EmbeddedResource Include="HBM\Spc.hbm.xml" />
     <EmbeddedResource Include="HBM\TabelaPreco.hbm.xml" />
     <EmbeddedResource Include="HBM\TipoObjeto.hbm.xml" />
     <EmbeddedResource Include="HBM\TransferenciaEstoque.hbm.xml" />

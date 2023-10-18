@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bi4rh6+nGAJv8uXpeU615DFEFi9NslWXJ2IVYo9vieHHegsLjuqblS+C56gUGrV70o5wx8ZS0nG74kfgzX66/A==",
+  "dgSpecHash": "uLQeN8YCrRQ1H2V6q553qOANEMt5tINVDr5sz1ev7fzPYCtgeMd6GwFTr5Qx9gt9//UOnva/QG6RRdKZFpYAyw==",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
   "expectedPackageFiles": [
@@ -88,6 +88,7 @@
       "targetGraphs": [
         ".NETFramework,Version=v4.7.2",
         ".NETFramework,Version=v4.7.2/win",
+        ".NETFramework,Version=v4.7.2/win-arm64",
         ".NETFramework,Version=v4.7.2/win-x64",
         ".NETFramework,Version=v4.7.2/win-x86"
       ]

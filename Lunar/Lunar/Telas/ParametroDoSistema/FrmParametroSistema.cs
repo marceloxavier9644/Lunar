@@ -154,6 +154,36 @@ namespace Lunar.Telas.ParametroDoSistema
                 txtContaBancariaVinculadaAPI.Texts = parametro.ContaBancariaVinculadaApi.Descricao;
                 txtCodContaBancariaVinculadaAPI.Texts = parametro.ContaBancariaVinculadaApi.Id.ToString();
             }
+            if(parametro.UsuarioWebServiceSpcBrasil != null)
+            {
+                txtUsuarioSPCBRASIL.Texts = parametro.UsuarioWebServiceSpcBrasil;
+            }
+            if(parametro.SenhaWebServiceSpcBrasil != null)
+            {
+                txtSenhaSpcBrasil.Texts = GenericaDesktop.Descriptografa(parametro.SenhaWebServiceSpcBrasil);
+            }
+            if(parametro.ConsultaPadraoSpcBrasil != null)
+            {
+                if (parametro.ConsultaPadraoSpcBrasil.Equals("12"))
+                    radioSPC12.Checked = true;
+                else if (parametro.ConsultaPadraoSpcBrasil.Equals("127"))
+                    radioSPC127.Checked = true;
+                else if (parametro.ConsultaPadraoSpcBrasil.Equals("128"))
+                    radioSPC128.Checked = true;
+            }
+            if (parametro.AmbienteSpcBrasil != null)
+            {
+                if (parametro.AmbienteSpcBrasil.Equals("PRODUCAO"))
+                {
+                    chkProducaoSPC.Checked = true;
+                    chkHomologacaoSPC.Checked = false;
+                }
+                else
+                {
+                    chkProducaoSPC.Checked = false;
+                    chkHomologacaoSPC.Checked = true;
+                }
+            }
         }
 
         private void setParametro()
@@ -279,7 +309,21 @@ namespace Lunar.Telas.ParametroDoSistema
             }
             else
                 parametro.ContaBancariaVinculadaApi = null;
-            
+
+            parametro.UsuarioWebServiceSpcBrasil = txtUsuarioSPCBRASIL.Texts;
+            parametro.SenhaWebServiceSpcBrasil = GenericaDesktop.Criptografa(txtSenhaSpcBrasil.Texts);
+            if (radioSPC12.Checked == true)
+                parametro.ConsultaPadraoSpcBrasil = "12";
+            else if (radioSPC127.Checked == true)
+                parametro.ConsultaPadraoSpcBrasil = "127";
+            else if (radioSPC128.Checked == true)
+                parametro.ConsultaPadraoSpcBrasil = "128";
+
+            if (chkProducaoSPC.Checked == true)
+                parametro.AmbienteSpcBrasil = "PRODUCAO";
+            else
+                parametro.AmbienteSpcBrasil = "HOMOLOGACAO";
+
             Sessao.parametroSistema = parametro;
         }
 
@@ -921,6 +965,32 @@ namespace Lunar.Telas.ParametroDoSistema
             finally
             {
                 formBackground.Dispose();
+            }
+        }
+
+        private void chkHomologacaoSPC_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkHomologacaoSPC.Checked == true)
+                    chkProducaoSPC.Checked = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkProducaoSPC_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkProducaoSPC.Checked == true)
+                    chkHomologacaoSPC.Checked = false;
+            }
+            catch
+            {
+
             }
         }
     }

@@ -35,11 +35,8 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
             this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.iconPesquisar = new FontAwesome.Sharp.IconButton();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnPesquisaEmpresa = new FontAwesome.Sharp.IconButton();
             this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.chkApenasDespesas = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
@@ -51,8 +48,11 @@
             this.autoLabel25 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnFechar = new FontAwesome.Sharp.IconButton();
             this.txtCodContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnPesquisaContaBancaria = new FontAwesome.Sharp.IconButton();
             this.txtContaBancaria = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.iconPesquisar = new FontAwesome.Sharp.IconButton();
             this.btnPesquisar = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnPesquisaEmpresa = new FontAwesome.Sharp.IconButton();
             this.txtCodEmpresa = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtEmpresa = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -99,26 +99,6 @@
             this.autoLabel10.Text = "Código";
             this.autoLabel10.Visible = false;
             // 
-            // btnPesquisaContaBancaria
-            // 
-            this.btnPesquisaContaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaContaBancaria.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaContaBancaria.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaContaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaContaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaContaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaContaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaContaBancaria.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaContaBancaria.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaContaBancaria.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaContaBancaria.IconSize = 38;
-            this.btnPesquisaContaBancaria.Location = new System.Drawing.Point(974, 61);
-            this.btnPesquisaContaBancaria.Name = "btnPesquisaContaBancaria";
-            this.btnPesquisaContaBancaria.Size = new System.Drawing.Size(40, 34);
-            this.btnPesquisaContaBancaria.TabIndex = 255;
-            this.btnPesquisaContaBancaria.UseVisualStyleBackColor = true;
-            this.btnPesquisaContaBancaria.Click += new System.EventHandler(this.btnPesquisaContaBancaria_Click);
-            // 
             // autoLabel9
             // 
             this.autoLabel9.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -130,28 +110,6 @@
             this.autoLabel9.TabIndex = 254;
             this.autoLabel9.Text = "Conta Bancária";
             // 
-            // iconPesquisar
-            // 
-            this.iconPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconPesquisar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconPesquisar.FlatAppearance.BorderSize = 0;
-            this.iconPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconPesquisar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.iconPesquisar.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.iconPesquisar.IconColor = System.Drawing.Color.White;
-            this.iconPesquisar.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconPesquisar.IconSize = 40;
-            this.iconPesquisar.Location = new System.Drawing.Point(819, 115);
-            this.iconPesquisar.Name = "iconPesquisar";
-            this.iconPesquisar.Size = new System.Drawing.Size(44, 36);
-            this.iconPesquisar.TabIndex = 252;
-            this.iconPesquisar.UseVisualStyleBackColor = false;
-            this.iconPesquisar.Click += new System.EventHandler(this.iconPesquisar_Click);
-            // 
             // autoLabel7
             // 
             this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -162,26 +120,6 @@
             this.autoLabel7.Size = new System.Drawing.Size(51, 16);
             this.autoLabel7.TabIndex = 250;
             this.autoLabel7.Text = "Código";
-            // 
-            // btnPesquisaEmpresa
-            // 
-            this.btnPesquisaEmpresa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaEmpresa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaEmpresa.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaEmpresa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaEmpresa.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaEmpresa.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaEmpresa.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaEmpresa.IconSize = 38;
-            this.btnPesquisaEmpresa.Location = new System.Drawing.Point(662, 128);
-            this.btnPesquisaEmpresa.Name = "btnPesquisaEmpresa";
-            this.btnPesquisaEmpresa.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaEmpresa.TabIndex = 249;
-            this.btnPesquisaEmpresa.UseVisualStyleBackColor = true;
-            this.btnPesquisaEmpresa.Click += new System.EventHandler(this.btnPesquisaEmpresa_Click);
             // 
             // autoLabel8
             // 
@@ -368,6 +306,26 @@
             this.txtCodContaBancaria.UnderlinedStyle = false;
             this.txtCodContaBancaria.Visible = false;
             // 
+            // btnPesquisaContaBancaria
+            // 
+            this.btnPesquisaContaBancaria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaContaBancaria.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaContaBancaria.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaContaBancaria.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaContaBancaria.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaContaBancaria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaContaBancaria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaContaBancaria.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaContaBancaria.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaContaBancaria.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaContaBancaria.IconSize = 38;
+            this.btnPesquisaContaBancaria.Location = new System.Drawing.Point(974, 61);
+            this.btnPesquisaContaBancaria.Name = "btnPesquisaContaBancaria";
+            this.btnPesquisaContaBancaria.Size = new System.Drawing.Size(40, 34);
+            this.btnPesquisaContaBancaria.TabIndex = 255;
+            this.btnPesquisaContaBancaria.UseVisualStyleBackColor = true;
+            this.btnPesquisaContaBancaria.Click += new System.EventHandler(this.btnPesquisaContaBancaria_Click);
+            // 
             // txtContaBancaria
             // 
             this.txtContaBancaria.BackColor = System.Drawing.Color.White;
@@ -392,6 +350,28 @@
             this.txtContaBancaria.Texts = "";
             this.txtContaBancaria.UnderlinedStyle = false;
             // 
+            // iconPesquisar
+            // 
+            this.iconPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconPesquisar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconPesquisar.FlatAppearance.BorderSize = 0;
+            this.iconPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconPesquisar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.iconPesquisar.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconPesquisar.IconColor = System.Drawing.Color.White;
+            this.iconPesquisar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconPesquisar.IconSize = 40;
+            this.iconPesquisar.Location = new System.Drawing.Point(819, 115);
+            this.iconPesquisar.Name = "iconPesquisar";
+            this.iconPesquisar.Size = new System.Drawing.Size(44, 36);
+            this.iconPesquisar.TabIndex = 252;
+            this.iconPesquisar.UseVisualStyleBackColor = false;
+            this.iconPesquisar.Click += new System.EventHandler(this.iconPesquisar_Click);
+            // 
             // btnPesquisar
             // 
             this.btnPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -413,6 +393,26 @@
             this.btnPesquisar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
             this.btnPesquisar.UseVisualStyleBackColor = false;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // btnPesquisaEmpresa
+            // 
+            this.btnPesquisaEmpresa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaEmpresa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaEmpresa.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaEmpresa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaEmpresa.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaEmpresa.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaEmpresa.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaEmpresa.IconSize = 38;
+            this.btnPesquisaEmpresa.Location = new System.Drawing.Point(662, 128);
+            this.btnPesquisaEmpresa.Name = "btnPesquisaEmpresa";
+            this.btnPesquisaEmpresa.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaEmpresa.TabIndex = 249;
+            this.btnPesquisaEmpresa.UseVisualStyleBackColor = true;
+            this.btnPesquisaEmpresa.Click += new System.EventHandler(this.btnPesquisaEmpresa_Click);
             // 
             // txtCodEmpresa
             // 

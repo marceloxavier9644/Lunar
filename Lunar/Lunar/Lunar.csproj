@@ -1018,6 +1018,12 @@
     <Compile Include="Telas\Sintegra\FrmGerarSintegra.Designer.cs">
       <DependentUpon>FrmGerarSintegra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\SPCs\FrmResultadoConsultaSPC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\SPCs\FrmResultadoConsultaSPC.Designer.cs">
+      <DependentUpon>FrmResultadoConsultaSPC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\TransferenciaEstoques\dsTransferenciaEstoque.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1546,6 +1552,9 @@
     <EmbeddedResource Include="Telas\RelatoriosDiversos\ReportsDiversos\ReportComissao01.rdlc" />
     <EmbeddedResource Include="Telas\Sintegra\FrmGerarSintegra.resx">
       <DependentUpon>FrmGerarSintegra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\SPCs\FrmResultadoConsultaSPC.resx">
+      <DependentUpon>FrmResultadoConsultaSPC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\TransferenciaEstoques\FrmImprimirTransferencia.resx">
       <DependentUpon>FrmImprimirTransferencia.cs</DependentUpon>

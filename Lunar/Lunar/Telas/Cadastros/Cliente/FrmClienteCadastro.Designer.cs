@@ -285,6 +285,7 @@
             this.dataColumn42 = new System.Data.DataColumn();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSPCBrasil = new Lunar.RJ_UI.Classes.RJButton();
             this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -3605,6 +3606,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnSPCBrasil);
             this.groupBox2.Controls.Add(this.btnSalvar);
             this.groupBox2.Controls.Add(this.btnCancelar);
             this.groupBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -3616,6 +3618,32 @@
             this.groupBox2.Size = new System.Drawing.Size(1017, 70);
             this.groupBox2.TabIndex = 149;
             this.groupBox2.TabStop = false;
+            // 
+            // btnSPCBrasil
+            // 
+            this.btnSPCBrasil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSPCBrasil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSPCBrasil.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSPCBrasil.BorderColor = System.Drawing.Color.Yellow;
+            this.btnSPCBrasil.BorderRadius = 8;
+            this.btnSPCBrasil.BorderSize = 2;
+            this.btnSPCBrasil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSPCBrasil.FlatAppearance.BorderSize = 0;
+            this.btnSPCBrasil.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnSPCBrasil.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnSPCBrasil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSPCBrasil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSPCBrasil.ForeColor = System.Drawing.Color.Blue;
+            this.btnSPCBrasil.Location = new System.Drawing.Point(201, 15);
+            this.btnSPCBrasil.Name = "btnSPCBrasil";
+            this.btnSPCBrasil.Size = new System.Drawing.Size(197, 45);
+            this.btnSPCBrasil.TabIndex = 146;
+            this.btnSPCBrasil.TabStop = false;
+            this.btnSPCBrasil.Text = "SPC Brasil";
+            this.btnSPCBrasil.TextColor = System.Drawing.Color.Blue;
+            this.btnSPCBrasil.UseVisualStyleBackColor = false;
+            this.btnSPCBrasil.Visible = false;
+            this.btnSPCBrasil.Click += new System.EventHandler(this.btnSPCBrasil_Click);
             // 
             // btnSalvar
             // 
@@ -4015,5 +4043,6 @@
         private RJ_UI.Classes.RJTextBox txtComissao;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkCobrador;
         private FontAwesome.Sharp.IconButton btnPesquisaCep;
+        private RJ_UI.Classes.RJButton btnSPCBrasil;
     }
 }

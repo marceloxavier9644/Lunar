@@ -177,7 +177,7 @@ namespace Lunar.Telas.Fiscal
                 posicaoItem++;
                 row.SetField("Codigo", nfeProduto.Produto.Id.ToString());
                 row.SetField("Descricao", nfeProduto.Produto.Descricao);
-                decimal valorUnitForm = nfeProduto.ValorProduto;
+                decimal valorUnitForm = nfeProduto.VUnCom;
                 row.SetField("ValorUnitario", string.Format("{0:0.00}", valorUnitForm));
                 row.SetField("Quantidade", nfeProduto.QCom);
                 decimal valorTotal = valorUnitForm * decimal.Parse(nfeProduto.QCom)/* - decimal.Parse(txtDesconto.Texts)*/;
@@ -1225,12 +1225,12 @@ namespace Lunar.Telas.Fiscal
                         {
                             enviarXMLNFeParaApi(xmlStrEnvio);
                         }
-                        //somente atualiza o numero se for uma nota nova, se for reenvio ou edição nao atualiza
-                        if(atualizaNumeroNota == true)
-                            Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(numeroNFe) + 1).ToString();
-                        Controller.getInstance().salvar(Sessao.parametroSistema);
                     }
                 }
+                //somente atualiza o numero se for uma nota nova, se for reenvio ou edição nao atualiza
+                if (atualizaNumeroNota == true)
+                    Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(numeroNFe) + 1).ToString();
+                Controller.getInstance().salvar(Sessao.parametroSistema);
             }
         }
 
@@ -1248,6 +1248,17 @@ namespace Lunar.Telas.Fiscal
             else
             {
                 nfe.NNf = Sessao.parametroSistema.ProximoNumeroNFe;
+                nfe = nfeController.selecionarNFePorNumeroESerie(nfe.NNf, Sessao.parametroSistema.SerieNFe);
+                if (nfe != null)
+                {
+                    if (nfe.Id > 0)
+                        nfe.NNf = (int.Parse(nfe.NNf) + 1).ToString();
+                }
+                else
+                {
+                    nfe = new Nfe();
+                    nfe.NNf = Sessao.parametroSistema.ProximoNumeroNFe;
+                }
             }
             if (chkGerarFinanceiro.Checked == true)
                 nfe.MovimentaFinanceiro = true;
@@ -1681,7 +1692,10 @@ namespace Lunar.Telas.Fiscal
                     NfeStatus nfeStatus1 = new NfeStatus();
                     nfeStatus1.Id = 2;
                     nfe.NfeStatus = (NfeStatus)NfeStatusController.getInstance().selecionar(nfeStatus1);
-                    nfe.Status = retornoNFCe.motivo;
+                    if (!String.IsNullOrEmpty(erros))
+                        nfe.Status = erros;
+                    else
+                        nfe.Status = retornoNFCe.motivo;
                     nfe.CodStatus = retornoNFCe.cStat;
                     if (!String.IsNullOrEmpty(retornoNFCe.chNFe))
                     {
