@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="HBM\AdquirenteCartao.hbm.xml" />
+    <None Remove="HBM\AlertaCliente.hbm.xml" />
     <None Remove="HBM\Anexo.hbm.xml" />
     <None Remove="HBM\Anp.hbm.xml" />
     <None Remove="HBM\BalancoEstoque.hbm.xml" />
@@ -91,6 +92,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="HBM\AlertaCliente.hbm.xml" />
     <EmbeddedResource Include="HBM\Anexo.hbm.xml" />
     <EmbeddedResource Include="HBM\BalancoEstoque.hbm.xml" />
     <EmbeddedResource Include="HBM\BalancoEstoqueProduto.hbm.xml" />

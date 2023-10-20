@@ -16,6 +16,7 @@ namespace LunarBase.Classes
         private double quantidadeRegistro;
         private Pessoa pessoa;
         private EmpresaFilial empresaFilial;
+        private string protocoloConsulta;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -37,5 +38,7 @@ namespace LunarBase.Classes
         public virtual Pessoa Pessoa { get => pessoa; set => pessoa = value; }
         [Anotacao("Filial")]
         public virtual EmpresaFilial EmpresaFilial { get => empresaFilial; set => empresaFilial = value; }
+        [Anotacao("Protocolo")]
+        public virtual string ProtocoloConsulta { get => protocoloConsulta; set => protocoloConsulta = value; }
     }
 }

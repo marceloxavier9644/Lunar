@@ -361,7 +361,7 @@ namespace Lunar.Utils
             }
         }
 
-        public Rootobject consultarCNPJJson(string cnpjCont, string cnpj, string Uf)
+        public ConsultEmpresaNs consultarEmpresaPorCnpj_NS(string cnpjCont, string cnpj, string Uf)
         {
             try
             {
@@ -371,11 +371,7 @@ namespace Lunar.Utils
                 requisicaoWeb.ContentType = "application/json";
                 requisicaoWeb.Headers.Add("x-auth-token", "VFhUIElORk9STUFUSUNBT3JQSEQ=");
 
-                //string jsonO = "X-AUTH-TOKEN:VFhUIElORk9STUFUSUNBT3JQSEQ=,CNPJCont:" + cnpjCont + ",UF:MG,CNPJ:"+cnpj;
-
-                using (var streamWriter = new
-                        StreamWriter(requisicaoWeb.GetRequestStream())
-                        )
+                using (var streamWriter = new StreamWriter(requisicaoWeb.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(new
                     {
@@ -385,16 +381,33 @@ namespace Lunar.Utils
                     });
 
                     streamWriter.Write(json);
-
                 }
+
                 var httpResponse = (HttpWebResponse)requisicaoWeb.GetResponse();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
                     streamReader.Close();
-                    var empresa = JsonConvert.DeserializeObject<Rootobject>(result);
+                    var empresa = JsonConvert.DeserializeObject<ConsultEmpresaNs>(result);
                     return empresa;
                 }
+            }
+            catch (WebException webEx)
+            {
+                if (webEx.Response != null)
+                {
+                    using (var streamReader = new StreamReader(webEx.Response.GetResponseStream()))
+                    {
+                        string errorResponse = streamReader.ReadToEnd();
+                        //GenericaDesktop.ShowErro($"Erro de Requisição: {webEx.Message}\nResposta do Servidor: {errorResponse}");
+                    }
+                }
+                else
+                {
+                    //GenericaDesktop.ShowErro($"Erro de Requisição: {webEx.Message}");
+                }
+
+                return null;
             }
             catch (Exception err)
             {
@@ -402,6 +415,7 @@ namespace Lunar.Utils
                 return null;
             }
         }
+
 
         public SintegraConsultaCnpj consultaCNPJSintegraWS(String cnpj)
         {
@@ -442,8 +456,8 @@ namespace Lunar.Utils
             }
         }
 
-                public async Task<ManifestoDownload.Manifesto> ConsultaNotas_Manifesto(string CNPJ, DateTime dataInicial)
-        {
+            public async Task<ManifestoDownload.Manifesto> ConsultaNotas_Manifesto(string CNPJ, DateTime dataInicial)
+            {
             try
             {
                 String url = "https://ddfe.ns.eti.br/dfe/bunch";

@@ -20,6 +20,7 @@ using System.Runtime.InteropServices;
 using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static LunarBase.Utilidades.Ns_ConsultaCNPJ;
 using Cidade = LunarBase.Classes.Cidade;
 using Endereco = LunarBase.Classes.Endereco;
 
@@ -175,26 +176,31 @@ namespace Lunar.Telas.Cadastros.Cliente
                             if (radioPJ.Checked == false)
                                 radioPJ.Checked = true;
 
-                            SintegraConsultaCnpj consulta = new SintegraConsultaCnpj();
-                            consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
-                            txtRazaoSocial.Texts = consulta.nome_empresarial;
-                            txtNomeFantasia.Texts = consulta.nome_fantasia;
-                            txtCEP.Texts = consulta.cep;
-                           // txtDataAbertura.Value = DateTime.Parse(consulta.data_inicio_atividade);
-                            txtEndereco.Texts = consulta.logradouro;
-                            txtNumero.Texts = consulta.numero;
-                            txtComplemento.Texts = consulta.complemento;
-                            txtBairro.Texts = consulta.bairro;
-                            txtInscricaoProdutor.Texts = consulta.inscricao_estadual;
-                            //txtCNAE.Texts = consulta.cnae_principal.code;
-
-                            cidade = new Cidade();
-                            cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(consulta.municipio, consulta.ibge.codigo_municipio);
-                            if (cidade != null)
+                            //SintegraConsultaCnpj consulta = new SintegraConsultaCnpj();
+                            //consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
+                            ConsultEmpresaNs empr = new ConsultEmpresaNs();
+                            empr = generica.consultarEmpresaPorCnpj_NS(Sessao.empresaFilialLogada.Cnpj, Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
+                            if (empr != null)
                             {
-                                txtCidade.Texts = cidade.Descricao;
-                                txtUF.Texts = cidade.Estado.Uf;
-                                //cidadePrincipal = cidade;
+                                txtRazaoSocial.Texts = empr.retConsCad.infCons.infCad[0].xNome;
+                                txtNomeFantasia.Texts = empr.retConsCad.infCons.infCad[0].xFant;
+                                txtCEP.Texts = empr.retConsCad.infCons.infCad[0].ender.CEP;
+                                // txtDataAbertura.Value = DateTime.Parse(consulta.data_inicio_atividade);
+                                txtEndereco.Texts = empr.retConsCad.infCons.infCad[0].ender.xLgr;
+                                txtNumero.Texts = empr.retConsCad.infCons.infCad[0].ender.nro;
+                                txtComplemento.Texts = empr.retConsCad.infCons.infCad[0].ender.xCpl;
+                                txtBairro.Texts = empr.retConsCad.infCons.infCad[0].ender.xBairro;
+                                txtInscricaoProdutor.Texts = empr.retConsCad.infCons.infCad[0].IE;
+                                //txtCNAE.Texts = consulta.cnae_principal.code;
+
+                                cidade = new Cidade();
+                                cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(empr.retConsCad.infCons.infCad[0].ender.xMun, empr.retConsCad.infCons.infCad[0].ender.cMun);
+                                if (cidade != null)
+                                {
+                                    txtCidade.Texts = cidade.Descricao;
+                                    txtUF.Texts = cidade.Estado.Uf;
+                                    //cidadePrincipal = cidade;
+                                }
                             }
                             txtDDD.Focus();
                         }

@@ -94,9 +94,10 @@ namespace Lunar.Telas.SPCs
                     {
                         lblRegistrosSPCTitulo.Visible = true;
                         gridRegistrosSPC.Visible = true;
+                        lblRegistrosSPCTitulo.Text = lblRegistrosSPCTitulo.Text + " (" + resultadoConsultaSpc.spc.resumo.quantidadetotal + ")";
                         if (resultadoConsultaSpc.spc.resumo.dataultimaocorrencia.ToShortDateString() != "01/01/0001")
                             lblDataUltimaOcorrenciaSPC.Text = resultadoConsultaSpc.spc.resumo.dataultimaocorrencia.ToShortDateString();
-                        if (resultadoConsultaSpc.spc.resumo.valorultimaocorrencia.ToString("C") != "R$ 0,00")
+                        if (resultadoConsultaSpc.spc.resumo.valorultimaocorrencia > 0)
                             lblValorUltimoRegistroSPC.Text = resultadoConsultaSpc.spc.resumo.valorultimaocorrencia.ToString("C");
                         lblQtdRegistroSPC.Text = resultadoConsultaSpc.spc.resumo.quantidadetotal.ToString();
                         lblQtdRegistroSPC.ForeColor = Color.Red;
@@ -105,23 +106,26 @@ namespace Lunar.Telas.SPCs
                         {
                             Pessoa pessoa = new Pessoa();
                             PessoaController pessoaController = new PessoaController();
-                            pessoa = pessoaController.selecionarPessoaPorCPFCNPJ(genericaDesktop.FormatarCPF(resultadoConsultaSpc.consumidor.consumidorpessoafisica.cpf.numero));
-
-                            foreach (object item in resultadoConsultaSpc.spc.Items)
+                            pessoa = pessoaController.selecionarPessoaPorCPFCNPJ(GenericaDesktop.RemoveCaracteres(resultadoConsultaSpc.consumidor.consumidorpessoafisica.cpf.numero));
+                            if (pessoa != null)
                             {
-                                if (item is InsumoSPC insumoSpc)
+                                foreach (object item in resultadoConsultaSpc.spc.Items)
                                 {
-                                    Spc spc = new Spc();
-                                    spc.NomeUsuario = Sessao.usuarioLogado.Login;
-                                    spc.DataRegistro = insumoSpc.datainclusao;
-                                    spc.DataConsulta = DateTime.Now;
-                                    spc.EmpresaFilial = Sessao.empresaFilialLogada;
-                                    spc.LocalRegistro = insumoSpc.nomeassociado;
-                                    //spc.LoginWebService = Sessao.parametroSistema.LoginSpcBrasil;
-                                    spc.Pessoa = pessoa;
-                                    spc.QuantidadeRegistro = resultadoConsultaSpc.spc.resumo.quantidadetotal;
-                                    spc.ValorRegistro = insumoSpc.valor;
-                                    Controller.getInstance().salvar(spc);
+                                    if (item is InsumoSPC insumoSpc)
+                                    {
+                                        Spc spc = new Spc();
+                                        spc.NomeUsuario = Sessao.usuarioLogado.Login;
+                                        spc.DataRegistro = insumoSpc.datainclusao;
+                                        spc.DataConsulta = DateTime.Now;
+                                        spc.EmpresaFilial = Sessao.empresaFilialLogada;
+                                        spc.LocalRegistro = insumoSpc.nomeassociado;
+                                        spc.LoginWebService = Sessao.parametroSistema.UsuarioWebServiceSpcBrasil;
+                                        spc.Pessoa = pessoa;
+                                        spc.QuantidadeRegistro = resultadoConsultaSpc.spc.resumo.quantidadetotal;
+                                        spc.ValorRegistro = insumoSpc.valor;
+                                        spc.ProtocoloConsulta = resultadoConsultaSpc.protocolo.numero.ToString() +"-"+resultadoConsultaSpc.protocolo.digito.ToString();
+                                        Controller.getInstance().salvar(spc);
+                                    }
                                 }
                             }
                         }

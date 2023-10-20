@@ -11,7 +11,9 @@
 		<property name="DataConsulta" column="DATACONSULTA" type="DateTime"/>
 		<property name="LoginWebService" column="LOGINWEBSERVICE" type="String" length="100"/>
 		<property name="QuantidadeRegistro" column="QUANTIDADEREGISTRO" type="double"/>
+		<property name="ProtocoloConsulta" column="PROTOCOLOCONSULTA" type="String" length="200"/>
 		
+
 		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_SPC_EMPRESA" lazy="false"/>
 		<many-to-one name="Pessoa" column="PESSOA" class="LunarBase.Classes.Pessoa" not-null="true" foreign-key="FK_SPC_PESSOA" lazy="false"/>
 		

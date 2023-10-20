@@ -3,7 +3,7 @@
     public class Ns_ConsultaCNPJ
     {
 
-        public class Rootobject
+        public class ConsultEmpresaNs
         {
             public int status { get; set; }
             public string motivo { get; set; }

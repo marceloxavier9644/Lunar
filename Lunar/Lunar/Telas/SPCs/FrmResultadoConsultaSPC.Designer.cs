@@ -454,7 +454,7 @@
             this.groupBox13.Controls.Add(this.lblCPF);
             this.groupBox13.Location = new System.Drawing.Point(3, 41);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(732, 130);
+            this.groupBox13.Size = new System.Drawing.Size(715, 130);
             this.groupBox13.TabIndex = 42;
             this.groupBox13.TabStop = false;
             // 
@@ -762,7 +762,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(820, 681);
+            this.ClientSize = new System.Drawing.Size(837, 659);
             this.Controls.Add(this.gridRegistrosSPC);
             this.Controls.Add(this.lblRegistrosSPCTitulo);
             this.Controls.Add(this.groupBox11);
