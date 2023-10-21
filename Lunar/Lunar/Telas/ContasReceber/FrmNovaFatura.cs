@@ -1,6 +1,7 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
+using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -11,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Exception = System.Exception;
 
 namespace Lunar.Telas.ContasReceber
 {
@@ -39,7 +41,7 @@ namespace Lunar.Telas.ContasReceber
         {
             this.Close();
         }
-
+       
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
             Pessoa pessoaOjeto = new Pessoa();
@@ -74,6 +76,7 @@ namespace Lunar.Telas.ContasReceber
                                 txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
                                 txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
                                 txtNumeroDocumento.Focus();
+                                generica.buscarAlertaCadastrado((Pessoa)pessoaObj);
                             }
                             form.Dispose();
                             break;
@@ -81,6 +84,7 @@ namespace Lunar.Telas.ContasReceber
                             txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
                             txtNumeroDocumento.Focus();
+                            generica.buscarAlertaCadastrado((Pessoa)pessoaOjeto);
                             break;
                     }
                     formBackground.Dispose();
@@ -139,6 +143,7 @@ namespace Lunar.Telas.ContasReceber
                             txtCliente.Texts = pessoa.RazaoSocial;
                             txtCodCliente.Texts = pessoa.Id.ToString();
                             txtNumeroDocumento.Focus();
+                            generica.buscarAlertaCadastrado(pessoa);
                         }
                     }
                 }

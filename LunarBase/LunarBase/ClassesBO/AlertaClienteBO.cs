@@ -65,6 +65,16 @@ namespace LunarBase.ClassesBO
             }
             return true;
         }
-
+        public IList<AlertaCliente> selecionarAlertaPorPessoa(int idPessoa)
+        {
+            try
+            {
+                return dao.selecionarAlertaPorPessoa(idPessoa);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar mensagem! Erro: " + e.Message);
+            }
+        }
     }
 }

@@ -58,15 +58,16 @@
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
             this.txtPesquisaCliente = new Lunar.RJ_UI.Classes.RJTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnAnaliseCliente = new FontAwesome.Sharp.IconButton();
             this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
-            this.btnExportarExcel = new FontAwesome.Sharp.IconButton();
             this.btnNovo = new Lunar.RJ_UI.Classes.RJButton();
             this.btnEditar = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.gridClient = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnMensagemAlerta = new FontAwesome.Sharp.IconButton();
+            this.btnAnaliseCliente = new FontAwesome.Sharp.IconButton();
+            this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
+            this.btnExportarExcel = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cliente)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -239,6 +240,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnMensagemAlerta);
             this.groupBox2.Controls.Add(this.btnAnaliseCliente);
             this.groupBox2.Controls.Add(this.btnExcluir);
             this.groupBox2.Controls.Add(this.btnExportarPDF);
@@ -251,26 +253,6 @@
             this.groupBox2.Size = new System.Drawing.Size(930, 76);
             this.groupBox2.TabIndex = 157;
             this.groupBox2.TabStop = false;
-            // 
-            // btnAnaliseCliente
-            // 
-            this.btnAnaliseCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAnaliseCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnAnaliseCliente.FlatAppearance.BorderSize = 0;
-            this.btnAnaliseCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAnaliseCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAnaliseCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnaliseCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnaliseCliente.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlassChart;
-            this.btnAnaliseCliente.IconColor = System.Drawing.Color.Navy;
-            this.btnAnaliseCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnAnaliseCliente.IconSize = 38;
-            this.btnAnaliseCliente.Location = new System.Drawing.Point(54, 23);
-            this.btnAnaliseCliente.Name = "btnAnaliseCliente";
-            this.btnAnaliseCliente.Size = new System.Drawing.Size(36, 34);
-            this.btnAnaliseCliente.TabIndex = 219;
-            this.btnAnaliseCliente.UseVisualStyleBackColor = true;
-            this.btnAnaliseCliente.Click += new System.EventHandler(this.btnAnaliseCliente_Click);
             // 
             // btnExcluir
             // 
@@ -295,46 +277,6 @@
             this.btnExcluir.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnExportarPDF
-            // 
-            this.btnExportarPDF.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExportarPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExportarPDF.FlatAppearance.BorderSize = 0;
-            this.btnExportarPDF.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExportarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportarPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportarPDF.IconChar = FontAwesome.Sharp.IconChar.IdCardClip;
-            this.btnExportarPDF.IconColor = System.Drawing.Color.LightSlateGray;
-            this.btnExportarPDF.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnExportarPDF.IconSize = 38;
-            this.btnExportarPDF.Location = new System.Drawing.Point(96, 23);
-            this.btnExportarPDF.Name = "btnExportarPDF";
-            this.btnExportarPDF.Size = new System.Drawing.Size(36, 34);
-            this.btnExportarPDF.TabIndex = 217;
-            this.btnExportarPDF.UseVisualStyleBackColor = true;
-            this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
-            // 
-            // btnExportarExcel
-            // 
-            this.btnExportarExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExportarExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExportarExcel.FlatAppearance.BorderSize = 0;
-            this.btnExportarExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExportarExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportarExcel.IconChar = FontAwesome.Sharp.IconChar.FileExcel;
-            this.btnExportarExcel.IconColor = System.Drawing.Color.DarkGreen;
-            this.btnExportarExcel.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnExportarExcel.IconSize = 38;
-            this.btnExportarExcel.Location = new System.Drawing.Point(12, 23);
-            this.btnExportarExcel.Name = "btnExportarExcel";
-            this.btnExportarExcel.Size = new System.Drawing.Size(36, 34);
-            this.btnExportarExcel.TabIndex = 216;
-            this.btnExportarExcel.UseVisualStyleBackColor = true;
-            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
             // btnNovo
             // 
@@ -501,6 +443,86 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnMensagemAlerta
+            // 
+            this.btnMensagemAlerta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMensagemAlerta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnMensagemAlerta.FlatAppearance.BorderSize = 0;
+            this.btnMensagemAlerta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnMensagemAlerta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnMensagemAlerta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMensagemAlerta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMensagemAlerta.IconChar = FontAwesome.Sharp.IconChar.Message;
+            this.btnMensagemAlerta.IconColor = System.Drawing.Color.CadetBlue;
+            this.btnMensagemAlerta.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnMensagemAlerta.IconSize = 38;
+            this.btnMensagemAlerta.Location = new System.Drawing.Point(138, 26);
+            this.btnMensagemAlerta.Name = "btnMensagemAlerta";
+            this.btnMensagemAlerta.Size = new System.Drawing.Size(36, 34);
+            this.btnMensagemAlerta.TabIndex = 220;
+            this.btnMensagemAlerta.UseVisualStyleBackColor = true;
+            this.btnMensagemAlerta.Click += new System.EventHandler(this.btnMensagemAlerta_Click);
+            // 
+            // btnAnaliseCliente
+            // 
+            this.btnAnaliseCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAnaliseCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnAnaliseCliente.FlatAppearance.BorderSize = 0;
+            this.btnAnaliseCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAnaliseCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAnaliseCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnaliseCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnaliseCliente.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlassChart;
+            this.btnAnaliseCliente.IconColor = System.Drawing.Color.Navy;
+            this.btnAnaliseCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnAnaliseCliente.IconSize = 38;
+            this.btnAnaliseCliente.Location = new System.Drawing.Point(54, 23);
+            this.btnAnaliseCliente.Name = "btnAnaliseCliente";
+            this.btnAnaliseCliente.Size = new System.Drawing.Size(36, 34);
+            this.btnAnaliseCliente.TabIndex = 219;
+            this.btnAnaliseCliente.UseVisualStyleBackColor = true;
+            this.btnAnaliseCliente.Click += new System.EventHandler(this.btnAnaliseCliente_Click);
+            // 
+            // btnExportarPDF
+            // 
+            this.btnExportarPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportarPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExportarPDF.FlatAppearance.BorderSize = 0;
+            this.btnExportarPDF.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExportarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarPDF.IconChar = FontAwesome.Sharp.IconChar.IdCardClip;
+            this.btnExportarPDF.IconColor = System.Drawing.Color.LightSlateGray;
+            this.btnExportarPDF.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExportarPDF.IconSize = 38;
+            this.btnExportarPDF.Location = new System.Drawing.Point(96, 23);
+            this.btnExportarPDF.Name = "btnExportarPDF";
+            this.btnExportarPDF.Size = new System.Drawing.Size(36, 34);
+            this.btnExportarPDF.TabIndex = 217;
+            this.btnExportarPDF.UseVisualStyleBackColor = true;
+            this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportarExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExportarExcel.FlatAppearance.BorderSize = 0;
+            this.btnExportarExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExportarExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.IconChar = FontAwesome.Sharp.IconChar.FileExcel;
+            this.btnExportarExcel.IconColor = System.Drawing.Color.DarkGreen;
+            this.btnExportarExcel.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExportarExcel.IconSize = 38;
+            this.btnExportarExcel.Location = new System.Drawing.Point(12, 23);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(36, 34);
+            this.btnExportarExcel.TabIndex = 216;
+            this.btnExportarExcel.UseVisualStyleBackColor = true;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
             // FrmClienteLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -554,5 +576,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private RJ_UI.Classes.RJButton btnExcluir;
         private FontAwesome.Sharp.IconButton btnAnaliseCliente;
+        private FontAwesome.Sharp.IconButton btnMensagemAlerta;
     }
 }

@@ -256,6 +256,7 @@ namespace Lunar.Telas.OrdensDeServico
                                 txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
                                 txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
                                 txtNumeroOS.Focus();
+                                generica.buscarAlertaCadastrado((Pessoa)pessoaObj);
                             }
                             form.Dispose();
                             break;
@@ -263,6 +264,7 @@ namespace Lunar.Telas.OrdensDeServico
                             txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
                             txtNumeroOS.Focus();
+                            generica.buscarAlertaCadastrado((Pessoa)pessoaOjeto);
                             pesquisarOrdemServico();
                             break;
                     }
@@ -424,6 +426,7 @@ namespace Lunar.Telas.OrdensDeServico
                         {
                             txtCliente.Texts = cliente.RazaoSocial;
                             txtCodCliente.Texts = cliente.Id.ToString();
+                            generica.buscarAlertaCadastrado(cliente);
 
                         }
                         else

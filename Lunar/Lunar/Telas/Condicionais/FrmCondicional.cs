@@ -2,6 +2,7 @@
 using Lunar.Telas.Cadastros.Produtos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
+using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -15,6 +16,7 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Exception = System.Exception;
 
 namespace Lunar.Telas.Condicionais
 {
@@ -414,6 +416,7 @@ namespace Lunar.Telas.Condicionais
                                 txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
                                 txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
                                 txtVendedor.Focus();
+                                genericaDesktop.buscarAlertaCadastrado((Pessoa)pessoaObj);
                             }
                             form.Dispose();
                             break;
@@ -421,6 +424,7 @@ namespace Lunar.Telas.Condicionais
                             txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
                             txtVendedor.Focus();
+                            genericaDesktop.buscarAlertaCadastrado((Pessoa)pessoaOjeto);
                             break;
                     }
                     formBackground.Dispose();
@@ -435,6 +439,10 @@ namespace Lunar.Telas.Condicionais
                 formBackground.Dispose();
             }
         }
+
+      
+
+
         private void pesquisaVendedor()
         {
             Object pessoaOjeto = new Pessoa();

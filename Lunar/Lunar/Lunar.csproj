@@ -369,6 +369,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsClienteSimplificado.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAlertaMensagemCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAlertaMensagemCliente.Designer.cs">
+      <DependentUpon>FrmAlertaMensagemCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAnaliseCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1241,6 +1247,9 @@
       <DependentUpon>FrmClienteLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FichaClienteSimples.rdlc" />
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAlertaMensagemCliente.resx">
+      <DependentUpon>FrmAlertaMensagemCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAnaliseCliente.resx">
       <DependentUpon>FrmAnaliseCliente.cs</DependentUpon>
     </EmbeddedResource>

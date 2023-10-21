@@ -430,5 +430,32 @@ namespace Lunar.Telas.Cadastros.Cliente
             else
                 GenericaDesktop.ShowAlerta("Clique na linha do cliente que deseja analisar!");
         }
+
+        private void btnMensagemAlerta_Click(object sender, EventArgs e)
+        {
+            if (gridClient.SelectedIndex >= 0)
+            {
+                pessoa = new Pessoa();
+                pessoa = (Pessoa)gridClient.SelectedItem;
+                Form formBackground = new Form();
+                FrmAlertaMensagemCliente uu = new FrmAlertaMensagemCliente(pessoa);
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                uu.Owner = formBackground;
+                uu.ShowDialog();
+                formBackground.Dispose();
+                uu.Dispose();
+            }
+            else
+                GenericaDesktop.ShowAlerta("Clique na linha do cliente que deseja inserir mensagem!");
+        }
     }
 }

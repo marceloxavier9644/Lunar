@@ -5,6 +5,7 @@ using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.RelatoriosDiversos;
 using Lunar.Utils;
 using Lunar.Utils.GalaxyPay_API;
+using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
@@ -24,6 +25,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
+using Exception = System.Exception;
 
 namespace Lunar.Telas.ContasReceber
 {
@@ -474,6 +476,7 @@ namespace Lunar.Telas.ContasReceber
                                 txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
                                 txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
                                 txtNumeroDocumento.Focus();
+                                generica.buscarAlertaCadastrado((Pessoa)pessoaObj);
                             }
                             form.Dispose();
                             break;
@@ -490,6 +493,7 @@ namespace Lunar.Telas.ContasReceber
                             {
                                 GenericaDesktop.ShowAlerta("Cliente com marcação de cobrança externa!");
                             }
+                            generica.buscarAlertaCadastrado((Pessoa)pessoaOjeto);
                             break;
                     }
                     formBackground.Dispose();
@@ -573,6 +577,7 @@ namespace Lunar.Telas.ContasReceber
                             txtCliente.Texts = pessoa.RazaoSocial;
                             txtCodCliente.Texts = pessoa.Id.ToString();
                             pesquisarContaReceber();
+                            generica.buscarAlertaCadastrado(pessoa);
                         }
                     }
                 }

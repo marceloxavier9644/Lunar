@@ -7,6 +7,7 @@ using Lunar.Telas.OrdensDeServico.TipoObjetos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using Lunar.Utils.IntegracaoZAPI;
+using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
@@ -19,6 +20,7 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Exception = System.Exception;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace Lunar.Telas.OrdensDeServico
@@ -356,6 +358,7 @@ namespace Lunar.Telas.OrdensDeServico
                                     GenericaDesktop.ShowAlerta("Cliente marcado que está registrado no SPC/Serasa pela sua empresa!");
                                     iconeExclamacao.Visible = true;
                                 }
+                                genericaDesktop.buscarAlertaCadastrado(((Pessoa)pessoaObj));
                                 txtVendedor.Focus();
                             }
                             form.Dispose();
@@ -373,6 +376,7 @@ namespace Lunar.Telas.OrdensDeServico
                                 GenericaDesktop.ShowAlerta("Cliente marcado que está registrado no SPC/Serasa pela sua empresa!");
                                 iconeExclamacao.Visible = true;
                             }
+                            genericaDesktop.buscarAlertaCadastrado(((Pessoa)pessoaOjeto));
                             txtVendedor.Focus();
                             break;
                     }
@@ -388,7 +392,7 @@ namespace Lunar.Telas.OrdensDeServico
                 formBackground.Dispose();
             }
         }
-
+       
         private void pesquisaCliente()
         {
             Object pessoaOjeto = new Pessoa();
@@ -517,6 +521,7 @@ namespace Lunar.Telas.OrdensDeServico
                                 GenericaDesktop.ShowAlerta("Cliente Marcado que possui parcela em escritório de cobrança!");
                             if (cliente.RegistradoSpc == true)
                                 GenericaDesktop.ShowAlerta("Cliente marcado que está registrado no SPC/Serasa pela sua empresa!");
+                            genericaDesktop.buscarAlertaCadastrado(cliente);
                             txtTipoObjeto.Focus();
                         }
                         else

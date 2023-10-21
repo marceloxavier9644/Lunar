@@ -2,6 +2,7 @@
 using Lunar.Telas.Cadastros.Empresas;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
+using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -12,6 +13,7 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Exception = System.Exception;
 
 namespace Lunar.Telas.ContasPagar
 {
@@ -122,6 +124,7 @@ namespace Lunar.Telas.ContasPagar
                                 txtClienteFornecedor.Texts = ((Pessoa)pessoaObj).RazaoSocial;
                                 txtCodClienteFornecedor.Texts = ((Pessoa)pessoaObj).Id.ToString();
                                 txtNumeroDocumento.Focus();
+                                generica.buscarAlertaCadastrado((Pessoa)pessoaObj);
                             }
                             form.Dispose();
                             break;
@@ -129,6 +132,7 @@ namespace Lunar.Telas.ContasPagar
                             txtClienteFornecedor.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodClienteFornecedor.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
                             txtNumeroDocumento.Focus();
+                            generica.buscarAlertaCadastrado((Pessoa)pessoaOjeto);
                             break;
                     }
                     formBackground.Dispose();
@@ -143,6 +147,7 @@ namespace Lunar.Telas.ContasPagar
                 formBackground.Dispose();
             }
         }
+       
 
         private void txtValorTotal_Leave(object sender, EventArgs e)
         {
@@ -192,6 +197,7 @@ namespace Lunar.Telas.ContasPagar
                             txtClienteFornecedor.Texts = pessoa.RazaoSocial;
                             txtCodClienteFornecedor.Texts = pessoa.Id.ToString();
                             txtNumeroDocumento.Focus();
+                            generica.buscarAlertaCadastrado(pessoa);
                         }
                     }
                 }

@@ -700,3 +700,4 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ContasPagar.Relatorio
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\System.Web.Http.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Vendas.Adicionais.FrmAguarde2.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.SPCs.FrmResultadoConsultaSPC.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Cadastros.Cliente.PessoaAdicionais.FrmAlertaMensagemCliente.resources

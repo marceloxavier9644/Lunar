@@ -130,6 +130,25 @@ namespace Lunar.Utils
                 return fone;
             }
         }
+
+        public void buscarAlertaCadastrado(Pessoa pessoa)
+        {
+            AlertaClienteController alertaClienteController = new AlertaClienteController();
+            IList<AlertaCliente> listaAlerta = alertaClienteController.selecionarAlertaPorPessoa(pessoa.Id);
+            if (listaAlerta.Count > 0)
+            {
+                String mensagem = "";
+                foreach (AlertaCliente alerta in listaAlerta)
+                {
+                    if (!String.IsNullOrEmpty(mensagem))
+                        mensagem = mensagem + "\n" + alerta.Data.ToShortDateString() + " - " + alerta.Descricao;
+                    else
+                        mensagem = alerta.Data.ToShortDateString() + " - " + alerta.Descricao;
+                }
+                GenericaDesktop.ShowAlerta(mensagem);
+            }
+        }
+
         public static bool validarCPFCNPJ(String cpfcnpj, Boolean aceitaVazio = false)
         {
             if (string.IsNullOrWhiteSpace(cpfcnpj))

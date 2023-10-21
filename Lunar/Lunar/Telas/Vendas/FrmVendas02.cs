@@ -8,6 +8,7 @@ using Lunar.Telas.Vendas.RecebimentoVendas;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
+using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -32,6 +33,7 @@ using System.Windows.Forms;
 using System.Xml;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static LunarBase.Utilidades.ManifestoDownload;
+using Exception = System.Exception;
 using Nfe = LunarBase.Classes.Nfe;
 
 namespace Lunar.Telas.Vendas
@@ -1378,6 +1380,7 @@ namespace Lunar.Telas.Vendas
                                 txtPesquisaCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
                                 txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
                                 txtNomeVendedor.Focus();
+                                generica.buscarAlertaCadastrado((Pessoa)pessoaObj);
                             }
                             form.Dispose();
                             break;
@@ -1385,6 +1388,7 @@ namespace Lunar.Telas.Vendas
                             txtPesquisaCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
                             txtNomeVendedor.Focus();
+                            generica.buscarAlertaCadastrado((Pessoa)pessoaOjeto);
                             break;
                     }
                     formBackground.Dispose();
@@ -1399,7 +1403,7 @@ namespace Lunar.Telas.Vendas
                 formBackground.Dispose();
             }
         }
-
+        
         private void gridProdutos_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
         {
             if (e.RowIndex % 2 == 0)
