@@ -98,6 +98,7 @@
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -376,8 +377,8 @@
             this.btnDashboards.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnDashboards.Size = new System.Drawing.Size(230, 46);
             this.btnDashboards.TabIndex = 1;
-            this.btnDashboards.Tag = "Dashboards";
-            this.btnDashboards.Text = "      Dashboards";
+            this.btnDashboards.Tag = "Home Page";
+            this.btnDashboards.Text = "      Home Page";
             this.btnDashboards.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDashboards.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDashboards.UseVisualStyleBackColor = true;
@@ -583,18 +584,19 @@
             this.gerarSintegraTool,
             this.GrupoUserMenu,
             this.UsuariosMenu,
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem,
             this.ParametrosMenu,
             this.btnImportar});
             this.dropMenuUtilitarios.MenuItemHeight = 25;
             this.dropMenuUtilitarios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuUtilitarios.Name = "rjDropdownMenu1";
             this.dropMenuUtilitarios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuUtilitarios.Size = new System.Drawing.Size(305, 224);
+            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 268);
             // 
             // btnBalancoEstoque
             // 
             this.btnBalancoEstoque.Name = "btnBalancoEstoque";
-            this.btnBalancoEstoque.Size = new System.Drawing.Size(304, 22);
+            this.btnBalancoEstoque.Size = new System.Drawing.Size(310, 22);
             this.btnBalancoEstoque.Text = "Balanço de Estoque";
             this.btnBalancoEstoque.Click += new System.EventHandler(this.btnBalancoEstoque_Click);
             // 
@@ -604,7 +606,7 @@
             this.adquirenteMaquinaCartãoToolStripMenuItem1,
             this.bandeirasDeCartãoToolStripMenuItem1});
             this.cartõesToolStripMenuItem.Name = "cartõesToolStripMenuItem";
-            this.cartõesToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.cartõesToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
             this.cartõesToolStripMenuItem.Text = "Cartões";
             // 
             // adquirenteMaquinaCartãoToolStripMenuItem1
@@ -624,55 +626,55 @@
             // contaBancáriaToolStripMenuItem
             // 
             this.contaBancáriaToolStripMenuItem.Name = "contaBancáriaToolStripMenuItem";
-            this.contaBancáriaToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.contaBancáriaToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
             this.contaBancáriaToolStripMenuItem.Text = "Conta Bancária";
             this.contaBancáriaToolStripMenuItem.Click += new System.EventHandler(this.contaBancáriaToolStripMenuItem_Click);
             // 
             // EmpresaMenu
             // 
             this.EmpresaMenu.Name = "EmpresaMenu";
-            this.EmpresaMenu.Size = new System.Drawing.Size(304, 22);
+            this.EmpresaMenu.Size = new System.Drawing.Size(310, 22);
             this.EmpresaMenu.Text = "Empresas/Filiais";
             this.EmpresaMenu.Click += new System.EventHandler(this.EmpresaMenu_Click);
             // 
             // enviarArquivosContabilidadeToolStripMenuItem
             // 
             this.enviarArquivosContabilidadeToolStripMenuItem.Name = "enviarArquivosContabilidadeToolStripMenuItem";
-            this.enviarArquivosContabilidadeToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.enviarArquivosContabilidadeToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
             this.enviarArquivosContabilidadeToolStripMenuItem.Text = "Enviar Arquivos Contabilidade";
             this.enviarArquivosContabilidadeToolStripMenuItem.Click += new System.EventHandler(this.enviarArquivosContabilidadeToolStripMenuItem_Click);
             // 
             // gerarSintegraTool
             // 
             this.gerarSintegraTool.Name = "gerarSintegraTool";
-            this.gerarSintegraTool.Size = new System.Drawing.Size(304, 22);
+            this.gerarSintegraTool.Size = new System.Drawing.Size(310, 22);
             this.gerarSintegraTool.Text = "Gerar Sintegra";
             this.gerarSintegraTool.Click += new System.EventHandler(this.gerarSintegraTool_Click);
             // 
             // GrupoUserMenu
             // 
             this.GrupoUserMenu.Name = "GrupoUserMenu";
-            this.GrupoUserMenu.Size = new System.Drawing.Size(304, 22);
+            this.GrupoUserMenu.Size = new System.Drawing.Size(310, 22);
             this.GrupoUserMenu.Text = "Grupo de Usuários";
             // 
             // UsuariosMenu
             // 
             this.UsuariosMenu.Name = "UsuariosMenu";
-            this.UsuariosMenu.Size = new System.Drawing.Size(304, 22);
+            this.UsuariosMenu.Size = new System.Drawing.Size(310, 22);
             this.UsuariosMenu.Text = "Usuários";
             this.UsuariosMenu.Click += new System.EventHandler(this.UsuariosMenu_Click);
             // 
             // ParametrosMenu
             // 
             this.ParametrosMenu.Name = "ParametrosMenu";
-            this.ParametrosMenu.Size = new System.Drawing.Size(304, 22);
+            this.ParametrosMenu.Size = new System.Drawing.Size(310, 22);
             this.ParametrosMenu.Text = "Parâmetros do Sistema";
             this.ParametrosMenu.Click += new System.EventHandler(this.ParametrosMenu_Click);
             // 
             // btnImportar
             // 
             this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(304, 22);
+            this.btnImportar.Size = new System.Drawing.Size(310, 22);
             this.btnImportar.Text = "Importar Dados de Arquivo CSV";
             this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
@@ -944,6 +946,13 @@
             this.transferênciaFilialToolStripMenuItem.Text = "Transferência Filial";
             this.transferênciaFilialToolStripMenuItem.Click += new System.EventHandler(this.transferênciaFilialToolStripMenuItem_Click);
             // 
+            // usuáriosPermissõesPorGrupoToolStripMenuItem
+            // 
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Name = "usuáriosPermissõesPorGrupoToolStripMenuItem";
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Text = "Usuários - Permissões Por Grupo";
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Click += new System.EventHandler(this.usuáriosPermissõesPorGrupoToolStripMenuItem_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1048,5 +1057,6 @@
         private System.Windows.Forms.ToolStripMenuItem adiantamentoValeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reciboAvulsoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notaFiscalAgrupadaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuáriosPermissõesPorGrupoToolStripMenuItem;
     }
 }

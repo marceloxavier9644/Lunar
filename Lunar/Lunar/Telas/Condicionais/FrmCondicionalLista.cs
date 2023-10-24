@@ -1,5 +1,6 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.ContasReceber;
+using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using Lunar.WSCorreios;
@@ -572,6 +573,37 @@ namespace Lunar.Telas.Condicionais
         private void grid_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnFaturar_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                condicional = new Condicional();
+                condicional = (Condicional)grid.SelectedItem;
+                if (GenericaDesktop.ShowConfirmacao("Confirma o faturamento da condicional selecionada?"))
+                {
+                    Form formBackground = new Form();
+                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(condicional);
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    uu.ShowDialog();
+                    formBackground.Dispose();
+                    uu.Dispose();
+                    btnPesquisar.PerformClick();
+                }
+            } 
         }
     }
 }

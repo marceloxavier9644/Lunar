@@ -46,6 +46,7 @@
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtSenhaBanco = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.chkServidor = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtSerial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCNPJ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSerialHD)).BeginInit();
@@ -240,12 +241,24 @@
             this.autoLabel7.TabIndex = 276;
             this.autoLabel7.Text = "Senha do Banco";
             // 
+            // chkServidor
+            // 
+            this.chkServidor.AutoSize = true;
+            this.chkServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkServidor.Location = new System.Drawing.Point(12, 192);
+            this.chkServidor.Name = "chkServidor";
+            this.chkServidor.Size = new System.Drawing.Size(95, 24);
+            this.chkServidor.TabIndex = 277;
+            this.chkServidor.Text = "Servidor?";
+            this.chkServidor.UseVisualStyleBackColor = true;
+            // 
             // FrmAtivador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(562, 259);
+            this.Controls.Add(this.chkServidor);
             this.Controls.Add(this.txtSenhaBanco);
             this.Controls.Add(this.autoLabel7);
             this.Controls.Add(this.txtUsuarioBanco);
@@ -302,5 +315,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSenhaBanco;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
+        private System.Windows.Forms.CheckBox chkServidor;
     }
 }

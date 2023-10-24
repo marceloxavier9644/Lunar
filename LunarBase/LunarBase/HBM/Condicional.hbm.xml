@@ -8,6 +8,7 @@
 		<property name="DataEncerramento" column="DATAENCERRAMENTO" type="DateTime"/>
 		<property name="QtdPeca" column="QTDPECA" type="double"/>
 		<property name="ValorTotal" column="VALORTOTAL" type="decimal"/>
+		<property name="ValorSaldo" column="VALORSALDO" type="decimal"/>
 		<property name="Observacoes" column="OBSERVACOES" type="String" length="200"/>
 		<property name="Encerrado" column="ENCERRADO" type="Boolean"/>
 		<property name="DataPrevisao" column="DATAPREVISAO" type="DateTime"/>

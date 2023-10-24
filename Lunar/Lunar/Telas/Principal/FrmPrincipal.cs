@@ -23,6 +23,7 @@ using Lunar.Telas.Orcamentos;
 using Lunar.Telas.OrdensDeServico;
 using Lunar.Telas.OrdensDeServico.Servicos;
 using Lunar.Telas.ParametroDoSistema;
+using Lunar.Telas.PermissoesUsuarios;
 using Lunar.Telas.ReciboAvulso1;
 using Lunar.Telas.RelatoriosDiversos;
 using Lunar.Telas.Sintegra;
@@ -1056,6 +1057,28 @@ namespace Lunar.Telas.Principal
             uu.ShowDialog();
             formBackground.Dispose();
             uu.Dispose();
+        }
+
+        private void usuáriosPermissõesPorGrupoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            FrmPermissoesUsuario fr = new FrmPermissoesUsuario();
+            fr.Owner = formBackground;
+            fr.ShowDialog();
+            formBackground.Dispose();
+            fr.Dispose();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace LunarBase.Classes
         private string observacoes;
         private bool encerrado;
         private Pessoa vendedor;
+        private decimal valorSaldo;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -40,5 +41,7 @@ namespace LunarBase.Classes
         public virtual DateTime DataPrevisao { get => dataPrevisao; set => dataPrevisao = value; }
         [Anotacao("Vendedor")]
         public virtual Pessoa Vendedor { get => vendedor; set => vendedor = value; }
+        [Anotacao("Valor Saldo")]
+        public virtual decimal ValorSaldo { get => valorSaldo; set => valorSaldo = value; }
     }
 }

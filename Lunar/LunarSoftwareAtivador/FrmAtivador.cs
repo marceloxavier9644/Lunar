@@ -1,7 +1,9 @@
 ﻿using Lunar.Utils;
 using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using System;
+using System.Data.SqlClient;
 using System.IO;
 using System.Management;
 using System.Net;
@@ -13,6 +15,7 @@ namespace LunarSoftwareAtivador
 {
     public partial class FrmAtivador : Form
     {
+        string connectionString = "Server=localhost;Database=lunar;User Id=root;Password=;";
         String senha = "@lunar_software";
         public FrmAtivador()
         {
@@ -21,12 +24,54 @@ namespace LunarSoftwareAtivador
             txtSerialHD.Text = GetHDDSerialNumber("C");
         }
 
+        private void criarBancoDados()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string createDatabaseQuery = "CREATE DATABASE IF NOT EXISTS lunar;";
+                using (MySqlCommand cmd = new MySqlCommand(createDatabaseQuery, connection))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void criarUsuarioBancoDados()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Comando para criar um novo usuário (substitua os valores apropriados)
+                string createUserQuery = "CREATE USER 'marcelo'@'localhost' IDENTIFIED BY 'mx123';";
+
+                using (MySqlCommand cmd = new MySqlCommand(createUserQuery, connection))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                // Comando para conceder permissões ao novo usuário (substitua os valores apropriados)
+                string grantPermissionsQuery = "GRANT ALL PRIVILEGES ON seubanco.* TO 'marcelo'@'localhost';";
+
+                using (MySqlCommand cmd = new MySqlCommand(grantPermissionsQuery, connection))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         private void btnGerarRegistro_Click(object sender, EventArgs e)
         {
             try
             {
                 consultarRetornoAPI();
                 inserirRegistroWindows();
+                //if(chkServidor.Checked == true)
+                //{
+                //    criarBancoDados();
+                //    criarUsuarioBancoDados();
+                //}
             }
             catch (Exception erro)
             {
@@ -192,5 +237,6 @@ namespace LunarSoftwareAtivador
                 GenericaDesktop.ShowErro("Verifique as permissões da pasta do sistema\n" + erro.Message);
             }
         }
+
     }
 }

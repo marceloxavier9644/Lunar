@@ -971,6 +971,12 @@
     <Compile Include="Telas\ParametroDoSistema\FrmParametroSistema.Designer.cs">
       <DependentUpon>FrmParametroSistema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\PermissoesUsuarios\FrmPermissoesUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\PermissoesUsuarios\FrmPermissoesUsuario.Designer.cs">
+      <DependentUpon>FrmPermissoesUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\PesquisaPadrao\FrmPesquisaPadrao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1535,6 +1541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\ParametroDoSistema\FrmParametroSistema.resx">
       <DependentUpon>FrmParametroSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\PermissoesUsuarios\FrmPermissoesUsuario.resx">
+      <DependentUpon>FrmPermissoesUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\PesquisaPadrao\FrmPesquisaPadrao.resx">
       <DependentUpon>FrmPesquisaPadrao.cs</DependentUpon>

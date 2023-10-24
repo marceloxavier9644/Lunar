@@ -42,6 +42,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         bool parcial = false;
         Pessoa pessoaCobrador = new Pessoa();
         IList<ContaReceber> listaReceberAbatimento = new List<ContaReceber>();
+        Condicional condicional = new Condicional();
         public FrmPagamentoRecebimento(IList<ContaReceber> listaReceber, IList<ContaPagar> listaPagar, OrdemServico ordemServico, string origem, bool parcial, bool ativarCrediario, IList<OrdemServico> listaOrdemServico)
         {
             InitializeComponent();
@@ -99,6 +100,71 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             //    ajustarNfe(nfe);
 
         }
+
+        //Faturar Condicional
+        public FrmPagamentoRecebimento(Condicional condicional)
+        {
+            InitializeComponent();
+            this.gridRecebimento.DataSource = dsRecebimento.Tables["Recebimento"];
+            lblFormaPagamento.TextAlign = HorizontalAlignment.Center;
+            rjTextBox1.TextAlign = HorizontalAlignment.Center;
+            rjTextBox2.TextAlign = HorizontalAlignment.Center;
+            this.origem = "CONDICIONAL";
+            this.condicional = condicional;
+            ajustarCondicional();
+        }
+
+
+        private void ajustarCondicional()
+        {
+            btnSelecionarCobrador.Visible = true;
+            decimal valorTotalFormat = 0;
+            decimal totalFormatado = 0;
+            
+                System.Data.DataRow row = dsFatura.Tables[0].NewRow();
+                row.SetField("Id", condicional.Id.ToString());
+                row.SetField("Documento", "CO" + condicional.Id);
+                row.SetField("Parcela", "1");
+            CondicionalProdutoController condicionalProdutoController = new CondicionalProdutoController();
+            //IList<CondicionalProduto> listaProdutos = condicionalProdutoController.selecionarProdutosCondicionalComVariosFiltros
+
+
+                decimal valorUnitForm = condicional.ValorSaldo;
+                valorUnitForm = Math.Round(valorUnitForm, 2);
+                row.SetField("ValorParcela", string.Format("{0:0.00}", valorUnitForm));
+                decimal valorMultaFormat = 0;
+                valorMultaFormat = Math.Round(valorMultaFormat, 2);
+                row.SetField("Multa", string.Format("{0:0.00}", valorMultaFormat));
+                decimal valorJuroFormat = 0;
+                valorJuroFormat = Math.Round(valorJuroFormat, 2);
+                row.SetField("Juro", string.Format("{0:0.00}", valorJuroFormat));
+                valorTotalFormat = valorUnitForm + valorJuroFormat + valorMultaFormat;
+                valorTotalFormat = Math.Round(valorTotalFormat, 2);
+                row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotalFormat));
+                row.SetField("FormaPagamento", "");
+                row.SetField("Cliente", condicional.Cliente.RazaoSocial);
+                row.SetField("DescontoAcrescimo", "");
+                dsFatura.Tables[0].Rows.Add(row);
+                clienteLista = condicional.Cliente;
+                totalFormatado = totalFormatado + valorTotalFormat;
+            
+            totalFormatado = Math.Round(totalFormatado, 2);
+            gridFaturas.DataSource = dsFatura;
+            valorTotal = totalFormatado;
+            valorFaltante = 0;
+            valorRecebido = 0;
+            if (condicional.Id > 0)
+                valorTotal = condicional.ValorTotal;
+
+            valorFaltante = valorTotal;
+            valorTotal = Math.Round(valorTotal, 2);
+            lblValorTotal.Text = valorTotal.ToString("C2", CultureInfo.CurrentCulture);
+            lblDesconto.Text = 0.ToString("C2", CultureInfo.CurrentCulture);
+            lblValorFaltante.Text = valorFaltante.ToString("C2", CultureInfo.CurrentCulture);
+            lblValorRecebido.Text = valorRecebido.ToString("C2", CultureInfo.CurrentCulture);
+        }
+
+
 
         //Encerrar O.S Agrupada
         private void ajustarListaOrdemServico()

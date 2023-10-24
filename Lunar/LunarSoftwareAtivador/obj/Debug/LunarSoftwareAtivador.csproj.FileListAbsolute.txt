@@ -245,3 +245,15 @@ C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\EnvDTE.xml
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Google.Protobuf.pdb
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\BarcodeStandard.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Drawing.Common.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Google.Protobuf.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\K4os.Compression.LZ4.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\K4os.Hash.xxHash.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\MySql.Data.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Buffers.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Memory.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Numerics.Vectors.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
