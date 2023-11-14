@@ -27,6 +27,7 @@ namespace Lunar.Telas.OrdensDeServico
 {
     public partial class FrmOrdemServico : Form
     {
+        bool passou = false;
         int idEdicaoProduto = 0;
         DataRow dataRowEdit;
         bool editando = false;
@@ -360,6 +361,16 @@ namespace Lunar.Telas.OrdensDeServico
                                 }
                                 genericaDesktop.buscarAlertaCadastrado(((Pessoa)pessoaObj));
                                 txtVendedor.Focus();
+                                if (Sessao.permissoes.Contains("42"))
+                                {
+                                    if (String.IsNullOrEmpty(((Pessoa)pessoaObj).Cnpj))
+                                    {
+                                        GenericaDesktop.ShowAlerta("Permissão Bloqueada para fazer Ordem de Serviço sem CPF/CNPJ");
+                                        txtCliente.Texts = "";
+                                        txtCodCliente.Texts = "";
+                                        cliente = new Pessoa();
+                                    }
+                                }
                             }
                             form.Dispose();
                             break;
@@ -378,6 +389,16 @@ namespace Lunar.Telas.OrdensDeServico
                             }
                             genericaDesktop.buscarAlertaCadastrado(((Pessoa)pessoaOjeto));
                             txtVendedor.Focus();
+                            if (Sessao.permissoes.Contains("42"))
+                            {
+                                if (String.IsNullOrEmpty(((Pessoa)pessoaOjeto).Cnpj))
+                                {
+                                    GenericaDesktop.ShowAlerta("Permissão Bloqueada para fazer Ordem de Serviço sem CPF/CNPJ");
+                                    txtCliente.Texts = "";
+                                    txtCodCliente.Texts = "";
+                                    cliente = new Pessoa();
+                                }
+                            }
                             break;
                     }
                     formBackground.Dispose();
@@ -523,6 +544,16 @@ namespace Lunar.Telas.OrdensDeServico
                                 GenericaDesktop.ShowAlerta("Cliente marcado que está registrado no SPC/Serasa pela sua empresa!");
                             genericaDesktop.buscarAlertaCadastrado(cliente);
                             txtTipoObjeto.Focus();
+                            if (Sessao.permissoes.Contains("42"))
+                            {
+                                if (String.IsNullOrEmpty(cliente.Cnpj))
+                                {
+                                    GenericaDesktop.ShowAlerta("Permissão Bloqueada para fazer Ordem de Serviço sem CPF/CNPJ");
+                                    txtCliente.Texts = "";
+                                    txtCodCliente.Texts = "";
+                                    cliente = new Pessoa();
+                                }
+                            }
                         }
                         else
                         {
@@ -2458,6 +2489,39 @@ namespace Lunar.Telas.OrdensDeServico
             txtValorTotalItem.Texts = string.Format("{0:0.00}", valorTotal);
             txtValorUnitarioItem.Focus();
             txtValorUnitarioItem.SelectAll();
+        }
+
+        private void FrmOrdemServico_Load(object sender, EventArgs e)
+        {
+            if(passou == false)
+            {
+                if (Sessao.permissoes.Count > 0)
+                {
+                    // Habilitar ou desabilitar os controles com base nas permissões
+                    if (ordemServico != null)
+                    {
+                        if (ordemServico.Id > 0)
+                        {
+                            if (ordemServico.Status.Equals("ENCERRADA"))
+                            {
+                                btnPesquisaVendedor.Enabled = Sessao.permissoes.Contains("36");
+                                txtVendedor.Enabled = Sessao.permissoes.Contains("36");
+                            }
+                        }
+                    }
+                    txtValorUnitarioItem.Enabled = Sessao.permissoes.Contains("43");
+                    txtValorTotalItem.Enabled = Sessao.permissoes.Contains("43");
+                    txtValorUnitarioServico.Enabled = Sessao.permissoes.Contains("43");
+                    txtValorTotalServico.Enabled = Sessao.permissoes.Contains("43");
+
+                    txtDescontoItem.Enabled = Sessao.permissoes.Contains("44");
+                    txtDescontoServico.Enabled = Sessao.permissoes.Contains("44");
+
+                    txtAcrescimoItem.Enabled = Sessao.permissoes.Contains("45");
+                    txtAcrescimoServico.Enabled = Sessao.permissoes.Contains("45");
+                }
+                passou = true;
+            }
         }
     }
 }

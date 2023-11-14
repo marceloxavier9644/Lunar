@@ -29,6 +29,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             }
             return DialogResult;
         }
+        bool passou = false;
         MarcaController marcaController = new MarcaController();
         UnidadeMedidaController unidadeMedidaController = new UnidadeMedidaController();
         CsosnController csosnController = new CsosnController();
@@ -2294,6 +2295,23 @@ namespace Lunar.Telas.Cadastros.Produtos
             catch
             {
 
+            }
+        }
+
+        private void FrmProdutoCadastro_Load(object sender, EventArgs e)
+        {
+            if(passou == false)
+            {
+                //Ajustar Permissoes de usuario
+                if (Sessao.permissoes.Count > 0)
+                {
+                    // Habilitar ou desabilitar os controles com base nas permissões
+                    txtEstoqueAuxiliar.Enabled = Sessao.permissoes.Contains("14");
+                    txtEstoque.Enabled = Sessao.permissoes.Contains("15");
+                    txtValorCusto.Enabled = Sessao.permissoes.Contains("16");
+                    txtValorVenda.Enabled = Sessao.permissoes.Contains("17");
+                }
+                passou = true;
             }
         }
     }

@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Forms;
+using static LunarBase.Utilidades.Ns_ConsultaCNPJ;
 
 namespace Lunar.Telas.Cadastros.Empresas
 {
@@ -633,23 +634,23 @@ namespace Lunar.Telas.Cadastros.Empresas
                     {
                         if (Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 14 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
                         {
-                            //Ns_ConsultaCNPJ.Rootobject consulta = new Ns_ConsultaCNPJ.Rootobject();
-                            //consulta = generica.consultarCNPJJson("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
-                            SintegraConsultaCnpj consulta = new SintegraConsultaCnpj();
-                            consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
-                            txtRazaoSocial.Texts = consulta.nome_empresarial;
-                            txtNomeFantasia.Texts = consulta.nome_fantasia;
-                            txtCEP.Texts = consulta.cep;
-                            txtDataAbertura.Value = DateTime.Parse(consulta.data_inicio_atividade);
-                            txtEndereco.Texts = consulta.logradouro;
-                            txtNumero.Texts = consulta.numero;
-                            txtComplemento.Texts = consulta.complemento;
-                            txtBairro.Texts = consulta.bairro;
-                            txtInscricaoEstadual.Texts = consulta.inscricao_estadual;
-                            txtCNAE.Texts = consulta.cnae_principal.code;
+                            ConsultEmpresaNs consulta = new ConsultEmpresaNs();
+                            consulta = generica.consultarEmpresaPorCnpj_NS("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
+                            //SintegraConsultaCnpj consulta = new SintegraConsultaCnpj();
+                           // consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
+                            txtRazaoSocial.Texts = consulta.retConsCad.infCons.infCad[0].xNome;
+                            txtNomeFantasia.Texts = consulta.retConsCad.infCons.infCad[0].xFant;
+                            txtCEP.Texts = consulta.retConsCad.infCons.infCad[0].ender.CEP;
+                            txtDataAbertura.Value = DateTime.Parse(consulta.retConsCad.infCons.infCad[0].dIniAtiv);
+                            txtEndereco.Texts = consulta.retConsCad.infCons.infCad[0].ender.xLgr;
+                            txtNumero.Texts = consulta.retConsCad.infCons.infCad[0].ender.nro;
+                            txtComplemento.Texts = consulta.retConsCad.infCons.infCad[0].ender.xCpl;
+                            txtBairro.Texts = consulta.retConsCad.infCons.infCad[0].ender.xBairro;
+                            txtInscricaoEstadual.Texts = consulta.retConsCad.infCons.infCad[0].IE;
+                            txtCNAE.Texts = consulta.retConsCad.infCons.infCad[0].CNAE.ToString();
 
                             cidade = new Cidade();
-                            cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(consulta.municipio, consulta.ibge.codigo_municipio);
+                            cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(consulta.retConsCad.infCons.infCad[0].ender.xMun, consulta.retConsCad.infCons.infCad[0].ender.cMun);
                             if (cidade != null)
                             {
                                 txtCidade.Texts = cidade.Descricao;

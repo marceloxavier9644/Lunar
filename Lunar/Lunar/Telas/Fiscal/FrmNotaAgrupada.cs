@@ -1732,5 +1732,18 @@ namespace Lunar.Telas.Fiscal
                 }
             }
         }
+
+        private void FrmNotaAgrupada_Load(object sender, EventArgs e)
+        {
+            if (Sessao.permissoes.Count > 0)
+            {
+                // Habilitar ou desabilitar os controles com base nas permissões
+                if (!Sessao.permissoes.Contains("69"))
+                {
+                    GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (69)!");
+                    this.Close();
+                }
+            }
+        }
     }
 }

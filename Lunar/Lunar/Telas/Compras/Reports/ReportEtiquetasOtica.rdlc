@@ -72,7 +72,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>4.09217cm</Height>
+                  <Height>3.64238cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -147,11 +147,12 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>3.88537cm</Height>
+                  <Height>2.8535cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Ean1">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -272,7 +273,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dsEtiquetaOtica</DataSetName>
-            <Height>7.97754cm</Height>
+            <Height>6.49587cm</Height>
             <Width>1.10765cm</Width>
             <Style>
               <Border>
@@ -287,7 +288,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>7.97754cm</Height>
+        <Height>7.0515cm</Height>
         <Style />
       </Body>
       <Width>1.10765cm</Width>

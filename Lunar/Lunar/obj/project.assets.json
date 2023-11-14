@@ -792,6 +792,53 @@
           }
         }
       },
+      "OpenAC.Net.Balanca/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1",
+          "OpenAC.Net.Devices": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Core/1.5.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing",
+          "System.Management",
+          "System.configuration"
+        ],
+        "compile": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Devices/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
+        }
+      },
       "PdfiumViewer/2.13.0": {
         "type": "package",
         "compile": {
@@ -2244,6 +2291,53 @@
           }
         }
       },
+      "OpenAC.Net.Balanca/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1",
+          "OpenAC.Net.Devices": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Core/1.5.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing",
+          "System.Management",
+          "System.configuration"
+        ],
+        "compile": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Devices/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
+        }
+      },
       "PdfiumViewer/2.13.0": {
         "type": "package",
         "compile": {
@@ -3643,6 +3737,53 @@
           "lib/net461/NHibernate.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "OpenAC.Net.Balanca/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1",
+          "OpenAC.Net.Devices": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Core/1.5.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing",
+          "System.Management",
+          "System.configuration"
+        ],
+        "compile": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Devices/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
         }
       },
       "PdfiumViewer/2.13.0": {
@@ -5046,6 +5187,53 @@
           }
         }
       },
+      "OpenAC.Net.Balanca/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1",
+          "OpenAC.Net.Devices": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Core/1.5.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing",
+          "System.Management",
+          "System.configuration"
+        ],
+        "compile": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Devices/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
+        }
+      },
       "PdfiumViewer/2.13.0": {
         "type": "package",
         "compile": {
@@ -6445,6 +6633,53 @@
           "lib/net461/NHibernate.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "OpenAC.Net.Balanca/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1",
+          "OpenAC.Net.Devices": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Balanca.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Core/1.5.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing",
+          "System.Management",
+          "System.configuration"
+        ],
+        "compile": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OpenAC.Net.Devices/1.5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "OpenAC.Net.Core": "1.5.0.1"
+        },
+        "compile": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
+        },
+        "runtime": {
+          "lib/net452/OpenAC.Net.Devices.dll": {}
         }
       },
       "PdfiumViewer/2.13.0": {
@@ -8048,6 +8283,52 @@
         "nhibernate.nuspec"
       ]
     },
+    "OpenAC.Net.Balanca/1.5.0.1": {
+      "sha512": "8yfEiXZh7Nhjt7i1L0lrs2OuxT1q3FiQuPIaBcHeoEbPKeiRnz4ngRpV1dJ3vBNeI8Bl47ACxJAvbs9gt0kRow==",
+      "type": "package",
+      "path": "openac.net.balanca/1.5.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net452/OpenAC.Net.Balanca.dll",
+        "lib/net452/OpenAC.Net.Balanca.xml",
+        "lib/netstandard2.0/OpenAC.Net.Balanca.dll",
+        "lib/netstandard2.0/OpenAC.Net.Balanca.xml",
+        "openac.net.balanca.1.5.0.1.nupkg.sha512",
+        "openac.net.balanca.nuspec"
+      ]
+    },
+    "OpenAC.Net.Core/1.5.0.1": {
+      "sha512": "FwrsuBX+5oQtXxX0ex9dECoo3qDfRjMJ0ytZREWykBBo5t7ddOY8OlTba1NDmP4iMEQOOJphcpU8vS1H4GeUzQ==",
+      "type": "package",
+      "path": "openac.net.core/1.5.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net452/OpenAC.Net.Core.dll",
+        "lib/net452/OpenAC.Net.Core.xml",
+        "lib/netstandard2.0/OpenAC.Net.Core.dll",
+        "lib/netstandard2.0/OpenAC.Net.Core.xml",
+        "openac.net.core.1.5.0.1.nupkg.sha512",
+        "openac.net.core.nuspec"
+      ]
+    },
+    "OpenAC.Net.Devices/1.5.0.1": {
+      "sha512": "xiJeQw7SlNt+kL688x8GEjA64ZcfTCkJQQGc7U6+lQbgtLJuuEo1Qfg9tV1c5Y6k4PVTsLG1XQqcKGGEtAMoCQ==",
+      "type": "package",
+      "path": "openac.net.devices/1.5.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net452/OpenAC.Net.Devices.dll",
+        "lib/netstandard2.0/OpenAC.Net.Devices.dll",
+        "openac.net.devices.1.5.0.1.nupkg.sha512",
+        "openac.net.devices.nuspec"
+      ]
+    },
     "PdfiumViewer/2.13.0": {
       "sha512": "Nw4owBmJzDVXoMRjCnqPbET07CPOawwhcNjt+PyRaSxONN9bsFF+cm9kcMsDLEAEaxsiDJo5jls8bCQjvjidkA==",
       "type": "package",
@@ -9521,6 +9802,7 @@
       "Microsoft.Windows.SDK.Contracts >= 10.0.17763.1000",
       "MySql.Data >= 8.0.27",
       "NHibernate >= 5.3.10",
+      "OpenAC.Net.Balanca >= 1.5.0.1",
       "PdfiumViewer >= 2.13.0",
       "PdfiumViewer.Native.x86.v8-xfa >= 2018.4.8.256",
       "Syncfusion.Tools.Windows >= 19.4.0.38",
@@ -9641,6 +9923,10 @@
           "NHibernate": {
             "target": "Package",
             "version": "[5.3.10, )"
+          },
+          "OpenAC.Net.Balanca": {
+            "target": "Package",
+            "version": "[1.5.0.1, )"
           },
           "PdfiumViewer": {
             "target": "Package",

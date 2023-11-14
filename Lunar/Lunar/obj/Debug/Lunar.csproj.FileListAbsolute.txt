@@ -306,7 +306,6 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.OrdensDeServico.TipoO
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.ParametroDoSistema.FrmParametroSistema.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.PesquisaPadrao.FrmPesquisaPadrao.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Principal.FrmPrincipal.resources
-C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.UsuarioRegistro.FrmPermissaoUsuario.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.UsuarioRegistro.FrmUsuarioCadastro.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.UsuarioRegistro.FrmUsuarioLista.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Vendas.Adicionais.FrmAguarde.resources
@@ -702,3 +701,8 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Vendas.Adicionais.Frm
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.SPCs.FrmResultadoConsultaSPC.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Cadastros.Cliente.PessoaAdicionais.FrmAlertaMensagemCliente.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.PermissoesUsuarios.FrmPermissoesUsuario.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\OpenAC.Net.Balanca.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\OpenAC.Net.Core.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\OpenAC.Net.Devices.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.UsuarioRegistro.FrmGrupoUsuarioCadastro.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Compras.FrmDesmembrarItem.resources

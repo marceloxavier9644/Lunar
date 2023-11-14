@@ -504,6 +504,11 @@ namespace Lunar.Telas.Cadastros.Cliente
             if(!String.IsNullOrEmpty(Sessao.parametroSistema.ConsultaPadraoSpcBrasil) && !String.IsNullOrEmpty(Sessao.parametroSistema.UsuarioWebServiceSpcBrasil))
             {
                 btnSPCBrasil.Visible = true;
+                if (Sessao.permissoes.Count > 0)
+                {
+                    // Habilitar ou desabilitar os controles com base nas permissões
+                    btnSPCBrasil.Enabled = Sessao.permissoes.Contains("5");
+                }
             }
         }
 

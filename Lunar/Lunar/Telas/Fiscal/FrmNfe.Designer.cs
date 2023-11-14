@@ -35,6 +35,7 @@
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkSVCAN = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioSaida = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.radioEntrada = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
@@ -233,9 +234,9 @@
             this.btnGravar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnPreVisualizar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnEmitirNfe = new Lunar.RJ_UI.Classes.RJButton();
-            this.chkSVCAN = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioSaida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioEntrada)).BeginInit();
@@ -267,7 +268,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NotaReferenciada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Produtos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -280,6 +280,7 @@
             this.panelTitleBar.Name = "panelTitleBar";
             this.panelTitleBar.Size = new System.Drawing.Size(1024, 44);
             this.panelTitleBar.TabIndex = 205;
+            this.panelTitleBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitleBar_Paint);
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
             // autoLabel2
@@ -340,6 +341,16 @@
             this.groupBox1.Size = new System.Drawing.Size(1000, 205);
             this.groupBox1.TabIndex = 206;
             this.groupBox1.TabStop = false;
+            // 
+            // chkSVCAN
+            // 
+            this.chkSVCAN.BeforeTouchSize = new System.Drawing.Size(194, 32);
+            this.chkSVCAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSVCAN.Location = new System.Drawing.Point(801, 164);
+            this.chkSVCAN.Name = "chkSVCAN";
+            this.chkSVCAN.Size = new System.Drawing.Size(194, 32);
+            this.chkSVCAN.TabIndex = 263;
+            this.chkSVCAN.Text = "Contingência SVC-AN";
             // 
             // groupBox3
             // 
@@ -3448,16 +3459,6 @@
             this.btnEmitirNfe.UseVisualStyleBackColor = false;
             this.btnEmitirNfe.Click += new System.EventHandler(this.btnEmitirNfe_Click);
             // 
-            // chkSVCAN
-            // 
-            this.chkSVCAN.BeforeTouchSize = new System.Drawing.Size(194, 32);
-            this.chkSVCAN.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSVCAN.Location = new System.Drawing.Point(801, 164);
-            this.chkSVCAN.Name = "chkSVCAN";
-            this.chkSVCAN.Size = new System.Drawing.Size(194, 32);
-            this.chkSVCAN.TabIndex = 263;
-            this.chkSVCAN.Text = "Contingência SVC-AN";
-            // 
             // FrmNfe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3481,6 +3482,7 @@
             this.panelTitleBar.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioSaida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioEntrada)).EndInit();
@@ -3518,7 +3520,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NotaReferenciada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Produtos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

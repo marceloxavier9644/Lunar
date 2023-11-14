@@ -64,6 +64,7 @@
     <None Remove="HBM\OSComissao.hbm.xml" />
     <None Remove="HBM\ParametroSistema.hbm.xml" />
     <None Remove="HBM\Parcelamento.hbm.xml" />
+    <None Remove="HBM\PermissaoUsuario.hbm.xml" />
     <None Remove="HBM\Pessoa.hbm.xml" />
     <None Remove="HBM\PessoaDependente.hbm.xml" />
     <None Remove="HBM\PessoaPropriedade.hbm.xml" />
@@ -100,6 +101,7 @@
     <EmbeddedResource Include="HBM\CondicionalDevolucao.hbm.xml" />
     <EmbeddedResource Include="HBM\NfePagamento.hbm.xml" />
     <EmbeddedResource Include="HBM\OsComissao.hbm.xml" />
+    <EmbeddedResource Include="HBM\PermissaoUsuario.hbm.xml" />
     <EmbeddedResource Include="HBM\Query.hbm.xml" />
     <EmbeddedResource Include="HBM\AdquirenteCartao.hbm.xml" />
     <EmbeddedResource Include="HBM\Anp.hbm.xml" />

@@ -149,7 +149,8 @@ namespace Lunar.Telas.Fiscal
             calculaTotalNotas();
 
             if (GenericaDesktop.possuiConexaoInternet())
-                reenviarNotasEmContigencia(primeiroDiaDoMes.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), ultimoDiaDoMes.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
+                reenviarNotasEmContigencia(primeiroDiaDoMes.AddMonths(-2).ToString("yyyy'-'MM'-'dd' '00':'00':'00"), ultimoDiaDoMes.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
+
         }
 
         private void selecionarNotasBancoDados(string dataInicial, string dataFinal)
@@ -179,6 +180,7 @@ namespace Lunar.Telas.Fiscal
                 lblReenviando.Visible = true;
                 lblReenviando.Text = "Reenviando Notas em Contigência";
                 IList<Nfe> listaNotasContigencia = nfeController.selecionarNotasSaidaEmContigenciaPorPeriodo(dataInicial, dataFinal);
+                //GenericaDesktop.ShowInfo("Sistema reenviando notas em contigência! " + listaNotasContigencia.Count);
                 foreach (Nfe nfe in listaNotasContigencia)
                 {
                     lblReenviando.Text = "Reenviando Notas em Contigência + (" + listaNotasContigencia.Count + ")";
@@ -516,11 +518,7 @@ namespace Lunar.Telas.Fiscal
 
         private void FrmControleNotas_Paint(object sender, PaintEventArgs e)
         {
-            if (fazerPrimeiraBuscaNotas == true)
-            {
-                buscaNotas();
-                fazerPrimeiraBuscaNotas = false;
-            }
+      
         }
 
         private void grid_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
@@ -1869,16 +1867,19 @@ namespace Lunar.Telas.Fiscal
                                 }
                                 else if (retConsulta.xMotivo.Contains("Duplicidade de NF-e, com diferenca na Chave de Acesso"))
                                 {
-                                    nfe.Chave = retConsulta.xMotivo.Substring(65, 44);
+                                    try { nfe.Chave = retConsulta.xMotivo.Substring(65, 44); } catch { }
                                     nfe.NsNrec = "";
                                     Controller.getInstance().salvar(nfe);
                                     if (nfe.Modelo.Equals("55"))
                                     {
                                         NFeDownloadProc55 nota = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
-                                        var nfeRet = Genericos.LoadFromXMLString<TNfeProc>(nota.xml);
-                                        genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id);
-                                        generica.gravarXMLNaPasta(nota.xml, nota.chNFe, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.xml");
-                                        btnImprimirNf.PerformClick();
+                                        if (nota != null)
+                                        {
+                                            var nfeRet = Genericos.LoadFromXMLString<TNfeProc>(nota.xml);
+                                            genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id);
+                                            generica.gravarXMLNaPasta(nota.xml, nota.chNFe, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.xml");
+                                            btnImprimirNf.PerformClick();
+                                        }
                                     }
                                 }
                                 else
@@ -1967,8 +1968,7 @@ namespace Lunar.Telas.Fiscal
                                     }
                                     GenericaDesktop.ShowInfo("XML Salvo em C:\\Lunar\\" + caminhoX);
                                 }
-                            }
-                                
+                            }    
                         }
                     }
                     else
@@ -2672,6 +2672,15 @@ namespace Lunar.Telas.Fiscal
                     }
                 }
                 GenericaDesktop.ShowInfo("Notas Enviadas para Nuvem com Sucesso!");
+            }
+        }
+
+        private void FrmControleNotas_Load(object sender, EventArgs e)
+        {
+            if (fazerPrimeiraBuscaNotas == true)
+            {
+                buscaNotas();
+                fazerPrimeiraBuscaNotas = false;
             }
         }
     }

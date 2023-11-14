@@ -138,7 +138,8 @@ namespace Lunar.Telas.Fiscal
             txtPlacaVeiculo.Texts = nfe.Placa;
             txtPesoBruto.Texts = nfe.PesoBruto;
             txtPesoLiquido.Texts = nfe.PesoLiquido;
-
+            txtOutrasDepesas.Texts = string.Format("{0:0.00}", nfe.VOutro);
+            txtFrete.Texts = string.Format("{0:0.00}", nfe.VFrete);
             NfeProdutoController nfeProdutoController = new NfeProdutoController();
             IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
             if(listaProdutos.Count > 0)
@@ -270,6 +271,15 @@ namespace Lunar.Telas.Fiscal
             {
                 GenericaDesktop.ShowAlerta("A resolução do seu monitor não atende os requisitos mínimos do sistema Lunar, " +
                     "verifique com um técnico a possibilidade da resolução de tela ficar em 1366x768 ou superior");
+            }
+            if (Sessao.permissoes.Count > 0)
+            {
+                // Habilitar ou desabilitar os controles com base nas permissões
+                if (!Sessao.permissoes.Contains("70"))
+                {
+                    GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (70)!");
+                    this.Close();
+                }
             }
         }
 
@@ -2271,6 +2281,11 @@ namespace Lunar.Telas.Fiscal
             {
                 GenericaDesktop.ShowAlerta("Primeiro você deve clicar na linha da nota referenciada que deseja remover!");
             }
+        }
+
+        private void panelTitleBar_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     } 
 }

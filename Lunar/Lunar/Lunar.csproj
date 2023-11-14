@@ -553,6 +553,12 @@
     <Compile Include="Telas\CaixaConferencia\Reports\FrmRelatorioCaixa.Designer.cs">
       <DependentUpon>FrmRelatorioCaixa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Compras\FrmDesmembrarItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Compras\FrmDesmembrarItem.Designer.cs">
+      <DependentUpon>FrmDesmembrarItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Compras\FrmImprimirEtiquetasOtica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1053,11 +1059,11 @@
     <Compile Include="Telas\TransferenciaEstoques\FrmTransferenciaEstoqueLista.Designer.cs">
       <DependentUpon>FrmTransferenciaEstoqueLista.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.cs">
+    <Compile Include="Telas\UsuarioRegistro\FrmGrupoUsuarioCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.Designer.cs">
-      <DependentUpon>FrmPermissaoUsuario.cs</DependentUpon>
+    <Compile Include="Telas\UsuarioRegistro\FrmGrupoUsuarioCadastro.Designer.cs">
+      <DependentUpon>FrmGrupoUsuarioCadastro.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\UsuarioRegistro\FrmUsuarioCadastro.cs">
       <SubType>Form</SubType>
@@ -1342,6 +1348,9 @@
       <DependentUpon>FrmRelatorioCaixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\CaixaConferencia\Reports\RelatorioCaixa01.rdlc" />
+    <EmbeddedResource Include="Telas\Compras\FrmDesmembrarItem.resx">
+      <DependentUpon>FrmDesmembrarItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Compras\FrmImprimirEtiquetasOtica.resx">
       <DependentUpon>FrmImprimirEtiquetasOtica.cs</DependentUpon>
     </EmbeddedResource>
@@ -1581,8 +1590,8 @@
       <DependentUpon>FrmTransferenciaEstoqueLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\TransferenciaEstoques\ReportTransferenciaTicket.rdlc" />
-    <EmbeddedResource Include="Telas\UsuarioRegistro\FrmPermissaoUsuario.resx">
-      <DependentUpon>FrmPermissaoUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="Telas\UsuarioRegistro\FrmGrupoUsuarioCadastro.resx">
+      <DependentUpon>FrmGrupoUsuarioCadastro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\UsuarioRegistro\FrmUsuarioCadastro.resx">
       <DependentUpon>FrmUsuarioCadastro.cs</DependentUpon>
@@ -2245,6 +2254,9 @@
     </PackageReference>
     <PackageReference Include="NHibernate">
       <Version>5.3.10</Version>
+    </PackageReference>
+    <PackageReference Include="OpenAC.Net.Balanca">
+      <Version>1.5.0.1</Version>
     </PackageReference>
     <PackageReference Include="PdfiumViewer">
       <Version>2.13.0</Version>

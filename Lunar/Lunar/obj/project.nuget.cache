@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uLQeN8YCrRQ1H2V6q553qOANEMt5tINVDr5sz1ev7fzPYCtgeMd6GwFTr5Qx9gt9//UOnva/QG6RRdKZFpYAyw==",
+  "dgSpecHash": "Hrs+0von8PvoYQPl7noyBhPzSRLWklzhcWn9A2QzwFfGXQDwhDS/9zhT/MOWdZ3h6+k118qAPR0JPA/KZ23LcQ==",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,9 @@
     "C:\\Users\\marce\\.nuget\\packages\\mysql.data\\8.0.27\\mysql.data.8.0.27.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\nhibernate\\5.3.10\\nhibernate.5.3.10.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\openac.net.balanca\\1.5.0.1\\openac.net.balanca.1.5.0.1.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\openac.net.core\\1.5.0.1\\openac.net.core.1.5.0.1.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\openac.net.devices\\1.5.0.1\\openac.net.devices.1.5.0.1.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\pdfiumviewer\\2.13.0\\pdfiumviewer.2.13.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\pdfiumviewer.native.x86.v8-xfa\\2018.4.8.256\\pdfiumviewer.native.x86.v8-xfa.2018.4.8.256.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\remotion.linq\\2.2.0\\remotion.linq.2.2.0.nupkg.sha512",

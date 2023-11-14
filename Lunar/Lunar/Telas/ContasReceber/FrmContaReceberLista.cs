@@ -652,6 +652,7 @@ namespace Lunar.Telas.ContasReceber
                         {
                             Controller.getInstance().excluir(conta);
                             i++;
+                            
                         }
                         else
                             GenericaDesktop.ShowAlerta("Não é possível excluir uma conta ja recebida!");

@@ -1810,6 +1810,19 @@ namespace Lunar.Telas.Compras
 				formBackground.Dispose();
 			}
 		}
+
+        private void btnDesmembrar_Click(object sender, EventArgs e)
+        {
+            if (gridProdutos.SelectedIndex >= 0)
+            {
+                NfeProdutoController nfeProdutoController = new NfeProdutoController();
+                nfeProd = new NfeProduto();
+                nfeProd = (NfeProduto)gridProdutos.SelectedItem;
+
+                FrmDesmembrarItem frm = new FrmDesmembrarItem(nfeProd);
+                frm.ShowDialog();
+            }
+        }
     }	
 }
 

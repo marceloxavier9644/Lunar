@@ -63,8 +63,8 @@
             this.EmpresaMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.enviarArquivosContabilidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gerarSintegraTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.GrupoUserMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.UsuariosMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParametrosMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnImportar = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuFinanceiro = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
@@ -98,7 +98,6 @@
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuáriosPermissõesPorGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -582,7 +581,6 @@
             this.EmpresaMenu,
             this.enviarArquivosContabilidadeToolStripMenuItem,
             this.gerarSintegraTool,
-            this.GrupoUserMenu,
             this.UsuariosMenu,
             this.usuáriosPermissõesPorGrupoToolStripMenuItem,
             this.ParametrosMenu,
@@ -591,7 +589,7 @@
             this.dropMenuUtilitarios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuUtilitarios.Name = "rjDropdownMenu1";
             this.dropMenuUtilitarios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 268);
+            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 224);
             // 
             // btnBalancoEstoque
             // 
@@ -651,18 +649,19 @@
             this.gerarSintegraTool.Text = "Gerar Sintegra";
             this.gerarSintegraTool.Click += new System.EventHandler(this.gerarSintegraTool_Click);
             // 
-            // GrupoUserMenu
-            // 
-            this.GrupoUserMenu.Name = "GrupoUserMenu";
-            this.GrupoUserMenu.Size = new System.Drawing.Size(310, 22);
-            this.GrupoUserMenu.Text = "Grupo de Usuários";
-            // 
             // UsuariosMenu
             // 
             this.UsuariosMenu.Name = "UsuariosMenu";
             this.UsuariosMenu.Size = new System.Drawing.Size(310, 22);
             this.UsuariosMenu.Text = "Usuários";
             this.UsuariosMenu.Click += new System.EventHandler(this.UsuariosMenu_Click);
+            // 
+            // usuáriosPermissõesPorGrupoToolStripMenuItem
+            // 
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Name = "usuáriosPermissõesPorGrupoToolStripMenuItem";
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Text = "Usuários - Permissões Por Grupo";
+            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Click += new System.EventHandler(this.usuáriosPermissõesPorGrupoToolStripMenuItem_Click);
             // 
             // ParametrosMenu
             // 
@@ -946,13 +945,6 @@
             this.transferênciaFilialToolStripMenuItem.Text = "Transferência Filial";
             this.transferênciaFilialToolStripMenuItem.Click += new System.EventHandler(this.transferênciaFilialToolStripMenuItem_Click);
             // 
-            // usuáriosPermissõesPorGrupoToolStripMenuItem
-            // 
-            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Name = "usuáriosPermissõesPorGrupoToolStripMenuItem";
-            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
-            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Text = "Usuários - Permissões Por Grupo";
-            this.usuáriosPermissõesPorGrupoToolStripMenuItem.Click += new System.EventHandler(this.usuáriosPermissõesPorGrupoToolStripMenuItem_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1014,7 +1006,6 @@
         private FontAwesome.Sharp.IconButton btnUtilitarios;
         private RJ_UI.Classes.RJDropdownMenu dropMenuUtilitarios;
         private System.Windows.Forms.ToolStripMenuItem EmpresaMenu;
-        private System.Windows.Forms.ToolStripMenuItem GrupoUserMenu;
         private System.Windows.Forms.ToolStripMenuItem UsuariosMenu;
         private System.Windows.Forms.ToolStripMenuItem ParametrosMenu;
         private FontAwesome.Sharp.IconButton btnRelatorios;

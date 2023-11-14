@@ -2,14 +2,10 @@
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
-using Syncfusion.XlsIO.FormatParser.FormatTokens;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.ServiceModel.Channels;
-using System.Text;
-using System.Threading.Tasks;
 using static LunarBase.ClassesDAO.NfeProdutoDAO;
 
 namespace Lunar.Utils.Sintegra
@@ -61,7 +57,7 @@ namespace Lunar.Utils.Sintegra
                 codFinalidadeArquivo, codEstruturaArquivo, codNaturezaOperacoes
                 );
 
-            var registro11 = new FiscalBr.Sintegra.Registro11(filial.Endereco.Logradouro, filial.Endereco.Numero,
+            var registro11 = new FiscalBr.Sintegra.Registro11(generica.RemoverAcentos(filial.Endereco.Logradouro), filial.Endereco.Numero,
                 filial.Endereco.Complemento, filial.Endereco.Bairro,
                 GenericaDesktop.RemoveCaracteres(filial.Endereco.Cep),
                 filial.Empresa.Responsavel, GenericaDesktop.RemoveCaracteres(filial.DddPrincipal + filial.TelefonePrincipal));
@@ -220,6 +216,9 @@ namespace Lunar.Utils.Sintegra
                         //        registro50.ValorOutras = nfProduto.valorOutras;
                         //}
                         //else
+                        
+                        if (int.Parse(numeroNota) == 437)
+                            a = "";
                        registro50.ValorOutras = nfProduto.valorTotal;
                         //registro50.AliquotaIcms = decimal.Parse(aliq);
                         registro50.AliquotaIcms = 0;
@@ -271,7 +270,7 @@ namespace Lunar.Utils.Sintegra
                         registro54.NumeroItem = int.Parse(nfProduto.Item);
                         registro54.CodProdutoServico = nfProduto.CodigoInterno;
                         registro54.Quantidade = decimal.Parse(nfProduto.QuantidadeEntrada.ToString());
-                        registro54.VlProdutoServico = ((nfProduto.VProd + nfProduto.VFrete + nfProduto.VICMSSt) - nfProduto.VDesc);
+                        registro54.VlProdutoServico = ((nfProduto.VProd + nfProduto.VFrete + nfProduto.VICMSSt + nfProduto.VOutro) - nfProduto.VDesc);
                         registro54.VlDescontoDespesaAc = nfProduto.VDesc;
                         //registro54.BaseCalculoIcms = nfProduto.VBC;
                         //registro54.BaseCalculoIcmsSt = nfProduto.VBCST;
@@ -335,7 +334,7 @@ namespace Lunar.Utils.Sintegra
                 foreach (Nfe nf65 in listaNFCe)
                 {
                     if (!nf65.DataEmissao.ToShortDateString().Equals(dataInserida.ToShortDateString()))
-                    {
+                    {   
                         registro61.Tipo = "61";
                         registro61.DataEmissao = nf65.DataEmissao;
                         registro61.Modelo = nf65.Modelo;

@@ -1051,6 +1051,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notas Fiscais";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmNotaAgrupada_Load);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             this.groupBox1.ResumeLayout(false);

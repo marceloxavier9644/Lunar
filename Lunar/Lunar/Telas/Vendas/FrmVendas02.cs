@@ -755,7 +755,7 @@ namespace Lunar.Telas.Vendas
         private void desbloquearCamposValorQuantidade()
         {
             txtQuantidade.Enabled = true;
-            txtValorUnitario.Enabled = true;
+            txtValorUnitario.Enabled = Sessao.permissoes.Contains("60");
             btnAdicionar.Enabled = true;
         }
 
@@ -1082,14 +1082,6 @@ namespace Lunar.Telas.Vendas
         {
             this.gridProdutos.DataSource = dsProduto.Tables["Produto"];
             this.gridRecebimento.DataSource = dsPagamento.Tables["Pagamento"];
-            //this.gridProdutos.Style.RowHeaderStyle.BackColor = Color.FromArgb(0, 192, 0);
-            //this.gridProdutos.Style.RowHeaderStyle.BackColor = Color.White;
-            //this.gridProdutos.ShowRowHeader = true;
-            //this.gridProdutos.Style.RowHeaderStyle.SelectionBackColor = Color.White;
-            //this.gridProdutos.Style.RowHeaderStyle.SelectionMarkerColor = Color.Red;
-
-
-            //this.gridProdutos.Columns["Descricao"].AutoSizeColumnsMode = AutoSizeColumnsMode.AllCellsWithLastColumnFill;
             txtPesquisaProduto.Focus();
 
             int w = Screen.PrimaryScreen.Bounds.Width;
@@ -1113,7 +1105,23 @@ namespace Lunar.Telas.Vendas
             lblFormaPagamento.BorderColor = System.Drawing.Color.White;
             lblFormaPagamento.Enabled = false;
 
-
+            if (Sessao.permissoes.Count > 0)
+            {
+                // Habilitar ou desabilitar os controles com base nas permissões
+                txtValorUnitario.Enabled = Sessao.permissoes.Contains("60");
+                btnDescontoItem.Enabled = Sessao.permissoes.Contains("61");
+                btnDescontoGeral.Enabled = Sessao.permissoes.Contains("62");
+                btnExcluirItem.Enabled = Sessao.permissoes.Contains("63");
+                btnPesquisaVendedor.Enabled = Sessao.permissoes.Contains("64");
+                btnSelecionaVendedorTela2.Enabled = Sessao.permissoes.Contains("64");
+                txtVendedorSelecionado.Enabled = Sessao.permissoes.Contains("64");
+                txtCodVendedor.Enabled = Sessao.permissoes.Contains("64"); 
+                txtNomeVendedor.Enabled = Sessao.permissoes.Contains("64");
+                btnCrediario.Enabled = Sessao.permissoes.Contains("65");
+                btnBoleto.Enabled = Sessao.permissoes.Contains("66");
+                btnCheque.Enabled = Sessao.permissoes.Contains("67");
+                btnFinalizarTela2.Enabled = Sessao.permissoes.Contains("69");
+            }
         }
 
         private void FrmVendas02_KeyDown(object sender, KeyEventArgs e)
@@ -1140,13 +1148,17 @@ namespace Lunar.Telas.Vendas
                         break;
 
                     case Keys.F6:
-                        btnDescontoItem.PerformClick();
+                        if(Sessao.permissoes.Contains("62"))
+                            btnDescontoItem.PerformClick();
                         break;
 
                     case Keys.Delete:
-                        if (tabControlAdv1.SelectedTab == tabVenda)
+                        if (Sessao.permissoes.Contains("63"))
                         {
-                            btnExcluirItem.PerformClick();
+                            if (tabControlAdv1.SelectedTab == tabVenda)
+                            {
+                                btnExcluirItem.PerformClick();
+                            }
                         }
                         break;
                 }
@@ -1160,6 +1172,9 @@ namespace Lunar.Telas.Vendas
                         break;
                     case Keys.F2:
                         btnGerarNFCe.PerformClick();
+                        break;
+                    case Keys.F3:
+                        btnCreditoCliente.PerformClick();
                         break;
                     case Keys.F6:
                         btnDinheiro.PerformClick();
@@ -1178,13 +1193,16 @@ namespace Lunar.Telas.Vendas
                         break;
 
                     case Keys.F10:
-                        btnCrediario.PerformClick();
+                        if(Sessao.permissoes.Contains("66"))
+                            btnBoleto.PerformClick();
                         break;
                     case Keys.F11:
-                        btnCheque.PerformClick();
+                        if (Sessao.permissoes.Contains("65"))
+                            btnCrediario.PerformClick();
                         break;
                     case Keys.F12:
-                        btnCreditoCliente.PerformClick();
+                        if (Sessao.permissoes.Contains("67"))
+                            btnCheque.PerformClick();
                         break;
                 }
             }

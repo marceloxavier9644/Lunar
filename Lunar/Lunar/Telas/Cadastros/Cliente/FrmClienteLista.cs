@@ -29,6 +29,7 @@ namespace Lunar.Telas.Cadastros.Cliente
             InitializeComponent();
             this.Opacity = 0.0;
             carregarLista();
+            
         }
         public DataTable selectProdutos()
         {
@@ -73,7 +74,6 @@ namespace Lunar.Telas.Cadastros.Cliente
             sfDataPager1.PageCount = totalPaginas;
 
             gridClient.DataSource = listaClientes;
-            //paginacao.OnDemandLoading += sfDataPager1_OnDemandLoading;
             txtPesquisaCliente.Focus();
         }
         private void ajustarLista()
@@ -122,11 +122,23 @@ namespace Lunar.Telas.Cadastros.Cliente
 
         private void FrmClienteLista_Load(object sender, EventArgs e)
         {
-            //timer1.Start();
             if (passou == false)
             {
                 passou = true;
                 txtPesquisaCliente.Focus();
+
+                //Ajustar Permissoes de usuario
+                if(Sessao.permissoes.Count > 0)
+                {
+                    // Habilitar ou desabilitar os controles com base nas permissões
+                    btnNovo.Enabled = Sessao.permissoes.Contains("1");
+                    btnEditar.Enabled = Sessao.permissoes.Contains("2");
+                    btnExcluir.Enabled = Sessao.permissoes.Contains("3");
+                    btnExportarPDF.Enabled = Sessao.permissoes.Contains("4");
+                    btnMensagemAlerta.Enabled = Sessao.permissoes.Contains("6");
+                    btnExportarExcel.Enabled = Sessao.permissoes.Contains("7");
+                    btnAnaliseCliente.Enabled = Sessao.permissoes.Contains("8");
+                }
             }
         }
 
@@ -299,7 +311,13 @@ namespace Lunar.Telas.Cadastros.Cliente
 
         private void gridClient_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
         {
-            selecionarClienteParaEditar();
+            if (!Sessao.permissoes.Contains("2"))
+            {
+                e.Cancel = true; // Isso impede o evento padrão de edição se a permissão "2" não estiver presente
+                GenericaDesktop.ShowAlerta("Usuário sem Permissão para essa operação!");
+            }
+            else
+                selecionarClienteParaEditar();
         }
 
         private void btnExportarPDF_Click(object sender, EventArgs e)

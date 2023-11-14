@@ -81,7 +81,17 @@ namespace Lunar.Telas.FormaPagamentoRecebimento.Adicionais
                     //        vencimento = vencimento.AddDays(1);
                     //}
                     if (vencimento.Day != dia)
-                        vencimento = DateTime.Parse((dia + "/" + vencimento.Month + "/" + vencimento.Year + " 00:00:00").ToString());
+                    {
+                        if(vencimento.Month == 2)
+                        {
+                            vencimento = DateTime.Parse((01 + "/03/" + vencimento.Year + " 00:00:00").ToString());
+                        }
+                        else
+                        {
+                            vencimento = DateTime.Parse((dia + "/" + vencimento.Month + "/" + vencimento.Year + " 00:00:00").ToString());
+                        }
+                    }
+                        
                     System.Data.DataRow row = dsParcelas.Tables[0].NewRow();
                     row.SetField("PARCELA", i);
                     row.SetField("VENCIMENTO", vencimento.ToShortDateString());
@@ -117,9 +127,9 @@ namespace Lunar.Telas.FormaPagamentoRecebimento.Adicionais
                     }
                 }
             }
-            catch
+            catch (Exception erro)
             {
-
+                GenericaDesktop.ShowAlerta(erro.Message);
             }
         }
 

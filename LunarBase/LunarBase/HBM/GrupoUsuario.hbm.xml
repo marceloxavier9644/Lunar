@@ -5,7 +5,7 @@
 			<generator class="native" />
 		</id>
 		<property name="Descricao" column="DESCRICAO" type="String" length="100"/>
-		<property name="Permissoes" column="PERMISSOES" type="String" length="300"/>
+		<property name="Permissoes" column="PERMISSOES" type="String" length="2000"/>
 		<property name="Supervisor" column="SUPERVISOR" type="Boolean"/>
 		
 		<many-to-one name="Empresa" column="EMPRESA" class="LunarBase.Classes.Empresa" not-null="false" foreign-key="FK_GRUPOUSUARIO_EMPRESA" lazy="false"/>

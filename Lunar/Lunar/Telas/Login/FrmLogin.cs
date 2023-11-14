@@ -9,6 +9,7 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using NHibernate.Impl;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Management;
 using System.Net;
@@ -75,6 +76,12 @@ namespace Lunar
                 {
                     //gravarEmpresaPadraoDoComputador();
                     LunarBase.Utilidades.Sessao.usuarioLogado = usuarioLogado;
+                    if (!String.IsNullOrEmpty(LunarBase.Utilidades.Sessao.usuarioLogado.GrupoUsuario.Permissoes))
+                    {
+                        string prm = GenericaDesktop.Descriptografa(Sessao.usuarioLogado.GrupoUsuario.Permissoes);
+                        String[] permissions = prm.Split(';');
+                        Sessao.permissoes = new HashSet<string>(permissions);
+                    }
                     //Pessoa pessoa = controller.pessoa_selecionarPessoaPorCodigo(int.Parse(comboLoja.SelectedValue.ToString()));
                     //if (int.Parse(comboLoja.SelectedValue.ToString()) != int.Parse(lojaPadrao.ToString()))
                     //{

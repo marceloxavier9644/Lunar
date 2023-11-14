@@ -167,6 +167,10 @@
               "target": "Package",
               "version": "[5.3.10, )"
             },
+            "OpenAC.Net.Balanca": {
+              "target": "Package",
+              "version": "[1.5.0.1, )"
+            },
             "PdfiumViewer": {
               "target": "Package",
               "version": "[2.13.0, )"

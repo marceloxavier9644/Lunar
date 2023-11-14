@@ -77,7 +77,7 @@ namespace LunarBase.ClassesDAO
             String sql = "";
             if (nfe.Fornecedor != null && nfe.TipoOperacao == "E")
             {
-                sql = "SELECT sum((nfeproduto.VUNCOM * Cast((nfeproduto.QCOM) as DECIMAL(7,2))) + nfeproduto.VICMSST + nfeproduto.VFRETE + nfeproduto.VALORIPI + nfeproduto.VIPIDEVOLVIDO - nfeproduto.VDESC) as ValorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
+                sql = "SELECT sum((nfeproduto.VUNCOM * Cast((nfeproduto.QCOM) as DECIMAL(7,2))) + nfeproduto.VICMSST + nfeproduto.VFRETE + nfeproduto.VALORIPI + nfeproduto.VOUTRO + nfeproduto.VIPIDEVOLVIDO - nfeproduto.VDESC) as ValorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                     "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
                     "nfe.NNf as numero, nfeProduto.CfopEntrada as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
                     "sum(nfeproduto.VIcms) as valorIcms, sum(nfeproduto.ValorIsentoIcms) as valorIsentaNaoTributada, sum(nfeproduto.OutrosIcms) as valorOutras, nfeproduto.PIcms as aliquotaIcms " +
@@ -101,7 +101,7 @@ namespace LunarBase.ClassesDAO
             }
             else if (nfe.Fornecedor != null && nfe.TipoOperacao == "S")
             {
-                sql = "SELECT SUM(((nfeproduto.VALORFINAL * Cast((nfeproduto.QCOM) as DECIMAL(7,2)) + nfeproduto.VFRETE + nfeproduto.VIPIDEVOLVIDO + nfeproduto.VICMSST + " +
+                sql = "SELECT SUM(((nfeproduto.VALORFINAL * Cast((nfeproduto.QCOM) as DECIMAL(7,2)) + nfeproduto.VFRETE + nfeproduto.VIPIDEVOLVIDO + nfeproduto.VOUTRO + nfeproduto.VICMSST + " +
                     "nfeproduto.VALORIPI) - nfeproduto.VDESC)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                            "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
                            "nfe.NNf as numero, nfeProduto.Cfop as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +
@@ -114,7 +114,7 @@ namespace LunarBase.ClassesDAO
             }
             else if (nfe.Cliente != null && nfe.TipoOperacao == "S")
             {
-                sql = "SELECT SUM(((nfeproduto.VUNCOM * Cast((nfeproduto.QCOM) as DECIMAL(7,2)) + nfeproduto.VFRETE + nfeproduto.VIPIDEVOLVIDO + nfeproduto.VICMSST + " +
+                sql = "SELECT SUM(((nfeproduto.VUNCOM * Cast((nfeproduto.QCOM) as DECIMAL(7,2)) + nfeproduto.VFRETE + nfeproduto.VIPIDEVOLVIDO + nfeproduto.VOUTRO + nfeproduto.VICMSST + " +
                     "nfeproduto.VALORIPI) - nfeproduto.VDESC)) as valorTotal, nfe.CnpjEmitente as cnpjRemetente, nfe.CnpjDestinatario as cnpjDestino, " +
                                    "pessoa.InscricaoEstadual as inscricaoEstadual, nfe.DataLancamento as data, nfe.Modelo as modelo,nfe.Serie as serie, " +
                                    "nfe.NNf as numero, nfeProduto.Cfop as cfop, sum(nfeproduto.VBc) as baseCalcIcms, " +

@@ -1211,5 +1211,19 @@ namespace Lunar.Telas.Vendas
                 GenericaDesktop.ShowErro("Ocorreu um erro: " + ex.Message);
             }
         }
+
+        private void FrmConsultaVendas_Load(object sender, EventArgs e)
+        {
+            if (Sessao.permissoes.Count > 0)
+            {
+                // Habilitar ou desabilitar os controles com base nas permissões
+                btnCancelar.Enabled = Sessao.permissoes.Contains("68");
+            }
+        }
+
+        private void btnReceber_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

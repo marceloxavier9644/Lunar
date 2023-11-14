@@ -225,15 +225,15 @@ namespace Lunar.Telas.UsuarioRegistro
                     {
                         case DialogResult.Ignore:
                             uu.Dispose();
-                            //FrmGrupoUsuarioCadastro form = new FrmGrupoUsuarioCadastro();
-                            //if (form.showModalNovo(ref grupo) == DialogResult.OK)
-                            //{
-                            //    txtGrupo.Texts = ((GrupoUsuario)grupo).Descricao;
-                            //    txtCodGrupo.Texts = ((GrupoUsuario)grupo).Id.ToString();
-                            //    grupoUsuario = ((GrupoUsuario)grupo);
-                            //    txtEmpresa.Focus();
-                            //}
-                            //form.Dispose();
+                            FrmGrupoUsuarioCadastro form = new FrmGrupoUsuarioCadastro();
+                            if (form.showModalNovo(ref grupo) == DialogResult.OK)
+                            {
+                                txtGrupo.Texts = ((GrupoUsuario)grupo).Descricao;
+                                txtCodGrupo.Texts = ((GrupoUsuario)grupo).Id.ToString();
+                                grupoUsuario = ((GrupoUsuario)grupo);
+                                txtEmpresa.Focus();
+                            }
+                            form.Dispose();
                             break;
                         case DialogResult.OK:
                             txtGrupo.Texts = ((GrupoUsuario)grupo).Descricao;

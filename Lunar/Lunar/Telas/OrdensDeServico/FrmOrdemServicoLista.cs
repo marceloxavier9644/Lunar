@@ -577,9 +577,29 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void FrmOrdemServicoLista_Load(object sender, EventArgs e)
         {
-            if(passou == false)
+            if (passou == false)
             {
                 pesquisarOrdemServico();
+
+                if (Sessao.permissoes.Count > 0)
+                {
+                    // Habilitar ou desabilitar os controles com base nas permissões
+                    btnNovo.Enabled = Sessao.permissoes.Contains("30");
+                    btnExcluir.Enabled = Sessao.permissoes.Contains("32");
+                    if (!Sessao.permissoes.Contains("34"))
+                    {
+                        GenericaDesktop.ShowAlerta("Usuário sem permissão de operar esta tela!");
+                        this.Close();
+                    }
+                    btnImprimir1.Enabled = Sessao.permissoes.Contains("35");
+                    btnEncerrar.Enabled = Sessao.permissoes.Contains("37");
+                    btnEntrada.Enabled = Sessao.permissoes.Contains("38");
+                    btnExportarExcel.Enabled = Sessao.permissoes.Contains("39");
+                    btnExportarPDF.Enabled = Sessao.permissoes.Contains("39");
+                    btnGerarNFCe.Enabled = Sessao.permissoes.Contains("40");
+                    btnGerarNFe.Enabled = Sessao.permissoes.Contains("41");
+                }
+
                 passou = true;
             }
         }
@@ -603,9 +623,25 @@ namespace Lunar.Telas.OrdensDeServico
         {
             if (grid.SelectedIndex >= 0)
             {
-                ordemServico = new OrdemServico();
-                ordemServico = (OrdemServico)grid.SelectedItem;
-                editarCadastro(ordemServico);
+                if (!Sessao.permissoes.Contains("31"))
+                {
+                    e.Cancel = true; // Isso impede o evento padrão de edição se a permissão "2" não estiver presente
+                    GenericaDesktop.ShowAlerta("Usuário sem Permissão para essa operação!");
+                }
+                else
+                {
+                    ordemServico = new OrdemServico();
+                    ordemServico = (OrdemServico)grid.SelectedItem;
+                    if (ordemServico.Status.Equals("ENCERRADA"))
+                    {
+                        if (Sessao.permissoes.Contains("33"))
+                        {
+                            editarCadastro(ordemServico);
+                        }
+                    }
+                    else
+                        editarCadastro(ordemServico);
+                }
             }
             else
                 GenericaDesktop.ShowAlerta("Clique na linha do cliente que deseja editar!");

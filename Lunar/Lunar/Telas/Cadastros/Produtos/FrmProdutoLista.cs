@@ -19,6 +19,7 @@ namespace Lunar.Telas.Cadastros.Produtos
 {
     public partial class FrmProdutoLista : Form
     {
+        bool passou = false;
         private IList<Produto> listaProdutos;
         ProdutoController produtoController = new ProdutoController();
         Produto produto = new Produto();
@@ -55,7 +56,24 @@ namespace Lunar.Telas.Cadastros.Produtos
 
         private void FrmProdutoLista_Load(object sender, EventArgs e)
         {
-            carregarLista();
+            
+            if (passou == false)
+            {
+                carregarLista();
+
+                //Ajustar Permissoes de usuario
+                if (Sessao.permissoes.Count > 0)
+                {
+                    // Habilitar ou desabilitar os controles com base nas permissões
+                    btnNovo.Enabled = Sessao.permissoes.Contains("9");
+                    btnEditar.Enabled = Sessao.permissoes.Contains("10");
+                    btnExcluirProduto.Enabled = Sessao.permissoes.Contains("11");
+                    btnExtratoProduto.Enabled = Sessao.permissoes.Contains("12");
+                    btnExportarPDF.Enabled = Sessao.permissoes.Contains("13");
+                    btnExportarExcel.Enabled = Sessao.permissoes.Contains("13");
+                }
+                passou = true;
+            }
         }
 
         private void txtPesquisaProdutoPorCodigoUnico_KeyPress(object sender, KeyPressEventArgs e)
@@ -233,7 +251,13 @@ namespace Lunar.Telas.Cadastros.Produtos
 
         private void grid_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
         {
-            selecionarProdutoParaEditar();
+            if (!Sessao.permissoes.Contains("10"))
+            {
+                e.Cancel = true; // Isso impede o evento padrão de edição se a permissão "2" não estiver presente
+                GenericaDesktop.ShowAlerta("Usuário sem Permissão para essa operação!");
+            }
+            else
+                selecionarProdutoParaEditar();
         }
 
         private void btnExportarPDF_Click(object sender, EventArgs e)

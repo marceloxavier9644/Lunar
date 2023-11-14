@@ -34,6 +34,7 @@ namespace LunarBase.Utilidades
         public static string serialPainel;
         public static string cnpjRegistro;
 
+        public static HashSet<string> permissoes;
         public static decimal valorSinalOrdemServico = 0;
     }
 }

@@ -619,12 +619,18 @@ namespace Lunar.Telas.Principal
         }
         private void EmpresaMenu_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmEmpresaLista(), btnUtilitarios);
+            if (!Sessao.permissoes.Contains("106"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (106)!");
+            else
+                OpenChildForm(() => new FrmEmpresaLista(), btnUtilitarios);
         }
 
         private void UsuariosMenu_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmUsuarioLista(), btnUtilitarios);
+            if (!Sessao.permissoes.Contains("101"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (101)!");
+            else
+                OpenChildForm(() => new FrmUsuarioLista(), btnUtilitarios);
         }
 
         private void FrmPrincipal_Paint(object sender, PaintEventArgs e)
@@ -643,17 +649,26 @@ namespace Lunar.Telas.Principal
 
         private void adquirenteMaquinaCartãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmAdquirenteCartaoLista(), btnUtilitarios);
+            if (!Sessao.permissoes.Contains("104"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (104)!");
+            else
+                OpenChildForm(() => new FrmAdquirenteCartaoLista(), btnUtilitarios);
         }
 
         private void bandeirasDeCartãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmBandeiraCartaoLista(), btnUtilitarios);
+            if (!Sessao.permissoes.Contains("104"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (104)!");
+            else
+                OpenChildForm(() => new FrmBandeiraCartaoLista(), btnUtilitarios);
         }
 
         private void contaBancáriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmContaBancariaLista(), btnUtilitarios);
+            if (!Sessao.permissoes.Contains("105"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (105)!");
+            else
+                OpenChildForm(() => new FrmContaBancariaLista(), btnUtilitarios);
         }
 
         private void btnPlanoDecontas1_Click(object sender, EventArgs e)
@@ -668,24 +683,29 @@ namespace Lunar.Telas.Principal
 
         private void ParametrosMenu_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            formBackground.StartPosition = FormStartPosition.Manual;
-            //formBackground.FormBorderStyle = FormBorderStyle.None;
-            formBackground.Opacity = .50d;
-            formBackground.BackColor = Color.Black;
-            formBackground.Left = Top = 0;
-            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            formBackground.WindowState = FormWindowState.Maximized;
-            formBackground.TopMost = false;
-            formBackground.Location = this.Location;
-            formBackground.ShowInTaskbar = false;
-            formBackground.Show();           
-            FrmParametroSistema fr = new FrmParametroSistema();
-            fr.Owner = formBackground;
-            fr.ShowDialog();
-            formBackground.Dispose();
-            fr.Dispose();
+            if (!Sessao.permissoes.Contains("100"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (100)!");
+            else
+            {
+                Form formBackground = new Form();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                FrmParametroSistema fr = new FrmParametroSistema();
+                fr.Owner = formBackground;
+                fr.ShowDialog();
+                formBackground.Dispose();
+                fr.Dispose();
+            }
         }
 
         private void btnDepartamentoFiscal_Click(object sender, EventArgs e)
@@ -787,7 +807,16 @@ namespace Lunar.Telas.Principal
 
         private void btnConsultaVendasRelatorio_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmConsultaVendas(), btnRelatorios);
+            if (!Sessao.permissoes.Contains("71"))
+            {
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (71)!");
+            }
+            else if (!Sessao.permissoes.Contains("72"))
+            {
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (72)!");
+            }
+            else
+                OpenChildForm(() => new FrmConsultaVendas(), btnRelatorios);
         }
 
         private void orçamentoAvulsoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -831,7 +860,10 @@ namespace Lunar.Telas.Principal
 
         private void btnBalancoEstoque_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmBalancoEstoqueLista(), btnUtilitarios);
+            if (!Sessao.permissoes.Contains("103"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (103)!");
+            else
+                OpenChildForm(() => new FrmBalancoEstoqueLista(), btnUtilitarios);
         }
 
         private void btnVendaPDV_Click(object sender, EventArgs e)
@@ -846,48 +878,56 @@ namespace Lunar.Telas.Principal
 
         private void enviarArquivosContabilidadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            FrmEnviarArquivosContabilidade uu = new FrmEnviarArquivosContabilidade();
-            formBackground.StartPosition = FormStartPosition.Manual;
-            //formBackground.FormBorderStyle = FormBorderStyle.None;
-            formBackground.Opacity = .50d;
-            formBackground.BackColor = Color.Black;
-            //formBackground.Left = Top = 0;
-            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            formBackground.WindowState = FormWindowState.Maximized;
-            formBackground.TopMost = false;
-            formBackground.Location = this.Location;
-            formBackground.ShowInTaskbar = false;
-            formBackground.Show();
-            uu.Owner = formBackground;
-            uu.ShowDialog();
-            formBackground.Dispose();
-            uu.Dispose();
-            //FrmOrcamentoAvulso frmOrcamento = new FrmOrcamentoAvulso();
-            //frmOrcamento.ShowDialog();
+            if (!Sessao.permissoes.Contains("107"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (107)!");
+            else
+            {
+                Form formBackground = new Form();
+                FrmEnviarArquivosContabilidade uu = new FrmEnviarArquivosContabilidade();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                //formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                uu.Owner = formBackground;
+                uu.ShowDialog();
+                formBackground.Dispose();
+                uu.Dispose();
+            }
         }
 
         private void gerarSintegraTool_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            formBackground.StartPosition = FormStartPosition.Manual;
-            //formBackground.FormBorderStyle = FormBorderStyle.None;
-            formBackground.Opacity = .50d;
-            formBackground.BackColor = Color.Black;
-            formBackground.Left = Top = 0;
-            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            formBackground.WindowState = FormWindowState.Maximized;
-            formBackground.TopMost = false;
-            formBackground.Location = this.Location;
-            formBackground.ShowInTaskbar = false;
-            formBackground.Show();
-            FrmGerarSintegra fr = new FrmGerarSintegra();
-            fr.Owner = formBackground;
-            fr.ShowDialog();
-            formBackground.Dispose();
-            fr.Dispose();
+            if (!Sessao.permissoes.Contains("107"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (107)!");
+            else
+            {
+                Form formBackground = new Form();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                FrmGerarSintegra fr = new FrmGerarSintegra();
+                fr.Owner = formBackground;
+                fr.ShowDialog();
+                formBackground.Dispose();
+                fr.Dispose();
+            }
         }
 
         private void imprimirDuplicataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -897,24 +937,29 @@ namespace Lunar.Telas.Principal
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            FrmImportarCSV uu = new FrmImportarCSV();
-            formBackground.StartPosition = FormStartPosition.Manual;
-            //formBackground.FormBorderStyle = FormBorderStyle.None;
-            formBackground.Opacity = .50d;
-            formBackground.BackColor = Color.Black;
-            //formBackground.Left = Top = 0;
-            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            formBackground.WindowState = FormWindowState.Maximized;
-            formBackground.TopMost = false;
-            formBackground.Location = this.Location;
-            formBackground.ShowInTaskbar = false;
-            formBackground.Show();
-            uu.Owner = formBackground;
-            uu.ShowDialog();
-            formBackground.Dispose();
-            uu.Dispose();
+            if (!Sessao.permissoes.Contains("108"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (108)!");
+            else
+            {
+                Form formBackground = new Form();
+                FrmImportarCSV uu = new FrmImportarCSV();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                //formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                uu.Owner = formBackground;
+                uu.ShowDialog();
+                formBackground.Dispose();
+                uu.Dispose();
+            }
         }
 
         private void btnMovimentoCaixa_Click(object sender, EventArgs e)
@@ -1061,24 +1106,51 @@ namespace Lunar.Telas.Principal
 
         private void usuáriosPermissõesPorGrupoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            formBackground.StartPosition = FormStartPosition.Manual;
-            //formBackground.FormBorderStyle = FormBorderStyle.None;
-            formBackground.Opacity = .50d;
-            formBackground.BackColor = Color.Black;
-            formBackground.Left = Top = 0;
-            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            formBackground.WindowState = FormWindowState.Maximized;
-            formBackground.TopMost = false;
-            formBackground.Location = this.Location;
-            formBackground.ShowInTaskbar = false;
-            formBackground.Show();
-            FrmPermissoesUsuario fr = new FrmPermissoesUsuario();
-            fr.Owner = formBackground;
-            fr.ShowDialog();
-            formBackground.Dispose();
-            fr.Dispose();
+            if (!Sessao.permissoes.Contains("102"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (102)!");
+            else
+            {
+                Form formBackground = new Form();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                FrmPermissoesUsuario fr = new FrmPermissoesUsuario();
+                fr.Owner = formBackground;
+                fr.ShowDialog();
+                formBackground.Dispose();
+                fr.Dispose();
+            }
+            //Se é o usuario do suporte, pode
+            if (Sessao.usuarioLogado.Id == 1 && !Sessao.permissoes.Contains("102"))
+            {
+                Form formBackground = new Form();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                FrmPermissoesUsuario fr = new FrmPermissoesUsuario();
+                fr.Owner = formBackground;
+                fr.ShowDialog();
+                formBackground.Dispose();
+                fr.Dispose();
+            }
         }
     }
 }
