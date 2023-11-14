@@ -2215,6 +2215,9 @@ namespace Lunar.Utils
         }
         public void atualizarEstoqueNaoConciliado(Produto produto, double quantidade, bool entrada, string origem, string descricao, Pessoa pessoa, DateTime dataAjuste, BalancoEstoque balancoEstoque)
         {
+            string teste = "";
+            if (produto.Id == 3110)
+                teste = "";
             Estoque estoque = new Estoque();
             EstoqueController estoqueController = new EstoqueController();
             estoque.Conciliado = false;

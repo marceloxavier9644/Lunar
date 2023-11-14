@@ -205,20 +205,29 @@ namespace Lunar.Telas.Estoques
                         balancoEstoque = (BalancoEstoque)grid.SelectedItem;
                         if (balancoEstoque.Efetivado == true)
                         {
-                            EstoqueController estoqueController = new EstoqueController();
-                            IList<Estoque> listaEstoque = estoqueController.selecionarEstoqueMovimentoPorBalanco(balancoEstoque.Filial, balancoEstoque.Conciliado, balancoEstoque);
-                            if (listaEstoque.Count > 0)
+                            if (GenericaDesktop.ShowConfirmacao("Balanço já foi efetivado, se excluir o estoque vai retornar as quantidades ajustadas, deseja realmente excluir?"))
                             {
-                                foreach (Estoque estoque in listaEstoque)
+                                EstoqueController estoqueController = new EstoqueController();
+                                IList<Estoque> listaEstoque = estoqueController.selecionarEstoqueMovimentoPorBalanco(balancoEstoque.Filial, balancoEstoque.Conciliado, balancoEstoque);
+                                if (listaEstoque.Count > 0)
                                 {
-                                    Controller.getInstance().excluir(estoque);
-                                    generica.conferirTabelaEstoqueEAtualizarProduto(estoque.Produto, estoque.EmpresaFilial);
+                                    foreach (Estoque estoque in listaEstoque)
+                                    {
+                                        Controller.getInstance().excluir(estoque);
+                                        generica.conferirTabelaEstoqueEAtualizarProduto(estoque.Produto, estoque.EmpresaFilial);
+                                    }
                                 }
+                                Controller.getInstance().excluir(balancoEstoque);
+                                GenericaDesktop.ShowInfo("Excluído com Sucesso");
+                                pesquisaBalanco();
                             }
                         }
-                        Controller.getInstance().excluir(balancoEstoque);
-                        GenericaDesktop.ShowInfo("Excluído com Sucesso");
-                        pesquisaBalanco();
+                        else
+                        {
+                            Controller.getInstance().excluir(balancoEstoque);
+                            GenericaDesktop.ShowInfo("Excluído com Sucesso");
+                            pesquisaBalanco();
+                        }
                     }
                     else
                         GenericaDesktop.ShowAlerta("Clique na linha do balanço que deseja excluir!");
@@ -274,10 +283,16 @@ namespace Lunar.Telas.Estoques
                     {
                         balanco = balancoEstoque;
                         lblEfetivacao.Visible = true;
-                        lblEfetivacao.Text = "Efetivando 0 de 0";
+                        lblEfetivacao.Text = "Efetivando";
                         Thread th = new Thread(efetivarBalanco);
                         th.Start();
                         th.Join();
+                        lblEfetivacao.Visible = true;
+                        lblEfetivacao.Text = "Aguarde...";
+                        Thread th2 = new Thread(ajustarQuantidadeProdutoPeloMovimentoEstoque);
+                        th2.Start();
+                        th2.Join();
+
                         GenericaDesktop.ShowInfo("Balanço efetivado com sucesso!");
                         pesquisaBalanco();
                     }
@@ -300,9 +315,11 @@ namespace Lunar.Telas.Estoques
             if (listaProdutos.Count > 0)
             {
                 int contador = 0;
+               
                 foreach (BalancoEstoqueProduto balancoEstoqueProduto in listaProdutos)
                 {
                     contador++;
+                    lblEfetivacao.Text = "Efetivando " + contador + " de " + listaProdutos.Count;
                     //lblEfetivacao.Text = "Efetivando "+contador+" de " + listaProdutos.Count;
                     bool tipoAjusteEntradaOuSaida2 = true;
                     double quantidadeAjuste = 0;
@@ -331,7 +348,7 @@ namespace Lunar.Telas.Estoques
                     foreach (Produto produto in listaProdutosParaZerar)
                     {
                         contador++;
-                        //lblEfetivacao.Text = "Zerando " + contador + " de " + listaProdutosParaZerar.Count;
+                        lblEfetivacao.Text = "Zerando " + contador + " de " + listaProdutosParaZerar.Count;
 
                         bool tipoAjusteEntradaOuSaida2 = true;
                         double quantidadeAjuste = 0;
@@ -342,14 +359,12 @@ namespace Lunar.Telas.Estoques
                             if (0 > estoqData)
                             {
                                 quantidadeAjuste = -(estoqData);
-                                MessageBox.Show(produto.Descricao + " este item vai ter uma entrada de " + quantidadeAjuste);
                                 tipoAjusteEntradaOuSaida2 = true;
                             }
                             else
                             {
                                 quantidadeAjuste = estoqData;
                                 tipoAjusteEntradaOuSaida2 = false;
-                                MessageBox.Show(produto.Descricao + " este item vai ter uma saida de " + quantidadeAjuste);
                             }
 
                             if (balanco.Conciliado == false)
@@ -489,6 +504,7 @@ namespace Lunar.Telas.Estoques
 
         private void ajustarQuantidadeProdutoPeloMovimentoEstoque()
         {
+            lblEfetivacao.Text = "Conferindo estoque, aguarde...";
             GenericaDesktop generica = new GenericaDesktop();
             ProdutoController produtoController = new ProdutoController();
             IList<Produto> listaProd = produtoController.selecionarTodosProdutorPorFilial(Sessao.empresaFilialLogada);
@@ -508,7 +524,8 @@ namespace Lunar.Telas.Estoques
                             + prody.Id + " ...Produto Conciliado: " + estoqueConciliado + " Para " + prody.Estoque, "CONFERENCIA TABELA ESTOQUE");
                     }
                 }
-                GenericaDesktop.ShowInfo("Ajuste finalizado com sucesso!");
+                lblEfetivacao.Visible = false;
+                //GenericaDesktop.ShowInfo("Ajuste finalizado com sucesso!");
             }
         }
     }

@@ -1718,7 +1718,7 @@ namespace Lunar.Telas.Fiscal
                         nfe.Chave = retConsulta.chNFe;
                     }
                     Controller.getInstance().salvar(nfe);
-                    GenericaDesktop.ShowAlerta("Corrija a nota e tente reenviar posteriormente: (" + retConsulta.cStat + " " + retConsulta.xMotivo + ") na tela de gerenciamento de notas você poderá reenviar a nota para sefaz!");
+                    //GenericaDesktop.ShowAlerta("Corrija a nota e tente reenviar posteriormente: (" + retConsulta.cStat + " " + retConsulta.xMotivo + ") na tela de gerenciamento de notas você poderá reenviar a nota para sefaz!");
                 }
                 this.Close();
             }

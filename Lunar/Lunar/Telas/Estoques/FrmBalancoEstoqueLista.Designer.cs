@@ -572,6 +572,7 @@
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextColor = System.Drawing.Color.Black;
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Visible = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnImprimir
