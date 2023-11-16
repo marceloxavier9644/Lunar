@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Hrs+0von8PvoYQPl7noyBhPzSRLWklzhcWn9A2QzwFfGXQDwhDS/9zhT/MOWdZ3h6+k118qAPR0JPA/KZ23LcQ==",
+  "dgSpecHash": "RvEeDvflgWiSDTsh/qxrdEJ2jBw9PAQn+0FsO6Em3Fp4P2pT0B84Oe5uYR3tJaqAAmzLrWhs3Eo7pt02P35MCA==",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
   "expectedPackageFiles": [
@@ -46,6 +46,7 @@
     "C:\\Users\\marce\\.nuget\\packages\\pdfiumviewer.native.x86.v8-xfa\\2018.4.8.256\\pdfiumviewer.native.x86.v8-xfa.2018.4.8.256.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\remotion.linq\\2.2.0\\remotion.linq.2.2.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\remotion.linq.eagerfetching\\2.2.0\\remotion.linq.eagerfetching.2.2.0.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\sharpcompress\\0.34.2\\sharpcompress.0.34.2.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\syncfusion.grid.base\\19.4.0.38\\syncfusion.grid.base.19.4.0.38.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\syncfusion.grid.windows\\19.4.0.38\\syncfusion.grid.windows.19.4.0.38.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\syncfusion.licensing\\19.4.0.38\\syncfusion.licensing.19.4.0.38.nupkg.sha512",
@@ -57,7 +58,7 @@
     "C:\\Users\\marce\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
-    "C:\\Users\\marce\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.net.http\\4.3.4\\system.net.http.4.3.4.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.net.http.json\\6.0.0\\system.net.http.json.6.0.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.net.websockets\\4.3.0\\system.net.websockets.4.3.0.nupkg.sha512",
@@ -72,6 +73,7 @@
     "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.encoding\\4.3.0\\system.security.cryptography.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.primitives\\4.3.0\\system.security.cryptography.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.x509certificates\\4.3.0\\system.security.cryptography.x509certificates.4.3.0.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\system.text.encoding.codepages\\7.0.0\\system.text.encoding.codepages.7.0.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
@@ -79,6 +81,7 @@
     "C:\\Users\\marce\\.nuget\\packages\\unimake.unidanfe\\20220117.1131.32\\unimake.unidanfe.20220117.1131.32.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\wdc.system.net.http.formatting.netstandard\\1.0.7\\wdc.system.net.http.formatting.netstandard.1.0.7.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\winformanimation\\1.6.0.4\\winformanimation.1.6.0.4.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\zstdsharp.port\\0.7.2\\zstdsharp.port.0.7.2.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\zxing.net\\0.16.8\\zxing.net.0.16.8.nupkg.sha512"
   ],
   "logs": [

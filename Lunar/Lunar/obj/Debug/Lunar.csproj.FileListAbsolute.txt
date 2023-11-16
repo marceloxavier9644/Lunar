@@ -706,3 +706,6 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\OpenAC.Net.Core.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\OpenAC.Net.Devices.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.UsuarioRegistro.FrmGrupoUsuarioCadastro.resources
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Compras.FrmDesmembrarItem.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\SharpCompress.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\ZstdSharp.dll

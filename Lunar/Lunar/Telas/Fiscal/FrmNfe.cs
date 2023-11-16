@@ -1239,8 +1239,10 @@ namespace Lunar.Telas.Fiscal
                 }
                 //somente atualiza o numero se for uma nota nova, se for reenvio ou edição nao atualiza
                 if (atualizaNumeroNota == true)
+                {
                     Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(numeroNFe) + 1).ToString();
-                Controller.getInstance().salvar(Sessao.parametroSistema);
+                    Controller.getInstance().salvar(Sessao.parametroSistema);
+                }
             }
         }
 

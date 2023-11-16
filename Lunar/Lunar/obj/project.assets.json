@@ -892,6 +892,20 @@
           }
         }
       },
+      "SharpCompress/0.34.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Text.Encoding.CodePages": "7.0.0",
+          "ZstdSharp.Port": "0.7.2"
+        },
+        "compile": {
+          "lib/net462/SharpCompress.dll": {}
+        },
+        "runtime": {
+          "lib/net462/SharpCompress.dll": {}
+        }
+      },
       "Syncfusion.Grid.Base/19.4.0.38": {
         "type": "package",
         "dependencies": {
@@ -1067,7 +1081,7 @@
           "lib/net462/System.IO.dll": {}
         }
       },
-      "System.Memory/4.5.4": {
+      "System.Memory/4.5.5": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
@@ -1358,6 +1372,26 @@
           }
         }
       },
+      "System.Text.Encoding.CodePages/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
+        }
+      },
       "System.Text.Encodings.Web/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -1477,6 +1511,19 @@
         },
         "runtime": {
           "lib/net40/WinFormAnimation.dll": {}
+        }
+      },
+      "ZstdSharp.Port/0.7.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net461/ZstdSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net461/ZstdSharp.dll": {}
         }
       },
       "ZXing.Net/0.16.8": {
@@ -2391,6 +2438,20 @@
           }
         }
       },
+      "SharpCompress/0.34.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Text.Encoding.CodePages": "7.0.0",
+          "ZstdSharp.Port": "0.7.2"
+        },
+        "compile": {
+          "lib/net462/SharpCompress.dll": {}
+        },
+        "runtime": {
+          "lib/net462/SharpCompress.dll": {}
+        }
+      },
       "Syncfusion.Grid.Base/19.4.0.38": {
         "type": "package",
         "dependencies": {
@@ -2566,7 +2627,7 @@
           "lib/net462/System.IO.dll": {}
         }
       },
-      "System.Memory/4.5.4": {
+      "System.Memory/4.5.5": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
@@ -2803,6 +2864,26 @@
           "runtimes/win/lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
         }
       },
+      "System.Text.Encoding.CodePages/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
+        }
+      },
       "System.Text.Encodings.Web/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -2922,6 +3003,19 @@
         },
         "runtime": {
           "lib/net40/WinFormAnimation.dll": {}
+        }
+      },
+      "ZstdSharp.Port/0.7.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net461/ZstdSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net461/ZstdSharp.dll": {}
         }
       },
       "ZXing.Net/0.16.8": {
@@ -3839,6 +3933,20 @@
           }
         }
       },
+      "SharpCompress/0.34.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Text.Encoding.CodePages": "7.0.0",
+          "ZstdSharp.Port": "0.7.2"
+        },
+        "compile": {
+          "lib/net462/SharpCompress.dll": {}
+        },
+        "runtime": {
+          "lib/net462/SharpCompress.dll": {}
+        }
+      },
       "Syncfusion.Grid.Base/19.4.0.38": {
         "type": "package",
         "dependencies": {
@@ -4014,7 +4122,7 @@
           "lib/net462/System.IO.dll": {}
         }
       },
-      "System.Memory/4.5.4": {
+      "System.Memory/4.5.5": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
@@ -4251,6 +4359,26 @@
           "lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
         }
       },
+      "System.Text.Encoding.CodePages/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
+        }
+      },
       "System.Text.Encodings.Web/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -4370,6 +4498,19 @@
         },
         "runtime": {
           "lib/net40/WinFormAnimation.dll": {}
+        }
+      },
+      "ZstdSharp.Port/0.7.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net461/ZstdSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net461/ZstdSharp.dll": {}
         }
       },
       "ZXing.Net/0.16.8": {
@@ -5287,6 +5428,20 @@
           }
         }
       },
+      "SharpCompress/0.34.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Text.Encoding.CodePages": "7.0.0",
+          "ZstdSharp.Port": "0.7.2"
+        },
+        "compile": {
+          "lib/net462/SharpCompress.dll": {}
+        },
+        "runtime": {
+          "lib/net462/SharpCompress.dll": {}
+        }
+      },
       "Syncfusion.Grid.Base/19.4.0.38": {
         "type": "package",
         "dependencies": {
@@ -5462,7 +5617,7 @@
           "lib/net462/System.IO.dll": {}
         }
       },
-      "System.Memory/4.5.4": {
+      "System.Memory/4.5.5": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
@@ -5699,6 +5854,26 @@
           "lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
         }
       },
+      "System.Text.Encoding.CodePages/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
+        }
+      },
       "System.Text.Encodings.Web/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -5818,6 +5993,19 @@
         },
         "runtime": {
           "lib/net40/WinFormAnimation.dll": {}
+        }
+      },
+      "ZstdSharp.Port/0.7.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net461/ZstdSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net461/ZstdSharp.dll": {}
         }
       },
       "ZXing.Net/0.16.8": {
@@ -6735,6 +6923,20 @@
           }
         }
       },
+      "SharpCompress/0.34.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Text.Encoding.CodePages": "7.0.0",
+          "ZstdSharp.Port": "0.7.2"
+        },
+        "compile": {
+          "lib/net462/SharpCompress.dll": {}
+        },
+        "runtime": {
+          "lib/net462/SharpCompress.dll": {}
+        }
+      },
       "Syncfusion.Grid.Base/19.4.0.38": {
         "type": "package",
         "dependencies": {
@@ -6910,7 +7112,7 @@
           "lib/net462/System.IO.dll": {}
         }
       },
-      "System.Memory/4.5.4": {
+      "System.Memory/4.5.5": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
@@ -7147,6 +7349,26 @@
           "lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
         }
       },
+      "System.Text.Encoding.CodePages/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Encoding.CodePages.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
+        }
+      },
       "System.Text.Encodings.Web/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -7266,6 +7488,19 @@
         },
         "runtime": {
           "lib/net40/WinFormAnimation.dll": {}
+        }
+      },
+      "ZstdSharp.Port/0.7.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net461/ZstdSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net461/ZstdSharp.dll": {}
         }
       },
       "ZXing.Net/0.16.8": {
@@ -8400,6 +8635,22 @@
         "remotion.linq.eagerfetching.nuspec"
       ]
     },
+    "SharpCompress/0.34.2": {
+      "sha512": "x+L5dw5D44EtN1m+0kkTHPi0v+u7S3iyj6nMcfns1y3uKQVb/nflmlroPWIILcxUnbTV2xRqwU335sMkRhDM7A==",
+      "type": "package",
+      "path": "sharpcompress/0.34.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/SharpCompress.dll",
+        "lib/net6.0/SharpCompress.dll",
+        "lib/net7.0/SharpCompress.dll",
+        "lib/netstandard2.0/SharpCompress.dll",
+        "lib/netstandard2.1/SharpCompress.dll",
+        "sharpcompress.0.34.2.nupkg.sha512",
+        "sharpcompress.nuspec"
+      ]
+    },
     "Syncfusion.Grid.Base/19.4.0.38": {
       "sha512": "mtAr7DTGo4jd3mXtxPsKXwEtoXm5OGjrrqFzFLnK2rmhR49K8+ofDVpvtC0HPPHdO/jiMGt5/efoskUDixNNng==",
       "type": "package",
@@ -8792,10 +9043,10 @@
         "system.io.nuspec"
       ]
     },
-    "System.Memory/4.5.4": {
-      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+    "System.Memory/4.5.5": {
+      "sha512": "XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
       "type": "package",
-      "path": "system.memory/4.5.4",
+      "path": "system.memory/4.5.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -8809,7 +9060,7 @@
         "lib/netstandard2.0/System.Memory.dll",
         "lib/netstandard2.0/System.Memory.xml",
         "ref/netcoreapp2.1/_._",
-        "system.memory.4.5.4.nupkg.sha512",
+        "system.memory.4.5.5.nupkg.sha512",
         "system.memory.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -9488,6 +9739,43 @@
         "system.security.cryptography.x509certificates.nuspec"
       ]
     },
+    "System.Text.Encoding.CodePages/7.0.0": {
+      "sha512": "LSyCblMpvOe0N3E+8e0skHcrIhgV2huaNcjUUEa8hRtgEAm36aGkRoC8Jxlb6Ra6GSfF29ftduPNywin8XolzQ==",
+      "type": "package",
+      "path": "system.text.encoding.codepages/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Text.Encoding.CodePages.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net462/System.Text.Encoding.CodePages.dll",
+        "lib/net462/System.Text.Encoding.CodePages.xml",
+        "lib/net6.0/System.Text.Encoding.CodePages.dll",
+        "lib/net6.0/System.Text.Encoding.CodePages.xml",
+        "lib/net7.0/System.Text.Encoding.CodePages.dll",
+        "lib/net7.0/System.Text.Encoding.CodePages.xml",
+        "lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
+        "lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.xml",
+        "runtimes/win/lib/net7.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net7.0/System.Text.Encoding.CodePages.xml",
+        "system.text.encoding.codepages.7.0.0.nupkg.sha512",
+        "system.text.encoding.codepages.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Text.Encodings.Web/6.0.0": {
       "sha512": "Vg8eB5Tawm1IFqj4TVK1czJX89rhFxJo9ELqc/Eiq0eXy13RK00eubyU6TJE6y+GQXjyV5gSfiewDUZjQgSE0w==",
       "type": "package",
@@ -9695,6 +9983,24 @@
         "winformanimation.nuspec"
       ]
     },
+    "ZstdSharp.Port/0.7.2": {
+      "sha512": "mT6Pb7qzDGapJ2ic4dAFqbzHpM+qgnasQIGR/Sofrk0fmKTQSTljG55OFXHbDJczLZWnUAFsg4bKR81uHiKzPg==",
+      "type": "package",
+      "path": "zstdsharp.port/0.7.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/ZstdSharp.dll",
+        "lib/net5.0/ZstdSharp.dll",
+        "lib/net6.0/ZstdSharp.dll",
+        "lib/net7.0/ZstdSharp.dll",
+        "lib/netcoreapp3.1/ZstdSharp.dll",
+        "lib/netstandard2.0/ZstdSharp.dll",
+        "lib/netstandard2.1/ZstdSharp.dll",
+        "zstdsharp.port.0.7.2.nupkg.sha512",
+        "zstdsharp.port.nuspec"
+      ]
+    },
     "ZXing.Net/0.16.8": {
       "sha512": "Cbbe+x7I7E+VJ0VxU1fPc7AktIw/9xea/ZY/fh38sXqTQ75LJp9ooGUjpzFqfpPfIKozAoXgJ4yvY4GzKpPBzQ==",
       "type": "package",
@@ -9805,6 +10111,7 @@
       "OpenAC.Net.Balanca >= 1.5.0.1",
       "PdfiumViewer >= 2.13.0",
       "PdfiumViewer.Native.x86.v8-xfa >= 2018.4.8.256",
+      "SharpCompress >= 0.34.2",
       "Syncfusion.Tools.Windows >= 19.4.0.38",
       "System.Net.Http.Json >= 6.0.0",
       "System.Net.WebSockets.Client >= 4.3.0",
@@ -9935,6 +10242,10 @@
           "PdfiumViewer.Native.x86.v8-xfa": {
             "target": "Package",
             "version": "[2018.4.8.256, )"
+          },
+          "SharpCompress": {
+            "target": "Package",
+            "version": "[0.34.2, )"
           },
           "Syncfusion.Tools.Windows": {
             "target": "Package",

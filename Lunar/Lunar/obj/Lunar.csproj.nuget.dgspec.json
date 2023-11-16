@@ -179,6 +179,10 @@
               "target": "Package",
               "version": "[2018.4.8.256, )"
             },
+            "SharpCompress": {
+              "target": "Package",
+              "version": "[0.34.2, )"
+            },
             "Syncfusion.Tools.Windows": {
               "target": "Package",
               "version": "[19.4.0.38, )"

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LunarBase", "..\LunarBase\L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunarSoftwareAtivador", "LunarSoftwareAtivador\LunarSoftwareAtivador.csproj", "{1C3FF172-D153-4A2A-A60F-B5E5FBDA6AA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunarAtualizador", "LunarAtualizador\LunarAtualizador.csproj", "{F69E9E71-F1CD-4BCB-B50C-81AB3CAA41A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1C3FF172-D153-4A2A-A60F-B5E5FBDA6AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C3FF172-D153-4A2A-A60F-B5E5FBDA6AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C3FF172-D153-4A2A-A60F-B5E5FBDA6AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F69E9E71-F1CD-4BCB-B50C-81AB3CAA41A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F69E9E71-F1CD-4BCB-B50C-81AB3CAA41A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F69E9E71-F1CD-4BCB-B50C-81AB3CAA41A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F69E9E71-F1CD-4BCB-B50C-81AB3CAA41A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
