@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using LunarBase.Utilidades;
+using Microsoft.Win32;
+using Syncfusion.Licensing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,10 @@ namespace LunarAtualizador
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmAtualizador());
-            AdicionarAoRegistro("LunarAtualizador", @"C:\Lunar\LunarAtualizador.exe");
+            //Register Syncfusion license
+            SyncfusionLicenseProvider.RegisterLicense(Sessao.syncfusion);
+
+            AdicionarAoRegistro("LunarAtualizador", @"C:\Lunar\Atualizador\LunarAtualizador.exe");
             using (Mutex mutex = new Mutex(true, "{A7756E11-7B0F-4BC3-8F3B-6ED4DBB0A6E0}"))
             {
                 if (mutex.WaitOne(TimeSpan.Zero, true))

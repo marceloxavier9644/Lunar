@@ -32,10 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAtualizador));
             this.lblVersaoAtualizador = new System.Windows.Forms.Label();
             this.btnVerificarAtualização = new System.Windows.Forms.Button();
-            this.progressBarAdv1 = new Syncfusion.Windows.Forms.Tools.ProgressBarAdv();
             this.lblNovaVersaoLocalizada = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblAgora = new System.Windows.Forms.Label();
+            this.progressBarAdv1 = new Syncfusion.Windows.Forms.Tools.ProgressBarAdv();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarAdv1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,27 +58,6 @@
             this.btnVerificarAtualização.Text = "Verificar Atualizações";
             this.btnVerificarAtualização.UseVisualStyleBackColor = true;
             this.btnVerificarAtualização.Click += new System.EventHandler(this.btnVerificarAtualização_Click);
-            // 
-            // progressBarAdv1
-            // 
-            this.progressBarAdv1.BackMultipleColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Empty};
-            this.progressBarAdv1.BackSegments = false;
-            this.progressBarAdv1.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
-            this.progressBarAdv1.CustomText = null;
-            this.progressBarAdv1.CustomWaitingRender = false;
-            this.progressBarAdv1.ForeColor = System.Drawing.Color.Purple;
-            this.progressBarAdv1.ForegroundImage = null;
-            this.progressBarAdv1.Location = new System.Drawing.Point(12, 111);
-            this.progressBarAdv1.MultipleColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Empty};
-            this.progressBarAdv1.Name = "progressBarAdv1";
-            this.progressBarAdv1.SegmentWidth = 12;
-            this.progressBarAdv1.Size = new System.Drawing.Size(355, 23);
-            this.progressBarAdv1.TabIndex = 2;
-            this.progressBarAdv1.Text = "progressBarAdv1";
-            this.progressBarAdv1.Visible = false;
-            this.progressBarAdv1.WaitingGradientWidth = 400;
             // 
             // lblNovaVersaoLocalizada
             // 
@@ -105,15 +84,35 @@
             this.lblAgora.TabIndex = 4;
             this.lblAgora.Text = "20:05:00";
             // 
+            // progressBarAdv1
+            // 
+            this.progressBarAdv1.BackMultipleColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Empty};
+            this.progressBarAdv1.BackSegments = false;
+            this.progressBarAdv1.CustomText = null;
+            this.progressBarAdv1.CustomWaitingRender = false;
+            this.progressBarAdv1.ForeColor = System.Drawing.Color.Purple;
+            this.progressBarAdv1.ForegroundImage = null;
+            this.progressBarAdv1.Location = new System.Drawing.Point(12, 115);
+            this.progressBarAdv1.MultipleColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Empty};
+            this.progressBarAdv1.Name = "progressBarAdv1";
+            this.progressBarAdv1.SegmentWidth = 12;
+            this.progressBarAdv1.Size = new System.Drawing.Size(355, 23);
+            this.progressBarAdv1.TabIndex = 5;
+            this.progressBarAdv1.Text = "progressBarAdv1";
+            this.progressBarAdv1.Visible = false;
+            this.progressBarAdv1.WaitingGradientWidth = 400;
+            // 
             // FrmAtualizador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(379, 163);
+            this.Controls.Add(this.progressBarAdv1);
             this.Controls.Add(this.lblAgora);
             this.Controls.Add(this.lblNovaVersaoLocalizada);
-            this.Controls.Add(this.progressBarAdv1);
             this.Controls.Add(this.btnVerificarAtualização);
             this.Controls.Add(this.lblVersaoAtualizador);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -134,9 +133,9 @@
 
         private System.Windows.Forms.Label lblVersaoAtualizador;
         private System.Windows.Forms.Button btnVerificarAtualização;
-        private Syncfusion.Windows.Forms.Tools.ProgressBarAdv progressBarAdv1;
         private System.Windows.Forms.Label lblNovaVersaoLocalizada;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblAgora;
+        private Syncfusion.Windows.Forms.Tools.ProgressBarAdv progressBarAdv1;
     }
 }

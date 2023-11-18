@@ -50,3 +50,4 @@ C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\bin\Debug\Microsoft.Bcl.AsyncInt
 C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\bin\Debug\System.Text.Encoding.CodePages.xml
 C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\obj\Debug\LunarAtualizador.FrmNotificacao.resources
+C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\bin\Debug\Syncfusion.Licensing.dll

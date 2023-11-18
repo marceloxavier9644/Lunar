@@ -1264,7 +1264,34 @@ namespace Lunar.Telas.CaixaConferencia
             }
         }
 
+        private void btnAjustarData_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void grid_CurrentCellValidating(object sender, Syncfusion.WinForms.DataGrid.Events.CurrentCellValidatingEventArgs e)
+        {
+            if (e.Column.MappingName == "DataLancamento")
+            {
+                try
+                {
+                    DateTime dataValida = DateTime.Parse(e.NewValue.ToString());
+                    e.IsValid = true;
+                    Caixa caixa = new Caixa();
+                    caixa = (Caixa)grid.SelectedItem;
+                    GenericaDesktop.gravarLinhaLog("Alteração de Data " + caixa.DataLancamento.ToShortDateString() + " para " + dataValida.ToShortDateString() + " Usuario: " + Sessao.usuarioLogado.Login,"ALTERAÇÃO CAIXA ID " + caixa.Id);
+                    caixa.DataLancamento = dataValida;
+                    Controller.getInstance().salvar(caixa);
+
+                    GenericaDesktop.ShowInfo("Alterado com Sucesso");
+                }
+                catch
+                {
+                    e.IsValid = false;
+                    e.ErrorMessage = "Data Inválida, digite no formato 00/00/0000";
+
+                }
+            }
+        }
     }
 }

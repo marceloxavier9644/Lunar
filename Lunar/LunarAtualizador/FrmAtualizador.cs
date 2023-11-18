@@ -124,6 +124,27 @@ namespace LunarAtualizador
 
         private async void btnVerificarAtualização_Click(object sender, EventArgs e)
         {
+            atualizar();
+        }
+
+        private async void atualizar()
+        {
+            try
+            {
+                string arquivoAtu1 = @"C:\Lunar\Atu1.rar";
+
+                // Deleta o arquivo Atu1.rar se existir
+                if (File.Exists(arquivoAtu1))
+                {
+                    File.Delete(arquivoAtu1);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Lidar com exceções ao deletar o arquivo, se necessário
+                Console.WriteLine($"Erro ao deletar o arquivo Atu1.rar: {ex.Message}");
+            }
+
             if (File.Exists(@"C:\Lunar\Lunar.exe"))
             {
                 btnVerificarAtualização.Enabled = false;
@@ -140,17 +161,26 @@ namespace LunarAtualizador
                     this.ControlBox = false;
                     verificarSistemaAberto();
                     progressBarAdv1.Visible = true;
-                    progressBarAdv1.Value = 5;
+                    //progressBarAdv1.Value = 0;
                     await BaixarEAtualizarAsync();
                     //}
                 }
                 else
                 {
                     MessageBox.Show("Você já possui a versão mais recente.", "Sem Atualizações");
+                    this.ControlBox = true;
+                    btnVerificarAtualização.Enabled = true;
                 }
             }
             else
-                MessageBox.Show("Sistema não encontrado, o sistema lunar deve ta instalado na pasta C:\\Lunar");
+            {
+                btnVerificarAtualização.Enabled = false;
+                this.ControlBox = false;
+                verificarSistemaAberto();
+                progressBarAdv1.Visible = true;
+                //progressBarAdv1.Value = 0;
+                await BaixarEAtualizarAsync();
+            }
         }
         public bool VerificarNovaVersaoDisponivel(string versaoAtual)
         {
@@ -187,7 +217,7 @@ namespace LunarAtualizador
 
             progressBarAdv1.Minimum = 0;
             progressBarAdv1.Maximum = urls.Length;
-            progressBarAdv1.Value = 5;
+            //progressBarAdv1.Value = ;
 
             await BaixarArquivosAsync(urls, destino);
 
@@ -336,7 +366,7 @@ namespace LunarAtualizador
 
         private void verificaConfiguracaoBancoLocal()
         {
-            if (File.Exists(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/MXSystem.xml"))
+            if (File.Exists(@"C:\Lunar\MXSystem.xml"))
             {
                 DateTime dataXML = DateTime.Now.AddDays(-1000);
                 String hd = "";
@@ -345,7 +375,8 @@ namespace LunarAtualizador
                 string verificaBloqueio = "100";
                 try
                 {
-                    XmlTextReader reader = new XmlTextReader(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/MXSystem.xml");
+                    //XmlTextReader reader = new XmlTextReader(System.IO.Path.GetDirectoryName(@"C:\Lunar\MXSystem.xml"));
+                    XmlTextReader reader = new XmlTextReader(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "C:\\Lunar\\MXSystem.xml"));
                     while (reader.Read())
                     {
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppUser")
@@ -371,7 +402,8 @@ namespace LunarAtualizador
                     Sessao.usuarioBanco = usuarioBanco;
                     Sessao.senhaBanco = senhaBanco;
 
-                    reader = new XmlTextReader(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/MXSystem.xml");
+                    //reader = new XmlTextReader(System.IO.Path.GetDirectoryName(@"C:\Lunar\MXSystem.xml"));
+                    reader = new XmlTextReader(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "C:\\Lunar\\MXSystem.xml"));
                     while (reader.Read())
                     {
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppUser")
@@ -429,7 +461,7 @@ namespace LunarAtualizador
             // Horários desejados para verificação (por exemplo, 9h e 15h)
             DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 09, 00, 00);
             DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 00);
-            DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 22, 52, 00);
+            DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 10, 05, 00);
           
             lblAgora.Text = agora.ToLongTimeString();
             // Verifica se é um dos horários desejados
@@ -438,25 +470,35 @@ namespace LunarAtualizador
 
                 if (abriuForm == false)
                 {
-                    abriuForm = true;
-                    frmNotificacao = new FrmNotificacao();
-                    frmNotificacao.WindowState = FormWindowState.Normal;
-                    frmNotificacao.BringToFront();
-                    if (frmNotificacao.ShowDialog() == DialogResult.OK)
+                    if (File.Exists(@"C:\Lunar\Lunar.exe"))
                     {
-                        bool atualiza = frmNotificacao.Atualiza;
-                        //Atualizar o sistema aqui...
-                        ExibirFormulario();
-                        btnVerificarAtualização.PerformClick();
-                        abriuForm = false;
-                    }
-                    else if (frmNotificacao.ShowDialog() == DialogResult.Cancel)
-                    {
-                        abriuForm = false;
+                        btnVerificarAtualização.Enabled = false;
+                        string caminhoParaExe = @"C:\Lunar\Lunar.exe";
+                        FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
+                        string versaoAtual = info.FileVersion;
+
+                        if (VerificarNovaVersaoDisponivel(versaoAtual))
+                        {
+                            abriuForm = true;
+                            frmNotificacao = new FrmNotificacao();
+                            frmNotificacao.WindowState = FormWindowState.Normal;
+                            frmNotificacao.BringToFront();
+                            if (frmNotificacao.ShowDialog() == DialogResult.OK)
+                            {
+                                bool atualiza = frmNotificacao.Atualiza;
+                                //Atualizar o sistema aqui...
+                                ExibirFormulario();
+
+                                atualizar();
+                                abriuForm = false;
+                            }
+                            else if (frmNotificacao.ShowDialog() == DialogResult.Cancel)
+                            {
+                                abriuForm = false;
+                            }
+                        }
                     }
                 }
-                // Executa a verificação de atualização
-                //btnVerificarAtualização.PerformClick();
             }
         }
         private void InicializarBackgroundWorker()
