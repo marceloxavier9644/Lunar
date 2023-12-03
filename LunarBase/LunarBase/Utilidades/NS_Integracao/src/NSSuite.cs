@@ -890,9 +890,12 @@ public class NSSuite
             };
 
             resposta = consultarStatusProcessamento(modelo, ConsStatusProcessamentoReqNFe);
-
-            var ConsStatusProcessamentoRespNFe = JsonConvert.DeserializeObject<ConsStatusProcessamentoRespNFe>(resposta);
-            statusConsulta = ConsStatusProcessamentoRespNFe.status;
+            var ConsStatusProcessamentoRespNFe = new ConsStatusProcessamentoRespNFe();
+            if (!String.IsNullOrEmpty(resposta))
+            {
+                ConsStatusProcessamentoRespNFe = JsonConvert.DeserializeObject<ConsStatusProcessamentoRespNFe>(resposta);
+                statusConsulta = ConsStatusProcessamentoRespNFe.status;
+            }
 
             // Testa se a consulta foi feita com sucesso (200)
             if (statusConsulta == "200")

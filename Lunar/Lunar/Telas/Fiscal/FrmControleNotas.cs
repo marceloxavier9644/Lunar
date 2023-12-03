@@ -1785,6 +1785,10 @@ namespace Lunar.Telas.Fiscal
                     Genericos genericosNF = new Genericos();
                     //CONSULTA NOTA
                     nfe = (Nfe)grid.SelectedItem;
+                    nfe.Chave = GenericaDesktop.RemoveCaracteres(nfe.Chave.Trim());
+                    if (nfe.Chave.Length != 44)
+                        nfe.Chave = "";
+                    Controller.getInstance().salvar(nfe);
                     if (nfe.Status != "Autorizado o uso da NF-e" && nfe.Status != "Inutilizacao de Numero homologado" && !nfe.Status.Contains("cancelada com sucesso"))
                     {
                         //para modelo 55
@@ -1868,7 +1872,7 @@ namespace Lunar.Telas.Fiscal
                                 }
                                 else if (retConsulta.xMotivo.Contains("Duplicidade de NF-e, com diferenca na Chave de Acesso"))
                                 {
-                                    try { nfe.Chave = retConsulta.xMotivo.Substring(65, 44); } catch { }
+                                    try { nfe.Chave = retConsulta.xMotivo.Substring(71, 44); } catch { }
                                     nfe.NsNrec = "";
                                     Controller.getInstance().salvar(nfe);
                                     if (nfe.Modelo.Equals("55"))

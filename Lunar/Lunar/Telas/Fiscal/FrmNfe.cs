@@ -32,6 +32,7 @@ namespace Lunar.Telas.Fiscal
 {
     public partial class FrmNfe : Form
     {
+        FrmAguarde formAguarde = null;
         public event EventHandler NotaConcluida;
         EmitirNfe3 emitirNFe3 = new EmitirNfe3();
         string numeroNFe = "";
@@ -1278,7 +1279,7 @@ namespace Lunar.Telas.Fiscal
 
         private async void emitirNota()
         {
-            FrmAguarde formAguarde = null;
+            formAguarde = null;
             
             try
             {
@@ -1291,7 +1292,7 @@ namespace Lunar.Telas.Fiscal
                         formAguarde.Show();
                     });
                 });
-
+                await Task.Delay(100);
                 // Restante do seu código para enviar a nota fiscal
                 await emitirNotaCodificacaoAsync(formAguarde);
 
@@ -1600,6 +1601,13 @@ namespace Lunar.Telas.Fiscal
 
                 if (retornoNFCe.motivo.Contains("autorizada com sucesso") || retornoNFCe.motivo.Contains("autorizado") || retornoNFCe.motivo.Contains("Autorizado"))
                 {
+                    if (formAguarde != null && !formAguarde.IsDisposed)
+                    {
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            formAguarde.Close();
+                        });
+                    }
                     nfeStatus = new NfeStatus();
                     nfeStatus.Id = 1;
                     nfe.NfeStatus = (NfeStatus)NfeStatusController.getInstance().selecionar(nfeStatus);
@@ -1772,6 +1780,13 @@ namespace Lunar.Telas.Fiscal
                         }
                     }
                 }
+                if (formAguarde != null && !formAguarde.IsDisposed)
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        formAguarde.Close();
+                    });
+                }
                 String erros = "";
                 if (retornoNFCe.erros != null) 
                 {
@@ -1814,13 +1829,19 @@ namespace Lunar.Telas.Fiscal
                     Controller.getInstance().salvar(nfe);
                     //GenericaDesktop.ShowAlerta("Corrija a nota e tente reenviar posteriormente: (" + retConsulta.cStat + " " + retConsulta.xMotivo + ") na tela de gerenciamento de notas você poderá reenviar a nota para sefaz!");
                 }
+                if (formAguarde != null && !formAguarde.IsDisposed)
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        formAguarde.Close();
+                    });
+                }
                 this.Close();
             }
             else
             {
                 GenericaDesktop.ShowAlerta("Erro na Nota Fiscal: Verifique sua conexão com a internet, após normalizar acesse o menu de gerenciamento de notas para reenviar a mesma!");
                 this.Close();
-
             }
         }
 
@@ -1837,10 +1858,6 @@ namespace Lunar.Telas.Fiscal
                 if (radioEntrada.Checked == true)
                     es = "E";
                 genericosNF.gravarXMLNoBanco(notaLida55, 0, es, this.nfe.Id);
-                //Ftp ftp = new Ftp();
-                //string caminho = "/www/LunarERP/Fiscal/" + Sessao.empresaFilialLogada.Cnpj + "/XML/NFCe/Autorizadas/";
-                //string caminhoArquivoLocal = @"C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Emissao\" + vendaConclusao.Nfe.Chave + "-procNFCe.xml";
-                //ftp.enviarArquivoFtp(caminho, caminhoArquivoLocal);
             }          
         }
 
