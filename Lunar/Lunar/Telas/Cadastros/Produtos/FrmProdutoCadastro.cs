@@ -2,7 +2,6 @@
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using LunarBase.Classes;
-using LunarBase.ClassesBO;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -12,7 +11,6 @@ using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Windows.Forms.Design;
 
 namespace Lunar.Telas.Cadastros.Produtos
 {
@@ -417,6 +415,12 @@ namespace Lunar.Telas.Cadastros.Produtos
                 chkVeiculoNovo.Checked = true;
             else
                 chkVeiculoNovo.Checked = false;
+            if (!String.IsNullOrEmpty(produto.Markup))
+            {
+                txtMarkup.Texts = produto.Markup;
+            }
+            else
+                txtMarkup.Texts = "";
         }
 
         private void btnPesquisaUnidadeMedida_Click(object sender, EventArgs e)
@@ -1242,6 +1246,12 @@ namespace Lunar.Telas.Cadastros.Produtos
                     if (decimal.Parse(txtValorVenda.Texts) > 0)
                         produto.ValorVenda = decimal.Parse(txtValorVenda.Texts);
                 }
+                if (!string.IsNullOrEmpty(txtMarkup.Texts))
+                {
+                    produto.Markup = txtMarkup.Texts;
+                }
+                else
+                    produto.Markup = "";
 
                 produto.Observacoes = txtObservacoes.Texts;
                 if (chkControlaEstoque.Checked == true)
@@ -1326,6 +1336,12 @@ namespace Lunar.Telas.Cadastros.Produtos
                 else
                     produto.VeiculoNovo = false;
 
+                if (produto.Veiculo == true) 
+                {
+                    if (!validarVeiculo())
+                        return;
+                }
+
                 //SALVA NA TABELA ESTOQUE O NOVO SALDO PRODUTO CASO O PRODUTO SEJA UM NOVO CADASTRO
                 if (String.IsNullOrEmpty(txtID.Texts))
                 {
@@ -1406,6 +1422,116 @@ namespace Lunar.Telas.Cadastros.Produtos
             }
         }
 
+        private bool validarVeiculo()
+        {
+            if (String.IsNullOrEmpty(produto.CorDenatran))
+            {
+                GenericaDesktop.ShowAlerta("Cor Denatran é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.CorMontadora))
+            {
+                GenericaDesktop.ShowAlerta("Cor Montadora é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.TipoPintura))
+            {
+                GenericaDesktop.ShowAlerta("Tipo de Pintura é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.PotenciaCv))
+            {
+                GenericaDesktop.ShowAlerta("Pot CV é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.CilindradaCc))
+            {
+                GenericaDesktop.ShowAlerta("Cilindrada Cc é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.NumeroMotor))
+            {
+                GenericaDesktop.ShowAlerta("Número Motor é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.Combustivel))
+            {
+                GenericaDesktop.ShowAlerta("Tipo de Combustível é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.AnoVeiculo))
+            {
+                GenericaDesktop.ShowAlerta("Ano do Veículo é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.ModeloVeiculo))
+            {
+                GenericaDesktop.ShowAlerta("Ano do Modelo é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.MarcaModelo))
+            {
+                GenericaDesktop.ShowAlerta("Cód Marca Modelo é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.EspecieVeiculo))
+            {
+                GenericaDesktop.ShowAlerta("Espécie é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.LotacaoVeiculo))
+            {
+                GenericaDesktop.ShowAlerta("Lotação é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.TipoVeiculo))
+            {
+                GenericaDesktop.ShowAlerta("Tipo Veiculo é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.Placa))
+            {
+                GenericaDesktop.ShowAlerta("Placa é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.Chassi))
+            {
+                GenericaDesktop.ShowAlerta("Chassi é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.DistanciaEixo))
+            {
+                GenericaDesktop.ShowAlerta("Dist. Entre Eixos é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.CapacidadeTracao))
+            {
+                GenericaDesktop.ShowAlerta("CMT - Capacidade Máxima Tração é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.PesoLiquidoVeiculo))
+            {
+                GenericaDesktop.ShowAlerta("Peso Liquido Veiculo é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.PesoBrutoVeiculo))
+            {
+                GenericaDesktop.ShowAlerta("Peso Bruto Veiculo é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.CondicaoProduto))
+            {
+                GenericaDesktop.ShowAlerta("Condição Veiculo é Obrigatório para Veículos!");
+                return false;
+            }
+            else if (String.IsNullOrEmpty(produto.RestricaoVeiculo))
+            {
+                GenericaDesktop.ShowAlerta("Restrição de Veiculo é Obrigatório para Veículos!");
+                return false;
+            }
+            else
+                return true;
+        }
         private void btnSalva_Click(object sender, EventArgs e)
         {
             set_Produto();
@@ -1413,7 +1539,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             {
                 DialogResult = DialogResult.OK;
             }
-            this.Close();
+            //this.Close();
         }
 
         private void txtCSOSN_Leave(object sender, EventArgs e)
@@ -2313,6 +2439,49 @@ namespace Lunar.Telas.Cadastros.Produtos
                 }
                 passou = true;
             }
+        }
+
+        private void txtMarkup_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (!String.IsNullOrEmpty(txtValorCusto.Texts) && !String.IsNullOrEmpty(txtMarkup.Texts))
+                {
+                    double valor = (double.Parse(txtValorCusto.Texts) / 100 * (double.Parse(txtMarkup.Texts))) + double.Parse(txtValorCusto.Texts);
+                    if (double.Parse(txtValorCusto.Texts) > 0)
+                        txtValorVenda.Texts = string.Format("{0:N2}", valor);
+                }
+            }
+            catch { txtMarkup.Texts = ""; }
+        }
+
+        private void txtValorVenda__TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(txtValorCusto.Texts))
+                {
+                    txtMarkup.Texts = "";
+                    double Percentual = ((double.Parse(txtValorVenda.Texts) / double.Parse(txtValorCusto.Texts)) * 100) - 100;
+                    txtMarkup.Texts = Percentual.ToString("F");
+                    //txtMarkup.BackColor = System.Drawing.SystemColors.InactiveCaption;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txtMarkup_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            generica.SoNumeroEVirgula(txtMarkup.Texts, e);
+        }
+
+        private void txtMarkup__TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

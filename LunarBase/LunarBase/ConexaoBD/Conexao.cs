@@ -66,7 +66,7 @@ namespace LunarBase.ConexaoBD
                         servidor = Sessao.servidor;
                         usuario = Sessao.usuarioBanco;
                         senha = Sessao.senhaBanco;
-                        bancoDados = "lunar";
+                        bancoDados = Sessao.nomeBanco;
 
                         //Online
                         //servidor = "mysql.lunarsoftware.com.br";

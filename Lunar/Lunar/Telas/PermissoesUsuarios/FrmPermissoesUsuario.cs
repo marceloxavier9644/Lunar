@@ -127,6 +127,7 @@ namespace Lunar.Telas.PermissoesUsuarios
             capturarCheckAbaOrdemServico();
             capturarCheckAbaVendas();
             capturarCheckAbaUtilitarios();
+            capturarCheckAbaCaixa();
 
             //Salvo permissoes apenas para identificar o que tinha e o que foi alterado e por quem... 
             //e posteriormente armazeno as permissoes no grupoUsuario para realmente validar nas telas
@@ -218,6 +219,26 @@ namespace Lunar.Telas.PermissoesUsuarios
         private void capturarCheckAbaUtilitarios()
         {
             for (int i = 100; i <= 108; i++)
+            {
+                string checkBoxName = "chk" + i;
+
+                // Use o método Controls.Find para encontrar o CheckBox com o nome específico.
+                CheckBox checkBox = tabControlAdv1.Controls.Find(checkBoxName, true).FirstOrDefault() as CheckBox;
+
+                if (checkBox != null)
+                {
+                    if (checkBox.Checked)
+                    {
+                        permissao.Permissoes += ";" + i;
+                    }
+                }
+            }
+        }
+
+        //Caixa
+        private void capturarCheckAbaCaixa()
+        {
+            for (int i = 200; i <= 205; i++)
             {
                 string checkBoxName = "chk" + i;
 
@@ -342,6 +363,32 @@ namespace Lunar.Telas.PermissoesUsuarios
         {
             Syncfusion.Windows.Forms.Tools.TabPageAdv tabPage = tabControlAdv1.TabPages[3];
 
+            foreach (Control control in tabPage.Controls)
+            {
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = (CheckBox)control;
+                    checkBox.Checked = false;
+                }
+            }
+        }
+
+        private void btnMarcarTodosAbaCaixa_Click(object sender, EventArgs e)
+        {
+            Syncfusion.Windows.Forms.Tools.TabPageAdv tabPage = tabControlAdv1.TabPages[4];
+            foreach (Control control in tabPage.Controls)
+            {
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = (CheckBox)control;
+                    checkBox.Checked = true;
+                }
+            }
+        }
+
+        private void btnDesmarcarTodosAbaCaixa_Click(object sender, EventArgs e)
+        {
+            Syncfusion.Windows.Forms.Tools.TabPageAdv tabPage = tabControlAdv1.TabPages[4];
             foreach (Control control in tabPage.Controls)
             {
                 if (control is CheckBox)

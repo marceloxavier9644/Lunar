@@ -47,6 +47,8 @@
             this.txtSenhaBanco = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.chkServidor = new System.Windows.Forms.CheckBox();
+            this.txtNomeBanco = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.txtSerial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCNPJ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSerialHD)).BeginInit();
@@ -55,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNomeServidor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsuarioBanco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSenhaBanco)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNomeBanco)).BeginInit();
             this.SuspendLayout();
             // 
             // autoLabel33
@@ -70,7 +73,7 @@
             // 
             // txtSerial
             // 
-            this.txtSerial.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtSerial.BeforeTouchSize = new System.Drawing.Size(264, 26);
             this.txtSerial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerial.Location = new System.Drawing.Point(12, 50);
             this.txtSerial.Name = "txtSerial";
@@ -90,7 +93,7 @@
             // 
             // txtCNPJ
             // 
-            this.txtCNPJ.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtCNPJ.BeforeTouchSize = new System.Drawing.Size(264, 26);
             this.txtCNPJ.ClipMode = Syncfusion.Windows.Forms.Tools.ClipModes.ExcludeLiterals;
             this.txtCNPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCNPJ.Location = new System.Drawing.Point(389, 50);
@@ -105,16 +108,16 @@
             // 
             this.btnGerarRegistro.AccessibleName = "Button";
             this.btnGerarRegistro.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerarRegistro.Location = new System.Drawing.Point(182, 209);
+            this.btnGerarRegistro.Location = new System.Drawing.Point(182, 273);
             this.btnGerarRegistro.Name = "btnGerarRegistro";
             this.btnGerarRegistro.Size = new System.Drawing.Size(199, 38);
-            this.btnGerarRegistro.TabIndex = 8;
+            this.btnGerarRegistro.TabIndex = 10;
             this.btnGerarRegistro.Text = "Gerar Arquivo de Registro";
             this.btnGerarRegistro.Click += new System.EventHandler(this.btnGerarRegistro_Click);
             // 
             // txtSerialHD
             // 
-            this.txtSerialHD.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtSerialHD.BeforeTouchSize = new System.Drawing.Size(264, 26);
             this.txtSerialHD.Enabled = false;
             this.txtSerialHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerialHD.Location = new System.Drawing.Point(12, 103);
@@ -135,7 +138,7 @@
             // 
             // txtData
             // 
-            this.txtData.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtData.BeforeTouchSize = new System.Drawing.Size(264, 26);
             this.txtData.Enabled = false;
             this.txtData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtData.Location = new System.Drawing.Point(228, 103);
@@ -159,7 +162,7 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtSenha.BeforeTouchSize = new System.Drawing.Size(264, 26);
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.Location = new System.Drawing.Point(389, 103);
             this.txtSenha.Name = "txtSenha";
@@ -181,11 +184,11 @@
             // 
             // txtNomeServidor
             // 
-            this.txtNomeServidor.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtNomeServidor.BeforeTouchSize = new System.Drawing.Size(264, 26);
             this.txtNomeServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeServidor.Location = new System.Drawing.Point(12, 160);
             this.txtNomeServidor.Name = "txtNomeServidor";
-            this.txtNomeServidor.Size = new System.Drawing.Size(210, 26);
+            this.txtNomeServidor.Size = new System.Drawing.Size(268, 26);
             this.txtNomeServidor.TabIndex = 5;
             // 
             // autoLabel5
@@ -201,19 +204,19 @@
             // 
             // txtUsuarioBanco
             // 
-            this.txtUsuarioBanco.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtUsuarioBanco.BeforeTouchSize = new System.Drawing.Size(264, 26);
             this.txtUsuarioBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuarioBanco.Location = new System.Drawing.Point(228, 160);
+            this.txtUsuarioBanco.Location = new System.Drawing.Point(12, 217);
             this.txtUsuarioBanco.Name = "txtUsuarioBanco";
-            this.txtUsuarioBanco.Size = new System.Drawing.Size(155, 26);
-            this.txtUsuarioBanco.TabIndex = 6;
+            this.txtUsuarioBanco.Size = new System.Drawing.Size(268, 26);
+            this.txtUsuarioBanco.TabIndex = 7;
             // 
             // autoLabel6
             // 
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(228, 137);
+            this.autoLabel6.Location = new System.Drawing.Point(12, 194);
             this.autoLabel6.Name = "autoLabel6";
             this.autoLabel6.Size = new System.Drawing.Size(136, 20);
             this.autoLabel6.TabIndex = 274;
@@ -221,13 +224,13 @@
             // 
             // txtSenhaBanco
             // 
-            this.txtSenhaBanco.BeforeTouchSize = new System.Drawing.Size(161, 26);
+            this.txtSenhaBanco.BeforeTouchSize = new System.Drawing.Size(264, 26);
             this.txtSenhaBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenhaBanco.Location = new System.Drawing.Point(389, 160);
+            this.txtSenhaBanco.Location = new System.Drawing.Point(286, 217);
             this.txtSenhaBanco.Name = "txtSenhaBanco";
             this.txtSenhaBanco.PasswordChar = '●';
-            this.txtSenhaBanco.Size = new System.Drawing.Size(161, 26);
-            this.txtSenhaBanco.TabIndex = 7;
+            this.txtSenhaBanco.Size = new System.Drawing.Size(264, 26);
+            this.txtSenhaBanco.TabIndex = 8;
             this.txtSenhaBanco.UseSystemPasswordChar = true;
             // 
             // autoLabel7
@@ -235,7 +238,7 @@
             this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel7.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel7.Location = new System.Drawing.Point(389, 137);
+            this.autoLabel7.Location = new System.Drawing.Point(286, 194);
             this.autoLabel7.Name = "autoLabel7";
             this.autoLabel7.Size = new System.Drawing.Size(128, 20);
             this.autoLabel7.TabIndex = 276;
@@ -245,19 +248,43 @@
             // 
             this.chkServidor.AutoSize = true;
             this.chkServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkServidor.Location = new System.Drawing.Point(12, 192);
+            this.chkServidor.Location = new System.Drawing.Point(12, 256);
             this.chkServidor.Name = "chkServidor";
             this.chkServidor.Size = new System.Drawing.Size(95, 24);
-            this.chkServidor.TabIndex = 277;
+            this.chkServidor.TabIndex = 9;
             this.chkServidor.Text = "Servidor?";
             this.chkServidor.UseVisualStyleBackColor = true;
+            // 
+            // txtNomeBanco
+            // 
+            this.txtNomeBanco.BeforeTouchSize = new System.Drawing.Size(264, 26);
+            this.txtNomeBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeBanco.Location = new System.Drawing.Point(286, 160);
+            this.txtNomeBanco.Name = "txtNomeBanco";
+            this.txtNomeBanco.PasswordChar = '●';
+            this.txtNomeBanco.Size = new System.Drawing.Size(264, 26);
+            this.txtNomeBanco.TabIndex = 6;
+            this.txtNomeBanco.UseSystemPasswordChar = true;
+            // 
+            // autoLabel8
+            // 
+            this.autoLabel8.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel8.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel8.Location = new System.Drawing.Point(286, 137);
+            this.autoLabel8.Name = "autoLabel8";
+            this.autoLabel8.Size = new System.Drawing.Size(174, 20);
+            this.autoLabel8.TabIndex = 279;
+            this.autoLabel8.Text = "Nome Banco de Dados";
             // 
             // FrmAtivador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(562, 259);
+            this.ClientSize = new System.Drawing.Size(562, 329);
+            this.Controls.Add(this.txtNomeBanco);
+            this.Controls.Add(this.autoLabel8);
             this.Controls.Add(this.chkServidor);
             this.Controls.Add(this.txtSenhaBanco);
             this.Controls.Add(this.autoLabel7);
@@ -291,6 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNomeServidor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsuarioBanco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSenhaBanco)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNomeBanco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,5 +344,7 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSenhaBanco;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
         private System.Windows.Forms.CheckBox chkServidor;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtNomeBanco;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel8;
     }
 }

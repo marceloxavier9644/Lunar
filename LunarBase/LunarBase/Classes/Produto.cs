@@ -79,6 +79,7 @@ namespace LunarBase.Classes
         private string restricaoVeiculo;
         private string kmEntrada;
         private bool veiculoNovo;
+        private string markup;
 
 
         [Anotacao("Código")]
@@ -281,6 +282,9 @@ namespace LunarBase.Classes
         [Anotacao("Veiculo Novo")]
         [OcultarEmGridsEPesquisas]
         public virtual bool VeiculoNovo { get => veiculoNovo; set => veiculoNovo = value; }
+        [Anotacao("Markup")]
+        [OcultarEmGridsEPesquisas]
+        public virtual string Markup { get => markup; set => markup = value; }
 
         public override string ToString()
         {

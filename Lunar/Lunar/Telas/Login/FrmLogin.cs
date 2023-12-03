@@ -29,6 +29,7 @@ namespace Lunar
         private string servidor = "";
         private string usuarioBanco = "";
         private string senhaBanco = "";
+        private string nomeBanco = "";
         public FrmLogin()
         {
             InitializeComponent();
@@ -319,7 +320,7 @@ namespace Lunar
                 xmlWriter.WriteStartDocument();
                 xmlWriter.WriteStartElement("MXSystem");
                 xmlWriter.WriteElementString("AppVersion", Generica.Criptografa("Fé, saúde e trabalho"));
-                xmlWriter.WriteElementString("AppData", Generica.Criptografa("Superação, foco e garra"));
+                xmlWriter.WriteElementString("AppData", Generica.Criptografa(nomeBanco));
                 xmlWriter.WriteElementString("AppTime", Generica.Criptografa("Com DEUS tudo é possível"));
                 xmlWriter.WriteElementString("AppUser", Generica.Criptografa(validade.ToShortDateString()));
                 xmlWriter.WriteElementString("AppServ", Generica.Criptografa(serialHD));
@@ -356,6 +357,8 @@ namespace Lunar
                             dataXML = DateTime.Parse(GenericaDesktop.Descriptografa(reader.ReadString()));
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppServ")
                             hd = GenericaDesktop.Descriptografa(reader.ReadString());
+                        if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppData")
+                            nomeBanco = GenericaDesktop.Descriptografa(reader.ReadString());
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppOper")
                             cnpjClient = GenericaDesktop.Descriptografa(reader.ReadString());
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppClient")
@@ -374,6 +377,7 @@ namespace Lunar
                     Sessao.servidor = servidor;
                     Sessao.usuarioBanco = usuarioBanco;
                     Sessao.senhaBanco = senhaBanco;
+                    Sessao.nomeBanco = nomeBanco;
 
                     atualizarLicenca(cnpjClient, serialRegistro, hd);
 

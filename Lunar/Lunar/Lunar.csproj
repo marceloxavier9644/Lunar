@@ -1215,6 +1215,7 @@
     <Compile Include="Utils\OrganizacaoNF\Ftp.cs" />
     <Compile Include="Utils\OrganizacaoNF\LunarApiNotas.cs" />
     <Compile Include="Utils\OrganizacaoNF\RetCartaCorrecao.cs" />
+    <Compile Include="Utils\OrganizacaoNF\RetConsultaNfe.cs" />
     <Compile Include="Utils\OrganizacaoNF\RetConsultaProcessamento.cs" />
     <Compile Include="Utils\OrganizacaoNF\RetInutilizacao.cs" />
     <Compile Include="Utils\OrganizacaoNF\RetornoJsonVariados.cs" />
@@ -2188,12 +2189,6 @@
     <Folder Include="Telas\Cadastros\Modulos\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LunarBase\LunarBase\LunarBase.csproj">
-      <Project>{aa640c44-8d48-4ae5-b815-f14602833ccd}</Project>
-      <Name>LunarBase</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -2297,6 +2292,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LunarBase\LunarBase\LunarBase.csproj">
+      <Project>{aa640c44-8d48-4ae5-b815-f14602833ccd}</Project>
+      <Name>LunarBase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

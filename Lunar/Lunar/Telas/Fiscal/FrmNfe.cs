@@ -1,6 +1,7 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.Fiscal.NFeSelecaoItens;
 using Lunar.Telas.PesquisaPadrao;
+using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
@@ -21,6 +22,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
@@ -30,6 +32,7 @@ namespace Lunar.Telas.Fiscal
 {
     public partial class FrmNfe : Form
     {
+        public event EventHandler NotaConcluida;
         EmitirNfe3 emitirNFe3 = new EmitirNfe3();
         string numeroNFe = "";
         NaturezaOperacao naturezaOperacaoSelecionado = new NaturezaOperacao();
@@ -1157,94 +1160,168 @@ namespace Lunar.Telas.Fiscal
         }
         private void btnEmitirNfe_Click(object sender, EventArgs e)
         {
-            bool validaCliente = false;
-            if (!String.IsNullOrEmpty(txtCodCliente.Texts))
+            emitirNota();
+        }
+
+        private async Task emitirNotaCodificacaoAsync(FrmAguarde formAguarde)
+        {
+            await Task.Run(() =>
             {
-                Pessoa cli = new Pessoa();
-                cli.Id = int.Parse(txtCodCliente.Texts);
-                cli = (Pessoa)Controller.getInstance().selecionar(cli);
-                validaCliente = validarClienteNFCe(cli);
-
-                ValidadorNotaSaida validador = new ValidadorNotaSaida();
-                if (validaCliente == true)
+                try
                 {
-                    EmitirNfe2 emitirNFe2 = new EmitirNfe2();
-                    carregarListaProdutos();
-                    if (validador.validarProdutosNota(listaProdutosNFe))
+                    bool validaCliente = false;
+                    if (!String.IsNullOrEmpty(txtCodCliente.Texts))
                     {
-                        ParametroSistema param = new ParametroSistema();
-                        param.Id = 1;
-                        param = (ParametroSistema)Controller.getInstance().selecionar(param);
-                        Sessao.parametroSistema = param;
-                        if (lblNumeroNfe.Text == "0")
-                            numeroNFe = Sessao.parametroSistema.ProximoNumeroNFe;
-                        else
-                            numeroNFe = lblNumeroNfe.Text;
+                        Pessoa cli = new Pessoa();
+                        cli.Id = int.Parse(txtCodCliente.Texts);
+                        cli = (Pessoa)Controller.getInstance().selecionar(cli);
+                        validaCliente = validarClienteNFCe(cli);
 
-                        //TNFeInfNFeIdeIndPres presenca = retornaPresencaCliente();
-                        TNFeInfNFeTranspModFrete frete = retornaFrete();
-                        Frete fr = new Frete();
-                        if (!frete.ToString().Equals("Item9"))
+                        ValidadorNotaSaida validador = new ValidadorNotaSaida();
+                        if (validaCliente == true)
                         {
-                            Pessoa pessoaTransporte = new Pessoa();
-                            if (!String.IsNullOrEmpty(txtCodTransportadora.Texts))
+                            EmitirNfe2 emitirNFe2 = new EmitirNfe2();
+                            carregarListaProdutos();
+                            if (validador.validarProdutosNota(listaProdutosNFe))
                             {
-                                pessoaTransporte.Id = int.Parse(txtCodTransportadora.Texts);
-                                pessoaTransporte = (Pessoa)Controller.getInstance().selecionar(pessoaTransporte);
-                                if (pessoaTransporte != null)
+                                ParametroSistema param = new ParametroSistema();
+                                param.Id = 1;
+                                param = (ParametroSistema)Controller.getInstance().selecionar(param);
+                                Sessao.parametroSistema = param;
+                                if (lblNumeroNfe.Text == "0")
+                                    numeroNFe = Sessao.parametroSistema.ProximoNumeroNFe;
+                                else
+                                    numeroNFe = lblNumeroNfe.Text;
+
+                                //TNFeInfNFeIdeIndPres presenca = retornaPresencaCliente();
+                                TNFeInfNFeTranspModFrete frete = retornaFrete();
+                                Frete fr = new Frete();
+                                if (!frete.ToString().Equals("Item9"))
                                 {
-                                    fr.transportadora = pessoaTransporte;
+                                    Pessoa pessoaTransporte = new Pessoa();
+                                    if (!String.IsNullOrEmpty(txtCodTransportadora.Texts))
+                                    {
+                                        pessoaTransporte.Id = int.Parse(txtCodTransportadora.Texts);
+                                        pessoaTransporte = (Pessoa)Controller.getInstance().selecionar(pessoaTransporte);
+                                        if (pessoaTransporte != null)
+                                        {
+                                            fr.transportadora = pessoaTransporte;
+                                        }
+                                    }
+                                    else
+                                        fr.transportadora = null;
+
+                                    fr.codigoAntt = txtCodigoAntt.Texts.Trim();
+                                    fr.especie = txtEspecie.Texts.Trim();
+                                    fr.marca = txtMarca.Texts.Trim();
+                                    fr.pesoBruto = txtPesoBruto.Texts.Trim();
+                                    fr.pesoLiquido = txtPesoLiquido.Texts.Trim();
+                                    fr.placa = txtPlacaVeiculo.Texts.Trim();
+                                    fr.quantidadeVolume = txtQtdVolume.Texts.Trim();
+                                }
+
+                                decimal fret = 0;
+                                decimal segur = 0;
+                                decimal outr = 0;
+                                if (!String.IsNullOrEmpty(txtFrete.Texts))
+                                    fret = decimal.Parse(txtFrete.Texts);
+                                if (!String.IsNullOrEmpty(txtSeguro.Texts))
+                                    segur = decimal.Parse(txtSeguro.Texts);
+                                if (!String.IsNullOrEmpty(txtOutrasDepesas.Texts))
+                                    outr = decimal.Parse(txtOutrasDepesas.Texts);
+
+                                nfe = alimentaNfe();
+
+                                NfeProdutoDAO nfeProdutoDAO = new NfeProdutoDAO();
+                                NfeReferenciaDAO nfeReferenciaDAO = new NfeReferenciaDAO();
+                                nfeProdutoDAO.excluirProdutosNfeParaAtualizar(nfe.Id.ToString());
+                                nfeReferenciaDAO.excluirReferenciaNfeParaAtualizar(nfe.Id.ToString());
+                                //Notas referenciadas
+                                TNFeInfNFeIdeNFref[] tNFeInfNFeIdeNFref = new TNFeInfNFeIdeNFref[gridNotaReferenciada.RowCount];
+                                tNFeInfNFeIdeNFref = retornarNotasReferenciadas();
+
+                                //string xmlStrEnvio = emitirNFe2.gerarXMLNfe(decimal.Parse(txtTotalProduto.Texts.Replace("R$ ", "")), decimal.Parse(txtTotalNota.Texts.Replace("R$ ", "")), decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFe, listaProdutosNFe, cli, null, false, naturezaOperacaoSelecionado.Descricao, frete, presenca, tNFeInfNFeIdeNFref, fret, segur, outr, tpNF, fr, naturezaOperacaoSelecionado, nfe);
+                                string xmlStrEnvio = emitirNFe3.gerarXML(nfe, fr, false, null, null, listaProdutosNFe, tNFeInfNFeIdeNFref, null, false);
+
+                                if (!String.IsNullOrEmpty(xmlStrEnvio))
+                                {
+                                    enviarXMLNFeParaApi(xmlStrEnvio);
                                 }
                             }
-                            else
-                                fr.transportadora = null;
-
-                            fr.codigoAntt = txtCodigoAntt.Texts.Trim();
-                            fr.especie = txtEspecie.Texts.Trim();
-                            fr.marca = txtMarca.Texts.Trim();
-                            fr.pesoBruto = txtPesoBruto.Texts.Trim();
-                            fr.pesoLiquido = txtPesoLiquido.Texts.Trim();
-                            fr.placa = txtPlacaVeiculo.Texts.Trim();
-                            fr.quantidadeVolume = txtQtdVolume.Texts.Trim();
                         }
-
-                        decimal fret = 0;
-                        decimal segur = 0;
-                        decimal outr = 0;
-                        if (!String.IsNullOrEmpty(txtFrete.Texts)) 
-                            fret = decimal.Parse(txtFrete.Texts);
-                        if (!String.IsNullOrEmpty(txtSeguro.Texts))
-                            segur = decimal.Parse(txtSeguro.Texts);
-                        if (!String.IsNullOrEmpty(txtOutrasDepesas.Texts))
-                            outr = decimal.Parse(txtOutrasDepesas.Texts);
-                       
-                        nfe = alimentaNfe();
-
-                        NfeProdutoDAO nfeProdutoDAO = new NfeProdutoDAO();
-                        NfeReferenciaDAO nfeReferenciaDAO = new NfeReferenciaDAO();
-                        nfeProdutoDAO.excluirProdutosNfeParaAtualizar(nfe.Id.ToString());
-                        nfeReferenciaDAO.excluirReferenciaNfeParaAtualizar(nfe.Id.ToString());
-                        //Notas referenciadas
-                        TNFeInfNFeIdeNFref[] tNFeInfNFeIdeNFref = new TNFeInfNFeIdeNFref[gridNotaReferenciada.RowCount];
-                        tNFeInfNFeIdeNFref = retornarNotasReferenciadas();
-
-                        //string xmlStrEnvio = emitirNFe2.gerarXMLNfe(decimal.Parse(txtTotalProduto.Texts.Replace("R$ ", "")), decimal.Parse(txtTotalNota.Texts.Replace("R$ ", "")), decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFe, listaProdutosNFe, cli, null, false, naturezaOperacaoSelecionado.Descricao, frete, presenca, tNFeInfNFeIdeNFref, fret, segur, outr, tpNF, fr, naturezaOperacaoSelecionado, nfe);
-                        string xmlStrEnvio = emitirNFe3.gerarXML(nfe, fr, false, null, null, listaProdutosNFe, tNFeInfNFeIdeNFref, null, false);
-
-                        if (!String.IsNullOrEmpty(xmlStrEnvio))
+                        //somente atualiza o numero se for uma nota nova, se for reenvio ou edição nao atualiza
+                        if (atualizaNumeroNota == true)
                         {
-                            enviarXMLNFeParaApi(xmlStrEnvio);
+                            Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(numeroNFe) + 1).ToString();
+                            Controller.getInstance().salvar(Sessao.parametroSistema);
                         }
                     }
+
+                    // Exemplo de log
+                    Console.WriteLine("emitirNotaCodificacao: Operações até este ponto estão concluídas com sucesso.");
+                    if (formAguarde != null && !formAguarde.IsDisposed)
+                    {
+                        formAguarde.Invoke((MethodInvoker)delegate
+                        {
+                            formAguarde.Close();
+                        });
+                    }
                 }
-                //somente atualiza o numero se for uma nota nova, se for reenvio ou edição nao atualiza
-                if (atualizaNumeroNota == true)
+                catch (Exception ex)
                 {
-                    Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(numeroNFe) + 1).ToString();
-                    Controller.getInstance().salvar(Sessao.parametroSistema);
+                    // Lida com exceções
+                    Console.WriteLine("emitirNotaCodificacao: Erro - " + ex.Message);
+                    throw; // Lança a exceção novamente para que ela possa ser tratada no método chamador
+                }
+            });
+        }
+
+        private async void emitirNota()
+        {
+            FrmAguarde formAguarde = null;
+            
+            try
+            {
+                // Mostra o formulário de aguarde de forma não bloqueante
+                await Task.Run(() =>
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        formAguarde = new FrmAguarde("5000", this.nfe);
+                        formAguarde.Show();
+                    });
+                });
+
+                // Restante do seu código para enviar a nota fiscal
+                await emitirNotaCodificacaoAsync(formAguarde);
+
+                // Fecha o formulário de aguarde após a conclusão do envio
+                if (formAguarde != null && !formAguarde.IsDisposed)
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        formAguarde.Close();
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Lida com exceções, se houver, e fecha o formulário de aguarde
+                MessageBox.Show("Erro ao enviar nota fiscal: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Garante que o formulário de aguarde seja fechado mesmo se houver exceção
+                if (formAguarde != null && !formAguarde.IsDisposed)
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        formAguarde.Close();
+                    });
                 }
             }
         }
+
 
         private Nfe alimentaNfe()
         {
@@ -1383,9 +1460,24 @@ namespace Lunar.Telas.Fiscal
             nfe.PesoBruto = txtPesoBruto.Texts;
             nfe.PesoLiquido = txtPesoLiquido.Texts;
             Controller.getInstance().salvar(nfe);
-            lblNumeroNfe.Text = nfe.NNf;
-            lblNumeroNfe.Visible = true;
-            labelN.Visible = true;
+            foreach (Control control in this.Controls)
+            {
+                if (control.InvokeRequired)
+                {
+                    control.Invoke(new Action(() => {
+                        lblNumeroNfe.Text = nfe.NNf;
+                        lblNumeroNfe.Visible = true;
+                        labelN.Visible = true;
+                    }));
+                }
+                else
+                {
+                    lblNumeroNfe.Text = nfe.NNf;
+                    lblNumeroNfe.Visible = true;
+                    labelN.Visible = true;
+                }
+            }
+
             return nfe;
         }
 
@@ -1544,7 +1636,7 @@ namespace Lunar.Telas.Fiscal
                             }
                         }
                     }
-                    GenericaDesktop.ShowInfo("Nota autorizada!");
+                   // GenericaDesktop.ShowInfo("Nota autorizada!");
                     //EnviaXML PAINEL LUNAR 
                     try
                     {
@@ -1683,7 +1775,7 @@ namespace Lunar.Telas.Fiscal
                 String erros = "";
                 if (retornoNFCe.erros != null) 
                 {
-            
+                    erros = "RETORNO API/SEFAZ: ";
                     if (retornoNFCe.erros.Count > 0)
                     {
                         foreach (string msgErro in retornoNFCe.erros)

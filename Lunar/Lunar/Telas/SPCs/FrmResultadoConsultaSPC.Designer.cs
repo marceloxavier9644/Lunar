@@ -454,7 +454,7 @@
             this.groupBox13.Controls.Add(this.lblCPF);
             this.groupBox13.Location = new System.Drawing.Point(3, 41);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(715, 130);
+            this.groupBox13.Size = new System.Drawing.Size(681, 130);
             this.groupBox13.TabIndex = 42;
             this.groupBox13.TabStop = false;
             // 

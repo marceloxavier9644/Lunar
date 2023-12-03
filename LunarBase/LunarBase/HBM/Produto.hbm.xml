@@ -38,7 +38,8 @@
 		<property name="PercGni" column="PERCGNI" type="double"/>
 		<property name="ValorPartida" column="VALORPARTIDA" type="decimal"/>
 		<property name="IdComplementar" column="IDCOMPLEMENTAR" type="String" length="25"/>
-		
+		<property name="Markup" column="MARKUP" type="String" length="20"/>
+
 		<!--Veiculo-->
 		<property name="Veiculo" column="VEICULO" type="Boolean"/>
 		<property name="CorMontadora" column="CORMONTADORA" type="String" length="40"/>

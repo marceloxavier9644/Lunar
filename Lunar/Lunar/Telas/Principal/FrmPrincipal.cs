@@ -784,25 +784,33 @@ namespace Lunar.Telas.Principal
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //OpenChildForm(() => new FrmRelatorioCaixa(), btnRelatorios);
-
-            Form formBackground = new Form();
-            FrmRelatorioCaixa uu = new FrmRelatorioCaixa();
-            formBackground.StartPosition = FormStartPosition.Manual;
-            //formBackground.FormBorderStyle = FormBorderStyle.None;
-            formBackground.Opacity = .50d;
-            formBackground.BackColor = Color.Black;
-            //formBackground.Left = Top = 0;
-            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            formBackground.WindowState = FormWindowState.Maximized;
-            formBackground.TopMost = false;
-            formBackground.Location = this.Location;
-            formBackground.ShowInTaskbar = false;
-            formBackground.Show();
-            uu.Owner = formBackground;
-            uu.ShowDialog();
-            formBackground.Dispose();
-            uu.Dispose();
+            if (Sessao.permissoes.Count > 0)
+            {
+                // Habilitar ou desabilitar os controles com base nas permissões
+                if (Sessao.permissoes.Contains("200"))
+                {
+                    Form formBackground = new Form();
+                    FrmRelatorioCaixa uu = new FrmRelatorioCaixa();
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    uu.ShowDialog();
+                    formBackground.Dispose();
+                    uu.Dispose();
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Usuário não possui permissão para visualizar esta tela! (200)");
+            }
         }
 
         private void btnConsultaVendasRelatorio_Click(object sender, EventArgs e)
@@ -964,7 +972,16 @@ namespace Lunar.Telas.Principal
 
         private void btnMovimentoCaixa_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmMovimentoCaixa(), btnFinanceiro);
+            if (Sessao.permissoes.Count > 0)
+            {
+                // Habilitar ou desabilitar os controles com base nas permissões
+                if (Sessao.permissoes.Contains("202"))
+                {
+                    OpenChildForm(() => new FrmMovimentoCaixa(), btnFinanceiro);
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Usuário não possui permissão para visualizar esta tela! (202)");
+            }
         }
 
         private void btnComissoes_Click(object sender, EventArgs e)

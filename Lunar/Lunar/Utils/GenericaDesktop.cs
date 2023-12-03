@@ -6,6 +6,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
+using NSSuite_CSharp.src.JSON.NFe;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,6 +24,7 @@ using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Xml;
 using static Lunar.Utils.OrganizacaoNF.RetCartaCorrecao;
+using static Lunar.Utils.OrganizacaoNF.RetConsultaNfe;
 using static Lunar.Utils.OrganizacaoNF.RetInutilizacao;
 using static Lunar.Utils.OrganizacaoNF.RetornoJsonVariados;
 using static LunarBase.Utilidades.ClasseRetornoJson.CancelamentoNFCe;
@@ -31,6 +33,7 @@ using static LunarBase.Utilidades.ManifestoDownload;
 using static LunarBase.Utilidades.Ns_ConsultaCNPJ;
 using Attachment = System.Net.Mail.Attachment;
 using File = System.IO.File;
+using Nfe = LunarBase.Classes.Nfe;
 
 namespace Lunar.Utils
 {
@@ -1060,7 +1063,57 @@ namespace Lunar.Utils
                 return null;
             }
         }
+        public RetNota55 NS_ConsultaStatusNota55(string chave)
+        {
+            try
+            {
+                String url = "https://nfe.ns.eti.br/nfe/stats";
+                var requisicaoWeb = WebRequest.CreateHttp(url);
+                requisicaoWeb.Method = "POST";
+                requisicaoWeb.ContentType = "application/json";
+                requisicaoWeb.Headers.Add("x-auth-token", "VFhUIElORk9STUFUSUNBT3JQSEQ=");
 
+                string tpAmbiente = Sessao.parametroSistema.AmbienteProducao ? "1" : "2";
+
+                using (var streamWriter = new StreamWriter(requisicaoWeb.GetRequestStream()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        chNFe = chave,
+                        tpAmb = tpAmbiente
+                    });
+
+                    streamWriter.Write(json);
+                }
+
+                var httpResponse = (HttpWebResponse)requisicaoWeb.GetResponse();
+
+                // Obtendo o código de status da resposta
+                HttpStatusCode statusCode = httpResponse.StatusCode;
+
+                if (statusCode == HttpStatusCode.OK) // 200 OK
+                {
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        var result = streamReader.ReadToEnd();
+                        streamReader.Close();
+                        var nota = JsonConvert.DeserializeObject<RetNota55>(result);
+                        return nota;
+                    }
+                }
+                else
+                {
+                    // Manipule os códigos de status de erro conforme necessário
+                    GenericaDesktop.ShowErro($"Erro na requisição. Código de status: {statusCode}");
+                    return null;
+                }
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowErro(err.Message);
+                return null;
+            }
+        }
         public NFCeDownloadProc NS_ConsultaStatusNota65(string chave)
         {
             try
@@ -1104,7 +1157,7 @@ namespace Lunar.Utils
             }
         }
 
-        public RetornoCancelamento ns_CancelarNF(Nfe nfe, string justificativa)
+        public RetornoCancelamento ns_CancelarNF(LunarBase.Classes.Nfe nfe, string justificativa)
         {
             try
             {
@@ -1165,7 +1218,7 @@ namespace Lunar.Utils
             }
         }
 
-        public RetornoCancelamento ns_DownloadEventoCanceladoOuCCE55(Nfe nfe, bool cancelamento, bool cce, string nSeqEventoDesejadoCCE)
+        public RetornoCancelamento ns_DownloadEventoCanceladoOuCCE55(LunarBase.Classes.Nfe nfe, bool cancelamento, bool cce, string nSeqEventoDesejadoCCE)
         {
             try
             {

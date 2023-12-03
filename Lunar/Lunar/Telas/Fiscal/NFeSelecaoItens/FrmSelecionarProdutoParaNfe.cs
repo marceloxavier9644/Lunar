@@ -514,7 +514,7 @@ namespace Lunar.Telas.Fiscal.NFeSelecaoItens
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Cfop", "and (Tabela.CfopNumero Like '5%' or Tabela.CfopNumero Like '6%')"))
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Cfop",""))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;

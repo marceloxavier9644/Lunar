@@ -3,7 +3,6 @@ using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using System;
-using System.Data.SqlClient;
 using System.IO;
 using System.Management;
 using System.Net;
@@ -217,7 +216,7 @@ namespace LunarSoftwareAtivador
                     xmlWriter.WriteStartDocument();
                     xmlWriter.WriteStartElement("MXSystem");
                     xmlWriter.WriteElementString("AppVersion", Criptografa("Fé, saúde e trabalho"));
-                    xmlWriter.WriteElementString("AppData", Criptografa("Superação, foco e garra"));
+                    xmlWriter.WriteElementString("AppData", Criptografa(txtNomeBanco.Text.Trim()));
                     xmlWriter.WriteElementString("AppTime", Criptografa("Com DEUS tudo é possível"));
                     xmlWriter.WriteElementString("AppUser", Criptografa(validade.ToShortDateString()));
                     xmlWriter.WriteElementString("AppServ", Criptografa(serialHD));

@@ -4,6 +4,8 @@ using Lunar.Utils.IntegracaoZAPI;
 using Lunar.Utils.OrganizacaoNF;
 using Lunar.Utils.Sintegra;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
@@ -11,10 +13,8 @@ using Newtonsoft.Json;
 using Syncfusion.Data;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
-using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
-using Syncfusion.WinForms.DataGrid.Interactivity;
 using Syncfusion.WinForms.DataGridConverter;
 using Syncfusion.XlsIO;
 using System;
@@ -25,6 +25,7 @@ using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Lunar.Utils.OrganizacaoNF.RetConsultaNfe;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static Lunar.Utils.OrganizacaoNF.RetInutilizacao;
 using static LunarBase.Utilidades.ClasseRetornoJson.CancelamentoNFCe;
@@ -38,7 +39,7 @@ namespace Lunar.Telas.Fiscal
     {
         GeradorSintegra geradorSintegra = new GeradorSintegra();
         private IList<Nfe> lista;
-        Nfe nfe = new Nfe();
+        LunarBase.Classes.Nfe nfe = new LunarBase.Classes.Nfe();
         GenericaDesktop generica = new GenericaDesktop();
         NfeController nfeController = new NfeController();
         bool fazerPrimeiraBuscaNotas = true;
@@ -1932,6 +1933,88 @@ namespace Lunar.Telas.Fiscal
                                 }
                             }
                         }
+                        else if (!String.IsNullOrEmpty(nfe.Chave) && nfe.Modelo.Equals("55"))
+                        {
+                            string caminhoSalvarXml = @"Fiscal\XML\NFe\" + DateTime.Now.Year + "-" + DateTime.Now.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\";
+                            RetNota55 nfeStatuss = generica.NS_ConsultaStatusNota55(nfe.Chave);
+                            if (nfeStatuss != null)
+                            {
+                                if (nfeStatuss.motivo != null)
+                                {
+                                    if(nfeStatuss.retConsSitNFe.xMotivo != null)
+                                        GenericaDesktop.ShowInfo(nfeStatuss.retConsSitNFe.xMotivo);
+                                    if (nfeStatuss.retConsSitNFe.xMotivo.Contains("Autorizado o uso da"))
+                                    {
+                                        NfeStatus nfeStatus = new NfeStatus();
+                                        nfeStatus.Id = 1;
+                                        nfe.NfeStatus = (NfeStatus)NfeStatusController.getInstance().selecionar(nfeStatus);
+                                        nfe.Status = nfeStatuss.retConsSitNFe.xMotivo;
+                                        nfe.CodStatus = nfeStatuss.retConsSitNFe.cStat;
+                                        nfe.DataLancamento = DateTime.Parse(nfeStatuss.retConsSitNFe.protNFe[0].infProt.dhRecbto.ToShortDateString());
+                                        if (!String.IsNullOrEmpty(nfeStatuss.retConsSitNFe.protNFe[0].infProt.chNFe))
+                                        {
+                                            nfe.Protocolo = nfeStatuss.retConsSitNFe.protNFe[0].infProt.nProt;
+                                            nfe.Chave = nfeStatuss.retConsSitNFe.protNFe[0].infProt.chNFe;
+                                        }
+                                        Controller.getInstance().salvar(nfe);
+                                        armazenaXmlAutorizadoNoBanco();
+                                        //ATUALIZAR ESTOQUE
+                                        NfeProdutoDAO nfeProdutoDAO = new NfeProdutoDAO();
+                                        if (radioSaida.Checked == true)
+                                        {
+                                            IList<NfeProduto> listaProd = nfeProdutoDAO.selecionarProdutosPorNfe(nfe.Id);
+                                            foreach (NfeProduto nfeP in listaProd)
+                                            {
+                                                generica.atualizarEstoqueNaoConciliado(nfeP.Produto, double.Parse(nfeP.QCom), false, "NFE " + nfe.Id.ToString(), "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NatOp, nfe.Cliente, DateTime.Now, null);
+                                                generica.atualizarEstoqueConciliado(nfeP.Produto, double.Parse(nfeP.QCom), false, "NFE " + nfe.Id.ToString(), "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NatOp, nfe.Cliente, DateTime.Now, null);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            IList<NfeProduto> listaProd = nfeProdutoDAO.selecionarProdutosPorNfe(nfe.Id);
+                                            foreach (NfeProduto nfeP in listaProd)
+                                            {
+                                                generica.atualizarEstoqueNaoConciliado(nfeP.Produto, double.Parse(nfeP.QCom), true, "NFE " + nfe.Id.ToString(), "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NatOp, nfe.Cliente, DateTime.Now, null);
+                                                generica.atualizarEstoqueConciliado(nfeP.Produto, double.Parse(nfeP.QCom), true, "NFE " + nfe.Id.ToString(), "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NatOp, nfe.Cliente, DateTime.Now, null);
+
+                                            }
+                                        }
+
+                                        // GenericaDesktop.ShowInfo("Nota autorizada!");
+                                        //EnviaXML PAINEL LUNAR 
+                                        try
+                                        {
+
+                                            LunarApiNotas lunarApiNotas = new LunarApiNotas();
+                                            byte[] arquivo;
+                                            using (var stream = new FileStream(caminhoSalvarXml + nfe.Chave + "-procNFe.xml", FileMode.Open, FileAccess.Read))
+                                            {
+                                                using (var reader = new BinaryReader(stream))
+                                                {
+                                                    arquivo = reader.ReadBytes((int)stream.Length);
+                                                    var ret = lunarApiNotas.EnvioNotaParaNuvem(nfe.CnpjEmitente, nfe.Chave, "NFE", "AUTORIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
+                                                    if (ret.ToString().Contains("\"error\":false,\"msg\":\"OK\""))
+                                                    {
+                                                        nfe.Nuvem = true;
+                                                        Controller.getInstance().salvar(nfe);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        catch
+                                        {
+
+                                        }
+
+                                        if (File.Exists(caminhoSalvarXml + nfe.Chave + "-procNFe.pdf"))
+                                        {
+                                            FrmPDF frmPDF = new FrmPDF(caminhoSalvarXml + nfe.Chave + "-procNFe.pdf");
+                                            frmPDF.ShowDialog();
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         else if (nfe.NfeStatus != null)
                         {
                             if (nfe.NfeStatus.Id != 1)
@@ -1941,38 +2024,38 @@ namespace Lunar.Telas.Fiscal
                                 GenericaDesktop.ShowInfo("Nota Fiscal Autorizada");
                             pesquisaNotas();
                         }
-                    }
-                    else if (nfe.Status.Contains("Inutilizacao"))
-                    {
-                        if (nfe.Modelo == "55")
-                        {
-                            var retorno = generica.ns_DownloadEventoInutilizacaoNFE(nfe);
-                            if (retorno.status == 200)
-                            {
-                                if (GenericaDesktop.ShowConfirmacao("Nota Inutilizada, deseja salvar o arquivo xml?")) 
-                                {
-                                    generica.gravarXMLNaPasta(retorno.retInut.xml,
-                                    nfe.Chave, @"Fiscal\XML\NFe\" + retorno.retInut.dhRecbto.Year + "-" + retorno.retInut.dhRecbto.Month.ToString().PadLeft(2, '0') + @"\Inutilizadas\", nfe.NNf + @"-INU.xml");
-
-                                    //EnviaXML PAINEL LUNAR 
-                                    string caminhoX = @"Fiscal\XML\NFe\" + retorno.retInut.dhRecbto.Year + "-" + retorno.retInut.dhRecbto.Month.ToString().PadLeft(2, '0') + @"\Inutilizadas\" + nfe.NNf + @"-INU.xml";
-                                    LunarApiNotas lunarApiNotas = new LunarApiNotas();
-                                    byte[] arquivo;
-                                    using (var stream = new FileStream(caminhoX, FileMode.Open, FileAccess.Read))
-                                    {
-                                        using (var reader = new BinaryReader(stream))
-                                        {
-                                            arquivo = reader.ReadBytes((int)stream.Length);
-                                            var retor = lunarApiNotas.EnvioNotaParaNuvem(nfe.CnpjEmitente, nfe.Chave, "NFE", "INUTILIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
-                                        }
-                                    }
-                                    GenericaDesktop.ShowInfo("XML Salvo em C:\\Lunar\\" + caminhoX);
-                                }
-                            }    
                         }
-                    }
-                    else
-                        GenericaDesktop.ShowAlerta("Status Atual: " + nfe.Status);
+                        else if (nfe.Status.Contains("Inutilizacao"))
+                        {
+                            if (nfe.Modelo == "55")
+                            {
+                                var retorno = generica.ns_DownloadEventoInutilizacaoNFE(nfe);
+                                if (retorno.status == 200)
+                                {
+                                    if (GenericaDesktop.ShowConfirmacao("Nota Inutilizada, deseja salvar o arquivo xml?"))
+                                    {
+                                        generica.gravarXMLNaPasta(retorno.retInut.xml,
+                                        nfe.Chave, @"Fiscal\XML\NFe\" + retorno.retInut.dhRecbto.Year + "-" + retorno.retInut.dhRecbto.Month.ToString().PadLeft(2, '0') + @"\Inutilizadas\", nfe.NNf + @"-INU.xml");
+
+                                        //EnviaXML PAINEL LUNAR 
+                                        string caminhoX = @"Fiscal\XML\NFe\" + retorno.retInut.dhRecbto.Year + "-" + retorno.retInut.dhRecbto.Month.ToString().PadLeft(2, '0') + @"\Inutilizadas\" + nfe.NNf + @"-INU.xml";
+                                        LunarApiNotas lunarApiNotas = new LunarApiNotas();
+                                        byte[] arquivo;
+                                        using (var stream = new FileStream(caminhoX, FileMode.Open, FileAccess.Read))
+                                        {
+                                            using (var reader = new BinaryReader(stream))
+                                            {
+                                                arquivo = reader.ReadBytes((int)stream.Length);
+                                                var retor = lunarApiNotas.EnvioNotaParaNuvem(nfe.CnpjEmitente, nfe.Chave, "NFE", "INUTILIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
+                                            }
+                                        }
+                                        GenericaDesktop.ShowInfo("XML Salvo em C:\\Lunar\\" + caminhoX);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                            GenericaDesktop.ShowAlerta("Status Atual: " + nfe.Status);
                 }
                 catch (Exception erro)
                 {
@@ -1985,7 +2068,21 @@ namespace Lunar.Telas.Fiscal
             }
         }
 
+        private void armazenaXmlAutorizadoNoBanco()
+        {
+            NFeDownloadProc55 nota55 = new NFeDownloadProc55();
+            nota55 = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, this.nfe.Chave);
 
+            if (nota55.motivo.Contains("SUCESSO") || nota55.motivo.Contains("sucesso") || nota55.motivo.Contains("Sucesso"))
+            {
+                Genericos genericosNF = new Genericos();
+                var notaLida55 = Genericos.LoadFromXMLString<TNfeProc>(nota55.xml);
+                string es = "S";
+                if (radioEntrada.Checked == true)
+                    es = "E";
+                genericosNF.gravarXMLNoBanco(notaLida55, 0, es, this.nfe.Id);
+            }
+        }
         private void btnCartaCorrecao_Click(object sender, EventArgs e)
         {
             NfeCce nfeCce = new NfeCce();

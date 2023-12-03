@@ -368,65 +368,104 @@ namespace Lunar.Utils.OrganizacaoNF
                 {
                     TNFeInfNFeDetProdVeicProd[] veic = new TNFeInfNFeDetProdVeicProd[1];
                     veic[0] = new TNFeInfNFeDetProdVeicProd();
-                    veic[0].anoFab = produto.Produto.AnoVeiculo.Trim();
-                    veic[0].anoMod = produto.Produto.ModeloVeiculo;
-                    veic[0].cCor = produto.Produto.CorMontadora.Substring(0, 2);
-                    veic[0].cCorDENATRAN = produto.Produto.CorDenatran.Substring(0, 2);
-                    veic[0].chassi = produto.Produto.Chassi;
-                    veic[0].cilin = produto.Produto.CilindradaCc;
-                    veic[0].cMod = produto.Produto.MarcaModelo;
-                    veic[0].CMT = produto.Produto.CapacidadeTracao;
-                    if (produto.Produto.CondicaoProduto.Substring(0, 1).Equals("1"))
-                        veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item1;
-                    else if (produto.Produto.CondicaoProduto.Substring(0, 1).Equals("2"))
-                        veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item2;
-                    else
-                        veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item3;
-                    veic[0].dist = produto.Produto.DistanciaEixo;
-                    veic[0].espVeic = produto.Produto.EspecieVeiculo.Substring(1, 1);
-                    veic[0].lota = produto.Produto.LotacaoVeiculo;
-                    veic[0].nMotor = produto.Produto.NumeroMotor;
+                    if (!String.IsNullOrEmpty(produto.Produto.AnoVeiculo))
+                        veic[0].anoFab = produto.Produto.AnoVeiculo.Trim();
+                    if (!String.IsNullOrEmpty(produto.Produto.ModeloVeiculo))
+                        veic[0].anoMod = produto.Produto.ModeloVeiculo;
+                    if (!String.IsNullOrEmpty(produto.Produto.CorMontadora))
+                        veic[0].cCor = produto.Produto.CorMontadora.Substring(0, 2);
+                    if (!String.IsNullOrEmpty(produto.Produto.CorDenatran))
+                        veic[0].cCorDENATRAN = produto.Produto.CorDenatran.Substring(0, 2);
+                    if(!String.IsNullOrEmpty(produto.Produto.Chassi))
+                        veic[0].chassi = produto.Produto.Chassi;
+                    if (!String.IsNullOrEmpty(produto.Produto.CilindradaCc))
+                        veic[0].cilin = produto.Produto.CilindradaCc;
+                    if (!String.IsNullOrEmpty(produto.Produto.MarcaModelo))
+                        veic[0].cMod = produto.Produto.MarcaModelo;
+                    if (!String.IsNullOrEmpty(produto.Produto.CapacidadeTracao))
+                        veic[0].CMT = produto.Produto.CapacidadeTracao;
+                    if (!String.IsNullOrEmpty(produto.Produto.CondicaoProduto)) 
+                    { 
+                        if (produto.Produto.CondicaoProduto.Substring(0, 1).Equals("1"))
+                            veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item1;
+                        else if (produto.Produto.CondicaoProduto.Substring(0, 1).Equals("2"))
+                            veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item2;
+                        else
+                            veic[0].condVeic = TNFeInfNFeDetProdVeicProdCondVeic.Item3;
+                    }
+                    if (!String.IsNullOrEmpty(produto.Produto.DistanciaEixo))
+                        veic[0].dist = produto.Produto.DistanciaEixo;
+                    if(!String.IsNullOrEmpty(produto.Produto.EspecieVeiculo))
+                        veic[0].espVeic = produto.Produto.EspecieVeiculo.Substring(1, 1);
+                    if (!String.IsNullOrEmpty(produto.Produto.LotacaoVeiculo))
+                        veic[0].lota = produto.Produto.LotacaoVeiculo;
+                    if (!String.IsNullOrEmpty(produto.Produto.NumeroMotor))
+                        veic[0].nMotor = produto.Produto.NumeroMotor;
                     veic[0].nSerie = "0";
-                    veic[0].pesoB = formatPeso(decimal.Parse(produto.Produto.PesoBrutoVeiculo));
-                    veic[0].pesoL = formatPeso(decimal.Parse(produto.Produto.PesoLiquidoVeiculo));
-                    veic[0].pot = produto.Produto.PotenciaCv;
-                    veic[0].tpComb = produto.Produto.Combustivel.Substring(0, 2);
+                    if (!String.IsNullOrEmpty(produto.Produto.PesoBrutoVeiculo))
+                        veic[0].pesoB = formatPeso(decimal.Parse(produto.Produto.PesoBrutoVeiculo));
+                    if (!String.IsNullOrEmpty(produto.Produto.PesoLiquidoVeiculo))
+                        veic[0].pesoL = formatPeso(decimal.Parse(produto.Produto.PesoLiquidoVeiculo));
+                    if (!String.IsNullOrEmpty(produto.Produto.PotenciaCv))
+                        veic[0].pot = produto.Produto.PotenciaCv;
+                    if(!String.IsNullOrEmpty(produto.Produto.Combustivel))
+                        veic[0].tpComb = produto.Produto.Combustivel.Substring(0, 2);
                     //venda concessionária
                     veic[0].tpOp = TNFeInfNFeDetProdVeicProdTpOp.Item0;
-                    veic[0].tpPint = produto.Produto.TipoPintura.Substring(0, 1);
-                    if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("0"))
-                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item0;
-                    else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("1"))
-                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item1;
-                    else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("2"))
-                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item2;
-                    else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("3"))
-                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item3;
-                    else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("4"))
-                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item4;
-                    else
-                        veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item9;
-                    veic[0].tpVeic = produto.Produto.TipoVeiculo.Substring(0, 2);
-                    if (produto.Produto.CondicaoVeiculo.Substring(0, 1).Equals("N"))
-                        veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.N;
-                    else if (produto.Produto.CondicaoVeiculo.Substring(0, 1).Equals("R"))
-                        veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.R;
-                    else
-                        veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.N;
-                    veic[0].xCor = produto.Produto.CorMontadora;
+                    if (!String.IsNullOrEmpty(produto.Produto.TipoPintura))
+                        veic[0].tpPint = produto.Produto.TipoPintura.Substring(0, 1);
+                    if (!String.IsNullOrEmpty(produto.Produto.RestricaoVeiculo))
+                    {
+                        if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("0"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item0;
+                        else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("1"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item1;
+                        else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("2"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item2;
+                        else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("3"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item3;
+                        else if (produto.Produto.RestricaoVeiculo.Substring(0, 1).Equals("4"))
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item4;
+                        else
+                            veic[0].tpRest = TNFeInfNFeDetProdVeicProdTpRest.Item9;
+                    }
+                    if (!String.IsNullOrEmpty(produto.Produto.TipoVeiculo))
+                        veic[0].tpVeic = produto.Produto.TipoVeiculo.Substring(0, 2);
+                    if (!String.IsNullOrEmpty(produto.Produto.CondicaoVeiculo))
+                    {
+                        if (produto.Produto.CondicaoVeiculo.Substring(0, 1).Equals("N"))
+                            veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.N;
+                        else if (produto.Produto.CondicaoVeiculo.Substring(0, 1).Equals("R"))
+                            veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.R;
+                        else
+                            veic[0].VIN = TNFeInfNFeDetProdVeicProdVIN.N;
+                    }
+                    if (!String.IsNullOrEmpty(produto.Produto.CorMontadora))
+                        veic[0].xCor = produto.Produto.CorMontadora;
                     det[y].prod.Items = veic;
                     //det[y].infAdProd = veic[0].ToString();
 
+                    string pesoliQ = "0";
+                    string pesoBru = "0";
+                    if (!String.IsNullOrEmpty(produto.Produto.PesoLiquidoVeiculo))
+                        pesoliQ = produto.Produto.PesoLiquidoVeiculo;
+                    if (!String.IsNullOrEmpty(produto.Produto.PesoBrutoVeiculo))
+                        pesoBru = produto.Produto.PesoBrutoVeiculo;
                     //Funcao pra sair por baixo do produto
-                    int caract = veic[0].xCor.Length;
+                    int caract = 0;
+                    if (veic[0].xCor != null)
+                        caract = veic[0].xCor.Length;
+                    string codCorMontadora = "";
+                    if (!String.IsNullOrEmpty(produto.Produto.CorMontadora))
+                        codCorMontadora = produto.Produto.CorMontadora.Substring(0, 2);
                     dadosVeiculo = "TIPO DA OPERAÇÃO: " + "0 - OUTROS" + " " +
                     "CHASSI: " + produto.Produto.Chassi + " " +
-                    "CÓD. COR: " + produto.Produto.CorMontadora.Substring(0, 2) + " " +
+                    "CÓD. COR: " + codCorMontadora + " " +
                     "NOME COR: " + produto.Produto.CorMontadora + " " +
                     "POT. MOTOR: " + produto.Produto.PotenciaCv + " " +
                     "CC: " + produto.Produto.CilindradaCc + " " +
-                    "PESO LIQ: " + formatPeso(decimal.Parse(produto.Produto.PesoLiquidoVeiculo)) + " " +
-                    "PESO BRUTO: " + formatPeso(decimal.Parse(produto.Produto.PesoBrutoVeiculo)) + " " +
+                    "PESO LIQ: " + formatPeso(decimal.Parse(pesoliQ)) + " " +
+                    "PESO BRUTO: " + formatPeso(decimal.Parse(pesoBru)) + " " +
                     //"Nº DE SÉRIE: 0 \n " +
                     "COMBUSTÍVEL: " + produto.Produto.Combustivel + " " +
                     "Nº MOTOR: " + produto.Produto.NumeroMotor + " " +
@@ -443,6 +482,9 @@ namespace Lunar.Utils.OrganizacaoNF
                     "CÓD COR DENATRAN: " + produto.Produto.CorDenatran + " " +
                     "CAP. MÁX. LOTAÇÃO: " + produto.Produto.LotacaoVeiculo + " " +
                     "REST.: " + produto.Produto.RestricaoVeiculo;
+
+                    if (dadosVeiculo.Length > 500)
+                        dadosVeiculo = GenericaDesktop.RemoveAcentos(GenericaDesktop.RemoveCaracteres(dadosVeiculo.Substring(0, 500)));
                 }
                
                 //Fim cadastro veiculo ou Bicicleta Elétrica

@@ -32,6 +32,7 @@ namespace Lunar.Telas.Vendas
 {
     public partial class FrmConsultaVendas : Form
     {
+        CaixaController caixaController = new CaixaController();
         EmitirSincronoRetNFCe retornoNFCe = new EmitirSincronoRetNFCe();
         string codStatusRet = "";
         String xmlStrEnvio = "";
@@ -260,6 +261,29 @@ namespace Lunar.Telas.Vendas
                     if (venda.Nfe == null)
                     {
                         venda.Cancelado = true;
+
+                        //Cancela Caixa
+                        IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorOrigem("VENDA", venda.Id.ToString());
+                        if(listaCaixa.Count > 0)
+                        {
+                            foreach(Caixa caixa in listaCaixa)
+                            {
+                                caixa.FlagExcluido = true;
+                                Controller.getInstance().excluir(caixa);
+                            }
+                        }
+                        //Cancela Conta Receber
+                        ContaReceberController contaReceberController = new ContaReceberController();
+                        IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorVenda(venda.Id);
+                        if (listaReceber.Count > 0)
+                        {
+                            foreach (ContaReceber contaReceber in listaReceber)
+                            {
+                                contaReceber.FlagExcluido = true;
+                                Controller.getInstance().excluir(contaReceber);
+                            }
+                        }
+
                         IList<VendaItens> listaProdutosVenda = vendaItensController.selecionarProdutosPorVenda(venda.Id);
                         foreach (VendaItens vendaItem in listaProdutosVenda)
                         {

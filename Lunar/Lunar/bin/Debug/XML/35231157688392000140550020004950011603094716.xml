@@ -1,0 +1,380 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe versao="4.00" Id="NFe35231157688392000140550020004950011603094716">
+      <ide>
+        <cUF>35</cUF>
+        <cNF>60309471</cNF>
+        <natOp>VENDA MERC. ADQ.TERCEIRO</natOp>
+        <mod>55</mod>
+        <serie>2</serie>
+        <nNF>495001</nNF>
+        <dhEmi>2023-11-17T00:00:00-03:00</dhEmi>
+        <dhSaiEnt>2023-11-17T00:00:00-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>3502804</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>6</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>2.0.0</verProc>
+      </ide>
+      <emit>
+        <CNPJ>57688392000140</CNPJ>
+        <xNome>PEREGO INDUSTRIA E COMERCIO LENTES LTDA</xNome>
+        <xFant>PEREGO INDUSTRIA E COMERCIO LENTES LTDA</xFant>
+        <enderEmit>
+          <xLgr>RUA 23 DE MARCO</xLgr>
+          <nro>421</nro>
+          <xBairro>SANTANA</xBairro>
+          <cMun>3502804</cMun>
+          <xMun>ARACATUBA</xMun>
+          <UF>SP</UF>
+          <CEP>16050510</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>1821025388</fone>
+        </enderEmit>
+        <IE>177064040111</IE>
+        <IM>10303</IM>
+        <CNAE>3250707</CNAE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>42988444000127</CNPJ>
+        <xNome>RONEI J.S PRODUTOS OPTICOS LTDA 8271</xNome>
+        <enderDest>
+          <xLgr>AV. GOVERNANDOR VALADARES</xLgr>
+          <nro>678</nro>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610970</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3836763246</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>7044597520016</IE>
+        <email>roneijsprodutosopticosltda@hotmail.com</email>
+      </dest>
+      <autXML>
+        <CPF>08563709836</CPF>
+      </autXML>
+      <det nItem="1">
+        <prod>
+          <cProd>34003300D</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>MF SOLAMAX CR39 3,0/300 O/D</xProd>
+          <NCM>90015000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>20.0000</qCom>
+          <vUnCom>26.0000000000</vUnCom>
+          <vProd>520.00</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>20.0000</qTrib>
+          <vUnTrib>26.0000000000</vUnTrib>
+          <vFrete>31.02</vFrete>
+          <indTot>1</indTot>
+          <nItemPed>0</nItemPed>
+        </prod>
+        <imposto>
+          <vTotTrib>110.97</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>551.02</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>66.12</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>53</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>484.90</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>8.00</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>484.90</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>36.85</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="2">
+        <prod>
+          <cProd>34003300E</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>MF SOLAMAX CR39 3,0/300 O/E</xProd>
+          <NCM>90015000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>20.0000</qCom>
+          <vUnCom>26.0000000000</vUnCom>
+          <vProd>520.00</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>20.0000</qTrib>
+          <vUnTrib>26.0000000000</vUnTrib>
+          <vFrete>31.02</vFrete>
+          <indTot>1</indTot>
+          <nItemPed>0</nItemPed>
+        </prod>
+        <imposto>
+          <vTotTrib>110.97</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>551.02</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>66.12</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>53</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>484.90</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>8.00</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>484.90</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>36.85</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="3">
+        <prod>
+          <cProd>34005300D</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>MF SOLAMAX CR39 5,0/300 O/D</xProd>
+          <NCM>90015000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>25.0000</qCom>
+          <vUnCom>26.0000000000</vUnCom>
+          <vProd>650.00</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>25.0000</qTrib>
+          <vUnTrib>26.0000000000</vUnTrib>
+          <vFrete>38.78</vFrete>
+          <indTot>1</indTot>
+          <nItemPed>0</nItemPed>
+        </prod>
+        <imposto>
+          <vTotTrib>138.72</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>688.78</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>82.65</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>53</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>606.13</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>10.00</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>606.13</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>46.07</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="4">
+        <prod>
+          <cProd>34005300E</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>MF SOLAMAX CR39 5,0/300 O/E</xProd>
+          <NCM>90015000</NCM>
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>25.0000</qCom>
+          <vUnCom>26.0000000000</vUnCom>
+          <vProd>650.00</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>25.0000</qTrib>
+          <vUnTrib>26.0000000000</vUnTrib>
+          <vFrete>38.78</vFrete>
+          <indTot>1</indTot>
+          <nItemPed>0</nItemPed>
+        </prod>
+        <imposto>
+          <vTotTrib>138.72</vTotTrib>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>688.78</vBC>
+              <pICMS>12.0000</pICMS>
+              <vICMS>82.65</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>53</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>606.13</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>10.00</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>606.13</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>46.07</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>2479.60</vBC>
+          <vICMS>297.54</vICMS>
+          <vICMSDeson>0.00</vICMSDeson>
+          <vFCP>0.00</vFCP>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vFCPST>0.00</vFCPST>
+          <vFCPSTRet>0.00</vFCPSTRet>
+          <vProd>2340.00</vProd>
+          <vFrete>139.60</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>0.00</vIPI>
+          <vIPIDevol>0.00</vIPIDevol>
+          <vPIS>36.00</vPIS>
+          <vCOFINS>165.84</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>2479.60</vNF>
+          <vTotTrib>499.38</vTotTrib>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>48740351009464</CNPJ>
+          <xNome>BRASPRESS TRANSPORTES URGENTES LTDA.</xNome>
+          <IE>177266549110</IE>
+          <xEnder>RUA JOSE FERREIRA BATISTA, 2589</xEnder>
+          <xMun>ARACATUBA</xMun>
+          <UF>SP</UF>
+        </transporta>
+        <vol>
+          <qVol>2</qVol>
+          <esp>CAIXA(S)</esp>
+          <pesoL>7.400</pesoL>
+          <pesoB>7.400</pesoB>
+        </vol>
+      </transp>
+      <pag>
+        <detPag>
+          <tPag>15</tPag>
+          <vPag>2479.60</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>Lei transpar.ncia fiscal decreto federal 8264/14 valor incidente: R$ 499,38 ;6.12 2340.00;CLIENTE: 8271 OTICA VEMOS;PEDIDO: 338001.001 - 407088 -PAGAMENTO A PRAZO</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>11754229000138</CNPJ>
+        <xContato>Richardson Suart</xContato>
+        <email>desenvolvimento@grupoacert.com.br</email>
+        <fone>1833037777</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe35231157688392000140550020004950011603094716">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>zM9TPhPIQvnkZq5bHXIH4MbbzH0=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>kMi7h0NNHFLOF7QqzD2JOPtgBFK2DdePlwrsmUNdDfMv+uHwMCpyftfp+fKj2YLzY4n4JZrW3iW77dTuJObpK2rlvOrlPXE16Fgd6CuBSXIUF6bUhronEeNV+Rdo7tV4Ot+TDQBLeKQUMCVvRhoyZhBhCOjWtPIJfq3bwRbhN5WbXeVkUP4HBcJujqApnBDHGUmKm66FK417t0UVfjW+cNYLJr7KiLYEnCpds383d1e7HBed8jGVRH7e7c8plqpuidX8fQx0WpLBoSq1Mnwuf1ObfrSbGHs+b47gSGoEXEnFueuB2mfJEotNcGv52YKsvA3UhywN770463vMGPYq6A==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00">
+    <infProt Id="Id135231995211585">
+      <tpAmb>1</tpAmb>
+      <verAplic>SP_NFE_PL009_V4</verAplic>
+      <chNFe>35231157688392000140550020004950011603094716</chNFe>
+      <dhRecbto>2023-11-17T17:09:33-03:00</dhRecbto>
+      <nProt>135231995211585</nProt>
+      <digVal>zM9TPhPIQvnkZq5bHXIH4MbbzH0=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

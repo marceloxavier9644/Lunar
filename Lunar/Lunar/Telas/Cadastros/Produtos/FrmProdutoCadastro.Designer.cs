@@ -255,6 +255,8 @@
             this.tabControlAdv2 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.metroPanel6 = new MetroFramework.Controls.MetroPanel();
+            this.autoLabel98 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtMarkup = new Lunar.RJ_UI.Classes.RJTextBox();
             this.comboTipoProduto = new Syncfusion.WinForms.ListView.SfComboBox();
             this.chkVeiculo = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.txtID = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -3423,6 +3425,8 @@
             // 
             // metroPanel6
             // 
+            this.metroPanel6.Controls.Add(this.autoLabel98);
+            this.metroPanel6.Controls.Add(this.txtMarkup);
             this.metroPanel6.Controls.Add(this.comboTipoProduto);
             this.metroPanel6.Controls.Add(this.chkVeiculo);
             this.metroPanel6.Controls.Add(this.autoLabel8);
@@ -3498,6 +3502,47 @@
             this.metroPanel6.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel6.VerticalScrollbarSize = 10;
             // 
+            // autoLabel98
+            // 
+            this.autoLabel98.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel98.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel98.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel98.Location = new System.Drawing.Point(715, 267);
+            this.autoLabel98.Name = "autoLabel98";
+            this.autoLabel98.Size = new System.Drawing.Size(67, 16);
+            this.autoLabel98.TabIndex = 277;
+            this.autoLabel98.Text = "% Markup";
+            // 
+            // txtMarkup
+            // 
+            this.txtMarkup.BackColor = System.Drawing.Color.White;
+            this.txtMarkup.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtMarkup.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtMarkup.BorderRadius = 8;
+            this.txtMarkup.BorderSize = 2;
+            this.txtMarkup.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtMarkup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMarkup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtMarkup.Location = new System.Drawing.Point(710, 279);
+            this.txtMarkup.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMarkup.Multiline = false;
+            this.txtMarkup.Name = "txtMarkup";
+            this.txtMarkup.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtMarkup.PasswordChar = false;
+            this.txtMarkup.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtMarkup.PlaceholderText = "";
+            this.txtMarkup.ReadOnly = false;
+            this.txtMarkup.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtMarkup.Size = new System.Drawing.Size(88, 37);
+            this.txtMarkup.TabIndex = 31;
+            this.txtMarkup.Tag = "";
+            this.txtMarkup.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtMarkup.Texts = "";
+            this.txtMarkup.UnderlinedStyle = false;
+            this.txtMarkup._TextChanged += new System.EventHandler(this.txtMarkup__TextChanged);
+            this.txtMarkup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMarkup_KeyPress);
+            this.txtMarkup.Leave += new System.EventHandler(this.txtMarkup_Leave);
+            // 
             // comboTipoProduto
             // 
             this.comboTipoProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -3523,7 +3568,7 @@
             this.comboTipoProduto.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboTipoProduto.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboTipoProduto.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
-            this.comboTipoProduto.TabIndex = 275;
+            this.comboTipoProduto.TabIndex = 27;
             this.comboTipoProduto.ThemeName = "Office2016White";
             this.comboTipoProduto.ToolTipOption.ShadowVisible = false;
             this.comboTipoProduto.Watermark = "Selecione";
@@ -3540,7 +3585,7 @@
             this.chkVeiculo.Name = "chkVeiculo";
             this.chkVeiculo.Size = new System.Drawing.Size(249, 27);
             this.chkVeiculo.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Office2016White;
-            this.chkVeiculo.TabIndex = 274;
+            this.chkVeiculo.TabIndex = 36;
             this.chkVeiculo.Text = " Veículo/Bicicleta Elétrica";
             this.chkVeiculo.ThemeName = "Office2016White";
             this.chkVeiculo.CheckStateChanged += new System.EventHandler(this.chkVeiculo_CheckStateChanged);
@@ -3596,7 +3641,7 @@
             this.chkProdutoPesavel.Name = "chkProdutoPesavel";
             this.chkProdutoPesavel.Size = new System.Drawing.Size(197, 27);
             this.chkProdutoPesavel.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Office2016White;
-            this.chkProdutoPesavel.TabIndex = 36;
+            this.chkProdutoPesavel.TabIndex = 38;
             this.chkProdutoPesavel.Text = " Produto Pesável";
             this.chkProdutoPesavel.ThemeName = "Office2016White";
             // 
@@ -3612,7 +3657,7 @@
             this.chkProdutoComGrade.Name = "chkProdutoComGrade";
             this.chkProdutoComGrade.Size = new System.Drawing.Size(230, 27);
             this.chkProdutoComGrade.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Office2016White;
-            this.chkProdutoComGrade.TabIndex = 35;
+            this.chkProdutoComGrade.TabIndex = 37;
             this.chkProdutoComGrade.Text = " Produto com Grade";
             this.chkProdutoComGrade.ThemeName = "Office2016White";
             // 
@@ -3630,7 +3675,7 @@
             this.chkControlaEstoque.Name = "chkControlaEstoque";
             this.chkControlaEstoque.Size = new System.Drawing.Size(215, 27);
             this.chkControlaEstoque.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Office2016White;
-            this.chkControlaEstoque.TabIndex = 33;
+            this.chkControlaEstoque.TabIndex = 34;
             this.chkControlaEstoque.Text = " Controla Estoque";
             this.chkControlaEstoque.ThemeName = "Office2016White";
             // 
@@ -3646,7 +3691,7 @@
             this.chkVenderLojaVirtual.Name = "chkVenderLojaVirtual";
             this.chkVenderLojaVirtual.Size = new System.Drawing.Size(249, 27);
             this.chkVenderLojaVirtual.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Office2016White;
-            this.chkVenderLojaVirtual.TabIndex = 34;
+            this.chkVenderLojaVirtual.TabIndex = 35;
             this.chkVenderLojaVirtual.Text = " Vender na Loja Virtual";
             this.chkVenderLojaVirtual.ThemeName = "Office2016White";
             // 
@@ -3670,7 +3715,7 @@
             this.txtObs.PlaceholderText = "";
             this.txtObs.ReadOnly = false;
             this.txtObs.Size = new System.Drawing.Size(946, 37);
-            this.txtObs.TabIndex = 32;
+            this.txtObs.TabIndex = 33;
             this.txtObs.Tag = "";
             this.txtObs.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtObs.Texts = "";
@@ -3732,7 +3777,7 @@
             this.autoLabel55.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel55.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel55.Location = new System.Drawing.Point(463, 267);
+            this.autoLabel55.Location = new System.Drawing.Point(445, 267);
             this.autoLabel55.Name = "autoLabel55";
             this.autoLabel55.Size = new System.Drawing.Size(57, 16);
             this.autoLabel55.TabIndex = 261;
@@ -3748,7 +3793,7 @@
             this.txtEstoque.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEstoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEstoque.Location = new System.Drawing.Point(451, 279);
+            this.txtEstoque.Location = new System.Drawing.Point(433, 279);
             this.txtEstoque.Margin = new System.Windows.Forms.Padding(4);
             this.txtEstoque.Multiline = false;
             this.txtEstoque.Name = "txtEstoque";
@@ -3757,7 +3802,7 @@
             this.txtEstoque.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtEstoque.PlaceholderText = "";
             this.txtEstoque.ReadOnly = false;
-            this.txtEstoque.Size = new System.Drawing.Size(134, 37);
+            this.txtEstoque.Size = new System.Drawing.Size(117, 37);
             this.txtEstoque.TabIndex = 29;
             this.txtEstoque.Tag = "";
             this.txtEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -3794,7 +3839,7 @@
             this.txtEstoqueAuxiliar.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtEstoqueAuxiliar.PlaceholderText = "";
             this.txtEstoqueAuxiliar.ReadOnly = false;
-            this.txtEstoqueAuxiliar.Size = new System.Drawing.Size(142, 37);
+            this.txtEstoqueAuxiliar.Size = new System.Drawing.Size(124, 37);
             this.txtEstoqueAuxiliar.TabIndex = 28;
             this.txtEstoqueAuxiliar.Tag = "";
             this.txtEstoqueAuxiliar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -3806,7 +3851,7 @@
             this.autoLabel44.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel44.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel44.Location = new System.Drawing.Point(789, 267);
+            this.autoLabel44.Location = new System.Drawing.Point(815, 267);
             this.autoLabel44.Name = "autoLabel44";
             this.autoLabel44.Size = new System.Drawing.Size(101, 16);
             this.autoLabel44.TabIndex = 257;
@@ -3822,7 +3867,7 @@
             this.txtValorVenda.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtValorVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorVenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValorVenda.Location = new System.Drawing.Point(780, 279);
+            this.txtValorVenda.Location = new System.Drawing.Point(806, 279);
             this.txtValorVenda.Margin = new System.Windows.Forms.Padding(4);
             this.txtValorVenda.Multiline = false;
             this.txtValorVenda.Name = "txtValorVenda";
@@ -3832,12 +3877,13 @@
             this.txtValorVenda.PlaceholderText = "";
             this.txtValorVenda.ReadOnly = false;
             this.txtValorVenda.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtValorVenda.Size = new System.Drawing.Size(178, 37);
-            this.txtValorVenda.TabIndex = 31;
+            this.txtValorVenda.Size = new System.Drawing.Size(152, 37);
+            this.txtValorVenda.TabIndex = 32;
             this.txtValorVenda.Tag = "";
             this.txtValorVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtValorVenda.Texts = "";
             this.txtValorVenda.UnderlinedStyle = false;
+            this.txtValorVenda._TextChanged += new System.EventHandler(this.txtValorVenda__TextChanged);
             this.txtValorVenda.Leave += new System.EventHandler(this.txtValorVenda_Leave);
             // 
             // autoLabel43
@@ -3845,7 +3891,7 @@
             this.autoLabel43.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel43.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel43.Location = new System.Drawing.Point(602, 267);
+            this.autoLabel43.Location = new System.Drawing.Point(567, 267);
             this.autoLabel43.Name = "autoLabel43";
             this.autoLabel43.Size = new System.Drawing.Size(95, 16);
             this.autoLabel43.TabIndex = 255;
@@ -3861,7 +3907,7 @@
             this.txtValorCusto.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtValorCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorCusto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValorCusto.Location = new System.Drawing.Point(593, 279);
+            this.txtValorCusto.Location = new System.Drawing.Point(558, 279);
             this.txtValorCusto.Margin = new System.Windows.Forms.Padding(4);
             this.txtValorCusto.Multiline = false;
             this.txtValorCusto.Name = "txtValorCusto";
@@ -3871,7 +3917,7 @@
             this.txtValorCusto.PlaceholderText = "";
             this.txtValorCusto.ReadOnly = false;
             this.txtValorCusto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtValorCusto.Size = new System.Drawing.Size(179, 37);
+            this.txtValorCusto.Size = new System.Drawing.Size(144, 37);
             this.txtValorCusto.TabIndex = 30;
             this.txtValorCusto.Tag = "";
             this.txtValorCusto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -7918,5 +7964,7 @@
         private RJ_UI.Classes.RJTextBox rjTextBox25;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkVeiculo;
         private Syncfusion.WinForms.ListView.SfComboBox comboTipoProduto;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel98;
+        private RJ_UI.Classes.RJTextBox txtMarkup;
     }
 }
