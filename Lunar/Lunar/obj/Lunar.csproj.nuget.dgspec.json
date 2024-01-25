@@ -179,10 +179,6 @@
               "target": "Package",
               "version": "[2.13.0, )"
             },
-            "PdfiumViewer.Native.x86.v8-xfa": {
-              "target": "Package",
-              "version": "[2018.4.8.256, )"
-            },
             "SharpCompress": {
               "target": "Package",
               "version": "[0.34.2, )"

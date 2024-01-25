@@ -857,12 +857,6 @@
           }
         }
       },
-      "PdfiumViewer.Native.x86.v8-xfa/2018.4.8.256": {
-        "type": "package",
-        "build": {
-          "Build/PdfiumViewer.Native.x86.v8-xfa.props": {}
-        }
-      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "compile": {
@@ -2404,12 +2398,6 @@
           }
         }
       },
-      "PdfiumViewer.Native.x86.v8-xfa/2018.4.8.256": {
-        "type": "package",
-        "build": {
-          "Build/PdfiumViewer.Native.x86.v8-xfa.props": {}
-        }
-      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "compile": {
@@ -3898,12 +3886,6 @@
           "lib/net20/nl/PdfiumViewer.resources.dll": {
             "locale": "nl"
           }
-        }
-      },
-      "PdfiumViewer.Native.x86.v8-xfa/2018.4.8.256": {
-        "type": "package",
-        "build": {
-          "Build/PdfiumViewer.Native.x86.v8-xfa.props": {}
         }
       },
       "Remotion.Linq/2.2.0": {
@@ -5396,12 +5378,6 @@
           }
         }
       },
-      "PdfiumViewer.Native.x86.v8-xfa/2018.4.8.256": {
-        "type": "package",
-        "build": {
-          "Build/PdfiumViewer.Native.x86.v8-xfa.props": {}
-        }
-      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "compile": {
@@ -6890,12 +6866,6 @@
           "lib/net20/nl/PdfiumViewer.resources.dll": {
             "locale": "nl"
           }
-        }
-      },
-      "PdfiumViewer.Native.x86.v8-xfa/2018.4.8.256": {
-        "type": "package",
-        "build": {
-          "Build/PdfiumViewer.Native.x86.v8-xfa.props": {}
         }
       },
       "Remotion.Linq/2.2.0": {
@@ -8585,19 +8555,6 @@
         "pdfiumviewer.nuspec"
       ]
     },
-    "PdfiumViewer.Native.x86.v8-xfa/2018.4.8.256": {
-      "sha512": "seXuvDlj2AcOmTrZpvVdl4SRHfYJczyld3vfgqVHJTGv4s813n/wSyoVmoM0b2IBcBTqjJM+9Gcs4WsJbmUu0w==",
-      "type": "package",
-      "path": "pdfiumviewer.native.x86.v8-xfa/2018.4.8.256",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Build/PdfiumViewer.Native.x86.v8-xfa.props",
-        "Build/x86/pdfium.dll",
-        "pdfiumviewer.native.x86.v8-xfa.2018.4.8.256.nupkg.sha512",
-        "pdfiumviewer.native.x86.v8-xfa.nuspec"
-      ]
-    },
     "Remotion.Linq/2.2.0": {
       "sha512": "fK/76UmpC0FXBlGDFVPLJHQlDLYnGC+XY3eoDgCgbtrhi0vzbXDQ3n/IYHhqSKqXQfGw/u04A1drWs7rFVkRjw==",
       "type": "package",
@@ -10115,7 +10072,6 @@
       "NHibernate >= 5.3.10",
       "OpenAC.Net.Balanca >= 1.5.0.1",
       "PdfiumViewer >= 2.13.0",
-      "PdfiumViewer.Native.x86.v8-xfa >= 2018.4.8.256",
       "SharpCompress >= 0.34.2",
       "Syncfusion.Tools.Windows >= 19.4.0.38",
       "System.Net.Http.Json >= 6.0.0",
@@ -10243,10 +10199,6 @@
           "PdfiumViewer": {
             "target": "Package",
             "version": "[2.13.0, )"
-          },
-          "PdfiumViewer.Native.x86.v8-xfa": {
-            "target": "Package",
-            "version": "[2018.4.8.256, )"
           },
           "SharpCompress": {
             "target": "Package",

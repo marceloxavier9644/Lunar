@@ -485,6 +485,7 @@ namespace LunarAtualizador
             DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 09, 00, 00);
             DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 00);
             DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 10, 05, 00);
+
             DateTime horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, 12, 00, 00);
             if (ativarMensagemLembreteExame.Equals("True"))
             {

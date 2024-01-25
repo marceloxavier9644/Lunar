@@ -478,7 +478,6 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.csproj.CoreCompileInputs.ca
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\runtimes\win-arm64\native\WebView2Loader.dll
-C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\x86\pdfium.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Lunar.exe.config
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Lunar.exe
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\Lunar.pdb
