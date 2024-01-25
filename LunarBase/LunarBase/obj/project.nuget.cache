@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NaGFsVeOFyZ0nx+VZlwbVxdoGsPcGNmYU2sqfwzgyas6AYirmoGfBy3xX52m3qrqfOb6zmfgkgSYoQhH4l6eOA==",
+  "dgSpecHash": "WOjUpDQ9bo3fJMNnwvq1TdhQkRREJOdW8BQI0Mtl21STyvHrg+2cZqpeNo4iwXc0NsRh6utjU82kXlE4XJEA9g==",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\Lunar\\LunarBase\\LunarBase\\LunarBase.csproj",
   "expectedPackageFiles": [
@@ -16,7 +16,8 @@
     "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.algorithms\\4.3.0\\system.security.cryptography.algorithms.4.3.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.encoding\\4.3.0\\system.security.cryptography.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.primitives\\4.3.0\\system.security.cryptography.primitives.4.3.0.nupkg.sha512",
-    "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.x509certificates\\4.3.0\\system.security.cryptography.x509certificates.4.3.0.nupkg.sha512"
+    "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.x509certificates\\4.3.0\\system.security.cryptography.x509certificates.4.3.0.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\zxing.net\\0.16.9\\zxing.net.0.16.9.nupkg.sha512"
   ],
   "logs": []
 }

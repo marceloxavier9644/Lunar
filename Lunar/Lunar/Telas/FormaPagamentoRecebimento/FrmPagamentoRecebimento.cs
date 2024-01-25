@@ -1258,19 +1258,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                     formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
                     if (formaPagamento.Id > 0)
                     {
-                        //ordemServicoPagamento.DataRecebimento = DateTime.Now;
-                        //ordemServicoPagamento.FormaPagamento = formaPagamento;
-                        //ordemServicoPagamento.OrdemServico = ordemServico;
-                        //ordemServicoPagamento.Troco = 0;
-                        //ordemServicoPagamento.ValorRecebido = decimal.Parse(dataRowView.Row["Valor"].ToString());
-                        valorRecebido = decimal.Parse(dataRowView.Row["Valor"].ToString());
-                        //ordemServicoPagamento.AdquirenteCartao = null;
-                        //ordemServicoPagamento.AutorizacaoCartao = "";
-                        //ordemServicoPagamento.BandeiraCartao = null;
-                        //ordemServicoPagamento.Cartao = false;
-                        //ordemServicoPagamento.ParcelamentoCartao = null;
-                        //ordemServicoPagamento.Parcelas = "";
-                        //ordemServicoPagamento.TipoCartao = "";
+
+                        valorRecebido = valorRecebido + decimal.Parse(dataRowView.Row["Valor"].ToString());
                         caixa.IdOrigem = ordemServico.Id.ToString();
 
                         //Dinheiro

@@ -1551,7 +1551,8 @@
         "dependencies": {
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
-          "System.Net.Http": "4.3.4"
+          "System.Net.Http": "4.3.4",
+          "ZXing.Net": "0.16.9"
         },
         "compile": {
           "bin/placeholder/LunarBase.dll": {}
@@ -3043,7 +3044,8 @@
         "dependencies": {
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
-          "System.Net.Http": "4.3.4"
+          "System.Net.Http": "4.3.4",
+          "ZXing.Net": "0.16.9"
         },
         "compile": {
           "bin/placeholder/LunarBase.dll": {}
@@ -4538,7 +4540,8 @@
         "dependencies": {
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
-          "System.Net.Http": "4.3.4"
+          "System.Net.Http": "4.3.4",
+          "ZXing.Net": "0.16.9"
         },
         "compile": {
           "bin/placeholder/LunarBase.dll": {}
@@ -6033,7 +6036,8 @@
         "dependencies": {
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
-          "System.Net.Http": "4.3.4"
+          "System.Net.Http": "4.3.4",
+          "ZXing.Net": "0.16.9"
         },
         "compile": {
           "bin/placeholder/LunarBase.dll": {}
@@ -7528,7 +7532,8 @@
         "dependencies": {
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
-          "System.Net.Http": "4.3.4"
+          "System.Net.Http": "4.3.4",
+          "ZXing.Net": "0.16.9"
         },
         "compile": {
           "bin/placeholder/LunarBase.dll": {}
@@ -10305,6 +10310,20 @@
       "warningLevel": 1,
       "message": "Microsoft.ReportingServices.ReportViewerControl.Winforms 150.1484.0 depende de Microsoft.SqlServer.Types (>= 14.0.0), mas Microsoft.SqlServer.Types 14.0.0 não foi encontrado. A melhor correspondência aproximada de Microsoft.SqlServer.Types 14.0.314.76 foi resolvida.",
       "libraryId": "Microsoft.SqlServer.Types",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.7.2",
+        ".NETFramework,Version=v4.7.2/win",
+        ".NETFramework,Version=v4.7.2/win-arm64",
+        ".NETFramework,Version=v4.7.2/win-x64",
+        ".NETFramework,Version=v4.7.2/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Downgrade de pacote detectado: ZXing.Net de 0.16.9 para 0.16.8. Referencie o pacote diretamente do projeto para selecionar uma versão diferente. \r\n Lunar -> LunarBase -> ZXing.Net (>= 0.16.9) \r\n Lunar -> ZXing.Net (>= 0.16.8)",
+      "libraryId": "ZXing.Net",
       "targetGraphs": [
         ".NETFramework,Version=v4.7.2",
         ".NETFramework,Version=v4.7.2/win",

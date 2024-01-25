@@ -27,6 +27,8 @@ namespace LunarBase.Classes
         private bool entrada;
         private string operadorEncerramento;
         private string qrCodePix;
+        private bool mensagemPosVenda;
+        private bool mensagemVencimentoExameOtica;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -66,5 +68,9 @@ namespace LunarBase.Classes
         public virtual string OperadorEncerramento { get => operadorEncerramento; set => operadorEncerramento = value; }
         [Anotacao("QR Code Pix")]
         public virtual string QrCodePix { get => qrCodePix; set => qrCodePix = value; }
+        [Anotacao("Mensagem Pós Venda")]
+        public virtual bool MensagemPosVenda { get => mensagemPosVenda; set => mensagemPosVenda = value; }
+        [Anotacao("Msg Vencimento Exame")]
+        public virtual bool MensagemVencimentoExameOtica { get => mensagemVencimentoExameOtica; set => mensagemVencimentoExameOtica = value; }
     }
 }

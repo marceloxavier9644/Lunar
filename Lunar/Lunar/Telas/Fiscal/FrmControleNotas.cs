@@ -1,14 +1,13 @@
 ﻿using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
-using Lunar.Utils.IntegracaoZAPI;
 using Lunar.Utils.OrganizacaoNF;
 using Lunar.Utils.Sintegra;
 using LunarBase.Classes;
-using LunarBase.ClassesBO;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
+using LunarBase.Utilidades.ZAPZAP;
 using Newtonsoft.Json;
 using Syncfusion.Data;
 using Syncfusion.Pdf.Graphics;
@@ -1357,7 +1356,6 @@ namespace Lunar.Telas.Fiscal
                         ordemServico = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
 
                         //Verifica valores dos produtos
-
                         IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
                         foreach (NfeProduto nfeProduto in listaProdutos)
                         {
@@ -1547,10 +1545,15 @@ namespace Lunar.Telas.Fiscal
                             IList<NfePagamento> listaPagamento = nfePagamentoController.selecionarPagamentoPorNfe(nfe.Id);
                             if (listaPagamento.Count > 0)
                             {
-                                foreach(NfePagamento nfePagamento in listaPagamento)
+                                foreach (NfePagamento nfePagamento in listaPagamento)
                                 {
                                     formaPag = nfePagamento.FormaPagamento;
                                 }
+                            }
+                            else
+                            {
+                                formaPag.Id = 2;
+                                formaPag = (FormaPagamento)Controller.getInstance().selecionar(formaPag);
                             }
                             EmitirNFCe emitirNFCe = new EmitirNFCe();
                             if (nfe.Cliente == null)

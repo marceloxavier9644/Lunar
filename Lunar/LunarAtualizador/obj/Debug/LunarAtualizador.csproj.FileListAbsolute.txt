@@ -51,3 +51,4 @@ C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\bin\Debug\System.Text.Encoding.C
 C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\obj\Debug\LunarAtualizador.FrmNotificacao.resources
 C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\bin\Debug\Syncfusion.Licensing.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarAtualizador\bin\Debug\zxing.dll

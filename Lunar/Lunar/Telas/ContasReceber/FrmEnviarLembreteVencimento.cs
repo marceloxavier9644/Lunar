@@ -2,10 +2,10 @@
 using Lunar.Telas.Fiscal;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
-using Lunar.Utils.IntegracaoZAPI;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using LunarBase.Utilidades.ZAPZAP;
 using Syncfusion.Data;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
@@ -17,7 +17,6 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.ContasReceber
@@ -427,7 +426,6 @@ namespace Lunar.Telas.ContasReceber
                 GenericaDesktop.ShowErro(erro.Message);
             }
         }
-
         private void grid_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
         {
             if (e.RowIndex % 2 == 0)
@@ -442,7 +440,20 @@ namespace Lunar.Telas.ContasReceber
                     e.Style.TextColor = Color.Red;
                     e.Style.Font.FontStyle = FontStyle.Strikeout;
                 }
-                
+                if ((e.RowData as ContaReceber).Cliente.PessoaTelefone is null)
+                {
+                    e.Style.TextColor = Color.Red;
+                    e.Style.Font.FontStyle = FontStyle.Strikeout;
+                }
+                else
+                {
+                    if (String.IsNullOrEmpty((e.RowData as ContaReceber).Cliente.PessoaTelefone.Ddd) && String.IsNullOrEmpty((e.RowData as ContaReceber).Cliente.PessoaTelefone.Telefone))
+                    {
+                        e.Style.TextColor = Color.Red;
+                        e.Style.Font.FontStyle = FontStyle.Strikeout;
+                    }
+                }
+
             }
         }
 

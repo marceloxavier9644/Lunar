@@ -30,3 +30,5 @@ C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.C
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.CopyComplete
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.pdb
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\zxing.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\zxing.presentation.dll

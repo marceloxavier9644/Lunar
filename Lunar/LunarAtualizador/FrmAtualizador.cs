@@ -1,6 +1,8 @@
 ﻿using LunarAtualiza.Utils;
+using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using LunarBase.Utilidades.ZAPZAP;
 using MySql.Data.MySqlClient;
 using SharpCompress.Common;
 using SharpCompress.Readers;
@@ -12,6 +14,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -20,6 +23,10 @@ namespace LunarAtualizador
 {
     public partial class FrmAtualizador : Form
     {
+        String ativarMensagemLembreteExame = "";
+        String horarioLembreteExame = "";
+        string horaLembreteExame = "";
+        string minutoLembreteExame = "";
         private BackgroundWorker backgroundWorkerEmail;
         String cnpjClient = "";
         bool abriuForm = false;
@@ -43,7 +50,7 @@ namespace LunarAtualizador
         private string senhaBanco = "";
         private WebClient webClient;
         private string connectionString = "Server=mysql.lunarsoftware.com.br;Port=3306;Database=lunarsoftware02;User ID=lunarsoftware02;Password=aramxs11;SslMode = none";
-
+        string connectionStringLocal = "Server=localhost;Database=lunar;User ID=marcelo;Password=mx123;";
         public FrmAtualizador()
         {
             InitializeComponent();
@@ -52,6 +59,22 @@ namespace LunarAtualizador
             webClient.DownloadProgressChanged += WebClientDownloadProgressChanged;
             instanciaAtualizador = this;
 
+            conferirHorarioMensagens();
+            if (ativarMensagemLembreteExame.Equals("True"))
+            {
+                if (!String.IsNullOrEmpty(horarioLembreteExame))
+                {
+                    string formatoHorario = "HH:mm";
+
+                    // Tenta fazer o parse da string para um objeto DateTime
+                    if (DateTime.TryParseExact(horarioLembreteExame, formatoHorario, null, System.Globalization.DateTimeStyles.None, out DateTime horarioParsed))
+                    {
+                        // O parse foi bem-sucedido, então obtemos a hora e o minuto
+                        horaLembreteExame = horarioParsed.Hour.ToString();
+                        minutoLembreteExame = horarioParsed.Minute.ToString();
+                    }
+                }
+            }
             //Timer automático
             timer1.Start();
            
@@ -462,12 +485,20 @@ namespace LunarAtualizador
             DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 09, 00, 00);
             DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 00);
             DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 10, 05, 00);
-          
+            DateTime horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, 12, 00, 00);
+            if (ativarMensagemLembreteExame.Equals("True"))
+            {
+                horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, int.Parse(horaLembreteExame), int.Parse(minutoLembreteExame), 00);
+                if (agora.ToLongTimeString() == horarioVerificacao4LembreteExame.ToLongTimeString())
+                {
+                    dispararMensagens_passo01();
+                }
+            }
+
             lblAgora.Text = agora.ToLongTimeString();
             // Verifica se é um dos horários desejados
             if (agora.ToLongTimeString() == horarioVerificacao1.ToLongTimeString() || agora.ToLongTimeString() == horarioVerificacao2.ToLongTimeString() || agora.ToLongTimeString() == horarioVerificacao3.ToLongTimeString())
             {
-
                 if (abriuForm == false)
                 {
                     if (File.Exists(@"C:\Lunar\Lunar.exe"))
@@ -563,6 +594,246 @@ namespace LunarAtualizador
             {
                 // Relatar erro
                 //MessageBox.Show($"Erro ao enviar e-mail: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dispararMensagens_passo01()
+        {
+            string msgLembreteExame = "";
+            string diasAntes = "";
+            string nomeServidorConfigurado = "";
+            string nomeDoComputador = Environment.MachineName;
+            string ativarMensagemPosVenda = "";
+            using (MySqlConnection connection = new MySqlConnection(connectionStringLocal))
+            {
+                try
+                {
+                    // Abra a conexão
+                    connection.Open();
+                    Sessao.parametroSistema = new ParametroSistema();
+                    // Realize uma consulta simples (substitua "suaTabela" e "seuCampo" conforme necessário)
+                    string query = "SELECT * FROM ParametroSistema";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Faça algo com os resultados
+                            while (reader.Read())
+                            {
+                                nomeServidorConfigurado = $"{reader["nomeServidor"]}";
+                                ativarMensagemPosVenda = $"{reader["ATIVARMENSAGEMPOSVENDAS"]}";
+                                ativarMensagemLembreteExame = $"{reader["ATIVARMENSAGEMVENCIMENTOEXAME"]}";
+                            }
+                        }
+                        if (ativarMensagemLembreteExame.Equals("True"))
+                        {
+                            //Compara sem considerar maiusculo e minusculo
+                            if (nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
+                            {
+                                query = "SELECT * FROM ParametroSistema";
+                                using (MySqlCommand command2 = new MySqlCommand(query, connection))
+                                {
+                                    using (MySqlDataReader reader2 = command2.ExecuteReader())
+                                    {
+                                        // Faça algo com os resultados
+                                        while (reader2.Read())
+                                        {
+                                            // Acesse os dados do banco de dados e faça o que for necessário
+                                            msgLembreteExame = reader2["MensagemLembreteExame"].ToString();
+                                            diasAntes = reader2["MENSAGEMLEMBREEXAMEQTDDIAS"].ToString();
+                                            try
+                                            {
+                                                Sessao.parametroSistema.IdInstanciaWhats = reader2["IdInstanciaWhats"].ToString();
+                                                Sessao.parametroSistema.TokenWhats = reader2["TokenWhats"].ToString();
+                                            }
+                                            catch
+                                            {
+                                                MessageBox.Show("Configure IdInstanciaWhats e TokenWhats nos parametros do sistema!");
+                                            }
+                                        }
+                                    }
+                                }
+                                listaExamesVencendo(int.Parse(diasAntes), msgLembreteExame);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro: {ex.Message}");
+                }
+            }
+        }
+
+        private void listaExamesVencendo(int diasAntesDoVencimento, string mensagemLembrete)
+        {
+            string idOrdemServico = "";
+            String ddd = "";
+            String telefoneCliente = "";
+            using (MySqlConnection connection = new MySqlConnection(connectionStringLocal))
+            {
+                try
+                {
+                    // Abra a conexão
+                    connection.Open();
+
+                    // Crie a consulta SQL
+                    string query = @"
+                           SELECT os.*, pessoatelefone.*, pessoa.*, exame.*
+                            FROM OrdemServico os
+                            JOIN OrdemServicoExame exame ON os.ID = exame.OrdemServico
+                            JOIN Pessoa pessoa ON os.CLIENTE = pessoa.ID
+                            JOIN PessoaTelefone pessoatelefone ON pessoa.ID = pessoatelefone.PESSOA
+                            WHERE os.Status = 'Encerrada' AND os.MensagemVencimentoExameOtica <> true AND
+                                  STR_TO_DATE(exame.ProximoExame, '%d/%m/%Y') = DATE_ADD(CURDATE(), INTERVAL @DiasAntesDoVencimento DAY)
+                    ";
+
+                    // Crie o comando e parâmetro
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@DiasAntesDoVencimento", diasAntesDoVencimento);
+
+                        // Execute a consulta
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Processar resultados
+                                //Console.WriteLine($"Número da Ordem de Serviço: {reader["ID"]}");
+                                idOrdemServico = $"{reader["Id"]}";
+                                ddd = $"{reader["DDD"]}";
+                                telefoneCliente =  $"{reader["TELEFONE"]}";
+                                String nomeCli = $"{reader["RazaoSocial"]}";
+                                string proxVencimentoExame = $"{reader["ProximoExame"]}";
+                                // Adicione outras informações conforme necessário
+                                if (ValidarNumeroTelefone(ddd + telefoneCliente))
+                                {
+                                    if (telefoneCliente.Length == 8)
+                                        telefoneCliente = "9" + telefoneCliente;
+                                    string numeroLimpo = RemoverCaracteresEspeciais("55" + ddd + telefoneCliente);
+                                    Zapi zapi = new Zapi();
+
+                                    //Nome e primeiro sobrenome
+                                    string[] partesNome = nomeCli.Split(' ');
+                                    if(partesNome.Length >= 2)
+                                        nomeCli = partesNome[0] + " " + partesNome[1];
+
+                                    String mensagemAjustada = mensagemLembrete;
+                                    if (mensagemAjustada.Contains("[NomeCliente]"))
+                                        mensagemAjustada = mensagemAjustada.Replace("[NomeCliente]", nomeCli);
+                                    if (mensagemAjustada.Contains("[DataProximoExame]"))
+                                        mensagemAjustada = mensagemAjustada.Replace("[DataProximoExame]", proxVencimentoExame);
+
+                                    var ret = zapi.zapi_EnviarTexto(numeroLimpo, mensagemAjustada, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                                    if(ret != null)
+                                    {
+                                        AtualizarFlagMensagemEnviada(int.Parse(idOrdemServico));
+
+                                        string nomeArquivo = $"Whatsapp_{DateTime.Now:yyyyMMdd_HHmm}.txt";
+                                        if (!Directory.Exists("Logs"))
+                                        {
+                                            Directory.CreateDirectory("Logs");
+                                        }
+                                        string caminhoArquivo = Path.Combine("Logs", nomeArquivo);
+                                        string conteudoLog = $"Data e Hora: {DateTime.Now}\nNúmero de Telefone: {telefoneCliente}\nTexto da Mensagem: {mensagemAjustada}\n\n";
+                                        // Escrever o conteúdo no arquivo (append para adicionar ao conteúdo existente)
+                                        File.AppendAllText(caminhoArquivo, conteudoLog);
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Número de telefone inválido");
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro: {ex.Message}");
+                }
+            }
+        }
+        private void AtualizarFlagMensagemEnviada(int ordemServicoId)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionStringLocal))
+            {
+                try
+                {
+                    // Abra a conexão
+                    connection.Open();
+
+                    // Crie a consulta SQL para o UPDATE
+                    string updateQuery = @"
+                    UPDATE OrdemServico
+                    SET MENSAGEMVENCIMENTOEXAMEOTICA = 1
+                    WHERE ID = @OrdemServicoId;
+                    ";
+
+                    // Crie o comando e parâmetro
+                    using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@OrdemServicoId", ordemServicoId);
+
+                        // Execute o UPDATE
+                        updateCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erro ao atualizar a flag: {ex.Message}");
+                }
+            }
+        }
+        private void btnWts_Click(object sender, EventArgs e)
+        {
+            dispararMensagens_passo01();
+        }
+
+        static bool ValidarNumeroTelefone(string numero)
+        {
+            // Expressão regular para validar DDD + número de telefone celular com pelo menos 10 dígitos
+            string padrao = @"^\(?([1-9]{2})\)?[-.\s]?[6-9]\d{3,4}[-.\s]?\d{4}$";
+
+            // Verificar se o número atende ao padrão
+            return Regex.IsMatch(numero, padrao);
+        }
+
+        static string RemoverCaracteresEspeciais(string input)
+        {
+            // Remover caracteres especiais usando expressão regular
+            return Regex.Replace(input, @"[^\d]", "");
+        }
+
+
+        private void conferirHorarioMensagens()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionStringLocal))
+            {
+                try
+                {
+                    // Abra a conexão
+                    connection.Open();
+                    Sessao.parametroSistema = new ParametroSistema();
+                    // Realize uma consulta simples (substitua "suaTabela" e "seuCampo" conforme necessário)
+                    string query = "SELECT * FROM ParametroSistema";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Faça algo com os resultados
+                            while (reader.Read())
+                            {
+                                ativarMensagemLembreteExame = $"{reader["ATIVARMENSAGEMVENCIMENTOEXAME"]}";
+                                horarioLembreteExame = $"{reader["MENSAGEMLEMBREEXAMEHORARIO"]}";
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
             }
         }
     }

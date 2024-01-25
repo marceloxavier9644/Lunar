@@ -1093,14 +1093,21 @@ namespace Lunar.Telas.Compras
 			prod = new Produto();
 			prod.Cest = nfeProd.Cest;
 			prod.Ncm = nfeProd.Ncm;
-			if (nfeProd.CfopEntrada.Substring(0, 2).Contains("11"))
-				prod.CfopVenda = "5102";
-			else if (nfeProd.CfopEntrada.Substring(0, 2).Contains("14"))
-				prod.CfopVenda = "5405";
-			else if (nfeProd.CfopEntrada.Substring(0, 2).Contains("21"))
-				prod.CfopVenda = "5102";
-			else if (nfeProd.CfopEntrada.Substring(0, 2).Contains("24"))
-				prod.CfopVenda = "5405";
+			try
+			{
+				if (nfeProd.CfopEntrada.Substring(0, 2).Contains("11"))
+					prod.CfopVenda = "5102";
+				else if (nfeProd.CfopEntrada.Substring(0, 2).Contains("14"))
+					prod.CfopVenda = "5405";
+				else if (nfeProd.CfopEntrada.Substring(0, 2).Contains("21"))
+					prod.CfopVenda = "5102";
+				else if (nfeProd.CfopEntrada.Substring(0, 2).Contains("24"))
+					prod.CfopVenda = "5405";
+			}
+			catch
+			{
+
+			}
 
 			prod.CodAnp = nfeProd.CodAnp;
 			prod.ControlaEstoque = true;

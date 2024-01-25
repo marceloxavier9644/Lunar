@@ -36,6 +36,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblAgora = new System.Windows.Forms.Label();
             this.progressBarAdv1 = new Syncfusion.Windows.Forms.Tools.ProgressBarAdv();
+            this.btnWts = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarAdv1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,12 +105,25 @@
             this.progressBarAdv1.Visible = false;
             this.progressBarAdv1.WaitingGradientWidth = 400;
             // 
+            // btnWts
+            // 
+            this.btnWts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWts.Location = new System.Drawing.Point(12, 9);
+            this.btnWts.Name = "btnWts";
+            this.btnWts.Size = new System.Drawing.Size(59, 26);
+            this.btnWts.TabIndex = 6;
+            this.btnWts.Text = "Wts";
+            this.btnWts.UseVisualStyleBackColor = true;
+            this.btnWts.Visible = false;
+            this.btnWts.Click += new System.EventHandler(this.btnWts_Click);
+            // 
             // FrmAtualizador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(379, 163);
+            this.Controls.Add(this.btnWts);
             this.Controls.Add(this.progressBarAdv1);
             this.Controls.Add(this.lblAgora);
             this.Controls.Add(this.lblNovaVersaoLocalizada);
@@ -137,5 +151,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblAgora;
         private Syncfusion.Windows.Forms.Tools.ProgressBarAdv progressBarAdv1;
+        private System.Windows.Forms.Button btnWts;
     }
 }

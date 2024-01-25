@@ -143,6 +143,17 @@
             this.txtCodPlanoContaVendas = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtPlanoContaVendas = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabEmpresa = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.autoLabel46 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chkProducaoSPC = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkHomologacaoSPC = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.radioSPC127 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioSPC128 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioSPC12 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.txtUsuarioSPCBRASIL = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtSenhaSpcBrasil = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.autoLabel45 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel44 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel37 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtComissaoPadrao = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel29 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -168,20 +179,33 @@
             this.autoLabel32 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel31 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel30 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.tabPosVenda = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.txtNomeServidor = new System.Windows.Forms.TextBox();
+            this.autoLabel52 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.chkDepois = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkAntes = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.autoLabel47 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtHorarioDisparoLembreteExame = new System.Windows.Forms.TextBox();
+            this.chkAtivarMensagemLembreteVencimentoExameOftamotologico = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.txtDiasEnvioMensagemLembreteExame = new System.Windows.Forms.TextBox();
+            this.autoLabel50 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtMensagemLembreteExame = new System.Windows.Forms.TextBox();
+            this.autoLabel51 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.chkAtivarEnvioMensagemPosVenda = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkMinutosPosVenda = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkDiasPosVenda = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.txtTempoEnvioMensagemPosVenda = new System.Windows.Forms.TextBox();
+            this.autoLabel49 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtMensagemPosVenda = new System.Windows.Forms.TextBox();
+            this.autoLabel48 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.autoLabel44 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.autoLabel45 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtSenhaSpcBrasil = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtUsuarioSPCBRASIL = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.radioSPC12 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
-            this.radioSPC128 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
-            this.radioSPC127 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
-            this.chkProducaoSPC = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
-            this.chkHomologacaoSPC = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.autoLabel46 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -207,16 +231,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).BeginInit();
             this.tabPlanoConta.SuspendLayout();
             this.tabEmpresa.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkProducaoSPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHomologacaoSPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC127)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC128)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.tabEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioSPC12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioSPC128)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioSPC127)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkProducaoSPC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkHomologacaoSPC)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.tabPosVenda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDepois)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAntes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAtivarMensagemLembreteVencimentoExameOftamotologico)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAtivarEnvioMensagemPosVenda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -275,6 +306,7 @@
             this.tabControlAdv1.Controls.Add(this.tabPlanoConta);
             this.tabControlAdv1.Controls.Add(this.tabEmpresa);
             this.tabControlAdv1.Controls.Add(this.tabEmail);
+            this.tabControlAdv1.Controls.Add(this.tabPosVenda);
             this.tabControlAdv1.Location = new System.Drawing.Point(12, 50);
             this.tabControlAdv1.Name = "tabControlAdv1";
             this.tabControlAdv1.Size = new System.Drawing.Size(871, 421);
@@ -1558,13 +1590,13 @@
             // chkEnvioAgradecimentoCompraWhats
             // 
             this.chkEnvioAgradecimentoCompraWhats.BeforeTouchSize = new System.Drawing.Size(251, 31);
-            this.chkEnvioAgradecimentoCompraWhats.Enabled = false;
             this.chkEnvioAgradecimentoCompraWhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEnvioAgradecimentoCompraWhats.Location = new System.Drawing.Point(14, 228);
             this.chkEnvioAgradecimentoCompraWhats.Name = "chkEnvioAgradecimentoCompraWhats";
             this.chkEnvioAgradecimentoCompraWhats.Size = new System.Drawing.Size(251, 31);
             this.chkEnvioAgradecimentoCompraWhats.TabIndex = 10;
             this.chkEnvioAgradecimentoCompraWhats.Text = " Agradecimento pela Compra";
+            this.chkEnvioAgradecimentoCompraWhats.CheckStateChanged += new System.EventHandler(this.chkEnvioAgradecimentoCompraWhats_CheckStateChanged);
             // 
             // chkEnvioAniversarioWhats
             // 
@@ -1591,7 +1623,6 @@
             // chkEnvioNFCeNFeWhats
             // 
             this.chkEnvioNFCeNFeWhats.BeforeTouchSize = new System.Drawing.Size(230, 21);
-            this.chkEnvioNFCeNFeWhats.Enabled = false;
             this.chkEnvioNFCeNFeWhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEnvioNFCeNFeWhats.Location = new System.Drawing.Point(14, 156);
             this.chkEnvioNFCeNFeWhats.Name = "chkEnvioNFCeNFeWhats";
@@ -2164,6 +2195,158 @@
             this.tabEmpresa.Text = "Configurações da Empresa";
             this.tabEmpresa.ThemesEnabled = false;
             // 
+            // autoLabel46
+            // 
+            this.autoLabel46.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel46.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel46.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel46.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel46.Location = new System.Drawing.Point(551, 284);
+            this.autoLabel46.Name = "autoLabel46";
+            this.autoLabel46.Size = new System.Drawing.Size(76, 21);
+            this.autoLabel46.TabIndex = 233;
+            this.autoLabel46.Text = "Ambiente";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.chkProducaoSPC);
+            this.panel1.Controls.Add(this.chkHomologacaoSPC);
+            this.panel1.Location = new System.Drawing.Point(551, 309);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(147, 63);
+            this.panel1.TabIndex = 232;
+            // 
+            // chkProducaoSPC
+            // 
+            this.chkProducaoSPC.BeforeTouchSize = new System.Drawing.Size(94, 21);
+            this.chkProducaoSPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkProducaoSPC.Location = new System.Drawing.Point(3, 3);
+            this.chkProducaoSPC.Name = "chkProducaoSPC";
+            this.chkProducaoSPC.Size = new System.Drawing.Size(94, 21);
+            this.chkProducaoSPC.TabIndex = 230;
+            this.chkProducaoSPC.Text = "Produção";
+            this.chkProducaoSPC.CheckStateChanged += new System.EventHandler(this.chkProducaoSPC_CheckStateChanged);
+            // 
+            // chkHomologacaoSPC
+            // 
+            this.chkHomologacaoSPC.BeforeTouchSize = new System.Drawing.Size(122, 21);
+            this.chkHomologacaoSPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkHomologacaoSPC.Location = new System.Drawing.Point(3, 30);
+            this.chkHomologacaoSPC.Name = "chkHomologacaoSPC";
+            this.chkHomologacaoSPC.Size = new System.Drawing.Size(122, 21);
+            this.chkHomologacaoSPC.TabIndex = 231;
+            this.chkHomologacaoSPC.Text = "Homologação";
+            this.chkHomologacaoSPC.CheckStateChanged += new System.EventHandler(this.chkHomologacaoSPC_CheckStateChanged);
+            // 
+            // radioSPC127
+            // 
+            this.radioSPC127.BeforeTouchSize = new System.Drawing.Size(194, 21);
+            this.radioSPC127.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioSPC127.Location = new System.Drawing.Point(112, 347);
+            this.radioSPC127.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioSPC127.Name = "radioSPC127";
+            this.radioSPC127.Size = new System.Drawing.Size(194, 21);
+            this.radioSPC127.TabIndex = 229;
+            this.radioSPC127.TabStop = false;
+            this.radioSPC127.Text = "SPC MIX PLUS. (127)";
+            // 
+            // radioSPC128
+            // 
+            this.radioSPC128.BeforeTouchSize = new System.Drawing.Size(152, 21);
+            this.radioSPC128.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioSPC128.Location = new System.Drawing.Point(307, 347);
+            this.radioSPC128.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioSPC128.Name = "radioSPC128";
+            this.radioSPC128.Size = new System.Drawing.Size(152, 21);
+            this.radioSPC128.TabIndex = 228;
+            this.radioSPC128.TabStop = false;
+            this.radioSPC128.Text = "SPC PLUS (128)";
+            // 
+            // radioSPC12
+            // 
+            this.radioSPC12.BeforeTouchSize = new System.Drawing.Size(99, 21);
+            this.radioSPC12.Checked = true;
+            this.radioSPC12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioSPC12.Location = new System.Drawing.Point(16, 347);
+            this.radioSPC12.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioSPC12.Name = "radioSPC12";
+            this.radioSPC12.Size = new System.Drawing.Size(99, 21);
+            this.radioSPC12.TabIndex = 227;
+            this.radioSPC12.Text = "SPC (12)";
+            // 
+            // txtUsuarioSPCBRASIL
+            // 
+            this.txtUsuarioSPCBRASIL.BackColor = System.Drawing.SystemColors.Window;
+            this.txtUsuarioSPCBRASIL.BorderColor = System.Drawing.Color.Lavender;
+            this.txtUsuarioSPCBRASIL.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtUsuarioSPCBRASIL.BorderRadius = 0;
+            this.txtUsuarioSPCBRASIL.BorderSize = 2;
+            this.txtUsuarioSPCBRASIL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuarioSPCBRASIL.ForeColor = System.Drawing.Color.DimGray;
+            this.txtUsuarioSPCBRASIL.Location = new System.Drawing.Point(16, 309);
+            this.txtUsuarioSPCBRASIL.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsuarioSPCBRASIL.Multiline = false;
+            this.txtUsuarioSPCBRASIL.Name = "txtUsuarioSPCBRASIL";
+            this.txtUsuarioSPCBRASIL.Padding = new System.Windows.Forms.Padding(7);
+            this.txtUsuarioSPCBRASIL.PasswordChar = false;
+            this.txtUsuarioSPCBRASIL.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txtUsuarioSPCBRASIL.PlaceholderText = "";
+            this.txtUsuarioSPCBRASIL.ReadOnly = false;
+            this.txtUsuarioSPCBRASIL.Size = new System.Drawing.Size(250, 31);
+            this.txtUsuarioSPCBRASIL.TabIndex = 226;
+            this.txtUsuarioSPCBRASIL.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtUsuarioSPCBRASIL.Texts = "";
+            this.txtUsuarioSPCBRASIL.UnderlinedStyle = false;
+            // 
+            // txtSenhaSpcBrasil
+            // 
+            this.txtSenhaSpcBrasil.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSenhaSpcBrasil.BorderColor = System.Drawing.Color.Lavender;
+            this.txtSenhaSpcBrasil.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtSenhaSpcBrasil.BorderRadius = 0;
+            this.txtSenhaSpcBrasil.BorderSize = 2;
+            this.txtSenhaSpcBrasil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenhaSpcBrasil.ForeColor = System.Drawing.Color.DimGray;
+            this.txtSenhaSpcBrasil.Location = new System.Drawing.Point(285, 309);
+            this.txtSenhaSpcBrasil.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSenhaSpcBrasil.Multiline = false;
+            this.txtSenhaSpcBrasil.Name = "txtSenhaSpcBrasil";
+            this.txtSenhaSpcBrasil.Padding = new System.Windows.Forms.Padding(7);
+            this.txtSenhaSpcBrasil.PasswordChar = true;
+            this.txtSenhaSpcBrasil.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txtSenhaSpcBrasil.PlaceholderText = "";
+            this.txtSenhaSpcBrasil.ReadOnly = false;
+            this.txtSenhaSpcBrasil.Size = new System.Drawing.Size(250, 31);
+            this.txtSenhaSpcBrasil.TabIndex = 225;
+            this.txtSenhaSpcBrasil.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtSenhaSpcBrasil.Texts = "";
+            this.txtSenhaSpcBrasil.UnderlinedStyle = false;
+            // 
+            // autoLabel45
+            // 
+            this.autoLabel45.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel45.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel45.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel45.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel45.Location = new System.Drawing.Point(285, 284);
+            this.autoLabel45.Name = "autoLabel45";
+            this.autoLabel45.Size = new System.Drawing.Size(213, 21);
+            this.autoLabel45.TabIndex = 224;
+            this.autoLabel45.Text = "Senha Web Service SPC BRASIL";
+            // 
+            // autoLabel44
+            // 
+            this.autoLabel44.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel44.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel44.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel44.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel44.Location = new System.Drawing.Point(16, 284);
+            this.autoLabel44.Name = "autoLabel44";
+            this.autoLabel44.Size = new System.Drawing.Size(220, 21);
+            this.autoLabel44.TabIndex = 222;
+            this.autoLabel44.Text = "Usuário Web Service SPC BRASIL";
+            // 
             // autoLabel37
             // 
             this.autoLabel37.BackColor = System.Drawing.Color.Transparent;
@@ -2519,6 +2702,294 @@
             this.autoLabel30.TabIndex = 220;
             this.autoLabel30.Text = "Servidor de Email";
             // 
+            // tabPosVenda
+            // 
+            this.tabPosVenda.Controls.Add(this.txtNomeServidor);
+            this.tabPosVenda.Controls.Add(this.autoLabel52);
+            this.tabPosVenda.Controls.Add(this.label13);
+            this.tabPosVenda.Controls.Add(this.chkDepois);
+            this.tabPosVenda.Controls.Add(this.chkAntes);
+            this.tabPosVenda.Controls.Add(this.autoLabel47);
+            this.tabPosVenda.Controls.Add(this.txtHorarioDisparoLembreteExame);
+            this.tabPosVenda.Controls.Add(this.chkAtivarMensagemLembreteVencimentoExameOftamotologico);
+            this.tabPosVenda.Controls.Add(this.txtDiasEnvioMensagemLembreteExame);
+            this.tabPosVenda.Controls.Add(this.autoLabel50);
+            this.tabPosVenda.Controls.Add(this.label11);
+            this.tabPosVenda.Controls.Add(this.label12);
+            this.tabPosVenda.Controls.Add(this.txtMensagemLembreteExame);
+            this.tabPosVenda.Controls.Add(this.autoLabel51);
+            this.tabPosVenda.Controls.Add(this.chkAtivarEnvioMensagemPosVenda);
+            this.tabPosVenda.Controls.Add(this.chkMinutosPosVenda);
+            this.tabPosVenda.Controls.Add(this.chkDiasPosVenda);
+            this.tabPosVenda.Controls.Add(this.txtTempoEnvioMensagemPosVenda);
+            this.tabPosVenda.Controls.Add(this.autoLabel49);
+            this.tabPosVenda.Controls.Add(this.label15);
+            this.tabPosVenda.Controls.Add(this.label16);
+            this.tabPosVenda.Controls.Add(this.txtMensagemPosVenda);
+            this.tabPosVenda.Controls.Add(this.autoLabel48);
+            this.tabPosVenda.Image = null;
+            this.tabPosVenda.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPosVenda.Location = new System.Drawing.Point(1, 22);
+            this.tabPosVenda.Name = "tabPosVenda";
+            this.tabPosVenda.ShowCloseButton = true;
+            this.tabPosVenda.Size = new System.Drawing.Size(868, 397);
+            this.tabPosVenda.TabIndex = 9;
+            this.tabPosVenda.TabVisible = false;
+            this.tabPosVenda.Text = "Mensagem Pós Vendas";
+            this.tabPosVenda.ThemesEnabled = false;
+            // 
+            // txtNomeServidor
+            // 
+            this.txtNomeServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeServidor.Location = new System.Drawing.Point(535, 37);
+            this.txtNomeServidor.Name = "txtNomeServidor";
+            this.txtNomeServidor.Size = new System.Drawing.Size(320, 29);
+            this.txtNomeServidor.TabIndex = 294;
+            this.txtNomeServidor.Text = "SERVIDOR";
+            this.txtNomeServidor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // autoLabel52
+            // 
+            this.autoLabel52.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel52.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel52.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel52.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel52.Location = new System.Drawing.Point(535, 13);
+            this.autoLabel52.Name = "autoLabel52";
+            this.autoLabel52.Size = new System.Drawing.Size(184, 21);
+            this.autoLabel52.TabIndex = 295;
+            this.autoLabel52.Text = "Nome do Servidor na Rede";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(675, 332);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(183, 13);
+            this.label13.TabIndex = 293;
+            this.label13.Text = "Próximo Exame: [DataProximoExame]";
+            // 
+            // chkDepois
+            // 
+            this.chkDepois.BeforeTouchSize = new System.Drawing.Size(83, 31);
+            this.chkDepois.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDepois.Location = new System.Drawing.Point(10, 279);
+            this.chkDepois.Name = "chkDepois";
+            this.chkDepois.Size = new System.Drawing.Size(83, 31);
+            this.chkDepois.TabIndex = 292;
+            this.chkDepois.Text = " Depois";
+            this.chkDepois.CheckStateChanged += new System.EventHandler(this.chkDepois_CheckStateChanged);
+            // 
+            // chkAntes
+            // 
+            this.chkAntes.BeforeTouchSize = new System.Drawing.Size(72, 31);
+            this.chkAntes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAntes.Location = new System.Drawing.Point(10, 242);
+            this.chkAntes.Name = "chkAntes";
+            this.chkAntes.Size = new System.Drawing.Size(72, 31);
+            this.chkAntes.TabIndex = 291;
+            this.chkAntes.Text = " Antes";
+            this.chkAntes.CheckStateChanged += new System.EventHandler(this.chkAntes_CheckStateChanged);
+            // 
+            // autoLabel47
+            // 
+            this.autoLabel47.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel47.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel47.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel47.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel47.Location = new System.Drawing.Point(209, 205);
+            this.autoLabel47.Name = "autoLabel47";
+            this.autoLabel47.Size = new System.Drawing.Size(111, 21);
+            this.autoLabel47.TabIndex = 288;
+            this.autoLabel47.Text = "Horário Disparo";
+            // 
+            // txtHorarioDisparoLembreteExame
+            // 
+            this.txtHorarioDisparoLembreteExame.Enabled = false;
+            this.txtHorarioDisparoLembreteExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHorarioDisparoLembreteExame.Location = new System.Drawing.Point(209, 229);
+            this.txtHorarioDisparoLembreteExame.Name = "txtHorarioDisparoLembreteExame";
+            this.txtHorarioDisparoLembreteExame.Size = new System.Drawing.Size(158, 29);
+            this.txtHorarioDisparoLembreteExame.TabIndex = 287;
+            this.txtHorarioDisparoLembreteExame.Text = "12:00";
+            this.txtHorarioDisparoLembreteExame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // chkAtivarMensagemLembreteVencimentoExameOftamotologico
+            // 
+            this.chkAtivarMensagemLembreteVencimentoExameOftamotologico.BeforeTouchSize = new System.Drawing.Size(72, 31);
+            this.chkAtivarMensagemLembreteVencimentoExameOftamotologico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAtivarMensagemLembreteVencimentoExameOftamotologico.Location = new System.Drawing.Point(10, 205);
+            this.chkAtivarMensagemLembreteVencimentoExameOftamotologico.Name = "chkAtivarMensagemLembreteVencimentoExameOftamotologico";
+            this.chkAtivarMensagemLembreteVencimentoExameOftamotologico.Size = new System.Drawing.Size(72, 31);
+            this.chkAtivarMensagemLembreteVencimentoExameOftamotologico.TabIndex = 286;
+            this.chkAtivarMensagemLembreteVencimentoExameOftamotologico.Text = " Ativar";
+            this.chkAtivarMensagemLembreteVencimentoExameOftamotologico.CheckStateChanged += new System.EventHandler(this.chkAtivarMensagemLembreteVencimentoExameOftamotologico_CheckStateChanged);
+            // 
+            // txtDiasEnvioMensagemLembreteExame
+            // 
+            this.txtDiasEnvioMensagemLembreteExame.Enabled = false;
+            this.txtDiasEnvioMensagemLembreteExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiasEnvioMensagemLembreteExame.Location = new System.Drawing.Point(114, 229);
+            this.txtDiasEnvioMensagemLembreteExame.Name = "txtDiasEnvioMensagemLembreteExame";
+            this.txtDiasEnvioMensagemLembreteExame.Size = new System.Drawing.Size(89, 29);
+            this.txtDiasEnvioMensagemLembreteExame.TabIndex = 282;
+            this.txtDiasEnvioMensagemLembreteExame.Text = "1";
+            this.txtDiasEnvioMensagemLembreteExame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // autoLabel50
+            // 
+            this.autoLabel50.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel50.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel50.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel50.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel50.Location = new System.Drawing.Point(114, 205);
+            this.autoLabel50.Name = "autoLabel50";
+            this.autoLabel50.Size = new System.Drawing.Size(38, 21);
+            this.autoLabel50.TabIndex = 283;
+            this.autoLabel50.Text = "Dias";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(675, 313);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(138, 13);
+            this.label11.TabIndex = 281;
+            this.label11.Text = "Nome Fantasia: [NomeLoja]";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(675, 295);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(157, 13);
+            this.label12.TabIndex = 280;
+            this.label12.Text = "Nome do Cliente: [NomeCliente]";
+            // 
+            // txtMensagemLembreteExame
+            // 
+            this.txtMensagemLembreteExame.Enabled = false;
+            this.txtMensagemLembreteExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMensagemLembreteExame.Location = new System.Drawing.Point(114, 295);
+            this.txtMensagemLembreteExame.Multiline = true;
+            this.txtMensagemLembreteExame.Name = "txtMensagemLembreteExame";
+            this.txtMensagemLembreteExame.Size = new System.Drawing.Size(555, 89);
+            this.txtMensagemLembreteExame.TabIndex = 278;
+            this.txtMensagemLembreteExame.Text = resources.GetString("txtMensagemLembreteExame.Text");
+            // 
+            // autoLabel51
+            // 
+            this.autoLabel51.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel51.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel51.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel51.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel51.Location = new System.Drawing.Point(114, 271);
+            this.autoLabel51.Name = "autoLabel51";
+            this.autoLabel51.Size = new System.Drawing.Size(402, 21);
+            this.autoLabel51.TabIndex = 279;
+            this.autoLabel51.Text = "Lembrete de Vencimento de Exame (Para Módulo de Óticas)";
+            // 
+            // chkAtivarEnvioMensagemPosVenda
+            // 
+            this.chkAtivarEnvioMensagemPosVenda.BeforeTouchSize = new System.Drawing.Size(72, 31);
+            this.chkAtivarEnvioMensagemPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAtivarEnvioMensagemPosVenda.Location = new System.Drawing.Point(10, 83);
+            this.chkAtivarEnvioMensagemPosVenda.Name = "chkAtivarEnvioMensagemPosVenda";
+            this.chkAtivarEnvioMensagemPosVenda.Size = new System.Drawing.Size(72, 31);
+            this.chkAtivarEnvioMensagemPosVenda.TabIndex = 277;
+            this.chkAtivarEnvioMensagemPosVenda.Text = " Ativar";
+            this.chkAtivarEnvioMensagemPosVenda.CheckStateChanged += new System.EventHandler(this.chkAtivarEnvioMensagemPosVenda_CheckStateChanged);
+            // 
+            // chkMinutosPosVenda
+            // 
+            this.chkMinutosPosVenda.BeforeTouchSize = new System.Drawing.Size(89, 31);
+            this.chkMinutosPosVenda.Enabled = false;
+            this.chkMinutosPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMinutosPosVenda.Location = new System.Drawing.Point(114, 37);
+            this.chkMinutosPosVenda.Name = "chkMinutosPosVenda";
+            this.chkMinutosPosVenda.Size = new System.Drawing.Size(89, 31);
+            this.chkMinutosPosVenda.TabIndex = 276;
+            this.chkMinutosPosVenda.Text = " Minutos";
+            this.chkMinutosPosVenda.CheckStateChanged += new System.EventHandler(this.chkMinutosPosVenda_CheckStateChanged);
+            // 
+            // chkDiasPosVenda
+            // 
+            this.chkDiasPosVenda.BeforeTouchSize = new System.Drawing.Size(72, 31);
+            this.chkDiasPosVenda.Checked = true;
+            this.chkDiasPosVenda.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDiasPosVenda.Enabled = false;
+            this.chkDiasPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDiasPosVenda.Location = new System.Drawing.Point(114, 11);
+            this.chkDiasPosVenda.Name = "chkDiasPosVenda";
+            this.chkDiasPosVenda.Size = new System.Drawing.Size(72, 31);
+            this.chkDiasPosVenda.TabIndex = 275;
+            this.chkDiasPosVenda.Text = " Dias";
+            this.chkDiasPosVenda.CheckStateChanged += new System.EventHandler(this.chkDiasPosVenda_CheckStateChanged);
+            // 
+            // txtTempoEnvioMensagemPosVenda
+            // 
+            this.txtTempoEnvioMensagemPosVenda.Enabled = false;
+            this.txtTempoEnvioMensagemPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTempoEnvioMensagemPosVenda.Location = new System.Drawing.Point(209, 37);
+            this.txtTempoEnvioMensagemPosVenda.Name = "txtTempoEnvioMensagemPosVenda";
+            this.txtTempoEnvioMensagemPosVenda.Size = new System.Drawing.Size(320, 29);
+            this.txtTempoEnvioMensagemPosVenda.TabIndex = 273;
+            this.txtTempoEnvioMensagemPosVenda.Text = "1";
+            this.txtTempoEnvioMensagemPosVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // autoLabel49
+            // 
+            this.autoLabel49.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel49.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel49.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel49.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel49.Location = new System.Drawing.Point(209, 13);
+            this.autoLabel49.Name = "autoLabel49";
+            this.autoLabel49.Size = new System.Drawing.Size(320, 21);
+            this.autoLabel49.TabIndex = 274;
+            this.autoLabel49.Text = "Dias/Horas Após Venda ou Encerramento de O.S";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(722, 121);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(138, 13);
+            this.label15.TabIndex = 267;
+            this.label15.Text = "Nome Fantasia: [NomeLoja]";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(722, 103);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(129, 13);
+            this.label16.TabIndex = 266;
+            this.label16.Text = "Nome do Cliente: [Cliente]";
+            // 
+            // txtMensagemPosVenda
+            // 
+            this.txtMensagemPosVenda.Enabled = false;
+            this.txtMensagemPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMensagemPosVenda.Location = new System.Drawing.Point(114, 103);
+            this.txtMensagemPosVenda.Multiline = true;
+            this.txtMensagemPosVenda.Name = "txtMensagemPosVenda";
+            this.txtMensagemPosVenda.Size = new System.Drawing.Size(602, 89);
+            this.txtMensagemPosVenda.TabIndex = 264;
+            this.txtMensagemPosVenda.Text = resources.GetString("txtMensagemPosVenda.Text");
+            // 
+            // autoLabel48
+            // 
+            this.autoLabel48.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel48.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel48.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel48.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel48.Location = new System.Drawing.Point(114, 79);
+            this.autoLabel48.Name = "autoLabel48";
+            this.autoLabel48.Size = new System.Drawing.Size(422, 21);
+            this.autoLabel48.TabIndex = 265;
+            this.autoLabel48.Text = "Mensagem Após Venda (Mensagem Para Envio pelo Whatsapp)";
+            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
@@ -2567,158 +3038,6 @@
             this.btnConfirmar.TextColor = System.Drawing.Color.White;
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
-            // 
-            // autoLabel44
-            // 
-            this.autoLabel44.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel44.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel44.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel44.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel44.Location = new System.Drawing.Point(16, 284);
-            this.autoLabel44.Name = "autoLabel44";
-            this.autoLabel44.Size = new System.Drawing.Size(220, 21);
-            this.autoLabel44.TabIndex = 222;
-            this.autoLabel44.Text = "Usuário Web Service SPC BRASIL";
-            // 
-            // autoLabel45
-            // 
-            this.autoLabel45.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel45.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel45.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel45.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel45.Location = new System.Drawing.Point(285, 284);
-            this.autoLabel45.Name = "autoLabel45";
-            this.autoLabel45.Size = new System.Drawing.Size(213, 21);
-            this.autoLabel45.TabIndex = 224;
-            this.autoLabel45.Text = "Senha Web Service SPC BRASIL";
-            // 
-            // txtSenhaSpcBrasil
-            // 
-            this.txtSenhaSpcBrasil.BackColor = System.Drawing.SystemColors.Window;
-            this.txtSenhaSpcBrasil.BorderColor = System.Drawing.Color.Lavender;
-            this.txtSenhaSpcBrasil.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtSenhaSpcBrasil.BorderRadius = 0;
-            this.txtSenhaSpcBrasil.BorderSize = 2;
-            this.txtSenhaSpcBrasil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenhaSpcBrasil.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSenhaSpcBrasil.Location = new System.Drawing.Point(285, 309);
-            this.txtSenhaSpcBrasil.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSenhaSpcBrasil.Multiline = false;
-            this.txtSenhaSpcBrasil.Name = "txtSenhaSpcBrasil";
-            this.txtSenhaSpcBrasil.Padding = new System.Windows.Forms.Padding(7);
-            this.txtSenhaSpcBrasil.PasswordChar = true;
-            this.txtSenhaSpcBrasil.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtSenhaSpcBrasil.PlaceholderText = "";
-            this.txtSenhaSpcBrasil.ReadOnly = false;
-            this.txtSenhaSpcBrasil.Size = new System.Drawing.Size(250, 31);
-            this.txtSenhaSpcBrasil.TabIndex = 225;
-            this.txtSenhaSpcBrasil.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtSenhaSpcBrasil.Texts = "";
-            this.txtSenhaSpcBrasil.UnderlinedStyle = false;
-            // 
-            // txtUsuarioSPCBRASIL
-            // 
-            this.txtUsuarioSPCBRASIL.BackColor = System.Drawing.SystemColors.Window;
-            this.txtUsuarioSPCBRASIL.BorderColor = System.Drawing.Color.Lavender;
-            this.txtUsuarioSPCBRASIL.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtUsuarioSPCBRASIL.BorderRadius = 0;
-            this.txtUsuarioSPCBRASIL.BorderSize = 2;
-            this.txtUsuarioSPCBRASIL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuarioSPCBRASIL.ForeColor = System.Drawing.Color.DimGray;
-            this.txtUsuarioSPCBRASIL.Location = new System.Drawing.Point(16, 309);
-            this.txtUsuarioSPCBRASIL.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUsuarioSPCBRASIL.Multiline = false;
-            this.txtUsuarioSPCBRASIL.Name = "txtUsuarioSPCBRASIL";
-            this.txtUsuarioSPCBRASIL.Padding = new System.Windows.Forms.Padding(7);
-            this.txtUsuarioSPCBRASIL.PasswordChar = false;
-            this.txtUsuarioSPCBRASIL.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtUsuarioSPCBRASIL.PlaceholderText = "";
-            this.txtUsuarioSPCBRASIL.ReadOnly = false;
-            this.txtUsuarioSPCBRASIL.Size = new System.Drawing.Size(250, 31);
-            this.txtUsuarioSPCBRASIL.TabIndex = 226;
-            this.txtUsuarioSPCBRASIL.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtUsuarioSPCBRASIL.Texts = "";
-            this.txtUsuarioSPCBRASIL.UnderlinedStyle = false;
-            // 
-            // radioSPC12
-            // 
-            this.radioSPC12.BeforeTouchSize = new System.Drawing.Size(99, 21);
-            this.radioSPC12.Checked = true;
-            this.radioSPC12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioSPC12.Location = new System.Drawing.Point(16, 347);
-            this.radioSPC12.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
-            this.radioSPC12.Name = "radioSPC12";
-            this.radioSPC12.Size = new System.Drawing.Size(99, 21);
-            this.radioSPC12.TabIndex = 227;
-            this.radioSPC12.Text = "SPC (12)";
-            // 
-            // radioSPC128
-            // 
-            this.radioSPC128.BeforeTouchSize = new System.Drawing.Size(152, 21);
-            this.radioSPC128.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioSPC128.Location = new System.Drawing.Point(307, 347);
-            this.radioSPC128.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
-            this.radioSPC128.Name = "radioSPC128";
-            this.radioSPC128.Size = new System.Drawing.Size(152, 21);
-            this.radioSPC128.TabIndex = 228;
-            this.radioSPC128.TabStop = false;
-            this.radioSPC128.Text = "SPC PLUS (128)";
-            // 
-            // radioSPC127
-            // 
-            this.radioSPC127.BeforeTouchSize = new System.Drawing.Size(194, 21);
-            this.radioSPC127.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioSPC127.Location = new System.Drawing.Point(112, 347);
-            this.radioSPC127.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
-            this.radioSPC127.Name = "radioSPC127";
-            this.radioSPC127.Size = new System.Drawing.Size(194, 21);
-            this.radioSPC127.TabIndex = 229;
-            this.radioSPC127.TabStop = false;
-            this.radioSPC127.Text = "SPC MIX PLUS. (127)";
-            // 
-            // chkProducaoSPC
-            // 
-            this.chkProducaoSPC.BeforeTouchSize = new System.Drawing.Size(94, 21);
-            this.chkProducaoSPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkProducaoSPC.Location = new System.Drawing.Point(3, 3);
-            this.chkProducaoSPC.Name = "chkProducaoSPC";
-            this.chkProducaoSPC.Size = new System.Drawing.Size(94, 21);
-            this.chkProducaoSPC.TabIndex = 230;
-            this.chkProducaoSPC.Text = "Produção";
-            this.chkProducaoSPC.CheckStateChanged += new System.EventHandler(this.chkProducaoSPC_CheckStateChanged);
-            // 
-            // chkHomologacaoSPC
-            // 
-            this.chkHomologacaoSPC.BeforeTouchSize = new System.Drawing.Size(122, 21);
-            this.chkHomologacaoSPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkHomologacaoSPC.Location = new System.Drawing.Point(3, 30);
-            this.chkHomologacaoSPC.Name = "chkHomologacaoSPC";
-            this.chkHomologacaoSPC.Size = new System.Drawing.Size(122, 21);
-            this.chkHomologacaoSPC.TabIndex = 231;
-            this.chkHomologacaoSPC.Text = "Homologação";
-            this.chkHomologacaoSPC.CheckStateChanged += new System.EventHandler(this.chkHomologacaoSPC_CheckStateChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.chkProducaoSPC);
-            this.panel1.Controls.Add(this.chkHomologacaoSPC);
-            this.panel1.Location = new System.Drawing.Point(551, 309);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(147, 63);
-            this.panel1.TabIndex = 232;
-            // 
-            // autoLabel46
-            // 
-            this.autoLabel46.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel46.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel46.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel46.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel46.Location = new System.Drawing.Point(551, 284);
-            this.autoLabel46.Name = "autoLabel46";
-            this.autoLabel46.Size = new System.Drawing.Size(76, 21);
-            this.autoLabel46.TabIndex = 233;
-            this.autoLabel46.Text = "Ambiente";
             // 
             // FrmParametroSistema
             // 
@@ -2770,17 +3089,25 @@
             this.tabPlanoConta.PerformLayout();
             this.tabEmpresa.ResumeLayout(false);
             this.tabEmpresa.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkProducaoSPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHomologacaoSPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC127)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC128)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSPC12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.tabEmail.ResumeLayout(false);
             this.tabEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioSPC12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioSPC128)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioSPC127)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkProducaoSPC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkHomologacaoSPC)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.tabPosVenda.ResumeLayout(false);
+            this.tabPosVenda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDepois)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAntes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAtivarMensagemLembreteVencimentoExameOftamotologico)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAtivarEnvioMensagemPosVenda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2939,5 +3266,29 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkProducaoSPC;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel46;
         private System.Windows.Forms.Panel panel1;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPosVenda;
+        private System.Windows.Forms.TextBox txtTempoEnvioMensagemPosVenda;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel49;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtMensagemPosVenda;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel48;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkMinutosPosVenda;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkDiasPosVenda;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkAtivarEnvioMensagemPosVenda;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel47;
+        private System.Windows.Forms.TextBox txtHorarioDisparoLembreteExame;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkAtivarMensagemLembreteVencimentoExameOftamotologico;
+        private System.Windows.Forms.TextBox txtDiasEnvioMensagemLembreteExame;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel50;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtMensagemLembreteExame;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel51;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkDepois;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkAntes;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtNomeServidor;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel52;
     }
 }

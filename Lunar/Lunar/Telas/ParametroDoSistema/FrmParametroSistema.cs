@@ -2,10 +2,10 @@
 using Lunar.Telas.OrdensDeServico.TipoObjetos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
-using Lunar.Utils.IntegracaoZAPI;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using LunarBase.Utilidades.ZAPZAP;
 using System;
 using System.Drawing;
 using System.IO;
@@ -184,6 +184,51 @@ namespace Lunar.Telas.ParametroDoSistema
                     chkHomologacaoSPC.Checked = true;
                 }
             }
+
+            //Whatsapp
+            
+            if (parametro.EnvioNotasPorWhats == true)
+                chkEnvioNFCeNFeWhats.Checked = true;
+            else
+                chkEnvioNFCeNFeWhats.Checked = false;
+
+            if (parametro.EnvioAgradecimentoCompra == true)
+                chkEnvioAgradecimentoCompraWhats.Checked = true;
+            else
+                chkEnvioAgradecimentoCompraWhats.Checked = false;
+
+            if (parametro.AtivarMensagemPosVendas == true)
+                chkAtivarEnvioMensagemPosVenda.Checked = true;
+            else
+                chkAtivarEnvioMensagemPosVenda.Checked = false;
+
+            if(!String.IsNullOrEmpty(parametro.MensagemPosVendasDiasOuMinutos))
+                if (parametro.MensagemPosVendasDiasOuMinutos == "DIAS")
+                    chkDiasPosVenda.Checked = true;
+                else if (parametro.MensagemPosVendasDiasOuMinutos == "MINUTOS")
+                    chkMinutosPosVenda.Checked = true;
+
+            txtTempoEnvioMensagemPosVenda.Text = parametro.MensagemPosVendasQtdDiasOuMinutos;
+            txtMensagemPosVenda.Text = parametro.MensagemPosVendas;
+
+            if (parametro.AtivarMensagemVencimentoExame == true)
+                chkAtivarMensagemLembreteVencimentoExameOftamotologico.Checked = true;
+            else
+                chkAtivarMensagemLembreteVencimentoExameOftamotologico.Checked = false;
+
+            if (!String.IsNullOrEmpty(parametro.MensagemLembreteExameAntesOuDepois)) 
+            {
+                if (parametro.MensagemLembreteExameAntesOuDepois.Equals("ANTES"))
+                    chkAntes.Checked = true;
+                else
+                    chkDepois.Checked = true;
+            }
+
+            txtDiasEnvioMensagemLembreteExame.Text = parametro.MensagemLembreteExameQtdDias;
+            txtHorarioDisparoLembreteExame.Text = parametro.MensagemLembreteExameHorario;
+            txtMensagemLembreteExame.Text = parametro.MensagemLembreteExame;
+            if(!String.IsNullOrEmpty(parametro.NomeServidor))
+                txtNomeServidor.Text = parametro.NomeServidor;
         }
 
         private void setParametro()
@@ -324,6 +369,42 @@ namespace Lunar.Telas.ParametroDoSistema
             else
                 parametro.AmbienteSpcBrasil = "HOMOLOGACAO";
 
+            //Whatsapp
+            if (chkEnvioNFCeNFeWhats.Checked == true)
+                parametro.EnvioNotasPorWhats = true;
+            else
+                parametro.EnvioNotasPorWhats = false;
+
+            if (chkEnvioAgradecimentoCompraWhats.Checked == true)
+                parametro.EnvioAgradecimentoCompra = true;
+            else
+                parametro.EnvioAgradecimentoCompra = false;
+
+            if (chkAtivarEnvioMensagemPosVenda.Checked == true)
+                parametro.AtivarMensagemPosVendas = true;
+            else
+                parametro.AtivarMensagemPosVendas = false;
+
+            if (chkDiasPosVenda.Checked == true)
+                parametro.MensagemPosVendasDiasOuMinutos = "DIAS";
+            else
+                parametro.MensagemPosVendasDiasOuMinutos = "MINUTOS";
+
+            parametro.MensagemPosVendasQtdDiasOuMinutos = txtTempoEnvioMensagemPosVenda.Text;
+            parametro.MensagemPosVendas = txtMensagemPosVenda.Text;
+
+            if (chkAtivarMensagemLembreteVencimentoExameOftamotologico.Checked == true)
+                parametro.AtivarMensagemVencimentoExame = true;
+            if (chkAntes.Checked == true)
+                parametro.MensagemLembreteExameAntesOuDepois = "ANTES";
+            else
+                parametro.MensagemLembreteExameAntesOuDepois = "DEPOIS";
+
+            parametro.MensagemLembreteExameQtdDias = txtDiasEnvioMensagemLembreteExame.Text;
+            parametro.MensagemLembreteExameHorario = txtHorarioDisparoLembreteExame.Text;
+            parametro.MensagemLembreteExame = txtMensagemLembreteExame.Text;
+            if (!String.IsNullOrEmpty(txtNomeServidor.Text))
+                parametro.NomeServidor = txtNomeServidor.Text;
             Sessao.parametroSistema = parametro;
         }
 
@@ -991,6 +1072,108 @@ namespace Lunar.Telas.ParametroDoSistema
             catch
             {
 
+            }
+        }
+
+        private void chkEnvioAgradecimentoCompraWhats_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkEnvioAgradecimentoCompraWhats.Checked == true)
+                {
+                    tabPosVenda.TabVisible = true;
+                }
+                else
+                    tabPosVenda.TabVisible = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkDiasPosVenda_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkDiasPosVenda.Checked == true)
+                    chkMinutosPosVenda.Checked = false;
+            }
+            catch 
+            { 
+            }
+        }
+
+        private void chkMinutosPosVenda_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkMinutosPosVenda.Checked == true)
+                    chkDiasPosVenda.Checked = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkAntes_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkAntes.Checked == true)
+                    chkDepois.Checked = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkDepois_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkDepois.Checked == true)
+                    chkAntes.Checked = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkAtivarEnvioMensagemPosVenda_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (chkAtivarEnvioMensagemPosVenda.Checked == true)
+            {
+                chkDiasPosVenda.Enabled = true;
+                chkMinutosPosVenda.Enabled = true;
+                txtMensagemPosVenda.Enabled = true;
+                txtTempoEnvioMensagemPosVenda.Enabled = true;
+            }
+            else
+            {
+                chkDiasPosVenda.Enabled = false;
+                chkMinutosPosVenda.Enabled = false;
+                txtMensagemPosVenda.Enabled = false;
+                txtTempoEnvioMensagemPosVenda.Enabled = false;
+            }
+        }
+
+        private void chkAtivarMensagemLembreteVencimentoExameOftamotologico_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (chkAtivarMensagemLembreteVencimentoExameOftamotologico.Checked == true)
+            {
+                txtDiasEnvioMensagemLembreteExame.Enabled = true;
+                txtHorarioDisparoLembreteExame.Enabled = true;
+                txtMensagemLembreteExame.Enabled = true;
+            }
+            else
+            {
+                txtDiasEnvioMensagemLembreteExame.Enabled = false;
+                txtHorarioDisparoLembreteExame.Enabled = false;
+                txtMensagemLembreteExame.Enabled = false;
             }
         }
     }

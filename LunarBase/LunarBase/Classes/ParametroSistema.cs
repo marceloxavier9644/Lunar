@@ -55,6 +55,22 @@ namespace LunarBase.Classes
         private string senhaWebServiceSpcBrasil;
         private string consultaPadraoSpcBrasil;
         private string ambienteSpcBrasil;
+
+
+        //WHATS
+        private bool envioNotasPorWhats;
+        private bool envioAgradecimentoCompra;
+        private bool ativarMensagemPosVendas;
+        private bool ativarMensagemVencimentoExame;
+        private string mensagemPosVendasDiasOuMinutos;
+        private string mensagemPosVendasQtdDiasOuMinutos;
+        private string mensagemPosVendas;
+        private string mensagemLembreteExameAntesOuDepois;
+        private string mensagemLembreteExameQtdDias;
+        private string mensagemLembreteExameHorario;
+        private string mensagemLembreteExame;
+        private string nomeServidor;
+
         public virtual int Id { get => id; set => id = value; }
         public virtual string UltNsu { get => ultNsu; set => ultNsu = value; }
         public virtual string ProximoNumeroNFCe { get => proximoNumeroNFCe; set => proximoNumeroNFCe = value; }
@@ -102,5 +118,17 @@ namespace LunarBase.Classes
         public virtual string SenhaWebServiceSpcBrasil { get => senhaWebServiceSpcBrasil; set => senhaWebServiceSpcBrasil = value; }
         public virtual string ConsultaPadraoSpcBrasil { get => consultaPadraoSpcBrasil; set => consultaPadraoSpcBrasil = value; }
         public virtual string AmbienteSpcBrasil { get => ambienteSpcBrasil; set => ambienteSpcBrasil = value; }
+        public virtual bool EnvioNotasPorWhats { get => envioNotasPorWhats; set => envioNotasPorWhats = value; }
+        public virtual bool EnvioAgradecimentoCompra { get => envioAgradecimentoCompra; set => envioAgradecimentoCompra = value; }
+        public virtual bool AtivarMensagemPosVendas { get => ativarMensagemPosVendas; set => ativarMensagemPosVendas = value; }
+        public virtual bool AtivarMensagemVencimentoExame { get => ativarMensagemVencimentoExame; set => ativarMensagemVencimentoExame = value; }
+        public virtual string MensagemPosVendasDiasOuMinutos { get => mensagemPosVendasDiasOuMinutos; set => mensagemPosVendasDiasOuMinutos = value; }
+        public virtual string MensagemPosVendasQtdDiasOuMinutos { get => mensagemPosVendasQtdDiasOuMinutos; set => mensagemPosVendasQtdDiasOuMinutos = value; }
+        public virtual string MensagemPosVendas { get => mensagemPosVendas; set => mensagemPosVendas = value; }
+        public virtual string MensagemLembreteExameAntesOuDepois { get => mensagemLembreteExameAntesOuDepois; set => mensagemLembreteExameAntesOuDepois = value; }
+        public virtual string MensagemLembreteExameQtdDias { get => mensagemLembreteExameQtdDias; set => mensagemLembreteExameQtdDias = value; }
+        public virtual string MensagemLembreteExameHorario { get => mensagemLembreteExameHorario; set => mensagemLembreteExameHorario = value; }
+        public virtual string MensagemLembreteExame { get => mensagemLembreteExame; set => mensagemLembreteExame = value; }
+        public virtual string NomeServidor { get => nomeServidor; set => nomeServidor = value; }
     }
 }

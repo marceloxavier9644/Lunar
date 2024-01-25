@@ -1207,7 +1207,6 @@
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.Designer.cs">
       <DependentUpon>FrmImportarCSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\IntegracaoZAPI\Zapi.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFCe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNfe2.cs" />

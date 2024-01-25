@@ -4,7 +4,6 @@ using Lunar.Telas.Cadastros.Cliente.PessoaAdicionais;
 using Lunar.Telas.SPCs;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
-using Lunar.Utils.IntegracaoZAPI;
 using Lunar.Utils.SintegrawsConsultas;
 using Lunar.Utils.SPCBrasilIntegracao;
 using LunarBase.Classes;
