@@ -60,7 +60,9 @@
 		<property name="MensagemLembreteExameHorario" column="MENSAGEMLEMBREEXAMEHORARIO" type="String" length="30"/>
 		<property name="MensagemLembreteExame" column="MENSAGEMLEMBRETEEXAME" type="String" length="1000"/>
 		<property name="NomeServidor" column="NOMESERVIDOR" type="String" length="150"/>
+		<property name="MensagemPosVendaAposFinalizarOs" column="MENSAGEMPOSVENDAAPOSFINALIZAROS" type="Boolean"/>
 		
+
 		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="false" foreign-key="FK_PARAMENTROS_TIPOOBJETO" lazy="false"/>
 		<many-to-one name="PlanoContaVenda" column="PLANOCONTAVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTAVENDA" lazy="false"/>
 		<many-to-one name="PlanoContaCompraRevenda" column="PLANOCONTACOMPRAREVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTACOMPRAREVENDA" lazy="false"/>

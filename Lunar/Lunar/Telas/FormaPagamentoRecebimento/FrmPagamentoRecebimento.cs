@@ -1867,7 +1867,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
 
                 //MensagemPosVendas
                 MensagemPosVenda msgPos = new MensagemPosVenda();
-                if (Sessao.parametroSistema.AtivarMensagemPosVendas == true && ordemServico.Cliente != null)
+                if (Sessao.parametroSistema.AtivarMensagemPosVendas == true && ordemServico.Cliente != null && Sessao.parametroSistema.MensagemPosVendaAposFinalizarOs == true)
                 {
                     if (ordemServico.Cliente.Id > 0)
                     {

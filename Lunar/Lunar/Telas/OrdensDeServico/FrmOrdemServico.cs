@@ -1790,6 +1790,28 @@ namespace Lunar.Telas.OrdensDeServico
                     ordemServicoController.salvarOrdemServicoComItensAdicionais(ordemServico, listaProdutos, listaServicos, listaExames, listaAnexo);
                     lblAutomatico.Visible = false;
                     txtNumeroOS.Texts = ordemServico.Id.ToString();
+
+                    //WhatsAPP Pós Venda
+                    //MensagemPosVendas
+                    MensagemPosVenda msgPos = new MensagemPosVenda();
+                    if (Sessao.parametroSistema.AtivarMensagemPosVendas == true && ordemServico.Cliente != null && Sessao.parametroSistema.MensagemPosVendaAposFinalizarOs == false)
+                    {
+                        if (ordemServico.Cliente.Id > 0)
+                        {
+                            msgPos.DataAgendamento = DateTime.Now.AddMinutes(int.Parse(Sessao.parametroSistema.MensagemPosVendasQtdDiasOuMinutos));
+                            if (msgPos.DataAgendamento.TimeOfDay > TimeSpan.Parse("18:00:00"))
+                            {
+                                // Ajustar para 17:59:00
+                                msgPos.DataAgendamento = new DateTime(msgPos.DataAgendamento.Year, msgPos.DataAgendamento.Month, msgPos.DataAgendamento.Day, 17, 59, 00);
+                            }
+                            msgPos.FlagEnviada = false;
+                            msgPos.NomeCliente = ordemServico.Cliente.NomeFantasia;
+                            msgPos.Pessoa = ordemServico.Cliente;
+                            Sessao.MensagensAgendadas.Add(msgPos);
+                            Controller.getInstance().salvar(msgPos);
+                        }
+                    }
+
                     if (GenericaDesktop.ShowConfirmacao("Ordem de Serviço " + ordemServico.Id + " Registrada com Sucesso, deseja imprimir?"))
                     {
                         FrmImpressaoOrdemServico frmImprimirOrdem = new FrmImpressaoOrdemServico(ordemServico);

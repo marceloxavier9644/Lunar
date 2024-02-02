@@ -1,7 +1,5 @@
 ﻿using LunarAtualiza.Utils;
 using LunarBase.Classes;
-using LunarBase.ClassesBO;
-using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
@@ -20,12 +18,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace LunarAtualizador
 {
     public partial class FrmAtualizador : Form
     {
+        string nomeDoComputador = "";
+        string nomeServidorConfigurado = "";
         string idWhats = "";
         string tokenWhats = "";
         String ativarMensagemLembreteExame = "";
@@ -61,6 +60,7 @@ namespace LunarAtualizador
         public FrmAtualizador()
         {
             InitializeComponent();
+            nomeDoComputador = Environment.MachineName;
             verificaConfiguracaoBancoLocal();
             webClient = new WebClient();
             webClient.DownloadProgressChanged += WebClientDownloadProgressChanged;
@@ -82,6 +82,7 @@ namespace LunarAtualizador
                     }
                 }
             }
+
             //Timer automático
             timer1.Start();
            
@@ -539,7 +540,8 @@ namespace LunarAtualizador
                     }
                 }
             }
-            if (ativarMensagemPosVendas.Equals("True"))
+
+            if (ativarMensagemPosVendas.Equals("True") && nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
             {
                 //de 10 em 10 minutos verifica novas msg
                 if (DateTime.Now.Minute % 10 == 0)
@@ -672,8 +674,8 @@ namespace LunarAtualizador
         {
             string msgLembreteExame = "";
             string diasAntes = "";
-            string nomeServidorConfigurado = "";
-            string nomeDoComputador = Environment.MachineName;
+            nomeServidorConfigurado = "";
+            
 
             string mensagemPosVenda = "";
             string tempoMensagemPosVenda = "";
@@ -918,6 +920,7 @@ namespace LunarAtualizador
                                 ativarMensagemPosVendas = $"{reader["ATIVARMENSAGEMPOSVENDAS"]}";
                                 horarioLembreteExame = $"{reader["MENSAGEMLEMBREEXAMEHORARIO"]}";
                                 mensagemPosVenda = $"{reader["MENSAGEMPOSVENDAS"]}";
+                                nomeServidorConfigurado = $"{reader["nomeServidor"]}";
                                 Sessao.parametroSistema.IdInstanciaWhats = reader["IdInstanciaWhats"].ToString();
                                 Sessao.parametroSistema.TokenWhats = reader["TokenWhats"].ToString();
                                 idWhats = Sessao.parametroSistema.IdInstanciaWhats;

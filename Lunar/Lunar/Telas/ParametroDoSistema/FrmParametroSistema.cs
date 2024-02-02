@@ -208,6 +208,11 @@ namespace Lunar.Telas.ParametroDoSistema
                 else if (parametro.MensagemPosVendasDiasOuMinutos == "MINUTOS")
                     chkMinutosPosVenda.Checked = true;
 
+            if (parametro.MensagemPosVendaAposFinalizarOs == true)
+                chkMensagemAposEncerrarOS.Checked = true;
+            else
+                chkMensagemAposEncerrarOS.Checked = false;
+
             txtTempoEnvioMensagemPosVenda.Text = parametro.MensagemPosVendasQtdDiasOuMinutos;
             txtMensagemPosVenda.Text = parametro.MensagemPosVendas;
 
@@ -389,6 +394,11 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.MensagemPosVendasDiasOuMinutos = "DIAS";
             else
                 parametro.MensagemPosVendasDiasOuMinutos = "MINUTOS";
+
+            if (chkMensagemAposEncerrarOS.Checked == true)
+                parametro.MensagemPosVendaAposFinalizarOs = true;
+            else
+                parametro.MensagemPosVendaAposFinalizarOs = false;
 
             parametro.MensagemPosVendasQtdDiasOuMinutos = txtTempoEnvioMensagemPosVenda.Text;
             parametro.MensagemPosVendas = txtMensagemPosVenda.Text;

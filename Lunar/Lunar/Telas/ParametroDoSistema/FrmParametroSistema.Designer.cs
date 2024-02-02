@@ -206,6 +206,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
+            this.chkMensagemAposEncerrarOS = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -248,6 +249,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivarEnvioMensagemPosVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkMensagemAposEncerrarOS)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -2704,6 +2706,7 @@
             // 
             // tabPosVenda
             // 
+            this.tabPosVenda.Controls.Add(this.chkMensagemAposEncerrarOS);
             this.tabPosVenda.Controls.Add(this.txtNomeServidor);
             this.tabPosVenda.Controls.Add(this.autoLabel52);
             this.tabPosVenda.Controls.Add(this.label13);
@@ -2907,7 +2910,7 @@
             this.chkMinutosPosVenda.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkMinutosPosVenda.Enabled = false;
             this.chkMinutosPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkMinutosPosVenda.Location = new System.Drawing.Point(114, 37);
+            this.chkMinutosPosVenda.Location = new System.Drawing.Point(10, 37);
             this.chkMinutosPosVenda.Name = "chkMinutosPosVenda";
             this.chkMinutosPosVenda.Size = new System.Drawing.Size(89, 31);
             this.chkMinutosPosVenda.TabIndex = 276;
@@ -2919,7 +2922,7 @@
             this.chkDiasPosVenda.BeforeTouchSize = new System.Drawing.Size(72, 31);
             this.chkDiasPosVenda.Enabled = false;
             this.chkDiasPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDiasPosVenda.Location = new System.Drawing.Point(114, 11);
+            this.chkDiasPosVenda.Location = new System.Drawing.Point(21, 130);
             this.chkDiasPosVenda.Name = "chkDiasPosVenda";
             this.chkDiasPosVenda.Size = new System.Drawing.Size(72, 31);
             this.chkDiasPosVenda.TabIndex = 275;
@@ -3040,6 +3043,17 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
+            // chkMensagemAposEncerrarOS
+            // 
+            this.chkMensagemAposEncerrarOS.BeforeTouchSize = new System.Drawing.Size(193, 31);
+            this.chkMensagemAposEncerrarOS.Enabled = false;
+            this.chkMensagemAposEncerrarOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMensagemAposEncerrarOS.Location = new System.Drawing.Point(10, 3);
+            this.chkMensagemAposEncerrarOS.Name = "chkMensagemAposEncerrarOS";
+            this.chkMensagemAposEncerrarOS.Size = new System.Drawing.Size(193, 31);
+            this.chkMensagemAposEncerrarOS.TabIndex = 296;
+            this.chkMensagemAposEncerrarOS.Text = " Após Encerrar O.S ?";
+            // 
             // FrmParametroSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3109,6 +3123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivarEnvioMensagemPosVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkMensagemAposEncerrarOS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3291,5 +3306,6 @@
         private System.Windows.Forms.TextBox txtNomeServidor;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel52;
         private System.Windows.Forms.Label label15;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkMensagemAposEncerrarOS;
     }
 }

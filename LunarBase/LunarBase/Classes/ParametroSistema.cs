@@ -70,6 +70,7 @@ namespace LunarBase.Classes
         private string mensagemLembreteExameHorario;
         private string mensagemLembreteExame;
         private string nomeServidor;
+        private bool mensagemPosVendaAposFinalizarOs;
 
         public virtual int Id { get => id; set => id = value; }
         public virtual string UltNsu { get => ultNsu; set => ultNsu = value; }
@@ -130,5 +131,6 @@ namespace LunarBase.Classes
         public virtual string MensagemLembreteExameHorario { get => mensagemLembreteExameHorario; set => mensagemLembreteExameHorario = value; }
         public virtual string MensagemLembreteExame { get => mensagemLembreteExame; set => mensagemLembreteExame = value; }
         public virtual string NomeServidor { get => nomeServidor; set => nomeServidor = value; }
+        public virtual bool MensagemPosVendaAposFinalizarOs { get => mensagemPosVendaAposFinalizarOs; set => mensagemPosVendaAposFinalizarOs = value; }
     }
 }
