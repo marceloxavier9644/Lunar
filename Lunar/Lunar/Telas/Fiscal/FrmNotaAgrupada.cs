@@ -922,6 +922,7 @@ namespace Lunar.Telas.Fiscal
             nfe.Marca = "";
             nfe.PesoBruto = "";
             nfe.PesoLiquido = "";
+            nfe.NotaAgrupada = true;
             Controller.getInstance().salvar(nfe);
             return nfe;
         }
@@ -1325,6 +1326,7 @@ namespace Lunar.Telas.Fiscal
                                 nfe.VProd = valorProdutos;
                                 nfe.VDesc = valorDesconto;
                                 nfe.VNf = valorTotalComDesconto;
+                                nfe.NotaAgrupada = true;
                                 try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(nfe.VProd, nfe.VNf, nfe.VDesc, numeroNFe, listaProdutosNFe, cli, null, null, formaPagamento); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
 
                                 if (!String.IsNullOrEmpty(xmlStrEnvio))
@@ -1348,6 +1350,7 @@ namespace Lunar.Telas.Fiscal
                                 nfePagamento.Origem = "NOTA FISCAL AGRUPADA";
                                 nfePagamento.Nfe = nfe;
                                 nfePagamento.FormaPagamento = formaPagamento;
+
                                 Controller.getInstance().salvar(nfePagamento);
 
                                 Sessao.parametroSistema.ProximoNumeroNFCe = (int.Parse(numeroNFe) + 1).ToString();

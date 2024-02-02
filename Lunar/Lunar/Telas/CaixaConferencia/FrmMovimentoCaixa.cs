@@ -828,10 +828,13 @@ namespace Lunar.Telas.CaixaConferencia
                                                     Controller.getInstance().excluir(caixa);
                                                     GenericaDesktop.ShowInfo("Registro Excluído com Sucesso!");
                                                 }
-                                                else
+                                                else if (listaRecebidas.Count > 1)
                                                 {
                                                     GenericaDesktop.ShowAlerta("Não é possível excluir esta parcial, existe 2 parciais no mesmo dia com o mesmo valor, solicite suporte ao revendedor do sistema!");
                                                 }
+                                                else
+                                                    GenericaDesktop.ShowAlerta("Não é possível excluir esta parcial, não localizado na tabela crr, solicite suporte ao revendedor do sistema!");
+
                                             }
                                         }
                                     }

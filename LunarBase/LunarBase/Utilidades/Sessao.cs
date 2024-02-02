@@ -37,5 +37,7 @@ namespace LunarBase.Utilidades
 
         public static HashSet<string> permissoes;
         public static decimal valorSinalOrdemServico = 0;
+
+        public static List<MensagemPosVenda> MensagensAgendadas = new List<MensagemPosVenda>();
     }
 }

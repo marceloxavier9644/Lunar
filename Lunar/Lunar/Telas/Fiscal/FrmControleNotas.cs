@@ -1350,10 +1350,14 @@ namespace Lunar.Telas.Fiscal
 
                         NfeProdutoController nfeProdutoController = new NfeProdutoController();
                         OrdemServicoController ordemServicoController = new OrdemServicoController();
+
                         Venda venda = null;
-                        venda = vendaController.selecionarVendaPorNF(nfe.Id);
                         OrdemServico ordemServico = null;
-                        ordemServico = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
+                        if (nfe.NotaAgrupada == false)
+                        {
+                            venda = vendaController.selecionarVendaPorNF(nfe.Id);
+                            ordemServico = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
+                        }
 
                         //Verifica valores dos produtos
                         IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);

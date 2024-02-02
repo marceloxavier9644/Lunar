@@ -1,5 +1,7 @@
 ﻿using LunarAtualiza.Utils;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
@@ -18,15 +20,20 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace LunarAtualizador
 {
     public partial class FrmAtualizador : Form
     {
+        string idWhats = "";
+        string tokenWhats = "";
         String ativarMensagemLembreteExame = "";
+        String ativarMensagemPosVendas = "";
         String horarioLembreteExame = "";
         string horaLembreteExame = "";
         string minutoLembreteExame = "";
+        string mensagemPosVenda = "";
         private BackgroundWorker backgroundWorkerEmail;
         String cnpjClient = "";
         bool abriuForm = false;
@@ -387,8 +394,8 @@ namespace LunarAtualizador
             }
         }
 
-        private void verificaConfiguracaoBancoLocal()
-        {
+        private void verificaConfiguracaoBancoLocal() { 
+        
             if (File.Exists(@"C:\Lunar\MXSystem.xml"))
             {
                 DateTime dataXML = DateTime.Now.AddDays(-1000);
@@ -532,6 +539,69 @@ namespace LunarAtualizador
                     }
                 }
             }
+            if (ativarMensagemPosVendas.Equals("True"))
+            {
+                //de 10 em 10 minutos verifica novas msg
+                if (DateTime.Now.Minute % 10 == 0)
+                {
+                    consultaMensagens();
+                    if (Sessao.MensagensAgendadas.Count > 0)
+                    {
+                        foreach (var mensagem in Sessao.MensagensAgendadas) // Usar ToList para evitar exceção de modificação durante a iteração
+                        {
+                            if (DateTime.Now >= mensagem.DataAgendamento)
+                            {
+                                if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda))
+                                {
+                                    if (mensagem.FlagEnviada == false)
+                                        dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
+                                    mensagem.FlagEnviada = true;
+                                    Controller.getInstance().salvar(mensagem);
+                                }
+                            }
+                        }
+                        Sessao.MensagensAgendadas.Clear();
+                    }
+                }
+            }
+        }
+
+        private void consultaMensagens()
+        {
+            MensagemPosVenda msgPos = new MensagemPosVenda();
+            using (MySqlConnection connection = new MySqlConnection(connectionStringLocal))
+            {
+                try
+                {
+                    // Abra a conexão
+                
+                    connection.Open();
+                    Sessao.parametroSistema = new ParametroSistema();
+                    string query = "SELECT * FROM MensagemPosVenda WHERE DATE(DataAgendamento) = CURDATE() AND FlagEnviada = false;";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Faça algo com os resultados
+                            while (reader.Read())
+                            {
+                                msgPos.Id = Convert.ToInt32(reader["Id"]);
+                                msgPos.DataAgendamento = DateTime.Parse($"{reader["DataAgendamento"]}");
+                                msgPos.NomeCliente = $"{reader["NomeCliente"]}";
+                                msgPos.Pessoa = new Pessoa();
+                                msgPos.Pessoa.Id = Convert.ToInt32(reader["Pessoa"]);
+                                msgPos.Pessoa = (Pessoa)Controller.getInstance().selecionar(msgPos.Pessoa);
+                                msgPos.FlagEnviada = false;
+                                Sessao.MensagensAgendadas.Add(msgPos);
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+            } 
         }
         private void InicializarBackgroundWorker()
         {
@@ -604,7 +674,11 @@ namespace LunarAtualizador
             string diasAntes = "";
             string nomeServidorConfigurado = "";
             string nomeDoComputador = Environment.MachineName;
-            string ativarMensagemPosVenda = "";
+
+            string mensagemPosVenda = "";
+            string tempoMensagemPosVenda = "";
+            string minutoOuHoraPosVenda = "";
+
             using (MySqlConnection connection = new MySqlConnection(connectionStringLocal))
             {
                 try
@@ -622,8 +696,9 @@ namespace LunarAtualizador
                             while (reader.Read())
                             {
                                 nomeServidorConfigurado = $"{reader["nomeServidor"]}";
-                                ativarMensagemPosVenda = $"{reader["ATIVARMENSAGEMPOSVENDAS"]}";
+                                ativarMensagemPosVendas = $"{reader["ATIVARMENSAGEMPOSVENDAS"]}";
                                 ativarMensagemLembreteExame = $"{reader["ATIVARMENSAGEMVENCIMENTOEXAME"]}";
+                                mensagemPosVenda = $"{reader["MENSAGEMPOSVENDAS"]}";
                             }
                         }
                         if (ativarMensagemLembreteExame.Equals("True"))
@@ -642,19 +717,33 @@ namespace LunarAtualizador
                                             // Acesse os dados do banco de dados e faça o que for necessário
                                             msgLembreteExame = reader2["MensagemLembreteExame"].ToString();
                                             diasAntes = reader2["MENSAGEMLEMBREEXAMEQTDDIAS"].ToString();
-                                            try
-                                            {
-                                                Sessao.parametroSistema.IdInstanciaWhats = reader2["IdInstanciaWhats"].ToString();
-                                                Sessao.parametroSistema.TokenWhats = reader2["TokenWhats"].ToString();
-                                            }
-                                            catch
-                                            {
-                                                MessageBox.Show("Configure IdInstanciaWhats e TokenWhats nos parametros do sistema!");
-                                            }
                                         }
                                     }
                                 }
                                 listaExamesVencendo(int.Parse(diasAntes), msgLembreteExame);
+                            }
+                        }
+                        if (ativarMensagemPosVendas.Equals("True"))
+                        {
+                            //Compara sem considerar maiusculo e minusculo
+                            if (nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
+                            {
+                                query = "SELECT * FROM ParametroSistema";
+                                using (MySqlCommand command2 = new MySqlCommand(query, connection))
+                                {
+                                    using (MySqlDataReader reader2 = command2.ExecuteReader())
+                                    {
+                                        // Faça algo com os resultados
+                                        while (reader2.Read())
+                                        {
+                                            // Acesse os dados do banco de dados e faça o que for necessário
+                                            mensagemPosVenda = reader2["MensagemPosVendas"].ToString();
+                                            minutoOuHoraPosVenda = reader2["MensagemPosVendasDiasOuMinutos"].ToString();
+                                            tempoMensagemPosVenda = reader2["MensagemPosVendasQtdDiasOuMinutos"].ToString();
+                                        }
+                                    }
+                                }
+                                //listaExamesVencendo(int.Parse(diasAntes), msgLembreteExame);
                             }
                         }
                     }
@@ -826,7 +915,13 @@ namespace LunarAtualizador
                             while (reader.Read())
                             {
                                 ativarMensagemLembreteExame = $"{reader["ATIVARMENSAGEMVENCIMENTOEXAME"]}";
+                                ativarMensagemPosVendas = $"{reader["ATIVARMENSAGEMPOSVENDAS"]}";
                                 horarioLembreteExame = $"{reader["MENSAGEMLEMBREEXAMEHORARIO"]}";
+                                mensagemPosVenda = $"{reader["MENSAGEMPOSVENDAS"]}";
+                                Sessao.parametroSistema.IdInstanciaWhats = reader["IdInstanciaWhats"].ToString();
+                                Sessao.parametroSistema.TokenWhats = reader["TokenWhats"].ToString();
+                                idWhats = Sessao.parametroSistema.IdInstanciaWhats;
+                                tokenWhats = Sessao.parametroSistema.TokenWhats;
                             }
                         }
                     }
@@ -837,5 +932,45 @@ namespace LunarAtualizador
                 }
             }
         }
+
+        private void dispararMensagemPosVenda(string nomeCliente, string mensagem, Pessoa pessoa)
+        {
+            Zapi zapi = new Zapi();
+            if (pessoa.PessoaTelefone != null)
+            {
+                if (ValidarNumeroTelefone(pessoa.PessoaTelefone.Ddd + pessoa.PessoaTelefone.Telefone))
+                {
+                    if (pessoa.PessoaTelefone.Telefone.Length == 8)
+                        pessoa.PessoaTelefone.Telefone = "9" + pessoa.PessoaTelefone.Telefone;
+                    string numeroLimpo = RemoverCaracteresEspeciais("55" + pessoa.PessoaTelefone.Ddd + pessoa.PessoaTelefone.Telefone);
+                    //Nome e primeiro sobrenome
+                    string[] partesNome = nomeCliente.Split(' ');
+                    if (partesNome.Length >= 2)
+                        nomeCliente = partesNome[0] + " " + partesNome[1];
+
+                    String mensagemAjustada = mensagem;
+                    if (mensagemAjustada.Contains("[NomeCliente]"))
+                        mensagemAjustada = mensagemAjustada.Replace("[NomeCliente]", nomeCliente);
+           
+                    
+                    var ret = zapi.zapi_EnviarTexto(numeroLimpo, mensagemAjustada, idWhats, tokenWhats);
+                    if (ret != null)
+                    {
+                        //AtualizarFlagMensagemEnviada(int.Parse(idOrdemServico));
+                        string nomeArquivo = $"Whatsapp_PosVenda_{DateTime.Now:yyyyMMdd_HHmm}.txt";
+                        if (!Directory.Exists("Logs"))
+                        {
+                            Directory.CreateDirectory("Logs");
+                        }
+                        string caminhoArquivo = Path.Combine("Logs", nomeArquivo);
+                        string conteudoLog = $"Data e Hora: {DateTime.Now}\nNúmero de Telefone: {numeroLimpo}\nTexto da Mensagem: {mensagemAjustada}\n\n";
+                        // Escrever o conteúdo no arquivo (append para adicionar ao conteúdo existente)
+                        File.AppendAllText(caminhoArquivo, conteudoLog);
+                    }
+                }
+            }
+        }
+
+
     }
 }

@@ -1462,17 +1462,6 @@ namespace Lunar.Telas.OrdensDeServico
                                         if (validador.validarProdutosNota(listaProdutosNFe))
                                         {
                                             numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFe;
-                                            //Nfe nfConferencia = new Nfe();
-                                            //NfeController nfeController = new NfeController();
-                                            //nfConferencia = nfeController.selecionarUltimoNumeroNota("55");
-                                            //if (nfConferencia != null)
-                                            //{
-                                            //    if (nfConferencia.Id > 0)
-                                            //    {
-                                            //        if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
-                                            //            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
-                                            //    }
-                                            //}
                                             xmlStrEnvio = emitirNFe.gerarXMLNfe(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, ordemServico.Cliente, null, false, "VENDA", ordemServico);
                                             if (!String.IsNullOrEmpty(xmlStrEnvio))
                                             {
@@ -1511,11 +1500,6 @@ namespace Lunar.Telas.OrdensDeServico
                 }
                 else
                     GenericaDesktop.ShowAlerta("Para gerar o documento fiscal a Ordem de Serviço deve ta encerrada/faturada!");
-            //}
-            //else
-            //{
-            //    GenericaDesktop.ShowAlerta("Não é possível gerar nota de Ordem de Serviço feita no outro sistema!");
-            //}
         }
 
         private void enviarXMLNFeParaApi(string xmlNfe)

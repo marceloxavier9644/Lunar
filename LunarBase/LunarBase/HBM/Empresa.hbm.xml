@@ -24,7 +24,10 @@
 		<property name="TelefonePrincipal" column="TELEFONEPRINCIPAL" type="String" length="40"/>
 		<property name="DddSecundario" column="DDDSECUNDARIO" type="String" length="5"/>
 		<property name="TelefoneSecundario" column="TELEFONESECUNDARIO" type="String" length="40"/>
-		
+
+		<many-to-one name="Endereco" column="ENDERECO" class="LunarBase.Classes.Endereco" not-null="false" foreign-key="FK_EMPRESA_ENDERECO" lazy="false"/>
+
+
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
 		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>

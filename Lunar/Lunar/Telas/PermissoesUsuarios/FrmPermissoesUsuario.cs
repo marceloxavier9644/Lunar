@@ -128,6 +128,7 @@ namespace Lunar.Telas.PermissoesUsuarios
             capturarCheckAbaVendas();
             capturarCheckAbaUtilitarios();
             capturarCheckAbaCaixa();
+            capturarCheckAbaRelatorios();
 
             //Salvo permissoes apenas para identificar o que tinha e o que foi alterado e por quem... 
             //e posteriormente armazeno as permissoes no grupoUsuario para realmente validar nas telas
@@ -239,6 +240,26 @@ namespace Lunar.Telas.PermissoesUsuarios
         private void capturarCheckAbaCaixa()
         {
             for (int i = 200; i <= 205; i++)
+            {
+                string checkBoxName = "chk" + i;
+
+                // Use o método Controls.Find para encontrar o CheckBox com o nome específico.
+                CheckBox checkBox = tabControlAdv1.Controls.Find(checkBoxName, true).FirstOrDefault() as CheckBox;
+
+                if (checkBox != null)
+                {
+                    if (checkBox.Checked)
+                    {
+                        permissao.Permissoes += ";" + i;
+                    }
+                }
+            }
+        }
+
+        //Relatorios
+        private void capturarCheckAbaRelatorios()
+        {
+            for (int i = 300; i <= 301; i++)
             {
                 string checkBoxName = "chk" + i;
 

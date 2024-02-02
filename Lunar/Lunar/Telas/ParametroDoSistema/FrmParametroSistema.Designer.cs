@@ -2741,9 +2741,9 @@
             // txtNomeServidor
             // 
             this.txtNomeServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeServidor.Location = new System.Drawing.Point(535, 37);
+            this.txtNomeServidor.Location = new System.Drawing.Point(568, 37);
             this.txtNomeServidor.Name = "txtNomeServidor";
-            this.txtNomeServidor.Size = new System.Drawing.Size(320, 29);
+            this.txtNomeServidor.Size = new System.Drawing.Size(287, 29);
             this.txtNomeServidor.TabIndex = 294;
             this.txtNomeServidor.Text = "SERVIDOR";
             this.txtNomeServidor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2754,7 +2754,7 @@
             this.autoLabel52.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel52.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel52.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel52.Location = new System.Drawing.Point(535, 13);
+            this.autoLabel52.Location = new System.Drawing.Point(568, 13);
             this.autoLabel52.Name = "autoLabel52";
             this.autoLabel52.Size = new System.Drawing.Size(184, 21);
             this.autoLabel52.TabIndex = 295;
@@ -2903,6 +2903,8 @@
             // chkMinutosPosVenda
             // 
             this.chkMinutosPosVenda.BeforeTouchSize = new System.Drawing.Size(89, 31);
+            this.chkMinutosPosVenda.Checked = true;
+            this.chkMinutosPosVenda.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkMinutosPosVenda.Enabled = false;
             this.chkMinutosPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkMinutosPosVenda.Location = new System.Drawing.Point(114, 37);
@@ -2915,8 +2917,6 @@
             // chkDiasPosVenda
             // 
             this.chkDiasPosVenda.BeforeTouchSize = new System.Drawing.Size(72, 31);
-            this.chkDiasPosVenda.Checked = true;
-            this.chkDiasPosVenda.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDiasPosVenda.Enabled = false;
             this.chkDiasPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDiasPosVenda.Location = new System.Drawing.Point(114, 11);
@@ -2924,6 +2924,7 @@
             this.chkDiasPosVenda.Size = new System.Drawing.Size(72, 31);
             this.chkDiasPosVenda.TabIndex = 275;
             this.chkDiasPosVenda.Text = " Dias";
+            this.chkDiasPosVenda.Visible = false;
             this.chkDiasPosVenda.CheckStateChanged += new System.EventHandler(this.chkDiasPosVenda_CheckStateChanged);
             // 
             // txtTempoEnvioMensagemPosVenda
@@ -2932,9 +2933,9 @@
             this.txtTempoEnvioMensagemPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTempoEnvioMensagemPosVenda.Location = new System.Drawing.Point(209, 37);
             this.txtTempoEnvioMensagemPosVenda.Name = "txtTempoEnvioMensagemPosVenda";
-            this.txtTempoEnvioMensagemPosVenda.Size = new System.Drawing.Size(320, 29);
+            this.txtTempoEnvioMensagemPosVenda.Size = new System.Drawing.Size(353, 29);
             this.txtTempoEnvioMensagemPosVenda.TabIndex = 273;
-            this.txtTempoEnvioMensagemPosVenda.Text = "1";
+            this.txtTempoEnvioMensagemPosVenda.Text = "30";
             this.txtTempoEnvioMensagemPosVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // autoLabel49
@@ -2945,9 +2946,9 @@
             this.autoLabel49.ForeColor = System.Drawing.Color.Black;
             this.autoLabel49.Location = new System.Drawing.Point(209, 13);
             this.autoLabel49.Name = "autoLabel49";
-            this.autoLabel49.Size = new System.Drawing.Size(320, 21);
+            this.autoLabel49.Size = new System.Drawing.Size(206, 21);
             this.autoLabel49.TabIndex = 274;
-            this.autoLabel49.Text = "Dias/Horas Após Venda ou Encerramento de O.S";
+            this.autoLabel49.Text = "Média de Minutos Após Venda";
             // 
             // label15
             // 
@@ -2963,9 +2964,9 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(722, 103);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(129, 13);
+            this.label16.Size = new System.Drawing.Size(111, 13);
             this.label16.TabIndex = 266;
-            this.label16.Text = "Nome do Cliente: [Cliente]";
+            this.label16.Text = "Cliente: [NomeCliente]";
             // 
             // txtMensagemPosVenda
             // 
@@ -3269,7 +3270,6 @@
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPosVenda;
         private System.Windows.Forms.TextBox txtTempoEnvioMensagemPosVenda;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel49;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtMensagemPosVenda;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel48;
@@ -3290,5 +3290,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtNomeServidor;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel52;
+        private System.Windows.Forms.Label label15;
     }
 }

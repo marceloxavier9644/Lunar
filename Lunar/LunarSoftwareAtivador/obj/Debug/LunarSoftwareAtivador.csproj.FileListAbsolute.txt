@@ -1,7 +1,6 @@
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\runtimes\win-x64\native\WebView2Loader.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\runtimes\win-arm64\native\WebView2Loader.dll
-C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\x86\pdfium.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\LunarSoftwareAtivador.exe.config
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\LunarSoftwareAtivador.exe
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\LunarSoftwareAtivador.pdb
@@ -13,7 +12,6 @@ C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\LunarBase.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\MetroFramework.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\FontAwesome.Sharp.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\FiscalBr.Sintegra.dll
-C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\zxing.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\BoletoFacilSDK.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\PdfiumViewer.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Syncfusion.SfInput.WinForms.dll
@@ -257,3 +255,5 @@ C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Buffers.xm
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Memory.xml
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Numerics.Vectors.xml
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Syncfusion.PdfViewer.Windows.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Syncfusion.PdfViewer.Windows.xml

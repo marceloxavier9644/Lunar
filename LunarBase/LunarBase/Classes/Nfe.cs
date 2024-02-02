@@ -94,6 +94,7 @@ namespace LunarBase.Classes
         private NaturezaOperacao naturezaOperacao;
         private string idInut;
         private bool nuvem;
+        private bool notaAgrupada;
 
         [Anotacao("ID")]
         [OcultarEmGridsEPesquisas]
@@ -324,6 +325,11 @@ namespace LunarBase.Classes
         [Anotacao("ID Inut")]
         [OcultarEmGridsEPesquisas]
         public virtual string IdInut { get => idInut; set => idInut = value; }
+        [Anotacao("Nuvem")]
+        [OcultarEmGridsEPesquisas]
         public virtual bool Nuvem { get => nuvem; set => nuvem = value; }
+        [Anotacao("Nota Agrupada")]
+        [OcultarEmGridsEPesquisas]
+        public virtual bool NotaAgrupada { get => notaAgrupada; set => notaAgrupada = value; }
     }
 }

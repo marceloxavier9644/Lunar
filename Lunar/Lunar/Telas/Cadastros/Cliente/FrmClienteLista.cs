@@ -20,6 +20,7 @@ namespace Lunar.Telas.Cadastros.Cliente
 {
     public partial class FrmClienteLista : Form
     {
+        GenericaDesktop genericaDesktop = new GenericaDesktop();
         private IList<Pessoa> listaClientes;
         PessoaController pessoaController = new PessoaController();
         Pessoa pessoa = new Pessoa();
@@ -303,6 +304,8 @@ namespace Lunar.Telas.Cadastros.Cliente
             {
                 pessoa = new Pessoa();
                 pessoa = (Pessoa)gridClient.SelectedItem;
+                //Verificar se tem alerta
+                genericaDesktop.buscarAlertaCadastrado(pessoa);
                 editarCadastro(pessoa);
             }
             else

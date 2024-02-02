@@ -92,6 +92,7 @@
 
 		<property name="IdInut" column="IDINUT" type="String" length="70"/>
 		<property name="Nuvem" column="NUVEM" type="Boolean"/>
+		<property name="NotaAgrupada" column="NOTAAGRUPADA" type="Boolean"/>
 		
 		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_NFE_CLIENTE" lazy="false"/>
 		<many-to-one name="NaturezaOperacao" column="NATUREZAOPERACAO" class="LunarBase.Classes.NaturezaOperacao" not-null="false" foreign-key="FK_NFE_NATUREZAOPERACAO" lazy="false"/>

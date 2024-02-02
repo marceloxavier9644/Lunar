@@ -117,17 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtMensagemLembreteExame.Text" xml:space="preserve">
+    <value>Olá [NomeCliente]! 👓✨ Esperamos que esteja bem! Queremos lembrar que o seu exame oftalmológico está próximo do vencimento em [DataProximoExame]. Para garantir sua visão sempre em dia, recomendamos agendar um novo exame. Estamos aqui para cuidar da sua saúde visual! 🌟 . Agradecemos pela confiança! 🤓👁️</value>
+  </data>
+  <data name="txtMensagemPosVenda.Text" xml:space="preserve">
+    <value>Olá [NomeCliente]! 🌟 Agradecemos muito por escolher a [NomeLoja]! Sua confiança é fundamental para nós. Esperamos que sua compra atenda ou até mesmo supere suas expectativas. Estamos à disposição para qualquer dúvida ou assistência. Tenha um excelente dia! ✨</value>
+  </data>
   <data name="txtLembreteVencimento.Text" xml:space="preserve">
     <value>Prezado Sr.(a) [Cliente], esta mensagem é apenas um lembrete do vencimento da parcela de [Valor] com vencimento em [Vencimento] na [Empresa]. Caso não seja o titular ou tenha pago, favor desconsiderar a mensagem. </value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Todas as mensagens enviadas do nosso Sistema serão encaminhadas para uma fila de mensageria e após o envio as mesmas são apagadas da nossa Base de Dados, você pode visualizar o envio pelo seu próprio Celular.</value>
-  </data>
-  <data name="txtMensagemLembreteExame.Text" xml:space="preserve">
-    <value>Olá [NomeCliente]! 👓✨ Esperamos que esteja bem! Queremos lembrar que o seu exame oftalmológico está próximo do vencimento em [DataProximoExame]. Para garantir sua visão sempre em dia, recomendamos agendar um novo exame. Estamos aqui para cuidar da sua saúde visual! 🌟 . Agradecemos pela confiança! 🤓👁️</value>
-  </data>
-  <data name="txtMensagemPosVenda.Text" xml:space="preserve">
-    <value>Olá [Cliente]! 🌟 Agradecemos muito por escolher a [NomeLoja]! Sua confiança é fundamental para nós. Esperamos que sua compra atenda ou até mesmo supere suas expectativas. Estamos à disposição para qualquer dúvida ou assistência. Tenha um excelente dia! ✨</value>
   </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

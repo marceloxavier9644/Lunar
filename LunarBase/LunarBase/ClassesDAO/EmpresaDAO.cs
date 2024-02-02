@@ -1,10 +1,5 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ConexaoBD;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LunarBase.ClassesDAO
 {
@@ -14,6 +9,12 @@ namespace LunarBase.ClassesDAO
         {
             Session = Conexao.GetSession();
             return Session.CreateQuery("from Empresa as Tabela where Tabela.Cnpj = '" + cpfCNPJ + "' and Tabela.FlagExcluido <> true").UniqueResult<Empresa>();
+        }
+
+        public Empresa selecionarEmpresaPorId(int id)
+        {
+            Session = Conexao.GetSession();
+            return Session.CreateQuery("from Empresa as Tabela where Tabela.Id = "+id+" and Tabela.FlagExcluido <> true").UniqueResult<Empresa>();
         }
 
         public IList<Empresa> selecionarTodasEmpresas()

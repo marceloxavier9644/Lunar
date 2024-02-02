@@ -44,6 +44,7 @@
     <None Remove="HBM\GrupoFiscal.hbm.xml" />
     <None Remove="HBM\GrupoUsuario.hbm.xml" />
     <None Remove="HBM\Marca.hbm.xml" />
+    <None Remove="HBM\MensagemPosVenda.hbm.xml" />
     <None Remove="HBM\Modulo.hbm.xml" />
     <None Remove="HBM\ModuloCampo.hbm.xml" />
     <None Remove="HBM\ModuloGrupo.hbm.xml" />
@@ -99,6 +100,7 @@
     <EmbeddedResource Include="HBM\BalancoEstoqueProduto.hbm.xml" />
     <EmbeddedResource Include="HBM\ComissaoVenda.hbm.xml" />
     <EmbeddedResource Include="HBM\CondicionalDevolucao.hbm.xml" />
+    <EmbeddedResource Include="HBM\MensagemPosVenda.hbm.xml" />
     <EmbeddedResource Include="HBM\NfePagamento.hbm.xml" />
     <EmbeddedResource Include="HBM\OsComissao.hbm.xml" />
     <EmbeddedResource Include="HBM\PermissaoUsuario.hbm.xml" />

@@ -2853,6 +2853,24 @@ namespace Lunar.Telas.Vendas
                     //Imprimir Ticket
                     FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda);
                     frmImprimirTicket.ShowDialog();
+                    MensagemPosVenda msgPos = new MensagemPosVenda();
+                    if (Sessao.parametroSistema.AtivarMensagemPosVendas == true && venda.Cliente != null)
+                    {
+                        if (venda.Cliente.Id > 0) 
+                        {
+                            msgPos.DataAgendamento = DateTime.Now.AddMinutes(int.Parse(Sessao.parametroSistema.MensagemPosVendasQtdDiasOuMinutos));
+                            if (msgPos.DataAgendamento.TimeOfDay > TimeSpan.Parse("18:00:00"))
+                            {
+                                // Ajustar para 17:59:00
+                                msgPos.DataAgendamento = new DateTime(msgPos.DataAgendamento.Year, msgPos.DataAgendamento.Month, msgPos.DataAgendamento.Day, 17, 59, 00);
+                            }
+                            msgPos.FlagEnviada = false;
+                            msgPos.NomeCliente = venda.Cliente.NomeFantasia;
+                            msgPos.Pessoa = venda.Cliente;
+                            Sessao.MensagensAgendadas.Add(msgPos);
+                            Controller.getInstance().salvar(msgPos);
+                        }
+                    }
                     GenericaDesktop.ShowInfo("Venda Registrada com Sucesso");
                     limparCampos();
                 }

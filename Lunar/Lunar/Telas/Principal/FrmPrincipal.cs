@@ -857,8 +857,17 @@ namespace Lunar.Telas.Principal
         }
 
         private void saldoDeEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(() => new FrmSaldoEstoque(), btnRelatorios);
+        {           //OpenChildForm(() => new FrmRelatorioCaixa(), btnRelatorios);
+            if (Sessao.permissoes.Count > 0)
+            {
+                // Habilitar ou desabilitar os controles com base nas permissões
+                if (Sessao.permissoes.Contains("301"))
+                {
+                    OpenChildForm(() => new FrmSaldoEstoque(), btnRelatorios);
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Usuário sem Permissão para este relatório! (301)");
+            }
         }
 
         private void btnLembreteVencimento_Click(object sender, EventArgs e)
@@ -985,44 +994,53 @@ namespace Lunar.Telas.Principal
         }
 
         private void btnComissoes_Click(object sender, EventArgs e)
-        {
-            DateTime dataInicial = DateTime.Now;
-            DateTime dataFinal = DateTime.Now;
-            Form formBackground = new Form();
-            using (FrmSelecionarData uu = new FrmSelecionarData("COMISSAO"))
+        {           //OpenChildForm(() => new FrmRelatorioCaixa(), btnRelatorios);
+            if (Sessao.permissoes.Count > 0)
             {
-                formBackground.StartPosition = FormStartPosition.Manual;
-                //formBackground.FormBorderStyle = FormBorderStyle.None;
-                formBackground.Opacity = .50d;
-                formBackground.BackColor = Color.Black;
-                //formBackground.Left = Top = 0;
-                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-                formBackground.WindowState = FormWindowState.Maximized;
-                formBackground.TopMost = false;
-                formBackground.Location = this.Location;
-                formBackground.ShowInTaskbar = false;
-                formBackground.Show();
-                uu.Owner = formBackground;
-                switch (uu.showModalNovo(ref dataInicial, ref dataFinal))
+                // Habilitar ou desabilitar os controles com base nas permissões
+                if (Sessao.permissoes.Contains("300"))
                 {
-                    case DialogResult.Ignore:
-                        uu.Dispose();
-                        break;
-                    case DialogResult.OK:
-                        try
+                    DateTime dataInicial = DateTime.Now;
+                    DateTime dataFinal = DateTime.Now;
+                    Form formBackground = new Form();
+                    using (FrmSelecionarData uu = new FrmSelecionarData("COMISSAO"))
+                    {
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        switch (uu.showModalNovo(ref dataInicial, ref dataFinal))
                         {
-                            FrmComissaoRelatorio01 frmRelComissao = new FrmComissaoRelatorio01(dataInicial.ToString("yyyy-MM-dd"), dataFinal.ToString("yyyy-MM-dd"));
-                            frmRelComissao.ShowDialog();
+                            case DialogResult.Ignore:
+                                uu.Dispose();
+                                break;
+                            case DialogResult.OK:
+                                try
+                                {
+                                    FrmComissaoRelatorio01 frmRelComissao = new FrmComissaoRelatorio01(dataInicial.ToString("yyyy-MM-dd"), dataFinal.ToString("yyyy-MM-dd"));
+                                    frmRelComissao.ShowDialog();
+                                }
+                                catch
+                                {
+                                    GenericaDesktop.ShowErro("Data Inválida");
+                                }
+                                break;
                         }
-                        catch
-                        {
-                            GenericaDesktop.ShowErro("Data Inválida");
-                        }
-                        break;
+                        formBackground.Dispose();
+                    }
                 }
-                formBackground.Dispose();
-                //OpenChildForm(() => new FrmComissaoRelatorio01(), btnRelatorios);
+                else
+                    GenericaDesktop.ShowAlerta("Usuário sem Permissão para Visualizar Comissões! (300)");
+
             }
         }
 

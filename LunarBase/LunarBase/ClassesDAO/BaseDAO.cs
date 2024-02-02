@@ -31,6 +31,7 @@ namespace LunarBase.ClassesDAO
             return objeto;
         }
 
+
         public IList<ObjetoPadrao> SelecionarTodos(String Tabela)
         {
             Session = Conexao.GetSession();

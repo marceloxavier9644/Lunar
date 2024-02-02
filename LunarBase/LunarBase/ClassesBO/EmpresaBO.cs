@@ -73,7 +73,9 @@ namespace LunarBase.ClassesBO
         {
             try
             {
-                Empresa empresaAux = (Empresa)dao.Selecionar(empresa, ((Empresa)empresa).Id);
+                Empresa empresaAux = new Empresa();
+                // empresaAux = (Empresa)dao.Selecionar(empresa, ((Empresa)empresa).Id);
+                empresaAux = dao.selecionarEmpresaPorId(empresa.Id);
                 if (empresaAux == null)
                     throw new Exception();
             }

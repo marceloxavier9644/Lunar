@@ -50,15 +50,6 @@
             this.chk3 = new System.Windows.Forms.CheckBox();
             this.chk2 = new System.Windows.Forms.CheckBox();
             this.chk1 = new System.Windows.Forms.CheckBox();
-            this.tabPageAdv5 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.btnDesmarcarTodosAbaCaixa = new FontAwesome.Sharp.IconButton();
-            this.btnMarcarTodosAbaCaixa = new FontAwesome.Sharp.IconButton();
-            this.chk205 = new System.Windows.Forms.CheckBox();
-            this.chk204 = new System.Windows.Forms.CheckBox();
-            this.chk203 = new System.Windows.Forms.CheckBox();
-            this.chk202 = new System.Windows.Forms.CheckBox();
-            this.chk201 = new System.Windows.Forms.CheckBox();
-            this.chk200 = new System.Windows.Forms.CheckBox();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.chk44 = new System.Windows.Forms.CheckBox();
@@ -106,21 +97,34 @@
             this.chk102 = new System.Windows.Forms.CheckBox();
             this.chk101 = new System.Windows.Forms.CheckBox();
             this.chk100 = new System.Windows.Forms.CheckBox();
+            this.tabPageAdv5 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.btnDesmarcarTodosAbaCaixa = new FontAwesome.Sharp.IconButton();
+            this.btnMarcarTodosAbaCaixa = new FontAwesome.Sharp.IconButton();
+            this.chk205 = new System.Windows.Forms.CheckBox();
+            this.chk204 = new System.Windows.Forms.CheckBox();
+            this.chk203 = new System.Windows.Forms.CheckBox();
+            this.chk202 = new System.Windows.Forms.CheckBox();
+            this.chk201 = new System.Windows.Forms.CheckBox();
+            this.chk200 = new System.Windows.Forms.CheckBox();
             this.txtGrupo = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel33 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCodGrupo = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaGrupo = new FontAwesome.Sharp.IconButton();
             this.btnSalvar = new Syncfusion.WinForms.Controls.SfButton();
+            this.tabPageAdv6 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.chk301 = new System.Windows.Forms.CheckBox();
+            this.chk300 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
-            this.tabPageAdv5.SuspendLayout();
             this.tabPageAdv2.SuspendLayout();
             this.tabPageAdv3.SuspendLayout();
             this.tabPageAdv4.SuspendLayout();
+            this.tabPageAdv5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtGrupo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodGrupo)).BeginInit();
+            this.tabPageAdv6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlAdv1
@@ -134,6 +138,7 @@
             this.tabControlAdv1.Controls.Add(this.tabPageAdv3);
             this.tabControlAdv1.Controls.Add(this.tabPageAdv4);
             this.tabControlAdv1.Controls.Add(this.tabPageAdv5);
+            this.tabControlAdv1.Controls.Add(this.tabPageAdv6);
             this.tabControlAdv1.Enabled = false;
             this.tabControlAdv1.Location = new System.Drawing.Point(12, 59);
             this.tabControlAdv1.Name = "tabControlAdv1";
@@ -384,126 +389,6 @@
             this.chk1.TabIndex = 0;
             this.chk1.Text = "1. Cadastrar Cliente/Fornecedor/Funcionário";
             this.chk1.UseVisualStyleBackColor = true;
-            // 
-            // tabPageAdv5
-            // 
-            this.tabPageAdv5.Controls.Add(this.btnDesmarcarTodosAbaCaixa);
-            this.tabPageAdv5.Controls.Add(this.btnMarcarTodosAbaCaixa);
-            this.tabPageAdv5.Controls.Add(this.chk205);
-            this.tabPageAdv5.Controls.Add(this.chk204);
-            this.tabPageAdv5.Controls.Add(this.chk203);
-            this.tabPageAdv5.Controls.Add(this.chk202);
-            this.tabPageAdv5.Controls.Add(this.chk201);
-            this.tabPageAdv5.Controls.Add(this.chk200);
-            this.tabPageAdv5.Image = null;
-            this.tabPageAdv5.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabPageAdv5.Location = new System.Drawing.Point(1, 22);
-            this.tabPageAdv5.Name = "tabPageAdv5";
-            this.tabPageAdv5.ShowCloseButton = true;
-            this.tabPageAdv5.Size = new System.Drawing.Size(722, 229);
-            this.tabPageAdv5.TabIndex = 5;
-            this.tabPageAdv5.Text = "Caixa";
-            this.tabPageAdv5.ThemesEnabled = false;
-            // 
-            // btnDesmarcarTodosAbaCaixa
-            // 
-            this.btnDesmarcarTodosAbaCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDesmarcarTodosAbaCaixa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnDesmarcarTodosAbaCaixa.FlatAppearance.BorderSize = 0;
-            this.btnDesmarcarTodosAbaCaixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnDesmarcarTodosAbaCaixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnDesmarcarTodosAbaCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDesmarcarTodosAbaCaixa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesmarcarTodosAbaCaixa.IconChar = FontAwesome.Sharp.IconChar.XmarkCircle;
-            this.btnDesmarcarTodosAbaCaixa.IconColor = System.Drawing.Color.Crimson;
-            this.btnDesmarcarTodosAbaCaixa.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnDesmarcarTodosAbaCaixa.IconSize = 38;
-            this.btnDesmarcarTodosAbaCaixa.Location = new System.Drawing.Point(668, 18);
-            this.btnDesmarcarTodosAbaCaixa.Name = "btnDesmarcarTodosAbaCaixa";
-            this.btnDesmarcarTodosAbaCaixa.Size = new System.Drawing.Size(37, 41);
-            this.btnDesmarcarTodosAbaCaixa.TabIndex = 270;
-            this.btnDesmarcarTodosAbaCaixa.UseVisualStyleBackColor = true;
-            this.btnDesmarcarTodosAbaCaixa.Click += new System.EventHandler(this.btnDesmarcarTodosAbaCaixa_Click);
-            // 
-            // btnMarcarTodosAbaCaixa
-            // 
-            this.btnMarcarTodosAbaCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMarcarTodosAbaCaixa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnMarcarTodosAbaCaixa.FlatAppearance.BorderSize = 0;
-            this.btnMarcarTodosAbaCaixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnMarcarTodosAbaCaixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnMarcarTodosAbaCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarcarTodosAbaCaixa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcarTodosAbaCaixa.IconChar = FontAwesome.Sharp.IconChar.CheckDouble;
-            this.btnMarcarTodosAbaCaixa.IconColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnMarcarTodosAbaCaixa.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnMarcarTodosAbaCaixa.IconSize = 38;
-            this.btnMarcarTodosAbaCaixa.Location = new System.Drawing.Point(615, 18);
-            this.btnMarcarTodosAbaCaixa.Name = "btnMarcarTodosAbaCaixa";
-            this.btnMarcarTodosAbaCaixa.Size = new System.Drawing.Size(37, 41);
-            this.btnMarcarTodosAbaCaixa.TabIndex = 269;
-            this.btnMarcarTodosAbaCaixa.UseVisualStyleBackColor = true;
-            this.btnMarcarTodosAbaCaixa.Click += new System.EventHandler(this.btnMarcarTodosAbaCaixa_Click);
-            // 
-            // chk205
-            // 
-            this.chk205.AutoSize = true;
-            this.chk205.Location = new System.Drawing.Point(13, 134);
-            this.chk205.Name = "chk205";
-            this.chk205.Size = new System.Drawing.Size(209, 17);
-            this.chk205.TabIndex = 6;
-            this.chk205.Text = "205. Permitir Lançar Despesa no Caixa";
-            this.chk205.UseVisualStyleBackColor = true;
-            // 
-            // chk204
-            // 
-            this.chk204.AutoSize = true;
-            this.chk204.Location = new System.Drawing.Point(13, 111);
-            this.chk204.Name = "chk204";
-            this.chk204.Size = new System.Drawing.Size(204, 17);
-            this.chk204.TabIndex = 5;
-            this.chk204.Text = "204. Permitir Lançar Receita no Caixa";
-            this.chk204.UseVisualStyleBackColor = true;
-            // 
-            // chk203
-            // 
-            this.chk203.AutoSize = true;
-            this.chk203.Location = new System.Drawing.Point(13, 88);
-            this.chk203.Name = "chk203";
-            this.chk203.Size = new System.Drawing.Size(224, 17);
-            this.chk203.TabIndex = 4;
-            this.chk203.Text = "203. Permitir Excluir Lançamento do Caixa";
-            this.chk203.UseVisualStyleBackColor = true;
-            // 
-            // chk202
-            // 
-            this.chk202.AutoSize = true;
-            this.chk202.Location = new System.Drawing.Point(13, 65);
-            this.chk202.Name = "chk202";
-            this.chk202.Size = new System.Drawing.Size(230, 17);
-            this.chk202.TabIndex = 3;
-            this.chk202.Text = "202. Permitir Visualizar Movimento de Caixa";
-            this.chk202.UseVisualStyleBackColor = true;
-            // 
-            // chk201
-            // 
-            this.chk201.AutoSize = true;
-            this.chk201.Location = new System.Drawing.Point(13, 42);
-            this.chk201.Name = "chk201";
-            this.chk201.Size = new System.Drawing.Size(264, 17);
-            this.chk201.TabIndex = 2;
-            this.chk201.Text = "201. Permitir Alterar Data de Lançamento de Caixa";
-            this.chk201.UseVisualStyleBackColor = true;
-            // 
-            // chk200
-            // 
-            this.chk200.AutoSize = true;
-            this.chk200.Location = new System.Drawing.Point(13, 19);
-            this.chk200.Name = "chk200";
-            this.chk200.Size = new System.Drawing.Size(220, 17);
-            this.chk200.TabIndex = 1;
-            this.chk200.Text = "200. Permitir Visualizar Relatório de Caixa";
-            this.chk200.UseVisualStyleBackColor = true;
             // 
             // tabPageAdv2
             // 
@@ -1085,6 +970,126 @@
             this.chk100.Text = "100. Permitir Acesso a Parâmetros do Sistema";
             this.chk100.UseVisualStyleBackColor = true;
             // 
+            // tabPageAdv5
+            // 
+            this.tabPageAdv5.Controls.Add(this.btnDesmarcarTodosAbaCaixa);
+            this.tabPageAdv5.Controls.Add(this.btnMarcarTodosAbaCaixa);
+            this.tabPageAdv5.Controls.Add(this.chk205);
+            this.tabPageAdv5.Controls.Add(this.chk204);
+            this.tabPageAdv5.Controls.Add(this.chk203);
+            this.tabPageAdv5.Controls.Add(this.chk202);
+            this.tabPageAdv5.Controls.Add(this.chk201);
+            this.tabPageAdv5.Controls.Add(this.chk200);
+            this.tabPageAdv5.Image = null;
+            this.tabPageAdv5.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPageAdv5.Location = new System.Drawing.Point(1, 22);
+            this.tabPageAdv5.Name = "tabPageAdv5";
+            this.tabPageAdv5.ShowCloseButton = true;
+            this.tabPageAdv5.Size = new System.Drawing.Size(722, 229);
+            this.tabPageAdv5.TabIndex = 5;
+            this.tabPageAdv5.Text = "Caixa";
+            this.tabPageAdv5.ThemesEnabled = false;
+            // 
+            // btnDesmarcarTodosAbaCaixa
+            // 
+            this.btnDesmarcarTodosAbaCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDesmarcarTodosAbaCaixa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDesmarcarTodosAbaCaixa.FlatAppearance.BorderSize = 0;
+            this.btnDesmarcarTodosAbaCaixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDesmarcarTodosAbaCaixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDesmarcarTodosAbaCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDesmarcarTodosAbaCaixa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesmarcarTodosAbaCaixa.IconChar = FontAwesome.Sharp.IconChar.XmarkCircle;
+            this.btnDesmarcarTodosAbaCaixa.IconColor = System.Drawing.Color.Crimson;
+            this.btnDesmarcarTodosAbaCaixa.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnDesmarcarTodosAbaCaixa.IconSize = 38;
+            this.btnDesmarcarTodosAbaCaixa.Location = new System.Drawing.Point(668, 18);
+            this.btnDesmarcarTodosAbaCaixa.Name = "btnDesmarcarTodosAbaCaixa";
+            this.btnDesmarcarTodosAbaCaixa.Size = new System.Drawing.Size(37, 41);
+            this.btnDesmarcarTodosAbaCaixa.TabIndex = 270;
+            this.btnDesmarcarTodosAbaCaixa.UseVisualStyleBackColor = true;
+            this.btnDesmarcarTodosAbaCaixa.Click += new System.EventHandler(this.btnDesmarcarTodosAbaCaixa_Click);
+            // 
+            // btnMarcarTodosAbaCaixa
+            // 
+            this.btnMarcarTodosAbaCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarTodosAbaCaixa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnMarcarTodosAbaCaixa.FlatAppearance.BorderSize = 0;
+            this.btnMarcarTodosAbaCaixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnMarcarTodosAbaCaixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnMarcarTodosAbaCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcarTodosAbaCaixa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarTodosAbaCaixa.IconChar = FontAwesome.Sharp.IconChar.CheckDouble;
+            this.btnMarcarTodosAbaCaixa.IconColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnMarcarTodosAbaCaixa.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnMarcarTodosAbaCaixa.IconSize = 38;
+            this.btnMarcarTodosAbaCaixa.Location = new System.Drawing.Point(615, 18);
+            this.btnMarcarTodosAbaCaixa.Name = "btnMarcarTodosAbaCaixa";
+            this.btnMarcarTodosAbaCaixa.Size = new System.Drawing.Size(37, 41);
+            this.btnMarcarTodosAbaCaixa.TabIndex = 269;
+            this.btnMarcarTodosAbaCaixa.UseVisualStyleBackColor = true;
+            this.btnMarcarTodosAbaCaixa.Click += new System.EventHandler(this.btnMarcarTodosAbaCaixa_Click);
+            // 
+            // chk205
+            // 
+            this.chk205.AutoSize = true;
+            this.chk205.Location = new System.Drawing.Point(13, 134);
+            this.chk205.Name = "chk205";
+            this.chk205.Size = new System.Drawing.Size(209, 17);
+            this.chk205.TabIndex = 6;
+            this.chk205.Text = "205. Permitir Lançar Despesa no Caixa";
+            this.chk205.UseVisualStyleBackColor = true;
+            // 
+            // chk204
+            // 
+            this.chk204.AutoSize = true;
+            this.chk204.Location = new System.Drawing.Point(13, 111);
+            this.chk204.Name = "chk204";
+            this.chk204.Size = new System.Drawing.Size(204, 17);
+            this.chk204.TabIndex = 5;
+            this.chk204.Text = "204. Permitir Lançar Receita no Caixa";
+            this.chk204.UseVisualStyleBackColor = true;
+            // 
+            // chk203
+            // 
+            this.chk203.AutoSize = true;
+            this.chk203.Location = new System.Drawing.Point(13, 88);
+            this.chk203.Name = "chk203";
+            this.chk203.Size = new System.Drawing.Size(224, 17);
+            this.chk203.TabIndex = 4;
+            this.chk203.Text = "203. Permitir Excluir Lançamento do Caixa";
+            this.chk203.UseVisualStyleBackColor = true;
+            // 
+            // chk202
+            // 
+            this.chk202.AutoSize = true;
+            this.chk202.Location = new System.Drawing.Point(13, 65);
+            this.chk202.Name = "chk202";
+            this.chk202.Size = new System.Drawing.Size(230, 17);
+            this.chk202.TabIndex = 3;
+            this.chk202.Text = "202. Permitir Visualizar Movimento de Caixa";
+            this.chk202.UseVisualStyleBackColor = true;
+            // 
+            // chk201
+            // 
+            this.chk201.AutoSize = true;
+            this.chk201.Location = new System.Drawing.Point(13, 42);
+            this.chk201.Name = "chk201";
+            this.chk201.Size = new System.Drawing.Size(264, 17);
+            this.chk201.TabIndex = 2;
+            this.chk201.Text = "201. Permitir Alterar Data de Lançamento de Caixa";
+            this.chk201.UseVisualStyleBackColor = true;
+            // 
+            // chk200
+            // 
+            this.chk200.AutoSize = true;
+            this.chk200.Location = new System.Drawing.Point(13, 19);
+            this.chk200.Name = "chk200";
+            this.chk200.Size = new System.Drawing.Size(220, 17);
+            this.chk200.TabIndex = 1;
+            this.chk200.Text = "200. Permitir Visualizar Relatório de Caixa";
+            this.chk200.UseVisualStyleBackColor = true;
+            // 
             // txtGrupo
             // 
             this.txtGrupo.BeforeTouchSize = new System.Drawing.Size(145, 26);
@@ -1161,6 +1166,40 @@
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // tabPageAdv6
+            // 
+            this.tabPageAdv6.Controls.Add(this.chk301);
+            this.tabPageAdv6.Controls.Add(this.chk300);
+            this.tabPageAdv6.Image = null;
+            this.tabPageAdv6.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPageAdv6.Location = new System.Drawing.Point(1, 22);
+            this.tabPageAdv6.Name = "tabPageAdv6";
+            this.tabPageAdv6.ShowCloseButton = true;
+            this.tabPageAdv6.Size = new System.Drawing.Size(722, 229);
+            this.tabPageAdv6.TabIndex = 6;
+            this.tabPageAdv6.Text = "Relatórios";
+            this.tabPageAdv6.ThemesEnabled = false;
+            // 
+            // chk301
+            // 
+            this.chk301.AutoSize = true;
+            this.chk301.Location = new System.Drawing.Point(12, 35);
+            this.chk301.Name = "chk301";
+            this.chk301.Size = new System.Drawing.Size(203, 17);
+            this.chk301.TabIndex = 6;
+            this.chk301.Text = "301. Permitir Visualizacao de Estoque";
+            this.chk301.UseVisualStyleBackColor = true;
+            // 
+            // chk300
+            // 
+            this.chk300.AutoSize = true;
+            this.chk300.Location = new System.Drawing.Point(12, 12);
+            this.chk300.Name = "chk300";
+            this.chk300.Size = new System.Drawing.Size(214, 17);
+            this.chk300.TabIndex = 5;
+            this.chk300.Text = "300. Permitir Visualização de Comissões";
+            this.chk300.UseVisualStyleBackColor = true;
+            // 
             // FrmPermissoesUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1185,16 +1224,18 @@
             this.tabControlAdv1.ResumeLayout(false);
             this.tabPageAdv1.ResumeLayout(false);
             this.tabPageAdv1.PerformLayout();
-            this.tabPageAdv5.ResumeLayout(false);
-            this.tabPageAdv5.PerformLayout();
             this.tabPageAdv2.ResumeLayout(false);
             this.tabPageAdv2.PerformLayout();
             this.tabPageAdv3.ResumeLayout(false);
             this.tabPageAdv3.PerformLayout();
             this.tabPageAdv4.ResumeLayout(false);
             this.tabPageAdv4.PerformLayout();
+            this.tabPageAdv5.ResumeLayout(false);
+            this.tabPageAdv5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtGrupo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodGrupo)).EndInit();
+            this.tabPageAdv6.ResumeLayout(false);
+            this.tabPageAdv6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1285,5 +1326,8 @@
         private System.Windows.Forms.CheckBox chk204;
         private FontAwesome.Sharp.IconButton btnDesmarcarTodosAbaCaixa;
         private FontAwesome.Sharp.IconButton btnMarcarTodosAbaCaixa;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv6;
+        private System.Windows.Forms.CheckBox chk301;
+        private System.Windows.Forms.CheckBox chk300;
     }
 }
