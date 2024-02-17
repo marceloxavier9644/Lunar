@@ -180,6 +180,7 @@
             this.autoLabel31 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel30 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.tabPosVenda = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.chkMensagemAposEncerrarOS = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.txtNomeServidor = new System.Windows.Forms.TextBox();
             this.autoLabel52 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.label13 = new System.Windows.Forms.Label();
@@ -206,7 +207,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.chkMensagemAposEncerrarOS = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -243,13 +243,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoTLS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).BeginInit();
             this.tabPosVenda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkMensagemAposEncerrarOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDepois)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAntes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivarMensagemLembreteVencimentoExameOftamotologico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivarEnvioMensagemPosVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkMensagemAposEncerrarOS)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -2741,6 +2741,17 @@
             this.tabPosVenda.Text = "Mensagem Pós Vendas";
             this.tabPosVenda.ThemesEnabled = false;
             // 
+            // chkMensagemAposEncerrarOS
+            // 
+            this.chkMensagemAposEncerrarOS.BeforeTouchSize = new System.Drawing.Size(193, 31);
+            this.chkMensagemAposEncerrarOS.Enabled = false;
+            this.chkMensagemAposEncerrarOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMensagemAposEncerrarOS.Location = new System.Drawing.Point(10, 3);
+            this.chkMensagemAposEncerrarOS.Name = "chkMensagemAposEncerrarOS";
+            this.chkMensagemAposEncerrarOS.Size = new System.Drawing.Size(193, 31);
+            this.chkMensagemAposEncerrarOS.TabIndex = 296;
+            this.chkMensagemAposEncerrarOS.Text = " Após Encerrar O.S ?";
+            // 
             // txtNomeServidor
             // 
             this.txtNomeServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2922,7 +2933,7 @@
             this.chkDiasPosVenda.BeforeTouchSize = new System.Drawing.Size(72, 31);
             this.chkDiasPosVenda.Enabled = false;
             this.chkDiasPosVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDiasPosVenda.Location = new System.Drawing.Point(21, 130);
+            this.chkDiasPosVenda.Location = new System.Drawing.Point(105, 37);
             this.chkDiasPosVenda.Name = "chkDiasPosVenda";
             this.chkDiasPosVenda.Size = new System.Drawing.Size(72, 31);
             this.chkDiasPosVenda.TabIndex = 275;
@@ -3043,17 +3054,6 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // chkMensagemAposEncerrarOS
-            // 
-            this.chkMensagemAposEncerrarOS.BeforeTouchSize = new System.Drawing.Size(193, 31);
-            this.chkMensagemAposEncerrarOS.Enabled = false;
-            this.chkMensagemAposEncerrarOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkMensagemAposEncerrarOS.Location = new System.Drawing.Point(10, 3);
-            this.chkMensagemAposEncerrarOS.Name = "chkMensagemAposEncerrarOS";
-            this.chkMensagemAposEncerrarOS.Size = new System.Drawing.Size(193, 31);
-            this.chkMensagemAposEncerrarOS.TabIndex = 296;
-            this.chkMensagemAposEncerrarOS.Text = " Após Encerrar O.S ?";
-            // 
             // FrmParametroSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3117,13 +3117,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAutenticacaoSSL)).EndInit();
             this.tabPosVenda.ResumeLayout(false);
             this.tabPosVenda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkMensagemAposEncerrarOS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDepois)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAntes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivarMensagemLembreteVencimentoExameOftamotologico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivarEnvioMensagemPosVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkMensagemAposEncerrarOS)).EndInit();
             this.ResumeLayout(false);
 
         }

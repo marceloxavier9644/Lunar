@@ -1161,6 +1161,7 @@ namespace Lunar.Telas.ParametroDoSistema
                 chkMinutosPosVenda.Enabled = true;
                 txtMensagemPosVenda.Enabled = true;
                 txtTempoEnvioMensagemPosVenda.Enabled = true;
+                chkMensagemAposEncerrarOS.Enabled = true;
             }
             else
             {
@@ -1168,6 +1169,7 @@ namespace Lunar.Telas.ParametroDoSistema
                 chkMinutosPosVenda.Enabled = false;
                 txtMensagemPosVenda.Enabled = false;
                 txtTempoEnvioMensagemPosVenda.Enabled = false;
+                chkMensagemAposEncerrarOS.Enabled = false;
             }
         }
 

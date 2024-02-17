@@ -260,10 +260,11 @@ namespace Lunar.Telas.Fiscal
                 nfe.CodStatus = "100";
                 nfe.DataLancamento = nFCeDownloadProc.nfeProc.dhRecbto;
                 nfe.DhSaiEnt = nFCeDownloadProc.nfeProc.dhRecbto.ToString();
+                nfe.DataEmissao = nFCeDownloadProc.nfeProc.dhRecbto;
                 nfeStatus = new NfeStatus();
                 nfeStatus.Id = 1;
                 nfe.NfeStatus = (NfeStatus)nfeStatusController.selecionar(nfeStatus);
-
+                Controller.getInstance().salvar(nfe);//teste
 
                 NFCeDownloadProc nota = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
                 if (nota.motivo.Contains("SUCESSO") || nota.motivo.Contains("sucesso") || nota.motivo.Contains("Sucesso"))
@@ -273,7 +274,6 @@ namespace Lunar.Telas.Fiscal
                     var nfeX = Genericos.LoadFromXMLString<TNfeProc>(nota.nfeProc.xml);
                     genericosNF.gravarXMLNoBanco(nfeX, 0, "S", nfe.Id);
                     generica.gravarXMLNaPasta(nota.nfeProc.xml, nfe.Chave, @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFCe.xml");
-
                 }
             }
         }

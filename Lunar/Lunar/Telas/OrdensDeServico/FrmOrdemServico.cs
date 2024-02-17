@@ -121,7 +121,7 @@ namespace Lunar.Telas.OrdensDeServico
             lblAutomatico.Visible = true;
             txtDataExame.Value = DateTime.Now;
             get_OrdemServico();
-            if(ordemServico.Status == "ENCERRADA") 
+            if(ordemServico.Status == "ENCERRADA" || ordemServico.FlagExcluido == true) 
             {
                 lblInformativo.Visible = true;
                 btnGravar.Enabled = false;

@@ -1,0 +1,729 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe33240219300038000108550010027582501699447321" versao="4.00">
+      <ide>
+        <cUF>33</cUF>
+        <cNF>69944732</cNF>
+        <natOp>VENDAS DE MERC. ADQUIRIDAS E/OU RECEBIDAS DE TERCEIROS</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>2758250</nNF>
+        <dhEmi>2024-02-06T12:32:00-03:00</dhEmi>
+        <dhSaiEnt>2024-02-06T12:32:00-03:00</dhSaiEnt>
+        <tpNF>1</tpNF>
+        <idDest>2</idDest>
+        <cMunFG>3304557</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>1</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <indFinal>0</indFinal>
+        <indPres>9</indPres>
+        <indIntermed>0</indIntermed>
+        <procEmi>0</procEmi>
+        <verProc>12.1.2210 | 3.0</verProc>
+      </ide>
+      <emit>
+        <CNPJ>19300038000108</CNPJ>
+        <xNome>HTK LENTES OFTALMICAS S.A.</xNome>
+        <xFant>HTK</xFant>
+        <enderEmit>
+          <xLgr>RUA SINIMBU</xLgr>
+          <nro>486</nro>
+          <xBairro>SAO CRISTOVAO</xBairro>
+          <cMun>3304557</cMun>
+          <xMun>RIO DE JANEIRO</xMun>
+          <UF>RJ</UF>
+          <CEP>20910180</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>552125896961</fone>
+        </enderEmit>
+        <IE>86614685</IE>
+        <IM>05952212</IM>
+        <CNAE>3250707</CNAE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>42988444000127</CNPJ>
+        <xNome>RONEI JS PRODUTOS OPTICOS EIRELI</xNome>
+        <enderDest>
+          <xLgr>AVENIDA GOVERNADOR VALADARES</xLgr>
+          <nro>688</nro>
+          <xBairro>CENTRO</xBairro>
+          <cMun>3170404</cMun>
+          <xMun>UNAI</xMun>
+          <UF>MG</UF>
+          <CEP>38610014</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>3836763246</fone>
+        </enderDest>
+        <indIEDest>1</indIEDest>
+        <IE>7044597520016</IE>
+        <email>roneijsprodutosopticosltda@hotmail.com;oticavenus@oticavenus</email>
+      </dest>
+      <entrega>
+        <CNPJ>42988444000127</CNPJ>
+        <xNome>RONEI JS PRODUTOS OPTICOS EIRELI</xNome>
+        <xLgr>avenida governador valadares</xLgr>
+        <nro>688</nro>
+        <xBairro>centro</xBairro>
+        <cMun>3170404</cMun>
+        <xMun>unai</xMun>
+        <UF>MG</UF>
+        <CEP>38610014</CEP>
+        <cPais>1058</cPais>
+        <xPais>BRASIL</xPais>
+        <fone>3836763246</fone>
+        <email>roneijsprodutosopticosltda@hotmail.com</email>
+        <IE>7044597520016</IE>
+      </entrega>
+      <det nItem="1">
+        <prod>
+          <cProd>FS56BB703646</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.56 Filt. Azul Antirreflexo Azul (-3.50/-1.00)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>15.45000000</vUnCom>
+          <vProd>15.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>15.45000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>15.45</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.62</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>14.83</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.24</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>14.83</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.13</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="2">
+        <prod>
+          <cProd>FS56BB705044</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.56 Filt. Azul Antirreflexo Azul (0.00/-1.50)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>15.45000000</vUnCom>
+          <vProd>15.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>15.45000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>15.45</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.62</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>14.83</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.25</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>14.83</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.12</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="3">
+        <prod>
+          <cProd>FS56BB704444</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.56 Filt. Azul Antirreflexo Azul (-1.50/-1.50)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>15.45000000</vUnCom>
+          <vProd>15.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>15.45000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>15.45</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.61</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>14.84</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.24</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>14.84</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.13</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="4">
+        <prod>
+          <cProd>FS56BB703744</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.56 Filt. Azul Antirreflexo Azul (-3.25/-1.50)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>15.45000000</vUnCom>
+          <vProd>15.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>15.45000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>15.45</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.62</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>14.83</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.25</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>14.83</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>1.13</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="5">
+        <prod>
+          <cProd>FS59AA753850</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.59 Antirreflexo (-3.00/0.00)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>8.40000000</vUnCom>
+          <vProd>8.40</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>8.40000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>8.40</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.34</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>8.06</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.13</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>8.06</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>0.61</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="6">
+        <prod>
+          <cProd>FS59AA753450</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.59 Antirreflexo (-4.00/0.00)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>8.40000000</vUnCom>
+          <vProd>8.40</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>8.40000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>8.40</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>0.33</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>8.07</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.14</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>8.07</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>0.61</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="7">
+        <prod>
+          <cProd>FS56PB704448</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.56 Fot. Filt. Azul Antirreflexo Azul (-1.50/-0.50)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>37.45000000</vUnCom>
+          <vProd>37.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>37.45000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>37.45</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>1.50</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>35.95</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.59</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>35.95</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>2.74</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="8">
+        <prod>
+          <cProd>FS56PB704248</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.56 Fot. Filt. Azul Antirreflexo Azul (-2.00/-0.50)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>37.45000000</vUnCom>
+          <vProd>37.45</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>37.45000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>37.45</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>1.50</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>35.95</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>0.59</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>35.95</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>2.73</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="9">
+        <prod>
+          <cProd>FS67AP755041</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.67 Fot. Antirreflexo (0.00/-2.25)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>84.95000000</vUnCom>
+          <vProd>84.95</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>84.95000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>84.95</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>3.40</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>81.55</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>1.35</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>81.55</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>6.20</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <det nItem="10">
+        <prod>
+          <cProd>FS67AP705237</cProd>
+          <cEAN>SEM GTIN</cEAN>
+          <xProd>Lente Oftalmica HTK Vis. Simp. Acab. 1.67 Fot. Antirreflexo (+0.50/-3.25)</xProd>
+          <NCM>90015000</NCM>
+          <cBenef />
+          <CFOP>6102</CFOP>
+          <uCom>UN</uCom>
+          <qCom>1.0000</qCom>
+          <vUnCom>84.95000000</vUnCom>
+          <vProd>84.95</vProd>
+          <cEANTrib>SEM GTIN</cEANTrib>
+          <uTrib>UN</uTrib>
+          <qTrib>1.0000</qTrib>
+          <vUnTrib>84.95000000</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>1</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>84.95</vBC>
+              <pICMS>4.0000</pICMS>
+              <vICMS>3.40</vICMS>
+            </ICMS00>
+          </ICMS>
+          <IPI>
+            <cEnq>999</cEnq>
+            <IPINT>
+              <CST>51</CST>
+            </IPINT>
+          </IPI>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>81.55</vBC>
+              <pPIS>1.6500</pPIS>
+              <vPIS>1.34</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>81.55</vBC>
+              <pCOFINS>7.6000</pCOFINS>
+              <vCOFINS>6.19</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>323.40</vBC>
+          <vICMS>12.94</vICMS>
+          <vICMSDeson>0</vICMSDeson>
+          <vFCPUFDest>0</vFCPUFDest>
+          <vICMSUFDest>0</vICMSUFDest>
+          <vICMSUFRemet>0</vICMSUFRemet>
+          <vFCP>0</vFCP>
+          <vBCST>0</vBCST>
+          <vST>0</vST>
+          <vFCPST>0</vFCPST>
+          <vFCPSTRet>0</vFCPSTRet>
+          <vProd>323.40</vProd>
+          <vFrete>0</vFrete>
+          <vSeg>0</vSeg>
+          <vDesc>0</vDesc>
+          <vII>0</vII>
+          <vIPI>0</vIPI>
+          <vIPIDevol>0</vIPIDevol>
+          <vPIS>5.12</vPIS>
+          <vCOFINS>23.59</vCOFINS>
+          <vOutro>0</vOutro>
+          <vNF>323.40</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <CNPJ>34028316000294</CNPJ>
+          <xNome>EMP BRASILEIRA DE CORREIOS E TELEGRAFOS</xNome>
+          <IE>81613524</IE>
+          <xEnder>AV PRESIDENTE VARGAS, 3077</xEnder>
+          <xMun>RIO DE JANEIRO</xMun>
+          <UF>RJ</UF>
+        </transporta>
+        <vol>
+          <qVol>1</qVol>
+          <esp>CAIXA</esp>
+          <pesoL>0.210</pesoL>
+          <pesoB>0.210</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>1002758250</nFat>
+          <vOrig>323.40</vOrig>
+          <vDesc>0</vDesc>
+          <vLiq>323.40</vLiq>
+        </fat>
+        <dup>
+          <nDup>001</nDup>
+          <dVenc>2024-04-01</dVenc>
+          <vDup>107.80</vDup>
+        </dup>
+        <dup>
+          <nDup>002</nDup>
+          <dVenc>2024-04-30</dVenc>
+          <vDup>107.80</vDup>
+        </dup>
+        <dup>
+          <nDup>003</nDup>
+          <dVenc>2024-05-31</dVenc>
+          <vDup>107.80</vDup>
+        </dup>
+      </cobr>
+      <pag>
+        <detPag>
+          <indPag>1</indPag>
+          <tPag>15</tPag>
+          <vPag>323.40</vPag>
+        </detPag>
+      </pag>
+      <infAdic>
+        <infCpl>Ped HTK MG04940563 Ped Cliente 096W Faturamento sera Realizado no dia 01/03/24</infCpl>
+      </infAdic>
+      <infRespTec>
+        <CNPJ>53113791000122</CNPJ>
+        <xContato>Rodrigo de Almeida Sartorio</xContato>
+        <email>resp_tecnico_dfe_protheus@totvs.com.br</email>
+        <fone>1128593904</fone>
+      </infRespTec>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe33240219300038000108550010027582501699447321">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>tJH8ECV4WWaDKEdGvMfyqy3Nro0=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>Q8dB4nrLirfMshv9kahXfB9EAqRpVztzzsmdZFOKF1vvoVNQepkyNQKRvhnyylKezcu9OHPuED9D7K517C6J3VHi1IJnj+9RoU3CWw1bfIRB1FRLow/vyzRxuGr6ljkJu7iyM0jFaphNijGkKR4DWc7+VfBnS8FnSkW/pcRDMts2KGjmsA7XvjtbkI0bellCtQJjiNrP2XoNb8AwNyn5C7yEc6IHf/RwIRCMO6B1wS6K7Wx5Vp2pR6f7lwjrSglm8EHVV8ajtLmXWpMPpo/zYJilMC6xwi8rquuFsLOAclG/wREaIJsOlPwwq6Y5LojAC/R1y5RuQbH3mRVxETgY+g==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infProt>
+      <tpAmb>1</tpAmb>
+      <verAplic>SVRS202401291642</verAplic>
+      <chNFe>33240219300038000108550010027582501699447321</chNFe>
+      <dhRecbto>2024-02-06T12:32:34-03:00</dhRecbto>
+      <nProt>333240034372425</nProt>
+      <digVal>tJH8ECV4WWaDKEdGvMfyqy3Nro0=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

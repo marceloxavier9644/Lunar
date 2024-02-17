@@ -130,7 +130,10 @@ namespace Lunar.Telas.OrdensDeServico
                 sql = sql + "INNER JOIN ordemservicoexame Exame on Exame.OrdemServico = Tabela.Id ";
             }
 
-            sql = sql + "where Tabela.FlagExcluido <> true ";
+            if(radioCanceladas.Checked == false)
+                sql = sql + "where Tabela.FlagExcluido <> true ";
+            else if (radioCanceladas.Checked == true)
+                sql = sql + "where Tabela.FlagExcluido = true ";
 
             if (!String.IsNullOrEmpty(txtCodDependente.Texts))
             {
@@ -148,8 +151,9 @@ namespace Lunar.Telas.OrdensDeServico
 
             if (radioAbertas.Checked == true)
                 sql = sql + "and Tabela.Status = 'ABERTA' ";
-            else if(radioEncerradas.Checked == true)
+            else if (radioEncerradas.Checked == true)
                 sql = sql + "and Tabela.Status = 'ENCERRADA' ";
+            
 
             if (chkAtivarDataAbertura.Checked == true)
             {
@@ -566,6 +570,13 @@ namespace Lunar.Telas.OrdensDeServico
                     {
                         (e.RowData as OrdemServico).OperadorCadastro = "";
                     }
+                    if ((e.RowData as OrdemServico).FlagExcluido == true)
+                    {
+                        e.Style.TextColor = Color.DarkGoldenrod;
+                        e.Style.Font.FontStyle = FontStyle.Strikeout;
+                       (e.RowData as OrdemServico).Status = "CANCELADO/EXCLUÍDO";
+                       
+                    }
                 }
   
             }
@@ -856,29 +867,24 @@ namespace Lunar.Telas.OrdensDeServico
                                         numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
                                         NfeController nfeController = new NfeController();
                                         Nfe notaTeste = nfeController.selecionarNFCePorNumeroESerie(numeroNFCe, Sessao.parametroSistema.SerieNFCe);
-                                        if(notaTeste != null)
+                                        if (notaTeste != null)
                                         {
-                                            if(notaTeste.Id > 0)
+                                            if (notaTeste.Id > 0)
                                             {
-                                                Nfe nfConferencia = new Nfe();
-                                                nfConferencia = nfeController.selecionarUltimoNumeroNota("65");
-                                                if (nfConferencia != null)
-                                                {
-                                                    if (nfConferencia.Id > 0)
-                                                    {
-                                                        if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
-                                                            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
-                                                    }
-                                                }
+                                                GenericaDesktop.ShowAlerta("Nota " + notaTeste.NNf + " já existe, verifique a numeração de notas!");
                                             }
                                         }
-                                        try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, cli, null, ordemServico, null); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
-                                        //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
-                                        if (!String.IsNullOrEmpty(xmlStrEnvio))
+                                        else // Emite nova nota
                                         {
-                                            enviarXMLNFCeParaApi(xmlStrEnvio);
+
+                                            try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, cli, null, ordemServico, null); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
+                                            //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
+                                            if (!String.IsNullOrEmpty(xmlStrEnvio))
+                                            {
+                                                enviarXMLNFCeParaApi(xmlStrEnvio);
+                                            }
+                                            atualizarProximoNumeroNota();
                                         }
-                                        atualizarProximoNumeroNota();
                                     }
                                 }
                                 catch (Exception erro)
@@ -1037,7 +1043,7 @@ namespace Lunar.Telas.OrdensDeServico
             }
             if (retornoNFCe.motivo.Contains("Duplicidade de NF-e com diferença na Chave"))
             {
-                nfe.NNf = (int.Parse(nfe.NNf) + 1).ToString();
+                //nfe.NNf = (int.Parse(nfe.NNf) + 1).ToString();
                 nfe.Status = retornoNFCe.motivo;
                 nfe.CodStatus = retornoNFCe.cStat;
                 NfeStatus nfeStatus = new NfeStatus();

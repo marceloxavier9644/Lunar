@@ -1515,7 +1515,7 @@ namespace Lunar.Telas.Fiscal
             }
             if (retornoNFCe.motivo.Contains("Duplicidade de NF-e com diferença na Chave"))
             {
-                nfe.NNf = (int.Parse(nfe.NNf) + 1).ToString();
+                //nfe.NNf = (int.Parse(nfe.NNf) + 1).ToString();
                 nfe.Status = retornoNFCe.motivo;
                 nfe.CodStatus = retornoNFCe.cStat;
                 NfeStatus nfeStatus = new NfeStatus();

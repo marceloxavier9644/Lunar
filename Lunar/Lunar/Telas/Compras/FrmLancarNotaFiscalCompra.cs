@@ -666,7 +666,8 @@ namespace Lunar.Telas.Compras
 					nfeProd.CstIcms = ((TNFeInfNFeDetImpostoICMSICMS90)icms.Item).CST.ToString().Replace("Item", "");
 					nfeProd.ModBC = ((TNFeInfNFeDetImpostoICMSICMS90)icms.Item).modBC.ToString().Replace("Item", "");
 					nfeProd.PRedBC = ((TNFeInfNFeDetImpostoICMSICMS90)icms.Item).pRedBC;
-					nfeProd.VBC = decimal.Parse(((TNFeInfNFeDetImpostoICMSICMS90)icms.Item).vBC.Replace(".", ","));
+					if(((TNFeInfNFeDetImpostoICMSICMS90)icms.Item).vBC != null)
+						nfeProd.VBC = decimal.Parse(((TNFeInfNFeDetImpostoICMSICMS90)icms.Item).vBC.Replace(".", ","));
 					nfeProd.PICMS = ((TNFeInfNFeDetImpostoICMSICMS90)icms.Item).pICMS;
 					if (((TNFeInfNFeDetImpostoICMSICMS90)icms.Item).vICMS != null)
 						nfeProd.VICMS = decimal.Parse(((TNFeInfNFeDetImpostoICMSICMS90)icms.Item).vICMS.Replace(".", ","));
@@ -1362,28 +1363,33 @@ namespace Lunar.Telas.Compras
 				cadastrarFornecedor();
 			}
 
-			//VERIFICAR SE FOI CONFIRMADO OS BOLETOS
-			if(listaContaPagar.Count > 0)
-            {
-				decimal somaContas = 0;
-				var recordsPagamento = gridPagamento.View.Records;
-				foreach (var record in recordsPagamento)
+            //VERIFICAR SE FOI CONFIRMADO OS BOLETOS
+            decimal somaContas = 0;
+            if (radioDesconsiderar.Checked == false) {
+				if (listaContaPagar.Count > 0)
 				{
-					//var dataRowView = record.Data as DataRowView;
-					if (record != null)
+					somaContas = 0;
+					var recordsPagamento = gridPagamento.View.Records;
+					foreach (var record in recordsPagamento)
 					{
-						contaPagar = new ContaPagar();
-						contaPagar = (ContaPagar)record.Data;
-						if (contaPagar != null)
+						//var dataRowView = record.Data as DataRowView;
+						if (record != null)
 						{
-							somaContas = somaContas + contaPagar.VDup;
+							contaPagar = new ContaPagar();
+							contaPagar = (ContaPagar)record.Data;
+							if (contaPagar != null)
+							{
+								somaContas = somaContas + contaPagar.VDup;
+							}
 						}
 					}
+					if (somaContas == nfe.VNf)
+						valoresConferidos = true;
+					else
+						valoresConferidos = false;
 				}
-				if (somaContas == nfe.VNf)
-					valoresConferidos = true;
 				else
-					valoresConferidos = false;
+					valoresConferidos = true;
 
 				if(valoresConferidos == true)
                 {
