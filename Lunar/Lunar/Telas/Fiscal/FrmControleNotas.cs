@@ -1273,12 +1273,13 @@ namespace Lunar.Telas.Fiscal
 
                                                 if (!String.IsNullOrEmpty(nfe.Chave))
                                                 {
+                                                    
                                                     var retornoInut = generica.ns_DownloadEventoInutilizacaoNFE(nfe);
                                                     if (retornoInut != null)
                                                     {
                                                         if (retornoInut.retornoInutNFe != null)
                                                         {
-                                                            generica.gravarXMLNaPasta(retornoInut.retornoInutNFe.xml,
+                                                            generica.gravarXMLNaPasta(retornoInut.retInut.xml,
                                                                     nfe.Chave, @"Fiscal\XML\NFe\" + DateTime.Now.Year + "-" + DateTime.Now.Month.ToString().PadLeft(2, '0') + @"\Inutilizadas\", nfe.NNf + @"-INU.xml");
                                                         }
                                                     }

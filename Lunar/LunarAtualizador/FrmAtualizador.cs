@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
@@ -23,6 +24,7 @@ namespace LunarAtualizador
 {
     public partial class FrmAtualizador : Form
     {
+        Logger logger = new Logger();
         string nomeDoComputador = "";
         string nomeServidorConfigurado = "";
         string idWhats = "";
@@ -178,7 +180,7 @@ namespace LunarAtualizador
 
             if (File.Exists(@"C:\Lunar\Lunar.exe"))
             {
-                btnVerificarAtualização.Enabled = false;
+               // btnVerificarAtualização.Enabled = false;
                 string caminhoParaExe = @"C:\Lunar\Lunar.exe";
                 FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
                 string versaoAtual = info.FileVersion;
@@ -205,7 +207,7 @@ namespace LunarAtualizador
             }
             else
             {
-                btnVerificarAtualização.Enabled = false;
+                //btnVerificarAtualização.Enabled = false;
                 this.ControlBox = false;
                 verificarSistemaAberto();
                 progressBarAdv1.Visible = true;
@@ -490,29 +492,30 @@ namespace LunarAtualizador
             DateTime agora = DateTime.Now;
 
             // Horários desejados para verificação (por exemplo, 9h e 15h)
-            DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 09, 00, 00);
-            DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 00);
-            DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 10, 05, 00);
+            DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 9, 0, 0);
+            DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 0);
+            DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 10, 5, 0);
 
-            DateTime horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, 12, 00, 00);
+            DateTime horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, 12, 0, 0);
+
             if (ativarMensagemLembreteExame.Equals("True"))
             {
-                horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, int.Parse(horaLembreteExame), int.Parse(minutoLembreteExame), 00);
-                if (agora.ToLongTimeString() == horarioVerificacao4LembreteExame.ToLongTimeString())
+                // Verifica se é hora de disparar o lembrete de exame
+                if (agora.Hour == int.Parse(horaLembreteExame) && agora.Minute == int.Parse(minutoLembreteExame))
                 {
                     dispararMensagens_passo01();
                 }
             }
 
             lblAgora.Text = agora.ToLongTimeString();
+
             // Verifica se é um dos horários desejados
-            if (agora.ToLongTimeString() == horarioVerificacao1.ToLongTimeString() || agora.ToLongTimeString() == horarioVerificacao2.ToLongTimeString() || agora.ToLongTimeString() == horarioVerificacao3.ToLongTimeString())
+            if (agora.TimeOfDay == horarioVerificacao1.TimeOfDay || agora.TimeOfDay == horarioVerificacao2.TimeOfDay || agora.TimeOfDay == horarioVerificacao3.TimeOfDay)
             {
-                if (abriuForm == false)
+                if (!abriuForm)
                 {
                     if (File.Exists(@"C:\Lunar\Lunar.exe"))
                     {
-                        btnVerificarAtualização.Enabled = false;
                         string caminhoParaExe = @"C:\Lunar\Lunar.exe";
                         FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
                         string versaoAtual = info.FileVersion;
@@ -523,19 +526,16 @@ namespace LunarAtualizador
                             frmNotificacao = new FrmNotificacao();
                             frmNotificacao.WindowState = FormWindowState.Normal;
                             frmNotificacao.BringToFront();
-                            if (frmNotificacao.ShowDialog() == DialogResult.OK)
-                            {
-                                bool atualiza = frmNotificacao.Atualiza;
-                                //Atualizar o sistema aqui...
-                                ExibirFormulario();
+                            DialogResult result = frmNotificacao.ShowDialog();
 
-                                atualizar();
-                                abriuForm = false;
-                            }
-                            else if (frmNotificacao.ShowDialog() == DialogResult.Cancel)
+                            if (result == DialogResult.OK)
                             {
-                                abriuForm = false;
+                                // Se o usuário confirmou a atualização, faça a atualização
+                                ExibirFormulario();
+                                atualizar();
                             }
+
+                            abriuForm = false;
                         }
                     }
                 }
@@ -543,20 +543,22 @@ namespace LunarAtualizador
 
             if (ativarMensagemPosVendas.Equals("True") && nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
             {
-                //de 10 em 10 minutos verifica novas msg
-                if (DateTime.Now.Minute % 10 == 0)
+                // Verifica novas mensagens a cada 10 minutos
+                if (agora.Minute % 10 == 0)
                 {
+                    //logger.WriteLog("Este é o servidor confirmado, verificação de 10 minutos...");
                     consultaMensagens();
                     if (Sessao.MensagensAgendadas.Count > 0)
                     {
-                        foreach (var mensagem in Sessao.MensagensAgendadas) // Usar ToList para evitar exceção de modificação durante a iteração
+                        logger.WriteLog("Sessao.MensagensAgendadas.Count > 0...OK ---- " + Sessao.MensagensAgendadas.Count, "LogMensagem");
+                        foreach (var mensagem in Sessao.MensagensAgendadas.ToList()) // Usar ToList para evitar exceção de modificação durante a iteração
                         {
-                            if (DateTime.Now >= mensagem.DataAgendamento)
+                            if (agora >= mensagem.DataAgendamento)
                             {
-                                if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda))
+                                logger.WriteLog("Preparando Disparo de Mensagem ---- NOME: " + mensagem.NomeCliente + " MENSAGEM: " + mensagemPosVenda + " FLAGENVIADA: " + mensagem.FlagEnviada, "LogMensagem");
+                                if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda) && !mensagem.FlagEnviada)
                                 {
-                                    if (mensagem.FlagEnviada == false)
-                                        dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
+                                    dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
                                     mensagem.FlagEnviada = true;
                                     Controller.getInstance().salvar(mensagem);
                                 }
@@ -579,7 +581,7 @@ namespace LunarAtualizador
                 
                     connection.Open();
                     Sessao.parametroSistema = new ParametroSistema();
-                    string query = "SELECT * FROM MensagemPosVenda WHERE DATE(DataAgendamento) = CURDATE() AND FlagEnviada = false;";
+                    string query = "SELECT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         using (MySqlDataReader reader = command.ExecuteReader())
@@ -594,7 +596,12 @@ namespace LunarAtualizador
                                 msgPos.Pessoa.Id = Convert.ToInt32(reader["Pessoa"]);
                                 msgPos.Pessoa = (Pessoa)Controller.getInstance().selecionar(msgPos.Pessoa);
                                 msgPos.FlagEnviada = false;
+                                if (String.IsNullOrEmpty(msgPos.NomeCliente))
+                                    msgPos.NomeCliente = msgPos.Pessoa.RazaoSocial;
                                 Sessao.MensagensAgendadas.Add(msgPos);
+
+                                logger.WriteLog("Mensagens agendadas: " + Sessao.MensagensAgendadas.Count, "LogMensagem");
+
                             }
                         }
                     }
@@ -880,6 +887,7 @@ namespace LunarAtualizador
         private void btnWts_Click(object sender, EventArgs e)
         {
             dispararMensagens_passo01();
+            consultaMensagens();
         }
 
         static bool ValidarNumeroTelefone(string numero)

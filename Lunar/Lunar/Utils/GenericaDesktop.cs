@@ -2161,7 +2161,7 @@ namespace Lunar.Utils
             }
         }
 
-        public static void gravarLinhaLog(string registro, string operacaoRealizada)
+        public static void gravarLinhaLog(string conteudoLog, string titulo)
         {
             string caminho = @".\logs\";
 
@@ -2170,15 +2170,15 @@ namespace Lunar.Utils
 
             try
             {
-                using (StreamWriter outputFile = new StreamWriter(@".\logs\" + operacaoRealizada +"_"+ DateTime.Now.ToString("yyyy-MM-dd") + ".log", true))
+                using (StreamWriter outputFile = new StreamWriter(@".\logs\" + titulo + "_"+ DateTime.Now.ToString("yyyy-MM-dd") + ".log", true))
                 {
-                    outputFile.WriteLine(DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:ffff") + " - \n" + registro);
+                    outputFile.WriteLine(DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:ffff") + " - \n" + conteudoLog);
                 }
             }
 
             catch (Exception ex)
             {
-                gravarLinhaLog("[ERRO_GRAVAR_LINHA_LOG]: " + ex.Message, "EXCEPTION " + operacaoRealizada);
+                gravarLinhaLog("[ERRO_GRAVAR_LINHA_LOG]: " + ex.Message, "EXCEPTION " + conteudoLog);
             }
 
         }

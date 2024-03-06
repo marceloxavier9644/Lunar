@@ -528,7 +528,7 @@ namespace Lunar.Telas.Principal
             try
             {
                 var ws = new WSCorreios.AtendeClienteClient();
-                var resposta = ws.consultaCEP("38613302");
+                var resposta = ws.consultaCEP("38613302", "marcelo.xs@hotmail.com", "@Aranhamxs11");
                 
                 //MessageBox.Show(resposta.end);
                 //MessageBox.Show(resposta.bairro);

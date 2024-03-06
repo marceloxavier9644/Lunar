@@ -322,7 +322,8 @@ namespace Lunar.Telas.Cadastros.Cliente
                 try
                 {
                     var ws = new WSCorreios.AtendeClienteClient();
-                    var resposta = ws.consultaCEP(txtCEP.Texts);
+           
+                    var resposta = ws.consultaCEP(txtCEP.Texts, "marcelo.xs@hotmail.com", "@Aranhamxs11");
                     if (!String.IsNullOrEmpty(resposta.end))
                     {
                         txtEndereco.Texts = generica.RemoverAcentos(resposta.end);
@@ -339,12 +340,17 @@ namespace Lunar.Telas.Cadastros.Cliente
                         txtNumero.Focus();
                     }
                 }
-                catch
+                catch (System.ServiceModel.FaultException)
                 {
-                    txtEndereco.Texts = "";
-                    txtNumero.Texts = "";
-                    txtComplemento.Texts = "";
-                    txtReferencia.Texts = "";
+                    // Trate a exceção de autenticação nula aqui
+                    GenericaDesktop.gravarLinhaLog("Falha na autenticação com o serviço WSCorreios, verificar Usuario e Senha!", "WSCORREIOS");
+                    //MessageBox.Show("Não foi possível autenticar com o serviço dos Correios. Verifique suas credenciais e tente novamente.", "Erro de Autenticação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    // Capture outras exceções aqui
+                    GenericaDesktop.gravarLinhaLog("Ocorreu um erro durante a consulta de CEP: " + ex.Message, "WSCORREIOS");
+                    //MessageBox.Show("Ocorreu um erro durante a consulta de CEP. Por favor, tente novamente mais tarde.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

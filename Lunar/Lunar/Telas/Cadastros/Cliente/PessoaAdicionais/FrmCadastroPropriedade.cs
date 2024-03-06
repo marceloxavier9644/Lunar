@@ -221,7 +221,7 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais
                 try
                 {
                     var ws = new WSCorreios.AtendeClienteClient();
-                    var resposta = ws.consultaCEP(txtCEP.Texts);
+                    var resposta = ws.consultaCEP(txtCEP.Texts, "marcelo.xs@hotmail.com", "@Aranhamxs11");
                     if (!String.IsNullOrEmpty(resposta.end))
                     {
                         txtEndereco.Texts = generica.RemoverAcentos(resposta.end);

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using LunarBase.Classes;
+using System.Drawing;
 using System.Net;
 using System.Text;
 using System.Web.Script.Serialization;
@@ -92,9 +93,11 @@ namespace LunarBase.Utilidades.ZAPZAP
 
         public dynamic zapi_EnviarTexto(string numeroTelefone, string texto, string idInstancia, string token)
         {
+            Logger logger = new Logger();
             try
             {
                 String url = "https://api.z-api.io/instances/" + idInstancia + "/token/" + token + "/send-text";
+      
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "POST";
                 requisicaoWeb.ContentType = "application/json";
@@ -106,7 +109,6 @@ namespace LunarBase.Utilidades.ZAPZAP
                     {
                         phone = numeroTelefone,
                         message = texto
-
                     });
 
                     streamWriter.Write(json);
@@ -119,12 +121,16 @@ namespace LunarBase.Utilidades.ZAPZAP
                     var retorno = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(result);
                     string idret = "";
                     if (retorno != null)
+                    {
+                        logger.WriteLog("Mensagem enviada","LogMensagem");
                         idret = retorno["messageId"].ToString();
+                    }
                     return idret;
                 }
             }
             catch (Exception err)
             {
+                logger.WriteLog("Falha ao Enviar Whatsapp: " + err.Message, "LogMensagem");
                 MessageBox.Show("Falha ao Enviar Whatsapp: " + err.Message);
                 return null;
             }

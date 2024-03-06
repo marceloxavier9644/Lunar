@@ -66,12 +66,16 @@ namespace Lunar.Utils.OrganizacaoNF
                     {
                         throw new Exception("O campo \"Unidade de Medida do Produto\" é obrigatório! Código do Produto: " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao);
                     }
-                    if (nfeProduto.Cfop.Equals("5405") || nfeProduto.Cfop.Equals("6405"))
+                    if (nfeProduto.Cfop.Equals("5405") || nfeProduto.Cfop.Equals("6403"))
                     {
                         if (string.IsNullOrWhiteSpace(nfeProduto.Produto.Cest))
                         {
                             throw new Exception("O campo \"CEST\" é obrigatório para produtos ST! Código do Produto: " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao);
                         }
+                    }
+                    if (nfeProduto.ValorFinal <= 0)
+                    {
+                        throw new Exception("O campo \"Valor do Produto\" é obrigatório ser maior que R$ 0,00! Código do Produto: " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao);
                     }
                 }
                 return true;

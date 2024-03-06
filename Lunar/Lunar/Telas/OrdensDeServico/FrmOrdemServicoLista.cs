@@ -871,19 +871,26 @@ namespace Lunar.Telas.OrdensDeServico
                                         {
                                             if (notaTeste.Id > 0)
                                             {
-                                                GenericaDesktop.ShowAlerta("Nota " + notaTeste.NNf + " já existe, verifique a numeração de notas!");
+                                                int novoNumero = (int.Parse(Sessao.parametroSistema.ProximoNumeroNFCe) + 1);
+                                                numeroNFCe = novoNumero.ToString();
+                                                Sessao.parametroSistema.ProximoNumeroNFCe = numeroNFCe;
+                                                Controller.getInstance().salvar(Sessao.parametroSistema);
+                                                Logger logger = new Logger();
+                                                logger.WriteLog("Nota " + notaTeste.NNf + " já existe, verifique a numeração de notas! Novo nº que será feito o teste: " + numeroNFCe, "Log");
+                                                btnGerarNFCe.PerformClick();
+                                                //GenericaDesktop.ShowAlerta("Nota " + notaTeste.NNf + " já existe, verifique a numeração de notas!");
                                             }
                                         }
                                         else // Emite nova nota
                                         {
-
+                                            atualizarProximoNumeroNota();
                                             try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, cli, null, ordemServico, null); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
                                             //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
                                             if (!String.IsNullOrEmpty(xmlStrEnvio))
                                             {
                                                 enviarXMLNFCeParaApi(xmlStrEnvio);
                                             }
-                                            atualizarProximoNumeroNota();
+                                            
                                         }
                                     }
                                 }
@@ -912,16 +919,23 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void atualizarProximoNumeroNota()
         {
-            //ATUALIZA NUMERO DA NOTA 
-            ParametroSistema param = new ParametroSistema();
-            param = Sessao.parametroSistema;
-            
-            if (nfe.Modelo.Equals("65"))
-                param.ProximoNumeroNFCe = (int.Parse(numeroNFCe) + 1).ToString();
-            if (nfe.Modelo.Equals("55"))
-                param.ProximoNumeroNFe = (int.Parse(nfe.NNf) + 1).ToString();
-            Controller.getInstance().salvar(param);
-            Sessao.parametroSistema = param;
+            try
+            {
+                //ATUALIZA NUMERO DA NOTA 
+                ParametroSistema param = new ParametroSistema();
+                param = Sessao.parametroSistema;
+
+                if (nfe.Modelo.Equals("65"))
+                    param.ProximoNumeroNFCe = (int.Parse(numeroNFCe) + 1).ToString();
+                if (nfe.Modelo.Equals("55"))
+                    param.ProximoNumeroNFe = (int.Parse(nfe.NNf) + 1).ToString();
+                Controller.getInstance().salvar(param);
+                Sessao.parametroSistema = param;
+            }
+            catch
+            {
+
+            }
         }
 
         private void enviarXMLNFCeParaApi(string xmlNfce)

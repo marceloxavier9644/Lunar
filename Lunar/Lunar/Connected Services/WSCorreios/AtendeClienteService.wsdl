@@ -551,6 +551,8 @@
       <xs:complexType name="consultaCEP">
         <xs:sequence>
           <xs:element minOccurs="0" name="cep" type="xs:string" />
+          <xs:element minOccurs="0" name="usuario" type="xs:string" />
+          <xs:element minOccurs="0" name="senha" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="consultaCEPResponse">
@@ -1492,6 +1494,7 @@
       <wsdl:input name="consultaCEP" message="tns:consultaCEP" />
       <wsdl:output name="consultaCEPResponse" message="tns:consultaCEPResponse" />
       <wsdl:fault name="SQLException" message="tns:SQLException" />
+      <wsdl:fault name="AutenticacaoException" message="tns:AutenticacaoException" />
       <wsdl:fault name="SigepClienteException" message="tns:SigepClienteException" />
     </wsdl:operation>
     <wsdl:operation name="integrarUsuarioScol">
@@ -1866,6 +1869,9 @@
       </wsdl:output>
       <wsdl:fault name="SQLException">
         <soap:fault use="literal" name="SQLException" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AutenticacaoException">
+        <soap:fault use="literal" name="AutenticacaoException" namespace="" />
       </wsdl:fault>
       <wsdl:fault name="SigepClienteException">
         <soap:fault use="literal" name="SigepClienteException" namespace="" />

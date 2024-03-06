@@ -1669,6 +1669,13 @@ namespace Lunar.Utils.OrganizacaoNF
                     i++;
                     string creditoDebito = "";
                     TNFeInfNFePagDetPagIndPag indPagamento;
+                    if (formaPagamento == null)
+                    {
+                        formaPagamento = new FormaPagamento();
+                        formaPagamento.Id = 2;
+                        formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    }
+                    
                     if (formaPagamento.Boleto || formaPagamento.Cheque || formaPagamento.Crediario)
                         indPagamento = TNFeInfNFePagDetPagIndPag.Item1;
                     else

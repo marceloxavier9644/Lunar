@@ -52,9 +52,9 @@
             // btnVerificarAtualização
             // 
             this.btnVerificarAtualização.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVerificarAtualização.Location = new System.Drawing.Point(109, 39);
+            this.btnVerificarAtualização.Location = new System.Drawing.Point(100, 52);
             this.btnVerificarAtualização.Name = "btnVerificarAtualização";
-            this.btnVerificarAtualização.Size = new System.Drawing.Size(160, 57);
+            this.btnVerificarAtualização.Size = new System.Drawing.Size(179, 57);
             this.btnVerificarAtualização.TabIndex = 1;
             this.btnVerificarAtualização.Text = "Verificar Atualizações";
             this.btnVerificarAtualização.UseVisualStyleBackColor = true;
@@ -108,13 +108,12 @@
             // btnWts
             // 
             this.btnWts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWts.Location = new System.Drawing.Point(12, 9);
+            this.btnWts.Location = new System.Drawing.Point(100, 22);
             this.btnWts.Name = "btnWts";
-            this.btnWts.Size = new System.Drawing.Size(59, 26);
+            this.btnWts.Size = new System.Drawing.Size(179, 26);
             this.btnWts.TabIndex = 6;
-            this.btnWts.Text = "Wts";
+            this.btnWts.Text = "Disparar Mensagens Manualmente";
             this.btnWts.UseVisualStyleBackColor = true;
-            this.btnWts.Visible = false;
             this.btnWts.Click += new System.EventHandler(this.btnWts_Click);
             // 
             // FrmAtualizador

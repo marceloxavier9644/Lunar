@@ -1,4 +1,5 @@
-﻿using Lunar.Telas.PesquisaPadrao;
+﻿using Lunar.Telas.Cadastros.Cidades;
+using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using Lunar.Utils.SintegrawsConsultas;
 using LunarBase.Classes;
@@ -307,7 +308,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                 try
                 {
                     var ws = new WSCorreios.AtendeClienteClient();
-                    var resposta = ws.consultaCEP(txtCEP.Texts);
+                    var resposta = ws.consultaCEP(txtCEP.Texts, "marcelo.xs@hotmail.com", "@Aranhamxs11");
                     if (!String.IsNullOrEmpty(resposta.end))
                     {
                         txtEndereco.Texts = generica.RemoverAcentos(resposta.end);
@@ -452,21 +453,22 @@ namespace Lunar.Telas.Cadastros.Empresas
                 using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("RegimeEmpresa", ""))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
                     formBackground.Opacity = .50d;
                     formBackground.BackColor = Color.Black;
+                    formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
                     formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = true;
+                    formBackground.TopMost = false;
                     formBackground.Location = this.Location;
                     formBackground.ShowInTaskbar = false;
                     formBackground.Show();
-
                     uu.Owner = formBackground;
                     switch (uu.showModal("RegimeEmpresa", "", ref regimeEmpresaOjeto))
                     {
                         case DialogResult.Ignore:
                             uu.Dispose();
-                            GenericaDesktop.ShowAlerta("Não é possível cadastrar diferentes tipos de regime tributário!");
                             break;
                         case DialogResult.OK:
                             txtRegimeTributario.Texts = ((RegimeEmpresa)regimeEmpresaOjeto).Descricao;
@@ -486,6 +488,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                 formBackground.Dispose();
             }
         }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -555,38 +558,6 @@ namespace Lunar.Telas.Cadastros.Empresas
                     btnConfirmaCertificado.PerformClick();
             }
         }
-
-        //private void btnPuxarCertificadoInstalado_Click(object sender, EventArgs e)
-        //{
-        //    puxandoCertificadoInstalado = true;
-        //    if (!String.IsNullOrEmpty(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim())) && GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 14)
-        //    {
-        //        cert = Genericos.buscaCertificado(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()));
-        //        if (cert == null)
-        //        {
-        //            GenericaDesktop.ShowAlerta("Certificado Digital para o cnpj informado não encontrado");
-        //        }
-        //        else
-        //        {
-        //            txtCertificado.Texts = cert.Subject;
-
-        //            //certificadoBase64 = cert
-        //            if (String.IsNullOrEmpty(txtSenhaCertificado.Texts))
-        //            {
-        //                txtSenhaCertificado.Focus();
-        //                GenericaDesktop.ShowInfo("Informe a senha do certificado e clique no botão confirmar!");
-        //            }
-        //            else
-        //            {
-        //                var certContents = File.ReadAllBytes(cert.Subject);
-        //                certificadoBase64 = Convert.ToBase64String(certContents);
-        //                btnConfirmaCertificado.PerformClick();
-        //            }
-        //        }
-        //    }
-        //    else
-        //        GenericaDesktop.ShowAlerta("Informe o cnpj correto da empresa na aba DADOS da empresa!");
-        //}
 
         private void btnConfirmaCertificado_Click(object sender, EventArgs e)
         {
