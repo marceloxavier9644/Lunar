@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAtualizador));
             this.lblVersaoAtualizador = new System.Windows.Forms.Label();
             this.btnVerificarAtualização = new System.Windows.Forms.Button();
             this.lblNovaVersaoLocalizada = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             this.lblAgora = new System.Windows.Forms.Label();
             this.progressBarAdv1 = new Syncfusion.Windows.Forms.Tools.ProgressBarAdv();
             this.btnWts = new System.Windows.Forms.Button();
+            this.timerExportImport = new System.Windows.Forms.Timer();
+            this.btnBackup = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarAdv1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +109,7 @@
             // btnWts
             // 
             this.btnWts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWts.Location = new System.Drawing.Point(100, 22);
+            this.btnWts.Location = new System.Drawing.Point(12, 20);
             this.btnWts.Name = "btnWts";
             this.btnWts.Size = new System.Drawing.Size(179, 26);
             this.btnWts.TabIndex = 6;
@@ -116,12 +117,28 @@
             this.btnWts.UseVisualStyleBackColor = true;
             this.btnWts.Click += new System.EventHandler(this.btnWts_Click);
             // 
+            // timerExportImport
+            // 
+            this.timerExportImport.Tick += new System.EventHandler(this.timerExportImport_Tick);
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackup.Location = new System.Drawing.Point(197, 20);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(170, 26);
+            this.btnBackup.TabIndex = 7;
+            this.btnBackup.Text = "Backup/Nuvem";
+            this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            // 
             // FrmAtualizador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(379, 163);
+            this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.btnWts);
             this.Controls.Add(this.progressBarAdv1);
             this.Controls.Add(this.lblAgora);
@@ -151,5 +168,7 @@
         private System.Windows.Forms.Label lblAgora;
         private Syncfusion.Windows.Forms.Tools.ProgressBarAdv progressBarAdv1;
         private System.Windows.Forms.Button btnWts;
+        private System.Windows.Forms.Timer timerExportImport;
+        private System.Windows.Forms.Button btnBackup;
     }
 }

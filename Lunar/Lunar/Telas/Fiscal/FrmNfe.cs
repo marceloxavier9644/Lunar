@@ -1189,8 +1189,31 @@ namespace Lunar.Telas.Fiscal
                                 param.Id = 1;
                                 param = (ParametroSistema)Controller.getInstance().selecionar(param);
                                 Sessao.parametroSistema = param;
+                                numeroNFe = "";
                                 if (lblNumeroNfe.Text == "0")
+                                {
                                     numeroNFe = Sessao.parametroSistema.ProximoNumeroNFe;
+                                    NfeController nfeController = new NfeController();
+                                    Nfe notaTeste;
+
+                                    do
+                                    {
+                                        notaTeste = nfeController.selecionarNFePorNumeroESerie(numeroNFe, Sessao.parametroSistema.SerieNFe);
+
+                                        if (notaTeste != null && notaTeste.Id > 0)
+                                        {
+                                            int novoNumero = int.Parse(Sessao.parametroSistema.ProximoNumeroNFe) + 1;
+                                            numeroNFe = novoNumero.ToString();
+                                            Sessao.parametroSistema.ProximoNumeroNFe = numeroNFe;
+                                            Controller.getInstance().salvar(Sessao.parametroSistema);
+                                            Logger logger = new Logger();
+                                            logger.WriteLog("Nota " + notaTeste.NNf + " Modelo: 55, já existe. Verifique a numeração de notas! Novo nº que será feito o teste: " + numeroNFe, "Log");
+                                        }
+
+                                    } while (notaTeste != null && notaTeste.Id > 0);
+
+                                    // Agora que temos um número de NFe válido, podemos prosseguir
+                                }
                                 else
                                     numeroNFe = lblNumeroNfe.Text;
 

@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BancoDadosUtils.cs" />
     <Compile Include="FrmNotificacao.cs">
       <SubType>Form</SubType>
     </Compile>

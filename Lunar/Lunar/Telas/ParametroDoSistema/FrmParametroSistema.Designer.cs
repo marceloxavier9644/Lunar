@@ -204,6 +204,15 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtMensagemPosVenda = new System.Windows.Forms.TextBox();
             this.autoLabel48 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.tabDashboardsApp = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.txtSenhaNuvem = new System.Windows.Forms.TextBox();
+            this.autoLabel56 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtUsuarioNuvem = new System.Windows.Forms.TextBox();
+            this.autoLabel55 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtBancoNuvem = new System.Windows.Forms.TextBox();
+            this.autoLabel54 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtServidorNuvem = new System.Windows.Forms.TextBox();
+            this.autoLabel53 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
@@ -250,6 +259,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivarEnvioMensagemPosVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).BeginInit();
+            this.tabDashboardsApp.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -309,6 +319,7 @@
             this.tabControlAdv1.Controls.Add(this.tabEmpresa);
             this.tabControlAdv1.Controls.Add(this.tabEmail);
             this.tabControlAdv1.Controls.Add(this.tabPosVenda);
+            this.tabControlAdv1.Controls.Add(this.tabDashboardsApp);
             this.tabControlAdv1.Location = new System.Drawing.Point(12, 50);
             this.tabControlAdv1.Name = "tabControlAdv1";
             this.tabControlAdv1.Size = new System.Drawing.Size(871, 421);
@@ -2737,7 +2748,6 @@
             this.tabPosVenda.ShowCloseButton = true;
             this.tabPosVenda.Size = new System.Drawing.Size(868, 397);
             this.tabPosVenda.TabIndex = 9;
-            this.tabPosVenda.TabVisible = false;
             this.tabPosVenda.Text = "Mensagem Pós Vendas";
             this.tabPosVenda.ThemesEnabled = false;
             // 
@@ -3005,6 +3015,111 @@
             this.autoLabel48.TabIndex = 265;
             this.autoLabel48.Text = "Mensagem Após Venda (Mensagem Para Envio pelo Whatsapp)";
             // 
+            // tabDashboardsApp
+            // 
+            this.tabDashboardsApp.Controls.Add(this.txtSenhaNuvem);
+            this.tabDashboardsApp.Controls.Add(this.autoLabel56);
+            this.tabDashboardsApp.Controls.Add(this.txtUsuarioNuvem);
+            this.tabDashboardsApp.Controls.Add(this.autoLabel55);
+            this.tabDashboardsApp.Controls.Add(this.txtBancoNuvem);
+            this.tabDashboardsApp.Controls.Add(this.autoLabel54);
+            this.tabDashboardsApp.Controls.Add(this.txtServidorNuvem);
+            this.tabDashboardsApp.Controls.Add(this.autoLabel53);
+            this.tabDashboardsApp.Image = null;
+            this.tabDashboardsApp.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabDashboardsApp.Location = new System.Drawing.Point(1, 22);
+            this.tabDashboardsApp.Name = "tabDashboardsApp";
+            this.tabDashboardsApp.ShowCloseButton = true;
+            this.tabDashboardsApp.Size = new System.Drawing.Size(868, 397);
+            this.tabDashboardsApp.TabIndex = 10;
+            this.tabDashboardsApp.Text = "Dashboards App Config";
+            this.tabDashboardsApp.ThemesEnabled = false;
+            // 
+            // txtSenhaNuvem
+            // 
+            this.txtSenhaNuvem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenhaNuvem.Location = new System.Drawing.Point(689, 40);
+            this.txtSenhaNuvem.Name = "txtSenhaNuvem";
+            this.txtSenhaNuvem.Size = new System.Drawing.Size(165, 29);
+            this.txtSenhaNuvem.TabIndex = 3;
+            this.txtSenhaNuvem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSenhaNuvem.UseSystemPasswordChar = true;
+            // 
+            // autoLabel56
+            // 
+            this.autoLabel56.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel56.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel56.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel56.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel56.Location = new System.Drawing.Point(689, 16);
+            this.autoLabel56.Name = "autoLabel56";
+            this.autoLabel56.Size = new System.Drawing.Size(102, 21);
+            this.autoLabel56.TabIndex = 282;
+            this.autoLabel56.Text = "Senha Nuvem";
+            // 
+            // txtUsuarioNuvem
+            // 
+            this.txtUsuarioNuvem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuarioNuvem.Location = new System.Drawing.Point(518, 40);
+            this.txtUsuarioNuvem.Name = "txtUsuarioNuvem";
+            this.txtUsuarioNuvem.Size = new System.Drawing.Size(165, 29);
+            this.txtUsuarioNuvem.TabIndex = 2;
+            this.txtUsuarioNuvem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // autoLabel55
+            // 
+            this.autoLabel55.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel55.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel55.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel55.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel55.Location = new System.Drawing.Point(518, 16);
+            this.autoLabel55.Name = "autoLabel55";
+            this.autoLabel55.Size = new System.Drawing.Size(134, 21);
+            this.autoLabel55.TabIndex = 280;
+            this.autoLabel55.Text = "Usuário em Nuvem";
+            // 
+            // txtBancoNuvem
+            // 
+            this.txtBancoNuvem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBancoNuvem.Location = new System.Drawing.Point(347, 40);
+            this.txtBancoNuvem.Name = "txtBancoNuvem";
+            this.txtBancoNuvem.Size = new System.Drawing.Size(165, 29);
+            this.txtBancoNuvem.TabIndex = 1;
+            this.txtBancoNuvem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // autoLabel54
+            // 
+            this.autoLabel54.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel54.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel54.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel54.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel54.Location = new System.Drawing.Point(347, 16);
+            this.autoLabel54.Name = "autoLabel54";
+            this.autoLabel54.Size = new System.Drawing.Size(165, 21);
+            this.autoLabel54.TabIndex = 278;
+            this.autoLabel54.Text = "Banco de Dados Nuvem";
+            // 
+            // txtServidorNuvem
+            // 
+            this.txtServidorNuvem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServidorNuvem.Location = new System.Drawing.Point(21, 40);
+            this.txtServidorNuvem.Name = "txtServidorNuvem";
+            this.txtServidorNuvem.Size = new System.Drawing.Size(320, 29);
+            this.txtServidorNuvem.TabIndex = 0;
+            this.txtServidorNuvem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // autoLabel53
+            // 
+            this.autoLabel53.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel53.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel53.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel53.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel53.Location = new System.Drawing.Point(21, 16);
+            this.autoLabel53.Name = "autoLabel53";
+            this.autoLabel53.Size = new System.Drawing.Size(139, 21);
+            this.autoLabel53.TabIndex = 276;
+            this.autoLabel53.Text = "Servidor em Nuvem";
+            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
@@ -3124,6 +3239,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivarEnvioMensagemPosVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).EndInit();
+            this.tabDashboardsApp.ResumeLayout(false);
+            this.tabDashboardsApp.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3307,5 +3424,14 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel52;
         private System.Windows.Forms.Label label15;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkMensagemAposEncerrarOS;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabDashboardsApp;
+        private System.Windows.Forms.TextBox txtSenhaNuvem;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel56;
+        private System.Windows.Forms.TextBox txtUsuarioNuvem;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel55;
+        private System.Windows.Forms.TextBox txtBancoNuvem;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel54;
+        private System.Windows.Forms.TextBox txtServidorNuvem;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel53;
     }
 }

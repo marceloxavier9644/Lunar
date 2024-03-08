@@ -7,7 +7,9 @@ using MySql.Data.MySqlClient;
 using SharpCompress.Common;
 using SharpCompress.Readers;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -41,6 +43,10 @@ namespace LunarAtualizador
         FrmNotificacao frmNotificacao = new FrmNotificacao();
         private static FrmAtualizador instanciaAtualizador;
         private Timer timer;
+        string servidorNuvem = "";
+        string bancoNuvem = "";
+        string usuarioNuvem = "";
+        string senhaNuvem = "";
         public static FrmAtualizador InstanciaAtualizador
         {
             get
@@ -67,6 +73,8 @@ namespace LunarAtualizador
             webClient = new WebClient();
             webClient.DownloadProgressChanged += WebClientDownloadProgressChanged;
             instanciaAtualizador = this;
+            //parametros para verificar integracao com dashboards
+            lerParametrosSistema();
 
             conferirHorarioMensagens();
             if (ativarMensagemLembreteExame.Equals("True"))
@@ -87,7 +95,12 @@ namespace LunarAtualizador
 
             //Timer automático
             timer1.Start();
-           
+
+            //timer atualiza banco de dados nuvem
+            timerExportImport.Interval = 30 * 60 * 1000; // 30 minutos em milissegundos
+            timerExportImport.Tick += timerExportImport_Tick;
+            timerExportImport.Start();
+
             Icon iconFromBitmap = CriarIconeTamanhoDesejado(LunarAtualizador.Properties.Resources.IconeLunarUpdate3, new Size(64, 64));
             notifyIcon = new NotifyIcon
             {
@@ -180,7 +193,7 @@ namespace LunarAtualizador
 
             if (File.Exists(@"C:\Lunar\Lunar.exe"))
             {
-               // btnVerificarAtualização.Enabled = false;
+                // btnVerificarAtualização.Enabled = false;
                 string caminhoParaExe = @"C:\Lunar\Lunar.exe";
                 FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
                 string versaoAtual = info.FileVersion;
@@ -304,7 +317,7 @@ namespace LunarAtualizador
                 Console.WriteLine($"O processo {nomeProcesso} não está em execução.");
             }
         }
-      
+
         private static bool FecharProcesso(string nomeProcesso)
         {
             try
@@ -397,8 +410,8 @@ namespace LunarAtualizador
             }
         }
 
-        private void verificaConfiguracaoBancoLocal() { 
-        
+        private void verificaConfiguracaoBancoLocal()
+        {
             if (File.Exists(@"C:\Lunar\MXSystem.xml"))
             {
                 DateTime dataXML = DateTime.Now.AddDays(-1000);
@@ -490,6 +503,16 @@ namespace LunarAtualizador
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime agora = DateTime.Now;
+            string caminhoPastaExportacao = "exportBD";
+            string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
+
+            if (!Directory.Exists(caminhoPastaExportacao))
+            {
+                Directory.CreateDirectory(caminhoPastaExportacao);
+            }
+            //ExportarParaNuvem("localhost", "marcelo", "mx123", "lunar", "mysql.lunarsoftware.com.br", "lunarsoftware01", "aranha1", "lunarsoftware01");
+            //BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
+            //BancoDadosUtils.ImportarBancoDados("mysql.lunarsoftware.com.br", "lunarsoftware01", "aranha1", "lunarsoftware01", caminhoArquivo);
 
             // Horários desejados para verificação (por exemplo, 9h e 15h)
             DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 9, 0, 0);
@@ -558,9 +581,17 @@ namespace LunarAtualizador
                                 logger.WriteLog("Preparando Disparo de Mensagem ---- NOME: " + mensagem.NomeCliente + " MENSAGEM: " + mensagemPosVenda + " FLAGENVIADA: " + mensagem.FlagEnviada, "LogMensagem");
                                 if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda) && !mensagem.FlagEnviada)
                                 {
-                                    dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
-                                    mensagem.FlagEnviada = true;
-                                    Controller.getInstance().salvar(mensagem);
+                                    try
+                                    {
+                                        dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
+                                        mensagem.FlagEnviada = true;
+                                        Controller.getInstance().salvar(mensagem);
+                                    }
+                                    catch
+                                    {
+                                        mensagem.FlagEnviada = true;
+                                        Controller.getInstance().salvar(mensagem);
+                                    }
                                 }
                             }
                         }
@@ -578,7 +609,7 @@ namespace LunarAtualizador
                 try
                 {
                     // Abra a conexão
-                
+
                     connection.Open();
                     Sessao.parametroSistema = new ParametroSistema();
                     string query = "SELECT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false";
@@ -610,7 +641,7 @@ namespace LunarAtualizador
                 {
 
                 }
-            } 
+            }
         }
         private void InicializarBackgroundWorker()
         {
@@ -656,7 +687,7 @@ namespace LunarAtualizador
                     From = new MailAddress("txtinformaticabackup@gmail.com"),
                     Subject = "Atualização Lunar",
                     Body = "Sistema Atualizado " + cnpjClient + " \r" + "Computador: " + Environment.MachineName
-                    +" \r" + "Data Atualização: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString(),
+                    + " \r" + "Data Atualização: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString(),
                     IsBodyHtml = false
                 };
 
@@ -682,7 +713,7 @@ namespace LunarAtualizador
             string msgLembreteExame = "";
             string diasAntes = "";
             nomeServidorConfigurado = "";
-            
+
 
             string mensagemPosVenda = "";
             string tempoMensagemPosVenda = "";
@@ -708,6 +739,11 @@ namespace LunarAtualizador
                                 ativarMensagemPosVendas = $"{reader["ATIVARMENSAGEMPOSVENDAS"]}";
                                 ativarMensagemLembreteExame = $"{reader["ATIVARMENSAGEMVENCIMENTOEXAME"]}";
                                 mensagemPosVenda = $"{reader["MENSAGEMPOSVENDAS"]}";
+                                
+                                servidorNuvem = $"{reader["SERVIDORNUVEM"]}";
+                                bancoNuvem = $"{reader["BANCONUVEM"]}";
+                                usuarioNuvem = $"{reader["USUARIONUVEM"]}";
+                                senhaNuvem = GenericaDesktop.Descriptografa($"{reader["SENHANUVEM"]}");
                             }
                         }
                         if (ativarMensagemLembreteExame.Equals("True"))
@@ -764,6 +800,55 @@ namespace LunarAtualizador
             }
         }
 
+        private void lerParametrosSistema()
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionStringLocal))
+            {
+                try
+                {
+                    // Abra a conexão
+                    connection.Open();
+
+                    // Realize uma consulta simples
+                    string query = "SELECT * FROM ParametroSistema";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Verificar se há linhas retornadas
+                            if (reader.HasRows)
+                            {
+                                // Ler os resultados
+                                while (reader.Read())
+                                {
+                                    // Faça algo com os resultados
+                                    nomeServidorConfigurado = reader["nomeServidor"].ToString();
+                                    ativarMensagemPosVendas = reader["ATIVARMENSAGEMPOSVENDAS"].ToString();
+                                    ativarMensagemLembreteExame = reader["ATIVARMENSAGEMVENCIMENTOEXAME"].ToString();
+                                    mensagemPosVenda = reader["MENSAGEMPOSVENDAS"].ToString();
+
+                                    servidorNuvem = $"{reader["SERVIDORNUVEM"]}";
+                                    bancoNuvem = $"{reader["BANCONUVEM"]}";
+                                    usuarioNuvem = $"{reader["USUARIONUVEM"]}";
+                                    senhaNuvem = GenericaDesktop.Descriptografa($"{reader["SENHANUVEM"]}");
+                                }
+                            }
+                            else
+                            {
+                                // Nenhuma linha retornada
+                                Console.WriteLine("Nenhuma linha retornada pela consulta.");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Lidar com exceções
+                    logger.WriteLog($"Erro ao executar a consulta a parametros do sistema: {ex.Message}", "Logs");
+                    Console.WriteLine($"Erro ao executar a consulta: {ex.Message}");
+                }
+            }
+        }
         private void listaExamesVencendo(int diasAntesDoVencimento, string mensagemLembrete)
         {
             string idOrdemServico = "";
@@ -801,7 +886,7 @@ namespace LunarAtualizador
                                 //Console.WriteLine($"Número da Ordem de Serviço: {reader["ID"]}");
                                 idOrdemServico = $"{reader["Id"]}";
                                 ddd = $"{reader["DDD"]}";
-                                telefoneCliente =  $"{reader["TELEFONE"]}";
+                                telefoneCliente = $"{reader["TELEFONE"]}";
                                 String nomeCli = $"{reader["RazaoSocial"]}";
                                 string proxVencimentoExame = $"{reader["ProximoExame"]}";
                                 // Adicione outras informações conforme necessário
@@ -814,7 +899,7 @@ namespace LunarAtualizador
 
                                     //Nome e primeiro sobrenome
                                     string[] partesNome = nomeCli.Split(' ');
-                                    if(partesNome.Length >= 2)
+                                    if (partesNome.Length >= 2)
                                         nomeCli = partesNome[0] + " " + partesNome[1];
 
                                     String mensagemAjustada = mensagemLembrete;
@@ -824,7 +909,7 @@ namespace LunarAtualizador
                                         mensagemAjustada = mensagemAjustada.Replace("[DataProximoExame]", proxVencimentoExame);
 
                                     var ret = zapi.zapi_EnviarTexto(numeroLimpo, mensagemAjustada, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                                    if(ret != null)
+                                    if (ret != null)
                                     {
                                         AtualizarFlagMensagemEnviada(int.Parse(idOrdemServico));
 
@@ -962,8 +1047,8 @@ namespace LunarAtualizador
                     String mensagemAjustada = mensagem;
                     if (mensagemAjustada.Contains("[NomeCliente]"))
                         mensagemAjustada = mensagemAjustada.Replace("[NomeCliente]", nomeCliente);
-           
-                    
+
+
                     var ret = zapi.zapi_EnviarTexto(numeroLimpo, mensagemAjustada, idWhats, tokenWhats);
                     if (ret != null)
                     {
@@ -982,6 +1067,48 @@ namespace LunarAtualizador
             }
         }
 
+        private void timerExportImport_Tick(object sender, EventArgs e)
+        {
+            // Obter o caminho do arquivo de exportação
+            string caminhoPastaExportacao = "exportBD";
+            string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
 
+            // Verificar se a pasta de exportação existe e criá-la se não existir
+            if (!Directory.Exists(caminhoPastaExportacao))
+            {
+                Directory.CreateDirectory(caminhoPastaExportacao);
+            }
+
+            if (nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
+            {
+                // Exportar o banco de dados local para um arquivo
+                BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
+
+                // Importar o banco de dados do arquivo para o servidor remoto
+                if (!String.IsNullOrEmpty(bancoNuvem) && !String.IsNullOrEmpty(servidorNuvem) && !String.IsNullOrEmpty(usuarioNuvem))
+                    BancoDadosUtils.ImportarBancoDados(servidorNuvem, usuarioNuvem, senhaNuvem, bancoNuvem, caminhoArquivo);
+            }
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {// Obter o caminho do arquivo de exportação
+            string caminhoPastaExportacao = "exportBD";
+            string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
+
+            // Verificar se a pasta de exportação existe e criá-la se não existir
+            if (!Directory.Exists(caminhoPastaExportacao))
+            {
+                Directory.CreateDirectory(caminhoPastaExportacao);
+            }
+            if (nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
+            {
+                // Exportar o banco de dados local para um arquivo
+                BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
+
+                // Importar o banco de dados do arquivo para o servidor remoto
+                if (!String.IsNullOrEmpty(bancoNuvem) && !String.IsNullOrEmpty(servidorNuvem) && !String.IsNullOrEmpty(usuarioNuvem))
+                    BancoDadosUtils.ImportarBancoDados(servidorNuvem, usuarioNuvem, senhaNuvem, bancoNuvem, caminhoArquivo);
+            }
+        }
     }
 }

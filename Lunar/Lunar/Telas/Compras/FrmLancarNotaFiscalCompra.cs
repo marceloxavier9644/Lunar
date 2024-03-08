@@ -814,7 +814,8 @@ namespace Lunar.Telas.Compras
 					nfeProd.OrigemIcms = ((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).orig.ToString().Replace("Item", "");
 					nfeProd.CstIcms = ((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).CSOSN.ToString().Replace("Item", "");
 					nfeProd.ModBC = ((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).modBC.ToString().Replace("Item", "");
-					nfeProd.VBC = decimal.Parse(((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).vBC.Replace(".", ","));
+					if(((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).vBC != null)
+						nfeProd.VBC = decimal.Parse(((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).vBC.Replace(".", ","));
 					nfeProd.PRedBCST = ((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).pRedBCST;
 					nfeProd.PICMS = ((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).pICMS;
 					if (((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).vICMS != null)
@@ -832,7 +833,8 @@ namespace Lunar.Telas.Compras
 					nfeProd.PFCPST = ((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).pFCPST;
 					if (((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).vFCPST != null)
 						nfeProd.VFCPST = decimal.Parse(((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).vFCPST.Replace(".", ","));
-					nfeProd.PCredSN = ((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).pCredSN.ToString().Replace("Item", "");
+					if(((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).pCredSN != null)
+						nfeProd.PCredSN = ((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).pCredSN.ToString().Replace("Item", "");
 					if (((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).vCredICMSSN != null)
 						nfeProd.VCredICMSSN = decimal.Parse(((TNFeInfNFeDetImpostoICMSICMSSN900)icms.Item).vCredICMSSN.Replace(".", ","));
 				}

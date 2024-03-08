@@ -234,6 +234,13 @@ namespace Lunar.Telas.ParametroDoSistema
             txtMensagemLembreteExame.Text = parametro.MensagemLembreteExame;
             if(!String.IsNullOrEmpty(parametro.NomeServidor))
                 txtNomeServidor.Text = parametro.NomeServidor;
+
+            //nuvem
+            txtServidorNuvem.Text = parametro.ServidorNuvem;
+            txtBancoNuvem.Text = parametro.BancoNuvem;
+            txtUsuarioNuvem.Text = parametro.UsuarioNuvem;
+            if(!String.IsNullOrEmpty(parametro.SenhaNuvem))
+                txtSenhaNuvem.Text = GenericaDesktop.Descriptografa(parametro.SenhaNuvem);
         }
 
         private void setParametro()
@@ -415,6 +422,14 @@ namespace Lunar.Telas.ParametroDoSistema
             parametro.MensagemLembreteExame = txtMensagemLembreteExame.Text;
             if (!String.IsNullOrEmpty(txtNomeServidor.Text))
                 parametro.NomeServidor = txtNomeServidor.Text;
+
+
+            //DASHBOARDS NUVEM
+            parametro.ServidorNuvem = txtServidorNuvem.Text;
+            parametro.BancoNuvem = txtBancoNuvem.Text;
+            parametro.UsuarioNuvem = txtUsuarioNuvem.Text;
+            parametro.SenhaNuvem = GenericaDesktop.Criptografa(txtSenhaNuvem.Text);
+
             Sessao.parametroSistema = parametro;
         }
 

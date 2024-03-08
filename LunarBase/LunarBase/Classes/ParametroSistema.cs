@@ -72,6 +72,12 @@ namespace LunarBase.Classes
         private string nomeServidor;
         private bool mensagemPosVendaAposFinalizarOs;
 
+        //Servidor Nuvem para Dashboards
+        private string servidorNuvem;
+        private string bancoNuvem;
+        private string usuarioNuvem;
+        private string senhaNuvem;
+
         public virtual int Id { get => id; set => id = value; }
         public virtual string UltNsu { get => ultNsu; set => ultNsu = value; }
         public virtual string ProximoNumeroNFCe { get => proximoNumeroNFCe; set => proximoNumeroNFCe = value; }
@@ -132,5 +138,9 @@ namespace LunarBase.Classes
         public virtual string MensagemLembreteExame { get => mensagemLembreteExame; set => mensagemLembreteExame = value; }
         public virtual string NomeServidor { get => nomeServidor; set => nomeServidor = value; }
         public virtual bool MensagemPosVendaAposFinalizarOs { get => mensagemPosVendaAposFinalizarOs; set => mensagemPosVendaAposFinalizarOs = value; }
+        public virtual string ServidorNuvem { get => servidorNuvem; set => servidorNuvem = value; }
+        public virtual string BancoNuvem { get => bancoNuvem; set => bancoNuvem = value; }
+        public virtual string UsuarioNuvem { get => usuarioNuvem; set => usuarioNuvem = value; }
+        public virtual string SenhaNuvem { get => senhaNuvem; set => senhaNuvem = value; }
     }
 }

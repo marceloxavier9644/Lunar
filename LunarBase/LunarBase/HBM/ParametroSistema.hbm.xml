@@ -61,7 +61,12 @@
 		<property name="MensagemLembreteExame" column="MENSAGEMLEMBRETEEXAME" type="String" length="1000"/>
 		<property name="NomeServidor" column="NOMESERVIDOR" type="String" length="150"/>
 		<property name="MensagemPosVendaAposFinalizarOs" column="MENSAGEMPOSVENDAAPOSFINALIZAROS" type="Boolean"/>
-		
+
+		<!--Dashboards Nuvem-->
+		<property name="ServidorNuvem" column="SERVIDORNUVEM" type="String" length="180"/>
+		<property name="BancoNuvem" column="BANCONUVEM" type="String" length="70"/>
+		<property name="UsuarioNuvem" column="USUARIONUVEM" type="String" length="80"/>
+		<property name="SenhaNuvem" column="SENHANUVEM" type="String" length="50"/>
 
 		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="false" foreign-key="FK_PARAMENTROS_TIPOOBJETO" lazy="false"/>
 		<many-to-one name="PlanoContaVenda" column="PLANOCONTAVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTAVENDA" lazy="false"/>
