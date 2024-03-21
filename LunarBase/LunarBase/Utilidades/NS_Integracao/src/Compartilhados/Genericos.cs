@@ -524,12 +524,28 @@ public class Genericos
             nfe.CnpjDestinatario = "";
         }
         try { nfe.DataProtocolo = DateTime.Parse(nota.protNFe.infProt.dhRecbto); } catch { };
-        
+
         //salvar produtos da nota de saida
-        //for(int x = 0; x < nota.NFe.infNFe.det.Length; x++)
-        //{
-        //    nota.NFe.infNFe.det[x].prod
-        //} 
+        List<string> codigosProdutosNaNota = new List<string>();
+        
+        for (int x = 0; x < nota.NFe.infNFe.det.Length; x++)
+        {
+            codigosProdutosNaNota.Add(nota.NFe.infNFe.det[x].prod.cProd);
+        }
+        NfeProdutoController nfeProdutoController = new NfeProdutoController();
+        IList<NfeProduto> listaProd = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
+        if (listaProd.Count > nota.NFe.infNFe.det.Length)
+        {
+            foreach (var produtoNoBanco in listaProd)
+            {
+                // Se o código do produto do banco não estiver na lista de códigos da nota fiscal, remova-o
+                if (!codigosProdutosNaNota.Contains(produtoNoBanco.CProd))
+                {
+                    // Remove o produto da base de dados
+                    nfeProdutoController.excluir(produtoNoBanco);
+                }
+            }
+        }
 
         Pessoa pessoa = new Pessoa();
         PessoaController pessoaController = new PessoaController();

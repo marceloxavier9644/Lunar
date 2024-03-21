@@ -703,9 +703,11 @@ namespace Lunar.Telas.Compras.Manifestos
                     //frmLancarNota.ShowDialog();
                     //grid.Refresh();
                 }
-                catch
+                catch (Exception erro)
                 {
-                    GenericaDesktop.ShowAlerta("Arquivo XML inválido, verifique se selecionou o arquivo correto!");
+                    Logger logger = new Logger();
+                    logger.WriteLog("Erro ao importar XML: " + erro.Message, "Logs");
+                    //GenericaDesktop.ShowAlerta("Arquivo XML inválido, verifique se selecionou o arquivo correto!");
                 }
             }
         }

@@ -322,8 +322,10 @@ namespace Lunar.Telas.Cadastros.Cliente
                 try
                 {
                     var ws = new WSCorreios.AtendeClienteClient();
-           
-                    var resposta = ws.consultaCEP(txtCEP.Texts, "marcelo.xs@hotmail.com", "@Aranhamxs11");
+
+                    
+                    //o login valido está dentro do metodo consultaCEP
+                    var resposta = ws.consultaCEP(txtCEP.Texts, "", "");
                     if (!String.IsNullOrEmpty(resposta.end))
                     {
                         txtEndereco.Texts = generica.RemoverAcentos(resposta.end);

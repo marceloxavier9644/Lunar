@@ -1279,6 +1279,7 @@ namespace Lunar.Telas.Fiscal
             param.Id = 1;
             param = (ParametroSistema)Controller.getInstance().selecionar(param);
             Sessao.parametroSistema = param;
+
             String xmlStrEnvio = "";
             nfe = new Nfe();
             bool validaCliente = true;
@@ -1306,6 +1307,11 @@ namespace Lunar.Telas.Fiscal
                             if (validador.validarProdutosNota(listaProdutosNFe))
                             {
                                 numeroNFe = Sessao.parametroSistema.ProximoNumeroNFCe;
+
+                                //Ja alimenta o proximo numero nos parametros
+                                Sessao.parametroSistema.ProximoNumeroNFCe = (int.Parse(numeroNFe) + 1).ToString();
+                                Controller.getInstance().salvar(Sessao.parametroSistema);
+
                                 FormaPagamento formaPagamento = new FormaPagamento();
                                 formaPagamento.Id = int.Parse(txtCodFormaPagamento.Texts);
                                 formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
@@ -1353,8 +1359,6 @@ namespace Lunar.Telas.Fiscal
 
                                 Controller.getInstance().salvar(nfePagamento);
 
-                                Sessao.parametroSistema.ProximoNumeroNFCe = (int.Parse(numeroNFe) + 1).ToString();
-                                Controller.getInstance().salvar(Sessao.parametroSistema);
                                 listaProdutos = new List<OrdemServicoProduto>();
                                 listaProdutosNFe = new List<NfeProduto>();
                                 ordem = new OrdemServico();

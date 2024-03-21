@@ -90,7 +90,7 @@ namespace Lunar.Utils.Sintegra
                 foreach (Nfe nf in listaNotas)
                 {
                     string a = "";
-                    if (nf.NNf.Equals("447"))
+                    if (nf.NNf.Equals("40"))
                         a = "a";
 
                     string emitente = "P";
@@ -424,6 +424,10 @@ namespace Lunar.Utils.Sintegra
                 registro75.CodItem = retProd.codProd.ToString();
                 registro75.CodNcm = GenericaDesktop.RemoveCaracteres(retProd.ncm.Trim());
                 registro75.Descricao = GenericaDesktop.RemoveAcentos(GenericaDesktop.RemoveCaracteres(retProd.descricao.Trim()));
+                if (registro75.Descricao.Contains("Ç"))
+                    registro75.Descricao = registro75.Descricao.Replace("Ç", "C");
+                if (registro75.Descricao.Contains("AÃ‡"))
+                    registro75.Descricao = registro75.Descricao.Replace("AÃ‡", "AC");
                 registro75.UnidadeMedida = retProd.unidadeMedida;
 
                 decimal aliqIpi = 0;

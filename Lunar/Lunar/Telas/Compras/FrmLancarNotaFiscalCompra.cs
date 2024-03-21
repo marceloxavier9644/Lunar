@@ -85,12 +85,7 @@ namespace Lunar.Telas.Compras
 			txtIPI.Texts = nfe.VIpi.ToString("C2", CultureInfo.CurrentCulture);
 			txtICMSSt.Texts = nfe.VSt.ToString("C2", CultureInfo.CurrentCulture);
 
-			//TNFeInfNFeDetProd detprod;
-			//for (int k = 0; k < notaXML.NFe.infNFe.det.Length; k++)
-			//{
-			//    detprod = notaXML.NFe.infNFe.det[k].prod;
 
-			//}
 			listaProdutos = new List<NfeProduto>();
 			for (int k = 0; k < notaXML.NFe.infNFe.det.Length; k++)
 			{
@@ -187,7 +182,24 @@ namespace Lunar.Telas.Compras
 			gridPagamento.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
 			this.gridPagamento.AutoSizeController.ResetAutoSizeWidthForAllColumns();
 			this.gridPagamento.AutoSizeController.Refresh();
-		}
+
+			//Verifica se nota ja foi lancada
+			Nfe nfe2 = new Nfe();
+			NfeController nfeController = new NfeController();
+			nfe2 = nfeController.selecionarNotaPorChave(nfe.Chave);
+			if(nfe2 != null)
+			{
+				if(nfe2.Id > 0)
+				{
+					if(nfe2.Lancada == true)
+					{
+						GenericaDesktop.ShowErro("Essa nota fiscal ja foi lançada!");
+						this.Close();
+					}
+				}
+			}
+
+        }
 
 		private void coletarCofins(int k)
         {

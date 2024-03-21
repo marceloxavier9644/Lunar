@@ -1,0 +1,4 @@
+15/03/2024 11:52 - [CONSULTA_DADOS]
+15/03/2024 11:52 - {"CNPJ":"42988444000127","nsNRec":"10556105","tpAmb":"1"}
+15/03/2024 11:52 - [CONSULTA_RESPOSTA]
+15/03/2024 11:52 - {"status":-999,"motivo":"Erro interno ao processar a requisicao","erro":{"cStat":999,"xMotivo":"Object reference not set to an instance of an object."}}

@@ -2084,11 +2084,13 @@ namespace Lunar.Utils
             var arrayText = text.Normalize(NormalizationForm.FormD).ToCharArray();
             foreach (char letter in arrayText)
             {
-                if (CharUnicodeInfo.GetUnicodeCategory(letter) != UnicodeCategory.NonSpacingMark)
+                UnicodeCategory category = CharUnicodeInfo.GetUnicodeCategory(letter);
+                if (category != UnicodeCategory.NonSpacingMark && category != UnicodeCategory.OtherLetter)
                     sbReturn.Append(letter);
             }
             return sbReturn.ToString();
         }
+
 
         public static string Criptografa(String valor)
         {

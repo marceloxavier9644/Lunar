@@ -53,19 +53,13 @@ namespace Lunar
         }
 
         private void Login()
-        {//Log In
-
-            //Start Validate fields
+        {
             if (string.IsNullOrWhiteSpace(txtUsuario.Texts) || txtUsuario.Texts == txtUsuario.PlaceholderText)
             {
                 ShowMessage("Insira seu nome de usuário");
                 return;
             }
-            //if (string.IsNullOrWhiteSpace(txtSenha.Texts) || txtSenha.Texts == txtSenha.PlaceholderText)
-            //{
-            //    ShowMessage("Insira sua senha");
-            //    return;
-            //}
+
             Usuario usuario = new Usuario();
             usuario.Login = txtUsuario.Texts;
             usuario.Senha = GenericaDesktop.Criptografa(txtSenha.Texts);
@@ -83,12 +77,6 @@ namespace Lunar
                         String[] permissions = prm.Split(';');
                         Sessao.permissoes = new HashSet<string>(permissions);
                     }
-                    //Pessoa pessoa = controller.pessoa_selecionarPessoaPorCodigo(int.Parse(comboLoja.SelectedValue.ToString()));
-                    //if (int.Parse(comboLoja.SelectedValue.ToString()) != int.Parse(lojaPadrao.ToString()))
-                    //{
-                    //    GenericaDesktop.ShowAlerta("Atenção: você está acessando outra loja, " + pessoa.NomeFantasia);
-                    //}
-                    //SessaoVariaveis.empresaLogada = pessoa;
                     this.Close();
                     th = new Thread(opennewform);
                     th.SetApartmentState(ApartmentState.STA);
@@ -108,19 +96,6 @@ namespace Lunar
                 txtSenha.Texts = "";
                 txtUsuario.Focus();
             }
-
-
-            //Form mainForm;
-            //mainForm = new FrmPrincipal();
-            
-            //this.Hide();//Hide the login form.
-            //var welcomeForm = new WelcomeForm("Marcelo Xavier");//Show the welcome form.
-            //welcomeForm.ShowDialog();
-            //mainForm.FormClosed += new FormClosedEventHandler(MainForm_SessionClosed);//Associate the closed event, to clean the login form when the session is closed from the main form.
-            //mainForm.Show();//Show the main form.
-            //}
-            //else //If the login was NOT successful, show message.
-            //    ShowMessage("Incorrect username or password");
 
         }
 

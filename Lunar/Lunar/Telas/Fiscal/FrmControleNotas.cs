@@ -22,6 +22,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaNfe;
@@ -1816,6 +1817,12 @@ namespace Lunar.Telas.Fiscal
                                 retConsulta = JsonConvert.DeserializeObject<RetConsultaProcessamentoNF>(retornoConsulta);
                             if (!String.IsNullOrEmpty(retConsulta.chNFe))
                                 nfe.Chave = retConsulta.chNFe;
+                            else
+                            {
+                                //isso indica q o nsnrec está incorreto ou com problema
+                                nfe.NsNrec = "";
+                                Controller.getInstance().salvar(nfe);
+                            }
                             if (!String.IsNullOrEmpty(retConsulta.xMotivo))
                                 nfe.Status = retConsulta.xMotivo;
 
@@ -1913,8 +1920,9 @@ namespace Lunar.Telas.Fiscal
                             {
                                 if (nFCeDownloadProc.nfeProc.xMotivo.Contains("Autorizado o uso da"))
                                 {
-                                    //Atualizar o estoque se for autorizada
-                                    if (nfe.NfeStatus.Id != 1)
+                                    modificarNotaParaAutorizado(nFCeDownloadProc, nfe);
+                                    //atualiza estoque
+                                    if (nfe.NfeStatus.Id == 1)
                                     {
                                         NfeProdutoController nfeProdutoController = new NfeProdutoController();
                                         IList<NfeProduto> listaProd = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
@@ -1923,8 +1931,6 @@ namespace Lunar.Telas.Fiscal
                                             generica.atualizarEstoqueConciliado(nfeProd.Produto, double.Parse(nfeProd.QCom), false, "CONSULTA_CONTROLE", "NFE: " + nfe.NNf + " MOD: " + nfe.Modelo + " - " + nfe.NaturezaOperacao, nfe.Cliente, DateTime.Now, null);
                                         }
                                     }
-
-                                    modificarNotaParaAutorizado(nFCeDownloadProc, nfe);
                                     //EnviaXML PAINEL LUNAR 
                                     string caminhoNota = @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
                                     LunarApiNotas lunarApiNotas = new LunarApiNotas();
@@ -2026,6 +2032,26 @@ namespace Lunar.Telas.Fiscal
                                     }
                                 }
                             }
+                        }
+                        else if (nfe.Status.Contains("Duplicidade de NF-e"))
+                        {
+                            string chaveExtraida = "";
+                            string pattern = @"\[chNFe:(\d+)\]";
+                            Match match = Regex.Match(nfe.Status, pattern);
+                            if (match.Success)
+                            {
+                                chaveExtraida = match.Groups[1].Value;
+                            }
+                            if (!String.IsNullOrEmpty(chaveExtraida))
+                            {
+                                if (chaveExtraida.Length == 44)
+                                {
+                                    nfe.Chave = chaveExtraida;
+                                    Controller.getInstance().salvar(nfe);
+                                    btnConsultarNota.PerformClick();
+                                }
+                            }
+
                         }
                         else if (nfe.NfeStatus != null)
                         {
