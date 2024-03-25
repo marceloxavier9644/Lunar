@@ -880,6 +880,12 @@
     <Compile Include="Telas\Login\WelcomeForm.Designer.cs">
       <DependentUpon>WelcomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Mensagens\FrmMensagemPosVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Mensagens\FrmMensagemPosVendas.Designer.cs">
+      <DependentUpon>FrmMensagemPosVendas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Orcamentos\dsOrcamentoAvulso.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1509,6 +1515,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Login\WelcomeForm.resx">
       <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Mensagens\FrmMensagemPosVendas.resx">
+      <DependentUpon>FrmMensagemPosVendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Orcamentos\FrmImprimirOrcamentoAvulso.resx">
       <DependentUpon>FrmImprimirOrcamentoAvulso.cs</DependentUpon>

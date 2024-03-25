@@ -948,6 +948,12 @@ namespace Lunar.Telas.Fiscal
                         param = (ParametroSistema)Controller.getInstance().selecionar(param);
                         Sessao.parametroSistema = param;
                         numeroNFe = Sessao.parametroSistema.ProximoNumeroNFe;
+
+                        //Ja alimenta o proximo numero nos parametros
+                        Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(numeroNFe) + 1).ToString();
+                        Controller.getInstance().salvar(Sessao.parametroSistema);
+
+
                         TNFeInfNFeTranspModFrete frete = retornaFrete();
                         nfe = alimentaNfe();
 
@@ -971,8 +977,7 @@ namespace Lunar.Telas.Fiscal
                         {
                             enviarXMLNFeParaApi(xmlStrEnvio);
                         }
-                        Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(numeroNFe) + 1).ToString();
-                        Controller.getInstance().salvar(Sessao.parametroSistema);
+                        
                         listaProdutos = new List<OrdemServicoProduto>();
                         listaProdutosNFe = new List<NfeProduto>();
                         ordem = new OrdemServico();

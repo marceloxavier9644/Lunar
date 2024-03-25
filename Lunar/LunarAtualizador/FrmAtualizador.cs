@@ -17,6 +17,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -156,6 +157,14 @@ namespace LunarAtualizador
             ToolStripMenuItem itemSair = new ToolStripMenuItem("Sair");
             itemSair.Click += (sender, e) =>
             {
+                // Verifica se o formulário principal está aberto e fecha-o
+                Form principalForm = Application.OpenForms.OfType<FrmAtualizador>().FirstOrDefault();
+                if (principalForm != null)
+                {
+                    principalForm.Close();
+                }
+
+                // Finaliza o aplicativo
                 Application.Exit();
             };
             contextMenuStrip.Items.Add(itemSair);
@@ -497,107 +506,117 @@ namespace LunarAtualizador
                 e.Cancel = true;  // Cancelar o fechamento
                 this.WindowState = FormWindowState.Minimized;  // Minimizar para a bandeja do sistema
                 this.ShowInTaskbar = false;  // Ocultar o formulário da barra de tarefas
+
+                // Ocultar o formulário da tela antes de minimizá-lo
+                this.Hide();
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DateTime agora = DateTime.Now;
-            string caminhoPastaExportacao = "exportBD";
-            string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
-
-            if (!Directory.Exists(caminhoPastaExportacao))
+            try
             {
-                Directory.CreateDirectory(caminhoPastaExportacao);
-            }
-            //ExportarParaNuvem("localhost", "marcelo", "mx123", "lunar", "mysql.lunarsoftware.com.br", "lunarsoftware01", "aranha1", "lunarsoftware01");
-            //BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
-            //BancoDadosUtils.ImportarBancoDados("mysql.lunarsoftware.com.br", "lunarsoftware01", "aranha1", "lunarsoftware01", caminhoArquivo);
+                DateTime agora = DateTime.Now;
+                string caminhoPastaExportacao = "exportBD";
+                string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
 
-            // Horários desejados para verificação (por exemplo, 9h e 15h)
-            DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 9, 0, 0);
-            DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 0);
-            DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 10, 5, 0);
-
-            DateTime horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, 12, 0, 0);
-
-            if (ativarMensagemLembreteExame.Equals("True"))
-            {
-                // Verifica se é hora de disparar o lembrete de exame
-                if (agora.Hour == int.Parse(horaLembreteExame) && agora.Minute == int.Parse(minutoLembreteExame))
+                if (!Directory.Exists(caminhoPastaExportacao))
                 {
-                    dispararMensagens_passo01();
+                    Directory.CreateDirectory(caminhoPastaExportacao);
                 }
-            }
+                //ExportarParaNuvem("localhost", "marcelo", "mx123", "lunar", "mysql.lunarsoftware.com.br", "lunarsoftware01", "aranha1", "lunarsoftware01");
+                //BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
+                //BancoDadosUtils.ImportarBancoDados("mysql.lunarsoftware.com.br", "lunarsoftware01", "aranha1", "lunarsoftware01", caminhoArquivo);
 
-            lblAgora.Text = agora.ToLongTimeString();
+                // Horários desejados para verificação (por exemplo, 9h e 15h)
+                DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 9, 0, 0);
+                DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 0);
+                DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 10, 5, 0);
 
-            // Verifica se é um dos horários desejados
-            if (agora.TimeOfDay == horarioVerificacao1.TimeOfDay || agora.TimeOfDay == horarioVerificacao2.TimeOfDay || agora.TimeOfDay == horarioVerificacao3.TimeOfDay)
-            {
-                if (!abriuForm)
+                DateTime horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, 12, 0, 0);
+
+                if (ativarMensagemLembreteExame.Equals("True"))
                 {
-                    if (File.Exists(@"C:\Lunar\Lunar.exe"))
+                    // Verifica se é hora de disparar o lembrete de exame
+                    if (agora.Hour == int.Parse(horaLembreteExame) && agora.Minute == int.Parse(minutoLembreteExame))
                     {
-                        string caminhoParaExe = @"C:\Lunar\Lunar.exe";
-                        FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
-                        string versaoAtual = info.FileVersion;
+                        dispararMensagens_passo01();
+                    }
+                }
 
-                        if (VerificarNovaVersaoDisponivel(versaoAtual))
+                lblAgora.Text = agora.ToLongTimeString();
+
+                // Verifica se é um dos horários desejados
+                if (agora.TimeOfDay == horarioVerificacao1.TimeOfDay || agora.TimeOfDay == horarioVerificacao2.TimeOfDay || agora.TimeOfDay == horarioVerificacao3.TimeOfDay)
+                {
+                    if (!abriuForm)
+                    {
+                        if (File.Exists(@"C:\Lunar\Lunar.exe"))
                         {
-                            abriuForm = true;
-                            frmNotificacao = new FrmNotificacao();
-                            frmNotificacao.WindowState = FormWindowState.Normal;
-                            frmNotificacao.BringToFront();
-                            DialogResult result = frmNotificacao.ShowDialog();
+                            string caminhoParaExe = @"C:\Lunar\Lunar.exe";
+                            FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
+                            string versaoAtual = info.FileVersion;
 
-                            if (result == DialogResult.OK)
+                            if (VerificarNovaVersaoDisponivel(versaoAtual))
                             {
-                                // Se o usuário confirmou a atualização, faça a atualização
-                                ExibirFormulario();
-                                atualizar();
-                            }
+                                abriuForm = true;
+                                frmNotificacao = new FrmNotificacao();
+                                frmNotificacao.WindowState = FormWindowState.Normal;
+                                frmNotificacao.BringToFront();
+                                DialogResult result = frmNotificacao.ShowDialog();
 
-                            abriuForm = false;
+                                if (result == DialogResult.OK)
+                                {
+                                    // Se o usuário confirmou a atualização, faça a atualização
+                                    ExibirFormulario();
+                                    atualizar();
+                                }
+
+                                abriuForm = false;
+                            }
                         }
                     }
                 }
-            }
 
-            if (ativarMensagemPosVendas.Equals("True") && nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
-            {
-                // Verifica novas mensagens a cada 10 minutos
-                if (agora.Minute % 10 == 0)
+                if (ativarMensagemPosVendas.Equals("True") && nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
                 {
-                    //logger.WriteLog("Este é o servidor confirmado, verificação de 10 minutos...");
-                    consultaMensagens();
-                    if (Sessao.MensagensAgendadas.Count > 0)
+                    // Verifica novas mensagens a cada 10 minutos
+                    if (agora.Minute % 10 == 0)
                     {
-                        logger.WriteLog("Sessao.MensagensAgendadas.Count > 0...OK ---- " + Sessao.MensagensAgendadas.Count, "LogMensagem");
-                        foreach (var mensagem in Sessao.MensagensAgendadas.ToList()) // Usar ToList para evitar exceção de modificação durante a iteração
+                        //logger.WriteLog("Este é o servidor confirmado, verificação de 10 minutos...");
+                        consultaMensagens();
+                        if (Sessao.MensagensAgendadas.Count > 0)
                         {
-                            if (agora >= mensagem.DataAgendamento)
+                            logger.WriteLog("Sessao.MensagensAgendadas.Count > 0...OK ---- " + Sessao.MensagensAgendadas.Count, "LogMensagem");
+                            foreach (var mensagem in Sessao.MensagensAgendadas.ToList()) // Usar ToList para evitar exceção de modificação durante a iteração
                             {
-                                logger.WriteLog("Preparando Disparo de Mensagem ---- NOME: " + mensagem.NomeCliente + " MENSAGEM: " + mensagemPosVenda + " FLAGENVIADA: " + mensagem.FlagEnviada, "LogMensagem");
-                                if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda) && !mensagem.FlagEnviada)
+                                if (agora >= mensagem.DataAgendamento)
                                 {
-                                    try
+                                    logger.WriteLog("Preparando Disparo de Mensagem ---- NOME: " + mensagem.NomeCliente + " MENSAGEM: " + mensagemPosVenda + " FLAGENVIADA: " + mensagem.FlagEnviada, "LogMensagem");
+                                    if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda) && !mensagem.FlagEnviada)
                                     {
-                                        dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
-                                        mensagem.FlagEnviada = true;
-                                        Controller.getInstance().salvar(mensagem);
-                                    }
-                                    catch
-                                    {
-                                        mensagem.FlagEnviada = true;
-                                        Controller.getInstance().salvar(mensagem);
+                                        try
+                                        {
+                                            dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
+                                            mensagem.FlagEnviada = true;
+                                            Controller.getInstance().salvar(mensagem);
+                                        }
+                                        catch
+                                        {
+                                            mensagem.FlagEnviada = true;
+                                            Controller.getInstance().salvar(mensagem);
+                                        }
                                     }
                                 }
                             }
+                            Sessao.MensagensAgendadas.Clear();
                         }
-                        Sessao.MensagensAgendadas.Clear();
                     }
                 }
+            }
+            catch
+            {
+
             }
         }
 
@@ -1069,24 +1088,31 @@ namespace LunarAtualizador
 
         private void timerExportImport_Tick(object sender, EventArgs e)
         {
-            // Obter o caminho do arquivo de exportação
-            string caminhoPastaExportacao = "exportBD";
-            string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
-
-            // Verificar se a pasta de exportação existe e criá-la se não existir
-            if (!Directory.Exists(caminhoPastaExportacao))
+            try
             {
-                Directory.CreateDirectory(caminhoPastaExportacao);
+                // Obter o caminho do arquivo de exportação
+                string caminhoPastaExportacao = "exportBD";
+                string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
+
+                // Verificar se a pasta de exportação existe e criá-la se não existir
+                if (!Directory.Exists(caminhoPastaExportacao))
+                {
+                    Directory.CreateDirectory(caminhoPastaExportacao);
+                }
+
+                if (nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Exportar o banco de dados local para um arquivo
+                    BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
+
+                    // Importar o banco de dados do arquivo para o servidor remoto
+                    if (!String.IsNullOrEmpty(bancoNuvem) && !String.IsNullOrEmpty(servidorNuvem) && !String.IsNullOrEmpty(usuarioNuvem))
+                        BancoDadosUtils.ImportarBancoDados(servidorNuvem, usuarioNuvem, senhaNuvem, bancoNuvem, caminhoArquivo);
+                }
             }
-
-            if (nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
+            catch (Exception erro)
             {
-                // Exportar o banco de dados local para um arquivo
-                BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
-
-                // Importar o banco de dados do arquivo para o servidor remoto
-                if (!String.IsNullOrEmpty(bancoNuvem) && !String.IsNullOrEmpty(servidorNuvem) && !String.IsNullOrEmpty(usuarioNuvem))
-                    BancoDadosUtils.ImportarBancoDados(servidorNuvem, usuarioNuvem, senhaNuvem, bancoNuvem, caminhoArquivo);
+                logger.WriteLog("ExportNuvem com erro: " + erro.Message, "LogMensagem");
             }
         }
 

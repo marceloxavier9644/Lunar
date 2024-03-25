@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAtualizador));
             this.lblVersaoAtualizador = new System.Windows.Forms.Label();
             this.btnVerificarAtualização = new System.Windows.Forms.Button();
             this.lblNovaVersaoLocalizada = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblAgora = new System.Windows.Forms.Label();
             this.progressBarAdv1 = new Syncfusion.Windows.Forms.Tools.ProgressBarAdv();
             this.btnWts = new System.Windows.Forms.Button();
-            this.timerExportImport = new System.Windows.Forms.Timer();
+            this.timerExportImport = new System.Windows.Forms.Timer(this.components);
             this.btnBackup = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarAdv1)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +81,7 @@
             // 
             this.lblAgora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAgora.AutoSize = true;
-            this.lblAgora.Location = new System.Drawing.Point(318, 9);
+            this.lblAgora.Location = new System.Drawing.Point(318, 7);
             this.lblAgora.Name = "lblAgora";
             this.lblAgora.Size = new System.Drawing.Size(49, 13);
             this.lblAgora.TabIndex = 4;
@@ -109,7 +110,7 @@
             // btnWts
             // 
             this.btnWts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWts.Location = new System.Drawing.Point(12, 20);
+            this.btnWts.Location = new System.Drawing.Point(12, 22);
             this.btnWts.Name = "btnWts";
             this.btnWts.Size = new System.Drawing.Size(179, 26);
             this.btnWts.TabIndex = 6;
@@ -124,7 +125,7 @@
             // btnBackup
             // 
             this.btnBackup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBackup.Location = new System.Drawing.Point(197, 20);
+            this.btnBackup.Location = new System.Drawing.Point(197, 22);
             this.btnBackup.Name = "btnBackup";
             this.btnBackup.Size = new System.Drawing.Size(170, 26);
             this.btnBackup.TabIndex = 7;

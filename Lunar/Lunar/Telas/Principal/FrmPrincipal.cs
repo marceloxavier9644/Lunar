@@ -19,6 +19,7 @@ using Lunar.Telas.Dashboards;
 using Lunar.Telas.Estoques;
 using Lunar.Telas.Fiscal;
 using Lunar.Telas.Fiscal.Adicionais;
+using Lunar.Telas.Mensagens;
 using Lunar.Telas.Orcamentos;
 using Lunar.Telas.OrdensDeServico;
 using Lunar.Telas.OrdensDeServico.Servicos;
@@ -1186,6 +1187,11 @@ namespace Lunar.Telas.Principal
                 formBackground.Dispose();
                 fr.Dispose();
             }
+        }
+
+        private void mensagensAgendadasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(() => new FrmMensagemPosVendas(), btnRelatorios);
         }
     }
 }

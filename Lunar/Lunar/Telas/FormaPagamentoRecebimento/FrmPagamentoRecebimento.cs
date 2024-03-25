@@ -1243,6 +1243,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             try
             {
                 IList<OrdemServicoPagamento> listaOrdemServicoPagamento = new List<OrdemServicoPagamento>();
+                IList<string> listaPagamento = new List<string>();
                 FormaPagamento formaPagamento = new FormaPagamento();
                 //OrdemServicoPagamento ordemServicoPagamento = new OrdemServicoPagamento();
                 decimal valorRecebido = 0;
@@ -1503,22 +1504,14 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         }
                     }
                     //listaOrdemServicoPagamento.Add(ordemServicoPagamento);
+                    listaPagamento.Add(formaPagamento.Descricao);
                 }
                 foreach (OrdemServicoPagamento ordemServicoPagamento1 in listaOrdemServicoPagamento)
                 {
                     Controller.getInstance().salvar(ordemServicoPagamento1);
                 }
-                //ordemServico.DataEncerramento = DateTime.Now;
-                //ordemServico.Status = "ENCERRADA";
-                //Controller.getInstance().salvar(ordemServico);
-                //GenericaDesktop generica = new GenericaDesktop();
-                //IList<OrdemServicoProduto> listaProdutoOS = new List<OrdemServicoProduto>();
-                //OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();
-                //listaProdutoOS = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(ordemServico.Id);
-                //foreach (OrdemServicoProduto ordemServicoProduto in listaProdutoOS)
-                //{
-                //    generica.atualizarEstoqueNaoConciliado(ordemServicoProduto.Produto, ordemServicoProduto.Quantidade, false, "O.S " + ordemServico.Id.ToString(), "O.S: " + ordemServico.Id + " CLI: " + ordemServico.Cliente.RazaoSocial, ordemServico.Cliente, DateTime.Now, null);
-                //}
+                string tipoPagamentoHistorico = string.Join("/", listaPagamento);
+
                 CreditoCliente credito = new CreditoCliente();
                 credito.Cliente = ordemServico.Cliente;
                 credito.EmpresaFilial = Sessao.empresaFilialLogada;
@@ -1526,6 +1519,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 credito.IdOrigem = ordemServico.Id.ToString();
                 credito.Valor = valorRecebido;
                 credito.ValorUtilizado = 0;
+                credito.DataCaixa = DateTime.Now;
+                credito.FormaPagamento = tipoPagamentoHistorico;
                 Controller.getInstance().salvar(credito);
                 ordemServico.Entrada = true;
                 Controller.getInstance().salvar(ordemServico);
@@ -1803,11 +1798,44 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         //Crédito Cliente
                         else if (formaPagamento.Id == 8)
                         {
+                            CreditoCliente creditoCliente = new CreditoCliente();
+                            creditoCliente.Cliente = clienteLista;
+                            creditoCliente.DataUtilizacao = DateTime.Now;
+                            creditoCliente.EmpresaFilial = Sessao.empresaFilialLogada;
+                            creditoCliente.Origem = origem;
+                            creditoCliente.Valor = 0;
+                            creditoCliente.ValorUtilizado = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            //ajustar credito do cliente
+                            string origemPagamentoCredito = "";
+                            DateTime dataCaixaCreditoOriginal = DateTime.Now;
+                            IList<CreditoCliente> listaCreditoCliente = new List<CreditoCliente>();
+                            CreditoClienteController creditoClienteController = new CreditoClienteController();
+                            listaCreditoCliente = creditoClienteController.selecionarCreditoPorClienteEOrigem(clienteLista.Id, "ORDEMSERVICO", ordemServico.Id.ToString());
+                            if (listaCreditoCliente.Count > 0)
+                            {
+                                // Extrair as formas de pagamento para uma lista de strings
+                                List<string> formasPagamento = new List<string>();
+                                foreach (CreditoCliente cred in listaCreditoCliente)
+                                {
+                                    formasPagamento.Add(cred.FormaPagamento);
+                                    if (cred.DataCaixa != null)
+                                        dataCaixaCreditoOriginal = cred.DataCaixa;
+                                }
+
+                                // Unir as formas de pagamento em uma única string, separadas por "/"
+                                origemPagamentoCredito = string.Join("/", formasPagamento);
+                            }
+                            creditoCliente.FormaPagamento = origemPagamentoCredito;
+                            creditoCliente.DataCaixa = dataCaixaCreditoOriginal;
+
+                            Controller.getInstance().salvar(creditoCliente);
+
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
                             caixa.DataLancamento = DateTime.Now;
-                            caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
+                            caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial + "-ORIGEM: " + origemPagamentoCredito + " - DT_CX: " + dataCaixaCreditoOriginal.ToShortDateString();
+                            //colocar aqui forma q foi a origem do credito!
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                             caixa.FormaPagamento = formaPagamento;
                             caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
@@ -1828,15 +1856,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             }
                             Controller.getInstance().salvar(caixa);
 
-                            CreditoCliente creditoCliente = new CreditoCliente();
-                            creditoCliente.Cliente = clienteLista;
-                            creditoCliente.DataUtilizacao = DateTime.Now;
-                            creditoCliente.EmpresaFilial = Sessao.empresaFilialLogada;
-                            creditoCliente.Origem = origem;
-                            creditoCliente.Valor = 0;
-                            creditoCliente.ValorUtilizado = decimal.Parse(dataRowView.Row["Valor"].ToString());
-
-                            Controller.getInstance().salvar(creditoCliente);
+                            
                         }
                     }
                     listaOrdemServicoPagamento.Add(ordemServicoPagamento);

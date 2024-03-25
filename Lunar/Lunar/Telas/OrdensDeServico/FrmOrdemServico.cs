@@ -123,6 +123,7 @@ namespace Lunar.Telas.OrdensDeServico
             get_OrdemServico();
             if(ordemServico.Status == "ENCERRADA" || ordemServico.FlagExcluido == true) 
             {
+                txtDataAbertura.Enabled = false;
                 lblInformativo.Visible = true;
                 btnGravar.Enabled = false;
                 btnGravarEncerrar.Enabled = false;

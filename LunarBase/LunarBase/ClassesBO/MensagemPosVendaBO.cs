@@ -66,16 +66,28 @@ namespace LunarBase.ClassesBO
             return true;
         }
 
-        //public IList<MensagemPosVenda> selecionarContaPagarPorSql(string sql)
-        //{
-        //    try
-        //    {
-        //        return dao.selecionarMensagemPosVendaPorSql(sql);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new Exception("Falha ao selecionar Mensagem Pos Venda! Erro: " + e.Message);
-        //    }
-        //}
+        public IList<MensagemPosVenda> selecionarTodasMensagensEnviadasPorPeriodo(string dataInicial, string dataFinal)
+        {
+            try
+            {
+                return dao.selecionarTodasMensagensEnviadasPorPeriodo(dataInicial, dataFinal);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar mensagens enviadas! Erro: " + e.Message);
+            }
+        }
+
+        public IList<MensagemPosVenda> selecionarTodasMensagensNaoEnviadasPorPeriodo(string dataInicial, string dataFinal)
+        {
+            try
+            {
+                return dao.selecionarTodasMensagensNaoEnviadasPorPeriodo(dataInicial, dataFinal);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar mensagens não enviadas! Erro: " + e.Message);
+            }
+        }
     }
 }

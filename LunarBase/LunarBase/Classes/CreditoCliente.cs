@@ -14,6 +14,8 @@ namespace LunarBase.Classes
         private Pessoa cliente;
         private EmpresaFilial empresaFilial;
         private string idOrigem;
+        private string formaPagamento;
+        private DateTime dataCaixa;
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -31,6 +33,10 @@ namespace LunarBase.Classes
         public virtual DateTime DataUtilizacao { get => dataUtilizacao; set => dataUtilizacao = value; }
         [Anotacao("ID Origem")]
         public virtual string IdOrigem { get => idOrigem; set => idOrigem = value; }
+        [Anotacao("Forma Pagamento")]
+        public virtual string FormaPagamento { get => formaPagamento; set => formaPagamento = value; }
+        [Anotacao("Data Caixa")]
+        public virtual DateTime DataCaixa { get => dataCaixa; set => dataCaixa = value; }
 
         public override string ToString()
         {
