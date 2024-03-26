@@ -7,9 +7,7 @@ using MySql.Data.MySqlClient;
 using SharpCompress.Common;
 using SharpCompress.Readers;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -17,7 +15,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -76,7 +73,19 @@ namespace LunarAtualizador
             instanciaAtualizador = this;
             //parametros para verificar integracao com dashboards
             lerParametrosSistema();
-
+            string atualizaBanco = @"C:\Lunar\Atualizador\AtualizaBanco.txt";
+            if (File.Exists(atualizaBanco))
+            {
+                ExibirFormulario();
+                lblNovaVersaoLocalizada.Enabled = true;
+                lblNovaVersaoLocalizada.Visible = true;
+                lblNovaVersaoLocalizada.Text = "Aguarde, Atualizando Banco de Dados.... Não feche!!!";
+                lblNovaVersaoLocalizada.ForeColor = Color.Red;
+                AtualizarBancoDeDados();
+                lblNovaVersaoLocalizada.Visible = false;
+                lblNovaVersaoLocalizada.Text = "";
+                File.Delete(atualizaBanco);
+            }
             conferirHorarioMensagens();
             if (ativarMensagemLembreteExame.Equals("True"))
             {
@@ -281,7 +290,8 @@ namespace LunarAtualizador
 
             //Conecta no banco de dados do cliente e atualiza...
             lblNovaVersaoLocalizada.Visible = true;
-            lblNovaVersaoLocalizada.Text = "Aguarde ajuste no banco de dados...";
+            lblNovaVersaoLocalizada.Text = "Aguarde, ajuste no banco de dados... Não Feche!!!";
+            lblNovaVersaoLocalizada.ForeColor = Color.Red;
             progressBarAdv1.Visible = false;
             progressBarAdv1.Value = 0;
             await Task.Run(() => AtualizarBancoDeDados());
@@ -399,9 +409,37 @@ namespace LunarAtualizador
             return @"C:\Lunar\";
         }
 
+        //private static void DescompactarArquivoRar()
+        //{
+        //    using (Stream stream = File.OpenRead(@"C:\Lunar\Atu1.rar"))
+        //    {
+        //        var reader = ReaderFactory.Open(stream);
+
+        //        while (reader.MoveToNextEntry())
+        //        {
+        //            if (!reader.Entry.IsDirectory)
+        //            {
+        //                reader.WriteEntryToDirectory(@"C:\Lunar", new ExtractionOptions()
+        //                {
+        //                    ExtractFullPath = true,
+        //                    Overwrite = true
+        //                });
+        //            }
+        //        }
+        //    }
+        //    // Após a descompactação, execute o arquivo .bat
+        //    string caminhoBat = @"C:\Lunar\Atualizador\AtuAtualizador.bat";
+        //    Process.Start(caminhoBat);
+        //}
+
         private static void DescompactarArquivoRar()
         {
-            using (Stream stream = File.OpenRead(@"C:\Lunar\Atu1.rar"))
+            string pastaDestino = @"C:\Lunar";
+            string arquivoRar = @"C:\Lunar\Atu1.rar";
+            string arquivoBat = @"C:\Lunar\AtuAtualizador.bat";
+
+            // Descompacta o arquivo RAR
+            using (Stream stream = File.OpenRead(arquivoRar))
             {
                 var reader = ReaderFactory.Open(stream);
 
@@ -409,7 +447,7 @@ namespace LunarAtualizador
                 {
                     if (!reader.Entry.IsDirectory)
                     {
-                        reader.WriteEntryToDirectory(@"C:\Lunar", new ExtractionOptions()
+                        reader.WriteEntryToDirectory(pastaDestino, new ExtractionOptions()
                         {
                             ExtractFullPath = true,
                             Overwrite = true
@@ -417,7 +455,19 @@ namespace LunarAtualizador
                     }
                 }
             }
+
+            // Verifica se o arquivo AtuAtualizador.bat existe após a descompactação
+            if (File.Exists(arquivoBat))
+            {
+                // Copia o arquivo AtuAtualizador.bat para a pasta C:\Lunar\Atualizador
+                File.Copy(arquivoBat, Path.Combine(pastaDestino, "Atualizador", Path.GetFileName(arquivoBat)), true);
+            }
+            // Após a descompactação, execute o arquivo .bat
+            string caminhoBat = @"C:\Lunar\Atualizador\AtuAtualizador.bat";
+            if (File.Exists(caminhoBat))
+                Process.Start(caminhoBat);
         }
+
 
         private void verificaConfiguracaoBancoLocal()
         {
