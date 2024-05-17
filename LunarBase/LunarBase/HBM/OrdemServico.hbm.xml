@@ -14,6 +14,7 @@
 		<property name="ValorTotal" column="VALORTOTAL" type="decimal"/>
 		<property name="DataAbertura" column="DATAABERTURA" type="DateTime"/>
 		<property name="DataEncerramento" column="DATAENCERRAMENTO" type="DateTime"/>
+		<property name="DataServico" column="DATASERVICO" type="DateTime"/>
 		<property name="Entrada" column="ENTRADA" type="Boolean"/>
 		<property name="OperadorEncerramento" column="OPERADORENCERRAMENTO" type="String" length="80"/>		
 		<property name="QrCodePix" column="QRCODEPIX" type="String" length="200"/>		

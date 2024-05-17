@@ -136,7 +136,7 @@ namespace Lunar.Telas.OrdensDeServico
                 }
             }
 
-            ReportParameter[] p = new ReportParameter[14];
+            ReportParameter[] p = new ReportParameter[16];
             p[0] = (new ReportParameter("Empresa", Sessao.empresaFilialLogada.NomeFantasia));
             p[1] = (new ReportParameter("OrdemServicoID", ordemServico.Id.ToString()));
             p[2] = (new ReportParameter("CNPJ", cnpjFormatado));
@@ -151,6 +151,13 @@ namespace Lunar.Telas.OrdensDeServico
             p[11] = (new ReportParameter("CidadeEmpresa", cidadeEmpresa));
             p[12] = (new ReportParameter("InscricaoEstadual", ordemServico.Filial.InscricaoEstadual));
             p[13] = (new ReportParameter("CidadeCliente", cidadeCliente));
+            p[14] = (new ReportParameter("DataOrdemServico", ordemServico.DataAbertura.ToShortDateString()));
+            if(ordemServico.Status.Equals("ENCERRADA") && ordemServico.DataServico != DateTime.Parse("1900-01-01 00:00:00"))
+                p[15] = (new ReportParameter("DataServico", "DATA SERVIÇO: " + ordemServico.DataServico.ToShortDateString()));
+            else if(ordemServico.Status.Equals("ABERTA") && ordemServico.DataServico != DateTime.Parse("1900-01-01 00:00:00"))
+                p[15] = (new ReportParameter("DataServico", "DATA PREVISTA: " + ordemServico.DataServico.ToShortDateString()));
+            else
+                p[15] = (new ReportParameter("DataServico", ""));
             reportViewer1.LocalReport.SetParameters(p);
 
             //dsOrdemServico ds = new dsOrdemServico();

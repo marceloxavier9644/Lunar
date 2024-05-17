@@ -10,13 +10,18 @@ using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using Newtonsoft.Json;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Net;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.ServiceModel;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static LunarBase.Utilidades.Ns_ConsultaCNPJ;
@@ -325,7 +330,7 @@ namespace Lunar.Telas.Cadastros.Cliente
 
                     
                     //o login valido está dentro do metodo consultaCEP
-                    var resposta = ws.consultaCEP(txtCEP.Texts, "", "");
+                    var resposta = ws.consultaCEP(txtCEP.Texts, "24092991", "28145398");
                     if (!String.IsNullOrEmpty(resposta.end))
                     {
                         txtEndereco.Texts = generica.RemoverAcentos(resposta.end);
@@ -358,6 +363,42 @@ namespace Lunar.Telas.Cadastros.Cliente
             }
         }
 
+        private async Task pesquisaCepAPIAsync()
+        {
+            string cep = GenericaDesktop.RemoveCaracteres(txtCEP.Texts);
+
+            string url = $"https://viacep.com.br/ws/{cep}/json/";
+
+            using (WebClient client = new WebClient())
+            {
+                client.Encoding = Encoding.UTF8;
+                string json = client.DownloadString(url);
+                EnderecoCep enderecoCep = JsonConvert.DeserializeObject<EnderecoCep>(json);
+
+                txtEndereco.Texts = generica.RemoverAcentos(enderecoCep.Logradouro);
+                txtComplemento.Texts = enderecoCep.Complemento;
+                cidade = new Cidade();
+                cidade = cidadeController.selecionarCidadePorDescricao(generica.RemoverAcentos(enderecoCep.Localidade));
+                if (cidade != null)
+                {
+                    txtCidade.Texts = cidade.Descricao;
+                    txtUF.Texts = enderecoCep.Uf;
+                    txtBairro.Texts = enderecoCep.Bairro;
+                    cidadePrincipal = cidade;
+                }
+                txtNumero.Focus();
+            }
+        }
+
+        class EnderecoCep
+        {
+            public string Cep { get; set; }
+            public string Logradouro { get; set; }
+            public string Complemento { get; set; }
+            public string Bairro { get; set; }
+            public string Localidade { get; set; }
+            public string Uf { get; set; }
+        }
         private void btnPesquisaCidade_Click(object sender, EventArgs e)
         {
             txtUF.Texts = "";
@@ -1716,7 +1757,8 @@ namespace Lunar.Telas.Cadastros.Cliente
 
         private void btnPesquisaCep_Click(object sender, EventArgs e)
         {
-            pesquisarCEP();
+            //pesquisarCEP();
+            pesquisaCepAPIAsync();
         }
 
         private void btnSPCBrasil_Click(object sender, EventArgs e)

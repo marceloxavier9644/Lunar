@@ -7,6 +7,7 @@ using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
+using Lunar.Utils.Unimake.GeradoresXML.GeradorChave;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -813,7 +814,7 @@ namespace Lunar.Telas.OrdensDeServico
         }
 
         private void btnGerarNFCe_Click(object sender, EventArgs e)
-        {
+        {  
             ParametroSistema param = new ParametroSistema();
             param.Id = 1;
             param = (ParametroSistema)Controller.getInstance().selecionar(param);
@@ -821,6 +822,7 @@ namespace Lunar.Telas.OrdensDeServico
 
             Pessoa cliSel = new Pessoa();
             nfe = new Nfe();
+            nfe.Modelo = "65";
             valorFinalNota = 0;
             valorDescontoProdutos = 0;
             valorProdutosSemDesconto = 0;
@@ -832,8 +834,9 @@ namespace Lunar.Telas.OrdensDeServico
                 {
                     if (ordemServico.Nfe == null)
                     {
-                        if (GenericaDesktop.ShowConfirmacao("Gerar NFC-e dos produtos da O.S " + ordemServico.Id.ToString() + "?"))
-                        {
+                        //if (GenericaDesktop.ShowConfirmacao("Gerar NFC-e dos produtos da O.S " + ordemServico.Id.ToString() + "?"))
+                        //{
+                        
                             //se nao tem cliente ja vem validado
                             bool validaCliente = true;
                             //enviarNFCe();
@@ -884,9 +887,16 @@ namespace Lunar.Telas.OrdensDeServico
                                         else // Emite nova nota
                                         {
                                             atualizarProximoNumeroNota();
-                                            try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, cli, null, ordemServico, null); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
-                                            //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
-                                            if (!String.IsNullOrEmpty(xmlStrEnvio))
+
+                                        //GeradorChave geradorChave = new GeradorChave();
+                                        //nfe.Chave = geradorChave.GerarChaveAcesso(31, DateTime.Now, Sessao.empresaFilialLogada.Cnpj, "65", Sessao.parametroSistema.SerieNFCe, int.Parse(numeroNFCe));
+                                      
+                                        try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorProdutosSemDesconto, valorFinalNota, valorDescontoProdutos, numeroNFCe, listaProdutosNFe, cli, null, ordemServico, null, nfe.Chave); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
+
+                                        //gravarXMLNaPasta(xmlStrEnvio, nfe.NNf, @"C:\Lunar\Unimake\UniNFe\28145398000173\Envio", nfe.Chave + "-nfe.xml", false);
+                                        gravarXMLNaPasta(xmlStrEnvio, nfe.NNf, @"C:\XML", nfe.Chave + "-nfe.xml", false);
+                                        //se nota foi emitida sem identificar o cliente o sistema apos emitir seta o cliente na o.s
+                                        if (!String.IsNullOrEmpty(xmlStrEnvio))
                                             {
                                                 enviarXMLNFCeParaApi(xmlStrEnvio);
                                             }
@@ -901,7 +911,7 @@ namespace Lunar.Telas.OrdensDeServico
                                     GenericaDesktop.ShowErro(erro.Message);
                                 }
                             }
-                        }
+                        //}
                     }
                     else
                     {
@@ -1003,8 +1013,9 @@ namespace Lunar.Telas.OrdensDeServico
 
                     if (File.Exists(caminhoXML + nfe.Chave + "-procNFe.pdf"))
                     {
-                        FrmPDF frmPDF = new FrmPDF(caminhoXML + nfe.Chave + "-procNFe.pdf");
-                        frmPDF.ShowDialog();
+                        System.Diagnostics.Process.Start(caminhoXML + nfe.Chave + "-procNFe.pdf");
+                        //FrmPDF frmPDF = new FrmPDF(caminhoXML + nfe.Chave + "-procNFe.pdf");
+                        //frmPDF.ShowDialog();
                     }
                     else
                     {

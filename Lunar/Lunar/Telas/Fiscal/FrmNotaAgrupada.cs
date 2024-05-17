@@ -949,6 +949,18 @@ namespace Lunar.Telas.Fiscal
                         Sessao.parametroSistema = param;
                         numeroNFe = Sessao.parametroSistema.ProximoNumeroNFe;
 
+                        int numeroNotaInt = int.Parse(numeroNFe);
+                        Nfe nfeTeste = new Nfe();
+                        NfeController nfeController = new NfeController();
+                        nfeTeste = nfeController.selecionarNFCePorNumeroESerie(numeroNFe, Sessao.parametroSistema.SerieNFCe);
+                        while (nfeTeste != null && int.Parse(nfeTeste.NNf) > 0)
+                        {
+                            // O número da NF-e já existe, então você precisa avançar para o próximo número
+                            numeroNotaInt++; // Avança para o próximo número
+                            nfeTeste = nfeController.selecionarNFCePorNumeroESerie(numeroNotaInt.ToString(), Sessao.parametroSistema.SerieNFCe);
+                            numeroNFe = numeroNotaInt.ToString();
+                        }
+
                         //Ja alimenta o proximo numero nos parametros
                         Sessao.parametroSistema.ProximoNumeroNFe = (int.Parse(numeroNFe) + 1).ToString();
                         Controller.getInstance().salvar(Sessao.parametroSistema);
@@ -1312,6 +1324,17 @@ namespace Lunar.Telas.Fiscal
                             if (validador.validarProdutosNota(listaProdutosNFe))
                             {
                                 numeroNFe = Sessao.parametroSistema.ProximoNumeroNFCe;
+                                int numeroNotaInt = int.Parse(numeroNFe);
+                                Nfe nfeTeste = new Nfe();
+                                NfeController nfeController = new NfeController();
+                                nfeTeste = nfeController.selecionarNFCePorNumeroESerie(numeroNFe, Sessao.parametroSistema.SerieNFCe);
+                                while (nfeTeste != null && int.Parse(nfeTeste.NNf) > 0)
+                                {
+                                    // O número da NF-e já existe, então você precisa avançar para o próximo número
+                                    numeroNotaInt++; // Avança para o próximo número
+                                    nfeTeste = nfeController.selecionarNFCePorNumeroESerie(numeroNotaInt.ToString(), Sessao.parametroSistema.SerieNFCe);
+                                    numeroNFe = numeroNotaInt.ToString();
+                                }
 
                                 //Ja alimenta o proximo numero nos parametros
                                 Sessao.parametroSistema.ProximoNumeroNFCe = (int.Parse(numeroNFe) + 1).ToString();
@@ -1338,7 +1361,7 @@ namespace Lunar.Telas.Fiscal
                                 nfe.VDesc = valorDesconto;
                                 nfe.VNf = valorTotalComDesconto;
                                 nfe.NotaAgrupada = true;
-                                try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(nfe.VProd, nfe.VNf, nfe.VDesc, numeroNFe, listaProdutosNFe, cli, null, null, formaPagamento); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
+                                try { xmlStrEnvio = emitirNFCe.gerarXMLNfce(nfe.VProd, nfe.VNf, nfe.VDesc, numeroNFe, listaProdutosNFe, cli, null, null, formaPagamento, ""); } catch (Exception err) { GenericaDesktop.ShowAlerta(err.Message); }
 
                                 if (!String.IsNullOrEmpty(xmlStrEnvio))
                                 {

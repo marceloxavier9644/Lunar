@@ -966,7 +966,7 @@
             </TablixRowHierarchy>
             <DataSetName>dsOrdemServicoProduto</DataSetName>
             <Top>0.89225cm</Top>
-            <Left>0.26627cm</Left>
+            <Left>0.29106cm</Left>
             <Height>1.8cm</Height>
             <Width>19.17821cm</Width>
             <Style>
@@ -1759,7 +1759,7 @@
             </TablixRowHierarchy>
             <DataSetName>dsOrdemServicoServico</DataSetName>
             <Top>3.44813cm</Top>
-            <Left>0.29106cm</Left>
+            <Left>0.31585cm</Left>
             <Height>1.8cm</Height>
             <Width>19.203cm</Width>
             <ZIndex>1</ZIndex>
@@ -1788,7 +1788,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>0.1673cm</Top>
-            <Left>0.29106cm</Left>
+            <Left>0.31585cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>2</ZIndex>
@@ -1821,7 +1821,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>2.72419cm</Top>
-            <Left>0.26627cm</Left>
+            <Left>0.29106cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>3</ZIndex>
@@ -1856,7 +1856,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox36</rd:DefaultName>
             <Top>6.14687cm</Top>
-            <Left>15.75052cm</Left>
+            <Left>15.77531cm</Left>
             <Height>0.6cm</Height>
             <Width>3.74354cm</Width>
             <ZIndex>4</ZIndex>
@@ -1894,7 +1894,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox37</rd:DefaultName>
             <Top>5.48449cm</Top>
-            <Left>15.75052cm</Left>
+            <Left>15.77531cm</Left>
             <Height>0.6cm</Height>
             <Width>3.74354cm</Width>
             <ZIndex>5</ZIndex>
@@ -1911,7 +1911,7 @@
           </Textbox>
           <Line Name="Line1">
             <Top>8.19475cm</Top>
-            <Left>5.36787cm</Left>
+            <Left>5.39266cm</Left>
             <Height>0cm</Height>
             <Width>9.27333cm</Width>
             <ZIndex>6</ZIndex>
@@ -1941,7 +1941,7 @@
             </Paragraphs>
             <rd:DefaultName>Cliente1</rd:DefaultName>
             <Top>8.30058cm</Top>
-            <Left>5.36787cm</Left>
+            <Left>5.39266cm</Left>
             <Height>0.62646cm</Height>
             <Width>9.27333cm</Width>
             <ZIndex>7</ZIndex>
@@ -1956,13 +1956,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>3.73958in</Height>
+        <Height>3.97916in</Height>
         <Style />
       </Body>
-      <Width>7.74342in</Width>
+      <Width>8.74108in</Width>
       <Page>
         <PageHeader>
-          <Height>7.84641cm</Height>
+          <Height>8.71954cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1984,7 +1984,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Empresa</rd:DefaultName>
-              <Top>0.0635cm</Top>
+              <Top>0.07585cm</Top>
               <Left>4.49792cm</Left>
               <Height>0.65292cm</Height>
               <Width>8.52487cm</Width>
@@ -2025,7 +2025,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>2.80874cm</Top>
+              <Top>3.57779cm</Top>
               <Left>0.26627cm</Left>
               <Height>0.98778cm</Height>
               <Width>19.15536cm</Width>
@@ -2064,7 +2064,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Empresa</rd:DefaultName>
-              <Top>0.0635cm</Top>
+              <Top>0.07585cm</Top>
               <Left>13.19918cm</Left>
               <Height>0.65292cm</Height>
               <Width>6.22245cm</Width>
@@ -2095,7 +2095,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Empresa</rd:DefaultName>
-              <Top>0.75177cm</Top>
+              <Top>0.76412cm</Top>
               <Left>4.49792cm</Left>
               <Height>0.65292cm</Height>
               <Width>8.52487cm</Width>
@@ -2133,7 +2133,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Empresa</rd:DefaultName>
-              <Top>1.43997cm</Top>
+              <Top>1.45232cm</Top>
               <Left>13.19918cm</Left>
               <Height>0.65292cm</Height>
               <Width>6.22245cm</Width>
@@ -2152,7 +2152,7 @@
               <Source>External</Source>
               <Value>="file:\\\"&amp;Parameters!logo.Value</Value>
               <Sizing>FitProportional</Sizing>
-              <Top>0.0635cm</Top>
+              <Top>0.1023cm</Top>
               <Height>2.44185cm</Height>
               <Width>4.32153cm</Width>
               <ZIndex>5</ZIndex>
@@ -2179,7 +2179,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Cliente</rd:DefaultName>
-              <Top>3.97616cm</Top>
+              <Top>4.74521cm</Top>
               <Left>0.29104cm</Left>
               <Height>0.65292cm</Height>
               <Width>12.73175cm</Width>
@@ -2217,7 +2217,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CpfCliente</rd:DefaultName>
-              <Top>3.97616cm</Top>
+              <Top>4.74521cm</Top>
               <Left>13.19918cm</Left>
               <Height>0.65292cm</Height>
               <Width>6.22245cm</Width>
@@ -2248,7 +2248,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>EnderecoCliente</rd:DefaultName>
-              <Top>4.64671cm</Top>
+              <Top>5.41576cm</Top>
               <Left>0.29104cm</Left>
               <Height>0.67938cm</Height>
               <Width>12.73175cm</Width>
@@ -2286,7 +2286,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>TelefoneCliente</rd:DefaultName>
-              <Top>4.70316cm</Top>
+              <Top>5.47221cm</Top>
               <Left>13.19918cm</Left>
               <Height>0.62293cm</Height>
               <Width>6.22245cm</Width>
@@ -2316,7 +2316,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Observacoes</rd:DefaultName>
-              <Top>6.81156cm</Top>
+              <Top>7.58061cm</Top>
               <Left>0.29106cm</Left>
               <Height>0.91667cm</Height>
               <Width>19.17819cm</Width>
@@ -2349,7 +2349,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox39</rd:DefaultName>
-              <Top>6.07045cm</Top>
+              <Top>6.8395cm</Top>
               <Left>0.29106cm</Left>
               <Height>0.6cm</Height>
               <Width>19.17819cm</Width>
@@ -2382,7 +2382,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Empresa</rd:DefaultName>
-              <Top>1.43997cm</Top>
+              <Top>1.45232cm</Top>
               <Left>4.49792cm</Left>
               <Height>0.65292cm</Height>
               <Width>8.52487cm</Width>
@@ -2420,7 +2420,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Empresa</rd:DefaultName>
-              <Top>0.75177cm</Top>
+              <Top>0.76412cm</Top>
               <Left>13.19918cm</Left>
               <Height>0.65292cm</Height>
               <Width>6.22245cm</Width>
@@ -2452,11 +2452,89 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>EnderecoCliente</rd:DefaultName>
-              <Top>5.32609cm</Top>
+              <Top>6.09514cm</Top>
               <Left>0.29106cm</Left>
               <Height>0.67938cm</Height>
               <Width>12.73173cm</Width>
               <ZIndex>14</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="DataOrdemServico">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>DATA ABERTURA O.S:</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Parameters!DataOrdemServico.Value</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>DataOrdemServico</rd:DefaultName>
+              <Top>2.80141cm</Top>
+              <Left>0.26627cm</Left>
+              <Height>0.6cm</Height>
+              <Width>9.51349cm</Width>
+              <ZIndex>15</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="DataServico">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!DataServico.Value</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>DataServico</rd:DefaultName>
+              <Top>2.80141cm</Top>
+              <Left>13.19918cm</Left>
+              <Height>0.6cm</Height>
+              <Width>6.22245cm</Width>
+              <ZIndex>16</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2570,6 +2648,18 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="DataOrdemServico">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DataServico">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -2645,6 +2735,16 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>3</RowIndex>
           <ParameterName>CidadeCliente</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>DataOrdemServico</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>DataServico</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

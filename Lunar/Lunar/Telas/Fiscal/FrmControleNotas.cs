@@ -2,6 +2,7 @@
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
 using Lunar.Utils.Sintegra;
+using Lunar.Utils.Unimake.GeradoresXML.XMLNFCe;
 using LunarBase.Classes;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
@@ -18,6 +19,7 @@ using Syncfusion.WinForms.DataGridConverter;
 using Syncfusion.XlsIO;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -57,7 +59,7 @@ namespace Lunar.Telas.Fiscal
         {
             InitializeComponent();
 
-            obterVencimentoCertificado();
+            //obterVencimentoCertificado();
 
             if(!String.IsNullOrEmpty(Sessao.parametroSistema.IdInstanciaWhats) && !String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats))
             {
@@ -1321,16 +1323,25 @@ namespace Lunar.Telas.Fiscal
 
         private async void btnReenviar_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = true;
+            reenvioNF();
+        }
+
+        private void reenvioNF()
+        {
             try
             {
+                progressBar1.MarqueeAnimationSpeed = 25;
+                progressBar1.Style = ProgressBarStyle.Marquee;
+
                 string retorno = "";
                 nfe = (Nfe)grid.SelectedItem;
                 if (chkSVCAN.Checked == true && nfe.Modelo.Equals("55"))
                 {
                     nfe.TpEmis = "6";
-                        Controller.getInstance().salvar(nfe);
+                    Controller.getInstance().salvar(nfe);
                 }
-            
+
                 if (nfe.NfeStatus == null)
                 {
                     if (nfe.Status.Equals("Preparando Envio..."))
@@ -1375,13 +1386,13 @@ namespace Lunar.Telas.Fiscal
                             nfeProduto.CstPis = nfeProduto.Produto.CstPis;
                             nfeProduto.CstCofins = nfeProduto.Produto.CstCofins;
                             nfeProduto.CstIpi = nfeProduto.Produto.CstIpi;
-                     
+
                             Controller.getInstance().salvar(nfeProduto);
                         }
-                      
+
                         totalNotaComDesconto = totalNotaSemDesconto - totalDesconto;
                         nfe.VNf = totalNotaComDesconto;
-                        Controller.getInstance().salvar(nfe); 
+                        Controller.getInstance().salvar(nfe);
                         //Reenvia nota
                         if (venda != null || ordemServico != null)
                         {
@@ -1393,14 +1404,14 @@ namespace Lunar.Telas.Fiscal
                                 {
                                     EmitirNFCe emitirNFCe = new EmitirNFCe();
                                     if (venda != null)
-                                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, venda.Cliente, venda, null, null);
+                                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, venda.Cliente, venda, null, null, "");
                                     else if (ordemServico != null)
                                     {
                                         //Essa configuração foi devido a nf ter a possibilidade de emissão da nota com cliente diferente da O.S
-                                        if(nfe.Cliente == null)
-                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, ordemServico.Cliente, null, ordemServico, null);
+                                        if (nfe.Cliente == null)
+                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, ordemServico.Cliente, null, ordemServico, null, "");
                                         else
-                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, nfe.Cliente, null, ordemServico, null);
+                                            xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, nfe.Cliente, null, ordemServico, null, "");
                                     }
 
                                     if (!String.IsNullOrEmpty(xmlStrEnvio))
@@ -1411,7 +1422,7 @@ namespace Lunar.Telas.Fiscal
                                     {
                                         nfe.Lancada = true;
                                         Controller.getInstance().salvar(nfe);
-                                        string caminhoX = @"Fiscal\XML\NFCe\" + nfe.DataCadastro.Year + "-" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" +nfe.Chave + "-procNFCe.xml";
+                                        string caminhoX = @"Fiscal\XML\NFCe\" + nfe.DataCadastro.Year + "-" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
                                         LunarApiNotas lunarApiNotas = new LunarApiNotas();
                                         byte[] arquivo;
                                         using (var stream = new FileStream(caminhoX, FileMode.Open, FileAccess.Read))
@@ -1480,7 +1491,7 @@ namespace Lunar.Telas.Fiscal
                                         {
 
                                             EmitirNFe emitirNFe = new EmitirNFe();
-                                            if(venda != null)
+                                            if (venda != null)
                                                 xmlStrEnvio = emitirNFe.gerarXMLNfe(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, venda.Cliente, venda, true, nfe.NatOp, null);
                                             if (ordemServico != null)
                                                 xmlStrEnvio = emitirNFe.gerarXMLNfe(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, ordemServico.Cliente, null, true, nfe.NatOp, ordemServico);
@@ -1506,7 +1517,7 @@ namespace Lunar.Telas.Fiscal
                                                 pesquisaNotas();
                                             }
                                             //Verifica o q esta acontecendo com a nota.
-                               
+
                                         }
                                     }
                                     //Reenvia a nota
@@ -1514,7 +1525,7 @@ namespace Lunar.Telas.Fiscal
                                     {
 
                                         EmitirNFe emitirNFe = new EmitirNFe();
-                                        if(venda != null)
+                                        if (venda != null)
                                             xmlStrEnvio = emitirNFe.gerarXMLNfe(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, venda.Cliente, venda, true, nfe.NatOp, null);
                                         if (ordemServico != null)
                                             xmlStrEnvio = emitirNFe.gerarXMLNfe(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutosAtualizados, ordemServico.Cliente, null, true, nfe.NatOp, ordemServico);
@@ -1538,8 +1549,8 @@ namespace Lunar.Telas.Fiscal
                                             pesquisaNotas();
                                         }
                                     }
-                                    if(nfe.NfeStatus.Id == 2)
-                                                btnConsultarNota.PerformClick();
+                                    if (nfe.NfeStatus.Id == 2)
+                                        btnConsultarNota.PerformClick();
                                 }
                             }
                         }
@@ -1563,9 +1574,9 @@ namespace Lunar.Telas.Fiscal
                             }
                             EmitirNFCe emitirNFCe = new EmitirNFCe();
                             if (nfe.Cliente == null)
-                                xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutos, nfe.Cliente, null, null, formaPag);
+                                xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutos, nfe.Cliente, null, null, formaPag, "");
                             else
-                                xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutos, nfe.Cliente, null, null, formaPag);
+                                xmlStrEnvio = emitirNFCe.gerarXMLNfce(totalNotaSemDesconto, totalNotaComDesconto, totalDesconto, nfe.NNf, listaProdutos, nfe.Cliente, null, null, formaPag, "");
                             if (!String.IsNullOrEmpty(xmlStrEnvio))
                             {
                                 retorno = emitirNFCe.ReenviarXMLApi(xmlStrEnvio, nfe);
@@ -1591,7 +1602,7 @@ namespace Lunar.Telas.Fiscal
                             GenericaDesktop.ShowAlerta("Dê 2 cliques na nota fiscal e selecione a opção de enviar nota!");
                         }
                     }
-                    else if(nfe.NfeStatus.Id == 6)
+                    else if (nfe.NfeStatus.Id == 6)
                     {
                         DateTime primeiroDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
                         DateTime ultimoDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -1631,10 +1642,12 @@ namespace Lunar.Telas.Fiscal
                 {
                     GenericaDesktop.ShowAlerta("Essa funcionalidade é apenas para notas com origem na tela de vendas, nesse caso você deve dar 2 cliques na nota, fazer os ajustes necessários e enviar a nota novamente!");
                 }
+                progressBar1.Visible = false;
             }
             catch (Exception erro)
             {
                 GenericaDesktop.ShowErro("Falha ao reenviar nota: " + erro.Message);
+                progressBar1.Visible = false;
             }
         }
 
@@ -1798,6 +1811,10 @@ namespace Lunar.Telas.Fiscal
                     if (nfe.Chave.Length != 44)
                         nfe.Chave = "";
                     Controller.getInstance().salvar(nfe);
+
+                    //TESTE UNIMAKE
+                    //XmlNfceUnimake.GerarXmlConsSitNFe("C:\\Lunar\\Unimake\\UniNFe\\28145398000173\\Envio\\" + nfe.Chave +"-ped-sit.xml"  , nfe.Chave);
+
                     if (nfe.Status != "Autorizado o uso da NF-e" && nfe.Status != "Inutilizacao de Numero homologado" && !nfe.Status.Contains("cancelada com sucesso"))
                     {
                         //para modelo 55
@@ -2097,7 +2114,7 @@ namespace Lunar.Telas.Fiscal
                 }
                 catch (Exception erro)
                 {
-                    GenericaDesktop.ShowErro(erro.Message);
+                   // GenericaDesktop.ShowErro(erro.Message);
                 }
             }
             else
@@ -2105,6 +2122,8 @@ namespace Lunar.Telas.Fiscal
                 GenericaDesktop.ShowAlerta("Selecione uma nota com o mouse e clique novamente em consultar!");
             }
         }
+
+        
 
         private void armazenaXmlAutorizadoNoBanco()
         {
@@ -2241,9 +2260,9 @@ namespace Lunar.Telas.Fiscal
                     {
                         if (File.Exists(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf"))
                         {
-                            //Process.Start(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
-                            FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
-                            frmPDF.ShowDialog();
+                            Process.Start(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
+                            //FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
+                            //frmPDF.ShowDialog();
                         }
                         else
                         {

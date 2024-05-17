@@ -709,3 +709,8 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.csproj.CopyComplete
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.exe
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.pdb
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Mensagens.FrmMensagemPosVendas.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\selenium-manager\linux\selenium-manager
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\selenium-manager\macos\selenium-manager
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\selenium-manager\windows\selenium-manager.exe
+C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\WebDriver.dll
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.OrdensDeServico.FrmDescontoTotalOrdemServico.resources

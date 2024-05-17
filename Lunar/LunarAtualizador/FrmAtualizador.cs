@@ -460,7 +460,7 @@ namespace LunarAtualizador
             if (File.Exists(arquivoBat))
             {
                 // Copia o arquivo AtuAtualizador.bat para a pasta C:\Lunar\Atualizador
-                File.Copy(arquivoBat, Path.Combine(pastaDestino, "Atualizador", Path.GetFileName(arquivoBat)), true);
+                try { File.Copy(arquivoBat, Path.Combine(pastaDestino, "Atualizador", Path.GetFileName(arquivoBat)), true); } catch { }
             }
             // Após a descompactação, execute o arquivo .bat
             string caminhoBat = @"C:\Lunar\Atualizador\AtuAtualizador.bat";
@@ -670,6 +670,33 @@ namespace LunarAtualizador
             }
         }
 
+
+        private void disparoManualMensagens()
+        {
+            if (Sessao.MensagensAgendadas.Count > 0)
+            {
+                logger.WriteLog("Sessao.MensagensAgendadas.Count > 0...OK ---- " + Sessao.MensagensAgendadas.Count, "LogMensagem");
+                foreach (var mensagem in Sessao.MensagensAgendadas.ToList()) // Usar ToList para evitar exceção de modificação durante a iteração
+                {
+                        logger.WriteLog("Preparando Disparo de Mensagem ---- NOME: " + mensagem.NomeCliente + " MENSAGEM: " + mensagemPosVenda + " FLAGENVIADA: " + mensagem.FlagEnviada, "LogMensagem");
+                        if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda) && !mensagem.FlagEnviada)
+                        {
+                            try
+                            {
+                                dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
+                                mensagem.FlagEnviada = true;
+                                Controller.getInstance().salvar(mensagem);
+                            }
+                            catch
+                            {
+                                mensagem.FlagEnviada = true;
+                                Controller.getInstance().salvar(mensagem);
+                            }
+                        }
+                }
+                Sessao.MensagensAgendadas.Clear();
+            }
+        }
         private void consultaMensagens()
         {
             MensagemPosVenda msgPos = new MensagemPosVenda();
@@ -681,7 +708,7 @@ namespace LunarAtualizador
 
                     connection.Open();
                     Sessao.parametroSistema = new ParametroSistema();
-                    string query = "SELECT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false";
+                    string query = "SELECT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento INNER JOIN Pessoa ON MP.Pessoa = Pessoa.Id INNER JOIN PessoaTelefone ON Pessoa.ID = PessoaTelefone.PESSOA WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false AND PessoaTelefone.ddd IS NOT NULL AND PessoaTelefone.Telefone IS NOT NULL";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         using (MySqlDataReader reader = command.ExecuteReader())
@@ -706,9 +733,9 @@ namespace LunarAtualizador
                         }
                     }
                 }
-                catch
+                catch (Exception erro)
                 {
-
+                    logger.WriteLog("Mensagens agendadas ERRO: " + erro.Message, "LogMensagem");
                 }
             }
         }
@@ -857,7 +884,6 @@ namespace LunarAtualizador
                                         }
                                     }
                                 }
-                                //listaExamesVencendo(int.Parse(diasAntes), msgLembreteExame);
                             }
                         }
                     }

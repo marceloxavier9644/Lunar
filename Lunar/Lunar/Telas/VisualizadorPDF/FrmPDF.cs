@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 
@@ -12,13 +13,9 @@ namespace Lunar.Telas.VisualizadorPDF
         public FrmPDF(String caminhoPDF)
         {
             InitializeComponent();
-            //pdf = new PdfiumViewer.PdfViewer();
-            //pdf.Width = this.Width - 20;
-            //pdf.Height = this.Height - 40;
-            //pdf.ZoomMode = PdfViewerZoomMode.FitBest;
-            //this.Controls.Add(pdf);
             this.caminhoPDF = caminhoPDF;
-            abrirArquivo();
+            //abrirArquivo();
+            Process.Start(caminhoPDF);
         }
 
         private void abrirArquivo()
@@ -41,7 +38,12 @@ namespace Lunar.Telas.VisualizadorPDF
 
         private void FrmPDF_Load(object sender, EventArgs e)
         {
+            this.Close();
 
+        }
+
+        private void FrmPDF_FormClosed(object sender, FormClosedEventArgs e)
+        {
 
         }
     }

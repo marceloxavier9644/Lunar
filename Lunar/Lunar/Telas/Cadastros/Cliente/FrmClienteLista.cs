@@ -4,7 +4,12 @@ using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using LunarBase.Utilidades.SerproGov;
+using Microsoft.SharePoint.Client.Utilities;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
 using Syncfusion.WinForms.DataGridConverter;
@@ -12,8 +17,15 @@ using Syncfusion.XlsIO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.Cadastros.Cliente
@@ -478,5 +490,200 @@ namespace Lunar.Telas.Cadastros.Cliente
             else
                 GenericaDesktop.ShowAlerta("Clique na linha do cliente que deseja inserir mensagem!");
         }
+
+        private async void btnMei_Click(object sender, EventArgs e)
+        {
+            //Chamada API Serpro e consulta do boleto.
+            var serproApiService = new SerproApiService();
+            var tokenResponse = await serproApiService.AutenticacaoSerpro();
+            string kwt = tokenResponse.jwt_token;
+            string access = tokenResponse.access_token;
+            var amd = await serproApiService.ConsultarGuiaMeiAsync(tokenResponse.jwt_token, tokenResponse.access_token, "34061827000127");
+        }
+        static byte[] ReadStream(System.IO.Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
+        private async Task ConsultaDasMeiAsync(string base64CombinedKey)
+        {
+            try
+            {
+                HttpClientHandler handler = new HttpClientHandler();
+
+                // URL do certificado no servidor FTP...no ftp nao preciso passar a pasta www
+                string ftpUrl = "ftp://lunarsoftware@ftp.lunarsoftware.com.br/Lunarerp/txt.pfx";
+                // Baixar o arquivo do certificado temporariamente
+                WebClient ftpClient = new WebClient();
+                ftpClient.Credentials = new NetworkCredential("lunarsoftware", "Aramxs@11");
+                string tempFilePath = Path.GetTempFileName();
+                ftpClient.DownloadFile(ftpUrl, tempFilePath);
+
+                // Carregar o certificado a partir do arquivo temporário
+                X509Certificate2 cert = new X509Certificate2(tempFilePath, "123456");
+                handler.ClientCertificates.Add(cert);
+                
+
+                // Use o handler conforme necessário (por exemplo, para fazer requisições HTTP com o certificado)
+                HttpClient client = new HttpClient(handler);
+
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64CombinedKey);
+                client.DefaultRequestHeaders.Add("Role-Type", "TERCEIROS");
+
+                // Configurar o payload
+                var payload = new StringContent("grant_type=client_credentials", Encoding.UTF8, "application/x-www-form-urlencoded");
+
+                // Fazer a chamada à API
+                HttpResponseMessage response = await client.PostAsync("https://autenticacao.sapi.serpro.gov.br/authenticate", payload);
+
+                // Verificar a resposta
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    TokenResponse tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(responseContent);
+                    string accessToken = tokenResponse.AccessToken;
+                    string jwtToken = tokenResponse.JwtToken;
+                    await consultarDasMeia(jwtToken, accessToken);
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Erro ao chamar a API DAS MEI: " + response.StatusCode);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Tratamento de erro geral
+                GenericaDesktop.ShowErro("Erro: " + ex.Message);
+            }
+        }
+
+       
+
+        private async Task consultarDasMeia(string jwtToken, string accessToken)
+        {
+            var requestBody = new
+            {
+                contratante = new
+                {
+                    numero = "28145398000173",
+                    tipo = 2
+                },
+                autorPedidoDados = new
+                {
+                    numero = "34061827000127",
+                    tipo = 2
+                },
+                contribuinte = new
+                {
+                    numero = "34061827000127",
+                    tipo = 2
+                },
+                pedidoDados = new
+                {
+                    idSistema = "PGMEI",
+                    idServico = "GERARDASPDF21",
+                    versaoSistema = "1.0",
+                    dados = "{\"periodoApuracao\": \"202401\"}" // Dados adicionais no formato JSON
+                }
+            };
+
+            var jsonRequest = System.Text.Json.JsonSerializer.Serialize(requestBody);
+            string apiUrl = "https://gateway.apiserpro.serpro.gov.br/integra-contador/v1/Emitir";
+
+            using (var httpClient = new HttpClient())
+            {
+                // Adiciona os tokens de acesso e JWT ao cabeçalho de autorização
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+                httpClient.DefaultRequestHeaders.Add("jwt_token", jwtToken);
+
+                // Adiciona o cabeçalho Accept para indicar o tipo de conteúdo esperado na resposta
+                httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                // Converte o corpo da requisição para o formato JSON
+                var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+                // Faz a chamada à API usando o método POST
+                var response = await httpClient.PostAsync(apiUrl, content);
+
+                // Verifica se a chamada foi bem-sucedida
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    // Desserializa o JSON da resposta
+                    var responseObject = JsonConvert.DeserializeObject<dynamic>(responseContent);
+                    if (responseObject != null && responseObject.dados != null)
+                    {
+                        foreach (var item in responseObject.dados)
+                        {
+                            // Verifica se o objeto contém um campo "pdf"
+                            if (item.pdf != null)
+                            {
+                                byte[] pdfBytes = Convert.FromBase64String(item.pdf.ToString());
+
+                                string anoMes = DateTime.Now.ToString("yyyy-MM");
+                                string folderPath = @"C:\Lunar\DASMEI";
+                                if (!Directory.Exists(folderPath))
+                                {
+                                    Directory.CreateDirectory(folderPath);
+                                }
+
+                                string filePath = @"C:\Lunar\DASMEI\"+anoMes+".pdf"; // Substitua pelo caminho desejado
+                                File.WriteAllBytes(filePath, pdfBytes);
+
+                                Process.Start(filePath);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    var problemDetailsJson = await response.Content.ReadAsStringAsync();
+                    var problemDetails = JsonConvert.DeserializeObject<ProblemDetails>(problemDetailsJson);
+
+                    // Exibe os detalhes do erro
+                    Console.WriteLine("Erro status: " + problemDetails.status);
+                    Console.WriteLine("Erro title: " + problemDetails.title);
+                    Console.WriteLine("Erro detail: " + problemDetails.detail);
+                }
+            }
+        }
+        public class ProblemDetails
+        {
+            public string type { get; set; }
+            public string title { get; set; }
+            public int status { get; set; }
+            public string detail { get; set; }
+            public string instance { get; set; }
+        }
+        public class TokenResponse
+        {
+            [JsonProperty("expires_in")]
+            public int ExpiresIn { get; set; }
+
+            [JsonProperty("scope")]
+            public string Scope { get; set; }
+
+            [JsonProperty("token_type")]
+            public string TokenType { get; set; }
+
+            [JsonProperty("access_token")]
+            public string AccessToken { get; set; }
+
+            [JsonProperty("jwt_token")]
+            public string JwtToken { get; set; }
+
+            [JsonProperty("jwt_pucomex")]
+            public string JwtPucomex { get; set; }
+        }
+
     }
 }

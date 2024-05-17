@@ -732,7 +732,24 @@ namespace Lunar.Utils.OrganizacaoNF
                             }
                         };
                     }
-                    else 
+                else if (formaPagamento.CodigoSefaz.Equals("17"))
+                {
+                    detPag = new TNFeInfNFePagDetPag[]
+                                        {
+                            new TNFeInfNFePagDetPag
+                            {
+                                indPag = indPagamento,
+                                xPag = GenericaDesktop.RemoveCaracteres(formaPagamento.Descricao),
+                                tPag = formaPagamento.CodigoSefaz,
+                                vPag = formatMoedaNf(nfe.VNf),
+                                card = new TNFeInfNFePagDetPagCard
+                                {
+                                    tpIntegra = TNFeInfNFePagDetPagCardTpIntegra.Item2
+                                }
+                            }
+                    };
+                }
+                else 
                     {
                     detPag = new TNFeInfNFePagDetPag[]
                        {

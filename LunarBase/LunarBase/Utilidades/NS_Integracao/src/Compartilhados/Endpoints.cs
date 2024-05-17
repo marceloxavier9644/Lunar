@@ -38,7 +38,8 @@
     public string MDFeListarNSNRecs { get; set; } = "https://mdfe.ns.eti.br/util/list/nsnrecs";
 
     // NFC-e
-    public string NFCeEnvio { get; set; } = "https://nfce.ns.eti.br/v1/nfce/issue";
+    //public string NFCeEnvio { get; set; } = "https://nfce.ns.eti.br/v1/nfce/issue";
+    public string NFCeEnvio { get; set; } = "https://nfce2.ns.eti.br/v1/nfce/issue";
     public string NFCeDownload { get; set; } = "https://nfce.ns.eti.br/v1/nfce/get";
     public string NFCeCancelamento { get; set; } = "https://nfce.ns.eti.br/v1/nfce/cancel";
     public string NFCeConsSit { get; set; } = "https://nfce.ns.eti.br/v1/nfce/status";

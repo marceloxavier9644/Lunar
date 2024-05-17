@@ -84,6 +84,7 @@
             this.btnPastaArquivo = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConferirXmlNuvem = new FontAwesome.Sharp.IconButton();
             this.rjButton1 = new Lunar.RJ_UI.Classes.RJButton();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).BeginInit();
@@ -851,6 +852,7 @@
             this.btnConsultarNota.Text = "Consultar Nota";
             this.btnConsultarNota.TextColor = System.Drawing.Color.Black;
             this.btnConsultarNota.UseVisualStyleBackColor = false;
+            this.btnConsultarNota.Visible = false;
             this.btnConsultarNota.Click += new System.EventHandler(this.btnConsultarNota_Click);
             // 
             // btnReenviar
@@ -984,12 +986,21 @@
             this.rjButton1.TextColor = System.Drawing.Color.Black;
             this.rjButton1.UseVisualStyleBackColor = false;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(5, 345);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(320, 23);
+            this.progressBar1.TabIndex = 238;
+            this.progressBar1.Visible = false;
+            // 
             // FrmControleNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1043, 450);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnConferirXmlNuvem);
             this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.iconPastaArquivo);
@@ -1088,5 +1099,6 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkSVCAN;
         private FontAwesome.Sharp.IconButton btnConferirXmlNuvem;
         private RJ_UI.Classes.RJButton rjButton1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

@@ -5,14 +5,14 @@ using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.OrdensDeServico.Servicos;
 using Lunar.Telas.OrdensDeServico.TipoObjetos;
 using Lunar.Telas.PesquisaPadrao;
+using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
-using Lunar.WSCorreios;
 using LunarBase.Classes;
-using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
 using Syncfusion.WinForms.DataGrid.Enums;
+using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -62,6 +62,7 @@ namespace Lunar.Telas.OrdensDeServico
         {
             InitializeComponent();
             txtDataAbertura.Value = DateTime.Now;
+            txtDataServico.Value = DateTime.Now;
             if (Sessao.parametroSistema.TipoObjeto != null)
             {
                 txtCodTipoObjeto.Texts = Sessao.parametroSistema.TipoObjeto.Id.ToString();
@@ -87,7 +88,7 @@ namespace Lunar.Telas.OrdensDeServico
             }
             lblAutomatico.Visible = true;
             txtDataExame.Value = DateTime.Now;
-            txtCliente.Focus();
+            txtCliente.Select();
         }
 
         public FrmOrdemServico(OrdemServico ordemServico)
@@ -123,7 +124,9 @@ namespace Lunar.Telas.OrdensDeServico
             get_OrdemServico();
             if(ordemServico.Status == "ENCERRADA" || ordemServico.FlagExcluido == true) 
             {
+                btnDescontoGeral.Enabled = false;
                 txtDataAbertura.Enabled = false;
+                txtDataServico.Enabled = false;
                 lblInformativo.Visible = true;
                 btnGravar.Enabled = false;
                 btnGravarEncerrar.Enabled = false;
@@ -158,6 +161,7 @@ namespace Lunar.Telas.OrdensDeServico
             txtNumeroSerie.Texts = ordemServico.NumeroSerie;
             txtObservacoes.Texts = ordemServico.Observacoes;
             txtDataAbertura.Value = ordemServico.DataAbertura;
+            txtDataServico.Value = ordemServico.DataServico;
             if (ordemServico.Vendedor != null)
             {
                 txtVendedor.Texts = ordemServico.Vendedor.RazaoSocial;
@@ -832,6 +836,7 @@ namespace Lunar.Telas.OrdensDeServico
                 row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
                 row.SetField("Desconto", string.Format("{0:0.00}", decimal.Parse(txtDescontoItem.Texts)));
                 row.SetField("Acrescimo", string.Format("{0:0.00}", decimal.Parse(txtAcrescimoItem.Texts)));
+                row.SetField("ValorComDesconto", string.Format("{0:0.00}", valorTotal - decimal.Parse(txtDescontoItem.Texts)));
                 dsProdutos.Tables[0].Rows.Add(row);
 
                 txtPesquisaProduto.Texts = "";
@@ -882,11 +887,11 @@ namespace Lunar.Telas.OrdensDeServico
 
                         if (!String.IsNullOrEmpty(dataRowView.Row[0].ToString()))
                             descontoItem = descontoItem + decimal.Parse(dataRowView.Row["Desconto"].ToString());
-                        valorTotalProdutos = valorTotalProdutos + decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                        valorTotalProdutos = valorTotalProdutos + decimal.Parse(dataRowView.Row["ValorUnitario"].ToString());
                         pecas = pecas + double.Parse(dataRowView.Row["Quantidade"].ToString());
                     }
                     txtValorTotalTodosProdutos.Texts = string.Format("{0:0.00}", valorTotalProdutos);
-                    txtTotalGeralProdutoServico.Texts = string.Format("{0:0.00}", valorTotalProdutos + decimal.Parse(txtValorTotalTodosServicos.Texts));
+                    txtTotalGeralProdutoServico.Texts = string.Format("{0:0.00}", valorTotalProdutos + decimal.Parse(txtValorTotalTodosServicos.Texts) - decimal.Parse(txtDescontoTotal.Texts));
                 }
             }
             catch
@@ -976,11 +981,54 @@ namespace Lunar.Telas.OrdensDeServico
                 produto.Id = int.Parse(txtCodProduto.Texts);
                 produto = (Produto)Controller.getInstance().selecionar(produto);
                 inserirItem(produto);
+                calculoDescontoGeral();
             }
             else
             {
                 GenericaDesktop.ShowAlerta("Selecione um produto");
             }
+        }
+
+        // Função para calcular o total de desconto em produtos
+        private decimal CalcularDescontoProdutos()
+        {
+            decimal descontoProdutos = 0;
+
+            if (gridProdutos.View != null)
+            {
+                var records = gridProdutos.View.Records;
+
+                foreach (var record in records)
+                {
+                    var dataRowView = record.Data as DataRowView;
+
+                    if (!String.IsNullOrEmpty(dataRowView.Row[0].ToString()))
+                        descontoProdutos += decimal.Parse(dataRowView.Row["Desconto"].ToString());
+                }
+            }
+
+            return descontoProdutos;
+        }
+
+        // Função para calcular o total de desconto em serviços
+        private decimal CalcularDescontoServicos()
+        {
+            decimal descontoServicos = 0;
+
+            if (gridServico.View != null)
+            {
+                var records = gridServico.View.Records;
+
+                foreach (var record in records)
+                {
+                    var dataRowView = record.Data as DataRowView;
+
+                    if (!String.IsNullOrEmpty(dataRowView.Row[0].ToString()))
+                        descontoServicos += decimal.Parse(dataRowView.Row["Desconto"].ToString());
+                }
+            }
+
+            return descontoServicos;
         }
 
         private void panelPagamentoTotal_Paint(object sender, PaintEventArgs e)
@@ -1101,7 +1149,7 @@ namespace Lunar.Telas.OrdensDeServico
             genericaDesktop.SoNumeroEVirgula(txtDescontoItem.Texts, e);
             if (e.KeyChar == 13)
             {
-                txtAcrescimoItem.Focus();
+                btnConfirmaItem.PerformClick();
             }
         }
 
@@ -1340,7 +1388,7 @@ namespace Lunar.Telas.OrdensDeServico
             genericaDesktop.SoNumeroEVirgula(txtDescontoServico.Texts, e);
             if (e.KeyChar == 13)
             {
-                txtAcrescimoServico.Focus();
+                btnConfirmaServico.PerformClick();
             }
         }
 
@@ -1362,6 +1410,7 @@ namespace Lunar.Telas.OrdensDeServico
                 servico.Id = int.Parse(txtCodServico.Texts);
                 servico = (Servico)Controller.getInstance().selecionar(servico);
                 inserirServico(servico);
+                calculoDescontoGeral();
             }
             else
             {
@@ -1388,6 +1437,7 @@ namespace Lunar.Telas.OrdensDeServico
                 row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
                 row.SetField("Desconto", string.Format("{0:0.00}", decimal.Parse(txtDescontoServico.Texts)));
                 row.SetField("Acrescimo", string.Format("{0:0.00}", decimal.Parse(txtAcrescimoServico.Texts)));
+                row.SetField("ValorComDesconto", string.Format("{0:0.00}", valorTotal - decimal.Parse(txtDescontoServico.Texts)));
                 dsServico.Tables[0].Rows.Add(row);
 
                 txtPesquisaServico.Texts = "";
@@ -1457,12 +1507,12 @@ namespace Lunar.Telas.OrdensDeServico
 
                         if (!String.IsNullOrEmpty(dataRowView.Row[0].ToString()))
                             descontoItem = descontoItem + decimal.Parse(dataRowView.Row["Desconto"].ToString());
-                        valorTotalServicos = valorTotalServicos + decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                        valorTotalServicos = valorTotalServicos + decimal.Parse(dataRowView.Row["ValorUnitario"].ToString());
                         pecas = pecas + double.Parse(dataRowView.Row["Quantidade"].ToString());
 
                     }
                     txtValorTotalTodosServicos.Texts = string.Format("{0:0.00}", valorTotalServicos);
-                    txtTotalGeralProdutoServico.Texts = string.Format("{0:0.00}", valorTotalServicos + decimal.Parse(txtValorTotalTodosProdutos.Texts));
+                    txtTotalGeralProdutoServico.Texts = string.Format("{0:0.00}", valorTotalServicos + decimal.Parse(txtValorTotalTodosProdutos.Texts) - decimal.Parse(txtDescontoTotal.Texts));
                 }
             }
             catch
@@ -1490,11 +1540,25 @@ namespace Lunar.Telas.OrdensDeServico
                     }
                     dsProdutos.Tables[0].Rows[gridProdutos.SelectedIndex].Delete();
                     somaEnquantoDigitaItens();
+                    calculoDescontoGeral();
                 }
             }
             else
                 GenericaDesktop.ShowAlerta("Primeiro selecione o produto que deseja excluir!");
         }
+
+        private void calculoDescontoGeral()
+        {
+            //calc de desconto
+            decimal descontoProdutos = CalcularDescontoProdutos();
+            decimal descontoServicos = CalcularDescontoServicos();
+            decimal descontoTotal = descontoProdutos > 0 || descontoServicos > 0 ? descontoProdutos + descontoServicos : 0;
+            txtDescontoTotal.Texts = string.Format("{0:0.00}", descontoTotal);
+
+            decimal totalGeral = (decimal.Parse(txtValorTotalTodosProdutos.Texts) + decimal.Parse(txtValorTotalTodosServicos.Texts)) - descontoTotal;
+            txtTotalGeralProdutoServico.Texts = string.Format("{0:0.00}", totalGeral);
+        }
+
 
         private void btnExcluirServico_Click(object sender, EventArgs e)
         {
@@ -1515,6 +1579,7 @@ namespace Lunar.Telas.OrdensDeServico
                     }
                     dsServico.Tables[0].Rows[gridServico.SelectedIndex].Delete();
                     somaEnquantoDigitaServicos();
+                    calculoDescontoGeral();
                 }
             }
             else
@@ -1767,6 +1832,7 @@ namespace Lunar.Telas.OrdensDeServico
                 ordemServico.Vendedor = vendedor;
             else
                 ordemServico.Vendedor = null;
+
             ordemServico.OperadorCadastro = Sessao.usuarioLogado.Id.ToString();
             if (!String.IsNullOrEmpty(txtCodCliente.Texts))
             {
@@ -1780,6 +1846,10 @@ namespace Lunar.Telas.OrdensDeServico
                 {
                     ordemServico.Cliente = pessoa;
                     ordemServico.DataAbertura = DateTime.Parse(txtDataAbertura.Value.ToString());
+                    if(txtDataServico.Value == null)
+                        ordemServico.DataServico = DateTime.Parse("1900-01-01 00:00:00");
+                    else
+                        ordemServico.DataServico = DateTime.Parse(txtDataServico.Value.ToString());
                     ordemServico.DataEncerramento = DateTime.Parse("1900-01-01 00:00:00");
                     ordemServico.Filial = Sessao.empresaFilialLogada;
                     ordemServico.NumeroSerie = txtNumeroSerie.Texts;
@@ -1822,6 +1892,8 @@ namespace Lunar.Telas.OrdensDeServico
                 else
                     GenericaDesktop.ShowErro("Você deve selecionar um cliente e um tipo de Objeto para realizar a Ordem de Serviço!");              
             }
+            else
+                GenericaDesktop.ShowErro("Você deve selecionar um cliente e um tipo de Objeto para realizar a Ordem de Serviço!");
         }
 
         private void capturarProdutosServicosExamesAnexos()
@@ -1868,7 +1940,7 @@ namespace Lunar.Telas.OrdensDeServico
                             ordemServicoProduto.Produto = produto;
                             ordemServicoProduto.Quantidade = double.Parse(dataRowView.Row["Quantidade"].ToString());
                             ordemServicoProduto.ValorUnitario = decimal.Parse(dataRowView.Row["ValorUnitario"].ToString());
-                            ordemServicoProduto.ValorTotal = decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                            ordemServicoProduto.ValorTotal = decimal.Parse(dataRowView.Row["ValorComDesconto"].ToString());
                             listaProdutos.Add(ordemServicoProduto);
                         }
                     }
@@ -1905,7 +1977,7 @@ namespace Lunar.Telas.OrdensDeServico
                             ordemServicoServico.Servico = servico;
                             ordemServicoServico.Quantidade = double.Parse(dataRowView.Row["Quantidade"].ToString());
                             ordemServicoServico.ValorUnitario = decimal.Parse(dataRowView.Row["ValorUnitario"].ToString());
-                            ordemServicoServico.ValorTotal = decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                            ordemServicoServico.ValorTotal = decimal.Parse(dataRowView.Row["ValorComDesconto"].ToString());
                             listaServicos.Add(ordemServicoServico);
                         }
                     }
@@ -1916,7 +1988,7 @@ namespace Lunar.Telas.OrdensDeServico
             ordemServico.ValorDesconto = descontoProdutos + descontoServicos;
             ordemServico.ValorProduto = totalProdutos;
             ordemServico.ValorServico = totalServicos;
-            ordemServico.ValorTotal = totalProdutos + totalServicos;
+            ordemServico.ValorTotal = (totalProdutos + totalServicos) - ordemServico.ValorDesconto;
 
             //Exames
             if (gridExames.View != null)
@@ -2546,5 +2618,111 @@ namespace Lunar.Telas.OrdensDeServico
                 passou = true;
             }
         }
+
+        private void txtDescontoTotal__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDescontoGeral_Click(object sender, EventArgs e)
+        {
+            abrirTelaDesconto();
+        }
+
+        private void abrirTelaDesconto()
+        {
+            decimal totalProdutos = decimal.Parse(txtValorTotalTodosProdutos.Texts.Replace("R$ ", ""));
+            decimal totalServicos = decimal.Parse(txtValorTotalTodosServicos.Texts.Replace("R$ ", ""));
+
+            Form formBackground = new Form();
+            object ordemServico = new OrdemServico();
+            try
+            {
+                using (FrmDescontoTotalOrdemServico uu = new FrmDescontoTotalOrdemServico(totalProdutos, totalServicos)) 
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    uu.Owner = this;
+                    uu.ShowDialog();
+                    formBackground.Dispose();
+                    //btnPesquisar.PerformClick();
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        public void AtualizarDescontos(decimal totalDescontoProduto, decimal percentualDescontoProduto, decimal totalDescontoServico, decimal percentualDescontoServico, decimal totalDescontoGeral, decimal percentualDescontoGeral)
+        {
+            txtDescontoTotal.Texts = totalDescontoGeral.ToString("N2");
+            RatearDescontoNosProdutos(totalDescontoProduto);
+            RatearDescontoNosServicos(totalDescontoServico);
+            txtTotalGeralProdutoServico.Texts = ((decimal.Parse(txtValorTotalTodosProdutos.Texts) + decimal.Parse(txtValorTotalTodosServicos.Texts)) - (totalDescontoProduto + totalDescontoServico)).ToString("N2");
+        }
+
+        private void RatearDescontoNosProdutos(decimal totalDescontoProduto)
+        {
+            decimal somaTotalProdutos = decimal.Parse(txtValorTotalTodosProdutos.Texts);
+
+            if (somaTotalProdutos == 0)
+            {
+                return;
+            }
+
+            foreach (var record in gridProdutos.View.Records)
+            {
+                var dataRowView = record.Data as DataRowView;
+                if (dataRowView != null && dataRowView["ValorTotal"] != DBNull.Value)
+                {
+                    decimal valorTotalProduto = Convert.ToDecimal(dataRowView["ValorTotal"]);
+                    decimal descontoProporcional = (valorTotalProduto / somaTotalProdutos) * totalDescontoProduto;
+
+                    dataRowView["Desconto"] = descontoProporcional.ToString("N5");
+                    dataRowView["ValorComDesconto"] = valorTotalProduto - descontoProporcional;
+                }
+            }
+        }
+
+        private void RatearDescontoNosServicos(decimal totalDescontoServico)
+        {
+            decimal somaTotalServicos = decimal.Parse(txtValorTotalTodosServicos.Texts);
+
+            if (somaTotalServicos == 0)
+            {
+                return;
+            }
+
+            foreach (var record in gridServico.View.Records)
+            {
+                var dataRowView = record.Data as DataRowView;
+                if (dataRowView != null && dataRowView["ValorTotal"] != DBNull.Value)
+                {
+                    decimal valorTotalServico = Convert.ToDecimal(dataRowView["ValorTotal"]);
+                    decimal descontoProporcional = (valorTotalServico / somaTotalServicos) * totalDescontoServico;
+
+                    dataRowView["Desconto"] = descontoProporcional.ToString("N5");
+                    dataRowView["ValorComDesconto"] = valorTotalServico - descontoProporcional;
+                }
+            }
+        }
+
     }
 }

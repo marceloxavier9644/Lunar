@@ -51,7 +51,7 @@
             this.pdfViewerControl1.MinimumZoomPercentage = 50;
             this.pdfViewerControl1.Name = "pdfViewerControl1";
             this.pdfViewerControl1.PageBorderThickness = 1;
-            pdfViewerPrinterSettings1.PageOrientation = Syncfusion.Windows.PdfViewer.PdfViewerPrintOrientation.Auto;
+            pdfViewerPrinterSettings1.PageOrientation = Syncfusion.Windows.PdfViewer.PdfViewerPrintOrientation.Portrait;
             pdfViewerPrinterSettings1.PageSize = Syncfusion.Windows.PdfViewer.PdfViewerPrintSize.ActualSize;
             pdfViewerPrinterSettings1.PrintLocation = ((System.Drawing.PointF)(resources.GetObject("pdfViewerPrinterSettings1.PrintLocation")));
             pdfViewerPrinterSettings1.ShowPrintStatusDialog = true;
@@ -69,6 +69,7 @@
             textSearchSettings1.HighlightAllInstance = true;
             textSearchSettings1.OtherInstanceColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(254)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
             this.pdfViewerControl1.TextSearchSettings = textSearchSettings1;
+            this.pdfViewerControl1.ThemeName = "Default";
             this.pdfViewerControl1.VerticalScrollOffset = 0;
             this.pdfViewerControl1.VisualStyle = Syncfusion.Windows.Forms.PdfViewer.VisualStyle.Default;
             this.pdfViewerControl1.ZoomMode = Syncfusion.Windows.Forms.PdfViewer.ZoomMode.Default;
@@ -87,6 +88,7 @@
             this.Name = "FrmPDF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualizador de PDF - Lunar Software";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPDF_FormClosed);
             this.Load += new System.EventHandler(this.FrmPDF_Load);
             this.ResumeLayout(false);
 

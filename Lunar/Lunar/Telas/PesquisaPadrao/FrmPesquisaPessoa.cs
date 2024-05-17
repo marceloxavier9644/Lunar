@@ -1,6 +1,7 @@
 ﻿using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
+using Syncfusion.WinForms.DataGrid;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -49,6 +50,8 @@ namespace Lunar.Telas.PesquisaPadrao
 
             txtPesquisa.Focus();
             txtPesquisa.Select();
+            if (listaClientes.Count > 0)
+                gridClient.Focus();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -82,8 +85,6 @@ namespace Lunar.Telas.PesquisaPadrao
 
             sfDataPager1.DataSource = listaClientes;
             gridClient.DataSource = sfDataPager1.PagedSource;
-            txtPesquisa.Focus();
-            txtPesquisa.Select();
 
             if (listaClientes.Count == 0)
             {
@@ -94,6 +95,7 @@ namespace Lunar.Telas.PesquisaPadrao
                 txtPesquisa.PlaceholderText = "";
                 txtPesquisa.Select();
             }
+            txtPesquisa.Select();
         }
 
         private void gridClient_CurrentCellKeyDown(object sender, Syncfusion.WinForms.DataGrid.Events.CurrentCellKeyEventArgs e)

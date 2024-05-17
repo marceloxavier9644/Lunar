@@ -111,7 +111,7 @@ namespace Lunar.Telas.ContasReceber
 
                 if (chkApenasEscritorioCobranca.Checked == true || chkApenasSPC.Checked == true)
                     orderBy = "order by Pessoa.Id, Tabela.Vencimento";
-                //MessageBox.Show(sql + orderBy);
+                string sqlx = (sql + orderBy);
                 listaContaReceber = ContaReceberController.selecionarContaReceberPorSqlNativo(sql + orderBy);
                 if (listaContaReceber.Count > 0)
                 {

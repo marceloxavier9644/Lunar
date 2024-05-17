@@ -19,6 +19,7 @@ namespace LunarBase.Classes
         private decimal valorServico;
         private decimal valorTotal;
         private DateTime dataAbertura;
+        private DateTime dataServico;
         private DateTime dataEncerramento;
         private TipoObjeto tipoObjeto;
         private EmpresaFilial filial;
@@ -72,5 +73,7 @@ namespace LunarBase.Classes
         public virtual bool MensagemPosVenda { get => mensagemPosVenda; set => mensagemPosVenda = value; }
         [Anotacao("Msg Vencimento Exame")]
         public virtual bool MensagemVencimentoExameOtica { get => mensagemVencimentoExameOtica; set => mensagemVencimentoExameOtica = value; }
+        [Anotacao("Data Serviço")]
+        public virtual DateTime DataServico { get => dataServico; set => dataServico = value; }
     }
 }

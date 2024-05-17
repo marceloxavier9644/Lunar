@@ -473,7 +473,6 @@
             this.gridClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridClient.Location = new System.Drawing.Point(3, 16);
             this.gridClient.Name = "gridClient";
-            this.gridClient.SelectionUnit = Syncfusion.WinForms.DataGrid.Enums.SelectionUnit.Cell;
             this.gridClient.Size = new System.Drawing.Size(986, 409);
             this.gridClient.Style.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.gridClient.Style.CellStyle.Font.Facename = "Montserrat";
@@ -481,6 +480,7 @@
             this.gridClient.TabIndex = 3;
             this.gridClient.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.gridClient_QueryRowStyle);
             this.gridClient.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.gridClient_CellDoubleClick);
+            
             this.gridClient.CurrentCellKeyDown += new Syncfusion.WinForms.DataGrid.Events.CurrentCellKeyEventHandler(this.gridClient_CurrentCellKeyDown);
             // 
             // dsCliente

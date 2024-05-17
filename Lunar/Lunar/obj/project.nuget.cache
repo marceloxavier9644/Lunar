@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "K2u4+WGZAolw2x8lxiTB++HZOh6pOT1MzPJ/5Yg9oT2LI3K0tfeglrT5J1Ygoxyc2qKLV/FPXyPYHSjxPpHQiA==",
+  "dgSpecHash": "sQEjLJo1IS0jac/BcicFwsVx0QYIND4Hct1beDg3V0BCDACI1UTt47gVFCR9i7Xngvsxa09McbGRwzEznm2xUw==",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Lunar.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "C:\\Users\\marce\\.nuget\\packages\\pdfiumviewer\\2.13.0\\pdfiumviewer.2.13.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\remotion.linq\\2.2.0\\remotion.linq.2.2.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\remotion.linq.eagerfetching\\2.2.0\\remotion.linq.eagerfetching.2.2.0.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\selenium.webdriver\\4.20.0\\selenium.webdriver.4.20.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\sharpcompress\\0.34.2\\sharpcompress.0.34.2.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\syncfusion.grid.base\\19.4.0.38\\syncfusion.grid.base.19.4.0.38.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\syncfusion.grid.windows\\19.4.0.38\\syncfusion.grid.windows.19.4.0.38.nupkg.sha512",

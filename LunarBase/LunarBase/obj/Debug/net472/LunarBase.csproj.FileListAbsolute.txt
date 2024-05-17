@@ -22,6 +22,8 @@ C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Newtonsoft.Json.dl
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\NHibernate.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Remotion.Linq.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Remotion.Linq.EagerFetching.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\zxing.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\zxing.presentation.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.AssemblyReference.cache
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.GeneratedMSBuildEditorConfig.editorconfig
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.AssemblyInfoInputs.cache
@@ -30,5 +32,3 @@ C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.C
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.CopyComplete
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.pdb
-C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\zxing.dll
-C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\zxing.presentation.dll

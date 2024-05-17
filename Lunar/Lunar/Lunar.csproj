@@ -923,6 +923,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsOrdemServicoServico.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmDescontoTotalOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmDescontoTotalOrdemServico.Designer.cs">
+      <DependentUpon>FrmDescontoTotalOrdemServico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\OrdensDeServico\FrmEntradaValor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1207,6 +1213,7 @@
     <Compile Include="Utils\GalaxyPay_API\RetornoBoletoGerado.cs" />
     <Compile Include="Utils\GalaxyPay_API\RetornoPagamentoPix.cs" />
     <Compile Include="Utils\GenericaDesktop.cs" />
+    <Compile Include="Utils\GeradorNFe2024\GeradorNFCe.cs" />
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1229,6 +1236,8 @@
     <Compile Include="Utils\Sintegra\GeradorSintegra.cs" />
     <Compile Include="Utils\SPCBrasilIntegracao\ConsultaSpcBrasilLunar.cs" />
     <Compile Include="Utils\SPCBrasilIntegracao\CustomMessageInspector.cs" />
+    <Compile Include="Utils\Unimake\GeradoresXML\GeradorChave\GeradorChave.cs" />
+    <Compile Include="Utils\Unimake\GeradoresXML\XMLNFCe\XmlNfceUnimake.cs" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="RJ_UI\Classes\RJTextBoxLower.resx">
       <DependentUpon>RJTextBoxLower.cs</DependentUpon>
@@ -1526,6 +1535,9 @@
       <DependentUpon>FrmOrcamentoAvulso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Orcamentos\ReportOrcamentoAvulso.rdlc" />
+    <EmbeddedResource Include="Telas\OrdensDeServico\FrmDescontoTotalOrdemServico.resx">
+      <DependentUpon>FrmDescontoTotalOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmEntradaValor.resx">
       <DependentUpon>FrmEntradaValor.cs</DependentUpon>
     </EmbeddedResource>
@@ -1702,6 +1714,7 @@
     <None Include="Connected Services\consultaSPCBrasil\Lunar.consultaSPCBrasil.ResultadoConsultaScore.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <EmbeddedResource Include="Lunar.gclicx" />
     <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
     <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.atualizaPagamentoNaEntregaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -1868,7 +1881,6 @@
     <None Include="Connected Services\WSCorreios\Lunar.WSCorreios.VerificaSeTodosObjetosCanceladosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <EmbeddedResource Include="Lunar.gclicx" />
     <None Include="Properties\DataSources\Lunar.Telas.OrdensDeServico.DataSetOrdemServico.dsOrdemServicoExame.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -2100,15 +2112,15 @@
     <None Include="Resources\XML-PNG-64x64.png" />
     <None Include="Resources\XML-PNG-32x32.png" />
     <None Include="Resources\XML_PNG_64x64.png" />
-    <None Include="Connected Services\WSCorreios\configuration91.svcinfo" />
-    <None Include="Connected Services\WSCorreios\configuration.svcinfo" />
-    <None Include="Connected Services\WSCorreios\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\consultaSPCBrasil\configuration91.svcinfo" />
     <None Include="Connected Services\consultaSPCBrasil\configuration.svcinfo" />
     <None Include="Connected Services\consultaSPCBrasil\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\WSCorreios\configuration91.svcinfo" />
+    <None Include="Connected Services\WSCorreios\configuration.svcinfo" />
+    <None Include="Connected Services\WSCorreios\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2263,6 +2275,9 @@
     </PackageReference>
     <PackageReference Include="PdfiumViewer">
       <Version>2.13.0</Version>
+    </PackageReference>
+    <PackageReference Include="Selenium.WebDriver">
+      <Version>4.20.0</Version>
     </PackageReference>
     <PackageReference Include="SharpCompress">
       <Version>0.34.2</Version>

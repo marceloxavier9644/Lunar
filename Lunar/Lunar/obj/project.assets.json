@@ -886,6 +886,28 @@
           }
         }
       },
+      "Selenium.WebDriver/4.20.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Selenium.WebDriver.targets": {}
+        }
+      },
       "SharpCompress/0.34.2": {
         "type": "package",
         "dependencies": {
@@ -2427,6 +2449,28 @@
           }
         }
       },
+      "Selenium.WebDriver/4.20.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Selenium.WebDriver.targets": {}
+        }
+      },
       "SharpCompress/0.34.2": {
         "type": "package",
         "dependencies": {
@@ -3915,6 +3959,28 @@
           "lib/net45/Remotion.Linq.EagerFetching.dll": {
             "related": ".XML"
           }
+        }
+      },
+      "Selenium.WebDriver/4.20.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Selenium.WebDriver.targets": {}
         }
       },
       "SharpCompress/0.34.2": {
@@ -5407,6 +5473,28 @@
           }
         }
       },
+      "Selenium.WebDriver/4.20.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Selenium.WebDriver.targets": {}
+        }
+      },
       "SharpCompress/0.34.2": {
         "type": "package",
         "dependencies": {
@@ -6895,6 +6983,28 @@
           "lib/net45/Remotion.Linq.EagerFetching.dll": {
             "related": ".XML"
           }
+        }
+      },
+      "Selenium.WebDriver/4.20.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Selenium.WebDriver.targets": {}
         }
       },
       "SharpCompress/0.34.2": {
@@ -8597,6 +8707,26 @@
         "remotion.linq.eagerfetching.nuspec"
       ]
     },
+    "Selenium.WebDriver/4.20.0": {
+      "sha512": "Z9rYD5t2d7nBhjluj5MxnrTqMjrfGDQSXWThIdBMwgpVCGTcHMYot7nWV3XoVnUtUBb5wrYag++GV9vq/evTZQ==",
+      "type": "package",
+      "path": "selenium.webdriver/4.20.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Selenium.WebDriver.targets",
+        "buildTransitive/Selenium.WebDriver.targets",
+        "icon.png",
+        "lib/netstandard2.0/WebDriver.dll",
+        "lib/netstandard2.0/WebDriver.xml",
+        "manager/linux/selenium-manager",
+        "manager/macos/selenium-manager",
+        "manager/windows/selenium-manager.exe",
+        "selenium.webdriver.4.20.0.nupkg.sha512",
+        "selenium.webdriver.nuspec"
+      ]
+    },
     "SharpCompress/0.34.2": {
       "sha512": "x+L5dw5D44EtN1m+0kkTHPi0v+u7S3iyj6nMcfns1y3uKQVb/nflmlroPWIILcxUnbTV2xRqwU335sMkRhDM7A==",
       "type": "package",
@@ -10072,6 +10202,7 @@
       "NHibernate >= 5.3.10",
       "OpenAC.Net.Balanca >= 1.5.0.1",
       "PdfiumViewer >= 2.13.0",
+      "Selenium.WebDriver >= 4.20.0",
       "SharpCompress >= 0.34.2",
       "Syncfusion.Tools.Windows >= 19.4.0.38",
       "System.Net.Http.Json >= 6.0.0",
@@ -10199,6 +10330,10 @@
           "PdfiumViewer": {
             "target": "Package",
             "version": "[2.13.0, )"
+          },
+          "Selenium.WebDriver": {
+            "target": "Package",
+            "version": "[4.20.0, )"
           },
           "SharpCompress": {
             "target": "Package",

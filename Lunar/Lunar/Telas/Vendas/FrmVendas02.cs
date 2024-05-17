@@ -2038,7 +2038,7 @@ namespace Lunar.Telas.Vendas
                         //            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
                         //    }
                         //}
-                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorTotal, valorComDesconto, decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFCe, listaProdutosNFe, venda.Cliente, venda, null, null);
+                        xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorTotal, valorComDesconto, decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFCe, listaProdutosNFe, venda.Cliente, venda, null, null, "");
                         if (!String.IsNullOrEmpty(xmlStrEnvio))
                         {
                             enviarXMLNFCeParaApi(xmlStrEnvio);

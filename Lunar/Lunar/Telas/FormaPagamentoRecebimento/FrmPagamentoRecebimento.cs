@@ -1236,6 +1236,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 concluirRecebimentoContaPagar();
             if (listaOrdemServico.Count > 0)
                 concluirRecebimentoOrdemServicoAgrupada();
+            if (origem.Equals("CONDICIONAL"))
+                concluirRecebimentoCondicional();
         }
 
         private void concluirRecebimentoSinalOs()
@@ -1928,6 +1930,427 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 GenericaDesktop.ShowErro("Erro ao encerrar a O.S " + ordemServico.Id + "\n\n" + err.Message);
             }
         }
+
+
+        private void concluirRecebimentoCondicional()
+        {
+            try
+            {
+                Venda venda = new Venda();
+                venda.Cancelado = false;
+                venda.Cliente = condicional.Cliente;
+                venda.Concluida = true;
+                venda.DataVenda = DateTime.Now;
+                venda.EmpresaFilial = condicional.Filial;
+                if(condicional.Cliente.EnderecoPrincipal != null)
+                    venda.EnderecoCliente = condicional.Cliente.EnderecoPrincipal.Logradouro + ", " + condicional.Cliente.EnderecoPrincipal.Numero;
+                venda.Nfe = null;
+                venda.NomeCliente = condicional.Cliente.RazaoSocial;
+                venda.NomeComputador = Environment.MachineName;
+                venda.Observacoes = "CONDICIONAL";
+                venda.PessoaDependente = null;
+                venda.PlanoConta = Sessao.parametroSistema.PlanoContaVenda;
+                venda.ValorAcrescimo = 0;
+                venda.ValorDesconto = 0;
+                venda.ValorFinal = condicional.ValorSaldo;
+                venda.ValorProdutos = condicional.ValorSaldo;
+                venda.Vendedor = condicional.Vendedor;
+                Controller.getInstance().salvar(venda);
+
+                IList<CondicionalProduto> listaProdutoCondicional = new List<CondicionalProduto>();
+                CondicionalProdutoController condicionalProdutoController = new CondicionalProdutoController();
+                listaProdutoCondicional = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
+                foreach(CondicionalProduto condProd in listaProdutoCondicional)
+                {
+                    //if(condProd.)
+                }
+                FormaPagamento formaPagamento = new FormaPagamento();
+                IList<ContaReceber> lis = new List<ContaReceber>();
+                var records = gridRecebimento.View.Records;
+                decimal somaTotalRecebido = 0;
+                foreach (var record in records)
+                {
+                    VendaFormaPagamento vendaPagamento = new VendaFormaPagamento();
+                    Caixa caixa = new Caixa();
+                    var dataRowView = record.Data as DataRowView;
+                    formaPagamento = new FormaPagamento();
+                    formaPagamento.Id = int.Parse(dataRowView.Row["Id"].ToString());
+                    formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    somaTotalRecebido = somaTotalRecebido + decimal.Parse(dataRowView.Row["Valor"].ToString());
+                    if (formaPagamento.Id > 0)
+                    {
+                        vendaPagamento.Venda = venda;
+                        vendaPagamento.FormaPagamento = formaPagamento;
+                        vendaPagamento.AdquirenteCartao = null;
+                        vendaPagamento.Troco = 0;
+                        vendaPagamento.ValorRecebido = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                        vendaPagamento.AutorizacaoCartao = "";
+                        vendaPagamento.BandeiraCartao = null;
+                        vendaPagamento.Cartao = false;
+                        vendaPagamento.TipoCartao = "";
+                        caixa.IdOrigem = venda.Id.ToString();
+
+                        //Dinheiro
+                        if (formaPagamento.Id == 1)
+                        {
+                            caixa.Conciliado = true;
+                            caixa.Concluido = true;
+                            caixa.ContaBancaria = null;
+                            caixa.DataLancamento = DateTime.Now;
+                            caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
+                            caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                            caixa.FormaPagamento = formaPagamento;
+                            caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                            caixa.TabelaOrigem = origem;
+                            caixa.Tipo = "E";
+                            caixa.Usuario = Sessao.usuarioLogado;
+                            caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            caixa.Pessoa = venda.Cliente;
+                            if (pessoaCobrador != null)
+                            {
+                                if (pessoaCobrador.Id > 0)
+                                    caixa.Cobrador = pessoaCobrador;
+                            }
+                            Controller.getInstance().salvar(caixa);
+                        }
+                        //Cartão
+                        else if (formaPagamento.Id == 2)
+                        {
+                            BandeiraCartao bandeiraCartao = new BandeiraCartao();
+                            bandeiraCartao.Id = int.Parse(dataRowView.Row["IdBandeira"].ToString());
+                            bandeiraCartao = (BandeiraCartao)Controller.getInstance().selecionar(bandeiraCartao);
+
+                            Parcelamento parcelamento = new Parcelamento();
+                            parcelamento.Id = int.Parse(dataRowView.Row["IdParcelamento"].ToString());
+                            parcelamento = (Parcelamento)Controller.getInstance().selecionar(parcelamento);
+
+                            AdquirenteCartao adquirenteCartao = new AdquirenteCartao();
+                            adquirenteCartao.Id = int.Parse(dataRowView.Row["Adquirente"].ToString());
+                            adquirenteCartao = (AdquirenteCartao)Controller.getInstance().selecionar(adquirenteCartao);
+                            decimal valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+
+                            caixa.Conciliado = true;
+                            caixa.Concluido = true;
+                            caixa.ContaBancaria = null;
+                            caixa.DataLancamento = DateTime.Now;
+                            caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
+                            caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                            caixa.FormaPagamento = formaPagamento;
+                            caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                            caixa.TabelaOrigem = origem;
+                            caixa.Tipo = "E";
+                            caixa.Usuario = Sessao.usuarioLogado;
+                            caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            caixa.Pessoa = venda.Cliente;
+                            if (pessoaCobrador != null)
+                            {
+                                if (pessoaCobrador.Id > 0)
+                                    caixa.Cobrador = pessoaCobrador;
+                            }
+                            Controller.getInstance().salvar(caixa);
+                            vendaPagamento.AdquirenteCartao = adquirenteCartao;
+                            vendaPagamento.AutorizacaoCartao = dataRowView.Row["AutorizacaoCartao"].ToString();
+                            vendaPagamento.BandeiraCartao = bandeiraCartao;
+                            vendaPagamento.Cartao = true;
+                            vendaPagamento.ParcelamentoFk = parcelamento;
+                            try { vendaPagamento.Parcelamento = int.Parse(parcelamento.Parcelas.ToString()); } catch { }
+                            vendaPagamento.TipoCartao = dataRowView.Row["TipoCartao"].ToString();
+                        }
+                        //PIX
+                        else if (formaPagamento.Id == 3)
+                        {
+                            ContaBancaria contaBancaria = new ContaBancaria();
+                            contaBancaria.Id = int.Parse(dataRowView.Row["ContaBancaria"].ToString());
+                            contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                            if (ordemServico.Id > 0)
+                            {
+                                caixa.Conciliado = true;
+                                caixa.Concluido = true;
+                                caixa.ContaBancaria = contaBancaria;
+                                caixa.DataLancamento = DateTime.Now;
+                                caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
+                                caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                                caixa.FormaPagamento = formaPagamento;
+                                caixa.PlanoConta = Sessao.planoContaVenda;
+                                caixa.TabelaOrigem = origem;
+                                caixa.Tipo = "E";
+                                caixa.Usuario = Sessao.usuarioLogado;
+                                caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                                caixa.Pessoa = ordemServico.Cliente;
+                                if (pessoaCobrador != null)
+                                {
+                                    if (pessoaCobrador.Id > 0)
+                                        caixa.Cobrador = pessoaCobrador;
+                                }
+                                vendaPagamento.ContaBancaria = contaBancaria;
+                                Controller.getInstance().salvar(caixa);
+                            }
+                        }
+                        //Depósito ou Transferência
+                        else if (formaPagamento.Id == 4)
+                        {
+                            ContaBancaria contaBancaria = new ContaBancaria();
+                            contaBancaria.Id = int.Parse(dataRowView.Row["ContaBancaria"].ToString());
+                            contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                            if (venda.Id > 0)
+                            {
+                                caixa.Conciliado = true;
+                                caixa.Concluido = true;
+                                caixa.ContaBancaria = contaBancaria;
+                                caixa.DataLancamento = DateTime.Now;
+                                caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
+                                caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                                caixa.FormaPagamento = formaPagamento;
+                                caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                                caixa.TabelaOrigem = origem;
+                                caixa.Tipo = "E";
+                                caixa.Usuario = Sessao.usuarioLogado;
+                                caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                                caixa.Pessoa = venda.Cliente;
+                                if (pessoaCobrador != null)
+                                {
+                                    if (pessoaCobrador.Id > 0)
+                                        caixa.Cobrador = pessoaCobrador;
+                                }
+                                vendaPagamento.ContaBancaria = contaBancaria;
+                                Controller.getInstance().salvar(caixa);
+                            }
+                        }
+                        //Boleto
+                        else if (formaPagamento.Id == 5)
+                        {
+                            GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
+                            Pessoa clienteBoleto = new Pessoa();
+                            if (listaCrediario.Count > 0)
+                            {
+                                int c = 0;
+
+                                foreach (ContaReceber contaReceber in listaCrediario)
+                                {
+                                    c++;
+                                    contaReceber.Concluido = true;
+                                    contaReceber.Parcela = c.ToString();
+                                    contaReceber.Documento = "V" + venda.Id + "/" + c;
+                                    Controller.getInstance().salvar(contaReceber);
+                                    lis.Add(contaReceber);
+                                    clienteBoleto = contaReceber.Cliente;
+                                }
+                                gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
+                            }
+                        }
+                        //Crediário
+                        else if (formaPagamento.Id == 6)
+                        {
+                            if (listaCrediario.Count > 0)
+                            {
+                                int c = 0;
+
+                                foreach (ContaReceber contaReceber in listaCrediario)
+                                {
+                                    c++;
+                                    contaReceber.Concluido = true;
+                                    contaReceber.Parcela = c.ToString();
+                                    contaReceber.Documento = "V" + venda.Id + "/" + c;
+                                    Controller.getInstance().salvar(contaReceber);
+                                    lis.Add(contaReceber);
+                                }
+                            }
+                        }
+                        //Cheque
+                        else if (formaPagamento.Id == 7)
+                        {
+                            if (listaCheque.Count > 0)
+                            {
+                                int c = 0;
+                                foreach (Cheque cheque in listaCheque)
+                                {
+                                    c++;
+                                    caixa.Conciliado = true;
+                                    caixa.Concluido = true;
+                                    caixa.ContaBancaria = null;
+                                    caixa.DataLancamento = DateTime.Now;
+                                    caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
+                                    caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                                    caixa.FormaPagamento = formaPagamento;
+                                    caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                                    caixa.TabelaOrigem = origem;
+                                    caixa.Tipo = "E";
+                                    caixa.Usuario = Sessao.usuarioLogado;
+                                    caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                                    caixa.Pessoa = venda.Cliente;
+                                    if (pessoaCobrador != null)
+                                    {
+                                        if (pessoaCobrador.Id > 0)
+                                            caixa.Cobrador = pessoaCobrador;
+                                    }
+                                    Controller.getInstance().salvar(caixa);
+                                    Controller.getInstance().salvar(cheque);
+                                    if (Sessao.parametroSistema.ChequeContaReceber == true)
+                                    {
+                                        ContaReceber contaReceber = new ContaReceber();
+                                        contaReceber.Id = 0;
+                                        contaReceber.NomeCliente = venda.Cliente.RazaoSocial;
+                                        contaReceber.CnpjCliente = venda.Cliente.Cnpj;
+                                        contaReceber.Data = DateTime.Now;
+                                        contaReceber.Descricao = "Venda - " + venda.Id + " - CHEQUE";
+                                        contaReceber.EmpresaFilial = Sessao.empresaFilialLogada;
+                                        contaReceber.ValorParcela = cheque.Valor;
+                                        contaReceber.ValorTotal = cheque.Valor;
+                                        contaReceber.Juro = 0;
+                                        contaReceber.Multa = 0;
+                                        if (venda.Cliente.EnderecoPrincipal != null)
+                                            contaReceber.EnderecoCliente = venda.Cliente.EnderecoPrincipal.Logradouro + ", " + venda.Cliente.EnderecoPrincipal.Numero + " - " + venda.Cliente.EnderecoPrincipal.Complemento;
+                                        else
+                                            contaReceber.EnderecoCliente = "";
+                                        contaReceber.Documento = "V" + venda.Id + "/" + c;
+                                        contaReceber.FormaPagamento = formaPagamento;
+                                        contaReceber.Recebido = false;
+                                        contaReceber.Vencimento = cheque.Vencimento;
+                                        contaReceber.Venda = null;
+                                        contaReceber.Venda = venda;
+                                        contaReceber.Parcela = c.ToString();
+                                        contaReceber.VendaFormaPagamento = null;
+                                        contaReceber.Cliente = venda.Cliente;
+                                        contaReceber.Origem = "VENDA";
+                                        contaReceber.Concluido = true;
+                                        Controller.getInstance().salvar(contaReceber);
+                                        lis.Add(contaReceber);
+                                    }
+                                }
+                            }
+                        }
+                        //Crédito Cliente
+                        else if (formaPagamento.Id == 8)
+                        {
+                            CreditoCliente creditoCliente = new CreditoCliente();
+                            creditoCliente.Cliente = clienteLista;
+                            creditoCliente.DataUtilizacao = DateTime.Now;
+                            creditoCliente.EmpresaFilial = Sessao.empresaFilialLogada;
+                            creditoCliente.Origem = origem;
+                            creditoCliente.Valor = 0;
+                            creditoCliente.ValorUtilizado = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            //ajustar credito do cliente
+                            string origemPagamentoCredito = "";
+                            DateTime dataCaixaCreditoOriginal = DateTime.Now;
+                            IList<CreditoCliente> listaCreditoCliente = new List<CreditoCliente>();
+                            CreditoClienteController creditoClienteController = new CreditoClienteController();
+                            listaCreditoCliente = creditoClienteController.selecionarCreditoPorClienteEOrigem(clienteLista.Id, "VENDA", venda.Id.ToString());
+                            if (listaCreditoCliente.Count > 0)
+                            {
+                                // Extrair as formas de pagamento para uma lista de strings
+                                List<string> formasPagamento = new List<string>();
+                                foreach (CreditoCliente cred in listaCreditoCliente)
+                                {
+                                    formasPagamento.Add(cred.FormaPagamento);
+                                    if (cred.DataCaixa != null)
+                                        dataCaixaCreditoOriginal = cred.DataCaixa;
+                                }
+
+                                // Unir as formas de pagamento em uma única string, separadas por "/"
+                                origemPagamentoCredito = string.Join("/", formasPagamento);
+                            }
+                            creditoCliente.FormaPagamento = origemPagamentoCredito;
+                            creditoCliente.DataCaixa = dataCaixaCreditoOriginal;
+
+                            Controller.getInstance().salvar(creditoCliente);
+
+                            caixa.Conciliado = true;
+                            caixa.Concluido = true;
+                            caixa.ContaBancaria = null;
+                            caixa.DataLancamento = DateTime.Now;
+                            caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial + "-ORIGEM: " + origemPagamentoCredito + " - DT_CX: " + dataCaixaCreditoOriginal.ToShortDateString();
+                            //colocar aqui forma q foi a origem do credito!
+                            caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                            caixa.FormaPagamento = formaPagamento;
+                            caixa.PlanoConta = Sessao.planoContaRecebimentoContaReceber;
+                            caixa.TabelaOrigem = origem;
+                            caixa.Tipo = "E";
+                            caixa.Usuario = Sessao.usuarioLogado;
+                            caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                            caixa.Pessoa = venda.Cliente;
+                            if (pessoaCobrador != null)
+                            {
+                                if (GenericaDesktop.ShowConfirmacao("Deseja inserir cobrador no recebimento com crédito? "))
+                                {
+                                    if (pessoaCobrador.Id > 0)
+                                        caixa.Cobrador = pessoaCobrador;
+                                }
+                                else
+                                    caixa.Cobrador = null;
+                            }
+                            Controller.getInstance().salvar(caixa);
+
+
+                        }
+                    }
+                    //listaOrdemServicoPagamento.Add(ordemServicoPagamento);
+                }
+                //foreach (OrdemServicoPagamento ordemServicoPagamento1 in listaOrdemServicoPagamento)
+                //{
+                //    Controller.getInstance().salvar(ordemServicoPagamento1);
+                //}
+                
+                if (descontoRecebido > 0)
+                {
+                    venda.ValorDesconto = descontoRecebido;
+                    venda.ValorFinal = somaTotalRecebido;
+                    decimal descontoPercentualNaOS = ((descontoRecebido * 100) / (venda.ValorFinal + descontoRecebido));
+                    ratearDescontoItens(descontoPercentualNaOS);
+                }
+                if (acrescimoRecebido > 0)
+                {
+                    decimal valorOriginal = venda.ValorFinal;
+                    venda.ValorAcrescimo = acrescimoRecebido;
+                    venda.ValorFinal = somaTotalRecebido;
+                    //decimal acrescimoNaOS = ((acrescimoRecebido * 100) / (ordemServico.ValorTotal + acrescimoRecebido));
+                    decimal acrescimoNaOS = Math.Abs(((valorOriginal - venda.ValorFinal) / valorOriginal) * 100);
+                    ratearDescontoItens(acrescimoNaOS);
+                }
+
+                //MensagemPosVendas
+                MensagemPosVenda msgPos = new MensagemPosVenda();
+                if (Sessao.parametroSistema.AtivarMensagemPosVendas == true && venda.Cliente != null && Sessao.parametroSistema.MensagemPosVendaAposFinalizarOs == true)
+                {
+                    if (venda.Cliente.Id > 0)
+                    {
+                        msgPos.DataAgendamento = DateTime.Now.AddMinutes(int.Parse(Sessao.parametroSistema.MensagemPosVendasQtdDiasOuMinutos));
+                        if (msgPos.DataAgendamento.TimeOfDay > TimeSpan.Parse("18:00:00"))
+                        {
+                            // Ajustar para 17:59:00
+                            msgPos.DataAgendamento = new DateTime(msgPos.DataAgendamento.Year, msgPos.DataAgendamento.Month, msgPos.DataAgendamento.Day, 17, 59, 00);
+                        }
+                        msgPos.FlagEnviada = false;
+                        msgPos.NomeCliente = venda.Cliente.NomeFantasia;
+                        msgPos.Pessoa = venda.Cliente;
+                        Sessao.MensagensAgendadas.Add(msgPos);
+                        Controller.getInstance().salvar(msgPos);
+                    }
+                }
+
+
+                Controller.getInstance().salvar(venda);
+                GenericaDesktop generica = new GenericaDesktop();
+                IList<VendaItens> listaProdutos = new List<VendaItens>();
+                VendaItensController vendaItensController = new VendaItensController();
+                listaProdutos = vendaItensController.selecionarProdutosPorVenda(venda.Id);
+                foreach (VendaItens vendaItens in listaProdutos)
+                {
+                    generica.atualizarEstoqueNaoConciliado(vendaItens.Produto, vendaItens.Quantidade, false, "VENDA " + venda.Id.ToString(), "VENDA: " + venda.Id + " CLI: " + venda.Cliente.RazaoSocial, venda.Cliente, DateTime.Now, null);
+                }
+                if (lis.Count > 0)
+                {
+                    FrmImprimirDuplicata frDup = new FrmImprimirDuplicata(venda.Cliente, lis);
+                    frDup.ShowDialog();
+                }
+                GenericaDesktop.ShowInfo("Venda encerrada com sucesso");
+                this.Close();
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowErro("Erro ao encerrar a Venda: " + err.Message);
+            }
+        }
+
 
         private void ratearDescontoItens(decimal percentualDesconto)
         {
