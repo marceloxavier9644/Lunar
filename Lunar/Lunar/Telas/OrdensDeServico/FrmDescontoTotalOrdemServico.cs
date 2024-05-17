@@ -21,6 +21,16 @@ namespace Lunar.Telas.OrdensDeServico
             txtTotalComDescontoProduto.Texts = string.Format("{0:0.00}", totalProdutos);
             txtTotalComDescontoServico.Texts = string.Format("{0:0.00}", totalServicos);
 
+            if(totalServicos <= 0)
+            {
+                txtDescontoPercentualServico.Enabled = false;
+                txtDescontoEmValorServico.Enabled = false;
+            }
+            if (totalProdutos <= 0)
+            {
+                txtDescontoPercentualProduto.Enabled = false;
+                txtDescontoEmValorProduto.Enabled = false;
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -144,6 +154,18 @@ namespace Lunar.Telas.OrdensDeServico
             txtValorTotalComDesconto.Text = totalGeralComDesconto.ToString("N2");
 
             CalcularPercentualDescontoGeral();
+            if (totalComDescontoProduto < 0)
+            {
+                GenericaDesktop.ShowAlerta("O valor final do produto não pode ser menor que zero!");
+                txtDescontoPercentualProduto.Texts = "0";
+                txtDescontoEmValorProduto.Texts = "0";
+            }
+            if (totalComDescontoServico < 0)
+            {
+                GenericaDesktop.ShowAlerta("O valor final do serviço não pode ser menor que zero!");
+                txtDescontoPercentualServico.Texts = "0";
+                txtDescontoEmValorServico.Texts = "0";
+            }
         }
 
         private void TxtTotalGeralComDesconto__TextChanged(object sender, EventArgs e)

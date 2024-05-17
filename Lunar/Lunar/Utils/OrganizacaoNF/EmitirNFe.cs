@@ -1878,125 +1878,152 @@ namespace Lunar.Utils.OrganizacaoNF
                 {
                     decimal valorRecebidoSomado = 0;
                     int pass = 0;
-                    detPag = new TNFeInfNFePagDetPag[listaPagamentoOs.Count];
-                    detPag2 = new TNFeInfNFePagDetPag[listaPagamentoOs.Count];
-                    foreach (OrdemServicoPagamento vendaFormaPagamento in listaPagamentoOs)
+                    detPag = new TNFeInfNFePagDetPag[1];
+                    detPag2 = new TNFeInfNFePagDetPag[1];
+                    OrdemServicoPagamento vendaFormaPagamento = new OrdemServicoPagamento();
+                    foreach (OrdemServicoPagamento vendaFormaPagamento1 in listaPagamentoOs)
                     {
-
-                        //essa funcao aqui é apenas pra separar o valor do serviço, senao o valor de troco daria erro
-                        if (vendaFormaPagamento.OrdemServico.ValorProduto < vendaFormaPagamento.ValorRecebido && listaPagamentoOs.Count == 1)
-                        {
-                            vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.OrdemServico.ValorProduto;
-                        }
-                        //Essa aqui é pra verificar sem tem mais de 1 forma de pagamento e se possui produto e serviço pra ratear o valor recebido em 
-                        //cada forma
-                        //else if(vendaFormaPagamento.OrdemServico.ValorProduto > vendaFormaPagamento.ValorRecebido)
-                        //{
-                        if (vendaFormaPagamento.OrdemServico.ValorServico > 0 && listaPagamentoOs.Count > 1)
-                        {
-                            pass++;
-                            decimal percentual = ((vendaFormaPagamento.ValorRecebido / vendaFormaPagamento.OrdemServico.ValorTotal) * 100);
-                            vendaFormaPagamento.ValorRecebido = ((percentual / 100) * vendaFormaPagamento.OrdemServico.ValorProduto);
-                            valorRecebidoSomado = valorRecebidoSomado + vendaFormaPagamento.ValorRecebido;
-                            if (pass == listaPagamentoOs.Count)
-                            {
-                                //Se é a ultima forma de pagamento deve arredonar os valores
-                                if (valorRecebidoSomado < vendaFormaPagamento.OrdemServico.ValorProduto)
-                                {
-                                    decimal diferenca = vendaFormaPagamento.OrdemServico.ValorProduto - valorRecebidoSomado;
-                                    vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.ValorRecebido + diferenca;
-                                }
-                                else if (valorRecebidoSomado > vendaFormaPagamento.OrdemServico.ValorProduto)
-                                {
-                                    decimal diferenca = valorRecebidoSomado - vendaFormaPagamento.OrdemServico.ValorProduto;
-                                    vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.ValorRecebido - diferenca;
-                                }
-                            }
-                        }
-                        //}
-
-                        //Funcao para gerar o troco certinho na nfce
-                        if (vendaFormaPagamento.Troco > 0 && vendaFormaPagamento.FormaPagamento.Descricao.Contains("DIN"))
-                            vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.ValorRecebido + vendaFormaPagamento.Troco;
-
-                        i++;
-                        string creditoDebito = "";
-                        TNFeInfNFePagDetPagIndPag indPagamento;
-                        if (vendaFormaPagamento.FormaPagamento.Boleto || vendaFormaPagamento.FormaPagamento.Cheque || vendaFormaPagamento.FormaPagamento.Crediario)
-                            indPagamento = TNFeInfNFePagDetPagIndPag.Item1;
-                        else
-                            indPagamento = TNFeInfNFePagDetPagIndPag.Item0;
-
-                        if (vendaFormaPagamento.FormaPagamento.Cartao == true)
-                        {
-                            AdquirenteCartao adquirenteCartao = new AdquirenteCartao();
-                            AdquirenteCartaoController adquirenteCartaoController = new AdquirenteCartaoController();
-                            IList<AdquirenteCartao> listaAdquirentes = adquirenteCartaoController.selecionarTodasAdquirentes();
-                            if (listaAdquirentes.Count > 0)
-                            {
-                                foreach (AdquirenteCartao adquirente in listaAdquirentes)
-                                {
-                                    adquirenteCartao = adquirente;
-                                }
-                            }
-
-                            if (vendaFormaPagamento.TipoCartao.Contains("Crédito") || vendaFormaPagamento.TipoCartao.Contains("DITO"))
-                            {
-                                creditoDebito = "03";
-                                indPagamento = TNFeInfNFePagDetPagIndPag.Item1;
-                            }
-
-                            //Debito
-                            else
-                            {
-                                creditoDebito = "04";
-                                indPagamento = TNFeInfNFePagDetPagIndPag.Item0;
-                            }
-
-                            detPag = new TNFeInfNFePagDetPag[]
-                            {
-                            new TNFeInfNFePagDetPag
-                            {
-                                indPag = indPagamento,
-                                tPag = creditoDebito,
-                                vPag = formatMoedaNf(vendaFormaPagamento.ValorRecebido),
-                                card = new TNFeInfNFePagDetPagCard
-                                {
-                                    tpIntegra = TNFeInfNFePagDetPagCardTpIntegra.Item2,
-                                    CNPJ = adquirenteCartao.Cnpj,
-                                    tBand = vendaFormaPagamento.BandeiraCartao.CodigoSefaz
-                                }
-                            }
-                            };
-                        }
-                        else if (vendaFormaPagamento.FormaPagamento.CodigoSefaz.Equals("99"))
-                        {
-                            detPag = new TNFeInfNFePagDetPag[]
-                                             {
-                            new TNFeInfNFePagDetPag
-                            {
-                                indPag = indPagamento,
-                                xPag = vendaFormaPagamento.FormaPagamento.Descricao,
-                                tPag = vendaFormaPagamento.FormaPagamento.CodigoSefaz,
-                                vPag = formatMoedaNf(vendaFormaPagamento.ValorRecebido),
-                            }
-                            };
-                        }
-                        else
-                        {
-                            detPag = new TNFeInfNFePagDetPag[]
-                            {
-                            new TNFeInfNFePagDetPag
-                            {
-                                indPag = indPagamento,
-                                tPag = vendaFormaPagamento.FormaPagamento.CodigoSefaz,
-                                vPag = formatMoedaNf(vendaFormaPagamento.ValorRecebido),
-                            }
-                            };
-                        }
-                        detPag2[i - 1] = detPag[0];
+                        vendaFormaPagamento = vendaFormaPagamento1;
                     }
-                    return detPag2;
+                    vendaFormaPagamento.ValorRecebido = 0;
+                        OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();
+                    IList<OrdemServicoProduto> listaProdutos = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(vendaFormaPagamento.OrdemServico.Id);
+                    foreach (OrdemServicoProduto osProd in listaProdutos)
+                    {
+                        vendaFormaPagamento.ValorRecebido = osProd.ValorTotal + vendaFormaPagamento.ValorRecebido;
+                    }
+                    //foreach (OrdemServicoPagamento vendaFormaPagamento in listaPagamentoOs)
+                    //{
+
+                    //    //essa funcao aqui é apenas pra separar o valor do serviço, senao o valor de troco daria erro
+                    //    if (vendaFormaPagamento.OrdemServico.ValorProduto < vendaFormaPagamento.ValorRecebido && listaPagamentoOs.Count == 1)
+                    //    {
+                    //        OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();
+                    //        IList<OrdemServicoProduto> listaProdutos = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(vendaFormaPagamento.OrdemServico.Id);
+                    //        foreach(OrdemServicoProduto osProd in listaProdutos)
+                    //        {
+                    //            vendaFormaPagamento.ValorRecebido = osProd.ValorTotal + vendaFormaPagamento.ValorRecebido;
+                    //        }
+                    //    }
+                    //    //Essa aqui é pra verificar sem tem mais de 1 forma de pagamento e se possui produto e serviço pra ratear o valor recebido em 
+                    //    //cada forma
+                    //    //else if(vendaFormaPagamento.OrdemServico.ValorProduto > vendaFormaPagamento.ValorRecebido)
+                    //    //{
+                    //    if (vendaFormaPagamento.OrdemServico.ValorServico > 0 && listaPagamentoOs.Count > 1)
+                    //    {
+                    //        pass++;
+                    //        decimal percentual = ((vendaFormaPagamento.ValorRecebido / vendaFormaPagamento.OrdemServico.ValorTotal) * 100);
+                    //        vendaFormaPagamento.ValorRecebido = ((percentual / 100) * vendaFormaPagamento.OrdemServico.ValorProduto);
+                    //        valorRecebidoSomado = valorRecebidoSomado + vendaFormaPagamento.ValorRecebido;
+                    //        if (pass == listaPagamentoOs.Count)
+                    //        {
+                    //            //Se é a ultima forma de pagamento deve arredonar os valores
+                    //            if (valorRecebidoSomado < vendaFormaPagamento.OrdemServico.ValorProduto)
+                    //            {
+                    //                decimal diferenca = vendaFormaPagamento.OrdemServico.ValorProduto - valorRecebidoSomado;
+                    //                vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.ValorRecebido + diferenca;
+                    //            }
+                    //            else if (valorRecebidoSomado > vendaFormaPagamento.OrdemServico.ValorProduto)
+                    //            {
+                    //                decimal diferenca = valorRecebidoSomado - vendaFormaPagamento.OrdemServico.ValorProduto;
+                    //                vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.ValorRecebido - diferenca;
+                    //            }
+                    //        }
+                    //    }
+                    //    //}
+
+                    //    //Funcao para gerar o troco certinho na nfce
+                    //    if (vendaFormaPagamento.Troco > 0 && vendaFormaPagamento.FormaPagamento.Descricao.Contains("DIN"))
+                    //        vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.ValorRecebido + vendaFormaPagamento.Troco;
+
+                    //    i++;
+                    //    string creditoDebito = "";
+                    //    TNFeInfNFePagDetPagIndPag indPagamento;
+                    //    if (vendaFormaPagamento.FormaPagamento.Boleto || vendaFormaPagamento.FormaPagamento.Cheque || vendaFormaPagamento.FormaPagamento.Crediario)
+                    //        indPagamento = TNFeInfNFePagDetPagIndPag.Item1;
+                    //    else
+                    //        indPagamento = TNFeInfNFePagDetPagIndPag.Item0;
+
+                    //    if (vendaFormaPagamento.FormaPagamento.Cartao == true)
+                    //    {
+                    //        AdquirenteCartao adquirenteCartao = new AdquirenteCartao();
+                    //        AdquirenteCartaoController adquirenteCartaoController = new AdquirenteCartaoController();
+                    //        IList<AdquirenteCartao> listaAdquirentes = adquirenteCartaoController.selecionarTodasAdquirentes();
+                    //        if (listaAdquirentes.Count > 0)
+                    //        {
+                    //            foreach (AdquirenteCartao adquirente in listaAdquirentes)
+                    //            {
+                    //                adquirenteCartao = adquirente;
+                    //            }
+                    //        }
+
+                    //        if (vendaFormaPagamento.TipoCartao.Contains("Crédito") || vendaFormaPagamento.TipoCartao.Contains("DITO"))
+                    //        {
+                    //            creditoDebito = "03";
+                    //            indPagamento = TNFeInfNFePagDetPagIndPag.Item1;
+                    //        }
+
+                    //        //Debito
+                    //        else
+                    //        {
+                    //            creditoDebito = "04";
+                    //            indPagamento = TNFeInfNFePagDetPagIndPag.Item0;
+                    //        }
+
+                    //        detPag = new TNFeInfNFePagDetPag[]
+                    //        {
+                    //        new TNFeInfNFePagDetPag
+                    //        {
+                    //            indPag = indPagamento,
+                    //            tPag = creditoDebito,
+                    //            vPag = formatMoedaNf(vendaFormaPagamento.ValorRecebido),
+                    //            card = new TNFeInfNFePagDetPagCard
+                    //            {
+                    //                tpIntegra = TNFeInfNFePagDetPagCardTpIntegra.Item2,
+                    //                CNPJ = adquirenteCartao.Cnpj,
+                    //                tBand = vendaFormaPagamento.BandeiraCartao.CodigoSefaz
+                    //            }
+                    //        }
+                    //        };
+                    //    }
+                    //    else if (vendaFormaPagamento.FormaPagamento.CodigoSefaz.Equals("99"))
+                    //    {
+                    //        detPag = new TNFeInfNFePagDetPag[]
+                    //                         {
+                    //        new TNFeInfNFePagDetPag
+                    //        {
+                    //            indPag = indPagamento,
+                    //            xPag = vendaFormaPagamento.FormaPagamento.Descricao,
+                    //            tPag = vendaFormaPagamento.FormaPagamento.CodigoSefaz,
+                    //            vPag = formatMoedaNf(vendaFormaPagamento.ValorRecebido),
+                    //        }
+                    //        };
+                    //    }
+                    //    else
+                    //    {
+                    //        detPag = new TNFeInfNFePagDetPag[]
+                    //        {
+                    //        new TNFeInfNFePagDetPag
+                    //        {
+                    //            indPag = indPagamento,
+                    //            tPag = vendaFormaPagamento.FormaPagamento.CodigoSefaz,
+                    //            vPag = formatMoedaNf(vendaFormaPagamento.ValorRecebido),
+                    //        }
+                    //        };
+                    //    }
+                    //    detPag2[i - 1] = detPag[0];
+                    //}
+                    detPag = new TNFeInfNFePagDetPag[]
+                            {
+                            new TNFeInfNFePagDetPag
+                            {
+                                indPag = TNFeInfNFePagDetPagIndPag.Item1,
+                                tPag = "99",
+                                xPag = "Outros",
+                                vPag = formatMoedaNf(vendaFormaPagamento.ValorRecebido),
+                            }
+                            };
+                    return detPag;
                 }
             }
             catch (Exception erro)

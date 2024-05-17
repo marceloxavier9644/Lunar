@@ -11,6 +11,7 @@ using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
+using SharpCompress;
 using Syncfusion.WinForms.DataGrid.Enums;
 using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
@@ -63,6 +64,8 @@ namespace Lunar.Telas.OrdensDeServico
             InitializeComponent();
             txtDataAbertura.Value = DateTime.Now;
             txtDataServico.Value = DateTime.Now;
+            txtHorarioVisita.Value = DateTime.Now.AddHours(2);
+
             if (Sessao.parametroSistema.TipoObjeto != null)
             {
                 txtCodTipoObjeto.Texts = Sessao.parametroSistema.TipoObjeto.Id.ToString();
@@ -1846,10 +1849,15 @@ namespace Lunar.Telas.OrdensDeServico
                 {
                     ordemServico.Cliente = pessoa;
                     ordemServico.DataAbertura = DateTime.Parse(txtDataAbertura.Value.ToString());
-                    if(txtDataServico.Value == null)
+                    if (txtDataServico.Value == null)
                         ordemServico.DataServico = DateTime.Parse("1900-01-01 00:00:00");
                     else
-                        ordemServico.DataServico = DateTime.Parse(txtDataServico.Value.ToString());
+                    {
+                        DateTime dataServico = txtDataServico.Value.Value.Date;
+                        TimeSpan horarioVisita = txtHorarioVisita.Value.Value.TimeOfDay;
+                        DateTime dataServicoCompleta = dataServico.Add(horarioVisita);
+                        ordemServico.DataServico = dataServicoCompleta;
+                    }
                     ordemServico.DataEncerramento = DateTime.Parse("1900-01-01 00:00:00");
                     ordemServico.Filial = Sessao.empresaFilialLogada;
                     ordemServico.NumeroSerie = txtNumeroSerie.Texts;

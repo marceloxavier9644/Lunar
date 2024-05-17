@@ -155,7 +155,7 @@ namespace Lunar.Telas.OrdensDeServico
             if(ordemServico.Status.Equals("ENCERRADA") && ordemServico.DataServico != DateTime.Parse("1900-01-01 00:00:00"))
                 p[15] = (new ReportParameter("DataServico", "DATA SERVIÇO: " + ordemServico.DataServico.ToShortDateString()));
             else if(ordemServico.Status.Equals("ABERTA") && ordemServico.DataServico != DateTime.Parse("1900-01-01 00:00:00"))
-                p[15] = (new ReportParameter("DataServico", "DATA PREVISTA: " + ordemServico.DataServico.ToShortDateString()));
+                p[15] = (new ReportParameter("DataServico", "DATA PREVISTA: " + ordemServico.DataServico.ToShortDateString() + " " + ordemServico.DataServico.ToShortTimeString()));
             else
                 p[15] = (new ReportParameter("DataServico", ""));
             reportViewer1.LocalReport.SetParameters(p);
