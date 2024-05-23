@@ -251,6 +251,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.Net.Http.WebRequest" />
@@ -935,6 +936,12 @@
     <Compile Include="Telas\OrdensDeServico\FrmEntradaValor.Designer.cs">
       <DependentUpon>FrmEntradaValor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmEnvioMensagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmEnvioMensagem.Designer.cs">
+      <DependentUpon>FrmEnvioMensagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\OrdensDeServico\FrmHistoricoOS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1220,6 +1227,8 @@
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.Designer.cs">
       <DependentUpon>FrmImportarCSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\LunarChatIntegracao\LunarChatMensagem.cs" />
+    <Compile Include="Utils\MeuCrediarioIntegracao\MeuCrediario.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFCe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNfe2.cs" />
@@ -1540,6 +1549,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmEntradaValor.resx">
       <DependentUpon>FrmEntradaValor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\FrmEnvioMensagem.resx">
+      <DependentUpon>FrmEnvioMensagem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmHistoricoOS.resx">
       <DependentUpon>FrmHistoricoOS.cs</DependentUpon>

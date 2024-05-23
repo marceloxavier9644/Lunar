@@ -83,7 +83,7 @@ namespace Lunar.Telas.OrdensDeServico
             if (totalProdutos != 0)
             {
                 decimal descontoPercentualProduto = (descontoEmValorProduto / totalProdutos) * 100;
-                txtDescontoPercentualProduto.Texts = descontoPercentualProduto.ToString("N2");
+                txtDescontoPercentualProduto.Texts = descontoPercentualProduto.ToString("N5");
             }
         }
 
@@ -95,7 +95,7 @@ namespace Lunar.Telas.OrdensDeServico
             if (totalServicos != 0)
             {
                 decimal descontoPercentualServico = (descontoEmValorServico / totalServicos) * 100;
-                txtDescontoPercentualServico.Texts = descontoPercentualServico.ToString("N2");
+                txtDescontoPercentualServico.Texts = descontoPercentualServico.ToString("N5");
             }
         }
 

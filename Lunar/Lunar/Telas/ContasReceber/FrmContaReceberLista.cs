@@ -21,6 +21,7 @@ using Syncfusion.XlsIO;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -559,6 +560,7 @@ namespace Lunar.Telas.ContasReceber
         private void iconPesquisar_Click(object sender, EventArgs e)
         {
             pesquisarContaReceber();
+
         }
 
         private void txtCodCliente_KeyPress(object sender, KeyPressEventArgs e)

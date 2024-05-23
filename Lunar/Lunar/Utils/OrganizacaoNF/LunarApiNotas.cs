@@ -1,19 +1,14 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
-using Newtonsoft.Json;
-using Syncfusion.Compression.Zip;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
-using System.Windows;
 
 namespace Lunar.Utils.OrganizacaoNF
 {
@@ -154,6 +149,63 @@ namespace Lunar.Utils.OrganizacaoNF
             return caminho + fileName;
         }
 
-        
+        public async Task<string> coletarArquivosContabeisEConferir(string cnpj, string mes, string ano, string caminho)
+        {
+            string url = "https://lunarsoftware.com.br/painel/api/api-invoice-get.php";
+            HttpClient httpClient = new HttpClient();
+            MultipartFormDataContent form = new MultipartFormDataContent();
+
+            form.Add(new StringContent(cnpj), "cnpj");
+            form.Add(new StringContent(Sessao.serialPainel), "key");
+            form.Add(new StringContent(mes), "month");
+            form.Add(new StringContent(ano), "year");
+            HttpResponseMessage response = await httpClient.PostAsync(url, form);
+
+            string fileName = mes + ano + ".zip";
+            string filePath = Path.Combine(caminho, fileName);
+
+            // Salvar o arquivo zip
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            {
+                using (Stream fileStream = File.OpenWrite(filePath))
+                {
+                    await stream.CopyToAsync(fileStream);
+                }
+            }
+
+            // Verificar se o arquivo zip é válido e contém arquivos dentro
+            bool hasFilesInside = false;
+            using (FileStream fs = new FileStream(filePath, FileMode.Open))
+            {
+                try
+                {
+                    using (System.IO.Compression.ZipArchive archive = new System.IO.Compression.ZipArchive(fs, ZipArchiveMode.Read))
+                    {
+                        // Verifica se há arquivos dentro
+                        if (archive.Entries.Any())
+                        {
+                            hasFilesInside = true;
+                        }
+                    }
+                }
+                catch (InvalidDataException)
+                {
+                    // Se o arquivo zip estiver corrompido ou não for válido, trata o erro aqui
+                    hasFilesInside = false;
+                }
+            }
+
+            // Retorna o caminho do arquivo apenas se houver arquivos dentro
+            if (hasFilesInside)
+            {
+                return filePath;
+            }
+            else
+            {
+                // Se não houver arquivos dentro, exclua o arquivo e retorne null ou uma mensagem indicando a ausência de arquivos
+                File.Delete(filePath);
+                return null;
+            }
+        }
     }
 }

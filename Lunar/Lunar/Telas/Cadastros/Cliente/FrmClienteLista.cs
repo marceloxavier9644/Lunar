@@ -1,6 +1,7 @@
 ﻿using Lunar.Telas.Cadastros.Cliente.PessoaAdicionais;
 using Lunar.Telas.Estoques;
 using Lunar.Utils;
+using Lunar.Utils.MeuCrediarioIntegracao;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -27,6 +28,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Lunar.Utils.MeuCrediarioIntegracao.MeuCrediario;
 
 namespace Lunar.Telas.Cadastros.Cliente
 {
@@ -684,6 +686,122 @@ namespace Lunar.Telas.Cadastros.Cliente
             [JsonProperty("jwt_pucomex")]
             public string JwtPucomex { get; set; }
         }
+
+        private async void btnConsulta_Click(object sender, EventArgs e)
+        {
+            var requisicao = new RequisicaoAnaliseCredito
+            {
+                Propostas = new List<Proposta>
+                {
+                    new Proposta
+                    {
+                        Identificador = "1+2 s/jur",
+                        ValorEntrada = 100,
+                        ValorFinanciado = 120,
+                        QuantidadeParcelas = 2,
+                        PrimeiroVencimento = new DateTime(2024, 6, 22)
+                    }
+                },
+                Cliente = new ClienteProposta
+                {
+                    Identificacao = new Identificacao
+                    {
+                        CPF = "321.321.321-78",
+                        Nome = "Joãozinho da Silva",
+                        RG = "1234567",
+                        RGOrgao = "SSP",
+                        RGOrgaoUF = "SC",
+                        RGDtEmis = new DateTime(2001, 10, 10),
+                        Nascimento = new DateTime(1995, 7, 13),
+                        Sexo = "M",
+                        NomePai = "José da Silva",
+                        NomeMae = "Maria da Silva",
+                        EstadoCivil = "SOLTEIRO"
+                    },
+                    Conjuge = new Conjuge
+                    {
+                        Nome = "Marciana da Silva",
+                        Nascimento = new DateTime(1996, 3, 30),
+                        Telefone = "(99) 99999-9999"
+                    },
+                    Endereco = new EnderecoProposta
+                    {
+                        CEP = "99999-999",
+                        Logradouro = "Rua Bom Fim",
+                        Numero = "999",
+                        Complemento = "Ap., Lote, Quadra, etc",
+                        Bairro = "Centro",
+                        AnosMoradia = 2
+                    },
+                    Contato = new Contato
+                    {
+                        TelResidencial = "(99) 99999-9999",
+                        TelCelular = "(99) 99999-9999",
+                        TelComercial = "(99) 99999-9999",
+                        Email = "joaozinho13@homail.com"
+                    },
+                    Trabalho = new Trabalho
+                    {
+                        Ocupacao = 21,
+                        Empresa = "Time Travelers LTDA",
+                        TempoEmpresa = 32,
+                        Salario = 2042.14m,
+                        SalarioComprovado = true
+                    },
+                    Social = new Social
+                    {
+                        Dependentes = 2,
+                        Moradia = "ALUGADA",
+                        SituacaoCarro = "QUITADO",
+                        SituacaoMoto = "QUITADO",
+                        Escolaridade = "FUNDAMENTAL_INCOMPLETO",
+                        Referencias = new List<Referencia>
+                        {
+                            new Referencia
+                            {
+                                Nome = "Pedro da Silva",
+                                Relacao = "AMIGO",
+                                TelResidencial = "(99) 99999-9999",
+                                TelCelular = "(99) 99999-9999",
+                                TelComercial = "(99) 99999-9999"
+                            }
+                        }
+                    }
+                },
+                Contratos = new List<Contrato>
+                {
+                    new Contrato
+                    {
+                        Numero = "1-159753",
+                        Data = new DateTime(2024, 4, 17),
+                        Hora = "15:32:14",
+                        Status = null,
+                        ValorTotal = 220,
+                        ValorEntrada = 100,
+                        ValorFinanciado = 120,
+                        Parcelas = new List<Parcela>
+                        {
+                            new Parcela
+                            {
+                                Numero = 1,
+                                Status = null,
+                                ValorVencimento = 60,
+                                DataVencimento = new DateTime(2024, 5, 7),
+                                DataUltimoPagamento = null,
+                                TotalPago = 0,
+                                CapitalAberto = 60,
+                                FormaPagamento = null
+                            }
+                        }
+                    }
+                }
+            };
+
+            MeuCrediario meuCrediario = new MeuCrediario();
+            string resultado = await meuCrediario.EnviarRequisicaoAnaliseCreditoAsync(requisicao);
+            MessageBox.Show(resultado);
+        }
+    
 
     }
 }

@@ -2348,9 +2348,52 @@ namespace Lunar.Utils
                 }
                 else
                 {
-                    GenericaDesktop.ShowAlerta("E-mail não configurado no sistema, acesse o menu parâmetros do sistema na aba Email e configure!");
                     return false;
                 }
+            }
+            catch (Exception erroEmail)
+            {
+                GenericaDesktop.ShowAlerta("Falha no teste de e-mail \n\n" + erroEmail.Message);
+                return false;
+            }
+        }
+
+        public bool enviarEmailPeloLunar(String emailDestino, String assuntoEmail, String tituloCorpoEmail, String corpoEmail, List<String> anexo)
+        {
+            try
+            {
+                MailMessage Email;
+                StringBuilder mensagemEmail = new StringBuilder();
+                Email = new MailMessage();
+                Email.To.Add(new MailAddress(emailDestino));
+                Email.From = new MailAddress("marketing@lunarsoftware.com.br", "Lunar Software");
+                Email.Subject = (assuntoEmail);
+                Email.IsBodyHtml = true;
+                mensagemEmail.Append("<span style=\"font-weight: bold; font-size: 18px\">" + tituloCorpoEmail + "</span><br />");
+                mensagemEmail.Append("<br />" + corpoEmail + "<br />");
+                Email.Body = mensagemEmail.ToString();
+                if (anexo != null)
+                {
+                    for (int i = 0; i < anexo.Count; i++)
+                    {
+                        Email.Attachments.Add(new Attachment(anexo[i]));
+                    }
+                }
+
+                SmtpClient cliente = new SmtpClient("smtp.lunarsoftware.com.br", 587);
+                using (cliente)
+                {
+                    cliente.Credentials = new System.Net.NetworkCredential("marketing@lunarsoftware.com.br", "Aramxs@11");
+                    if (Sessao.parametroSistema.AutenticacaoSsl == true)
+                        cliente.EnableSsl = true;
+                    else
+                        cliente.EnableSsl = false;
+
+                    cliente.Send(Email);
+                }
+                Email.Attachments.Clear();
+                return true;
+
             }
             catch (Exception erroEmail)
             {

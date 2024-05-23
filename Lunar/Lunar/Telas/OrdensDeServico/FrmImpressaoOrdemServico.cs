@@ -6,6 +6,7 @@ using LunarBase.Utilidades;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.OrdensDeServico
@@ -196,7 +197,202 @@ namespace Lunar.Telas.OrdensDeServico
             }
             this.reportViewer1.RefreshReport();
         }
-        private void FrmImpressaoOrdemServico_Load(object sender, EventArgs e)
+
+
+        public string GerarPDF(OrdemServico ordemServico)
+        {
+            try
+            {
+                this.reportViewer1.LocalReport.EnableExternalImages = true;
+                AdicionarFontesDeDados();
+                DefinirParametrosRelatorio();
+                this.reportViewer1.RefreshReport();
+                byte[] bytes = RenderizarRelatorioPDF();
+                string caminhoArquivoTemporario = SalvarPDFEmTemp(bytes);
+
+                return caminhoArquivoTemporario;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao gerar o relatório: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        private void AdicionarFontesDeDados()
+        {
+            // Adicionar fontes de dados ao relatório
+            Microsoft.Reporting.WinForms.ReportDataSource dsOrdem = new Microsoft.Reporting.WinForms.ReportDataSource();
+            dsOrdem.Name = "dsOrdemServico";
+            dsOrdem.Value = this.bindingSourceOrdem;
+            this.reportViewer1.LocalReport.DataSources.Add(dsOrdem);
+
+            Microsoft.Reporting.WinForms.ReportDataSource dsOrdemProd = new Microsoft.Reporting.WinForms.ReportDataSource();
+            dsOrdemProd.Name = "dsOrdemServicoProduto";
+            dsOrdemProd.Value = this.bindingSourceProd;
+            this.reportViewer1.LocalReport.DataSources.Add(dsOrdemProd);
+
+            Microsoft.Reporting.WinForms.ReportDataSource dsOrdemServico = new Microsoft.Reporting.WinForms.ReportDataSource();
+            dsOrdemServico.Name = "dsOrdemServicoServico";
+            dsOrdemServico.Value = this.bindingSourceServico;
+            this.reportViewer1.LocalReport.DataSources.Add(dsOrdemServico);
+        }
+
+        private void DefinirParametrosRelatorio()
+        {
+            // Definir parâmetros do relatório
+            string cnpjFormatado = "";
+            string cpfFormatado = "";
+            string enderecoCliente = "";
+            string bairroCliente = "";
+            string cidadeEmpresa = "";
+            string bairroEmpresa = "";
+            string numeroEndereco = "";
+            string logradouroEmpresa = "";
+            string foneEmpresa = "";
+
+            // CNPJ DA EMPRESA
+            if (ordemServico.Filial.Cnpj.Length == 14)
+            {
+                cnpjFormatado = Convert.ToUInt64(ordemServico.Filial.Cnpj).ToString(@"00\.000\.000\/0000\-00");
+            }
+            else if (ordemServico.Filial.Cnpj.Length == 11)
+            {
+                cnpjFormatado = Convert.ToUInt64(ordemServico.Filial.Cnpj).ToString(@"000\.000\.000\-00");
+            }
+
+            // Cidade e Bairro da empresa
+            if (ordemServico.Filial.Endereco != null)
+            {
+                cidadeEmpresa = ordemServico.Filial.Endereco.Cidade.Descricao + "-" + ordemServico.Filial.Endereco.Cidade.Estado.Uf;
+                logradouroEmpresa = ordemServico.Filial.Endereco.Logradouro + ", " + ordemServico.Filial.Endereco.Numero + " " + ordemServico.Filial.Endereco.Complemento;
+                bairroEmpresa = ordemServico.Filial.Endereco.Bairro;
+            }
+
+            // CPF DO CLIENTE
+            if (ordemServico.Cliente.Cnpj.Length == 14)
+            {
+                cpfFormatado = Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"00\.000\.000\/0000\-00");
+            }
+            else if (ordemServico.Cliente.Cnpj.Length == 11)
+            {
+                cpfFormatado = Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"000\.000\.000\-00");
+            }
+
+            // Cidade e Bairro do cliente
+            string cidadeCliente = "";
+            if (ordemServico.Cliente.EnderecoPrincipal != null)
+            {
+                numeroEndereco = ordemServico.Cliente.EnderecoPrincipal.Numero;
+                bairroCliente = ordemServico.Cliente.EnderecoPrincipal.Bairro;
+                cidadeCliente = ordemServico.Cliente.EnderecoPrincipal.Cidade.Descricao + " - " + ordemServico.Cliente.EnderecoPrincipal.Cidade.Estado.Uf;
+
+                enderecoCliente = ordemServico.Cliente.EnderecoPrincipal.Logradouro + ", " +
+                numeroEndereco + " " + ordemServico.Cliente.EnderecoPrincipal.Complemento + " " + bairroCliente;
+            }
+
+            string foneEmp = GenericaDesktop.RemoveCaracteres(ordemServico.Filial.DddPrincipal + ordemServico.Filial.TelefonePrincipal);
+            foneEmp = foneEmp.Trim();
+            if (foneEmp.Length == 11)
+            {
+                foneEmp = long.Parse(foneEmp).ToString(@"(00) 0 0000-0000");
+            }
+            else if (foneEmp.Length == 9)
+            {
+                foneEmp = long.Parse(foneEmp).ToString(@"00000-0000");
+            }
+            else if (foneEmp.Length == 10)
+            {
+                foneEmp = long.Parse(foneEmp).ToString(@"(00) 0000-0000");
+            }
+
+            string foneCliente = "";
+            if (ordemServico.Cliente.PessoaTelefone != null)
+            {
+                foneCliente = GenericaDesktop.RemoveCaracteres(ordemServico.Cliente.PessoaTelefone.Ddd + ordemServico.Cliente.PessoaTelefone.Telefone);
+                foneCliente = foneCliente.Trim();
+                if (foneCliente.Length == 11)
+                {
+                    foneCliente = long.Parse(foneCliente).ToString(@"(00) 0 0000-0000");
+                }
+                else if (foneCliente.Length == 9)
+                {
+                    foneCliente = long.Parse(foneCliente).ToString(@"00000-0000");
+                }
+                else if (foneCliente.Length == 10)
+                {
+                    foneCliente = long.Parse(foneCliente).ToString(@"(00) 0000-0000");
+                }
+            }
+
+            string status = "";
+            if (ordemServico.Status.Equals("ENCERRADA") && ordemServico.DataServico != DateTime.Parse("1900-01-01 00:00:00"))
+            {
+                status = "DATA SERVIÇO: " + ordemServico.DataServico.ToShortDateString();
+            }
+            else if (ordemServico.Status.Equals("ABERTA") && ordemServico.DataServico != DateTime.Parse("1900-01-01 00:00:00"))
+            {
+                status = "DATA PREVISTA: " + ordemServico.DataServico.ToShortDateString() + " " + ordemServico.DataServico.ToShortTimeString();
+            }
+
+            ReportParameter[] parametros = new ReportParameter[]
+            {
+            new ReportParameter("Empresa", Sessao.empresaFilialLogada.NomeFantasia),
+            new ReportParameter("OrdemServicoID", ordemServico.Id.ToString()),
+            new ReportParameter("CNPJ", cnpjFormatado),
+            new ReportParameter("EnderecoEmpresa", logradouroEmpresa + " " + bairroEmpresa),
+            new ReportParameter("Telefone", foneEmp),
+            new ReportParameter("logo", Sessao.parametroSistema.Logo),
+            new ReportParameter("Cliente", ordemServico.Cliente.RazaoSocial),
+            new ReportParameter("CpfCliente", cpfFormatado),
+            new ReportParameter("EnderecoCliente", enderecoCliente),
+            new ReportParameter("TelefoneCliente", foneCliente),
+            new ReportParameter("Observacoes", ordemServico.Observacoes),
+            new ReportParameter("CidadeEmpresa", cidadeEmpresa),
+            new ReportParameter("InscricaoEstadual", ordemServico.Filial.InscricaoEstadual),
+            new ReportParameter("CidadeCliente", cidadeCliente),
+            new ReportParameter("DataOrdemServico", ordemServico.DataAbertura.ToShortDateString()),
+            new ReportParameter("DataServico", status)
+            };
+
+            this.reportViewer1.LocalReport.SetParameters(parametros);
+        }
+
+        private byte[] RenderizarRelatorioPDF()
+        {
+            var deviceInfo = @"
+                   <DeviceInfo>
+                        <EmbedFonts>None</EmbedFonts>
+                        <DPI>300</DPI>
+                        <RepeatColumnHeaders>False</RepeatColumnHeaders>
+                        <HumanReadablePDF>True</HumanReadablePDF> <!-- Para PDFs mais legíveis -->
+                        <ConsumeContainerWhitespace>True</ConsumeContainerWhitespace> <!-- Remove espaços em branco -->
+                        <ShowHideToggle>False</ShowHideToggle> <!-- Oculta os botões de mostrar/ocultar detalhes -->
+                        <PrintDpiX>300</PrintDpiX> <!-- Configuração de DPI para impressão -->
+                        <PrintDpiY>300</PrintDpiY>
+                        <PageWidth>9.5in</PageWidth> <!-- Largura da página -->
+                        <PageHeight>11.3in</PageHeight> <!-- Altura da página -->
+                        <MarginTop>0.2in</MarginTop> <!-- Margem superior -->
+                        <MarginLeft>0.1in</MarginLeft> <!-- Margem esquerda -->
+                        <MarginRight>0.1in</MarginRight> <!-- Margem direita -->
+                        <MarginBottom>0.2in</MarginBottom> <!-- Margem inferior -->
+                    </DeviceInfo>";
+
+            byte[] bytes = this.reportViewer1.LocalReport.Render("PDF", deviceInfo);
+
+            return bytes;
+        }
+
+        private string SalvarPDFEmTemp(byte[] bytes)
+        {
+            // Salvar o PDF em um arquivo temporário
+            string caminhoArquivoTemporario = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".pdf");
+            File.WriteAllBytes(caminhoArquivoTemporario, bytes);
+
+            return caminhoArquivoTemporario;
+        }
+    
+    private void FrmImpressaoOrdemServico_Load(object sender, EventArgs e)
         {
 
             //this.reportViewer1.RefreshReport();

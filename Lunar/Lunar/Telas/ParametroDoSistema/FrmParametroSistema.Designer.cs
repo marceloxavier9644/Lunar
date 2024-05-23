@@ -97,15 +97,15 @@
             this.txtCodTipoObjeto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtTipoObjeto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabWhatsapp = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.txtIdWhatsapp = new System.Windows.Forms.TextBox();
+            this.txtTokenWhatsapp = new System.Windows.Forms.TextBox();
             this.btnVerificarConexaoWhats = new FontAwesome.Sharp.IconButton();
             this.btnDesconectarWhats = new FontAwesome.Sharp.IconButton();
             this.btnRestaurarSessaoWhats = new FontAwesome.Sharp.IconButton();
             this.btnGerarQR = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
             this.autoLabel18 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtIdWhatsapp = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel17 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtTokenWhatsapp = new Lunar.RJ_UI.Classes.RJTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnConfirmaNumeroWhatsapp = new FontAwesome.Sharp.IconButton();
             this.chkEnvioAgradecimentoCompraWhats = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
@@ -216,6 +216,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
+            this.autoLabel57 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -1368,15 +1369,16 @@
             // 
             // tabWhatsapp
             // 
+            this.tabWhatsapp.Controls.Add(this.autoLabel57);
+            this.tabWhatsapp.Controls.Add(this.txtIdWhatsapp);
+            this.tabWhatsapp.Controls.Add(this.txtTokenWhatsapp);
             this.tabWhatsapp.Controls.Add(this.btnVerificarConexaoWhats);
             this.tabWhatsapp.Controls.Add(this.btnDesconectarWhats);
             this.tabWhatsapp.Controls.Add(this.btnRestaurarSessaoWhats);
             this.tabWhatsapp.Controls.Add(this.btnGerarQR);
             this.tabWhatsapp.Controls.Add(this.label4);
             this.tabWhatsapp.Controls.Add(this.autoLabel18);
-            this.tabWhatsapp.Controls.Add(this.txtIdWhatsapp);
             this.tabWhatsapp.Controls.Add(this.autoLabel17);
-            this.tabWhatsapp.Controls.Add(this.txtTokenWhatsapp);
             this.tabWhatsapp.Controls.Add(this.label3);
             this.tabWhatsapp.Controls.Add(this.btnConfirmaNumeroWhatsapp);
             this.tabWhatsapp.Controls.Add(this.chkEnvioAgradecimentoCompraWhats);
@@ -1402,6 +1404,22 @@
             this.tabWhatsapp.Text = "Integração WhatsApp";
             this.tabWhatsapp.ThemesEnabled = false;
             // 
+            // txtIdWhatsapp
+            // 
+            this.txtIdWhatsapp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdWhatsapp.Location = new System.Drawing.Point(660, 38);
+            this.txtIdWhatsapp.Name = "txtIdWhatsapp";
+            this.txtIdWhatsapp.Size = new System.Drawing.Size(163, 29);
+            this.txtIdWhatsapp.TabIndex = 235;
+            // 
+            // txtTokenWhatsapp
+            // 
+            this.txtTokenWhatsapp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTokenWhatsapp.Location = new System.Drawing.Point(291, 38);
+            this.txtTokenWhatsapp.Name = "txtTokenWhatsapp";
+            this.txtTokenWhatsapp.Size = new System.Drawing.Size(352, 29);
+            this.txtTokenWhatsapp.TabIndex = 234;
+            // 
             // btnVerificarConexaoWhats
             // 
             this.btnVerificarConexaoWhats.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1421,6 +1439,7 @@
             this.btnVerificarConexaoWhats.TabIndex = 233;
             this.btnVerificarConexaoWhats.TabStop = false;
             this.btnVerificarConexaoWhats.UseVisualStyleBackColor = true;
+            this.btnVerificarConexaoWhats.Visible = false;
             this.btnVerificarConexaoWhats.Click += new System.EventHandler(this.btnVerificarConexaoWhats_Click);
             // 
             // btnDesconectarWhats
@@ -1442,6 +1461,7 @@
             this.btnDesconectarWhats.TabIndex = 232;
             this.btnDesconectarWhats.TabStop = false;
             this.btnDesconectarWhats.UseVisualStyleBackColor = true;
+            this.btnDesconectarWhats.Visible = false;
             this.btnDesconectarWhats.Click += new System.EventHandler(this.btnDesconectarWhats_Click);
             // 
             // btnRestaurarSessaoWhats
@@ -1463,6 +1483,7 @@
             this.btnRestaurarSessaoWhats.TabIndex = 231;
             this.btnRestaurarSessaoWhats.TabStop = false;
             this.btnRestaurarSessaoWhats.UseVisualStyleBackColor = true;
+            this.btnRestaurarSessaoWhats.Visible = false;
             this.btnRestaurarSessaoWhats.Click += new System.EventHandler(this.btnRestaurarSessaoWhats_Click);
             // 
             // btnGerarQR
@@ -1484,6 +1505,7 @@
             this.btnGerarQR.TabIndex = 229;
             this.btnGerarQR.TabStop = false;
             this.btnGerarQR.UseVisualStyleBackColor = true;
+            this.btnGerarQR.Visible = false;
             this.btnGerarQR.Click += new System.EventHandler(this.btnGerarQR_Click_2);
             // 
             // label4
@@ -1502,35 +1524,11 @@
             this.autoLabel18.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel18.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel18.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel18.Location = new System.Drawing.Point(610, 17);
+            this.autoLabel18.Location = new System.Drawing.Point(660, 17);
             this.autoLabel18.Name = "autoLabel18";
             this.autoLabel18.Size = new System.Drawing.Size(97, 21);
             this.autoLabel18.TabIndex = 227;
             this.autoLabel18.Text = "ID Integração";
-            // 
-            // txtIdWhatsapp
-            // 
-            this.txtIdWhatsapp.BackColor = System.Drawing.Color.White;
-            this.txtIdWhatsapp.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtIdWhatsapp.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtIdWhatsapp.BorderRadius = 8;
-            this.txtIdWhatsapp.BorderSize = 2;
-            this.txtIdWhatsapp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtIdWhatsapp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtIdWhatsapp.Location = new System.Drawing.Point(600, 33);
-            this.txtIdWhatsapp.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIdWhatsapp.Multiline = false;
-            this.txtIdWhatsapp.Name = "txtIdWhatsapp";
-            this.txtIdWhatsapp.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtIdWhatsapp.PasswordChar = false;
-            this.txtIdWhatsapp.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtIdWhatsapp.PlaceholderText = "";
-            this.txtIdWhatsapp.ReadOnly = false;
-            this.txtIdWhatsapp.Size = new System.Drawing.Size(222, 37);
-            this.txtIdWhatsapp.TabIndex = 4;
-            this.txtIdWhatsapp.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtIdWhatsapp.Texts = "";
-            this.txtIdWhatsapp.UnderlinedStyle = false;
             // 
             // autoLabel17
             // 
@@ -1538,35 +1536,11 @@
             this.autoLabel17.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel17.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel17.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel17.Location = new System.Drawing.Point(347, 17);
+            this.autoLabel17.Location = new System.Drawing.Point(291, 17);
             this.autoLabel17.Name = "autoLabel17";
-            this.autoLabel17.Size = new System.Drawing.Size(174, 21);
+            this.autoLabel17.Size = new System.Drawing.Size(217, 21);
             this.autoLabel17.TabIndex = 225;
-            this.autoLabel17.Text = "Token (Solicitar Revenda)";
-            // 
-            // txtTokenWhatsapp
-            // 
-            this.txtTokenWhatsapp.BackColor = System.Drawing.Color.White;
-            this.txtTokenWhatsapp.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtTokenWhatsapp.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtTokenWhatsapp.BorderRadius = 8;
-            this.txtTokenWhatsapp.BorderSize = 2;
-            this.txtTokenWhatsapp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtTokenWhatsapp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTokenWhatsapp.Location = new System.Drawing.Point(337, 33);
-            this.txtTokenWhatsapp.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTokenWhatsapp.Multiline = false;
-            this.txtTokenWhatsapp.Name = "txtTokenWhatsapp";
-            this.txtTokenWhatsapp.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtTokenWhatsapp.PasswordChar = false;
-            this.txtTokenWhatsapp.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtTokenWhatsapp.PlaceholderText = "";
-            this.txtTokenWhatsapp.ReadOnly = false;
-            this.txtTokenWhatsapp.Size = new System.Drawing.Size(255, 37);
-            this.txtTokenWhatsapp.TabIndex = 3;
-            this.txtTokenWhatsapp.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtTokenWhatsapp.Texts = "";
-            this.txtTokenWhatsapp.UnderlinedStyle = false;
+            this.autoLabel17.Text = "UrlWebhook (Solicitar Revenda)";
             // 
             // label3
             // 
@@ -1665,24 +1639,27 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(36, 112);
+            this.linkLabel1.Location = new System.Drawing.Point(26, 111);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(58, 16);
+            this.linkLabel1.Size = new System.Drawing.Size(322, 16);
             this.linkLabel1.TabIndex = 6;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "leia aqui";
+            this.linkLabel1.Text = "Encontre mais detalhes e contrate agora, clique aqui!";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // chkAceitoContratoWhats
             // 
             this.chkAceitoContratoWhats.BeforeTouchSize = new System.Drawing.Size(259, 21);
             this.chkAceitoContratoWhats.Enabled = false;
             this.chkAceitoContratoWhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkAceitoContratoWhats.Location = new System.Drawing.Point(14, 88);
+            this.chkAceitoContratoWhats.Location = new System.Drawing.Point(268, 156);
             this.chkAceitoContratoWhats.Name = "chkAceitoContratoWhats";
             this.chkAceitoContratoWhats.Size = new System.Drawing.Size(259, 21);
             this.chkAceitoContratoWhats.TabIndex = 5;
             this.chkAceitoContratoWhats.Text = " Aceito os Termos do Contrato";
+            this.chkAceitoContratoWhats.Visible = false;
             this.chkAceitoContratoWhats.CheckStateChanged += new System.EventHandler(this.chkAceitoContratoWhats_CheckStateChanged);
             // 
             // autoLabel16
@@ -1717,6 +1694,7 @@
             this.picQRCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picQRCode.TabIndex = 208;
             this.picQRCode.TabStop = false;
+            this.picQRCode.Visible = false;
             // 
             // txtDDDWhats
             // 
@@ -1761,7 +1739,7 @@
             this.txtNumeroWhats.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtNumeroWhats.PlaceholderText = "";
             this.txtNumeroWhats.ReadOnly = false;
-            this.txtNumeroWhats.Size = new System.Drawing.Size(214, 37);
+            this.txtNumeroWhats.Size = new System.Drawing.Size(158, 37);
             this.txtNumeroWhats.TabIndex = 1;
             this.txtNumeroWhats.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNumeroWhats.Texts = "";
@@ -3169,6 +3147,18 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
+            // autoLabel57
+            // 
+            this.autoLabel57.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel57.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel57.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel57.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel57.Location = new System.Drawing.Point(24, 89);
+            this.autoLabel57.Name = "autoLabel57";
+            this.autoLabel57.Size = new System.Drawing.Size(268, 21);
+            this.autoLabel57.TabIndex = 236;
+            this.autoLabel57.Text = "Lunar Chat - Uma infinidade de funções";
+            // 
             // FrmParametroSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3308,9 +3298,7 @@
         private FontAwesome.Sharp.IconButton btnConfirmaNumeroWhatsapp;
         private System.Windows.Forms.Label label3;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel18;
-        private RJ_UI.Classes.RJTextBox txtIdWhatsapp;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel17;
-        private RJ_UI.Classes.RJTextBox txtTokenWhatsapp;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPlanoConta;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel21;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel22;
@@ -3433,5 +3421,8 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel54;
         private System.Windows.Forms.TextBox txtServidorNuvem;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel53;
+        private System.Windows.Forms.TextBox txtTokenWhatsapp;
+        private System.Windows.Forms.TextBox txtIdWhatsapp;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel57;
     }
 }

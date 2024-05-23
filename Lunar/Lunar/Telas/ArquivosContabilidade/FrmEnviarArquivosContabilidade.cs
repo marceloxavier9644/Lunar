@@ -45,20 +45,41 @@ namespace Lunar.Telas.ArquivosContabilidade
             if (!String.IsNullOrEmpty(txtPasta.Texts))
             {
                 LunarApiNotas lunarApiNotas = new LunarApiNotas();
-                var retor = await lunarApiNotas.coletarArquivosContabeis(Sessao.empresaFilialLogada.Cnpj, txtMes.Texts, txtAno.Texts, localFilePath);
-                if (File.Exists(retor.ToString()))
+                var retor = await lunarApiNotas.coletarArquivosContabeisEConferir(Sessao.empresaFilialLogada.Cnpj, txtMes.Texts, txtAno.Texts, localFilePath);
+                if (retor != null)
                 {
-                    GenericaDesktop genericaDesktop = new GenericaDesktop();
-                    if (!String.IsNullOrEmpty(txtEmail.Texts.Trim()))
+                    if (File.Exists(retor.ToString()))
                     {
+                        GenericaDesktop genericaDesktop = new GenericaDesktop();
+                        if (!String.IsNullOrEmpty(txtEmail.Texts.Trim()))
+                        {
 
-                        List<string> listaAnexo = new List<string>();
-                        listaAnexo.Add(retor.ToString());
-                        if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.NomeRemetenteEmail))
-                            genericaDesktop.enviarEmail(txtEmail.Texts.Trim(), "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia, txtMes.Texts + "/" + txtAno.Texts + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj, "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.", listaAnexo);
-                        GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+                            List<string> listaAnexo = new List<string>();
+                            listaAnexo.Add(retor.ToString());
+                            if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.NomeRemetenteEmail))
+                            {
+                                bool ret = genericaDesktop.enviarEmail(txtEmail.Texts.Trim(), "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia, txtMes.Texts + "/" + txtAno.Texts + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj, "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.", listaAnexo);
+                                if (ret == true)
+                                    GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+                                else
+                                    GenericaDesktop.ShowAlerta("Falha ao enviar e-mail, verifique a configuração do seu e-mail de disparo em parâmetros do sistema!");
+                            }
+                            else
+                            {
+                                bool retorno = genericaDesktop.enviarEmailPeloLunar(txtEmail.Texts.Trim(), "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia, txtMes.Texts + "/" + txtAno.Texts + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj, "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.", listaAnexo);
+                                if (retorno == true)
+                                    GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+                                else
+                                    GenericaDesktop.ShowAlerta("Falha ao enviar e-mail, tente novamente!");
+                            }
+
+                        }
+                        GenericaDesktop.ShowInfo("Arquivo salvo com sucesso!");
                     }
-                    GenericaDesktop.ShowInfo("Arquivo salvo com sucesso!");
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Arquivo vazio! Você emitiu notas no mês informado? Informe o suporte.");
                 }
             }
             else

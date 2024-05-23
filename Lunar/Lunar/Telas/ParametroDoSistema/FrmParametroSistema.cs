@@ -7,6 +7,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -77,11 +78,11 @@ namespace Lunar.Telas.ParametroDoSistema
             }
             if(parametro.IdInstanciaWhats != null)
             {
-                txtIdWhatsapp.Texts = parametro.IdInstanciaWhats;
+                txtIdWhatsapp.Text = parametro.IdInstanciaWhats;
             }
             if(parametro.TokenWhats != null)
             {
-                txtTokenWhatsapp.Texts = parametro.TokenWhats;
+                txtTokenWhatsapp.Text = parametro.TokenWhats;
             }
 
             if (parametro.PlanoContaCompraImobilizado != null)
@@ -273,8 +274,8 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.ChequeContaReceber = false;
             parametro.Multa = txtMulta.Texts;
             parametro.Juro = txtJuro.Texts;
-            parametro.IdInstanciaWhats = txtIdWhatsapp.Texts;
-            parametro.TokenWhats = txtTokenWhatsapp.Texts;
+            parametro.IdInstanciaWhats = txtIdWhatsapp.Text;
+            parametro.TokenWhats = txtTokenWhatsapp.Text;
             parametro.LembreteVencimento = txtLembreteVencimento.Text;
             if (!String.IsNullOrEmpty(txtCodTipoObjeto.Texts))
             {
@@ -625,7 +626,7 @@ namespace Lunar.Telas.ParametroDoSistema
         {
             if(chkAceitoContratoWhats.Checked == true)
             {
-                if (!String.IsNullOrEmpty(txtTokenWhatsapp.Texts) && !String.IsNullOrEmpty(txtIdWhatsapp.Texts))
+                if (!String.IsNullOrEmpty(txtTokenWhatsapp.Text) && !String.IsNullOrEmpty(txtIdWhatsapp.Text))
                 {
                     picQRCode.Enabled = true;
                     picQRCode.Visible = true;
@@ -682,7 +683,7 @@ namespace Lunar.Telas.ParametroDoSistema
 
         private void btnConfirmaNumeroWhatsapp_Click(object sender, EventArgs e)
         {
-            if(!String.IsNullOrEmpty(txtDDDWhats.Texts) && !String.IsNullOrEmpty(txtNumeroWhats.Texts) && !String.IsNullOrEmpty(txtTokenWhatsapp.Texts) && !String.IsNullOrEmpty(txtIdWhatsapp.Texts))
+            if(!String.IsNullOrEmpty(txtDDDWhats.Texts) && !String.IsNullOrEmpty(txtNumeroWhats.Texts) && !String.IsNullOrEmpty(txtTokenWhatsapp.Text) && !String.IsNullOrEmpty(txtIdWhatsapp.Text))
             {
                 if (txtDDDWhats.Texts.Length != 2)
                 {
@@ -1202,6 +1203,11 @@ namespace Lunar.Telas.ParametroDoSistema
                 txtHorarioDisparoLembreteExame.Enabled = false;
                 txtMensagemLembreteExame.Enabled = false;
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://www.lunarchat.com.br") { UseShellExecute = true });
         }
     }
 }

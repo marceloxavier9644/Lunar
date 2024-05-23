@@ -2,12 +2,11 @@
 using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
-using Lunar.Telas.ValeFuncionarios;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
+using Lunar.Utils.LunarChatIntegracao;
 using Lunar.Utils.OrganizacaoNF;
-using Lunar.Utils.Unimake.GeradoresXML.GeradorChave;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -23,7 +22,9 @@ using Syncfusion.WinForms.DataGridConverter;
 using Syncfusion.XlsIO;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static LunarBase.Utilidades.ManifestoDownload;
 using Exception = System.Exception;
@@ -65,6 +67,20 @@ namespace Lunar.Telas.OrdensDeServico
             txtDataAberturaInicial.Text = DateTime.Now.ToShortDateString();
             txtDataEncerramentoFinal.Text = DateTime.Now.ToShortDateString();
             txtDataEncerramentoInicial.Text = DateTime.Now.ToShortDateString();
+
+            if (!String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats))
+            {
+                linkLabel1.Visible = false;
+                btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.whatsapp_logo_icone;
+                btnEnviarWhats.Enabled = true;
+            }
+            else
+            {
+                linkLabel1.Links.Add(0, linkLabel1.Text.Length, "https://www.lunarchat.com.br");
+                linkLabel1.Visible = true;
+                btnEnviarWhats.Enabled = false;
+                btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.WhatsappCinza2_1;
+            }
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -2338,6 +2354,120 @@ namespace Lunar.Telas.OrdensDeServico
                 }
                 else
                     GenericaDesktop.ShowAlerta("É possível ver histórico de pagamento apenas de Ordem de Serviço encerrada!");
+            }
+        }
+
+        private async void btnEnviarWhats_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                ordemServico = new OrdemServico();
+                ordemServico = (OrdemServico)grid.SelectedItem;
+                string telefoneCompleto = "";
+                if (ordemServico.Cliente.PessoaTelefone != null)
+                {
+                    telefoneCompleto = EnviarMensagemWhatsapp.TratarTelefone(ordemServico.Cliente.PessoaTelefone.Ddd, ordemServico.Cliente.PessoaTelefone.Telefone);
+                }
+                FrmEnvioMensagem frmEnvioMensagem = new FrmEnvioMensagem(telefoneCompleto, capturarNomeParaMensagem(ordemServico.Cliente.RazaoSocial));
+                if (frmEnvioMensagem.ShowDialog() == DialogResult.OK)
+                {
+                    string escolha = frmEnvioMensagem.GetEscolha();
+                    string numero = frmEnvioMensagem.GetTelefone();
+                    string nome = frmEnvioMensagem.GetNome();
+                    string mensagem = frmEnvioMensagem.GetMensagem();
+                    //Ajusta nome
+                    if (mensagem.Contains("[nome]"))
+                    {
+                        mensagem = mensagem.Replace("[nome]", capturarNomeParaMensagem(nome));
+                    }
+                    if (escolha.Equals("Envio PDF"))
+                    {
+                        await enviarPDfPeloWhats(ordemServico, numero, nome, mensagem);
+                    }
+                    else if (escolha.Equals("Envio Técnico"))
+                    {
+                        await enviarMensagemPeloWhats(ordemServico, numero, nome, mensagem);
+                    }
+                }
+            }
+        }
+
+        private async Task enviarPDfPeloWhats(OrdemServico ordem, string numero, string nome, string mensagem)
+        {
+            string caminhoPDF = "";
+
+            if (grid.SelectedIndex >= 0)
+            {
+                FrmImpressaoOrdemServico frmImpressaoOrdemServico = new FrmImpressaoOrdemServico(ordem);
+                caminhoPDF = frmImpressaoOrdemServico.GerarPDF(ordem);
+            }
+
+            if (!String.IsNullOrEmpty(caminhoPDF))
+            {
+                var client = new EnviarMensagemWhatsapp();
+                string file = await client.EnviarArquivoFtp(caminhoPDF);
+                var message = new WebhookMessage
+                {
+                    Number = numero,
+                    Name = nome,
+                    Email = ordem.Cliente.Email,
+                    Message = mensagem + " \n\n",
+                    File = file+"\n\n"+ "Equipe " + Sessao.empresaFilialLogada.NomeFantasia
+                };
+                await client.SendMessageAsync(message);
+            }
+        }
+
+        private async Task enviarMensagemPeloWhats(OrdemServico ordem, string numero, string nome, string mensagem)
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                var client = new EnviarMensagemWhatsapp();
+                var message = new WebhookMessage
+                {
+                    Number = numero,
+                    Name = nome,
+                    Email = ordemServico.Cliente.Email,
+                    Message = mensagem + "\n\nO.S: " + ordem.Id.ToString(),
+                    File = ""
+                };
+                await client.SendMessageAsync(message);
+            }
+        }
+
+        private string capturarNomeParaMensagem(string nomeCompleto)
+        {
+            if (string.IsNullOrWhiteSpace(nomeCompleto))
+            {
+                return nomeCompleto;
+            }
+
+            string[] partes = nomeCompleto.Split(' ');
+            TextInfo textInfo = new CultureInfo("pt-BR", false).TextInfo;
+            string nomeFormatado = "";
+
+            if (partes.Length >= 2)
+            {
+                string primeiroNomeFormatado = textInfo.ToTitleCase(partes[0].ToLower());
+                string segundoNomeFormatado = textInfo.ToTitleCase(partes[1].ToLower());
+                nomeFormatado = $"{primeiroNomeFormatado} {segundoNomeFormatado}";
+            }
+            else
+            {
+                nomeFormatado = textInfo.ToTitleCase(nomeCompleto.ToLower());
+            }
+
+            return nomeFormatado;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string url = e.Link.LinkData as string;
+
+            if (!string.IsNullOrEmpty(url))
+            {
+                // Abrir a URL no navegador padrão
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
             }
         }
     }

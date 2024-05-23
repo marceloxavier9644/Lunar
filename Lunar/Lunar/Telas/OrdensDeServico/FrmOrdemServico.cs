@@ -11,6 +11,7 @@ using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
+using OpenAC.Net.Core.Extensions;
 using SharpCompress;
 using Syncfusion.WinForms.DataGrid.Enums;
 using Syncfusion.WinForms.DataGrid.Interactivity;
@@ -188,6 +189,7 @@ namespace Lunar.Telas.OrdensDeServico
                     row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
                     row.SetField("Desconto", string.Format("{0:0.00}", ordemServicoProduto.Desconto));
                     row.SetField("Acrescimo", string.Format("{0:0.00}", ordemServicoProduto.Acrescimo));
+                    row.SetField("ValorComDesconto", string.Format("{0:0.00}", ((valorTotal - ordemServicoProduto.Desconto) + ordemServicoProduto.Acrescimo)));
                     dsProdutos.Tables[0].Rows.Add(row);
                 }
                 if (this.gridProdutos.View != null)
@@ -221,6 +223,8 @@ namespace Lunar.Telas.OrdensDeServico
                     row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
                     row.SetField("Desconto", string.Format("{0:0.00}", ordemServicoServico.Desconto));
                     row.SetField("Acrescimo", string.Format("{0:0.00}", ordemServicoServico.Acrescimo));
+                    row.SetField("ValorComDesconto", string.Format("{0:0.00}", ((valorTotal - ordemServicoServico.Desconto) + ordemServicoServico.Acrescimo)));
+                    
                     dsServico.Tables[0].Rows.Add(row);
                 }
                 if (this.gridServico.View != null)
@@ -890,7 +894,7 @@ namespace Lunar.Telas.OrdensDeServico
 
                         if (!String.IsNullOrEmpty(dataRowView.Row[0].ToString()))
                             descontoItem = descontoItem + decimal.Parse(dataRowView.Row["Desconto"].ToString());
-                        valorTotalProdutos = valorTotalProdutos + decimal.Parse(dataRowView.Row["ValorUnitario"].ToString());
+                        valorTotalProdutos = valorTotalProdutos + decimal.Parse(dataRowView.Row["ValorComDesconto"].ToString());
                         pecas = pecas + double.Parse(dataRowView.Row["Quantidade"].ToString());
                     }
                     txtValorTotalTodosProdutos.Texts = string.Format("{0:0.00}", valorTotalProdutos);
@@ -1948,7 +1952,10 @@ namespace Lunar.Telas.OrdensDeServico
                             ordemServicoProduto.Produto = produto;
                             ordemServicoProduto.Quantidade = double.Parse(dataRowView.Row["Quantidade"].ToString());
                             ordemServicoProduto.ValorUnitario = decimal.Parse(dataRowView.Row["ValorUnitario"].ToString());
-                            ordemServicoProduto.ValorTotal = decimal.Parse(dataRowView.Row["ValorComDesconto"].ToString());
+                            if(!String.IsNullOrEmpty(dataRowView.Row["ValorComDesconto"].ToString()))
+                                ordemServicoProduto.ValorTotal = decimal.Parse(dataRowView.Row["ValorComDesconto"].ToString());
+                            else
+                                ordemServicoProduto.ValorTotal = decimal.Parse(dataRowView.Row["ValorUnitario"].ToString()) * decimal.Parse(dataRowView.Row["Quantidade"].ToString());
                             listaProdutos.Add(ordemServicoProduto);
                         }
                     }
