@@ -26,6 +26,7 @@ namespace LunarBase.Classes
         private int quantidade;
         private PessoaDependente pessoaDependente;
         private string qrCodePix;
+        private Condicional condicional;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -70,6 +71,8 @@ namespace LunarBase.Classes
         [Anotacao("QR CODE")]
         [OcultarEmGridsEPesquisas]
         public virtual string QrCodePix { get => qrCodePix; set => qrCodePix = value; }
+        [Anotacao("Condicional")]
+        public virtual Condicional Condicional { get => condicional; set => condicional = value; }
 
         //Pre venda
         //Condicional

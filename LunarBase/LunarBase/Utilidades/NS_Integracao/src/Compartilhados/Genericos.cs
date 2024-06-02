@@ -497,7 +497,6 @@ public class Genericos
         string ultimaDataNotaBaixada = nota.NFe.infNFe.ide.dhEmi.Replace("T", " ").Replace("-03:00", "");
         nfe.DataEmissao = DateTime.Parse(ultimaDataNotaBaixada);
         nfe.Manifesto = "";
-
         if (nota.protNFe.infProt.xMotivo.Contains("Autorizado o uso"))
         {
             nfe.CodStatus = "100";
@@ -506,6 +505,7 @@ public class Genericos
             nfeStatus = (NfeStatus)Controller.getInstance().selecionar(nfeStatus);
             nfe.NfeStatus = nfeStatus;
             nfe.Status = nota.protNFe.infProt.xMotivo;
+            nfe.Lancada = true;
         }
 
         else

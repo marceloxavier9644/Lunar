@@ -24,6 +24,7 @@
 		<many-to-one name="Nfe" column="NFE" class="LunarBase.Classes.Nfe" not-found="ignore" not-null="false" foreign-key="FK_VENDA_NFE" lazy="false"/>
 		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="false" foreign-key="FK_VENDA_EMPRESAFILIAL" lazy="false"/>
 		<many-to-one name="PessoaDependente" column="PESSOADEPENDENTE" class="LunarBase.Classes.PessoaDependente" not-null="false" foreign-key="FK_VENDA_PESSOADEPENDENTE" lazy="false"/>
+		<many-to-one name="Condicional" column="CONDICIONAL" class="LunarBase.Classes.Condicional" not-null="false" foreign-key="FK_VENDA_CONDICIONAL" lazy="false"/>
 		
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>

@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = LunarBase
 build_property.ProjectDir = C:\Desenvolvimento\Lunar\LunarBase\LunarBase\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

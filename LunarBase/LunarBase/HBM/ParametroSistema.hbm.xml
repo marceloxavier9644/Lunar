@@ -46,6 +46,8 @@
 		<property name="SenhaWebServiceSpcBrasil" column="SENHAWEBSERVICESPCBRASIL" type="String" length="100"/>
 		<property name="ConsultaPadraoSpcBrasil" column="CONSULTAPADRAOSPCBRASIL" type="String" length="30"/>
 		<property name="AmbienteSpcBrasil" column="AMBIENTESPCBRASIL" type="String" length="80"/>
+
+		<property name="TipoImpressoraCondicional" column="TIPOIMPRESSORACONDICIONAL" type="String" length="20"/>
 		
 		<!-- Integração WhatsApp-->
 		<property name="EnvioNotasPorWhats" column="ENVIONOTASPORWHATS" type="Boolean"/>

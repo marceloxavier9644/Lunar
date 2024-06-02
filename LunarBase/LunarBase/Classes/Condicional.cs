@@ -18,6 +18,9 @@ namespace LunarBase.Classes
         private bool encerrado;
         private Pessoa vendedor;
         private decimal valorSaldo;
+        private Venda venda;
+        private double quantidadeDevolvida;
+       
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -43,5 +46,13 @@ namespace LunarBase.Classes
         public virtual Pessoa Vendedor { get => vendedor; set => vendedor = value; }
         [Anotacao("Valor Saldo")]
         public virtual decimal ValorSaldo { get => valorSaldo; set => valorSaldo = value; }
+        [Anotacao("Venda")]
+        public virtual Venda Venda { get => venda; set => venda = value; }
+
+        [Anotacao("Devolvido")]
+        [OcultarEmGridsEPesquisas]
+        public virtual double QuantidadeDevolvida { get => quantidadeDevolvida; set => quantidadeDevolvida = value; }
+
+
     }
 }
