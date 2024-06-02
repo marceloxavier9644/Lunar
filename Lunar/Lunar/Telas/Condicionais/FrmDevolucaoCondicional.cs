@@ -137,7 +137,7 @@ namespace Lunar.Telas.Condicionais
                 {
                     txtPesquisaProduto.Texts = prod.DescricaoProduto;
                     txtQuantidadeItem.Texts = "1";
-                    txtCodProduto.Texts = prod.Id.ToString();
+                    txtCodProduto.Texts = prod.Produto.Id.ToString();
                     this.condicionalproduto = prod;
                     if (valorAux.Contains("*"))
                         txtQuantidadeItem.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));

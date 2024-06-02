@@ -97,6 +97,7 @@
             this.txtCodTipoObjeto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtTipoObjeto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabWhatsapp = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.autoLabel57 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtIdWhatsapp = new System.Windows.Forms.TextBox();
             this.txtTokenWhatsapp = new System.Windows.Forms.TextBox();
             this.btnVerificarConexaoWhats = new FontAwesome.Sharp.IconButton();
@@ -216,7 +217,9 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.autoLabel57 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.radioTermicaCondicional = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioA4Condicional = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -261,6 +264,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).BeginInit();
             this.tabDashboardsApp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioTermicaCondicional)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioA4Condicional)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -1097,11 +1103,11 @@
             // 
             this.autoLabel36.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel36.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel36.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel36.ForeColor = System.Drawing.Color.Red;
             this.autoLabel36.Location = new System.Drawing.Point(16, 357);
             this.autoLabel36.Name = "autoLabel36";
-            this.autoLabel36.Size = new System.Drawing.Size(602, 21);
+            this.autoLabel36.Size = new System.Drawing.Size(555, 16);
             this.autoLabel36.TabIndex = 263;
             this.autoLabel36.Text = "Obs. Para Utilizar essa funcionalidade deve ser contratado o módulo de envio de W" +
     "hatsapp";
@@ -1174,11 +1180,11 @@
             // 
             this.autoLabel35.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel35.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel35.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel35.ForeColor = System.Drawing.Color.Black;
             this.autoLabel35.Location = new System.Drawing.Point(16, 223);
             this.autoLabel35.Name = "autoLabel35";
-            this.autoLabel35.Size = new System.Drawing.Size(436, 21);
+            this.autoLabel35.Size = new System.Drawing.Size(400, 16);
             this.autoLabel35.TabIndex = 222;
             this.autoLabel35.Text = "Lembrete de Vencimento (Mensagem Para Envio pelo Whatsapp)";
             // 
@@ -1258,6 +1264,7 @@
             // 
             // tabOrdemServico
             // 
+            this.tabOrdemServico.Controls.Add(this.groupBox3);
             this.tabOrdemServico.Controls.Add(this.autoLabel13);
             this.tabOrdemServico.Controls.Add(this.autoLabel14);
             this.tabOrdemServico.Controls.Add(this.btnPesquisaTipoObjeto);
@@ -1270,18 +1277,18 @@
             this.tabOrdemServico.ShowCloseButton = true;
             this.tabOrdemServico.Size = new System.Drawing.Size(868, 397);
             this.tabOrdemServico.TabIndex = 4;
-            this.tabOrdemServico.Text = "Ordem de Serviço";
+            this.tabOrdemServico.Text = "O.S/Vendas";
             this.tabOrdemServico.ThemesEnabled = false;
             // 
             // autoLabel13
             // 
             this.autoLabel13.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel13.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel13.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel13.ForeColor = System.Drawing.Color.Black;
             this.autoLabel13.Location = new System.Drawing.Point(460, 13);
             this.autoLabel13.Name = "autoLabel13";
-            this.autoLabel13.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel13.Size = new System.Drawing.Size(51, 16);
             this.autoLabel13.TabIndex = 205;
             this.autoLabel13.Text = "Código";
             // 
@@ -1289,11 +1296,11 @@
             // 
             this.autoLabel14.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel14.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel14.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel14.ForeColor = System.Drawing.Color.Black;
             this.autoLabel14.Location = new System.Drawing.Point(27, 13);
             this.autoLabel14.Name = "autoLabel14";
-            this.autoLabel14.Size = new System.Drawing.Size(217, 21);
+            this.autoLabel14.Size = new System.Drawing.Size(203, 16);
             this.autoLabel14.TabIndex = 203;
             this.autoLabel14.Text = "Tipo de Objeto (Padrão ao Abrir)";
             // 
@@ -1403,6 +1410,18 @@
             this.tabWhatsapp.TabIndex = 5;
             this.tabWhatsapp.Text = "Integração WhatsApp";
             this.tabWhatsapp.ThemesEnabled = false;
+            // 
+            // autoLabel57
+            // 
+            this.autoLabel57.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel57.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel57.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel57.Location = new System.Drawing.Point(24, 89);
+            this.autoLabel57.Name = "autoLabel57";
+            this.autoLabel57.Size = new System.Drawing.Size(239, 16);
+            this.autoLabel57.TabIndex = 236;
+            this.autoLabel57.Text = "Lunar Chat - Uma infinidade de funções";
             // 
             // txtIdWhatsapp
             // 
@@ -1522,11 +1541,11 @@
             // 
             this.autoLabel18.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel18.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel18.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel18.ForeColor = System.Drawing.Color.Black;
             this.autoLabel18.Location = new System.Drawing.Point(660, 17);
             this.autoLabel18.Name = "autoLabel18";
-            this.autoLabel18.Size = new System.Drawing.Size(97, 21);
+            this.autoLabel18.Size = new System.Drawing.Size(87, 16);
             this.autoLabel18.TabIndex = 227;
             this.autoLabel18.Text = "ID Integração";
             // 
@@ -1534,11 +1553,11 @@
             // 
             this.autoLabel17.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel17.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel17.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel17.ForeColor = System.Drawing.Color.Black;
             this.autoLabel17.Location = new System.Drawing.Point(291, 17);
             this.autoLabel17.Name = "autoLabel17";
-            this.autoLabel17.Size = new System.Drawing.Size(217, 21);
+            this.autoLabel17.Size = new System.Drawing.Size(201, 16);
             this.autoLabel17.TabIndex = 225;
             this.autoLabel17.Text = "UrlWebhook (Solicitar Revenda)";
             // 
@@ -1666,11 +1685,11 @@
             // 
             this.autoLabel16.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel16.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel16.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel16.ForeColor = System.Drawing.Color.Black;
             this.autoLabel16.Location = new System.Drawing.Point(24, 17);
             this.autoLabel16.Name = "autoLabel16";
-            this.autoLabel16.Size = new System.Drawing.Size(40, 21);
+            this.autoLabel16.Size = new System.Drawing.Size(37, 16);
             this.autoLabel16.TabIndex = 213;
             this.autoLabel16.Text = "DDD";
             // 
@@ -1678,11 +1697,11 @@
             // 
             this.autoLabel15.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
             this.autoLabel15.Location = new System.Drawing.Point(125, 17);
             this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(119, 21);
+            this.autoLabel15.Size = new System.Drawing.Size(109, 16);
             this.autoLabel15.TabIndex = 211;
             this.autoLabel15.Text = " Nº do Whatsapp";
             // 
@@ -1782,11 +1801,11 @@
             // 
             this.autoLabel25.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel25.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel25.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel25.ForeColor = System.Drawing.Color.Black;
             this.autoLabel25.Location = new System.Drawing.Point(459, 197);
             this.autoLabel25.Name = "autoLabel25";
-            this.autoLabel25.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel25.Size = new System.Drawing.Size(51, 16);
             this.autoLabel25.TabIndex = 225;
             this.autoLabel25.Text = "Código";
             // 
@@ -1794,11 +1813,11 @@
             // 
             this.autoLabel26.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel26.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel26.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel26.ForeColor = System.Drawing.Color.Black;
             this.autoLabel26.Location = new System.Drawing.Point(26, 197);
             this.autoLabel26.Name = "autoLabel26";
-            this.autoLabel26.Size = new System.Drawing.Size(268, 21);
+            this.autoLabel26.Size = new System.Drawing.Size(243, 16);
             this.autoLabel26.TabIndex = 223;
             this.autoLabel26.Text = "Plano de Contas - Compras Imobilizado";
             // 
@@ -1876,11 +1895,11 @@
             // 
             this.autoLabel23.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel23.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel23.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel23.ForeColor = System.Drawing.Color.Black;
             this.autoLabel23.Location = new System.Drawing.Point(459, 136);
             this.autoLabel23.Name = "autoLabel23";
-            this.autoLabel23.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel23.Size = new System.Drawing.Size(51, 16);
             this.autoLabel23.TabIndex = 220;
             this.autoLabel23.Text = "Código";
             // 
@@ -1888,11 +1907,11 @@
             // 
             this.autoLabel24.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel24.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel24.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel24.ForeColor = System.Drawing.Color.Black;
             this.autoLabel24.Location = new System.Drawing.Point(26, 136);
             this.autoLabel24.Name = "autoLabel24";
-            this.autoLabel24.Size = new System.Drawing.Size(289, 21);
+            this.autoLabel24.Size = new System.Drawing.Size(270, 16);
             this.autoLabel24.TabIndex = 218;
             this.autoLabel24.Text = "Plano de Contas - Compras Uso e Consumo";
             // 
@@ -1970,11 +1989,11 @@
             // 
             this.autoLabel21.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel21.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel21.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel21.ForeColor = System.Drawing.Color.Black;
             this.autoLabel21.Location = new System.Drawing.Point(459, 75);
             this.autoLabel21.Name = "autoLabel21";
-            this.autoLabel21.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel21.Size = new System.Drawing.Size(51, 16);
             this.autoLabel21.TabIndex = 215;
             this.autoLabel21.Text = "Código";
             // 
@@ -1982,11 +2001,11 @@
             // 
             this.autoLabel22.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel22.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel22.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel22.ForeColor = System.Drawing.Color.Black;
             this.autoLabel22.Location = new System.Drawing.Point(26, 75);
             this.autoLabel22.Name = "autoLabel22";
-            this.autoLabel22.Size = new System.Drawing.Size(280, 21);
+            this.autoLabel22.Size = new System.Drawing.Size(262, 16);
             this.autoLabel22.TabIndex = 213;
             this.autoLabel22.Text = "Plano de Contas - Compras Para Revenda";
             // 
@@ -2064,11 +2083,11 @@
             // 
             this.autoLabel19.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel19.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel19.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel19.ForeColor = System.Drawing.Color.Black;
             this.autoLabel19.Location = new System.Drawing.Point(459, 15);
             this.autoLabel19.Name = "autoLabel19";
-            this.autoLabel19.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel19.Size = new System.Drawing.Size(51, 16);
             this.autoLabel19.TabIndex = 210;
             this.autoLabel19.Text = "Código";
             // 
@@ -2076,11 +2095,11 @@
             // 
             this.autoLabel20.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel20.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel20.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel20.ForeColor = System.Drawing.Color.Black;
             this.autoLabel20.Location = new System.Drawing.Point(26, 15);
             this.autoLabel20.Name = "autoLabel20";
-            this.autoLabel20.Size = new System.Drawing.Size(175, 21);
+            this.autoLabel20.Size = new System.Drawing.Size(163, 16);
             this.autoLabel20.TabIndex = 208;
             this.autoLabel20.Text = "Plano de Contas - Vendas";
             // 
@@ -2190,11 +2209,11 @@
             // 
             this.autoLabel46.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel46.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel46.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel46.ForeColor = System.Drawing.Color.Black;
             this.autoLabel46.Location = new System.Drawing.Point(551, 284);
             this.autoLabel46.Name = "autoLabel46";
-            this.autoLabel46.Size = new System.Drawing.Size(76, 21);
+            this.autoLabel46.Size = new System.Drawing.Size(64, 16);
             this.autoLabel46.TabIndex = 233;
             this.autoLabel46.Text = "Ambiente";
             // 
@@ -2318,11 +2337,11 @@
             // 
             this.autoLabel45.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel45.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel45.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel45.ForeColor = System.Drawing.Color.Black;
             this.autoLabel45.Location = new System.Drawing.Point(285, 284);
             this.autoLabel45.Name = "autoLabel45";
-            this.autoLabel45.Size = new System.Drawing.Size(213, 21);
+            this.autoLabel45.Size = new System.Drawing.Size(207, 16);
             this.autoLabel45.TabIndex = 224;
             this.autoLabel45.Text = "Senha Web Service SPC BRASIL";
             // 
@@ -2330,11 +2349,11 @@
             // 
             this.autoLabel44.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel44.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel44.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel44.ForeColor = System.Drawing.Color.Black;
             this.autoLabel44.Location = new System.Drawing.Point(16, 284);
             this.autoLabel44.Name = "autoLabel44";
-            this.autoLabel44.Size = new System.Drawing.Size(220, 21);
+            this.autoLabel44.Size = new System.Drawing.Size(215, 16);
             this.autoLabel44.TabIndex = 222;
             this.autoLabel44.Text = "Usuário Web Service SPC BRASIL";
             // 
@@ -2342,11 +2361,11 @@
             // 
             this.autoLabel37.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel37.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel37.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel37.ForeColor = System.Drawing.Color.Black;
             this.autoLabel37.Location = new System.Drawing.Point(27, 203);
             this.autoLabel37.Name = "autoLabel37";
-            this.autoLabel37.Size = new System.Drawing.Size(332, 21);
+            this.autoLabel37.Size = new System.Drawing.Size(313, 16);
             this.autoLabel37.TabIndex = 220;
             this.autoLabel37.Text = "Comissão Padrão Por Venda ou Ordem de Serviço";
             // 
@@ -2378,11 +2397,11 @@
             // 
             this.autoLabel29.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel29.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel29.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel29.ForeColor = System.Drawing.Color.Black;
             this.autoLabel29.Location = new System.Drawing.Point(27, 137);
             this.autoLabel29.Name = "autoLabel29";
-            this.autoLabel29.Size = new System.Drawing.Size(116, 21);
+            this.autoLabel29.Size = new System.Drawing.Size(107, 16);
             this.autoLabel29.TabIndex = 218;
             this.autoLabel29.Text = "Site da Empresa";
             // 
@@ -2414,11 +2433,11 @@
             // 
             this.autoLabel28.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel28.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel28.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel28.ForeColor = System.Drawing.Color.Black;
             this.autoLabel28.Location = new System.Drawing.Point(27, 75);
             this.autoLabel28.Name = "autoLabel28";
-            this.autoLabel28.Size = new System.Drawing.Size(272, 21);
+            this.autoLabel28.Size = new System.Drawing.Size(244, 16);
             this.autoLabel28.TabIndex = 215;
             this.autoLabel28.Text = "Caminho P/ Armazenamento de Anexos";
             // 
@@ -2481,11 +2500,11 @@
             // 
             this.autoLabel27.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel27.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel27.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel27.ForeColor = System.Drawing.Color.Black;
             this.autoLabel27.Location = new System.Drawing.Point(27, 15);
             this.autoLabel27.Name = "autoLabel27";
-            this.autoLabel27.Size = new System.Drawing.Size(186, 21);
+            this.autoLabel27.Size = new System.Drawing.Size(171, 16);
             this.autoLabel27.TabIndex = 211;
             this.autoLabel27.Text = "Caminho Logo da Empresa";
             // 
@@ -2637,11 +2656,11 @@
             // 
             this.autoLabel34.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel34.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel34.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel34.ForeColor = System.Drawing.Color.Black;
             this.autoLabel34.Location = new System.Drawing.Point(467, 19);
             this.autoLabel34.Name = "autoLabel34";
-            this.autoLabel34.Size = new System.Drawing.Size(131, 21);
+            this.autoLabel34.Size = new System.Drawing.Size(121, 16);
             this.autoLabel34.TabIndex = 228;
             this.autoLabel34.Text = "Nome da Empresa";
             // 
@@ -2649,11 +2668,11 @@
             // 
             this.autoLabel33.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel33.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel33.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel33.ForeColor = System.Drawing.Color.Black;
             this.autoLabel33.Location = new System.Drawing.Point(531, 75);
             this.autoLabel33.Name = "autoLabel33";
-            this.autoLabel33.Size = new System.Drawing.Size(52, 21);
+            this.autoLabel33.Size = new System.Drawing.Size(46, 16);
             this.autoLabel33.TabIndex = 226;
             this.autoLabel33.Text = "Senha";
             // 
@@ -2661,11 +2680,11 @@
             // 
             this.autoLabel32.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel32.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel32.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel32.ForeColor = System.Drawing.Color.Black;
             this.autoLabel32.Location = new System.Drawing.Point(8, 75);
             this.autoLabel32.Name = "autoLabel32";
-            this.autoLabel32.Size = new System.Drawing.Size(48, 21);
+            this.autoLabel32.Size = new System.Drawing.Size(41, 16);
             this.autoLabel32.TabIndex = 224;
             this.autoLabel32.Text = "Email";
             // 
@@ -2673,11 +2692,11 @@
             // 
             this.autoLabel31.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel31.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel31.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel31.ForeColor = System.Drawing.Color.Black;
             this.autoLabel31.Location = new System.Drawing.Point(360, 20);
             this.autoLabel31.Name = "autoLabel31";
-            this.autoLabel31.Size = new System.Drawing.Size(45, 21);
+            this.autoLabel31.Size = new System.Drawing.Size(39, 16);
             this.autoLabel31.TabIndex = 222;
             this.autoLabel31.Text = "Porta";
             // 
@@ -2685,11 +2704,11 @@
             // 
             this.autoLabel30.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel30.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel30.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel30.ForeColor = System.Drawing.Color.Black;
             this.autoLabel30.Location = new System.Drawing.Point(8, 19);
             this.autoLabel30.Name = "autoLabel30";
-            this.autoLabel30.Size = new System.Drawing.Size(125, 21);
+            this.autoLabel30.Size = new System.Drawing.Size(114, 16);
             this.autoLabel30.TabIndex = 220;
             this.autoLabel30.Text = "Servidor de Email";
             // 
@@ -2754,11 +2773,11 @@
             // 
             this.autoLabel52.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel52.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel52.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel52.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel52.ForeColor = System.Drawing.Color.Black;
             this.autoLabel52.Location = new System.Drawing.Point(568, 13);
             this.autoLabel52.Name = "autoLabel52";
-            this.autoLabel52.Size = new System.Drawing.Size(184, 21);
+            this.autoLabel52.Size = new System.Drawing.Size(172, 16);
             this.autoLabel52.TabIndex = 295;
             this.autoLabel52.Text = "Nome do Servidor na Rede";
             // 
@@ -2797,11 +2816,11 @@
             // 
             this.autoLabel47.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel47.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel47.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel47.ForeColor = System.Drawing.Color.Black;
             this.autoLabel47.Location = new System.Drawing.Point(209, 205);
             this.autoLabel47.Name = "autoLabel47";
-            this.autoLabel47.Size = new System.Drawing.Size(111, 21);
+            this.autoLabel47.Size = new System.Drawing.Size(103, 16);
             this.autoLabel47.TabIndex = 288;
             this.autoLabel47.Text = "Horário Disparo";
             // 
@@ -2842,11 +2861,11 @@
             // 
             this.autoLabel50.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel50.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel50.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel50.ForeColor = System.Drawing.Color.Black;
             this.autoLabel50.Location = new System.Drawing.Point(114, 205);
             this.autoLabel50.Name = "autoLabel50";
-            this.autoLabel50.Size = new System.Drawing.Size(38, 21);
+            this.autoLabel50.Size = new System.Drawing.Size(35, 16);
             this.autoLabel50.TabIndex = 283;
             this.autoLabel50.Text = "Dias";
             // 
@@ -2883,11 +2902,11 @@
             // 
             this.autoLabel51.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel51.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel51.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel51.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel51.ForeColor = System.Drawing.Color.Black;
             this.autoLabel51.Location = new System.Drawing.Point(114, 271);
             this.autoLabel51.Name = "autoLabel51";
-            this.autoLabel51.Size = new System.Drawing.Size(402, 21);
+            this.autoLabel51.Size = new System.Drawing.Size(369, 16);
             this.autoLabel51.TabIndex = 279;
             this.autoLabel51.Text = "Lembrete de Vencimento de Exame (Para Módulo de Óticas)";
             // 
@@ -2944,11 +2963,11 @@
             // 
             this.autoLabel49.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel49.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel49.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel49.ForeColor = System.Drawing.Color.Black;
             this.autoLabel49.Location = new System.Drawing.Point(209, 13);
             this.autoLabel49.Name = "autoLabel49";
-            this.autoLabel49.Size = new System.Drawing.Size(206, 21);
+            this.autoLabel49.Size = new System.Drawing.Size(191, 16);
             this.autoLabel49.TabIndex = 274;
             this.autoLabel49.Text = "Média de Minutos Após Venda";
             // 
@@ -2985,11 +3004,11 @@
             // 
             this.autoLabel48.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel48.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel48.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel48.ForeColor = System.Drawing.Color.Black;
             this.autoLabel48.Location = new System.Drawing.Point(114, 79);
             this.autoLabel48.Name = "autoLabel48";
-            this.autoLabel48.Size = new System.Drawing.Size(422, 21);
+            this.autoLabel48.Size = new System.Drawing.Size(396, 16);
             this.autoLabel48.TabIndex = 265;
             this.autoLabel48.Text = "Mensagem Após Venda (Mensagem Para Envio pelo Whatsapp)";
             // 
@@ -3027,11 +3046,11 @@
             // 
             this.autoLabel56.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel56.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel56.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel56.ForeColor = System.Drawing.Color.Black;
             this.autoLabel56.Location = new System.Drawing.Point(689, 16);
             this.autoLabel56.Name = "autoLabel56";
-            this.autoLabel56.Size = new System.Drawing.Size(102, 21);
+            this.autoLabel56.Size = new System.Drawing.Size(92, 16);
             this.autoLabel56.TabIndex = 282;
             this.autoLabel56.Text = "Senha Nuvem";
             // 
@@ -3048,11 +3067,11 @@
             // 
             this.autoLabel55.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel55.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel55.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel55.ForeColor = System.Drawing.Color.Black;
             this.autoLabel55.Location = new System.Drawing.Point(518, 16);
             this.autoLabel55.Name = "autoLabel55";
-            this.autoLabel55.Size = new System.Drawing.Size(134, 21);
+            this.autoLabel55.Size = new System.Drawing.Size(122, 16);
             this.autoLabel55.TabIndex = 280;
             this.autoLabel55.Text = "Usuário em Nuvem";
             // 
@@ -3069,11 +3088,11 @@
             // 
             this.autoLabel54.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel54.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel54.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel54.ForeColor = System.Drawing.Color.Black;
             this.autoLabel54.Location = new System.Drawing.Point(347, 16);
             this.autoLabel54.Name = "autoLabel54";
-            this.autoLabel54.Size = new System.Drawing.Size(165, 21);
+            this.autoLabel54.Size = new System.Drawing.Size(155, 16);
             this.autoLabel54.TabIndex = 278;
             this.autoLabel54.Text = "Banco de Dados Nuvem";
             // 
@@ -3090,11 +3109,11 @@
             // 
             this.autoLabel53.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel53.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel53.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel53.ForeColor = System.Drawing.Color.Black;
             this.autoLabel53.Location = new System.Drawing.Point(21, 16);
             this.autoLabel53.Name = "autoLabel53";
-            this.autoLabel53.Size = new System.Drawing.Size(139, 21);
+            this.autoLabel53.Size = new System.Drawing.Size(126, 16);
             this.autoLabel53.TabIndex = 276;
             this.autoLabel53.Text = "Servidor em Nuvem";
             // 
@@ -3147,17 +3166,41 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // autoLabel57
+            // radioTermicaCondicional
             // 
-            this.autoLabel57.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel57.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel57.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel57.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel57.Location = new System.Drawing.Point(24, 89);
-            this.autoLabel57.Name = "autoLabel57";
-            this.autoLabel57.Size = new System.Drawing.Size(268, 21);
-            this.autoLabel57.TabIndex = 236;
-            this.autoLabel57.Text = "Lunar Chat - Uma infinidade de funções";
+            this.radioTermicaCondicional.BeforeTouchSize = new System.Drawing.Size(137, 21);
+            this.radioTermicaCondicional.Checked = true;
+            this.radioTermicaCondicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioTermicaCondicional.Location = new System.Drawing.Point(11, 33);
+            this.radioTermicaCondicional.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioTermicaCondicional.Name = "radioTermicaCondicional";
+            this.radioTermicaCondicional.Size = new System.Drawing.Size(137, 21);
+            this.radioTermicaCondicional.TabIndex = 206;
+            this.radioTermicaCondicional.Text = " Térmica";
+            // 
+            // radioA4Condicional
+            // 
+            this.radioA4Condicional.BeforeTouchSize = new System.Drawing.Size(137, 21);
+            this.radioA4Condicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioA4Condicional.Location = new System.Drawing.Point(11, 60);
+            this.radioA4Condicional.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioA4Condicional.Name = "radioA4Condicional";
+            this.radioA4Condicional.Size = new System.Drawing.Size(137, 21);
+            this.radioA4Condicional.TabIndex = 207;
+            this.radioA4Condicional.TabStop = false;
+            this.radioA4Condicional.Text = " A4";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioTermicaCondicional);
+            this.groupBox3.Controls.Add(this.radioA4Condicional);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(16, 73);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(235, 91);
+            this.groupBox3.TabIndex = 208;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tipo Impressora Condicional";
             // 
             // FrmParametroSistema
             // 
@@ -3231,6 +3274,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).EndInit();
             this.tabDashboardsApp.ResumeLayout(false);
             this.tabDashboardsApp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioTermicaCondicional)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioA4Condicional)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3424,5 +3470,8 @@
         private System.Windows.Forms.TextBox txtTokenWhatsapp;
         private System.Windows.Forms.TextBox txtIdWhatsapp;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel57;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioTermicaCondicional;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioA4Condicional;
     }
 }

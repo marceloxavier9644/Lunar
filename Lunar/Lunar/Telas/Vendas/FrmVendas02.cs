@@ -26,6 +26,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.ServiceModel.Security;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Lunar.Telas.Vendas
 {
     public partial class FrmVendas02 : Form
     {
-       
+        Condicional condicional1 = new Condicional();
         string arquivoContigencia = "";
         string nomeArquivoContigencia = "";
         string numeroNFCe = "";
@@ -78,7 +79,79 @@ namespace Lunar.Telas.Vendas
             bloquearCamposValorQuantidade();
             btnTransferencia.Visible = false;
         }
+        public FrmVendas02(Condicional condicional)
+        {
+            InitializeComponent();
+            bloquearCamposValorQuantidade();
+            CondicionalDevolucaoController condicionalDevolucaoController = new CondicionalDevolucaoController();
+            btnTransferencia.Visible = false;
+            Pessoa pessoa = new Pessoa();
+            this.gridProdutos.DataSource = dsProduto.Tables["Produto"];
+            this.gridRecebimento.DataSource = dsPagamento.Tables["Pagamento"];
+            this.condicional1 = condicional;
+            
+            if (condicional1 != null)
+            {
+                EsconderTabPagamento();
+            }
 
+            IList<CondicionalProduto> listaProdutosCondicional = new List<CondicionalProduto>();
+            CondicionalProdutoController condicionalProdutoController = new CondicionalProdutoController();
+            listaProdutosCondicional = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
+            IList<CondicionalDevolucao> listaDevolucoes = condicionalDevolucaoController.selecionarProdutosDevolvidosPorCondicional(condicional.Id);
+
+            // Dicionário para manter o controle da quantidade devolvida por produto
+            Dictionary<double, double> devolucoesPorProduto = new Dictionary<double, double>();
+
+            // Preencher o dicionário com as quantidades devolvidas
+            foreach (var devolucao in listaDevolucoes)
+            {
+                if (devolucoesPorProduto.ContainsKey(devolucao.Produto.Id))
+                {
+                    devolucoesPorProduto[devolucao.Produto.Id] += devolucao.Quantidade;
+                }
+                else
+                {
+                    devolucoesPorProduto[devolucao.Produto.Id] = devolucao.Quantidade;
+                }
+            }
+
+            foreach (CondicionalProduto condicionalProduto in listaProdutosCondicional)
+            {
+                if (!condicionalProduto.Devolvido)
+                {
+                    double quantidadeDevolvida = 0;
+                    if (devolucoesPorProduto.ContainsKey(condicionalProduto.Produto.Id))
+                    {
+                        quantidadeDevolvida = devolucoesPorProduto[condicionalProduto.Produto.Id];
+                    }
+
+                    double quantidadeAFaturar = condicionalProduto.Quantidade - quantidadeDevolvida;
+
+                    if (quantidadeAFaturar > 0)
+                    {
+                        condicionalProduto.Produto.ValorVenda = condicionalProduto.ValorUnitario;
+                        txtValorUnitario.Texts = string.Format("{0:0.00}", condicionalProduto.ValorUnitario);
+                        txtQuantidade.Texts = quantidadeAFaturar.ToString();
+                        inserirItem(condicionalProduto.Produto);
+                    }
+                }
+                txtCodCliente.Texts = condicionalProduto.Condicional.Cliente.Id.ToString();
+                txtPesquisaCliente.Texts = condicionalProduto.Condicional.Cliente.RazaoSocial;
+                txtClienteAbaPagamento.Texts = condicionalProduto.Condicional.Cliente.RazaoSocial;
+
+                if (condicionalProduto.Condicional.Vendedor != null)
+                {
+                    if (condicionalProduto.Condicional.Vendedor.Id > 0)
+                    {
+                        txtCodVendedor.Texts = condicionalProduto.Condicional.Vendedor.Id.ToString();
+                        txtNomeVendedor.Texts = condicionalProduto.Condicional.Vendedor.NomeFantasia;
+                        txtVendedorSelecionado.Texts = condicionalProduto.Condicional.Vendedor.NomeFantasia;
+                    }
+                }
+                pessoa = condicionalProduto.Condicional.Cliente;
+            }
+        }
         public FrmVendas02(bool transferencia)
         {
             InitializeComponent();
@@ -121,6 +194,7 @@ namespace Lunar.Telas.Vendas
         private void btnFinalizar01_Click(object sender, EventArgs e)
         {
             nfe = new Nfe();
+            MostrarTabPagamento();
             set_venda();
         }
 
@@ -207,6 +281,30 @@ namespace Lunar.Telas.Vendas
                 {
                     GenericaDesktop.ShowErro(ex.Message);
                 }
+            }
+        }
+        private void EsconderTabPagamento()
+        {
+            if (tabControlAdv1.TabPages.Contains(tabPagamento))
+            {
+                tabControlAdv1.TabPages.Remove(tabPagamento);
+            }
+            if (!tabControlAdv1.TabPages.Contains(tabVenda))
+            {
+                tabControlAdv1.TabPages.Add(tabVenda);
+            }
+        }
+
+        // Mostrar a aba
+        private void MostrarTabPagamento()
+        {
+            if (!tabControlAdv1.TabPages.Contains(tabPagamento))
+            {
+                tabControlAdv1.TabPages.Add(tabPagamento);
+            }
+            if (tabControlAdv1.TabPages.Contains(tabVenda))
+            {
+                tabControlAdv1.TabPages.Remove(tabVenda);
             }
         }
 
@@ -1028,7 +1126,7 @@ namespace Lunar.Telas.Vendas
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Email, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtPesquisaCliente.Texts + "%' and Tabela.Vendedor = true"))
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.NomeFantasia) like '%" + txtNomeVendedor.Texts + "%' and Tabela.Vendedor = true"))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -1105,6 +1203,7 @@ namespace Lunar.Telas.Vendas
             lblFormaPagamento.BorderColor = System.Drawing.Color.White;
             lblFormaPagamento.Enabled = false;
 
+          
             if (Sessao.permissoes.Count > 0)
             {
                 // Habilitar ou desabilitar os controles com base nas permissões
@@ -1121,6 +1220,14 @@ namespace Lunar.Telas.Vendas
                 btnBoleto.Enabled = Sessao.permissoes.Contains("66");
                 btnCheque.Enabled = Sessao.permissoes.Contains("67");
                 btnFinalizarTela2.Enabled = Sessao.permissoes.Contains("69");
+            }
+            if (this.condicional1 != null)
+            {
+                if (this.condicional1.Id > 0)
+                {
+                    btnExcluirItem.Enabled = false;
+                    btnExcluirItem.BorderColor = Color.Gray;
+                }
             }
         }
 
@@ -1868,6 +1975,7 @@ namespace Lunar.Telas.Vendas
         {
             if (GenericaDesktop.ShowConfirmacao("Tem certeza que deseja retornar a tela anterior?"))
             {
+                EsconderTabPagamento();
                 tabControlAdv1.SelectedTab = tabVenda;
             }
         }
@@ -2818,6 +2926,12 @@ namespace Lunar.Telas.Vendas
                 //    AtualizaEstoque(true);
 
                 vendaConclusao.Concluida = true;
+                if(this.condicional1 != null)
+                {
+                    if (this.condicional1.Id > 0)
+                        vendaConclusao.Condicional = this.condicional1;
+                }
+
                 Controller.getInstance().salvar(vendaConclusao);
 
                 ContaReceberController contaReceberController = new ContaReceberController();
@@ -2874,6 +2988,25 @@ namespace Lunar.Telas.Vendas
                     GenericaDesktop.ShowInfo("Venda Registrada com Sucesso");
                     limparCampos();
                 }
+                if (this.condicional1 != null)
+                {
+                    if (this.condicional1.Id > 0)
+                    {
+                        this.condicional1.Encerrado = true;
+                        if (!String.IsNullOrEmpty(txtCodVendedor.Texts))
+                        {
+                            Pessoa pessoaVendedor = new Pessoa();
+                            pessoaVendedor.Id = int.Parse(txtCodVendedor.Texts);
+                            this.condicional1.Vendedor = (Pessoa)Controller.getInstance().selecionar(pessoaVendedor);
+                        }
+                        this.condicional1.DataEncerramento = DateTime.Now;
+                        this.condicional1.Venda = vendaConclusao;
+                 
+                        Controller.getInstance().salvar(this.condicional1);
+                        this.Close();
+                    }
+                }
+                EsconderTabPagamento();
             }
             catch (Exception erro)
             {
@@ -3601,6 +3734,22 @@ namespace Lunar.Telas.Vendas
             {
                 formBackground.Dispose();
             }
+        }
+
+        private void txtNomeVendedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnPesquisaVendedor.PerformClick();
+            }
+        }
+
+        private void rjButton5_Click(object sender, EventArgs e)
+        {
+            if(GenericaDesktop.ShowConfirmacao("Deseja realmente cancelar a venda?"))
+                {
+                btnVoltar.PerformClick();
+                }
         }
     }
 }

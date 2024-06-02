@@ -103,8 +103,6 @@ namespace Lunar.Telas.Compras
             }
             else
                 return "";
-            
-
         }
         private void CreateEan13()
         {

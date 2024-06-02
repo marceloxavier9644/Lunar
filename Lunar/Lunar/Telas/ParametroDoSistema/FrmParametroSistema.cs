@@ -172,6 +172,13 @@ namespace Lunar.Telas.ParametroDoSistema
                 else if (parametro.ConsultaPadraoSpcBrasil.Equals("128"))
                     radioSPC128.Checked = true;
             }
+            if(parametro.TipoImpressoraCondicional != null)
+            {
+                if (parametro.TipoImpressoraCondicional.Equals("TERMICA"))
+                    radioTermicaCondicional.Checked = true;
+                else if(parametro.TipoImpressoraCondicional.Equals("A4"))
+                    radioA4Condicional.Checked = true;
+            }
             if (parametro.AmbienteSpcBrasil != null)
             {
                 if (parametro.AmbienteSpcBrasil.Equals("PRODUCAO"))
@@ -381,6 +388,11 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.AmbienteSpcBrasil = "PRODUCAO";
             else
                 parametro.AmbienteSpcBrasil = "HOMOLOGACAO";
+
+            if (radioTermicaCondicional.Checked == true)
+                parametro.TipoImpressoraCondicional = "TERMICA";
+            else
+                parametro.TipoImpressoraCondicional = "A4";
 
             //Whatsapp
             if (chkEnvioNFCeNFeWhats.Checked == true)

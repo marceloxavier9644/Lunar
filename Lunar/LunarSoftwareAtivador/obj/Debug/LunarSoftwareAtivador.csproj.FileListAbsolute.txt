@@ -103,7 +103,6 @@ C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtiv
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtivador.Properties.Resources.resources
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtivador.csproj.GenerateResource.cache
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtivador.csproj.CoreCompileInputs.cache
-C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtivador.csproj.CopyComplete
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtivador.exe
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSoftwareAtivador.pdb
 C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll
@@ -257,3 +256,11 @@ C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Numerics.V
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Syncfusion.PdfViewer.Windows.dll
 C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Syncfusion.PdfViewer.Windows.xml
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\selenium-manager\linux\selenium-manager
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\selenium-manager\macos\selenium-manager
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\selenium-manager\windows\selenium-manager.exe
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Text.Json.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.Text.Encodings.Web.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\System.ValueTuple.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Desenvolvimento\Lunar\Lunar\LunarSoftwareAtivador\obj\Debug\LunarSof.01F6ADAF.Up2Date

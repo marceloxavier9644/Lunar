@@ -449,7 +449,7 @@ namespace Lunar.Telas.Condicionais
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtVendedor.Texts + "%' and Tabela.Vendedor = true"))
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj) like '%" + txtVendedor.Texts + "%' and Tabela.Vendedor = true"))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -662,7 +662,12 @@ namespace Lunar.Telas.Condicionais
                         vendedor = (Pessoa)Controller.getInstance().selecionar(vendedor);
                     }
                     if (vendedor != null)
-                        condicional.Vendedor = vendedor;
+                    {
+                        if (vendedor.Id > 0)
+                            condicional.Vendedor = vendedor;
+                        else 
+                            condicional.Vendedor = null;
+                    }
                     condicional.Cliente = pessoa;
                     condicional.Data = DateTime.Parse(txtDataAbertura.Value.ToString());
                     condicional.DataEncerramento = DateTime.Parse("1900-01-01 00:00:00");

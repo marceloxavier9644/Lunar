@@ -2414,7 +2414,7 @@ namespace Lunar.Telas.OrdensDeServico
                     Message = mensagem + " \n\n",
                     File = file+"\n\n"+ "Equipe " + Sessao.empresaFilialLogada.NomeFantasia
                 };
-                await client.SendMessageAsync(message);
+                //await client.SendMessageAsync(message);
             }
         }
 
@@ -2431,7 +2431,7 @@ namespace Lunar.Telas.OrdensDeServico
                     Message = mensagem + "\n\nO.S: " + ordem.Id.ToString(),
                     File = ""
                 };
-                await client.SendMessageAsync(message);
+                //await client.SendMessageAsync(message);
             }
         }
 

@@ -9,13 +9,10 @@ using Lunar.Telas.Cadastros.Financeiro.PlanoContas.PlanosPorGrupos;
 using Lunar.Telas.Cadastros.Produtos;
 using Lunar.Telas.CaixaConferencia;
 using Lunar.Telas.CaixaConferencia.Reports;
-using Lunar.Telas.Compras;
 using Lunar.Telas.Compras.Manifestos;
 using Lunar.Telas.Condicionais;
 using Lunar.Telas.ContasPagar;
 using Lunar.Telas.ContasReceber;
-using Lunar.Telas.ContasReceber.Reports;
-using Lunar.Telas.Dashboards;
 using Lunar.Telas.Estoques;
 using Lunar.Telas.Fiscal;
 using Lunar.Telas.Fiscal.Adicionais;
@@ -32,7 +29,6 @@ using Lunar.Telas.TransferenciaEstoques;
 using Lunar.Telas.UsuarioRegistro;
 using Lunar.Telas.ValeFuncionarios;
 using Lunar.Telas.Vendas;
-using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
 using Lunar.Utils.ImportadorSistemas;
 using LunarBase.Classes;
@@ -42,7 +38,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -399,7 +394,7 @@ namespace Lunar.Telas.Principal
 
 
         //Layout novo
-        private void OpenChildForm<childForm>(Func<childForm> _delegate, object senderMenuButton) where childForm : Form
+        public void OpenChildForm<childForm>(Func<childForm> _delegate, object senderMenuButton) where childForm : Form
         {
             Button menuButton = (Button)senderMenuButton;
             Form form = listChildForms.OfType<childForm>().FirstOrDefault();

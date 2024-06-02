@@ -1,9 +1,7 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
-using Lunar.Telas.ContasReceber;
-using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
+using Lunar.Telas.Vendas;
 using Lunar.Utils;
-using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using Syncfusion.Data;
@@ -65,7 +63,44 @@ namespace Lunar.Telas.Condicionais
 
                 string orderBy = " order by Tabela.Data";
                 listaCondicional = condicionalController.selecionarCondicionalPorSql(sql + orderBy);
-                if (listaCondicional.Count > 0)
+                CondicionalProdutoController condicionalProdutoController = new CondicionalProdutoController();
+                CondicionalDevolucaoController condicionalDevolucaoController = new CondicionalDevolucaoController();
+                foreach (var condicional in listaCondicional)
+                {
+                    // Consultar os produtos associados a esta condicional na tabela CondicionalProduto
+                    var produtosCondicional = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
+
+                    // Inicializar variáveis para armazenar a quantidade e o valor total dos produtos devolvidos para esta condicional
+                    double quantidadeDevolvidaTotalCond = 0;
+                    decimal valorDevolvidoTotalCond = 0;
+
+                    foreach (var produtoCondicional in produtosCondicional)
+                    {
+                        // Consultar os produtos devolvidos associados a este produto da condicional na tabela Devolvidos
+                        var produtosDevolvidos = condicionalDevolucaoController.selecionarProdutosDevolvidosPorCondicional(produtoCondicional.Condicional.Id);
+
+                        // Inicializar variáveis para armazenar a quantidade e o valor total dos produtos devolvidos para este produto da condicional
+                        double quantidadeDevolvidaProduto = 0;
+                        decimal valorDevolvidoProduto = 0;
+
+                        // Para cada produto devolvido associado a este produto da condicional
+                        foreach (var produtoDevolvido in produtosDevolvidos)
+                        {
+                            if (produtoDevolvido.Produto.Id == produtoCondicional.Produto.Id)
+                            {
+                                quantidadeDevolvidaProduto += produtoDevolvido.Quantidade;
+                                valorDevolvidoProduto += decimal.Parse(produtoDevolvido.Quantidade.ToString()) * produtoCondicional.ValorUnitario;
+                            }
+                        }
+                        // Adicionar a quantidade e o valor total deste produto devolvido aos totais da condicional
+                        quantidadeDevolvidaTotalCond += quantidadeDevolvidaProduto;
+                        valorDevolvidoTotalCond += valorDevolvidoProduto;
+                        condicional.ValorSaldo = condicional.ValorTotal - valorDevolvidoTotalCond;
+                        condicional.QuantidadeDevolvida = quantidadeDevolvidaTotalCond;
+                    }
+                }
+
+                    if (listaCondicional.Count > 0)
                 {
                     sfDataPager1.DataSource = listaCondicional;
 
@@ -574,6 +609,14 @@ namespace Lunar.Telas.Condicionais
         {
 
         }
+        public class ProdutoFaturarCondicional
+        {
+            public int ProdutoId { get; set; }
+            public string NomeProduto { get; set; }
+            public int Quantidade { get; set; }
+            public decimal PrecoUnitario { get; set; }
+            public decimal ValorTotal { get; set; }
+        }
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
@@ -582,28 +625,15 @@ namespace Lunar.Telas.Condicionais
                 condicional = new Condicional();
                 condicional = (Condicional)grid.SelectedItem;
                 if (GenericaDesktop.ShowConfirmacao("Confirma o faturamento da condicional selecionada?"))
-                {
-                    Form formBackground = new Form();
-                    FrmPagamentoRecebimento uu = new FrmPagamentoRecebimento(condicional);
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    //formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    //formBackground.Left = Top = 0;
-                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = false;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-                    uu.Owner = formBackground;
-                    uu.ShowDialog();
-                    formBackground.Dispose();
-                    uu.Dispose();
+                { 
+                    FrmVendas02 frm = new FrmVendas02(condicional);
+                    frm.ShowDialog();
                     btnPesquisar.PerformClick();
                 }
             } 
         }
+        
+
+
     }
 }

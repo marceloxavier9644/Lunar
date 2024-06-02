@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Lunar</RootNamespace>
     <AssemblyName>Lunar</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -28,9 +28,10 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -52,10 +53,19 @@
     <ApplicationIcon>Group 137.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.BarTender, Version=11.3.6.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files\Seagull\BarTender 2022\SDK\Print Server API Samples\TaskMaster\bin\Interop.BarTender.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.JScript" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="ReachFramework" />
+    <Reference Include="Seagull.BarTender.Print, Version=11.3.6.1, Culture=neutral, PublicKeyToken=109ff779a1b4cbc7, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Seagull.BarTender.Print.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.BulletGraph.Windows, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\19.4.0.38\precompiledassemblies\4.6\Syncfusion.BulletGraph.Windows.dll</HintPath>
       <Private>True</Private>
@@ -1400,6 +1410,7 @@
       <DependentUpon>FrmImprimirCondicional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Condicionais\ReportCondicional01.rdlc" />
+    <EmbeddedResource Include="Telas\Condicionais\ReportCondicionalA4.rdlc" />
     <EmbeddedResource Include="Telas\ContasPagar\FrmContaPagarLista.resx">
       <DependentUpon>FrmContaPagarLista.cs</DependentUpon>
     </EmbeddedResource>
@@ -2248,6 +2259,9 @@
     </PackageReference>
     <PackageReference Include="FontAwesome.Sharp">
       <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="iTextSharp">
+      <Version>5.5.13.3</Version>
     </PackageReference>
     <PackageReference Include="JWT">
       <Version>5.1.1</Version>

@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.7.2": {
+    ".NETFramework,Version=v4.8": {
       "Antlr3.Runtime/3.5.1": {
         "type": "package",
         "compile": {
@@ -44,7 +44,7 @@
           }
         }
       },
-      "BouncyCastle/1.8.5": {
+      "BouncyCastle/1.8.9": {
         "type": "package",
         "compile": {
           "lib/BouncyCastle.Crypto.dll": {}
@@ -99,14 +99,16 @@
       "FirebirdSql.Data.FirebirdClient/9.1.1": {
         "type": "package",
         "dependencies": {
-          "System.Reflection.Emit": "4.7.0",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
+        "frameworkAssemblies": [
+          "System.Transactions"
+        ],
         "compile": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
       "FiscalBr.Common/4.0.0": {
@@ -115,10 +117,10 @@
           "Microsoft.CSharp": "4.7.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         }
       },
       "FiscalBr.Sintegra/2.0.0": {
@@ -127,10 +129,10 @@
           "FiscalBr.Common": "4.0.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         }
       },
       "FontAwesome.Sharp/6.1.1": {
@@ -143,10 +145,10 @@
           "WindowsBase"
         ],
         "compile": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         },
         "runtime": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
       "Google.Protobuf/3.14.0": {
@@ -176,6 +178,18 @@
           "lib/net461/Iesi.Collections.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "iTextSharp/5.5.13.3": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle": "1.8.9"
+        },
+        "compile": {
+          "lib/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {}
         }
       },
       "JWT/5.1.1": {
@@ -740,18 +754,18 @@
           "System.Transactions"
         ],
         "compile": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         },
         "runtime": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -1225,15 +1239,6 @@
           }
         }
       },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
       "System.Runtime/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1545,18 +1550,18 @@
       "ZXing.Net/0.16.8": {
         "type": "package",
         "compile": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         },
         "runtime": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         }
@@ -1578,7 +1583,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.7.2/win": {
+    ".NETFramework,Version=v4.8/win": {
       "Antlr3.Runtime/3.5.1": {
         "type": "package",
         "compile": {
@@ -1621,7 +1626,7 @@
           }
         }
       },
-      "BouncyCastle/1.8.5": {
+      "BouncyCastle/1.8.9": {
         "type": "package",
         "compile": {
           "lib/BouncyCastle.Crypto.dll": {}
@@ -1676,14 +1681,16 @@
       "FirebirdSql.Data.FirebirdClient/9.1.1": {
         "type": "package",
         "dependencies": {
-          "System.Reflection.Emit": "4.7.0",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
+        "frameworkAssemblies": [
+          "System.Transactions"
+        ],
         "compile": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
       "FiscalBr.Common/4.0.0": {
@@ -1692,10 +1699,10 @@
           "Microsoft.CSharp": "4.7.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         }
       },
       "FiscalBr.Sintegra/2.0.0": {
@@ -1704,10 +1711,10 @@
           "FiscalBr.Common": "4.0.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         }
       },
       "FontAwesome.Sharp/6.1.1": {
@@ -1720,10 +1727,10 @@
           "WindowsBase"
         ],
         "compile": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         },
         "runtime": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
       "Google.Protobuf/3.14.0": {
@@ -1753,6 +1760,18 @@
           "lib/net461/Iesi.Collections.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "iTextSharp/5.5.13.3": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle": "1.8.9"
+        },
+        "compile": {
+          "lib/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {}
         }
       },
       "JWT/5.1.1": {
@@ -2303,18 +2322,18 @@
           "System.Transactions"
         ],
         "compile": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         },
         "runtime": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -2768,15 +2787,6 @@
           }
         }
       },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
       "System.Runtime/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -3054,18 +3064,18 @@
       "ZXing.Net/0.16.8": {
         "type": "package",
         "compile": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         },
         "runtime": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         }
@@ -3087,7 +3097,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.7.2/win-arm64": {
+    ".NETFramework,Version=v4.8/win-arm64": {
       "Antlr3.Runtime/3.5.1": {
         "type": "package",
         "compile": {
@@ -3130,7 +3140,7 @@
           }
         }
       },
-      "BouncyCastle/1.8.5": {
+      "BouncyCastle/1.8.9": {
         "type": "package",
         "compile": {
           "lib/BouncyCastle.Crypto.dll": {}
@@ -3185,14 +3195,16 @@
       "FirebirdSql.Data.FirebirdClient/9.1.1": {
         "type": "package",
         "dependencies": {
-          "System.Reflection.Emit": "4.7.0",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
+        "frameworkAssemblies": [
+          "System.Transactions"
+        ],
         "compile": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
       "FiscalBr.Common/4.0.0": {
@@ -3201,10 +3213,10 @@
           "Microsoft.CSharp": "4.7.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         }
       },
       "FiscalBr.Sintegra/2.0.0": {
@@ -3213,10 +3225,10 @@
           "FiscalBr.Common": "4.0.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         }
       },
       "FontAwesome.Sharp/6.1.1": {
@@ -3229,10 +3241,10 @@
           "WindowsBase"
         ],
         "compile": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         },
         "runtime": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
       "Google.Protobuf/3.14.0": {
@@ -3262,6 +3274,18 @@
           "lib/net461/Iesi.Collections.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "iTextSharp/5.5.13.3": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle": "1.8.9"
+        },
+        "compile": {
+          "lib/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {}
         }
       },
       "JWT/5.1.1": {
@@ -3815,18 +3839,18 @@
           "System.Transactions"
         ],
         "compile": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         },
         "runtime": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -4280,15 +4304,6 @@
           }
         }
       },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
       "System.Runtime/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -4566,18 +4581,18 @@
       "ZXing.Net/0.16.8": {
         "type": "package",
         "compile": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         },
         "runtime": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         }
@@ -4599,7 +4614,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.7.2/win-x64": {
+    ".NETFramework,Version=v4.8/win-x64": {
       "Antlr3.Runtime/3.5.1": {
         "type": "package",
         "compile": {
@@ -4642,7 +4657,7 @@
           }
         }
       },
-      "BouncyCastle/1.8.5": {
+      "BouncyCastle/1.8.9": {
         "type": "package",
         "compile": {
           "lib/BouncyCastle.Crypto.dll": {}
@@ -4697,14 +4712,16 @@
       "FirebirdSql.Data.FirebirdClient/9.1.1": {
         "type": "package",
         "dependencies": {
-          "System.Reflection.Emit": "4.7.0",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
+        "frameworkAssemblies": [
+          "System.Transactions"
+        ],
         "compile": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
       "FiscalBr.Common/4.0.0": {
@@ -4713,10 +4730,10 @@
           "Microsoft.CSharp": "4.7.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         }
       },
       "FiscalBr.Sintegra/2.0.0": {
@@ -4725,10 +4742,10 @@
           "FiscalBr.Common": "4.0.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         }
       },
       "FontAwesome.Sharp/6.1.1": {
@@ -4741,10 +4758,10 @@
           "WindowsBase"
         ],
         "compile": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         },
         "runtime": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
       "Google.Protobuf/3.14.0": {
@@ -4774,6 +4791,18 @@
           "lib/net461/Iesi.Collections.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "iTextSharp/5.5.13.3": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle": "1.8.9"
+        },
+        "compile": {
+          "lib/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {}
         }
       },
       "JWT/5.1.1": {
@@ -5327,18 +5356,18 @@
           "System.Transactions"
         ],
         "compile": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         },
         "runtime": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -5792,15 +5821,6 @@
           }
         }
       },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
       "System.Runtime/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -6078,18 +6098,18 @@
       "ZXing.Net/0.16.8": {
         "type": "package",
         "compile": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         },
         "runtime": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         }
@@ -6111,7 +6131,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.7.2/win-x86": {
+    ".NETFramework,Version=v4.8/win-x86": {
       "Antlr3.Runtime/3.5.1": {
         "type": "package",
         "compile": {
@@ -6154,7 +6174,7 @@
           }
         }
       },
-      "BouncyCastle/1.8.5": {
+      "BouncyCastle/1.8.9": {
         "type": "package",
         "compile": {
           "lib/BouncyCastle.Crypto.dll": {}
@@ -6209,14 +6229,16 @@
       "FirebirdSql.Data.FirebirdClient/9.1.1": {
         "type": "package",
         "dependencies": {
-          "System.Reflection.Emit": "4.7.0",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
+        "frameworkAssemblies": [
+          "System.Transactions"
+        ],
         "compile": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+          "lib/net48/FirebirdSql.Data.FirebirdClient.dll": {}
         }
       },
       "FiscalBr.Common/4.0.0": {
@@ -6225,10 +6247,10 @@
           "Microsoft.CSharp": "4.7.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Common.dll": {}
+          "lib/net48/FiscalBr.Common.dll": {}
         }
       },
       "FiscalBr.Sintegra/2.0.0": {
@@ -6237,10 +6259,10 @@
           "FiscalBr.Common": "4.0.0"
         },
         "compile": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         },
         "runtime": {
-          "lib/net472/FiscalBr.Sintegra.dll": {}
+          "lib/net48/FiscalBr.Sintegra.dll": {}
         }
       },
       "FontAwesome.Sharp/6.1.1": {
@@ -6253,10 +6275,10 @@
           "WindowsBase"
         ],
         "compile": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         },
         "runtime": {
-          "lib/net472/FontAwesome.Sharp.dll": {}
+          "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
       "Google.Protobuf/3.14.0": {
@@ -6286,6 +6308,18 @@
           "lib/net461/Iesi.Collections.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "iTextSharp/5.5.13.3": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle": "1.8.9"
+        },
+        "compile": {
+          "lib/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {}
         }
       },
       "JWT/5.1.1": {
@@ -6839,18 +6873,18 @@
           "System.Transactions"
         ],
         "compile": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         },
         "runtime": {
-          "lib/net452/MySql.Data.dll": {
+          "lib/net48/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/net452/Ubiety.Dns.Core.dll": {},
-          "lib/net452/ZstdNet.dll": {}
+          "lib/net48/Ubiety.Dns.Core.dll": {},
+          "lib/net48/ZstdNet.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -7304,15 +7338,6 @@
           }
         }
       },
-      "System.Reflection.Emit/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
       "System.Runtime/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -7590,18 +7615,18 @@
       "ZXing.Net/0.16.8": {
         "type": "package",
         "compile": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         },
         "runtime": {
-          "lib/net47/zxing.dll": {
+          "lib/net48/zxing.dll": {
             "related": ".presentation.XML;.XML"
           },
-          "lib/net47/zxing.presentation.dll": {
+          "lib/net48/zxing.presentation.dll": {
             "related": ".XML"
           }
         }
@@ -7673,15 +7698,15 @@
         "readme.txt"
       ]
     },
-    "BouncyCastle/1.8.5": {
-      "sha512": "196QWfvglefGd/Cr2C4hIdmA9HYkLFZovxJ7L0BAOFlNn+qlmVxqpxpcKGoC5AF4rOuoUq3ylzLgKZW5j4nmDQ==",
+    "BouncyCastle/1.8.9": {
+      "sha512": "axnBgvdD5n+FnEG6efk/tfKuMFru7R/EoISH9zjh319yb3HD24TEHSAbNN/lTRT2ulOGRxDgOsCjkuk08iwWPg==",
       "type": "package",
-      "path": "bouncycastle/1.8.5",
+      "path": "bouncycastle/1.8.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "bouncycastle.1.8.5.nupkg.sha512",
+        "bouncycastle.1.8.9.nupkg.sha512",
         "bouncycastle.nuspec",
         "lib/BouncyCastle.Crypto.dll"
       ]
@@ -7841,6 +7866,22 @@
         "lib/netstandard1.0/Iesi.Collections.xml",
         "lib/netstandard1.3/Iesi.Collections.dll",
         "lib/netstandard1.3/Iesi.Collections.xml"
+      ]
+    },
+    "iTextSharp/5.5.13.3": {
+      "sha512": "vtnMhTEJdZFCkLqaQLjD8aqTBIVKHPrSFuSXnxbLEJlvE/j/l88fvG9wtsejXTmhtErMo0lA9T2LdfdfbwplYw==",
+      "type": "package",
+      "path": "itextsharp/5.5.13.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "gnu-agpl-v3.0.md",
+        "itextsharp.5.5.13.3.nupkg.sha512",
+        "itextsharp.nuspec",
+        "lib/iTextSharp.xml",
+        "lib/itextsharp.dll",
+        "notice.txt"
       ]
     },
     "JWT/5.1.1": {
@@ -9353,60 +9394,6 @@
         "version.txt"
       ]
     },
-    "System.Reflection.Emit/4.7.0": {
-      "sha512": "VR4kk8XLKebQ4MZuKuIni/7oh+QGFmZW3qORd1GvBq/8026OpW501SzT/oypwiQl4TvT8ErnReh/NzY9u+C6wQ==",
-      "type": "package",
-      "path": "system.reflection.emit/4.7.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.Reflection.Emit.dll",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.1/System.Reflection.Emit.dll",
-        "lib/netstandard1.1/System.Reflection.Emit.xml",
-        "lib/netstandard1.3/System.Reflection.Emit.dll",
-        "lib/netstandard2.0/System.Reflection.Emit.dll",
-        "lib/netstandard2.0/System.Reflection.Emit.xml",
-        "lib/netstandard2.1/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard1.1/System.Reflection.Emit.dll",
-        "ref/netstandard1.1/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/de/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/es/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/fr/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/it/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/ja/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/ko/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/ru/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/zh-hans/System.Reflection.Emit.xml",
-        "ref/netstandard1.1/zh-hant/System.Reflection.Emit.xml",
-        "ref/netstandard2.0/System.Reflection.Emit.dll",
-        "ref/netstandard2.0/System.Reflection.Emit.xml",
-        "ref/netstandard2.1/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/System.Reflection.Emit.dll",
-        "runtimes/aot/lib/netcore50/System.Reflection.Emit.xml",
-        "system.reflection.emit.4.7.0.nupkg.sha512",
-        "system.reflection.emit.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Runtime/4.3.0": {
       "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
       "type": "package",
@@ -10181,7 +10168,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.7.2": [
+    ".NETFramework,Version=v4.8": [
       "BarcodeLib >= 2.4.0",
       "CircularProgressBar >= 2.8.0.16",
       "Cquential.Microsoft.ReportViewer.DataVisualization >= 10.0.40219.1",
@@ -10210,12 +10197,13 @@
       "Unimake.Unidanfe >= 20220117.1131.32",
       "Wdc.System.Net.Http.Formatting.NetStandard >= 1.0.7",
       "ZXing.Net >= 0.16.8",
-      "boletofacilsdk >= 1.0.8"
+      "boletofacilsdk >= 1.0.8",
+      "iTextSharp >= 5.5.13.3"
     ]
   },
   "packageFolders": {
     "C:\\Users\\marce\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WPF\\19.4.0.38\\ToolboxNuGetPackages": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -10228,32 +10216,37 @@
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WPF\\19.4.0.38\\ToolboxNuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\marce\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Syncfusion Toolbox for WPF.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net472"
+        "net48"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net472": {
+        "net48": {
           "projectReferences": {
             "C:\\Desenvolvimento\\Lunar\\LunarBase\\LunarBase\\LunarBase.csproj": {
               "projectPath": "C:\\Desenvolvimento\\Lunar\\LunarBase\\LunarBase\\LunarBase.csproj"
             }
           }
         }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
-      "net472": {
+      "net48": {
         "dependencies": {
           "BarcodeLib": {
             "target": "Package",
@@ -10366,6 +10359,10 @@
           "boletofacilsdk": {
             "target": "Package",
             "version": "[1.0.8, )"
+          },
+          "iTextSharp": {
+            "target": "Package",
+            "version": "[5.5.13.3, )"
           }
         },
         "imports": [
@@ -10398,11 +10395,67 @@
       "message": "Microsoft.ReportingServices.ReportViewerControl.Winforms 150.1484.0 depende de Microsoft.SqlServer.Types (>= 14.0.0), mas Microsoft.SqlServer.Types 14.0.0 não foi encontrado. A melhor correspondência aproximada de Microsoft.SqlServer.Types 14.0.314.76 foi resolvida.",
       "libraryId": "Microsoft.SqlServer.Types",
       "targetGraphs": [
-        ".NETFramework,Version=v4.7.2",
-        ".NETFramework,Version=v4.7.2/win",
-        ".NETFramework,Version=v4.7.2/win-arm64",
-        ".NETFramework,Version=v4.7.2/win-x64",
-        ".NETFramework,Version=v4.7.2/win-x86"
+        ".NETFramework,Version=v4.8",
+        ".NETFramework,Version=v4.8/win",
+        ".NETFramework,Version=v4.8/win-arm64",
+        ".NETFramework,Version=v4.8/win-x64",
+        ".NETFramework,Version=v4.8/win-x86"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'System.Net.WebSockets.Client' 4.3.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-6xh7-4v2w-36q6",
+      "libraryId": "System.Net.WebSockets.Client",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.8",
+        ".NETFramework,Version=v4.8/win",
+        ".NETFramework,Version=v4.8/win-arm64",
+        ".NETFramework,Version=v4.8/win-x64",
+        ".NETFramework,Version=v4.8/win-x86"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'System.Net.WebSockets.Client' 4.3.0 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-ch6p-4jcm-h8vh",
+      "libraryId": "System.Net.WebSockets.Client",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.8",
+        ".NETFramework,Version=v4.8/win",
+        ".NETFramework,Version=v4.8/win-arm64",
+        ".NETFramework,Version=v4.8/win-x64",
+        ".NETFramework,Version=v4.8/win-x86"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'System.Net.WebSockets.Client' 4.3.0 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-j8f4-2w4p-mhjc",
+      "libraryId": "System.Net.WebSockets.Client",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.8",
+        ".NETFramework,Version=v4.8/win",
+        ".NETFramework,Version=v4.8/win-arm64",
+        ".NETFramework,Version=v4.8/win-x64",
+        ".NETFramework,Version=v4.8/win-x86"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'System.Net.WebSockets.Client' 4.3.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-qhqf-ghgh-x2m4",
+      "libraryId": "System.Net.WebSockets.Client",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.8",
+        ".NETFramework,Version=v4.8/win",
+        ".NETFramework,Version=v4.8/win-arm64",
+        ".NETFramework,Version=v4.8/win-x64",
+        ".NETFramework,Version=v4.8/win-x86"
       ]
     },
     {
@@ -10412,11 +10465,11 @@
       "message": "Downgrade de pacote detectado: ZXing.Net de 0.16.9 para 0.16.8. Referencie o pacote diretamente do projeto para selecionar uma versão diferente. \r\n Lunar -> LunarBase -> ZXing.Net (>= 0.16.9) \r\n Lunar -> ZXing.Net (>= 0.16.8)",
       "libraryId": "ZXing.Net",
       "targetGraphs": [
-        ".NETFramework,Version=v4.7.2",
-        ".NETFramework,Version=v4.7.2/win",
-        ".NETFramework,Version=v4.7.2/win-arm64",
-        ".NETFramework,Version=v4.7.2/win-x64",
-        ".NETFramework,Version=v4.7.2/win-x86"
+        ".NETFramework,Version=v4.8",
+        ".NETFramework,Version=v4.8/win",
+        ".NETFramework,Version=v4.8/win-arm64",
+        ".NETFramework,Version=v4.8/win-x64",
+        ".NETFramework,Version=v4.8/win-x86"
       ]
     }
   ]

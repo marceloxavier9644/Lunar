@@ -50,20 +50,31 @@
             this.tabVenda = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtTotalComDesconto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtDesconto = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtValorTotalProdutos = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtTotalItens = new Lunar.RJ_UI.Classes.RJTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTransferencia = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnCondicional = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnFinalizar01 = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnCancelarVenda = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnDescontoGeral = new Lunar.RJ_UI.Classes.RJButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtCodCliente = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnDadosCliente = new FontAwesome.Sharp.IconButton();
             this.btnPesquisaProduto = new FontAwesome.Sharp.IconButton();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaVendedor = new FontAwesome.Sharp.IconButton();
+            this.txtNomeVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblDependente = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblIdDependente = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -76,11 +87,26 @@
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtQuantidade = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtValorTotal = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtValorUnitario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.lblRevisar = new System.Windows.Forms.Label();
+            this.btnAdicionar = new Lunar.RJ_UI.Classes.RJButton();
+            this.rjTextBox1 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox2 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gridProdutos = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            this.btnDescontoItem = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnExcluirItem = new Lunar.RJ_UI.Classes.RJButton();
+            this.rjTextBox16 = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtPesquisaCliente = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtPesquisaProduto = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCodVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabPagamento = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnFinalizarTela2 = new Lunar.RJ_UI.Classes.RJButton();
+            this.rjButton5 = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnVoltar = new Lunar.RJ_UI.Classes.RJButton();
             this.panelPagamentoTotal = new System.Windows.Forms.Panel();
             this.btnGerarNfe = new FontAwesome.Sharp.IconButton();
             this.lblNumeroVenda = new System.Windows.Forms.Label();
@@ -89,9 +115,11 @@
             this.btnExcluirRecebimento = new FontAwesome.Sharp.IconButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtClienteAbaPagamento = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnSelecionaVendedorTela2 = new FontAwesome.Sharp.IconButton();
             this.btnSelecionaClienteTela2 = new FontAwesome.Sharp.IconButton();
+            this.txtVendedorSelecionado = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.lblValorVenda = new System.Windows.Forms.Label();
@@ -107,19 +135,28 @@
             this.autoLabel17 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel14 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.iconeCredito = new FontAwesome.Sharp.IconButton();
+            this.btnCreditoCliente = new Lunar.RJ_UI.Classes.RJButton();
             this.iconeDeposito = new FontAwesome.Sharp.IconButton();
+            this.btnDeposito = new Lunar.RJ_UI.Classes.RJButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.autoLabel18 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnBoleto = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel16 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel13 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel12 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel11 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.lblFormaPagamento = new Lunar.RJ_UI.Classes.RJTextBox();
             this.iconeCartao = new FontAwesome.Sharp.IconButton();
+            this.btnCartaoCredito = new Lunar.RJ_UI.Classes.RJButton();
             this.IconeDinheiro = new FontAwesome.Sharp.IconButton();
+            this.btnDinheiro = new Lunar.RJ_UI.Classes.RJButton();
             this.iconeCheque = new FontAwesome.Sharp.IconButton();
             this.iconePix = new FontAwesome.Sharp.IconButton();
+            this.btnCheque = new Lunar.RJ_UI.Classes.RJButton();
             this.iconeCrediario = new FontAwesome.Sharp.IconButton();
+            this.btnCrediario = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnPIX = new Lunar.RJ_UI.Classes.RJButton();
             this.dsProduto = new System.Data.DataSet();
             this.Produtos = new System.Data.DataTable();
             this.dataColumn1 = new System.Data.DataColumn();
@@ -141,43 +178,6 @@
             this.dataColumn10 = new System.Data.DataColumn();
             this.dataColumn11 = new System.Data.DataColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txtTotalComDesconto = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtDesconto = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtValorTotalProdutos = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtTotalItens = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnTransferencia = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCondicional = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnFinalizar01 = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCancelarVenda = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnDescontoGeral = new Lunar.RJ_UI.Classes.RJButton();
-            this.txtCodCliente = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtNomeVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtQuantidade = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtValorTotal = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtValorUnitario = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnAdicionar = new Lunar.RJ_UI.Classes.RJButton();
-            this.rjTextBox1 = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.rjTextBox2 = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnDescontoItem = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnExcluirItem = new Lunar.RJ_UI.Classes.RJButton();
-            this.rjTextBox16 = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtPesquisaCliente = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtPesquisaProduto = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtCodVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnFinalizarTela2 = new Lunar.RJ_UI.Classes.RJButton();
-            this.rjButton5 = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnVoltar = new Lunar.RJ_UI.Classes.RJButton();
-            this.txtClienteAbaPagamento = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtVendedorSelecionado = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnCreditoCliente = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnDeposito = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnBoleto = new Lunar.RJ_UI.Classes.RJButton();
-            this.lblFormaPagamento = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnCartaoCredito = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnDinheiro = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCheque = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCrediario = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnPIX = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabVenda.SuspendLayout();
@@ -265,6 +265,33 @@
             this.label5.TabIndex = 144;
             this.label5.Text = "Total com Desc.";
             // 
+            // txtTotalComDesconto
+            // 
+            this.txtTotalComDesconto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalComDesconto.BackColor = System.Drawing.Color.White;
+            this.txtTotalComDesconto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTotalComDesconto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTotalComDesconto.BorderRadius = 8;
+            this.txtTotalComDesconto.BorderSize = 2;
+            this.txtTotalComDesconto.Enabled = false;
+            this.txtTotalComDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalComDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTotalComDesconto.Location = new System.Drawing.Point(821, 38);
+            this.txtTotalComDesconto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotalComDesconto.Multiline = false;
+            this.txtTotalComDesconto.Name = "txtTotalComDesconto";
+            this.txtTotalComDesconto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTotalComDesconto.PasswordChar = false;
+            this.txtTotalComDesconto.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtTotalComDesconto.PlaceholderText = "";
+            this.txtTotalComDesconto.ReadOnly = false;
+            this.txtTotalComDesconto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtTotalComDesconto.Size = new System.Drawing.Size(173, 38);
+            this.txtTotalComDesconto.TabIndex = 143;
+            this.txtTotalComDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtTotalComDesconto.Texts = "";
+            this.txtTotalComDesconto.UnderlinedStyle = false;
+            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -301,6 +328,86 @@
             this.label1.TabIndex = 141;
             this.label1.Text = "Desconto";
             // 
+            // txtDesconto
+            // 
+            this.txtDesconto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDesconto.BackColor = System.Drawing.Color.White;
+            this.txtDesconto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDesconto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDesconto.BorderRadius = 8;
+            this.txtDesconto.BorderSize = 2;
+            this.txtDesconto.Enabled = false;
+            this.txtDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDesconto.Location = new System.Drawing.Point(640, 38);
+            this.txtDesconto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDesconto.Multiline = false;
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtDesconto.PasswordChar = false;
+            this.txtDesconto.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtDesconto.PlaceholderText = "";
+            this.txtDesconto.ReadOnly = false;
+            this.txtDesconto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtDesconto.Size = new System.Drawing.Size(173, 38);
+            this.txtDesconto.TabIndex = 140;
+            this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtDesconto.Texts = "0,00";
+            this.txtDesconto.UnderlinedStyle = false;
+            // 
+            // txtValorTotalProdutos
+            // 
+            this.txtValorTotalProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtValorTotalProdutos.BackColor = System.Drawing.Color.White;
+            this.txtValorTotalProdutos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorTotalProdutos.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorTotalProdutos.BorderRadius = 8;
+            this.txtValorTotalProdutos.BorderSize = 2;
+            this.txtValorTotalProdutos.Enabled = false;
+            this.txtValorTotalProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorTotalProdutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtValorTotalProdutos.Location = new System.Drawing.Point(459, 38);
+            this.txtValorTotalProdutos.Margin = new System.Windows.Forms.Padding(4);
+            this.txtValorTotalProdutos.Multiline = false;
+            this.txtValorTotalProdutos.Name = "txtValorTotalProdutos";
+            this.txtValorTotalProdutos.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtValorTotalProdutos.PasswordChar = false;
+            this.txtValorTotalProdutos.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtValorTotalProdutos.PlaceholderText = "";
+            this.txtValorTotalProdutos.ReadOnly = false;
+            this.txtValorTotalProdutos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtValorTotalProdutos.Size = new System.Drawing.Size(173, 38);
+            this.txtValorTotalProdutos.TabIndex = 138;
+            this.txtValorTotalProdutos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtValorTotalProdutos.Texts = "";
+            this.txtValorTotalProdutos.UnderlinedStyle = false;
+            // 
+            // txtTotalItens
+            // 
+            this.txtTotalItens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalItens.BackColor = System.Drawing.Color.White;
+            this.txtTotalItens.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTotalItens.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTotalItens.BorderRadius = 8;
+            this.txtTotalItens.BorderSize = 2;
+            this.txtTotalItens.Enabled = false;
+            this.txtTotalItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalItens.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTotalItens.Location = new System.Drawing.Point(278, 38);
+            this.txtTotalItens.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotalItens.Multiline = false;
+            this.txtTotalItens.Name = "txtTotalItens";
+            this.txtTotalItens.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTotalItens.PasswordChar = false;
+            this.txtTotalItens.PlaceholderColor = System.Drawing.Color.Black;
+            this.txtTotalItens.PlaceholderText = "";
+            this.txtTotalItens.ReadOnly = false;
+            this.txtTotalItens.Size = new System.Drawing.Size(173, 38);
+            this.txtTotalItens.TabIndex = 137;
+            this.txtTotalItens.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtTotalItens.Texts = "";
+            this.txtTotalItens.UnderlinedStyle = false;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnTransferencia);
@@ -316,6 +423,125 @@
             this.groupBox1.Size = new System.Drawing.Size(1005, 68);
             this.groupBox1.TabIndex = 147;
             this.groupBox1.TabStop = false;
+            // 
+            // btnTransferencia
+            // 
+            this.btnTransferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTransferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnTransferencia.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnTransferencia.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnTransferencia.BorderRadius = 8;
+            this.btnTransferencia.BorderSize = 2;
+            this.btnTransferencia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTransferencia.FlatAppearance.BorderSize = 0;
+            this.btnTransferencia.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnTransferencia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnTransferencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransferencia.ForeColor = System.Drawing.Color.White;
+            this.btnTransferencia.Location = new System.Drawing.Point(783, 13);
+            this.btnTransferencia.Name = "btnTransferencia";
+            this.btnTransferencia.Size = new System.Drawing.Size(206, 45);
+            this.btnTransferencia.TabIndex = 148;
+            this.btnTransferencia.Text = "Transferência Filiais";
+            this.btnTransferencia.TextColor = System.Drawing.Color.White;
+            this.btnTransferencia.UseVisualStyleBackColor = false;
+            this.btnTransferencia.Click += new System.EventHandler(this.btnTransferencia_Click);
+            // 
+            // btnCondicional
+            // 
+            this.btnCondicional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCondicional.BackColor = System.Drawing.Color.White;
+            this.btnCondicional.BackgroundColor = System.Drawing.Color.White;
+            this.btnCondicional.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCondicional.BorderRadius = 8;
+            this.btnCondicional.BorderSize = 2;
+            this.btnCondicional.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCondicional.FlatAppearance.BorderSize = 0;
+            this.btnCondicional.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCondicional.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCondicional.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCondicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCondicional.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnCondicional.Location = new System.Drawing.Point(349, 13);
+            this.btnCondicional.Name = "btnCondicional";
+            this.btnCondicional.Size = new System.Drawing.Size(211, 45);
+            this.btnCondicional.TabIndex = 147;
+            this.btnCondicional.Text = "Condicional";
+            this.btnCondicional.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnCondicional.UseVisualStyleBackColor = false;
+            this.btnCondicional.Visible = false;
+            this.btnCondicional.Click += new System.EventHandler(this.btnCondicional_Click);
+            // 
+            // btnFinalizar01
+            // 
+            this.btnFinalizar01.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinalizar01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnFinalizar01.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnFinalizar01.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnFinalizar01.BorderRadius = 8;
+            this.btnFinalizar01.BorderSize = 0;
+            this.btnFinalizar01.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinalizar01.FlatAppearance.BorderSize = 0;
+            this.btnFinalizar01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizar01.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizar01.ForeColor = System.Drawing.Color.White;
+            this.btnFinalizar01.Location = new System.Drawing.Point(783, 13);
+            this.btnFinalizar01.Name = "btnFinalizar01";
+            this.btnFinalizar01.Size = new System.Drawing.Size(211, 45);
+            this.btnFinalizar01.TabIndex = 144;
+            this.btnFinalizar01.Text = "Finalizar [F5]";
+            this.btnFinalizar01.TextColor = System.Drawing.Color.White;
+            this.btnFinalizar01.UseVisualStyleBackColor = false;
+            this.btnFinalizar01.Click += new System.EventHandler(this.btnFinalizar01_Click);
+            // 
+            // btnCancelarVenda
+            // 
+            this.btnCancelarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancelarVenda.BackColor = System.Drawing.Color.White;
+            this.btnCancelarVenda.BackgroundColor = System.Drawing.Color.White;
+            this.btnCancelarVenda.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCancelarVenda.BorderRadius = 8;
+            this.btnCancelarVenda.BorderSize = 2;
+            this.btnCancelarVenda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelarVenda.FlatAppearance.BorderSize = 0;
+            this.btnCancelarVenda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCancelarVenda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCancelarVenda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarVenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancelarVenda.Location = new System.Drawing.Point(12, 13);
+            this.btnCancelarVenda.Name = "btnCancelarVenda";
+            this.btnCancelarVenda.Size = new System.Drawing.Size(159, 45);
+            this.btnCancelarVenda.TabIndex = 145;
+            this.btnCancelarVenda.Text = "Cancelar";
+            this.btnCancelarVenda.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancelarVenda.UseVisualStyleBackColor = false;
+            this.btnCancelarVenda.Click += new System.EventHandler(this.btnCancelarVenda_Click);
+            // 
+            // btnDescontoGeral
+            // 
+            this.btnDescontoGeral.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDescontoGeral.BackColor = System.Drawing.Color.White;
+            this.btnDescontoGeral.BackgroundColor = System.Drawing.Color.White;
+            this.btnDescontoGeral.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDescontoGeral.BorderRadius = 8;
+            this.btnDescontoGeral.BorderSize = 2;
+            this.btnDescontoGeral.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDescontoGeral.FlatAppearance.BorderSize = 0;
+            this.btnDescontoGeral.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnDescontoGeral.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDescontoGeral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescontoGeral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDescontoGeral.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnDescontoGeral.Location = new System.Drawing.Point(566, 13);
+            this.btnDescontoGeral.Name = "btnDescontoGeral";
+            this.btnDescontoGeral.Size = new System.Drawing.Size(211, 45);
+            this.btnDescontoGeral.TabIndex = 146;
+            this.btnDescontoGeral.Text = "Desconto";
+            this.btnDescontoGeral.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnDescontoGeral.UseVisualStyleBackColor = false;
+            this.btnDescontoGeral.Click += new System.EventHandler(this.btnDescontoGeral_Click);
             // 
             // panel2
             // 
@@ -415,6 +641,33 @@
             this.autoLabel7.Text = "Código";
             this.autoLabel7.Visible = false;
             // 
+            // txtCodCliente
+            // 
+            this.txtCodCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodCliente.BackColor = System.Drawing.Color.White;
+            this.txtCodCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodCliente.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodCliente.BorderRadius = 8;
+            this.txtCodCliente.BorderSize = 2;
+            this.txtCodCliente.Enabled = false;
+            this.txtCodCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodCliente.Location = new System.Drawing.Point(445, 19);
+            this.txtCodCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodCliente.Multiline = false;
+            this.txtCodCliente.Name = "txtCodCliente";
+            this.txtCodCliente.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodCliente.PasswordChar = false;
+            this.txtCodCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodCliente.PlaceholderText = "";
+            this.txtCodCliente.ReadOnly = false;
+            this.txtCodCliente.Size = new System.Drawing.Size(98, 37);
+            this.txtCodCliente.TabIndex = 192;
+            this.txtCodCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodCliente.Texts = "";
+            this.txtCodCliente.UnderlinedStyle = false;
+            this.txtCodCliente.Visible = false;
+            // 
             // btnDadosCliente
             // 
             this.btnDadosCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -489,6 +742,33 @@
             this.btnPesquisaVendedor.TabIndex = 195;
             this.btnPesquisaVendedor.UseVisualStyleBackColor = true;
             this.btnPesquisaVendedor.Click += new System.EventHandler(this.btnPesquisaVendedor_Click);
+            // 
+            // txtNomeVendedor
+            // 
+            this.txtNomeVendedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNomeVendedor.BackColor = System.Drawing.Color.White;
+            this.txtNomeVendedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtNomeVendedor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtNomeVendedor.BorderRadius = 8;
+            this.txtNomeVendedor.BorderSize = 2;
+            this.txtNomeVendedor.Enabled = false;
+            this.txtNomeVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtNomeVendedor.Location = new System.Drawing.Point(627, 19);
+            this.txtNomeVendedor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNomeVendedor.Multiline = false;
+            this.txtNomeVendedor.Name = "txtNomeVendedor";
+            this.txtNomeVendedor.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtNomeVendedor.PasswordChar = false;
+            this.txtNomeVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtNomeVendedor.PlaceholderText = "";
+            this.txtNomeVendedor.ReadOnly = false;
+            this.txtNomeVendedor.Size = new System.Drawing.Size(319, 37);
+            this.txtNomeVendedor.TabIndex = 194;
+            this.txtNomeVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtNomeVendedor.Texts = "";
+            this.txtNomeVendedor.UnderlinedStyle = false;
+            this.txtNomeVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomeVendedor_KeyPress);
             // 
             // panel3
             // 
@@ -672,6 +952,86 @@
             this.autoLabel8.TabIndex = 183;
             this.autoLabel8.Text = "Quantidade";
             // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQuantidade.BackColor = System.Drawing.Color.White;
+            this.txtQuantidade.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtQuantidade.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtQuantidade.BorderRadius = 8;
+            this.txtQuantidade.BorderSize = 2;
+            this.txtQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtQuantidade.Location = new System.Drawing.Point(33, 68);
+            this.txtQuantidade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQuantidade.Multiline = false;
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtQuantidade.PasswordChar = false;
+            this.txtQuantidade.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtQuantidade.PlaceholderText = "";
+            this.txtQuantidade.ReadOnly = false;
+            this.txtQuantidade.Size = new System.Drawing.Size(293, 37);
+            this.txtQuantidade.TabIndex = 156;
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtQuantidade.Texts = "";
+            this.txtQuantidade.UnderlinedStyle = false;
+            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
+            this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
+            // 
+            // txtValorTotal
+            // 
+            this.txtValorTotal.BackColor = System.Drawing.Color.White;
+            this.txtValorTotal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorTotal.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorTotal.BorderRadius = 8;
+            this.txtValorTotal.BorderSize = 2;
+            this.txtValorTotal.Enabled = false;
+            this.txtValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtValorTotal.Location = new System.Drawing.Point(33, 173);
+            this.txtValorTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtValorTotal.Multiline = false;
+            this.txtValorTotal.Name = "txtValorTotal";
+            this.txtValorTotal.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtValorTotal.PasswordChar = false;
+            this.txtValorTotal.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtValorTotal.PlaceholderText = "";
+            this.txtValorTotal.ReadOnly = false;
+            this.txtValorTotal.Size = new System.Drawing.Size(293, 37);
+            this.txtValorTotal.TabIndex = 54;
+            this.txtValorTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtValorTotal.Texts = "";
+            this.txtValorTotal.UnderlinedStyle = false;
+            // 
+            // txtValorUnitario
+            // 
+            this.txtValorUnitario.BackColor = System.Drawing.Color.White;
+            this.txtValorUnitario.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorUnitario.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorUnitario.BorderRadius = 8;
+            this.txtValorUnitario.BorderSize = 2;
+            this.txtValorUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorUnitario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtValorUnitario.Location = new System.Drawing.Point(33, 121);
+            this.txtValorUnitario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtValorUnitario.Multiline = false;
+            this.txtValorUnitario.Name = "txtValorUnitario";
+            this.txtValorUnitario.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtValorUnitario.PasswordChar = false;
+            this.txtValorUnitario.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtValorUnitario.PlaceholderText = "";
+            this.txtValorUnitario.ReadOnly = false;
+            this.txtValorUnitario.Size = new System.Drawing.Size(293, 37);
+            this.txtValorUnitario.TabIndex = 53;
+            this.txtValorUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtValorUnitario.Texts = "";
+            this.txtValorUnitario.UnderlinedStyle = false;
+            this.txtValorUnitario._TextChanged += new System.EventHandler(this.txtValorUnitario__TextChanged);
+            this.txtValorUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorUnitario_KeyPress);
+            this.txtValorUnitario.Leave += new System.EventHandler(this.txtValorUnitario_Leave);
+            // 
             // lblRevisar
             // 
             this.lblRevisar.AutoSize = true;
@@ -682,6 +1042,76 @@
             this.lblRevisar.Size = new System.Drawing.Size(94, 29);
             this.lblRevisar.TabIndex = 52;
             this.lblRevisar.Text = "Revisar";
+            // 
+            // btnAdicionar
+            // 
+            this.btnAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnAdicionar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnAdicionar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAdicionar.BorderRadius = 8;
+            this.btnAdicionar.BorderSize = 0;
+            this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdicionar.FlatAppearance.BorderSize = 0;
+            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.ForeColor = System.Drawing.Color.White;
+            this.btnAdicionar.Location = new System.Drawing.Point(33, 227);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(293, 45);
+            this.btnAdicionar.TabIndex = 142;
+            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.TextColor = System.Drawing.Color.White;
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            // 
+            // rjTextBox1
+            // 
+            this.rjTextBox1.BackColor = System.Drawing.Color.White;
+            this.rjTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox1.BorderRadius = 8;
+            this.rjTextBox1.BorderSize = 2;
+            this.rjTextBox1.Enabled = false;
+            this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox1.Location = new System.Drawing.Point(0, 4);
+            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox1.Multiline = true;
+            this.rjTextBox1.Name = "rjTextBox1";
+            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox1.PasswordChar = false;
+            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox1.PlaceholderText = "";
+            this.rjTextBox1.ReadOnly = false;
+            this.rjTextBox1.Size = new System.Drawing.Size(370, 281);
+            this.rjTextBox1.TabIndex = 156;
+            this.rjTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox1.Texts = "";
+            this.rjTextBox1.UnderlinedStyle = false;
+            // 
+            // rjTextBox2
+            // 
+            this.rjTextBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.rjTextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox2.BorderRadius = 8;
+            this.rjTextBox2.BorderSize = 2;
+            this.rjTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox2.ForeColor = System.Drawing.Color.DimGray;
+            this.rjTextBox2.Location = new System.Drawing.Point(0, 293);
+            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox2.Multiline = true;
+            this.rjTextBox2.Name = "rjTextBox2";
+            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(7);
+            this.rjTextBox2.PasswordChar = false;
+            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.rjTextBox2.PlaceholderText = "";
+            this.rjTextBox2.ReadOnly = false;
+            this.rjTextBox2.Size = new System.Drawing.Size(370, 84);
+            this.rjTextBox2.TabIndex = 189;
+            this.rjTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox2.Texts = "";
+            this.rjTextBox2.UnderlinedStyle = false;
             // 
             // panel5
             // 
@@ -813,6 +1243,162 @@
             this.gridProdutos.QueryCellStyle += new Syncfusion.WinForms.DataGrid.Events.QueryCellStyleEventHandler(this.gridProdutos_QueryCellStyle);
             this.gridProdutos.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.gridProdutos_QueryRowStyle);
             // 
+            // btnDescontoItem
+            // 
+            this.btnDescontoItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDescontoItem.BackColor = System.Drawing.Color.White;
+            this.btnDescontoItem.BackgroundColor = System.Drawing.Color.White;
+            this.btnDescontoItem.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDescontoItem.BorderRadius = 8;
+            this.btnDescontoItem.BorderSize = 2;
+            this.btnDescontoItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDescontoItem.FlatAppearance.BorderSize = 0;
+            this.btnDescontoItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnDescontoItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDescontoItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescontoItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDescontoItem.ForeColor = System.Drawing.Color.Black;
+            this.btnDescontoItem.Location = new System.Drawing.Point(170, 348);
+            this.btnDescontoItem.Name = "btnDescontoItem";
+            this.btnDescontoItem.Size = new System.Drawing.Size(206, 42);
+            this.btnDescontoItem.TabIndex = 152;
+            this.btnDescontoItem.Text = "Deconto Item [F6]";
+            this.btnDescontoItem.TextColor = System.Drawing.Color.Black;
+            this.btnDescontoItem.UseVisualStyleBackColor = false;
+            this.btnDescontoItem.Click += new System.EventHandler(this.btnDescontoItem_Click);
+            // 
+            // btnExcluirItem
+            // 
+            this.btnExcluirItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirItem.BackColor = System.Drawing.Color.White;
+            this.btnExcluirItem.BackgroundColor = System.Drawing.Color.White;
+            this.btnExcluirItem.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnExcluirItem.BorderRadius = 8;
+            this.btnExcluirItem.BorderSize = 2;
+            this.btnExcluirItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluirItem.FlatAppearance.BorderSize = 0;
+            this.btnExcluirItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnExcluirItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluirItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnExcluirItem.Location = new System.Drawing.Point(382, 348);
+            this.btnExcluirItem.Name = "btnExcluirItem";
+            this.btnExcluirItem.Size = new System.Drawing.Size(206, 42);
+            this.btnExcluirItem.TabIndex = 147;
+            this.btnExcluirItem.Text = "Excluir Item [DEL]";
+            this.btnExcluirItem.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnExcluirItem.UseVisualStyleBackColor = false;
+            this.btnExcluirItem.Click += new System.EventHandler(this.btnExcluirItem_Click);
+            // 
+            // rjTextBox16
+            // 
+            this.rjTextBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rjTextBox16.BackColor = System.Drawing.Color.White;
+            this.rjTextBox16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox16.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox16.BorderRadius = 8;
+            this.rjTextBox16.BorderSize = 2;
+            this.rjTextBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox16.Location = new System.Drawing.Point(-2, 4);
+            this.rjTextBox16.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox16.Multiline = true;
+            this.rjTextBox16.Name = "rjTextBox16";
+            this.rjTextBox16.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox16.PasswordChar = false;
+            this.rjTextBox16.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox16.PlaceholderText = "";
+            this.rjTextBox16.ReadOnly = false;
+            this.rjTextBox16.Size = new System.Drawing.Size(604, 397);
+            this.rjTextBox16.TabIndex = 150;
+            this.rjTextBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox16.Texts = "";
+            this.rjTextBox16.UnderlinedStyle = false;
+            // 
+            // txtPesquisaCliente
+            // 
+            this.txtPesquisaCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPesquisaCliente.BackColor = System.Drawing.Color.White;
+            this.txtPesquisaCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesquisaCliente.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesquisaCliente.BorderRadius = 8;
+            this.txtPesquisaCliente.BorderSize = 2;
+            this.txtPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisaCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPesquisaCliente.Location = new System.Drawing.Point(7, 19);
+            this.txtPesquisaCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPesquisaCliente.Multiline = false;
+            this.txtPesquisaCliente.Name = "txtPesquisaCliente";
+            this.txtPesquisaCliente.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtPesquisaCliente.PasswordChar = false;
+            this.txtPesquisaCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtPesquisaCliente.PlaceholderText = "";
+            this.txtPesquisaCliente.ReadOnly = false;
+            this.txtPesquisaCliente.Size = new System.Drawing.Size(528, 37);
+            this.txtPesquisaCliente.TabIndex = 153;
+            this.txtPesquisaCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPesquisaCliente.Texts = "";
+            this.txtPesquisaCliente.UnderlinedStyle = false;
+            this.txtPesquisaCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisaCliente_KeyPress);
+            // 
+            // txtPesquisaProduto
+            // 
+            this.txtPesquisaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPesquisaProduto.BackColor = System.Drawing.Color.White;
+            this.txtPesquisaProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesquisaProduto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesquisaProduto.BorderRadius = 8;
+            this.txtPesquisaProduto.BorderSize = 2;
+            this.txtPesquisaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisaProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPesquisaProduto.Location = new System.Drawing.Point(7, 80);
+            this.txtPesquisaProduto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPesquisaProduto.Multiline = false;
+            this.txtPesquisaProduto.Name = "txtPesquisaProduto";
+            this.txtPesquisaProduto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtPesquisaProduto.PasswordChar = false;
+            this.txtPesquisaProduto.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtPesquisaProduto.PlaceholderText = "";
+            this.txtPesquisaProduto.ReadOnly = false;
+            this.txtPesquisaProduto.Size = new System.Drawing.Size(939, 38);
+            this.txtPesquisaProduto.TabIndex = 152;
+            this.txtPesquisaProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPesquisaProduto.Texts = "";
+            this.txtPesquisaProduto.UnderlinedStyle = false;
+            this.txtPesquisaProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisaProduto_KeyPress);
+            // 
+            // txtCodVendedor
+            // 
+            this.txtCodVendedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodVendedor.BackColor = System.Drawing.Color.White;
+            this.txtCodVendedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodVendedor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodVendedor.BorderRadius = 8;
+            this.txtCodVendedor.BorderSize = 2;
+            this.txtCodVendedor.Enabled = false;
+            this.txtCodVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodVendedor.Location = new System.Drawing.Point(894, 19);
+            this.txtCodVendedor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodVendedor.Multiline = false;
+            this.txtCodVendedor.Name = "txtCodVendedor";
+            this.txtCodVendedor.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodVendedor.PasswordChar = false;
+            this.txtCodVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodVendedor.PlaceholderText = "";
+            this.txtCodVendedor.ReadOnly = false;
+            this.txtCodVendedor.Size = new System.Drawing.Size(95, 37);
+            this.txtCodVendedor.TabIndex = 197;
+            this.txtCodVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodVendedor.Texts = "";
+            this.txtCodVendedor.UnderlinedStyle = false;
+            this.txtCodVendedor.Visible = false;
+            // 
             // tabPagamento
             // 
             this.tabPagamento.BackColor = System.Drawing.Color.White;
@@ -825,7 +1411,6 @@
             this.tabPagamento.ShowCloseButton = true;
             this.tabPagamento.Size = new System.Drawing.Size(1005, 705);
             this.tabPagamento.TabIndex = 2;
-            this.tabPagamento.TabVisible = false;
             this.tabPagamento.Text = "........";
             this.tabPagamento.ThemesEnabled = false;
             // 
@@ -842,6 +1427,77 @@
             this.groupBox2.Size = new System.Drawing.Size(1005, 68);
             this.groupBox2.TabIndex = 148;
             this.groupBox2.TabStop = false;
+            // 
+            // btnFinalizarTela2
+            // 
+            this.btnFinalizarTela2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinalizarTela2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnFinalizarTela2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnFinalizarTela2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnFinalizarTela2.BorderRadius = 8;
+            this.btnFinalizarTela2.BorderSize = 0;
+            this.btnFinalizarTela2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinalizarTela2.Enabled = false;
+            this.btnFinalizarTela2.FlatAppearance.BorderSize = 0;
+            this.btnFinalizarTela2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizarTela2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarTela2.ForeColor = System.Drawing.Color.White;
+            this.btnFinalizarTela2.Location = new System.Drawing.Point(696, 13);
+            this.btnFinalizarTela2.Name = "btnFinalizarTela2";
+            this.btnFinalizarTela2.Size = new System.Drawing.Size(298, 45);
+            this.btnFinalizarTela2.TabIndex = 144;
+            this.btnFinalizarTela2.Text = "Finalizar [F5]";
+            this.btnFinalizarTela2.TextColor = System.Drawing.Color.White;
+            this.btnFinalizarTela2.UseVisualStyleBackColor = false;
+            this.btnFinalizarTela2.Click += new System.EventHandler(this.btnFinalizar_Click);
+            // 
+            // rjButton5
+            // 
+            this.rjButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rjButton5.BackColor = System.Drawing.Color.White;
+            this.rjButton5.BackgroundColor = System.Drawing.Color.White;
+            this.rjButton5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjButton5.BorderRadius = 8;
+            this.rjButton5.BorderSize = 2;
+            this.rjButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton5.FlatAppearance.BorderSize = 0;
+            this.rjButton5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.rjButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rjButton5.Location = new System.Drawing.Point(14, 13);
+            this.rjButton5.Name = "rjButton5";
+            this.rjButton5.Size = new System.Drawing.Size(296, 45);
+            this.rjButton5.TabIndex = 145;
+            this.rjButton5.Text = "Cancelar";
+            this.rjButton5.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rjButton5.UseVisualStyleBackColor = false;
+            this.rjButton5.Click += new System.EventHandler(this.rjButton5_Click);
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVoltar.BackColor = System.Drawing.Color.White;
+            this.btnVoltar.BackgroundColor = System.Drawing.Color.White;
+            this.btnVoltar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnVoltar.BorderRadius = 8;
+            this.btnVoltar.BorderSize = 2;
+            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVoltar.FlatAppearance.BorderSize = 0;
+            this.btnVoltar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnVoltar.Location = new System.Drawing.Point(392, 13);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(298, 45);
+            this.btnVoltar.TabIndex = 146;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // panelPagamentoTotal
             // 
@@ -992,6 +1648,31 @@
             this.autoLabel9.TabIndex = 199;
             this.autoLabel9.Text = "Cliente";
             // 
+            // txtClienteAbaPagamento
+            // 
+            this.txtClienteAbaPagamento.BackColor = System.Drawing.Color.White;
+            this.txtClienteAbaPagamento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtClienteAbaPagamento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtClienteAbaPagamento.BorderRadius = 8;
+            this.txtClienteAbaPagamento.BorderSize = 2;
+            this.txtClienteAbaPagamento.Enabled = false;
+            this.txtClienteAbaPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClienteAbaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtClienteAbaPagamento.Location = new System.Drawing.Point(7, 17);
+            this.txtClienteAbaPagamento.Margin = new System.Windows.Forms.Padding(4);
+            this.txtClienteAbaPagamento.Multiline = false;
+            this.txtClienteAbaPagamento.Name = "txtClienteAbaPagamento";
+            this.txtClienteAbaPagamento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtClienteAbaPagamento.PasswordChar = false;
+            this.txtClienteAbaPagamento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtClienteAbaPagamento.PlaceholderText = "";
+            this.txtClienteAbaPagamento.ReadOnly = false;
+            this.txtClienteAbaPagamento.Size = new System.Drawing.Size(415, 37);
+            this.txtClienteAbaPagamento.TabIndex = 198;
+            this.txtClienteAbaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtClienteAbaPagamento.Texts = "";
+            this.txtClienteAbaPagamento.UnderlinedStyle = false;
+            // 
             // autoLabel10
             // 
             this.autoLabel10.BackColor = System.Drawing.Color.Transparent;
@@ -1043,6 +1724,31 @@
             this.btnSelecionaClienteTela2.TabIndex = 197;
             this.btnSelecionaClienteTela2.UseVisualStyleBackColor = true;
             this.btnSelecionaClienteTela2.Click += new System.EventHandler(this.btnSelecionaClienteTela2_Click);
+            // 
+            // txtVendedorSelecionado
+            // 
+            this.txtVendedorSelecionado.BackColor = System.Drawing.Color.White;
+            this.txtVendedorSelecionado.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtVendedorSelecionado.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtVendedorSelecionado.BorderRadius = 8;
+            this.txtVendedorSelecionado.BorderSize = 2;
+            this.txtVendedorSelecionado.Enabled = false;
+            this.txtVendedorSelecionado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVendedorSelecionado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtVendedorSelecionado.Location = new System.Drawing.Point(472, 17);
+            this.txtVendedorSelecionado.Margin = new System.Windows.Forms.Padding(4);
+            this.txtVendedorSelecionado.Multiline = false;
+            this.txtVendedorSelecionado.Name = "txtVendedorSelecionado";
+            this.txtVendedorSelecionado.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtVendedorSelecionado.PasswordChar = false;
+            this.txtVendedorSelecionado.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtVendedorSelecionado.PlaceholderText = "";
+            this.txtVendedorSelecionado.ReadOnly = false;
+            this.txtVendedorSelecionado.Size = new System.Drawing.Size(384, 37);
+            this.txtVendedorSelecionado.TabIndex = 152;
+            this.txtVendedorSelecionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtVendedorSelecionado.Texts = "";
+            this.txtVendedorSelecionado.UnderlinedStyle = false;
             // 
             // panel4
             // 
@@ -1309,6 +2015,33 @@
             this.iconeCredito.UseVisualStyleBackColor = true;
             this.iconeCredito.Click += new System.EventHandler(this.iconeCredito_Click);
             // 
+            // btnCreditoCliente
+            // 
+            this.btnCreditoCliente.BackColor = System.Drawing.Color.White;
+            this.btnCreditoCliente.BackgroundColor = System.Drawing.Color.White;
+            this.btnCreditoCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCreditoCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCreditoCliente.BorderRadius = 8;
+            this.btnCreditoCliente.BorderSize = 4;
+            this.btnCreditoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreditoCliente.FlatAppearance.BorderSize = 0;
+            this.btnCreditoCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCreditoCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCreditoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreditoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreditoCliente.ForeColor = System.Drawing.Color.Black;
+            this.btnCreditoCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCreditoCliente.Location = new System.Drawing.Point(677, 161);
+            this.btnCreditoCliente.Name = "btnCreditoCliente";
+            this.btnCreditoCliente.Size = new System.Drawing.Size(190, 97);
+            this.btnCreditoCliente.TabIndex = 173;
+            this.btnCreditoCliente.Text = "CRÉDITO";
+            this.btnCreditoCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCreditoCliente.TextColor = System.Drawing.Color.Black;
+            this.btnCreditoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCreditoCliente.UseVisualStyleBackColor = false;
+            this.btnCreditoCliente.Click += new System.EventHandler(this.btnCreditoCliente_Click);
+            // 
             // iconeDeposito
             // 
             this.iconeDeposito.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1328,6 +2061,33 @@
             this.iconeDeposito.TabIndex = 168;
             this.iconeDeposito.UseVisualStyleBackColor = true;
             this.iconeDeposito.Click += new System.EventHandler(this.iconeDeposito_Click);
+            // 
+            // btnDeposito
+            // 
+            this.btnDeposito.BackColor = System.Drawing.Color.White;
+            this.btnDeposito.BackgroundColor = System.Drawing.Color.White;
+            this.btnDeposito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeposito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDeposito.BorderRadius = 8;
+            this.btnDeposito.BorderSize = 4;
+            this.btnDeposito.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeposito.FlatAppearance.BorderSize = 0;
+            this.btnDeposito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnDeposito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnDeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeposito.ForeColor = System.Drawing.Color.Black;
+            this.btnDeposito.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDeposito.Location = new System.Drawing.Point(677, 58);
+            this.btnDeposito.Name = "btnDeposito";
+            this.btnDeposito.Size = new System.Drawing.Size(190, 97);
+            this.btnDeposito.TabIndex = 166;
+            this.btnDeposito.Text = "DEP/TRANSF.";
+            this.btnDeposito.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDeposito.TextColor = System.Drawing.Color.Black;
+            this.btnDeposito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeposito.UseVisualStyleBackColor = false;
+            this.btnDeposito.Click += new System.EventHandler(this.btnDeposito_Click);
             // 
             // iconButton1
             // 
@@ -1362,6 +2122,33 @@
             this.autoLabel18.Size = new System.Drawing.Size(37, 16);
             this.autoLabel18.TabIndex = 211;
             this.autoLabel18.Text = "[F10]";
+            // 
+            // btnBoleto
+            // 
+            this.btnBoleto.BackColor = System.Drawing.Color.White;
+            this.btnBoleto.BackgroundColor = System.Drawing.Color.White;
+            this.btnBoleto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBoleto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnBoleto.BorderRadius = 8;
+            this.btnBoleto.BorderSize = 4;
+            this.btnBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBoleto.FlatAppearance.BorderSize = 0;
+            this.btnBoleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnBoleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBoleto.ForeColor = System.Drawing.Color.Black;
+            this.btnBoleto.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBoleto.Location = new System.Drawing.Point(14, 161);
+            this.btnBoleto.Name = "btnBoleto";
+            this.btnBoleto.Size = new System.Drawing.Size(190, 97);
+            this.btnBoleto.TabIndex = 210;
+            this.btnBoleto.Text = "BOLETO";
+            this.btnBoleto.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBoleto.TextColor = System.Drawing.Color.Black;
+            this.btnBoleto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBoleto.UseVisualStyleBackColor = false;
+            this.btnBoleto.Click += new System.EventHandler(this.btnBoleto_Click);
             // 
             // autoLabel16
             // 
@@ -1433,6 +2220,33 @@
             this.autoLabel11.TabIndex = 201;
             this.autoLabel11.Text = "[F6]";
             // 
+            // lblFormaPagamento
+            // 
+            this.lblFormaPagamento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblFormaPagamento.BackColor = System.Drawing.Color.White;
+            this.lblFormaPagamento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.lblFormaPagamento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.lblFormaPagamento.BorderRadius = 8;
+            this.lblFormaPagamento.BorderSize = 2;
+            this.lblFormaPagamento.Enabled = false;
+            this.lblFormaPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblFormaPagamento.Location = new System.Drawing.Point(14, 8);
+            this.lblFormaPagamento.Margin = new System.Windows.Forms.Padding(4);
+            this.lblFormaPagamento.Multiline = false;
+            this.lblFormaPagamento.Name = "lblFormaPagamento";
+            this.lblFormaPagamento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.lblFormaPagamento.PasswordChar = false;
+            this.lblFormaPagamento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.lblFormaPagamento.PlaceholderText = "";
+            this.lblFormaPagamento.ReadOnly = false;
+            this.lblFormaPagamento.Size = new System.Drawing.Size(853, 38);
+            this.lblFormaPagamento.TabIndex = 203;
+            this.lblFormaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.lblFormaPagamento.Texts = "SELECIONE A FORMA DE PAGAMENTO";
+            this.lblFormaPagamento.UnderlinedStyle = false;
+            // 
             // iconeCartao
             // 
             this.iconeCartao.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1453,6 +2267,33 @@
             this.iconeCartao.UseVisualStyleBackColor = true;
             this.iconeCartao.Click += new System.EventHandler(this.iconeCartao_Click);
             // 
+            // btnCartaoCredito
+            // 
+            this.btnCartaoCredito.BackColor = System.Drawing.Color.White;
+            this.btnCartaoCredito.BackgroundColor = System.Drawing.Color.White;
+            this.btnCartaoCredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCartaoCredito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCartaoCredito.BorderRadius = 8;
+            this.btnCartaoCredito.BorderSize = 4;
+            this.btnCartaoCredito.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCartaoCredito.FlatAppearance.BorderSize = 0;
+            this.btnCartaoCredito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCartaoCredito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCartaoCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCartaoCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCartaoCredito.ForeColor = System.Drawing.Color.Black;
+            this.btnCartaoCredito.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCartaoCredito.Location = new System.Drawing.Point(235, 58);
+            this.btnCartaoCredito.Name = "btnCartaoCredito";
+            this.btnCartaoCredito.Size = new System.Drawing.Size(190, 97);
+            this.btnCartaoCredito.TabIndex = 175;
+            this.btnCartaoCredito.Text = "CARTÃO";
+            this.btnCartaoCredito.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCartaoCredito.TextColor = System.Drawing.Color.Black;
+            this.btnCartaoCredito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCartaoCredito.UseVisualStyleBackColor = false;
+            this.btnCartaoCredito.Click += new System.EventHandler(this.btnCartaoCredito_Click);
+            // 
             // IconeDinheiro
             // 
             this.IconeDinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1472,6 +2313,33 @@
             this.IconeDinheiro.TabIndex = 162;
             this.IconeDinheiro.UseVisualStyleBackColor = true;
             this.IconeDinheiro.Click += new System.EventHandler(this.IconeDinheiro_Click);
+            // 
+            // btnDinheiro
+            // 
+            this.btnDinheiro.BackColor = System.Drawing.Color.White;
+            this.btnDinheiro.BackgroundColor = System.Drawing.Color.White;
+            this.btnDinheiro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDinheiro.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDinheiro.BorderRadius = 8;
+            this.btnDinheiro.BorderSize = 4;
+            this.btnDinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDinheiro.FlatAppearance.BorderSize = 0;
+            this.btnDinheiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnDinheiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDinheiro.ForeColor = System.Drawing.Color.Black;
+            this.btnDinheiro.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDinheiro.Location = new System.Drawing.Point(14, 58);
+            this.btnDinheiro.Name = "btnDinheiro";
+            this.btnDinheiro.Size = new System.Drawing.Size(190, 97);
+            this.btnDinheiro.TabIndex = 161;
+            this.btnDinheiro.Text = "DINHEIRO";
+            this.btnDinheiro.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDinheiro.TextColor = System.Drawing.Color.Black;
+            this.btnDinheiro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDinheiro.UseVisualStyleBackColor = false;
+            this.btnDinheiro.Click += new System.EventHandler(this.btnDinheiro_Click);
             // 
             // iconeCheque
             // 
@@ -1513,6 +2381,33 @@
             this.iconePix.UseVisualStyleBackColor = true;
             this.iconePix.Click += new System.EventHandler(this.iconePix_Click);
             // 
+            // btnCheque
+            // 
+            this.btnCheque.BackColor = System.Drawing.Color.White;
+            this.btnCheque.BackgroundColor = System.Drawing.Color.White;
+            this.btnCheque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCheque.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCheque.BorderRadius = 8;
+            this.btnCheque.BorderSize = 4;
+            this.btnCheque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCheque.FlatAppearance.BorderSize = 0;
+            this.btnCheque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCheque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheque.ForeColor = System.Drawing.Color.Black;
+            this.btnCheque.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCheque.Location = new System.Drawing.Point(456, 161);
+            this.btnCheque.Name = "btnCheque";
+            this.btnCheque.Size = new System.Drawing.Size(190, 97);
+            this.btnCheque.TabIndex = 171;
+            this.btnCheque.Text = "CHEQUE";
+            this.btnCheque.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCheque.TextColor = System.Drawing.Color.Black;
+            this.btnCheque.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCheque.UseVisualStyleBackColor = false;
+            this.btnCheque.Click += new System.EventHandler(this.btnCheque_Click);
+            // 
             // iconeCrediario
             // 
             this.iconeCrediario.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1532,6 +2427,60 @@
             this.iconeCrediario.TabIndex = 170;
             this.iconeCrediario.UseVisualStyleBackColor = true;
             this.iconeCrediario.Click += new System.EventHandler(this.iconeCrediario_Click);
+            // 
+            // btnCrediario
+            // 
+            this.btnCrediario.BackColor = System.Drawing.Color.White;
+            this.btnCrediario.BackgroundColor = System.Drawing.Color.White;
+            this.btnCrediario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCrediario.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCrediario.BorderRadius = 8;
+            this.btnCrediario.BorderSize = 4;
+            this.btnCrediario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrediario.FlatAppearance.BorderSize = 0;
+            this.btnCrediario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCrediario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCrediario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrediario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrediario.ForeColor = System.Drawing.Color.Black;
+            this.btnCrediario.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCrediario.Location = new System.Drawing.Point(235, 161);
+            this.btnCrediario.Name = "btnCrediario";
+            this.btnCrediario.Size = new System.Drawing.Size(190, 97);
+            this.btnCrediario.TabIndex = 169;
+            this.btnCrediario.Text = "CREDIÁRIO";
+            this.btnCrediario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCrediario.TextColor = System.Drawing.Color.Black;
+            this.btnCrediario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCrediario.UseVisualStyleBackColor = false;
+            this.btnCrediario.Click += new System.EventHandler(this.btnCrediario_Click);
+            // 
+            // btnPIX
+            // 
+            this.btnPIX.BackColor = System.Drawing.Color.White;
+            this.btnPIX.BackgroundColor = System.Drawing.Color.White;
+            this.btnPIX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPIX.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPIX.BorderRadius = 8;
+            this.btnPIX.BorderSize = 4;
+            this.btnPIX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPIX.FlatAppearance.BorderSize = 0;
+            this.btnPIX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnPIX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnPIX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPIX.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPIX.ForeColor = System.Drawing.Color.Black;
+            this.btnPIX.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPIX.Location = new System.Drawing.Point(456, 58);
+            this.btnPIX.Name = "btnPIX";
+            this.btnPIX.Size = new System.Drawing.Size(190, 97);
+            this.btnPIX.TabIndex = 165;
+            this.btnPIX.Text = "PIX";
+            this.btnPIX.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPIX.TextColor = System.Drawing.Color.Black;
+            this.btnPIX.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPIX.UseVisualStyleBackColor = false;
+            this.btnPIX.Click += new System.EventHandler(this.btnPIX_Click);
             // 
             // dsProduto
             // 
@@ -1647,953 +2596,6 @@
             this.dataColumn11.Caption = "VendaForma";
             this.dataColumn11.ColumnName = "VendaForma";
             this.dataColumn11.DataType = typeof(int);
-            // 
-            // txtTotalComDesconto
-            // 
-            this.txtTotalComDesconto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalComDesconto.BackColor = System.Drawing.Color.White;
-            this.txtTotalComDesconto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtTotalComDesconto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtTotalComDesconto.BorderRadius = 8;
-            this.txtTotalComDesconto.BorderSize = 2;
-            this.txtTotalComDesconto.Enabled = false;
-            this.txtTotalComDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalComDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTotalComDesconto.Location = new System.Drawing.Point(821, 38);
-            this.txtTotalComDesconto.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTotalComDesconto.Multiline = false;
-            this.txtTotalComDesconto.Name = "txtTotalComDesconto";
-            this.txtTotalComDesconto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtTotalComDesconto.PasswordChar = false;
-            this.txtTotalComDesconto.PlaceholderColor = System.Drawing.Color.Black;
-            this.txtTotalComDesconto.PlaceholderText = "";
-            this.txtTotalComDesconto.ReadOnly = false;
-            this.txtTotalComDesconto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTotalComDesconto.Size = new System.Drawing.Size(173, 38);
-            this.txtTotalComDesconto.TabIndex = 143;
-            this.txtTotalComDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtTotalComDesconto.Texts = "";
-            this.txtTotalComDesconto.UnderlinedStyle = false;
-            // 
-            // txtDesconto
-            // 
-            this.txtDesconto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDesconto.BackColor = System.Drawing.Color.White;
-            this.txtDesconto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtDesconto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtDesconto.BorderRadius = 8;
-            this.txtDesconto.BorderSize = 2;
-            this.txtDesconto.Enabled = false;
-            this.txtDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDesconto.Location = new System.Drawing.Point(640, 38);
-            this.txtDesconto.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDesconto.Multiline = false;
-            this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtDesconto.PasswordChar = false;
-            this.txtDesconto.PlaceholderColor = System.Drawing.Color.Black;
-            this.txtDesconto.PlaceholderText = "";
-            this.txtDesconto.ReadOnly = false;
-            this.txtDesconto.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDesconto.Size = new System.Drawing.Size(173, 38);
-            this.txtDesconto.TabIndex = 140;
-            this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtDesconto.Texts = "0,00";
-            this.txtDesconto.UnderlinedStyle = false;
-            // 
-            // txtValorTotalProdutos
-            // 
-            this.txtValorTotalProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValorTotalProdutos.BackColor = System.Drawing.Color.White;
-            this.txtValorTotalProdutos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtValorTotalProdutos.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtValorTotalProdutos.BorderRadius = 8;
-            this.txtValorTotalProdutos.BorderSize = 2;
-            this.txtValorTotalProdutos.Enabled = false;
-            this.txtValorTotalProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorTotalProdutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValorTotalProdutos.Location = new System.Drawing.Point(459, 38);
-            this.txtValorTotalProdutos.Margin = new System.Windows.Forms.Padding(4);
-            this.txtValorTotalProdutos.Multiline = false;
-            this.txtValorTotalProdutos.Name = "txtValorTotalProdutos";
-            this.txtValorTotalProdutos.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtValorTotalProdutos.PasswordChar = false;
-            this.txtValorTotalProdutos.PlaceholderColor = System.Drawing.Color.Black;
-            this.txtValorTotalProdutos.PlaceholderText = "";
-            this.txtValorTotalProdutos.ReadOnly = false;
-            this.txtValorTotalProdutos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtValorTotalProdutos.Size = new System.Drawing.Size(173, 38);
-            this.txtValorTotalProdutos.TabIndex = 138;
-            this.txtValorTotalProdutos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtValorTotalProdutos.Texts = "";
-            this.txtValorTotalProdutos.UnderlinedStyle = false;
-            // 
-            // txtTotalItens
-            // 
-            this.txtTotalItens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalItens.BackColor = System.Drawing.Color.White;
-            this.txtTotalItens.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtTotalItens.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtTotalItens.BorderRadius = 8;
-            this.txtTotalItens.BorderSize = 2;
-            this.txtTotalItens.Enabled = false;
-            this.txtTotalItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalItens.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTotalItens.Location = new System.Drawing.Point(278, 38);
-            this.txtTotalItens.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTotalItens.Multiline = false;
-            this.txtTotalItens.Name = "txtTotalItens";
-            this.txtTotalItens.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtTotalItens.PasswordChar = false;
-            this.txtTotalItens.PlaceholderColor = System.Drawing.Color.Black;
-            this.txtTotalItens.PlaceholderText = "";
-            this.txtTotalItens.ReadOnly = false;
-            this.txtTotalItens.Size = new System.Drawing.Size(173, 38);
-            this.txtTotalItens.TabIndex = 137;
-            this.txtTotalItens.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtTotalItens.Texts = "";
-            this.txtTotalItens.UnderlinedStyle = false;
-            // 
-            // btnTransferencia
-            // 
-            this.btnTransferencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTransferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnTransferencia.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnTransferencia.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnTransferencia.BorderRadius = 8;
-            this.btnTransferencia.BorderSize = 2;
-            this.btnTransferencia.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTransferencia.FlatAppearance.BorderSize = 0;
-            this.btnTransferencia.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnTransferencia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnTransferencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTransferencia.ForeColor = System.Drawing.Color.White;
-            this.btnTransferencia.Location = new System.Drawing.Point(783, 13);
-            this.btnTransferencia.Name = "btnTransferencia";
-            this.btnTransferencia.Size = new System.Drawing.Size(206, 45);
-            this.btnTransferencia.TabIndex = 148;
-            this.btnTransferencia.Text = "Transferência Filiais";
-            this.btnTransferencia.TextColor = System.Drawing.Color.White;
-            this.btnTransferencia.UseVisualStyleBackColor = false;
-            this.btnTransferencia.Click += new System.EventHandler(this.btnTransferencia_Click);
-            // 
-            // btnCondicional
-            // 
-            this.btnCondicional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCondicional.BackColor = System.Drawing.Color.White;
-            this.btnCondicional.BackgroundColor = System.Drawing.Color.White;
-            this.btnCondicional.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCondicional.BorderRadius = 8;
-            this.btnCondicional.BorderSize = 2;
-            this.btnCondicional.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCondicional.FlatAppearance.BorderSize = 0;
-            this.btnCondicional.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCondicional.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCondicional.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCondicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCondicional.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnCondicional.Location = new System.Drawing.Point(349, 13);
-            this.btnCondicional.Name = "btnCondicional";
-            this.btnCondicional.Size = new System.Drawing.Size(211, 45);
-            this.btnCondicional.TabIndex = 147;
-            this.btnCondicional.Text = "Condicional";
-            this.btnCondicional.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnCondicional.UseVisualStyleBackColor = false;
-            this.btnCondicional.Click += new System.EventHandler(this.btnCondicional_Click);
-            // 
-            // btnFinalizar01
-            // 
-            this.btnFinalizar01.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizar01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnFinalizar01.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnFinalizar01.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnFinalizar01.BorderRadius = 8;
-            this.btnFinalizar01.BorderSize = 0;
-            this.btnFinalizar01.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFinalizar01.FlatAppearance.BorderSize = 0;
-            this.btnFinalizar01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalizar01.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizar01.ForeColor = System.Drawing.Color.White;
-            this.btnFinalizar01.Location = new System.Drawing.Point(783, 13);
-            this.btnFinalizar01.Name = "btnFinalizar01";
-            this.btnFinalizar01.Size = new System.Drawing.Size(211, 45);
-            this.btnFinalizar01.TabIndex = 144;
-            this.btnFinalizar01.Text = "Finalizar [F5]";
-            this.btnFinalizar01.TextColor = System.Drawing.Color.White;
-            this.btnFinalizar01.UseVisualStyleBackColor = false;
-            this.btnFinalizar01.Click += new System.EventHandler(this.btnFinalizar01_Click);
-            // 
-            // btnCancelarVenda
-            // 
-            this.btnCancelarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancelarVenda.BackColor = System.Drawing.Color.White;
-            this.btnCancelarVenda.BackgroundColor = System.Drawing.Color.White;
-            this.btnCancelarVenda.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCancelarVenda.BorderRadius = 8;
-            this.btnCancelarVenda.BorderSize = 2;
-            this.btnCancelarVenda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelarVenda.FlatAppearance.BorderSize = 0;
-            this.btnCancelarVenda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCancelarVenda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCancelarVenda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelarVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarVenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelarVenda.Location = new System.Drawing.Point(12, 13);
-            this.btnCancelarVenda.Name = "btnCancelarVenda";
-            this.btnCancelarVenda.Size = new System.Drawing.Size(159, 45);
-            this.btnCancelarVenda.TabIndex = 145;
-            this.btnCancelarVenda.Text = "Cancelar";
-            this.btnCancelarVenda.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelarVenda.UseVisualStyleBackColor = false;
-            this.btnCancelarVenda.Click += new System.EventHandler(this.btnCancelarVenda_Click);
-            // 
-            // btnDescontoGeral
-            // 
-            this.btnDescontoGeral.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDescontoGeral.BackColor = System.Drawing.Color.White;
-            this.btnDescontoGeral.BackgroundColor = System.Drawing.Color.White;
-            this.btnDescontoGeral.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnDescontoGeral.BorderRadius = 8;
-            this.btnDescontoGeral.BorderSize = 2;
-            this.btnDescontoGeral.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDescontoGeral.FlatAppearance.BorderSize = 0;
-            this.btnDescontoGeral.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnDescontoGeral.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnDescontoGeral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDescontoGeral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDescontoGeral.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnDescontoGeral.Location = new System.Drawing.Point(566, 13);
-            this.btnDescontoGeral.Name = "btnDescontoGeral";
-            this.btnDescontoGeral.Size = new System.Drawing.Size(211, 45);
-            this.btnDescontoGeral.TabIndex = 146;
-            this.btnDescontoGeral.Text = "Desconto";
-            this.btnDescontoGeral.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnDescontoGeral.UseVisualStyleBackColor = false;
-            this.btnDescontoGeral.Click += new System.EventHandler(this.btnDescontoGeral_Click);
-            // 
-            // txtCodCliente
-            // 
-            this.txtCodCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodCliente.BackColor = System.Drawing.Color.White;
-            this.txtCodCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodCliente.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodCliente.BorderRadius = 8;
-            this.txtCodCliente.BorderSize = 2;
-            this.txtCodCliente.Enabled = false;
-            this.txtCodCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodCliente.Location = new System.Drawing.Point(445, 19);
-            this.txtCodCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodCliente.Multiline = false;
-            this.txtCodCliente.Name = "txtCodCliente";
-            this.txtCodCliente.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCodCliente.PasswordChar = false;
-            this.txtCodCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtCodCliente.PlaceholderText = "";
-            this.txtCodCliente.ReadOnly = false;
-            this.txtCodCliente.Size = new System.Drawing.Size(98, 37);
-            this.txtCodCliente.TabIndex = 192;
-            this.txtCodCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCodCliente.Texts = "";
-            this.txtCodCliente.UnderlinedStyle = false;
-            this.txtCodCliente.Visible = false;
-            // 
-            // txtNomeVendedor
-            // 
-            this.txtNomeVendedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNomeVendedor.BackColor = System.Drawing.Color.White;
-            this.txtNomeVendedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtNomeVendedor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtNomeVendedor.BorderRadius = 8;
-            this.txtNomeVendedor.BorderSize = 2;
-            this.txtNomeVendedor.Enabled = false;
-            this.txtNomeVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNomeVendedor.Location = new System.Drawing.Point(627, 19);
-            this.txtNomeVendedor.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNomeVendedor.Multiline = false;
-            this.txtNomeVendedor.Name = "txtNomeVendedor";
-            this.txtNomeVendedor.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtNomeVendedor.PasswordChar = false;
-            this.txtNomeVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtNomeVendedor.PlaceholderText = "";
-            this.txtNomeVendedor.ReadOnly = false;
-            this.txtNomeVendedor.Size = new System.Drawing.Size(319, 37);
-            this.txtNomeVendedor.TabIndex = 194;
-            this.txtNomeVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtNomeVendedor.Texts = "";
-            this.txtNomeVendedor.UnderlinedStyle = false;
-            // 
-            // txtQuantidade
-            // 
-            this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuantidade.BackColor = System.Drawing.Color.White;
-            this.txtQuantidade.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtQuantidade.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtQuantidade.BorderRadius = 8;
-            this.txtQuantidade.BorderSize = 2;
-            this.txtQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtQuantidade.Location = new System.Drawing.Point(33, 68);
-            this.txtQuantidade.Margin = new System.Windows.Forms.Padding(4);
-            this.txtQuantidade.Multiline = false;
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtQuantidade.PasswordChar = false;
-            this.txtQuantidade.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtQuantidade.PlaceholderText = "";
-            this.txtQuantidade.ReadOnly = false;
-            this.txtQuantidade.Size = new System.Drawing.Size(293, 37);
-            this.txtQuantidade.TabIndex = 156;
-            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtQuantidade.Texts = "";
-            this.txtQuantidade.UnderlinedStyle = false;
-            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
-            this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
-            // 
-            // txtValorTotal
-            // 
-            this.txtValorTotal.BackColor = System.Drawing.Color.White;
-            this.txtValorTotal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtValorTotal.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtValorTotal.BorderRadius = 8;
-            this.txtValorTotal.BorderSize = 2;
-            this.txtValorTotal.Enabled = false;
-            this.txtValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValorTotal.Location = new System.Drawing.Point(33, 173);
-            this.txtValorTotal.Margin = new System.Windows.Forms.Padding(4);
-            this.txtValorTotal.Multiline = false;
-            this.txtValorTotal.Name = "txtValorTotal";
-            this.txtValorTotal.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtValorTotal.PasswordChar = false;
-            this.txtValorTotal.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtValorTotal.PlaceholderText = "";
-            this.txtValorTotal.ReadOnly = false;
-            this.txtValorTotal.Size = new System.Drawing.Size(293, 37);
-            this.txtValorTotal.TabIndex = 54;
-            this.txtValorTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtValorTotal.Texts = "";
-            this.txtValorTotal.UnderlinedStyle = false;
-            // 
-            // txtValorUnitario
-            // 
-            this.txtValorUnitario.BackColor = System.Drawing.Color.White;
-            this.txtValorUnitario.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtValorUnitario.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtValorUnitario.BorderRadius = 8;
-            this.txtValorUnitario.BorderSize = 2;
-            this.txtValorUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorUnitario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValorUnitario.Location = new System.Drawing.Point(33, 121);
-            this.txtValorUnitario.Margin = new System.Windows.Forms.Padding(4);
-            this.txtValorUnitario.Multiline = false;
-            this.txtValorUnitario.Name = "txtValorUnitario";
-            this.txtValorUnitario.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtValorUnitario.PasswordChar = false;
-            this.txtValorUnitario.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtValorUnitario.PlaceholderText = "";
-            this.txtValorUnitario.ReadOnly = false;
-            this.txtValorUnitario.Size = new System.Drawing.Size(293, 37);
-            this.txtValorUnitario.TabIndex = 53;
-            this.txtValorUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtValorUnitario.Texts = "";
-            this.txtValorUnitario.UnderlinedStyle = false;
-            this.txtValorUnitario._TextChanged += new System.EventHandler(this.txtValorUnitario__TextChanged);
-            this.txtValorUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorUnitario_KeyPress);
-            this.txtValorUnitario.Leave += new System.EventHandler(this.txtValorUnitario_Leave);
-            // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnAdicionar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnAdicionar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnAdicionar.BorderRadius = 8;
-            this.btnAdicionar.BorderSize = 0;
-            this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar.FlatAppearance.BorderSize = 0;
-            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionar.Location = new System.Drawing.Point(33, 227);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(293, 45);
-            this.btnAdicionar.TabIndex = 142;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.TextColor = System.Drawing.Color.White;
-            this.btnAdicionar.UseVisualStyleBackColor = false;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
-            // 
-            // rjTextBox1
-            // 
-            this.rjTextBox1.BackColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox1.BorderRadius = 8;
-            this.rjTextBox1.BorderSize = 2;
-            this.rjTextBox1.Enabled = false;
-            this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox1.Location = new System.Drawing.Point(0, 4);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox1.Multiline = true;
-            this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox1.PasswordChar = false;
-            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox1.PlaceholderText = "";
-            this.rjTextBox1.ReadOnly = false;
-            this.rjTextBox1.Size = new System.Drawing.Size(370, 281);
-            this.rjTextBox1.TabIndex = 156;
-            this.rjTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox1.Texts = "";
-            this.rjTextBox1.UnderlinedStyle = false;
-            // 
-            // rjTextBox2
-            // 
-            this.rjTextBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.rjTextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox2.BorderRadius = 8;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox2.ForeColor = System.Drawing.Color.DimGray;
-            this.rjTextBox2.Location = new System.Drawing.Point(0, 293);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = true;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(7);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox2.PlaceholderText = "";
-            this.rjTextBox2.ReadOnly = false;
-            this.rjTextBox2.Size = new System.Drawing.Size(370, 84);
-            this.rjTextBox2.TabIndex = 189;
-            this.rjTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = false;
-            // 
-            // btnDescontoItem
-            // 
-            this.btnDescontoItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDescontoItem.BackColor = System.Drawing.Color.White;
-            this.btnDescontoItem.BackgroundColor = System.Drawing.Color.White;
-            this.btnDescontoItem.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDescontoItem.BorderRadius = 8;
-            this.btnDescontoItem.BorderSize = 2;
-            this.btnDescontoItem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDescontoItem.FlatAppearance.BorderSize = 0;
-            this.btnDescontoItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnDescontoItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDescontoItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDescontoItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDescontoItem.ForeColor = System.Drawing.Color.Black;
-            this.btnDescontoItem.Location = new System.Drawing.Point(170, 348);
-            this.btnDescontoItem.Name = "btnDescontoItem";
-            this.btnDescontoItem.Size = new System.Drawing.Size(206, 42);
-            this.btnDescontoItem.TabIndex = 152;
-            this.btnDescontoItem.Text = "Deconto Item [F6]";
-            this.btnDescontoItem.TextColor = System.Drawing.Color.Black;
-            this.btnDescontoItem.UseVisualStyleBackColor = false;
-            this.btnDescontoItem.Click += new System.EventHandler(this.btnDescontoItem_Click);
-            // 
-            // btnExcluirItem
-            // 
-            this.btnExcluirItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirItem.BackColor = System.Drawing.Color.White;
-            this.btnExcluirItem.BackgroundColor = System.Drawing.Color.White;
-            this.btnExcluirItem.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnExcluirItem.BorderRadius = 8;
-            this.btnExcluirItem.BorderSize = 2;
-            this.btnExcluirItem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluirItem.FlatAppearance.BorderSize = 0;
-            this.btnExcluirItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnExcluirItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluirItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnExcluirItem.Location = new System.Drawing.Point(382, 348);
-            this.btnExcluirItem.Name = "btnExcluirItem";
-            this.btnExcluirItem.Size = new System.Drawing.Size(206, 42);
-            this.btnExcluirItem.TabIndex = 147;
-            this.btnExcluirItem.Text = "Excluir Item [DEL]";
-            this.btnExcluirItem.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnExcluirItem.UseVisualStyleBackColor = false;
-            this.btnExcluirItem.Click += new System.EventHandler(this.btnExcluirItem_Click);
-            // 
-            // rjTextBox16
-            // 
-            this.rjTextBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjTextBox16.BackColor = System.Drawing.Color.White;
-            this.rjTextBox16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox16.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox16.BorderRadius = 8;
-            this.rjTextBox16.BorderSize = 2;
-            this.rjTextBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox16.Location = new System.Drawing.Point(-2, 4);
-            this.rjTextBox16.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox16.Multiline = true;
-            this.rjTextBox16.Name = "rjTextBox16";
-            this.rjTextBox16.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox16.PasswordChar = false;
-            this.rjTextBox16.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox16.PlaceholderText = "";
-            this.rjTextBox16.ReadOnly = false;
-            this.rjTextBox16.Size = new System.Drawing.Size(604, 397);
-            this.rjTextBox16.TabIndex = 150;
-            this.rjTextBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox16.Texts = "";
-            this.rjTextBox16.UnderlinedStyle = false;
-            // 
-            // txtPesquisaCliente
-            // 
-            this.txtPesquisaCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisaCliente.BackColor = System.Drawing.Color.White;
-            this.txtPesquisaCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisaCliente.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisaCliente.BorderRadius = 8;
-            this.txtPesquisaCliente.BorderSize = 2;
-            this.txtPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisaCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPesquisaCliente.Location = new System.Drawing.Point(7, 19);
-            this.txtPesquisaCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPesquisaCliente.Multiline = false;
-            this.txtPesquisaCliente.Name = "txtPesquisaCliente";
-            this.txtPesquisaCliente.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtPesquisaCliente.PasswordChar = false;
-            this.txtPesquisaCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtPesquisaCliente.PlaceholderText = "Cliente (Opcional) - [F2]";
-            this.txtPesquisaCliente.ReadOnly = false;
-            this.txtPesquisaCliente.Size = new System.Drawing.Size(528, 37);
-            this.txtPesquisaCliente.TabIndex = 153;
-            this.txtPesquisaCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtPesquisaCliente.Texts = "";
-            this.txtPesquisaCliente.UnderlinedStyle = false;
-            this.txtPesquisaCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisaCliente_KeyPress);
-            // 
-            // txtPesquisaProduto
-            // 
-            this.txtPesquisaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisaProduto.BackColor = System.Drawing.Color.White;
-            this.txtPesquisaProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisaProduto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisaProduto.BorderRadius = 8;
-            this.txtPesquisaProduto.BorderSize = 2;
-            this.txtPesquisaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisaProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPesquisaProduto.Location = new System.Drawing.Point(7, 80);
-            this.txtPesquisaProduto.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPesquisaProduto.Multiline = false;
-            this.txtPesquisaProduto.Name = "txtPesquisaProduto";
-            this.txtPesquisaProduto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtPesquisaProduto.PasswordChar = false;
-            this.txtPesquisaProduto.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtPesquisaProduto.PlaceholderText = "";
-            this.txtPesquisaProduto.ReadOnly = false;
-            this.txtPesquisaProduto.Size = new System.Drawing.Size(939, 38);
-            this.txtPesquisaProduto.TabIndex = 152;
-            this.txtPesquisaProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtPesquisaProduto.Texts = "";
-            this.txtPesquisaProduto.UnderlinedStyle = false;
-            this.txtPesquisaProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisaProduto_KeyPress);
-            // 
-            // txtCodVendedor
-            // 
-            this.txtCodVendedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodVendedor.BackColor = System.Drawing.Color.White;
-            this.txtCodVendedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodVendedor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodVendedor.BorderRadius = 8;
-            this.txtCodVendedor.BorderSize = 2;
-            this.txtCodVendedor.Enabled = false;
-            this.txtCodVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodVendedor.Location = new System.Drawing.Point(894, 19);
-            this.txtCodVendedor.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodVendedor.Multiline = false;
-            this.txtCodVendedor.Name = "txtCodVendedor";
-            this.txtCodVendedor.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCodVendedor.PasswordChar = false;
-            this.txtCodVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtCodVendedor.PlaceholderText = "";
-            this.txtCodVendedor.ReadOnly = false;
-            this.txtCodVendedor.Size = new System.Drawing.Size(95, 37);
-            this.txtCodVendedor.TabIndex = 197;
-            this.txtCodVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCodVendedor.Texts = "";
-            this.txtCodVendedor.UnderlinedStyle = false;
-            this.txtCodVendedor.Visible = false;
-            // 
-            // btnFinalizarTela2
-            // 
-            this.btnFinalizarTela2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizarTela2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnFinalizarTela2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnFinalizarTela2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnFinalizarTela2.BorderRadius = 8;
-            this.btnFinalizarTela2.BorderSize = 0;
-            this.btnFinalizarTela2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFinalizarTela2.Enabled = false;
-            this.btnFinalizarTela2.FlatAppearance.BorderSize = 0;
-            this.btnFinalizarTela2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalizarTela2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizarTela2.ForeColor = System.Drawing.Color.White;
-            this.btnFinalizarTela2.Location = new System.Drawing.Point(696, 13);
-            this.btnFinalizarTela2.Name = "btnFinalizarTela2";
-            this.btnFinalizarTela2.Size = new System.Drawing.Size(298, 45);
-            this.btnFinalizarTela2.TabIndex = 144;
-            this.btnFinalizarTela2.Text = "Finalizar [F5]";
-            this.btnFinalizarTela2.TextColor = System.Drawing.Color.White;
-            this.btnFinalizarTela2.UseVisualStyleBackColor = false;
-            this.btnFinalizarTela2.Click += new System.EventHandler(this.btnFinalizar_Click);
-            // 
-            // rjButton5
-            // 
-            this.rjButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.rjButton5.BackColor = System.Drawing.Color.White;
-            this.rjButton5.BackgroundColor = System.Drawing.Color.White;
-            this.rjButton5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjButton5.BorderRadius = 8;
-            this.rjButton5.BorderSize = 2;
-            this.rjButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton5.FlatAppearance.BorderSize = 0;
-            this.rjButton5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.rjButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.rjButton5.Location = new System.Drawing.Point(14, 13);
-            this.rjButton5.Name = "rjButton5";
-            this.rjButton5.Size = new System.Drawing.Size(296, 45);
-            this.rjButton5.TabIndex = 145;
-            this.rjButton5.Text = "Cancelar";
-            this.rjButton5.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.rjButton5.UseVisualStyleBackColor = false;
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVoltar.BackColor = System.Drawing.Color.White;
-            this.btnVoltar.BackgroundColor = System.Drawing.Color.White;
-            this.btnVoltar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnVoltar.BorderRadius = 8;
-            this.btnVoltar.BorderSize = 2;
-            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVoltar.FlatAppearance.BorderSize = 0;
-            this.btnVoltar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnVoltar.Location = new System.Drawing.Point(392, 13);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(298, 45);
-            this.btnVoltar.TabIndex = 146;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // txtClienteAbaPagamento
-            // 
-            this.txtClienteAbaPagamento.BackColor = System.Drawing.Color.White;
-            this.txtClienteAbaPagamento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtClienteAbaPagamento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtClienteAbaPagamento.BorderRadius = 8;
-            this.txtClienteAbaPagamento.BorderSize = 2;
-            this.txtClienteAbaPagamento.Enabled = false;
-            this.txtClienteAbaPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClienteAbaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtClienteAbaPagamento.Location = new System.Drawing.Point(7, 17);
-            this.txtClienteAbaPagamento.Margin = new System.Windows.Forms.Padding(4);
-            this.txtClienteAbaPagamento.Multiline = false;
-            this.txtClienteAbaPagamento.Name = "txtClienteAbaPagamento";
-            this.txtClienteAbaPagamento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtClienteAbaPagamento.PasswordChar = false;
-            this.txtClienteAbaPagamento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtClienteAbaPagamento.PlaceholderText = "";
-            this.txtClienteAbaPagamento.ReadOnly = false;
-            this.txtClienteAbaPagamento.Size = new System.Drawing.Size(415, 37);
-            this.txtClienteAbaPagamento.TabIndex = 198;
-            this.txtClienteAbaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtClienteAbaPagamento.Texts = "";
-            this.txtClienteAbaPagamento.UnderlinedStyle = false;
-            // 
-            // txtVendedorSelecionado
-            // 
-            this.txtVendedorSelecionado.BackColor = System.Drawing.Color.White;
-            this.txtVendedorSelecionado.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtVendedorSelecionado.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtVendedorSelecionado.BorderRadius = 8;
-            this.txtVendedorSelecionado.BorderSize = 2;
-            this.txtVendedorSelecionado.Enabled = false;
-            this.txtVendedorSelecionado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVendedorSelecionado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtVendedorSelecionado.Location = new System.Drawing.Point(472, 17);
-            this.txtVendedorSelecionado.Margin = new System.Windows.Forms.Padding(4);
-            this.txtVendedorSelecionado.Multiline = false;
-            this.txtVendedorSelecionado.Name = "txtVendedorSelecionado";
-            this.txtVendedorSelecionado.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtVendedorSelecionado.PasswordChar = false;
-            this.txtVendedorSelecionado.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtVendedorSelecionado.PlaceholderText = "";
-            this.txtVendedorSelecionado.ReadOnly = false;
-            this.txtVendedorSelecionado.Size = new System.Drawing.Size(384, 37);
-            this.txtVendedorSelecionado.TabIndex = 152;
-            this.txtVendedorSelecionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtVendedorSelecionado.Texts = "";
-            this.txtVendedorSelecionado.UnderlinedStyle = false;
-            // 
-            // btnCreditoCliente
-            // 
-            this.btnCreditoCliente.BackColor = System.Drawing.Color.White;
-            this.btnCreditoCliente.BackgroundColor = System.Drawing.Color.White;
-            this.btnCreditoCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCreditoCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCreditoCliente.BorderRadius = 8;
-            this.btnCreditoCliente.BorderSize = 4;
-            this.btnCreditoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreditoCliente.FlatAppearance.BorderSize = 0;
-            this.btnCreditoCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCreditoCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCreditoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreditoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreditoCliente.ForeColor = System.Drawing.Color.Black;
-            this.btnCreditoCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCreditoCliente.Location = new System.Drawing.Point(677, 161);
-            this.btnCreditoCliente.Name = "btnCreditoCliente";
-            this.btnCreditoCliente.Size = new System.Drawing.Size(190, 97);
-            this.btnCreditoCliente.TabIndex = 173;
-            this.btnCreditoCliente.Text = "CRÉDITO";
-            this.btnCreditoCliente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCreditoCliente.TextColor = System.Drawing.Color.Black;
-            this.btnCreditoCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCreditoCliente.UseVisualStyleBackColor = false;
-            this.btnCreditoCliente.Click += new System.EventHandler(this.btnCreditoCliente_Click);
-            // 
-            // btnDeposito
-            // 
-            this.btnDeposito.BackColor = System.Drawing.Color.White;
-            this.btnDeposito.BackgroundColor = System.Drawing.Color.White;
-            this.btnDeposito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDeposito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnDeposito.BorderRadius = 8;
-            this.btnDeposito.BorderSize = 4;
-            this.btnDeposito.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeposito.FlatAppearance.BorderSize = 0;
-            this.btnDeposito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnDeposito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnDeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeposito.ForeColor = System.Drawing.Color.Black;
-            this.btnDeposito.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDeposito.Location = new System.Drawing.Point(677, 58);
-            this.btnDeposito.Name = "btnDeposito";
-            this.btnDeposito.Size = new System.Drawing.Size(190, 97);
-            this.btnDeposito.TabIndex = 166;
-            this.btnDeposito.Text = "DEP/TRANSF.";
-            this.btnDeposito.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDeposito.TextColor = System.Drawing.Color.Black;
-            this.btnDeposito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDeposito.UseVisualStyleBackColor = false;
-            this.btnDeposito.Click += new System.EventHandler(this.btnDeposito_Click);
-            // 
-            // btnBoleto
-            // 
-            this.btnBoleto.BackColor = System.Drawing.Color.White;
-            this.btnBoleto.BackgroundColor = System.Drawing.Color.White;
-            this.btnBoleto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnBoleto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnBoleto.BorderRadius = 8;
-            this.btnBoleto.BorderSize = 4;
-            this.btnBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBoleto.FlatAppearance.BorderSize = 0;
-            this.btnBoleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnBoleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnBoleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBoleto.ForeColor = System.Drawing.Color.Black;
-            this.btnBoleto.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBoleto.Location = new System.Drawing.Point(14, 161);
-            this.btnBoleto.Name = "btnBoleto";
-            this.btnBoleto.Size = new System.Drawing.Size(190, 97);
-            this.btnBoleto.TabIndex = 210;
-            this.btnBoleto.Text = "BOLETO";
-            this.btnBoleto.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBoleto.TextColor = System.Drawing.Color.Black;
-            this.btnBoleto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnBoleto.UseVisualStyleBackColor = false;
-            this.btnBoleto.Click += new System.EventHandler(this.btnBoleto_Click);
-            // 
-            // lblFormaPagamento
-            // 
-            this.lblFormaPagamento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblFormaPagamento.BackColor = System.Drawing.Color.White;
-            this.lblFormaPagamento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.lblFormaPagamento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.lblFormaPagamento.BorderRadius = 8;
-            this.lblFormaPagamento.BorderSize = 2;
-            this.lblFormaPagamento.Enabled = false;
-            this.lblFormaPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFormaPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblFormaPagamento.Location = new System.Drawing.Point(14, 8);
-            this.lblFormaPagamento.Margin = new System.Windows.Forms.Padding(4);
-            this.lblFormaPagamento.Multiline = false;
-            this.lblFormaPagamento.Name = "lblFormaPagamento";
-            this.lblFormaPagamento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.lblFormaPagamento.PasswordChar = false;
-            this.lblFormaPagamento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.lblFormaPagamento.PlaceholderText = "";
-            this.lblFormaPagamento.ReadOnly = false;
-            this.lblFormaPagamento.Size = new System.Drawing.Size(853, 38);
-            this.lblFormaPagamento.TabIndex = 203;
-            this.lblFormaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.lblFormaPagamento.Texts = "SELECIONE A FORMA DE PAGAMENTO";
-            this.lblFormaPagamento.UnderlinedStyle = false;
-            // 
-            // btnCartaoCredito
-            // 
-            this.btnCartaoCredito.BackColor = System.Drawing.Color.White;
-            this.btnCartaoCredito.BackgroundColor = System.Drawing.Color.White;
-            this.btnCartaoCredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCartaoCredito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCartaoCredito.BorderRadius = 8;
-            this.btnCartaoCredito.BorderSize = 4;
-            this.btnCartaoCredito.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCartaoCredito.FlatAppearance.BorderSize = 0;
-            this.btnCartaoCredito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCartaoCredito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCartaoCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCartaoCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCartaoCredito.ForeColor = System.Drawing.Color.Black;
-            this.btnCartaoCredito.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCartaoCredito.Location = new System.Drawing.Point(235, 58);
-            this.btnCartaoCredito.Name = "btnCartaoCredito";
-            this.btnCartaoCredito.Size = new System.Drawing.Size(190, 97);
-            this.btnCartaoCredito.TabIndex = 175;
-            this.btnCartaoCredito.Text = "CARTÃO";
-            this.btnCartaoCredito.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCartaoCredito.TextColor = System.Drawing.Color.Black;
-            this.btnCartaoCredito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCartaoCredito.UseVisualStyleBackColor = false;
-            this.btnCartaoCredito.Click += new System.EventHandler(this.btnCartaoCredito_Click);
-            // 
-            // btnDinheiro
-            // 
-            this.btnDinheiro.BackColor = System.Drawing.Color.White;
-            this.btnDinheiro.BackgroundColor = System.Drawing.Color.White;
-            this.btnDinheiro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDinheiro.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnDinheiro.BorderRadius = 8;
-            this.btnDinheiro.BorderSize = 4;
-            this.btnDinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDinheiro.FlatAppearance.BorderSize = 0;
-            this.btnDinheiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnDinheiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDinheiro.ForeColor = System.Drawing.Color.Black;
-            this.btnDinheiro.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDinheiro.Location = new System.Drawing.Point(14, 58);
-            this.btnDinheiro.Name = "btnDinheiro";
-            this.btnDinheiro.Size = new System.Drawing.Size(190, 97);
-            this.btnDinheiro.TabIndex = 161;
-            this.btnDinheiro.Text = "DINHEIRO";
-            this.btnDinheiro.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDinheiro.TextColor = System.Drawing.Color.Black;
-            this.btnDinheiro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDinheiro.UseVisualStyleBackColor = false;
-            this.btnDinheiro.Click += new System.EventHandler(this.btnDinheiro_Click);
-            // 
-            // btnCheque
-            // 
-            this.btnCheque.BackColor = System.Drawing.Color.White;
-            this.btnCheque.BackgroundColor = System.Drawing.Color.White;
-            this.btnCheque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCheque.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCheque.BorderRadius = 8;
-            this.btnCheque.BorderSize = 4;
-            this.btnCheque.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCheque.FlatAppearance.BorderSize = 0;
-            this.btnCheque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCheque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheque.ForeColor = System.Drawing.Color.Black;
-            this.btnCheque.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCheque.Location = new System.Drawing.Point(456, 161);
-            this.btnCheque.Name = "btnCheque";
-            this.btnCheque.Size = new System.Drawing.Size(190, 97);
-            this.btnCheque.TabIndex = 171;
-            this.btnCheque.Text = "CHEQUE";
-            this.btnCheque.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCheque.TextColor = System.Drawing.Color.Black;
-            this.btnCheque.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCheque.UseVisualStyleBackColor = false;
-            this.btnCheque.Click += new System.EventHandler(this.btnCheque_Click);
-            // 
-            // btnCrediario
-            // 
-            this.btnCrediario.BackColor = System.Drawing.Color.White;
-            this.btnCrediario.BackgroundColor = System.Drawing.Color.White;
-            this.btnCrediario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCrediario.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCrediario.BorderRadius = 8;
-            this.btnCrediario.BorderSize = 4;
-            this.btnCrediario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCrediario.FlatAppearance.BorderSize = 0;
-            this.btnCrediario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCrediario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCrediario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrediario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrediario.ForeColor = System.Drawing.Color.Black;
-            this.btnCrediario.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCrediario.Location = new System.Drawing.Point(235, 161);
-            this.btnCrediario.Name = "btnCrediario";
-            this.btnCrediario.Size = new System.Drawing.Size(190, 97);
-            this.btnCrediario.TabIndex = 169;
-            this.btnCrediario.Text = "CREDIÁRIO";
-            this.btnCrediario.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCrediario.TextColor = System.Drawing.Color.Black;
-            this.btnCrediario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCrediario.UseVisualStyleBackColor = false;
-            this.btnCrediario.Click += new System.EventHandler(this.btnCrediario_Click);
-            // 
-            // btnPIX
-            // 
-            this.btnPIX.BackColor = System.Drawing.Color.White;
-            this.btnPIX.BackgroundColor = System.Drawing.Color.White;
-            this.btnPIX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPIX.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPIX.BorderRadius = 8;
-            this.btnPIX.BorderSize = 4;
-            this.btnPIX.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPIX.FlatAppearance.BorderSize = 0;
-            this.btnPIX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnPIX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnPIX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPIX.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPIX.ForeColor = System.Drawing.Color.Black;
-            this.btnPIX.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPIX.Location = new System.Drawing.Point(456, 58);
-            this.btnPIX.Name = "btnPIX";
-            this.btnPIX.Size = new System.Drawing.Size(190, 97);
-            this.btnPIX.TabIndex = 165;
-            this.btnPIX.Text = "PIX";
-            this.btnPIX.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPIX.TextColor = System.Drawing.Color.Black;
-            this.btnPIX.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPIX.UseVisualStyleBackColor = false;
-            this.btnPIX.Click += new System.EventHandler(this.btnPIX_Click);
             // 
             // FrmVendas02
             // 

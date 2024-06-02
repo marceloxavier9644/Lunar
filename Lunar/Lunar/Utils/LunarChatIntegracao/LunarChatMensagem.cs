@@ -8,52 +8,19 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using HttpClient = System.Net.Http.HttpClient;
+using HttpResponseMessage = System.Net.Http.HttpResponseMessage;
 
 namespace Lunar.Utils.LunarChatIntegracao
 {
     public class LunarChatMensagem
     {
-      
         public class EnviarMensagemWhatsapp
         {
             Logger logger = new Logger();
             private static readonly HttpClient httpClient = new HttpClient();
             private ParametroSistema parametro;
             private ParametroSistemaController parametroSistemaController;
-
-            public async Task SendMessageAsync(WebhookMessage message)
-            {
-                parametro = new ParametroSistema();
-                parametroSistemaController = new ParametroSistemaController();
-                parametro.Id = 1;
-                parametro = (ParametroSistema)parametroSistemaController.selecionar(parametro);
-                string webhookUrl = parametro.TokenWhats;
-
-                if (!string.IsNullOrEmpty(webhookUrl))
-                {
-                    var json = JsonConvert.SerializeObject(message);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = await httpClient.PostAsync(webhookUrl, content);
-                    logger.WriteLog($"JSON Enviado: {json}", "Logs");
-                    logger.WriteLog($"Webhook URL: {webhookUrl}", "Logs");
-                    if (response.IsSuccessStatusCode)
-                    {
-                        Console.WriteLine("Message sent successfully!");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Falha ao disparar mensagem. Status code: {response.StatusCode}");
-                        var responseContent = await response.Content.ReadAsStringAsync();
-                        logger.WriteLog($"Falha ao disparar whatsapp LunarChat: {responseContent}", "Logs");
-                    }
-                }
-                else
-                {
-                    GenericaDesktop.ShowAlerta("Esta função não está habilitada. Por favor, entre em contato com seu representante para mais informações.");
-                }
-            }
-
             public async Task<string> EnviarArquivoFtp(string caminhoPdf)
             {
                 string ftpServerUrl = "ftp://ftp.lunarsoftware.com.br/anexo/";
@@ -94,6 +61,82 @@ namespace Lunar.Utils.LunarChatIntegracao
                     return null;
                 }
             }
+            //public async Task SendMessageAsync(WebhookMessage message)
+            //{
+            //    parametro = new ParametroSistema();
+            //    parametroSistemaController = new ParametroSistemaController();
+            //    parametro.Id = 1;
+            //    parametro = (ParametroSistema)parametroSistemaController.selecionar(parametro);
+            //    string webhookUrl = parametro.TokenWhats;
+
+            //    if (!string.IsNullOrEmpty(webhookUrl))
+            //    {
+            //        var json = JsonConvert.SerializeObject(message);
+            //        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            //        HttpResponseMessage response = await httpClient.PostAsync(webhookUrl, content);
+            //        logger.WriteLog($"JSON Enviado: {json}", "Logs");
+            //        logger.WriteLog($"Webhook URL: {webhookUrl}", "Logs");
+            //        if (response.IsSuccessStatusCode)
+            //        {
+            //            Console.WriteLine("Message sent successfully!");
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show($"Falha ao disparar mensagem. Status code: {response.StatusCode}");
+            //            var responseContent = await response.Content.ReadAsStringAsync();
+            //            logger.WriteLog($"Falha ao disparar whatsapp LunarChat: {responseContent}", "Logs");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        GenericaDesktop.ShowAlerta("Esta função não está habilitada. Por favor, entre em contato com seu representante para mais informações.");
+            //    }
+            //}
+            public async Task<string> SendMessageAsync(string number, string body)
+            {
+                string _baseUri = "https://backend.lunarchat.com.br/api/messages/send";
+                string _token = "xaxb12341"; // Certifique-se de que este token é válido
+
+                var requestBody = new
+                {
+                    number = number,
+                    body = body
+                };
+
+                var json = JsonConvert.SerializeObject(requestBody);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                using (var httpClient = new HttpClient())
+                {
+                    var request = new HttpRequestMessage(HttpMethod.Post, _baseUri)
+                    {
+                        Content = content
+                    };
+                    request.Headers.Add("X_TOKEN", _token);
+
+                    try
+                    {
+                        HttpResponseMessage response = await httpClient.SendAsync(request);
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            // Log detailed error message
+                            string responseBy = await response.Content.ReadAsStringAsync();
+                            Console.WriteLine($"Failed to send message. Status code: {response.StatusCode}, Reason: {response.ReasonPhrase}, Response: {responseBy}");
+                            return null;
+                        }
+
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        return responseBody;
+                    }
+                    catch (HttpRequestException e)
+                    {
+                        Console.WriteLine($"Request error: {e.Message}");
+                        return null;
+                    }
+                }
+            }
+
             public static string TratarTelefone(string ddd, string telefone)
             {
                 if (telefone.Length == 8)
@@ -108,6 +151,7 @@ namespace Lunar.Utils.LunarChatIntegracao
 
                 return telefoneCompleto;
             }
+
         }
         public class WebhookMessage
         {
@@ -119,3 +163,4 @@ namespace Lunar.Utils.LunarChatIntegracao
         }
     }
 }
+

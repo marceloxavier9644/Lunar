@@ -5,25 +5,72 @@ using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using Seagull.BarTender.Print;
 using Syncfusion.WinForms.DataGrid.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Drawing.Printing;
+using System.Diagnostics;
+using System.Linq;
+using Newtonsoft.Json;
+using NSSuite_CSharp.src.JSON.NFe;
+using NSSuite_CSharp.src.JSON.MDFe;
 
 namespace Lunar.Telas.Estoques
 {
     public partial class FrmEtiquetas : Form
     {
+        Ean13 ean13 = new Ean13();
+        string caminhoPastaEtiquetas = "";
         GenericaDesktop generica = new GenericaDesktop();
         public FrmEtiquetas()
         {
             InitializeComponent();
             this.grid.DataSource = dsProdutos;
             txtProduto.Focus();
+            VerificarECriarPastaEtiquetas();
+            CarregarModelosEtiquetas();
+            CarregarImpressoras();
+            txtParcelas.TextAlign = HorizontalAlignment.Center;
         }
 
+        private void CarregarImpressoras()
+        {
+            // Limpa o ComboBox para evitar duplicatas
+            comboImpressoras.Items.Clear();
+
+            // Obtém uma coleção de todas as impressoras instaladas no sistema
+            PrinterSettings.StringCollection impressoras = PrinterSettings.InstalledPrinters;
+
+            // Adiciona cada impressora ao ComboBox
+            foreach (string impressora in impressoras)
+            {
+                comboImpressoras.Items.Add(impressora);
+            }
+
+            // Seleciona a primeira impressora por padrão, se houver alguma
+            if (comboImpressoras.Items.Count > 0)
+            {
+                comboImpressoras.SelectedIndex = 0;
+            }
+        }
+        private void VerificarECriarPastaEtiquetas()
+        {
+            string caminhoExecutavel = Application.StartupPath;
+            caminhoPastaEtiquetas = Path.Combine(caminhoExecutavel, "Etiquetas");
+            if (!Directory.Exists(caminhoPastaEtiquetas))
+            {
+                Directory.CreateDirectory(caminhoPastaEtiquetas);
+            }
+            if (!Directory.Exists(caminhoPastaEtiquetas + "\\TempFile"))
+                Directory.CreateDirectory(caminhoPastaEtiquetas + "\\TempFile");
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -267,7 +314,6 @@ namespace Lunar.Telas.Estoques
             if(grid.RowCount > 0)
             {
                 var records = grid.View.Records;
-                decimal descontoItem = 0;
                 IList<Produto> listaProdutosEtiquetas = new List<Produto>();
                 foreach (var record in records)
                 {
@@ -293,7 +339,226 @@ namespace Lunar.Telas.Estoques
         }
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            imprimir();
+            if (String.IsNullOrEmpty(txtParcelas.Texts))
+                txtParcelas.Texts = "1";
+
+            if (grid.View.Records.Count > 0)
+            {
+                var records = grid.View.Records;
+                IList<Produto> listaProdutosEtiquetas = new List<Produto>();
+                foreach (var record in records)
+                {
+                    Produto produto = new Produto();
+                    var dataRowView = record.Data as DataRowView;
+                    produto.Id = int.Parse(dataRowView.Row["Id"].ToString());
+                    produto = (Produto)ProdutoController.getInstance().selecionar(produto);
+                    produto.Descricao = dataRowView.Row["Descricao"].ToString();
+                    produto.ValorVenda = decimal.Parse(dataRowView.Row["Valor"].ToString());
+                    produto.Estoque = double.Parse(dataRowView.Row["Quantidade"].ToString());
+                    produto.Observacoes = txtObservacoes.Texts;
+                    listaProdutosEtiquetas.Add(produto);
+                }
+                string nomeArquivoEtiqueta = comboModeloEtiqueta.SelectedItem.ToString();
+                string nomeImpressoraSelecionada = comboImpressoras.SelectedItem.ToString();
+                PrintLabel3(nomeArquivoEtiqueta, listaProdutosEtiquetas, nomeImpressoraSelecionada);
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Insira os produtos que deseja imprimir!");
+            }
+        }
+
+        private void PrintLabel2(string nomeArquivoEtiqueta, IList<Produto> listaProdutos, string nomeImpressora)
+        {
+            string labelFile = Path.Combine(caminhoPastaEtiquetas, nomeArquivoEtiqueta);
+            int numArquivo = 0;
+
+            string combinedPdfPath = Path.Combine(caminhoPastaEtiquetas+ "\\TempFile", "PreviewEtiquetas.pdf");
+            DirectoryInfo di = new DirectoryInfo(caminhoPastaEtiquetas + "\\TempFile");
+            foreach (FileInfo file in di.GetFiles("*.pdf"))
+            {
+                //Deleta os pdfs da pasta, para caso o usuario queira gerar um pdf visualizador, pois vou ler todos pdf da pasta
+                file.Delete();
+            }
+            try
+            {
+                using (Engine btEngine = new Engine(true))
+                {
+                    foreach (var produto in listaProdutos)
+                    {
+                        LabelFormatDocument labelFormat = btEngine.Documents.Open(labelFile);
+                        numArquivo++;
+                        try { labelFormat.SubStrings["nomeEmpresa"].Value = Sessao.empresaFilialLogada.NomeFantasia; } catch (KeyNotFoundException) { }
+                        try { labelFormat.SubStrings["descricaoProduto"].Value = produto.Descricao; } catch (KeyNotFoundException) { }
+                        try { labelFormat.SubStrings["codigoBarras"].Value = produto.Ean; } catch (KeyNotFoundException) { }
+                        try { labelFormat.SubStrings["observacoes"].Value = produto.Observacoes; } catch (KeyNotFoundException) { }
+                        try { labelFormat.SubStrings["preco"].Value = (produto.ValorVenda / decimal.Parse(txtParcelas.Texts)).ToString("C2"); } catch (KeyNotFoundException) { }
+                        try { labelFormat.SubStrings["quantidade"].Value = (produto.Estoque.ToString()); } catch (KeyNotFoundException) { }
+                        labelFormat.PrintSetup.PrinterName = nomeImpressora;
+                        if (nomeImpressora.Contains("PDF"))
+                        {
+                            labelFormat.PrintSetup.PrinterName = "PDF";
+                            labelFormat.PrintSetup.PrintToFile = true;
+                            labelFormat.PrintSetup.PrintToFileName = caminhoPastaEtiquetas + $@"\TempFile\Preview_" + numArquivo + ".pdf";
+                        }
+                        labelFormat.PrintSetup.IdenticalCopiesOfLabel = int.Parse(produto.Estoque.ToString());
+                        labelFormat.Print("Etiqueta");
+                        labelFormat.Close(SaveOptions.DoNotSaveChanges);
+                    }
+                    if (nomeImpressora.Contains("PDF"))
+                    {
+                        if (!Directory.Exists(caminhoPastaEtiquetas + "\\TempFile"))
+                            Directory.CreateDirectory(caminhoPastaEtiquetas + "\\TempFile");
+                        CombinePDFs(caminhoPastaEtiquetas+"\\TempFile", combinedPdfPath);
+                        Process.Start(combinedPdfPath);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao imprimir: " + ex.Message);
+            }
+        }
+
+        private void PrintLabel3(string nomeArquivoEtiqueta, IList<Produto> listaProdutos, string nomeImpressora)
+        {
+            string labelFile = Path.Combine(caminhoPastaEtiquetas, nomeArquivoEtiqueta);
+            string combinedPdfPath = Path.Combine(caminhoPastaEtiquetas + "\\TempFile", "PreviewEtiquetas.pdf");
+            DirectoryInfo di = new DirectoryInfo(caminhoPastaEtiquetas + "\\TempFile");
+
+            // Deleta os PDFs da pasta
+            foreach (FileInfo file in di.GetFiles("*.json"))
+            {
+                file.Delete();
+            }
+
+            try
+            {
+                // Lista para armazenar as etiquetas
+                List<LabelData> listaEtiquetas = new List<LabelData>();
+
+                // Converter lista de produtos em lista de etiquetas
+                foreach (var produto in listaProdutos)
+                {
+                    //Se o produto nao tem codigo de barras, vamos gerar um
+                    if (String.IsNullOrEmpty(produto.Ean))
+                    {
+                        while (String.IsNullOrEmpty(produto.Ean))
+                        {
+                            produto.Ean = gerarCodigoBarras(produto);
+                        }
+                    }
+                    for (int i = 0; i < produto.Estoque; i++)
+                    {
+                        LabelData etiqueta = new LabelData
+                        {
+                            NomeEmpresa = Sessao.empresaFilialLogada.NomeFantasia,
+                            CodigoProduto = produto.Id.ToString(),
+                            DescricaoProduto = produto.Descricao,
+                            CodigoBarras = produto.Ean,
+                            Observacoes = produto.Observacoes,
+                            Preco = (produto.ValorVenda / decimal.Parse(txtParcelas.Texts)).ToString("C2"),
+                            Quantidade = produto.Estoque,
+                            Parcelas = double.Parse(txtParcelas.Texts)
+                        };
+
+                        listaEtiquetas.Add(etiqueta);
+                    }
+                }
+
+                // Encapsular as etiquetas dentro de um objeto LabelDataContainer
+                LabelDataContainer container = new LabelDataContainer
+                {
+                    LabelDataList = listaEtiquetas
+                };
+
+                // Serializar o objeto LabelDataContainer em JSON
+                string json = JsonConvert.SerializeObject(container, Formatting.Indented);
+                string caminhoArquivoJson = caminhoPastaEtiquetas + "\\TempFile\\Etiquetas.json";
+                File.WriteAllText(caminhoArquivoJson, json);
+
+                string appBaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string tempFileDirectory = Path.Combine(appBaseDirectory, "Etiquetas", "TempFile");
+
+                string caminhoBartender = @"C:\Program Files\Seagull\BarTender 2022\bartend.exe";
+                string caminhoArquivoJSON = @tempFileDirectory+@"\Etiquetas.json";
+
+                if (chkPreview.Checked == true)
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo();
+                    startInfo.FileName = caminhoBartender;
+                    startInfo.Arguments = $"/F=\"{labelFile}\" /D=\"{caminhoArquivoJSON}\" /PD";
+                    Process.Start(startInfo);
+                }
+                else
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    {
+                        FileName = caminhoBartender,
+                        Arguments = $"/AF=\"{labelFile}\" /D=\"{caminhoArquivoJSON}\" /P /X /PRN=\"{nomeImpressora}\"",
+                        CreateNoWindow = true,
+                        UseShellExecute = false,
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    };
+
+                    // Inicie o processo
+                    Process.Start(startInfo);
+                }
+            }
+            catch (Exception ex)
+            {
+                GenericaDesktop.ShowAlerta("Erro ao imprimir: " + ex.Message);
+            }
+        }
+  
+        public class LabelData
+        {
+            public string NomeEmpresa { get; set; }
+            public string CodigoProduto { get; set; }
+            public string DescricaoProduto { get; set; }
+            public string CodigoBarras { get; set; }
+            public string Observacoes { get; set; }
+            public string Preco { get; set; }
+            public double Quantidade { get; set; }
+            public double Parcelas { get; set; }
+        }
+
+
+        public class LabelDataContainer
+        {
+            public List<LabelData> LabelDataList { get; set; }
+        }
+
+
+        private void CombinePDFs(string folderPath, string combinedPdfPath)
+        {
+            // Obtém todos os arquivos PDF na pasta especificada
+            string[] pdfFiles = Directory.GetFiles(folderPath, "*.pdf");
+
+            // Cria um novo documento PDF para combinar os arquivos
+            using (FileStream combinedStream = new FileStream(combinedPdfPath, FileMode.Create))
+            {
+                using (Document document = new Document())
+                {
+                    using (PdfCopy copy = new PdfCopy(document, combinedStream))
+                    {
+                        document.Open();
+
+                        // Adiciona cada arquivo PDF ao documento combinado
+                        foreach (string pdfFile in pdfFiles)
+                        {
+                            using (PdfReader reader = new PdfReader(pdfFile))
+                            {
+                                for (int i = 1; i <= reader.NumberOfPages; i++)
+                                {
+                                    PdfImportedPage page = copy.GetImportedPage(reader, i);
+                                    copy.AddPage(page);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void btnExcluirProduto_Click(object sender, EventArgs e)
@@ -322,6 +587,101 @@ namespace Lunar.Telas.Estoques
             txtQuantidade.Texts = "1";
             dsProdutos.Tables[0].Clear();
             txtProduto.Focus();
+        }
+
+        private void CarregarModelosEtiquetas()
+        {
+            if (Directory.Exists(caminhoPastaEtiquetas))
+            {
+                string[] arquivosEtiquetas = Directory.GetFiles(caminhoPastaEtiquetas, "*.btw");
+                comboModeloEtiqueta.Items.Clear();
+                if (arquivosEtiquetas.Length > 0)
+                {
+                    foreach (string arquivo in arquivosEtiquetas)
+                    {
+                        comboModeloEtiqueta.Items.Add(Path.GetFileName(arquivo));
+                    }
+                    comboModeloEtiqueta.SelectedIndex = 0;
+                }
+                else
+                {
+                    comboModeloEtiqueta.Items.Add("Nenhum modelo disponível");
+                }
+            }
+        }
+
+        private void txtParcelas__TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(txtParcelas.Texts))
+                {
+                    if(int.Parse(txtParcelas.Texts) > 1)
+                        txtObservacoes.Texts = "Por Apenas " + txtParcelas.Texts + "x de ";
+                }
+            }
+            catch { }
+        }
+
+        private void txtParcelas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Se não for um número, marca o evento como manipulado para evitar a entrada
+                e.Handled = true;
+            }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkPreview_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkPreview.Checked == true)
+                    comboImpressoras.Enabled = false;
+                if (chkPreview.Checked == false)
+                    comboImpressoras.Enabled = true;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private string gerarCodigoBarras(Produto product)
+        {
+            Produto prod = new Produto();
+            prod = product;
+            ProdutoController produtoController = new ProdutoController();
+            CreateEan13();
+            IList<Produto> listaProd = produtoController.selecionarProdutosComVariosFiltros(ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit, Sessao.empresaFilialLogada);
+            if (listaProd.Count == 0)
+            {
+                prod.Ean = ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit;
+                Controller.getInstance().salvar(prod);
+                return prod.Ean;
+            }
+            else
+                return "";
+        }
+        private void CreateEan13()
+        {
+            ean13 = new Ean13();
+            ean13.CountryCode = RandomNumber(10, 78).ToString();
+            ean13.ManufacturerCode = RandomNumber(79000, 99000).ToString();
+            ean13.ProductCode = RandomNumber(10000, 99000).ToString();
+            ean13.ChecksumDigit = RandomNumber(1, 9).ToString();
+            ean13.Scale = 1;
+        }
+
+        private int RandomNumber(int min, int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max);
         }
     }
 }

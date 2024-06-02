@@ -1,12 +1,15 @@
 ﻿using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
+using LunarBase.Utilidades;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +33,13 @@ namespace Lunar.Telas.Condicionais
 
         private void gerarRelatorio()
         {
+            if(Sessao.parametroSistema.TipoImpressoraCondicional != null)
+            {
+                if(Sessao.parametroSistema.TipoImpressoraCondicional.Equals("A4"))
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.Condicionais.ReportCondicionalA4.rdlc";
+                else
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.Condicionais.ReportCondicional01.rdlc";
+            }
             this.reportViewer1.LocalReport.EnableExternalImages = true;
             Microsoft.Reporting.WinForms.ReportDataSource dsVendaX = new Microsoft.Reporting.WinForms.ReportDataSource();
             dsVendaX.Name = "dsCondicional";
