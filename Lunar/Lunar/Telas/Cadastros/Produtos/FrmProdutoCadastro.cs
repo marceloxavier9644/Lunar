@@ -1,4 +1,5 @@
 ﻿using Lunar.Telas.Cadastros.Produtos.Auxiliares;
+using Lunar.Telas.Estoques;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using LunarBase.Classes;
@@ -67,7 +68,40 @@ namespace Lunar.Telas.Cadastros.Produtos
             //aba veiculo nao apresenta se nao marcar o checkbox veiculo
             tabPageAdv3.TabVisible = false;
         }
-
+        private void LimparCampos(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                else if (c is ComboBox)
+                {
+                    ((ComboBox)c).SelectedIndex = -1;
+                }
+                else if (c is CheckBox)
+                {
+                    ((CheckBox)c).Checked = false;
+                }
+                else if (c is RadioButton)
+                {
+                    ((RadioButton)c).Checked = false;
+                }
+                else if (c is DateTimePicker)
+                {
+                    ((DateTimePicker)c).Value = DateTime.Now;
+                }
+                else if (c is NumericUpDown)
+                {
+                    ((NumericUpDown)c).Value = ((NumericUpDown)c).Minimum;
+                }
+                else if (c.Controls.Count > 0)
+                {
+                    LimparCampos(c);
+                }
+            }
+        }
         public FrmProdutoCadastro(Produto produto, bool inserindoNotaFiscal)
         {
             InitializeComponent();
@@ -257,6 +291,7 @@ namespace Lunar.Telas.Cadastros.Produtos
 
         private void get_Produto(Produto produto)
         {
+            btnEtiqueta.Visible = true;
             txtID.Texts = produto.Id.ToString();
             if (txtID.Texts.Equals("0"))
                 txtID.Texts = "";
@@ -1068,6 +1103,10 @@ namespace Lunar.Telas.Cadastros.Produtos
             {
                 case Keys.Escape:
                     this.Close();
+                    break;
+
+                case Keys.F2:
+                    btnNovo.PerformClick();
                     break;
 
                 case Keys.F5:
@@ -2482,6 +2521,32 @@ namespace Lunar.Telas.Cadastros.Produtos
         private void txtMarkup__TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEtiqueta_Click(object sender, EventArgs e)
+        {
+            double qtd = 0;
+            if (!String.IsNullOrEmpty(txtEstoqueAuxiliar.Texts))
+                qtd = double.Parse(txtEstoqueAuxiliar.Texts);
+            FrmEtiquetas frmEtiquetas = new FrmEtiquetas(produto, qtd);
+            frmEtiquetas.ShowDialog();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            LimparCampos(this);
+            btnEtiqueta.Visible = false;
+            produto = new Produto();
+      
+            iniciarTributosPadroes();
+            gerarCombustivel();
+            gerarCoresVeiculos();
+            gerarDadosVeiculos();
+            gerarTiposDeProdutos();
+            tabPageAdv3.TabVisible = false;
+            comboTipoProduto.SelectedIndex = 1;
+
+            txtDescricao.Focus();
         }
     }
 }

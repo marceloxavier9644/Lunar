@@ -648,7 +648,6 @@
             </TablixRowHierarchy>
             <DataSetName>dsCondicional</DataSetName>
             <Top>0.74306cm</Top>
-            <Left>0cm</Left>
             <Height>1.8cm</Height>
             <Width>6.93209cm</Width>
             <Style>
@@ -678,7 +677,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
             <Top>0.07603cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>6.93209cm</Width>
             <ZIndex>1</ZIndex>
@@ -710,7 +708,6 @@
             </Paragraphs>
             <rd:DefaultName>Cliente1</rd:DefaultName>
             <Top>4.32626cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>6.93209cm</Width>
             <ZIndex>2</ZIndex>
@@ -766,7 +763,6 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Empresa</rd:DefaultName>
-              <Left>0cm</Left>
               <Height>0.86458cm</Height>
               <Width>6.93209cm</Width>
               <Style>
@@ -797,7 +793,6 @@
               </Paragraphs>
               <rd:DefaultName>CNPJ</rd:DefaultName>
               <Top>0.93514cm</Top>
-              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>1</ZIndex>
@@ -827,7 +822,6 @@
               </Paragraphs>
               <rd:DefaultName>EnderecoEmpresa</rd:DefaultName>
               <Top>1.53514cm</Top>
-              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>2</ZIndex>
@@ -857,7 +851,6 @@
               </Paragraphs>
               <rd:DefaultName>FoneEmpresa</rd:DefaultName>
               <Top>2.13514cm</Top>
-              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>3</ZIndex>
@@ -887,7 +880,6 @@
               </Paragraphs>
               <rd:DefaultName>Cliente</rd:DefaultName>
               <Top>4.88003cm</Top>
-              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>4</ZIndex>
@@ -917,7 +909,6 @@
               </Paragraphs>
               <rd:DefaultName>EnderecoCliente</rd:DefaultName>
               <Top>5.48003cm</Top>
-              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>5</ZIndex>
@@ -933,7 +924,6 @@
             </Textbox>
             <Line Name="Line1">
               <Top>4.83341cm</Top>
-              <Left>0cm</Left>
               <Height>0cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>6</ZIndex>
@@ -945,7 +935,6 @@
             </Line>
             <Line Name="Line3">
               <Top>6.18818cm</Top>
-              <Left>0cm</Left>
               <Height>0cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>7</ZIndex>
@@ -975,7 +964,6 @@
               </Paragraphs>
               <rd:DefaultName>Vendedor</rd:DefaultName>
               <Top>6.26745cm</Top>
-              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>8</ZIndex>
@@ -1010,7 +998,6 @@
               </Paragraphs>
               <rd:DefaultName>Textbox23</rd:DefaultName>
               <Top>2.85405cm</Top>
-              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>9</ZIndex>
@@ -1052,7 +1039,6 @@
               </Paragraphs>
               <rd:DefaultName>Id</rd:DefaultName>
               <Top>3.49285cm</Top>
-              <Left>0cm</Left>
               <Height>0.63853cm</Height>
               <Width>6.93209cm</Width>
               <ZIndex>10</ZIndex>
@@ -1170,6 +1156,12 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="logo">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1220,6 +1212,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>Data</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>logo</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

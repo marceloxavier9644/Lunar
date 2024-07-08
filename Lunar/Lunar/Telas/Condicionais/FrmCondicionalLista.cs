@@ -62,45 +62,110 @@ namespace Lunar.Telas.Condicionais
                 }
 
                 string orderBy = " order by Tabela.Data";
+                //listaCondicional = condicionalController.selecionarCondicionalPorSql(sql + orderBy);
+                //CondicionalProdutoController condicionalProdutoController = new CondicionalProdutoController();
+                //CondicionalDevolucaoController condicionalDevolucaoController = new CondicionalDevolucaoController();
+                //foreach (var condicional in listaCondicional)
+                //{
+                //    // Consultar os produtos associados a esta condicional na tabela CondicionalProduto
+                //    var produtosCondicional = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
+
+                //    // Inicializar variáveis para armazenar a quantidade e o valor total dos produtos devolvidos para esta condicional
+                //    double quantidadeDevolvidaTotalCond = 0;
+                //    decimal valorDevolvidoTotalCond = 0;
+
+                //    foreach (var produtoCondicional in produtosCondicional)
+                //    {
+                //        // Consultar os produtos devolvidos associados a este produto da condicional na tabela Devolvidos
+                //        var produtosDevolvidos = condicionalDevolucaoController.selecionarProdutosDevolvidosPorCondicional(produtoCondicional.Condicional.Id);
+
+                //        // Inicializar variáveis para armazenar a quantidade e o valor total dos produtos devolvidos para este produto da condicional
+                //        double quantidadeDevolvidaProduto = 0;
+                //        decimal valorDevolvidoProduto = 0;
+
+                //        // Para cada produto devolvido associado a este produto da condicional
+                //        foreach (var produtoDevolvido in produtosDevolvidos)
+                //        {
+                //            if (produtoDevolvido.Produto.Id == produtoCondicional.Produto.Id)
+                //            {
+                //                quantidadeDevolvidaProduto += produtoDevolvido.Quantidade;
+                //                valorDevolvidoProduto += decimal.Parse(produtoDevolvido.Quantidade.ToString()) * produtoCondicional.ValorUnitario;
+                //            }
+                //        }
+                //        // Adicionar a quantidade e o valor total deste produto devolvido aos totais da condicional
+                //        quantidadeDevolvidaTotalCond += quantidadeDevolvidaProduto;
+                //        valorDevolvidoTotalCond += valorDevolvidoProduto;
+                //        condicional.ValorSaldo = condicional.ValorTotal - valorDevolvidoTotalCond;
+                //        condicional.QuantidadeDevolvida = quantidadeDevolvidaTotalCond;
+                //    }
+                //}
+                // Selecionar todas as condicionais com base no SQL e orderBy fornecidos
                 listaCondicional = condicionalController.selecionarCondicionalPorSql(sql + orderBy);
+
+                // Inicializar os controladores
                 CondicionalProdutoController condicionalProdutoController = new CondicionalProdutoController();
                 CondicionalDevolucaoController condicionalDevolucaoController = new CondicionalDevolucaoController();
+
+                // Selecionar todos os produtos e devoluções de todas as condicionais em uma única chamada
+                var todosProdutosCondicional = new Dictionary<int, IList<CondicionalProduto>>();
+                var todosProdutosDevolvidos = new Dictionary<int, IList<CondicionalDevolucao>>();
+
                 foreach (var condicional in listaCondicional)
                 {
-                    // Consultar os produtos associados a esta condicional na tabela CondicionalProduto
-                    var produtosCondicional = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
+                    todosProdutosCondicional[condicional.Id] = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
+                    todosProdutosDevolvidos[condicional.Id] = condicionalDevolucaoController.selecionarProdutosDevolvidosPorCondicional(condicional.Id);
+                }
+
+                // Processar cada condicional
+                foreach (var condicional in listaCondicional)
+                {
+                    // Obter os produtos e devoluções associados a esta condicional
+                    var produtosCondicional = todosProdutosCondicional[condicional.Id];
+                    var produtosDevolvidos = todosProdutosDevolvidos[condicional.Id];
 
                     // Inicializar variáveis para armazenar a quantidade e o valor total dos produtos devolvidos para esta condicional
                     double quantidadeDevolvidaTotalCond = 0;
                     decimal valorDevolvidoTotalCond = 0;
 
+                    // Dicionário para armazenar a quantidade devolvida por produto
+                    var devolucoesPorProduto = new Dictionary<int, double>();
+
+                    // Preencher o dicionário com as devoluções
+                    foreach (var produtoDevolvido in produtosDevolvidos)
+                    {
+                        if (devolucoesPorProduto.ContainsKey(produtoDevolvido.Produto.Id))
+                        {
+                            devolucoesPorProduto[produtoDevolvido.Produto.Id] += produtoDevolvido.Quantidade;
+                        }
+                        else
+                        {
+                            devolucoesPorProduto[produtoDevolvido.Produto.Id] = produtoDevolvido.Quantidade;
+                        }
+                    }
+
+                    // Calcular a quantidade e valor devolvido por produto da condicional
                     foreach (var produtoCondicional in produtosCondicional)
                     {
-                        // Consultar os produtos devolvidos associados a este produto da condicional na tabela Devolvidos
-                        var produtosDevolvidos = condicionalDevolucaoController.selecionarProdutosDevolvidosPorCondicional(produtoCondicional.Condicional.Id);
-
-                        // Inicializar variáveis para armazenar a quantidade e o valor total dos produtos devolvidos para este produto da condicional
                         double quantidadeDevolvidaProduto = 0;
                         decimal valorDevolvidoProduto = 0;
 
-                        // Para cada produto devolvido associado a este produto da condicional
-                        foreach (var produtoDevolvido in produtosDevolvidos)
+                        if (devolucoesPorProduto.ContainsKey(produtoCondicional.Produto.Id))
                         {
-                            if (produtoDevolvido.Produto.Id == produtoCondicional.Produto.Id)
-                            {
-                                quantidadeDevolvidaProduto += produtoDevolvido.Quantidade;
-                                valorDevolvidoProduto += decimal.Parse(produtoDevolvido.Quantidade.ToString()) * produtoCondicional.ValorUnitario;
-                            }
+                            quantidadeDevolvidaProduto = devolucoesPorProduto[produtoCondicional.Produto.Id];
+                            valorDevolvidoProduto = (decimal)quantidadeDevolvidaProduto * produtoCondicional.ValorUnitario;
                         }
+
                         // Adicionar a quantidade e o valor total deste produto devolvido aos totais da condicional
                         quantidadeDevolvidaTotalCond += quantidadeDevolvidaProduto;
                         valorDevolvidoTotalCond += valorDevolvidoProduto;
-                        condicional.ValorSaldo = condicional.ValorTotal - valorDevolvidoTotalCond;
-                        condicional.QuantidadeDevolvida = quantidadeDevolvidaTotalCond;
                     }
+
+                    // Atualizar os valores da condicional
+                    condicional.ValorSaldo = condicional.ValorTotal - valorDevolvidoTotalCond;
+                    condicional.QuantidadeDevolvida = quantidadeDevolvidaTotalCond;
                 }
 
-                    if (listaCondicional.Count > 0)
+                if (listaCondicional.Count > 0)
                 {
                     sfDataPager1.DataSource = listaCondicional;
 
@@ -208,11 +273,12 @@ namespace Lunar.Telas.Condicionais
             summaryColumn5.Name = "ValorTotalFaturado";
             summaryColumn5.SummaryType = SummaryType.DoubleAggregate;
             summaryColumn5.Format = "{Sum:c}";
-            summaryColumn5.MappingName = "ValorTotal";
+            summaryColumn5.MappingName = "ValorSaldo";
+
 
             if (radioFaturadas.Checked == true)
             {
-                tableSummaryRow1.Title = " Condicionais: {TotalNotas}                 Total: {ValorTotal}                 Total Faturado: {ValorTotalFaturado}";
+                tableSummaryRow1.Title = " Condicionais: {TotalCond}                 Total Levado: {ValorTotal}                 Total Vendido: {ValorTotalFaturado}";
                 tableSummaryRow1.SummaryColumns.Add(summaryColumn5);
             }
 
@@ -454,7 +520,13 @@ namespace Lunar.Telas.Condicionais
             {
                 condicional = new Condicional();
                 condicional = (Condicional)grid.SelectedItem;
-                editarCadastro(condicional);
+
+                CondicionalDevolucaoController condicionalDevolucaoController = new CondicionalDevolucaoController();
+                IList<CondicionalDevolucao> listaDevolvidas = condicionalDevolucaoController.selecionarProdutosDevolvidosPorCondicional(condicional.Id);
+                if (listaDevolvidas.Count == 0)
+                    editarCadastro(condicional);
+                else
+                    GenericaDesktop.ShowAlerta("Não é possível editar condicionais que tenham um ou mais produtos devolvidos!");
             }
             else
                 GenericaDesktop.ShowAlerta("Clique na linha da condicional que deseja editar!");
@@ -624,16 +696,84 @@ namespace Lunar.Telas.Condicionais
             {
                 condicional = new Condicional();
                 condicional = (Condicional)grid.SelectedItem;
-                if (GenericaDesktop.ShowConfirmacao("Confirma o faturamento da condicional selecionada?"))
-                { 
-                    FrmVendas02 frm = new FrmVendas02(condicional);
-                    frm.ShowDialog();
-                    btnPesquisar.PerformClick();
+
+                if (verificaSeFoiTotalmenteDevolvida(condicional))
+                {
+                    if (GenericaDesktop.ShowConfirmacao("Condicional totalmente devolvida, deseja apenas encerrar a mesma?"))
+                    {
+                        condicional.Encerrado = true;
+                        condicional.DataEncerramento = DateTime.Now;
+                        Controller.getInstance().salvar(condicional);
+                        GenericaDesktop.ShowInfo("Finalizado com sucesso!");
+                        btnPesquisar.PerformClick();
+                    }
+                }
+                else
+                {
+                    if (GenericaDesktop.ShowConfirmacao("Confirma o faturamento da condicional selecionada?"))
+                    {
+
+                        FrmVendas02 frm = new FrmVendas02(condicional);
+                        frm.ShowDialog();
+                        btnPesquisar.PerformClick();
+                    }
                 }
             } 
         }
-        
 
+        private bool verificaSeFoiTotalmenteDevolvida(Condicional condicional)
+        {
+            CondicionalProdutoController condicionalProdutoController = new CondicionalProdutoController();
+            CondicionalDevolucaoController condicionalDevolucaoController = new CondicionalDevolucaoController();
+            var todosProdutosCondicional = new Dictionary<int, IList<CondicionalProduto>>();
+            var todosProdutosDevolvidos = new Dictionary<int, IList<CondicionalDevolucao>>();
+
+            todosProdutosCondicional[condicional.Id] = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
+            todosProdutosDevolvidos[condicional.Id] = condicionalDevolucaoController.selecionarProdutosDevolvidosPorCondicional(condicional.Id);
+
+            var produtosCondicional = todosProdutosCondicional[condicional.Id];
+            var produtosDevolvidos = todosProdutosDevolvidos[condicional.Id];
+
+            // Inicializar variáveis para armazenar a quantidade e o valor total dos produtos devolvidos para esta condicional
+            double quantidadeDevolvidaTotalCond = 0;
+            decimal valorDevolvidoTotalCond = 0;
+
+            // Dicionário para armazenar a quantidade devolvida por produto
+            var devolucoesPorProduto = new Dictionary<int, double>();
+
+            // Preencher o dicionário com as devoluções
+            foreach (var produtoDevolvido in produtosDevolvidos)
+            {
+                if (devolucoesPorProduto.ContainsKey(produtoDevolvido.Produto.Id))
+                {
+                    devolucoesPorProduto[produtoDevolvido.Produto.Id] += produtoDevolvido.Quantidade;
+                }
+                else
+                {
+                    devolucoesPorProduto[produtoDevolvido.Produto.Id] = produtoDevolvido.Quantidade;
+                }
+            }
+
+            foreach (var produtoCondicional in produtosCondicional)
+            {
+                double quantidadeDevolvidaProduto = 0;
+                decimal valorDevolvidoProduto = 0;
+
+                if (devolucoesPorProduto.ContainsKey(produtoCondicional.Produto.Id))
+                {
+                    quantidadeDevolvidaProduto = devolucoesPorProduto[produtoCondicional.Produto.Id];
+                    valorDevolvidoProduto = (decimal)quantidadeDevolvidaProduto * produtoCondicional.ValorUnitario;
+                }
+
+                quantidadeDevolvidaTotalCond += quantidadeDevolvidaProduto;
+                valorDevolvidoTotalCond += valorDevolvidoProduto;
+            }
+            condicional.ValorSaldo = condicional.ValorTotal - valorDevolvidoTotalCond;
+            if (condicional.ValorSaldo == 0)
+                return true;
+            else
+                return false;
+        }
 
     }
 }

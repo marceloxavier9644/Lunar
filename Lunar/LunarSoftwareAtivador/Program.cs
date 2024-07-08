@@ -15,7 +15,7 @@ namespace LunarSoftwareAtivador
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmAtivador());
+            Application.Run(new FrmDemonstracao());
         }
     }
 }

@@ -65,50 +65,16 @@ namespace Lunar.Telas.Fiscal
 
             //obterVencimentoCertificado();
 
-            if(!String.IsNullOrEmpty(Sessao.parametroSistema.IdInstanciaWhats) && !String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats))
+            if(!String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats))
             {
-                string ret = zap.zapi_VerificarConexaoInstancia_ParaGerarQR(Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                if (ret != null)
-                {
-                    if (ret.Equals("True"))
-                    {
-                        btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.whatsapp_logo_icone;
-                        btnEnviarWhats.Enabled = true;
-                    }
-                    else
-                    {
-                        btnEnviarWhats.Enabled = false;
-                        btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.WhatsappCinza2_1;
-                    }
-                }
-                else
-                {
-                    btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.WhatsappCinza2_1;
-                    btnEnviarWhats.Enabled = false;
-                }
+                btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.whatsapp_logo_icone;
+                btnEnviarWhats.Enabled = true;
             }
             else
             {
                 btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.WhatsappCinza2_1;
                 btnEnviarWhats.Enabled = false;
             }
-            
-
-            //SignInAsync(app);
-
-            //Task<string> retorno = ftp.enviarArquivoParaNuvem(@"C:\XML\Tentativa\NFe\134.xml", "134.xml", @"XML\Teste\NFe\134.xml");
-            //ftp.azure_CriarDiretorio(Sessao.empresaFilialLogada.Cnpj);
-            //DropboxComandos drop = new DropboxComandos();
-
-            //var task = Task.Run((Func<Task>)DropboxComandos.uploadArquivo);
-            //task.Wait();
-
-            //DropboxComandos.listarPastas();
-            //var task = Task.Run((Func<Task>)DropboxComandos.listarPastas);
-            //task.Wait();
-            //Console.ReadKey();
-
-
         }
 
         public bool obterVencimentoCertificado()
@@ -279,7 +245,7 @@ namespace Lunar.Telas.Fiscal
                     Controller.getInstance().salvar(nfe);
                     Genericos genericosNF = new Genericos();
                     var nfeX = Genericos.LoadFromXMLString<TNfeProc>(nota.nfeProc.xml);
-                    genericosNF.gravarXMLNoBanco(nfeX, 0, "S", nfe.Id);
+                    genericosNF.gravarXMLNoBanco(nfeX, 0, "S", nfe.Id, false);
                     generica.gravarXMLNaPasta(nota.nfeProc.xml, nfe.Chave, @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFCe.xml");
                 }
             }
@@ -1468,7 +1434,7 @@ namespace Lunar.Telas.Fiscal
                                             Genericos genericosNF = new Genericos();
                                             NFeDownloadProc55 nota = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
                                             var nfeRet = Genericos.LoadFromXMLString<TNfeProc>(nota.xml);
-                                            genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id);
+                                            genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id, false);
                                             Controller.getInstance().salvar(nfe);
                                             generica.gravarXMLNaPasta(retConsulta.xml, retConsulta.chNFe, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.xml");
                                             GenericaDesktop.ShowInfo(retConsulta.xMotivo);
@@ -1910,7 +1876,7 @@ namespace Lunar.Telas.Fiscal
                 {
                     Genericos genericosNF = new Genericos();
                     var nota = Genericos.LoadFromXMLString<TNfeProc>(DownloadRespNFCe.nfeProc.xml);
-                    genericosNF.gravarXMLNoBanco(nota, 0, nfe.TipoOperacao, nfe.Id);
+                    genericosNF.gravarXMLNoBanco(nota, 0, nfe.TipoOperacao, nfe.Id, false);
                     btnPesquisar.PerformClick();
                 }
                 else
@@ -1932,7 +1898,7 @@ namespace Lunar.Telas.Fiscal
                 string es = "S";
                 if (radioEntrada.Checked == true)
                     es = "E";
-                genericosNF.gravarXMLNoBanco(notaLida55, 0, es, this.nfe.Id);
+                genericosNF.gravarXMLNoBanco(notaLida55, 0, es, this.nfe.Id, false);
             }
         }
         private void btnCartaCorrecao_Click(object sender, EventArgs e)
@@ -2399,9 +2365,28 @@ namespace Lunar.Telas.Fiscal
 
             }
         }
+        private string SavePdfFromBase64String(string base64String, string fileName)
+        {
+            byte[] pdfBytes = Convert.FromBase64String(base64String);
+            string tempPath = Path.GetTempPath();
+            string filePath = Path.Combine(tempPath, fileName);
+            File.WriteAllBytes(filePath, pdfBytes);
 
+            return filePath;
+        }
+
+        private string SaveXmlFromString(string xmlString, string fileName)
+        {
+            byte[] xmlBytes = System.Text.Encoding.UTF8.GetBytes(xmlString);
+            string tempPath = Path.GetTempPath();
+            string filePath = Path.Combine(tempPath, fileName);
+            File.WriteAllBytes(filePath, xmlBytes);
+
+            return filePath;
+        }
         private void btnEnviarWhats_Click(object sender, EventArgs e)
         {
+            EnviarMensagemWhatsapp enviarMensagemWhatsapp = new EnviarMensagemWhatsapp();
             string numero = "";
             nfe = (Nfe)grid.SelectedItem;
             if(nfe.NfeStatus.Id != 2 && nfe.NfeStatus.Id != 3) { 
@@ -2446,13 +2431,19 @@ namespace Lunar.Telas.Fiscal
                         if (nfe.NfeStatus.Id == 1)
                         {
                             nFCeDownloadProc = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
-                                
+                            
+                            enviarMensagemWhatsapp.SendMessageAsync(numero, "Olá, segue Nota Fiscal da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ");
+                            string caminhoArquivoPDF = SavePdfFromBase64String(nFCeDownloadProc.pdf, nfe.Chave + ".pdf");
+                            enviarMensagemWhatsapp.SendMediaMessageAsync(numero, caminhoArquivoPDF);
+                            string caminhoArquivoXML = SaveXmlFromString(nFCeDownloadProc.nfeProc.xml, nfe.Chave + ".xml");
+                            enviarMensagemWhatsapp.SendMediaMessageAsync(numero, caminhoArquivoXML);
+                            GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
 
-                            dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, segue Nota Fiscal da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                            dynamic ret = zapi.zapi_EnviarDocumento(numero, nFCeDownloadProc.pdf, Sessao.empresaFilialLogada.NomeFantasia + ": PDF NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "PDF");
-                            dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nFCeDownloadProc.nfeProc.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
-                            if (!String.IsNullOrEmpty(ret) && !String.IsNullOrEmpty(ret2))
-                                GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
+                            //dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, segue Nota Fiscal da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                            //dynamic ret = zapi.zapi_EnviarDocumento(numero, nFCeDownloadProc.pdf, Sessao.empresaFilialLogada.NomeFantasia + ": PDF NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "PDF");
+                            //dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nFCeDownloadProc.nfeProc.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
+                            //if (!String.IsNullOrEmpty(ret) && !String.IsNullOrEmpty(ret2))
+                            //    GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
                         }
                         //cancelada
                         if (nfe.NfeStatus.Id == 4)
@@ -2460,10 +2451,14 @@ namespace Lunar.Telas.Fiscal
                             var nfceCancelada = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj.Trim(), nfe.Chave);
                             if (nfceCancelada != null)
                             {
-                                dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, cancelamento da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                                dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nfceCancelada.nfeProc.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML CANCELAMENTO NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
-                                if (!String.IsNullOrEmpty(ret0) && !String.IsNullOrEmpty(ret2))
-                                    GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
+                                enviarMensagemWhatsapp.SendMessageAsync(numero, "Olá, cancelamento da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ");
+                                string caminhoArquivoXML = SaveXmlFromString(nfceCancelada.nfeProc.xml, nfe.Chave + "_CAN.xml");
+                                enviarMensagemWhatsapp.SendMediaMessageAsync(numero, caminhoArquivoXML);
+
+                                //dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, cancelamento da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                                //dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nfceCancelada.nfeProc.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML CANCELAMENTO NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
+                                //if (!String.IsNullOrEmpty(ret0) && !String.IsNullOrEmpty(ret2))
+                                //GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
                             }
                         }
                         //INUTILIZADA
@@ -2472,10 +2467,13 @@ namespace Lunar.Telas.Fiscal
                             var nfceInut = generica.NS_DownloadNFCeInutilizada(Sessao.empresaFilialLogada.Cnpj.Trim(), nfe.IdInut);
                             if (nfceInut != null)
                             {
-                                dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, segue inutilização da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                                dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nfceInut.retInut.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML INUT NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
-                                if (!String.IsNullOrEmpty(ret0) && !String.IsNullOrEmpty(ret2))
-                                    GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
+                                enviarMensagemWhatsapp.SendMessageAsync(numero, "Olá, segue inutilização da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ");
+                                string caminhoArquivoXML = SaveXmlFromString(nfceInut.retInut.xml, nfe.Chave + "_INU.xml");
+                                enviarMensagemWhatsapp.SendMediaMessageAsync(numero, caminhoArquivoXML);
+                                //dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, segue inutilização da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                                //dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nfceInut.retInut.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML INUT NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
+                                //if (!String.IsNullOrEmpty(ret0) && !String.IsNullOrEmpty(ret2))
+                                //    GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
                             }
                         }
                     }
@@ -2484,10 +2482,18 @@ namespace Lunar.Telas.Fiscal
                         if (nfe.NfeStatus.Id == 1)
                         {
                             nFeDownloadProc55 = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
-                            dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, segue Nota Fiscal da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                            dynamic ret = zapi.zapi_EnviarDocumento(numero, nFeDownloadProc55.pdf, Sessao.empresaFilialLogada.NomeFantasia + ": PDF NFe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "PDF");
-                            dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nFeDownloadProc55.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML NFe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
-                            if(nfe.PossuiCartaCorrecao == true)
+                            //dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, segue Nota Fiscal da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                            //dynamic ret = zapi.zapi_EnviarDocumento(numero, nFeDownloadProc55.pdf, Sessao.empresaFilialLogada.NomeFantasia + ": PDF NFe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "PDF");
+                            //dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nFeDownloadProc55.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML NFe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
+
+                            enviarMensagemWhatsapp.SendMessageAsync(numero, "Olá, segue Nota Fiscal da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ");
+                            string caminhoArquivoPDF = SavePdfFromBase64String(nFeDownloadProc55.pdf, nfe.Chave + ".pdf");
+                            enviarMensagemWhatsapp.SendMediaMessageAsync(numero, caminhoArquivoPDF);
+                            string caminhoArquivoXML = SaveXmlFromString(nFeDownloadProc55.xml, nfe.Chave + ".xml");
+                            enviarMensagemWhatsapp.SendMediaMessageAsync(numero, caminhoArquivoXML);
+                            //GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
+
+                            if (nfe.PossuiCartaCorrecao == true)
                             {
                                 NfeCceController nfeCceController = new NfeCceController();
                                 IList<NfeCce> listaCCe = nfeCceController.selecionarCartaCorrecaoPorNfe(nfe.Id);
@@ -2495,11 +2501,14 @@ namespace Lunar.Telas.Fiscal
                                 if (listaCCe.Count > 1)
                                     sequencia = listaCCe.Count;
                                 var nfeCce = generica.ns_DownloadEventoCanceladoOuCCE55(nfe, false, true, sequencia.ToString());
-                                zapi.zapi_EnviarTexto(numero, "Ahhh, esta Nota Fiscal possui uma carta de correção, segue:", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                                zapi.zapi_EnviarDocumento(numero, nfeCce.pdf, Sessao.empresaFilialLogada.NomeFantasia + ": PDF Carta Correção NFe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "PDF");
+                                //zapi.zapi_EnviarTexto(numero, "Ahhh, esta Nota Fiscal possui uma carta de correção, segue:", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                                //zapi.zapi_EnviarDocumento(numero, nfeCce.pdf, Sessao.empresaFilialLogada.NomeFantasia + ": PDF Carta Correção NFe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "PDF");
+                                enviarMensagemWhatsapp.SendMessageAsync(numero, "Ahhh, esta Nota Fiscal possui uma carta de correção, segue:");
+                                string caminhoArquivoPDFCCe = SavePdfFromBase64String(nfeCce.pdf, nfe.Chave + ".pdf");
+                                enviarMensagemWhatsapp.SendMediaMessageAsync(numero, caminhoArquivoPDFCCe);
                             }
                             
-                            if (!String.IsNullOrEmpty(ret) && !String.IsNullOrEmpty(ret2))
+                            //if (!String.IsNullOrEmpty(ret) && !String.IsNullOrEmpty(ret2))
                                 GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
                         }
                         //cancelada
@@ -2509,10 +2518,13 @@ namespace Lunar.Telas.Fiscal
 
                             if (nfceCancelada != null)
                             {
-                                dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, cancelamento da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                                dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nfceCancelada.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML CANCELAMENTO NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
-                                if (!String.IsNullOrEmpty(ret0) && !String.IsNullOrEmpty(ret2))
-                                    GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
+                                enviarMensagemWhatsapp.SendMessageAsync(numero, "Olá, cancelamento da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ");
+                                string caminhoArquivoXML = SaveXmlFromString(nfceCancelada.xml, nfe.Chave + "_CAN.xml");
+                                enviarMensagemWhatsapp.SendMediaMessageAsync(numero, caminhoArquivoXML);
+                                //dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, cancelamento da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                                //dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nfceCancelada.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML CANCELAMENTO NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
+                                //if (!String.IsNullOrEmpty(ret0) && !String.IsNullOrEmpty(ret2))
+                                GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
                             }
                         }
                         //INUTILIZADA
@@ -2521,10 +2533,13 @@ namespace Lunar.Telas.Fiscal
                             var nfeInut = generica.ns_DownloadEventoInutilizacaoNFE(nfe);
                             if (nfeInut != null)
                             {
-                                dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, inutilização da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                                dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nfeInut.retInut.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML INUT NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
-                                if (!String.IsNullOrEmpty(ret0) && !String.IsNullOrEmpty(ret2))
-                                    GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
+                                enviarMensagemWhatsapp.SendMessageAsync(numero, "Olá, segue inutilização da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ");
+                                string caminhoArquivoXML = SaveXmlFromString(nfeInut.retInut.xml, nfe.Chave + "_INU.xml");
+                                enviarMensagemWhatsapp.SendMediaMessageAsync(numero, caminhoArquivoXML);
+                                //dynamic ret0 = zapi.zapi_EnviarTexto(numero, "Olá, inutilização da Nota Fiscal " + nfe.NNf + " da empresa " + Sessao.empresaFilialLogada.NomeFantasia + "\n\n*Essa é uma mensagem automática, caso não tenha feito essa solicitação desconsidere a mensagem* ", Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                                //dynamic ret2 = zapi.zapi_EnviarDocumento(numero, Zapi.EncodeToBase64(nfeInut.retInut.xml), Sessao.empresaFilialLogada.NomeFantasia + ": XML INUT NFCe " + nfe.NNf, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats, "xml");
+                                //if (!String.IsNullOrEmpty(ret0) && !String.IsNullOrEmpty(ret2))
+                                GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
                             }
                         }
                     }

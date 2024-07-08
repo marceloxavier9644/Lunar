@@ -21,6 +21,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Exception = System.Exception;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
@@ -33,6 +34,8 @@ namespace Lunar.Telas.OrdensDeServico
         int idEdicaoProduto = 0;
         DataRow dataRowEdit;
         bool editando = false;
+        bool editandoServico = false;
+        int idEdicaoServico = 0;
         PessoaDependenteController pessoaDependenteController = new PessoaDependenteController();
         GenericaDesktop genericaDesktop = new GenericaDesktop();
         PessoaController pessoaController = new PessoaController();
@@ -190,6 +193,8 @@ namespace Lunar.Telas.OrdensDeServico
                     row.SetField("Desconto", string.Format("{0:0.00}", ordemServicoProduto.Desconto));
                     row.SetField("Acrescimo", string.Format("{0:0.00}", ordemServicoProduto.Acrescimo));
                     row.SetField("ValorComDesconto", string.Format("{0:0.00}", ((valorTotal - ordemServicoProduto.Desconto) + ordemServicoProduto.Acrescimo)));
+                    if(ordemServicoProduto.Vendedor != null)
+                        row.SetField("Vendedor", ordemServicoProduto.Vendedor.Id.ToString());
                     dsProdutos.Tables[0].Rows.Add(row);
                 }
                 if (this.gridProdutos.View != null)
@@ -224,7 +229,8 @@ namespace Lunar.Telas.OrdensDeServico
                     row.SetField("Desconto", string.Format("{0:0.00}", ordemServicoServico.Desconto));
                     row.SetField("Acrescimo", string.Format("{0:0.00}", ordemServicoServico.Acrescimo));
                     row.SetField("ValorComDesconto", string.Format("{0:0.00}", ((valorTotal - ordemServicoServico.Desconto) + ordemServicoServico.Acrescimo)));
-                    
+                    if (ordemServicoServico.Vendedor != null)
+                        row.SetField("Vendedor", ordemServicoServico.Vendedor.Id.ToString());
                     dsServico.Tables[0].Rows.Add(row);
                 }
                 if (this.gridServico.View != null)
@@ -486,7 +492,7 @@ namespace Lunar.Telas.OrdensDeServico
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtVendedor.Texts + "%' and Tabela.Vendedor = true "))
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj, ' ', Tabela.NomeFantasia) like '%" + txtVendedor.Texts + "%' and (Tabela.Vendedor = true or Tabela.Tecnico = true) "))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -510,6 +516,10 @@ namespace Lunar.Telas.OrdensDeServico
                             {
                                 txtVendedor.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                                 vendedor = ((Pessoa)pessoaOjeto);
+                                txtCodVendedorProduto.Texts = "";
+                                txtVendedorProduto.Texts = "";
+                                txtCodVendedorServico.Texts = "";
+                                txtVendedorServico.Texts = "";
                                 txtObservacoes.Focus();
                             }
                             form.Dispose();
@@ -518,6 +528,10 @@ namespace Lunar.Telas.OrdensDeServico
                             txtVendedor.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
                             vendedor = ((Pessoa)pessoaOjeto);
                             txtObservacoes.Focus();
+                            txtCodVendedorProduto.Texts = "";
+                            txtVendedorProduto.Texts = "";
+                            txtCodVendedorServico.Texts = "";
+                            txtVendedorServico.Texts = "";
                             break;
                     }
 
@@ -534,6 +548,189 @@ namespace Lunar.Telas.OrdensDeServico
             }
         }
 
+        private void alterarVendedorGridProdutoServico()
+        {
+            if (gridProdutos.RowCount > 0 && !String.IsNullOrEmpty(txtVendedor.Texts))
+            {
+                GenericaDesktop.ShowAlerta("Atenção, será incluído este vendedor em todos produtos e serviços!");
+                DataTable dataTable = dsProdutos.Tables["Produto"];
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    row["Vendedor"] = vendedor.Id.ToString();
+                }
+                gridProdutos.Refresh();
+            }
+            if (gridServico.RowCount > 0 && !String.IsNullOrEmpty(txtVendedor.Texts))
+            {
+                DataTable dataTable = dsServico.Tables["Servico"];
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    row["Vendedor"] = vendedor.Id.ToString();
+                }
+                gridProdutos.Refresh();
+            }
+        }
+
+        //private void limparVendedorGridProdutoServico()
+        //{
+        //    if (gridProdutos.RowCount > 0 && !String.IsNullOrEmpty(txtVendedor.Texts))
+        //    {
+        //        DataTable dataTable = dsProdutos.Tables["Produto"];
+        //        foreach (DataRow row in dataTable.Rows)
+        //        {
+        //            row["Vendedor"] = "";
+        //        }
+        //        gridProdutos.Refresh();
+        //    }
+        //}
+
+        private void pesquisaVendedorProduto()
+        {
+            Object pessoaOjeto = new Pessoa();
+            Form formBackground = new Form();
+            try
+            {
+                string sqlAdicional = "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj) like '%" + txtVendedorProduto.Texts + "%' and Tabela.Vendedor = true ";
+                if (eNumero(txtCodVendedorProduto.Texts))
+                {
+                    Pessoa vend = new Pessoa();
+                    vend.Id = int.Parse(txtCodVendedorProduto.Texts);
+                    vend = (Pessoa)Controller.getInstance().selecionar(vend);
+                    if (vend != null)
+                    {
+                        txtVendedorProduto.Texts = vend.RazaoSocial;
+                        txtCodVendedorProduto.Texts = vend.Id.ToString();
+                        txtQuantidadeItem.Focus();
+                    }
+                }
+                else
+                {
+                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", sqlAdicional))
+                    {
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                        {
+                            case DialogResult.Ignore:
+                                uu.Dispose();
+                                FrmClienteCadastro form = new FrmClienteCadastro();
+                                if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                                {
+                                    txtVendedorProduto.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                                    txtCodVendedorProduto.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                                    txtQuantidadeItem.Focus();
+                                }
+                                form.Dispose();
+                                break;
+                            case DialogResult.OK:
+                                txtVendedorProduto.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                                txtCodVendedorProduto.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                                txtQuantidadeItem.Focus();
+                                break;
+                        }
+
+                        formBackground.Dispose();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+        public static bool eNumero(string input)
+        {
+            if (input.Length >= 6)
+            {
+                return false;
+            }
+            Regex regex = new Regex(@"^\d+$");
+            return regex.IsMatch(input);
+        }
+        private void pesquisaVendedorServico()
+        {
+            Object pessoaOjeto = new Pessoa();
+            Form formBackground = new Form();
+            try
+            {
+                string sqlAdicional = "and CONCAT(Tabela.Id, ' ', Tabela.RazaoSocial, ' ', Tabela.Cnpj) like '%" + txtVendedorServico.Texts + "%' and Tabela.Tecnico = true ";
+                if (eNumero(txtCodVendedorServico.Texts))
+                {
+                    Pessoa vend = new Pessoa();
+                    vend.Id = int.Parse(txtCodVendedorProduto.Texts);
+                    vend = (Pessoa)Controller.getInstance().selecionar(vend);
+                    if (vend != null)
+                    {
+                        txtVendedorServico.Texts = vend.RazaoSocial;
+                        txtCodVendedorServico.Texts = vend.Id.ToString();
+                        txtQuantidadeServico.Focus();
+                    }
+                }
+                else
+                {
+                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", sqlAdicional))
+                    {
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        switch (uu.showModal("Pessoa", "", ref pessoaOjeto))
+                        {
+                            case DialogResult.Ignore:
+                                uu.Dispose();
+                                FrmClienteCadastro form = new FrmClienteCadastro();
+                                if (form.showModalNovo(ref pessoaOjeto) == DialogResult.OK)
+                                {
+                                    txtVendedorServico.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                                    txtCodVendedorServico.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                                    txtQuantidadeServico.Focus();
+                                }
+                                form.Dispose();
+                                break;
+                            case DialogResult.OK:
+                                txtVendedorServico.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                                txtCodVendedorServico.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                                txtQuantidadeServico.Focus();
+                                break;
+                        }
+
+                        formBackground.Dispose();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
         private void txtCodCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -844,6 +1041,10 @@ namespace Lunar.Telas.OrdensDeServico
                 row.SetField("Desconto", string.Format("{0:0.00}", decimal.Parse(txtDescontoItem.Texts)));
                 row.SetField("Acrescimo", string.Format("{0:0.00}", decimal.Parse(txtAcrescimoItem.Texts)));
                 row.SetField("ValorComDesconto", string.Format("{0:0.00}", valorTotal - decimal.Parse(txtDescontoItem.Texts)));
+                row.SetField("Vendedor", txtCodVendedorProduto.Texts);
+                if (vendedor != null && !String.IsNullOrEmpty(txtVendedor.Texts))
+                    row.SetField("Vendedor", vendedor.Id.ToString());
+                
                 dsProdutos.Tables[0].Rows.Add(row);
 
                 txtPesquisaProduto.Texts = "";
@@ -854,6 +1055,8 @@ namespace Lunar.Telas.OrdensDeServico
                 txtDescontoItem.Texts = "0,00";
                 txtAcrescimoItem.Texts = "0,00";
                 txtCodProduto.Texts = "";
+                txtCodVendedorProduto.Texts = "";
+                txtVendedorProduto.Texts = "";
                 txtPesquisaProduto.Focus();
                 editando = false;
                 this.produto = new Produto();
@@ -1052,6 +1255,7 @@ namespace Lunar.Telas.OrdensDeServico
         {
             if (e.KeyChar == 13)
             {
+                txtCodVendedorProduto.Texts = "";
                 PesquisarProduto(txtPesquisaProduto.Texts);
             }
         }
@@ -1435,6 +1639,14 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 System.Data.DataRow row = dsServico.Tables[0].NewRow();
                 row.SetField("Id", "0");
+                if (editandoServico == true)
+                {
+                    dataRowEdit.Delete();
+                    if (idEdicaoServico > 0)
+                        row.SetField("Id", idEdicaoServico);
+                }
+                idEdicaoServico = 0;
+                editandoServico = false;
                 row.SetField("Codigo", servico.Id.ToString());
                 row.SetField("Descricao", servico.Descricao);
                 decimal valorUnitForm = decimal.Parse(txtValorUnitarioServico.Texts);
@@ -1445,6 +1657,9 @@ namespace Lunar.Telas.OrdensDeServico
                 row.SetField("Desconto", string.Format("{0:0.00}", decimal.Parse(txtDescontoServico.Texts)));
                 row.SetField("Acrescimo", string.Format("{0:0.00}", decimal.Parse(txtAcrescimoServico.Texts)));
                 row.SetField("ValorComDesconto", string.Format("{0:0.00}", valorTotal - decimal.Parse(txtDescontoServico.Texts)));
+                row.SetField("Vendedor", txtCodVendedorServico.Texts);
+                if (vendedor != null && !String.IsNullOrEmpty(txtVendedor.Texts))
+                    row.SetField("Vendedor", vendedor.Id.ToString());
                 dsServico.Tables[0].Rows.Add(row);
 
                 txtPesquisaServico.Texts = "";
@@ -1455,6 +1670,8 @@ namespace Lunar.Telas.OrdensDeServico
                 txtDescontoServico.Texts = "0,00";
                 txtAcrescimoServico.Texts = "0,00";
                 txtCodServico.Texts = "";
+                txtCodVendedorServico.Texts = "";
+                txtVendedorServico.Texts = "";
                 txtPesquisaServico.Focus();
 
                 this.servico = new Servico();
@@ -1956,6 +2173,19 @@ namespace Lunar.Telas.OrdensDeServico
                                 ordemServicoProduto.ValorTotal = decimal.Parse(dataRowView.Row["ValorComDesconto"].ToString());
                             else
                                 ordemServicoProduto.ValorTotal = decimal.Parse(dataRowView.Row["ValorUnitario"].ToString()) * decimal.Parse(dataRowView.Row["Quantidade"].ToString());
+
+                            ordemServicoProduto.Vendedor = null;
+                            Pessoa pessoaVend = new Pessoa();
+                            if (!String.IsNullOrEmpty(dataRowView.Row["Vendedor"].ToString()))
+                            {
+                                pessoaVend.Id = int.Parse(dataRowView.Row["Vendedor"].ToString());
+                                pessoaVend = (Pessoa)PessoaController.getInstance().selecionar(pessoaVend);
+                                if (pessoaVend != null)
+                                {
+                                    ordemServicoProduto.Vendedor = pessoaVend;
+                                }
+                            }
+
                             listaProdutos.Add(ordemServicoProduto);
                         }
                     }
@@ -1993,6 +2223,17 @@ namespace Lunar.Telas.OrdensDeServico
                             ordemServicoServico.Quantidade = double.Parse(dataRowView.Row["Quantidade"].ToString());
                             ordemServicoServico.ValorUnitario = decimal.Parse(dataRowView.Row["ValorUnitario"].ToString());
                             ordemServicoServico.ValorTotal = decimal.Parse(dataRowView.Row["ValorComDesconto"].ToString());
+                            ordemServicoServico.Vendedor = null;
+                            Pessoa pessoaVend = new Pessoa();
+                            if (!String.IsNullOrEmpty(dataRowView.Row["Vendedor"].ToString()))
+                            {
+                                pessoaVend.Id = int.Parse(dataRowView.Row["Vendedor"].ToString());
+                                pessoaVend = (Pessoa)PessoaController.getInstance().selecionar(pessoaVend);
+                                if (pessoaVend != null)
+                                {
+                                    ordemServicoServico.Vendedor = pessoaVend;
+                                }
+                            }
                             listaServicos.Add(ordemServicoServico);
                         }
                     }
@@ -2342,9 +2583,12 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void btnPesquisaVendedor_Click(object sender, EventArgs e)
         {
+            txtVendedor.Texts = "";
             vendedor = new Pessoa();
             pesquisaVendedor();
-            if(ordemServico.Status == "ENCERRADA")
+            //Se tiver vendedor nos grids de produtos e servico serao modificados pelo geral!
+            alterarVendedorGridProdutoServico();
+            if (ordemServico.Status == "ENCERRADA")
             {
                 if(vendedor != null)
                 {
@@ -2590,13 +2834,27 @@ namespace Lunar.Telas.OrdensDeServico
             var valorUnitario = dataRow["ValorUnitario"].ToString();
             var valorTotal = dataRow["ValorTotal"].ToString();
             var codigo = dataRow["Codigo"].ToString();
+            var vendedor = dataRow["Vendedor"].ToString();
 
-           // indexEditando = this.gridProdutos.SelectedIndex;
+            // indexEditando = this.gridProdutos.SelectedIndex;
             txtPesquisaProduto.Texts = descricao;
             txtCodProduto.Texts = codigo;
             txtQuantidadeItem.Texts = quantidade;
             txtValorUnitarioItem.Texts = string.Format("{0:0.00}", valorUnitario);
             txtValorTotalItem.Texts = string.Format("{0:0.00}", valorTotal);
+            txtVendedorProduto.Texts = "";
+            txtCodVendedorProduto.Texts = "";
+            Pessoa pessoaVend = new Pessoa();
+            if (!String.IsNullOrEmpty(vendedor)) 
+            {
+                pessoaVend.Id = int.Parse(vendedor);
+                pessoaVend = (Pessoa)PessoaController.getInstance().selecionar(pessoaVend);
+                if (pessoaVend != null)
+                {
+                    txtVendedorProduto.Texts = pessoaVend.RazaoSocial;
+                    txtCodVendedorProduto.Texts = pessoaVend.Id.ToString();
+                }
+            }
             txtValorUnitarioItem.Focus();
             txtValorUnitarioItem.SelectAll();
         }
@@ -2620,9 +2878,9 @@ namespace Lunar.Telas.OrdensDeServico
                         }
                     }
                     txtValorUnitarioItem.Enabled = Sessao.permissoes.Contains("43");
-                    txtValorTotalItem.Enabled = Sessao.permissoes.Contains("43");
+                    //txtValorTotalItem.Enabled = Sessao.permissoes.Contains("43");
                     txtValorUnitarioServico.Enabled = Sessao.permissoes.Contains("43");
-                    txtValorTotalServico.Enabled = Sessao.permissoes.Contains("43");
+                    //txtValorTotalServico.Enabled = Sessao.permissoes.Contains("43");
 
                     txtDescontoItem.Enabled = Sessao.permissoes.Contains("44");
                     txtDescontoServico.Enabled = Sessao.permissoes.Contains("44");
@@ -2739,5 +2997,91 @@ namespace Lunar.Telas.OrdensDeServico
             }
         }
 
+        private void btnPesquisaVendedorProduto_Click(object sender, EventArgs e)
+        {
+            txtCodVendedorProduto.Texts = "";
+            txtVendedorProduto.Texts = "";
+            pesquisaVendedorProduto();
+        }
+
+        private void gridServico_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        {
+            editandoServico = true;
+            var selectedItem = this.gridServico.CurrentItem as DataRowView;
+            var dataRow = (selectedItem as DataRowView).Row;
+            dataRowEdit = dataRow;
+            idEdicaoServico = 0;
+            try { idEdicaoServico = int.Parse(dataRow["Id"].ToString()); } catch { }
+            var descricao = dataRow["Descricao"].ToString();
+            var quantidade = dataRow["Quantidade"].ToString();
+            var valorUnitario = dataRow["ValorUnitario"].ToString();
+            var valorTotal = dataRow["ValorTotal"].ToString();
+            var codigo = dataRow["Codigo"].ToString();
+            var vendedor = dataRow["Vendedor"].ToString();
+
+            // indexEditando = this.gridProdutos.SelectedIndex;
+            txtPesquisaServico.Texts = descricao;
+            txtCodServico.Texts = codigo;
+            txtQuantidadeServico.Texts = quantidade;
+            txtValorUnitarioServico.Texts = string.Format("{0:0.00}", valorUnitario);
+            txtValorTotalServico.Texts = string.Format("{0:0.00}", valorTotal);
+            txtVendedorServico.Texts = "";
+            txtCodVendedorServico.Texts = "";
+            Pessoa pessoaVend = new Pessoa();
+            if (!String.IsNullOrEmpty(vendedor))
+            {
+                pessoaVend.Id = int.Parse(vendedor);
+                pessoaVend = (Pessoa)PessoaController.getInstance().selecionar(pessoaVend);
+                if (pessoaVend != null)
+                {
+                    txtVendedorServico.Texts = pessoaVend.RazaoSocial;
+                    txtCodVendedorServico.Texts = pessoaVend.Id.ToString();
+                }
+            }
+            txtValorUnitarioServico.Focus();
+            txtValorUnitarioServico.SelectAll();
+        }
+
+        private void btnPesquisaVendedorServico_Click(object sender, EventArgs e)
+        {
+            txtCodVendedorServico.Texts = "";
+            txtVendedorServico.Texts = "";
+            pesquisaVendedorServico();
+        }
+
+        private void txtVendedorProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                pesquisaVendedorProduto();
+            }
+        }
+
+        private void txtVendedorServico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                txtCodVendedorServico.Texts = "";
+                pesquisaVendedorServico();
+            }
+        }
+
+        private void txtCodVendedorServico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                txtVendedorServico.Texts = "";
+                pesquisaVendedorServico();
+            }
+        }
+
+        private void txtCodVendedorProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                txtVendedorProduto.Texts = "";
+                pesquisaVendedorProduto();
+            }
+        }
     }
 }

@@ -44,8 +44,18 @@ namespace Lunar.Telas.UsuarioRegistro
             this.FormBorderStyle = FormBorderStyle.None;
             txtLogin.Focus();
             txtLogin.Select();
+            lblAutomatico.Visible = false;
         }
-
+        public FrmUsuarioCadastro(GrupoUsuario grupoUsuario)
+        {
+            InitializeComponent();
+            txtEmpresa.Texts = Sessao.empresaFilialLogada.NomeFantasia;
+            txtCodEmpresa.Texts = Sessao.empresaFilialLogada.Id.ToString();
+            empresaFilial = Sessao.empresaFilialLogada;
+            txtCodGrupo.Texts = grupoUsuario.Id.ToString();
+            txtGrupo.Texts = grupoUsuario.Descricao;
+            this.FormBorderStyle = FormBorderStyle.None;
+        }
         private void get_Usuario(Usuario usuario)
         {
             txtID.Texts = usuario.Id.ToString();

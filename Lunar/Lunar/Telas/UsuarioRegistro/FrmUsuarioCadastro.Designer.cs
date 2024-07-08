@@ -42,6 +42,8 @@
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaGrupo = new FontAwesome.Sharp.IconButton();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblAutomatico = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCodGrupo = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtGrupo = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
@@ -52,7 +54,6 @@
             this.txtEmpresa = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtID = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtLogin = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,11 +71,11 @@
             // autoLabel2
             // 
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel2.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel2.ForeColor = System.Drawing.Color.White;
             this.autoLabel2.Location = new System.Drawing.Point(5, 7);
             this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(224, 35);
+            this.autoLabel2.Size = new System.Drawing.Size(209, 25);
             this.autoLabel2.TabIndex = 198;
             this.autoLabel2.Text = "Cadastro de Usuário";
             // 
@@ -88,7 +89,7 @@
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             this.btnClose.IconColor = System.Drawing.Color.White;
             this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnClose.IconSize = 30;
@@ -103,11 +104,11 @@
             // 
             this.lblRazaoSocial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblRazaoSocial.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lblRazaoSocial.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRazaoSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.lblRazaoSocial.Location = new System.Drawing.Point(181, 57);
+            this.lblRazaoSocial.Location = new System.Drawing.Point(171, 53);
             this.lblRazaoSocial.Name = "lblRazaoSocial";
-            this.lblRazaoSocial.Size = new System.Drawing.Size(97, 21);
+            this.lblRazaoSocial.Size = new System.Drawing.Size(89, 16);
             this.lblRazaoSocial.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
             this.lblRazaoSocial.TabIndex = 204;
             this.lblRazaoSocial.Text = "Nome/Login *";
@@ -118,11 +119,11 @@
             // 
             this.autoLabel3.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel3.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel3.Location = new System.Drawing.Point(26, 57);
+            this.autoLabel3.Location = new System.Drawing.Point(13, 53);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel3.Size = new System.Drawing.Size(51, 16);
             this.autoLabel3.TabIndex = 207;
             this.autoLabel3.Text = "Código";
             // 
@@ -149,22 +150,22 @@
             // autoLabel15
             // 
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel15.Location = new System.Drawing.Point(641, 188);
+            this.autoLabel15.Location = new System.Drawing.Point(626, 184);
             this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel15.Size = new System.Drawing.Size(51, 16);
             this.autoLabel15.TabIndex = 214;
             this.autoLabel15.Text = "Código";
             // 
             // autoLabel14
             // 
             this.autoLabel14.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel14.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel14.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel14.Location = new System.Drawing.Point(23, 188);
+            this.autoLabel14.Location = new System.Drawing.Point(16, 184);
             this.autoLabel14.Name = "autoLabel14";
-            this.autoLabel14.Size = new System.Drawing.Size(155, 21);
+            this.autoLabel14.Size = new System.Drawing.Size(147, 16);
             this.autoLabel14.TabIndex = 213;
             this.autoLabel14.Text = "Empresa de Trabalho *";
             // 
@@ -172,11 +173,11 @@
             // 
             this.autoLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.autoLabel1.Location = new System.Drawing.Point(494, 57);
+            this.autoLabel1.Location = new System.Drawing.Point(484, 53);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(59, 21);
+            this.autoLabel1.Size = new System.Drawing.Size(54, 16);
             this.autoLabel1.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
             this.autoLabel1.TabIndex = 216;
             this.autoLabel1.Text = "Senha *";
@@ -186,11 +187,11 @@
             // autoLabel4
             // 
             this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel4.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel4.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel4.Location = new System.Drawing.Point(26, 120);
+            this.autoLabel4.Location = new System.Drawing.Point(13, 117);
             this.autoLabel4.Name = "autoLabel4";
-            this.autoLabel4.Size = new System.Drawing.Size(53, 21);
+            this.autoLabel4.Size = new System.Drawing.Size(45, 16);
             this.autoLabel4.TabIndex = 218;
             this.autoLabel4.Text = "E-mail";
             // 
@@ -198,11 +199,11 @@
             // 
             this.autoLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel5.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.autoLabel5.Location = new System.Drawing.Point(384, 121);
+            this.autoLabel5.Location = new System.Drawing.Point(374, 117);
             this.autoLabel5.Name = "autoLabel5";
-            this.autoLabel5.Size = new System.Drawing.Size(148, 21);
+            this.autoLabel5.Size = new System.Drawing.Size(139, 16);
             this.autoLabel5.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
             this.autoLabel5.TabIndex = 220;
             this.autoLabel5.Text = "Grupo de Permissão *";
@@ -232,13 +233,29 @@
             // autoLabel6
             // 
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel6.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(641, 121);
+            this.autoLabel6.Location = new System.Drawing.Point(626, 117);
             this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel6.Size = new System.Drawing.Size(51, 16);
             this.autoLabel6.TabIndex = 223;
             this.autoLabel6.Text = "Código";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblAutomatico
+            // 
+            this.lblAutomatico.BackColor = System.Drawing.Color.Transparent;
+            this.lblAutomatico.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblAutomatico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAutomatico.ForeColor = System.Drawing.Color.LightGray;
+            this.lblAutomatico.Location = new System.Drawing.Point(52, 84);
+            this.lblAutomatico.Name = "lblAutomatico";
+            this.lblAutomatico.Size = new System.Drawing.Size(74, 16);
+            this.lblAutomatico.TabIndex = 224;
+            this.lblAutomatico.Text = "Automático";
             // 
             // txtCodGrupo
             // 
@@ -249,7 +266,7 @@
             this.txtCodGrupo.BorderSize = 2;
             this.txtCodGrupo.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCodGrupo.Enabled = false;
-            this.txtCodGrupo.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodGrupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCodGrupo.Location = new System.Drawing.Point(626, 138);
             this.txtCodGrupo.Margin = new System.Windows.Forms.Padding(4);
@@ -260,7 +277,7 @@
             this.txtCodGrupo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCodGrupo.PlaceholderText = "";
             this.txtCodGrupo.ReadOnly = false;
-            this.txtCodGrupo.Size = new System.Drawing.Size(137, 44);
+            this.txtCodGrupo.Size = new System.Drawing.Size(137, 37);
             this.txtCodGrupo.TabIndex = 222;
             this.txtCodGrupo.Tag = "";
             this.txtCodGrupo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -276,7 +293,7 @@
             this.txtGrupo.BorderRadius = 8;
             this.txtGrupo.BorderSize = 2;
             this.txtGrupo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtGrupo.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtGrupo.Location = new System.Drawing.Point(374, 137);
             this.txtGrupo.Margin = new System.Windows.Forms.Padding(4);
@@ -287,7 +304,7 @@
             this.txtGrupo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtGrupo.PlaceholderText = "";
             this.txtGrupo.ReadOnly = false;
-            this.txtGrupo.Size = new System.Drawing.Size(201, 44);
+            this.txtGrupo.Size = new System.Drawing.Size(201, 37);
             this.txtGrupo.TabIndex = 219;
             this.txtGrupo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGrupo.Texts = "";
@@ -347,7 +364,7 @@
             this.txtEmail.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtEmail.BorderRadius = 8;
             this.txtEmail.BorderSize = 2;
-            this.txtEmail.Font = new System.Drawing.Font("Montserrat", 14.25F);
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtEmail.Location = new System.Drawing.Point(13, 137);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
@@ -357,7 +374,7 @@
             this.txtEmail.PasswordChar = false;
             this.txtEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtEmail.PlaceholderText = "";
-            this.txtEmail.Size = new System.Drawing.Size(353, 46);
+            this.txtEmail.Size = new System.Drawing.Size(353, 39);
             this.txtEmail.TabIndex = 3;
             this.txtEmail.Texts = "";
             this.txtEmail.UnderlinedStyle = false;
@@ -371,7 +388,7 @@
             this.txtSenha.BorderRadius = 8;
             this.txtSenha.BorderSize = 2;
             this.txtSenha.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtSenha.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSenha.Location = new System.Drawing.Point(484, 73);
             this.txtSenha.Margin = new System.Windows.Forms.Padding(4);
@@ -382,7 +399,7 @@
             this.txtSenha.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtSenha.PlaceholderText = "";
             this.txtSenha.ReadOnly = false;
-            this.txtSenha.Size = new System.Drawing.Size(279, 44);
+            this.txtSenha.Size = new System.Drawing.Size(279, 37);
             this.txtSenha.TabIndex = 2;
             this.txtSenha.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtSenha.Texts = "";
@@ -397,7 +414,7 @@
             this.txtCodEmpresa.BorderSize = 2;
             this.txtCodEmpresa.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCodEmpresa.Enabled = false;
-            this.txtCodEmpresa.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCodEmpresa.Location = new System.Drawing.Point(626, 204);
             this.txtCodEmpresa.Margin = new System.Windows.Forms.Padding(4);
@@ -408,7 +425,7 @@
             this.txtCodEmpresa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCodEmpresa.PlaceholderText = "";
             this.txtCodEmpresa.ReadOnly = false;
-            this.txtCodEmpresa.Size = new System.Drawing.Size(137, 44);
+            this.txtCodEmpresa.Size = new System.Drawing.Size(137, 37);
             this.txtCodEmpresa.TabIndex = 6;
             this.txtCodEmpresa.Tag = "";
             this.txtCodEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -423,7 +440,7 @@
             this.txtEmpresa.BorderRadius = 8;
             this.txtEmpresa.BorderSize = 2;
             this.txtEmpresa.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtEmpresa.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtEmpresa.Location = new System.Drawing.Point(13, 204);
             this.txtEmpresa.Margin = new System.Windows.Forms.Padding(4);
@@ -434,7 +451,7 @@
             this.txtEmpresa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtEmpresa.PlaceholderText = "";
             this.txtEmpresa.ReadOnly = false;
-            this.txtEmpresa.Size = new System.Drawing.Size(562, 44);
+            this.txtEmpresa.Size = new System.Drawing.Size(562, 37);
             this.txtEmpresa.TabIndex = 4;
             this.txtEmpresa.Tag = "";
             this.txtEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -450,7 +467,7 @@
             this.txtID.BorderSize = 2;
             this.txtID.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtID.Enabled = false;
-            this.txtID.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtID.Location = new System.Drawing.Point(13, 73);
             this.txtID.Margin = new System.Windows.Forms.Padding(4);
@@ -461,7 +478,7 @@
             this.txtID.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtID.PlaceholderText = "";
             this.txtID.ReadOnly = false;
-            this.txtID.Size = new System.Drawing.Size(150, 44);
+            this.txtID.Size = new System.Drawing.Size(150, 37);
             this.txtID.TabIndex = 0;
             this.txtID.Tag = "";
             this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -477,7 +494,7 @@
             this.txtLogin.BorderRadius = 8;
             this.txtLogin.BorderSize = 2;
             this.txtLogin.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtLogin.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtLogin.Location = new System.Drawing.Point(171, 73);
             this.txtLogin.Margin = new System.Windows.Forms.Padding(4);
@@ -488,15 +505,11 @@
             this.txtLogin.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtLogin.PlaceholderText = "";
             this.txtLogin.ReadOnly = false;
-            this.txtLogin.Size = new System.Drawing.Size(305, 44);
+            this.txtLogin.Size = new System.Drawing.Size(305, 37);
             this.txtLogin.TabIndex = 1;
             this.txtLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtLogin.Texts = "";
             this.txtLogin.UnderlinedStyle = false;
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmUsuarioCadastro
             // 
@@ -504,6 +517,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(774, 328);
+            this.Controls.Add(this.lblAutomatico);
             this.Controls.Add(this.btnPesquisaGrupo);
             this.Controls.Add(this.autoLabel6);
             this.Controls.Add(this.txtCodGrupo);
@@ -564,5 +578,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private RJ_UI.Classes.RJTextBox txtCodGrupo;
         private System.Windows.Forms.Timer timer1;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lblAutomatico;
     }
 }

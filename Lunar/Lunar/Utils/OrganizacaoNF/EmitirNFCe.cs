@@ -1899,7 +1899,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     Genericos genericosNF = new Genericos();
                     NFCeDownloadProc nota = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
                     var nfeRet = Genericos.LoadFromXMLString<TNfeProc>(nota.nfeProc.xml);
-                    genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id);
+                    genericosNF.gravarXMLNoBanco(nfeRet, 0, "S", nfe.Id, false);
                     Controller.getInstance().salvar(nfe);
                     return "Nota Autorizada com Sucesso!";
                 }

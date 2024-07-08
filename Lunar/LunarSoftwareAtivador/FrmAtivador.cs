@@ -1,5 +1,4 @@
-﻿using Lunar.Utils;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using System;
@@ -9,6 +8,7 @@ using System.Net;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Xml;
+using Lunar.Utils;
 
 namespace LunarSoftwareAtivador
 {
@@ -78,7 +78,7 @@ namespace LunarSoftwareAtivador
             }
         }
 
-        private void inserirRegistroWindows()
+        public void inserirRegistroWindows()
         {
             if (txtSenha.Text.Equals(senha))
             {
@@ -119,7 +119,7 @@ namespace LunarSoftwareAtivador
         }
 
        
-        private string Criptografa(String valor)
+        public string Criptografa(String valor)
         {
             Byte[] bytes = System.Text.ASCIIEncoding.ASCII.GetBytes(valor);
             String dadosCriptografados = Convert.ToBase64String(bytes);
@@ -206,7 +206,7 @@ namespace LunarSoftwareAtivador
             public bool is_selected { get; set; }
         }
 
-        private void gerarXMLConfigPC(DateTime validade, string serialHD, string block)
+        public void gerarXMLConfigPC(DateTime validade, string serialHD, string block)
         {
             try
             {
@@ -218,7 +218,7 @@ namespace LunarSoftwareAtivador
                     xmlWriter.WriteElementString("AppVersion", Criptografa("Fé, saúde e trabalho"));
                     xmlWriter.WriteElementString("AppData", Criptografa(txtNomeBanco.Text.Trim()));
                     xmlWriter.WriteElementString("AppTime", Criptografa("Com DEUS tudo é possível"));
-                    xmlWriter.WriteElementString("AppUser", Criptografa(validade.ToShortDateString()));
+                    xmlWriter.WriteElementString("AppUser", Criptografa(Criptografa(validade.ToShortDateString())));
                     xmlWriter.WriteElementString("AppServ", Criptografa(serialHD));
                     xmlWriter.WriteElementString("AppComon", block);
                     xmlWriter.WriteElementString("AppOper", Criptografa(txtCNPJ.Text));

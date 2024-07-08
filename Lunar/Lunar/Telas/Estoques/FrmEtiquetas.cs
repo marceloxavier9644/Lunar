@@ -40,6 +40,22 @@ namespace Lunar.Telas.Estoques
             txtParcelas.TextAlign = HorizontalAlignment.Center;
         }
 
+        public FrmEtiquetas(Produto produto, double quantidade)
+        {
+            InitializeComponent();
+            this.grid.DataSource = dsProdutos;
+            txtProduto.Focus();
+            VerificarECriarPastaEtiquetas();
+            CarregarModelosEtiquetas();
+            CarregarImpressoras();
+            txtParcelas.TextAlign = HorizontalAlignment.Center;
+            if (quantidade > 0)
+                txtQuantidade.Texts = quantidade.ToString();
+            else
+                txtQuantidade.Texts = "1";
+            inserirItem(produto);
+        }
+
         private void CarregarImpressoras()
         {
             // Limpa o ComboBox para evitar duplicatas
@@ -617,7 +633,7 @@ namespace Lunar.Telas.Estoques
                 if (!String.IsNullOrEmpty(txtParcelas.Texts))
                 {
                     if(int.Parse(txtParcelas.Texts) > 1)
-                        txtObservacoes.Texts = "Por Apenas " + txtParcelas.Texts + "x de ";
+                        txtObservacoes.Texts = txtParcelas.Texts + "x de ";
                 }
             }
             catch { }

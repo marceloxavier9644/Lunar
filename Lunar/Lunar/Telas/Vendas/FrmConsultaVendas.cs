@@ -10,11 +10,8 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using Newtonsoft.Json;
-using Syncfusion.WinForms.DataGrid;
-using Syncfusion.WinForms.ListView.Enums;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -23,7 +20,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
 using static Lunar.Utils.GalaxyPay_API.RetornoPagamentoPix;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static LunarBase.Utilidades.ManifestoDownload;
@@ -680,7 +676,7 @@ namespace Lunar.Telas.Vendas
                 {
                     Genericos genericosNF = new Genericos();
                     var nfe1 = Genericos.LoadFromXMLString<TNfeProc>(nota.nfeProc.xml);
-                    genericosNF.gravarXMLNoBanco(nfe1, 0, "S", this.nfe.Id);
+                    genericosNF.gravarXMLNoBanco(nfe1, 0, "S", this.nfe.Id, false);
 
                     //string origem = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
                     //string pastaDropbox = @"XML\NFCe\" + nfe.DataEmissao.Year + " - " + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\";
@@ -698,7 +694,7 @@ namespace Lunar.Telas.Vendas
                 {
                     Genericos genericosNF = new Genericos();
                     var notaLida55 = Genericos.LoadFromXMLString<TNfeProc>(nota55.xml);
-                    genericosNF.gravarXMLNoBanco(notaLida55, 0, "S", this.nfe.Id);
+                    genericosNF.gravarXMLNoBanco(notaLida55, 0, "S", this.nfe.Id, false);
 
                     string caminhoArquivo = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
                     string pastaArquivo = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas";
@@ -1249,5 +1245,23 @@ namespace Lunar.Telas.Vendas
         {
 
         }
+
+        private void btnExportarPDF_Click(object sender, EventArgs e)
+        {
+            DateTime dataInicial = DateTime.Parse(txtDataInicial.Value.ToString());
+            DateTime datafinal = DateTime.Parse(txtDataFinal.Value.ToString());
+            String data1 = "";
+            String data2 = "";
+            if(chkAtivarData.Checked == true)
+            {
+                data1 = dataInicial.ToString("dd/MM/yyyy");
+                data2 = datafinal.ToString("dd/MM/yyyy");
+            }
+            FrmRelatorioVendas frm = new FrmRelatorioVendas(data1, data2, listaVenda);
+            frm.ShowDialog();
+        }
+
+
+
     }
 }

@@ -870,16 +870,6 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>VENDEDOR(A):</Value>
-                      <Style>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value xml:space="preserve"> </Value>
-                      <Style />
-                    </TextRun>
-                    <TextRun>
                       <Value>=Parameters!Vendedor.Value</Value>
                       <Style />
                     </TextRun>
@@ -994,6 +984,20 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Image Name="Image2">
+              <Source>External</Source>
+              <Value>="file:\\\"&amp;Parameters!logo.Value</Value>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.28575cm</Top>
+              <Height>1.30034cm</Height>
+              <Width>3.95111cm</Width>
+              <ZIndex>9</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
           </ReportItems>
           <Style>
             <Border>
@@ -1067,11 +1071,17 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="logo">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>3</NumberOfRows>
+      <NumberOfRows>4</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -1117,6 +1127,11 @@
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>Id</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>logo</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

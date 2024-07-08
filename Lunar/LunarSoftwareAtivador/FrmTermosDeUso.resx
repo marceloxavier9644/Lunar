@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="rtbTermos.Text" xml:space="preserve">
+    <value>Termos de Uso do Sistema Lunar
+Última atualização: [30/06/2024]
+ 1. Aceitação dos Termos
+
+Ao utilizar o sistema Lunar, você concorda em cumprir e estar sujeito a estes Termos de Uso. Caso não concorde com algum dos termos aqui apresentados, você não deve utilizar o sistema.
+
+2. Criador e Responsável pelo Sistema
+
+O sistema Lunar foi desenvolvido e é mantido por Marcelo Xavier da Silva, CPF 07497828622. Toda comunicação oficial e suporte devem ser realizados através dos canais disponibilizados pela Lunar Software.
+
+3. Licenciamento e Uso do Sistema
+
+O uso do sistema Lunar é permitido apenas para clientes que contrataram o sistema e obtiveram uma licença válida junto à Lunar Software.
+A licença de uso é concedida de forma não exclusiva e intransferível, sendo vedado o uso do sistema sem a devida contratação e validação da licença.
+4. Responsabilidade pelo Backup
+
+A responsabilidade pela realização de backups dos dados gerados e manipulados no sistema Lunar é exclusivamente do cliente.
+A Lunar Software não se responsabiliza por perda de dados, sendo recomendado que o cliente implemente rotinas regulares de backup.
+5. Hardware e Infraestrutura
+
+A Lunar Software não se responsabiliza por defeitos ou danos no hardware do cliente.
+O sistema Lunar é instalado localmente no computador do cliente, e a manutenção de hardware é de inteira responsabilidade do cliente.
+6. Treinamento e Implantação
+
+Para garantir a melhor usabilidade do sistema, é recomendado contratar o plano de treinamento e implantação oferecido pela Lunar Software.
+A Lunar Software não se responsabiliza pelo treinamento de novos funcionários em caso de troca de equipe na empresa cliente. A empresa cliente deve garantir que haja um responsável interno para treinar novos funcionários ou contratar um novo plano de treinamento junto à Lunar Software ou seus parceiros.
+7. Limitação de Responsabilidade
+
+A Lunar Software não se responsabiliza por furos de estoque, danos fiscais ou qualquer outra consequência decorrente do uso inadequado do sistema.
+O sistema Lunar é uma ferramenta eficaz para controle de diversas situações, desde que operado por uma equipe devidamente capacitada.
+8. Uso Indevido
+
+É expressamente proibido usar o sistema Lunar para atividades ilegais ou não autorizadas.
+Qualquer uso do sistema que viole estes Termos de Uso poderá resultar na suspensão ou cancelamento da licença de uso, sem prejuízo das medidas legais cabíveis.
+9. Atualizações e Manutenções
+
+A Lunar Software se reserva o direito de realizar atualizações e manutenções no sistema a qualquer momento. O cliente será notificado previamente sempre que possível.
+As atualizações podem incluir, mas não se limitam a, melhorias, correções de bugs e novas funcionalidades.
+10. Suporte Técnico
+
+O suporte técnico é fornecido conforme o plano de suporte contratado pelo cliente.
+O suporte não cobre problemas relacionados ao hardware do cliente ou à infraestrutura de rede local.
+11. Responsabilidades do Cliente
+
+O cliente é responsável por garantir que os dados inseridos no sistema estão corretos e atualizados.
+O cliente deve garantir que todos os usuários do sistema na sua empresa estão cientes e de acordo com estes Termos de Uso.
+12. Proteção de Dados
+
+A Lunar Software implementa medidas para proteger os dados armazenados no sistema, porém, a segurança completa depende também das práticas adotadas pelo cliente.
+Recomenda-se que o cliente adote práticas de segurança como o uso de senhas fortes, controle de acesso e a realização de backups regulares.
+13. Garantias Limitadas
+
+O sistema Lunar é fornecido "no estado em que se encontra" e "conforme disponível", sem garantias de qualquer tipo, expressas ou implícitas, incluindo, mas não se limitando a, garantias de comercialização, adequação a um propósito específico e não violação.
+A Lunar Software não garante que o sistema será ininterrupto ou livre de erros.
+14. Alterações nos Termos de Uso
+
+A Lunar Software se reserva o direito de alterar estes Termos de Uso a qualquer momento, mediante notificação ao cliente.
+O uso contínuo do sistema após a publicação das alterações constituirá aceitação dos novos termos.
+15. Jurisdição e Lei Aplicável
+
+Estes Termos de Uso são regidos pelas leis do Brasil.
+Qualquer disputa relacionada a estes Termos de Uso será resolvida nos tribunais competentes do domicílio de Marcelo Xavier da Silva, salvo disposição em contrário pela legislação aplicável.
+16. Contato
+
+Para qualquer dúvida ou solicitação relacionada a estes Termos de Uso, entre em contato com o suporte da Lunar Software através dos canais oficiais.
+17. Disposições Gerais
+
+A nulidade ou inaplicabilidade de qualquer disposição destes Termos de Uso não afetará a validade ou aplicabilidade das demais disposições.
+Estes Termos de Uso constituem o acordo integral entre o cliente e a Lunar Software em relação ao uso do sistema, substituindo quaisquer acordos anteriores.
+Ao clicar em "Aceitar", você concorda com os Termos de Uso acima descritos.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAMAEBAAAAEAIABoBAAANgAAACAgAAABACAAKBEAAJ4EAAAwMAAAAQAgAGgmAADGFQAAKAAAABAA
+        AAAgAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/DnUl/xN7if8T
+        e8v/Envs/xJ77P8Tesz/EnyK/xR5JgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AZgX/EnqK/xN7+/8T
+        e///E3v//xl+//8Zfv//E3v//xN7//8Te/v/EnuN/wCABgAAAAAAAAAAAAAAAP8AZgX/Enq0/xN7//8e
+        gf//hrz//9rq///9/v//y+L//4q9//+u0f//l8X//zKM//8Se7f/AIAGAAAAAAAAAAD/EnuL/xN7//80
+        jf//3ez///X5//+kzP//bK3//6/S//+iy///qM7//6jO//+52P//NI3//xJ7jwAAAAD/FHYn/xN7+/8e
+        gf//3ez//8Xe//8sif//NY7//1uj///0+f//1+j//7TV///v9v//zOL//57J//8Tevz/Enkq/xJ8jP8T
+        e///hrv//8/k//8dgf//g7n//5bF//9zsf///////+vz//92sv//vdr///////+41///E3v//xJ6kP8S
+        e8//E3v//9zr//9Dlv//VqD//yqI//9Clf//VaD///X5////////qM7/////////////lMP//xN7//8S
+        e9P/E3vx/xyA///S5v//F33//0GV//+/2///ebT//zqR//9jqP//9vr///P5////////vtr//1Of//8f
+        gv//E3v0/xN68v8fgv//p83//xZ9///M4v//OZD//xN7//8Te///E3v//yeG//9bo///RJb//8zi//80
+        jf//IoP//xN79f8Se9L/E3v//42///9Qnf//nMj//xN7//8Te///E3v//xN7//8Te///E3v//xN7///W
+        6P//NY7//xN7//8Te9b/EnmR/xN7//9nqv//aqz//3Sx//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///1+n//xl+//8Te///E3qV/xJ9K/8Te/3/KYf//1ag//+Uw///E3v//xN7//8Te///E3v//xN7//8T
+        e///OJD//6HK//8Te///E3v9/xB9LwAAAAD/E3qV/xN7//8WfP//qs///yuI//8Te///E3v//xN7//8T
+        e///FXz//5XE//8jhP//E3v//xJ6mAAAAAAAAAAA/wCACP8Ter7/E3v//x+C//+Fu///WKH//yaF//8c
+        gP//IoP//1Wg//8jhP//E3v//xJ7wf8AcQkAAAAAAAAAAAAAAAD/AIAI/xN7l/8Te/3/E3v//xt///8n
+        hv//FHv//xN7//8Te///E3r+/xJ7mv8AcQkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/EHow/xN7l/8T
+        etn/Env5/xJ6+v8Te9r/EnqY/xB9MQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACAAAABAAAAAAQAgAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAD/AIAE/xF5Pf8SfID/E3uw/xJ70f8SeuH/Envi/xJ70v8TerH/FHuB/xR8QP8AZgUAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAD/DXkT/xJ6gP8Te+T/E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN75v8T
+        e4P/DHQWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAD/AFUD/xN6bf8Te+7/E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te/D/Enty/wCABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA/w2AFP8Te7r/E3v//xN7//8Te///E3v//xN7//8Te///E3v//xh+//8mhf//Job//xh+//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3u+/xZ6FwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP8Sex3/E3rZ/xN7//8Te///E3v//xN7//8Te///RJf//5jF///U5///+Pv///7////+
+        ////9Pn//3ay//8ig///VJ///2Wp//9Pnf//HID//xN7//8Te///E3vc/w98IwAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD/DHkV/xN72v8Te///E3v//xN7//8Te///QZT//8Te///+////////////////
+        /////////+nz//9Snv//m8f///f6///////////////////x9///ib3//xl+//8Te///Envd/xWAGAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA/wBVA/8Terz/E3v//xN7//8Te///FHv//363///6/P//////////////
+        ////+/3//9bo//+11f//Tpz//9Lm///6/P//9/r///f6///3+v//9/r///f6///6/P//vtv//xp+//8T
+        e///EnrC/wCABAAAAAAAAAAAAAAAAAAAAAD/Entw/xN7//8Te///E3v//xR7//+Xxf//////////////
+        ////1+j//3Cv//8lhf//E3v//xN7//+v0v//7PX//z+U//9aov//WqL//1qi//9aov//WqL//z+U///u
+        9f//kcH//xN7//8Te///E3l4AAAAAAAAAAAAAAAA/wx0Fv8Te/D/E3v//xN7//8Te///frf/////////
+        ////9Pn//3Ox//8WfP//E3v//xN7//8Te///OpH///3+///b6v//dbH/////////////8ff/////////
+        ////crD//9zr///2+v//I4T//xN7//8Te/P/FHYaAAAAAAAAAAD/E3qG/xN7//8Te///E3v//0CU///6
+        /P///////+Tw//88kv//E3v//xN7//8ph///h7v//6PL//99tv////////n8///p8////////73a//8k
+        hf//vtv////////o8v//+fz///////9fpv//E3v//xN7//8Se40AAAAA/wCABv8Te+j/E3v//xN7//8T
+        e///wt3////////r9P//NY7//xN7//8VfP//gLj///T5///0+f//nMj//5bF///////////////////E
+        3v//VaD//0GU//9Un///xd///////////////////3i0//8Te///E3v//xN77f8AgAj/E3xE/xN7//8T
+        e///E3v//0aX///+/////v7//1ag//8Te///Gn///7TV///C3P//WKL//xl///8Te///iL3/////////
+        /////////+ny///z+P//UZ3///P4///p8///////////////////a6z//xN7//8Te///E3v//xF5TP8T
+        e4f/E3v//xN7//8Te///msb///////+t0f//E3v//xN7//+fyf//aqv//xN7//8Te///E3v//xN7//9S
+        nv////////////////////////////9Rnf////////////////////////7+//82jv//E3v//xN7//8T
+        e///EnuP/xN7uP8Te///E3v//xN7///Z6v///f7//zqR//8Te///W6P//0yb//8Te///GX7//1eh//+M
+        vv//nsn//1Ge///W6P///////////////////////1Gd////////////////////////utj//2Oo//8T
+        e///E3v//xN7//8TesD/E3va/xN7//8Te///HID///r8///J4f//E3v//xZ9//9PnP//E3v//2So///k
+        8P//9/r//6/S//94s///TJv//0KV///0+f//////////////////0eb//////////////////+jy//8v
+        i///pcz//yGD//8Te///E3v//xJ74v8Se+v/E3v//xN7//8vi////////4e8//8Te///IIL//xV8//+P
+        wP///v///7XW//8sif//E3v//xN7//8Te///E3v//0WX///c6//////////////////////////////O
+        4///RJb//xN7//9mqf//No7//xN7//8Te///E3vy/xJ67P8Te///E3v//zKM////////W6P//xN7//8T
+        e///bq7///////+jy///FXz//xN7//8Te///E3v//xN7//8Te///E3v//xh+//9gpv//msb//6zQ//+V
+        w///VqD//2qr///l8P//KIb//zuR//85kP//E3v//xN7//8Te/P/Enrd/xN7//8Te///JYX///7+//9E
+        lv//E3v//yCC///t9f//1ef//xl+//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Ue///4e7///////9Mm///I4T//yuI//8Te///E3v//xN75P8Te73/E3v//xN7//8U
+        e///6/T//0GV//8Te///b6////////9hpv//E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//+21v///////1qj//8Xff//FXz//xN7//8Te///E3vF/xJ7jf8T
+        e///E3v//xN7//+11f//U5///xN7//+r0P//9vr//xuA//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//6bN////////T53//xN7//8Te///E3v//xN7//8T
+        e5X/EXlM/xN7//8Te///E3v//2iq//96tf//E3v//8Xe///Y6f//E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///sNP///7///8sif//E3v//xN7//8T
+        e///E3v//xJ5VP8AcQn/E3vv/xN7//8Te///G4D//6DK//8Te///vtv//9Tn//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7///V6P//2ur//xR7//8T
+        e///E3v//xN7//8Te/P/FHYNAAAAAP8Se5H/E3v//xN7//8Te///a6z//yaF//+Xxf//8Pb//xZ9//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///LYr///z9//+B
+        uf//E3v//xN7//8Te///E3v//xJ7mQAAAAAAAAAA/xJ7Hf8Te/b/E3v//xN7//8VfP//TZv//06c////
+        ////S5r//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//+M
+        v///5/H//yCC//8Te///E3v//xN7//8Te/j/DngkAAAAAAAAAAAAAAAA/xJ6gv8Te///E3v//xN7//8c
+        gP//FXz//8nh//+62P//E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///MIv///D2//9VoP//E3v//xN7//8Te///E3v//xN7iQAAAAAAAAAAAAAAAAAAAAD/AG0H/xN6zP8T
+        e///E3v//xN7//8Te///N4///+/2//90sf//E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//x2B///J4f//ba3//xN7//8Te///E3v//xN7//8Se9H/HHEJAAAAAAAAAAAAAAAAAAAAAAAA
+        AAD/EHsf/xN75v8Te///E3v//xN7//8Te///Q5b//+Lv//+Buf//Fn3//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8qiP//rNH//1Ke//8Te///E3v//xN7//8Te///E3vp/w54JAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD/EXos/xN75/8Te///E3v//xN7//8Te///IoP//47A//++2v//ebT//0OV//8x
+        i///MIv//xl+//8bf///R5j//2So//8cgP//E3v//xN7//8Te///E3v//xN76f8PejIAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/D3wh/xJ7z/8Te///E3v//xN7//8Te///E3v//xV8//8x
+        i///QpX//zWO//8Wff//E3v//xV8//8Te///E3v//xN7//8Te///E3v//xN7//8Te9P/DnwlAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AIAI/xN6iP8Te/j/E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Sevr/EnuN/xqACgAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/w54JP8S
+        e5v/E3v0/xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te/X/Enue/xR8JwAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP8Rdw//EXtZ/xJ6m/8Tesz/Envs/xN6/P8Te/z/Envt/xN7zf8Se5z/FHtb/w94EQAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAADAA
+        AABgAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/IIAI/xR6Gf8Rei7/EX1Y/xN7h/8T
+        e6z/EnrE/xJ70P8Se9D/EnvF/xN6rf8Seor/FHpa/xF6Lv8Udhr/HHEJ/wAAAQAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/xR6Gf8UfVj/E3uV/xN7yf8T
+        e/L/E3r+/xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v+/xN78/8Tesz/EnqY/xR7W/8S
+        dhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8VgAz/Enpx/xN70/8T
+        fPH/E3r+/xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3r+/xN78v8Te9b/E3p3/xJtDgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/FYAM/xV6Sf8T
+        e9L/E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN81v8Te0//EoAOAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8V
+        gCT/EnqY/xN78/8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8TevT/E3ue/xN5KAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA/xJ5Of8Te9X/E3v7/xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8W
+        ff//KYf//zWO//82jv//Kof//xd9//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3r8/xN62f8UeEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP8AgAT/FHtN/xN75/8Te///E3v//xN7//8Te///E3v//xN7//8Te///F37//ymH//9I
+        mf//i77//8bf///v9v//+/3/////////////+/3//+71//+s0f//QpX//xuA//8nhv//LYr//y6K//8q
+        iP//HoH//xR8//8Te///E3v//xN7//8Ue+r/EntT/wCABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8UeU7/E3vb/xN7//8Te///E3v//xN7//8Te///E3v//xN7//87
+        kf//h7z//8rh///4+///////////////////////////////////7/b//5vH//9Lmv//Y6j//5zI///E
+        3v//2On//9vr///M4///qs///3ey//8xjP//E3v//xN7//8Te///E3vg/xJ7VQAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/xJ9Of8Teuj/E3v//xN7//8Te///E3v//xN7//8T
+        e///HoH//4O6///j7///+vz////////////////////////////////////////z+P//dbL//z+T///B
+        3P//8ff///7+//////////////////////////////j7///X6P//Yqf//xZ9//8Te///E3v//xR76/8T
+        fEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/FHkm/xN61/8Te///E3v//xN7//8T
+        e///E3v//xN7//81jv//s9X///z9//////////////////////////////3+///0+f//6/T//+Xw//+D
+        uf//TJv//+Lv///+/v///P3///z9///8/f///P3///z9///8/f///P3///z9///9/v//8vj//2yt//8X
+        ff//E3v//xN7//8Te9v/EXosAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8Udg3/Enua/xN7+/8T
+        e///E3v//xN7//8Te///FHv//1Gd///O5P///v7////////////////////////w9v//u9n//42///9n
+        qv//TZv//zuS//85kf//zeP///v9//+hyv//grn//4G4//+BuP//gbj//4G4//+BuP//gbj//4G4//+I
+        vf//0uX///L4//9oqv//FHv//xN7//8Te/z/E3ui/xF3DwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8U
+        eU7/E3vz/xN7//8Te///E3v//xN7//8Te///UJ3//9/t////////////////////////9Pn//57I//8/
+        lP//JIT//xZ9//8Te///E3v//xN7//+lzf///f7//9Hl//8sif//fbb//4m9//+Jvf//ib3//4m9//+J
+        vf//ib3//4m9//9ip///dLL///b6///b6///OZD//xN7//8Te///E3r2/xF6WAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA/xJtDv8TfNb/E3v//xN7//8Te///E3v//xN7//81jv//zuT///////////////////n8///G
+        3///SZn//xV8//8Te///E3v//xN7//8Te///E3v//z2S///7/f///////8Pd//81jf//6vP/////////
+        /////f7///r8//////////////////+y1P//Zqn///P4///6/P//grn//xV8//8Te///E3v//xJ73/8O
+        gBIAAAAAAAAAAAAAAAAAAAAA/xN7ev8Te///E3v//xN7//8Te///E3v//x2B//+z1P///v7/////////
+        ////6vP//4i8//8khf//E3v//xN7//8Te///E3v//ySF//9Kmf//Lor//5XD/////////////9fp//95
+        tP//8ff////////8/v//vtr//4y////z+P/////////////M4///msf///f7////////udf//yOE//8T
+        e///E3v//xN7//8Te4P/AP8BAAAAAAAAAAD/EXce/xN61/8Te///E3v//xN7//8Te///E3v//4O5///8
+        /f/////////////v9v//aqz//xl+//8Te///E3v//xN7//8jhP//g7n//9Xn///a6v//VJ///8nh////
+        //////////z9///0+f///v7////////N4///NY7//xl+//9srf//8/j////////7/f//9/r///7/////
+        ////3ez//y+L//8Te///E3v//xN7//8Tetv/DnUlAAAAAP8AAAH/E3tf/xN78/8Te///E3v//xN7//8T
+        e///OpH//+Lv//////////////T5//9vr///FHv//xN7//8Te///IIL//2Wo///i7////v////n8///c
+        6///T5z//9vr/////////////////////////v///87k//81jv//PZL//zeP//9AlP//fbb///T5////
+        ////////////////////7fX//zWO//8Te///E3v//xN7//8Te/X/FHpm/wAAAf8agAr/Enub/xN7/v8T
+        e///E3v//xN7//8Yfv//h7z///r8////////9vr//4C3//8VfP//E3v//xN7//8tiv//osr///X5///d
+        7P//pc3//3u1//9Zov//LYr//9rq/////////////////////////f7//4e8//+Ov///m8f//1Ke///U
+        5///drL//+Tw////////////////////////7PT//zWO//8Te///E3v//xN7//8Te///E3qj/xWADP8T
+        exv/EnrR/xN7//8Te///E3v//xN7//8piP//zOL////////+////r9L//yKE//8Te///E3v//yaF///G
+        3///4e7//3iz//8wi///HYH//xR8//8Te///F33//8jg//////////////////////////////P4///4
+        +///p83//1Ke///+/v//9Pn///3+////////////////////////3Ov//y+K//8Te///E3v//xN7//8T
+        e///E3vY/xF3Hv8PezT/E3v2/xN7//8Te///E3v//xN7//9Lmv//+Pv////////p8///Tpz//xN7//8T
+        e///J4b//7nY//+92v//OZD//xN7//8Te///E3v//xN7//8Te///E3v//5LC////////////////////
+        ////////////////////p83//1Ke////////////////////////////////////////t9f//yOE//8T
+        e///E3v//xN7//8Te///E3v6/xF7PP8SeWX/E3v//xN7//8Te///E3v//xN7//+Qwf////////////+l
+        zf//GX7//xN7//8bf///gLj//4u+//8ihP//E3v//xN7//8Te///FHz//x6B//8oh///JIT//z6T///1
+        +f//////////////////////////////////p83//1Ke///////////////////////////////////4
+        +///frb//zaO//8Te///E3v//xN7//8Te///E3v//xJ7cP8TepX/E3v//xN7//8Te///E3v//xN7///O
+        5P////////v8//84kP//E3v//xN7//87kf//frf//x6B//8Te///E3v//yOE//9xsP//t9b//9fo///e
+        7P//0OX//zmQ//+bx///////////////////////////////////p83//1Ke////////////////////
+        ///////////////c6///Rpf//63R//8Te///E3v//xN7//8Te///E3v//xN7ov8Se7v/E3v//xN7//8T
+        e///E3v//xt////1+f///////7zZ//8Te///E3v//xV8//9wr///JoX//xN7//8oh///fbb//+vz///+
+        /v//8vj//9/t///D3f//pc3//1eh//8tiv//zeP///7+////////////////////////2er//7TV////
+        //////////////////////////L4//9gpv//PZL//9/t//8khP//E3v//xN7//8Te///E3v//xJ7x/8S
+        etP/E3v//xN7//8Te///E3v//zSO///9/v///v7//2us//8Te///E3v//yuI//86kf//E3v//0iZ//+9
+        2v//+vz///b6//+u0f//ZKj//y6K//8UfP//E3v//xN7//8VfP//TZv//9Dl////////////////////
+        ////////////////////////////////////5PD//3Gv//8Ue///Gn///8bf//8+k///E3v//xN7//8T
+        e///E3v//xJ73/8Se+D/E3v//xN7//8Te///E3v//0WX////////8ff//zuS//8Te///E3v//x+C//8U
+        fP//Spr//9rr////////5fD//2Gn//8ggv//FHv//xN7//8Te///E3v//xN7//8Te///FXz//zCL//+m
+        zf//+fz////////////////////////////////////////R5f//UZ7//0GU//8Ue///E3v//47A//9Q
+        nf//E3v//xN7//8Te///E3v//xJ77P8TeuL/E3v//xN7//8Te///E3v//0iZ////////1+j//y2K//8T
+        e///E3v//xN7//8tif//xd7////////l8P//WaL//xR8//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Wff//S5v//6jO///Y6f//4u///+Pv///c7P//utn//2mr//8xi///e7X//+z0//8q
+        h///E3v//16l//9Tnv//E3v//xN7//8Te///E3v//xJ77f8Te9b/E3v//xN7//8Te///E3v//z+U////
+        ////w93//yaG//8Te///E3v//xN7//+Qwf///P3///b6//9mqf//FXz//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8ggv//Moz//zWO//8nhv//Fn3//xZ9//+7
+        2P//+vz///////9Xof//E3v//z6T//9Kmv//E3v//xN7//8Te///E3v//xN74v8TesD/E3v//xN7//8T
+        e///E3v//yuI///8/f//uNf//yOE//8Te///E3v//zaP///0+f///////5fF//8Wff//E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//+/2/////////////96tP//E3v//yuI//80jf//E3v//xN7//8Te///E3v//xN6zP8S
+        e5z/E3v//xN7//8Te///E3v//xV8///q8///ttb//yKD//8Te///FHv//5fF////////5fD//zaO//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//+Ov/////////////+Jvv//E3v//x2B//8Zfv//E3v//xN7//8T
+        e///E3v//xR6qf8Tem3/E3v//xN7//8Te///E3v//xN7//+21v//vdr//yWF//8Te///IIL//9Pm////
+        ////q9D//x+B//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//9ysP////////////+Gu///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7ev8Sdzr/E3v5/xN7//8Te///E3v//xN7//9ysP//zuT//yqI//8T
+        e///PJL//+Xw///6/P//f7j//xR8//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//9qq/////////////9x
+        sP//E3v//xN7//8Te///E3v//xN7//8Te///E3r8/xN4RP8Rdx7/E3vY/xN7//8Te///E3v//xN7//84
+        j///0ub//zSO//8Te///TZv//+v0///z+P//Zqn//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//91
+        sv////////////9Kmv//E3v//xN7//8Te///E3v//xN7//8Te///Envg/xCAIP8Udg3/E3uk/xN7//8T
+        e///E3v//xN7//8hgv//rND//1Of//8Te///T53//+z0///w9v//XKP//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//+UxP///////+72//8ggv//E3v//xN7//8Te///E3v//xN7//8Te///Enus/xF3D/8A
+        /wH/E3xp/xN79v8Te///E3v//xN7//8UfP//aav//4/A//8Te///RZf//+jy///x9///YKb//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7///I4P///////67R//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e/j/Enpx/wCAAgAAAAD/DXwn/xJ73f8Te///E3v//xN7//8Te///IYP//7DT//8ggv//K4j//93s///4
+        +///dbL//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//yuJ///3+///+Pv//1Wg//8Te///E3v//xN7//8T
+        e///E3v//xN7//8TeuH/EXouAAAAAAAAAAD/AIAC/xJ7i/8Te///E3v//xN7//8Te///E3v//0ma//9p
+        q///F33//7bW///+/v//msb//xp///8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//4O6////////v9v//yWF//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Sepn/AIAEAAAAAAAAAAAAAAAA/xeAFv8Te+f/E3v//xN7//8T
+        e///E3v//xR8//9Jmf//Koj//12k///+////0OX//yuI//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///L4r//9jp///y
+        +P//Zqn//xR8//8Te///E3v//xN7//8Te///E3v//xN77f8Sex0AAAAAAAAAAAAAAAAAAAAAAAAAAP8S
+        fGP/E3r4/xN7//8Te///E3v//xN7//8Yfv//I4T//xZ9///J4f///P3//2yt//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8X
+        ff//gbj///b6//+ozv//Gn///xN7//8Te///E3v//xN7//8Te///E3v5/xJ6bwAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP8OgBL/E3uu/xN7/f8Te///E3v//xN7//8Te///E3v//xN7//9OnP//5vH//+Hu//88
+        kf//E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//9Jmf//3Ov//7PV//8nhv//E3v//xN7//8Te///E3v//xN7//8Tev7/Enu1/wx5FQAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAH/E3s2/xN64/8Te///E3v//xN7//8Te///E3v//xN7//8Y
+        fv//frf///b6///H4P//L4v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//zCM///Y6f//stP//yyJ//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e+b/EXk9/wD/AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/xJ9Vv8Te/H/E3v//xN7//8T
+        e///E3v//xN7//8Te///GH7//46////v9v//uNf//zeP//8VfP//E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Wff//Q5b//8fg//+jy///JYX//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN78/8SeWEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAf8R
+        eWf/E3vo/xN7//8Te///E3v//xN7//8Te///E3v//xZ9//9kqP//xt///8/k//95s///MYz//xV8//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//yKD//9oqv//j8D//16l//8Yfv//E3v//xN7//8T
+        e///E3v//xN7//8Te///Envs/xN7bv8AgAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAP8AgAb/EXto/xN78f8Te///E3v//xN7//8Te///E3v//xN7//8VfP//KYf//2eq//+7
+        2f//1ef//6bN//9srf//TJv//0WW//9ImP//MYz//xd9//8Yff//QZT//2Oo//89kv//I4T//xR8//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te/P/Enpv/yCACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAB/xF4W/8TfOX/E3v9/xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Ue///KIb//06b//9hpv//XaT//0OV//8dgf//E3v//xN7//8Wff//FXz//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3r+/xN75/8SeWP/AIACAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8Sezr/E3uy/xN7+f8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te/r/Enu3/xR9PwAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8A
+        AAH/DXMU/xN7bv8Te+3/E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN68P8UenX/DIAW/wD/AQAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8Sex3/EnuZ/xN74v8Se/n/E3v//xN7//8Te///E3v//xN7//8T
+        e///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN6+v8TeuP/Enue/w94IgAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AIAE/xB6MP8Se3T/E3qx/xN75P8T
+        e/3/E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7//8Te///E3v//xN7/f8Te+b/E3uz/xN6d/8P
+        fTP/AIAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8A
+        gAL/D3gR/xZ8I/8Rekv/EXqE/xJ7tv8Te9r/E3vw/xN7/f8Te/3/E3vx/xN72v8Ue7f/E3uH/xB5Tv8V
+        eCT/D3gR/wCAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+</value>
+  </data>
+</root>

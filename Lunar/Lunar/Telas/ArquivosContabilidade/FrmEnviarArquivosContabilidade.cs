@@ -3,14 +3,11 @@ using Lunar.Utils.OrganizacaoNF;
 using LunarBase.Utilidades;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Lunar.Telas.ArquivosContabilidade
 {
@@ -53,9 +50,12 @@ namespace Lunar.Telas.ArquivosContabilidade
                         GenericaDesktop genericaDesktop = new GenericaDesktop();
                         if (!String.IsNullOrEmpty(txtEmail.Texts.Trim()))
                         {
+                            string diretorioOriginal = Path.GetDirectoryName(retor);
+                            string caminhoNovoArquivo = Path.Combine(diretorioOriginal, "Arquivos.zip");
+                            await ReorganizarPastasAsync(retor, caminhoNovoArquivo);
 
                             List<string> listaAnexo = new List<string>();
-                            listaAnexo.Add(retor.ToString());
+                            listaAnexo.Add(caminhoNovoArquivo);
                             if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.NomeRemetenteEmail))
                             {
                                 bool ret = genericaDesktop.enviarEmail(txtEmail.Texts.Trim(), "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia, txtMes.Texts + "/" + txtAno.Texts + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj, "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.", listaAnexo);
@@ -84,6 +84,153 @@ namespace Lunar.Telas.ArquivosContabilidade
             }
             else
                 GenericaDesktop.ShowAlerta("Selecione uma pasta para salvar os arquivos");
+        }
+
+        public async Task ReorganizarPastasAsync(string caminhoArquivoOriginal, string caminhoNovoArquivo)
+        {
+            string reorganizedDir = "";
+            // Diretório temporário para extrair o conteúdo do zip original
+            string tempDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+            Directory.CreateDirectory(tempDir);
+
+            try
+            {
+                // Extrai o conteúdo do arquivo .zip para a pasta temporária
+                ZipFile.ExtractToDirectory(caminhoArquivoOriginal, tempDir);
+
+                // Caminho do diretório reorganizado
+                reorganizedDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+                Directory.CreateDirectory(reorganizedDir);
+
+                // Criar subpastas "NFCE" e "NFE" no diretório reorganizado
+                string nfceDir = Path.Combine(reorganizedDir, "NFCE");
+                string nfeDir = Path.Combine(reorganizedDir, "NFE");
+                Directory.CreateDirectory(nfceDir);
+                Directory.CreateDirectory(nfeDir);
+
+                // Obtém todos os arquivos .xml em todos os subdiretórios
+                string[] xmlFiles = Directory.GetFiles(tempDir, "*.xml", SearchOption.AllDirectories);
+
+                // Move todos os arquivos .xml para as subpastas "NFCE" e "NFE"
+                // Move todos os arquivos .xml para as subpastas "NFCE" e "NFE"
+                foreach (string file in xmlFiles)
+                {
+                    string relativePath = file.Substring(tempDir.Length + 1); // Obtém o caminho relativo
+
+                    if (relativePath.Contains("NFCE"))
+                    {
+                        string destFile = Path.Combine(nfceDir, Path.GetFileName(file));
+                        if (File.Exists(destFile))
+                        {
+                            File.Delete(destFile); // Se o arquivo existir, exclui o arquivo de destino
+                        }
+                        File.Move(file, destFile); // Move o arquivo para o destino
+                    }
+                    else if (relativePath.Contains("NFE"))
+                    {
+                        string destFile = Path.Combine(nfeDir, Path.GetFileName(file));
+                        if (File.Exists(destFile))
+                        {
+                            File.Delete(destFile); // Se o arquivo existir, exclui o arquivo de destino
+                        }
+                        File.Move(file, destFile); // Move o arquivo para o destino
+                    }
+                }
+
+                // Cria um novo arquivo .zip com a estrutura reorganizada
+                if (File.Exists(caminhoNovoArquivo))
+                {
+                    File.Delete(caminhoNovoArquivo);
+                }
+
+                ZipFile.CreateFromDirectory(reorganizedDir, caminhoNovoArquivo);
+                //Soma NFCe no temp antes de deletar os arquivos q estao extraidos
+                somarNFCeXml(reorganizedDir);
+                somarNFeXml(reorganizedDir);
+            }
+            finally
+            {
+                // Limpa os diretórios temporários
+                Directory.Delete(tempDir, true);
+                Directory.Delete(reorganizedDir, true);
+                
+            }
+        }
+
+        private decimal somarNFCeXml(string diretorioXml)
+        {
+            decimal somaVNF = 0;
+
+            string[] xmlFiles = Directory.GetFiles(Path.Combine(diretorioXml, "NFCE"), "*.xml");
+
+            foreach (string xmlFile in xmlFiles)
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(xmlFile);
+
+                // Verifica se o XML foi autorizado
+                if (xmlDoc.InnerXml.Contains("<xMotivo>Autorizado o uso da NF-e</xMotivo>"))
+                {
+                    // Encontra o valor de vNF
+                    XmlNodeList vnfNodes = xmlDoc.GetElementsByTagName("vNF");
+                    if (vnfNodes.Count > 0)
+                    {
+                        string vNFValue = vnfNodes[0].InnerText;
+                        if (decimal.TryParse(vNFValue.Replace(".", ","), out decimal valorNF))
+                        {
+                            somaVNF += valorNF;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Não foi possível converter o valor de vNF no arquivo: {xmlFile}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"O arquivo XML não contém o nó vNF: {xmlFile}");
+                    }
+                }
+            }
+            MessageBox.Show($"Soma dos valores de NFCe nos arquivos autorizados: {somaVNF.ToString("C2")}");
+            return somaVNF;
+        }
+
+        private decimal somarNFeXml(string diretorioXml)
+        {
+            decimal somaVNF = 0;
+
+            string[] xmlFiles = Directory.GetFiles(Path.Combine(diretorioXml, "NFE"), "*.xml");
+
+            foreach (string xmlFile in xmlFiles)
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(xmlFile);
+
+                // Verifica se o XML foi autorizado
+                if (xmlDoc.InnerXml.Contains("<xMotivo>Autorizado o uso da NF-e</xMotivo>"))
+                {
+                    // Encontra o valor de vNF
+                    XmlNodeList vnfNodes = xmlDoc.GetElementsByTagName("vNF");
+                    if (vnfNodes.Count > 0)
+                    {
+                        string vNFValue = vnfNodes[0].InnerText;
+                        if (decimal.TryParse(vNFValue.Replace(".", ","), out decimal valorNF))
+                        {
+                            somaVNF += valorNF;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Não foi possível converter o valor de vNF no arquivo: {xmlFile}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"O arquivo XML não contém o nó vNF: {xmlFile}");
+                    }
+                }
+            }
+            MessageBox.Show($"Soma dos valores de NFe nos arquivos autorizados: {somaVNF.ToString("C2")}");
+            return somaVNF;
         }
 
         private void btnPesquisaPasta_Click(object sender, EventArgs e)

@@ -1,34 +1,34 @@
 {
   "LabelDataList": [
     {
-      "NomeEmpresa": "OTICA VEMOS",
-      "CodigoProduto": "19",
-      "DescricaoProduto": "PHYSIO ORMA TGEN8 CRIZAL FORTE",
-      "CodigoBarras": "4489216554655",
-      "Observacoes": "POR APENAS 3X DE ",
-      "Preco": "R$ 233,33",
+      "NomeEmpresa": "TXT INFORMATICA",
+      "CodigoProduto": "3",
+      "DescricaoProduto": "TTDFDSFSDFSDFDS",
+      "CodigoBarras": "2382867272092",
+      "Observacoes": "",
+      "Preco": "R$ 33,00",
       "Quantidade": 3.0,
-      "Parcelas": 3.0
+      "Parcelas": 1.0
     },
     {
-      "NomeEmpresa": "OTICA VEMOS",
-      "CodigoProduto": "19",
-      "DescricaoProduto": "PHYSIO ORMA TGEN8 CRIZAL FORTE",
-      "CodigoBarras": "4489216554655",
-      "Observacoes": "POR APENAS 3X DE ",
-      "Preco": "R$ 233,33",
+      "NomeEmpresa": "TXT INFORMATICA",
+      "CodigoProduto": "3",
+      "DescricaoProduto": "TTDFDSFSDFSDFDS",
+      "CodigoBarras": "2382867272092",
+      "Observacoes": "",
+      "Preco": "R$ 33,00",
       "Quantidade": 3.0,
-      "Parcelas": 3.0
+      "Parcelas": 1.0
     },
     {
-      "NomeEmpresa": "OTICA VEMOS",
-      "CodigoProduto": "19",
-      "DescricaoProduto": "PHYSIO ORMA TGEN8 CRIZAL FORTE",
-      "CodigoBarras": "4489216554655",
-      "Observacoes": "POR APENAS 3X DE ",
-      "Preco": "R$ 233,33",
+      "NomeEmpresa": "TXT INFORMATICA",
+      "CodigoProduto": "3",
+      "DescricaoProduto": "TTDFDSFSDFSDFDS",
+      "CodigoBarras": "2382867272092",
+      "Observacoes": "",
+      "Preco": "R$ 33,00",
       "Quantidade": 3.0,
-      "Parcelas": 3.0
+      "Parcelas": 1.0
     }
   ]
 }

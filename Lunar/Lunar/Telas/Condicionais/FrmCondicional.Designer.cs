@@ -102,11 +102,11 @@
             // 
             this.lblAutomatico.BackColor = System.Drawing.Color.Transparent;
             this.lblAutomatico.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblAutomatico.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAutomatico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAutomatico.ForeColor = System.Drawing.Color.Silver;
             this.lblAutomatico.Location = new System.Drawing.Point(56, 76);
             this.lblAutomatico.Name = "lblAutomatico";
-            this.lblAutomatico.Size = new System.Drawing.Size(105, 27);
+            this.lblAutomatico.Size = new System.Drawing.Size(90, 20);
             this.lblAutomatico.TabIndex = 205;
             this.lblAutomatico.Text = "Automático";
             // 
@@ -114,11 +114,11 @@
             // 
             this.autoLabel8.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel8.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel8.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel8.ForeColor = System.Drawing.Color.Black;
             this.autoLabel8.Location = new System.Drawing.Point(827, 55);
             this.autoLabel8.Name = "autoLabel8";
-            this.autoLabel8.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel8.Size = new System.Drawing.Size(51, 16);
             this.autoLabel8.TabIndex = 213;
             this.autoLabel8.Text = "Código";
             // 
@@ -126,11 +126,11 @@
             // 
             this.autoLabel2.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel2.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel2.ForeColor = System.Drawing.Color.Black;
             this.autoLabel2.Location = new System.Drawing.Point(221, 55);
             this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(64, 21);
+            this.autoLabel2.Size = new System.Drawing.Size(56, 16);
             this.autoLabel2.TabIndex = 212;
             this.autoLabel2.Text = "Cliente *";
             // 
@@ -157,11 +157,11 @@
             // 
             this.autoLabel1.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
             this.autoLabel1.Location = new System.Drawing.Point(26, 55);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(107, 21);
+            this.autoLabel1.Size = new System.Drawing.Size(96, 16);
             this.autoLabel1.TabIndex = 211;
             this.autoLabel1.Text = "Nº Condicional";
             // 
@@ -200,11 +200,11 @@
             // lblTitulo
             // 
             this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lblTitulo.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(5, 1);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(140, 35);
+            this.lblTitulo.Size = new System.Drawing.Size(125, 25);
             this.lblTitulo.TabIndex = 198;
             this.lblTitulo.Text = "Condicional";
             // 
@@ -246,11 +246,11 @@
             // autoLabel59
             // 
             this.autoLabel59.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel59.Font = new System.Drawing.Font("Montserrat", 9.749999F);
+            this.autoLabel59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F);
             this.autoLabel59.ForeColor = System.Drawing.Color.Black;
             this.autoLabel59.Location = new System.Drawing.Point(13, 116);
             this.autoLabel59.Name = "autoLabel59";
-            this.autoLabel59.Size = new System.Drawing.Size(101, 21);
+            this.autoLabel59.Size = new System.Drawing.Size(90, 16);
             this.autoLabel59.TabIndex = 259;
             this.autoLabel59.Text = "Data Abertura";
             // 
@@ -271,11 +271,11 @@
             // autoLabel3
             // 
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel3.Font = new System.Drawing.Font("Montserrat", 9.749999F);
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F);
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
             this.autoLabel3.Location = new System.Drawing.Point(214, 116);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(128, 21);
+            this.autoLabel3.Size = new System.Drawing.Size(121, 16);
             this.autoLabel3.TabIndex = 261;
             this.autoLabel3.Text = "Data P/ Devolução";
             // 
@@ -283,11 +283,11 @@
             // 
             this.autoLabel4.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel4.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel4.ForeColor = System.Drawing.Color.Black;
             this.autoLabel4.Location = new System.Drawing.Point(421, 121);
             this.autoLabel4.Name = "autoLabel4";
-            this.autoLabel4.Size = new System.Drawing.Size(90, 21);
+            this.autoLabel4.Size = new System.Drawing.Size(83, 16);
             this.autoLabel4.TabIndex = 263;
             this.autoLabel4.Text = "Vendedor(a)";
             // 
@@ -315,11 +315,11 @@
             // 
             this.autoLabel5.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel5.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel5.ForeColor = System.Drawing.Color.Black;
             this.autoLabel5.Location = new System.Drawing.Point(889, 121);
             this.autoLabel5.Name = "autoLabel5";
-            this.autoLabel5.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel5.Size = new System.Drawing.Size(51, 16);
             this.autoLabel5.TabIndex = 266;
             this.autoLabel5.Text = "Código";
             // 
@@ -327,11 +327,11 @@
             // 
             this.autoLabel6.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel6.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
             this.autoLabel6.Location = new System.Drawing.Point(21, 200);
             this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(143, 21);
+            this.autoLabel6.Size = new System.Drawing.Size(133, 16);
             this.autoLabel6.TabIndex = 269;
             this.autoLabel6.Text = "Pesquisa de Produto";
             // 
@@ -381,11 +381,11 @@
             // 
             this.autoLabel16.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel16.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel16.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel16.ForeColor = System.Drawing.Color.Black;
             this.autoLabel16.Location = new System.Drawing.Point(464, 260);
             this.autoLabel16.Name = "autoLabel16";
-            this.autoLabel16.Size = new System.Drawing.Size(78, 21);
+            this.autoLabel16.Size = new System.Drawing.Size(71, 16);
             this.autoLabel16.TabIndex = 282;
             this.autoLabel16.Text = "Acréscimo";
             // 
@@ -393,11 +393,11 @@
             // 
             this.autoLabel15.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
             this.autoLabel15.Location = new System.Drawing.Point(317, 260);
             this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(71, 21);
+            this.autoLabel15.Size = new System.Drawing.Size(65, 16);
             this.autoLabel15.TabIndex = 281;
             this.autoLabel15.Text = "Desconto";
             // 
@@ -514,11 +514,11 @@
             // 
             this.autoLabel9.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel9.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel9.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel9.ForeColor = System.Drawing.Color.Black;
             this.autoLabel9.Location = new System.Drawing.Point(609, 260);
             this.autoLabel9.Name = "autoLabel9";
-            this.autoLabel9.Size = new System.Drawing.Size(77, 21);
+            this.autoLabel9.Size = new System.Drawing.Size(73, 16);
             this.autoLabel9.TabIndex = 279;
             this.autoLabel9.Text = "Valor Total";
             // 
@@ -526,11 +526,11 @@
             // 
             this.autoLabel10.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel10.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel10.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel10.ForeColor = System.Drawing.Color.Black;
             this.autoLabel10.Location = new System.Drawing.Point(169, 260);
             this.autoLabel10.Name = "autoLabel10";
-            this.autoLabel10.Size = new System.Drawing.Size(55, 21);
+            this.autoLabel10.Size = new System.Drawing.Size(46, 16);
             this.autoLabel10.TabIndex = 278;
             this.autoLabel10.Text = "Vr.Unit";
             // 
@@ -538,11 +538,11 @@
             // 
             this.autoLabel11.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel11.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel11.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel11.ForeColor = System.Drawing.Color.Black;
             this.autoLabel11.Location = new System.Drawing.Point(22, 260);
             this.autoLabel11.Name = "autoLabel11";
-            this.autoLabel11.Size = new System.Drawing.Size(89, 21);
+            this.autoLabel11.Size = new System.Drawing.Size(77, 16);
             this.autoLabel11.TabIndex = 277;
             this.autoLabel11.Text = "Quantidade";
             // 
@@ -621,11 +621,11 @@
             // 
             this.autoLabel12.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel12.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel12.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel12.ForeColor = System.Drawing.Color.Black;
             this.autoLabel12.Location = new System.Drawing.Point(22, 1);
             this.autoLabel12.Name = "autoLabel12";
-            this.autoLabel12.Size = new System.Drawing.Size(68, 21);
+            this.autoLabel12.Size = new System.Drawing.Size(61, 16);
             this.autoLabel12.TabIndex = 284;
             this.autoLabel12.Text = "Produtos";
             // 
@@ -646,11 +646,11 @@
             // 
             this.autoLabel7.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel7.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel7.ForeColor = System.Drawing.Color.Black;
             this.autoLabel7.Location = new System.Drawing.Point(166, 1);
             this.autoLabel7.Name = "autoLabel7";
-            this.autoLabel7.Size = new System.Drawing.Size(48, 21);
+            this.autoLabel7.Size = new System.Drawing.Size(46, 16);
             this.autoLabel7.TabIndex = 287;
             this.autoLabel7.Text = "Peças";
             // 
@@ -1086,6 +1086,7 @@
             this.Name = "FrmCondicional";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Condicional";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProdutos)).EndInit();

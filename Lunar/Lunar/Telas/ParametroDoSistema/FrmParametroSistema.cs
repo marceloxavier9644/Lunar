@@ -78,7 +78,7 @@ namespace Lunar.Telas.ParametroDoSistema
             }
             if(parametro.IdInstanciaWhats != null)
             {
-                txtIdWhatsapp.Text = parametro.IdInstanciaWhats;
+                txtUrlWhatsapp.Text = parametro.IdInstanciaWhats;
             }
             if(parametro.TokenWhats != null)
             {
@@ -281,7 +281,7 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.ChequeContaReceber = false;
             parametro.Multa = txtMulta.Texts;
             parametro.Juro = txtJuro.Texts;
-            parametro.IdInstanciaWhats = txtIdWhatsapp.Text;
+            parametro.IdInstanciaWhats = txtUrlWhatsapp.Text;
             parametro.TokenWhats = txtTokenWhatsapp.Text;
             parametro.LembreteVencimento = txtLembreteVencimento.Text;
             if (!String.IsNullOrEmpty(txtCodTipoObjeto.Texts))
@@ -638,7 +638,7 @@ namespace Lunar.Telas.ParametroDoSistema
         {
             if(chkAceitoContratoWhats.Checked == true)
             {
-                if (!String.IsNullOrEmpty(txtTokenWhatsapp.Text) && !String.IsNullOrEmpty(txtIdWhatsapp.Text))
+                if (!String.IsNullOrEmpty(txtUrlWhatsapp.Text) && !String.IsNullOrEmpty(txtTokenWhatsapp.Text))
                 {
                     picQRCode.Enabled = true;
                     picQRCode.Visible = true;
@@ -695,7 +695,7 @@ namespace Lunar.Telas.ParametroDoSistema
 
         private void btnConfirmaNumeroWhatsapp_Click(object sender, EventArgs e)
         {
-            if(!String.IsNullOrEmpty(txtDDDWhats.Texts) && !String.IsNullOrEmpty(txtNumeroWhats.Texts) && !String.IsNullOrEmpty(txtTokenWhatsapp.Text) && !String.IsNullOrEmpty(txtIdWhatsapp.Text))
+            if(!String.IsNullOrEmpty(txtDDDWhats.Texts) && !String.IsNullOrEmpty(txtNumeroWhats.Texts) && !String.IsNullOrEmpty(txtUrlWhatsapp.Text) && !String.IsNullOrEmpty(txtTokenWhatsapp.Text))
             {
                 if (txtDDDWhats.Texts.Length != 2)
                 {

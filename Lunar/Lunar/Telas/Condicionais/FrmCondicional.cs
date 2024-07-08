@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Exception = System.Exception;
@@ -55,7 +56,13 @@ namespace Lunar.Telas.Condicionais
                 PesquisarProduto(txtPesquisaProduto.Texts);
             }
         }
-
+        public static bool eNumero(string input)
+        {
+            if (input != "")
+                return input.Length < 6 && input.All(char.IsDigit);
+            else
+                return false;
+        }
         private void PesquisarProduto(string valor)
         {
             IList<Produto> listaProdutos = new List<Produto>();
@@ -69,7 +76,20 @@ namespace Lunar.Telas.Condicionais
             if (valor.Contains("*"))
                 valor = valor.Substring(valor.IndexOf("*") + 1);
 
-            listaProdutos = produtoController.selecionarProdutosComVariosFiltros(valor, Sessao.empresaFilialLogada);
+            if (eNumero(valor))
+            {
+                Produto produto = new Produto();
+                produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(valor), Sessao.empresaFilialLogada);
+                if (produto != null)
+                {
+                    if(produto.Id > 0)
+                    {
+                        listaProdutos.Add(produto);
+                    }
+                }
+            }
+            else
+                listaProdutos = produtoController.selecionarProdutosComVariosFiltros(valor, Sessao.empresaFilialLogada);
             if (listaProdutos.Count == 1)
             {
                 foreach (Produto prod in listaProdutos)
@@ -85,6 +105,8 @@ namespace Lunar.Telas.Condicionais
                     if (valorAux.Contains("*"))
                         txtQuantidadeItem.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
                     if (prod.Ean.Equals(valor.Trim()))
+                        inserirItem(this.produto);
+                    else if (prod.Id.ToString().Equals(valor.Trim()))
                         inserirItem(this.produto);
                     else
                     {

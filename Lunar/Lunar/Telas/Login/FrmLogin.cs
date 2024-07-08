@@ -7,10 +7,11 @@ using LunarBase.Utilidades;
 using LunarBase.Utilidades.LunarNFe;
 using Microsoft.Win32;
 using Newtonsoft.Json;
-using NHibernate.Impl;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Management;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -34,9 +35,47 @@ namespace Lunar
         {
             InitializeComponent();
             verificaLicencaSistema();
+            abrirAtualizador("LunarAtualizador", @"C:\Lunar\Atualizador\LunarAtualizador.exe");
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            try
+            {
+                if (File.Exists("C:\\Lunar\\LunarSoftwareAtivador.exe"))
+                {
+                    File.Delete("C:\\Lunar\\LunarSoftwareAtivador.exe");
+                }
+            }
+            catch
+            {
+
+            }
         }
 
+        private static void abrirAtualizador(string processName, string processPath)
+        {
+            try
+            {
+                // Check if the process is running
+                var isRunning = Process.GetProcessesByName(processName).Any();
+
+                // If the process is not running, start it
+                if (!isRunning)
+                {
+                    try
+                    {
+                        Process.Start(processPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle exceptions here, such as logging the error
+                        Console.WriteLine($"Failed to start process {processName}: {ex.Message}");
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
         //EstadoController estadoController = new EstadoController();
         //CidadeController cidadeController = new CidadeController();
         //ValoresPadraoBO valoresPadraoBO = new ValoresPadraoBO();
@@ -48,7 +87,6 @@ namespace Lunar
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //Controller.getInstanceAtualiza();
             Login();
         }
 
@@ -121,25 +159,12 @@ namespace Lunar
         {
             try
             {
-                //lblStatus.Visible = true;
                 btnLogin.Enabled = false;
-                //lblStatus.Visible = true;
-                //lblStatus.Text = "Aguarde...";
                 progressBar1.Visible = true;
                 progressBar1.Value = 30;
-                //lblStatus.Text = "Atualizando o banco de dados";
-                //Thread th = new Thread(() => Controller.getInstanceAtualiza());
-                //th.Start();
-                //Application.DoEvents();
-                //th.Join();
                 progressBar1.Value = 70;
-
-                //Valores Padroes
-                //lblStatus.Text = "Cadastro de usuários: Suporte";
                 ValoresPadraoBO valoresPadraoBO = new ValoresPadraoBO();
                 valoresPadraoBO.gerarUsuarioPadrao();
-
-                //lblStatus.Visible = false;
             }
             catch (Exception erro)
             {
@@ -267,6 +292,7 @@ namespace Lunar
                         if (retorno.msg.Equals("ERR_INVALID_USER"))
                         {
                             GenericaDesktop.ShowErro("Serial do Painel ou CNPJ Inválido!");
+                            Environment.Exit(0);
                         }
                     }
                 }
@@ -291,13 +317,19 @@ namespace Lunar
         {
             try
             {
+                string dateToEncrypt = validade.ToShortDateString();
+                var (key, iv) = CryptoUtils.GenerateKeyAndIV();
+                File.WriteAllBytes("lunar.bin", key);
+                File.WriteAllBytes("lunarSoftware.bin", iv);
+                byte[] encryptedDate = CryptoUtils.EncryptDateString(dateToEncrypt, key, iv);
+
                 XmlTextWriter xmlWriter = new XmlTextWriter(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/MXSystem.xml", null);
                 xmlWriter.WriteStartDocument();
                 xmlWriter.WriteStartElement("MXSystem");
                 xmlWriter.WriteElementString("AppVersion", Generica.Criptografa("Fé, saúde e trabalho"));
                 xmlWriter.WriteElementString("AppData", Generica.Criptografa(nomeBanco));
                 xmlWriter.WriteElementString("AppTime", Generica.Criptografa("Com DEUS tudo é possível"));
-                xmlWriter.WriteElementString("AppUser", Generica.Criptografa(validade.ToShortDateString()));
+                xmlWriter.WriteElementString("AppUser", Convert.ToBase64String(encryptedDate));
                 xmlWriter.WriteElementString("AppServ", Generica.Criptografa(serialHD));
                 xmlWriter.WriteElementString("AppComon", block);
                 xmlWriter.WriteElementString("AppOper", Generica.Criptografa(cnpj));
@@ -318,7 +350,11 @@ namespace Lunar
         {
             if (File.Exists(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/MXSystem.xml"))
             {
-                DateTime dataXML = DateTime.Now.AddDays(-1000);
+                string dataLicenca = "";
+                byte[] storedKey = null;
+                byte[] storedIV = null;
+
+                string dataXML = DateTime.Now.AddDays(-1000).ToString();
                 String hd = "";
                 String cnpjClient = "";
                 String serialRegistro = "";
@@ -329,7 +365,7 @@ namespace Lunar
                     while (reader.Read())
                     {
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppUser")
-                            dataXML = DateTime.Parse(GenericaDesktop.Descriptografa(reader.ReadString()));
+                            dataXML = reader.ReadString();
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppServ")
                             hd = GenericaDesktop.Descriptografa(reader.ReadString());
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppData")
@@ -356,11 +392,14 @@ namespace Lunar
 
                     atualizarLicenca(cnpjClient, serialRegistro, hd);
 
+                    storedKey = File.ReadAllBytes("lunar.bin");
+                    storedIV = File.ReadAllBytes("lunarSoftware.bin");
+
                     reader = new XmlTextReader(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/MXSystem.xml");
                     while (reader.Read())
                     {
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppUser")
-                            dataXML = DateTime.Parse(GenericaDesktop.Descriptografa(reader.ReadString()));
+                            dataXML = reader.ReadString().ToString();
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppServ")
                             hd = GenericaDesktop.Descriptografa(reader.ReadString());
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppOper")
@@ -416,10 +455,10 @@ namespace Lunar
                         //Environment.Exit(0);
                     }
 
-                    //String[] arrayData = dataXML.Split('/');
-                    //DateTime dataValidade = new DateTime(int.Parse(arrayData[2]), int.Parse(arrayData[1]), int.Parse(arrayData[0]));
+                    byte[] storedEncryptedDate = Convert.FromBase64String(dataXML);
+                    dataLicenca = CryptoUtils.DecryptDateString(storedEncryptedDate, storedKey, storedIV);
 
-                    if (dataXML < DateTime.Now)
+                    if (DateTime.Parse(dataLicenca) < DateTime.Now)
                     {
                         GenericaDesktop.ShowAlerta("Sua licença expirou, entre em contato com seu revendedor");
                         Environment.Exit(0);

@@ -51,7 +51,7 @@
             this.chk2 = new System.Windows.Forms.CheckBox();
             this.chk1 = new System.Windows.Forms.CheckBox();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.chk45 = new System.Windows.Forms.CheckBox();
             this.chk44 = new System.Windows.Forms.CheckBox();
             this.chk43 = new System.Windows.Forms.CheckBox();
             this.chk42 = new System.Windows.Forms.CheckBox();
@@ -75,8 +75,8 @@
             this.chk70 = new System.Windows.Forms.CheckBox();
             this.chk69 = new System.Windows.Forms.CheckBox();
             this.chk68 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chk67 = new System.Windows.Forms.CheckBox();
+            this.chk66 = new System.Windows.Forms.CheckBox();
             this.btnDesmarcarTodosTabVendas = new FontAwesome.Sharp.IconButton();
             this.btnMarcarTodosTabVendas = new FontAwesome.Sharp.IconButton();
             this.chk65 = new System.Windows.Forms.CheckBox();
@@ -106,15 +106,15 @@
             this.chk202 = new System.Windows.Forms.CheckBox();
             this.chk201 = new System.Windows.Forms.CheckBox();
             this.chk200 = new System.Windows.Forms.CheckBox();
+            this.tabPageAdv6 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.chk301 = new System.Windows.Forms.CheckBox();
+            this.chk300 = new System.Windows.Forms.CheckBox();
             this.txtGrupo = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel33 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCodGrupo = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaGrupo = new FontAwesome.Sharp.IconButton();
             this.btnSalvar = new Syncfusion.WinForms.Controls.SfButton();
-            this.tabPageAdv6 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.chk301 = new System.Windows.Forms.CheckBox();
-            this.chk300 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
@@ -122,9 +122,9 @@
             this.tabPageAdv3.SuspendLayout();
             this.tabPageAdv4.SuspendLayout();
             this.tabPageAdv5.SuspendLayout();
+            this.tabPageAdv6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtGrupo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodGrupo)).BeginInit();
-            this.tabPageAdv6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlAdv1
@@ -392,7 +392,7 @@
             // 
             // tabPageAdv2
             // 
-            this.tabPageAdv2.Controls.Add(this.checkBox3);
+            this.tabPageAdv2.Controls.Add(this.chk45);
             this.tabPageAdv2.Controls.Add(this.chk44);
             this.tabPageAdv2.Controls.Add(this.chk43);
             this.tabPageAdv2.Controls.Add(this.chk42);
@@ -420,15 +420,15 @@
             this.tabPageAdv2.Text = "Ordem de Serviço";
             this.tabPageAdv2.ThemesEnabled = false;
             // 
-            // checkBox3
+            // chk45
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(390, 157);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(166, 17);
-            this.checkBox3.TabIndex = 274;
-            this.checkBox3.Text = "45. Permitir Acréscimo na O.S";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chk45.AutoSize = true;
+            this.chk45.Location = new System.Drawing.Point(390, 157);
+            this.chk45.Name = "chk45";
+            this.chk45.Size = new System.Drawing.Size(166, 17);
+            this.chk45.TabIndex = 274;
+            this.chk45.Text = "45. Permitir Acréscimo na O.S";
+            this.chk45.UseVisualStyleBackColor = true;
             // 
             // chk44
             // 
@@ -627,8 +627,8 @@
             this.tabPageAdv3.Controls.Add(this.chk70);
             this.tabPageAdv3.Controls.Add(this.chk69);
             this.tabPageAdv3.Controls.Add(this.chk68);
-            this.tabPageAdv3.Controls.Add(this.checkBox2);
-            this.tabPageAdv3.Controls.Add(this.checkBox1);
+            this.tabPageAdv3.Controls.Add(this.chk67);
+            this.tabPageAdv3.Controls.Add(this.chk66);
             this.tabPageAdv3.Controls.Add(this.btnDesmarcarTodosTabVendas);
             this.tabPageAdv3.Controls.Add(this.btnMarcarTodosTabVendas);
             this.tabPageAdv3.Controls.Add(this.chk65);
@@ -697,25 +697,25 @@
             this.chk68.Text = "68. Permitir Cancelar Venda";
             this.chk68.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // chk67
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(13, 180);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(201, 17);
-            this.checkBox2.TabIndex = 274;
-            this.checkBox2.Text = "67. Permitir Fazer Vendas no Cheque";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chk67.AutoSize = true;
+            this.chk67.Location = new System.Drawing.Point(13, 180);
+            this.chk67.Name = "chk67";
+            this.chk67.Size = new System.Drawing.Size(201, 17);
+            this.chk67.TabIndex = 274;
+            this.chk67.Text = "67. Permitir Fazer Vendas no Cheque";
+            this.chk67.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // chk66
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(13, 157);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(194, 17);
-            this.checkBox1.TabIndex = 273;
-            this.checkBox1.Text = "66. Permitir Fazer Vendas no Boleto";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chk66.AutoSize = true;
+            this.chk66.Location = new System.Drawing.Point(13, 157);
+            this.chk66.Name = "chk66";
+            this.chk66.Size = new System.Drawing.Size(194, 17);
+            this.chk66.TabIndex = 273;
+            this.chk66.Text = "66. Permitir Fazer Vendas no Boleto";
+            this.chk66.UseVisualStyleBackColor = true;
             // 
             // btnDesmarcarTodosTabVendas
             // 
@@ -1090,6 +1090,40 @@
             this.chk200.Text = "200. Permitir Visualizar Relatório de Caixa";
             this.chk200.UseVisualStyleBackColor = true;
             // 
+            // tabPageAdv6
+            // 
+            this.tabPageAdv6.Controls.Add(this.chk301);
+            this.tabPageAdv6.Controls.Add(this.chk300);
+            this.tabPageAdv6.Image = null;
+            this.tabPageAdv6.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPageAdv6.Location = new System.Drawing.Point(1, 22);
+            this.tabPageAdv6.Name = "tabPageAdv6";
+            this.tabPageAdv6.ShowCloseButton = true;
+            this.tabPageAdv6.Size = new System.Drawing.Size(722, 229);
+            this.tabPageAdv6.TabIndex = 6;
+            this.tabPageAdv6.Text = "Relatórios";
+            this.tabPageAdv6.ThemesEnabled = false;
+            // 
+            // chk301
+            // 
+            this.chk301.AutoSize = true;
+            this.chk301.Location = new System.Drawing.Point(12, 35);
+            this.chk301.Name = "chk301";
+            this.chk301.Size = new System.Drawing.Size(203, 17);
+            this.chk301.TabIndex = 6;
+            this.chk301.Text = "301. Permitir Visualizacao de Estoque";
+            this.chk301.UseVisualStyleBackColor = true;
+            // 
+            // chk300
+            // 
+            this.chk300.AutoSize = true;
+            this.chk300.Location = new System.Drawing.Point(12, 12);
+            this.chk300.Name = "chk300";
+            this.chk300.Size = new System.Drawing.Size(214, 17);
+            this.chk300.TabIndex = 5;
+            this.chk300.Text = "300. Permitir Visualização de Comissões";
+            this.chk300.UseVisualStyleBackColor = true;
+            // 
             // txtGrupo
             // 
             this.txtGrupo.BeforeTouchSize = new System.Drawing.Size(145, 26);
@@ -1166,40 +1200,6 @@
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // tabPageAdv6
-            // 
-            this.tabPageAdv6.Controls.Add(this.chk301);
-            this.tabPageAdv6.Controls.Add(this.chk300);
-            this.tabPageAdv6.Image = null;
-            this.tabPageAdv6.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabPageAdv6.Location = new System.Drawing.Point(1, 22);
-            this.tabPageAdv6.Name = "tabPageAdv6";
-            this.tabPageAdv6.ShowCloseButton = true;
-            this.tabPageAdv6.Size = new System.Drawing.Size(722, 229);
-            this.tabPageAdv6.TabIndex = 6;
-            this.tabPageAdv6.Text = "Relatórios";
-            this.tabPageAdv6.ThemesEnabled = false;
-            // 
-            // chk301
-            // 
-            this.chk301.AutoSize = true;
-            this.chk301.Location = new System.Drawing.Point(12, 35);
-            this.chk301.Name = "chk301";
-            this.chk301.Size = new System.Drawing.Size(203, 17);
-            this.chk301.TabIndex = 6;
-            this.chk301.Text = "301. Permitir Visualizacao de Estoque";
-            this.chk301.UseVisualStyleBackColor = true;
-            // 
-            // chk300
-            // 
-            this.chk300.AutoSize = true;
-            this.chk300.Location = new System.Drawing.Point(12, 12);
-            this.chk300.Name = "chk300";
-            this.chk300.Size = new System.Drawing.Size(214, 17);
-            this.chk300.TabIndex = 5;
-            this.chk300.Text = "300. Permitir Visualização de Comissões";
-            this.chk300.UseVisualStyleBackColor = true;
-            // 
             // FrmPermissoesUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1232,10 +1232,10 @@
             this.tabPageAdv4.PerformLayout();
             this.tabPageAdv5.ResumeLayout(false);
             this.tabPageAdv5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGrupo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCodGrupo)).EndInit();
             this.tabPageAdv6.ResumeLayout(false);
             this.tabPageAdv6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGrupo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCodGrupo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1294,8 +1294,8 @@
         private System.Windows.Forms.CheckBox chk60;
         private FontAwesome.Sharp.IconButton btnDesmarcarTodosTabVendas;
         private FontAwesome.Sharp.IconButton btnMarcarTodosTabVendas;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox chk66;
+        private System.Windows.Forms.CheckBox chk67;
         private System.Windows.Forms.CheckBox chk68;
         private System.Windows.Forms.CheckBox chk70;
         private System.Windows.Forms.CheckBox chk69;
@@ -1304,7 +1304,7 @@
         private System.Windows.Forms.CheckBox chk42;
         private System.Windows.Forms.CheckBox chk44;
         private System.Windows.Forms.CheckBox chk43;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox chk45;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv4;
         private System.Windows.Forms.CheckBox chk108;
         private System.Windows.Forms.CheckBox chk107;

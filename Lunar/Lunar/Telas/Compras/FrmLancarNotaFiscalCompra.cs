@@ -1045,8 +1045,8 @@ namespace Lunar.Telas.Compras
 			{
 				var index = i;
 				var produtoSelecionado = (NfeProduto)gridProdutos.GetRecordAtRowIndex(i);
-			
-				if (produtoSelecionado != null)
+
+                if (produtoSelecionado != null)
 				{
 					//Se nao tem produto ainda selecionado pelo usuario o sistema verifica se existe ja cadastro no sistema...
 					if (String.IsNullOrEmpty(produtoSelecionado.ProdutoAssociado))
@@ -1075,13 +1075,16 @@ namespace Lunar.Telas.Compras
 							if (listaProdsFornecedor.Count > 0)
 							{
 								foreach (NfeProduto nfeProduto in listaProdsFornecedor)
-								{
-									gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["CodigoInterno"].MappingName, nfeProduto.Produto.Id.ToString());
-									gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["DescricaoInterna"].MappingName, nfeProduto.Produto.Descricao);
-									gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
-									produtoSelecionado.Produto = nfeProduto.Produto;
+                                {
+									if (nfeProduto.Produto.FlagExcluido == false)
+									{
+										gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["CodigoInterno"].MappingName, nfeProduto.Produto.Id.ToString());
+										gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["DescricaoInterna"].MappingName, nfeProduto.Produto.Descricao);
+										gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
+										produtoSelecionado.Produto = nfeProduto.Produto;
+                                        selecionadoPeloSistema = true;
+                                    }
 								}
-								selecionadoPeloSistema = true;
 							}
 
 						}

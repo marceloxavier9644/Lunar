@@ -8,13 +8,11 @@ using Lunar.Telas.Vendas.RecebimentoVendas;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
-using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using Newtonsoft.Json;
-using NSSuite_CSharp.src.JSON.NFe;
 using Syncfusion.Data;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
@@ -26,7 +24,6 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.ServiceModel.Security;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -2862,7 +2859,7 @@ namespace Lunar.Telas.Vendas
                 {
                     Genericos genericosNF = new Genericos();
                     var nfe1 = Genericos.LoadFromXMLString<TNfeProc>(nota.nfeProc.xml);
-                    genericosNF.gravarXMLNoBanco(nfe1, 0, "S", this.nfe.Id);
+                    genericosNF.gravarXMLNoBanco(nfe1, 0, "S", this.nfe.Id, false);
 
                     //string origem = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
                     //string pastaDropbox = @"XML\NFCe\" + nfe.DataEmissao.Year + " - " + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\";
@@ -2880,7 +2877,7 @@ namespace Lunar.Telas.Vendas
                 {
                     Genericos genericosNF = new Genericos();
                     var notaLida55 = Genericos.LoadFromXMLString<TNfeProc>(nota55.xml);
-                    genericosNF.gravarXMLNoBanco(notaLida55, 0, "S", this.nfe.Id);
+                    genericosNF.gravarXMLNoBanco(notaLida55, 0, "S", this.nfe.Id, false);
 
                     string caminhoArquivo = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
                     string pastaArquivo = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas";

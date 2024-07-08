@@ -1228,7 +1228,7 @@ namespace Lunar.Telas.Fiscal
                 {
                     Genericos genericosNF = new Genericos();
                     var nfe1 = Genericos.LoadFromXMLString<TNfeProc>(nota.nfeProc.xml);
-                    genericosNF.gravarXMLNoBanco(nfe1, 0, "S", this.nfe.Id);
+                    genericosNF.gravarXMLNoBanco(nfe1, 0, "S", this.nfe.Id, false);
                 }
             }
             else if (nfe.Modelo.Equals("55"))
@@ -1240,7 +1240,7 @@ namespace Lunar.Telas.Fiscal
                 {
                     Genericos genericosNF = new Genericos();
                     var notaLida55 = Genericos.LoadFromXMLString<TNfeProc>(nota55.xml);
-                    genericosNF.gravarXMLNoBanco(notaLida55, 0, "S", this.nfe.Id);
+                    genericosNF.gravarXMLNoBanco(notaLida55, 0, "S", this.nfe.Id, false);
 
                     string caminhoArquivo = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
                     string pastaArquivo = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas";

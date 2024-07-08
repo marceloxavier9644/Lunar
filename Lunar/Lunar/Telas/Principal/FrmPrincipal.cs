@@ -16,6 +16,7 @@ using Lunar.Telas.ContasReceber;
 using Lunar.Telas.Estoques;
 using Lunar.Telas.Fiscal;
 using Lunar.Telas.Fiscal.Adicionais;
+using Lunar.Telas.IntegracoesEcommerce.NuvemShopIntegration;
 using Lunar.Telas.Mensagens;
 using Lunar.Telas.Orcamentos;
 using Lunar.Telas.OrdensDeServico;
@@ -1187,6 +1188,26 @@ namespace Lunar.Telas.Principal
         private void mensagensAgendadasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(() => new FrmMensagemPosVendas(), btnRelatorios);
+        }
+
+        private void integraçõesEcommerceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            FrmIntegracaoNuvemShop uu = new FrmIntegracaoNuvemShop();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            uu.Owner = formBackground;
+            uu.ShowDialog();
+            formBackground.Dispose();
+            uu.Dispose();
         }
     }
 }

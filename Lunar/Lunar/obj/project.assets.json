@@ -15,33 +15,19 @@
           }
         }
       },
-      "BarcodeLib/2.4.0": {
+      "BarcodeLib/3.1.2": {
         "type": "package",
         "dependencies": {
-          "System.Drawing.Common": "5.0.2",
-          "System.Text.Json": "5.0.2"
+          "SkiaSharp": "2.88.6",
+          "SkiaSharp.NativeAssets.Linux.NoDependencies": "2.88.6",
+          "System.Resources.Extensions": "7.0.0",
+          "System.Text.Json": "7.0.3"
         },
         "compile": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
-        }
-      },
-      "boletofacilsdk/1.0.8": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.1"
-        },
-        "compile": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
         }
       },
       "BouncyCastle/1.8.9": {
@@ -151,7 +137,7 @@
           "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
-      "Google.Protobuf/3.14.0": {
+      "Google.Protobuf/3.15.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
@@ -341,20 +327,23 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "compile": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
         }
       },
       "Microsoft.CSharp/4.7.0": {
@@ -806,6 +795,9 @@
           }
         }
       },
+      "NuGet.CommandLine/6.10.0": {
+        "type": "package"
+      },
       "OpenAC.Net.Balanca/1.5.0.1": {
         "type": "package",
         "dependencies": {
@@ -934,6 +926,101 @@
         },
         "runtime": {
           "lib/net462/SharpCompress.dll": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Linux.NoDependencies/2.88.6": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.6"
+        },
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Linux.NoDependencies.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-musl-x64/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "linux-musl-x64"
+          },
+          "runtimes/linux-x64/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.macOS.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Win32.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
         }
       },
       "Syncfusion.Grid.Base/19.4.0.38": {
@@ -1084,20 +1171,6 @@
           }
         }
       },
-      "System.Drawing.Common/5.0.2": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System",
-          "System.Drawing",
-          "mscorlib"
-        ],
-        "compile": {
-          "ref/net461/System.Drawing.Common.dll": {}
-        },
-        "runtime": {
-          "lib/net461/System.Drawing.Common.dll": {}
-        }
-      },
       "System.IO/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1195,7 +1268,7 @@
           "lib/net46/System.Net.WebSockets.dll": {}
         }
       },
-      "System.Net.WebSockets.Client/4.3.0": {
+      "System.Net.WebSockets.Client/4.3.2": {
         "type": "package",
         "dependencies": {
           "System.Net.WebSockets": "4.3.0",
@@ -1237,6 +1310,25 @@
           "lib/net46/System.Numerics.Vectors.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.Resources.Extensions/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Resources.Extensions.targets": {}
         }
       },
       "System.Runtime/4.3.0": {
@@ -1413,48 +1505,51 @@
           "buildTransitive/net462/_._": {}
         }
       },
-      "System.Text.Encodings.Web/6.0.0": {
+      "System.Text.Encodings.Web/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
+          "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "System.Text.Json/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
-          "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
-          "System.Numerics.Vectors": "4.5.0",
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encodings.Web": "6.0.0",
-          "System.Threading.Tasks.Extensions": "4.5.4",
-          "System.ValueTuple": "4.5.0"
-        },
-        "compile": {
-          "lib/net461/System.Text.Json.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net461/System.Text.Json.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "build/_._": {}
+          "buildTransitive/net462/_._": {}
+        }
+      },
+      "System.Text.Json/7.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "7.0.0",
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.5",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "7.0.0",
+          "System.Threading.Tasks.Extensions": "4.5.4",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Text.Json.targets": {}
         }
       },
       "System.Threading.Tasks.Extensions/4.5.4": {
@@ -1547,7 +1642,7 @@
           "lib/net461/ZstdSharp.dll": {}
         }
       },
-      "ZXing.Net/0.16.8": {
+      "ZXing.Net/0.16.9": {
         "type": "package",
         "compile": {
           "lib/net48/zxing.dll": {
@@ -1570,9 +1665,11 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
+          "Google.Protobuf": "3.15.0",
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
           "System.Net.Http": "4.3.4",
+          "System.Net.WebSockets.Client": "4.3.2",
           "ZXing.Net": "0.16.9"
         },
         "compile": {
@@ -1597,33 +1694,19 @@
           }
         }
       },
-      "BarcodeLib/2.4.0": {
+      "BarcodeLib/3.1.2": {
         "type": "package",
         "dependencies": {
-          "System.Drawing.Common": "5.0.2",
-          "System.Text.Json": "5.0.2"
+          "SkiaSharp": "2.88.6",
+          "SkiaSharp.NativeAssets.Linux.NoDependencies": "2.88.6",
+          "System.Resources.Extensions": "7.0.0",
+          "System.Text.Json": "7.0.3"
         },
         "compile": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
-        }
-      },
-      "boletofacilsdk/1.0.8": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.1"
-        },
-        "compile": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
         }
       },
       "BouncyCastle/1.8.9": {
@@ -1733,7 +1816,7 @@
           "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
-      "Google.Protobuf/3.14.0": {
+      "Google.Protobuf/3.15.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
@@ -1923,20 +2006,23 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "compile": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
         }
       },
       "Microsoft.CSharp/4.7.0": {
@@ -2374,6 +2460,9 @@
           }
         }
       },
+      "NuGet.CommandLine/6.10.0": {
+        "type": "package"
+      },
       "OpenAC.Net.Balanca/1.5.0.1": {
         "type": "package",
         "dependencies": {
@@ -2502,6 +2591,63 @@
         },
         "runtime": {
           "lib/net462/SharpCompress.dll": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Linux.NoDependencies/2.88.6": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.6"
+        },
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Linux.NoDependencies.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.macOS.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Win32.targets": {}
         }
       },
       "Syncfusion.Grid.Base/19.4.0.38": {
@@ -2652,20 +2798,6 @@
           }
         }
       },
-      "System.Drawing.Common/5.0.2": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System",
-          "System.Drawing",
-          "mscorlib"
-        ],
-        "compile": {
-          "ref/net461/System.Drawing.Common.dll": {}
-        },
-        "runtime": {
-          "lib/net461/System.Drawing.Common.dll": {}
-        }
-      },
       "System.IO/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -2753,7 +2885,7 @@
           "lib/net46/System.Net.WebSockets.dll": {}
         }
       },
-      "System.Net.WebSockets.Client/4.3.0": {
+      "System.Net.WebSockets.Client/4.3.2": {
         "type": "package",
         "dependencies": {
           "System.Net.WebSockets": "4.3.0",
@@ -2785,6 +2917,25 @@
           "lib/net46/System.Numerics.Vectors.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.Resources.Extensions/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Resources.Extensions.targets": {}
         }
       },
       "System.Runtime/4.3.0": {
@@ -2927,48 +3078,51 @@
           "buildTransitive/net462/_._": {}
         }
       },
-      "System.Text.Encodings.Web/6.0.0": {
+      "System.Text.Encodings.Web/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
+          "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "System.Text.Json/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
-          "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
-          "System.Numerics.Vectors": "4.5.0",
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encodings.Web": "6.0.0",
-          "System.Threading.Tasks.Extensions": "4.5.4",
-          "System.ValueTuple": "4.5.0"
-        },
-        "compile": {
-          "lib/net461/System.Text.Json.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net461/System.Text.Json.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "build/_._": {}
+          "buildTransitive/net462/_._": {}
+        }
+      },
+      "System.Text.Json/7.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "7.0.0",
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.5",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "7.0.0",
+          "System.Threading.Tasks.Extensions": "4.5.4",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Text.Json.targets": {}
         }
       },
       "System.Threading.Tasks.Extensions/4.5.4": {
@@ -3061,7 +3215,7 @@
           "lib/net461/ZstdSharp.dll": {}
         }
       },
-      "ZXing.Net/0.16.8": {
+      "ZXing.Net/0.16.9": {
         "type": "package",
         "compile": {
           "lib/net48/zxing.dll": {
@@ -3084,9 +3238,11 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
+          "Google.Protobuf": "3.15.0",
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
           "System.Net.Http": "4.3.4",
+          "System.Net.WebSockets.Client": "4.3.2",
           "ZXing.Net": "0.16.9"
         },
         "compile": {
@@ -3111,33 +3267,19 @@
           }
         }
       },
-      "BarcodeLib/2.4.0": {
+      "BarcodeLib/3.1.2": {
         "type": "package",
         "dependencies": {
-          "System.Drawing.Common": "5.0.2",
-          "System.Text.Json": "5.0.2"
+          "SkiaSharp": "2.88.6",
+          "SkiaSharp.NativeAssets.Linux.NoDependencies": "2.88.6",
+          "System.Resources.Extensions": "7.0.0",
+          "System.Text.Json": "7.0.3"
         },
         "compile": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
-        }
-      },
-      "boletofacilsdk/1.0.8": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.1"
-        },
-        "compile": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
         }
       },
       "BouncyCastle/1.8.9": {
@@ -3247,7 +3389,7 @@
           "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
-      "Google.Protobuf/3.14.0": {
+      "Google.Protobuf/3.15.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
@@ -3437,20 +3579,23 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "compile": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
         }
       },
       "Microsoft.CSharp/4.7.0": {
@@ -3891,6 +4036,9 @@
           }
         }
       },
+      "NuGet.CommandLine/6.10.0": {
+        "type": "package"
+      },
       "OpenAC.Net.Balanca/1.5.0.1": {
         "type": "package",
         "dependencies": {
@@ -4019,6 +4167,66 @@
         },
         "runtime": {
           "lib/net462/SharpCompress.dll": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Linux.NoDependencies/2.88.6": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.6"
+        },
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Linux.NoDependencies.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.macOS.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "native": {
+          "runtimes/win-arm64/native/libSkiaSharp.dll": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Win32.targets": {}
         }
       },
       "Syncfusion.Grid.Base/19.4.0.38": {
@@ -4169,20 +4377,6 @@
           }
         }
       },
-      "System.Drawing.Common/5.0.2": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System",
-          "System.Drawing",
-          "mscorlib"
-        ],
-        "compile": {
-          "ref/net461/System.Drawing.Common.dll": {}
-        },
-        "runtime": {
-          "lib/net461/System.Drawing.Common.dll": {}
-        }
-      },
       "System.IO/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -4270,7 +4464,7 @@
           "lib/net46/System.Net.WebSockets.dll": {}
         }
       },
-      "System.Net.WebSockets.Client/4.3.0": {
+      "System.Net.WebSockets.Client/4.3.2": {
         "type": "package",
         "dependencies": {
           "System.Net.WebSockets": "4.3.0",
@@ -4302,6 +4496,25 @@
           "lib/net46/System.Numerics.Vectors.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.Resources.Extensions/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Resources.Extensions.targets": {}
         }
       },
       "System.Runtime/4.3.0": {
@@ -4444,48 +4657,51 @@
           "buildTransitive/net462/_._": {}
         }
       },
-      "System.Text.Encodings.Web/6.0.0": {
+      "System.Text.Encodings.Web/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
+          "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "System.Text.Json/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
-          "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
-          "System.Numerics.Vectors": "4.5.0",
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encodings.Web": "6.0.0",
-          "System.Threading.Tasks.Extensions": "4.5.4",
-          "System.ValueTuple": "4.5.0"
-        },
-        "compile": {
-          "lib/net461/System.Text.Json.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net461/System.Text.Json.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "build/_._": {}
+          "buildTransitive/net462/_._": {}
+        }
+      },
+      "System.Text.Json/7.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "7.0.0",
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.5",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "7.0.0",
+          "System.Threading.Tasks.Extensions": "4.5.4",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Text.Json.targets": {}
         }
       },
       "System.Threading.Tasks.Extensions/4.5.4": {
@@ -4578,7 +4794,7 @@
           "lib/net461/ZstdSharp.dll": {}
         }
       },
-      "ZXing.Net/0.16.8": {
+      "ZXing.Net/0.16.9": {
         "type": "package",
         "compile": {
           "lib/net48/zxing.dll": {
@@ -4601,9 +4817,11 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
+          "Google.Protobuf": "3.15.0",
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
           "System.Net.Http": "4.3.4",
+          "System.Net.WebSockets.Client": "4.3.2",
           "ZXing.Net": "0.16.9"
         },
         "compile": {
@@ -4628,33 +4846,19 @@
           }
         }
       },
-      "BarcodeLib/2.4.0": {
+      "BarcodeLib/3.1.2": {
         "type": "package",
         "dependencies": {
-          "System.Drawing.Common": "5.0.2",
-          "System.Text.Json": "5.0.2"
+          "SkiaSharp": "2.88.6",
+          "SkiaSharp.NativeAssets.Linux.NoDependencies": "2.88.6",
+          "System.Resources.Extensions": "7.0.0",
+          "System.Text.Json": "7.0.3"
         },
         "compile": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
-        }
-      },
-      "boletofacilsdk/1.0.8": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.1"
-        },
-        "compile": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
         }
       },
       "BouncyCastle/1.8.9": {
@@ -4764,7 +4968,7 @@
           "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
-      "Google.Protobuf/3.14.0": {
+      "Google.Protobuf/3.15.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
@@ -4954,20 +5158,23 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "compile": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
         }
       },
       "Microsoft.CSharp/4.7.0": {
@@ -5408,6 +5615,9 @@
           }
         }
       },
+      "NuGet.CommandLine/6.10.0": {
+        "type": "package"
+      },
       "OpenAC.Net.Balanca/1.5.0.1": {
         "type": "package",
         "dependencies": {
@@ -5536,6 +5746,66 @@
         },
         "runtime": {
           "lib/net462/SharpCompress.dll": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Linux.NoDependencies/2.88.6": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.6"
+        },
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Linux.NoDependencies.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.macOS.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "native": {
+          "runtimes/win-x64/native/libSkiaSharp.dll": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Win32.targets": {}
         }
       },
       "Syncfusion.Grid.Base/19.4.0.38": {
@@ -5686,20 +5956,6 @@
           }
         }
       },
-      "System.Drawing.Common/5.0.2": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System",
-          "System.Drawing",
-          "mscorlib"
-        ],
-        "compile": {
-          "ref/net461/System.Drawing.Common.dll": {}
-        },
-        "runtime": {
-          "lib/net461/System.Drawing.Common.dll": {}
-        }
-      },
       "System.IO/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -5787,7 +6043,7 @@
           "lib/net46/System.Net.WebSockets.dll": {}
         }
       },
-      "System.Net.WebSockets.Client/4.3.0": {
+      "System.Net.WebSockets.Client/4.3.2": {
         "type": "package",
         "dependencies": {
           "System.Net.WebSockets": "4.3.0",
@@ -5819,6 +6075,25 @@
           "lib/net46/System.Numerics.Vectors.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.Resources.Extensions/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Resources.Extensions.targets": {}
         }
       },
       "System.Runtime/4.3.0": {
@@ -5961,48 +6236,51 @@
           "buildTransitive/net462/_._": {}
         }
       },
-      "System.Text.Encodings.Web/6.0.0": {
+      "System.Text.Encodings.Web/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
+          "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "System.Text.Json/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
-          "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
-          "System.Numerics.Vectors": "4.5.0",
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encodings.Web": "6.0.0",
-          "System.Threading.Tasks.Extensions": "4.5.4",
-          "System.ValueTuple": "4.5.0"
-        },
-        "compile": {
-          "lib/net461/System.Text.Json.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net461/System.Text.Json.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "build/_._": {}
+          "buildTransitive/net462/_._": {}
+        }
+      },
+      "System.Text.Json/7.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "7.0.0",
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.5",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "7.0.0",
+          "System.Threading.Tasks.Extensions": "4.5.4",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Text.Json.targets": {}
         }
       },
       "System.Threading.Tasks.Extensions/4.5.4": {
@@ -6095,7 +6373,7 @@
           "lib/net461/ZstdSharp.dll": {}
         }
       },
-      "ZXing.Net/0.16.8": {
+      "ZXing.Net/0.16.9": {
         "type": "package",
         "compile": {
           "lib/net48/zxing.dll": {
@@ -6118,9 +6396,11 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
+          "Google.Protobuf": "3.15.0",
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
           "System.Net.Http": "4.3.4",
+          "System.Net.WebSockets.Client": "4.3.2",
           "ZXing.Net": "0.16.9"
         },
         "compile": {
@@ -6145,33 +6425,19 @@
           }
         }
       },
-      "BarcodeLib/2.4.0": {
+      "BarcodeLib/3.1.2": {
         "type": "package",
         "dependencies": {
-          "System.Drawing.Common": "5.0.2",
-          "System.Text.Json": "5.0.2"
+          "SkiaSharp": "2.88.6",
+          "SkiaSharp.NativeAssets.Linux.NoDependencies": "2.88.6",
+          "System.Resources.Extensions": "7.0.0",
+          "System.Text.Json": "7.0.3"
         },
         "compile": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/BarcodeStandard.dll": {}
-        }
-      },
-      "boletofacilsdk/1.0.8": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.1"
-        },
-        "compile": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/portable45-net45+win8/BoletoFacilSDK.dll": {
-            "related": ".xml"
-          }
         }
       },
       "BouncyCastle/1.8.9": {
@@ -6281,7 +6547,7 @@
           "lib/net48/FontAwesome.Sharp.dll": {}
         }
       },
-      "Google.Protobuf/3.14.0": {
+      "Google.Protobuf/3.15.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
@@ -6471,20 +6737,23 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "compile": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll": {
+          "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/net462/_._": {}
         }
       },
       "Microsoft.CSharp/4.7.0": {
@@ -6925,6 +7194,9 @@
           }
         }
       },
+      "NuGet.CommandLine/6.10.0": {
+        "type": "package"
+      },
       "OpenAC.Net.Balanca/1.5.0.1": {
         "type": "package",
         "dependencies": {
@@ -7053,6 +7325,66 @@
         },
         "runtime": {
           "lib/net462/SharpCompress.dll": {}
+        }
+      },
+      "SkiaSharp/2.88.8": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.8",
+          "SkiaSharp.NativeAssets.macOS": "2.88.8",
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/SkiaSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.Linux.NoDependencies/2.88.6": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "2.88.6"
+        },
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Linux.NoDependencies.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.macOS.targets": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Win32/2.88.8": {
+        "type": "package",
+        "compile": {
+          "lib/net462/_._": {}
+        },
+        "runtime": {
+          "lib/net462/_._": {}
+        },
+        "native": {
+          "runtimes/win-x86/native/libSkiaSharp.dll": {}
+        },
+        "build": {
+          "buildTransitive/net462/SkiaSharp.NativeAssets.Win32.targets": {}
         }
       },
       "Syncfusion.Grid.Base/19.4.0.38": {
@@ -7203,20 +7535,6 @@
           }
         }
       },
-      "System.Drawing.Common/5.0.2": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System",
-          "System.Drawing",
-          "mscorlib"
-        ],
-        "compile": {
-          "ref/net461/System.Drawing.Common.dll": {}
-        },
-        "runtime": {
-          "lib/net461/System.Drawing.Common.dll": {}
-        }
-      },
       "System.IO/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -7304,7 +7622,7 @@
           "lib/net46/System.Net.WebSockets.dll": {}
         }
       },
-      "System.Net.WebSockets.Client/4.3.0": {
+      "System.Net.WebSockets.Client/4.3.2": {
         "type": "package",
         "dependencies": {
           "System.Net.WebSockets": "4.3.0",
@@ -7336,6 +7654,25 @@
           "lib/net46/System.Numerics.Vectors.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.Resources.Extensions/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "compile": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Resources.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Resources.Extensions.targets": {}
         }
       },
       "System.Runtime/4.3.0": {
@@ -7478,48 +7815,51 @@
           "buildTransitive/net462/_._": {}
         }
       },
-      "System.Text.Encodings.Web/6.0.0": {
+      "System.Text.Encodings.Web/7.0.0": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
+          "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net461/System.Text.Encodings.Web.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "System.Text.Json/6.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
-          "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.4",
-          "System.Numerics.Vectors": "4.5.0",
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encodings.Web": "6.0.0",
-          "System.Threading.Tasks.Extensions": "4.5.4",
-          "System.ValueTuple": "4.5.0"
-        },
-        "compile": {
-          "lib/net461/System.Text.Json.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net461/System.Text.Json.dll": {
+          "lib/net462/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "build/_._": {}
+          "buildTransitive/net462/_._": {}
+        }
+      },
+      "System.Text.Json/7.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "7.0.0",
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.5",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "7.0.0",
+          "System.Threading.Tasks.Extensions": "4.5.4",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net462/System.Text.Json.targets": {}
         }
       },
       "System.Threading.Tasks.Extensions/4.5.4": {
@@ -7612,7 +7952,7 @@
           "lib/net461/ZstdSharp.dll": {}
         }
       },
-      "ZXing.Net/0.16.8": {
+      "ZXing.Net/0.16.9": {
         "type": "package",
         "compile": {
           "lib/net48/zxing.dll": {
@@ -7635,9 +7975,11 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
+          "Google.Protobuf": "3.15.0",
           "NHibernate": "5.3.10",
           "Newtonsoft.Json": "13.0.1",
           "System.Net.Http": "4.3.4",
+          "System.Net.WebSockets.Client": "4.3.2",
           "ZXing.Net": "0.16.9"
         },
         "compile": {
@@ -7669,33 +8011,19 @@
         "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Antlr3.Runtime.xml"
       ]
     },
-    "BarcodeLib/2.4.0": {
-      "sha512": "SXMILkQm3jpngFmSa6AafsaJNid8UWCZh1v4w2oWxBzXnuVaL/S7H+nMxslWbPOPz1AVaLenRbFgy3OtX9J4dQ==",
+    "BarcodeLib/3.1.2": {
+      "sha512": "wlwB4XyyVDAujzVQd7H4DKKeo7w7Tuf7LUv2PmOD6YQadybhWG6Yjqqi5P9eaeEzICHGbpdj5Y1ar3ONfrg4MQ==",
       "type": "package",
-      "path": "barcodelib/2.4.0",
+      "path": "barcodelib/3.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.txt",
-        "barcodelib.2.4.0.nupkg.sha512",
+        "README.md",
+        "barcodelib.3.1.2.nupkg.sha512",
         "barcodelib.nuspec",
         "lib/netstandard2.0/BarcodeStandard.dll",
         "upca.jpg"
-      ]
-    },
-    "boletofacilsdk/1.0.8": {
-      "sha512": "o2Gu4hF74e9uVyYhzG3yzS+XtjOxd9jUeAm28GBvuSIam3/8x4Fki+uyaYjFQXegbUwr2NEXUq2rnn2rvieuwg==",
-      "type": "package",
-      "path": "boletofacilsdk/1.0.8",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "boletofacilsdk.1.0.8.nupkg.sha512",
-        "boletofacilsdk.nuspec",
-        "lib/portable45-net45+win8/BoletoFacilSDK.dll",
-        "lib/portable45-net45+win8/BoletoFacilSDK.xml",
-        "licenses/LICENSE-2.0.txt",
-        "readme.txt"
       ]
     },
     "BouncyCastle/1.8.9": {
@@ -7829,14 +8157,14 @@
         "lib/netcoreapp3.1/FontAwesome.Sharp.dll"
       ]
     },
-    "Google.Protobuf/3.14.0": {
-      "sha512": "9AkodyGNmLI+wJJPbwpWLmh4BMHoXDQ9+8qvDPhQQi/BNsleqKMBn3OlyLwC6CALwan2kc5+Cenb8fJSITX3nQ==",
+    "Google.Protobuf/3.15.0": {
+      "sha512": "2na7LsYrtxkEQaVCNjaafBzVu4IJ4U4+dwwBazK8oUkpDiIFjO0GkyTc+IbStx4xNVAV4EqHl+qp2uegFgFiiA==",
       "type": "package",
-      "path": "google.protobuf/3.14.0",
+      "path": "google.protobuf/3.15.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "google.protobuf.3.14.0.nupkg.sha512",
+        "google.protobuf.3.15.0.nupkg.sha512",
         "google.protobuf.nuspec",
         "lib/net45/Google.Protobuf.dll",
         "lib/net45/Google.Protobuf.pdb",
@@ -8047,23 +8375,25 @@
         "microsoft.aspnet.webapi.core.nuspec"
       ]
     },
-    "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
-      "sha512": "UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
+    "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
+      "sha512": "3aeMZ1N0lJoSyzqiP03hqemtb1BijhsJADdobn/4nsMJ8V1H+CrpuduUe4hlRdx+ikBQju1VGjMD1GJ3Sk05Eg==",
       "type": "package",
-      "path": "microsoft.bcl.asyncinterfaces/6.0.0",
+      "path": "microsoft.bcl.asyncinterfaces/7.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll",
-        "lib/net461/Microsoft.Bcl.AsyncInterfaces.xml",
+        "buildTransitive/net461/Microsoft.Bcl.AsyncInterfaces.targets",
+        "buildTransitive/net462/_._",
+        "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/net462/Microsoft.Bcl.AsyncInterfaces.xml",
         "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll",
         "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml",
-        "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
+        "microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
         "microsoft.bcl.asyncinterfaces.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -8644,6 +8974,23 @@
         "nhibernate.nuspec"
       ]
     },
+    "NuGet.CommandLine/6.10.0": {
+      "sha512": "f05VAt1PVuNyfFe8eIZPIOs0KMv5b/kiAH0HutVFAJbldTRFNGcp7KPC8wVevAtbopVMIh6AS7Z6/nHG7xK/7Q==",
+      "type": "package",
+      "path": "nuget.commandline/6.10.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NOTICES.txt",
+        "README.md",
+        "icon.png",
+        "nuget.commandline.6.10.0.nupkg.sha512",
+        "nuget.commandline.nuspec",
+        "tools/NuGet.exe",
+        "tools/NuGet.pdb"
+      ]
+    },
     "OpenAC.Net.Balanca/1.5.0.1": {
       "sha512": "8yfEiXZh7Nhjt7i1L0lrs2OuxT1q3FiQuPIaBcHeoEbPKeiRnz4ngRpV1dJ3vBNeI8Bl47ACxJAvbs9gt0kRow==",
       "type": "package",
@@ -8782,6 +9129,151 @@
         "lib/netstandard2.1/SharpCompress.dll",
         "sharpcompress.0.34.2.nupkg.sha512",
         "sharpcompress.nuspec"
+      ]
+    },
+    "SkiaSharp/2.88.8": {
+      "sha512": "bRkp3uKp5ZI8gXYQT57uKwil1uobb2p8c69n7v5evlB/2JNcMAXVcw9DZAP5Ig3WSvgzGm2YSn27UVeOi05NlA==",
+      "type": "package",
+      "path": "skiasharp/2.88.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "interactive-extensions/dotnet/SkiaSharp.DotNet.Interactive.dll",
+        "lib/monoandroid1.0/SkiaSharp.dll",
+        "lib/monoandroid1.0/SkiaSharp.pdb",
+        "lib/monoandroid1.0/SkiaSharp.xml",
+        "lib/net462/SkiaSharp.dll",
+        "lib/net462/SkiaSharp.pdb",
+        "lib/net462/SkiaSharp.xml",
+        "lib/net6.0-android30.0/SkiaSharp.dll",
+        "lib/net6.0-android30.0/SkiaSharp.pdb",
+        "lib/net6.0-android30.0/SkiaSharp.xml",
+        "lib/net6.0-ios13.6/SkiaSharp.dll",
+        "lib/net6.0-ios13.6/SkiaSharp.pdb",
+        "lib/net6.0-ios13.6/SkiaSharp.xml",
+        "lib/net6.0-maccatalyst13.5/SkiaSharp.dll",
+        "lib/net6.0-maccatalyst13.5/SkiaSharp.pdb",
+        "lib/net6.0-maccatalyst13.5/SkiaSharp.xml",
+        "lib/net6.0-macos10.15/SkiaSharp.dll",
+        "lib/net6.0-macos10.15/SkiaSharp.pdb",
+        "lib/net6.0-macos10.15/SkiaSharp.xml",
+        "lib/net6.0-tizen7.0/SkiaSharp.dll",
+        "lib/net6.0-tizen7.0/SkiaSharp.pdb",
+        "lib/net6.0-tizen7.0/SkiaSharp.xml",
+        "lib/net6.0-tvos13.4/SkiaSharp.dll",
+        "lib/net6.0-tvos13.4/SkiaSharp.pdb",
+        "lib/net6.0-tvos13.4/SkiaSharp.xml",
+        "lib/net6.0/SkiaSharp.dll",
+        "lib/net6.0/SkiaSharp.pdb",
+        "lib/net6.0/SkiaSharp.xml",
+        "lib/netcoreapp3.1/SkiaSharp.dll",
+        "lib/netcoreapp3.1/SkiaSharp.pdb",
+        "lib/netcoreapp3.1/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.pdb",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/netstandard2.0/SkiaSharp.dll",
+        "lib/netstandard2.0/SkiaSharp.pdb",
+        "lib/netstandard2.0/SkiaSharp.xml",
+        "lib/netstandard2.1/SkiaSharp.dll",
+        "lib/netstandard2.1/SkiaSharp.pdb",
+        "lib/netstandard2.1/SkiaSharp.xml",
+        "lib/tizen40/SkiaSharp.dll",
+        "lib/tizen40/SkiaSharp.pdb",
+        "lib/tizen40/SkiaSharp.xml",
+        "lib/uap10.0.10240/SkiaSharp.dll",
+        "lib/uap10.0.10240/SkiaSharp.pdb",
+        "lib/uap10.0.10240/SkiaSharp.xml",
+        "lib/uap10.0.16299/SkiaSharp.dll",
+        "lib/uap10.0.16299/SkiaSharp.pdb",
+        "lib/uap10.0.16299/SkiaSharp.xml",
+        "lib/xamarinios1.0/SkiaSharp.dll",
+        "lib/xamarinios1.0/SkiaSharp.pdb",
+        "lib/xamarinios1.0/SkiaSharp.xml",
+        "lib/xamarinmac2.0/SkiaSharp.dll",
+        "lib/xamarinmac2.0/SkiaSharp.pdb",
+        "lib/xamarinmac2.0/SkiaSharp.xml",
+        "lib/xamarintvos1.0/SkiaSharp.dll",
+        "lib/xamarintvos1.0/SkiaSharp.pdb",
+        "lib/xamarintvos1.0/SkiaSharp.xml",
+        "lib/xamarinwatchos1.0/SkiaSharp.dll",
+        "lib/xamarinwatchos1.0/SkiaSharp.pdb",
+        "lib/xamarinwatchos1.0/SkiaSharp.xml",
+        "skiasharp.2.88.8.nupkg.sha512",
+        "skiasharp.nuspec"
+      ]
+    },
+    "SkiaSharp.NativeAssets.Linux.NoDependencies/2.88.6": {
+      "sha512": "ecgMclPor+X1wi2dZSVDo1sV2Dm8gwEKNRtS+qiE9qfnQzGHbYWlbTBWalnZBaIl3BLC21b1QO8gMgabhSAh+g==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.linux.nodependencies/2.88.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net462/SkiaSharp.NativeAssets.Linux.NoDependencies.targets",
+        "buildTransitive/net462/SkiaSharp.NativeAssets.Linux.NoDependencies.targets",
+        "lib/net462/_._",
+        "lib/net6.0/_._",
+        "lib/netcoreapp3.1/_._",
+        "lib/netstandard1.3/_._",
+        "runtimes/linux-arm/native/libSkiaSharp.so",
+        "runtimes/linux-arm64/native/libSkiaSharp.so",
+        "runtimes/linux-musl-x64/native/libSkiaSharp.so",
+        "runtimes/linux-x64/native/libSkiaSharp.so",
+        "skiasharp.nativeassets.linux.nodependencies.2.88.6.nupkg.sha512",
+        "skiasharp.nativeassets.linux.nodependencies.nuspec"
+      ]
+    },
+    "SkiaSharp.NativeAssets.macOS/2.88.8": {
+      "sha512": "6Kn5TSkKlfyS6azWHF3Jk2sW5C4jCE5uSshM/5AbfFrR+5n6qM5XEnz9h4VaVl7LTxBvHvMkuPb/3bpbq0vxTw==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.macos/2.88.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net462/SkiaSharp.NativeAssets.macOS.targets",
+        "build/net6.0-macos10.15/SkiaSharp.NativeAssets.macOS.targets",
+        "build/xamarinmac2.0/SkiaSharp.NativeAssets.macOS.targets",
+        "buildTransitive/net462/SkiaSharp.NativeAssets.macOS.targets",
+        "buildTransitive/net6.0-macos10.15/SkiaSharp.NativeAssets.macOS.targets",
+        "buildTransitive/xamarinmac2.0/SkiaSharp.NativeAssets.macOS.targets",
+        "lib/net462/_._",
+        "lib/net6.0-macos10.15/_._",
+        "lib/net6.0/_._",
+        "lib/netcoreapp3.1/_._",
+        "lib/netstandard1.3/_._",
+        "lib/xamarinmac2.0/_._",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "skiasharp.nativeassets.macos.2.88.8.nupkg.sha512",
+        "skiasharp.nativeassets.macos.nuspec"
+      ]
+    },
+    "SkiaSharp.NativeAssets.Win32/2.88.8": {
+      "sha512": "O9QXoWEXA+6cweR4h3BOnwMz+pO9vL9mXdjLrpDd0w1QzCgWmLQBxa1VgySDITiH7nQndrDG1h6937zm9pLj1Q==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.win32/2.88.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net462/SkiaSharp.NativeAssets.Win32.targets",
+        "buildTransitive/net462/SkiaSharp.NativeAssets.Win32.targets",
+        "lib/net462/_._",
+        "lib/net6.0/_._",
+        "lib/netcoreapp3.1/_._",
+        "lib/netstandard1.3/_._",
+        "runtimes/win-arm64/native/libSkiaSharp.dll",
+        "runtimes/win-x64/native/libSkiaSharp.dll",
+        "runtimes/win-x86/native/libSkiaSharp.dll",
+        "skiasharp.nativeassets.win32.2.88.8.nupkg.sha512",
+        "skiasharp.nativeassets.win32.nuspec"
       ]
     },
     "Syncfusion.Grid.Base/19.4.0.38": {
@@ -9053,48 +9545,6 @@
         "version.txt"
       ]
     },
-    "System.Drawing.Common/5.0.2": {
-      "sha512": "rvr/M1WPf24ljpvvrVd74+NdjRUJu1bBkspkZcnzSZnmAUQWSvanlQ0k/hVHk+cHufZbZfu7vOh/vYc0q5Uu/A==",
-      "type": "package",
-      "path": "system.drawing.common/5.0.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.Drawing.Common.dll",
-        "lib/netcoreapp3.0/System.Drawing.Common.dll",
-        "lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "lib/netstandard2.0/System.Drawing.Common.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net461/System.Drawing.Common.dll",
-        "ref/netcoreapp3.0/System.Drawing.Common.dll",
-        "ref/netcoreapp3.0/System.Drawing.Common.xml",
-        "ref/netstandard2.0/System.Drawing.Common.dll",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll",
-        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll",
-        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
-        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll",
-        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "system.drawing.common.5.0.2.nupkg.sha512",
-        "system.drawing.common.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.IO/4.3.0": {
       "sha512": "3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
       "type": "package",
@@ -9305,10 +9755,10 @@
         "system.net.websockets.nuspec"
       ]
     },
-    "System.Net.WebSockets.Client/4.3.0": {
-      "sha512": "QjcP33TONz6wS5+3B4JKHXxQp9b5sexHH/eGTBwG2ZhlaThGvZGm3mMEHyJB6rrLsSah3h1Gc/OkJ162iavkjA==",
+    "System.Net.WebSockets.Client/4.3.2": {
+      "sha512": "LqSrocFY47SxEmu1fYWbUmXcFJ2B/PqnMtc6zudOTUhNINgo75hgmoHv46ynkJLmqjkpxPzl251SGWHc+jofFQ==",
       "type": "package",
-      "path": "system.net.websockets.client/4.3.0",
+      "path": "system.net.websockets.client/4.3.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -9325,16 +9775,6 @@
         "ref/MonoTouch10/_._",
         "ref/net46/System.Net.WebSockets.Client.dll",
         "ref/netstandard1.3/System.Net.WebSockets.Client.dll",
-        "ref/netstandard1.3/System.Net.WebSockets.Client.xml",
-        "ref/netstandard1.3/de/System.Net.WebSockets.Client.xml",
-        "ref/netstandard1.3/es/System.Net.WebSockets.Client.xml",
-        "ref/netstandard1.3/fr/System.Net.WebSockets.Client.xml",
-        "ref/netstandard1.3/it/System.Net.WebSockets.Client.xml",
-        "ref/netstandard1.3/ja/System.Net.WebSockets.Client.xml",
-        "ref/netstandard1.3/ko/System.Net.WebSockets.Client.xml",
-        "ref/netstandard1.3/ru/System.Net.WebSockets.Client.xml",
-        "ref/netstandard1.3/zh-hans/System.Net.WebSockets.Client.xml",
-        "ref/netstandard1.3/zh-hant/System.Net.WebSockets.Client.xml",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
@@ -9343,7 +9783,7 @@
         "runtimes/win/lib/net46/System.Net.WebSockets.Client.dll",
         "runtimes/win/lib/netcore50/System.Net.WebSockets.Client.dll",
         "runtimes/win/lib/netstandard1.3/System.Net.WebSockets.Client.dll",
-        "system.net.websockets.client.4.3.0.nupkg.sha512",
+        "system.net.websockets.client.4.3.2.nupkg.sha512",
         "system.net.websockets.client.nuspec"
       ]
     },
@@ -9392,6 +9832,33 @@
         "system.numerics.vectors.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.Resources.Extensions/7.0.0": {
+      "sha512": "65ufm9ABXvxRkQ//hMcUDrQXbGWkC7z0WWZAvHlQ6Qv+JmrIwHH1lmX8aXlNlXpIrT9KxDpuZPqJTVqqwzMD8Q==",
+      "type": "package",
+      "path": "system.resources.extensions/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Resources.Extensions.targets",
+        "buildTransitive/net462/System.Resources.Extensions.targets",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Resources.Extensions.targets",
+        "lib/net462/System.Resources.Extensions.dll",
+        "lib/net462/System.Resources.Extensions.xml",
+        "lib/net6.0/System.Resources.Extensions.dll",
+        "lib/net6.0/System.Resources.Extensions.xml",
+        "lib/net7.0/System.Resources.Extensions.dll",
+        "lib/net7.0/System.Resources.Extensions.xml",
+        "lib/netstandard2.0/System.Resources.Extensions.dll",
+        "lib/netstandard2.0/System.Resources.Extensions.xml",
+        "system.resources.extensions.7.0.0.nupkg.sha512",
+        "system.resources.extensions.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.Runtime/4.3.0": {
@@ -9855,42 +10322,47 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Text.Encodings.Web/6.0.0": {
-      "sha512": "Vg8eB5Tawm1IFqj4TVK1czJX89rhFxJo9ELqc/Eiq0eXy13RK00eubyU6TJE6y+GQXjyV5gSfiewDUZjQgSE0w==",
+    "System.Text.Encodings.Web/7.0.0": {
+      "sha512": "OP6umVGxc0Z0MvZQBVigj4/U31Pw72ITihDWP9WiWDm+q5aoe0GaJivsfYGq53o6dxH7DcXWiCTl7+0o2CGdmg==",
       "type": "package",
-      "path": "system.text.encodings.web/6.0.0",
+      "path": "system.text.encodings.web/7.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Text.Encodings.Web.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.Text.Encodings.Web.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Text.Encodings.Web.dll",
-        "lib/net461/System.Text.Encodings.Web.xml",
+        "lib/net462/System.Text.Encodings.Web.dll",
+        "lib/net462/System.Text.Encodings.Web.xml",
         "lib/net6.0/System.Text.Encodings.Web.dll",
         "lib/net6.0/System.Text.Encodings.Web.xml",
-        "lib/netcoreapp3.1/System.Text.Encodings.Web.dll",
-        "lib/netcoreapp3.1/System.Text.Encodings.Web.xml",
+        "lib/net7.0/System.Text.Encodings.Web.dll",
+        "lib/net7.0/System.Text.Encodings.Web.xml",
         "lib/netstandard2.0/System.Text.Encodings.Web.dll",
         "lib/netstandard2.0/System.Text.Encodings.Web.xml",
         "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll",
         "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.xml",
-        "system.text.encodings.web.6.0.0.nupkg.sha512",
+        "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.xml",
+        "system.text.encodings.web.7.0.0.nupkg.sha512",
         "system.text.encodings.web.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Text.Json/6.0.0": {
-      "sha512": "zaJsHfESQvJ11vbXnNlkrR46IaMULk/gHxYsJphzSF+07kTjPHv+Oc14w6QEOfo3Q4hqLJgStUaYB9DBl0TmWg==",
+    "System.Text.Json/7.0.3": {
+      "sha512": "AyjhwXN1zTFeIibHimfJn6eAsZ7rTBib79JQpzg8WAuR/HKDu9JGNHTuu3nbbXQ/bgI+U4z6HtZmCHNXB1QXrQ==",
       "type": "package",
-      "path": "system.text.json/6.0.0",
+      "path": "system.text.json/7.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
+        "README.md",
         "THIRD-PARTY-NOTICES.TXT",
         "analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll",
         "analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
@@ -9920,18 +10392,34 @@
         "analyzers/dotnet/roslyn4.0/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
         "analyzers/dotnet/roslyn4.0/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
         "analyzers/dotnet/roslyn4.0/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
-        "build/System.Text.Json.targets",
+        "analyzers/dotnet/roslyn4.4/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.4/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "buildTransitive/net461/System.Text.Json.targets",
+        "buildTransitive/net462/System.Text.Json.targets",
+        "buildTransitive/net6.0/System.Text.Json.targets",
         "buildTransitive/netcoreapp2.0/System.Text.Json.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Text.Json.dll",
-        "lib/net461/System.Text.Json.xml",
+        "buildTransitive/netstandard2.0/System.Text.Json.targets",
+        "lib/net462/System.Text.Json.dll",
+        "lib/net462/System.Text.Json.xml",
         "lib/net6.0/System.Text.Json.dll",
         "lib/net6.0/System.Text.Json.xml",
-        "lib/netcoreapp3.1/System.Text.Json.dll",
-        "lib/netcoreapp3.1/System.Text.Json.xml",
+        "lib/net7.0/System.Text.Json.dll",
+        "lib/net7.0/System.Text.Json.xml",
         "lib/netstandard2.0/System.Text.Json.dll",
         "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.6.0.0.nupkg.sha512",
+        "system.text.json.7.0.3.nupkg.sha512",
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -10080,10 +10568,10 @@
         "zstdsharp.port.nuspec"
       ]
     },
-    "ZXing.Net/0.16.8": {
-      "sha512": "Cbbe+x7I7E+VJ0VxU1fPc7AktIw/9xea/ZY/fh38sXqTQ75LJp9ooGUjpzFqfpPfIKozAoXgJ4yvY4GzKpPBzQ==",
+    "ZXing.Net/0.16.9": {
+      "sha512": "7WaVMHklpT3Ye2ragqRIwlFRsb6kOk63BOGADV0fan3ulVfGLUYkDi5yNUsZS/7FVNkWbtHAlDLmu4WnHGfqvQ==",
       "type": "package",
-      "path": "zxing.net/0.16.8",
+      "path": "zxing.net/0.16.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10122,6 +10610,8 @@
         "lib/net5.0/zxing.dll",
         "lib/net6.0/zxing.XML",
         "lib/net6.0/zxing.dll",
+        "lib/net7.0/zxing.XML",
+        "lib/net7.0/zxing.dll",
         "lib/netcoreapp3.0/zxing.dll",
         "lib/netcoreapp3.0/zxing.xml",
         "lib/netcoreapp3.1/zxing.dll",
@@ -10157,7 +10647,7 @@
         "lib/wp8/zxing.wp8.0.XML",
         "lib/wp8/zxing.wp8.0.dll",
         "logo.jpg",
-        "zxing.net.0.16.8.nupkg.sha512",
+        "zxing.net.0.16.9.nupkg.sha512",
         "zxing.net.nuspec"
       ]
     },
@@ -10169,12 +10659,13 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.8": [
-      "BarcodeLib >= 2.4.0",
+      "BarcodeLib >= 3.1.2",
       "CircularProgressBar >= 2.8.0.16",
       "Cquential.Microsoft.ReportViewer.DataVisualization >= 10.0.40219.1",
       "FirebirdSql.Data.FirebirdClient >= 9.1.1",
       "FiscalBr.Sintegra >= 2.0.0",
       "FontAwesome.Sharp >= 6.1.1",
+      "Google.Protobuf >= 3.15.0",
       "JWT >= 5.1.1",
       "LunarBase >= 1.0.0",
       "MetroFramework >= 1.2.0.3",
@@ -10187,17 +10678,18 @@
       "Microsoft.Windows.SDK.Contracts >= 10.0.17763.1000",
       "MySql.Data >= 8.0.27",
       "NHibernate >= 5.3.10",
+      "NuGet.CommandLine >= 6.10.0",
       "OpenAC.Net.Balanca >= 1.5.0.1",
       "PdfiumViewer >= 2.13.0",
       "Selenium.WebDriver >= 4.20.0",
       "SharpCompress >= 0.34.2",
+      "SkiaSharp >= 2.88.8",
       "Syncfusion.Tools.Windows >= 19.4.0.38",
       "System.Net.Http.Json >= 6.0.0",
-      "System.Net.WebSockets.Client >= 4.3.0",
+      "System.Net.WebSockets.Client >= 4.3.2",
       "Unimake.Unidanfe >= 20220117.1131.32",
       "Wdc.System.Net.Http.Formatting.NetStandard >= 1.0.7",
-      "ZXing.Net >= 0.16.8",
-      "boletofacilsdk >= 1.0.8",
+      "ZXing.Net >= 0.16.9",
       "iTextSharp >= 5.5.13.3"
     ]
   },
@@ -10228,7 +10720,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.telerik.com/v3/index.json": {}
       },
       "frameworks": {
         "net48": {
@@ -10250,7 +10743,7 @@
         "dependencies": {
           "BarcodeLib": {
             "target": "Package",
-            "version": "[2.4.0, )"
+            "version": "[3.1.2, )"
           },
           "CircularProgressBar": {
             "target": "Package",
@@ -10271,6 +10764,10 @@
           "FontAwesome.Sharp": {
             "target": "Package",
             "version": "[6.1.1, )"
+          },
+          "Google.Protobuf": {
+            "target": "Package",
+            "version": "[3.15.0, )"
           },
           "JWT": {
             "target": "Package",
@@ -10316,6 +10813,12 @@
             "target": "Package",
             "version": "[5.3.10, )"
           },
+          "NuGet.CommandLine": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[6.10.0, )"
+          },
           "OpenAC.Net.Balanca": {
             "target": "Package",
             "version": "[1.5.0.1, )"
@@ -10332,6 +10835,10 @@
             "target": "Package",
             "version": "[0.34.2, )"
           },
+          "SkiaSharp": {
+            "target": "Package",
+            "version": "[2.88.8, )"
+          },
           "Syncfusion.Tools.Windows": {
             "target": "Package",
             "version": "[19.4.0.38, )"
@@ -10342,7 +10849,7 @@
           },
           "System.Net.WebSockets.Client": {
             "target": "Package",
-            "version": "[4.3.0, )"
+            "version": "[4.3.2, )"
           },
           "Unimake.Unidanfe": {
             "target": "Package",
@@ -10354,11 +10861,7 @@
           },
           "ZXing.Net": {
             "target": "Package",
-            "version": "[0.16.8, )"
-          },
-          "boletofacilsdk": {
-            "target": "Package",
-            "version": "[1.0.8, )"
+            "version": "[0.16.9, )"
           },
           "iTextSharp": {
             "target": "Package",
@@ -10394,76 +10897,6 @@
       "warningLevel": 1,
       "message": "Microsoft.ReportingServices.ReportViewerControl.Winforms 150.1484.0 depende de Microsoft.SqlServer.Types (>= 14.0.0), mas Microsoft.SqlServer.Types 14.0.0 não foi encontrado. A melhor correspondência aproximada de Microsoft.SqlServer.Types 14.0.314.76 foi resolvida.",
       "libraryId": "Microsoft.SqlServer.Types",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.8",
-        ".NETFramework,Version=v4.8/win",
-        ".NETFramework,Version=v4.8/win-arm64",
-        ".NETFramework,Version=v4.8/win-x64",
-        ".NETFramework,Version=v4.8/win-x86"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'System.Net.WebSockets.Client' 4.3.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-6xh7-4v2w-36q6",
-      "libraryId": "System.Net.WebSockets.Client",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.8",
-        ".NETFramework,Version=v4.8/win",
-        ".NETFramework,Version=v4.8/win-arm64",
-        ".NETFramework,Version=v4.8/win-x64",
-        ".NETFramework,Version=v4.8/win-x86"
-      ]
-    },
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'System.Net.WebSockets.Client' 4.3.0 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-ch6p-4jcm-h8vh",
-      "libraryId": "System.Net.WebSockets.Client",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.8",
-        ".NETFramework,Version=v4.8/win",
-        ".NETFramework,Version=v4.8/win-arm64",
-        ".NETFramework,Version=v4.8/win-x64",
-        ".NETFramework,Version=v4.8/win-x86"
-      ]
-    },
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'System.Net.WebSockets.Client' 4.3.0 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-j8f4-2w4p-mhjc",
-      "libraryId": "System.Net.WebSockets.Client",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.8",
-        ".NETFramework,Version=v4.8/win",
-        ".NETFramework,Version=v4.8/win-arm64",
-        ".NETFramework,Version=v4.8/win-x64",
-        ".NETFramework,Version=v4.8/win-x86"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'System.Net.WebSockets.Client' 4.3.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-qhqf-ghgh-x2m4",
-      "libraryId": "System.Net.WebSockets.Client",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.8",
-        ".NETFramework,Version=v4.8/win",
-        ".NETFramework,Version=v4.8/win-arm64",
-        ".NETFramework,Version=v4.8/win-x64",
-        ".NETFramework,Version=v4.8/win-x86"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Downgrade de pacote detectado: ZXing.Net de 0.16.9 para 0.16.8. Referencie o pacote diretamente do projeto para selecionar uma versão diferente. \r\n Lunar -> LunarBase -> ZXing.Net (>= 0.16.9) \r\n Lunar -> ZXing.Net (>= 0.16.8)",
-      "libraryId": "ZXing.Net",
       "targetGraphs": [
         ".NETFramework,Version=v4.8",
         ".NETFramework,Version=v4.8/win",

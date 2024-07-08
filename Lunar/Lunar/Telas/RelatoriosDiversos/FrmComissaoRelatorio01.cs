@@ -29,11 +29,31 @@ namespace Lunar.Telas.RelatoriosDiversos
 
         private void gerarRelatorio()
         {
-            string sql = "SELECT pv.Id, pv.RazaoSocial, sum(os.ValorTotal) as Valor, os.Id as OrdemServico " +
-                "FROM ordemservico as os INNER JOIN pessoa pv on pv.ID = os.VENDEDOR " +
-                "WHERE os.FLAGEXCLUIDO <> true and os.VENDEDOR is not null and " +
-                "os.dataabertura between '"+dataInicial+" 00:00:00' and '"+dataFinal+" 23:59:59' " +
-                "group by os.VENDEDOR";
+            //string sql = "SELECT pv.Id, pv.RazaoSocial, sum(os.ValorTotal) as Valor, os.Id as OrdemServico " +
+            //    "FROM ordemservico as os INNER JOIN pessoa pv on pv.ID = os.VENDEDOR " +
+            //    "WHERE os.FLAGEXCLUIDO <> true and os.VENDEDOR is not null and " +
+            //    "os.dataabertura between '"+dataInicial+" 00:00:00' and '"+dataFinal+" 23:59:59' " +
+            //    "group by os.VENDEDOR";
+
+            string sql = "SELECT pv.Id, pv.RazaoSocial, SUM(t.ValorTotal) AS Valor, '1' as OrdemServico " +
+"FROM( "+
+    "SELECT osp.Vendedor AS Vendedor, osp.ValorTotal "+
+    "FROM ordemservicoproduto osp "+
+    "INNER JOIN ordemservico os ON osp.OrdemServico = os.Id "+
+    "WHERE os.FLAGEXCLUIDO<> true "+
+      "AND os.dataabertura BETWEEN '" + dataInicial + " 00:00:00' and '" + dataFinal + " 23:59:59' " +
+
+    "UNION ALL " +
+
+    "SELECT oss.Vendedor AS Vendedor, oss.ValorTotal "+
+    "FROM ordemservicoservico oss "+
+    "INNER JOIN ordemservico os ON oss.OrdemServico = os.Id "+
+    "WHERE os.FLAGEXCLUIDO<> true "+
+      "AND os.dataabertura BETWEEN '" + dataInicial + " 00:00:00' and '" + dataFinal + " 23:59:59' " +
+") t " +
+"INNER JOIN pessoa pv ON pv.ID = t.Vendedor "+
+"GROUP BY pv.Id, pv.RazaoSocial, t.Vendedor;";
+            
 
             IList<OsComissao> listaOsComissao = ordemServicoDAO.selecionarOSComissaoPorSQL(sql);
             if(listaOsComissao.Count > 0)

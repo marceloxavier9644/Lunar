@@ -473,7 +473,11 @@ namespace LunarAtualizador
         {
             if (File.Exists(@"C:\Lunar\MXSystem.xml"))
             {
-                DateTime dataXML = DateTime.Now.AddDays(-1000);
+                string dataLicenca = "";
+                byte[] storedKey = null;
+                byte[] storedIV = null;
+
+                string dataXML = DateTime.Now.AddDays(-1000).ToShortDateString();
                 String hd = "";
                 cnpjClient = "";
                 String serialRegistro = "";
@@ -485,7 +489,7 @@ namespace LunarAtualizador
                     while (reader.Read())
                     {
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppUser")
-                            dataXML = DateTime.Parse(GenericaDesktop.Descriptografa(reader.ReadString()));
+                            dataXML = reader.ReadString().ToString();
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppServ")
                             hd = GenericaDesktop.Descriptografa(reader.ReadString());
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppOper")
@@ -512,7 +516,7 @@ namespace LunarAtualizador
                     while (reader.Read())
                     {
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppUser")
-                            dataXML = DateTime.Parse(GenericaDesktop.Descriptografa(reader.ReadString()));
+                            dataXML = reader.ReadString().ToString();
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppServ")
                             hd = GenericaDesktop.Descriptografa(reader.ReadString());
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppOper")
@@ -534,6 +538,28 @@ namespace LunarAtualizador
                     Sessao.usuarioBanco = usuarioBanco;
                     Sessao.senhaBanco = senhaBanco;
                     reader.Dispose();
+                    if (File.Exists(@"C:\Lunar\lunar.bin"))
+                    {
+                        string keyFilePath = @"C:\Lunar\lunar.bin";
+                        string ivFilePath = @"C:\Lunar\lunarSoftware.bin";
+                        storedKey = File.ReadAllBytes(keyFilePath);
+                        storedIV = File.ReadAllBytes(ivFilePath);
+
+                        byte[] storedEncryptedDate = Convert.FromBase64String(dataXML);
+                        dataLicenca = CryptoUtils.DecryptDateString(storedEncryptedDate, storedKey, storedIV);
+
+                        if (DateTime.Parse(dataLicenca) < DateTime.Now)
+                        {
+                            GenericaDesktop.ShowAlerta("Sua licença expirou, entre em contato com seu revendedor");
+                            Environment.Exit(0);
+                        }
+                    }
+                    else
+                    {
+                        GenericaDesktop.ShowAlerta("O aplicativo atualizador do Lunar Software está com falha, verifique com o suporte!");
+                        Environment.Exit(0);
+                    }
+
                 }
                 catch (Exception e)
                 {
@@ -567,16 +593,6 @@ namespace LunarAtualizador
             try
             {
                 DateTime agora = DateTime.Now;
-                string caminhoPastaExportacao = "exportBD";
-                string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
-
-                if (!Directory.Exists(caminhoPastaExportacao))
-                {
-                    Directory.CreateDirectory(caminhoPastaExportacao);
-                }
-                //ExportarParaNuvem("localhost", "marcelo", "mx123", "lunar", "mysql.lunarsoftware.com.br", "lunarsoftware01", "aranha1", "lunarsoftware01");
-                //BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
-                //BancoDadosUtils.ImportarBancoDados("mysql.lunarsoftware.com.br", "lunarsoftware01", "aranha1", "lunarsoftware01", caminhoArquivo);
 
                 // Horários desejados para verificação (por exemplo, 9h e 15h)
                 DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 9, 0, 0);
@@ -678,21 +694,21 @@ namespace LunarAtualizador
                 logger.WriteLog("Sessao.MensagensAgendadas.Count > 0...OK ---- " + Sessao.MensagensAgendadas.Count, "LogMensagem");
                 foreach (var mensagem in Sessao.MensagensAgendadas.ToList()) // Usar ToList para evitar exceção de modificação durante a iteração
                 {
-                        logger.WriteLog("Preparando Disparo de Mensagem ---- NOME: " + mensagem.NomeCliente + " MENSAGEM: " + mensagemPosVenda + " FLAGENVIADA: " + mensagem.FlagEnviada, "LogMensagem");
-                        if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda) && !mensagem.FlagEnviada)
+                    logger.WriteLog("Preparando Disparo de Mensagem ---- NOME: " + mensagem.NomeCliente + " MENSAGEM: " + mensagemPosVenda + " FLAGENVIADA: " + mensagem.FlagEnviada, "LogMensagem");
+                    if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda) && !mensagem.FlagEnviada)
+                    {
+                        try
                         {
-                            try
-                            {
-                                dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
-                                mensagem.FlagEnviada = true;
-                                Controller.getInstance().salvar(mensagem);
-                            }
-                            catch
-                            {
-                                mensagem.FlagEnviada = true;
-                                Controller.getInstance().salvar(mensagem);
-                            }
+                            dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
+                            mensagem.FlagEnviada = true;
+                            Controller.getInstance().salvar(mensagem);
                         }
+                        catch
+                        {
+                            mensagem.FlagEnviada = true;
+                            Controller.getInstance().salvar(mensagem);
+                        }
+                    }
                 }
                 Sessao.MensagensAgendadas.Clear();
             }
@@ -835,7 +851,7 @@ namespace LunarAtualizador
                                 ativarMensagemPosVendas = $"{reader["ATIVARMENSAGEMPOSVENDAS"]}";
                                 ativarMensagemLembreteExame = $"{reader["ATIVARMENSAGEMVENCIMENTOEXAME"]}";
                                 mensagemPosVenda = $"{reader["MENSAGEMPOSVENDAS"]}";
-                                
+
                                 servidorNuvem = $"{reader["SERVIDORNUVEM"]}";
                                 bancoNuvem = $"{reader["BANCONUVEM"]}";
                                 usuarioNuvem = $"{reader["USUARIONUVEM"]}";
@@ -990,7 +1006,7 @@ namespace LunarAtualizador
                                     if (telefoneCliente.Length == 8)
                                         telefoneCliente = "9" + telefoneCliente;
                                     string numeroLimpo = RemoverCaracteresEspeciais("55" + ddd + telefoneCliente);
-                                    Zapi zapi = new Zapi();
+                                    //Zapi zapi = new Zapi();
 
                                     //Nome e primeiro sobrenome
                                     string[] partesNome = nomeCli.Split(' ');
@@ -1003,8 +1019,10 @@ namespace LunarAtualizador
                                     if (mensagemAjustada.Contains("[DataProximoExame]"))
                                         mensagemAjustada = mensagemAjustada.Replace("[DataProximoExame]", proxVencimentoExame);
 
-                                    var ret = zapi.zapi_EnviarTexto(numeroLimpo, mensagemAjustada, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                                    if (ret != null)
+                                    LunarChatAPI lunarChatAPI = new LunarChatAPI();
+                                    var ret2 = lunarChatAPI.SendMessageAsync(numeroLimpo, mensagemAjustada);
+                                    //var ret = zapi.zapi_EnviarTexto(numeroLimpo, mensagemAjustada, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                                    if (ret2 != null)
                                     {
                                         AtualizarFlagMensagemEnviada(int.Parse(idOrdemServico));
 
@@ -1033,6 +1051,7 @@ namespace LunarAtualizador
                 }
             }
         }
+        
         private void AtualizarFlagMensagemEnviada(int ordemServicoId)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionStringLocal))
@@ -1126,7 +1145,8 @@ namespace LunarAtualizador
 
         private void dispararMensagemPosVenda(string nomeCliente, string mensagem, Pessoa pessoa)
         {
-            Zapi zapi = new Zapi();
+            //Zapi zapi = new Zapi();
+            LunarChatAPI lunarChatAPI = new LunarChatAPI();
             if (pessoa.PessoaTelefone != null)
             {
                 if (ValidarNumeroTelefone(pessoa.PessoaTelefone.Ddd + pessoa.PessoaTelefone.Telefone))
@@ -1144,7 +1164,7 @@ namespace LunarAtualizador
                         mensagemAjustada = mensagemAjustada.Replace("[NomeCliente]", nomeCliente);
 
 
-                    var ret = zapi.zapi_EnviarTexto(numeroLimpo, mensagemAjustada, idWhats, tokenWhats);
+                    var ret = lunarChatAPI.SendMessageAsync(numeroLimpo, mensagemAjustada);
                     if (ret != null)
                     {
                         //AtualizarFlagMensagemEnviada(int.Parse(idOrdemServico));
@@ -1162,12 +1182,12 @@ namespace LunarAtualizador
             }
         }
 
-        private void timerExportImport_Tick(object sender, EventArgs e)
+        private async void timerExportImport_Tick(object sender, EventArgs e)
         {
             try
             {
                 // Obter o caminho do arquivo de exportação
-                string caminhoPastaExportacao = "exportBD";
+                string caminhoPastaExportacao = Path.GetTempPath();
                 string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
 
                 // Verificar se a pasta de exportação existe e criá-la se não existir
@@ -1179,11 +1199,13 @@ namespace LunarAtualizador
                 if (nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
                 {
                     // Exportar o banco de dados local para um arquivo
-                    BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
+                    await Task.Run(() => BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo));
 
                     // Importar o banco de dados do arquivo para o servidor remoto
                     if (!String.IsNullOrEmpty(bancoNuvem) && !String.IsNullOrEmpty(servidorNuvem) && !String.IsNullOrEmpty(usuarioNuvem))
-                        BancoDadosUtils.ImportarBancoDados(servidorNuvem, usuarioNuvem, senhaNuvem, bancoNuvem, caminhoArquivo);
+                    {
+                        await Task.Run(() => BancoDadosUtils.ImportarBancoDados(servidorNuvem, usuarioNuvem, senhaNuvem, bancoNuvem, caminhoArquivo));
+                    }
                 }
             }
             catch (Exception erro)
@@ -1192,25 +1214,83 @@ namespace LunarAtualizador
             }
         }
 
-        private void btnBackup_Click(object sender, EventArgs e)
-        {// Obter o caminho do arquivo de exportação
-            string caminhoPastaExportacao = "exportBD";
-            string caminhoArquivo = Path.Combine(caminhoPastaExportacao, $"{"lunar"}_backup.sql");
+        private async void btnBackup_Click(object sender, EventArgs e)
+        {
+            btnBackup.Enabled = false;
+            bool existeUser = await Task.Run(() => CheckIfUserExists("marcelo"));
+            if (!existeUser)
+                await Task.Run(() => CreateUser("marcelo", "mx123"));
 
-            // Verificar se a pasta de exportação existe e criá-la se não existir
-            if (!Directory.Exists(caminhoPastaExportacao))
-            {
-                Directory.CreateDirectory(caminhoPastaExportacao);
-            }
+            string tempPath = Path.GetTempPath();
+            string fileName = $"{"lunar"}_backup.sql";
+            string caminhoArquivo = Path.Combine(tempPath, fileName);
+
             if (nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase))
             {
-                // Exportar o banco de dados local para um arquivo
-                BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo);
+                await Task.Run(() => BancoDadosUtils.ExportDatabase("marcelo", "mx123", "lunar", caminhoArquivo));
 
-                // Importar o banco de dados do arquivo para o servidor remoto
                 if (!String.IsNullOrEmpty(bancoNuvem) && !String.IsNullOrEmpty(servidorNuvem) && !String.IsNullOrEmpty(usuarioNuvem))
-                    BancoDadosUtils.ImportarBancoDados(servidorNuvem, usuarioNuvem, senhaNuvem, bancoNuvem, caminhoArquivo);
+                {
+                    await Task.Run(() => BancoDadosUtils.ImportarBancoDados(servidorNuvem, usuarioNuvem, senhaNuvem, bancoNuvem, caminhoArquivo));
+                }
+            }
+            btnBackup.Enabled = true;
+        }
+    public bool CheckIfUserExists(string usuario)
+    {
+        string adminConnectionString = $"Server={"localhost"};Uid={"root"};";
+        using (MySqlConnection connection = new MySqlConnection(adminConnectionString))
+        {
+            try
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM mysql.user WHERE user = @username;";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@username", usuario);
+                    object result = command.ExecuteScalar();
+                    return Convert.ToInt32(result) > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao verificar a existência do usuário: " + ex.Message);
+                return false;
+            }
+        }
+    }
+        public bool CreateUser(string username, string password)
+        {
+            string adminConnectionString = $"Server={"localhost"};Uid={"root"};";
+            using (MySqlConnection connection = new MySqlConnection(adminConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string createUserQuery = $"CREATE USER '{username}'@'%' IDENTIFIED BY '{password}';";
+                    using (MySqlCommand command = new MySqlCommand(createUserQuery, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    string grantPrivilegesQuery = $"GRANT ALL PRIVILEGES ON *.* TO '{username}'@'%' WITH GRANT OPTION;";
+                    using (MySqlCommand command = new MySqlCommand(grantPrivilegesQuery, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    Console.WriteLine("Usuário criado com sucesso.");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Erro ao criar usuário: " + ex.Message);
+                    return false;
+                }
             }
         }
     }
 }
+

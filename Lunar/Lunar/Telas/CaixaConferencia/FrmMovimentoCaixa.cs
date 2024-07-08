@@ -2,22 +2,20 @@
 using Lunar.Telas.Cadastros.Bancos;
 using Lunar.Telas.Cadastros.Empresas;
 using Lunar.Telas.PesquisaPadrao;
+using Lunar.Telas.SPCs;
 using Lunar.Telas.UsuarioRegistro;
+using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
+using Lunar.Utils.SPCBrasilIntegracao;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using System.ServiceModel;
-using System.ServiceModel.Dispatcher;
-using System.ServiceModel.Description;
-using Lunar.Utils.SPCBrasilIntegracao;
-using Lunar.Telas.SPCs;
 using System.Threading.Tasks;
-using Lunar.Telas.Vendas.Adicionais;
+using System.Windows.Forms;
 
 namespace Lunar.Telas.CaixaConferencia
 {

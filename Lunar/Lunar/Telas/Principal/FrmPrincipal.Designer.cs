@@ -87,18 +87,19 @@
             this.btnServico = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuRelatorios = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnComissoes = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGerarInventario = new System.Windows.Forms.ToolStripMenuItem();
             this.saldoDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.etiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mensagensAgendadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnConsultaVendasRelatorio = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnComissoes = new System.Windows.Forms.ToolStripMenuItem();
-            this.etiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuVendas = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mensagensAgendadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.integraçõesEcommerceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -585,12 +586,13 @@
             this.UsuariosMenu,
             this.usuáriosPermissõesPorGrupoToolStripMenuItem,
             this.ParametrosMenu,
-            this.btnImportar});
+            this.btnImportar,
+            this.integraçõesEcommerceToolStripMenuItem});
             this.dropMenuUtilitarios.MenuItemHeight = 25;
             this.dropMenuUtilitarios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuUtilitarios.Name = "rjDropdownMenu1";
             this.dropMenuUtilitarios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 224);
+            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 268);
             // 
             // btnBalancoEstoque
             // 
@@ -850,7 +852,7 @@
             this.dropMenuRelatorios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuRelatorios.Name = "rjDropdownMenu1";
             this.dropMenuRelatorios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuRelatorios.Size = new System.Drawing.Size(238, 158);
+            this.dropMenuRelatorios.Size = new System.Drawing.Size(238, 136);
             // 
             // toolStripMenuItem1
             // 
@@ -858,6 +860,13 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(237, 22);
             this.toolStripMenuItem1.Text = "Caixa";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // btnComissoes
+            // 
+            this.btnComissoes.Name = "btnComissoes";
+            this.btnComissoes.Size = new System.Drawing.Size(237, 22);
+            this.btnComissoes.Text = "Comissões";
+            this.btnComissoes.Click += new System.EventHandler(this.btnComissoes_Click);
             // 
             // estoqueToolStripMenuItem
             // 
@@ -882,6 +891,20 @@
             this.saldoDeEstoqueToolStripMenuItem.Text = "Saldo de Estoque";
             this.saldoDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.saldoDeEstoqueToolStripMenuItem_Click);
             // 
+            // etiquetasToolStripMenuItem
+            // 
+            this.etiquetasToolStripMenuItem.Name = "etiquetasToolStripMenuItem";
+            this.etiquetasToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.etiquetasToolStripMenuItem.Text = "Etiquetas";
+            this.etiquetasToolStripMenuItem.Click += new System.EventHandler(this.etiquetasToolStripMenuItem_Click);
+            // 
+            // mensagensAgendadasToolStripMenuItem
+            // 
+            this.mensagensAgendadasToolStripMenuItem.Name = "mensagensAgendadasToolStripMenuItem";
+            this.mensagensAgendadasToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.mensagensAgendadasToolStripMenuItem.Text = "Mensagens Agendadas";
+            this.mensagensAgendadasToolStripMenuItem.Click += new System.EventHandler(this.mensagensAgendadasToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -896,20 +919,6 @@
             this.btnConsultaVendasRelatorio.Size = new System.Drawing.Size(194, 22);
             this.btnConsultaVendasRelatorio.Text = "Consulta Vendas";
             this.btnConsultaVendasRelatorio.Click += new System.EventHandler(this.btnConsultaVendasRelatorio_Click);
-            // 
-            // btnComissoes
-            // 
-            this.btnComissoes.Name = "btnComissoes";
-            this.btnComissoes.Size = new System.Drawing.Size(237, 22);
-            this.btnComissoes.Text = "Comissões";
-            this.btnComissoes.Click += new System.EventHandler(this.btnComissoes_Click);
-            // 
-            // etiquetasToolStripMenuItem
-            // 
-            this.etiquetasToolStripMenuItem.Name = "etiquetasToolStripMenuItem";
-            this.etiquetasToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.etiquetasToolStripMenuItem.Text = "Etiquetas";
-            this.etiquetasToolStripMenuItem.Click += new System.EventHandler(this.etiquetasToolStripMenuItem_Click);
             // 
             // dropMenuVendas
             // 
@@ -947,12 +956,12 @@
             this.transferênciaFilialToolStripMenuItem.Text = "Transferência Filial";
             this.transferênciaFilialToolStripMenuItem.Click += new System.EventHandler(this.transferênciaFilialToolStripMenuItem_Click);
             // 
-            // mensagensAgendadasToolStripMenuItem
+            // integraçõesEcommerceToolStripMenuItem
             // 
-            this.mensagensAgendadasToolStripMenuItem.Name = "mensagensAgendadasToolStripMenuItem";
-            this.mensagensAgendadasToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.mensagensAgendadasToolStripMenuItem.Text = "Mensagens Agendadas";
-            this.mensagensAgendadasToolStripMenuItem.Click += new System.EventHandler(this.mensagensAgendadasToolStripMenuItem_Click);
+            this.integraçõesEcommerceToolStripMenuItem.Name = "integraçõesEcommerceToolStripMenuItem";
+            this.integraçõesEcommerceToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
+            this.integraçõesEcommerceToolStripMenuItem.Text = "Integrações Ecommerce";
+            this.integraçõesEcommerceToolStripMenuItem.Click += new System.EventHandler(this.integraçõesEcommerceToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1059,5 +1068,6 @@
         private System.Windows.Forms.ToolStripMenuItem notaFiscalAgrupadaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuáriosPermissõesPorGrupoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mensagensAgendadasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem integraçõesEcommerceToolStripMenuItem;
     }
 }

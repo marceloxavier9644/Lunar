@@ -449,6 +449,8 @@
             this.txtTipoPintura = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnSalva = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancela = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnEtiqueta = new FontAwesome.Sharp.IconButton();
+            this.btnNovo = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsTelefone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Telefone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridEnderecoAdicional)).BeginInit();
@@ -7443,9 +7445,9 @@
             this.btnSalva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalva.ForeColor = System.Drawing.Color.White;
-            this.btnSalva.Location = new System.Drawing.Point(673, 588);
+            this.btnSalva.Location = new System.Drawing.Point(761, 588);
             this.btnSalva.Name = "btnSalva";
-            this.btnSalva.Size = new System.Drawing.Size(298, 45);
+            this.btnSalva.Size = new System.Drawing.Size(220, 45);
             this.btnSalva.TabIndex = 214;
             this.btnSalva.Text = "Salvar [F5]";
             this.btnSalva.TextColor = System.Drawing.Color.White;
@@ -7467,14 +7469,60 @@
             this.btnCancela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancela.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancela.Location = new System.Drawing.Point(369, 588);
+            this.btnCancela.Location = new System.Drawing.Point(535, 588);
             this.btnCancela.Name = "btnCancela";
-            this.btnCancela.Size = new System.Drawing.Size(298, 45);
+            this.btnCancela.Size = new System.Drawing.Size(220, 45);
             this.btnCancela.TabIndex = 215;
             this.btnCancela.TabStop = false;
             this.btnCancela.Text = "Cancelar";
             this.btnCancela.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancela.UseVisualStyleBackColor = false;
+            // 
+            // btnEtiqueta
+            // 
+            this.btnEtiqueta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEtiqueta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEtiqueta.FlatAppearance.BorderSize = 0;
+            this.btnEtiqueta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEtiqueta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEtiqueta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEtiqueta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEtiqueta.IconChar = FontAwesome.Sharp.IconChar.Tags;
+            this.btnEtiqueta.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnEtiqueta.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnEtiqueta.IconSize = 38;
+            this.btnEtiqueta.Location = new System.Drawing.Point(13, 599);
+            this.btnEtiqueta.Name = "btnEtiqueta";
+            this.btnEtiqueta.Size = new System.Drawing.Size(53, 34);
+            this.btnEtiqueta.TabIndex = 216;
+            this.btnEtiqueta.UseVisualStyleBackColor = true;
+            this.btnEtiqueta.Visible = false;
+            this.btnEtiqueta.Click += new System.EventHandler(this.btnEtiqueta_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNovo.BackColor = System.Drawing.Color.White;
+            this.btnNovo.BackgroundColor = System.Drawing.Color.White;
+            this.btnNovo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnNovo.BorderRadius = 8;
+            this.btnNovo.BorderSize = 2;
+            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNovo.FlatAppearance.BorderSize = 0;
+            this.btnNovo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnNovo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.ForeColor = System.Drawing.Color.Black;
+            this.btnNovo.Location = new System.Drawing.Point(309, 588);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(220, 45);
+            this.btnNovo.TabIndex = 217;
+            this.btnNovo.TabStop = false;
+            this.btnNovo.Text = "Novo Produto [F2]";
+            this.btnNovo.TextColor = System.Drawing.Color.Black;
+            this.btnNovo.UseVisualStyleBackColor = false;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // FrmProdutoCadastro
             // 
@@ -7482,6 +7530,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(993, 640);
+            this.Controls.Add(this.btnNovo);
+            this.Controls.Add(this.btnEtiqueta);
             this.Controls.Add(this.btnSalva);
             this.Controls.Add(this.btnCancela);
             this.Controls.Add(this.tabControlAdv2);
@@ -7966,5 +8016,7 @@
         private Syncfusion.WinForms.ListView.SfComboBox comboTipoProduto;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel98;
         private RJ_UI.Classes.RJTextBox txtMarkup;
+        private FontAwesome.Sharp.IconButton btnEtiqueta;
+        private RJ_UI.Classes.RJButton btnNovo;
     }
 }

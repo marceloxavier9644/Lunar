@@ -27,7 +27,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net472": {
@@ -50,6 +51,10 @@
         "net472": {
           "targetAlias": "net472",
           "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.15.0, )"
+            },
             "NHibernate": {
               "target": "Package",
               "version": "[5.3.10, )"
@@ -61,6 +66,10 @@
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.4, )"
+            },
+            "System.Net.WebSockets.Client": {
+              "target": "Package",
+              "version": "[4.3.2, )"
             },
             "ZXing.Net": {
               "target": "Package",
@@ -94,7 +103,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net48": {
@@ -116,7 +126,7 @@
           "dependencies": {
             "BarcodeLib": {
               "target": "Package",
-              "version": "[2.4.0, )"
+              "version": "[3.1.2, )"
             },
             "CircularProgressBar": {
               "target": "Package",
@@ -137,6 +147,10 @@
             "FontAwesome.Sharp": {
               "target": "Package",
               "version": "[6.1.1, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.15.0, )"
             },
             "JWT": {
               "target": "Package",
@@ -182,6 +196,12 @@
               "target": "Package",
               "version": "[5.3.10, )"
             },
+            "NuGet.CommandLine": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.10.0, )"
+            },
             "OpenAC.Net.Balanca": {
               "target": "Package",
               "version": "[1.5.0.1, )"
@@ -198,6 +218,10 @@
               "target": "Package",
               "version": "[0.34.2, )"
             },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[2.88.8, )"
+            },
             "Syncfusion.Tools.Windows": {
               "target": "Package",
               "version": "[19.4.0.38, )"
@@ -208,7 +232,7 @@
             },
             "System.Net.WebSockets.Client": {
               "target": "Package",
-              "version": "[4.3.0, )"
+              "version": "[4.3.2, )"
             },
             "Unimake.Unidanfe": {
               "target": "Package",
@@ -220,11 +244,7 @@
             },
             "ZXing.Net": {
               "target": "Package",
-              "version": "[0.16.8, )"
-            },
-            "boletofacilsdk": {
-              "target": "Package",
-              "version": "[1.0.8, )"
+              "version": "[0.16.9, )"
             },
             "iTextSharp": {
               "target": "Package",

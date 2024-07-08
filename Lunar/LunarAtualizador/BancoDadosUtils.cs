@@ -159,8 +159,10 @@ namespace LunarAtualizador
                     connection.Open();
 
                     string script = File.ReadAllText(caminhoArquivo);
-
-                    MySqlCommand command = new MySqlCommand(script, connection);
+                    MySqlCommand command = new MySqlCommand(script, connection)
+                    {
+                        CommandTimeout = 600 // 10 minutos
+                    };
                     command.ExecuteNonQuery();
 
                     logger.WriteLog("Banco de dados importado com sucesso para o servidor na nuvem.", "Logs");
@@ -173,8 +175,6 @@ namespace LunarAtualizador
                 Console.WriteLine("Erro ao importar banco de dados: " + ex.Message);
             }
         }
-
-
 
         //DUMP
         public static void ExportDatabase(string userName, string password, string databaseName, string outputPath)

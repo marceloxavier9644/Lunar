@@ -202,7 +202,9 @@ namespace Lunar.Telas.PermissoesUsuarios
             for (int i = 60; i <= 72; i++)
             {
                 string checkBoxName = "chk" + i;
-
+                string a = "";
+                if (i == 66)
+                    a = "";
                 // Use o método Controls.Find para encontrar o CheckBox com o nome específico.
                 CheckBox checkBox = tabControlAdv1.Controls.Find(checkBoxName, true).FirstOrDefault() as CheckBox;
 

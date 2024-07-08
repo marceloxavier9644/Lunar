@@ -91,6 +91,9 @@
             this.txtJuro = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtMulta = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabOrdemServico = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioTermicaCondicional = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioA4Condicional = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.autoLabel13 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel14 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaTipoObjeto = new FontAwesome.Sharp.IconButton();
@@ -98,8 +101,8 @@
             this.txtTipoObjeto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabWhatsapp = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.autoLabel57 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtIdWhatsapp = new System.Windows.Forms.TextBox();
             this.txtTokenWhatsapp = new System.Windows.Forms.TextBox();
+            this.txtUrlWhatsapp = new System.Windows.Forms.TextBox();
             this.btnVerificarConexaoWhats = new FontAwesome.Sharp.IconButton();
             this.btnDesconectarWhats = new FontAwesome.Sharp.IconButton();
             this.btnRestaurarSessaoWhats = new FontAwesome.Sharp.IconButton();
@@ -217,9 +220,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.radioTermicaCondicional = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
-            this.radioA4Condicional = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -236,6 +236,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkIntegracaoGalaxyPay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).BeginInit();
             this.tabOrdemServico.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioTermicaCondicional)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioA4Condicional)).BeginInit();
             this.tabWhatsapp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkEnvioAgradecimentoCompraWhats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEnvioAniversarioWhats)).BeginInit();
@@ -264,9 +267,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).BeginInit();
             this.tabDashboardsApp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioTermicaCondicional)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioA4Condicional)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -1280,6 +1280,42 @@
             this.tabOrdemServico.Text = "O.S/Vendas";
             this.tabOrdemServico.ThemesEnabled = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioTermicaCondicional);
+            this.groupBox3.Controls.Add(this.radioA4Condicional);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(16, 73);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(235, 91);
+            this.groupBox3.TabIndex = 208;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tipo Impressora Condicional";
+            // 
+            // radioTermicaCondicional
+            // 
+            this.radioTermicaCondicional.BeforeTouchSize = new System.Drawing.Size(137, 21);
+            this.radioTermicaCondicional.Checked = true;
+            this.radioTermicaCondicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioTermicaCondicional.Location = new System.Drawing.Point(11, 33);
+            this.radioTermicaCondicional.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioTermicaCondicional.Name = "radioTermicaCondicional";
+            this.radioTermicaCondicional.Size = new System.Drawing.Size(137, 21);
+            this.radioTermicaCondicional.TabIndex = 206;
+            this.radioTermicaCondicional.Text = " Térmica";
+            // 
+            // radioA4Condicional
+            // 
+            this.radioA4Condicional.BeforeTouchSize = new System.Drawing.Size(137, 21);
+            this.radioA4Condicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioA4Condicional.Location = new System.Drawing.Point(11, 60);
+            this.radioA4Condicional.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioA4Condicional.Name = "radioA4Condicional";
+            this.radioA4Condicional.Size = new System.Drawing.Size(137, 21);
+            this.radioA4Condicional.TabIndex = 207;
+            this.radioA4Condicional.TabStop = false;
+            this.radioA4Condicional.Text = " A4";
+            // 
             // autoLabel13
             // 
             this.autoLabel13.BackColor = System.Drawing.Color.Transparent;
@@ -1377,8 +1413,8 @@
             // tabWhatsapp
             // 
             this.tabWhatsapp.Controls.Add(this.autoLabel57);
-            this.tabWhatsapp.Controls.Add(this.txtIdWhatsapp);
             this.tabWhatsapp.Controls.Add(this.txtTokenWhatsapp);
+            this.tabWhatsapp.Controls.Add(this.txtUrlWhatsapp);
             this.tabWhatsapp.Controls.Add(this.btnVerificarConexaoWhats);
             this.tabWhatsapp.Controls.Add(this.btnDesconectarWhats);
             this.tabWhatsapp.Controls.Add(this.btnRestaurarSessaoWhats);
@@ -1423,21 +1459,21 @@
             this.autoLabel57.TabIndex = 236;
             this.autoLabel57.Text = "Lunar Chat - Uma infinidade de funções";
             // 
-            // txtIdWhatsapp
-            // 
-            this.txtIdWhatsapp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdWhatsapp.Location = new System.Drawing.Point(660, 38);
-            this.txtIdWhatsapp.Name = "txtIdWhatsapp";
-            this.txtIdWhatsapp.Size = new System.Drawing.Size(163, 29);
-            this.txtIdWhatsapp.TabIndex = 235;
-            // 
             // txtTokenWhatsapp
             // 
             this.txtTokenWhatsapp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTokenWhatsapp.Location = new System.Drawing.Point(291, 38);
+            this.txtTokenWhatsapp.Location = new System.Drawing.Point(606, 38);
             this.txtTokenWhatsapp.Name = "txtTokenWhatsapp";
-            this.txtTokenWhatsapp.Size = new System.Drawing.Size(352, 29);
-            this.txtTokenWhatsapp.TabIndex = 234;
+            this.txtTokenWhatsapp.Size = new System.Drawing.Size(217, 29);
+            this.txtTokenWhatsapp.TabIndex = 235;
+            // 
+            // txtUrlWhatsapp
+            // 
+            this.txtUrlWhatsapp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUrlWhatsapp.Location = new System.Drawing.Point(291, 38);
+            this.txtUrlWhatsapp.Name = "txtUrlWhatsapp";
+            this.txtUrlWhatsapp.Size = new System.Drawing.Size(309, 29);
+            this.txtUrlWhatsapp.TabIndex = 234;
             // 
             // btnVerificarConexaoWhats
             // 
@@ -1543,11 +1579,11 @@
             this.autoLabel18.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel18.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel18.Location = new System.Drawing.Point(660, 17);
+            this.autoLabel18.Location = new System.Drawing.Point(606, 17);
             this.autoLabel18.Name = "autoLabel18";
-            this.autoLabel18.Size = new System.Drawing.Size(87, 16);
+            this.autoLabel18.Size = new System.Drawing.Size(164, 16);
             this.autoLabel18.TabIndex = 227;
-            this.autoLabel18.Text = "ID Integração";
+            this.autoLabel18.Text = "Token (Solicitar Revenda)";
             // 
             // autoLabel17
             // 
@@ -1557,9 +1593,9 @@
             this.autoLabel17.ForeColor = System.Drawing.Color.Black;
             this.autoLabel17.Location = new System.Drawing.Point(291, 17);
             this.autoLabel17.Name = "autoLabel17";
-            this.autoLabel17.Size = new System.Drawing.Size(201, 16);
+            this.autoLabel17.Size = new System.Drawing.Size(24, 16);
             this.autoLabel17.TabIndex = 225;
-            this.autoLabel17.Text = "UrlWebhook (Solicitar Revenda)";
+            this.autoLabel17.Text = "Url";
             // 
             // label3
             // 
@@ -3166,42 +3202,6 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // radioTermicaCondicional
-            // 
-            this.radioTermicaCondicional.BeforeTouchSize = new System.Drawing.Size(137, 21);
-            this.radioTermicaCondicional.Checked = true;
-            this.radioTermicaCondicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioTermicaCondicional.Location = new System.Drawing.Point(11, 33);
-            this.radioTermicaCondicional.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
-            this.radioTermicaCondicional.Name = "radioTermicaCondicional";
-            this.radioTermicaCondicional.Size = new System.Drawing.Size(137, 21);
-            this.radioTermicaCondicional.TabIndex = 206;
-            this.radioTermicaCondicional.Text = " Térmica";
-            // 
-            // radioA4Condicional
-            // 
-            this.radioA4Condicional.BeforeTouchSize = new System.Drawing.Size(137, 21);
-            this.radioA4Condicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioA4Condicional.Location = new System.Drawing.Point(11, 60);
-            this.radioA4Condicional.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
-            this.radioA4Condicional.Name = "radioA4Condicional";
-            this.radioA4Condicional.Size = new System.Drawing.Size(137, 21);
-            this.radioA4Condicional.TabIndex = 207;
-            this.radioA4Condicional.TabStop = false;
-            this.radioA4Condicional.Text = " A4";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.radioTermicaCondicional);
-            this.groupBox3.Controls.Add(this.radioA4Condicional);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(16, 73);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(235, 91);
-            this.groupBox3.TabIndex = 208;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tipo Impressora Condicional";
-            // 
             // FrmParametroSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3240,6 +3240,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).EndInit();
             this.tabOrdemServico.ResumeLayout(false);
             this.tabOrdemServico.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radioTermicaCondicional)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioA4Condicional)).EndInit();
             this.tabWhatsapp.ResumeLayout(false);
             this.tabWhatsapp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkEnvioAgradecimentoCompraWhats)).EndInit();
@@ -3274,9 +3277,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).EndInit();
             this.tabDashboardsApp.ResumeLayout(false);
             this.tabDashboardsApp.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioTermicaCondicional)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioA4Condicional)).EndInit();
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3467,8 +3467,8 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel54;
         private System.Windows.Forms.TextBox txtServidorNuvem;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel53;
+        private System.Windows.Forms.TextBox txtUrlWhatsapp;
         private System.Windows.Forms.TextBox txtTokenWhatsapp;
-        private System.Windows.Forms.TextBox txtIdWhatsapp;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel57;
         private System.Windows.Forms.GroupBox groupBox3;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioTermicaCondicional;

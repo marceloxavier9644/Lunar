@@ -80,7 +80,7 @@ namespace Lunar.Telas.Compras.Manifestos
 
                         var nfe = Genericos.LoadFromXMLString<TNfeProc>(manifesto.xmls[i].xml);
                         Genericos genericos = new Genericos();
-                        genericos.gravarXMLNoBanco(nfe, manifesto.xmls[i].nsu, "E", 0);
+                        genericos.gravarXMLNoBanco(nfe, manifesto.xmls[i].nsu, "E", 0, true);
                         Sessao.parametroSistema.UltNsu = manifesto.ultNSU.ToString();
                         Controller.getInstance().salvar(Sessao.parametroSistema);
                     }
@@ -681,7 +681,7 @@ namespace Lunar.Telas.Compras.Manifestos
                             if (nfXML.NFe.infNFe.dest.Item.Equals(Sessao.empresaFilialLogada.Cnpj))
                             {
                                 //SALVA XML NO BANCO E INICIA LANÇAMENTO
-                                genericos.gravarXMLNoBanco(nfXML, 0, "E", 0);
+                                genericos.gravarXMLNoBanco(nfXML, 0, "E", 0, true);
                                 nfe = nfeController.selecionarNotaPorChave(GenericaDesktop.RemoveCaracteres(nfXML.protNFe.infProt.chNFe.Trim()));
                                 FrmLancarNotaFiscalCompra frmLancarNota = new FrmLancarNotaFiscalCompra(nfXML, nfe);
                                 frmLancarNota.ShowDialog();

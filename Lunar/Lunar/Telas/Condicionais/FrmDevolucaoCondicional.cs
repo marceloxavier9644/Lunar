@@ -6,12 +6,15 @@ using LunarBase.ClassesBO;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using DataRow = System.Data.DataRow;
 using Exception = System.Exception;
 
 namespace Lunar.Telas.Condicionais
@@ -36,9 +39,99 @@ namespace Lunar.Telas.Condicionais
             gridProdutos.DataSource = dsProdutos;
             retornaProdutosCondicional();
             retornaProdutosDevolvidos();
+            //AdjustPanelSizes();
+        }
+        private void ScrollGridDevolucaoToBottom()
+        {
+            if (gridDevolucao.RowCount > 0)
+            {
+                gridDevolucao.TableControl.ScrollRows.ScrollInView(gridDevolucao.RowCount - 1);
+            }
         }
 
         private void retornaProdutosCondicional()
+        {
+            lblLoading.Visible = true;
+            this.Refresh(); // Força a atualização da interface para exibir o label
+            try
+            {
+                quantidadeProdutosCondicional = 0;
+            IList<CondicionalProduto> listaProdutosCondicional = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
+
+            if (listaProdutosCondicional.Count > 0)
+            {
+                dsProdutos.Tables[0].Clear();
+                IList<SobraProduto> listaSobra = new List<SobraProduto>();
+
+                foreach (CondicionalProduto condProduto in listaProdutosCondicional)
+                {
+                    quantidadeProdutosCondicional += condProduto.Quantidade;
+                    CondicionalDevolucaoDAO condDAO = new CondicionalDevolucaoDAO();
+                    double quantidadeDevolvida = condDAO.calcularQuantidadeProdutoDevolvido(condProduto.Condicional.Id, condProduto.Produto.Id);
+                    double saldo = condProduto.Quantidade >= quantidadeDevolvida ? condProduto.Quantidade - quantidadeDevolvida : 0;
+
+                    // Verifique o estado do checkbox e filtre os produtos conforme necessário
+                    if (chkSaldoPositivo.Checked && saldo <= 0)
+                    {
+                        continue;
+                    }
+
+                    DataRow row = dsProdutos.Tables[0].NewRow();
+                    row.SetField("Id", condProduto.Id.ToString());
+                    row.SetField("Codigo", condProduto.Produto.Id.ToString());
+                    row.SetField("Descricao", condProduto.Produto.Descricao);
+                    row.SetField("ValorUnitario", condProduto.ValorUnitario.ToString("0.00"));
+                    row.SetField("Quantidade", condProduto.Quantidade);
+                    row.SetField("QuantidadeDevolvida", condProduto.Quantidade >= quantidadeDevolvida ? quantidadeDevolvida : condProduto.Quantidade);
+                    row.SetField("Saldo", saldo);
+                    row.SetField("ValorTotal", condProduto.ValorTotal.ToString("0.00"));
+                    row.SetField("Desconto", condProduto.Desconto.ToString("0.00"));
+                    row.SetField("Acrescimo", condProduto.Acrescimo.ToString("0.00"));
+
+                    dsProdutos.Tables[0].Rows.Add(row);
+
+                    if (condProduto.Quantidade < quantidadeDevolvida)
+                    {
+                        listaSobra.Add(new SobraProduto
+                        {
+                            Produto = condProduto.Produto,
+                            QuantidadeSobra = quantidadeDevolvida - condProduto.Quantidade
+                        });
+                    }
+                }
+
+                if (listaSobra.Count > 0)
+                {
+                    foreach (SobraProduto sobraProduto in listaSobra)
+                    {
+                        foreach (var record in gridProdutos.View.Records)
+                        {
+                            var dataRowView = record.Data as DataRowView;
+                            if (dataRowView != null)
+                            {
+                                int id = int.Parse(dataRowView.Row["Id"].ToString());
+                                double sald = double.Parse(dataRowView.Row["Saldo"].ToString());
+                                CondicionalProduto condicionalProduto = new CondicionalProduto { Id = id };
+                                condicionalProduto = (CondicionalProduto)Controller.getInstance().selecionar(condicionalProduto);
+                            }
+                        }
+                    }
+                }
+
+                gridProdutos.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+                gridProdutos.Columns["Descricao"].AutoSizeColumnsMode = AutoSizeColumnsMode.AllCellsWithLastColumnFill;
+                gridProdutos.AutoSizeController.Refresh();
+
+                ScrollGridDevolucaoToBottom();
+                }
+            }
+            finally
+            {
+                lblLoading.Visible = false;
+            }
+        }
+
+        private void retornaProdutosCondicional_OLD()
         {
             quantidadeProdutosCondicional = 0;
             IList<CondicionalProduto> listaProdutosCondicional = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
@@ -92,11 +185,6 @@ namespace Lunar.Telas.Condicionais
                                 condicionalproduto.Id = int.Parse(dataRowView.Row["Id"].ToString());
                                 double sald = double.Parse(dataRowView.Row["Saldo"].ToString());
                                 condicionalproduto = (CondicionalProduto)Controller.getInstance().selecionar(condicionalproduto);
-
-                                //if (condicionalproduto.Produto.Id == sobraProduto.Produto.Id && (sald > 0))
-                                //{
-
-                                //}
                             }
                         }
                     }
@@ -118,7 +206,35 @@ namespace Lunar.Telas.Condicionais
         {
             this.Close();
         }
+        private void AdjustPanelSizes()
+        {
+            int centralWidth = panel1.ClientSize.Width;
+            int centralHeight = panel1.ClientSize.Height;
 
+            // Define a largura de cada painel para metade da largura do painel central
+            int panelWidth = centralWidth / 2;
+
+            // Define a altura dos painéis para a altura total do painel central
+            int panelHeight = centralHeight;
+
+            // Ajusta o tamanho e a posição do painel esquerdo
+            panel2.Size = new System.Drawing.Size(panelWidth, panelHeight);
+            panel2.Location = new System.Drawing.Point(0, 0);
+
+            // Ajusta o tamanho e a posição do painel direito
+            panel3.Size = new System.Drawing.Size(panelWidth, panelHeight);
+            panel3.Location = new System.Drawing.Point(panelWidth, 0);
+
+
+      
+        }
+        public static bool eNumero(string input)
+        {
+            if (input != "")
+                return input.Length < 6 && input.All(char.IsDigit);
+            else
+                return false;
+        }
         private void PesquisarProduto(string valor)
         {
             IList<CondicionalProduto> listaProdutos = new List<CondicionalProduto>();
@@ -130,7 +246,10 @@ namespace Lunar.Telas.Condicionais
             if (valor.Contains("*"))
                 valor = valor.Substring(valor.IndexOf("*") + 1);
 
-            listaProdutos = condicionalProdutoController.selecionarProdutosCondicionalComVariosFiltros(valor, condicional.Id);
+            if(eNumero(valor))
+                listaProdutos = condicionalProdutoController.selecionarProdutosCondicionalPorIdProduto(valor, condicional.Id);
+            else
+                listaProdutos = condicionalProdutoController.selecionarProdutosCondicionalComVariosFiltros(valor, condicional.Id);
             if (listaProdutos.Count == 1)
             {
                 foreach (CondicionalProduto prod in listaProdutos)
@@ -142,6 +261,8 @@ namespace Lunar.Telas.Condicionais
                     if (valorAux.Contains("*"))
                         txtQuantidadeItem.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
                     if (condicionalproduto.Produto.Ean.Equals(valor.Trim()))
+                        inserirItem(this.condicionalproduto);
+                    else if (condicionalproduto.Produto.Id.ToString().Equals(valor))
                         inserirItem(this.condicionalproduto);
                     else
                     {
@@ -444,23 +565,69 @@ namespace Lunar.Telas.Condicionais
                 Controller.getInstance().salvar(condicional);
                 GenericaDesktop.ShowAlerta("Condicional totalmente devolvida e encerrada!");
             }
-
+            else
+            {
+                GenericaDesktop.ShowInfo("Registro salvo com sucesso!");
+                this.Close();
+            }
         }
 
         private void gridDevolucao_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
         {
             if (e.RowIndex % 2 == 0)
-                e.Style.BackColor = Color.WhiteSmoke;
+                e.Style.BackColor = Color.FromArgb(255, 223, 223);
             else
-                e.Style.BackColor = Color.White;
+                e.Style.BackColor = Color.FromArgb(255, 235, 235);
         }
 
         private void gridProdutos_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
         {
             if (e.RowIndex % 2 == 0)
-                e.Style.BackColor = Color.WhiteSmoke;
+                e.Style.BackColor = Color.FromArgb(202, 255, 202);
             else
-                e.Style.BackColor = Color.White;
+                e.Style.BackColor = Color.FromArgb(235, 255, 235);
+        }
+
+        private void chkSaldoPositivo_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                retornaProdutosCondicional();
+                if(chkSaldoPositivo.Checked == false)
+                {
+                    autoLabel4.Text = "Todos os Produtos da Condicional";
+                }
+                else
+                    autoLabel4.Text = "Produtos em Aberto";
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmDevolucaoCondicional_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+                case Keys.F5:
+                    btnGravar.PerformClick();
+                    break;
+            }
+        }
+
+        private void FrmDevolucaoCondicional_Resize(object sender, EventArgs e)
+        {
+            AdjustPanelSizes();
         }
     }
 }

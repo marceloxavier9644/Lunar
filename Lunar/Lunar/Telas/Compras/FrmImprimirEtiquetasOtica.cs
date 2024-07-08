@@ -1,12 +1,15 @@
-﻿using LunarBase.Classes;
+﻿using BarcodeStandard;
+using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.Reporting.WinForms;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Type = BarcodeStandard.Type;
 
 namespace Lunar.Telas.Compras
 {
@@ -38,15 +41,14 @@ namespace Lunar.Telas.Compras
                 int idx = 0;
                 foreach (Produto produto in listaProdutos)
                 {
-                    
                     if (!String.IsNullOrEmpty(produto.Ean))
                     {
-                        using (var bc = new BarcodeLib.Barcode())
+                        using (var bc = new Barcode())
                         {
                             for (int i = 0; i < produto.Estoque; i++)
                             {
                                 idx++;
-                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, produto.Ean)), idx);
+                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), produto.Descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArraySk(bc.Encode(Type.Code128, produto.Ean)), idx);
                             }
                         }
                     }
@@ -59,7 +61,7 @@ namespace Lunar.Telas.Compras
                         {
                             gerarCodigoBarras();
                         }
-                        using (var bc = new BarcodeLib.Barcode())
+                        using (var bc = new Barcode())
                         {
                             for (int i = 0; i < produto.Estoque; i++)
                             {
@@ -67,7 +69,7 @@ namespace Lunar.Telas.Compras
                                 string descricao = produto.Descricao;
                                 if (produto.Descricao.Length > 35)
                                     descricao = produto.Descricao.Substring(0, 35);
-                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArray(bc.Encode(BarcodeLib.TYPE.CODE128, prod.Ean)), idx);
+                                dsEtiquetaOtica.Etiqueta.AddEtiquetaRow(produto.Id.ToString(), descricao, produto.ValorVenda, produto.Ean, produto.Referencia, ImageToByteArraySk(bc.Encode(Type.Code128, prod.Ean)), idx);
                             }
                         }
                     }
@@ -79,7 +81,19 @@ namespace Lunar.Telas.Compras
         {
             gerarEtiquetas();
         }
+        public static byte[] ImageToByteArraySk(SKImage image)
+        {
+            using (var ms = new MemoryStream())
+            {
+                // Obter informações sobre a imagem
+                SKImageInfo info = new SKImageInfo(image.Width, image.Height);
 
+                // Codificar a imagem para o formato PNG e salvar no MemoryStream
+                image.Encode(SKEncodedImageFormat.Png, 100).SaveTo(ms);
+
+                return ms.ToArray();
+            }
+        }
         public static byte[] ImageToByteArray(System.Drawing.Image image)
         {
             using (var ms = new MemoryStream())
@@ -90,6 +104,8 @@ namespace Lunar.Telas.Compras
                 return ms.ToArray();
             }
         }
+
+  
 
         private string gerarCodigoBarras()
         {

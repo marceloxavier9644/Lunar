@@ -1083,7 +1083,7 @@ namespace Lunar.Utils.OrganizacaoNF
         }
         else
         {
-            throw new Exception("O Produto " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao + " > Gerou falha ao gerar ICMS, consulte o suporte ou contabilidade para conferir os campos preenchidos de icms, confira o CSOSN correto!");
+            throw new Exception("O Produto " + nfeProduto.Produto.Id.ToString() + " - " + nfeProduto.Produto.Descricao + " > Gerou falha ao gerar ICMS, consulte o suporte ou contabilidade para conferir os campos preenchidos de icms, confira o CSOSN e cfop!");
         }
 
         if (nfeProduto.ValorIpi > 0)

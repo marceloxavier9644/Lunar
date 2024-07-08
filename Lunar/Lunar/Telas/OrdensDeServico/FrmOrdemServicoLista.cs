@@ -1303,7 +1303,7 @@ namespace Lunar.Telas.OrdensDeServico
                 {
                     Genericos genericosNF = new Genericos();
                     var nfe1 = Genericos.LoadFromXMLString<TNfeProc>(nota.nfeProc.xml);
-                    genericosNF.gravarXMLNoBanco(nfe1, 0, "S", this.nfe.Id);
+                    genericosNF.gravarXMLNoBanco(nfe1, 0, "S", this.nfe.Id, false);
 
                     //string origem = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
                     //string pastaDropbox = @"XML\NFCe\" + nfe.DataEmissao.Year + " - " + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\";
@@ -1321,7 +1321,7 @@ namespace Lunar.Telas.OrdensDeServico
                 {
                     Genericos genericosNF = new Genericos();
                     var notaLida55 = Genericos.LoadFromXMLString<TNfeProc>(nota55.xml);
-                    genericosNF.gravarXMLNoBanco(notaLida55, 0, "S", this.nfe.Id);
+                    genericosNF.gravarXMLNoBanco(notaLida55, 0, "S", this.nfe.Id, false);
 
                     string caminhoArquivo = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
                     string pastaArquivo = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas";
@@ -2405,16 +2405,8 @@ namespace Lunar.Telas.OrdensDeServico
             if (!String.IsNullOrEmpty(caminhoPDF))
             {
                 var client = new EnviarMensagemWhatsapp();
-                string file = await client.EnviarArquivoFtp(caminhoPDF);
-                var message = new WebhookMessage
-                {
-                    Number = numero,
-                    Name = nome,
-                    Email = ordem.Cliente.Email,
-                    Message = mensagem + " \n\n",
-                    File = file+"\n\n"+ "Equipe " + Sessao.empresaFilialLogada.NomeFantasia
-                };
-                //await client.SendMessageAsync(message);
+                await client.SendMessageAsync(numero, mensagem);
+                await client.SendMediaMessageAsync(numero, caminhoPDF); 
             }
         }
 
@@ -2423,15 +2415,7 @@ namespace Lunar.Telas.OrdensDeServico
             if (grid.SelectedIndex >= 0)
             {
                 var client = new EnviarMensagemWhatsapp();
-                var message = new WebhookMessage
-                {
-                    Number = numero,
-                    Name = nome,
-                    Email = ordemServico.Cliente.Email,
-                    Message = mensagem + "\n\nO.S: " + ordem.Id.ToString(),
-                    File = ""
-                };
-                //await client.SendMessageAsync(message);
+                await client.SendMessageAsync(numero, mensagem);
             }
         }
 

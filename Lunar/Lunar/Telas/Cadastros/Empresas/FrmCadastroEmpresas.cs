@@ -58,7 +58,7 @@ namespace Lunar.Telas.Cadastros.Empresas
             regimeTributario = (RegimeEmpresa)Controller.getInstance().selecionar(regimeTributario);
             txtRegimeTributario.Texts = regimeTributario.Descricao;
             txtCodRegimeTributario.Texts = regimeTributario.Id.ToString();
-            obterVencimentoCertificado();
+            //obterVencimentoCertificado();
         }
         public FrmCadastroEmpresas(EmpresaFilial empresaFilial)
         {
@@ -69,7 +69,7 @@ namespace Lunar.Telas.Cadastros.Empresas
             this.FormBorderStyle = FormBorderStyle.None;
             txtCNPJ.Focus();
             txtCNPJ.Select();
-            obterVencimentoCertificado();
+            //obterVencimentoCertificado();
         }
         private void txtCNPJ_Leave(object sender, EventArgs e)
         {
@@ -110,7 +110,8 @@ namespace Lunar.Telas.Cadastros.Empresas
             txtNomeResponsavel.Texts = empresaFilial.Empresa.Responsavel;
             txtCPFResponsavel.Texts = empresaFilial.Empresa.CpfResponsavel;
             txtCargoResponsavel.Texts = empresaFilial.Empresa.FuncaoResponsavel;
-            txtSenhaCertificado.Texts = GenericaDesktop.Descriptografa(empresaFilial.SenhaCertificado);
+            if(!String.IsNullOrEmpty(empresaFilial.SenhaCertificado))
+                txtSenhaCertificado.Texts = GenericaDesktop.Descriptografa(empresaFilial.SenhaCertificado);
             if (empresaFilial.Otica == true)
                 chkOtica.Checked = true;
             else

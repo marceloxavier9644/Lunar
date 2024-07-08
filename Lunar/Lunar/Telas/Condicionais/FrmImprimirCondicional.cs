@@ -41,13 +41,17 @@ namespace Lunar.Telas.Condicionais
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.Condicionais.ReportCondicional01.rdlc";
             }
             this.reportViewer1.LocalReport.EnableExternalImages = true;
+            this.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
+            this.reportViewer1.ZoomMode = ZoomMode.Percent;
+            this.reportViewer1.ZoomPercent = 100;
+
             Microsoft.Reporting.WinForms.ReportDataSource dsVendaX = new Microsoft.Reporting.WinForms.ReportDataSource();
             dsVendaX.Name = "dsCondicional";
             dsVendaX.Value = this.bindingSource1;
             this.reportViewer1.LocalReport.DataSources.Add(dsVendaX);
 
             this.reportViewer1.LocalReport.DisplayName = "Condicional " + condicional.Id;
-
+            string foneCliente = "";
             String cnpjFormatado = "";
             String cpfFormatado = "";
             String enderecoCliente = "";
@@ -122,7 +126,6 @@ namespace Lunar.Telas.Condicionais
                     numeroEndereco + " " + condicional.Cliente.EnderecoPrincipal.Complemento + " " + bairroCliente;
                 }
 
-                string foneCliente = "";
                 if (condicional.Cliente.PessoaTelefone != null)
                 {
                     foneCliente = GenericaDesktop.RemoveCaracteres(condicional.Cliente.PessoaTelefone.Ddd + condicional.Cliente.PessoaTelefone.Telefone);
@@ -150,29 +153,84 @@ namespace Lunar.Telas.Condicionais
             string vendedor = "";
             if (condicional.Vendedor != null)
                 vendedor = "Vendedor(a): " + condicional.Vendedor.RazaoSocial.Substring(0, condicional.Vendedor.RazaoSocial.IndexOf(" "));
-            ReportParameter[] p = new ReportParameter[9];
+            ReportParameter[] p = new ReportParameter[10];
             p[0] = (new ReportParameter("Empresa", condicional.Filial.NomeFantasia));
             p[1] = (new ReportParameter("CNPJ", cnpjFormatado));
             p[2] = (new ReportParameter("FoneEmpresa", foneEmp));
             p[3] = (new ReportParameter("EnderecoEmpresa", logradouroEmpresa + " " + bairroEmpresa));
-            p[4] = (new ReportParameter("Cliente", nomeCliente + " - " + cpfFormatado));
+            p[4] = (new ReportParameter("Cliente", nomeCliente + " - " + cpfFormatado + " - " + foneCliente));
             p[5] = (new ReportParameter("EnderecoCliente", enderecoCliente));
             p[6] = (new ReportParameter("Vendedor", vendedor));
             p[7] = (new ReportParameter("Id", condicional.Id.ToString()));
             p[8] = (new ReportParameter("Data", condicional.Data.ToShortDateString() + " " + condicional.Data.ToShortTimeString()));
+            p[9] = (new ReportParameter("logo", Sessao.parametroSistema.Logo));
             reportViewer1.LocalReport.SetParameters(p);
 
             IList<CondicionalProduto> listaProdutos = new List<CondicionalProduto>();
             CondicionalProdutoController condicionalProdutoController = new CondicionalProdutoController();
             listaProdutos = condicionalProdutoController.selecionarProdutosPorCondicional(condicional.Id);
+
+            CondicionalDevolucaoController condicionalDevolucaoController = new CondicionalDevolucaoController(); 
+            IList<CondicionalDevolucao> listaDevolucoes = condicionalDevolucaoController.selecionarProdutosDevolvidosPorCondicional(condicional.Id);
+
+            // Dicionário para armazenar a quantidade total devolvida por produto
+            Dictionary<string, double> devolucoesPorProduto = new Dictionary<string, double>();
+
+            // Processando devoluções para criar o dicionário
+            foreach (CondicionalDevolucao devolucao in listaDevolucoes)
+            {
+                string produtoId = devolucao.Produto.Id.ToString(); // Assumindo que CondicionalDevolucao tem uma propriedade ProdutoId
+                if (devolucoesPorProduto.ContainsKey(produtoId))
+                {
+                    devolucoesPorProduto[produtoId] += devolucao.Quantidade;
+                }
+                else
+                {
+                    devolucoesPorProduto[produtoId] = devolucao.Quantidade;
+                }
+            }
+
+            // Lista para armazenar produtos em aberto
+            IList<CondicionalProduto> listaProdutosEmAberto = new List<CondicionalProduto>();
+
+            // Calculando produtos em aberto
             foreach (CondicionalProduto condicionalProduto in listaProdutos)
+            {
+                string produtoId = condicionalProduto.Produto.Id.ToString();
+                double quantidadeDevolvida = devolucoesPorProduto.ContainsKey(produtoId) ? devolucoesPorProduto[produtoId] : 0;
+                double quantidadeEmAberto = condicionalProduto.Quantidade - quantidadeDevolvida;
+
+                if (quantidadeEmAberto > 0)
+                {
+                    // Criando uma nova instância do produto com a quantidade atualizada
+                    CondicionalProduto produtoEmAberto = new CondicionalProduto
+                    {
+                        Id = condicionalProduto.Id,
+                        Produto = condicionalProduto.Produto,
+                        ValorUnitario = condicionalProduto.ValorUnitario,
+                        ValorTotal = condicionalProduto.ValorUnitario * decimal.Parse(quantidadeEmAberto.ToString()),
+                        Quantidade = quantidadeEmAberto
+                    };
+
+                    listaProdutosEmAberto.Add(produtoEmAberto);
+                }
+            }
+
+            // Processando a lista de produtos em aberto para adicionar ao dataset
+            foreach (CondicionalProduto condicionalProduto in listaProdutosEmAberto)
             {
                 string descricaoAbreviada = condicionalProduto.Produto.Descricao;
                 if (descricaoAbreviada.Length > 33)
                     descricaoAbreviada = descricaoAbreviada.Substring(0, 33);
-                dsCondicional.Condicional.AddCondicionalRow(condicional.Id, condicional.Cliente.RazaoSocial, 
-                    condicional.Filial.RazaoSocial, condicionalProduto.Id.ToString() + condicionalProduto.Produto.IdComplementar, 
-                    condicionalProduto.ValorUnitario, condicionalProduto.ValorTotal, descricaoAbreviada, 
+
+                dsCondicional.Condicional.AddCondicionalRow(
+                    condicional.Id,
+                    condicional.Cliente.RazaoSocial,
+                    condicional.Filial.RazaoSocial,
+                    condicionalProduto.Produto.Id.ToString(),
+                    condicionalProduto.ValorUnitario,
+                    condicionalProduto.ValorTotal,
+                    descricaoAbreviada,
                     condicionalProduto.Quantidade);
             }
             this.reportViewer1.RefreshReport();

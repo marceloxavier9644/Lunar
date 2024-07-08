@@ -701,7 +701,7 @@ namespace Lunar.Telas.Fiscal.NFeSelecaoItens
             try
             {
                 corrigirAliquotas();
-                decimal valorCalc = decimal.Parse(txtBaseCalcICMSST.Texts) * decimal.Parse(txtPercentualICMSST.Texts) / 100 - decimal.Parse(txtValorICMS.Texts);
+                decimal valorCalc = decimal.Parse(txtBaseCalcICMSST.Texts) * decimal.Parse(txtPercentualICMSST.Texts) / 100;
                 txtValorICMSST.Texts = valorCalc.ToString("N2");
             }
             catch

@@ -385,8 +385,8 @@ namespace Lunar.Telas.OrdensDeServico
 
         private string SalvarPDFEmTemp(byte[] bytes)
         {
-            // Salvar o PDF em um arquivo temporário
-            string caminhoArquivoTemporario = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".pdf");
+            // Salvar o PDF em um arquivo temporáriodfsd
+            string caminhoArquivoTemporario = Path.Combine(Path.GetTempPath(), "OS" + ordemServico.Id.ToString() + ".pdf");
             File.WriteAllBytes(caminhoArquivoTemporario, bytes);
 
             return caminhoArquivoTemporario;

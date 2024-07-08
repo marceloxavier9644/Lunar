@@ -1880,7 +1880,7 @@ namespace Lunar.Telas.Fiscal
                 string es = "S";
                 if (radioEntrada.Checked == true)
                     es = "E";
-                genericosNF.gravarXMLNoBanco(notaLida55, 0, es, this.nfe.Id);
+                genericosNF.gravarXMLNoBanco(notaLida55, 0, es, this.nfe.Id, false);
             }          
         }
 

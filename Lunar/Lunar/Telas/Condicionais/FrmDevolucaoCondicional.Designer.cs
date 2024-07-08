@@ -92,6 +92,13 @@
             this.txtNumeroCondicional = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCliente = new Lunar.RJ_UI.Classes.RJTextBox();
             this.lblInformativo = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.chkSaldoPositivo = new System.Windows.Forms.CheckBox();
+            this.lblLoading = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutos)).BeginInit();
@@ -99,6 +106,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridDevolucao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutoDevolucao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -115,11 +127,11 @@
             // autoLabel25
             // 
             this.autoLabel25.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel25.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel25.ForeColor = System.Drawing.Color.White;
             this.autoLabel25.Location = new System.Drawing.Point(5, 3);
             this.autoLabel25.Name = "autoLabel25";
-            this.autoLabel25.Size = new System.Drawing.Size(286, 35);
+            this.autoLabel25.Size = new System.Drawing.Size(263, 25);
             this.autoLabel25.TabIndex = 199;
             this.autoLabel25.Text = "Devolução de Condicional";
             // 
@@ -148,11 +160,11 @@
             // 
             this.autoLabel8.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel8.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel8.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel8.ForeColor = System.Drawing.Color.Black;
             this.autoLabel8.Location = new System.Drawing.Point(726, 64);
             this.autoLabel8.Name = "autoLabel8";
-            this.autoLabel8.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel8.Size = new System.Drawing.Size(51, 16);
             this.autoLabel8.TabIndex = 260;
             this.autoLabel8.Text = "Código";
             // 
@@ -160,11 +172,11 @@
             // 
             this.autoLabel2.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel2.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel2.ForeColor = System.Drawing.Color.Black;
             this.autoLabel2.Location = new System.Drawing.Point(162, 64);
             this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(57, 21);
+            this.autoLabel2.Size = new System.Drawing.Size(48, 16);
             this.autoLabel2.TabIndex = 259;
             this.autoLabel2.Text = "Cliente";
             // 
@@ -172,11 +184,11 @@
             // 
             this.autoLabel1.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
             this.autoLabel1.Location = new System.Drawing.Point(5, 64);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(107, 21);
+            this.autoLabel1.Size = new System.Drawing.Size(96, 16);
             this.autoLabel1.TabIndex = 258;
             this.autoLabel1.Text = "Nº Condicional";
             // 
@@ -203,11 +215,11 @@
             // 
             this.autoLabel11.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel11.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel11.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel11.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel11.Location = new System.Drawing.Point(643, 126);
+            this.autoLabel11.Location = new System.Drawing.Point(643, 130);
             this.autoLabel11.Name = "autoLabel11";
-            this.autoLabel11.Size = new System.Drawing.Size(106, 21);
+            this.autoLabel11.Size = new System.Drawing.Size(97, 16);
             this.autoLabel11.TabIndex = 281;
             this.autoLabel11.Text = "Qtd Devolução";
             // 
@@ -215,11 +227,11 @@
             // 
             this.autoLabel6.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel6.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(162, 126);
+            this.autoLabel6.Location = new System.Drawing.Point(162, 130);
             this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(247, 21);
+            this.autoLabel6.Size = new System.Drawing.Size(234, 16);
             this.autoLabel6.TabIndex = 280;
             this.autoLabel6.Text = "Pesquisa de Produto Para Devolução";
             // 
@@ -229,12 +241,9 @@
             this.gridProdutos.AllowEditing = false;
             this.gridProdutos.AllowResizingColumns = true;
             this.gridProdutos.AllowSorting = false;
-            this.gridProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridProdutos.AutoGenerateColumns = false;
             this.gridProdutos.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCellsWithLastColumnFill;
-            this.gridProdutos.BackColor = System.Drawing.Color.White;
+            this.gridProdutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(255)))), ((int)(((byte)(235)))));
             gridTextColumn1.AllowEditing = false;
             gridTextColumn1.AllowFiltering = true;
             gridTextColumn1.AllowResizing = true;
@@ -335,10 +344,11 @@
             this.gridProdutos.Columns.Add(gridTextColumn9);
             this.gridProdutos.Columns.Add(gridTextColumn10);
             this.gridProdutos.Columns.Add(gridCheckBoxColumn1);
+            this.gridProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridProdutos.Location = new System.Drawing.Point(5, 452);
+            this.gridProdutos.Location = new System.Drawing.Point(0, 24);
             this.gridProdutos.Name = "gridProdutos";
-            this.gridProdutos.Size = new System.Drawing.Size(867, 205);
+            this.gridProdutos.Size = new System.Drawing.Size(440, 438);
             this.gridProdutos.Style.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.gridProdutos.Style.CellStyle.Font.Facename = "Montserrat";
             this.gridProdutos.Style.CellStyle.Font.Size = 14F;
@@ -350,11 +360,11 @@
             // 
             this.autoLabel3.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel3.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel3.Location = new System.Drawing.Point(5, 126);
+            this.autoLabel3.Location = new System.Drawing.Point(5, 130);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel3.Size = new System.Drawing.Size(51, 16);
             this.autoLabel3.TabIndex = 288;
             this.autoLabel3.Text = "Código";
             // 
@@ -468,12 +478,9 @@
             this.gridDevolucao.AllowEditing = false;
             this.gridDevolucao.AllowResizingColumns = true;
             this.gridDevolucao.AllowSorting = false;
-            this.gridDevolucao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridDevolucao.AutoGenerateColumns = false;
             this.gridDevolucao.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCellsWithLastColumnFill;
-            this.gridDevolucao.BackColor = System.Drawing.Color.White;
+            this.gridDevolucao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             gridTextColumn11.AllowEditing = false;
             gridTextColumn11.AllowResizing = true;
             gridTextColumn11.AllowSorting = false;
@@ -537,10 +544,11 @@
             this.gridDevolucao.Columns.Add(gridTextColumn15);
             this.gridDevolucao.Columns.Add(gridCheckBoxColumn2);
             this.gridDevolucao.Columns.Add(gridTextColumn16);
+            this.gridDevolucao.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridDevolucao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridDevolucao.Location = new System.Drawing.Point(5, 234);
+            this.gridDevolucao.Location = new System.Drawing.Point(0, 32);
             this.gridDevolucao.Name = "gridDevolucao";
-            this.gridDevolucao.Size = new System.Drawing.Size(867, 185);
+            this.gridDevolucao.Size = new System.Drawing.Size(237, 430);
             this.gridDevolucao.Style.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.gridDevolucao.Style.CellStyle.Font.Facename = "Montserrat";
             this.gridDevolucao.Style.CellStyle.Font.Size = 14F;
@@ -552,23 +560,23 @@
             // 
             this.autoLabel4.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel4.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel4.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel4.Location = new System.Drawing.Point(5, 422);
+            this.autoLabel4.Location = new System.Drawing.Point(6, 4);
             this.autoLabel4.Name = "autoLabel4";
-            this.autoLabel4.Size = new System.Drawing.Size(206, 27);
+            this.autoLabel4.Size = new System.Drawing.Size(169, 20);
             this.autoLabel4.TabIndex = 292;
-            this.autoLabel4.Text = "Produtos da Condicional";
+            this.autoLabel4.Text = "Produtos em Aberto";
             // 
             // autoLabel5
             // 
             this.autoLabel5.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel5.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel5.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel5.Location = new System.Drawing.Point(5, 204);
+            this.autoLabel5.Location = new System.Drawing.Point(3, 8);
             this.autoLabel5.Name = "autoLabel5";
-            this.autoLabel5.Size = new System.Drawing.Size(170, 27);
+            this.autoLabel5.Size = new System.Drawing.Size(169, 20);
             this.autoLabel5.TabIndex = 293;
             this.autoLabel5.Text = "Produtos devolvidos";
             // 
@@ -638,6 +646,8 @@
             this.btnExcluir.Text = "Devolver Todos";
             this.btnExcluir.TextColor = System.Drawing.Color.Black;
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Visible = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnGravar
             // 
@@ -663,8 +673,6 @@
             // 
             // txtCodProduto
             // 
-            this.txtCodProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCodProduto.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtCodProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtCodProduto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
@@ -714,8 +722,6 @@
             // 
             // txtPesquisaProduto
             // 
-            this.txtPesquisaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPesquisaProduto.BackColor = System.Drawing.Color.White;
             this.txtPesquisaProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtPesquisaProduto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
@@ -817,16 +823,97 @@
             // 
             // lblInformativo
             // 
+            this.lblInformativo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblInformativo.BackColor = System.Drawing.Color.Transparent;
             this.lblInformativo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblInformativo.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformativo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInformativo.ForeColor = System.Drawing.Color.Red;
-            this.lblInformativo.Location = new System.Drawing.Point(5, 674);
+            this.lblInformativo.Location = new System.Drawing.Point(5, 689);
             this.lblInformativo.Name = "lblInformativo";
-            this.lblInformativo.Size = new System.Drawing.Size(206, 27);
+            this.lblInformativo.Size = new System.Drawing.Size(181, 20);
             this.lblInformativo.TabIndex = 296;
             this.lblInformativo.Text = "Produtos da Condicional";
             this.lblInformativo.Visible = false;
+            // 
+            // chkSaldoPositivo
+            // 
+            this.chkSaldoPositivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkSaldoPositivo.AutoSize = true;
+            this.chkSaldoPositivo.Checked = true;
+            this.chkSaldoPositivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkSaldoPositivo.Location = new System.Drawing.Point(5, 663);
+            this.chkSaldoPositivo.Name = "chkSaldoPositivo";
+            this.chkSaldoPositivo.Size = new System.Drawing.Size(201, 17);
+            this.chkSaldoPositivo.TabIndex = 297;
+            this.chkSaldoPositivo.Text = "Visualizar apenas com Saldo Positivo";
+            this.chkSaldoPositivo.UseVisualStyleBackColor = true;
+            this.chkSaldoPositivo.CheckedChanged += new System.EventHandler(this.chkSaldoPositivo_CheckedChanged);
+            // 
+            // lblLoading
+            // 
+            this.lblLoading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblLoading.BackColor = System.Drawing.Color.Transparent;
+            this.lblLoading.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblLoading.Location = new System.Drawing.Point(21, 682);
+            this.lblLoading.Name = "lblLoading";
+            this.lblLoading.Size = new System.Drawing.Size(105, 20);
+            this.lblLoading.TabIndex = 298;
+            this.lblLoading.Text = "Carregando...";
+            this.lblLoading.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(5, 195);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(864, 462);
+            this.panel1.TabIndex = 301;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.gridProdutos);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(440, 462);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.panel4.Controls.Add(this.autoLabel5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(237, 32);
+            this.panel4.TabIndex = 302;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.gridDevolucao);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(627, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(237, 462);
+            this.panel2.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel5.Controls.Add(this.autoLabel4);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(440, 24);
+            this.panel5.TabIndex = 303;
             // 
             // FrmDevolucaoCondicional
             // 
@@ -834,17 +921,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(881, 720);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lblLoading);
+            this.Controls.Add(this.chkSaldoPositivo);
             this.Controls.Add(this.lblInformativo);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnGravar);
-            this.Controls.Add(this.autoLabel5);
-            this.Controls.Add(this.autoLabel4);
-            this.Controls.Add(this.gridDevolucao);
             this.Controls.Add(this.btnExcluirProduto);
             this.Controls.Add(this.btnConfirmaItem);
             this.Controls.Add(this.autoLabel3);
             this.Controls.Add(this.txtCodProduto);
-            this.Controls.Add(this.gridProdutos);
             this.Controls.Add(this.autoLabel11);
             this.Controls.Add(this.txtQuantidadeItem);
             this.Controls.Add(this.autoLabel6);
@@ -862,6 +948,9 @@
             this.Name = "FrmDevolucaoCondicional";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Devolução de Condicional";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmDevolucaoCondicional_KeyDown);
+            this.Resize += new System.EventHandler(this.FrmDevolucaoCondicional_Resize);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProdutos)).EndInit();
@@ -870,6 +959,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridDevolucao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutoDevolucao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -923,5 +1019,12 @@
         private System.Data.DataColumn dataColumn15;
         private System.Data.DataColumn dataColumn17;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblInformativo;
+        private System.Windows.Forms.CheckBox chkSaldoPositivo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lblLoading;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }

@@ -1,14 +1,9 @@
-﻿using BoletoFacilSDK;
-using BoletoFacilSDK.Enums;
-using BoletoFacilSDK.Model.Entities;
-using BoletoFacilSDK.Model.Response;
-using Lunar.Utils;
+﻿using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -301,41 +296,6 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             }
         }
 
-        private void gerarBoletosAvulso(decimal valor)
-        {
-            Pessoa pessoaCliente = new Pessoa();
-            pessoaCliente = venda.Cliente;
-            if (pessoaCliente != null)
-            {
-                Payer payer = new Payer();
-                payer.Name = pessoaCliente.RazaoSocial;
-                payer.CpfCnpj = pessoaCliente.Cnpj.Trim();
-                if (!String.IsNullOrEmpty(pessoaCliente.Email))
-                    payer.Email = pessoaCliente.Email;
-
-                Charge charge = new Charge();
-                charge.Description = "Cobrança teste gerada pelo SDK .NET";
-                charge.Amount = valor;
-                charge.Payer = payer;
-                charge.NotifyPayer = true;
-                //Vencimento
-                charge.DueDate = DateTime.Now.AddMonths(1);
-
-                //Possivel criação de favorecido
-                Payee favorecido = new Payee();
-
-                BoletoFacil boleto = new BoletoFacil(BoletoFacilEnvironment.Sandbox, Sessao.tokenJunoParceiros);
-                ChargeResponse response = boleto.IssueCharge(charge);
-
-                foreach (Charge c in response.Data.Charges)
-                {
-                    //string id = c.Payments[0].Id.ToString();
-                    Process.Start(c.Link);
-                    MessageBox.Show("Boleto(s) de teste gerado(s) com sucesso");
-                }
-            }
-            else
-                GenericaDesktop.ShowAlerta("Selecione um cliente para gerar boleto");
-        }
+       
     }
 }

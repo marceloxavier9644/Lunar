@@ -1,10 +1,12 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ControllerBO;
+using LunarBase.Utilidades;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -61,42 +63,11 @@ namespace Lunar.Utils.LunarChatIntegracao
                     return null;
                 }
             }
-            //public async Task SendMessageAsync(WebhookMessage message)
-            //{
-            //    parametro = new ParametroSistema();
-            //    parametroSistemaController = new ParametroSistemaController();
-            //    parametro.Id = 1;
-            //    parametro = (ParametroSistema)parametroSistemaController.selecionar(parametro);
-            //    string webhookUrl = parametro.TokenWhats;
-
-            //    if (!string.IsNullOrEmpty(webhookUrl))
-            //    {
-            //        var json = JsonConvert.SerializeObject(message);
-            //        var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            //        HttpResponseMessage response = await httpClient.PostAsync(webhookUrl, content);
-            //        logger.WriteLog($"JSON Enviado: {json}", "Logs");
-            //        logger.WriteLog($"Webhook URL: {webhookUrl}", "Logs");
-            //        if (response.IsSuccessStatusCode)
-            //        {
-            //            Console.WriteLine("Message sent successfully!");
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show($"Falha ao disparar mensagem. Status code: {response.StatusCode}");
-            //            var responseContent = await response.Content.ReadAsStringAsync();
-            //            logger.WriteLog($"Falha ao disparar whatsapp LunarChat: {responseContent}", "Logs");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        GenericaDesktop.ShowAlerta("Esta função não está habilitada. Por favor, entre em contato com seu representante para mais informações.");
-            //    }
-            //}
+ 
             public async Task<string> SendMessageAsync(string number, string body)
             {
                 string _baseUri = "https://backend.lunarchat.com.br/api/messages/send";
-                string _token = "xaxb12341"; // Certifique-se de que este token é válido
+                string _token = Sessao.parametroSistema.TokenWhats; // Certifique-se de que este token é válido
 
                 var requestBody = new
                 {
@@ -113,14 +84,16 @@ namespace Lunar.Utils.LunarChatIntegracao
                     {
                         Content = content
                     };
-                    request.Headers.Add("X_TOKEN", _token);
+
+                    // Adiciona o token Bearer ao cabeçalho de autorização
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
                     try
                     {
                         HttpResponseMessage response = await httpClient.SendAsync(request);
                         if (!response.IsSuccessStatusCode)
                         {
-                            // Log detailed error message
+                            // Log detalhes do erro
                             string responseBy = await response.Content.ReadAsStringAsync();
                             Console.WriteLine($"Failed to send message. Status code: {response.StatusCode}, Reason: {response.ReasonPhrase}, Response: {responseBy}");
                             return null;
@@ -133,6 +106,93 @@ namespace Lunar.Utils.LunarChatIntegracao
                     {
                         Console.WriteLine($"Request error: {e.Message}");
                         return null;
+                    }
+                }
+            }
+
+            public async Task<string> SendMessageAdminAsync(string number, string body)
+            {
+                string _baseUri = "https://backend.lunarchat.com.br/api/messages/send";
+                string _token = "41f7ff53c1dc5cf4f3db1f331"; 
+
+                var requestBody = new
+                {
+                    number = number,
+                    body = body
+                };
+
+                var json = JsonConvert.SerializeObject(requestBody);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                using (var httpClient = new HttpClient())
+                {
+                    var request = new HttpRequestMessage(HttpMethod.Post, _baseUri)
+                    {
+                        Content = content
+                    };
+
+                    // Adiciona o token Bearer ao cabeçalho de autorização
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+
+                    try
+                    {
+                        HttpResponseMessage response = await httpClient.SendAsync(request);
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            // Log detalhes do erro
+                            string responseBy = await response.Content.ReadAsStringAsync();
+                            Console.WriteLine($"Failed to send message. Status code: {response.StatusCode}, Reason: {response.ReasonPhrase}, Response: {responseBy}");
+                            return null;
+                        }
+
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        return responseBody;
+                    }
+                    catch (HttpRequestException e)
+                    {
+                        Console.WriteLine($"Request error: {e.Message}");
+                        return null;
+                    }
+                }
+            }
+
+            public async Task<string> SendMediaMessageAsync(string number, string filePath)
+            {
+                string _baseUri = "https://backend.lunarchat.com.br/api/messages/send";
+                string _token = Sessao.parametroSistema.TokenWhats; // Certifique-se de que este token é válido
+
+                using (var httpClient = new HttpClient())
+                {
+                    using (var formData = new MultipartFormDataContent())
+                    {
+                        formData.Add(new StringContent(number), "number");
+
+                        // Lê o arquivo em bytes
+                        byte[] fileBytes = File.ReadAllBytes(filePath);
+                        formData.Add(new ByteArrayContent(fileBytes), "medias", Path.GetFileName(filePath));
+
+                        // Adiciona o token Bearer ao cabeçalho de autorização
+                        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+
+                        try
+                        {
+                            HttpResponseMessage response = await httpClient.PostAsync(_baseUri, formData);
+                            if (!response.IsSuccessStatusCode)
+                            {
+                                // Log detalhes do erro
+                                string responseBy = await response.Content.ReadAsStringAsync();
+                                Console.WriteLine($"Failed to send media message. Status code: {response.StatusCode}, Reason: {response.ReasonPhrase}, Response: {responseBy}");
+                                return null;
+                            }
+
+                            string responseBody = await response.Content.ReadAsStringAsync();
+                            return responseBody;
+                        }
+                        catch (HttpRequestException e)
+                        {
+                            Console.WriteLine($"Request error: {e.Message}");
+                            return null;
+                        }
                     }
                 }
             }
