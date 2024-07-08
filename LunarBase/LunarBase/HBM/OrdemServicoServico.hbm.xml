@@ -13,7 +13,8 @@
 
 		<many-to-one name="Servico" column="SERVICO" class="LunarBase.Classes.Servico" not-null="true" foreign-key="FK_OSSERVICO_SERVICO" lazy="false"/>
 		<many-to-one name="OrdemServico" column="ORDEMSERVICO" class="LunarBase.Classes.OrdemServico" not-null="true" foreign-key="FK_OSSERVICO_OS" lazy="false"/>
-
+		<many-to-one name="Vendedor" column="VENDEDOR" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_OSSERVICO_VENDEDOR" lazy="false"/>
+		
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
 		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>

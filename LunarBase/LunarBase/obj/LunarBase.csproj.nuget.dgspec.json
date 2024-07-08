@@ -27,7 +27,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net472": {
@@ -50,6 +51,10 @@
         "net472": {
           "targetAlias": "net472",
           "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.15.0, )"
+            },
             "NHibernate": {
               "target": "Package",
               "version": "[5.3.10, )"
@@ -61,6 +66,10 @@
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.4, )"
+            },
+            "System.Net.WebSockets.Client": {
+              "target": "Package",
+              "version": "[4.3.2, )"
             },
             "ZXing.Net": {
               "target": "Package",

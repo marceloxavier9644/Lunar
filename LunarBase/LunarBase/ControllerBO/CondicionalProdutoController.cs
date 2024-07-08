@@ -40,5 +40,23 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+
+        public IList<CondicionalProduto> selecionarProdutosCondicionalPorIdProduto(string codProduto, int idCondicional)
+        {
+            CondicionalProdutoBO bo = new CondicionalProdutoBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarProdutosCondicionalPorIdProduto(codProduto, idCondicional);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

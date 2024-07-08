@@ -87,5 +87,17 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar produtos! Erro: " + e.Message);
             }
         }
+
+        public IList<CondicionalProduto> selecionarProdutosCondicionalPorIdProduto(string codProduto, int idCondicional)
+        {
+            try
+            {
+                return dao.selecionarProdutosCondicionalPorIdProduto(codProduto, idCondicional);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar produtos! Erro: " + e.Message);
+            }
+        }
     }
 }

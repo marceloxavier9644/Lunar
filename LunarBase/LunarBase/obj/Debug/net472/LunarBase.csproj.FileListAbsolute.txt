@@ -17,11 +17,16 @@ C:\RXSystem\Sistema Marcelo\Novo Lunar\Lunar\LunarBase\LunarBase\obj\Debug\net47
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\LunarBase.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\LunarBase.pdb
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Antlr3.Runtime.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Google.Protobuf.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Iesi.Collections.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Newtonsoft.Json.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\NHibernate.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Remotion.Linq.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Remotion.Linq.EagerFetching.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\System.Buffers.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\System.Memory.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\System.Numerics.Vectors.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\System.Runtime.CompilerServices.Unsafe.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\zxing.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\zxing.presentation.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.AssemblyReference.cache
@@ -29,7 +34,7 @@ C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.Generate
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.AssemblyInfoInputs.cache
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.AssemblyInfo.cs
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.CoreCompileInputs.cache
-C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.dll
-C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.pdb
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.sourcelink.json
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.Up2Date
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.pdb

@@ -79,6 +79,10 @@ namespace LunarBase.ControllerBO
             }
         }
 
+        public async Task salvarAsync(ObjetoPadrao objeto)
+        {
+            await Task.Run(() => salvar(objeto));
+        }
 
         public void atualizar(ObjetoPadrao objeto)
         {

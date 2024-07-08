@@ -432,7 +432,7 @@ public class Genericos
     //            Process.Start(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf");
     //    }
     //}
-    public void gravarXMLNoBanco(TNfeProc nota, int nsu, string tipoOperacao, int idNFeBanco)
+    public void gravarXMLNoBanco(TNfeProc nota, int nsu, string tipoOperacao, int idNFeBanco, bool notaVindoManifesto)
     {
         Nfe nfe = new Nfe();       
         nfe.Id = idNFeBanco;
@@ -497,6 +497,7 @@ public class Genericos
         string ultimaDataNotaBaixada = nota.NFe.infNFe.ide.dhEmi.Replace("T", " ").Replace("-03:00", "");
         nfe.DataEmissao = DateTime.Parse(ultimaDataNotaBaixada);
         nfe.Manifesto = "";
+        nfe.CodStatus = "";
         if (nota.protNFe.infProt.xMotivo.Contains("Autorizado o uso"))
         {
             nfe.CodStatus = "100";
@@ -507,9 +508,11 @@ public class Genericos
             nfe.Status = nota.protNFe.infProt.xMotivo;
             nfe.Lancada = true;
         }
-
-        else
-            nfe.CodStatus = "";
+        if(notaVindoManifesto == true)
+        {
+            nfe.Lancada = false;
+        }
+            
         nfe.Status = nota.protNFe.infProt.xMotivo;
         nfe.Chave = nota.protNFe.infProt.chNFe;
         nfe.Protocolo = nota.protNFe.infProt.nProt;

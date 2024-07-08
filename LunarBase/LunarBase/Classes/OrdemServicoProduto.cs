@@ -15,6 +15,7 @@ namespace LunarBase.Classes
         private double quantidade;
         private Produto produto;
         private OrdemServico ordemServico;
+        private Pessoa vendedor;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -34,6 +35,8 @@ namespace LunarBase.Classes
         public virtual Produto Produto { get => produto; set => produto = value; }
         [Anotacao("Ordem Serviço")]
         public virtual OrdemServico OrdemServico { get => ordemServico; set => ordemServico = value; }
+        [Anotacao("Vendedor")]
+        public virtual Pessoa Vendedor { get => vendedor; set => vendedor = value; }
 
         public override string ToString()
         {

@@ -231,7 +231,7 @@ namespace LunarBase.ClassesBO
                 {
                     grupoUsuario.Id = LunarConstantes.GRUPOUSUARIO_ADMINISTRADOR;
                     grupoUsuario.Descricao = "ADMINISTRADOR";
-                    grupoUsuario.Permissoes = Generica.Criptografa("TODAS");
+                    grupoUsuario.Permissoes = "OzE7MjszOzQ7NTs2Ozc7ODs5OzEwOzExOzEyOzEzOzE0OzE1OzE2OzE3OzMwOzMxOzMyOzMzOzM0OzM1OzM2OzM3OzM4OzM5OzQwOzQxOzQzOzQ0OzYwOzYxOzYyOzYzOzY0OzY1OzY4OzY5OzcwOzcxOzcyOzEwMDsxMDE7MTAyOzEwMzsxMDQ7MTA1OzEwNjsxMDc7MTA4OzIwMDsyMDE7MjAyOzIwMzsyMDQ7MjA1OzMwMDszMDE=";
                     grupoUsuario.Supervisor = true;
                     grupoUsuario.Empresa = empresa;
                     grupoUsuarioController.salvarSeNaoExistir(grupoUsuario);

@@ -26,7 +26,9 @@ namespace LunarBase.ClassesDAO
         public IList<NfeProduto> selecionarProdutoPorCNPJeReferencia(string cnpjEmitente, string referencia)
         {
             Session = Conexao.GetSession();
-            String sql = "FROM NfeProduto as Tabela WHERE Tabela.Nfe.CnpjEmitente = '" + cnpjEmitente + "' and Tabela.CProd like '" + referencia + "' and Tabela.FlagExcluido <> true";
+            String sql = "FROM NfeProduto as Tabela " +
+                "WHERE Tabela.Nfe.CnpjEmitente = '" + cnpjEmitente + "' and " +
+                "Tabela.CProd like '" + referencia + "' and Tabela.FlagExcluido <> true";
             IList<NfeProduto> retorno = Session.CreateQuery(sql).List<NfeProduto>();
             return retorno;
         }
