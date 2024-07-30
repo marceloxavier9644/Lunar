@@ -22,3 +22,5 @@ bld/
 
 # Ignore Visual Studio working directory
 .vs/
+
+../LunarBase/
