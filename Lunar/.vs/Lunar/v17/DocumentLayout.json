@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Desenvolvimento\\Lunar\\Lunar\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|c:\\desenvolvimento\\lunar\\lunar\\lunar\\telas\\vendas\\frmconsultavendas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\vendas\\frmconsultavendas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\utils\\updatescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\utils\\updatescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -74,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,20 +94,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FrmConsultaVendas.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
               "RelativeDocumentMoniker": "Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
               "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
               "RelativeToolTip": "Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
-              "ViewState": "AQIAAGQDAAAAAAAAAIAwwHADAAANAAAA",
+              "ViewState": "AQIAAGQDAAAAAAAAAIAwwGoDAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-29T22:09:41.562Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FrmConsultaVendas.cs [Design]",
               "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
               "RelativeDocumentMoniker": "Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
@@ -125,7 +125,8 @@
               "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmVendas02.cs [Design]",
               "RelativeToolTip": "Lunar\\Telas\\Vendas\\FrmVendas02.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T21:03:48.442Z"
+              "WhenOpened": "2024-07-29T21:03:48.442Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -176,15 +177,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "FrmVendas02.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmVendas02.cs",
               "RelativeDocumentMoniker": "Lunar\\Telas\\Vendas\\FrmVendas02.cs",
               "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmVendas02.cs",
               "RelativeToolTip": "Lunar\\Telas\\Vendas\\FrmVendas02.cs",
-              "ViewState": "AQIAADALAAAAAAAAAIAwwBgLAAAuAAAA",
+              "ViewState": "AQIAADALAAAAAAAAAIAwwDcLAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T13:37:17.345Z"
+              "WhenOpened": "2024-07-29T13:37:17.345Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -258,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UpdateScript.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Utils\\UpdateScript.cs",
               "RelativeDocumentMoniker": "Lunar\\Utils\\UpdateScript.cs",

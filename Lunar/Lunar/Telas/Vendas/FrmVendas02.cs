@@ -2868,7 +2868,7 @@ namespace Lunar.Telas.Vendas
 
         private void btnDescontoGeral_Click(object sender, EventArgs e)
         {
-            //desconto
+            //descontowdsds
             decimal descontoEmItens = 0;
             var records = gridProdutos.View.Records;
             foreach (var record in records)
