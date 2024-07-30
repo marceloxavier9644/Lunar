@@ -11,7 +11,7 @@ namespace LunarBase.ConexaoBD
         public static ISessionFactory Factory;
         public static ISession Session;
         public static ITransaction Transaction;
-
+        //conection
         public static void IniciaTransacao()
         {
             Transaction = GetSession().BeginTransaction();
