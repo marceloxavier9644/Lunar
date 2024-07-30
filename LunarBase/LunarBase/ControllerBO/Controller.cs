@@ -198,7 +198,7 @@ namespace LunarBase.ControllerBO
             }
             catch (Exception erro)
             {
-                MessageBox.Show(erro.Message);
+                //MessageBox.Show(erro.Message);
             }
         }
     }

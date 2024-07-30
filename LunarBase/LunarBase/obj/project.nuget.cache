@@ -26,5 +26,16 @@
     "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.x509certificates\\4.3.0\\system.security.cryptography.x509certificates.4.3.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\zxing.net\\0.16.9\\zxing.net.0.16.9.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'NHibernate' 5.3.10 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-fg4q-ccq8-3r5q",
+      "libraryId": "NHibernate",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.7.2"
+      ]
+    }
+  ]
 }

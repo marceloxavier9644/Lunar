@@ -78,7 +78,8 @@
 		<many-to-one name="GrupoFiscal" column="GRUPOFISCAL" class="LunarBase.Classes.GrupoFiscal" not-null="false" foreign-key="FK_PRODUTO_GRUPOFISCAL" lazy="false"/>
 		<many-to-one name="Empresa" column="EMPRESA" class="LunarBase.Classes.Empresa" not-null="false" foreign-key="FK_PRODUTO_EMPRESA" lazy="false"/>
 		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="false" foreign-key="FK_PRODUTO_EMPRESAFILIAL" lazy="false"/>
-
+		<many-to-one name="GradePrincipal" column="GRADEPRINCIPAL" class="LunarBase.Classes.ProdutoGrade" not-null="false" foreign-key="FK_PRODUTO_GRADEPRINCIPAL" lazy="false"/>
+		
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
 		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>

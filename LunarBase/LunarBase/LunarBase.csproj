@@ -12,6 +12,12 @@
     <None Remove="HBM\AlertaCliente.hbm.xml" />
     <None Remove="HBM\Anexo.hbm.xml" />
     <None Remove="HBM\Anp.hbm.xml" />
+    <None Remove="HBM\Atendimento.hbm.xml" />
+    <None Remove="HBM\AtendimentoConfig.hbm.xml" />
+    <None Remove="HBM\AtendimentoConta.hbm.xml" />
+    <None Remove="HBM\AtendimentoMesa.hbm.xml" />
+    <None Remove="HBM\AtendimentoProduto.hbm.xml" />
+    <None Remove="HBM\AtendimentoVinculo.hbm.xml" />
     <None Remove="HBM\BalancoEstoque.hbm.xml" />
     <None Remove="HBM\BalancoEstoqueProduto.hbm.xml" />
     <None Remove="HBM\Banco.hbm.xml" />
@@ -74,6 +80,8 @@
     <None Remove="HBM\PessoaTelefone.hbm.xml" />
     <None Remove="HBM\PlanoConta.hbm.xml" />
     <None Remove="HBM\Produto.hbm.xml" />
+    <None Remove="HBM\ProdutoCodigoBarras.hbm.xml" />
+    <None Remove="HBM\ProdutoGrade.hbm.xml" />
     <None Remove="HBM\ProdutoGrupo.hbm.xml" />
     <None Remove="HBM\ProdutoSetor.hbm.xml" />
     <None Remove="HBM\ProdutoSubGrupo.hbm.xml" />
@@ -96,6 +104,12 @@
   <ItemGroup>
     <EmbeddedResource Include="HBM\AlertaCliente.hbm.xml" />
     <EmbeddedResource Include="HBM\Anexo.hbm.xml" />
+    <EmbeddedResource Include="HBM\Atendimento.hbm.xml" />
+    <EmbeddedResource Include="HBM\AtendimentoConfig.hbm.xml" />
+    <EmbeddedResource Include="HBM\AtendimentoConta.hbm.xml" />
+    <EmbeddedResource Include="HBM\AtendimentoMesa.hbm.xml" />
+    <EmbeddedResource Include="HBM\AtendimentoProduto.hbm.xml" />
+    <EmbeddedResource Include="HBM\AtendimentoVinculo.hbm.xml" />
     <EmbeddedResource Include="HBM\BalancoEstoque.hbm.xml" />
     <EmbeddedResource Include="HBM\BalancoEstoqueProduto.hbm.xml" />
     <EmbeddedResource Include="HBM\ComissaoVenda.hbm.xml" />
@@ -104,6 +118,8 @@
     <EmbeddedResource Include="HBM\NfePagamento.hbm.xml" />
     <EmbeddedResource Include="HBM\OsComissao.hbm.xml" />
     <EmbeddedResource Include="HBM\PermissaoUsuario.hbm.xml" />
+    <EmbeddedResource Include="HBM\ProdutoCodigoBarras.hbm.xml" />
+    <EmbeddedResource Include="HBM\ProdutoGrade.hbm.xml" />
     <EmbeddedResource Include="HBM\Query.hbm.xml" />
     <EmbeddedResource Include="HBM\AdquirenteCartao.hbm.xml" />
     <EmbeddedResource Include="HBM\Anp.hbm.xml" />
@@ -189,7 +205,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="PresentationFramework" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />

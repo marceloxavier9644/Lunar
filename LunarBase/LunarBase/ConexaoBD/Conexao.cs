@@ -63,13 +63,20 @@ namespace LunarBase.ConexaoBD
                         //senha = "mx123";
                         //bancoDados = "lunar";
 
-                        servidor = Sessao.servidor;
-                        usuario = Sessao.usuarioBanco;
-                        senha = Sessao.senhaBanco;
-                        bancoDados = Sessao.nomeBanco;
-                       
-                        if (String.IsNullOrEmpty(bancoDados))
+                        if (!String.IsNullOrEmpty(Sessao.servidor))
+                        {
+                            servidor = Sessao.servidor;
+                            usuario = Sessao.usuarioBanco;
+                            senha = Sessao.senhaBanco;
+                            bancoDados = Sessao.nomeBanco;
+                        }
+                        else
+                        {
+                            servidor = "localhost";
+                            usuario = "marcelo";
+                            senha = "mx123";
                             bancoDados = "lunar";
+                        }
 
                         //Online
                         //servidor = "mysql.lunarsoftware.com.br";
@@ -117,7 +124,7 @@ namespace LunarBase.ConexaoBD
                     writer.Write("ERRO CONEXAO");
                     writer.WriteLine(Erro.Message);
                 }
-                MessageBox.Show("Erro de conexão com o banco de dados " + System.Environment.NewLine + Erro.Message);
+                //MessageBox.Show("Erro de conexão com o banco de dados " + System.Environment.NewLine + Erro.Message);
                 throw new Exception("Erro de conexão! " + System.Environment.NewLine + Erro.Message);
             }
 

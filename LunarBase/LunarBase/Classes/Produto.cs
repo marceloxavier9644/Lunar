@@ -81,6 +81,8 @@ namespace LunarBase.Classes
         private bool veiculoNovo;
         private string markup;
 
+        private ProdutoGrade gradePrincipal;
+
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -285,6 +287,9 @@ namespace LunarBase.Classes
         [Anotacao("Markup")]
         [OcultarEmGridsEPesquisas]
         public virtual string Markup { get => markup; set => markup = value; }
+        [Anotacao("Grade")]
+        [OcultarEmGridsEPesquisas]
+        public virtual ProdutoGrade GradePrincipal { get => gradePrincipal; set => gradePrincipal = value; }
 
         public override string ToString()
         {

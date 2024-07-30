@@ -7,7 +7,7 @@ namespace LunarBase.Utilidades
     {
         private const string RegistryKeyPath = @"SOFTWARE\RegisterMon\Monreg";
         private const string RegistryValueName = "ExecutionCount";
-        private const int MaxExecutions = 3;
+        private const int MaxExecutions = 5;
         private const string DevMachineName = "NoteMarcelo"; // Substitua pelo nome do seu computador de desenvolvimento
 
         public bool CanExecute()

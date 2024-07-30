@@ -55,6 +55,7 @@ namespace LunarBase.Classes
 
         private Venda venda;
         private EmpresaFilial empresaFilial;
+        private ProdutoGrade produtoGrade;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -140,6 +141,8 @@ namespace LunarBase.Classes
         public virtual EmpresaFilial EmpresaFilial { get => empresaFilial; set => empresaFilial = value; }
         [Anotacao("Quantidade")]
         public virtual double Quantidade { get => quantidade; set => quantidade = value; }
+        [Anotacao("Grade")]
+        public virtual ProdutoGrade ProdutoGrade { get => produtoGrade; set => produtoGrade = value; }
 
 
         //Contrutor para conseguir puxar SUM na consulta DAO

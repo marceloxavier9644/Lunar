@@ -2,16 +2,11 @@
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
-using System;
 using System.Collections;
-using System.Diagnostics;
-using System.IO;
-using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -735,7 +730,7 @@ public class Genericos
         }
         catch (Exception e) 
         {
-            MessageBox.Show("Falha ao gravar fornecedor! " + e.Message);
+            //MessageBox.Show("Falha ao gravar fornecedor! " + e.Message);
             return null;
         }
     }
@@ -805,7 +800,7 @@ public class Genericos
         }
         catch (Exception e)
         {
-            MessageBox.Show("Falha ao gravar cliente! " + e.Message);
+            //MessageBox.Show("Falha ao gravar cliente! " + e.Message);
             return null;
         }
     }

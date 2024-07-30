@@ -56,6 +56,7 @@
 
 		<many-to-one name="Venda" column="VENDA" class="LunarBase.Classes.Venda" not-null="false" foreign-key="FK_VENDAITEM_VENDA" lazy="false"/>
 		<many-to-one name="Produto" column="PRODUTO" class="LunarBase.Classes.Produto" not-null="true" foreign-key="FK_VENDAITEM_PRODUTO" lazy="false"/>
+		<many-to-one name="ProdutoGrade" column="PRODUTOGRADE" class="LunarBase.Classes.ProdutoGrade" not-null="true" foreign-key="FK_VENDAITEM_GRADE" lazy="false"/>
 
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>

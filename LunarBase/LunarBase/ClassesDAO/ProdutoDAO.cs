@@ -1,5 +1,6 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ConexaoBD;
+using NHibernate.Transform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace LunarBase.ClassesDAO
         public IList<Produto> selecionarProdutosComVariosFiltros(string valor, EmpresaFilial empresaLogada)
         {
             Session = Conexao.GetSession();
-            String sql = "FROM Produto as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.Descricao, ' ', Tabela.Ean, ' ', Tabela.Referencia, ' ', Tabela.Ncm) like '%" + valor + "%' and Tabela.FlagExcluido <> true and " +
+            String sql = "FROM Produto as Tabela WHERE CONCAT(Tabela.Descricao, ' ', Tabela.Referencia, ' ', Tabela.Ncm) like '%" + valor + "%' and Tabela.FlagExcluido <> true and " +
                          "Tabela.EmpresaFilial = " + empresaLogada.Id + " order by Tabela.Descricao";
             IList<Produto> retorno = Session.CreateQuery(sql).List<Produto>();
             return retorno;
@@ -40,6 +41,26 @@ namespace LunarBase.ClassesDAO
             return retorno;
         }
 
+        public IList<ProdutoResult> selecionarProdutosPorSqlResult(string sql)
+        {
+            Session = Conexao.GetSession();
+
+            IList<ProdutoResult> resultados = Session.CreateSQLQuery(sql)
+                    .SetResultTransformer(Transformers.AliasToBean<ProdutoResult>())
+                    .List<ProdutoResult>();
+                return resultados;
+            
+        }
+        public class ProdutoResult
+        {
+            public int ProdutoId { get; set; }
+            public string ProdutoNome { get; set; }
+            public int? ProdutoGradeId { get; set; }
+            public string DescricaoGrade { get; set; }
+            public int UnidadeMedida { get; set; }
+            public decimal? ValorVenda { get; set; }
+            public string CodigoBarras { get; set; }
+        }
         public IList<Produto> selecionarProdutoPorCodigoBarras(string valor)
         {
             Session = Conexao.GetSession();

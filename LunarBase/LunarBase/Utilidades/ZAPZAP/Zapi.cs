@@ -46,7 +46,7 @@ namespace LunarBase.Utilidades.ZAPZAP
             }
             catch (Exception err)
             {
-                MessageBox.Show("Falha ao Enviar Whatsapp: " + err.Message);
+                //MessageBox.Show("Falha ao Enviar Whatsapp: " + err.Message);
                 return null;
             }
         }
@@ -86,7 +86,7 @@ namespace LunarBase.Utilidades.ZAPZAP
             }
             catch (Exception err)
             {
-                MessageBox.Show("Falha ao Enviar Whatsapp: " + err.Message);
+                //MessageBox.Show("Falha ao Enviar Whatsapp: " + err.Message);
                 return null;
             }
         }
@@ -131,7 +131,7 @@ namespace LunarBase.Utilidades.ZAPZAP
             catch (Exception err)
             {
                 logger.WriteLog("Falha ao Enviar Whatsapp: " + err.Message, "LogMensagem");
-                MessageBox.Show("Falha ao Enviar Whatsapp: " + err.Message);
+                //MessageBox.Show("Falha ao Enviar Whatsapp: " + err.Message);
                 return null;
             }
         }
@@ -161,7 +161,7 @@ namespace LunarBase.Utilidades.ZAPZAP
             }
             catch (Exception err)
             {
-                MessageBox.Show("Falha ao Gerar QRCODE do WhatsApp, Verifique com seu representante sobre a ativação: " + err.Message);
+                //MessageBox.Show("Falha ao Gerar QRCODE do WhatsApp, Verifique com seu representante sobre a ativação: " + err.Message);
                 return null;
             }
         }
@@ -189,7 +189,7 @@ namespace LunarBase.Utilidades.ZAPZAP
             }
             catch (Exception err)
             {
-                MessageBox.Show("Falha ao Restaurar Sessão do WhatsApp, Verifique com seu representante sobre a funcionalidade: " + err.Message);
+                //MessageBox.Show("Falha ao Restaurar Sessão do WhatsApp, Verifique com seu representante sobre a funcionalidade: " + err.Message);
                 return null;
             }
         }
@@ -212,12 +212,12 @@ namespace LunarBase.Utilidades.ZAPZAP
                     string idret = "";
                     if (retorno != null)
                     {
-                        if (retorno["connected"].ToString().Equals("True"))
-                            MessageBox.Show("Conexão ativa");
-                        else if (retorno["connected"].ToString().Equals("False"))
-                            MessageBox.Show("Sem Conexão, gere o QRCODE e conecte");
-                        else
-                            MessageBox.Show("Atenção: Celular sem internet");
+                        //if (retorno["connected"].ToString().Equals("True"))
+                        //    MessageBox.Show("Conexão ativa");
+                        //else if (retorno["connected"].ToString().Equals("False"))
+                        //    //MessageBox.Show("Sem Conexão, gere o QRCODE e conecte");
+                        //else
+                        //    MessageBox.Show("Atenção: Celular sem internet");
                     }
 
                     return idret;
@@ -225,7 +225,7 @@ namespace LunarBase.Utilidades.ZAPZAP
             }
             catch (Exception err)
             {
-                MessageBox.Show("Falha ao Visualizar Status do WhatsApp, verifique com seu representante sobre a funcionalidade: " + err.Message);
+                //MessageBox.Show("Falha ao Visualizar Status do WhatsApp, verifique com seu representante sobre a funcionalidade: " + err.Message);
                 return null;
             }
         }
@@ -279,15 +279,15 @@ namespace LunarBase.Utilidades.ZAPZAP
                     string idret = "";
                     if (retorno != null)
                     {
-                        if (retorno["value"].ToString().Equals("True"))
-                            MessageBox.Show("Conexão Desativada com Sucesso");
+                        //if (retorno["value"].ToString().Equals("True"))
+                            //MessageBox.Show("Conexão Desativada com Sucesso");
                     }
                     return idret;
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show("Falha ao Visualizar Status do WhatsApp, verifique com seu representante sobre a funcionalidade: " + err.Message);
+                //MessageBox.Show("Falha ao Visualizar Status do WhatsApp, verifique com seu representante sobre a funcionalidade: " + err.Message);
                 return null;
             }
         }
