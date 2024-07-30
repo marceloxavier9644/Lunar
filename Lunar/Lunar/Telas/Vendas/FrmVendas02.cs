@@ -1,6 +1,7 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.Cadastros.Produtos;
 using Lunar.Telas.ContasReceber.Reports;
+using Lunar.Telas.Fiscal;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.TransferenciaEstoques;
 using Lunar.Telas.Vendas.Adicionais;
@@ -9,10 +10,13 @@ using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using Newtonsoft.Json;
+using OpenQA.Selenium.Internal;
 using Syncfusion.Data;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
@@ -24,12 +28,14 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
+using static LunarBase.ClassesDAO.ProdutoDAO;
 using static LunarBase.Utilidades.ManifestoDownload;
 using Exception = System.Exception;
 using Nfe = LunarBase.Classes.Nfe;
@@ -835,11 +841,188 @@ namespace Lunar.Telas.Vendas
         {
             if (e.KeyChar == 13)
             {
-                //if (!String.IsNullOrEmpty(txtPesquisaProduto.Texts))
-                PesquisarProdutoPorDescricao(txtPesquisaProduto.Texts.Trim());
+                //PesquisarProdutoPorDescricao(txtPesquisaProduto.Texts.Trim());
+                PesquisarProdutoNovoMetodo(txtPesquisaProduto.Texts.Trim());
             }
         }
 
+        private void PesquisarProdutoNovoMetodo(string valor)
+        {
+            txtQuantidade.TextAlign = HorizontalAlignment.Center;
+            txtValorUnitario.TextAlign = HorizontalAlignment.Center;
+            txtValorTotal.TextAlign = HorizontalAlignment.Center;
+
+            String valorAux = "";
+            valorAux = valor;
+
+            if (valor.Contains("*"))
+                valor = valor.Substring(valor.IndexOf("*") + 1);
+
+            //Verifica se é codigo de barras
+            if (IsNumericAndHasMoreThan7Digits(valor))
+            {
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                //Consulta para casos que produtograde podem ser null
+                //String sql = "SELECT p.Id AS ProdutoId, p.DESCRICAO AS ProdutoNome, pg.Id AS ProdutoGradeId, pg.Descricao AS DescricaoGrade, COALESCE(um.Descricao, p.UnidadeMedida) AS UnidadeMedida, COALESCE(pg.ValorVenda, p.ValorVenda) AS ValorVenda, COALESCE(pcb.CodigoBarras, (SELECT pcb2.CodigoBarras FROM ProdutoCodigoBarras pcb2 WHERE pcb2.Produto = p.Id LIMIT 1)) AS CodigoBarras FROM Produto p LEFT JOIN ProdutoGrade pg ON p.Id = pg.Produto LEFT JOIN ProdutoCodigoBarras pcb ON pg.Id = pcb.PRODUTOGRADE LEFT JOIN UnidadeMedida um ON pg.UnidadeMedida = um.Id WHERE (pcb.CodigoBarras = '" + valor+"' OR (pg.Id IS NULL AND pcb.CodigoBarras IS NULL AND p.Id IN (SELECT p2.Id FROM Produto p2 LEFT JOIN ProdutoCodigoBarras pcb2 ON p2.Id = pcb2.Produto WHERE pcb2.CodigoBarras = '"+valor+"'))) AND p.FlagExcluido = 0 AND (pg.FlagExcluido = 0 OR pg.FlagExcluido IS NULL) AND (pcb.FlagExcluido = 0 OR pcb.FlagExcluido IS NULL) AND (um.FlagExcluido = 0 OR um.FlagExcluido IS NULL);";
+
+                //Consulta para casos que todos itens tenha uma grade
+                String sql = "SELECT p.Id AS ProdutoId, p.DESCRICAO AS ProdutoNome, pg.Id AS ProdutoGradeId, pg.Descricao AS DescricaoGrade, COALESCE(um.Id, p.UnidadeMedida) AS UnidadeMedida, COALESCE(pg.ValorVenda, p.ValorVenda) AS ValorVenda, COALESCE(pcb.CodigoBarras, (SELECT pcb2.CodigoBarras FROM ProdutoCodigoBarras pcb2 WHERE pcb2.Produto = p.Id LIMIT 1)) AS CodigoBarras FROM Produto p JOIN ProdutoGrade pg ON p.Id = pg.Produto LEFT JOIN ProdutoCodigoBarras pcb ON pg.Id = pcb.ProdutoGrade LEFT JOIN UnidadeMedida um ON pg.UnidadeMedida = um.Id WHERE pcb.CodigoBarras = '"+valor+"' AND p.FlagExcluido = 0 AND pg.FlagExcluido = 0 AND (pcb.FlagExcluido = 0 OR pcb.FlagExcluido IS NULL) AND (um.FlagExcluido = 0 OR um.FlagExcluido IS NULL)";
+
+
+                IList<ProdutoResult> lista = produtoDAO.selecionarProdutosPorSqlResult(sql);
+                if (lista.Count == 1)
+                {
+                    desbloquearCamposValorQuantidade();
+                    foreach (ProdutoResult prod in lista)
+                    {
+                        txtPesquisaProduto.Texts = prod.DescricaoGrade;
+                        txtQuantidade.Texts = "1";
+                        txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                        txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                        produto.Id = prod.ProdutoId;
+                        produto = (Produto)Controller.getInstance().selecionar(produto);
+                        UnidadeMedida unidadeMedida = new UnidadeMedida();
+                        unidadeMedida.Id = prod.UnidadeMedida;
+                        unidadeMedida = (UnidadeMedida)Controller.getInstance().selecionar(unidadeMedida);
+                        //lblUnidadeMedida.Text = unidadeMedida.Sigla;
+                        produto.UnidadeMedida = unidadeMedida;
+
+                        ProdutoGrade prdgrade = new ProdutoGrade();
+                        prdgrade.Id = int.Parse(prod.ProdutoGradeId.ToString());
+                        prdgrade = (ProdutoGrade)Controller.getInstance().selecionar(prdgrade);
+                        produto.GradePrincipal = prdgrade;
+                        
+
+                        if (valorAux.Contains("*"))
+                            txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                        if (prod.CodigoBarras.Equals(valor.Trim()))
+                            inserirItem(this.produto);
+                        else
+                        {
+                            txtQuantidade.Focus();
+                            txtQuantidade.Select();
+                        }
+                    }
+                }
+            }
+            //Verifica se é Id do produto
+            else if (ENumeroMenorQue5Digitos(valor))
+            {
+                listaProdutos = new List<Produto>();
+                listaProdutos = produtoController.selecionarProdutosPorSql("From Produto Tabela Where Tabela.FlagExcluido = false and Tabela.Id = " + valor);
+                if (listaProdutos.Count > 0)
+                {
+                    desbloquearCamposValorQuantidade();
+                    foreach (Produto prod in listaProdutos)
+                    {
+                        if (prod.Veiculo == true)
+                        {
+                            FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
+                            frmProdutoCadastro.ShowDialog();
+                        }
+                        if (prod.Grade == true)
+                        {
+                            ProdutoGrade produtoGrade = new ProdutoGrade();
+                            produtoGrade = selecionarGrade(prod);
+
+                            if (produtoGrade != null)
+                            {
+                                txtPesquisaProduto.Texts = prod.Descricao;
+                                txtQuantidade.Texts = "1";
+                                txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                this.produto = prod;
+                                this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                                lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
+              
+                                produto.GradePrincipal = produtoGrade;
+
+                                //inserirItem(this.produto);
+                                txtQuantidade.Focus();
+                                txtQuantidade.Select();
+                            }
+                        }
+                        else
+                        {
+                            txtPesquisaProduto.Texts = prod.Descricao;
+                            txtQuantidade.Texts = "1";
+                            txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                            txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                            this.produto = prod;
+                            if (valorAux.Contains("*"))
+                                txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                            if (prod.Ean.Equals(valor.Trim()))
+                                inserirItem(this.produto);
+                            else
+                            {
+                                txtQuantidade.Focus();
+                                txtQuantidade.Select();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //pode ser uma referencia, ai ele pesquisa por descricao e referencia
+                    PesquisarProdutoPorDescricao(valor);
+                }
+            }
+            //Pesquisa por descricao ou referencia
+            else
+            {
+                PesquisarProdutoPorDescricao(valor);
+            }
+        }
+
+        private ProdutoGrade selecionarGrade(Produto produto)
+        {
+            using (var formBackground = new Form())
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.Opacity = .50d; // Define a opacidade
+                formBackground.BackColor = Color.Black; // Define a cor de fundo
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width; // Define a largura
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height; // Define a altura
+                formBackground.WindowState = FormWindowState.Maximized; // Maximiza a janela
+                formBackground.TopMost = true; // Garante que o formulário de fundo fique acima de outros
+                formBackground.ShowInTaskbar = false; // Não mostra na barra de tarefas
+                formBackground.Show(); // Exibe o formulário de fundo
+
+                using (var frmSelecionarGrade = new FrmSelecionarGrade(produto))
+                {
+                    frmSelecionarGrade.StartPosition = FormStartPosition.CenterParent; // Centraliza em relação ao formulário de fundo
+                    frmSelecionarGrade.FormBorderStyle = FormBorderStyle.FixedDialog; // Configura a borda do formulário
+                    if (frmSelecionarGrade.ShowDialog(formBackground) == DialogResult.OK)
+                    {
+                        var gradeSelecionada = frmSelecionarGrade.GradeSelecionada;
+                        if (gradeSelecionada != null)
+                        {
+                            return gradeSelecionada;
+                        }
+                    }
+                }
+                formBackground.Dispose();
+                return null;
+            }
+        }
+        public bool IsNumericAndHasMoreThan7Digits(string input)
+        {
+            // Verifica se a string não é nula ou vazia
+            if (string.IsNullOrWhiteSpace(input))
+                return false;
+
+            // Verifica se a string é composta apenas por dígitos e tem mais de 7 caracteres
+            return input.All(char.IsDigit) && input.Length > 7;
+        }
+        public bool ENumeroMenorQue5Digitos(string input)
+        {
+            // Verifica se a string não é nula ou vazia
+            if (string.IsNullOrWhiteSpace(input))
+                return false;
+
+            // Verifica se a string é composta apenas por dígitos e tem mais de 7 caracteres
+            return input.All(char.IsDigit) && input.Length <= 5;
+        }
         private void bloquearCamposValorQuantidade()
         {
             txtQuantidade.Enabled = false;
@@ -878,19 +1061,42 @@ namespace Lunar.Telas.Vendas
                         FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
                         frmProdutoCadastro.ShowDialog();
                     }
-                    txtPesquisaProduto.Texts = prod.Descricao;
-                    txtQuantidade.Texts = "1";
-                    txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                    txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                    this.produto = prod;
-                    if (valorAux.Contains("*"))
-                        txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                    if (prod.Ean.Equals(valor.Trim()))
-                        inserirItem(this.produto);
+                    if (prod.Grade == true)
+                    {
+                        ProdutoGrade produtoGrade = new ProdutoGrade();
+                        produtoGrade = selecionarGrade(prod);
+
+                        if (produtoGrade != null)
+                        {
+                            txtPesquisaProduto.Texts = prod.Descricao;
+                            txtQuantidade.Texts = "1";
+                            txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                            txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                            this.produto = prod;
+                            this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                            lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
+                            this.produto.GradePrincipal = produtoGrade;
+                            //inserirItem(this.produto);
+                            txtQuantidade.Focus();
+                            txtQuantidade.Select();
+                        }
+                    }
                     else
                     {
-                        txtQuantidade.Focus();
-                        txtQuantidade.Select();
+                        txtPesquisaProduto.Texts = prod.Descricao;
+                        txtQuantidade.Texts = "1";
+                        txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                        txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                        this.produto = prod;
+                        if (valorAux.Contains("*"))
+                            txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                        if (prod.Ean.Equals(valor.Trim()))
+                            inserirItem(this.produto);
+                        else
+                        {
+                            txtQuantidade.Focus();
+                            txtQuantidade.Select();
+                        }
                     }
                 }
             }
@@ -928,9 +1134,81 @@ namespace Lunar.Telas.Vendas
                                     txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
                                     txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
                                     this.produto = ((Produto)produtoOjeto);
+                                    if (this.produto.Grade == true)
+                                    {
+                                        ProdutoGrade produtoGrade = new ProdutoGrade();
+                                        produtoGrade = selecionarGrade(produto);
+
+                                        if (produtoGrade != null)
+                                        {
+                                            txtPesquisaProduto.Texts = produto.Descricao;
+                                            txtQuantidade.Texts = "1";
+                                            txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                            txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                            this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                                            lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
+                                            this.produto.GradePrincipal = produtoGrade;
+                                            //inserirItem(this.produto);
+                                            txtQuantidade.Focus();
+                                            txtQuantidade.Select();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (valorAux.Contains("*"))
+                                            txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                                        if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()))
+                                            inserirItem(this.produto);
+                                        else
+                                        {
+                                            txtQuantidade.Focus();
+                                            txtQuantidade.SelectAll();
+                                        }
+                                        if (((Produto)produtoOjeto).Veiculo == true)
+                                        {
+                                            FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
+                                            frmProdutoCadastro.ShowDialog();
+                                        }
+                                    }
+                                }
+                                form.Dispose();
+                                break;
+                            case DialogResult.OK:
+
+                                desbloquearCamposValorQuantidade();
+                                txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
+
+                                Produto prod = ((Produto)produtoOjeto);
+                                if (prod.Grade == true)
+                                {
+                                    ProdutoGrade produtoGrade = new ProdutoGrade();
+                                    produtoGrade = selecionarGrade(prod);
+
+                                    if (produtoGrade != null)
+                                    {
+                                        txtPesquisaProduto.Texts = prod.Descricao;
+                                        txtQuantidade.Texts = "1";
+                                        txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                        txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                        this.produto = prod;
+                                        this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                                        lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
+                                        this.produto.GradePrincipal = produtoGrade;
+                                        //inserirItem(this.produto);
+                                        txtQuantidade.Focus();
+                                        txtQuantidade.Select();
+                                    }
+                                }
+                                else
+                                {
+
+                                    txtQuantidade.Texts = "1";
+                                    txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
+                                    txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
+                                    this.produto = ((Produto)produtoOjeto);
                                     if (valorAux.Contains("*"))
                                         txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                                    if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()))
+                                    if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()) && !String.IsNullOrEmpty(valor))
                                         inserirItem(this.produto);
                                     else
                                     {
@@ -942,29 +1220,6 @@ namespace Lunar.Telas.Vendas
                                         FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
                                         frmProdutoCadastro.ShowDialog();
                                     }
-                                }
-                                form.Dispose();
-                                break;
-                            case DialogResult.OK:
-                                desbloquearCamposValorQuantidade();
-                                txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
-                                txtQuantidade.Texts = "1";
-                                txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                this.produto = ((Produto)produtoOjeto);
-                                if (valorAux.Contains("*"))
-                                    txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                                if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()) && !String.IsNullOrEmpty(valor))
-                                    inserirItem(this.produto);
-                                else
-                                {
-                                    txtQuantidade.Focus();
-                                    txtQuantidade.SelectAll();
-                                }
-                                if (((Produto)produtoOjeto).Veiculo == true)
-                                {
-                                    FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
-                                    frmProdutoCadastro.ShowDialog();
                                 }
                                 break;
                         }
@@ -1012,6 +1267,9 @@ namespace Lunar.Telas.Vendas
                 row.SetField("Estoque", produto.Estoque);
                 row.SetField("CfopVenda", produto.CfopVenda);
                 row.SetField("CstIcms", produto.CstIcms);
+                row.SetField("UnidadeMedida", produto.UnidadeMedida.Sigla);
+                row.SetField("ProdutoGrade", produto.GradePrincipal.Id);
+                row.SetField("QuantidadeBaixa", produto.GradePrincipal.QuantidadeMedida * double.Parse(txtQuantidade.Texts));
                 dsProduto.Tables[0].Rows.Add(row);
                 txtPesquisaProduto.Texts = "";
                 somaEnquantoDigita();
@@ -1409,6 +1667,7 @@ namespace Lunar.Telas.Vendas
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             inserirItem(this.produto);
+            lblUnidadeMedida.Visible = false;
         }
 
 
@@ -1718,8 +1977,8 @@ namespace Lunar.Telas.Vendas
 
             // aqui eu precisava marcar o checkbox ou entao no metodo soma_enquanto_digita nao somar as linhas riscadas...
             //as linhas riscadas tem a funcao FontStyle.Strikeout;
-            gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(index), gridProdutos.Columns[6].MappingName, true);
-            gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(index), gridProdutos.Columns[7].MappingName, 0);
+            gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(index), gridProdutos.Columns["ItemExcluido"].MappingName, true);
+            gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(index), gridProdutos.Columns["DescontoItem"].MappingName, 0);
 
             //System.Data.DataRow row = dsProduto.Tables[0].Rows[index - 1];
             //row.SetField("ItemExcluido", true);
@@ -2132,17 +2391,7 @@ namespace Lunar.Telas.Vendas
                         //Concluir a venda antes de gerar a nota
                         concluirVenda(venda, true);
                         numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
-                        //LunarBase.Classes.Nfe nfConferencia = new Nfe();
-                        //NfeController nfeController = new NfeController();
-                        //nfConferencia = nfeController.selecionarUltimoNumeroNota("65");
-                        //if (nfConferencia != null)
-                        //{
-                        //    if (nfConferencia.Id > 0)
-                        //    {
-                        //        if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
-                        //            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
-                        //    }
-                        //}
+       
                         xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorTotal, valorComDesconto, decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFCe, listaProdutosNFe, venda.Cliente, venda, null, null, "");
                         if (!String.IsNullOrEmpty(xmlStrEnvio))
                         {
@@ -2174,9 +2423,12 @@ namespace Lunar.Telas.Vendas
                 {
                     NfeProduto nfeProduto = new NfeProduto();
                     produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(dataRowViewXXX.Row["Codigo"].ToString()), Sessao.empresaFilialLogada);
-                    double quantidade = double.Parse(dataRowViewXXX.Row["Quantidade"].ToString());
+                    double quantidade = double.Parse(dataRowViewXXX.Row["QuantidadeBaixa"].ToString());
+                    double quantidadeOr = double.Parse(dataRowViewXXX.Row["Quantidade"].ToString());
+                    double quantidadeDiv = quantidade / quantidadeOr;
                     decimal descontoItem = decimal.Parse(dataRowViewXXX.Row["DescontoItem"].ToString());
-                    produto.ValorVenda = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString());
+                    produto.ValorVenda = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString()) / decimal.Parse(quantidadeDiv.ToString());
+
                     nfeProduto.Item = i.ToString();
                     nfeProduto.Produto = produto;
                     nfeProduto.QCom = quantidade.ToString();
@@ -2186,6 +2438,7 @@ namespace Lunar.Telas.Vendas
                     nfeProduto.CProd = produto.Id.ToString();
                     nfeProduto.Nfe = null;
                     nfeProduto.VProd = produto.ValorVenda * decimal.Parse(quantidade.ToString());
+
                     nfeProduto.VUnCom = produto.ValorVenda;
                     nfeProduto.QTrib = quantidade;
                     nfeProduto.VDesc = descontoItem;
@@ -2216,7 +2469,8 @@ namespace Lunar.Telas.Vendas
                     nfeProduto.ValorAcrescimo = 0;
                     nfeProduto.ValorCofins = 0;
                     nfeProduto.ValorDesconto = descontoItem;
-                    nfeProduto.ValorFinal = (produto.ValorVenda * decimal.Parse(quantidade.ToString())) - descontoItem;
+                    nfeProduto.ValorFinal = Math.Round((produto.ValorVenda * decimal.Parse(quantidade.ToString())) - descontoItem, 4);
+  
                     nfeProduto.UComConvertida = produto.UnidadeMedida.Sigla;
                     nfeProduto.ValorIpi = 0;
                     nfeProduto.ValorPis = 0;
@@ -2550,11 +2804,20 @@ namespace Lunar.Telas.Vendas
                     produto = new Produto();
                     VendaItens vendaItens = new VendaItens();
                     produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(dataRowViewXXX.Row["Codigo"].ToString()), Sessao.empresaFilialLogada);
-                    double quantidade = double.Parse(dataRowViewXXX.Row["Quantidade"].ToString());
+                    double quantidade = double.Parse(dataRowViewXXX.Row["QuantidadeBaixa"].ToString());
+                    double quantidadeLancada = double.Parse(dataRowViewXXX.Row["Quantidade"].ToString());
                     decimal descontoItem = decimal.Parse(dataRowViewXXX.Row["DescontoItem"].ToString());
                     produto.ValorVenda = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString());
+
+                    //Grade na venda
+                    ProdutoGrade prdgrade = new ProdutoGrade();
+                    prdgrade.Id = int.Parse(dataRowViewXXX.Row["ProdutoGrade"].ToString());
+                    prdgrade = (ProdutoGrade)Controller.getInstance().selecionar(prdgrade);
+                    vendaItens.ProdutoGrade = prdgrade;
+                    vendaItens.UnidadeMedida = prdgrade.UnidadeMedida.Sigla;
+
                     vendaItens.Produto = produto;
-                    vendaItens.Quantidade = quantidade;
+                    vendaItens.Quantidade = quantidadeLancada;
                     vendaItens.Ncm = produto.Ncm;
                     vendaItens.Cest = produto.Cest;
                     vendaItens.Cfop = produto.CfopVenda;
@@ -2583,8 +2846,13 @@ namespace Lunar.Telas.Vendas
                     vendaItens.ValorAcrescimo = 0;
                     vendaItens.ValorCofins = 0;
                     vendaItens.ValorDesconto = descontoItem;
-                    vendaItens.ValorFinal = (produto.ValorVenda * decimal.Parse(quantidade.ToString())) - descontoItem;
-                    try { vendaItens.ValorIcms = vendaItens.ValorFinal / decimal.Parse(quantidade.ToString()) * decimal.Parse(produto.PercentualIcms); } catch { vendaItens.ValorIcms = 0; }
+                    vendaItens.ValorFinal = (produto.ValorVenda * decimal.Parse(quantidadeLancada.ToString())) - descontoItem;
+                    //calcular icms
+                    decimal percentualDecimal = 0;
+                    if (!String.IsNullOrEmpty(produto.PercentualIcms))
+                        percentualDecimal = decimal.Parse(produto.PercentualIcms) / 100;
+
+                    try { vendaItens.ValorIcms = vendaItens.ValorFinal * percentualDecimal; } catch { vendaItens.ValorIcms = 0; }
                     vendaItens.ValorIpi = 0;
                     vendaItens.ValorIsentoCofins = 0;
                     vendaItens.ValorIsentoIcms = 0;
@@ -2672,7 +2940,7 @@ namespace Lunar.Telas.Vendas
                     foreach (var record in records2)
                     {
                         var dataRowView = record.Data as DataRowView;
-                        gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns[7].MappingName, 0);
+                        gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["DescontoItem"].MappingName, 0);
                         i++;
                     }
 
@@ -2746,7 +3014,7 @@ namespace Lunar.Telas.Vendas
 
                 decimal descontoItem = (decimal.Parse(dataRowView.Row["ValorTotal"].ToString()) * percentualDesconto) / 100;
                 descontoItem = Math.Round(descontoItem, 2);
-                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns[7].MappingName, descontoItem);
+                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["DescontoItem"].MappingName, descontoItem);
                 i++;
                 somarDescontoTotal = somarDescontoTotal + decimal.Parse(dataRowView.Row["DescontoItem"].ToString());
                 valorDescontoInformado = decimal.Parse(dataRowView.Row["DescontoItem"].ToString());
@@ -2762,14 +3030,14 @@ namespace Lunar.Telas.Vendas
                 {
                     valorDescontoInformado = valorDescontoInformado - diferenca;
                     int index = gridProdutos.RowCount - 1;
-                    gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(index), gridProdutos.Columns[7].MappingName, valorDescontoInformado);
+                    gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(index), gridProdutos.Columns["DescontoItem"].MappingName, valorDescontoInformado);
 
                 }
                 else if (somarDescontoTotal < decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")))
                 {
                     valorDescontoInformado = valorDescontoInformado + diferenca;
                     int index = gridProdutos.RowCount - 1;
-                    gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(index), gridProdutos.Columns[7].MappingName, valorDescontoInformado);
+                    gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(index), gridProdutos.Columns["DescontoItem"].MappingName, valorDescontoInformado);
                 }
             }
         }
@@ -2812,7 +3080,7 @@ namespace Lunar.Telas.Vendas
                                     if (valorOriginal > 0)
                                     {
                                         decimal valorDesconto = decimal.Parse(valorOriginal.ToString());
-                                        gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns[7].MappingName, valorDesconto);
+                                        gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["DescontoItem"].MappingName, valorDesconto);
                                         var records = gridProdutos.View.Records;
                                         foreach (var record in records)
                                         {
@@ -3030,7 +3298,7 @@ namespace Lunar.Telas.Vendas
                     prod = estoque.Produto;
                     estoque.Saida = true;
                     estoque.DataEntradaSaida = DateTime.Now;
-                    estoque.Quantidade = double.Parse(dataRowView.Row["Quantidade"].ToString());
+                    estoque.Quantidade = double.Parse(dataRowView.Row["QuantidadeBaixa"].ToString());
                     estoque.Pessoa = venda.Cliente;
                     if (conciliado == true)
                     {

@@ -121,11 +121,17 @@
   <data name="Completed-Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Completed-Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="whatsapp-logo-icone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\whatsapp-logo-icone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Produto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Produto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img-wellcome-sis-lunar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img-wellcome-sis-lunar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Group 137" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Group 137.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CloseDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CloseDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,6 +163,9 @@
   <data name="Only-Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Only-Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="settings_24dp_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings_24dp_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AniversariantesTeste" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AniversariantesTeste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -178,13 +187,13 @@
   <data name="DinheiroExemplo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DinheiroExemplo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="whatsapp-logo-icone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\whatsapp-logo-icone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="XML-PNG-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XML-PNG-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Group 137" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Group 137.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="settings_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

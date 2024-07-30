@@ -43,6 +43,11 @@ namespace Lunar
                 {
                     File.Delete("C:\\Lunar\\LunarSoftwareAtivador.exe");
                 }
+                if(Environment.MachineName.Equals("NoteMarcelo") || Environment.MachineName.Equals("NOTEMARCELO"))
+                {
+                    txtUsuario.Texts = "SUPORTE";
+                    txtSenha.Texts = "ESTAC2UL";
+                }
             }
             catch
             {
@@ -298,7 +303,9 @@ namespace Lunar
                 }
                 catch (Exception err)
                 {
-                    GenericaDesktop.ShowErro(err.Message);
+                    Logger logger = new Logger();
+                    logger.WriteLog(err.Message, "Log");
+                    //GenericaDesktop.ShowErro(err.Message);
                 }
             }
         }

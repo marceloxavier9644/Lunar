@@ -44,6 +44,8 @@
             this.txtSenha = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnLogin = new Lunar.RJ_UI.Classes.RJCircularPictureBox();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogin)).BeginInit();
@@ -52,23 +54,23 @@
             // autoLabel2
             // 
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel2.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel2.Location = new System.Drawing.Point(167, 206);
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.Location = new System.Drawing.Point(169, 215);
             this.autoLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(253, 27);
+            this.autoLabel2.Size = new System.Drawing.Size(231, 20);
             this.autoLabel2.TabIndex = 7;
             this.autoLabel2.Text = "Se você não possuir uma conta";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.ForeColor = System.Drawing.Color.Black;
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.linkLabel1.Location = new System.Drawing.Point(165, 165);
+            this.linkLabel1.Location = new System.Drawing.Point(165, 186);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(161, 27);
+            this.linkLabel1.Size = new System.Drawing.Size(154, 20);
             this.linkLabel1.TabIndex = 18;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Esqueceu a Senha?";
@@ -78,12 +80,12 @@
             // 
             this.linkLabel2.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel2.ForeColor = System.Drawing.Color.Black;
             this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
-            this.linkLabel2.Location = new System.Drawing.Point(420, 206);
+            this.linkLabel2.Location = new System.Drawing.Point(422, 215);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(82, 27);
+            this.linkLabel2.Size = new System.Drawing.Size(72, 20);
             this.linkLabel2.TabIndex = 19;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Crie uma";
@@ -92,12 +94,12 @@
             // 
             this.linkLabel3.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel3.ForeColor = System.Drawing.Color.Black;
             this.linkLabel3.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
-            this.linkLabel3.Location = new System.Drawing.Point(166, 228);
+            this.linkLabel3.Location = new System.Drawing.Point(168, 237);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(49, 27);
+            this.linkLabel3.Size = new System.Drawing.Size(43, 20);
             this.linkLabel3.TabIndex = 20;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "aqui.";
@@ -118,11 +120,11 @@
             // lblStatus
             // 
             this.lblStatus.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblStatus.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.Location = new System.Drawing.Point(33, 303);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(59, 18);
+            this.lblStatus.Size = new System.Drawing.Size(56, 13);
             this.lblStatus.TabIndex = 22;
             this.lblStatus.Text = "Aguarde...";
             this.lblStatus.Visible = false;
@@ -212,18 +214,18 @@
             this.txtSenha.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
             this.txtSenha.BorderRadius = 8;
             this.txtSenha.BorderSize = 1;
-            this.txtSenha.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSenha.Location = new System.Drawing.Point(163, 112);
+            this.txtSenha.Location = new System.Drawing.Point(163, 137);
             this.txtSenha.Margin = new System.Windows.Forms.Padding(4);
             this.txtSenha.Multiline = false;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.txtSenha.PasswordChar = true;
             this.txtSenha.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtSenha.PlaceholderText = "Senha";
+            this.txtSenha.PlaceholderText = "";
             this.txtSenha.ReadOnly = false;
-            this.txtSenha.Size = new System.Drawing.Size(346, 40);
+            this.txtSenha.Size = new System.Drawing.Size(346, 33);
             this.txtSenha.TabIndex = 12;
             this.txtSenha.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtSenha.Texts = "";
@@ -236,18 +238,18 @@
             this.txtUsuario.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
             this.txtUsuario.BorderRadius = 8;
             this.txtUsuario.BorderSize = 1;
-            this.txtUsuario.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUsuario.Location = new System.Drawing.Point(163, 65);
+            this.txtUsuario.Location = new System.Drawing.Point(163, 75);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Multiline = false;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.txtUsuario.PasswordChar = false;
             this.txtUsuario.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtUsuario.PlaceholderText = "Usuário";
+            this.txtUsuario.PlaceholderText = "";
             this.txtUsuario.ReadOnly = false;
-            this.txtUsuario.Size = new System.Drawing.Size(346, 40);
+            this.txtUsuario.Size = new System.Drawing.Size(346, 33);
             this.txtUsuario.TabIndex = 11;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUsuario.Texts = "";
@@ -272,6 +274,28 @@
             this.btnLogin.TabStop = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Location = new System.Drawing.Point(163, 51);
+            this.autoLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(64, 20);
+            this.autoLabel1.TabIndex = 25;
+            this.autoLabel1.Text = "Usuário";
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Location = new System.Drawing.Point(163, 113);
+            this.autoLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(56, 20);
+            this.autoLabel3.TabIndex = 26;
+            this.autoLabel3.Text = "Senha";
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +303,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.CaptionForeColor = System.Drawing.Color.SlateBlue;
             this.ClientSize = new System.Drawing.Size(548, 323);
+            this.Controls.Add(this.autoLabel3);
+            this.Controls.Add(this.autoLabel1);
             this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblStatus);
@@ -329,5 +355,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
     }
 }

@@ -269,6 +269,7 @@ namespace Lunar.Utils.Sintegra
                         registro54.Cst = nfProduto.CstIcms.PadLeft(3, '0');
                         registro54.NumeroItem = int.Parse(nfProduto.Item);
                         registro54.CodProdutoServico = nfProduto.CodigoInterno;
+
                         registro54.Quantidade = decimal.Parse(nfProduto.QuantidadeEntrada.ToString());
                         registro54.VlProdutoServico = ((nfProduto.VProd + nfProduto.VFrete + nfProduto.VICMSSt + nfProduto.VOutro) - nfProduto.VDesc);
                         registro54.VlDescontoDespesaAc = nfProduto.VDesc;

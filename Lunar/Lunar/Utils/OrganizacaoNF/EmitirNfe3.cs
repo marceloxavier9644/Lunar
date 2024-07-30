@@ -350,13 +350,13 @@ namespace Lunar.Utils.OrganizacaoNF
                 det[y].prod.CFOP = produto.Cfop;
                 det[y].prod.uCom = produto.Produto.UnidadeMedida.Sigla;
                 det[y].prod.qCom = formatMoedaNf(decimal.Parse(produto.QCom));
-                det[y].prod.vUnCom = formatMoedaNf(produto.VUnCom);
+                det[y].prod.vUnCom = formatMoedaNf6Decimais(produto.VUnCom);
                 det[y].prod.vProd = formatMoedaNf(produto.VUnCom * decimal.Parse(produto.QCom));
                 det[y].prod.uTrib = produto.Produto.UnidadeMedida.Sigla;
                 det[y].prod.qTrib = formatMoedaNf(decimal.Parse(produto.QCom));
                 if(produto.VDesc > 0)
                     det[y].prod.vDesc = formatMoedaNf(produto.VDesc);
-                det[y].prod.vUnTrib = formatMoedaNf(produto.VUnCom);
+                det[y].prod.vUnTrib = formatMoedaNf6Decimais(produto.VUnCom);
                 det[y].prod.indTot = TNFeInfNFeDetProdIndTot.Item1;
                 
                 //Informacao adicional item
@@ -517,7 +517,18 @@ namespace Lunar.Utils.OrganizacaoNF
                 y++;
             }  
         }
-
+        private string formatMoedaNf6Decimais(decimal valor)
+        {
+            try
+            {
+                string valorFormatado = String.Format("{0:0.000000}", valor);
+                return valorFormatado.Replace(",", ".");
+            }
+            catch
+            {
+                return valor.ToString();
+            }
+        }
         private void gerarTotais()
         {
             totais.ICMSTot = new TNFeInfNFeTotalICMSTot();

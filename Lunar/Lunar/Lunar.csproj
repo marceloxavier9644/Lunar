@@ -841,6 +841,31 @@
     <Compile Include="Telas\Fiscal\NFeSelecaoItens\FrmSelecionarProdutoParaNfe.Designer.cs">
       <DependentUpon>FrmSelecionarProdutoParaNfe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Food\ApiServiceFood.cs" />
+    <Compile Include="Telas\Food\FrmAdicionarComanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Food\FrmAdicionarComanda.Designer.cs">
+      <DependentUpon>FrmAdicionarComanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Food\FrmConfigFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Food\FrmConfigFood.Designer.cs">
+      <DependentUpon>FrmConfigFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Food\FrmControleFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Food\FrmControleFood.Designer.cs">
+      <DependentUpon>FrmControleFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Food\FrmDetalheMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Food\FrmDetalheMesa.Designer.cs">
+      <DependentUpon>FrmDetalheMesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1168,6 +1193,12 @@
     <Compile Include="Telas\Vendas\Adicionais\FrmImprimirTicketVenda.Designer.cs">
       <DependentUpon>FrmImprimirTicketVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmSelecionarGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmSelecionarGrade.Designer.cs">
+      <DependentUpon>FrmSelecionarGrade.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Vendas\FrmConsultaVendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1252,6 +1283,7 @@
     <Compile Include="Utils\GalaxyPay_API\RetornoPagamentoPix.cs" />
     <Compile Include="Utils\GenericaDesktop.cs" />
     <Compile Include="Utils\GeradorNFe2024\GeradorNFCe.cs" />
+    <Compile Include="Utils\Grid_Class\GridSummary.cs" />
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1278,6 +1310,7 @@
     <Compile Include="Utils\SPCBrasilIntegracao\CustomMessageInspector.cs" />
     <Compile Include="Utils\Unimake\GeradoresXML\GeradorChave\GeradorChave.cs" />
     <Compile Include="Utils\Unimake\GeradoresXML\XMLNFCe\XmlNfceUnimake.cs" />
+    <Compile Include="Utils\UpdateScript.cs" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="RJ_UI\Classes\RJTextBoxLower.resx">
       <DependentUpon>RJTextBoxLower.cs</DependentUpon>
@@ -1535,6 +1568,18 @@
     <EmbeddedResource Include="Telas\Fiscal\NFeSelecaoItens\FrmSelecionarProdutoParaNfe.resx">
       <DependentUpon>FrmSelecionarProdutoParaNfe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Food\FrmAdicionarComanda.resx">
+      <DependentUpon>FrmAdicionarComanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Food\FrmConfigFood.resx">
+      <DependentUpon>FrmConfigFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Food\FrmControleFood.resx">
+      <DependentUpon>FrmControleFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Food\FrmDetalheMesa.resx">
+      <DependentUpon>FrmDetalheMesa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.resx">
       <DependentUpon>FrmCrediarioOrdemServico.cs</DependentUpon>
     </EmbeddedResource>
@@ -1688,6 +1733,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmImprimirTicketVenda.resx">
       <DependentUpon>FrmImprimirTicketVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmSelecionarGrade.resx">
+      <DependentUpon>FrmSelecionarGrade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Adicionais\reportTicketVenda.rdlc" />
     <EmbeddedResource Include="Telas\Vendas\FrmConsultaVendas.resx">
@@ -2189,6 +2237,7 @@
     <Content Include="Group 137.ico" />
     <Content Include="only_logo_BR8_1.ico" />
     <Content Include="Resources\Account Setting.png" />
+    <None Include="Resources\Add24.png" />
     <Content Include="Resources\Address Book.png" />
     <None Include="Resources\AniversariantesTeste.png" />
     <Content Include="Resources\Auto archive Setting.png" />
@@ -2256,6 +2305,8 @@
     <Content Include="Resources\Send and recive all folder.png" />
     <Content Include="Resources\Send Group.png" />
     <Content Include="Resources\Send-Receive group.png" />
+    <None Include="Resources\settings_24dp.png" />
+    <None Include="Resources\settings_24dp_Black.png" />
     <Content Include="Resources\Show all A to Z.png" />
     <Content Include="Resources\show in favorites.png" />
     <Content Include="Resources\Show Progress.png" />

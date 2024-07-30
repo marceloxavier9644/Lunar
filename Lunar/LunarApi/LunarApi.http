@@ -1,0 +1,6 @@
+@LunarApi_HostAddress = http://localhost:5130
+
+GET {{LunarApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

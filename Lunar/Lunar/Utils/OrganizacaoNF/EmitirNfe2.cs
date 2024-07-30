@@ -419,12 +419,12 @@ namespace Lunar.Utils.OrganizacaoNF
                                 CFOP = produto.Cfop,
                                 uCom = produto.Produto.UnidadeMedida.Sigla,
                                 qCom = formatMoedaNf(decimal.Parse(produto.QCom)),
-                                vUnCom = formatMoedaNf(produto.VProd),
+                                vUnCom = formatMoedaNf6Decimais(produto.VProd),
                                 vProd = formatMoedaNf(produto.VProd * decimal.Parse(produto.QCom)),
                                 uTrib = produto.Produto.UnidadeMedida.Sigla,
                                 qTrib = formatMoedaNf(decimal.Parse(produto.QCom)),
                                 vDesc = formatMoedaNf(produto.VDesc),
-                                vUnTrib = formatMoedaNf(produto.VProd),
+                                vUnTrib = formatMoedaNf6Decimais(produto.VProd),
                                 indTot = TNFeInfNFeDetProdIndTot.Item1,
                                 vFrete = valorFreteItem,
                                 vOutro = valorOutro,
@@ -461,11 +461,11 @@ namespace Lunar.Utils.OrganizacaoNF
                             CFOP = produto.Cfop,
                             uCom = produto.Produto.UnidadeMedida.Sigla,
                             qCom = formatMoedaNf(decimal.Parse(produto.QCom)),
-                            vUnCom = formatMoedaNf(produto.VProd),
+                            vUnCom = formatMoedaNf6Decimais(produto.VProd),
                             vProd = formatMoedaNf(produto.VProd * decimal.Parse(produto.QCom)),
                             uTrib = produto.Produto.UnidadeMedida.Sigla,
                             qTrib = formatMoedaNf(decimal.Parse(produto.QCom)),
-                            vUnTrib = formatMoedaNf(produto.VProd),
+                            vUnTrib = formatMoedaNf6Decimais(produto.VProd),
                             indTot = TNFeInfNFeDetProdIndTot.Item1,
                             vFrete = valorFreteItem,
                             vOutro = valorOutro,
@@ -491,7 +491,18 @@ namespace Lunar.Utils.OrganizacaoNF
                 return null;
             }
         }
-
+        private string formatMoedaNf6Decimais(decimal valor)
+        {
+            try
+            {
+                string valorFormatado = String.Format("{0:0.000000}", valor);
+                return valorFormatado.Replace(",", ".");
+            }
+            catch
+            {
+                return valor.ToString();
+            }
+        }
         private object[] geraImpostoICMS_IPI(NfeProduto nfeProduto)
         {
             TNFeInfNFeDetImpostoICMS[] icms = new TNFeInfNFeDetImpostoICMS[0];

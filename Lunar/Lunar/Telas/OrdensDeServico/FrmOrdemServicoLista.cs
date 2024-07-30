@@ -1354,8 +1354,17 @@ namespace Lunar.Telas.OrdensDeServico
                 nfeProduto = new NfeProduto();
                 Produto produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(VendaItens.Produto.Id, Sessao.empresaFilialLogada);
                 double quantidade = VendaItens.Quantidade;
+                double quantidadeMedida = 1;
+                if (VendaItens.ProdutoGrade != null)
+                {
+                    quantidadeMedida = VendaItens.ProdutoGrade.QuantidadeMedida;
+                    quantidade = VendaItens.Quantidade * VendaItens.ProdutoGrade.QuantidadeMedida;
+                }
                 decimal descontoItem = VendaItens.Desconto;
                 produto.ValorVenda = VendaItens.ValorUnitario;
+
+                decimal valorUnit = (produto.ValorVenda * decimal.Parse(VendaItens.Quantidade.ToString())) / (decimal.Parse(quantidadeMedida.ToString()) * decimal.Parse(VendaItens.Quantidade.ToString()));
+
                 nfeProduto.Item = i.ToString();
                 nfeProduto.Produto = produto;
                 nfeProduto.QCom = quantidade.ToString();
@@ -1364,7 +1373,7 @@ namespace Lunar.Telas.OrdensDeServico
                 nfeProduto.Cfop = produto.CfopVenda;
                 nfeProduto.CProd = produto.Id.ToString();
                 nfeProduto.Nfe = null;
-                nfeProduto.VProd = produto.ValorVenda * decimal.Parse(quantidade.ToString());
+                nfeProduto.VProd = VendaItens.ValorUnitario * decimal.Parse(VendaItens.Quantidade.ToString());
                 nfeProduto.QTrib = quantidade;
                 nfeProduto.VDesc = descontoItem;
                 nfeProduto.DescricaoInterna = produto.Descricao.Trim();
@@ -1394,17 +1403,17 @@ namespace Lunar.Telas.OrdensDeServico
                 nfeProduto.ValorAcrescimo = 0;
                 nfeProduto.ValorCofins = 0;
                 nfeProduto.ValorDesconto = descontoItem;
-                nfeProduto.ValorFinal = produto.ValorVenda - descontoItem;
+                nfeProduto.ValorFinal = (produto.ValorVenda * decimal.Parse(VendaItens.Quantidade.ToString())) - descontoItem;
                 nfeProduto.UComConvertida = produto.UnidadeMedida.Sigla;
                 nfeProduto.ValorIpi = 0;
                 nfeProduto.ValorPis = 0;
-                nfeProduto.ValorProduto = produto.ValorVenda;
-                nfeProduto.VUnCom = produto.ValorVenda;
+                nfeProduto.ValorProduto = valorUnit;
+                nfeProduto.VUnCom = valorUnit;
 
-                valorFinalNota = (valorFinalNota + (nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString()))) - descontoItem;
-                valorProdutosSemDesconto = valorProdutosSemDesconto + nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString());
+                valorFinalNota += nfeProduto.ValorFinal;
+                valorProdutosSemDesconto += nfeProduto.ValorProduto * decimal.Parse(quantidade.ToString());
                 valorDescontoProdutos = valorDescontoProdutos + nfeProduto.VDesc;
-                if(produto.Estoque < VendaItens.Quantidade)
+                if(produto.Estoque < VendaItens.Quantidade * quantidadeMedida)
                 {
                     produtoNegativo = true;
                 }

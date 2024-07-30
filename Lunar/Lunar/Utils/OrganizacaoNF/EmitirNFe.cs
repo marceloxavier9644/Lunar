@@ -402,12 +402,12 @@ namespace Lunar.Utils.OrganizacaoNF
                                 CFOP = produto.Produto.CfopVenda,
                                 uCom = produto.Produto.UnidadeMedida.Sigla,
                                 qCom = formatMoedaNf(decimal.Parse(produto.QCom)),
-                                vUnCom = formatMoedaNf(produto.VProd),
+                                vUnCom = formatMoedaNf6Decimais(produto.VProd),
                                 vProd = formatMoedaNf(produto.VProd * decimal.Parse(produto.QCom)),
                                 uTrib = produto.Produto.UnidadeMedida.Sigla,
                                 qTrib = formatMoedaNf(decimal.Parse(produto.QCom)),
                                 vDesc = formatMoedaNf(produto.VDesc),
-                                vUnTrib = formatMoedaNf(produto.VProd),
+                                vUnTrib = formatMoedaNf6Decimais(produto.VProd),
 
                                 indTot = TNFeInfNFeDetProdIndTot.Item1
                                 //nItemPed = "0"}}
@@ -441,11 +441,11 @@ namespace Lunar.Utils.OrganizacaoNF
                             CFOP = produto.Produto.CfopVenda,
                             uCom = produto.Produto.UnidadeMedida.Sigla,
                             qCom = formatMoedaNf(decimal.Parse(produto.QCom)),
-                            vUnCom = formatMoedaNf(produto.VProd),
+                            vUnCom = formatMoedaNf6Decimais(produto.VProd),
                             vProd = formatMoedaNf(produto.VProd * decimal.Parse(produto.QCom)),
                             uTrib = produto.Produto.UnidadeMedida.Sigla,
                             qTrib = formatMoedaNf(decimal.Parse(produto.QCom)),
-                            vUnTrib = formatMoedaNf(produto.VProd),
+                            vUnTrib = formatMoedaNf6Decimais(produto.VProd),
                             indTot = TNFeInfNFeDetProdIndTot.Item1
                             //nItemPed = "0"}}
                         },
@@ -466,6 +466,19 @@ namespace Lunar.Utils.OrganizacaoNF
             {
                 GenericaDesktop.ShowErro("Falha ao inserir itens na emissão de nota " + erro.Message);
                 return null;
+            }
+        }
+
+        private string formatMoedaNf6Decimais(decimal valor)
+        {
+            try
+            {
+                string valorFormatado = String.Format("{0:0.000000}", valor);
+                return valorFormatado.Replace(",", ".");
+            }
+            catch
+            {
+                return valor.ToString();
             }
         }
         private string formatPeso(decimal valor)
@@ -516,13 +529,13 @@ namespace Lunar.Utils.OrganizacaoNF
                         det[i].prod.CFOP = produto.Produto.CfopVenda;
                         det[i].prod.uCom = produto.Produto.UnidadeMedida.Sigla;
                         det[i].prod.qCom = formatMoedaNf(decimal.Parse(produto.QCom));
-                        det[i].prod.vUnCom = formatMoedaNf(produto.VUnCom);
+                        det[i].prod.vUnCom = formatMoedaNf6Decimais(produto.VUnCom);
                         det[i].prod.vProd = formatMoedaNf(produto.VUnCom * decimal.Parse(produto.QCom));
                         det[i].prod.uTrib = produto.Produto.UnidadeMedida.Sigla;
                         det[i].prod.qTrib = formatMoedaNf(decimal.Parse(produto.QCom));
                         if(produto.VDesc > 0)
                             det[i].prod.vDesc = formatMoedaNf(produto.VDesc);
-                        det[i].prod.vUnTrib = formatMoedaNf(produto.VUnCom);
+                        det[i].prod.vUnTrib = formatMoedaNf6Decimais(produto.VUnCom);
                         det[i].prod.indTot = TNFeInfNFeDetProdIndTot.Item1;
                     //Veiculo ou Bicicleta Elétrica
                     if (produto.Produto.Veiculo == true)

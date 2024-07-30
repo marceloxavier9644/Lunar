@@ -16,6 +16,7 @@ using Lunar.Telas.ContasReceber;
 using Lunar.Telas.Estoques;
 using Lunar.Telas.Fiscal;
 using Lunar.Telas.Fiscal.Adicionais;
+using Lunar.Telas.Food;
 using Lunar.Telas.IntegracoesEcommerce.NuvemShopIntegration;
 using Lunar.Telas.Mensagens;
 using Lunar.Telas.Orcamentos;
@@ -601,13 +602,13 @@ namespace Lunar.Telas.Principal
                 GenericaDesktop.ShowAlerta("A resolução do seu monitor não atende os requisitos mínimos do sistema Lunar, " +
                     "verifique com um técnico a possibilidade da resolução de tela ficar em 1366x768 ou superior");
             }
-            //else if (w == 1366 && h == 768)
-            //{
-            //    CollapseMenu();
-            //};
-            //abrir nscloud
+
             abrirNsCloud();
-            //btnDashboards.PerformClick();
+
+
+            UpdateScript updateScript = new UpdateScript();
+            updateScript.ExecutarScript();
+
         }
 
         private async Task abrirNsCloud()
@@ -1208,6 +1209,11 @@ namespace Lunar.Telas.Principal
             uu.ShowDialog();
             formBackground.Dispose();
             uu.Dispose();
+        }
+
+        private void foodServiceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(() => new FrmControleFood(), btnMenuVenda);
         }
     }
 }

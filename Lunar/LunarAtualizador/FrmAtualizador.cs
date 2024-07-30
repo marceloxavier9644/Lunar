@@ -74,6 +74,10 @@ namespace LunarAtualizador
             //parametros para verificar integracao com dashboards
             lerParametrosSistema();
             string atualizaBanco = @"C:\Lunar\Atualizador\AtualizaBanco.txt";
+            //Atualiza o sistema se tiver novas atualizacoes
+            atualizarAoAbrir();
+
+            //Atualiza o BD se existir o arquivo
             if (File.Exists(atualizaBanco))
             {
                 ExibirFormulario();
@@ -232,6 +236,62 @@ namespace LunarAtualizador
                 else
                 {
                     MessageBox.Show("Você já possui a versão mais recente.", "Sem Atualizações");
+                    this.ControlBox = true;
+                    btnVerificarAtualização.Enabled = true;
+                }
+            }
+            else
+            {
+                //btnVerificarAtualização.Enabled = false;
+                this.ControlBox = false;
+                verificarSistemaAberto();
+                progressBarAdv1.Visible = true;
+                //progressBarAdv1.Value = 0;
+                await BaixarEAtualizarAsync();
+            }
+        }
+
+        private async void atualizarAoAbrir()
+        {
+            try
+            {
+                string arquivoAtu1 = @"C:\Lunar\Atu1.rar";
+
+                // Deleta o arquivo Atu1.rar se existir
+                if (File.Exists(arquivoAtu1))
+                {
+                    File.Delete(arquivoAtu1);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Lidar com exceções ao deletar o arquivo, se necessário
+                Console.WriteLine($"Erro ao deletar o arquivo Atu1.rar: {ex.Message}");
+            }
+
+            if (File.Exists(@"C:\Lunar\Lunar.exe"))
+            {
+                // btnVerificarAtualização.Enabled = false;
+                string caminhoParaExe = @"C:\Lunar\Lunar.exe";
+                FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
+                string versaoAtual = info.FileVersion;
+
+                if (VerificarNovaVersaoDisponivel(versaoAtual))
+                {
+                    //DialogResult result = MessageBox.Show("Nova versão disponível. Deseja atualizar?", "Atualização Disponível", MessageBoxButtons.YesNo);
+
+                    //if (result == DialogResult.Yes)
+                    //{ 
+                    this.ControlBox = false;
+                    verificarSistemaAberto();
+                    progressBarAdv1.Visible = true;
+                    //progressBarAdv1.Value = 0;
+                    await BaixarEAtualizarAsync();
+                    //}
+                }
+                else
+                {
+                    //MessageBox.Show("Você já possui a versão mais recente.", "Sem Atualizações");
                     this.ControlBox = true;
                     btnVerificarAtualização.Enabled = true;
                 }
@@ -596,8 +656,10 @@ namespace LunarAtualizador
 
                 // Horários desejados para verificação (por exemplo, 9h e 15h)
                 DateTime horarioVerificacao1 = new DateTime(agora.Year, agora.Month, agora.Day, 9, 0, 0);
-                DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 0);
                 DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 10, 5, 0);
+                DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 0);
+                DateTime horarioVerificacao4 = new DateTime(agora.Year, agora.Month, agora.Day, 17, 0, 0);
+
 
                 DateTime horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, 12, 0, 0);
 
@@ -613,7 +675,7 @@ namespace LunarAtualizador
                 lblAgora.Text = agora.ToLongTimeString();
 
                 // Verifica se é um dos horários desejados
-                if (agora.TimeOfDay == horarioVerificacao1.TimeOfDay || agora.TimeOfDay == horarioVerificacao2.TimeOfDay || agora.TimeOfDay == horarioVerificacao3.TimeOfDay)
+                if (agora.TimeOfDay == horarioVerificacao1.TimeOfDay || agora.TimeOfDay == horarioVerificacao2.TimeOfDay || agora.TimeOfDay == horarioVerificacao3.TimeOfDay || agora.TimeOfDay == horarioVerificacao4.TimeOfDay)
                 {
                     if (!abriuForm)
                     {
@@ -665,6 +727,7 @@ namespace LunarAtualizador
                                         {
                                             dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
                                             mensagem.FlagEnviada = true;
+                                            mensagem.DataAlteracao = DateTime.Now;
                                             Controller.getInstance().salvar(mensagem);
                                         }
                                         catch
@@ -1145,6 +1208,10 @@ namespace LunarAtualizador
 
         private void dispararMensagemPosVenda(string nomeCliente, string mensagem, Pessoa pessoa)
         {
+            //capturar o token
+            if (Sessao.parametroSistema.TokenWhats == null)
+                conferirHorarioMensagens();
+
             //Zapi zapi = new Zapi();
             LunarChatAPI lunarChatAPI = new LunarChatAPI();
             if (pessoa.PessoaTelefone != null)

@@ -35,14 +35,17 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridCheckBoxColumn gridCheckBoxColumn1 = new Syncfusion.WinForms.DataGrid.GridCheckBoxColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn9 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn10 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn11 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn12 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn13 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn14 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn15 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn3 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVendas02));
@@ -76,6 +79,7 @@
             this.btnPesquisaVendedor = new FontAwesome.Sharp.IconButton();
             this.txtNomeVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblUnidadeMedida = new System.Windows.Forms.Label();
             this.lblDependente = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblIdDependente = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnSelecionarDependente = new FontAwesome.Sharp.IconButton();
@@ -171,6 +175,7 @@
             this.dataColumn14 = new System.Data.DataColumn();
             this.dataColumn15 = new System.Data.DataColumn();
             this.dataColumn16 = new System.Data.DataColumn();
+            this.dataColumn17 = new System.Data.DataColumn();
             this.dsPagamento = new System.Data.DataSet();
             this.Pagamento = new System.Data.DataTable();
             this.dataColumn8 = new System.Data.DataColumn();
@@ -178,6 +183,8 @@
             this.dataColumn10 = new System.Data.DataColumn();
             this.dataColumn11 = new System.Data.DataColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dataColumn18 = new System.Data.DataColumn();
+            this.dataColumn19 = new System.Data.DataColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabVenda.SuspendLayout();
@@ -774,6 +781,7 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel3.Controls.Add(this.lblUnidadeMedida);
             this.panel3.Controls.Add(this.lblDependente);
             this.panel3.Controls.Add(this.lblIdDependente);
             this.panel3.Controls.Add(this.btnSelecionarDependente);
@@ -796,6 +804,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(377, 405);
             this.panel3.TabIndex = 155;
+            // 
+            // lblUnidadeMedida
+            // 
+            this.lblUnidadeMedida.AutoSize = true;
+            this.lblUnidadeMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUnidadeMedida.ForeColor = System.Drawing.Color.Black;
+            this.lblUnidadeMedida.Location = new System.Drawing.Point(327, 75);
+            this.lblUnidadeMedida.Name = "lblUnidadeMedida";
+            this.lblUnidadeMedida.Size = new System.Drawing.Size(37, 24);
+            this.lblUnidadeMedida.TabIndex = 197;
+            this.lblUnidadeMedida.Text = "UN";
+            this.lblUnidadeMedida.Visible = false;
             // 
             // lblDependente
             // 
@@ -1181,6 +1201,13 @@
             gridTextColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridTextColumn6.HeaderText = "          Valor Total      ";
             gridTextColumn6.MappingName = "ValorTotal";
+            gridTextColumn7.AllowEditing = false;
+            gridTextColumn7.AllowResizing = true;
+            gridTextColumn7.AllowSorting = false;
+            gridTextColumn7.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn7.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn7.HeaderText = "Unid";
+            gridTextColumn7.MappingName = "UnidadeMedida";
             gridCheckBoxColumn1.AllowEditing = false;
             gridCheckBoxColumn1.AllowResizing = true;
             gridCheckBoxColumn1.AllowSorting = false;
@@ -1194,42 +1221,57 @@
             gridNumericColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridNumericColumn1.HeaderText = "Desconto";
             gridNumericColumn1.MappingName = "DescontoItem";
-            gridTextColumn7.AllowEditing = false;
-            gridTextColumn7.AllowResizing = true;
-            gridTextColumn7.AllowSorting = false;
-            gridTextColumn7.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn7.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn7.HeaderText = "Estoque Auxiliar";
-            gridTextColumn7.MappingName = "EstoqueAuxiliar";
             gridTextColumn8.AllowEditing = false;
             gridTextColumn8.AllowResizing = true;
             gridTextColumn8.AllowSorting = false;
             gridTextColumn8.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             gridTextColumn8.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn8.HeaderText = "Estoque";
-            gridTextColumn8.MappingName = "Estoque";
+            gridTextColumn8.HeaderText = "Estoque Auxiliar";
+            gridTextColumn8.MappingName = "EstoqueAuxiliar";
             gridTextColumn9.AllowEditing = false;
             gridTextColumn9.AllowResizing = true;
             gridTextColumn9.AllowSorting = false;
-            gridTextColumn9.HeaderText = "CFOP";
-            gridTextColumn9.MappingName = "CfopVenda";
+            gridTextColumn9.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn9.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn9.HeaderText = "Estoque";
+            gridTextColumn9.MappingName = "Estoque";
             gridTextColumn10.AllowEditing = false;
             gridTextColumn10.AllowResizing = true;
             gridTextColumn10.AllowSorting = false;
-            gridTextColumn10.HeaderText = "CST/CSOSN";
-            gridTextColumn10.MappingName = "CstIcms";
+            gridTextColumn10.HeaderText = "CFOP";
+            gridTextColumn10.MappingName = "CfopVenda";
+            gridTextColumn11.AllowEditing = false;
+            gridTextColumn11.AllowResizing = true;
+            gridTextColumn11.AllowSorting = false;
+            gridTextColumn11.HeaderText = "CST/CSOSN";
+            gridTextColumn11.MappingName = "CstIcms";
+            gridTextColumn12.AllowEditing = false;
+            gridTextColumn12.AllowResizing = true;
+            gridTextColumn12.AllowSorting = false;
+            gridTextColumn12.HeaderText = "ProdutoGrade";
+            gridTextColumn12.MappingName = "ProdutoGrade";
+            gridTextColumn12.Visible = false;
+            gridTextColumn13.AllowEditing = false;
+            gridTextColumn13.AllowResizing = true;
+            gridTextColumn13.AllowSorting = false;
+            gridTextColumn13.HeaderText = "Quantidade Baixa";
+            gridTextColumn13.MappingName = "QuantidadeBaixa";
+            gridTextColumn13.Visible = false;
             this.gridProdutos.Columns.Add(gridTextColumn1);
             this.gridProdutos.Columns.Add(gridTextColumn2);
             this.gridProdutos.Columns.Add(gridTextColumn3);
             this.gridProdutos.Columns.Add(gridTextColumn4);
             this.gridProdutos.Columns.Add(gridTextColumn5);
             this.gridProdutos.Columns.Add(gridTextColumn6);
+            this.gridProdutos.Columns.Add(gridTextColumn7);
             this.gridProdutos.Columns.Add(gridCheckBoxColumn1);
             this.gridProdutos.Columns.Add(gridNumericColumn1);
-            this.gridProdutos.Columns.Add(gridTextColumn7);
             this.gridProdutos.Columns.Add(gridTextColumn8);
             this.gridProdutos.Columns.Add(gridTextColumn9);
             this.gridProdutos.Columns.Add(gridTextColumn10);
+            this.gridProdutos.Columns.Add(gridTextColumn11);
+            this.gridProdutos.Columns.Add(gridTextColumn12);
+            this.gridProdutos.Columns.Add(gridTextColumn13);
             this.gridProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridProdutos.Location = new System.Drawing.Point(5, 14);
             this.gridProdutos.Name = "gridProdutos";
@@ -1852,26 +1894,26 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridRecebimento.AutoGenerateColumns = false;
             this.gridRecebimento.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn11.AllowEditing = false;
-            gridTextColumn11.AllowGrouping = false;
-            gridTextColumn11.AllowResizing = true;
-            gridTextColumn11.AllowSorting = false;
-            gridTextColumn11.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn11.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn11.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn11.HeaderStyle.Font.Size = 11F;
-            gridTextColumn11.HeaderText = "Código";
-            gridTextColumn11.MappingName = "Codigo";
-            gridTextColumn12.AllowEditing = false;
-            gridTextColumn12.AllowGrouping = false;
-            gridTextColumn12.AllowResizing = true;
-            gridTextColumn12.AllowSorting = false;
-            gridTextColumn12.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
-            gridTextColumn12.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn12.HeaderStyle.Font.Facename = "Montserrat";
-            gridTextColumn12.HeaderStyle.Font.Size = 11F;
-            gridTextColumn12.HeaderText = "Forma de Pagamento";
-            gridTextColumn12.MappingName = "FormaPagamento";
+            gridTextColumn14.AllowEditing = false;
+            gridTextColumn14.AllowGrouping = false;
+            gridTextColumn14.AllowResizing = true;
+            gridTextColumn14.AllowSorting = false;
+            gridTextColumn14.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridTextColumn14.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn14.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn14.HeaderStyle.Font.Size = 11F;
+            gridTextColumn14.HeaderText = "Código";
+            gridTextColumn14.MappingName = "Codigo";
+            gridTextColumn15.AllowEditing = false;
+            gridTextColumn15.AllowGrouping = false;
+            gridTextColumn15.AllowResizing = true;
+            gridTextColumn15.AllowSorting = false;
+            gridTextColumn15.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridTextColumn15.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn15.HeaderStyle.Font.Facename = "Montserrat";
+            gridTextColumn15.HeaderStyle.Font.Size = 11F;
+            gridTextColumn15.HeaderText = "Forma de Pagamento";
+            gridTextColumn15.MappingName = "FormaPagamento";
             gridNumericColumn2.AllowEditing = false;
             gridNumericColumn2.AllowGrouping = false;
             gridNumericColumn2.AllowResizing = true;
@@ -1892,8 +1934,8 @@
             gridNumericColumn3.HeaderText = "CodigoPagamento";
             gridNumericColumn3.MappingName = "VendaForma";
             gridNumericColumn3.Visible = false;
-            this.gridRecebimento.Columns.Add(gridTextColumn11);
-            this.gridRecebimento.Columns.Add(gridTextColumn12);
+            this.gridRecebimento.Columns.Add(gridTextColumn14);
+            this.gridRecebimento.Columns.Add(gridTextColumn15);
             this.gridRecebimento.Columns.Add(gridNumericColumn2);
             this.gridRecebimento.Columns.Add(gridNumericColumn3);
             this.gridRecebimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2502,7 +2544,10 @@
             this.dataColumn13,
             this.dataColumn14,
             this.dataColumn15,
-            this.dataColumn16});
+            this.dataColumn16,
+            this.dataColumn17,
+            this.dataColumn18,
+            this.dataColumn19});
             this.Produtos.TableName = "Produto";
             // 
             // dataColumn1
@@ -2563,6 +2608,10 @@
             // 
             this.dataColumn16.ColumnName = "CfopVenda";
             // 
+            // dataColumn17
+            // 
+            this.dataColumn17.ColumnName = "UnidadeMedida";
+            // 
             // dsPagamento
             // 
             this.dsPagamento.DataSetName = "dsPagamento";
@@ -2596,6 +2645,14 @@
             this.dataColumn11.Caption = "VendaForma";
             this.dataColumn11.ColumnName = "VendaForma";
             this.dataColumn11.DataType = typeof(int);
+            // 
+            // dataColumn18
+            // 
+            this.dataColumn18.ColumnName = "ProdutoGrade";
+            // 
+            // dataColumn19
+            // 
+            this.dataColumn19.ColumnName = "QuantidadeBaixa";
             // 
             // FrmVendas02
             // 
@@ -2781,5 +2838,9 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblIdDependente;
         private System.Windows.Forms.Timer timer1;
         private RJ_UI.Classes.RJButton btnTransferencia;
+        private System.Data.DataColumn dataColumn17;
+        private System.Windows.Forms.Label lblUnidadeMedida;
+        private System.Data.DataColumn dataColumn18;
+        private System.Data.DataColumn dataColumn19;
     }
 }

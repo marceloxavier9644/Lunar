@@ -927,7 +927,7 @@ namespace Lunar.Telas.CaixaConferencia
                                     contaPagar = (ContaPagar)ContaPagarController.getInstance().selecionar(contaPagar);
                                     contaPagar.Pago = false;
                                     contaPagar.ValorPago = 0;
-
+                                    Controller.getInstance().salvar(contaPagar);
                                     CaixaController caixaController = new CaixaController();
                                     IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.FlagExcluido <> true and Tabela.TabelaOrigem = 'CONTAPAGAR' and Tabela.IdOrigem = '" + original + "' and Tabela.Pessoa = " + contaPagar.Pessoa.Id);
                                     if (listaCaixa.Count > 0)

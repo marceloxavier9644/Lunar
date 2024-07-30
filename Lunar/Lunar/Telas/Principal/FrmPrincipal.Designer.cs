@@ -67,6 +67,7 @@
             this.usuáriosPermissõesPorGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParametrosMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnImportar = new System.Windows.Forms.ToolStripMenuItem();
+            this.integraçõesEcommerceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuFinanceiro = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.adiantamentoValeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,7 +100,7 @@
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.integraçõesEcommerceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.foodServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -592,7 +593,7 @@
             this.dropMenuUtilitarios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuUtilitarios.Name = "rjDropdownMenu1";
             this.dropMenuUtilitarios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 268);
+            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 246);
             // 
             // btnBalancoEstoque
             // 
@@ -679,6 +680,13 @@
             this.btnImportar.Size = new System.Drawing.Size(310, 22);
             this.btnImportar.Text = "Importar Dados de Arquivo CSV";
             this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
+            // 
+            // integraçõesEcommerceToolStripMenuItem
+            // 
+            this.integraçõesEcommerceToolStripMenuItem.Name = "integraçõesEcommerceToolStripMenuItem";
+            this.integraçõesEcommerceToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
+            this.integraçõesEcommerceToolStripMenuItem.Text = "Integrações Ecommerce";
+            this.integraçõesEcommerceToolStripMenuItem.Click += new System.EventHandler(this.integraçõesEcommerceToolStripMenuItem_Click);
             // 
             // dropMenuFinanceiro
             // 
@@ -928,12 +936,13 @@
             this.dropMenuVendas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnVendaPDV,
             this.btnCondicionalMenu,
+            this.foodServiceToolStripMenuItem,
             this.transferênciaFilialToolStripMenuItem});
             this.dropMenuVendas.MenuItemHeight = 25;
             this.dropMenuVendas.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuVendas.Name = "rjDropdownMenu1";
             this.dropMenuVendas.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuVendas.Size = new System.Drawing.Size(203, 70);
+            this.dropMenuVendas.Size = new System.Drawing.Size(203, 114);
             // 
             // btnVendaPDV
             // 
@@ -956,12 +965,12 @@
             this.transferênciaFilialToolStripMenuItem.Text = "Transferência Filial";
             this.transferênciaFilialToolStripMenuItem.Click += new System.EventHandler(this.transferênciaFilialToolStripMenuItem_Click);
             // 
-            // integraçõesEcommerceToolStripMenuItem
+            // foodServiceToolStripMenuItem
             // 
-            this.integraçõesEcommerceToolStripMenuItem.Name = "integraçõesEcommerceToolStripMenuItem";
-            this.integraçõesEcommerceToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
-            this.integraçõesEcommerceToolStripMenuItem.Text = "Integrações Ecommerce";
-            this.integraçõesEcommerceToolStripMenuItem.Click += new System.EventHandler(this.integraçõesEcommerceToolStripMenuItem_Click);
+            this.foodServiceToolStripMenuItem.Name = "foodServiceToolStripMenuItem";
+            this.foodServiceToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.foodServiceToolStripMenuItem.Text = "Food Service";
+            this.foodServiceToolStripMenuItem.Click += new System.EventHandler(this.foodServiceToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1069,5 +1078,6 @@
         private System.Windows.Forms.ToolStripMenuItem usuáriosPermissõesPorGrupoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mensagensAgendadasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem integraçõesEcommerceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem foodServiceToolStripMenuItem;
     }
 }

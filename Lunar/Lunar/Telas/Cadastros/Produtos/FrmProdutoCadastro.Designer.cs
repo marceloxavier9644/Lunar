@@ -54,6 +54,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridCheckBoxColumn gridCheckBoxColumn1 = new Syncfusion.WinForms.DataGrid.GridCheckBoxColumn();
             this.cidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dDDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -447,10 +454,29 @@
             this.rjTextBox5 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtAnoFabricacao = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtTipoPintura = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnSalva = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCancela = new Lunar.RJ_UI.Classes.RJButton();
+            this.tabPageAdv4 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.btnGerarCodigoBarrasGrade = new FontAwesome.Sharp.IconButton();
+            this.autoLabel104 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel103 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.gridGrade = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            this.autoLabel102 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel101 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel99 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel100 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnRemoverGrade = new FontAwesome.Sharp.IconButton();
+            this.btnConfirmarGrade = new FontAwesome.Sharp.IconButton();
+            this.btnPesquisaUnidadeMedidaGrade = new FontAwesome.Sharp.IconButton();
+            this.txtCodigoBarrasGrade = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtQuantidadeMedida = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtValorVendaGrade = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtDescricaoGrade = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCodUnidadeMedidaGrade = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtUnidadeMedidaGrade = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnEtiqueta = new FontAwesome.Sharp.IconButton();
             this.btnNovo = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnSalva = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnCancela = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsTelefone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Telefone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridEnderecoAdicional)).BeginInit();
@@ -513,6 +539,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboCombustivel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboCorDenatran)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboCorMontadora)).BeginInit();
+            this.tabPageAdv4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridGrade)).BeginInit();
             this.SuspendLayout();
             // 
             // cidadeDataGridViewTextBoxColumn
@@ -3393,6 +3422,7 @@
             this.tabControlAdv2.Controls.Add(this.tabPageAdv1);
             this.tabControlAdv2.Controls.Add(this.tabPageAdv2);
             this.tabControlAdv2.Controls.Add(this.tabPageAdv3);
+            this.tabControlAdv2.Controls.Add(this.tabPageAdv4);
             this.tabControlAdv2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabControlAdv2.FocusOnTabClick = false;
             this.tabControlAdv2.ImageAlignmentR = Syncfusion.Windows.Forms.Tools.RelativeImageAlignment.RightOfText;
@@ -3662,6 +3692,7 @@
             this.chkProdutoComGrade.TabIndex = 37;
             this.chkProdutoComGrade.Text = " Produto com Grade";
             this.chkProdutoComGrade.ThemeName = "Office2016White";
+            this.chkProdutoComGrade.CheckStateChanged += new System.EventHandler(this.chkProdutoComGrade_CheckStateChanged);
             // 
             // chkControlaEstoque
             // 
@@ -7432,51 +7463,417 @@
             this.txtTipoPintura.UnderlinedStyle = false;
             this.txtTipoPintura.Leave += new System.EventHandler(this.txtTipoPintura_Leave);
             // 
-            // btnSalva
+            // tabPageAdv4
             // 
-            this.btnSalva.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnSalva.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnSalva.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnSalva.BorderRadius = 8;
-            this.btnSalva.BorderSize = 0;
-            this.btnSalva.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalva.FlatAppearance.BorderSize = 0;
-            this.btnSalva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalva.ForeColor = System.Drawing.Color.White;
-            this.btnSalva.Location = new System.Drawing.Point(761, 588);
-            this.btnSalva.Name = "btnSalva";
-            this.btnSalva.Size = new System.Drawing.Size(220, 45);
-            this.btnSalva.TabIndex = 214;
-            this.btnSalva.Text = "Salvar [F5]";
-            this.btnSalva.TextColor = System.Drawing.Color.White;
-            this.btnSalva.UseVisualStyleBackColor = false;
-            this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
+            this.tabPageAdv4.Controls.Add(this.btnGerarCodigoBarrasGrade);
+            this.tabPageAdv4.Controls.Add(this.autoLabel104);
+            this.tabPageAdv4.Controls.Add(this.autoLabel103);
+            this.tabPageAdv4.Controls.Add(this.panel2);
+            this.tabPageAdv4.Controls.Add(this.autoLabel102);
+            this.tabPageAdv4.Controls.Add(this.autoLabel101);
+            this.tabPageAdv4.Controls.Add(this.autoLabel99);
+            this.tabPageAdv4.Controls.Add(this.autoLabel100);
+            this.tabPageAdv4.Controls.Add(this.btnRemoverGrade);
+            this.tabPageAdv4.Controls.Add(this.btnConfirmarGrade);
+            this.tabPageAdv4.Controls.Add(this.btnPesquisaUnidadeMedidaGrade);
+            this.tabPageAdv4.Controls.Add(this.txtCodigoBarrasGrade);
+            this.tabPageAdv4.Controls.Add(this.txtQuantidadeMedida);
+            this.tabPageAdv4.Controls.Add(this.txtValorVendaGrade);
+            this.tabPageAdv4.Controls.Add(this.txtDescricaoGrade);
+            this.tabPageAdv4.Controls.Add(this.txtCodUnidadeMedidaGrade);
+            this.tabPageAdv4.Controls.Add(this.txtUnidadeMedidaGrade);
+            this.tabPageAdv4.Image = null;
+            this.tabPageAdv4.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPageAdv4.Location = new System.Drawing.Point(1, 33);
+            this.tabPageAdv4.Name = "tabPageAdv4";
+            this.tabPageAdv4.ShowCloseButton = true;
+            this.tabPageAdv4.Size = new System.Drawing.Size(974, 494);
+            this.tabPageAdv4.TabFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.tabPageAdv4.TabIndex = 5;
+            this.tabPageAdv4.TabVisible = false;
+            this.tabPageAdv4.Text = "Grade/Unidade";
+            this.tabPageAdv4.ThemesEnabled = false;
             // 
-            // btnCancela
+            // btnGerarCodigoBarrasGrade
             // 
-            this.btnCancela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancela.BackColor = System.Drawing.Color.White;
-            this.btnCancela.BackgroundColor = System.Drawing.Color.White;
-            this.btnCancela.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCancela.BorderRadius = 8;
-            this.btnCancela.BorderSize = 2;
-            this.btnCancela.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancela.FlatAppearance.BorderSize = 0;
-            this.btnCancela.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCancela.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCancela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancela.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancela.Location = new System.Drawing.Point(535, 588);
-            this.btnCancela.Name = "btnCancela";
-            this.btnCancela.Size = new System.Drawing.Size(220, 45);
-            this.btnCancela.TabIndex = 215;
-            this.btnCancela.TabStop = false;
-            this.btnCancela.Text = "Cancelar";
-            this.btnCancela.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancela.UseVisualStyleBackColor = false;
+            this.btnGerarCodigoBarrasGrade.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerarCodigoBarrasGrade.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnGerarCodigoBarrasGrade.FlatAppearance.BorderSize = 0;
+            this.btnGerarCodigoBarrasGrade.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnGerarCodigoBarrasGrade.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnGerarCodigoBarrasGrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGerarCodigoBarrasGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarCodigoBarrasGrade.IconChar = FontAwesome.Sharp.IconChar.Barcode;
+            this.btnGerarCodigoBarrasGrade.IconColor = System.Drawing.Color.SlateGray;
+            this.btnGerarCodigoBarrasGrade.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnGerarCodigoBarrasGrade.IconSize = 38;
+            this.btnGerarCodigoBarrasGrade.Location = new System.Drawing.Point(506, 88);
+            this.btnGerarCodigoBarrasGrade.Name = "btnGerarCodigoBarrasGrade";
+            this.btnGerarCodigoBarrasGrade.Size = new System.Drawing.Size(36, 34);
+            this.btnGerarCodigoBarrasGrade.TabIndex = 6;
+            this.btnGerarCodigoBarrasGrade.UseVisualStyleBackColor = true;
+            this.btnGerarCodigoBarrasGrade.Click += new System.EventHandler(this.btnGerarCodigoBarrasGrade_Click);
+            // 
+            // autoLabel104
+            // 
+            this.autoLabel104.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel104.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel104.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel104.Location = new System.Drawing.Point(228, 74);
+            this.autoLabel104.Name = "autoLabel104";
+            this.autoLabel104.Size = new System.Drawing.Size(75, 16);
+            this.autoLabel104.TabIndex = 265;
+            this.autoLabel104.Text = "Cód Barras";
+            // 
+            // autoLabel103
+            // 
+            this.autoLabel103.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel103.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel103.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel103.Location = new System.Drawing.Point(25, 74);
+            this.autoLabel103.Name = "autoLabel103";
+            this.autoLabel103.Size = new System.Drawing.Size(122, 16);
+            this.autoLabel103.TabIndex = 262;
+            this.autoLabel103.Text = "Quantidade Baixa *";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.gridGrade);
+            this.panel2.Location = new System.Drawing.Point(16, 131);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(951, 344);
+            this.panel2.TabIndex = 260;
+            // 
+            // gridGrade
+            // 
+            this.gridGrade.AccessibleName = "Table";
+            this.gridGrade.AllowEditing = false;
+            this.gridGrade.AutoGenerateColumns = false;
+            this.gridGrade.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridTextColumn1.AllowEditing = false;
+            gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn1.HeaderText = "Id";
+            gridTextColumn1.MappingName = "Id";
+            gridTextColumn2.AllowEditing = false;
+            gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn2.HeaderText = "Descrição";
+            gridTextColumn2.MappingName = "Descricao";
+            gridTextColumn3.AllowEditing = false;
+            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn3.HeaderText = "Unidade de Medida";
+            gridTextColumn3.MappingName = "UnidadeMedida.Descricao";
+            gridTextColumn4.AllowEditing = false;
+            gridTextColumn4.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn4.HeaderText = "Quantidade";
+            gridTextColumn4.MappingName = "QuantidadeMedida";
+            gridTextColumn5.AllowEditing = false;
+            gridTextColumn5.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Right;
+            gridTextColumn5.Format = "N2";
+            gridTextColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn5.HeaderText = "Valor";
+            gridTextColumn5.MappingName = "ValorVenda";
+            gridTextColumn6.AllowEditing = false;
+            gridTextColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn6.HeaderText = "Cod Barras";
+            gridTextColumn6.MappingName = "CodigoBarras";
+            gridCheckBoxColumn1.AllowEditing = false;
+            gridCheckBoxColumn1.HeaderText = "Principal";
+            gridCheckBoxColumn1.MappingName = "Principal";
+            this.gridGrade.Columns.Add(gridTextColumn1);
+            this.gridGrade.Columns.Add(gridTextColumn2);
+            this.gridGrade.Columns.Add(gridTextColumn3);
+            this.gridGrade.Columns.Add(gridTextColumn4);
+            this.gridGrade.Columns.Add(gridTextColumn5);
+            this.gridGrade.Columns.Add(gridTextColumn6);
+            this.gridGrade.Columns.Add(gridCheckBoxColumn1);
+            this.gridGrade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridGrade.Location = new System.Drawing.Point(0, 0);
+            this.gridGrade.Name = "gridGrade";
+            this.gridGrade.Size = new System.Drawing.Size(951, 344);
+            this.gridGrade.Style.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.gridGrade.TabIndex = 0;
+            this.gridGrade.Text = "sfDataGrid1";
+            this.gridGrade.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.gridGrade_QueryRowStyle);
+            // 
+            // autoLabel102
+            // 
+            this.autoLabel102.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel102.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel102.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel102.Location = new System.Drawing.Point(558, 74);
+            this.autoLabel102.Name = "autoLabel102";
+            this.autoLabel102.Size = new System.Drawing.Size(109, 16);
+            this.autoLabel102.TabIndex = 259;
+            this.autoLabel102.Text = "Valor de Venda *";
+            // 
+            // autoLabel101
+            // 
+            this.autoLabel101.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.autoLabel101.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel101.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel101.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.autoLabel101.Location = new System.Drawing.Point(525, 17);
+            this.autoLabel101.Name = "autoLabel101";
+            this.autoLabel101.Size = new System.Drawing.Size(137, 16);
+            this.autoLabel101.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.autoLabel101.TabIndex = 227;
+            this.autoLabel101.Text = "Descrição da Grade *";
+            this.autoLabel101.ThemeName = "Office2016White";
+            this.autoLabel101.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            // 
+            // autoLabel99
+            // 
+            this.autoLabel99.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel99.Enabled = false;
+            this.autoLabel99.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel99.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel99.Location = new System.Drawing.Point(389, 15);
+            this.autoLabel99.Name = "autoLabel99";
+            this.autoLabel99.Size = new System.Drawing.Size(112, 16);
+            this.autoLabel99.TabIndex = 225;
+            this.autoLabel99.Text = "Cód. Un.Medida *";
+            // 
+            // autoLabel100
+            // 
+            this.autoLabel100.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel100.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel100.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel100.Location = new System.Drawing.Point(26, 15);
+            this.autoLabel100.Name = "autoLabel100";
+            this.autoLabel100.Size = new System.Drawing.Size(135, 16);
+            this.autoLabel100.TabIndex = 224;
+            this.autoLabel100.Text = "Unidade de Medida *";
+            // 
+            // btnRemoverGrade
+            // 
+            this.btnRemoverGrade.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRemoverGrade.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoverGrade.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnRemoverGrade.FlatAppearance.BorderSize = 0;
+            this.btnRemoverGrade.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRemoverGrade.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnRemoverGrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverGrade.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnRemoverGrade.IconColor = System.Drawing.Color.Salmon;
+            this.btnRemoverGrade.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnRemoverGrade.IconSize = 29;
+            this.btnRemoverGrade.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRemoverGrade.Location = new System.Drawing.Point(844, 87);
+            this.btnRemoverGrade.Name = "btnRemoverGrade";
+            this.btnRemoverGrade.Size = new System.Drawing.Size(123, 37);
+            this.btnRemoverGrade.TabIndex = 9;
+            this.btnRemoverGrade.Text = "Remover";
+            this.btnRemoverGrade.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverGrade.UseVisualStyleBackColor = false;
+            this.btnRemoverGrade.Click += new System.EventHandler(this.btnRemoverGrade_Click);
+            // 
+            // btnConfirmarGrade
+            // 
+            this.btnConfirmarGrade.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnConfirmarGrade.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirmarGrade.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnConfirmarGrade.FlatAppearance.BorderSize = 0;
+            this.btnConfirmarGrade.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnConfirmarGrade.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnConfirmarGrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmarGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmarGrade.IconChar = FontAwesome.Sharp.IconChar.Database;
+            this.btnConfirmarGrade.IconColor = System.Drawing.Color.CornflowerBlue;
+            this.btnConfirmarGrade.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnConfirmarGrade.IconSize = 29;
+            this.btnConfirmarGrade.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConfirmarGrade.Location = new System.Drawing.Point(715, 87);
+            this.btnConfirmarGrade.Name = "btnConfirmarGrade";
+            this.btnConfirmarGrade.Size = new System.Drawing.Size(123, 37);
+            this.btnConfirmarGrade.TabIndex = 8;
+            this.btnConfirmarGrade.Text = "Confirmar";
+            this.btnConfirmarGrade.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConfirmarGrade.UseVisualStyleBackColor = false;
+            this.btnConfirmarGrade.Click += new System.EventHandler(this.btnConfirmarGrade_Click);
+            // 
+            // btnPesquisaUnidadeMedidaGrade
+            // 
+            this.btnPesquisaUnidadeMedidaGrade.AccessibleDescription = "btnPesquisaUnidadeMedidaGrade";
+            this.btnPesquisaUnidadeMedidaGrade.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaUnidadeMedidaGrade.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaUnidadeMedidaGrade.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaUnidadeMedidaGrade.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaUnidadeMedidaGrade.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaUnidadeMedidaGrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaUnidadeMedidaGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaUnidadeMedidaGrade.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaUnidadeMedidaGrade.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaUnidadeMedidaGrade.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaUnidadeMedidaGrade.IconSize = 38;
+            this.btnPesquisaUnidadeMedidaGrade.Location = new System.Drawing.Point(333, 31);
+            this.btnPesquisaUnidadeMedidaGrade.Name = "btnPesquisaUnidadeMedidaGrade";
+            this.btnPesquisaUnidadeMedidaGrade.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaUnidadeMedidaGrade.TabIndex = 1;
+            this.btnPesquisaUnidadeMedidaGrade.UseVisualStyleBackColor = true;
+            this.btnPesquisaUnidadeMedidaGrade.Click += new System.EventHandler(this.btnPesquisaUnidadeMedidaGrade_Click);
+            // 
+            // txtCodigoBarrasGrade
+            // 
+            this.txtCodigoBarrasGrade.BackColor = System.Drawing.Color.White;
+            this.txtCodigoBarrasGrade.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodigoBarrasGrade.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodigoBarrasGrade.BorderRadius = 8;
+            this.txtCodigoBarrasGrade.BorderSize = 2;
+            this.txtCodigoBarrasGrade.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCodigoBarrasGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoBarrasGrade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodigoBarrasGrade.Location = new System.Drawing.Point(219, 86);
+            this.txtCodigoBarrasGrade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigoBarrasGrade.Multiline = false;
+            this.txtCodigoBarrasGrade.Name = "txtCodigoBarrasGrade";
+            this.txtCodigoBarrasGrade.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodigoBarrasGrade.PasswordChar = false;
+            this.txtCodigoBarrasGrade.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodigoBarrasGrade.PlaceholderText = "";
+            this.txtCodigoBarrasGrade.ReadOnly = false;
+            this.txtCodigoBarrasGrade.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtCodigoBarrasGrade.Size = new System.Drawing.Size(280, 37);
+            this.txtCodigoBarrasGrade.TabIndex = 5;
+            this.txtCodigoBarrasGrade.Tag = "";
+            this.txtCodigoBarrasGrade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodigoBarrasGrade.Texts = "";
+            this.txtCodigoBarrasGrade.UnderlinedStyle = false;
+            // 
+            // txtQuantidadeMedida
+            // 
+            this.txtQuantidadeMedida.BackColor = System.Drawing.Color.White;
+            this.txtQuantidadeMedida.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtQuantidadeMedida.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtQuantidadeMedida.BorderRadius = 8;
+            this.txtQuantidadeMedida.BorderSize = 2;
+            this.txtQuantidadeMedida.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtQuantidadeMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantidadeMedida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtQuantidadeMedida.Location = new System.Drawing.Point(16, 86);
+            this.txtQuantidadeMedida.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQuantidadeMedida.Multiline = false;
+            this.txtQuantidadeMedida.Name = "txtQuantidadeMedida";
+            this.txtQuantidadeMedida.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtQuantidadeMedida.PasswordChar = false;
+            this.txtQuantidadeMedida.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtQuantidadeMedida.PlaceholderText = "";
+            this.txtQuantidadeMedida.ReadOnly = false;
+            this.txtQuantidadeMedida.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtQuantidadeMedida.Size = new System.Drawing.Size(195, 37);
+            this.txtQuantidadeMedida.TabIndex = 4;
+            this.txtQuantidadeMedida.Tag = "";
+            this.txtQuantidadeMedida.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtQuantidadeMedida.Texts = "";
+            this.txtQuantidadeMedida.UnderlinedStyle = false;
+            // 
+            // txtValorVendaGrade
+            // 
+            this.txtValorVendaGrade.BackColor = System.Drawing.Color.White;
+            this.txtValorVendaGrade.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorVendaGrade.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtValorVendaGrade.BorderRadius = 8;
+            this.txtValorVendaGrade.BorderSize = 2;
+            this.txtValorVendaGrade.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtValorVendaGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorVendaGrade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtValorVendaGrade.Location = new System.Drawing.Point(549, 86);
+            this.txtValorVendaGrade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtValorVendaGrade.Multiline = false;
+            this.txtValorVendaGrade.Name = "txtValorVendaGrade";
+            this.txtValorVendaGrade.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtValorVendaGrade.PasswordChar = false;
+            this.txtValorVendaGrade.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtValorVendaGrade.PlaceholderText = "";
+            this.txtValorVendaGrade.ReadOnly = false;
+            this.txtValorVendaGrade.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtValorVendaGrade.Size = new System.Drawing.Size(159, 37);
+            this.txtValorVendaGrade.TabIndex = 7;
+            this.txtValorVendaGrade.Tag = "";
+            this.txtValorVendaGrade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtValorVendaGrade.Texts = "";
+            this.txtValorVendaGrade.UnderlinedStyle = false;
+            // 
+            // txtDescricaoGrade
+            // 
+            this.txtDescricaoGrade.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.txtDescricaoGrade.BackColor = System.Drawing.Color.White;
+            this.txtDescricaoGrade.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDescricaoGrade.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDescricaoGrade.BorderRadius = 8;
+            this.txtDescricaoGrade.BorderSize = 2;
+            this.txtDescricaoGrade.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDescricaoGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescricaoGrade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDescricaoGrade.Location = new System.Drawing.Point(522, 27);
+            this.txtDescricaoGrade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescricaoGrade.Multiline = false;
+            this.txtDescricaoGrade.Name = "txtDescricaoGrade";
+            this.txtDescricaoGrade.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtDescricaoGrade.PasswordChar = false;
+            this.txtDescricaoGrade.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtDescricaoGrade.PlaceholderText = "";
+            this.txtDescricaoGrade.ReadOnly = false;
+            this.txtDescricaoGrade.Size = new System.Drawing.Size(445, 37);
+            this.txtDescricaoGrade.TabIndex = 3;
+            this.txtDescricaoGrade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtDescricaoGrade.Texts = "";
+            this.txtDescricaoGrade.UnderlinedStyle = false;
+            // 
+            // txtCodUnidadeMedidaGrade
+            // 
+            this.txtCodUnidadeMedidaGrade.BackColor = System.Drawing.Color.White;
+            this.txtCodUnidadeMedidaGrade.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodUnidadeMedidaGrade.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodUnidadeMedidaGrade.BorderRadius = 8;
+            this.txtCodUnidadeMedidaGrade.BorderSize = 2;
+            this.txtCodUnidadeMedidaGrade.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCodUnidadeMedidaGrade.Enabled = false;
+            this.txtCodUnidadeMedidaGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodUnidadeMedidaGrade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodUnidadeMedidaGrade.Location = new System.Drawing.Point(377, 27);
+            this.txtCodUnidadeMedidaGrade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodUnidadeMedidaGrade.Multiline = false;
+            this.txtCodUnidadeMedidaGrade.Name = "txtCodUnidadeMedidaGrade";
+            this.txtCodUnidadeMedidaGrade.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodUnidadeMedidaGrade.PasswordChar = false;
+            this.txtCodUnidadeMedidaGrade.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodUnidadeMedidaGrade.PlaceholderText = "";
+            this.txtCodUnidadeMedidaGrade.ReadOnly = false;
+            this.txtCodUnidadeMedidaGrade.Size = new System.Drawing.Size(137, 37);
+            this.txtCodUnidadeMedidaGrade.TabIndex = 2;
+            this.txtCodUnidadeMedidaGrade.Tag = "";
+            this.txtCodUnidadeMedidaGrade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodUnidadeMedidaGrade.Texts = "";
+            this.txtCodUnidadeMedidaGrade.UnderlinedStyle = false;
+            // 
+            // txtUnidadeMedidaGrade
+            // 
+            this.txtUnidadeMedidaGrade.BackColor = System.Drawing.Color.White;
+            this.txtUnidadeMedidaGrade.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtUnidadeMedidaGrade.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtUnidadeMedidaGrade.BorderRadius = 8;
+            this.txtUnidadeMedidaGrade.BorderSize = 2;
+            this.txtUnidadeMedidaGrade.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtUnidadeMedidaGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnidadeMedidaGrade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUnidadeMedidaGrade.Location = new System.Drawing.Point(16, 27);
+            this.txtUnidadeMedidaGrade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUnidadeMedidaGrade.Multiline = false;
+            this.txtUnidadeMedidaGrade.Name = "txtUnidadeMedidaGrade";
+            this.txtUnidadeMedidaGrade.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtUnidadeMedidaGrade.PasswordChar = false;
+            this.txtUnidadeMedidaGrade.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtUnidadeMedidaGrade.PlaceholderText = "";
+            this.txtUnidadeMedidaGrade.ReadOnly = false;
+            this.txtUnidadeMedidaGrade.Size = new System.Drawing.Size(310, 37);
+            this.txtUnidadeMedidaGrade.TabIndex = 0;
+            this.txtUnidadeMedidaGrade.Tag = "";
+            this.txtUnidadeMedidaGrade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtUnidadeMedidaGrade.Texts = "";
+            this.txtUnidadeMedidaGrade.UnderlinedStyle = false;
+            this.txtUnidadeMedidaGrade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidadeMedidaGrade_KeyPress);
             // 
             // btnEtiqueta
             // 
@@ -7523,6 +7920,52 @@
             this.btnNovo.TextColor = System.Drawing.Color.Black;
             this.btnNovo.UseVisualStyleBackColor = false;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // btnSalva
+            // 
+            this.btnSalva.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnSalva.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnSalva.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSalva.BorderRadius = 8;
+            this.btnSalva.BorderSize = 0;
+            this.btnSalva.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalva.FlatAppearance.BorderSize = 0;
+            this.btnSalva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalva.ForeColor = System.Drawing.Color.White;
+            this.btnSalva.Location = new System.Drawing.Point(761, 588);
+            this.btnSalva.Name = "btnSalva";
+            this.btnSalva.Size = new System.Drawing.Size(220, 45);
+            this.btnSalva.TabIndex = 214;
+            this.btnSalva.Text = "Salvar [F5]";
+            this.btnSalva.TextColor = System.Drawing.Color.White;
+            this.btnSalva.UseVisualStyleBackColor = false;
+            this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
+            // 
+            // btnCancela
+            // 
+            this.btnCancela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancela.BackColor = System.Drawing.Color.White;
+            this.btnCancela.BackgroundColor = System.Drawing.Color.White;
+            this.btnCancela.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCancela.BorderRadius = 8;
+            this.btnCancela.BorderSize = 2;
+            this.btnCancela.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancela.FlatAppearance.BorderSize = 0;
+            this.btnCancela.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCancela.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCancela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancela.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancela.Location = new System.Drawing.Point(535, 588);
+            this.btnCancela.Name = "btnCancela";
+            this.btnCancela.Size = new System.Drawing.Size(220, 45);
+            this.btnCancela.TabIndex = 215;
+            this.btnCancela.TabStop = false;
+            this.btnCancela.Text = "Cancelar";
+            this.btnCancela.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancela.UseVisualStyleBackColor = false;
             // 
             // FrmProdutoCadastro
             // 
@@ -7615,6 +8058,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboCombustivel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboCorDenatran)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboCorMontadora)).EndInit();
+            this.tabPageAdv4.ResumeLayout(false);
+            this.tabPageAdv4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridGrade)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -8018,5 +8465,24 @@
         private RJ_UI.Classes.RJTextBox txtMarkup;
         private FontAwesome.Sharp.IconButton btnEtiqueta;
         private RJ_UI.Classes.RJButton btnNovo;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv4;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel101;
+        private RJ_UI.Classes.RJTextBox txtDescricaoGrade;
+        private FontAwesome.Sharp.IconButton btnPesquisaUnidadeMedidaGrade;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel99;
+        private RJ_UI.Classes.RJTextBox txtCodUnidadeMedidaGrade;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel100;
+        private RJ_UI.Classes.RJTextBox txtUnidadeMedidaGrade;
+        private System.Windows.Forms.Panel panel2;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel102;
+        private RJ_UI.Classes.RJTextBox txtValorVendaGrade;
+        private FontAwesome.Sharp.IconButton btnConfirmarGrade;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel103;
+        private RJ_UI.Classes.RJTextBox txtQuantidadeMedida;
+        private Syncfusion.WinForms.DataGrid.SfDataGrid gridGrade;
+        private FontAwesome.Sharp.IconButton btnRemoverGrade;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel104;
+        private RJ_UI.Classes.RJTextBox txtCodigoBarrasGrade;
+        private FontAwesome.Sharp.IconButton btnGerarCodigoBarrasGrade;
     }
 }

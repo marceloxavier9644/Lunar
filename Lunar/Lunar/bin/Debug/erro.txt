@@ -1,1 +1,3 @@
-ERRO CONEXAOAuthentication to host 'localhost' for user 'marcelo' using method 'mysql_native_password' failed with message: Access denied for user 'marcelo'@'localhost' (using password: YES)
+ERRO CONEXAOThe following types may not be used as proxies:
+LunarBase.Classes.OrdemServicoProduto: method get_ProdutoGrade should be 'public/protected virtual' or 'protected internal virtual'
+LunarBase.Classes.OrdemServicoProduto: method set_ProdutoGrade should be 'public/protected virtual' or 'protected internal virtual'

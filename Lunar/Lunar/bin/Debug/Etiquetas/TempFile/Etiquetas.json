@@ -2,31 +2,31 @@
   "LabelDataList": [
     {
       "NomeEmpresa": "TXT INFORMATICA",
-      "CodigoProduto": "3",
-      "DescricaoProduto": "TTDFDSFSDFSDFDS",
-      "CodigoBarras": "2382867272092",
+      "CodigoProduto": "4096",
+      "DescricaoProduto": "OCULOS SOLAR MARIE 0024",
+      "CodigoBarras": "4288669530294",
       "Observacoes": "",
-      "Preco": "R$ 33,00",
+      "Preco": "R$ 535,00",
       "Quantidade": 3.0,
       "Parcelas": 1.0
     },
     {
       "NomeEmpresa": "TXT INFORMATICA",
-      "CodigoProduto": "3",
-      "DescricaoProduto": "TTDFDSFSDFSDFDS",
-      "CodigoBarras": "2382867272092",
+      "CodigoProduto": "4096",
+      "DescricaoProduto": "OCULOS SOLAR MARIE 0024",
+      "CodigoBarras": "4288669530294",
       "Observacoes": "",
-      "Preco": "R$ 33,00",
+      "Preco": "R$ 535,00",
       "Quantidade": 3.0,
       "Parcelas": 1.0
     },
     {
       "NomeEmpresa": "TXT INFORMATICA",
-      "CodigoProduto": "3",
-      "DescricaoProduto": "TTDFDSFSDFSDFDS",
-      "CodigoBarras": "2382867272092",
+      "CodigoProduto": "4096",
+      "DescricaoProduto": "OCULOS SOLAR MARIE 0024",
+      "CodigoBarras": "4288669530294",
       "Observacoes": "",
-      "Preco": "R$ 33,00",
+      "Preco": "R$ 535,00",
       "Quantidade": 3.0,
       "Parcelas": 1.0
     }

@@ -1866,16 +1866,36 @@ namespace Lunar.Telas.Fiscal
                 down.tpAmb = "1";
                 down.chNFe = nfe.Chave;
 
-                string caminho = @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas";
-
-                String Retorno = NSSuite.downloadDocumentoESalvar(nfe.Modelo, down, caminho, nfe.Chave + "-procNFCe", true);
+                string caminho = "";
+                String Retorno = "";
+                if (nfe.Modelo == "65")
+                {
+                    caminho = @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas";
+                    Retorno = NSSuite.downloadDocumentoESalvar(nfe.Modelo, down, caminho, nfe.Chave + "-procNFCe", true);
+                }
+                else if (nfe.Modelo == "55")
+                {
+                    caminho = @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas";
+                    Retorno = NSSuite.downloadDocumentoESalvar(nfe.Modelo, down, caminho, nfe.Chave + "-procNFe", true);
+                }
                 DownloadRespNFCe DownloadRespNFCe = new DownloadRespNFCe();
-                DownloadRespNFCe = JsonConvert.DeserializeObject<DownloadRespNFCe>(Retorno);
+                DownloadRespNFe downloadRespNFe = new DownloadRespNFe();
+                if(nfe.Modelo == "65")
+                    DownloadRespNFCe = JsonConvert.DeserializeObject<DownloadRespNFCe>(Retorno);
+                if(nfe.Modelo == "55")
+                    downloadRespNFe = JsonConvert.DeserializeObject<DownloadRespNFe>(Retorno);
 
-                if (DownloadRespNFCe.pdf != null)
+                if (DownloadRespNFCe.pdf != null && DownloadRespNFCe.nfeProc != null)
                 {
                     Genericos genericosNF = new Genericos();
                     var nota = Genericos.LoadFromXMLString<TNfeProc>(DownloadRespNFCe.nfeProc.xml);
+                    genericosNF.gravarXMLNoBanco(nota, 0, nfe.TipoOperacao, nfe.Id, false);
+                    btnPesquisar.PerformClick();
+                }
+                else if (downloadRespNFe.pdf != null && downloadRespNFe.xml != null)
+                {
+                    Genericos genericosNF = new Genericos();
+                    var nota = Genericos.LoadFromXMLString<TNfeProc>(downloadRespNFe.xml);
                     genericosNF.gravarXMLNoBanco(nota, 0, nfe.TipoOperacao, nfe.Id, false);
                     btnPesquisar.PerformClick();
                 }

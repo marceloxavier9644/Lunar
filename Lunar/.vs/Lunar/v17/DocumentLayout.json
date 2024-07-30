@@ -3,31 +3,68 @@
   "WorkspaceRootPath": "C:\\Desenvolvimento\\Lunar\\Lunar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|c:\\desenvolvimento\\lunar\\lunar\\lunar\\telas\\cadastros\\produtos\\frmprodutocadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\cadastros\\produtos\\frmprodutocadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|c:\\desenvolvimento\\lunar\\lunar\\lunar\\telas\\vendas\\frmconsultavendas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\vendas\\frmconsultavendas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|c:\\desenvolvimento\\lunar\\lunar\\lunar\\telas\\cadastros\\produtos\\frmprodutocadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\cadastros\\produtos\\frmprodutocadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\vendas\\frmconsultavendas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\vendas\\frmconsultavendas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C3FF172-D153-4A2A-A60F-B5E5FBDA6AA7}|LunarSoftwareAtivador\\LunarSoftwareAtivador.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunarsoftwareativador\\frmdemonstracao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1C3FF172-D153-4A2A-A60F-B5E5FBDA6AA7}|LunarSoftwareAtivador\\LunarSoftwareAtivador.csproj|solutionrelative:lunarsoftwareativador\\frmdemonstracao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\utils\\updatescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\utils\\updatescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|c:\\desenvolvimento\\lunar\\lunar\\lunar\\telas\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C3FF172-D153-4A2A-A60F-B5E5FBDA6AA7}|LunarSoftwareAtivador\\LunarSoftwareAtivador.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunarsoftwareativador\\frmdemonstracao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C3FF172-D153-4A2A-A60F-B5E5FBDA6AA7}|LunarSoftwareAtivador\\LunarSoftwareAtivador.csproj|solutionrelative:lunarsoftwareativador\\frmdemonstracao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA640C44-8D48-4AE5-B815-F14602833CCD}|..\\LunarBase\\LunarBase\\LunarBase.csproj|c:\\desenvolvimento\\lunar\\lunarbase\\lunarbase\\utilidades\\executionlimiter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\formapagamentorecebimento\\frmpagamentorecebimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\formapagamentorecebimento\\frmpagamentorecebimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\ordensdeservico\\frmordemservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\ordensdeservico\\frmordemservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\ordensdeservico\\frmordemservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\ordensdeservico\\frmordemservico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\ordensdeservico\\frmordemservicolista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\ordensdeservico\\frmordemservicolista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\ordensdeservico\\frmordemservicolista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\ordensdeservico\\frmordemservicolista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\cadastros\\cliente\\frmclientelista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\cadastros\\cliente\\frmclientelista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\cadastros\\cliente\\frmclientelista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\cadastros\\cliente\\frmclientelista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\cadastros\\produtos\\frmprodutolista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\cadastros\\produtos\\frmprodutolista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\cadastros\\produtos\\frmprodutolista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\cadastros\\produtos\\frmprodutolista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\utils\\grid_class\\gridsummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\utils\\grid_class\\gridsummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\contasreceber\\frmcontareceberlista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\contasreceber\\frmcontareceberlista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -57,89 +94,190 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmProdutoCadastro.cs [Design]",
-              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoCadastro.cs",
-              "RelativeDocumentMoniker": "Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoCadastro.cs",
-              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoCadastro.cs [Design]",
-              "RelativeToolTip": "Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoCadastro.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-05T19:08:06.124Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FrmProdutoCadastro.cs",
-              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoCadastro.cs",
-              "RelativeDocumentMoniker": "Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoCadastro.cs",
-              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoCadastro.cs",
-              "RelativeToolTip": "Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoCadastro.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAlAAAA",
+              "Title": "FrmConsultaVendas.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
+              "RelativeToolTip": "Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
+              "ViewState": "AQIAAGQDAAAAAAAAAIAwwHADAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-05T18:14:58.036Z",
+              "WhenOpened": "2024-07-29T22:09:41.562Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ExecutionLimiter.cs",
-              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\LunarBase\\LunarBase\\Utilidades\\ExecutionLimiter.cs",
-              "RelativeDocumentMoniker": "..\\LunarBase\\LunarBase\\Utilidades\\ExecutionLimiter.cs",
-              "ToolTip": "C:\\Desenvolvimento\\Lunar\\LunarBase\\LunarBase\\Utilidades\\ExecutionLimiter.cs",
-              "RelativeToolTip": "..\\LunarBase\\LunarBase\\Utilidades\\ExecutionLimiter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "FrmConsultaVendas.cs [Design]",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs [Design]",
+              "RelativeToolTip": "Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T19:26:36.936Z"
+              "WhenOpened": "2024-07-29T22:05:57.247Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "FrmDemonstracao.cs",
-              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\LunarSoftwareAtivador\\FrmDemonstracao.cs",
-              "RelativeDocumentMoniker": "LunarSoftwareAtivador\\FrmDemonstracao.cs",
-              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\LunarSoftwareAtivador\\FrmDemonstracao.cs",
-              "RelativeToolTip": "LunarSoftwareAtivador\\FrmDemonstracao.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACQAAAAvAAAA",
+              "Title": "FrmVendas02.cs [Design]",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmVendas02.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\Vendas\\FrmVendas02.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmVendas02.cs [Design]",
+              "RelativeToolTip": "Lunar\\Telas\\Vendas\\FrmVendas02.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T19:08:24.229Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T21:03:48.442Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FrmDemonstracao.cs [Design]",
-              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\LunarSoftwareAtivador\\FrmDemonstracao.cs",
-              "RelativeDocumentMoniker": "LunarSoftwareAtivador\\FrmDemonstracao.cs",
-              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\LunarSoftwareAtivador\\FrmDemonstracao.cs [Design]",
-              "RelativeToolTip": "LunarSoftwareAtivador\\FrmDemonstracao.cs [Design]",
+              "DocumentIndex": 5,
+              "Title": "FrmPagamentoRecebimento.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\FormaPagamentoRecebimento\\FrmPagamentoRecebimento.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\FormaPagamentoRecebimento\\FrmPagamentoRecebimento.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\FormaPagamentoRecebimento\\FrmPagamentoRecebimento.cs",
+              "RelativeToolTip": "Lunar\\Telas\\FormaPagamentoRecebimento\\FrmPagamentoRecebimento.cs",
+              "ViewState": "AQIAAIMOAAAAAAAAAAAYwIoOAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T19:08:18.058Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-07-29T20:24:21.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FrmOrdemServico.cs [Design]",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\OrdensDeServico\\FrmOrdemServico.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\OrdensDeServico\\FrmOrdemServico.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\OrdensDeServico\\FrmOrdemServico.cs [Design]",
+              "RelativeToolTip": "Lunar\\Telas\\OrdensDeServico\\FrmOrdemServico.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T19:31:05.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FrmOrdemServicoLista.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\OrdensDeServico\\FrmOrdemServicoLista.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\OrdensDeServico\\FrmOrdemServicoLista.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\OrdensDeServico\\FrmOrdemServicoLista.cs",
+              "RelativeToolTip": "Lunar\\Telas\\OrdensDeServico\\FrmOrdemServicoLista.cs",
+              "ViewState": "AQIAAFEFAAAAAAAAAAAYwEwFAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T19:30:55.952Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FrmClienteLista.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Cliente\\FrmClienteLista.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\Cadastros\\Cliente\\FrmClienteLista.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Cliente\\FrmClienteLista.cs",
+              "RelativeToolTip": "Lunar\\Telas\\Cadastros\\Cliente\\FrmClienteLista.cs",
+              "ViewState": "AQIAAK4CAAAAAAAAAAAkwLMCAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T13:37:16.158Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FrmLogin.cs",
-              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Login\\FrmLogin.cs",
-              "RelativeDocumentMoniker": "Lunar\\Telas\\Login\\FrmLogin.cs",
-              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Login\\FrmLogin.cs",
-              "RelativeToolTip": "Lunar\\Telas\\Login\\FrmLogin.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAASwCsAAABIAAAA",
+              "Title": "FrmVendas02.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmVendas02.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\Vendas\\FrmVendas02.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmVendas02.cs",
+              "RelativeToolTip": "Lunar\\Telas\\Vendas\\FrmVendas02.cs",
+              "ViewState": "AQIAADALAAAAAAAAAIAwwBgLAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T18:30:28.003Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T13:37:17.345Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "FrmLogin.cs [Design]",
-              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Login\\FrmLogin.cs",
-              "RelativeDocumentMoniker": "Lunar\\Telas\\Login\\FrmLogin.cs",
-              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Login\\FrmLogin.cs [Design]",
-              "RelativeToolTip": "Lunar\\Telas\\Login\\FrmLogin.cs [Design]",
+              "Title": "FrmOrdemServico.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\OrdensDeServico\\FrmOrdemServico.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\OrdensDeServico\\FrmOrdemServico.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\OrdensDeServico\\FrmOrdemServico.cs",
+              "RelativeToolTip": "Lunar\\Telas\\OrdensDeServico\\FrmOrdemServico.cs",
+              "ViewState": "AQIAANgJAAAAAAAAAAAAwOEJAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T18:30:26.364Z"
+              "WhenOpened": "2024-07-29T13:37:17.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FrmClienteLista.cs [Design]",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Cliente\\FrmClienteLista.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\Cadastros\\Cliente\\FrmClienteLista.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Cliente\\FrmClienteLista.cs [Design]",
+              "RelativeToolTip": "Lunar\\Telas\\Cadastros\\Cliente\\FrmClienteLista.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T18:58:48.455Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FrmProdutoLista.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoLista.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoLista.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoLista.cs",
+              "RelativeToolTip": "Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoLista.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAowDEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T18:58:09.003Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "FrmProdutoLista.cs [Design]",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoLista.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoLista.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoLista.cs [Design]",
+              "RelativeToolTip": "Lunar\\Telas\\Cadastros\\Produtos\\FrmProdutoLista.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T18:57:57.828Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GridSummary.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Utils\\Grid_Class\\GridSummary.cs",
+              "RelativeDocumentMoniker": "Lunar\\Utils\\Grid_Class\\GridSummary.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Utils\\Grid_Class\\GridSummary.cs",
+              "RelativeToolTip": "Lunar\\Utils\\Grid_Class\\GridSummary.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T15:33:25.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FrmContaReceberLista.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\ContasReceber\\FrmContaReceberLista.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\ContasReceber\\FrmContaReceberLista.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\ContasReceber\\FrmContaReceberLista.cs",
+              "RelativeToolTip": "Lunar\\Telas\\ContasReceber\\FrmContaReceberLista.cs",
+              "ViewState": "AQIAABIBAAAAAAAAAAAhwCQBAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T15:30:58.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UpdateScript.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Utils\\UpdateScript.cs",
+              "RelativeDocumentMoniker": "Lunar\\Utils\\UpdateScript.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Utils\\UpdateScript.cs",
+              "RelativeToolTip": "Lunar\\Utils\\UpdateScript.cs",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAwwGYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T20:44:32.192Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FrmOrdemServicoLista.cs [Design]",
+              "DocumentMoniker": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\OrdensDeServico\\FrmOrdemServicoLista.cs",
+              "RelativeDocumentMoniker": "Lunar\\Telas\\OrdensDeServico\\FrmOrdemServicoLista.cs",
+              "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\OrdensDeServico\\FrmOrdemServicoLista.cs [Design]",
+              "RelativeToolTip": "Lunar\\Telas\\OrdensDeServico\\FrmOrdemServicoLista.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-27T17:23:36.343Z"
             }
           ]
         }

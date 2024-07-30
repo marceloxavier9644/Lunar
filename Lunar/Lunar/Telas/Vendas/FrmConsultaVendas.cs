@@ -4,6 +4,7 @@ using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.GalaxyPay_API;
+using Lunar.Utils.Grid_Class;
 using Lunar.Utils.OrganizacaoNF;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
@@ -155,6 +156,8 @@ namespace Lunar.Telas.Vendas
                     this.grid.AutoSizeController.Refresh();
                     grid.Refresh();
                     this.grid.MoveToCurrentCell(new Syncfusion.WinForms.GridCommon.ScrollAxis.RowColumnIndex(1, 0));
+
+                    GridSummary.PreencherSumario(grid, "ValorFinal");
 
                 }
                 else
@@ -869,10 +872,6 @@ namespace Lunar.Telas.Vendas
 
         private void grid_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
         {
-            venda = new Venda();
-            venda = (Venda)grid.SelectedItem;
-            IList<VendaItens> listaProdutosVenda = vendaItensController.selecionarProdutosPorVenda(venda.Id);
-            gridProduto.DataSource = listaProdutosVenda;
             tabControlAdv1.SelectedTab = tabProdutos;
         }
 
@@ -883,6 +882,14 @@ namespace Lunar.Telas.Vendas
                 if(tabControlAdv1.SelectedTab == tabVenda)
                 {
                     gridProduto.DataSource = null;
+                }
+                if (tabControlAdv1.SelectedTab == tabProdutos)
+                {
+                    gridProduto.DataSource = null;
+                    venda = new Venda();
+                    venda = (Venda)grid.SelectedItem;
+                    IList<VendaItens> listaProdutosVenda = vendaItensController.selecionarProdutosPorVenda(venda.Id);
+                    gridProduto.DataSource = listaProdutosVenda;
                 }
             }
             catch

@@ -1,0 +1,2 @@
+27/07/2024 08:58:47 - A conexão subjacente estava fechada: Não foi possível estabelecer relação de confiança para o canal seguro de SSL/TLS.
+27/07/2024 08:58:52 - A conexão subjacente estava fechada: Não foi possível estabelecer relação de confiança para o canal seguro de SSL/TLS.

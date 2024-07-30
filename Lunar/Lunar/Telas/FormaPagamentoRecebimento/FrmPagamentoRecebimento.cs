@@ -1913,9 +1913,14 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 IList<OrdemServicoProduto> listaProdutoOS = new List<OrdemServicoProduto>();
                 OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();
                 listaProdutoOS = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(ordemServico.Id);
+   
+   
                 foreach (OrdemServicoProduto ordemServicoProduto in listaProdutoOS)
                 {
-                    generica.atualizarEstoqueNaoConciliado(ordemServicoProduto.Produto, ordemServicoProduto.Quantidade, false, "O.S " + ordemServico.Id.ToString(), "O.S: " + ordemServico.Id + " CLI: " + ordemServico.Cliente.RazaoSocial, ordemServico.Cliente, DateTime.Now, null);
+                    double quantidadeMedida = 1;
+                    if (ordemServicoProduto.ProdutoGrade != null)
+                        quantidadeMedida = ordemServicoProduto.ProdutoGrade.QuantidadeMedida;
+                    generica.atualizarEstoqueNaoConciliado(ordemServicoProduto.Produto, ordemServicoProduto.Quantidade * quantidadeMedida, false, "O.S " + ordemServico.Id.ToString(), "O.S: " + ordemServico.Id + " CLI: " + ordemServico.Cliente.RazaoSocial, ordemServico.Cliente, DateTime.Now, null);
                 }
                 if (lis.Count > 0)
                 {
@@ -3716,7 +3721,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 listaProdutoOS = ordemServicoProdutoController.selecionarProdutosPorOrdemServico(o.Id);
                 foreach (OrdemServicoProduto ordemServicoProduto in listaProdutoOS)
                 {
-                    generica.atualizarEstoqueNaoConciliado(ordemServicoProduto.Produto, ordemServicoProduto.Quantidade, false, "O.S " + ordemServicoProduto.OrdemServico.Id.ToString(), "O.S: " + ordemServicoProduto.OrdemServico.Id + " CLI: " + ordemServicoProduto.OrdemServico.Cliente.RazaoSocial, ordemServicoProduto.OrdemServico.Cliente, DateTime.Now, null);
+                    double quantidadeMedida = 1;
+                    if (ordemServicoProduto.ProdutoGrade != null)
+                        quantidadeMedida = ordemServicoProduto.ProdutoGrade.QuantidadeMedida;
+                    generica.atualizarEstoqueNaoConciliado(ordemServicoProduto.Produto, ordemServicoProduto.Quantidade * quantidadeMedida, false, "O.S " + ordemServicoProduto.OrdemServico.Id.ToString(), "O.S: " + ordemServicoProduto.OrdemServico.Id + " CLI: " + ordemServicoProduto.OrdemServico.Cliente.RazaoSocial, ordemServicoProduto.OrdemServico.Cliente, DateTime.Now, null);
                 }
             }
             if (lis.Count > 0)

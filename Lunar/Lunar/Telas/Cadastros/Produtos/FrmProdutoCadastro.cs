@@ -11,7 +11,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
+using static LunarBase.ClassesDAO.ProdutoGradeDAO;
 
 namespace Lunar.Telas.Cadastros.Produtos
 {
@@ -67,6 +69,8 @@ namespace Lunar.Telas.Cadastros.Produtos
             gerarTiposDeProdutos();
             //aba veiculo nao apresenta se nao marcar o checkbox veiculo
             tabPageAdv3.TabVisible = false;
+            tabPageAdv4.TabVisible = false;
+
         }
         private void LimparCampos(Control control)
         {
@@ -158,6 +162,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             {
                 tabControlAdv2.SelectedTab = tabPageAdv3;
             }
+            
         }
 
         private void gerarDadosVeiculos()
@@ -407,6 +412,17 @@ namespace Lunar.Telas.Cadastros.Produtos
             if (produto.ValorPartida > 0)
                 txtValorPartida.Texts = produto.ValorPartida.ToString("C2", CultureInfo.CurrentCulture).Replace("R$ ", "");
 
+            //Grade
+            if (produto.Grade == true)
+            {
+                tabPageAdv4.TabVisible = true;
+                chkProdutoComGrade.Checked = true;
+            }
+            else
+            {
+                chkProdutoComGrade.Checked = false;
+                tabPageAdv4.TabVisible = false;
+            }
 
             //Veiculo
             if (produto.Veiculo == true)
@@ -456,6 +472,30 @@ namespace Lunar.Telas.Cadastros.Produtos
             }
             else
                 txtMarkup.Texts = "";
+
+            //verificar se produto possui grade
+            getGrade();
+        }
+
+        private void getGrade()
+        {
+            gridGrade.DataSource = null;
+
+            if (!String.IsNullOrEmpty(txtID.Texts))
+            {
+                IList<ProdutoGrade> listaGrade = new List<ProdutoGrade>();
+                ProdutoGradeController produtoGradeController = new ProdutoGradeController();
+
+                ProdutoGradeDAO produtoDAO = new ProdutoGradeDAO();
+                IList<ProdutoGradeDTO> listaGradeDto = new List<ProdutoGradeDTO>();
+                listaGradeDto = produtoDAO.selecionarGradeComBarrasPorProduto(produto.Id);
+                if (listaGradeDto.Count > 0)
+                    gridGrade.DataSource = listaGradeDto;
+
+                //listaGrade = produtoGradeController.selecionarGradePorProduto(produto.Id);
+                //if (listaGrade.Count > 0)
+                //    gridGrade.DataSource = listaGrade;
+            }
         }
 
         private void btnPesquisaUnidadeMedida_Click(object sender, EventArgs e)
@@ -716,32 +756,18 @@ namespace Lunar.Telas.Cadastros.Produtos
 
         private void btnGerarCodigoBarras_Click(object sender, EventArgs e)
         {
-            //System.Drawing.Graphics g = this.picBarcode.CreateGraphics();
+            string codigoBarras;
+            bool codigoExiste;
 
-            //g.FillRectangle(new System.Drawing.SolidBrush(System.Drawing.SystemColors.Control),
-            //    new Rectangle(0, 0, picBarcode.Width, picBarcode.Height));
-
-            CreateEan13();
-            ean13.Scale = 1;
-            //ean13.DrawEan13Barcode(g, new System.Drawing.Point(0, 0));
-
-            //Verificar se codigo de barras ja existe
-            IList<Produto> listaProd = produtoController.selecionarProdutosComVariosFiltros(ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit, Sessao.empresaFilialLogada);
-            if(listaProd.Count == 0)
-                txtCodBarras.Texts = ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit;
-            else if (listaProd.Count > 0)
+            do
             {
-                //Se o primeiro codigo ja existe o sistema gera outro 
                 CreateEan13();
                 ean13.Scale = 1;
-                IList<Produto> listaProd2 = produtoController.selecionarProdutosComVariosFiltros(ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit, Sessao.empresaFilialLogada);
-                if (listaProd2.Count == 0)
-                    txtCodBarras.Texts = ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit;
-                else
-                    GenericaDesktop.ShowAlerta("Codigo de barras já está em uso, tente gerar outro!");
-            }
+                codigoBarras = ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit;
+                codigoExiste = CodigoBarrasExiste(codigoBarras);
+            } while (codigoExiste);
 
-            //g.Dispose();
+            txtCodBarras.Texts = codigoBarras;
         }
 
         private void CreateEan13()
@@ -1130,6 +1156,7 @@ namespace Lunar.Telas.Cadastros.Produtos
                 if (String.IsNullOrEmpty(txtCodOrigem.Texts))
                     txtCodOrigem.Texts = "0";
                 atualizaDescricaoCsts();
+                comboTipoProduto.SelectedIndex = 0;
             }
         }
 
@@ -1452,15 +1479,65 @@ namespace Lunar.Telas.Cadastros.Produtos
                 if (quantidadeAjusteNaoConciliado > 0 || quantidadeAjusteNaoConciliado < 0)
                     generica.atualizarEstoqueNaoConciliado(produto, double.Parse(GenericaDesktop.RemoveCaracteres(quantidadeAjusteNaoConciliado.ToString())), tipoAjusteEntradaOuSaida2, "PRODUTO", "AJUSTE DE ESTOQUE NO CADASTRO, USUARIO: " + Sessao.usuarioLogado.Id + " - " + Sessao.usuarioLogado.Login, null, DateTime.Now, null);
 
+
+                //Salvar Grade Principal e codigo de barras
+                {
+                    ProdutoGrade produtoGrade = new ProdutoGrade();
+                    if (produto.GradePrincipal == null)
+                        produtoGrade.Id = 0;
+                    else
+                        produtoGrade.Id = produto.GradePrincipal.Id;
+                    produtoGrade.Descricao = produto.UnidadeMedida.Descricao;
+                    produtoGrade.Produto = produto;
+                    produtoGrade.UnidadeMedida = produto.UnidadeMedida;
+                    produtoGrade.QuantidadeMedida = 1;
+                    produtoGrade.ValorVenda = decimal.Parse(txtValorVenda.Texts);
+                    produtoGrade.Principal = true;
+      
+                    ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
+                    if (!String.IsNullOrEmpty(txtCodBarras.Texts))
+                    {
+                        produtoCodigoBarras.CodigoBarras = txtCodBarras.Texts;
+                        produtoCodigoBarras.Produto = produto;
+                        produtoCodigoBarras.ProdutoGrade = produtoGrade;
+                    }
+                    else
+                    {
+                        btnGerarCodigoBarras.PerformClick();
+                        produtoCodigoBarras.CodigoBarras = txtCodBarras.Texts;
+                        produtoCodigoBarras.Produto = produto;
+                        produtoCodigoBarras.ProdutoGrade = produtoGrade;
+                    }
+               
+                    Controller.getInstance().salvar(produtoGrade);
+                    produto.GradePrincipal = produtoGrade;
+                    if (!String.IsNullOrEmpty(produtoCodigoBarras.CodigoBarras))
+                    {
+                        bool codigoBarrasExiste = CodigoBarrasExiste(produtoCodigoBarras.CodigoBarras);
+                        if (!codigoBarrasExiste)
+                        {
+                            Controller.getInstance().salvar(produtoCodigoBarras);
+                        }
+                    }
+                    Controller.getInstance().salvar(produto);
+                }
+
                 GenericaDesktop.ShowInfo("Registrado com sucesso!");
                 get_Produto(produto);
+                getGrade();
             }
             catch (Exception ex) 
             {
                 GenericaDesktop.ShowErro("Erro ao gravar produto \n" + ex.Message);
             }
         }
-
+        public bool CodigoBarrasExiste(string codigoBarras)
+        {
+            ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
+            string sql = $"SELECT * FROM ProdutoCodigoBarras WHERE CodigoBarras = '{codigoBarras}'";
+            IList<ProdutoCodigoBarras> resultado = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL(sql);
+            return resultado.Count > 0;
+        }
         private bool validarVeiculo()
         {
             if (String.IsNullOrEmpty(produto.CorDenatran))
@@ -2544,9 +2621,305 @@ namespace Lunar.Telas.Cadastros.Produtos
             gerarDadosVeiculos();
             gerarTiposDeProdutos();
             tabPageAdv3.TabVisible = false;
-            comboTipoProduto.SelectedIndex = 1;
+            comboTipoProduto.SelectedIndex = 0;
 
             txtDescricao.Focus();
+        }
+
+        private void chkProdutoComGrade_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkProdutoComGrade.Checked == true)
+                    tabPageAdv4.TabVisible = true;
+                else
+                    tabPageAdv4.TabVisible = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btnPesquisaUnidadeMedidaGrade_Click(object sender, EventArgs e)
+        {
+            Object unidadeMedidaOjeto = new UnidadeMedida();
+            txtUnidadeMedidaGrade.Texts = "";
+            txtCodUnidadeMedidaGrade.Texts = "";
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("UnidadeMedida", ""))
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("UnidadeMedida", "", ref unidadeMedidaOjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmUnidadeMedidaCadastro form = new FrmUnidadeMedidaCadastro();
+                            if (form.showModalNovo(ref unidadeMedidaOjeto) == DialogResult.OK)
+                            {
+                                txtUnidadeMedidaGrade.Texts = ((UnidadeMedida)unidadeMedidaOjeto).Descricao;
+                                txtCodUnidadeMedidaGrade.Texts = ((UnidadeMedida)unidadeMedidaOjeto).Id.ToString();
+                                txtDescricaoGrade.Focus();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtUnidadeMedidaGrade.Texts = ((UnidadeMedida)unidadeMedidaOjeto).Descricao;
+                            txtCodUnidadeMedidaGrade.Texts = ((UnidadeMedida)unidadeMedidaOjeto).Id.ToString();
+                            txtDescricaoGrade.Focus();
+                            break;
+                    }
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        private void txtUnidadeMedidaGrade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                unidadeMedida = new UnidadeMedida();
+                if (!String.IsNullOrEmpty(txtUnidadeMedidaGrade.Texts))
+                {
+                    if (generica.eNumero(txtUnidadeMedidaGrade.Texts))
+                    {
+                        unidadeMedida.Id = int.Parse(txtUnidadeMedidaGrade.Texts);
+                        try
+                        {
+                            unidadeMedida = (UnidadeMedida)Controller.getInstance().selecionar(unidadeMedida);
+                            txtUnidadeMedidaGrade.Texts = unidadeMedida.Descricao;
+                            txtCodUnidadeMedidaGrade.Texts = unidadeMedida.Id.ToString();
+                            txtMarca.Focus();
+                        }
+                        catch
+                        {
+                            unidadeMedida = null;
+                            txtCodUnidadeMedidaGrade.Texts = "";
+                            GenericaDesktop.ShowAlerta("Nenhuma unidade de medida encontrada");
+                            txtUnidadeMedidaGrade.SelectAll();
+                        }
+                    }
+                    if (unidadeMedida == null || generica.eNumero(txtUnidadeMedidaGrade.Texts) == false)
+                    {
+                        IList<UnidadeMedida> listaUnidadeMedida = unidadeMedidaController.selecionarUnidadeMedidaComVariosFiltros(txtUnidadeMedida.Texts, Sessao.empresaFilialLogada);
+                        if (listaUnidadeMedida.Count == 1)
+                        {
+                            foreach (UnidadeMedida uni in listaUnidadeMedida)
+                            {
+                                unidadeMedida = uni;
+                                txtUnidadeMedidaGrade.Texts = uni.Descricao;
+                                txtCodUnidadeMedidaGrade.Texts = uni.Id.ToString();
+                                txtDescricaoGrade.Focus();
+                            }
+                        }
+                        else if (listaUnidadeMedida.Count > 1)
+                        {
+                            btnPesquisaUnidadeMedidaGrade.PerformClick();
+                        }
+                        else
+                            GenericaDesktop.ShowAlerta("Nenhuma unidade de medida encontrada");
+                    }
+                }
+                else
+                {
+                    btnPesquisaUnidadeMedida.PerformClick();
+                }
+            }
+        }
+
+        private void setGrade()
+        {
+            ProdutoGrade produtoGrade = new ProdutoGrade();
+            Produto prod = new Produto();
+            UnidadeMedida unidadeMedida = new UnidadeMedida();
+
+            if (!String.IsNullOrEmpty(txtID.Texts))
+            {
+                produtoGrade.Descricao = txtDescricaoGrade.Texts;
+                prod.Id = int.Parse(txtID.Texts);
+                prod = (Produto)Controller.getInstance().selecionar(prod);
+                produtoGrade.Produto = prod;
+
+                produtoGrade.Produto = prod;
+
+                unidadeMedida.Id = int.Parse(txtCodUnidadeMedidaGrade.Texts);
+                unidadeMedida = (UnidadeMedida)Controller.getInstance().selecionar(unidadeMedida);
+                produtoGrade.UnidadeMedida = unidadeMedida;
+
+                produtoGrade.QuantidadeMedida = double.Parse(txtQuantidadeMedida.Texts);
+                produtoGrade.ValorVenda = decimal.Parse(txtValorVendaGrade.Texts);
+                produtoGrade.Principal = false;
+                Controller.getInstance().salvar(produtoGrade);
+                if (String.IsNullOrEmpty(txtCodigoBarrasGrade.Texts))
+                    btnGerarCodigoBarrasGrade.PerformClick();
+                if (!String.IsNullOrEmpty(txtCodigoBarrasGrade.Texts))
+                {
+                    bool codigoBarrasExiste = CodigoBarrasExiste(txtCodigoBarrasGrade.Texts);
+                    if (!codigoBarrasExiste) 
+                    { 
+                        ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
+                        produtoCodigoBarras.CodigoBarras = txtCodigoBarrasGrade.Texts;
+                        produtoCodigoBarras.ProdutoGrade = produtoGrade;
+                        produtoCodigoBarras.Produto = prod;
+                        Controller.getInstance().salvar(produtoCodigoBarras);
+                    }
+                    else
+                    {
+                        if (GenericaDesktop.ShowConfirmacao("Este código de barras já existe, deseja gerar outro automatico? "))
+                        {
+                            ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
+                            btnGerarCodigoBarrasGrade.PerformClick();
+                            produtoCodigoBarras.CodigoBarras = txtCodigoBarrasGrade.Texts;
+                            produtoCodigoBarras.ProdutoGrade = produtoGrade;
+                            produtoCodigoBarras.Produto = prod;
+                            Controller.getInstance().salvar(produtoCodigoBarras);
+                        }
+                        //Se nao quiser outro codigo a grade nao pode ser salva
+                        else
+                        {
+                            GenericaDesktop.ShowAlerta("Resolva o codigo de barras para conseguir gravar!");
+                            Controller.getInstance().excluir(produtoGrade);
+                        }
+                    }
+                }
+                limparCamposGrade();
+            }
+            else
+            {
+                set_Produto();
+                if (!String.IsNullOrEmpty(txtID.Texts))
+                {
+                    setGrade();
+                    limparCamposGrade();
+                }
+            }
+        }
+
+        private void btnConfirmarGrade_Click(object sender, EventArgs e)
+        {
+            if (validaCamposGrade())
+            {
+                setGrade();
+                getGrade();
+            }
+        }
+        private bool validaCamposGrade()
+        {
+            StringBuilder msg = new StringBuilder();
+
+            if (String.IsNullOrEmpty(txtCodUnidadeMedidaGrade.Texts))
+            {
+                msg.AppendLine("Obrigatório preencher o campo Unidade de Medida.");
+            }
+            if (String.IsNullOrEmpty(txtDescricaoGrade.Texts))
+            {
+                msg.AppendLine("Obrigatório preencher o campo Descrição da Grade.");
+            }
+            if (String.IsNullOrEmpty(txtQuantidadeMedida.Texts))
+            {
+                msg.AppendLine("Obrigatório preencher o campo Quantidade de Baixa.");
+            }
+            if (String.IsNullOrEmpty(txtValorVendaGrade.Texts))
+            {
+                msg.AppendLine("Obrigatório preencher o campo Valor de Venda.");
+            }
+
+            if (msg.Length > 0)
+            {
+                MessageBox.Show(msg.ToString(), "Validação de Campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+        private void limparCamposGrade()
+        {
+            txtCodUnidadeMedidaGrade.Texts = "";
+            txtUnidadeMedidaGrade.Texts = "";
+            txtDescricaoGrade.Texts = "";
+            txtValorVendaGrade.Texts = "";
+            txtQuantidadeMedida.Texts = "";
+            txtCodigoBarrasGrade.Texts = "";
+        }
+
+        private void gridGrade_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.Style.BackColor = Color.WhiteSmoke;
+            else
+                e.Style.BackColor = Color.White;
+        }
+
+        private void btnRemoverGrade_Click(object sender, EventArgs e)
+        {
+            if (gridGrade.SelectedIndex >= 0)
+            {
+                ProdutoGradeDTO produtoGradeDTO = new ProdutoGradeDTO();
+                produtoGradeDTO = (ProdutoGradeDTO)gridGrade.SelectedItem;
+                ProdutoGrade produtoGrade = new ProdutoGrade();
+                produtoGrade.Id = produtoGradeDTO.Id;
+                produtoGrade = (ProdutoGrade)Controller.getInstance().selecionar(produtoGrade);
+                if (GenericaDesktop.ShowConfirmacao("Deseja excluir a grade " + produtoGrade.Descricao + "?"))
+                {
+                    if (produtoGrade.Principal != true)
+                    {
+                        Controller.getInstance().excluir(produtoGrade);
+                        GenericaDesktop.ShowInfo("Excluído com Sucesso");
+                        getGrade();
+                    }
+                    else
+                        GenericaDesktop.ShowAlerta("Essa grade não pode ser excluída, ela é a principal do produto!");
+                }
+            }
+            else
+                GenericaDesktop.ShowAlerta("Clique na linha do produto que deseja excluir!");
+        }
+
+        private void btnGerarCodigoBarrasGrade_Click(object sender, EventArgs e)
+        {
+            string codigoBarras = "";
+            CreateEan13();
+            ean13.Scale = 1;
+            ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
+            codigoBarras = ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit;
+            IList<ProdutoCodigoBarras> listaProd = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL("Select * from ProdutoCodigoBarras as Tabela Where Tabela.FlagExcluido <> true and Tabela.CodigoBarras = '" + codigoBarras + "'");
+            if (listaProd.Count == 0)
+                txtCodigoBarrasGrade.Texts = codigoBarras;
+            else if (listaProd.Count > 0)
+            {
+                //Se o primeiro codigo ja existe o sistema gera outro 
+                CreateEan13();
+                ean13.Scale = 1;
+                codigoBarras = ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit;
+                IList<ProdutoCodigoBarras> listaProd2 = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL("Select * from ProdutoCodigoBarras as Tabela Where Tabela.FlagExcluido <> true and Tabela.CodigoBarras = '" + codigoBarras + "'");
+                if (listaProd2.Count == 0)
+                    txtCodigoBarrasGrade.Texts = codigoBarras;
+                else
+                    GenericaDesktop.ShowAlerta("Codigo de barras já está em uso, tente gerar outro!");
+            }
         }
     }
 }

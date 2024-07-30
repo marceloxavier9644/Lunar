@@ -195,6 +195,16 @@ namespace Lunar.Telas.OrdensDeServico
                     row.SetField("ValorComDesconto", string.Format("{0:0.00}", ((valorTotal - ordemServicoProduto.Desconto) + ordemServicoProduto.Acrescimo)));
                     if(ordemServicoProduto.Vendedor != null)
                         row.SetField("Vendedor", ordemServicoProduto.Vendedor.Id.ToString());
+                    if (ordemServicoProduto.ProdutoGrade != null)
+                    {
+                        row.SetField("ProdutoGrade", ordemServicoProduto.ProdutoGrade.Id.ToString());
+                        row.SetField("QuantidadeBaixa", (ordemServicoProduto.ProdutoGrade.QuantidadeMedida * ordemServicoProduto.Quantidade).ToString());
+                    }
+                    else
+                    {
+                        row.SetField("ProdutoGrade", ordemServicoProduto.Produto.GradePrincipal.Id.ToString());
+                        row.SetField("QuantidadeBaixa", (ordemServicoProduto.Produto.GradePrincipal.QuantidadeMedida * ordemServicoProduto.Quantidade).ToString());
+                    }
                     dsProdutos.Tables[0].Rows.Add(row);
                 }
                 if (this.gridProdutos.View != null)
@@ -904,22 +914,52 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 foreach (Produto prod in listaProdutos)
                 {
-                    txtPesquisaProduto.Texts = prod.Descricao;
-                    txtQuantidadeItem.Texts = "1";
-                    txtValorUnitarioItem.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                    txtValorTotalItem.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                    txtDescontoItem.Texts = string.Format("{0:0.00}", 0);
-                    txtAcrescimoItem.Texts = string.Format("{0:0.00}", 0);
-                    txtCodProduto.Texts = prod.Id.ToString();
-                    this.produto = prod;
-                    if (valorAux.Contains("*"))
-                        txtQuantidadeItem.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                    if (prod.Ean.Equals(valor.Trim()))
-                        inserirItem(this.produto);
+                    if (prod.Grade == true)
+                    {
+                        ProdutoGrade produtoGrade = new ProdutoGrade();
+                        produtoGrade = selecionarGrade(prod);
+
+                        if (produtoGrade != null)
+                        {
+                            txtPesquisaProduto.Texts = prod.Descricao;
+                            txtQuantidadeItem.Texts = "1";
+                            txtValorUnitarioItem.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                            txtValorTotalItem.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                            txtDescontoItem.Texts = string.Format("{0:0.00}", 0);
+                            txtAcrescimoItem.Texts = string.Format("{0:0.00}", 0);
+                            txtCodProduto.Texts = prod.Id.ToString();
+                            this.produto = prod;
+                            this.produto.GradePrincipal = produtoGrade;
+                            if (valorAux.Contains("*"))
+                                txtQuantidadeItem.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                            if (prod.Ean.Equals(valor.Trim()))
+                                inserirItem(this.produto);
+                            else
+                            {
+                                txtQuantidadeItem.Focus();
+                                txtQuantidadeItem.Select();
+                            }
+                        }
+                    }
                     else
                     {
-                        txtQuantidadeItem.Focus();
-                        txtQuantidadeItem.Select();
+                        txtPesquisaProduto.Texts = prod.Descricao;
+                        txtQuantidadeItem.Texts = "1";
+                        txtValorUnitarioItem.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                        txtValorTotalItem.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                        txtDescontoItem.Texts = string.Format("{0:0.00}", 0);
+                        txtAcrescimoItem.Texts = string.Format("{0:0.00}", 0);
+                        txtCodProduto.Texts = prod.Id.ToString();
+                        this.produto = prod;
+                        if (valorAux.Contains("*"))
+                            txtQuantidadeItem.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                        if (prod.Ean.Equals(valor.Trim()))
+                            inserirItem(this.produto);
+                        else
+                        {
+                            txtQuantidadeItem.Focus();
+                            txtQuantidadeItem.Select();
+                        }
                     }
                 }
             }
@@ -970,20 +1010,50 @@ namespace Lunar.Telas.OrdensDeServico
                                 form.Dispose();
                                 break;
                             case DialogResult.OK:
-                                txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
-                                txtQuantidadeItem.Texts = "1";
-                                txtValorUnitarioItem.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                txtValorTotalItem.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                txtCodProduto.Texts = ((Produto)produtoOjeto).Id.ToString();
-                                this.produto = ((Produto)produtoOjeto);
-                                if (valorAux.Contains("*"))
-                                    txtQuantidadeItem.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                                if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()) && !String.IsNullOrEmpty(valor))
-                                    inserirItem(this.produto);
+                                Produto prod = new Produto();
+                                prod = ((Produto)produtoOjeto);
+                                if (prod.Grade == true)
+                                {
+                                    ProdutoGrade produtoGrade = new ProdutoGrade();
+                                    produtoGrade = selecionarGrade(prod);
+
+                                    if (produtoGrade != null)
+                                    {
+                                        txtPesquisaProduto.Texts = prod.Descricao;
+                                        txtQuantidadeItem.Texts = "1";
+                                        txtValorUnitarioItem.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                        txtValorTotalItem.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                        txtCodProduto.Texts = ((Produto)produtoOjeto).Id.ToString();
+                                        this.produto = ((Produto)produtoOjeto);
+                                        this.produto.GradePrincipal = produtoGrade;
+                                        if (valorAux.Contains("*"))
+                                            txtQuantidadeItem.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                                        if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()) && !String.IsNullOrEmpty(valor))
+                                            inserirItem(this.produto);
+                                        else
+                                        {
+                                            txtQuantidadeItem.Focus();
+                                            txtQuantidadeItem.SelectAll();
+                                        }
+                                    }
+                                }
                                 else
                                 {
-                                    txtQuantidadeItem.Focus();
-                                    txtQuantidadeItem.SelectAll();
+                                    txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
+                                    txtQuantidadeItem.Texts = "1";
+                                    txtValorUnitarioItem.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
+                                    txtValorTotalItem.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
+                                    txtCodProduto.Texts = ((Produto)produtoOjeto).Id.ToString();
+                                    this.produto = ((Produto)produtoOjeto);
+                                    if (valorAux.Contains("*"))
+                                        txtQuantidadeItem.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                                    if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()) && !String.IsNullOrEmpty(valor))
+                                        inserirItem(this.produto);
+                                    else
+                                    {
+                                        txtQuantidadeItem.Focus();
+                                        txtQuantidadeItem.SelectAll();
+                                    }
                                 }
                                 break;
                         }
@@ -1044,7 +1114,8 @@ namespace Lunar.Telas.OrdensDeServico
                 row.SetField("Vendedor", txtCodVendedorProduto.Texts);
                 if (vendedor != null && !String.IsNullOrEmpty(txtVendedor.Texts))
                     row.SetField("Vendedor", vendedor.Id.ToString());
-                
+                row.SetField("ProdutoGrade", produto.GradePrincipal.Id.ToString());
+                row.SetField("QuantidadeBaixa", produto.GradePrincipal.QuantidadeMedida * double.Parse(txtQuantidadeItem.Texts));
                 dsProdutos.Tables[0].Rows.Add(row);
 
                 txtPesquisaProduto.Texts = "";
@@ -1187,10 +1258,10 @@ namespace Lunar.Telas.OrdensDeServico
         {
             if (!String.IsNullOrEmpty(txtCodProduto.Texts))
             {
-                produto = new Produto();
-                produto.Id = int.Parse(txtCodProduto.Texts);
-                produto = (Produto)Controller.getInstance().selecionar(produto);
-                inserirItem(produto);
+                //produto = new Produto();
+                //produto.Id = int.Parse(txtCodProduto.Texts);
+                //produto = (Produto)Controller.getInstance().selecionar(produto);
+                inserirItem(this.produto);
                 calculoDescontoGeral();
             }
             else
@@ -1274,12 +1345,32 @@ namespace Lunar.Telas.OrdensDeServico
                         produto = (Produto)produtoController.selecionar(produto);
                         if (produto != null)
                         {
-                            txtPesquisaProduto.Texts = produto.Descricao;
-                            txtCodProduto.Texts = produto.Id.ToString();
-                            txtValorUnitarioItem.Texts = string.Format("{0:0.00}", produto.ValorVenda);
-                            txtValorTotalItem.Texts = string.Format("{0:0.00}", produto.ValorVenda * decimal.Parse(txtQuantidadeItem.Texts));
-                            calculaTotalItem();
-                            txtQuantidadeItem.Focus();
+                            if (produto.Grade == true)
+                            {
+                                ProdutoGrade produtoGrade = new ProdutoGrade();
+                                produtoGrade = selecionarGrade(produto);
+
+                                if (produtoGrade != null)
+                                {
+                                    txtPesquisaProduto.Texts = produto.Descricao;
+                                    txtQuantidadeItem.Texts = "1";
+                                    txtValorUnitarioItem.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                    txtValorTotalItem.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda * decimal.Parse(txtQuantidadeItem.Texts));
+                                    this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                                    this.produto.GradePrincipal = produtoGrade;
+                                    calculaTotalItem();
+                                    txtQuantidadeItem.Focus();
+                                }
+                            }
+                            else
+                            {
+                                txtPesquisaProduto.Texts = produto.Descricao;
+                                txtCodProduto.Texts = produto.Id.ToString();
+                                txtValorUnitarioItem.Texts = string.Format("{0:0.00}", produto.ValorVenda);
+                                txtValorTotalItem.Texts = string.Format("{0:0.00}", produto.ValorVenda * decimal.Parse(txtQuantidadeItem.Texts));
+                                calculaTotalItem();
+                                txtQuantidadeItem.Focus();
+                            }
                         }
                         else
                         {
@@ -1298,7 +1389,37 @@ namespace Lunar.Telas.OrdensDeServico
                 }
             }
         }
+        private ProdutoGrade selecionarGrade(Produto produto)
+        {
+            using (var formBackground = new Form())
+            {
+                formBackground.StartPosition = FormStartPosition.Manual;
+                formBackground.Opacity = .50d; // Define a opacidade
+                formBackground.BackColor = Color.Black; // Define a cor de fundo
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width; // Define a largura
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height; // Define a altura
+                formBackground.WindowState = FormWindowState.Maximized; // Maximiza a janela
+                formBackground.TopMost = true; // Garante que o formulário de fundo fique acima de outros
+                formBackground.ShowInTaskbar = false; // Não mostra na barra de tarefas
+                formBackground.Show(); // Exibe o formulário de fundo
 
+                using (var frmSelecionarGrade = new FrmSelecionarGrade(produto))
+                {
+                    frmSelecionarGrade.StartPosition = FormStartPosition.CenterParent; // Centraliza em relação ao formulário de fundo
+                    frmSelecionarGrade.FormBorderStyle = FormBorderStyle.FixedDialog; // Configura a borda do formulário
+                    if (frmSelecionarGrade.ShowDialog(formBackground) == DialogResult.OK)
+                    {
+                        var gradeSelecionada = frmSelecionarGrade.GradeSelecionada;
+                        if (gradeSelecionada != null)
+                        {
+                            return gradeSelecionada;
+                        }
+                    }
+                }
+                formBackground.Dispose();
+                return null;
+            }
+        }
         private void calculaTotalItem()
         {
             try
@@ -2173,6 +2294,12 @@ namespace Lunar.Telas.OrdensDeServico
                                 ordemServicoProduto.ValorTotal = decimal.Parse(dataRowView.Row["ValorComDesconto"].ToString());
                             else
                                 ordemServicoProduto.ValorTotal = decimal.Parse(dataRowView.Row["ValorUnitario"].ToString()) * decimal.Parse(dataRowView.Row["Quantidade"].ToString());
+
+                            //Grade
+                            ProdutoGrade produtoGrade = new ProdutoGrade();
+                            produtoGrade.Id = int.Parse(dataRowView.Row["ProdutoGrade"].ToString());
+                            produtoGrade = (ProdutoGrade)Controller.getInstance().selecionar(produtoGrade);
+                            ordemServicoProduto.ProdutoGrade = produtoGrade;
 
                             ordemServicoProduto.Vendedor = null;
                             Pessoa pessoaVend = new Pessoa();

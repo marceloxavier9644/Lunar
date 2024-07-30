@@ -974,9 +974,9 @@
             this.autoLabel11.ForeColor = System.Drawing.Color.Black;
             this.autoLabel11.Location = new System.Drawing.Point(649, 101);
             this.autoLabel11.Name = "autoLabel11";
-            this.autoLabel11.Size = new System.Drawing.Size(55, 16);
+            this.autoLabel11.Size = new System.Drawing.Size(63, 16);
             this.autoLabel11.TabIndex = 198;
-            this.autoLabel11.Text = "Número";
+            this.autoLabel11.Text = "Número *";
             // 
             // txtNumero
             // 

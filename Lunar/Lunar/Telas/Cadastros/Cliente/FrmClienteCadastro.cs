@@ -4,21 +4,18 @@ using Lunar.Telas.Cadastros.Cliente.PessoaAdicionais;
 using Lunar.Telas.SPCs;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
-using Lunar.Utils.SintegrawsConsultas;
 using Lunar.Utils.SPCBrasilIntegracao;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Newtonsoft.Json;
-using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Net;
-using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.ServiceModel;
 using System.Text;
@@ -1054,6 +1051,8 @@ namespace Lunar.Telas.Cadastros.Cliente
                 pessoa.InscricaoEstadual = GenericaDesktop.RemoveCaracteres(txtInscricaoProdutor.Texts.Trim());
                 pessoa.Mae = txtMae.Texts;
                 pessoa.NomeFantasia = txtNomeFantasia.Texts.Trim();
+                if (String.IsNullOrEmpty(pessoa.NomeFantasia))
+                    pessoa.NomeFantasia = txtRazaoSocial.Texts.Trim();
                 pessoa.Pai = txtPai.Texts.Trim();
                 pessoa.RazaoSocial = txtRazaoSocial.Texts.Trim();
                 pessoa.Rg = txtRG.Texts.Trim();
@@ -1237,6 +1236,8 @@ namespace Lunar.Telas.Cadastros.Cliente
                         endereco = new Endereco();
                         endereco.Cep = GenericaDesktop.RemoveCaracteres(txtCEP.Texts.Trim());
                         endereco.Logradouro = txtEndereco.Texts.Trim();
+                        if (string.IsNullOrEmpty(txtNumero.Texts))
+                            txtNumero.Texts = "1";
                         endereco.Numero = txtNumero.Texts.Trim();
                         endereco.Complemento = txtComplemento.Texts.Trim();
                         endereco.Referencia = txtReferencia.Texts.Trim();

@@ -58,6 +58,7 @@
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
             this.txtPesquisaCliente = new Lunar.RJ_UI.Classes.RJTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnConsulta = new Lunar.RJ_UI.Classes.RJButton();
             this.btnMei = new FontAwesome.Sharp.IconButton();
             this.btnMensagemAlerta = new FontAwesome.Sharp.IconButton();
             this.btnAnaliseCliente = new FontAwesome.Sharp.IconButton();
@@ -69,7 +70,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.gridClient = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnConsulta = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cliente)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -257,6 +257,31 @@
             this.groupBox2.Size = new System.Drawing.Size(930, 76);
             this.groupBox2.TabIndex = 157;
             this.groupBox2.TabStop = false;
+            // 
+            // btnConsulta
+            // 
+            this.btnConsulta.BackColor = System.Drawing.Color.White;
+            this.btnConsulta.BackgroundColor = System.Drawing.Color.White;
+            this.btnConsulta.BackgroundImage = global::Lunar.Properties.Resources.lunarIcone;
+            this.btnConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnConsulta.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnConsulta.BorderRadius = 8;
+            this.btnConsulta.BorderSize = 2;
+            this.btnConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConsulta.FlatAppearance.BorderSize = 0;
+            this.btnConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsulta.ForeColor = System.Drawing.Color.Black;
+            this.btnConsulta.Location = new System.Drawing.Point(180, 23);
+            this.btnConsulta.Name = "btnConsulta";
+            this.btnConsulta.Size = new System.Drawing.Size(35, 37);
+            this.btnConsulta.TabIndex = 261;
+            this.btnConsulta.TextColor = System.Drawing.Color.Black;
+            this.btnConsulta.UseVisualStyleBackColor = false;
+            this.btnConsulta.Visible = false;
+            this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
             // 
             // btnMei
             // 
@@ -547,30 +572,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // btnConsulta
-            // 
-            this.btnConsulta.BackColor = System.Drawing.Color.White;
-            this.btnConsulta.BackgroundColor = System.Drawing.Color.White;
-            this.btnConsulta.BackgroundImage = global::Lunar.Properties.Resources.lunarIcone;
-            this.btnConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConsulta.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnConsulta.BorderRadius = 8;
-            this.btnConsulta.BorderSize = 2;
-            this.btnConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConsulta.FlatAppearance.BorderSize = 0;
-            this.btnConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConsulta.ForeColor = System.Drawing.Color.Black;
-            this.btnConsulta.Location = new System.Drawing.Point(180, 23);
-            this.btnConsulta.Name = "btnConsulta";
-            this.btnConsulta.Size = new System.Drawing.Size(35, 37);
-            this.btnConsulta.TabIndex = 261;
-            this.btnConsulta.TextColor = System.Drawing.Color.Black;
-            this.btnConsulta.UseVisualStyleBackColor = false;
-            this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
             // 
             // FrmClienteLista
             // 

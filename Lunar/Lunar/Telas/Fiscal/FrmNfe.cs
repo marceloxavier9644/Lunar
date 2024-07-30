@@ -21,6 +21,7 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -1801,6 +1802,17 @@ namespace Lunar.Telas.Fiscal
                                 GenericaDesktop.ShowAlerta("Erro na Nota Fiscal: " + retConsulta.cStat + " " + retConsulta.xMotivo + ", na tela de gerenciamento de notas você poderá reenviar a nota para sefaz!");
                             }
                         }
+                    }
+                }
+                else if(retornoNFCe.motivo.Contains("Duplicidade"))
+                {
+                    string pattern = @"chNFe: (\d{44})";
+                    Match match = Regex.Match(retornoNFCe.motivo, pattern);
+                    if (match.Success)
+                    {
+                        string chaveAcesso = match.Groups[1].Value;
+                        nfe.Chave = chaveAcesso;
+                        Controller.getInstance().salvar(nfe);
                     }
                 }
                 if (formAguarde != null && !formAguarde.IsDisposed)

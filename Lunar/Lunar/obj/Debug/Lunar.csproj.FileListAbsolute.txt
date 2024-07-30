@@ -729,3 +729,8 @@ C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.pdb
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\runtimes\win-x86\native\WebView2Loader.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\bin\Debug\runtimes\win-arm64\native\WebView2Loader.dll
 C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.IntegracoesEcommerce.NuvemShopIntegration.FrmIntegracaoNuvemShop.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Food.FrmControleFood.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Food.FrmAdicionarComanda.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Food.FrmConfigFood.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Food.FrmDetalheMesa.resources
+C:\Desenvolvimento\Lunar\Lunar\Lunar\obj\Debug\Lunar.Telas.Vendas.Adicionais.FrmSelecionarGrade.resources

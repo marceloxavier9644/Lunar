@@ -1,0 +1,27 @@
+19/07/2024 09:55:34 - Mensagens agendadas: 1
+19/07/2024 09:55:34 - Mensagens agendadas: 2
+19/07/2024 09:55:34 - Mensagens agendadas: 3
+19/07/2024 09:55:34 - Mensagens agendadas: 4
+19/07/2024 09:55:34 - Mensagens agendadas: 5
+19/07/2024 09:55:34 - Mensagens agendadas: 6
+19/07/2024 09:55:34 - Mensagens agendadas: 7
+19/07/2024 09:55:34 - Mensagens agendadas: 8
+19/07/2024 09:55:34 - Mensagens agendadas: 9
+19/07/2024 09:55:34 - Mensagens agendadas: 10
+19/07/2024 09:55:34 - Mensagens agendadas: 11
+19/07/2024 09:55:34 - Mensagens agendadas: 12
+19/07/2024 09:55:34 - Mensagens agendadas: 13
+19/07/2024 09:55:34 - Mensagens agendadas: 14
+19/07/2024 09:55:34 - Mensagens agendadas: 15
+19/07/2024 09:55:34 - Mensagens agendadas: 16
+19/07/2024 09:56:19 - Mensagens agendadas: 1
+19/07/2024 09:56:19 - Mensagens agendadas: 2
+19/07/2024 09:56:26 - Sessao.MensagensAgendadas.Count > 0...OK ---- 2
+19/07/2024 09:56:35 - Preparando Disparo de Mensagem ---- NOME: MARLUCIA CORDEIRO DA SILVA MENSAGEM: Olá, [NomeCliente], como vai? Passando para perguntar sobre sua satisfação com os nossos produtos. Está tudo certo? Trabalhamos para entregar a melhor experiência para você, caso tenha dúvidas, estamos à disposição.
+Ótica Vemos
+(38) 3676-3246
+(38)9 9932-3246 FLAGENVIADA: False
+19/07/2024 09:57:09 - Preparando Disparo de Mensagem ---- NOME: MARLUCIA CORDEIRO DA SILVA MENSAGEM: Olá, [NomeCliente], como vai? Passando para perguntar sobre sua satisfação com os nossos produtos. Está tudo certo? Trabalhamos para entregar a melhor experiência para você, caso tenha dúvidas, estamos à disposição.
+Ótica Vemos
+(38) 3676-3246
+(38)9 9932-3246 FLAGENVIADA: True
