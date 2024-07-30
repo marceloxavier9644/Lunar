@@ -43,3 +43,6 @@ bld/
 *.app
 *.app.js
 *.app.js.map
+
+# Ignore assembly reference cache files
+*.cache
