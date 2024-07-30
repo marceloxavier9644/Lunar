@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LunarImportador")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc8cf7965a91868388b0f283262bf39e4c604c87")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f24ebd73a5f85277cbb630e28bd0c6d59d6a76b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("LunarImportador")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LunarImportador")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

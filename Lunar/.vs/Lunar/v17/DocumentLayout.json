@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Desenvolvimento\\Lunar\\Lunar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|c:\\desenvolvimento\\lunar\\lunar\\lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\vendas\\frmvendas02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|c:\\desenvolvimento\\lunar\\lunar\\lunar\\telas\\vendas\\frmconsultavendas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|C:\\Desenvolvimento\\Lunar\\Lunar\\lunar\\telas\\vendas\\frmconsultavendas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85D5AE08-4EB8-470E-B39A-B531CC9AF1DC}|Lunar\\Lunar.csproj|solutionrelative:lunar\\telas\\vendas\\frmconsultavendas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -102,8 +102,7 @@
               "RelativeToolTip": "Lunar\\Telas\\Vendas\\FrmConsultaVendas.cs",
               "ViewState": "AQIAAGQDAAAAAAAAAIAwwGoDAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T22:09:41.562Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T22:09:41.562Z"
             },
             {
               "$type": "Document",
@@ -183,7 +182,7 @@
               "RelativeDocumentMoniker": "Lunar\\Telas\\Vendas\\FrmVendas02.cs",
               "ToolTip": "C:\\Desenvolvimento\\Lunar\\Lunar\\Lunar\\Telas\\Vendas\\FrmVendas02.cs",
               "RelativeToolTip": "Lunar\\Telas\\Vendas\\FrmVendas02.cs",
-              "ViewState": "AQIAADALAAAAAAAAAIAwwDcLAAAoAAAA",
+              "ViewState": "AQIAADALAAAAAAAAAIAwwDsLAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-29T13:37:17.345Z",
               "EditorCaption": ""
