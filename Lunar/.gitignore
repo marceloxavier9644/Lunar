@@ -1,2 +1,24 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
 
-Lunar/Lunar/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+# VS Code
+.vscode/
+
+# Visual Studio Code - Session Workspace Storage
+**/workspaceStorage/
+
+# Visual Studio Code - Temporary storage files
+**/tmp/
+
+# Ignore Visual Studio working directory
+.vs/

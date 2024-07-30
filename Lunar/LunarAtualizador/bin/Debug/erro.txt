@@ -1,1 +1,0 @@
-ERRO CONEXAOAuthentication to host '' for user 'marce' using method 'mysql_native_password' failed with message: Access denied for user 'marce'@'NoteMarcelo' (using password: NO)

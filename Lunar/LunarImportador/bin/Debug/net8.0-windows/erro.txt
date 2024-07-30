@@ -1,1 +1,0 @@
-ERRO CONEXAOAn exception occurred during configuration of persistence layer.

@@ -1,3 +1,0 @@
-ERRO CONEXAOThe following types may not be used as proxies:
-LunarBase.Classes.OrdemServicoProduto: method get_ProdutoGrade should be 'public/protected virtual' or 'protected internal virtual'
-LunarBase.Classes.OrdemServicoProduto: method set_ProdutoGrade should be 'public/protected virtual' or 'protected internal virtual'
