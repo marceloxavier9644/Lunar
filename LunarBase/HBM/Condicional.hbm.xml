@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.Condicional" table="condicional">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="Data" column="DATA" type="DateTime"/>
+		<property name="DataEncerramento" column="DATAENCERRAMENTO" type="DateTime"/>
+		<property name="QtdPeca" column="QTDPECA" type="double"/>
+		<property name="ValorTotal" column="VALORTOTAL" type="decimal"/>
+		<property name="ValorSaldo" column="VALORSALDO" type="decimal"/>
+		<property name="Observacoes" column="OBSERVACOES" type="String" length="200"/>
+		<property name="Encerrado" column="ENCERRADO" type="Boolean"/>
+		<property name="DataPrevisao" column="DATAPREVISAO" type="DateTime"/>
+		
+		<many-to-one name="Filial" column="FILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_CONDICIONAL_FILIAL" lazy="false"/>
+		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="true" foreign-key="FK_CONDICIONAL_CLIENTE" lazy="false"/>
+		<many-to-one name="Vendedor" column="VENDEDOR" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_CONDICIONAL_VENDEDOR" lazy="false"/>
+		<many-to-one name="Venda" column="VENDA" class="LunarBase.Classes.Venda" not-null="false" foreign-key="FK_CONDICIONAL_VENDA" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

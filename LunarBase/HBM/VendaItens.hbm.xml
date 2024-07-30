@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.VendaItens" table="vendaitens">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="DescricaoProduto" column="DESCRICAOPRODUTO" type="String" length="200"/>
+		<property name="Quantidade" column="QUANTIDADE" type="double"/>
+		<property name="Ncm" column="NCM" type="String" length="20"/>
+		<property name="Cest" column="CEST" type="String" length="30"/>
+		<property name="UnidadeMedida" column="UNIDADEMEDIDA" type="String" length="30"/>	
+		<property name="Cfop" column="CFOP" type="String" length="10"/>
+		
+		<!-- ICMS -->
+		<property name="OrigemIcms" column="ORIGEMICMS" type="String" length="30"/>
+		<property name="CstIcms" column="CSTICMS" type="String" length="30"/>
+		<property name="BaseIcms" column="VBC" type="decimal"/>
+		<property name="AliqIcms" column="ALIQICMS" type="String" length="30"/>
+		<property name="ValorIcms" column="VALORICMS" type="decimal"/>
+		<property name="ValorIsentoIcms" column="VALORISENTOICMS" type="decimal"/>		
+		<property name="OutrosIcms" column="OUTROSICMS" type="decimal"/>
+		
+		<!-- IPI -->
+		<property name="CstIpi" column="CSTIPI" type="String" length="30"/>
+		<property name="BaseIpi" column="BASEIPI" type="decimal"/>
+		<property name="AliqIpi" column="ALIQIPI" type="String" length="30"/>
+		<property name="ValorIpi" column="VALORIPI" type="decimal"/>
+		<property name="CodEnqIpi" column="CODENQIPI" type="String" length="30"/>
+		<property name="CodSeloIpi" column="CODSELOIPI" type="String" length="30"/>
+	
+		<!-- PIS -->
+		<property name="CstPis" column="CSTPIS" type="String" length="30"/>
+		<property name="BasePis" column="BASEPIS" type="decimal"/>
+		<property name="AliqPis" column="ALIQPIS" type="String" length="30"/>
+		<property name="ValorPis" column="VALORPIS" type="decimal"/>
+		<property name="ValorIsentoPis" column="VALORISENTOPIS" type="decimal"/>
+
+		<!-- COFINS -->
+		<property name="CstCofins" column="CSTCOFINS" type="String" length="30"/>
+		<property name="BaseCofins" column="BASECOFINS" type="decimal"/>
+		<property name="AliqCofins" column="ALIQCOFINS" type="String" length="30"/>
+		<property name="ValorCofins" column="VALORCOFINS" type="decimal"/>
+		<property name="ValorIsentoCofins" column="VALORISENTOCOFINS" type="decimal"/>
+
+		<!-- ANP -->
+		<property name="CodAnp" column="CODANP" type="String" length="30"/>
+		<property name="PercGlp" column="PERCGLP" type="double"/>
+		<property name="PercGnn" column="PERCGNN" type="double"/>
+		<property name="PercGni" column="PERCGNI" type="double"/>
+		<property name="ValorPartida" column="VALORPARTIDA" type="decimal"/>
+		<!-- VARIADOS -->
+		<property name="ValorProduto" column="VALORPRODUTO" type="decimal"/>
+		<property name="ValorDesconto" column="VALORDESCONTO" type="decimal"/>
+		<property name="ValorAcrescimo" column="VALORACRESCIMO" type="decimal"/>
+		<property name="ValorFinal" column="VALORFINAL" type="decimal"/>
+
+		<many-to-one name="Venda" column="VENDA" class="LunarBase.Classes.Venda" not-null="false" foreign-key="FK_VENDAITEM_VENDA" lazy="false"/>
+		<many-to-one name="Produto" column="PRODUTO" class="LunarBase.Classes.Produto" not-null="true" foreign-key="FK_VENDAITEM_PRODUTO" lazy="false"/>
+		<many-to-one name="ProdutoGrade" column="PRODUTOGRADE" class="LunarBase.Classes.ProdutoGrade" not-null="true" foreign-key="FK_VENDAITEM_GRADE" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.Empresa" table="empresa">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="RazaoSocial" column="RAZAOSOCIAL" type="String" not-null="true" length="150"/>
+		<property name="NomeFantasia" column="NOMEFANTASIA" type="String" length="100"/>
+		<property name="Cnpj" column="CNPJ" type="String" length="25"/>
+		<property name="InscricaoEstadual" column="INSCRICAOESTADUAL" type="String" length="20"/>
+		<property name="Responsavel" column="RESPONSAVEL" type="String" length="80"/>
+		<property name="CpfResponsavel" column="CPFRESPONSAVEL" type="String" length="20"/>
+		<property name="FuncaoResponsavel" column="FUNCAORESPONSAVEL" type="String" length="80"/>
+		<property name="Contador" column="CONTADOR" type="String" length="140"/>
+		<property name="CpfContador" column="CPFCONTADOR" type="String" length="20"/>
+		<property name="CrcContador" column="CRCCONTADOR" type="String" length="40"/>
+		<property name="EmailContador" column="EMAILCONTADOR" type="String" length="100"/>
+		<property name="ValidadeLicenca" column="VALIDADELICENCA" type="DateTime"/>
+		<property name="Token" column="TOKEN" type="String" length="200"/>
+		<property name="Cnae" column="CNAE" type="String" length="20"/>
+		<property name="DataAbertura" column="DATAABERTURA" type="DateTime"/>
+		<property name="Email" column="EMAIL" type="String" length="80"/>
+		<property name="DddPrincipal" column="DDDPRINCIPAL" type="String" length="5"/>
+		<property name="TelefonePrincipal" column="TELEFONEPRINCIPAL" type="String" length="40"/>
+		<property name="DddSecundario" column="DDDSECUNDARIO" type="String" length="5"/>
+		<property name="TelefoneSecundario" column="TELEFONESECUNDARIO" type="String" length="40"/>
+
+		<many-to-one name="Endereco" column="ENDERECO" class="LunarBase.Classes.Endereco" not-null="false" foreign-key="FK_EMPRESA_ENDERECO" lazy="false"/>
+
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.CondicionalProduto" table="condicionalproduto">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="CodigoProduto" column="CODIGOPRODUTO" type="String" length="30"/>
+		<property name="DescricaoProduto" column="DESCRICAOPRODUTO" type="String" length="250"/>
+		<property name="Quantidade" column="QUANTIDADE" type="double"/>
+		<property name="Desconto" column="DESCONTO" type="decimal"/>
+		<property name="Acrescimo" column="ACRESCIMO" type="decimal"/>
+		<property name="ValorUnitario" column="VALORUNITARIO" type="decimal"/>
+		<property name="ValorTotal" column="VALORTOTAL" type="decimal"/>
+		<property name="Devolvido" column="DEVOLVIDO" type="Boolean"/>
+		<property name="DataDevolucao" column="DATADEVOLUCAO" type="DateTime"/>
+
+		<many-to-one name="Condicional" column="CONDICIONAL" class="LunarBase.Classes.Condicional" not-null="true" foreign-key="FK_CONDICIONALPRODUTO_CONDICIONAL" lazy="false"/>
+		<many-to-one name="Produto" column="PRODUTO" class="LunarBase.Classes.Produto" not-null="true" foreign-key="FK_CONDICIONALPRODUTO_PRODUTOL" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

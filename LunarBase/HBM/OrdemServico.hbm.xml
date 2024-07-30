@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.OrdemServico" table="ordemservico">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="Status" column="STATUS" type="String" length="100"/>
+		<property name="NumeroSerie" column="NUMEROSERIE" type="String" length="80"/>
+		<property name="Observacoes" column="OBSERVACOES" type="String" length="240"/>
+		<property name="ValorProduto" column="VALORPRODUTO" type="decimal"/>
+		<property name="ValorDesconto" column="VALORDESCONTO" type="decimal"/>
+		<property name="ValorAcrescimo" column="VALORACRESCIMO" type="decimal"/>
+		<property name="ValorServico" column="VALORSERVICO" type="decimal"/>
+		<property name="ValorTotal" column="VALORTOTAL" type="decimal"/>
+		<property name="DataAbertura" column="DATAABERTURA" type="DateTime"/>
+		<property name="DataEncerramento" column="DATAENCERRAMENTO" type="DateTime"/>
+		<property name="DataServico" column="DATASERVICO" type="DateTime"/>
+		<property name="Entrada" column="ENTRADA" type="Boolean"/>
+		<property name="OperadorEncerramento" column="OPERADORENCERRAMENTO" type="String" length="80"/>		
+		<property name="QrCodePix" column="QRCODEPIX" type="String" length="200"/>		
+		<property name="MensagemPosVenda" column="MENSAGEMPOSVENDA" type="Boolean"/>
+		<property name="MensagemVencimentoExameOtica" column="MENSAGEMVENCIMENTOEXAMEOTICA" type="Boolean"/>
+		
+
+		<many-to-one name="Nfe" column="NFE" class="LunarBase.Classes.Nfe" not-null="false" foreign-key="FK_ORDEMSERVICO_NFE" lazy="false"/>
+		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="true" foreign-key="FK_ORDEMSERVICO_OBJETO" lazy="false"/>
+		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_ORDEMSERVICO_CLIENTE" lazy="false"/>
+		<many-to-one name="Filial" column="FILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_ORDEMSERVICO_FILIAL" lazy="false"/>
+		<many-to-one name="Vendedor" column="VENDEDOR" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_ORDEMSERVICO_VENDEDOR" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

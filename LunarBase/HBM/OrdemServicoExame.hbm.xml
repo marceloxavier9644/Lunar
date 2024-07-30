@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.OrdemServicoExame" table="ordemservicoexame">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="Examinador" column="EXAMINADOR" type="String" length="150"/>
+		<property name="DataExame" column="DATAEXAME" type="DateTime"/>
+		
+		<!--<LONGE DIREITO>-->
+		<property name="LdEsferico" column="LDESFERICO" type="String" length="20"/>
+		<property name="LdCilindrico" column="LDCILINDRICO" type="String" length="20"/>
+		<property name="LdPosicao" column="LDPOSICAO" type="String" length="20"/>
+		<property name="LdDp" column="LDDP" type="String" length="20"/>
+		<property name="LdAltura" column="LDALTURA" type="String" length="20"/>
+		<!--<LONGE ESQUERDO>-->
+		<property name="LeEsferico" column="LEESFERICO" type="String" length="20"/>
+		<property name="LeCilindrico" column="LECILINDRICO" type="String" length="20"/>
+		<property name="LePosicao" column="LEPOSICAO" type="String" length="20"/>
+		<property name="LeDp" column="LEDP" type="String" length="20"/>
+		<property name="LeAltura" column="LEALTURA" type="String" length="20"/>
+		<!--<PERTO DIREITO>-->
+		<property name="PdEsferico" column="PDESFERICO" type="String" length="20"/>
+		<property name="PdCilindrico" column="PDCILINDRICO" type="String" length="20"/>
+		<property name="PdPosicao" column="PDPOSICAO" type="String" length="20"/>
+		<property name="PdDp" column="PDDP" type="String" length="20"/>
+		<property name="PdAltura" column="PDALTURA" type="String" length="20"/>
+		<!--<PERTO ESQUERDO>-->
+		<property name="PeEsferico" column="PEESFERICO" type="String" length="20"/>
+		<property name="PeCilindrico" column="PECILINDRICO" type="String" length="20"/>
+		<property name="PePosicao" column="PEPOSICAO" type="String" length="20"/>
+		<property name="PeDp" column="PEDP" type="String" length="20"/>
+		<property name="PeAltura" column="PEALTURA" type="String" length="20"/>
+
+		<property name="Armacao" column="ARMACAO" type="String" length="80"/>
+		<property name="Lente" column="LENTE" type="String" length="80"/>
+		<property name="ProximoExame" column="PROXIMOEXAME" type="String" length="80"/>
+		<property name="Adicao" column="ADICAO" type="String" length="80"/>
+		<property name="DataEntrega" column="DATAENTREGA" type="DateTime"/>
+		<property name="Observacoes" column="OBSERVACOES" type="String" length="250"/>
+		
+		
+		<many-to-one name="OrdemServico" column="ORDEMSERVICO" class="LunarBase.Classes.OrdemServico" not-null="true" foreign-key="FK_EXAME_ORDEMSERVICO" lazy="false"/>
+		<many-to-one name="Pessoa" column="PESSOA" class="LunarBase.Classes.Pessoa" not-null="true" foreign-key="FK_EXAME_PESSOA" lazy="false"/>
+		<many-to-one name="Dependente" column="DEPENDENTE" class="LunarBase.Classes.PessoaDependente" not-null="false" foreign-key="FK_EXAME_PESSOADEPENDENTE" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

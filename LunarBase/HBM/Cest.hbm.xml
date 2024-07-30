@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.Cest" table="cest">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="NumeroCest" column="NUMEROCEST" type="String" length="20"/>
+		<property name="Ncm" column="NCM" type="String" length="20"/>
+		<property name="DescricaoCest" column="DESCRICAOCEST" type="String" length="550"/>
+		<property name="Segmento" column="SEGMENTO" type="String" length="150"/>
+		<property name="Item" column="ITEM" type="String" length="20"/>
+
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.Cheque" table="cheque">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="Descricao" column="DESCRICAO" type="String" length="150"/>
+		<property name="Valor" column="VALOR" type="decimal"/>
+		<property name="Parcela" column="PARCELA" type="String" length="30"/>
+		<property name="Vencimento" column="VENCIMENTO" type="DateTime"/>
+		<property name="NumeroCheque" column="NUMEROCHEQUE" type="String" length="50"/>
+		<property name="Agencia" column="AGENCIA" type="String" length="50"/>
+		<property name="Conta" column="CONTA" type="String" length="50"/>
+		<property name="DvConta" column="DVCONTA" type="String" length="20"/>
+		<property name="Cnpj" column="CNPJ" type="String" length="20"/>
+		<property name="RazaoSocial" column="RAZAOSOCIAL" type="String" length="150"/>
+		<property name="Concluido" column="CONCLUIDO" type="Boolean"/>
+
+		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_CHEQUE_CLIENTE" lazy="false"/>
+		<many-to-one name="Banco" column="BANCO" class="LunarBase.Classes.Banco" not-null="false" foreign-key="FK_CHEQUE_BANCO" lazy="false"/>
+		<many-to-one name="Venda" column="VENDA" class="LunarBase.Classes.Venda" not-null="false" foreign-key="FK_CHEQUE_VENDA" lazy="false"/>
+		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="false" foreign-key="FK_CHEQUE_EMPRESAFILIAL" lazy="false"/>
+		
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

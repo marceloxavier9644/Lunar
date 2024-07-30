@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.Endereco" table="endereco">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="Cep" column="CEP" type="String" length="30"/>
+		<property name="Logradouro" column="LOGRADOURO" type="String"/>
+		<property name="Numero" column="NUMERO" type="String" length="100"/>
+		<property name="Complemento" column="COMPLEMENTO" type="String" length="200"/>
+		<property name="Referencia" column="REFERENCIA" type="String" length="200"/>
+		<property name="Bairro" column="BAIRRO" type="String" length="200"/>
+		
+		<many-to-one name="Pessoa" column="PESSOA" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_ENDERECO_PESSOA" lazy="false"/>
+		<many-to-one name="Cidade" column="CIDADE" class="LunarBase.Classes.Cidade" not-null="true" foreign-key="FK_ENDERECO_CIDADE" lazy="false"/>
+		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="false" foreign-key="FK_ENDERECO_EMPRESAFILIAL" lazy="false"/>
+		
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.Nfe" table="nfe">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+
+		<property name="TipoOperacao" column="TIPOOPERACAO" type="String" length="10"/>
+		
+		<property name="CUf" column="CUF" type="String" length="50"/>
+		<property name="CNf" column="CNF" type="String" length="50"/>
+		<property name="NatOp" column="NATOP" type="String" length="200"/>
+		<property name="Modelo" column="MODELO" type="String" length="50"/>
+		<!--<property name="Mod" column="MOD" type="String" length="10"/>-->
+		
+		<property name="Serie" column="SERIE" type="String" length="50"/>
+		<property name="NNf" column="NNF" type="String" length="50"/>
+		<property name="DhEmi" column="DHEMI" type="String" length="50"/>
+		<property name="DhSaiEnt" column="DHSAIENT" type="String" length="50"/>
+		<property name="TpNf" column="TPNF" type="String" length="50"/>
+		
+		<property name="IdDest" column="IDDEST" type="String" length="50"/>
+		<property name="CMunFg" column="CMUNFG" type="String" length="50"/>
+		<property name="TpImp" column="TPIMP" type="String" length="50"/>
+		<property name="TpEmis" column="TPEMIS" type="String" length="50"/>
+		<property name="CDv" column="CDV" type="String" length="50"/>
+		<property name="TpAmb" column="TPAMB" type="String" length="50"/>
+		<property name="FinNfe" column="FINNFE" type="String" length="50"/>
+		
+		<property name="IndFinal" column="INDFINAL" type="String" length="50"/>
+		<property name="IndPres" column="INDPRES" type="String" length="50"/>
+		<property name="IndIntermed" column="INDINTERMED" type="String" length="150"/>
+		<property name="ProcEmi" column="PROCEMI" type="String" length="50"/>
+		<property name="VerProc" column="VERPROC" type="String" length="50"/>
+		<property name="Chave" column="CHAVE" type="String" length="80"/>
+		<property name="VBc" column="VBC" type="decimal"/>
+		
+		<property name="VIcms" column="VICMS" type="decimal"/>
+		<property name="VIcmsDeson" column="VICMSDESON" type="decimal"/>
+		<property name="VFcp" column="VFCP" type="decimal"/>
+		<property name="VBcst" column="VBCST" type="decimal"/>
+		<property name="VSt" column="VST" type="decimal"/>
+		<property name="VFcpst" column="VFCPST" type="decimal"/>
+
+		<property name="VFcpstRet" column="VFCPSTRET" type="decimal"/>
+		<property name="VProd" column="VPROD" type="decimal"/>
+		<property name="VFrete" column="VFRETE" type="decimal"/>
+		<property name="VSeg" column="VSEG" type="decimal"/>
+		<property name="VDesc" column="VDESC" type="decimal"/>
+		<property name="VIi" column="VII" type="decimal"/>
+		<property name="VIpi" column="VIPI" type="decimal"/>
+		<property name="VIpiDevol" column="VIPIDEVOL" type="decimal"/>
+
+		<property name="VPis" column="VPIS" type="decimal"/>
+		<property name="VCofins" column="VCOFINS" type="decimal"/>
+		<property name="VOutro" column="VOUTRO" type="decimal"/>
+		<property name="VNf" column="VNF" type="decimal"/>
+		<property name="VTotTrib" column="VTOTTRIB" type="decimal"/>
+		
+		<property name="ModFrete" column="MODFRETE" type="String" length="20"/>
+		<property name="InfCpl" column="INFCPL" type="String" length="350"/>
+
+		<property name="Lancada" column="LANCADA" type="Boolean"/>
+		<property name="DataLancamento" column="DATALANCAMENTO" type="DateTime"/>
+		<property name="DataEmissao" column="DATAEMISSAO" type="DateTime"/>
+		<property name="Conciliado" column="CONCILIADO" type="Boolean"/>
+		<property name="Nsu" column="NSU" type="int"/>
+		<property name="CnpjEmitente" column="CNPJEMITENTE" type="String" length="20"/>
+		<property name="RazaoEmitente" column="RAZAOEMITENTE" type="String" length="150"/>
+		<property name="Manifesto" column="MANIFESTO" type="String" length="180"/>
+
+		<property name="CodStatus" column="CODSTATUS" type="String" length="50"/>
+		<property name="Status" column="STATUS" type="String" length="800"/>
+		<property name="Protocolo" column="PROTOCOLO" type="String" length="50"/>
+		<property name="DataProtocolo" column="DATAPROTOCOLO" type="DateTime"/>
+		<property name="Cancelada" column="CANCELADA" type="Boolean"/>
+		<property name="Destinatario" column="DESTINATARIO" type="String" length="250"/>
+		<property name="CnpjDestinatario" column="CNPJDESTINATARIO" type="String" length="20"/>
+		<property name="NsNrec" column="NSNREC" type="String" length="20"/>
+		<property name="PossuiCartaCorrecao" column="POSSUICARTACORRECAO" type="Boolean"/>
+
+		<property name="DataSaida" column="DATASAIDA" type="DateTime"/>
+		<property name="MovimentaEstoque" column="MOVIMENTAESTOQUE" type="Boolean"/>
+		<property name="MovimentaFinanceiro" column="MOVIMENTAFINANCEIRO" type="Boolean"/>
+		<property name="CodigoAntt" column="CODIGOANTT" type="String" length="50"/>
+		<property name="Placa" column="PLACA" type="String" length="20"/>
+		<property name="Especie" column="ESPECIE" type="String" length="20"/>
+		<property name="Volume" column="VOLUME" type="String" length="20"/>
+		<property name="Marca" column="MARCA" type="String" length="60"/>
+		<property name="PesoBruto" column="PESOBRUTO" type="String" length="20"/>
+		<property name="PesoLiquido" column="PESOLIQUIDO" type="String" length="20"/>
+
+		<property name="IdInut" column="IDINUT" type="String" length="70"/>
+		<property name="Nuvem" column="NUVEM" type="Boolean"/>
+		<property name="NotaAgrupada" column="NOTAAGRUPADA" type="Boolean"/>
+		
+		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_NFE_CLIENTE" lazy="false"/>
+		<many-to-one name="NaturezaOperacao" column="NATUREZAOPERACAO" class="LunarBase.Classes.NaturezaOperacao" not-null="false" foreign-key="FK_NFE_NATUREZAOPERACAO" lazy="false"/>
+		<many-to-one name="Fornecedor" column="FORNECEDOR" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_NFE_FORNECEDOR" lazy="false"/>
+		<many-to-one name="Transportadora" column="TRANSPORTADORA" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_NFE_TRANSPORTADORA" lazy="false"/>
+
+		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_NFE_EMPRESAFILIAL" lazy="false"/>
+		<many-to-one name="NfeStatus" column="NFESTATUS" class="LunarBase.Classes.NfeStatus" not-null="false" foreign-key="FK_NFE_NFESTATUS" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

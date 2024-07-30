@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.ParametroSistema" table="parametrosistema">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="UltNsu" column="ULTNSU" type="String" length="30"/>
+
+		<property name="ProximoNumeroNFCe" column="PROXIMONUMERONFCE" type="String" length="30"/>
+		<property name="SerieNFCe" column="SERIENFCE" type="String" length="30"/>
+		<property name="ProximoNumeroNFe" column="PROXIMONUMERONFE" type="String" length="30"/>
+		<property name="SerieNFe" column="SERIENFE" type="String" length="30"/>
+		<property name="AmbienteProducao" column="AMBIENTEPRODUCAO" type="Boolean"/>
+		<property name="TokenNfce" column="TOKENNFCE" type="String" length="10"/>
+		<property name="CscNfce" column="CSCNFCE" type="String" length="50"/>
+		<property name="InformacaoAdicionalNFCe" column="INFORMACAOADICIONALNFCE" type="String" length="400"/>
+		<property name="InformacaoAdicionalNFe" column="INFORMACAOADICIONALNFE" type="String" length="400"/>
+		<property name="PastaRemessaNsCloud" column="PASTAREMESSANSCLOUD" type="String" length="250"/>
+		<property name="AlertaEstoqueFiscal" column="ALERTAESTOQUEFISCAL" type="Boolean"/>
+		<property name="AlertaEstoqueGerencial" column="ALERTAESTOQUEGERENCIAL" type="Boolean"/>
+		<property name="Multa" column="MULTA" type="String" length="10"/>
+		<property name="Juro" column="JURO" type="String" length="10"/>
+		<property name="IdInstanciaWhats" column="IDINSTANCIAWHATS" type="String" length="100"/>
+		<property name="TokenWhats" column="TOKENWHATS" type="String" length="100"/>
+		<property name="Logo" column="LOGO" type="String"/>
+		<property name="DddWhats" column="DDDWHATS" type="String"/>
+		<property name="FoneWhats" column="FONEWHATS" type="String"/>
+		<property name="LembreteVencimento" column="LEMBRETEVENCIMENTO" type="String" length="400"/>
+		
+		<property name="ServidorEmail" column="SERVIDOREMAIL" type="String" length="100"/>
+		<property name="PortaEmail" column="PORTAEMAIL" type="String" length="10"/>
+		<property name="NomeRemetenteEmail" column="NOMEREMETENTEEMAIL" type="String" length="100"/>
+		<property name="Email" column="EMAIL" type="String" length="200"/>
+		<property name="SenhaEmail" column="SENHAEMAIL" type="String" length="80"/>
+		<property name="AutenticacaoSsl" column="AUTENTICACAOSSL" type="Boolean"/>
+		<property name="AutenticacaoTls" column="AUTENTICACAOTLS" type="Boolean"/>
+		<property name="CaminhoAnexo" column="CAMINHOANEXO" type="String" length="200"/>
+		<property name="Comissao" column="COMISSAO" type="double"/>
+		<property name="ChequeContaReceber" column="CHEQUECONTARECEBER" type="Boolean"/>
+		<property name="ModeloEtiquetaPadrao" column="MODELOETIQUETAPADRAO" type="String" length="200"/>
+		<property name="ModeloEtiquetaNumeroOs" column="MODELOETIQUETANUMEROOS" type="String" length="200"/>
+		<property name="TokenGalaxyPay" column="TOKENGALAXYPAY" type="String" length="100"/>
+		<property name="IdGalaxyPay" column="IDGALAXYPAY" type="String" length="50"/>
+		<property name="IntegracaoGalaxyPay" column="INTEGRACAOGALAXYPAY" type="Boolean"/>
+		<property name="UsuarioWebServiceSpcBrasil" column="USUARIOWEBSERVICESPCBRASIL" type="String" length="100"/>
+		<property name="SenhaWebServiceSpcBrasil" column="SENHAWEBSERVICESPCBRASIL" type="String" length="100"/>
+		<property name="ConsultaPadraoSpcBrasil" column="CONSULTAPADRAOSPCBRASIL" type="String" length="30"/>
+		<property name="AmbienteSpcBrasil" column="AMBIENTESPCBRASIL" type="String" length="80"/>
+
+		<property name="TipoImpressoraCondicional" column="TIPOIMPRESSORACONDICIONAL" type="String" length="20"/>
+		
+		<!-- Integração WhatsApp-->
+		<property name="EnvioNotasPorWhats" column="ENVIONOTASPORWHATS" type="Boolean"/>
+		<property name="EnvioAgradecimentoCompra" column="ENVIOAGRADECIMENTOCOMPRA" type="Boolean"/>
+		<property name="AtivarMensagemPosVendas" column="ATIVARMENSAGEMPOSVENDAS" type="Boolean"/>
+		<property name="AtivarMensagemVencimentoExame" column="ATIVARMENSAGEMVENCIMENTOEXAME" type="Boolean"/>
+		<property name="MensagemPosVendasDiasOuMinutos" column="MENSAGEMPOSVENDASDIASOUMINUTOS" type="String" length="30"/>
+		<property name="MensagemPosVendasQtdDiasOuMinutos" column="MENSAGEMPOSVENDASQTDDIASOUMINUTOS" type="String" length="30"/>
+		<property name="MensagemPosVendas" column="MENSAGEMPOSVENDAS" type="String" length="1000"/>
+		<property name="MensagemLembreteExameAntesOuDepois" column="MENSAGEMLEMBREEXAMEANTESOUDEPOIS" type="String" length="30"/>
+		<property name="MensagemLembreteExameQtdDias" column="MENSAGEMLEMBREEXAMEQTDDIAS" type="String" length="30"/>
+		<property name="MensagemLembreteExameHorario" column="MENSAGEMLEMBREEXAMEHORARIO" type="String" length="30"/>
+		<property name="MensagemLembreteExame" column="MENSAGEMLEMBRETEEXAME" type="String" length="1000"/>
+		<property name="NomeServidor" column="NOMESERVIDOR" type="String" length="150"/>
+		<property name="MensagemPosVendaAposFinalizarOs" column="MENSAGEMPOSVENDAAPOSFINALIZAROS" type="Boolean"/>
+
+		<!--Dashboards Nuvem-->
+		<property name="ServidorNuvem" column="SERVIDORNUVEM" type="String" length="180"/>
+		<property name="BancoNuvem" column="BANCONUVEM" type="String" length="70"/>
+		<property name="UsuarioNuvem" column="USUARIONUVEM" type="String" length="80"/>
+		<property name="SenhaNuvem" column="SENHANUVEM" type="String" length="50"/>
+
+		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="false" foreign-key="FK_PARAMENTROS_TIPOOBJETO" lazy="false"/>
+		<many-to-one name="PlanoContaVenda" column="PLANOCONTAVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTAVENDA" lazy="false"/>
+		<many-to-one name="PlanoContaCompraRevenda" column="PLANOCONTACOMPRAREVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTACOMPRAREVENDA" lazy="false"/>
+		<many-to-one name="PlanoContaCompraImobilizado" column="PLANOCONTACOMPRAIMOBILIZADO" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTACOMPRAIMOBILIZADO" lazy="false"/>
+		<many-to-one name="PlanoContaUsoConsumo" column="PLANOCONTAUSOCONSUMO" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTAUSOCONSUMO" lazy="false"/>
+		<many-to-one name="ContaBancariaVinculadaApi" column="CONTABANCARIAVINCULADAAPI" class="LunarBase.Classes.ContaBancaria" not-null="false" foreign-key="FK_PARAMENTROS_CONTABANCARIAAPI" lazy="false"/>
+
+		
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.BalancoEstoqueProduto" table="balancoestoqueproduto">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="DescricaoProduto" column="DESCRICAOPRODUTO" type="String"/>
+		<property name="Quantidade" column="QUANTIDADE" type="double"/>
+		<property name="Tipo" column="TIPO" type="String" length="1"/>
+		<property name="Conciliado" column="CONCILIADO" type="Boolean"/>
+
+		<many-to-one name="BalancoEstoque" column="BALANCOESTOQUE" class="LunarBase.Classes.BalancoEstoque" not-null="true" foreign-key="FK_BALANCOESTOQUEPRODUTO_BALANCOESTOQUE" lazy="false"/>
+		<many-to-one name="Produto" column="PRODUTO" class="LunarBase.Classes.Produto" not-null="true" foreign-key="FK_BALANCOESTOQUEPRODUTO_PRODUTO" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>
