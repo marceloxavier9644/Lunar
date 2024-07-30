@@ -873,6 +873,7 @@ namespace Lunar.Telas.Vendas
         private void grid_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
         {
             tabControlAdv1.SelectedTab = tabProdutos;
+            //Ajuste fdfsdfsdfsdfsdfdfsdf
         }
 
         private void tabControlAdv1_SelectedIndexChanged(object sender, EventArgs e)
