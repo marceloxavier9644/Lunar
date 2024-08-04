@@ -14,8 +14,13 @@ namespace Lunar.Telas.Food
 
         public static async Task<List<AtendimentoMesa>> GetAtendimentoMesasAsync()
         {
-            string ip = Sessao.atendimentoConfig.IpServidor;
-            string porta = Sessao.atendimentoConfig.PortaApi;
+            string ip = "";
+            string porta = "";
+            if (!String.IsNullOrEmpty(Sessao.atendimentoConfig.IpServidor))
+            {
+                ip = Sessao.atendimentoConfig.IpServidor;
+                porta = Sessao.atendimentoConfig.PortaApi;
+            }
 
             try
             {
@@ -36,8 +41,13 @@ namespace Lunar.Telas.Food
         //Deletar as Mesas anteriores
         public static async Task DeleteAllMesasAsync()
         {
-            string ip = Sessao.atendimentoConfig.IpServidor;
-            string porta = Sessao.atendimentoConfig.PortaApi;
+            string ip = "";
+            string porta = "";
+            if (!String.IsNullOrEmpty(Sessao.atendimentoConfig.IpServidor))
+            {
+                ip = Sessao.atendimentoConfig.IpServidor;
+                porta = Sessao.atendimentoConfig.PortaApi;
+            }
             try
             {
                 HttpResponseMessage response = await client.DeleteAsync("http://"+ip+":"+porta+ "/api/Mesas/DeletarTodas");

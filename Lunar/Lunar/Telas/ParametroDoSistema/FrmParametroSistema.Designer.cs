@@ -220,6 +220,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
+            this.chkSelecionarGradePorCodigoBarras = new System.Windows.Forms.CheckBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -1264,6 +1265,7 @@
             // 
             // tabOrdemServico
             // 
+            this.tabOrdemServico.Controls.Add(this.chkSelecionarGradePorCodigoBarras);
             this.tabOrdemServico.Controls.Add(this.groupBox3);
             this.tabOrdemServico.Controls.Add(this.autoLabel13);
             this.tabOrdemServico.Controls.Add(this.autoLabel14);
@@ -1320,11 +1322,11 @@
             // 
             this.autoLabel13.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel13.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.autoLabel13.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel13.Location = new System.Drawing.Point(460, 13);
+            this.autoLabel13.Location = new System.Drawing.Point(449, 7);
             this.autoLabel13.Name = "autoLabel13";
-            this.autoLabel13.Size = new System.Drawing.Size(51, 16);
+            this.autoLabel13.Size = new System.Drawing.Size(59, 20);
             this.autoLabel13.TabIndex = 205;
             this.autoLabel13.Text = "Código";
             // 
@@ -1332,11 +1334,11 @@
             // 
             this.autoLabel14.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel14.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.autoLabel14.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel14.Location = new System.Drawing.Point(27, 13);
+            this.autoLabel14.Location = new System.Drawing.Point(16, 7);
             this.autoLabel14.Name = "autoLabel14";
-            this.autoLabel14.Size = new System.Drawing.Size(203, 16);
+            this.autoLabel14.Size = new System.Drawing.Size(236, 20);
             this.autoLabel14.TabIndex = 203;
             this.autoLabel14.Text = "Tipo de Objeto (Padrão ao Abrir)";
             // 
@@ -3202,6 +3204,18 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
+            // chkSelecionarGradePorCodigoBarras
+            // 
+            this.chkSelecionarGradePorCodigoBarras.AutoSize = true;
+            this.chkSelecionarGradePorCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSelecionarGradePorCodigoBarras.Location = new System.Drawing.Point(16, 170);
+            this.chkSelecionarGradePorCodigoBarras.Name = "chkSelecionarGradePorCodigoBarras";
+            this.chkSelecionarGradePorCodigoBarras.Size = new System.Drawing.Size(810, 22);
+            this.chkSelecionarGradePorCodigoBarras.TabIndex = 209;
+            this.chkSelecionarGradePorCodigoBarras.Text = "Obrigar seleção de grade de produtos na venda ao bipar o código de barras (se hou" +
+    "ver mais de uma grade cadastrada)";
+            this.chkSelecionarGradePorCodigoBarras.UseVisualStyleBackColor = true;
+            // 
             // FrmParametroSistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3473,5 +3487,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioTermicaCondicional;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioA4Condicional;
+        private System.Windows.Forms.CheckBox chkSelecionarGradePorCodigoBarras;
     }
 }

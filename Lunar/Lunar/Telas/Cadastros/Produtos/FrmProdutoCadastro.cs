@@ -3,6 +3,7 @@ using Lunar.Telas.Estoques;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -70,7 +71,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             //aba veiculo nao apresenta se nao marcar o checkbox veiculo
             tabPageAdv3.TabVisible = false;
             tabPageAdv4.TabVisible = false;
-
+            lblIdGrade.Text = "";
         }
         private void LimparCampos(Control control)
         {
@@ -131,7 +132,7 @@ namespace Lunar.Telas.Cadastros.Produtos
 
             }
             iniciarTributosPadroes();
-
+            lblIdGrade.Text = "";
         }
 
         public FrmProdutoCadastro(Produto produto, bool inserindoNotaFiscal, bool veiculo)
@@ -162,7 +163,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             {
                 tabControlAdv2.SelectedTab = tabPageAdv3;
             }
-            
+            lblIdGrade.Text = "";
         }
 
         private void gerarDadosVeiculos()
@@ -334,7 +335,25 @@ namespace Lunar.Telas.Cadastros.Produtos
                 txtGrupoFiscal.Texts = produto.GrupoFiscal.Descricao;
             }
 
-            txtCodBarras.Texts = produto.Ean;
+            //txtCodBarras.Texts = produto.Ean;
+            ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
+            ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
+            try
+            {
+                IList<ProdutoCodigoBarras> listaCodigoBarras = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL("Select * From ProdutoCodigoBarras Tabela Where Tabela.Produto = " + produto.Id + " and Tabela.FlagExcluido <> true");
+                if (listaCodigoBarras.Count > 0)
+                {
+                    foreach (ProdutoCodigoBarras produtoCodigo in listaCodigoBarras)
+                    {
+                        if (produtoCodigo.ProdutoGrade.Principal == true)
+                            txtCodBarras.Texts = produtoCodigo.CodigoBarras;
+                    }
+                }
+            }
+            catch
+            {
+                txtCodBarras.Texts = "";
+            }
             txtNCM.Texts = produto.Ncm;
             txtCEST.Texts = produto.Cest;
 
@@ -1521,7 +1540,6 @@ namespace Lunar.Telas.Cadastros.Produtos
                     }
                     Controller.getInstance().salvar(produto);
                 }
-
                 GenericaDesktop.ShowInfo("Registrado com sucesso!");
                 get_Produto(produto);
                 getGrade();
@@ -2761,24 +2779,39 @@ namespace Lunar.Telas.Cadastros.Produtos
                 produtoGrade.Descricao = txtDescricaoGrade.Texts;
                 prod.Id = int.Parse(txtID.Texts);
                 prod = (Produto)Controller.getInstance().selecionar(prod);
-                produtoGrade.Produto = prod;
+                //Inciia como nao principal, mas se for edicao o sistema puxa
+                produtoGrade.Principal = false;
+                if (lblIdGrade.Text != "")
+                {
+                    produtoGrade.Id = int.Parse(lblIdGrade.Text);
+                    produtoGrade = (ProdutoGrade)Controller.getInstance().selecionar(produtoGrade);
+
+                    //Se é o principal ajusta na tabela do produto tbm
+                    if (produtoGrade.Principal == true)
+                    {
+                        txtCodBarras.Texts = txtCodigoBarrasGrade.Texts;
+                        txtValorVenda.Texts = txtValorVendaGrade.Texts;
+                    }
+                }
 
                 produtoGrade.Produto = prod;
-
                 unidadeMedida.Id = int.Parse(txtCodUnidadeMedidaGrade.Texts);
                 unidadeMedida = (UnidadeMedida)Controller.getInstance().selecionar(unidadeMedida);
                 produtoGrade.UnidadeMedida = unidadeMedida;
-
                 produtoGrade.QuantidadeMedida = double.Parse(txtQuantidadeMedida.Texts);
                 produtoGrade.ValorVenda = decimal.Parse(txtValorVendaGrade.Texts);
-                produtoGrade.Principal = false;
+        
                 Controller.getInstance().salvar(produtoGrade);
                 if (String.IsNullOrEmpty(txtCodigoBarrasGrade.Texts))
                     btnGerarCodigoBarrasGrade.PerformClick();
                 if (!String.IsNullOrEmpty(txtCodigoBarrasGrade.Texts))
                 {
+                    bool editandoGrade = false;
+                    if (!String.IsNullOrEmpty(lblIdGrade.Text))
+                        editandoGrade = true;
+
                     bool codigoBarrasExiste = CodigoBarrasExiste(txtCodigoBarrasGrade.Texts);
-                    if (!codigoBarrasExiste) 
+                    if (!codigoBarrasExiste && editandoGrade == false) 
                     { 
                         ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
                         produtoCodigoBarras.CodigoBarras = txtCodigoBarrasGrade.Texts;
@@ -2786,7 +2819,7 @@ namespace Lunar.Telas.Cadastros.Produtos
                         produtoCodigoBarras.Produto = prod;
                         Controller.getInstance().salvar(produtoCodigoBarras);
                     }
-                    else
+                    else if(codigoBarrasExiste && editandoGrade == false)
                     {
                         if (GenericaDesktop.ShowConfirmacao("Este código de barras já existe, deseja gerar outro automatico? "))
                         {
@@ -2803,6 +2836,17 @@ namespace Lunar.Telas.Cadastros.Produtos
                             GenericaDesktop.ShowAlerta("Resolva o codigo de barras para conseguir gravar!");
                             Controller.getInstance().excluir(produtoGrade);
                         }
+                    }
+                    else if(editandoGrade == true)
+                    {
+                        ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
+                        ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
+                        try { produtoCodigoBarras = produtoCodigoBarrasController.selecionarCodigoBarrasPorGrade(int.Parse(lblIdGrade.Text)); } catch { produtoCodigoBarras = new ProdutoCodigoBarras(); }
+                        produtoCodigoBarras.CodigoBarras = txtCodigoBarrasGrade.Texts;
+                        produtoCodigoBarras.ProdutoGrade = produtoGrade;
+                        produtoCodigoBarras.Produto = prod;
+                        Controller.getInstance().salvar(produtoCodigoBarras);
+                        set_Produto();
                     }
                 }
                 limparCamposGrade();
@@ -2857,6 +2901,7 @@ namespace Lunar.Telas.Cadastros.Produtos
         }
         private void limparCamposGrade()
         {
+            lblIdGrade.Text = "";
             txtCodUnidadeMedidaGrade.Texts = "";
             txtUnidadeMedidaGrade.Texts = "";
             txtDescricaoGrade.Texts = "";
@@ -2884,8 +2929,16 @@ namespace Lunar.Telas.Cadastros.Produtos
                 produtoGrade = (ProdutoGrade)Controller.getInstance().selecionar(produtoGrade);
                 if (GenericaDesktop.ShowConfirmacao("Deseja excluir a grade " + produtoGrade.Descricao + "?"))
                 {
+                    lblIdGrade.Text = "";
                     if (produtoGrade.Principal != true)
                     {
+                        ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
+                        ProdutoCodigoBarras produtoCodigoBarras = produtoCodigoBarrasController.selecionarCodigoBarrasPorGrade(produtoGrade.Id);
+                        if (produtoCodigoBarras != null)
+                        {
+                            if (produtoCodigoBarras.Id > 0)
+                                Controller.getInstance().excluir(produtoCodigoBarras);
+                        }
                         Controller.getInstance().excluir(produtoGrade);
                         GenericaDesktop.ShowInfo("Excluído com Sucesso");
                         getGrade();
@@ -2920,6 +2973,48 @@ namespace Lunar.Telas.Cadastros.Produtos
                 else
                     GenericaDesktop.ShowAlerta("Codigo de barras já está em uso, tente gerar outro!");
             }
+        }
+
+        private void gridGrade_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        {
+            selecionarGradeParaEditar();
+        }
+        private void selecionarGradeParaEditar()
+        {
+            if (gridGrade.SelectedIndex >= 0)
+            {
+                ProdutoGradeDTO produtoGradeDTO = new ProdutoGradeDTO();
+                produtoGradeDTO = (ProdutoGradeDTO)gridGrade.SelectedItem;
+
+                ProdutoGrade produtoGrade = new ProdutoGrade();
+                produtoGrade.Id = produtoGradeDTO.Id;
+                produtoGrade = (ProdutoGrade)Controller.getInstance().selecionar(produtoGrade);
+
+                txtCodUnidadeMedidaGrade.Texts = produtoGrade.UnidadeMedida.Id.ToString();
+                txtUnidadeMedidaGrade.Texts = produtoGrade.UnidadeMedida.Descricao;
+                txtDescricaoGrade.Texts = produtoGrade.Descricao;
+                txtValorVendaGrade.Texts = produtoGrade.ValorVenda.ToString("N2");
+                txtQuantidadeMedida.Texts = produtoGrade.QuantidadeMedida.ToString();
+                lblIdGrade.Text = produtoGrade.Id.ToString();
+                ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
+                try
+                {
+                    ProdutoCodigoBarras produtoCodigoBarras = produtoCodigoBarrasController.selecionarCodigoBarrasPorGrade(produtoGrade.Id);
+                    txtCodigoBarrasGrade.Texts = produtoCodigoBarras.CodigoBarras;
+                }
+                catch
+                {
+                    txtCodigoBarrasGrade.Texts = "";
+                }
+
+            }
+            else
+                GenericaDesktop.ShowAlerta("Clique na linha do produto que deseja editar!");
+        }
+
+        private void txtValorVendaGrade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            generica.SoNumeroEVirgula(txtValorVendaGrade.Texts, e);
         }
     }
 }

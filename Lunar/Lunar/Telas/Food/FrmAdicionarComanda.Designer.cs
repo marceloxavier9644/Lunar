@@ -160,6 +160,7 @@
             this.Name = "FrmAdicionarComanda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Comanda";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmAdicionarComanda_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

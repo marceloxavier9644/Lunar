@@ -57,6 +57,7 @@ namespace LunarBase.Classes
         private string ambienteSpcBrasil;
 
         private string tipoImpressoraCondicional;
+        private bool selecionarGradeEan;
 
         //WHATS
         private bool envioNotasPorWhats;
@@ -144,5 +145,6 @@ namespace LunarBase.Classes
         public virtual string UsuarioNuvem { get => usuarioNuvem; set => usuarioNuvem = value; }
         public virtual string SenhaNuvem { get => senhaNuvem; set => senhaNuvem = value; }
         public virtual string TipoImpressoraCondicional { get => tipoImpressoraCondicional; set => tipoImpressoraCondicional = value; }
+        public virtual bool SelecionarGradeEan { get => selecionarGradeEan; set => selecionarGradeEan = value; }
     }
 }

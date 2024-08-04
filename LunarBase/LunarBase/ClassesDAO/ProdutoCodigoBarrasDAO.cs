@@ -11,5 +11,10 @@ namespace LunarBase.ClassesDAO
             IList<ProdutoCodigoBarras> retorno = Session.CreateSQLQuery(sql).AddEntity("f", typeof(ProdutoCodigoBarras)).List<ProdutoCodigoBarras>();
             return retorno;
         }
+        public ProdutoCodigoBarras selecionarCodigoBarrasPorGrade(int idGrade)
+        {
+            Session = Conexao.GetSession();
+            return Session.CreateQuery("from ProdutoCodigoBarras as Tabela where Tabela.ProdutoGrade = " + idGrade + " and Tabela.FlagExcluido <> true").UniqueResult<ProdutoCodigoBarras>();
+        }
     }
 }

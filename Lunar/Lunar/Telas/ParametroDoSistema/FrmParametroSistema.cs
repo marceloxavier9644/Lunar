@@ -55,6 +55,11 @@ namespace Lunar.Telas.ParametroDoSistema
             else
                 chkChequeContaReceber.Checked = false;
 
+            if (parametro.SelecionarGradeEan == true)
+                chkSelecionarGradePorCodigoBarras.Checked = true;
+            else
+                chkSelecionarGradePorCodigoBarras.Checked = false;
+
             txtCSC.Texts = parametro.CscNfce;
             txtTokenNFCe.Texts = parametro.TokenNfce;
             txtInformacaoAdicionalNFCe.Texts = parametro.InformacaoAdicionalNFCe;
@@ -279,6 +284,10 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.ChequeContaReceber = true;
             else
                 parametro.ChequeContaReceber = false;
+            if (chkSelecionarGradePorCodigoBarras.Checked == true)
+                parametro.SelecionarGradeEan = true;
+            else
+                parametro.SelecionarGradeEan = false;
             parametro.Multa = txtMulta.Texts;
             parametro.Juro = txtJuro.Texts;
             parametro.IdInstanciaWhats = txtUrlWhatsapp.Text;

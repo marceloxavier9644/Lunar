@@ -868,42 +868,76 @@ namespace Lunar.Telas.Vendas
                 //Consulta para casos que todos itens tenha uma grade
                 String sql = "SELECT p.Id AS ProdutoId, p.DESCRICAO AS ProdutoNome, pg.Id AS ProdutoGradeId, pg.Descricao AS DescricaoGrade, COALESCE(um.Id, p.UnidadeMedida) AS UnidadeMedida, COALESCE(pg.ValorVenda, p.ValorVenda) AS ValorVenda, COALESCE(pcb.CodigoBarras, (SELECT pcb2.CodigoBarras FROM ProdutoCodigoBarras pcb2 WHERE pcb2.Produto = p.Id LIMIT 1)) AS CodigoBarras FROM Produto p JOIN ProdutoGrade pg ON p.Id = pg.Produto LEFT JOIN ProdutoCodigoBarras pcb ON pg.Id = pcb.ProdutoGrade LEFT JOIN UnidadeMedida um ON pg.UnidadeMedida = um.Id WHERE pcb.CodigoBarras = '"+valor+"' AND p.FlagExcluido = 0 AND pg.FlagExcluido = 0 AND (pcb.FlagExcluido = 0 OR pcb.FlagExcluido IS NULL) AND (um.FlagExcluido = 0 OR um.FlagExcluido IS NULL)";
 
-
+                ProdutoGradeController produtoGradeController = new ProdutoGradeController();
                 IList<ProdutoResult> lista = produtoDAO.selecionarProdutosPorSqlResult(sql);
                 if (lista.Count == 1)
                 {
                     desbloquearCamposValorQuantidade();
                     foreach (ProdutoResult prod in lista)
                     {
-                        txtPesquisaProduto.Texts = prod.DescricaoGrade;
-                        txtQuantidade.Texts = "1";
-                        txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                        txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                        produto.Id = prod.ProdutoId;
-                        produto = (Produto)Controller.getInstance().selecionar(produto);
-                        UnidadeMedida unidadeMedida = new UnidadeMedida();
-                        unidadeMedida.Id = prod.UnidadeMedida;
-                        unidadeMedida = (UnidadeMedida)Controller.getInstance().selecionar(unidadeMedida);
-                        //lblUnidadeMedida.Text = unidadeMedida.Sigla;
-                        produto.UnidadeMedida = unidadeMedida;
+                        IList<ProdutoGrade> listaGrade = produtoGradeController.selecionarGradePorProduto(prod.ProdutoId);
+                        if (Sessao.parametroSistema.SelecionarGradeEan == true && listaGrade.Count > 1)
+                        {
+                            Produto produtoSel = new Produto();
+                            produtoSel.Id = prod.ProdutoId;
+                            produtoSel = (Produto)Controller.getInstance().selecionar(produtoSel);
+                            if (produtoSel.Grade == true)
+                            {
+                                ProdutoGrade produtoGrade = new ProdutoGrade();
+                                produtoGrade = selecionarGrade(produtoSel);
 
-                        ProdutoGrade prdgrade = new ProdutoGrade();
-                        prdgrade.Id = int.Parse(prod.ProdutoGradeId.ToString());
-                        prdgrade = (ProdutoGrade)Controller.getInstance().selecionar(prdgrade);
-                        produto.GradePrincipal = prdgrade;
-                        
+                                if (produtoGrade != null)
+                                {
+                                    txtPesquisaProduto.Texts = produtoSel.Descricao;
+                                    txtQuantidade.Texts = "1";
+                                    txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                    txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                    this.produto = produtoSel;
+                                    this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                                    lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
 
-                        if (valorAux.Contains("*"))
-                            txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                        if (prod.CodigoBarras.Equals(valor.Trim()))
-                            inserirItem(this.produto);
+                                    produto.GradePrincipal = produtoGrade;
+
+                                    //inserirItem(this.produto);
+                                    txtQuantidade.Focus();
+                                    txtQuantidade.Select();
+                                }
+                            }
+                        }
+                        //1 Codigo de barras por grade, nao pergunta grade na tela de vendas se bipar o produto
                         else
                         {
-                            txtQuantidade.Focus();
-                            txtQuantidade.Select();
+                            txtPesquisaProduto.Texts = prod.DescricaoGrade;
+                            txtQuantidade.Texts = "1";
+                            txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                            txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                            produto.Id = prod.ProdutoId;
+                            produto = (Produto)Controller.getInstance().selecionar(produto);
+                            UnidadeMedida unidadeMedida = new UnidadeMedida();
+                            unidadeMedida.Id = prod.UnidadeMedida;
+                            unidadeMedida = (UnidadeMedida)Controller.getInstance().selecionar(unidadeMedida);
+                            //lblUnidadeMedida.Text = unidadeMedida.Sigla;
+                            produto.UnidadeMedida = unidadeMedida;
+
+                            ProdutoGrade prdgrade = new ProdutoGrade();
+                            prdgrade.Id = int.Parse(prod.ProdutoGradeId.ToString());
+                            prdgrade = (ProdutoGrade)Controller.getInstance().selecionar(prdgrade);
+                            produto.GradePrincipal = prdgrade;
+
+
+                            if (valorAux.Contains("*"))
+                                txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                            if (prod.CodigoBarras.Equals(valor.Trim()))
+                                inserirItem(this.produto);
+                            else
+                            {
+                                txtQuantidade.Focus();
+                                txtQuantidade.Select();
+                            }
                         }
                     }
                 }
+                
             }
             //Verifica se é Id do produto
             else if (ENumeroMenorQue5Digitos(valor))

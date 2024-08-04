@@ -7,6 +7,8 @@
 		<property name="Numero" column="NUMERO" type="String" length="50"/>
 		<property name="Tipo" column="TIPO" type="String" length="90"/>
 		<property name="Status" column="STATUS" type="String" length="100"/>
+		<property name="Nome" column="NOME" type="String" length="100"/>
+		<property name="Observacao" column="OBSERVACAO" type="String" length="400"/>
 
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>

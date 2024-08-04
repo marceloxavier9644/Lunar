@@ -70,6 +70,10 @@
 		<property name="UsuarioNuvem" column="USUARIONUVEM" type="String" length="80"/>
 		<property name="SenhaNuvem" column="SENHANUVEM" type="String" length="50"/>
 
+		<!--MESMO COM EAN DIFERENTE O SISTEMA PEDE PRA SELECIONAR A GRADE-->
+		<property name="SelecionarGradeEan" column="SELECIONARGRADEEAN" type="Boolean"/>
+		
+		
 		<many-to-one name="TipoObjeto" column="TIPOOBJETO" class="LunarBase.Classes.TipoObjeto" not-null="false" foreign-key="FK_PARAMENTROS_TIPOOBJETO" lazy="false"/>
 		<many-to-one name="PlanoContaVenda" column="PLANOCONTAVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTAVENDA" lazy="false"/>
 		<many-to-one name="PlanoContaCompraRevenda" column="PLANOCONTACOMPRAREVENDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTACOMPRAREVENDA" lazy="false"/>

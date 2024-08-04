@@ -32,6 +32,8 @@ namespace Lunar.Telas.Food
                     txtMesaInicial.Text = Sessao.atendimentoConfig.MesaInicial.ToString();
                     txtMesaFinal.Text = Sessao.atendimentoConfig.MesaFinal.ToString();
                 }
+                else
+                    txtPortaServidor.Text = "5130";
             }
             catch (Exception ex)
             {
@@ -94,7 +96,7 @@ namespace Lunar.Telas.Food
         }
         private async void SalvarMesas()
         {
-            if (GenericaDesktop.ShowConfirmacao("Deseja realmente modificar as configurações das mesas?"))
+            if (GenericaDesktop.ShowConfirmacao("Deseja realmente modificar as configurações das mesas? Caso tenha mesas com status ocupadas, elas serão encerradas!"))
             {
                 await ApiServiceFood.DeleteAllMesasAsync();
                 int mesaInicial = int.Parse(txtMesaInicial.Text);

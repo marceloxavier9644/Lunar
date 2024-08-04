@@ -1,4 +1,6 @@
-﻿using LunarBase.Classes;
+﻿using Lunar.Telas.ParametroDoSistema;
+using Lunar.Utils;
+using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Newtonsoft.Json;
@@ -23,8 +25,17 @@ namespace Lunar.Telas.Food
             InitializeComponent();
             //Confid Food
             retornarConfigPadrao();
-            ConfigureFlowLayoutPanel();
-            loadMesas();
+            if (Sessao.atendimentoConfig != null)
+            {
+                ConfigureFlowLayoutPanel();
+                loadMesas();
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Faça a configuração do sistema Lunar Food!");
+                FrmConfigFood frm = new FrmConfigFood();
+                frm.ShowDialog();
+            }
         }
         private void textBoxPesquisar_Enter(object sender, EventArgs e)
         {
@@ -62,7 +73,7 @@ namespace Lunar.Telas.Food
                 int numeroInicial = mesas.Min(m => int.Parse(m.Numero));
                 int numeroFinal = mesas.Max(m => int.Parse(m.Numero));
 
-                AddMesas(mesas);
+                AddMesasEComandas(mesas);
             }
         }
 
@@ -214,7 +225,7 @@ namespace Lunar.Telas.Food
             }
         }
 
-        private void AddMesas(List<AtendimentoMesa> mesas)
+        private void AddMesasEComandas(List<AtendimentoMesa> mesas)
         {
             mesasDic.Clear(); // Limpa o dicionário para evitar duplicatas
 
@@ -230,16 +241,37 @@ namespace Lunar.Telas.Food
                 Font labelFont = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
 
                 Label lblMesa = new Label();
-                lblMesa.Text = $"MESA {mesa.Numero}";
+                lblMesa.Text = mesa.Tipo + $": {mesa.Numero}";
                 lblMesa.AutoSize = false;
-                lblMesa.Size = new Size(200, 60);
-                lblMesa.Location = new Point(0, 10);
+                //lblMesa.Size = new Size(200, 60);
+                //lblMesa.Location = new Point(0, 10);
+                lblMesa.Location = new Point(10, 10);
+                lblMesa.Size = new Size(180, 20); // Ajusta o tamanho do label
                 lblMesa.TextAlign = ContentAlignment.MiddleCenter;
                 lblMesa.Font = labelFont;
                 lblMesa.BackColor = Color.Transparent; // Torna o fundo do Label transparente
                 lblMesa.Click += Control_Click; // Adiciona o evento Click ao Label
 
+                Label lblNome = new Label();
+                lblNome.Text = $"CLIENTE: {mesa.Nome}";
+                lblMesa.AutoSize = false;
+                lblNome.Location = new Point(10, 35); // Ajusta a localização para minimizar espaço
+                lblNome.Size = new Size(180, 20); // Ajusta o tamanho do label
+                lblNome.AutoSize = false;
+                lblNome.Font = labelFont;
+
+                Label lblObservacao = new Label();
+                lblObservacao.Text = $"OBS: {mesa.Observacao}";
+                lblObservacao.Location = new Point(10, 60); // Ajusta a localização para minimizar espaço
+                lblObservacao.Size = new Size(180, 20); // Ajusta o tamanho do label
+                lblObservacao.AutoSize = false;
+                lblObservacao.Font = labelFont;
+
                 mesaPanel.Controls.Add(lblMesa);
+                if(!String.IsNullOrEmpty(mesa.Nome))
+                    mesaPanel.Controls.Add(lblNome);
+                if (!String.IsNullOrEmpty(mesa.Observacao))
+                    mesaPanel.Controls.Add(lblObservacao);
 
                 // Adicionar rodapé
                 Panel footerPanel = new Panel();
@@ -374,19 +406,21 @@ namespace Lunar.Telas.Food
         private void FilterItems(string filter, string searchTerm)
         {
             searchTerm = searchTerm.ToLower();
+    
             foreach (Control control in flowLayoutPanel1.Controls)
             {
+                var atendimentoMesa = control.Tag as AtendimentoMesa;
                 bool visible = false;
 
                 if (filter == "TODAS")
                 {
                     visible = true;
                 }
-                else if (filter == "MESA" && control.Tag?.ToString() == "MESA")
+                else if (filter == "MESA" && atendimentoMesa.Tipo == "MESA")
                 {
                     visible = true;
                 }
-                else if (filter == "COMANDA" && control.Tag?.ToString() == "COMANDA")
+                else if (filter == "COMANDA" && atendimentoMesa.Tipo == "COMANDA")
                 {
                     visible = true;
                 }

@@ -73,7 +73,16 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar Codigo Barras! Erro: " + e.Message);
             }
         }
-
-      
+        public ProdutoCodigoBarras selecionarCodigoBarrasPorGrade(int idGrade)
+        {
+            try
+            {
+                return dao.selecionarCodigoBarrasPorGrade(idGrade);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar codigo barras! Erro: " + e.Message);
+            }
+        }
     }
 }

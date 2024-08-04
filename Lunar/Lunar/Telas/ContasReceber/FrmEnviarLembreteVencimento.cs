@@ -17,6 +17,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.ContasReceber
@@ -252,7 +253,7 @@ namespace Lunar.Telas.ContasReceber
 
         private void btnTesteMensagem_Click(object sender, EventArgs e)
         {
-            Zapi zapi = new Zapi();
+            LunarChatAPI lunarChatAPI = new LunarChatAPI();
             string numero = "";
             Form formBackground = new Form();
             Nfe nfe = new Nfe();
@@ -315,16 +316,11 @@ namespace Lunar.Telas.ContasReceber
                 if (mensagemAjustada.Contains("[Empresa]"))
                     mensagemAjustada = mensagemAjustada.Replace("[Empresa]", Sessao.empresaFilialLogada.NomeFantasia);
 
-                dynamic ret0 = zapi.zapi_EnviarTexto(numero, mensagemAjustada, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
-                
-                if(!String.IsNullOrEmpty(ret0))
-                    GenericaDesktop.ShowInfo("Mensagem enviada com sucesso");
-                else
-                    GenericaDesktop.ShowAlerta("Falha no envio de mensagem");
+                dynamic ret0 = lunarChatAPI.SendMessageAsync(numero, mensagemAjustada);
             }
         }
 
-        private void btnEnviarMensagem_Click(object sender, EventArgs e)
+        private async Task enviarMensagem()
         {
             try
             {
@@ -332,7 +328,7 @@ namespace Lunar.Telas.ContasReceber
                     Directory.CreateDirectory(@"TempLogLunar");
                 string nomeArquivo = @"TempLogLunar\log_EnvioLembrete" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".txt";
                 StreamWriter writer = new StreamWriter(nomeArquivo);
-                Zapi zapi = new Zapi();
+                LunarChatAPI lunarChatAPI = new LunarChatAPI();
                 var records = grid.View.Records;
                 int sucesso = 0;
                 int falha = 0;
@@ -391,7 +387,7 @@ namespace Lunar.Telas.ContasReceber
                         else
                             numero = GenericaDesktop.RemoveCaracteres(numero.Trim());
 
-                        dynamic ret0 = zapi.zapi_EnviarTexto(numero, mensagemAjustada, Sessao.parametroSistema.IdInstanciaWhats, Sessao.parametroSistema.TokenWhats);
+                        string ret0 = await lunarChatAPI.SendMessageAsync(numero, mensagemAjustada);
                         if (!String.IsNullOrEmpty(ret0))
                         {
                             sucesso++;
@@ -517,6 +513,19 @@ namespace Lunar.Telas.ContasReceber
             if (e.KeyChar == 13)
             {
                 btnPesquisaCliente.PerformClick();
+            }
+        }
+
+        private async void btnEnviarMensagem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                await enviarMensagem();
+            }
+            catch (Exception ex)
+            {
+                // Lida com qualquer exceção que possa ocorrer
+                GenericaDesktop.ShowAlerta("Ocorreu um erro ao enviar as mensagens: " + ex.Message);
             }
         }
     }

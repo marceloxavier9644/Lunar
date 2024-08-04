@@ -401,6 +401,26 @@ namespace Lunar.Telas.Cadastros.Produtos
                     if(GenericaDesktop.ShowConfirmacao("Deseja excluir o produto " + produto.Id.ToString() + "?"))
                     {
                         Controller.getInstance().excluir(produto);
+
+                        ProdutoGradeController produtoGradeController = new ProdutoGradeController();
+                        ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
+
+                        IList<ProdutoGrade> listaGrade = produtoGradeController.selecionarGradePorProduto(produto.Id);
+                        IList<ProdutoCodigoBarras> listaBarras = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL("Select * from ProdutoCodigoBarras Tabela Where Tabela.Produto = " + produto.Id + " and Tabela.FlagExcluido <> true");
+                        if(listaGrade.Count > 0)
+                        {
+                            foreach(ProdutoGrade grade in listaGrade)
+                            {
+                                Controller.getInstance().excluir(grade);
+                            }
+                        }
+                        if (listaBarras.Count > 0)
+                        {
+                            foreach (ProdutoCodigoBarras barras in listaBarras)
+                            {
+                                Controller.getInstance().excluir(barras);
+                            }
+                        }
                         GenericaDesktop.ShowInfo("Excluído com Sucesso");
                         PesquisarProdutoPorDescricao(txtPesquisaProdutoPorDescricao.Texts.Trim());
                     }

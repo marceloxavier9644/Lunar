@@ -176,6 +176,8 @@
             this.dataColumn15 = new System.Data.DataColumn();
             this.dataColumn16 = new System.Data.DataColumn();
             this.dataColumn17 = new System.Data.DataColumn();
+            this.dataColumn18 = new System.Data.DataColumn();
+            this.dataColumn19 = new System.Data.DataColumn();
             this.dsPagamento = new System.Data.DataSet();
             this.Pagamento = new System.Data.DataTable();
             this.dataColumn8 = new System.Data.DataColumn();
@@ -183,8 +185,6 @@
             this.dataColumn10 = new System.Data.DataColumn();
             this.dataColumn11 = new System.Data.DataColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dataColumn18 = new System.Data.DataColumn();
-            this.dataColumn19 = new System.Data.DataColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabVenda.SuspendLayout();
@@ -2612,6 +2612,14 @@
             // 
             this.dataColumn17.ColumnName = "UnidadeMedida";
             // 
+            // dataColumn18
+            // 
+            this.dataColumn18.ColumnName = "ProdutoGrade";
+            // 
+            // dataColumn19
+            // 
+            this.dataColumn19.ColumnName = "QuantidadeBaixa";
+            // 
             // dsPagamento
             // 
             this.dsPagamento.DataSetName = "dsPagamento";
@@ -2645,14 +2653,6 @@
             this.dataColumn11.Caption = "VendaForma";
             this.dataColumn11.ColumnName = "VendaForma";
             this.dataColumn11.DataType = typeof(int);
-            // 
-            // dataColumn18
-            // 
-            this.dataColumn18.ColumnName = "ProdutoGrade";
-            // 
-            // dataColumn19
-            // 
-            this.dataColumn19.ColumnName = "QuantidadeBaixa";
             // 
             // FrmVendas02
             // 
