@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Label = System.Windows.Forms.Label;
@@ -20,6 +23,8 @@ namespace Lunar.Telas.Food
     {
         private Panel draggedPanel = null;
         private Point dragStartPoint;
+        private ClientWebSocket webSocket;
+        private CancellationTokenSource cts;
         public FrmControleFood()
         {
             InitializeComponent();
@@ -29,6 +34,7 @@ namespace Lunar.Telas.Food
             {
                 ConfigureFlowLayoutPanel();
                 loadMesas();
+                StartWebSocketConnection();
             }
             else
             {
@@ -245,8 +251,15 @@ namespace Lunar.Telas.Food
                 lblMesa.AutoSize = false;
                 //lblMesa.Size = new Size(200, 60);
                 //lblMesa.Location = new Point(0, 10);
-                lblMesa.Location = new Point(10, 10);
+
                 lblMesa.Size = new Size(180, 20); // Ajusta o tamanho do label
+                lblMesa.Location = new Point(10, 10);
+                if (mesa.Tipo.Equals("MESA"))
+                {
+                    lblMesa.Size = new Size(200, 60);
+                    lblMesa.Location = new Point(0, 10);
+                }  
+     
                 lblMesa.TextAlign = ContentAlignment.MiddleCenter;
                 lblMesa.Font = labelFont;
                 lblMesa.BackColor = Color.Transparent; // Torna o fundo do Label transparente
@@ -497,6 +510,96 @@ namespace Lunar.Telas.Food
                 Console.WriteLine("\nException Caught!");
                 Console.WriteLine("Message :{0} ", e.Message);
                 return new List<AtendimentoMesa>();
+            }
+        }
+
+
+        private async void StartWebSocketConnection()
+        {
+            cts = new CancellationTokenSource();
+            webSocket = new ClientWebSocket();
+
+            try
+            {
+                Uri serverUri = new Uri("ws://localhost:5130/ws"); 
+                await webSocket.ConnectAsync(serverUri, cts.Token);
+                MessageBox.Show("Conectado ao WebSocket.");
+
+                _ = ReceiveMessagesAsync(webSocket);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao conectar ao WebSocket: {ex.Message}");
+            }
+        }
+
+        private async Task ReceiveMessagesAsync(ClientWebSocket client)
+        {
+            var buffer = new byte[1024 * 4];
+            while (client.State == WebSocketState.Open)
+            {
+                WebSocketReceiveResult result;
+                var receiveSegment = new ArraySegment<byte>(buffer);
+
+                try
+                {
+                    result = await client.ReceiveAsync(receiveSegment, CancellationToken.None);
+                    string messageReceived = Encoding.UTF8.GetString(buffer, 0, result.Count);
+
+                    // Atualizar a interface do usuário com a mensagem recebida
+                    Invoke(new Action(() => UpdateUIWithMessage(messageReceived)));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao receber mensagem: {ex.Message}");
+                    break;
+                }
+            }
+        }
+
+        private void UpdateUIWithMessage(string message)
+        {
+            MessageBox.Show($"Mensagem recebida: {message}");
+
+            try
+            {
+                //var mesas = JsonSerializer.Deserialize<List<AtendimentoMesa>>(message);
+                // Atualize a FlowLayoutPanel ou outro controle com as novas informações
+                // Exemplo:
+                // UpdateFlowLayoutPanel(mesas);
+            }
+            catch (JsonException jsonEx)
+            {
+                MessageBox.Show($"Erro ao processar a mensagem: {jsonEx.Message}");
+            }
+        }
+
+        private void FrmControleFood_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            cts?.Cancel();
+            webSocket?.Dispose();
+        }
+
+        private async void btnMessage_Click(object sender, EventArgs e)
+        {
+            if (webSocket != null && webSocket.State == WebSocketState.Open)
+            {
+                string messageToSend = "Mensagem de teste do Windows Forms";
+                var buffer = Encoding.UTF8.GetBytes(messageToSend);
+                var segment = new ArraySegment<byte>(buffer);
+
+                try
+                {
+                    await webSocket.SendAsync(segment, WebSocketMessageType.Text, true, CancellationToken.None);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao enviar mensagem: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("WebSocket não está conectado.");
             }
         }
     }

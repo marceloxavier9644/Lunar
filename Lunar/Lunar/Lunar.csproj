@@ -312,6 +312,14 @@
     <Compile Include="RJ_UI\Classes\UppercaseTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Telas\ArquivosContabilidade\dsFiscalXml.cs">
+      <DependentUpon>dsFiscalXml.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\ArquivosContabilidade\dsFiscalXml.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsFiscalXml.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Telas\ArquivosContabilidade\FrmEnviarArquivosContabilidade.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -866,6 +874,7 @@
     <Compile Include="Telas\Food\FrmDetalheMesa.Designer.cs">
       <DependentUpon>FrmDetalheMesa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Food\UpdateTela.cs" />
     <Compile Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1318,6 +1327,7 @@
     <EmbeddedResource Include="Telas\ArquivosContabilidade\FrmEnviarArquivosContabilidade.resx">
       <DependentUpon>FrmEnviarArquivosContabilidade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ArquivosContabilidade\RelatorioFiscal.rdlc" />
     <EmbeddedResource Include="Telas\Cadastros\Bancos\FrmBancosCadastro.resx">
       <DependentUpon>FrmBancosCadastro.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1990,6 +2000,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Telas\ArquivosContabilidade\dsFiscalXml.xsc">
+      <DependentUpon>dsFiscalXml.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\ArquivosContabilidade\dsFiscalXml.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFiscalXml.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\ArquivosContabilidade\dsFiscalXml.xss">
+      <DependentUpon>dsFiscalXml.xsd</DependentUpon>
+    </None>
     <None Include="Telas\Cadastros\Cliente\PessoaAdicionais\dsClienteSimplificado.xsc">
       <DependentUpon>dsClienteSimplificado.xsd</DependentUpon>
     </None>

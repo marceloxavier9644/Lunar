@@ -7,8 +7,8 @@
 		<property name="Identificacao" column="IDENTIFICACAO" type="String" length="30"/>
 		<property name="Data" column="DATA" type="DateTime"/>
 		<property name="Observacao" column="OBSERVACAO" type="String" length="250"/>
+		<property name="EmpresaFilial" column="EMPRESAFILIAL" type="int"/>
 
-		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_ATENDIMENTO_FILIAL" lazy="false"/>
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
 		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>

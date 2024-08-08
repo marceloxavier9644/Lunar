@@ -12,9 +12,22 @@ namespace LunarBase.ConexaoBD
         public static ISession Session;
         public static ITransaction Transaction;
         //conection
+        //public static void IniciaTransacao()
+        //{
+        //    Transaction = GetSession().BeginTransaction();
+        //}
         public static void IniciaTransacao()
         {
-            Transaction = GetSession().BeginTransaction();
+            var session = GetSession();
+            if (session == null || !session.IsOpen)
+            {
+                throw new InvalidOperationException("A sessão NHibernate não está aberta.");
+            }
+
+            if (Transaction == null || !Transaction.IsActive)
+            {
+                Transaction = session.BeginTransaction();
+            }
         }
 
         public static bool Commit()

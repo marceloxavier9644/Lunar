@@ -30,19 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmControleFood));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPesquisar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panelCentro = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnNovoAtendimento = new FontAwesome.Sharp.IconButton();
+            this.btnMessage = new FontAwesome.Sharp.IconButton();
             this.btnComandas = new FontAwesome.Sharp.IconButton();
             this.btnMesas = new FontAwesome.Sharp.IconButton();
             this.btnTodas = new FontAwesome.Sharp.IconButton();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnConfig = new FontAwesome.Sharp.IconButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnPesquisar = new FontAwesome.Sharp.IconButton();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnNovoAtendimento = new FontAwesome.Sharp.IconButton();
+            this.panelCentro = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelCentro.SuspendLayout();
@@ -51,6 +52,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.btnMessage);
             this.panel1.Controls.Add(this.btnComandas);
             this.panel1.Controls.Add(this.btnMesas);
             this.panel1.Controls.Add(this.btnTodas);
@@ -66,90 +68,22 @@
             this.panel1.Size = new System.Drawing.Size(800, 190);
             this.panel1.TabIndex = 0;
             // 
-            // panel3
+            // btnMessage
             // 
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(794, 31);
-            this.panel3.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Pesquisar";
-            // 
-            // txtPesquisar
-            // 
-            this.txtPesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.ForeColor = System.Drawing.Color.Gray;
-            this.txtPesquisar.Location = new System.Drawing.Point(17, 110);
-            this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(317, 31);
-            this.txtPesquisar.TabIndex = 1;
-            this.txtPesquisar.Enter += new System.EventHandler(this.textBoxPesquisar_Enter);
-            this.txtPesquisar.Leave += new System.EventHandler(this.textBoxPesquisar_Leave);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mesas";
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btnNovoAtendimento);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 386);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 64);
-            this.panel2.TabIndex = 1;
-            // 
-            // panelCentro
-            // 
-            this.panelCentro.Controls.Add(this.flowLayoutPanel1);
-            this.panelCentro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCentro.Location = new System.Drawing.Point(0, 190);
-            this.panelCentro.Name = "panelCentro";
-            this.panelCentro.Size = new System.Drawing.Size(800, 196);
-            this.panelCentro.TabIndex = 2;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 196);
-            this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // btnNovoAtendimento
-            // 
-            this.btnNovoAtendimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNovoAtendimento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
-            this.btnNovoAtendimento.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovoAtendimento.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovoAtendimento.ForeColor = System.Drawing.Color.White;
-            this.btnNovoAtendimento.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnNovoAtendimento.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
-            this.btnNovoAtendimento.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnNovoAtendimento.IconSize = 25;
-            this.btnNovoAtendimento.Location = new System.Drawing.Point(599, 8);
-            this.btnNovoAtendimento.Name = "btnNovoAtendimento";
-            this.btnNovoAtendimento.Size = new System.Drawing.Size(196, 43);
-            this.btnNovoAtendimento.TabIndex = 6;
-            this.btnNovoAtendimento.Text = "Novo Atendimento [F2]";
-            this.btnNovoAtendimento.UseVisualStyleBackColor = false;
-            this.btnNovoAtendimento.Click += new System.EventHandler(this.btnNovoAtendimento_Click);
+            this.btnMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMessage.BackgroundImage = global::Lunar.Properties.Resources.Add24;
+            this.btnMessage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMessage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMessage.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnMessage.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
+            this.btnMessage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMessage.IconSize = 25;
+            this.btnMessage.Location = new System.Drawing.Point(755, 74);
+            this.btnMessage.Name = "btnMessage";
+            this.btnMessage.Size = new System.Drawing.Size(33, 33);
+            this.btnMessage.TabIndex = 9;
+            this.btnMessage.UseVisualStyleBackColor = true;
+            this.btnMessage.Click += new System.EventHandler(this.btnMessage_Click);
             // 
             // btnComandas
             // 
@@ -205,6 +139,13 @@
             this.btnTodas.UseVisualStyleBackColor = false;
             this.btnTodas.Click += new System.EventHandler(this.btnTodas_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(794, 31);
+            this.panel3.TabIndex = 5;
+            // 
             // btnConfig
             // 
             this.btnConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -222,6 +163,16 @@
             this.btnConfig.UseVisualStyleBackColor = true;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Pesquisar";
+            // 
             // btnPesquisar
             // 
             this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -235,6 +186,74 @@
             this.btnPesquisar.TabIndex = 2;
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // txtPesquisar
+            // 
+            this.txtPesquisar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisar.ForeColor = System.Drawing.Color.Gray;
+            this.txtPesquisar.Location = new System.Drawing.Point(17, 110);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(317, 31);
+            this.txtPesquisar.TabIndex = 1;
+            this.txtPesquisar.Enter += new System.EventHandler(this.textBoxPesquisar_Enter);
+            this.txtPesquisar.Leave += new System.EventHandler(this.textBoxPesquisar_Leave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mesas";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnNovoAtendimento);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 386);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 64);
+            this.panel2.TabIndex = 1;
+            // 
+            // btnNovoAtendimento
+            // 
+            this.btnNovoAtendimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNovoAtendimento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
+            this.btnNovoAtendimento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNovoAtendimento.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovoAtendimento.ForeColor = System.Drawing.Color.White;
+            this.btnNovoAtendimento.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnNovoAtendimento.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
+            this.btnNovoAtendimento.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnNovoAtendimento.IconSize = 25;
+            this.btnNovoAtendimento.Location = new System.Drawing.Point(599, 8);
+            this.btnNovoAtendimento.Name = "btnNovoAtendimento";
+            this.btnNovoAtendimento.Size = new System.Drawing.Size(196, 43);
+            this.btnNovoAtendimento.TabIndex = 6;
+            this.btnNovoAtendimento.Text = "Novo Atendimento [F2]";
+            this.btnNovoAtendimento.UseVisualStyleBackColor = false;
+            this.btnNovoAtendimento.Click += new System.EventHandler(this.btnNovoAtendimento_Click);
+            // 
+            // panelCentro
+            // 
+            this.panelCentro.Controls.Add(this.flowLayoutPanel1);
+            this.panelCentro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCentro.Location = new System.Drawing.Point(0, 190);
+            this.panelCentro.Name = "panelCentro";
+            this.panelCentro.Size = new System.Drawing.Size(800, 196);
+            this.panelCentro.TabIndex = 2;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 196);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // FrmControleFood
             // 
@@ -250,6 +269,7 @@
             this.Name = "FrmControleFood";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Controle de Mesas e Comandas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmControleFood_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmControleFood_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -275,5 +295,6 @@
         private FontAwesome.Sharp.IconButton btnTodas;
         private FontAwesome.Sharp.IconButton btnComandas;
         private FontAwesome.Sharp.IconButton btnMesas;
+        private FontAwesome.Sharp.IconButton btnMessage;
     }
 }

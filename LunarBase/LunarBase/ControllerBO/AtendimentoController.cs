@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LunarBase.ControllerBO
 {
-    public class Atendimento : Controller
+    public class AtendimentoController : Controller
     {
     }
 }

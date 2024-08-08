@@ -37,7 +37,7 @@ namespace LunarBase.ClassesDAO
         {
             Session = Conexao.GetSession();
             String sql = "FROM Nfe as Tabela WHERE Tabela.FlagExcluido <> true and " +
-                         "Tabela.DataEmissao Between '" + dataInicial + "' and '" + dataFinal + "' and Tabela.CnpjEmitente = '"+Sessao.empresaFilialLogada.Cnpj+ "' order by Tabela.DataEmissao desc";
+                         "Tabela.DataEmissao Between '" + dataInicial + " 00:00:00' and '" + dataFinal + " 23:59:59' and Tabela.CnpjEmitente = '"+Sessao.empresaFilialLogada.Cnpj+ "' order by Tabela.DataEmissao desc";
             IList<Nfe> retorno = Session.CreateQuery(sql).List<Nfe>();
             return retorno;
         }

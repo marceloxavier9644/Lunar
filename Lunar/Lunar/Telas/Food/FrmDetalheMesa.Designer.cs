@@ -39,7 +39,8 @@
             this.btnMaisPessoas = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnOcuparMesa = new System.Windows.Forms.Button();
+            this.btnReservarMesa = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidadePessoas)).BeginInit();
@@ -158,21 +159,35 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 238);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(840, 192);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(840, 263);
             this.flowLayoutPanel1.TabIndex = 8;
             // 
-            // button3
+            // btnOcuparMesa
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(12, 507);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(173, 48);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Ocupar Mesa [F8]";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnOcuparMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnOcuparMesa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOcuparMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOcuparMesa.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnOcuparMesa.Location = new System.Drawing.Point(12, 507);
+            this.btnOcuparMesa.Name = "btnOcuparMesa";
+            this.btnOcuparMesa.Size = new System.Drawing.Size(173, 48);
+            this.btnOcuparMesa.TabIndex = 9;
+            this.btnOcuparMesa.Text = "Ocupar Mesa [F8]";
+            this.btnOcuparMesa.UseVisualStyleBackColor = false;
+            this.btnOcuparMesa.Click += new System.EventHandler(this.btnOcuparMesa_Click);
+            // 
+            // btnReservarMesa
+            // 
+            this.btnReservarMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
+            this.btnReservarMesa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReservarMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReservarMesa.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReservarMesa.Location = new System.Drawing.Point(191, 507);
+            this.btnReservarMesa.Name = "btnReservarMesa";
+            this.btnReservarMesa.Size = new System.Drawing.Size(173, 48);
+            this.btnReservarMesa.TabIndex = 10;
+            this.btnReservarMesa.Text = "Reservar Mesa [F10]";
+            this.btnReservarMesa.UseVisualStyleBackColor = false;
             // 
             // FrmDetalheMesa
             // 
@@ -180,7 +195,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(840, 567);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnReservarMesa);
+            this.Controls.Add(this.btnOcuparMesa);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -213,6 +229,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnOcuparMesa;
+        private System.Windows.Forms.Button btnReservarMesa;
     }
 }

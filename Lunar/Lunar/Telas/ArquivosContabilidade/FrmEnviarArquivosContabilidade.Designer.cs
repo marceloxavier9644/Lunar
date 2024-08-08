@@ -34,13 +34,14 @@
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel59 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtAno = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtMes = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnEnviar = new Lunar.RJ_UI.Classes.RJButton();
-            this.txtEmail = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtPasta = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnPesquisaPasta = new FontAwesome.Sharp.IconButton();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtAno = new System.Windows.Forms.TextBox();
+            this.txtMes = new System.Windows.Forms.TextBox();
+            this.txtPasta = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnEnviar = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnRelatorio = new Lunar.RJ_UI.Classes.RJButton();
             this.panelTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,11 +59,11 @@
             // autoLabel25
             // 
             this.autoLabel25.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel25.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel25.ForeColor = System.Drawing.Color.White;
             this.autoLabel25.Location = new System.Drawing.Point(5, 1);
             this.autoLabel25.Name = "autoLabel25";
-            this.autoLabel25.Size = new System.Drawing.Size(329, 35);
+            this.autoLabel25.Size = new System.Drawing.Size(301, 25);
             this.autoLabel25.TabIndex = 198;
             this.autoLabel25.Text = "Enviar Arquivos Contabilidade";
             // 
@@ -90,22 +91,22 @@
             // autoLabel3
             // 
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel3.Font = new System.Drawing.Font("Montserrat", 9.749999F);
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F);
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
             this.autoLabel3.Location = new System.Drawing.Point(106, 63);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(36, 21);
+            this.autoLabel3.Size = new System.Drawing.Size(31, 16);
             this.autoLabel3.TabIndex = 265;
             this.autoLabel3.Text = "Ano";
             // 
             // autoLabel59
             // 
             this.autoLabel59.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel59.Font = new System.Drawing.Font("Montserrat", 9.749999F);
+            this.autoLabel59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F);
             this.autoLabel59.ForeColor = System.Drawing.Color.Black;
             this.autoLabel59.Location = new System.Drawing.Point(22, 63);
             this.autoLabel59.Name = "autoLabel59";
-            this.autoLabel59.Size = new System.Drawing.Size(36, 21);
+            this.autoLabel59.Size = new System.Drawing.Size(33, 16);
             this.autoLabel59.TabIndex = 264;
             this.autoLabel59.Text = "Mês";
             // 
@@ -120,99 +121,6 @@
             this.autoLabel1.TabIndex = 267;
             this.autoLabel1.Text = "E-mail Contabilidade";
             // 
-            // txtAno
-            // 
-            this.txtAno.BackColor = System.Drawing.Color.White;
-            this.txtAno.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtAno.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtAno.BorderRadius = 8;
-            this.txtAno.BorderSize = 2;
-            this.txtAno.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtAno.Location = new System.Drawing.Point(96, 77);
-            this.txtAno.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAno.Multiline = false;
-            this.txtAno.Name = "txtAno";
-            this.txtAno.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtAno.PasswordChar = false;
-            this.txtAno.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtAno.PlaceholderText = "";
-            this.txtAno.ReadOnly = false;
-            this.txtAno.Size = new System.Drawing.Size(108, 37);
-            this.txtAno.TabIndex = 1;
-            this.txtAno.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtAno.Texts = "";
-            this.txtAno.UnderlinedStyle = false;
-            // 
-            // txtMes
-            // 
-            this.txtMes.BackColor = System.Drawing.Color.White;
-            this.txtMes.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtMes.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtMes.BorderRadius = 8;
-            this.txtMes.BorderSize = 2;
-            this.txtMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMes.Location = new System.Drawing.Point(13, 77);
-            this.txtMes.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMes.Multiline = false;
-            this.txtMes.Name = "txtMes";
-            this.txtMes.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtMes.PasswordChar = false;
-            this.txtMes.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtMes.PlaceholderText = "";
-            this.txtMes.ReadOnly = false;
-            this.txtMes.Size = new System.Drawing.Size(75, 37);
-            this.txtMes.TabIndex = 0;
-            this.txtMes.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtMes.Texts = "";
-            this.txtMes.UnderlinedStyle = false;
-            // 
-            // btnEnviar
-            // 
-            this.btnEnviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnEnviar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnEnviar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEnviar.BorderRadius = 8;
-            this.btnEnviar.BorderSize = 0;
-            this.btnEnviar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEnviar.FlatAppearance.BorderSize = 0;
-            this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnviar.ForeColor = System.Drawing.Color.White;
-            this.btnEnviar.Location = new System.Drawing.Point(205, 231);
-            this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(217, 45);
-            this.btnEnviar.TabIndex = 5;
-            this.btnEnviar.Text = "Enviar/Download [F5]";
-            this.btnEnviar.TextColor = System.Drawing.Color.White;
-            this.btnEnviar.UseVisualStyleBackColor = false;
-            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.BackColor = System.Drawing.Color.White;
-            this.txtEmail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtEmail.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtEmail.BorderRadius = 8;
-            this.txtEmail.BorderSize = 2;
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmail.Location = new System.Drawing.Point(212, 77);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmail.Multiline = false;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtEmail.PasswordChar = false;
-            this.txtEmail.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtEmail.PlaceholderText = "";
-            this.txtEmail.ReadOnly = false;
-            this.txtEmail.Size = new System.Drawing.Size(390, 37);
-            this.txtEmail.TabIndex = 2;
-            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtEmail.Texts = "";
-            this.txtEmail.UnderlinedStyle = false;
-            // 
             // autoLabel2
             // 
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -223,6 +131,50 @@
             this.autoLabel2.Size = new System.Drawing.Size(163, 16);
             this.autoLabel2.TabIndex = 290;
             this.autoLabel2.Text = "Local Para Salvar Arquivo";
+            // 
+            // btnPesquisaPasta
+            // 
+            this.btnPesquisaPasta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaPasta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaPasta.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaPasta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaPasta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaPasta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaPasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaPasta.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaPasta.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaPasta.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaPasta.IconSize = 38;
+            this.btnPesquisaPasta.Location = new System.Drawing.Point(566, 141);
+            this.btnPesquisaPasta.Name = "btnPesquisaPasta";
+            this.btnPesquisaPasta.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaPasta.TabIndex = 4;
+            this.btnPesquisaPasta.UseVisualStyleBackColor = true;
+            this.btnPesquisaPasta.Click += new System.EventHandler(this.btnPesquisaPasta_Click);
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtEmail.Location = new System.Drawing.Point(222, 84);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(337, 29);
+            this.txtEmail.TabIndex = 291;
+            // 
+            // txtAno
+            // 
+            this.txtAno.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtAno.Location = new System.Drawing.Point(106, 84);
+            this.txtAno.Name = "txtAno";
+            this.txtAno.Size = new System.Drawing.Size(110, 29);
+            this.txtAno.TabIndex = 292;
+            // 
+            // txtMes
+            // 
+            this.txtMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtMes.Location = new System.Drawing.Point(13, 84);
+            this.txtMes.Name = "txtMes";
+            this.txtMes.Size = new System.Drawing.Size(87, 29);
+            this.txtMes.TabIndex = 293;
             // 
             // txtPasta
             // 
@@ -248,25 +200,46 @@
             this.txtPasta.Texts = "";
             this.txtPasta.UnderlinedStyle = false;
             // 
-            // btnPesquisaPasta
+            // btnEnviar
             // 
-            this.btnPesquisaPasta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaPasta.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaPasta.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaPasta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaPasta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaPasta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaPasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaPasta.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaPasta.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaPasta.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaPasta.IconSize = 38;
-            this.btnPesquisaPasta.Location = new System.Drawing.Point(566, 141);
-            this.btnPesquisaPasta.Name = "btnPesquisaPasta";
-            this.btnPesquisaPasta.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaPasta.TabIndex = 4;
-            this.btnPesquisaPasta.UseVisualStyleBackColor = true;
-            this.btnPesquisaPasta.Click += new System.EventHandler(this.btnPesquisaPasta_Click);
+            this.btnEnviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnEnviar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnEnviar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEnviar.BorderRadius = 8;
+            this.btnEnviar.BorderSize = 0;
+            this.btnEnviar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnviar.FlatAppearance.BorderSize = 0;
+            this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviar.ForeColor = System.Drawing.Color.White;
+            this.btnEnviar.Location = new System.Drawing.Point(205, 231);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(217, 45);
+            this.btnEnviar.TabIndex = 5;
+            this.btnEnviar.Text = "Enviar/Download [F5]";
+            this.btnEnviar.TextColor = System.Drawing.Color.White;
+            this.btnEnviar.UseVisualStyleBackColor = false;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            // 
+            // btnRelatorio
+            // 
+            this.btnRelatorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnRelatorio.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnRelatorio.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnRelatorio.BorderRadius = 8;
+            this.btnRelatorio.BorderSize = 0;
+            this.btnRelatorio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRelatorio.FlatAppearance.BorderSize = 0;
+            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRelatorio.ForeColor = System.Drawing.Color.White;
+            this.btnRelatorio.Location = new System.Drawing.Point(13, 231);
+            this.btnRelatorio.Name = "btnRelatorio";
+            this.btnRelatorio.Size = new System.Drawing.Size(68, 45);
+            this.btnRelatorio.TabIndex = 294;
+            this.btnRelatorio.TextColor = System.Drawing.Color.White;
+            this.btnRelatorio.UseVisualStyleBackColor = false;
+            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
             // 
             // FrmEnviarArquivosContabilidade
             // 
@@ -274,16 +247,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(626, 301);
+            this.Controls.Add(this.btnRelatorio);
+            this.Controls.Add(this.txtMes);
+            this.Controls.Add(this.txtAno);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.btnPesquisaPasta);
             this.Controls.Add(this.autoLabel2);
             this.Controls.Add(this.txtPasta);
             this.Controls.Add(this.autoLabel3);
-            this.Controls.Add(this.txtAno);
             this.Controls.Add(this.autoLabel59);
-            this.Controls.Add(this.txtMes);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.autoLabel1);
-            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.panelTitleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
@@ -305,12 +279,13 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel59;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
-        private RJ_UI.Classes.RJTextBox txtEmail;
         private RJ_UI.Classes.RJButton btnEnviar;
-        private RJ_UI.Classes.RJTextBox txtMes;
-        private RJ_UI.Classes.RJTextBox txtAno;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private RJ_UI.Classes.RJTextBox txtPasta;
         private FontAwesome.Sharp.IconButton btnPesquisaPasta;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtAno;
+        private System.Windows.Forms.TextBox txtMes;
+        private RJ_UI.Classes.RJButton btnRelatorio;
     }
 }

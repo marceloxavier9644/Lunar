@@ -1,29 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Lunar.Utils;
+using LunarBase.Classes;
+using LunarBase.ClassesDTO;
+using LunarBase.ControllerBO;
+using LunarBase.Utilidades;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.Food
 {
     public partial class FrmDetalheMesa : Form
     {
+        AtendimentoMesa mesa = new AtendimentoMesa();
         public FrmDetalheMesa(int numeroMesa, int idMesa)
         {
             InitializeComponent();
             button1.Text = numeroMesa.ToString();
 
             InitializeDynamicButtons();
+            mesa.Id = idMesa;
+            mesa = (AtendimentoMesa)Controller.getInstance().selecionar(mesa);
         }
 
         private void InitializeDynamicButtons()
         {
             // Exemplo de dados de pessoas
-            string[] pessoas = { "GERAL", "João", "Maria", "Ana", "Carlos", "Marcelo", "Alane", "Miguel", "Arthur" };
+            string[] pessoas = { "GERAL" };
 
             // Cria botões dinamicamente
             foreach (var pessoa in pessoas)
@@ -104,5 +106,84 @@ namespace Lunar.Telas.Food
                 txtQuantidadePessoas.Text = quantidade.ToString();
             }
         }
+
+        private async void btnOcuparMesa_Click(object sender, EventArgs e)
+        {
+            //mesa.Status = "OCUPADO";
+            //Controller.getInstance().salvar(mesa);
+
+            //AtendimentoDto atendimentoDto = new AtendimentoDto();
+            //atendimentoDto.Id = 0;
+            //atendimentoDto.Data = DateTime.Now;
+            //atendimentoDto.Identificacao = "GERAL";
+            //atendimentoDto.Observacoes = "";
+            ////Salvar Atendimento
+            //string idAtendimento = await ApiServiceFood.PostSalvarAtendimento(atendimentoDto);
+
+            //AtendimentoContaDto atendimentoContaDto = new AtendimentoContaDto();
+            //atendimentoContaDto.IdAtendimento = int.Parse(idAtendimento);
+            //atendimentoContaDto.NomeCliente = "GERAL";
+            //atendimentoContaDto.IdCliente = null;
+            ////Salvar Atendimento Conta
+            //string idAtendimentoConta = await ApiServiceFood.PostSalvarAtendimentoConta(atendimentoContaDto);
+
+
+            //AtendimentoVinculoDto atendimentoVinculoDto = new AtendimentoVinculoDto();
+            //atendimentoVinculoDto.Id = 0;
+            //atendimentoVinculoDto.IdMesa = mesa.Id;
+            //atendimentoVinculoDto.IdConta = int.Parse(idAtendimentoConta);
+            //atendimentoVinculoDto.IdAtendimento = int.Parse(idAtendimento);
+            //atendimentoVinculoDto.Operador = Sessao.usuarioLogado.Id.ToString();
+            ////Salvar Atendimento Conta
+            //string result2 = await ApiServiceFood.PostSalvarAtendimentoVinculo(atendimentoVinculoDto);
+
+            //GenericaDesktop.ShowInfo("Abertura de Mesa Realizada com Sucesso!");
+            ocuparMesaAsync();
+        }
+
+        private async void ocuparMesaAsync()
+        {
+            //mesa.Status = "OCUPADO";
+            //Controller.getInstance().salvar(mesa);
+
+            AtendimentoDto atendimentoDto = new AtendimentoDto
+            {
+                Id = 0,
+                Data = DateTime.Now,
+                Identificacao = "GERAL",
+                Observacoes = ""
+            };
+
+            AtendimentoContaDto atendimentoContaDto = new AtendimentoContaDto
+            {
+                IdAtendimento = 0, // This will be atualizado na API
+                NomeCliente = "GERAL",
+                IdCliente = null,
+                Id = 0
+            };
+
+            AtendimentoVinculoDto atendimentoVinculoDto = new AtendimentoVinculoDto
+            {
+                Id = 0,
+                IdMesa = mesa.Id,
+                IdConta = 0, // This will be atualizado na API
+                IdAtendimento = 0, // This will be atualizado na API
+                Operador = Sessao.usuarioLogado.Id.ToString()
+            };
+
+            AtendimentoMasterDto atendimentoMasterDto = new AtendimentoMasterDto
+            {
+                IdMesa = mesa.Id,
+                Atendimento = atendimentoDto,
+                AtendimentoConta = atendimentoContaDto,
+                AtendimentoVinculo = atendimentoVinculoDto
+            };
+
+            string result = await ApiServiceFood.PostSalvarAtendimentoMaster(atendimentoMasterDto);
+
+            GenericaDesktop.ShowInfo("Abertura de Mesa Realizada com Sucesso!");
+        }
+
+
     }
 }

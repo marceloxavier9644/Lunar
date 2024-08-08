@@ -1,4 +1,5 @@
 ﻿using LunarBase.Anotations;
+using Newtonsoft.Json;
 
 namespace LunarBase.Classes
 {
@@ -14,6 +15,7 @@ namespace LunarBase.Classes
         private bool flagExcluido;
 
         [Anotacao("Data de Cadastro")]
+        [JsonIgnore]
         public virtual DateTime DataCadastro
         {
             get { return dataCadastro; }
@@ -21,6 +23,7 @@ namespace LunarBase.Classes
         }
 
         [Anotacao("Data de Alteração")]
+        [JsonIgnore]
         public virtual DateTime DataAlteracao
         {
             get { return dataAlteracao; }
@@ -28,6 +31,7 @@ namespace LunarBase.Classes
         }
 
         [Anotacao("Data de Exclusão")]
+        [JsonIgnore]
         public virtual DateTime DataExclusao
         {
             get { return dataExclusao; }
@@ -35,6 +39,7 @@ namespace LunarBase.Classes
         }
 
         [Anotacao("Operador do Cadastro")]
+        [JsonIgnore]
         public virtual String OperadorCadastro
         {
             get { return operadorCadastro; }
@@ -42,6 +47,7 @@ namespace LunarBase.Classes
         }
 
         [Anotacao("Operador da Alteração")]
+        [JsonIgnore]
         public virtual String OperadorAlteracao
         {
             get { return operadorAlteracao; }
@@ -49,6 +55,7 @@ namespace LunarBase.Classes
         }
 
         [Anotacao("Operador da Exclusão")]
+        [JsonIgnore]
         public virtual String OperadorExclusao
         {
             get { return operadorExclusao; }

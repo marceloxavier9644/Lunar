@@ -147,6 +147,45 @@ namespace LunarBase.ControllerBO
             }
         }
 
+        public ObjetoPadrao selecionarViaApi(ObjetoPadrao objeto)
+        {
+            BO bo = (BO)Type.GetType("LunarBase.ClassesBO." + objeto.GetType().Name + "BO").GetConstructor(System.Type.EmptyTypes).Invoke(null);
+
+            bool isNewTransaction = false;
+            if (Conexao.Transaction == null || !Conexao.Transaction.IsActive)
+            {
+                Console.WriteLine("Iniciando nova transação no selecionar.");
+                Conexao.IniciaTransacao();
+                isNewTransaction = true;
+            }
+            else
+            {
+                Console.WriteLine("Usando transação existente no selecionar.");
+            }
+
+            try
+            {
+                Console.WriteLine($"Selecionando objeto do tipo {objeto.GetType().Name}.");
+                return bo.selecionar(objeto);
+            }
+            catch (Exception e)
+            {
+                if (isNewTransaction)
+                {
+                    Conexao.RollBack();
+                }
+                Console.WriteLine($"Erro ao selecionar {objeto.GetType().Name}: {e.Message}");
+                throw new Exception("Erro ao selecionar " + objeto.GetType().Name + ":" + Environment.NewLine + e.Message);
+            }
+            finally
+            {
+                if (isNewTransaction)
+                {
+                    Conexao.FechaConexaoBD();
+                }
+            }
+        }
+
         public IList<ObjetoPadrao> selecionarTodos(ObjetoPadrao objeto)
         {
             BO bo = (BO)Type.GetType("LunarBase.ClassesBO." + objeto.GetType().Name + "BO").GetConstructor(System.Type.EmptyTypes).Invoke(null);
