@@ -7,6 +7,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
@@ -59,6 +60,48 @@ namespace Lunar.Utils.OrganizacaoNF
                 return null;
         }
 
+        public async Task<string> ConsultaNotaApiAsync(string cnpj, string chave)
+        {
+            if (GenericaDesktop.possuiConexaoInternet())
+            {
+                string url = "https://lunarsoftware.com.br/painel/api/api-invoice-get.php";
+
+                try
+                {
+                    using (var httpClient = new HttpClient())
+                    {
+                        var requestPayload = new
+                        {
+                            cnpj = cnpj,
+                            key = Sessao.serialPainel,
+                            nfkey = chave
+                        };
+
+                        string json = new JavaScriptSerializer().Serialize(requestPayload);
+                        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                        var response = await httpClient.PostAsync(url, content);
+                        response.EnsureSuccessStatusCode(); // Throws an exception if the HTTP response status is an error
+
+                        string result = await response.Content.ReadAsStringAsync();
+
+                        if (result.Contains("ERR_NENHUMA_NOTA_LOCALIZADA"))
+                            return "ERR_NENHUMA_NOTA_LOCALIZADA";
+                        else
+                            return result;
+                    }
+                }
+                catch (Exception err)
+                {
+                    GenericaDesktop.ShowErro(err.Message);
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public async Task<string> EnvioNotaParaNuvem(string cnpj, string chave, string tipoNota, string nfstatus, string mes, string ano, byte[] file_bytes, Nfe nfe)
         {

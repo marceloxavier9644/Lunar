@@ -970,6 +970,55 @@ namespace Lunar.Utils
             }
         }
 
+        public async Task<NFCeDownloadProc> ConsultaNFCeEmitidaAsync(string CNPJ, string chave)
+        {
+            try
+            {
+                // Configura o objeto de impressão NFCe
+                ImpressaoNFCe imp = new ImpressaoNFCe
+                {
+                    tipo = "PDF"
+                };
+
+                string url = "https://nfce.ns.eti.br/v1/nfce/get";
+
+                using (var httpClient = new HttpClient())
+                {
+                    // Configura o cabeçalho de autenticação
+                    httpClient.DefaultRequestHeaders.Add("x-auth-token", "VFhUIElORk9STUFUSUNBT3JQSEQ=");
+
+                    // Determina o ambiente de produção
+                    string tpAmbiente = Sessao.parametroSistema.AmbienteProducao ? "1" : "2";
+
+                    // Cria o payload JSON
+                    var requestPayload = new
+                    {
+                        chNFe = chave,
+                        tpAmb = tpAmbiente,
+                        impressao = imp
+                    };
+
+                    string json = JsonConvert.SerializeObject(requestPayload);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    // Faz a requisição POST de forma assíncrona
+                    var response = await httpClient.PostAsync(url, content);
+                    response.EnsureSuccessStatusCode(); // Lança uma exceção se a resposta for um erro
+
+                    // Lê a resposta como string de forma assíncrona
+                    string result = await response.Content.ReadAsStringAsync();
+
+                    // Desserializa o resultado
+                    var nota = JsonConvert.DeserializeObject<NFCeDownloadProc>(result);
+                    return nota;
+                }
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowErro(err.Message);
+                return null;
+            }
+        }
 
         public RetornoInutilizacao NS_DownloadNFCeInutilizada(string CNPJ, string idInut)
         {

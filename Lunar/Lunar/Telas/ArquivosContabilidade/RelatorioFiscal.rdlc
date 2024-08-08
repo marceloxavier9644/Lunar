@@ -45,6 +45,10 @@
           <DataField>ValorAutorizado</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="EntradaSaida">
+          <DataField>EntradaSaida</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsFiscalXml</rd:DataSetName>
@@ -64,16 +68,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.91792cm</Width>
+                  <Width>1.60042cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.12417cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>9.00875cm</Width>
+                  <Width>8.28145cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.16146cm</Width>
+                  <Width>3.39959cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.09771cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>3.135cm</Width>
@@ -94,6 +101,7 @@
                                 <TextRun>
                                   <Value>Número</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -127,6 +135,7 @@
                                 <TextRun>
                                   <Value>Série</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -160,6 +169,7 @@
                                 <TextRun>
                                   <Value>Chave</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -193,6 +203,7 @@
                                 <TextRun>
                                   <Value>Status</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -217,6 +228,40 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>E/S</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Textbox16">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -226,6 +271,7 @@
                                 <TextRun>
                                   <Value>Valor</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -263,7 +309,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Numero.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>=IIf(Fields!Status.Value = "CANCELADA" Or Fields!Status.Value = "INUTILIZADA" Or Fields!Status.Value = "REJEIÇÃO", "Red", "Black")</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -295,7 +344,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Serie.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>=IIf(Fields!Status.Value = "CANCELADA" Or Fields!Status.Value = "INUTILIZADA" Or Fields!Status.Value = "REJEIÇÃO", "Red", "Black")</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -327,7 +379,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Chave.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>=IIf(Fields!Status.Value = "CANCELADA" Or Fields!Status.Value = "INUTILIZADA" Or Fields!Status.Value = "REJEIÇÃO", "Red", "Black")</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -357,7 +412,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Status.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>=IIf(Fields!Status.Value = "CANCELADA" Or Fields!Status.Value = "INUTILIZADA" Or Fields!Status.Value = "REJEIÇÃO", "Red", "Black")</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -366,6 +424,41 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Status</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>=iif(rownumber(nothing) mod 2 = 0, "WhiteSmoke", "White")</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="EntradaSaida">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!EntradaSaida.Value</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>=IIf(Fields!Status.Value = "CANCELADA" Or Fields!Status.Value = "INUTILIZADA" Or Fields!Status.Value = "REJEIÇÃO", "Red", "Black")</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>EntradaSaida</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -390,7 +483,9 @@
                                 <TextRun>
                                   <Value>=Fields!Valor.Value</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <Format>'R$' #,0.00</Format>
+                                    <Color>=IIf(Fields!Status.Value = "CANCELADA" Or Fields!Status.Value = "INUTILIZADA" Or Fields!Status.Value = "REJEIÇÃO", "Red", "Black")</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -519,8 +614,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Total Autorizadas</Value>
+                                  <Value>Tot. Autorizadas</Value>
                                   <Style>
+                                    <FontSize>12pt</FontSize>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -546,6 +642,40 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox6">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#7b13ff</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="ValorAutorizado">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -555,6 +685,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!ValorAutorizado.Value)</Value>
                                   <Style>
+                                    <FontSize>12pt</FontSize>
                                     <Format>'R$' #,0.00</Format>
                                     <Color>White</Color>
                                   </Style>
@@ -591,13 +722,14 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.28833cm</Size>
+                    <Size>1.99729cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox45">
                         <CanGrow>true</CanGrow>
@@ -608,6 +740,7 @@
                               <TextRun>
                                 <Value>Emissão</Value>
                                 <Style>
+                                  <FontSize>9pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -643,14 +776,14 @@
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!DataEmissao.Value</Value>
+                      <Value>=Fields!Numero.Value</Value>
                     </SortExpression>
                     <SortExpression>
-                      <Value>=Fields!Numero.Value</Value>
+                      <Value>=Fields!DataEmissao.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.28833cm</Size>
+                    <Size>1.99729cm</Size>
                     <CellContents>
                       <Textbox Name="DataEmissao1">
                         <CanGrow>true</CanGrow>
@@ -661,7 +794,9 @@
                               <TextRun>
                                 <Value>=Fields!DataEmissao.Value</Value>
                                 <Style>
+                                  <FontSize>9pt</FontSize>
                                   <Format>d</Format>
+                                  <Color>=IIf(Fields!Status.Value = "CANCELADA" Or Fields!Status.Value = "INUTILIZADA" Or Fields!Status.Value = "REJEIÇÃO", "Red", "Black")</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -690,7 +825,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>2.28833cm</Size>
+                    <Size>1.99729cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox47">
                         <CanGrow>true</CanGrow>
@@ -730,9 +865,8 @@
             </TablixRowHierarchy>
             <DataSetName>dsFiscalXml</DataSetName>
             <Top>0.15558cm</Top>
-            <Left>0cm</Left>
             <Height>1.8cm</Height>
-            <Width>20.63562cm</Width>
+            <Width>20.63563cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -740,13 +874,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.24235in</Height>
+        <Height>1.23193in</Height>
         <Style />
       </Body>
       <Width>8.12426in</Width>
       <Page>
         <PageHeader>
-          <Height>3.97849cm</Height>
+          <Height>4.71932cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -762,7 +896,7 @@
                           <Value>Relatório Fiscal</Value>
                           <Style>
                             <FontStyle>Normal</FontStyle>
-                            <FontSize>16pt</FontSize>
+                            <FontSize>18pt</FontSize>
                             <FontWeight>Bold</FontWeight>
                             <Color>White</Color>
                           </Style>
@@ -775,8 +909,7 @@
                   </Paragraphs>
                   <rd:DefaultName>Textbox2</rd:DefaultName>
                   <Top>0.0635cm</Top>
-                  <Left>0cm</Left>
-                  <Height>0.70583cm</Height>
+                  <Height>0.77286cm</Height>
                   <Width>20.63562cm</Width>
                   <Style>
                     <Border>
@@ -813,8 +946,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox4</rd:DefaultName>
-                  <Top>2.50888cm</Top>
-                  <Left>0cm</Left>
+                  <Top>2.69938cm</Top>
                   <Height>0.67938cm</Height>
                   <Width>19.97416cm</Width>
                   <ZIndex>1</ZIndex>
@@ -828,9 +960,86 @@
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
+                <Textbox Name="Textbox7">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>EMISSÃO: </Value>
+                          <Style>
+                            <FontSize>14pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <Color>White</Color>
+                          </Style>
+                        </TextRun>
+                        <TextRun>
+                          <Value>=Parameters!Modelo.Value</Value>
+                          <Style>
+                            <FontSize>14pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <Color>White</Color>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox4</rd:DefaultName>
+                  <Top>3.38229cm</Top>
+                  <Height>0.83813cm</Height>
+                  <Width>19.97416cm</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Periodo">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Parameters!Periodo.Value</Value>
+                          <Style>
+                            <FontSize>12pt</FontSize>
+                            <Color>White</Color>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Periodo</rd:DefaultName>
+                  <Top>0.87164cm</Top>
+                  <Height>0.75875cm</Height>
+                  <Width>20.63562cm</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
-              <Height>3.45637cm</Height>
+              <Height>4.3295cm</Height>
               <Width>20.63562cm</Width>
               <Style>
                 <Border>
@@ -839,41 +1048,6 @@
                 <BackgroundColor>#7b13ff</BackgroundColor>
               </Style>
             </Rectangle>
-            <Textbox Name="Periodo">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!Periodo.Value</Value>
-                      <Style>
-                        <FontSize>12pt</FontSize>
-                        <Color>White</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Periodo</rd:DefaultName>
-              <Top>0.77639cm</Top>
-              <Left>0cm</Left>
-              <Height>0.75875cm</Height>
-              <Width>20.63562cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Textbox Name="Textbox4">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -881,7 +1055,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Empresa:</Value>
+                      <Value>EMPRESA: </Value>
                       <Style>
                         <FontSize>12pt</FontSize>
                         <Color>White</Color>
@@ -899,11 +1073,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>1.7078cm</Top>
-              <Left>0cm</Left>
+              <Top>2.1523cm</Top>
               <Height>0.70583cm</Height>
               <Width>19.97416cm</Width>
-              <ZIndex>2</ZIndex>
+              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -922,7 +1095,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.32292cm</Height>
+          <Height>1.55902cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -933,8 +1106,16 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Microsoft JhengHei</FontFamily>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
                       <Value>= "Página " &amp; Globals!PageNumber &amp; " de " &amp; Globals!TotalPages</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Microsoft JhengHei</FontFamily>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -944,9 +1125,43 @@
               </Paragraphs>
               <rd:DefaultName>Textbox34</rd:DefaultName>
               <Top>0.51125cm</Top>
-              <Left>10.75626cm</Left>
+              <Left>11.86751cm</Left>
               <Height>0.6cm</Height>
-              <Width>9.2179cm</Width>
+              <Width>8.10665cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox9">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Lunar Software Technology</Value>
+                      <Style>
+                        <FontFamily>Microsoft JhengHei</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox9</rd:DefaultName>
+              <Top>0.51125cm</Top>
+              <Left>0.28787cm</Left>
+              <Height>0.6cm</Height>
+              <Width>5.78083cm</Width>
+              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -994,6 +1209,12 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="Modelo">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1014,6 +1235,11 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>Cnpj</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Modelo</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

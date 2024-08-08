@@ -1552,7 +1552,7 @@ namespace Lunar.Telas.Cadastros.Produtos
         public bool CodigoBarrasExiste(string codigoBarras)
         {
             ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
-            string sql = $"SELECT * FROM ProdutoCodigoBarras WHERE CodigoBarras = '{codigoBarras}'";
+            string sql = $"SELECT * FROM ProdutoCodigoBarras WHERE CodigoBarras = '{codigoBarras}' and FlagExcluido <> True";
             IList<ProdutoCodigoBarras> resultado = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL(sql);
             return resultado.Count > 0;
         }

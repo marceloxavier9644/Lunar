@@ -15,6 +15,9 @@ using System.Xml;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using System.Linq;
+using Lunar.Utils.Sintegra;
+using System.Threading;
+using Syncfusion.Windows.Forms.Tools;
 
 namespace Lunar.Telas.ArquivosContabilidade
 {
@@ -22,6 +25,8 @@ namespace Lunar.Telas.ArquivosContabilidade
     {
         DateTime data;
         GenericaDesktop genericaDesktop = new GenericaDesktop();
+        decimal SomaNfceXml = 0;
+        decimal SomaNfeXml = 0;
         public FrmEnviarArquivosContabilidade()
         {
             InitializeComponent();
@@ -38,79 +43,206 @@ namespace Lunar.Telas.ArquivosContabilidade
             this.Close();
         }
 
-        private void btnEnviar_Click(object sender, EventArgs e)
+        private async void btnEnviar_Click(object sender, EventArgs e)
         {
-            envioArquivos();
+            progressBarAdv1.Visible = true;
+            SetupWaitingGradientProgressBar();
+            ProcessarNotas();
+            lblInfo.Text = "Gerando Arquivos...";
+            await envioArquivos();
+            progressBarAdv1.Visible = false;
         }
 
-        private async void envioArquivos()
+        private async void ProcessarNotas()
         {
-            string localFilePath = txtPasta.Texts + @"\";
-            string fileName = txtMes.Text + txtAno.Text + ".zip";
-            if (!String.IsNullOrEmpty(txtPasta.Texts))
+            try
             {
-                LunarApiNotas lunarApiNotas = new LunarApiNotas();
-                var retor = await lunarApiNotas.coletarArquivosContabeisEConferir(Sessao.empresaFilialLogada.Cnpj, txtMes.Text, txtAno.Text, localFilePath);
-                if (retor != null)
-                {
-                    if (File.Exists(retor.ToString()))
-                    {
-                        GenericaDesktop genericaDesktop = new GenericaDesktop();
-                        if (!String.IsNullOrEmpty(txtEmail.Text.Trim()))
-                        {
-                            string diretorioOriginal = Path.GetDirectoryName(retor);
-                            string caminhoNovoArquivo = Path.Combine(diretorioOriginal, "Arquivos.zip");
-                            await ReorganizarPastasAsync(retor, caminhoNovoArquivo);
+                lblInfo.Visible = true;
+                lblInfo.Text = "Conferindo notas na nuvem...";
+                int mes = int.Parse(txtMes.Text);
+                int ano = int.Parse(txtAno.Text);
+                DateTime primeiroDia = new DateTime(ano, mes, 1);
+                DateTime ultimoDia = primeiroDia.AddMonths(1).AddDays(-1);
+                string dataInicial = $"{primeiroDia:dd/MM/yyyy}";
+                string dataFinal = $"{ultimoDia:dd/MM/yyyy}";
 
-                            List<string> listaAnexo = new List<string>();
-                            listaAnexo.Add(caminhoNovoArquivo);
-                            if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.NomeRemetenteEmail))
+                GenericaDesktop genericaDesktop = new GenericaDesktop();
+                LunarApiNotas lunarApiNotas = new LunarApiNotas();
+                NfeController nfeController = new NfeController(); // Certifique-se de ter uma instância válida
+                NotaService notaService = new NotaService(genericaDesktop, lunarApiNotas, nfeController);
+                DateTime dataInicial1 = DateTime.Parse(dataInicial);
+                DateTime dataFinal1 = DateTime.Parse(dataFinal);
+
+                await notaService.ProcessarNotasAsync(dataInicial1, dataFinal1);
+            }
+            catch (Exception ex)
+            {
+                GenericaDesktop.ShowAlerta("Erro: " + ex.Message);
+            }
+        }
+        //private async void envioArquivos()
+        //{
+        //    gerarRelatorioNfeENfce();
+        //    gerarSintegra();
+        //    string localFilePath = txtPasta.Texts + @"\";
+        //    string fileName = txtMes.Text + txtAno.Text + ".zip";
+        //    if (!String.IsNullOrEmpty(txtPasta.Texts))
+        //    {
+        //        LunarApiNotas lunarApiNotas = new LunarApiNotas();
+        //        var retor = await lunarApiNotas.coletarArquivosContabeisEConferir(Sessao.empresaFilialLogada.Cnpj, txtMes.Text, txtAno.Text, localFilePath);
+        //        if (retor != null)
+        //        {
+        //            if (File.Exists(retor.ToString()))
+        //            {
+        //                string diretorioOriginal = Path.GetDirectoryName(retor);
+        //                string caminhoNovoArquivo = Path.Combine(diretorioOriginal, "Arquivos.zip");
+        //                await ReorganizarPastasAsync(retor, caminhoNovoArquivo);
+
+        //                GenericaDesktop genericaDesktop = new GenericaDesktop();
+        //                if (!String.IsNullOrEmpty(txtEmail.Text.Trim()))
+        //                {
+        //                    List<string> listaAnexo = new List<string>();
+        //                    listaAnexo.Add(caminhoNovoArquivo);
+        //                    if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.NomeRemetenteEmail))
+        //                    {
+        //                        bool ret = genericaDesktop.enviarEmail(txtEmail.Text.Trim(), "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia, txtMes.Text + "/" + txtAno.Text + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj, "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.", listaAnexo);
+        //                        if (ret == true)
+        //                            GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+        //                        else
+        //                            GenericaDesktop.ShowAlerta("Falha ao enviar e-mail, verifique a configuração do seu e-mail de disparo em parâmetros do sistema!");
+        //                    }
+        //                    else
+        //                    {
+        //                        bool retorno = genericaDesktop.enviarEmailPeloLunar(txtEmail.Text.Trim(), "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia, txtMes.Text + "/" + txtAno.Text + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj, "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.", listaAnexo);
+        //                        if (retorno == true)
+        //                            GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+        //                        else
+        //                            GenericaDesktop.ShowAlerta("Falha ao enviar e-mail, tente novamente!");
+        //                    }
+
+        //                }
+        //                GenericaDesktop.ShowInfo("Arquivo salvo com sucesso!");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            GenericaDesktop.ShowAlerta("Falha ao salvar/enviar arquivos? Informe o suporte.");
+        //        }
+        //    }
+        //    else
+        //        GenericaDesktop.ShowAlerta("Selecione uma pasta para salvar os arquivos");
+        //}
+
+        private async Task envioArquivos()
+        {
+            // Mostrar o ProgressBar e configurar o estilo de espera
+            progressBarAdv1.Visible = true;
+
+            try
+            {
+                // Simula uma operação demorada
+                await Task.Delay(5000); // Remova ou substitua por suas operações reais
+
+                // Seu código para gerar e enviar arquivos
+                await Task.Run(() => gerarRelatorioNfeENfce()); // Garante que a operação é executada em um thread separado
+                await Task.Run(() => gerarSintegra()); // Garante que a operação é executada em um thread separado
+
+                string localFilePath = txtPasta.Texts + @"\";
+                string fileName = txtMes.Text + txtAno.Text + ".zip";
+
+                if (!String.IsNullOrEmpty(txtPasta.Texts))
+                {
+                    LunarApiNotas lunarApiNotas = new LunarApiNotas();
+                    var retor = await lunarApiNotas.coletarArquivosContabeisEConferir(Sessao.empresaFilialLogada.Cnpj, txtMes.Text, txtAno.Text, localFilePath);
+
+                    if (retor != null)
+                    {
+                        if (File.Exists(retor.ToString()))
+                        {
+                            string diretorioOriginal = Path.GetDirectoryName(retor.ToString());
+                            string caminhoNovoArquivo = Path.Combine(diretorioOriginal, "Arquivos.zip");
+                            await ReorganizarPastasAsync(retor.ToString(), caminhoNovoArquivo);
+
+                            MessageBox.Show("NFC-e: "+ SomaNfceXml.ToString("C2"));
+                            MessageBox.Show("NF-e: " + SomaNfeXml.ToString("C2"));
+
+                            GenericaDesktop genericaDesktop = new GenericaDesktop();
+                            if (!String.IsNullOrEmpty(txtEmail.Text.Trim()))
                             {
-                                bool ret = genericaDesktop.enviarEmail(txtEmail.Text.Trim(), "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia, txtMes.Text + "/" + txtAno.Text + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj, "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.", listaAnexo);
-                                if (ret == true)
-                                    GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+                                List<string> listaAnexo = new List<string> { caminhoNovoArquivo };
+
+                                bool emailEnviado;
+                                if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.NomeRemetenteEmail))
+                                {
+                                    emailEnviado = genericaDesktop.enviarEmail(
+                                        txtEmail.Text.Trim(),
+                                        "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia,
+                                        txtMes.Text + "/" + txtAno.Text + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj,
+                                        "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.",
+                                        listaAnexo
+                                    );
+                                }
                                 else
-                                    GenericaDesktop.ShowAlerta("Falha ao enviar e-mail, verifique a configuração do seu e-mail de disparo em parâmetros do sistema!");
+                                {
+                                    emailEnviado = genericaDesktop.enviarEmailPeloLunar(
+                                        txtEmail.Text.Trim(),
+                                        "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia,
+                                        txtMes.Text + "/" + txtAno.Text + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj,
+                                        "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.",
+                                        listaAnexo
+                                    );
+                                }
+
+                                GenericaDesktop.ShowInfo(emailEnviado ? "E-mail enviado com sucesso!" : "Falha ao enviar e-mail, verifique a configuração do seu e-mail de disparo em parâmetros do sistema!");
                             }
                             else
                             {
-                                bool retorno = genericaDesktop.enviarEmailPeloLunar(txtEmail.Text.Trim(), "Arquivos Fiscais " + Sessao.empresaFilialLogada.NomeFantasia, txtMes.Text + "/" + txtAno.Text + "    " + Sessao.empresaFilialLogada.NomeFantasia + " CNPJ: " + Sessao.empresaFilialLogada.Cnpj, "Olá, segue arquivos em anexo. Este e-mail foi disparado pelo sistema Lunar Software, qualquer dúvida entre em contato com o responsável da empresa.", listaAnexo);
-                                if (retorno == true)
-                                    GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
-                                else
-                                    GenericaDesktop.ShowAlerta("Falha ao enviar e-mail, tente novamente!");
+                                GenericaDesktop.ShowInfo("Arquivo salvo com sucesso!");
                             }
-
                         }
-                        GenericaDesktop.ShowInfo("Arquivo salvo com sucesso!");
+                        else
+                        {
+                            GenericaDesktop.ShowAlerta("Falha ao salvar/enviar arquivos? Informe o suporte.");
+                        }
+                    }
+                    else
+                    {
+                        GenericaDesktop.ShowAlerta("Falha ao salvar/enviar arquivos? Informe o suporte.");
                     }
                 }
                 else
                 {
-                    GenericaDesktop.ShowAlerta("Falha ao salvar/enviar arquivos? Informe o suporte.");
+                    GenericaDesktop.ShowAlerta("Selecione uma pasta para salvar os arquivos");
                 }
             }
-            else
-                GenericaDesktop.ShowAlerta("Selecione uma pasta para salvar os arquivos");
+            catch (Exception ex)
+            {
+                GenericaDesktop.ShowAlerta("Erro: " + ex.Message);
+            }
+            finally
+            {
+                // Ocultar o ProgressBar ao final da operação
+                progressBarAdv1.Visible = false;
+            }
         }
+
+
 
         public async Task ReorganizarPastasAsync(string caminhoArquivoOriginal, string caminhoNovoArquivo)
         {
-            string reorganizedDir = "";
-            // Diretório temporário para extrair o conteúdo do zip original
             string tempDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-            Directory.CreateDirectory(tempDir);
+            string reorganizedDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
 
             try
             {
-                // Extrai o conteúdo do arquivo .zip para a pasta temporária
-                ZipFile.ExtractToDirectory(caminhoArquivoOriginal, tempDir);
-
-                // Caminho do diretório reorganizado
-                reorganizedDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+                // Cria diretórios temporários
+                Directory.CreateDirectory(tempDir);
                 Directory.CreateDirectory(reorganizedDir);
 
-                // Criar subpastas "NFCE" e "NFE" no diretório reorganizado
+                // Extrai o arquivo .zip para a pasta temporária
+                ZipFile.ExtractToDirectory(caminhoArquivoOriginal, tempDir);
+
+                // Cria subpastas "NFCE" e "NFE" no diretório reorganizado
                 string nfceDir = Path.Combine(reorganizedDir, "NFCE");
                 string nfeDir = Path.Combine(reorganizedDir, "NFE");
                 Directory.CreateDirectory(nfceDir);
@@ -120,23 +252,16 @@ namespace Lunar.Telas.ArquivosContabilidade
                 string[] xmlFiles = Directory.GetFiles(tempDir, "*.xml", SearchOption.AllDirectories);
 
                 // Move todos os arquivos .xml para as subpastas "NFCE" e "NFE"
-                // Move todos os arquivos .xml para as subpastas "NFCE" e "NFE"
                 foreach (string file in xmlFiles)
                 {
                     string relativePath = file.Substring(tempDir.Length + 1); // Obtém o caminho relativo
 
-                    if (relativePath.Contains("NFCE"))
+                    string destDir = relativePath.Contains("NFCE") ? nfceDir :
+                                     (relativePath.Contains("NFE") ? nfeDir : null);
+
+                    if (destDir != null)
                     {
-                        string destFile = Path.Combine(nfceDir, Path.GetFileName(file));
-                        if (File.Exists(destFile))
-                        {
-                            File.Delete(destFile); // Se o arquivo existir, exclui o arquivo de destino
-                        }
-                        File.Move(file, destFile); // Move o arquivo para o destino
-                    }
-                    else if (relativePath.Contains("NFE"))
-                    {
-                        string destFile = Path.Combine(nfeDir, Path.GetFileName(file));
+                        string destFile = Path.Combine(destDir, Path.GetFileName(file));
                         if (File.Exists(destFile))
                         {
                             File.Delete(destFile); // Se o arquivo existir, exclui o arquivo de destino
@@ -152,18 +277,29 @@ namespace Lunar.Telas.ArquivosContabilidade
                 }
 
                 ZipFile.CreateFromDirectory(reorganizedDir, caminhoNovoArquivo);
-                //Soma NFCe no temp antes de deletar os arquivos q estao extraidos
-                somarNFCeXml(reorganizedDir);
-                somarNFeXml(reorganizedDir);
+
+                // Soma NFCe no temp antes de deletar os arquivos que estão extraídos
+                await somarNFCeXml(reorganizedDir);
+                await somarNFeXml(reorganizedDir);
             }
             finally
             {
-                // Limpa os diretórios temporários
-                Directory.Delete(tempDir, true);
-                Directory.Delete(reorganizedDir, true);
-                
+                // Garante que os diretórios temporários sejam excluídos
+                if (Directory.Exists(tempDir))
+                {
+                    Directory.Delete(tempDir, true);
+                }
+                if (Directory.Exists(reorganizedDir))
+                {
+                    Directory.Delete(reorganizedDir, true);
+                }
+                if (File.Exists(caminhoArquivoOriginal))
+                {
+                    File.Delete(caminhoArquivoOriginal);
+                }
             }
         }
+
         public void GerarRelatorioPDF(string caminhoPDF, Dictionary<string, string> parametros, string modelo)
         {
             try
@@ -216,7 +352,7 @@ namespace Lunar.Telas.ArquivosContabilidade
                 dtNotas.Columns.Add("Status", typeof(string));
                 dtNotas.Columns.Add("Valor", typeof(decimal));
                 dtNotas.Columns.Add("ValorAutorizado", typeof(decimal)); // Adicione esta coluna
-
+                dtNotas.Columns.Add("EntradaSaida", typeof(string));
                 // Preencha o DataTable com dados
                 foreach (Nfe nota in notasDoModelo)
                 {
@@ -224,15 +360,19 @@ namespace Lunar.Telas.ArquivosContabilidade
                     string statusFormatado;
                     if (nota.Status == "Autorizado o uso da NF-e")
                     {
-                        statusFormatado = "Autorizado o Uso";
+                        statusFormatado = "AUTORIZADA";
                     }
                     else if (nota.Status == "NF-e cancelada com sucesso" || nota.Status == "NFC-e cancelada com sucesso")
                     {
-                        statusFormatado = "Cancelada";
+                        statusFormatado = "CANCELADA";
                     }
                     else if (nota.Status == "Inutilizacao de Numero homologado")
                     {
-                        statusFormatado = "Inutilizada";
+                        statusFormatado = "INUTILIZADA";
+                    }
+                    else if (nota.Status.Contains("Preparando") || String.IsNullOrEmpty(nota.Status) || nota.Status.Length > 40)
+                    {
+                        statusFormatado = "REJEIÇÃO";
                     }
                     else
                     {
@@ -240,7 +380,7 @@ namespace Lunar.Telas.ArquivosContabilidade
                     }
 
                     // Defina o valor condicionalmente
-                    decimal valorAutorizado = statusFormatado == "Autorizado o Uso" ? nota.VNf : 0;
+                    decimal valorAutorizado = statusFormatado == "AUTORIZADA" ? nota.VNf : 0;
 
                     dtNotas.Rows.Add(
                         nota.NNf,
@@ -249,7 +389,8 @@ namespace Lunar.Telas.ArquivosContabilidade
                         nota.Chave,
                         statusFormatado,
                         nota.VNf,
-                        valorAutorizado 
+                        valorAutorizado,
+                        nota.TipoOperacao
                     );
                 }
 
@@ -399,8 +540,9 @@ namespace Lunar.Telas.ArquivosContabilidade
         //}
 
 
-        private decimal somarNFCeXml(string diretorioXml)
+        private Task somarNFCeXml(string diretorioXml)
         {
+            SomaNfceXml = 0;
             decimal somaVNF = 0;
 
             string[] xmlFiles = Directory.GetFiles(Path.Combine(diretorioXml, "NFCE"), "*.xml");
@@ -433,12 +575,13 @@ namespace Lunar.Telas.ArquivosContabilidade
                     }
                 }
             }
-            //MessageBox.Show($"Soma dos valores de NFCe nos arquivos autorizados: {somaVNF.ToString("C2")}");
-            return somaVNF;
+            SomaNfceXml = somaVNF;
+            return Task.CompletedTask;
         }
 
-        private decimal somarNFeXml(string diretorioXml)
+        private Task somarNFeXml(string diretorioXml)
         {
+            SomaNfeXml = 0;
             decimal somaVNF = 0;
 
             string[] xmlFiles = Directory.GetFiles(Path.Combine(diretorioXml, "NFE"), "*.xml");
@@ -472,7 +615,8 @@ namespace Lunar.Telas.ArquivosContabilidade
                 }
             }
             //MessageBox.Show($"Soma dos valores de NFe nos arquivos autorizados: {somaVNF.ToString("C2")}");
-            return somaVNF;
+            SomaNfeXml = somaVNF;
+            return Task.CompletedTask;
         }
 
         private void btnPesquisaPasta_Click(object sender, EventArgs e)
@@ -484,7 +628,7 @@ namespace Lunar.Telas.ArquivosContabilidade
             }
         }
 
-        private void btnRelatorio_Click(object sender, EventArgs e)
+        private void gerarRelatorioNfeENfce()
         {
             int mes = int.Parse(txtMes.Text);
             int ano = int.Parse(txtAno.Text);
@@ -496,7 +640,8 @@ namespace Lunar.Telas.ArquivosContabilidade
             {
                 { "Empresa", Sessao.empresaFilialLogada.RazaoSocial },
                 { "Cnpj", genericaDesktop.FormatarCNPJ(Sessao.empresaFilialLogada.Cnpj) },
-                { "Periodo", periodo + "\nSAÍDA NFC-e MOD. 65"  }
+                { "Periodo", periodo },
+                {"Modelo", "NFC-e MOD. 65" }
             };
             GerarRelatorioPDF(txtPasta.Texts + @"\Relatorio NFC-e 65.pdf", parametros, "65");
 
@@ -505,9 +650,56 @@ namespace Lunar.Telas.ArquivosContabilidade
             {
                 { "Empresa", Sessao.empresaFilialLogada.RazaoSocial },
                 { "Cnpj", genericaDesktop.FormatarCNPJ(Sessao.empresaFilialLogada.Cnpj) },
-                { "Periodo", periodo + "\nEMISSÃO NF-e MOD. 55"  }
+                { "Periodo", periodo },
+                {"Modelo", "NF-e MOD. 55" }
             };
             GerarRelatorioPDF(txtPasta.Texts + @"\Relatorio NF-e 55.pdf", parametros, "55");
         }
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void gerarSintegra()
+        {
+            bool reg74 = false;
+            String dataInventario = "";
+            DateTime data = DateTime.Parse(txtDataInventario.Value.ToString());
+            dataInventario = data.ToString("yyyy'-'MM'-'dd' '23':'59':'59");
+            if (chkRegistro74.Checked == true)
+                reg74 = true;
+
+            //data inicial e final
+            int mes = int.Parse(txtMes.Text);
+            int ano = int.Parse(txtAno.Text);
+            DateTime primeiroDia = new DateTime(ano, mes, 1);
+            DateTime ultimoDia = primeiroDia.AddMonths(1).AddDays(-1);
+            string dataInicial = $"{primeiroDia:dd/MM/yyyy}";
+            string dataFinal = $"{ultimoDia:dd/MM/yyyy}";
+
+            GeradorSintegra geradorSintegra = new GeradorSintegra();
+            geradorSintegra.gerarSintegra(DateTime.Parse(dataInicial), DateTime.Parse(dataFinal), Sessao.empresaFilialLogada, txtPasta.Texts, reg74, dataInventario, false);
+        }
+        private void chkRegistro74_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkRegistro74.Checked == true)
+                    txtDataInventario.Enabled = true;
+                else
+                    txtDataInventario.Enabled = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void SetupWaitingGradientProgressBar()
+        {
+            progressBarAdv1.Visible = true;
+        }
+
+
     }
 }

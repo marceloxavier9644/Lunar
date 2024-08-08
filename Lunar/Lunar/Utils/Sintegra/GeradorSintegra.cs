@@ -15,7 +15,7 @@ namespace Lunar.Utils.Sintegra
         NfeProdutoDAO nfeProdutoDAO = new NfeProdutoDAO();
         GenericaDesktop generica = new GenericaDesktop();
         NfeController nfeController = new NfeController();
-        public void gerarSintegra(DateTime dataInicial, DateTime dataFinal, EmpresaFilial filial, String caminhoSalvar, bool reg74, string dataInventario)
+        public void gerarSintegra(DateTime dataInicial, DateTime dataFinal, EmpresaFilial filial, String caminhoSalvar, bool reg74, string dataInventario, bool mensagemAposGerar)
         {
             IList<NfeProduto> listaProdutos = new List<NfeProduto>();
             string cfop = "";
@@ -487,9 +487,12 @@ namespace Lunar.Utils.Sintegra
             x.Write(arquivo);
             x.Close();
 
-            GenericaDesktop.ShowInfo("Arquivo Gerado com Sucesso no Caminho: \n" + System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"\" + CaminhoNome);
-            if (GenericaDesktop.ShowConfirmacao("Deseja abrir a pasta que o arquivo foi gerado?"))
-                generica.AbrirPastaExplorer(CaminhoNome);
+            if (mensagemAposGerar == true)
+            {
+                GenericaDesktop.ShowInfo("Arquivo Gerado com Sucesso no Caminho: \n" + System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"\" + CaminhoNome);
+                if (GenericaDesktop.ShowConfirmacao("Deseja abrir a pasta que o arquivo foi gerado?"))
+                    generica.AbrirPastaExplorer(CaminhoNome);
+            }
         }
 
         private string retornaUF(string valor)

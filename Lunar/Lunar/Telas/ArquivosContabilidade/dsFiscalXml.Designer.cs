@@ -293,6 +293,8 @@ namespace Lunar.Telas.ArquivosContabilidade {
             
             private global::System.Data.DataColumn columnValorAutorizado;
             
+            private global::System.Data.DataColumn columnEntradaSaida;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public NotaFiscalDataTable() {
@@ -384,6 +386,14 @@ namespace Lunar.Telas.ArquivosContabilidade {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EntradaSaidaColumn {
+                get {
+                    return this.columnEntradaSaida;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -419,7 +429,7 @@ namespace Lunar.Telas.ArquivosContabilidade {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NotaFiscalRow AddNotaFiscalRow(int Numero, string Serie, string DataEmissao, string Chave, string Status, decimal Valor, decimal ValorAutorizado) {
+            public NotaFiscalRow AddNotaFiscalRow(int Numero, string Serie, string DataEmissao, string Chave, string Status, decimal Valor, decimal ValorAutorizado, string EntradaSaida) {
                 NotaFiscalRow rowNotaFiscalRow = ((NotaFiscalRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Numero,
@@ -428,7 +438,8 @@ namespace Lunar.Telas.ArquivosContabilidade {
                         Chave,
                         Status,
                         Valor,
-                        ValorAutorizado};
+                        ValorAutorizado,
+                        EntradaSaida};
                 rowNotaFiscalRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNotaFiscalRow);
                 return rowNotaFiscalRow;
@@ -458,6 +469,7 @@ namespace Lunar.Telas.ArquivosContabilidade {
                 this.columnStatus = base.Columns["Status"];
                 this.columnValor = base.Columns["Valor"];
                 this.columnValorAutorizado = base.Columns["ValorAutorizado"];
+                this.columnEntradaSaida = base.Columns["EntradaSaida"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -477,6 +489,8 @@ namespace Lunar.Telas.ArquivosContabilidade {
                 base.Columns.Add(this.columnValor);
                 this.columnValorAutorizado = new global::System.Data.DataColumn("ValorAutorizado", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnValorAutorizado);
+                this.columnEntradaSaida = new global::System.Data.DataColumn("EntradaSaida", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEntradaSaida);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -731,6 +745,22 @@ namespace Lunar.Telas.ArquivosContabilidade {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string EntradaSaida {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotaFiscal.EntradaSaidaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'EntradaSaida\' na tabela \'NotaFiscal\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotaFiscal.EntradaSaidaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsNumeroNull() {
                 return this.IsNull(this.tableNotaFiscal.NumeroColumn);
             }
@@ -811,6 +841,18 @@ namespace Lunar.Telas.ArquivosContabilidade {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetValorAutorizadoNull() {
                 this[this.tableNotaFiscal.ValorAutorizadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEntradaSaidaNull() {
+                return this.IsNull(this.tableNotaFiscal.EntradaSaidaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEntradaSaidaNull() {
+                this[this.tableNotaFiscal.EntradaSaidaColumn] = global::System.Convert.DBNull;
             }
         }
         

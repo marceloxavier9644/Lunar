@@ -702,7 +702,7 @@ namespace Lunar.Telas.Fiscal
             switch (e.KeyCode)
             {
                 case Keys.F2:
-                    geradorSintegra.gerarSintegra(data1, data2, Sessao.empresaFilialLogada, @"SINTEGRA\" + data1.Year + data1.Month.ToString().PadLeft(2, '0'), false, "2000-01-01 00:00:00");
+                    geradorSintegra.gerarSintegra(data1, data2, Sessao.empresaFilialLogada, @"SINTEGRA\" + data1.Year + data1.Month.ToString().PadLeft(2, '0'), false, "2000-01-01 00:00:00", true);
                     break;
                 case Keys.F3:
                     imprimir();

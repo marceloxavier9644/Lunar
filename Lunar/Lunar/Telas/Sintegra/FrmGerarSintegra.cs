@@ -61,7 +61,7 @@ namespace Lunar.Telas.Sintegra
             if (chkRegistro74.Checked == true)
                 reg74 = true;
             
-            geradorSintegra.gerarSintegra(DateTime.Parse(txtDataInicial.Value.ToString()), DateTime.Parse(txtDataFinal.Value.ToString()), Sessao.empresaFilialLogada, txtCaminho.Texts, reg74, dataInventario);
+            geradorSintegra.gerarSintegra(DateTime.Parse(txtDataInicial.Value.ToString()), DateTime.Parse(txtDataFinal.Value.ToString()), Sessao.empresaFilialLogada, txtCaminho.Texts, reg74, dataInventario, true);
 
         }
         private void btnGerar_Click(object sender, EventArgs e)

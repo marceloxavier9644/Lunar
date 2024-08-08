@@ -39,10 +39,15 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtAno = new System.Windows.Forms.TextBox();
             this.txtMes = new System.Windows.Forms.TextBox();
+            this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtDataInventario = new Syncfusion.WinForms.Input.SfDateTimeEdit();
+            this.chkRegistro74 = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.progressBarAdv1 = new MetroFramework.Controls.MetroProgressBar();
             this.txtPasta = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnEnviar = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnRelatorio = new Lunar.RJ_UI.Classes.RJButton();
+            this.lblInfo = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panelTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkRegistro74)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -61,7 +66,7 @@
             this.autoLabel25.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel25.ForeColor = System.Drawing.Color.White;
-            this.autoLabel25.Location = new System.Drawing.Point(5, 1);
+            this.autoLabel25.Location = new System.Drawing.Point(5, 7);
             this.autoLabel25.Name = "autoLabel25";
             this.autoLabel25.Size = new System.Drawing.Size(301, 25);
             this.autoLabel25.TabIndex = 198;
@@ -176,6 +181,54 @@
             this.txtMes.Size = new System.Drawing.Size(87, 29);
             this.txtMes.TabIndex = 293;
             // 
+            // autoLabel4
+            // 
+            this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel4.Enabled = false;
+            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel4.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel4.Location = new System.Drawing.Point(12, 207);
+            this.autoLabel4.Name = "autoLabel4";
+            this.autoLabel4.Size = new System.Drawing.Size(97, 16);
+            this.autoLabel4.TabIndex = 297;
+            this.autoLabel4.Text = "Data Inventário";
+            // 
+            // txtDataInventario
+            // 
+            this.txtDataInventario.BackColor = System.Drawing.Color.White;
+            this.txtDataInventario.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDataInventario.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
+            this.txtDataInventario.Enabled = false;
+            this.txtDataInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtDataInventario.Location = new System.Drawing.Point(12, 226);
+            this.txtDataInventario.Name = "txtDataInventario";
+            this.txtDataInventario.Size = new System.Drawing.Size(185, 35);
+            this.txtDataInventario.Style.BorderColor = System.Drawing.Color.Silver;
+            this.txtDataInventario.Style.FocusedBorderColor = System.Drawing.Color.Silver;
+            this.txtDataInventario.Style.HoverBorderColor = System.Drawing.Color.Silver;
+            this.txtDataInventario.TabIndex = 296;
+            // 
+            // chkRegistro74
+            // 
+            this.chkRegistro74.BeforeTouchSize = new System.Drawing.Size(352, 24);
+            this.chkRegistro74.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRegistro74.Location = new System.Drawing.Point(13, 180);
+            this.chkRegistro74.Name = "chkRegistro74";
+            this.chkRegistro74.Size = new System.Drawing.Size(352, 24);
+            this.chkRegistro74.TabIndex = 295;
+            this.chkRegistro74.Text = " Registro 74 (Inserir Inventário de Estoque)";
+            this.chkRegistro74.CheckStateChanged += new System.EventHandler(this.chkRegistro74_CheckStateChanged);
+            // 
+            // progressBarAdv1
+            // 
+            this.progressBarAdv1.Location = new System.Drawing.Point(22, 335);
+            this.progressBarAdv1.Name = "progressBarAdv1";
+            this.progressBarAdv1.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBarAdv1.Size = new System.Drawing.Size(590, 23);
+            this.progressBarAdv1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.progressBarAdv1.TabIndex = 298;
+            this.progressBarAdv1.Visible = false;
+            // 
             // txtPasta
             // 
             this.txtPasta.BackColor = System.Drawing.Color.White;
@@ -212,7 +265,7 @@
             this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnviar.ForeColor = System.Drawing.Color.White;
-            this.btnEnviar.Location = new System.Drawing.Point(205, 231);
+            this.btnEnviar.Location = new System.Drawing.Point(205, 284);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(217, 45);
             this.btnEnviar.TabIndex = 5;
@@ -221,33 +274,30 @@
             this.btnEnviar.UseVisualStyleBackColor = false;
             this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
             // 
-            // btnRelatorio
+            // lblInfo
             // 
-            this.btnRelatorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnRelatorio.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnRelatorio.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnRelatorio.BorderRadius = 8;
-            this.btnRelatorio.BorderSize = 0;
-            this.btnRelatorio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRelatorio.FlatAppearance.BorderSize = 0;
-            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRelatorio.ForeColor = System.Drawing.Color.White;
-            this.btnRelatorio.Location = new System.Drawing.Point(13, 231);
-            this.btnRelatorio.Name = "btnRelatorio";
-            this.btnRelatorio.Size = new System.Drawing.Size(68, 45);
-            this.btnRelatorio.TabIndex = 294;
-            this.btnRelatorio.TextColor = System.Drawing.Color.White;
-            this.btnRelatorio.UseVisualStyleBackColor = false;
-            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
+            this.lblInfo.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblInfo.Enabled = false;
+            this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.ForeColor = System.Drawing.Color.Black;
+            this.lblInfo.Location = new System.Drawing.Point(23, 313);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(97, 16);
+            this.lblInfo.TabIndex = 299;
+            this.lblInfo.Text = "Data Inventário";
+            this.lblInfo.Visible = false;
             // 
             // FrmEnviarArquivosContabilidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(626, 301);
-            this.Controls.Add(this.btnRelatorio);
+            this.ClientSize = new System.Drawing.Size(626, 361);
+            this.Controls.Add(this.lblInfo);
+            this.Controls.Add(this.progressBarAdv1);
+            this.Controls.Add(this.autoLabel4);
+            this.Controls.Add(this.txtDataInventario);
+            this.Controls.Add(this.chkRegistro74);
             this.Controls.Add(this.txtMes);
             this.Controls.Add(this.txtAno);
             this.Controls.Add(this.txtEmail);
@@ -266,6 +316,7 @@
             this.Text = "FrmEnviarArquivosContabilidade";
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkRegistro74)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,6 +337,10 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtAno;
         private System.Windows.Forms.TextBox txtMes;
-        private RJ_UI.Classes.RJButton btnRelatorio;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
+        private Syncfusion.WinForms.Input.SfDateTimeEdit txtDataInventario;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkRegistro74;
+        private MetroFramework.Controls.MetroProgressBar progressBarAdv1;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lblInfo;
     }
 }
