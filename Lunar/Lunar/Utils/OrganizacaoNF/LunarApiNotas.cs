@@ -62,6 +62,8 @@ namespace Lunar.Utils.OrganizacaoNF
 
         public async Task<string> ConsultaNotaApiAsync(string cnpj, string chave)
         {
+            if (cnpj.Equals("42988444000127"))
+                Sessao.serialPainel = "C0021738-FAD3-45D8-95E4-2CD28D6E6DF3";
             if (GenericaDesktop.possuiConexaoInternet())
             {
                 string url = "https://lunarsoftware.com.br/painel/api/api-invoice-get.php";
@@ -194,8 +196,8 @@ namespace Lunar.Utils.OrganizacaoNF
 
         public async Task<string> coletarArquivosContabeisEConferir(string cnpj, string mes, string ano, string caminho)
         {
-            Sessao.serialPainel = "C0021738-FAD3-45D8-95E4-2CD28D6E6DF3";
-            cnpj = "42988444000127";
+            if (cnpj.Equals("42988444000127"))
+                Sessao.serialPainel = "C0021738-FAD3-45D8-95E4-2CD28D6E6DF3";
 
             string url = "https://lunarsoftware.com.br/painel/api/api-invoice-get.php";
             HttpClient httpClient = new HttpClient();

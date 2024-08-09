@@ -37,14 +37,17 @@ namespace Lunar.Telas.ArquivosContabilidade
                 {
                     if (nfe.Modelo.Equals("65") && nfe.Status.Contains("Autorizado o uso"))
                     {
-                        await ProcessarNotaAsync(nfe);
+                        await ProcessarNota65Async(nfe);
+                    }
+                    if (nfe.Modelo.Equals("55") && nfe.Status.Contains("Autorizado o uso"))
+                    {
+                        await ProcessarNota55Async(nfe);
                     }
                 }
-                GenericaDesktop.ShowInfo("Notas Enviadas para Nuvem com Sucesso!");
             }
         }
 
-        private async Task ProcessarNotaAsync(Nfe nfe)
+        private async Task ProcessarNota65Async(Nfe nfe)
         {
             string retorno = await _lunarApiNotas.ConsultaNotaApiAsync(nfe.CnpjEmitente, nfe.Chave);
 
@@ -75,6 +78,47 @@ namespace Lunar.Telas.ArquivosContabilidade
                         Sessao.empresaFilialLogada.Cnpj,
                         nfe.Chave,
                         "NFCE",
+                        "AUTORIZADAS",
+                        nfe.DataEmissao.Month.ToString().PadLeft(2, '0'),
+                        nfe.DataEmissao.Year.ToString(),
+                        arquivo,
+                        nfe
+                    );
+                }
+            }
+        }
+
+        private async Task ProcessarNota55Async(Nfe nfe)
+        {
+            string retorno = await _lunarApiNotas.ConsultaNotaApiAsync(nfe.CnpjEmitente, nfe.Chave);
+
+            if (retorno.Contains("NENHUMA_NOTA_LOCALIZADA"))
+            {
+                NFeDownloadProc55 nfeDownload = await _genericaDesktop.ConsultaNFeEmitidaAsync(nfe.EmpresaFilial.Cnpj, nfe.Chave.Trim());
+
+                if (nfeDownload.motivo.Contains("realizado com sucesso") || nfeDownload.motivo.Contains("realizada com sucesso"))
+                {
+                    string caminhoArquivo = Path.Combine(
+                        @"Fiscal\XML\NFe\",
+                        nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0'),
+                        @"Autorizadas\",
+                        nfe.Chave + "-procNFe.xml"
+                    );
+
+                    await GravarXMLAsync(nfeDownload.xml, nfe.Chave, caminhoArquivo);
+
+                    string caminhoX = Path.Combine(
+                        @"Fiscal\XML\NFe\",
+                        nfe.DataCadastro.Year + "-" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0'),
+                        @"Autorizadas\",
+                        nfe.Chave + "-procNFe.xml"
+                    );
+
+                    byte[] arquivo = await ReadFileBytesAsync(caminhoX);
+                    await _lunarApiNotas.EnvioNotaParaNuvem(
+                        Sessao.empresaFilialLogada.Cnpj,
+                        nfe.Chave,
+                        "NFE",
                         "AUTORIZADAS",
                         nfe.DataEmissao.Month.ToString().PadLeft(2, '0'),
                         nfe.DataEmissao.Year.ToString(),

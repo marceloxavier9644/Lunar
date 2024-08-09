@@ -90,7 +90,7 @@ namespace Lunar.Utils.Sintegra
                 foreach (Nfe nf in listaNotas)
                 {
                     string a = "";
-                    if (nf.NNf.Equals("40"))
+                    if (nf.NNf.Equals("583"))
                         a = "a";
 
                     string emitente = "P";
@@ -118,10 +118,20 @@ namespace Lunar.Utils.Sintegra
                         {
                             if (nf.Cliente != null)
                             {
-                                if (!String.IsNullOrEmpty(nf.Cliente.InscricaoEstadual))
-                                    registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Cliente.InscricaoEstadual.Trim());/*.PadLeft(14, '0');*/
+                                if (nf.Modelo.Equals("55"))
+                                {
+                                    if (!String.IsNullOrEmpty(nf.Cliente.InscricaoEstadual) && !nf.Cliente.EnderecoPrincipal.Cidade.Estado.Uf.Equals("DF"))
+                                        registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Cliente.InscricaoEstadual.Trim());/*.PadLeft(14, '0');*/
+                                    else
+                                        registro50.InscrEstadual = "ISENTO";
+                                }
                                 else
-                                    registro50.InscrEstadual = "ISENTO";
+                                {
+                                    if (!String.IsNullOrEmpty(nf.Cliente.InscricaoEstadual))
+                                        registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Cliente.InscricaoEstadual.Trim());/*.PadLeft(14, '0');*/
+                                    else
+                                        registro50.InscrEstadual = "ISENTO";
+                                }
                             }
                             else if(nf.Fornecedor != null)
                             {
@@ -136,7 +146,7 @@ namespace Lunar.Utils.Sintegra
                             if (nf.Fornecedor != null)
                             {
                                 if (!String.IsNullOrEmpty(nf.Fornecedor.InscricaoEstadual) && !nf.Fornecedor.EnderecoPrincipal.Cidade.Estado.Uf.Equals("DF"))
-                                    registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Fornecedor.InscricaoEstadual.Trim());/*PadLeft(14, '0');*/
+                                    registro50.InscrEstadual = GenericaDesktop.RemoveCaracteres(nf.Fornecedor.InscricaoEstadual.Trim());
                                 else
                                     registro50.InscrEstadual = "ISENTO";
                             }

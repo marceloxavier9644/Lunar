@@ -1112,6 +1112,48 @@ namespace Lunar.Utils
                 return null;
             }
         }
+
+        public async Task<NFeDownloadProc55> ConsultaNFeEmitidaAsync(string CNPJ, string chave)
+        {
+            try
+            {
+                ImpressaoNFCe imp = new ImpressaoNFCe();
+                imp.tipo = "PDF";
+                String url = "https://nfe.ns.eti.br/nfe/get";
+                var requisicaoWeb = WebRequest.CreateHttp(url);
+                requisicaoWeb.Method = "POST";
+                requisicaoWeb.ContentType = "application/json";
+                requisicaoWeb.Headers.Add("x-auth-token", "VFhUIElORk9STUFUSUNBT3JQSEQ=");
+                string tpAmbiente = Sessao.parametroSistema.AmbienteProducao ? "1" : "2";
+
+                using (var streamWriter = new StreamWriter(await requisicaoWeb.GetRequestStreamAsync()))
+                {
+                    string json = new JavaScriptSerializer().Serialize(new
+                    {
+                        chNFe = chave,
+                        printCEAN = false,
+                        tpAmb = tpAmbiente,
+                        tpDown = "XP"
+                    });
+
+                    await streamWriter.WriteAsync(json);
+                }
+
+                var httpResponse = (HttpWebResponse)await requisicaoWeb.GetResponseAsync();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = await streamReader.ReadToEndAsync();
+                    var nota = JsonConvert.DeserializeObject<NFeDownloadProc55>(result);
+                    return nota;
+                }
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowErro(err.Message);
+                return null;
+            }
+        }
+
         public RetNota55 NS_ConsultaStatusNota55(string chave)
         {
             try

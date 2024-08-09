@@ -27,6 +27,7 @@ namespace Lunar.Telas.ArquivosContabilidade
         GenericaDesktop genericaDesktop = new GenericaDesktop();
         decimal SomaNfceXml = 0;
         decimal SomaNfeXml = 0;
+        string arquivoSintegraCaminho = "";
         public FrmEnviarArquivosContabilidade()
         {
             InitializeComponent();
@@ -47,18 +48,18 @@ namespace Lunar.Telas.ArquivosContabilidade
         {
             progressBarAdv1.Visible = true;
             SetupWaitingGradientProgressBar();
-            ProcessarNotas();
-            lblInfo.Text = "Gerando Arquivos...";
+            await ProcessarNotas();
             await envioArquivos();
             progressBarAdv1.Visible = false;
         }
 
-        private async void ProcessarNotas()
+        private async Task ProcessarNotas() // Ajustado para ser assíncrono e retornar Task
         {
             try
             {
                 lblInfo.Visible = true;
-                lblInfo.Text = "Conferindo notas na nuvem...";
+                lblInfo.Text = "Conferindo Notas Fiscais...";
+
                 int mes = int.Parse(txtMes.Text);
                 int ano = int.Parse(txtAno.Text);
                 DateTime primeiroDia = new DateTime(ano, mes, 1);
@@ -68,11 +69,13 @@ namespace Lunar.Telas.ArquivosContabilidade
 
                 GenericaDesktop genericaDesktop = new GenericaDesktop();
                 LunarApiNotas lunarApiNotas = new LunarApiNotas();
-                NfeController nfeController = new NfeController(); // Certifique-se de ter uma instância válida
+                NfeController nfeController = new NfeController(); // Certifique-se de que você tem uma instância válida
                 NotaService notaService = new NotaService(genericaDesktop, lunarApiNotas, nfeController);
+
                 DateTime dataInicial1 = DateTime.Parse(dataInicial);
                 DateTime dataFinal1 = DateTime.Parse(dataFinal);
 
+                // Processa as notas de forma assíncrona
                 await notaService.ProcessarNotasAsync(dataInicial1, dataFinal1);
             }
             catch (Exception ex)
@@ -142,7 +145,7 @@ namespace Lunar.Telas.ArquivosContabilidade
             {
                 // Simula uma operação demorada
                 await Task.Delay(5000); // Remova ou substitua por suas operações reais
-
+                lblInfo.Text = "Gerando Arquivos...";
                 // Seu código para gerar e enviar arquivos
                 await Task.Run(() => gerarRelatorioNfeENfce()); // Garante que a operação é executada em um thread separado
                 await Task.Run(() => gerarSintegra()); // Garante que a operação é executada em um thread separado
@@ -161,10 +164,10 @@ namespace Lunar.Telas.ArquivosContabilidade
                         {
                             string diretorioOriginal = Path.GetDirectoryName(retor.ToString());
                             string caminhoNovoArquivo = Path.Combine(diretorioOriginal, "Arquivos.zip");
-                            await ReorganizarPastasAsync(retor.ToString(), caminhoNovoArquivo);
+                            await ReorganizarPastasAsync(retor.ToString(), caminhoNovoArquivo, arquivoSintegraCaminho);
 
-                            MessageBox.Show("NFC-e: "+ SomaNfceXml.ToString("C2"));
-                            MessageBox.Show("NF-e: " + SomaNfeXml.ToString("C2"));
+                            //MessageBox.Show("NFC-e: "+ SomaNfceXml.ToString("C2"));
+                            //MessageBox.Show("NF-e: " + SomaNfeXml.ToString("C2"));
 
                             GenericaDesktop genericaDesktop = new GenericaDesktop();
                             if (!String.IsNullOrEmpty(txtEmail.Text.Trim()))
@@ -198,6 +201,8 @@ namespace Lunar.Telas.ArquivosContabilidade
                             else
                             {
                                 GenericaDesktop.ShowInfo("Arquivo salvo com sucesso!");
+                                GenericaDesktop generica = new GenericaDesktop();
+                                generica.AbrirPastaExplorer(txtPasta.Texts);
                             }
                         }
                         else
@@ -223,12 +228,12 @@ namespace Lunar.Telas.ArquivosContabilidade
             {
                 // Ocultar o ProgressBar ao final da operação
                 progressBarAdv1.Visible = false;
+                lblInfo.Visible = false;
             }
         }
 
 
-
-        public async Task ReorganizarPastasAsync(string caminhoArquivoOriginal, string caminhoNovoArquivo)
+        public async Task ReorganizarPastasAsync(string caminhoArquivoOriginal, string caminhoNovoArquivo, string caminhoSintegra)
         {
             string tempDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             string reorganizedDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
@@ -270,7 +275,27 @@ namespace Lunar.Telas.ArquivosContabilidade
                     }
                 }
 
-                // Cria um novo arquivo .zip com a estrutura reorganizada
+                // Copia os arquivos adicionais para o diretório reorganizado
+                string relatorioNfcePdf = Path.Combine(Path.GetDirectoryName(caminhoArquivoOriginal), "Relatorio NFC-e 65.pdf");
+                string relatorioNfePdf = Path.Combine(Path.GetDirectoryName(caminhoArquivoOriginal), "Relatorio NF-e 55.pdf");
+                string relatorioTxt = arquivoSintegraCaminho.Replace("/","");
+
+                if (File.Exists(relatorioNfcePdf))
+                {
+                    File.Copy(relatorioNfcePdf, Path.Combine(reorganizedDir, Path.GetFileName(relatorioNfcePdf)), true);
+                }
+
+                if (File.Exists(relatorioNfePdf))
+                {
+                    File.Copy(relatorioNfePdf, Path.Combine(reorganizedDir, Path.GetFileName(relatorioNfePdf)), true);
+                }
+
+                if (!string.IsNullOrEmpty(relatorioTxt) && File.Exists(relatorioTxt))
+                {
+                    File.Copy(relatorioTxt, Path.Combine(reorganizedDir, Path.GetFileName(relatorioTxt)), true);
+                }
+
+                // Cria um novo arquivo .zip com a estrutura reorganizada e arquivos adicionais
                 if (File.Exists(caminhoNovoArquivo))
                 {
                     File.Delete(caminhoNovoArquivo);
@@ -299,6 +324,78 @@ namespace Lunar.Telas.ArquivosContabilidade
                 }
             }
         }
+
+        //public async Task ReorganizarPastasAsync(string caminhoArquivoOriginal, string caminhoNovoArquivo)
+        //{
+        //    string tempDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+        //    string reorganizedDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+
+        //    try
+        //    {
+        //        // Cria diretórios temporários
+        //        Directory.CreateDirectory(tempDir);
+        //        Directory.CreateDirectory(reorganizedDir);
+
+        //        // Extrai o arquivo .zip para a pasta temporária
+        //        ZipFile.ExtractToDirectory(caminhoArquivoOriginal, tempDir);
+
+        //        // Cria subpastas "NFCE" e "NFE" no diretório reorganizado
+        //        string nfceDir = Path.Combine(reorganizedDir, "NFCE");
+        //        string nfeDir = Path.Combine(reorganizedDir, "NFE");
+        //        Directory.CreateDirectory(nfceDir);
+        //        Directory.CreateDirectory(nfeDir);
+
+        //        // Obtém todos os arquivos .xml em todos os subdiretórios
+        //        string[] xmlFiles = Directory.GetFiles(tempDir, "*.xml", SearchOption.AllDirectories);
+
+        //        // Move todos os arquivos .xml para as subpastas "NFCE" e "NFE"
+        //        foreach (string file in xmlFiles)
+        //        {
+        //            string relativePath = file.Substring(tempDir.Length + 1); // Obtém o caminho relativo
+
+        //            string destDir = relativePath.Contains("NFCE") ? nfceDir :
+        //                             (relativePath.Contains("NFE") ? nfeDir : null);
+
+        //            if (destDir != null)
+        //            {
+        //                string destFile = Path.Combine(destDir, Path.GetFileName(file));
+        //                if (File.Exists(destFile))
+        //                {
+        //                    File.Delete(destFile); // Se o arquivo existir, exclui o arquivo de destino
+        //                }
+        //                File.Move(file, destFile); // Move o arquivo para o destino
+        //            }
+        //        }
+
+        //        // Cria um novo arquivo .zip com a estrutura reorganizada
+        //        if (File.Exists(caminhoNovoArquivo))
+        //        {
+        //            File.Delete(caminhoNovoArquivo);
+        //        }
+
+        //        ZipFile.CreateFromDirectory(reorganizedDir, caminhoNovoArquivo);
+
+        //        // Soma NFCe no temp antes de deletar os arquivos que estão extraídos
+        //        await somarNFCeXml(reorganizedDir);
+        //        await somarNFeXml(reorganizedDir);
+        //    }
+        //    finally
+        //    {
+        //        // Garante que os diretórios temporários sejam excluídos
+        //        if (Directory.Exists(tempDir))
+        //        {
+        //            Directory.Delete(tempDir, true);
+        //        }
+        //        if (Directory.Exists(reorganizedDir))
+        //        {
+        //            Directory.Delete(reorganizedDir, true);
+        //        }
+        //        if (File.Exists(caminhoArquivoOriginal))
+        //        {
+        //            File.Delete(caminhoArquivoOriginal);
+        //        }
+        //    }
+        //}
 
         public void GerarRelatorioPDF(string caminhoPDF, Dictionary<string, string> parametros, string modelo)
         {
@@ -676,7 +773,7 @@ namespace Lunar.Telas.ArquivosContabilidade
             DateTime ultimoDia = primeiroDia.AddMonths(1).AddDays(-1);
             string dataInicial = $"{primeiroDia:dd/MM/yyyy}";
             string dataFinal = $"{ultimoDia:dd/MM/yyyy}";
-
+            arquivoSintegraCaminho = txtPasta.Texts + @"\Sintegra" + dataInicial + "_" + dataFinal + ".txt";
             GeradorSintegra geradorSintegra = new GeradorSintegra();
             geradorSintegra.gerarSintegra(DateTime.Parse(dataInicial), DateTime.Parse(dataFinal), Sessao.empresaFilialLogada, txtPasta.Texts, reg74, dataInventario, false);
         }
