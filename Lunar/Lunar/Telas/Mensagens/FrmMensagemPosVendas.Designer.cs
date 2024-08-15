@@ -48,6 +48,7 @@
             this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
             this.btnExportarExcel = new FontAwesome.Sharp.IconButton();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            this.btnEnviar = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
@@ -195,6 +196,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnEnviar);
             this.groupBox2.Controls.Add(this.btnExcluir);
             this.groupBox2.Controls.Add(this.btnExportarPDF);
             this.groupBox2.Controls.Add(this.btnExportarExcel);
@@ -220,7 +222,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnExcluir.Location = new System.Drawing.Point(796, 19);
+            this.btnExcluir.Location = new System.Drawing.Point(623, 19);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(165, 45);
             this.btnExcluir.TabIndex = 219;
@@ -351,6 +353,30 @@
             this.grid.TabIndex = 163;
             this.grid.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.grid_QueryRowStyle);
             // 
+            // btnEnviar
+            // 
+            this.btnEnviar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEnviar.BackColor = System.Drawing.Color.White;
+            this.btnEnviar.BackgroundColor = System.Drawing.Color.White;
+            this.btnEnviar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEnviar.BorderRadius = 8;
+            this.btnEnviar.BorderSize = 2;
+            this.btnEnviar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnviar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEnviar.FlatAppearance.BorderSize = 2;
+            this.btnEnviar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnEnviar.Location = new System.Drawing.Point(794, 19);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(165, 45);
+            this.btnEnviar.TabIndex = 220;
+            this.btnEnviar.Text = "Enviar Atrasadas";
+            this.btnEnviar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnEnviar.UseVisualStyleBackColor = false;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            // 
             // FrmMensagemPosVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,5 +413,6 @@
         private FontAwesome.Sharp.IconButton btnExportarExcel;
         private Syncfusion.WinForms.DataGrid.SfDataGrid grid;
         private FontAwesome.Sharp.IconButton btnPesquisar;
+        private RJ_UI.Classes.RJButton btnEnviar;
     }
 }

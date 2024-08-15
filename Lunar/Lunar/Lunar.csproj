@@ -814,6 +814,12 @@
     <Compile Include="Telas\Fiscal\FrmControleNotas.Designer.cs">
       <DependentUpon>FrmControleNotas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Fiscal\FrmInutilizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fiscal\FrmInutilizar.Designer.cs">
+      <DependentUpon>FrmInutilizar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Fiscal\FrmJustificativa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1560,6 +1566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fiscal\FrmControleNotas.resx">
       <DependentUpon>FrmControleNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fiscal\FrmInutilizar.resx">
+      <DependentUpon>FrmInutilizar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fiscal\FrmJustificativa.resx">
       <DependentUpon>FrmJustificativa.cs</DependentUpon>

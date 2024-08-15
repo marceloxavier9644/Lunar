@@ -46,8 +46,16 @@
             this.txtPasta = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnEnviar = new Lunar.RJ_UI.Classes.RJButton();
             this.lblInfo = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioTodos = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioRevendaEMateriaPrima = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioSomenteRevenda = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkRegistro74)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioTodos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioRevendaEMateriaPrima)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSomenteRevenda)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -187,7 +195,7 @@
             this.autoLabel4.Enabled = false;
             this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel4.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel4.Location = new System.Drawing.Point(12, 207);
+            this.autoLabel4.Location = new System.Drawing.Point(404, 13);
             this.autoLabel4.Name = "autoLabel4";
             this.autoLabel4.Size = new System.Drawing.Size(97, 16);
             this.autoLabel4.TabIndex = 297;
@@ -200,7 +208,7 @@
             this.txtDataInventario.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
             this.txtDataInventario.Enabled = false;
             this.txtDataInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtDataInventario.Location = new System.Drawing.Point(12, 226);
+            this.txtDataInventario.Location = new System.Drawing.Point(404, 32);
             this.txtDataInventario.Name = "txtDataInventario";
             this.txtDataInventario.Size = new System.Drawing.Size(185, 35);
             this.txtDataInventario.Style.BorderColor = System.Drawing.Color.Silver;
@@ -221,10 +229,10 @@
             // 
             // progressBarAdv1
             // 
-            this.progressBarAdv1.Location = new System.Drawing.Point(22, 335);
+            this.progressBarAdv1.Location = new System.Drawing.Point(13, 428);
             this.progressBarAdv1.Name = "progressBarAdv1";
             this.progressBarAdv1.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBarAdv1.Size = new System.Drawing.Size(590, 23);
+            this.progressBarAdv1.Size = new System.Drawing.Size(602, 23);
             this.progressBarAdv1.Style = MetroFramework.MetroColorStyle.Blue;
             this.progressBarAdv1.TabIndex = 298;
             this.progressBarAdv1.Visible = false;
@@ -265,7 +273,7 @@
             this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnviar.ForeColor = System.Drawing.Color.White;
-            this.btnEnviar.Location = new System.Drawing.Point(205, 284);
+            this.btnEnviar.Location = new System.Drawing.Point(205, 342);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(217, 45);
             this.btnEnviar.TabIndex = 5;
@@ -280,23 +288,77 @@
             this.lblInfo.Enabled = false;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo.Location = new System.Drawing.Point(23, 313);
+            this.lblInfo.Location = new System.Drawing.Point(14, 406);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(97, 16);
             this.lblInfo.TabIndex = 299;
             this.lblInfo.Text = "Data Inventário";
             this.lblInfo.Visible = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioTodos);
+            this.groupBox3.Controls.Add(this.radioRevendaEMateriaPrima);
+            this.groupBox3.Controls.Add(this.radioSomenteRevenda);
+            this.groupBox3.Controls.Add(this.autoLabel4);
+            this.groupBox3.Controls.Add(this.txtDataInventario);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F);
+            this.groupBox3.Location = new System.Drawing.Point(13, 210);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(601, 112);
+            this.groupBox3.TabIndex = 300;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tipo de Produto";
+            this.groupBox3.Visible = false;
+            // 
+            // radioTodos
+            // 
+            this.radioTodos.BeforeTouchSize = new System.Drawing.Size(93, 21);
+            this.radioTodos.Location = new System.Drawing.Point(7, 73);
+            this.radioTodos.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioTodos.Name = "radioTodos";
+            this.radioTodos.Size = new System.Drawing.Size(93, 21);
+            this.radioTodos.Style = Syncfusion.Windows.Forms.Tools.RadioButtonAdvStyle.Office2007;
+            this.radioTodos.TabIndex = 3;
+            this.radioTodos.TabStop = false;
+            this.radioTodos.Text = " Todos";
+            this.radioTodos.ThemeName = "Office2007";
+            // 
+            // radioRevendaEMateriaPrima
+            // 
+            this.radioRevendaEMateriaPrima.BeforeTouchSize = new System.Drawing.Size(269, 21);
+            this.radioRevendaEMateriaPrima.Location = new System.Drawing.Point(7, 46);
+            this.radioRevendaEMateriaPrima.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioRevendaEMateriaPrima.Name = "radioRevendaEMateriaPrima";
+            this.radioRevendaEMateriaPrima.Size = new System.Drawing.Size(269, 21);
+            this.radioRevendaEMateriaPrima.Style = Syncfusion.Windows.Forms.Tools.RadioButtonAdvStyle.Office2007;
+            this.radioRevendaEMateriaPrima.TabIndex = 1;
+            this.radioRevendaEMateriaPrima.TabStop = false;
+            this.radioRevendaEMateriaPrima.Text = " Produtos Para Revenda e Matéria Prima";
+            this.radioRevendaEMateriaPrima.ThemeName = "Office2007";
+            // 
+            // radioSomenteRevenda
+            // 
+            this.radioSomenteRevenda.BeforeTouchSize = new System.Drawing.Size(233, 21);
+            this.radioSomenteRevenda.Checked = true;
+            this.radioSomenteRevenda.Location = new System.Drawing.Point(6, 22);
+            this.radioSomenteRevenda.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioSomenteRevenda.Name = "radioSomenteRevenda";
+            this.radioSomenteRevenda.Size = new System.Drawing.Size(233, 21);
+            this.radioSomenteRevenda.Style = Syncfusion.Windows.Forms.Tools.RadioButtonAdvStyle.Office2007;
+            this.radioSomenteRevenda.TabIndex = 0;
+            this.radioSomenteRevenda.Text = " Somente Produtos Para Revenda";
+            this.radioSomenteRevenda.ThemeName = "Office2007";
+            // 
             // FrmEnviarArquivosContabilidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(626, 361);
+            this.ClientSize = new System.Drawing.Size(626, 472);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.progressBarAdv1);
-            this.Controls.Add(this.autoLabel4);
-            this.Controls.Add(this.txtDataInventario);
             this.Controls.Add(this.chkRegistro74);
             this.Controls.Add(this.txtMes);
             this.Controls.Add(this.txtAno);
@@ -317,6 +379,11 @@
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkRegistro74)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioTodos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioRevendaEMateriaPrima)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioSomenteRevenda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,5 +409,9 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkRegistro74;
         private MetroFramework.Controls.MetroProgressBar progressBarAdv1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblInfo;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioTodos;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioRevendaEMateriaPrima;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioSomenteRevenda;
     }
 }

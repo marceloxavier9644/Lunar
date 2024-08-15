@@ -23,7 +23,7 @@ namespace LunarBase.Classes
         private RegimeEmpresa regimeEmpresa = new RegimeEmpresa();
         private string senhaCertificado;
         private bool otica;
-    
+        private string emailXml;
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -60,6 +60,9 @@ namespace LunarBase.Classes
         [Anotacao("Otica")]
         [OcultarEmGridsEPesquisas]
         public virtual bool Otica { get => otica; set => otica = value; }
+        [Anotacao("Email XML")]
+        [OcultarEmGridsEPesquisas]
+        public virtual string EmailXml { get => emailXml; set => emailXml = value; }
 
         public override string ToString()
         {

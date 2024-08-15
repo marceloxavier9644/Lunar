@@ -116,6 +116,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                 chkOtica.Checked = true;
             else
                 chkOtica.Checked = false;
+            txtEmailContabilidadeXml.Text = empresaFilial.EmailXml;
         }
 
         private void get_EnderecoPrincipal(EmpresaFilial empresaFilial)
@@ -250,6 +251,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                         empresaFilial.RazaoSocial = txtRazaoSocial.Texts;
                         empresaFilial.Endereco = endereco;
                         empresaFilial.Empresa = empresa;
+                        empresaFilial.EmailXml = txtEmailContabilidadeXml.Text.Trim();
                         if (chkOtica.Checked == true)
                             empresaFilial.Otica = true;
                         else

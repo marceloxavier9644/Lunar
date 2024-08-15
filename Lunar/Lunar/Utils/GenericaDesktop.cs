@@ -899,27 +899,57 @@ namespace Lunar.Utils
             }
         }
 
+        //public void gravarXMLNaPasta(string xmlString, string chave, string caminhoGravar, string nomeArquivo)
+        //{
+        //    try
+        //    {
+        //        if (Directory.Exists(@caminhoGravar) && !File.Exists(@nomeArquivo))
+        //        {
+        //            XmlDocument doc = new XmlDocument();
+        //            doc.LoadXml(xmlString);
+        //            doc.Save(@caminhoGravar + @nomeArquivo);
+        //        }
+        //        else if (!Directory.Exists(@caminhoGravar))
+        //        {
+        //            Directory.CreateDirectory(@caminhoGravar);
+        //            if (!File.Exists(@caminhoGravar + @nomeArquivo))
+        //            {
+        //                XmlDocument doc = new XmlDocument();
+        //                doc.LoadXml(xmlString);
+        //                doc.Save(@caminhoGravar + @nomeArquivo);
+        //            }
+        //        }
+        //    }catch (Exception err)
+        //    {
+        //        GenericaDesktop.ShowErro("Falha ao gravar o XML na Pasta: " + err.Message);
+        //    }
+        //}
+
         public void gravarXMLNaPasta(string xmlString, string chave, string caminhoGravar, string nomeArquivo)
         {
             try
             {
-                if (Directory.Exists(@caminhoGravar) && !File.Exists(@nomeArquivo))
+                string caminhoCompleto = Path.Combine(caminhoGravar, nomeArquivo);
+
+                // Verifica se o diretório existe; se não, cria
+                if (!Directory.Exists(caminhoGravar))
+                {
+                    Directory.CreateDirectory(caminhoGravar);
+                }
+
+                // Verifica se o arquivo já existe; se não, cria
+                if (!File.Exists(caminhoCompleto))
                 {
                     XmlDocument doc = new XmlDocument();
                     doc.LoadXml(xmlString);
-                    doc.Save(@caminhoGravar + @nomeArquivo);
+                    doc.Save(caminhoCompleto);
                 }
-                else if (!Directory.Exists(@caminhoGravar))
+                else
                 {
-                    Directory.CreateDirectory(@caminhoGravar);
-                    if (!File.Exists(@caminhoGravar + @nomeArquivo))
-                    {
-                        XmlDocument doc = new XmlDocument();
-                        doc.LoadXml(xmlString);
-                        doc.Save(@caminhoGravar + @nomeArquivo);
-                    }
+                    GenericaDesktop.ShowErro("Arquivo já existe: " + caminhoCompleto);
                 }
-            }catch (Exception err)
+            }
+            catch (Exception err)
             {
                 GenericaDesktop.ShowErro("Falha ao gravar o XML na Pasta: " + err.Message);
             }
@@ -1024,8 +1054,6 @@ namespace Lunar.Utils
         {
             try
             {
-                ImpressaoNFCe imp = new ImpressaoNFCe();
-                imp.tipo = "PDF";
                 String url = "https://nfce.ns.eti.br/v1/nfce/get/inut";
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "POST";
@@ -2457,7 +2485,7 @@ namespace Lunar.Utils
                 StringBuilder mensagemEmail = new StringBuilder();
                 Email = new MailMessage();
                 Email.To.Add(new MailAddress(emailDestino));
-                Email.From = new MailAddress("marketing@lunarsoftware.com.br", "Lunar Software");
+                Email.From = new MailAddress("arquivosfiscais@lunarsoftware.com.br", "Lunar Software");
                 Email.Subject = (assuntoEmail);
                 Email.IsBodyHtml = true;
                 mensagemEmail.Append("<span style=\"font-weight: bold; font-size: 18px\">" + tituloCorpoEmail + "</span><br />");
@@ -2474,7 +2502,7 @@ namespace Lunar.Utils
                 SmtpClient cliente = new SmtpClient("smtp.lunarsoftware.com.br", 587);
                 using (cliente)
                 {
-                    cliente.Credentials = new System.Net.NetworkCredential("marketing@lunarsoftware.com.br", "Aramxs@11");
+                    cliente.Credentials = new System.Net.NetworkCredential("arquivosfiscais@lunarsoftware.com.br", "Arquivos@2024");
                     if (Sessao.parametroSistema.AutenticacaoSsl == true)
                         cliente.EnableSsl = true;
                     else

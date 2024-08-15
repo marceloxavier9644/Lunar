@@ -66,13 +66,13 @@
             this.txtDataInicial = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtPesquisa = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.btnEmail = new Syncfusion.Windows.Forms.Tools.toolstripitem();
             this.iconEmail = new FontAwesome.Sharp.IconButton();
             this.iconPastaArquivo = new FontAwesome.Sharp.IconButton();
+            this.btnConferirXmlNuvem = new FontAwesome.Sharp.IconButton();
+            this.rjButton1 = new Lunar.RJ_UI.Classes.RJButton();
             this.btnEnviarWhats = new Lunar.RJ_UI.Classes.RJButton();
             this.btnEmailEnvio = new Lunar.RJ_UI.Classes.RJButton();
             this.btnImprimirNf = new Lunar.RJ_UI.Classes.RJButton();
@@ -81,9 +81,10 @@
             this.btnReenviar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnInutilizar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
+            this.txtPesquisa = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnPastaArquivo = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnConferirXmlNuvem = new FontAwesome.Sharp.IconButton();
-            this.rjButton1 = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnInutilizarSequencia = new Lunar.RJ_UI.Classes.RJButton();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkSVCAN)).BeginInit();
@@ -120,7 +121,7 @@
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1043, 44);
+            this.panelTitleBar.Size = new System.Drawing.Size(1139, 44);
             this.panelTitleBar.TabIndex = 202;
             // 
             // autoLabel2
@@ -148,7 +149,7 @@
             this.btnClose.IconColor = System.Drawing.Color.White;
             this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnClose.IconSize = 30;
-            this.btnClose.Location = new System.Drawing.Point(1002, 3);
+            this.btnClose.Location = new System.Drawing.Point(1098, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(39, 41);
             this.btnClose.TabIndex = 2;
@@ -176,7 +177,7 @@
             this.groupBox1.Controls.Add(this.txtRegistroPorPagina);
             this.groupBox1.Location = new System.Drawing.Point(5, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1026, 177);
+            this.groupBox1.Size = new System.Drawing.Size(1122, 177);
             this.groupBox1.TabIndex = 221;
             this.groupBox1.TabStop = false;
             // 
@@ -504,31 +505,6 @@
             this.autoLabel1.TabIndex = 219;
             this.autoLabel1.Text = "Pesquisa";
             // 
-            // txtPesquisa
-            // 
-            this.txtPesquisa.BackColor = System.Drawing.Color.White;
-            this.txtPesquisa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtPesquisa.BorderRadius = 8;
-            this.txtPesquisa.BorderSize = 2;
-            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPesquisa.Location = new System.Drawing.Point(8, 20);
-            this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPesquisa.Multiline = false;
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtPesquisa.PasswordChar = false;
-            this.txtPesquisa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtPesquisa.PlaceholderText = "";
-            this.txtPesquisa.ReadOnly = false;
-            this.txtPesquisa.Size = new System.Drawing.Size(434, 37);
-            this.txtPesquisa.TabIndex = 0;
-            this.txtPesquisa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtPesquisa.Texts = "";
-            this.txtPesquisa.UnderlinedStyle = false;
-            this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
-            // 
             // autoLabel15
             // 
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -539,34 +515,6 @@
             this.autoLabel15.Size = new System.Drawing.Size(90, 16);
             this.autoLabel15.TabIndex = 218;
             this.autoLabel15.Text = "Reg. por Pág.";
-            // 
-            // txtRegistroPorPagina
-            // 
-            this.txtRegistroPorPagina.BackColor = System.Drawing.Color.White;
-            this.txtRegistroPorPagina.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtRegistroPorPagina.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtRegistroPorPagina.BorderRadius = 8;
-            this.txtRegistroPorPagina.BorderSize = 2;
-            this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRegistroPorPagina.Location = new System.Drawing.Point(450, 20);
-            this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
-            this.txtRegistroPorPagina.Multiline = false;
-            this.txtRegistroPorPagina.Name = "txtRegistroPorPagina";
-            this.txtRegistroPorPagina.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtRegistroPorPagina.PasswordChar = false;
-            this.txtRegistroPorPagina.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtRegistroPorPagina.PlaceholderText = "";
-            this.txtRegistroPorPagina.ReadOnly = false;
-            this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
-            this.txtRegistroPorPagina.TabIndex = 1;
-            this.txtRegistroPorPagina.Tag = "";
-            this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtRegistroPorPagina.Texts = "100";
-            this.txtRegistroPorPagina.UnderlinedStyle = false;
-            this.txtRegistroPorPagina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRegistroPorPagina_KeyPress);
             // 
             // grid
             // 
@@ -683,7 +631,7 @@
             this.grid.Columns.Add(gridButtonColumn1);
             this.grid.Location = new System.Drawing.Point(5, 233);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(1026, 106);
+            this.grid.Size = new System.Drawing.Size(1122, 106);
             this.grid.Style.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.grid.TabIndex = 223;
             this.grid.Text = "sfDataGrid1";
@@ -712,7 +660,7 @@
             this.iconEmail.IconColor = System.Drawing.Color.SteelBlue;
             this.iconEmail.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconEmail.IconSize = 38;
-            this.iconEmail.Location = new System.Drawing.Point(987, 354);
+            this.iconEmail.Location = new System.Drawing.Point(1083, 354);
             this.iconEmail.Name = "iconEmail";
             this.iconEmail.Size = new System.Drawing.Size(36, 23);
             this.iconEmail.TabIndex = 229;
@@ -733,12 +681,55 @@
             this.iconPastaArquivo.IconColor = System.Drawing.Color.SteelBlue;
             this.iconPastaArquivo.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconPastaArquivo.IconSize = 38;
-            this.iconPastaArquivo.Location = new System.Drawing.Point(889, 355);
+            this.iconPastaArquivo.Location = new System.Drawing.Point(985, 355);
             this.iconPastaArquivo.Name = "iconPastaArquivo";
             this.iconPastaArquivo.Size = new System.Drawing.Size(36, 23);
             this.iconPastaArquivo.TabIndex = 234;
             this.iconPastaArquivo.UseVisualStyleBackColor = true;
             this.iconPastaArquivo.Click += new System.EventHandler(this.iconPastaArquivo_Click);
+            // 
+            // btnConferirXmlNuvem
+            // 
+            this.btnConferirXmlNuvem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConferirXmlNuvem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConferirXmlNuvem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnConferirXmlNuvem.FlatAppearance.BorderSize = 0;
+            this.btnConferirXmlNuvem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnConferirXmlNuvem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnConferirXmlNuvem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConferirXmlNuvem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConferirXmlNuvem.IconChar = FontAwesome.Sharp.IconChar.Cloud;
+            this.btnConferirXmlNuvem.IconColor = System.Drawing.Color.SteelBlue;
+            this.btnConferirXmlNuvem.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnConferirXmlNuvem.IconSize = 38;
+            this.btnConferirXmlNuvem.Location = new System.Drawing.Point(932, 355);
+            this.btnConferirXmlNuvem.Name = "btnConferirXmlNuvem";
+            this.btnConferirXmlNuvem.Size = new System.Drawing.Size(36, 23);
+            this.btnConferirXmlNuvem.TabIndex = 236;
+            this.btnConferirXmlNuvem.UseVisualStyleBackColor = true;
+            this.btnConferirXmlNuvem.Click += new System.EventHandler(this.btnConferirXmlNuvem_Click);
+            // 
+            // rjButton1
+            // 
+            this.rjButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.rjButton1.BackColor = System.Drawing.Color.White;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.White;
+            this.rjButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjButton1.BorderRadius = 8;
+            this.rjButton1.BorderSize = 2;
+            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.rjButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton1.ForeColor = System.Drawing.Color.Black;
+            this.rjButton1.Location = new System.Drawing.Point(924, 345);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(47, 38);
+            this.rjButton1.TabIndex = 237;
+            this.rjButton1.TextColor = System.Drawing.Color.Black;
+            this.rjButton1.UseVisualStyleBackColor = false;
             // 
             // btnEnviarWhats
             // 
@@ -757,7 +748,7 @@
             this.btnEnviarWhats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnviarWhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnviarWhats.ForeColor = System.Drawing.Color.Black;
-            this.btnEnviarWhats.Location = new System.Drawing.Point(934, 345);
+            this.btnEnviarWhats.Location = new System.Drawing.Point(1030, 345);
             this.btnEnviarWhats.Name = "btnEnviarWhats";
             this.btnEnviarWhats.Size = new System.Drawing.Size(41, 38);
             this.btnEnviarWhats.TabIndex = 233;
@@ -780,7 +771,7 @@
             this.btnEmailEnvio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmailEnvio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmailEnvio.ForeColor = System.Drawing.Color.Black;
-            this.btnEmailEnvio.Location = new System.Drawing.Point(981, 345);
+            this.btnEmailEnvio.Location = new System.Drawing.Point(1077, 345);
             this.btnEmailEnvio.Name = "btnEmailEnvio";
             this.btnEmailEnvio.Size = new System.Drawing.Size(47, 38);
             this.btnEmailEnvio.TabIndex = 232;
@@ -800,7 +791,7 @@
             this.btnImprimirNf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimirNf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimirNf.ForeColor = System.Drawing.Color.Transparent;
-            this.btnImprimirNf.Location = new System.Drawing.Point(877, 393);
+            this.btnImprimirNf.Location = new System.Drawing.Point(973, 393);
             this.btnImprimirNf.Name = "btnImprimirNf";
             this.btnImprimirNf.Size = new System.Drawing.Size(154, 45);
             this.btnImprimirNf.TabIndex = 231;
@@ -822,7 +813,7 @@
             this.btnCartaCorrecao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCartaCorrecao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCartaCorrecao.ForeColor = System.Drawing.Color.Black;
-            this.btnCartaCorrecao.Location = new System.Drawing.Point(557, 393);
+            this.btnCartaCorrecao.Location = new System.Drawing.Point(653, 393);
             this.btnCartaCorrecao.Name = "btnCartaCorrecao";
             this.btnCartaCorrecao.Size = new System.Drawing.Size(154, 45);
             this.btnCartaCorrecao.TabIndex = 230;
@@ -844,7 +835,7 @@
             this.btnConsultarNota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultarNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultarNota.ForeColor = System.Drawing.Color.Black;
-            this.btnConsultarNota.Location = new System.Drawing.Point(77, 393);
+            this.btnConsultarNota.Location = new System.Drawing.Point(13, 393);
             this.btnConsultarNota.Name = "btnConsultarNota";
             this.btnConsultarNota.Size = new System.Drawing.Size(154, 45);
             this.btnConsultarNota.TabIndex = 229;
@@ -866,7 +857,7 @@
             this.btnReenviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReenviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReenviar.ForeColor = System.Drawing.Color.Black;
-            this.btnReenviar.Location = new System.Drawing.Point(717, 393);
+            this.btnReenviar.Location = new System.Drawing.Point(813, 393);
             this.btnReenviar.Name = "btnReenviar";
             this.btnReenviar.Size = new System.Drawing.Size(154, 45);
             this.btnReenviar.TabIndex = 0;
@@ -888,7 +879,7 @@
             this.btnInutilizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInutilizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInutilizar.ForeColor = System.Drawing.Color.Black;
-            this.btnInutilizar.Location = new System.Drawing.Point(237, 393);
+            this.btnInutilizar.Location = new System.Drawing.Point(333, 393);
             this.btnInutilizar.Name = "btnInutilizar";
             this.btnInutilizar.Size = new System.Drawing.Size(154, 45);
             this.btnInutilizar.TabIndex = 3;
@@ -910,7 +901,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Location = new System.Drawing.Point(397, 393);
+            this.btnCancelar.Location = new System.Drawing.Point(493, 393);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(154, 45);
             this.btnCancelar.TabIndex = 2;
@@ -918,6 +909,59 @@
             this.btnCancelar.TextColor = System.Drawing.Color.Black;
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.BackColor = System.Drawing.Color.White;
+            this.txtPesquisa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesquisa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtPesquisa.BorderRadius = 8;
+            this.txtPesquisa.BorderSize = 2;
+            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPesquisa.Location = new System.Drawing.Point(8, 20);
+            this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPesquisa.Multiline = false;
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtPesquisa.PasswordChar = false;
+            this.txtPesquisa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtPesquisa.PlaceholderText = "";
+            this.txtPesquisa.ReadOnly = false;
+            this.txtPesquisa.Size = new System.Drawing.Size(434, 37);
+            this.txtPesquisa.TabIndex = 0;
+            this.txtPesquisa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtPesquisa.Texts = "";
+            this.txtPesquisa.UnderlinedStyle = false;
+            this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
+            // 
+            // txtRegistroPorPagina
+            // 
+            this.txtRegistroPorPagina.BackColor = System.Drawing.Color.White;
+            this.txtRegistroPorPagina.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtRegistroPorPagina.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtRegistroPorPagina.BorderRadius = 8;
+            this.txtRegistroPorPagina.BorderSize = 2;
+            this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRegistroPorPagina.Location = new System.Drawing.Point(450, 20);
+            this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRegistroPorPagina.Multiline = false;
+            this.txtRegistroPorPagina.Name = "txtRegistroPorPagina";
+            this.txtRegistroPorPagina.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtRegistroPorPagina.PasswordChar = false;
+            this.txtRegistroPorPagina.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtRegistroPorPagina.PlaceholderText = "";
+            this.txtRegistroPorPagina.ReadOnly = false;
+            this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
+            this.txtRegistroPorPagina.TabIndex = 1;
+            this.txtRegistroPorPagina.Tag = "";
+            this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtRegistroPorPagina.Texts = "100";
+            this.txtRegistroPorPagina.UnderlinedStyle = false;
+            this.txtRegistroPorPagina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRegistroPorPagina_KeyPress);
             // 
             // btnPastaArquivo
             // 
@@ -934,62 +978,42 @@
             this.btnPastaArquivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPastaArquivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPastaArquivo.ForeColor = System.Drawing.Color.Black;
-            this.btnPastaArquivo.Location = new System.Drawing.Point(881, 345);
+            this.btnPastaArquivo.Location = new System.Drawing.Point(977, 345);
             this.btnPastaArquivo.Name = "btnPastaArquivo";
             this.btnPastaArquivo.Size = new System.Drawing.Size(47, 38);
             this.btnPastaArquivo.TabIndex = 235;
             this.btnPastaArquivo.TextColor = System.Drawing.Color.Black;
             this.btnPastaArquivo.UseVisualStyleBackColor = false;
             // 
-            // btnConferirXmlNuvem
+            // btnInutilizarSequencia
             // 
-            this.btnConferirXmlNuvem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConferirXmlNuvem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConferirXmlNuvem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnConferirXmlNuvem.FlatAppearance.BorderSize = 0;
-            this.btnConferirXmlNuvem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnConferirXmlNuvem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnConferirXmlNuvem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConferirXmlNuvem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConferirXmlNuvem.IconChar = FontAwesome.Sharp.IconChar.Cloud;
-            this.btnConferirXmlNuvem.IconColor = System.Drawing.Color.SteelBlue;
-            this.btnConferirXmlNuvem.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnConferirXmlNuvem.IconSize = 38;
-            this.btnConferirXmlNuvem.Location = new System.Drawing.Point(836, 355);
-            this.btnConferirXmlNuvem.Name = "btnConferirXmlNuvem";
-            this.btnConferirXmlNuvem.Size = new System.Drawing.Size(36, 23);
-            this.btnConferirXmlNuvem.TabIndex = 236;
-            this.btnConferirXmlNuvem.UseVisualStyleBackColor = true;
-            this.btnConferirXmlNuvem.Click += new System.EventHandler(this.btnConferirXmlNuvem_Click);
-            // 
-            // rjButton1
-            // 
-            this.rjButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjButton1.BackColor = System.Drawing.Color.White;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.White;
-            this.rjButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjButton1.BorderRadius = 8;
-            this.rjButton1.BorderSize = 2;
-            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.rjButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.Black;
-            this.rjButton1.Location = new System.Drawing.Point(828, 345);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(47, 38);
-            this.rjButton1.TabIndex = 237;
-            this.rjButton1.TextColor = System.Drawing.Color.Black;
-            this.rjButton1.UseVisualStyleBackColor = false;
+            this.btnInutilizarSequencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInutilizarSequencia.BackColor = System.Drawing.Color.White;
+            this.btnInutilizarSequencia.BackgroundColor = System.Drawing.Color.White;
+            this.btnInutilizarSequencia.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnInutilizarSequencia.BorderRadius = 8;
+            this.btnInutilizarSequencia.BorderSize = 2;
+            this.btnInutilizarSequencia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInutilizarSequencia.FlatAppearance.BorderSize = 0;
+            this.btnInutilizarSequencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInutilizarSequencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInutilizarSequencia.ForeColor = System.Drawing.Color.Black;
+            this.btnInutilizarSequencia.Location = new System.Drawing.Point(173, 393);
+            this.btnInutilizarSequencia.Name = "btnInutilizarSequencia";
+            this.btnInutilizarSequencia.Size = new System.Drawing.Size(154, 45);
+            this.btnInutilizarSequencia.TabIndex = 238;
+            this.btnInutilizarSequencia.Text = "Inut. Sequência";
+            this.btnInutilizarSequencia.TextColor = System.Drawing.Color.Black;
+            this.btnInutilizarSequencia.UseVisualStyleBackColor = false;
+            this.btnInutilizarSequencia.Click += new System.EventHandler(this.btnInutilizarSequencia_Click);
             // 
             // FrmControleNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1043, 450);
+            this.ClientSize = new System.Drawing.Size(1139, 450);
+            this.Controls.Add(this.btnInutilizarSequencia);
             this.Controls.Add(this.btnConferirXmlNuvem);
             this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.iconPastaArquivo);
@@ -1088,5 +1112,6 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkSVCAN;
         private FontAwesome.Sharp.IconButton btnConferirXmlNuvem;
         private RJ_UI.Classes.RJButton rjButton1;
+        private RJ_UI.Classes.RJButton btnInutilizarSequencia;
     }
 }

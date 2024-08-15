@@ -78,10 +78,10 @@
                   <Width>1.98933cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.60312cm</Width>
+                  <Width>4.2856cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.65875cm</Width>
+                  <Width>2.97625cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.44167cm</Width>
@@ -1046,7 +1046,7 @@
             <DataSetName>dsInventario</DataSetName>
             <Top>0.15558cm</Top>
             <Height>1.8cm</Height>
-            <Width>20.17231cm</Width>
+            <Width>20.17229cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1224,7 +1224,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CidadeFilial</rd:DefaultName>
-              <Top>1.53894cm</Top>
+              <Top>1.88819cm</Top>
               <Left>11.00479cm</Left>
               <Height>0.6cm</Height>
               <Width>8.85cm</Width>
@@ -1256,7 +1256,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>FoneFilial</rd:DefaultName>
-              <Top>2.07192cm</Top>
+              <Top>2.42117cm</Top>
               <Left>11.00479cm</Left>
               <Height>0.6cm</Height>
               <Width>8.85cm</Width>

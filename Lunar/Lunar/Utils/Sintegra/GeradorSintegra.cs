@@ -371,28 +371,30 @@ namespace Lunar.Utils.Sintegra
                     dataInserida = nf65.DataEmissao;
                 }
             }
-
-            var registro61R = new FiscalBr.Sintegra.Registro61R();
-            nfeProdutoDAO = new NfeProdutoDAO();
             IList<RetProd> listaCodigos = new List<RetProd>();
-            listaCodigos = nfeProdutoDAO.selecionarSomaItensNFCeParaSintegra(dataInicial.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), dataFinal.ToString("yyyy'-'MM'-'dd' '23':'59':'59"), filial);
-            if (listaCodigos.Count > 0)
+            if (listaNFCe.Count > 0)
             {
-                foreach (RetProd retProd in listaCodigos)
+                var registro61R = new FiscalBr.Sintegra.Registro61R();
+                nfeProdutoDAO = new NfeProdutoDAO();
+                listaCodigos = nfeProdutoDAO.selecionarSomaItensNFCeParaSintegra(dataInicial.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), dataFinal.ToString("yyyy'-'MM'-'dd' '23':'59':'59"), filial);
+                if (listaCodigos.Count > 0)
                 {
-                    decimal valorProdutosSemDesconto = retProd.valor;
-                    decimal quantidadeProdutos = decimal.Parse(retProd.quantidade.ToString());
-                    decimal somaBaseCalc = retProd.baseCalc;
-                    registro61R.Tipo = "61R";
-                    registro61R.DataEmissao = dataInicial;
-                    registro61R.CodItem = retProd.codProd.ToString();/*.PadLeft(14, '0')*/
-                    registro61R.Quantidade = quantidadeProdutos;
-                    registro61R.ValorItem = valorProdutosSemDesconto;
-                    registro61R.BaseCalculoIcms = somaBaseCalc;
-                    registro61R.AliquotaIcms = 0;
-                    arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro61R);
-                    listaSintegra.Add(arquivo);
-                    x.Write(arquivo);
+                    foreach (RetProd retProd in listaCodigos)
+                    {
+                        decimal valorProdutosSemDesconto = retProd.valor;
+                        decimal quantidadeProdutos = decimal.Parse(retProd.quantidade.ToString());
+                        decimal somaBaseCalc = retProd.baseCalc;
+                        registro61R.Tipo = "61R";
+                        registro61R.DataEmissao = dataInicial;
+                        registro61R.CodItem = retProd.codProd.ToString();/*.PadLeft(14, '0')*/
+                        registro61R.Quantidade = quantidadeProdutos;
+                        registro61R.ValorItem = valorProdutosSemDesconto;
+                        registro61R.BaseCalculoIcms = somaBaseCalc;
+                        registro61R.AliquotaIcms = 0;
+                        arquivo = FiscalBr.Common.Sintegra.EscreverCamposSintegra.EscreverCampos(registro61R);
+                        listaSintegra.Add(arquivo);
+                        x.Write(arquivo);
+                    }
                 }
             }
             IList<Estoque> listaInventario = new List<Estoque>();

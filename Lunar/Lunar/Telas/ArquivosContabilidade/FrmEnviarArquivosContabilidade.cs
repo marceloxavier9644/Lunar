@@ -1,23 +1,23 @@
-﻿using Lunar.Utils;
+﻿using Lunar.Telas.Fiscal;
+using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
+using Lunar.Utils.Sintegra;
+using LunarBase.Classes;
+using LunarBase.ClassesDAO;
+using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using LunarBase.Classes;
-using LunarBase.ControllerBO;
-using System.Linq;
-using Lunar.Utils.Sintegra;
-using System.Threading;
-using Syncfusion.Windows.Forms.Tools;
+using static LunarBase.Classes.Estoque;
 
 namespace Lunar.Telas.ArquivosContabilidade
 {
@@ -37,6 +37,9 @@ namespace Lunar.Telas.ArquivosContabilidade
             if (data.Month.Equals("12"))
                 data = data.AddYears(-1);
             txtAno.Text = data.Year.ToString();
+
+            if (!String.IsNullOrEmpty(Sessao.empresaFilialLogada.EmailXml))
+                txtEmail.Text = Sessao.empresaFilialLogada.EmailXml;
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -44,13 +47,46 @@ namespace Lunar.Telas.ArquivosContabilidade
             this.Close();
         }
 
+        private bool VerificarPreenchimentoCampos()
+        {
+            if (String.IsNullOrEmpty(txtEmail.Text) && String.IsNullOrEmpty(txtPasta.Texts))
+                return false;
+            else
+                return true;
+        }
         private async void btnEnviar_Click(object sender, EventArgs e)
         {
-            progressBarAdv1.Visible = true;
-            SetupWaitingGradientProgressBar();
-            await ProcessarNotas();
-            await envioArquivos();
-            progressBarAdv1.Visible = false;
+            if (VerificarNotasComRejeicao())
+            {
+                if (VerificarPreenchimentoCampos())
+                {
+                    progressBarAdv1.Visible = true;
+
+                    SetupWaitingGradientProgressBar();
+                    await ProcessarNotas();
+                    await envioArquivos();
+                    progressBarAdv1.Visible = false;
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Você deve preencher o email da contabilidade ou escolher uma pasta para salvar os arquivos!");
+                }
+            }
+            else
+            {
+                int mes = int.Parse(txtMes.Text);
+                int ano = int.Parse(txtAno.Text);
+                DateTime primeiroDia = new DateTime(ano, mes, 1);
+                DateTime ultimoDia = primeiroDia.AddMonths(1).AddDays(-1);
+                string dataInicial1 = $"{primeiroDia:dd/MM/yyyy}";
+                string dataFinal1 = $"{ultimoDia:dd/MM/yyyy}";
+                DateTime dataInicial = DateTime.Parse(dataInicial1);
+                DateTime dataFinal = DateTime.Parse(dataFinal1);
+
+                GenericaDesktop.ShowAlerta("Você possui notas fiscais com erro, verifique primeiro!");
+                FrmControleNotas frm = new FrmControleNotas(true, dataInicial, dataFinal);
+                frm.ShowDialog();
+            }
         }
 
         private async Task ProcessarNotas() // Ajustado para ser assíncrono e retornar Task
@@ -140,17 +176,22 @@ namespace Lunar.Telas.ArquivosContabilidade
         {
             // Mostrar o ProgressBar e configurar o estilo de espera
             progressBarAdv1.Visible = true;
-
+            string localFilePath = !String.IsNullOrEmpty(txtPasta.Texts) ? txtPasta.Texts + @"\" : Path.GetTempPath();
+            txtPasta.Texts = localFilePath + @"\" + txtAno.Text + txtMes.Text;
             try
             {
-                // Simula uma operação demorada
-                await Task.Delay(5000); // Remova ou substitua por suas operações reais
+                //await Task.Delay(5000); // Remova ou substitua por suas operações reais
                 lblInfo.Text = "Gerando Arquivos...";
-                // Seu código para gerar e enviar arquivos
-                await Task.Run(() => gerarRelatorioNfeENfce()); // Garante que a operação é executada em um thread separado
-                await Task.Run(() => gerarSintegra()); // Garante que a operação é executada em um thread separado
-
-                string localFilePath = txtPasta.Texts + @"\";
+                await Task.Delay(2000);
+                lblInfo.Text = "Gerando Relátorio NFe e NFCe...";
+                await Task.Run(() => gerarRelatorioNfeENfce());
+                lblInfo.Text = "Gerando Sintegra...";
+                await Task.Run(() => gerarSintegra());
+                if (chkRegistro74.Checked == true)
+                {
+                    lblInfo.Text = "Gerando Inventário...";
+                    await Task.Run(() => gerarInventario());
+                }
                 string fileName = txtMes.Text + txtAno.Text + ".zip";
 
                 if (!String.IsNullOrEmpty(txtPasta.Texts))
@@ -195,7 +236,8 @@ namespace Lunar.Telas.ArquivosContabilidade
                                         listaAnexo
                                     );
                                 }
-
+                                progressBarAdv1.Visible = false;
+                                lblInfo.Visible = false;
                                 GenericaDesktop.ShowInfo(emailEnviado ? "E-mail enviado com sucesso!" : "Falha ao enviar e-mail, verifique a configuração do seu e-mail de disparo em parâmetros do sistema!");
                             }
                             else
@@ -279,6 +321,7 @@ namespace Lunar.Telas.ArquivosContabilidade
                 string relatorioNfcePdf = Path.Combine(Path.GetDirectoryName(caminhoArquivoOriginal), "Relatorio NFC-e 65.pdf");
                 string relatorioNfePdf = Path.Combine(Path.GetDirectoryName(caminhoArquivoOriginal), "Relatorio NF-e 55.pdf");
                 string relatorioTxt = arquivoSintegraCaminho.Replace("/","");
+                string relatorioInventario = txtPasta.Texts + @"\Inventario.pdf";
 
                 if (File.Exists(relatorioNfcePdf))
                 {
@@ -289,7 +332,10 @@ namespace Lunar.Telas.ArquivosContabilidade
                 {
                     File.Copy(relatorioNfePdf, Path.Combine(reorganizedDir, Path.GetFileName(relatorioNfePdf)), true);
                 }
-
+                if (File.Exists(relatorioInventario))
+                {
+                    File.Copy(relatorioInventario, Path.Combine(reorganizedDir, Path.GetFileName(relatorioInventario)), true);
+                }
                 if (!string.IsNullOrEmpty(relatorioTxt) && File.Exists(relatorioTxt))
                 {
                     File.Copy(relatorioTxt, Path.Combine(reorganizedDir, Path.GetFileName(relatorioTxt)), true);
@@ -397,6 +443,26 @@ namespace Lunar.Telas.ArquivosContabilidade
         //    }
         //}
 
+        private bool VerificarNotasComRejeicao()
+        {
+            int mes = int.Parse(txtMes.Text);
+            int ano = int.Parse(txtAno.Text);
+            DateTime primeiroDia = new DateTime(ano, mes, 1);
+            DateTime ultimoDia = primeiroDia.AddMonths(1).AddDays(-1);
+            string dataInicial = $"{primeiroDia:yyyy/MM/dd}";
+            string dataFinal = $"{ultimoDia:yyyy/MM/dd}";
+
+            NfeController nfeController = new NfeController();
+            IList<Nfe> listaNotas = nfeController.selecionarNotasEmitidasPorPeriodo(dataInicial, dataFinal);
+            foreach(Nfe nfe in listaNotas)
+            {
+                if(nfe.Status.Contains("Preparando") || String.IsNullOrEmpty(nfe.Status) || nfe.Status.Length > 40)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public void GerarRelatorioPDF(string caminhoPDF, Dictionary<string, string> parametros, string modelo)
         {
             try
@@ -434,7 +500,7 @@ namespace Lunar.Telas.ArquivosContabilidade
                 // Verifique se há notas para o modelo
                 if (notasDoModelo.Count == 0)
                 {
-                    MessageBox.Show($"Nenhuma nota encontrada para o modelo {modelo}.");
+                    //MessageBox.Show($"Nenhuma nota encontrada para o modelo {modelo}.");
                     return;
                 }
 
@@ -527,115 +593,6 @@ namespace Lunar.Telas.ArquivosContabilidade
                 MessageBox.Show("Erro ao gerar o relatório: " + ex.Message);
             }
         }
-        //public void GerarRelatorioPDF(string caminhoPDF, Dictionary<string, string> parametros)
-        //{
-        //    try
-        //    {
-        //        // Crie uma instância do LocalReport
-        //        LocalReport relatorio = new LocalReport();
-
-        //        // Carregue o relatório do recurso embutido
-        //        using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lunar.Telas.ArquivosContabilidade.RelatorioFiscal.rdlc"))
-        //        {
-        //            if (stream != null)
-        //            {
-        //                relatorio.LoadReportDefinition(stream);
-        //            }
-        //            else
-        //            {
-        //                throw new FileNotFoundException("Não foi possível encontrar o arquivo de relatório embutido.");
-        //            }
-        //        }
-
-        //        // Obtenha os dados
-        //        NfeController nfeController = new NfeController();
-        //        int mes = int.Parse(txtMes.Text);
-        //        int ano = int.Parse(txtAno.Text);
-        //        DateTime primeiroDia = new DateTime(ano, mes, 1);
-        //        DateTime ultimoDia = primeiroDia.AddMonths(1).AddDays(-1);
-        //        string dataInicial = $"{primeiroDia:yyyy/MM/dd}";
-        //        string dataFinal = $"{ultimoDia:yyyy/MM/dd}";
-
-
-        //        IList<Nfe> listaNotas = nfeController.selecionarNotasEmitidasPorPeriodo(dataInicial, dataFinal);
-
-        //        // Crie e preencha o DataTable com dados
-        //        DataTable dtNotas = new DataTable("dsFiscalXml");
-
-        //        // Defina as colunas do DataTable
-        //        dtNotas.Columns.Add("Numero", typeof(int));
-        //        dtNotas.Columns.Add("Serie", typeof(string));
-        //        dtNotas.Columns.Add("DataEmissao", typeof(DateTime)); 
-        //        dtNotas.Columns.Add("Chave", typeof(string));
-        //        dtNotas.Columns.Add("Status", typeof(string));
-        //        dtNotas.Columns.Add("Valor", typeof(decimal));
-
-        //        // Preencha o DataTable com dados
-        //        foreach (Nfe nota in listaNotas)
-        //        {
-        //            // Ajuste o status conforme as regras definidas
-        //            string statusFormatado;
-        //            if (nota.Status == "Autorizado o uso da NF-e")
-        //            {
-        //                statusFormatado = "Autorizado o Uso";
-        //            }
-        //            else if (nota.Status == "NF-e cancelada com sucesso" || nota.Status == "NFC-e cancelada com sucesso")
-        //            {
-        //                statusFormatado = "Cancelada";
-        //            }
-        //            else
-        //            {
-        //                statusFormatado = nota.Status; // Mantém o status original se não se encaixar nas condições acima
-        //            }
-
-        //            // Adicione a linha ao DataTable
-        //            dtNotas.Rows.Add(
-        //                nota.NNf,
-        //                nota.Serie,
-        //                DateTime.Parse(nota.DataEmissao.ToString()), // Converta para DateTime
-        //                nota.Chave,
-        //                statusFormatado, // Use o status formatado
-        //                nota.VNf
-        //            );
-        //        }
-
-        //        // Adicione o DataTable ao relatório
-        //        relatorio.DataSources.Clear();
-        //        relatorio.DataSources.Add(new ReportDataSource("dsFiscalXml", dtNotas));
-
-        //        // Adicione os parâmetros, se houver
-        //        if (parametros != null)
-        //        {
-        //            foreach (var parametro in parametros)
-        //            {
-        //                relatorio.SetParameters(new ReportParameter(parametro.Key, parametro.Value));
-        //            }
-        //        }
-
-        //        // Renderize o relatório para o formato PDF
-        //        string mimeType;
-        //        string encoding;
-        //        string fileNameExtension;
-        //        Warning[] warnings;
-        //        string[] streams;
-
-        //        byte[] bytes = relatorio.Render(
-        //            "PDF", null, out mimeType, out encoding,
-        //            out fileNameExtension, out streams, out warnings);
-
-        //        // Salve o PDF no disco
-        //        using (FileStream fs = new FileStream(caminhoPDF, FileMode.Create))
-        //        {
-        //            fs.Write(bytes, 0, bytes.Length);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log ou exiba a exceção para depuração
-        //        MessageBox.Show("Erro ao gerar o relatório: " + ex.Message);
-        //    }
-        //}
-
 
         private Task somarNFCeXml(string diretorioXml)
         {
@@ -752,6 +709,34 @@ namespace Lunar.Telas.ArquivosContabilidade
             };
             GerarRelatorioPDF(txtPasta.Texts + @"\Relatorio NF-e 55.pdf", parametros, "55");
         }
+
+        private void gerarInventário()
+        {
+            int mes = int.Parse(txtMes.Text);
+            int ano = int.Parse(txtAno.Text);
+            DateTime primeiroDia = new DateTime(ano, mes, 1);
+            DateTime ultimoDia = primeiroDia.AddMonths(1).AddDays(-1);
+            string periodo = "Período " + $"{primeiroDia:dd/MM/yyyy} a {ultimoDia:dd/MM/yyyy}";
+
+            var parametros = new Dictionary<string, string>
+            {
+                { "Empresa", Sessao.empresaFilialLogada.RazaoSocial },
+                { "Cnpj", genericaDesktop.FormatarCNPJ(Sessao.empresaFilialLogada.Cnpj) },
+                { "Periodo", periodo },
+                {"Modelo", "NFC-e MOD. 65" }
+            };
+            GerarRelatorioPDF(txtPasta.Texts + @"\Relatorio NFC-e 65.pdf", parametros, "65");
+
+            //GERAR RELATORIO 55
+            parametros = new Dictionary<string, string>
+            {
+                { "Empresa", Sessao.empresaFilialLogada.RazaoSocial },
+                { "Cnpj", genericaDesktop.FormatarCNPJ(Sessao.empresaFilialLogada.Cnpj) },
+                { "Periodo", periodo },
+                {"Modelo", "NF-e MOD. 55" }
+            };
+            GerarRelatorioPDF(txtPasta.Texts + @"\Relatorio NF-e 55.pdf", parametros, "55");
+        }
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
             
@@ -782,9 +767,19 @@ namespace Lunar.Telas.ArquivosContabilidade
             try
             {
                 if (chkRegistro74.Checked == true)
+                {
+                    groupBox3.Visible = true;
                     txtDataInventario.Enabled = true;
+                    int anoAnterior = DateTime.Now.Year - 1;
+                    DateTime dataAnoAnterior = new DateTime(anoAnterior, 12, 31);
+                    txtDataInventario.Text = dataAnoAnterior.ToString("dd/MM/yyyy");
+                    txtDataInventario.Value = dataAnoAnterior;
+                }
                 else
+                {
+                    groupBox3.Visible = false;
                     txtDataInventario.Enabled = false;
+                }
             }
             catch
             {
@@ -796,6 +791,181 @@ namespace Lunar.Telas.ArquivosContabilidade
         {
             progressBarAdv1.Visible = true;
         }
+        private void gerarInventario()
+        {
+            DateTime data = DateTime.Parse(txtDataInventario.Value.ToString());
+            String dataInventario = data.ToString("yyyy'-'MM'-'dd' '23':'59':'59");
+
+            EstoqueDAO estoqueDAO = new EstoqueDAO();
+            IList<Estoque> lista = estoqueDAO.gerarInventarioPorData(Sessao.empresaFilialLogada, dataInventario);
+
+            Inventario inventario = new Inventario();
+            IList<Inventario> listaInventario = new List<Inventario>();
+            foreach (Estoque estoque in lista)
+            {
+                if (radioSomenteRevenda.Checked == true)
+                {
+                    if (estoque.Produto.TipoProduto.Equals("REVENDA") && estoque.QuantidadeInventario > 0)
+                    {
+                        inventario = new Inventario();
+                        inventario.quantidadeInventario = estoque.QuantidadeInventario;
+                        inventario.codigo = estoque.Produto.Id.ToString() + estoque.Produto.IdComplementar;
+                        inventario.codigoBarras = estoque.Produto.Ean;
+                        inventario.csosn = estoque.Produto.CstIcms;
+                        inventario.descricao = estoque.Produto.Descricao;
+                        inventario.medida = estoque.Produto.UnidadeMedida.Sigla;
+                        inventario.ncm = estoque.Produto.Ncm;
+                        inventario.produto = estoque.Produto;
+                        inventario.valorCusto = estoque.Produto.ValorCusto;
+                        inventario.valorTotal = estoque.Produto.ValorCusto * decimal.Parse(estoque.QuantidadeInventario.ToString());
+                        listaInventario.Add(inventario);
+                    }
+                }
+                else if (radioRevendaEMateriaPrima.Checked == true)
+                {
+                    if ((estoque.Produto.TipoProduto.Equals("REVENDA") || estoque.Produto.TipoProduto.Equals("MATÉRIA PRIMA")) && estoque.QuantidadeInventario > 0)
+                    {
+                        inventario = new Inventario();
+                        inventario.quantidadeInventario = estoque.QuantidadeInventario;
+                        inventario.codigo = estoque.Produto.Id.ToString() + estoque.Produto.IdComplementar;
+                        inventario.codigoBarras = estoque.Produto.Ean;
+                        inventario.csosn = estoque.Produto.CstIcms;
+                        inventario.descricao = estoque.Produto.Descricao;
+                        inventario.medida = estoque.Produto.UnidadeMedida.Sigla;
+                        inventario.ncm = estoque.Produto.Ncm;
+                        inventario.produto = estoque.Produto;
+                        inventario.valorCusto = estoque.Produto.ValorCusto;
+                        inventario.valorTotal = estoque.Produto.ValorCusto * decimal.Parse(estoque.QuantidadeInventario.ToString());
+                        listaInventario.Add(inventario);
+                    }
+                }
+                else
+                {
+                    if (estoque.QuantidadeInventario > 0)
+                    {
+                        inventario = new Inventario();
+                        inventario.quantidadeInventario = estoque.QuantidadeInventario;
+                        inventario.codigo = estoque.Produto.Id.ToString() + estoque.Produto.IdComplementar;
+                        inventario.codigoBarras = estoque.Produto.Ean;
+                        inventario.csosn = estoque.Produto.CstIcms;
+                        inventario.descricao = estoque.Produto.Descricao;
+                        inventario.medida = estoque.Produto.UnidadeMedida.Sigla;
+                        inventario.ncm = estoque.Produto.Ncm;
+                        inventario.produto = estoque.Produto;
+                        inventario.valorCusto = estoque.Produto.ValorCusto;
+                        inventario.valorTotal = estoque.Produto.ValorCusto * decimal.Parse(estoque.QuantidadeInventario.ToString());
+                        listaInventario.Add(inventario);
+                    }
+                }
+            }
+            if (listaInventario.Count > 0)
+            {
+                GerarPDFInventario(listaInventario, txtPasta.Texts + @"\Inventario.pdf");
+            }
+        }
+        public void GerarPDFInventario(IList<Inventario> inventarioLista, string caminhoArquivo)
+        {
+            try
+            {
+                // Crie uma instância do LocalReport
+                LocalReport relatorio = new LocalReport();
+                // Habilita imagens externas no relatório
+                relatorio.EnableExternalImages = true;
+
+                // Carregue o relatório do recurso embutido
+                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lunar.Telas.Estoques.reportInventario01.rdlc"))
+                {
+                    if (stream != null)
+                    {
+                        relatorio.LoadReportDefinition(stream);
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException("Não foi possível encontrar o arquivo de relatório embutido.");
+                    }
+                }
+
+                // Crie e preencha o DataTable com dados
+                DataTable dtInventario = new DataTable("dsInventario");
+
+                // Defina as colunas do DataTable
+                dtInventario.Columns.Add("Ncm", typeof(string));
+                dtInventario.Columns.Add("Codigo", typeof(string));
+                dtInventario.Columns.Add("Descricao", typeof(string));
+                dtInventario.Columns.Add("Ean", typeof(string));
+                dtInventario.Columns.Add("Csosn", typeof(string));
+                dtInventario.Columns.Add("UnidadeMedida", typeof(string));
+                dtInventario.Columns.Add("Quantidade", typeof(decimal));
+                dtInventario.Columns.Add("CustoUnitario", typeof(decimal));
+                dtInventario.Columns.Add("ValorTotal", typeof(decimal));
+
+                // Preencha o DataTable com dados
+                foreach (var inventario in inventarioLista)
+                {
+                    dtInventario.Rows.Add(
+                        inventario.ncm,
+                        inventario.codigo,
+                        inventario.descricao,
+                        inventario.codigoBarras,
+                        inventario.csosn,
+                        inventario.medida,
+                        inventario.quantidadeInventario,
+                        inventario.valorCusto,
+                        inventario.valorTotal
+                    );
+                }
+
+                // Adicione o DataTable ao relatório
+                relatorio.DataSources.Clear();
+                relatorio.DataSources.Add(new ReportDataSource("dsInventario", dtInventario));
+
+                // Defina os parâmetros
+                string comp = "";
+                if (!String.IsNullOrEmpty(Sessao.empresaFilialLogada.Endereco.Complemento))
+                    comp = " - " + Sessao.empresaFilialLogada.Endereco.Complemento;
+                if (!String.IsNullOrEmpty(Sessao.empresaFilialLogada.Endereco.Bairro))
+                    comp = comp + " - " + Sessao.empresaFilialLogada.Endereco.Bairro;
+                string fone = GenericaDesktop.formatarFone(Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal.Trim());
+
+                DateTime data = DateTime.Parse(txtDataInventario.Value.ToString());
+                string dataInventario = data.ToString("dd/MM/yyyy");
+
+                relatorio.SetParameters(new ReportParameter("RazaoFilial", Sessao.empresaFilialLogada.RazaoSocial));
+                relatorio.SetParameters(new ReportParameter("CnpjFilial", Sessao.empresaFilialLogada.Cnpj));
+                relatorio.SetParameters(new ReportParameter("LogradouroFilial", Sessao.empresaFilialLogada.Endereco.Logradouro + ", " + Sessao.empresaFilialLogada.Endereco.Numero + comp));
+                relatorio.SetParameters(new ReportParameter("CidadeFilial", Sessao.empresaFilialLogada.Endereco.Cidade.Descricao));
+                relatorio.SetParameters(new ReportParameter("FoneFilial", fone));
+                relatorio.SetParameters(new ReportParameter("DataInventario", dataInventario));
+                relatorio.SetParameters(new ReportParameter("Logo", Sessao.parametroSistema.Logo));
+                relatorio.SetParameters(new ReportParameter("NumeroLivro", ""));
+
+                // Renderize o relatório para o formato PDF
+                string mimeType;
+                string encoding;
+                string fileNameExtension;
+                Warning[] warnings;
+                string[] streams;
+
+                byte[] bytes = relatorio.Render(
+                    "PDF", null, out mimeType, out encoding,
+                    out fileNameExtension, out streams, out warnings);
+
+                // Salve o PDF no disco
+                using (FileStream fs = new FileStream(caminhoArquivo, FileMode.Create))
+                {
+                    fs.Write(bytes, 0, bytes.Length);
+                }
+
+                MessageBox.Show($"PDF gerado com sucesso: {caminhoArquivo}");
+            }
+            catch (Exception ex)
+            {
+                // Log ou exiba a exceção para depuração
+                MessageBox.Show("Erro ao gerar o relatório: " + ex.Message);
+            }
+        }
+
+
 
 
     }

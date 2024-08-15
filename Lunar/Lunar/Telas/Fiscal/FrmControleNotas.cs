@@ -2,9 +2,8 @@
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
 using Lunar.Utils.Sintegra;
-using Lunar.Utils.Unimake.GeradoresXML.XMLNFCe;
 using LunarBase.Classes;
-using LunarBase.ClassesDAO;
+using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
@@ -23,21 +22,18 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Security;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Lunar.Utils.OrganizacaoNF.RetConsultaNfe;
+using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static Lunar.Utils.OrganizacaoNF.RetInutilizacao;
 using static LunarBase.Utilidades.ClasseRetornoJson.CancelamentoNFCe;
 using static LunarBase.Utilidades.ManifestoDownload;
 using File = System.IO.File;
 using Form = System.Windows.Forms.Form;
-using System.Net.Http;
-using Lunar.Utils.LunarChatIntegracao;
-using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
 
 namespace Lunar.Telas.Fiscal
 {
@@ -54,7 +50,7 @@ namespace Lunar.Telas.Fiscal
         Ftp ftp = new Ftp();
         DateTime data1 = DateTime.Parse("2022-11-01 00:00:00");
         DateTime data2 = DateTime.Parse("2022-11-30");
-
+        bool apenasRejeitadas = false;
         public const string clientId = "1d0b3a89-5c98-49d7-a9da-de69b0516a20";
         public const string MsaReturnUrl = "urn:ietf:wg:oauth:2.0:oob";
         Zapi zap = new Zapi();
@@ -66,6 +62,31 @@ namespace Lunar.Telas.Fiscal
             //obterVencimentoCertificado();
 
             if(!String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats))
+            {
+                btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.whatsapp_logo_icone;
+                btnEnviarWhats.Enabled = true;
+            }
+            else
+            {
+                btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.WhatsappCinza2_1;
+                btnEnviarWhats.Enabled = false;
+            }
+        }
+
+        public FrmControleNotas(bool apenasRejeitadas, DateTime dataInicial, DateTime dataFinal)
+        {
+            InitializeComponent();
+
+            if (apenasRejeitadas == true)
+            {
+                this.apenasRejeitadas = true;
+                txtDataInicial.Value = dataInicial;
+                txtDataFinal.Value = dataFinal;
+                radioStatusNaoAutorizada.Checked = true;
+            }
+            this.WindowState = FormWindowState.Maximized;
+
+            if (!String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats))
             {
                 btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.whatsapp_logo_icone;
                 btnEnviarWhats.Enabled = true;
@@ -1087,21 +1108,6 @@ namespace Lunar.Telas.Fiscal
                                             var retor = lunarApiNotas.EnvioNotaParaNuvem(nfe.CnpjEmitente, nfe.Chave, "NFCE", "INUTILIZADAS", nfe.DataEmissao.Month.ToString().PadLeft(2, '0'), nfe.DataEmissao.Year.ToString(), arquivo, nfe);
                                         }
                                     }
-                                    //Atualiza Estoque Conciliado
-                                    //NfeProdutoController nfeProdutoController = new NfeProdutoController();
-                                    //IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
-                                    //foreach (NfeProduto nfeProduto in listaProdutos)
-                                    //{
-                                    //    generica.atualizarEstoqueConciliado(nfeProduto.Produto, double.Parse(nfeProduto.QCom), true, "NFE", "INUTILIZAÇÃO NF: " + nfe.NNf + " MOD: " + nfe.Modelo);
-                                    //    if (GenericaDesktop.ShowConfirmacao("Deseja também cancelar a venda ligada a essa NF?"))
-                                    //    {
-                                    //        Venda venda = vendaController.selecionarVendaPorNF(nfe.Id);
-                                    //        venda.Cancelado = true;
-                                    //        venda.Observacoes = "Venda Cancelada Junto com NF: " + nfe.NNf + "Mod: " + nfe.Modelo + " Operador: " + Sessao.usuarioLogado.Login;
-                                    //        Controller.getInstance().salvar(venda);
-                                    //        generica.atualizarEstoqueNaoConciliado(nfeProduto.Produto, double.Parse(nfeProduto.QCom), true, "NFE", "INUTILIZAÇÃO NF: " + nfe.NNf + " MOD: " + nfe.Modelo);
-                                    //    }
-                                    //}
 
                                     if (retorno.retInutNFe != null)
                                         GenericaDesktop.ShowInfo(retorno.retInutNFe.xMotivo);
@@ -1201,23 +1207,6 @@ namespace Lunar.Telas.Fiscal
                                                 }
                                             }
                                         }
-
-                                        //Atualiza Estoque Conciliado
-                                        //NfeProdutoController nfeProdutoController = new NfeProdutoController();
-                                        //IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
-                                        //foreach (NfeProduto nfeProduto in listaProdutos)
-                                        //{
-                                        //    generica.atualizarEstoqueConciliado(nfeProduto.Produto, double.Parse(nfeProduto.QCom), true, "NFE", "INUTILIZAÇÃO NF: " + nfe.NNf + " MOD: " + nfe.Modelo);
-                                        //    if (GenericaDesktop.ShowConfirmacao("Deseja também cancelar a venda ligada a essa NF?"))
-                                        //    {
-                                        //        Venda venda = vendaController.selecionarVendaPorNF(nfe.Id);
-                                        //        venda.Cancelado = true;
-                                        //        venda.Observacoes = "Venda Cancelada Junto com NF: " + nfe.NNf + "Mod: " + nfe.Modelo + " Operador: " + Sessao.usuarioLogado.Login;
-                                        //        Controller.getInstance().salvar(venda);
-                                        //        generica.atualizarEstoqueNaoConciliado(nfeProduto.Produto, double.Parse(nfeProduto.QCom), true, "NFE", "INUTILIZAÇÃO NF: " + nfe.NNf + " MOD: " + nfe.Modelo);
-                                        //    }
-                                        //}
-
                                         if (retorno.retornoInutNFe != null)
                                             GenericaDesktop.ShowInfo(retorno.retornoInutNFe.xMotivo);
                                         else
@@ -2664,10 +2653,47 @@ namespace Lunar.Telas.Fiscal
 
         private void FrmControleNotas_Load(object sender, EventArgs e)
         {
-            if (fazerPrimeiraBuscaNotas == true)
+            if (fazerPrimeiraBuscaNotas == true && apenasRejeitadas == false)
             {
                 buscaNotas();
                 fazerPrimeiraBuscaNotas = false;
+            }
+        }
+
+        private void btnInutilizarSequencia_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmInutilizar uu = new FrmInutilizar())
+                {
+                    // Configuração do fundo semi-transparente
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    uu.ShowDialog();
+
+                    switch (uu.DialogResult)
+                    {
+                        case DialogResult.Ignore:
+                            break;
+                        case DialogResult.OK:
+                            break;
+                    }
+                }
+            }
+            finally
+            {
+                formBackground.Dispose();
+
             }
         }
     }

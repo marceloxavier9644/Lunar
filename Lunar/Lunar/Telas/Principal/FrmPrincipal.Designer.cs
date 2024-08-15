@@ -99,8 +99,9 @@
             this.dropMenuVendas = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.foodServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inutilizarNúmeraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -772,6 +773,7 @@
             this.dropMenuFiscal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnComprasFiscal,
             this.btnEmitirNfe,
+            this.inutilizarNúmeraçãoToolStripMenuItem,
             this.btnMonitoramentoFiscal,
             this.btnNaturezaOperacao,
             this.notaFiscalAgrupadaToolStripMenuItem});
@@ -779,7 +781,7 @@
             this.dropMenuFiscal.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFiscal.Name = "rjDropdownMenu1";
             this.dropMenuFiscal.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFiscal.Size = new System.Drawing.Size(327, 114);
+            this.dropMenuFiscal.Size = new System.Drawing.Size(327, 158);
             // 
             // btnComprasFiscal
             // 
@@ -942,7 +944,7 @@
             this.dropMenuVendas.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuVendas.Name = "rjDropdownMenu1";
             this.dropMenuVendas.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuVendas.Size = new System.Drawing.Size(203, 114);
+            this.dropMenuVendas.Size = new System.Drawing.Size(203, 92);
             // 
             // btnVendaPDV
             // 
@@ -958,6 +960,13 @@
             this.btnCondicionalMenu.Text = "Condicional";
             this.btnCondicionalMenu.Click += new System.EventHandler(this.btnCondicionalMenu_Click);
             // 
+            // foodServiceToolStripMenuItem
+            // 
+            this.foodServiceToolStripMenuItem.Name = "foodServiceToolStripMenuItem";
+            this.foodServiceToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.foodServiceToolStripMenuItem.Text = "Food Service";
+            this.foodServiceToolStripMenuItem.Click += new System.EventHandler(this.foodServiceToolStripMenuItem_Click);
+            // 
             // transferênciaFilialToolStripMenuItem
             // 
             this.transferênciaFilialToolStripMenuItem.Name = "transferênciaFilialToolStripMenuItem";
@@ -965,12 +974,12 @@
             this.transferênciaFilialToolStripMenuItem.Text = "Transferência Filial";
             this.transferênciaFilialToolStripMenuItem.Click += new System.EventHandler(this.transferênciaFilialToolStripMenuItem_Click);
             // 
-            // foodServiceToolStripMenuItem
+            // inutilizarNúmeraçãoToolStripMenuItem
             // 
-            this.foodServiceToolStripMenuItem.Name = "foodServiceToolStripMenuItem";
-            this.foodServiceToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.foodServiceToolStripMenuItem.Text = "Food Service";
-            this.foodServiceToolStripMenuItem.Click += new System.EventHandler(this.foodServiceToolStripMenuItem_Click);
+            this.inutilizarNúmeraçãoToolStripMenuItem.Name = "inutilizarNúmeraçãoToolStripMenuItem";
+            this.inutilizarNúmeraçãoToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
+            this.inutilizarNúmeraçãoToolStripMenuItem.Text = "Inutilizar Númeração";
+            this.inutilizarNúmeraçãoToolStripMenuItem.Click += new System.EventHandler(this.inutilizarNúmeraçãoToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1079,5 +1088,6 @@
         private System.Windows.Forms.ToolStripMenuItem mensagensAgendadasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem integraçõesEcommerceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem foodServiceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inutilizarNúmeraçãoToolStripMenuItem;
     }
 }

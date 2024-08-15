@@ -1215,5 +1215,41 @@ namespace Lunar.Telas.Principal
         {
             OpenChildForm(() => new FrmControleFood(), btnMenuVenda);
         }
+
+        private void inutilizarNúmeraçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmInutilizar uu = new FrmInutilizar())
+                {
+                    // Configuração do fundo semi-transparente
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    uu.ShowDialog();
+
+                    switch (uu.DialogResult)
+                    {
+                        case DialogResult.Ignore:
+                            break;
+                        case DialogResult.OK:
+                            break;
+                    }
+                }
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
     }
 }

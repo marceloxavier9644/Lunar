@@ -17,6 +17,7 @@
 		<property name="TelefoneSecundario" column="TELEFONESECUNDARIO" type="String" length="40"/>
 		<property name="SenhaCertificado" column="SENHACERTIFICADO" type="String" length="40"/>
 		<property name="Otica" column="OTICA" type="Boolean"/>
+		<property name="EmailXml" column="EMAILXML" type="String" length="120"/>
 		
 		<many-to-one name="RegimeEmpresa" column="REGIMEEMPRESA" class="LunarBase.Classes.RegimeEmpresa" not-null="false" foreign-key="FK_EMPRESAFILIAL_REGIMEEMPRESA" lazy="false"/>
 		<many-to-one name="Endereco" column="ENDERECO" class="LunarBase.Classes.Endereco" not-null="false" foreign-key="FK_EMPRESAFILIAL_ENDERECO" lazy="false"/>
