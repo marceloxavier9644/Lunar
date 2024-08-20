@@ -5,6 +5,8 @@
 			<generator class="native" />
 		</id>
 		<property name="Descricao" column="DESCRICAO" type="String" length="100"/>
+		<property name="Food" column="FOOD" type="Boolean"/>
+		<property name="CaminhoImagem" column="CAMINHOIMAGEM" type="String" length="250"/>
 
 		<many-to-one name="Empresa" column="EMPRESA" class="LunarBase.Classes.Empresa" not-null="true" foreign-key="FK_PRODUTOGRUPO_EMPRESA" lazy="false"/>
 

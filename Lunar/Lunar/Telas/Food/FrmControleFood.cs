@@ -233,6 +233,7 @@ namespace Lunar.Telas.Food
 
         private void AddMesasEComandas(List<AtendimentoMesa> mesas)
         {
+            flowLayoutPanel1.Controls.Clear();
             mesasDic.Clear(); // Limpa o dicionário para evitar duplicatas
 
             foreach (var mesa in mesas)
@@ -351,6 +352,8 @@ namespace Lunar.Telas.Food
                     fr.ShowDialog();
                     formBackground.Dispose();
                     fr.Dispose();
+
+                    loadMesas();
                 }
             }
         }

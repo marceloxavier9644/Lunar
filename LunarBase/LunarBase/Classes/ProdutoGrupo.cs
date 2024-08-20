@@ -8,6 +8,8 @@ namespace LunarBase.Classes
     {
         private int id;
         private string descricao;
+        private bool food;
+        private string caminhoImagem;
         private Empresa empresa;
 
         [Anotacao("Código")]
@@ -17,6 +19,11 @@ namespace LunarBase.Classes
         [Anotacao("Empresa")]
         [OcultarEmGridsEPesquisas]
         public virtual Empresa Empresa { get => empresa; set => empresa = value; }
+        [Anotacao("Food?")]
+        public virtual bool Food { get => food; set => food = value; }
+        [Anotacao("Imagem")]
+        [OcultarEmGridsEPesquisas]
+        public virtual string CaminhoImagem { get => caminhoImagem; set => caminhoImagem = value; }
 
         public override string ToString()
         {

@@ -9,7 +9,8 @@
 		<property name="Status" column="STATUS" type="String" length="100"/>
 		<property name="Nome" column="NOME" type="String" length="100"/>
 		<property name="Observacao" column="OBSERVACAO" type="String" length="400"/>
-
+		<property name="AtendimentoId" column="ATENDIMENTOID" type="int"/>
+		
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
 		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>

@@ -12,6 +12,7 @@ namespace LunarBase.Classes
         private string status;
         private string nome;
         private string observacao;
+        private int? atendimentoId;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -25,5 +26,7 @@ namespace LunarBase.Classes
         public virtual string Nome { get => nome; set => nome = value; }
         [Anotacao("Observacao")]
         public virtual string Observacao { get => observacao; set => observacao = value; }
+        [Anotacao("Atendimento ID")]
+        public virtual int? AtendimentoId { get => atendimentoId; set => atendimentoId = value; }
     }
 }

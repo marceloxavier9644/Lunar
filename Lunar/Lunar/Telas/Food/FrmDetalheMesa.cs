@@ -3,7 +3,9 @@ using LunarBase.Classes;
 using LunarBase.ClassesDTO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -15,75 +17,116 @@ namespace Lunar.Telas.Food
         public FrmDetalheMesa(int numeroMesa, int idMesa)
         {
             InitializeComponent();
-            button1.Text = numeroMesa.ToString();
 
-            InitializeDynamicButtons();
             mesa.Id = idMesa;
             mesa = (AtendimentoMesa)Controller.getInstance().selecionar(mesa);
-        }
-
-        private void InitializeDynamicButtons()
-        {
-            // Exemplo de dados de pessoas
-            string[] pessoas = { "GERAL" };
-
-            // Cria botões dinamicamente
-            foreach (var pessoa in pessoas)
+            if (mesa.AtendimentoId != null)
             {
-                Button btn = new Button();
-                btn.Text = pessoa;
-                btn.Size = new Size(200, 50);
-                btn.BackColor = Color.FromArgb(123, 19, 255);
-                btn.ForeColor = Color.White;
-                btn.FlatStyle = FlatStyle.Flat;
-                btn.Margin = new Padding(5);
-                btn.Click += new EventHandler(Button_Click);
-                btn.Font = new Font("Microsoft JhengHei", 12, FontStyle.Regular);
-
-                flowLayoutPanel1.Controls.Add(btn);
+                ajustarBotaoMesaOcupada();
+                CarregarVinculo(int.Parse(mesa.AtendimentoId.ToString()));
+                InicializarAtendimentoConta(int.Parse(mesa.AtendimentoId.ToString()));
             }
-
-            // Adiciona o botão especial "Ocupar Mesa [F8]"
-            Button ocuparMesaBtn = new Button();
-            ocuparMesaBtn.Text = "Adicionar Conta [F9]";
-            ocuparMesaBtn.Size = new Size(200, 50);
-            ocuparMesaBtn.BackColor = Color.White;
-            ocuparMesaBtn.ForeColor = Color.FromArgb(123, 19, 255);
-            ocuparMesaBtn.FlatStyle = FlatStyle.Flat;
-            ocuparMesaBtn.Margin = new Padding(5);
-            ocuparMesaBtn.Click += new EventHandler(AdicionarConta_Click);
-            ocuparMesaBtn.Font = new Font("Microsoft JhengHei", 12, FontStyle.Regular);
-
-            flowLayoutPanel1.Controls.Add(ocuparMesaBtn);
         }
-        private void AdicionarConta_Click(object sender, EventArgs e)
+        private void CriarBotoesParaVinculos(List<AtendimentoVinculoDto> vinculos)
         {
-            // Ação ao clicar no botão "Ocupar Mesa [F8]"
-            MessageBox.Show("Adicionar Conta [F9]");
+            // Limpar o Panel antes de adicionar novos botões
+            panel1.Controls.Clear();
+
+            // Tamanho e espaçamento dos botões
+            int buttonWidth = 75;
+            int buttonHeight = 63;
+            int spacing = 10; // Espaçamento entre botões
+            int startX = 10; // Posição inicial X
+
+            // Definições de estilo do botão
+            Font buttonFont = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular);
+            Color buttonBackColor = Color.FromArgb(123, 19, 255);
+            Color buttonForeColor = Color.White; // Cor da fonte
+
+            // Calcular a posição Y inicial para centralizar verticalmente
+            int totalHeight = buttonHeight;
+            int panelHeight = panel1.ClientSize.Height;
+            int startY = (panelHeight - totalHeight) / 2;
+
+            // Adiciona os botões ao panel
+            for (int i = 0; i < vinculos.Count; i++)
+            {
+                var vinculo = vinculos[i];
+
+                Button button = new Button
+                {
+                    Width = buttonWidth,
+                    Height = buttonHeight,
+                    Text = vinculo.IdMesa.ToString(), // Texto do botão como número da mesa
+                    Location = new Point(startX + i * (buttonWidth + spacing), startY),
+                    Font = buttonFont, // Define a fonte do botão
+                    BackColor = buttonBackColor, // Define a cor de fundo do botão
+                    ForeColor = buttonForeColor // Define a cor da fonte do botão
+                };
+
+                // Adicione um evento de clique, se necessário
+                button.Click += (sender, e) =>
+                {
+                    // Ação ao clicar no botão, você pode personalizar conforme necessário
+                    MessageBox.Show($"Mesa {vinculo.IdMesa}");
+                };
+
+                // Adiciona o botão ao panel
+                panel1.Controls.Add(button);
+            }
         }
-        // Evento de clique para expandir e mostrar mais detalhes
+        private async void CarregarVinculo(int idAtendimento)
+        {
+            var vinculos = await ApiServiceFood.GetListaVinculoPorAtendimento(idAtendimento);
+            CriarBotoesParaVinculos(vinculos);
+        }
+        private void InicializarAtendimentoConta(int idAtendimento)
+        {
+            flowLayoutPanel1.Controls.Clear();
+
+            AtendimentoContaController atendimentoContaController = new AtendimentoContaController();
+            IList<AtendimentoConta> listaConta = atendimentoContaController.selecionarTodosAtendimentoConta(idAtendimento);
+            if (listaConta.Count > 0)
+            {
+                foreach (var conta in listaConta)
+                {
+                    Button btn = new Button();
+                    btn.Text = conta.NomeCliente; // Presumindo que NomeCliente seja uma propriedade de AtendimentoConta
+                    btn.Size = new Size(200, 50);
+                    if (conta.NomeCliente.Equals("GERAL"))
+                    {
+                        btn.BackColor = Color.FromArgb(123, 19, 255);
+                        btn.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                           btn.BackColor = Color.White;
+                        btn.ForeColor = Color.Black;
+                    }
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.Margin = new Padding(5);
+                    btn.Font = new Font("Microsoft JhengHei", 12, FontStyle.Regular);
+
+                    // Associa o objeto AtendimentoConta ao botão
+                    btn.Tag = conta;
+
+                    // Associa o evento de clique ao botão
+                    btn.Click += new EventHandler(Button_Click);
+
+                    // Adiciona o botão ao FlowLayoutPanel
+                    flowLayoutPanel1.Controls.Add(btn);
+                }
+            }
+        }
         private void Button_Click(object sender, EventArgs e)
         {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag is AtendimentoConta conta)
             {
-                // Alterna entre expandir e recolher
-                if (clickedButton.Height == 50)
-                {
-                    clickedButton.Height = 100; // Expande o botão
-                    Label detailsLabel = new Label();
-                    detailsLabel.Text = $"Detalhes de {clickedButton.Text}";
-                    detailsLabel.Size = new Size(180, 50);
-                    detailsLabel.Location = new Point(10, 50); // Posição abaixo do texto do botão
-                    detailsLabel.ForeColor = Color.White;
-                    detailsLabel.BackColor = Color.Transparent;
-                    clickedButton.Controls.Add(detailsLabel);
-                }
-                else
-                {
-                    clickedButton.Height = 50; // Recolhe o botão
-                    clickedButton.Controls.Clear(); // Remove detalhes
-                }
+
+                MessageBox.Show($"Conta selecionada: {conta.NomeCliente}");
+                FrmPdvFood frmPdvFood = new FrmPdvFood();
+                frmPdvFood.ShowDialog();
             }
         }
 
@@ -109,43 +152,11 @@ namespace Lunar.Telas.Food
 
         private async void btnOcuparMesa_Click(object sender, EventArgs e)
         {
-            //mesa.Status = "OCUPADO";
-            //Controller.getInstance().salvar(mesa);
-
-            //AtendimentoDto atendimentoDto = new AtendimentoDto();
-            //atendimentoDto.Id = 0;
-            //atendimentoDto.Data = DateTime.Now;
-            //atendimentoDto.Identificacao = "GERAL";
-            //atendimentoDto.Observacoes = "";
-            ////Salvar Atendimento
-            //string idAtendimento = await ApiServiceFood.PostSalvarAtendimento(atendimentoDto);
-
-            //AtendimentoContaDto atendimentoContaDto = new AtendimentoContaDto();
-            //atendimentoContaDto.IdAtendimento = int.Parse(idAtendimento);
-            //atendimentoContaDto.NomeCliente = "GERAL";
-            //atendimentoContaDto.IdCliente = null;
-            ////Salvar Atendimento Conta
-            //string idAtendimentoConta = await ApiServiceFood.PostSalvarAtendimentoConta(atendimentoContaDto);
-
-
-            //AtendimentoVinculoDto atendimentoVinculoDto = new AtendimentoVinculoDto();
-            //atendimentoVinculoDto.Id = 0;
-            //atendimentoVinculoDto.IdMesa = mesa.Id;
-            //atendimentoVinculoDto.IdConta = int.Parse(idAtendimentoConta);
-            //atendimentoVinculoDto.IdAtendimento = int.Parse(idAtendimento);
-            //atendimentoVinculoDto.Operador = Sessao.usuarioLogado.Id.ToString();
-            ////Salvar Atendimento Conta
-            //string result2 = await ApiServiceFood.PostSalvarAtendimentoVinculo(atendimentoVinculoDto);
-
-            //GenericaDesktop.ShowInfo("Abertura de Mesa Realizada com Sucesso!");
             ocuparMesaAsync();
         }
 
         private async void ocuparMesaAsync()
         {
-            //mesa.Status = "OCUPADO";
-            //Controller.getInstance().salvar(mesa);
-
             AtendimentoDto atendimentoDto = new AtendimentoDto
             {
                 Id = 0,
@@ -180,10 +191,76 @@ namespace Lunar.Telas.Food
             };
 
             string result = await ApiServiceFood.PostSalvarAtendimentoMaster(atendimentoMasterDto);
+            var atendimentoResponse = JsonConvert.DeserializeObject<AtendimentoResponse>(result);
+            CarregarVinculo(atendimentoResponse.AtendimentoId);
+            InicializarAtendimentoConta(atendimentoResponse.AtendimentoId);
 
+            ajustarBotaoMesaOcupada();
             GenericaDesktop.ShowInfo("Abertura de Mesa Realizada com Sucesso!");
         }
 
+        private void ajustarBotaoMesaOcupada()
+        {
+            btnOcuparMesa.BackColor = Color.Wheat;
+            btnOcuparMesa.Enabled = false;
+            btnOcuparMesa.Text = "MESA OCUPADA";
+        }
+        public class AtendimentoResponse
+        {
+            public int AtendimentoId { get; set; }
+            public int AtendimentoContaId { get; set; }
+            public int MesaId { get; set; }
+            public string Message { get; set; }
+        }
 
+        private void btnAdicionarConta_Click(object sender, EventArgs e)
+        {
+            int quantidadePessoa = 0;
+            if (!String.IsNullOrEmpty(txtQuantidadePessoas.Text))
+                quantidadePessoa = int.Parse(txtQuantidadePessoas.Text);
+
+            Form formBackground = new Form();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            FrmAdicionarComanda fr = new FrmAdicionarComanda(true, mesa.Id.ToString(), quantidadePessoa, mesa.AtendimentoId.ToString());
+            fr.Owner = formBackground;
+            fr.ShowDialog();
+            formBackground.Dispose();
+            fr.Dispose();
+            InicializarAtendimentoConta(int.Parse(mesa.AtendimentoId.ToString()));
+        }
+
+        private void FrmDetalheMesa_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+                case Keys.F8:
+                    btnOcuparMesa.PerformClick();
+                    break;
+                case Keys.F10:
+                    btnReservarMesa.PerformClick();
+                    break;
+                case Keys.F11:
+                    btnAdicionarConta.PerformClick();
+                    break;
+            }
+        }
+
+        private void btnReservarMesa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

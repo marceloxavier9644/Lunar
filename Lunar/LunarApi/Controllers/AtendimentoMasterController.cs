@@ -4,21 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LunarApi.Controllers
 {
-    public class AtendimentoMasterControllerApi : Controller
+    [ApiController]
+    [Route("api")]
+    public class AtendimentoMasterControllerApi : ControllerBase
     {
         [HttpPost]
-        [Route("api/AtendimentoMaster")]
+        [Route("SalvarAtendimentoMaster")]
         public async Task<IActionResult> SalvarAtendimentoMaster([FromBody] AtendimentoMasterDto atendimentoMasterDto)
         {
             try
             {
                 NHibernateHelper.BeginTransaction();
-
-                // Carregar Mesa existente
-                AtendimentoMesa mesa = new AtendimentoMesa { Id = atendimentoMasterDto.IdMesa };
-                mesa = (AtendimentoMesa)LunarBase.ControllerBO.Controller.getInstance().selecionar(mesa);
-                mesa.Status = "OCUPADO";
-                LunarBase.ControllerBO.Controller.getInstance().salvar(mesa);
 
                 // Salvar Atendimento
                 Atendimento atendimento = new Atendimento
@@ -30,19 +26,26 @@ namespace LunarApi.Controllers
                 };
                 LunarBase.ControllerBO.Controller.getInstance().salvar(atendimento);
 
-                // Atualizar o ID do Atendimento na entidade
+                // Atualizar o ID do Atendimento na DTO
                 atendimentoMasterDto.Atendimento.Id = atendimento.Id;
+
+                // Carregar Mesa existente
+                AtendimentoMesa mesa = new AtendimentoMesa { Id = atendimentoMasterDto.IdMesa };
+                mesa = (AtendimentoMesa)LunarBase.ControllerBO.Controller.getInstance().selecionar(mesa);
+                mesa.Status = "OCUPADO";
+                mesa.AtendimentoId = atendimento.Id;
+                LunarBase.ControllerBO.Controller.getInstance().salvar(mesa);
 
                 // Salvar AtendimentoConta
                 AtendimentoConta atendimentoConta = new AtendimentoConta
                 {
                     AtendimentoId = atendimento.Id,
-                    Cliente = null,
+                    Cliente = null, // Ajuste conforme necessário
                     NomeCliente = atendimentoMasterDto.AtendimentoConta.NomeCliente
                 };
                 LunarBase.ControllerBO.Controller.getInstance().salvar(atendimentoConta);
 
-                // Atualizar o ID da AtendimentoConta na entidade
+                // Atualizar o ID da AtendimentoConta na DTO
                 atendimentoMasterDto.AtendimentoConta.Id = atendimentoConta.Id;
 
                 // Salvar AtendimentoVinculo
@@ -57,7 +60,16 @@ namespace LunarApi.Controllers
 
                 NHibernateHelper.CommitTransaction();
 
-                return Ok("Abertura de Mesa Realizada com Sucesso!");
+                // Retorne um objeto com os IDs gerados
+                var response = new
+                {
+                    AtendimentoId = atendimento.Id,
+                    AtendimentoContaId = atendimentoConta.Id,
+                    MesaId = mesa.Id,
+                    Message = "Abertura de Mesa Realizada com Sucesso!"
+                };
+
+                return Ok(response);
             }
             catch (Exception ex)
             {

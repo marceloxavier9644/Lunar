@@ -61,5 +61,17 @@ namespace LunarBase.ClassesBO
         {
             return true;
         }
+
+        public IList<AtendimentoVinculo> selecionarVinculosPorAtendimento(int idAtendimento)
+        {
+            try
+            {
+                return dao.selecionarVinculosPorAtendimento(idAtendimento);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Atendimento Vinculo! Erro: " + e.Message);
+            }
+        }
     }
 }

@@ -11,42 +11,58 @@ namespace LunarApi.Controllers
     {
         // Método para obter todas as mesas e comandas com um nome específico de consulta
         [HttpGet("ListaMesas")]
-        public ActionResult<List<AtendimentoMesa>> GetAtendimentoMesas()
+        public async Task<IActionResult> GetAtendimentoMesas()
         {
             List<AtendimentoMesa> mesas = new List<AtendimentoMesa>();
-            var controller = LunarBase.ControllerBO.Controller.getInstance(); // Instância do Controller do LunarBase
+
             try
             {
+                NHibernateHelper.OpenSession(); // Abra a sessão NHibernate
+                NHibernateHelper.BeginTransaction(); // Inicie a transação, se necessário
+
+                var controller = LunarBase.ControllerBO.Controller.getInstance(); // Instância do Controller do LunarBase
+
                 IList<ObjetoPadrao> listaObjetos = controller.selecionarTodos(new AtendimentoMesa());
+
                 foreach (var objeto in listaObjetos)
                 {
                     mesas.Add((AtendimentoMesa)objeto);
                 }
-                
-                // Enviar atualizações para WebSocket
-                //WebSocketHandler.SendMessageToAllAsync("MesaAtualizada").Wait(); // Aguarde a tarefa para garantir que a mensagem é enviada
+
+                NHibernateHelper.CommitTransaction(); // Commit da transação se estiver sendo usada
 
                 return Ok(mesas);
             }
             catch (Exception ex)
             {
+                NHibernateHelper.RollbackTransaction(); // Rollback da transação em caso de erro
                 return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+            finally
+            {
+                NHibernateHelper.CloseSession(); // Feche a sessão NHibernate
             }
         }
 
-        // Método para deletar todas as mesas
+
         [HttpDelete("DeletarTodas")]
         public IActionResult DeleteAllMesas()
         {
-            var controller = LunarBase.ControllerBO.Controller.getInstance();
             try
             {
+                NHibernateHelper.OpenSession(); // Abra a sessão NHibernate
+                NHibernateHelper.BeginTransaction(); // Inicie a transação
+
+                var controller = LunarBase.ControllerBO.Controller.getInstance();
                 AtendimentoMesaController atendimentoMesaController = new LunarBase.ControllerBO.AtendimentoMesaController();
+
                 IList<AtendimentoMesa> listaObjetos = atendimentoMesaController.selecionarTodasMesas();
                 foreach (AtendimentoMesa objeto in listaObjetos)
                 {
                     controller.excluir(objeto);
                 }
+
+                NHibernateHelper.CommitTransaction(); // Commit da transação
 
                 // Notificar WebSocket sobre a exclusão
                 string message = "Todas as mesas foram excluídas.";
@@ -56,8 +72,14 @@ namespace LunarApi.Controllers
             }
             catch (Exception ex)
             {
+                NHibernateHelper.RollbackTransaction(); // Rollback da transação em caso de erro
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
+            finally
+            {
+                NHibernateHelper.CloseSession(); // Feche a sessão NHibernate
+            }
         }
+
     }
 }

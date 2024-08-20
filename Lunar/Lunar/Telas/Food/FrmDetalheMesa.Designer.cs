@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetalheMesa));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +40,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnOcuparMesa = new System.Windows.Forms.Button();
             this.btnReservarMesa = new System.Windows.Forms.Button();
+            this.btnAdicionarConta = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidadePessoas)).BeginInit();
@@ -49,26 +50,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(840, 118);
             this.panel1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(17, 42);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 63);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "5";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -164,6 +151,7 @@
             // 
             // btnOcuparMesa
             // 
+            this.btnOcuparMesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnOcuparMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnOcuparMesa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOcuparMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -178,6 +166,7 @@
             // 
             // btnReservarMesa
             // 
+            this.btnReservarMesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnReservarMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
             this.btnReservarMesa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReservarMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -188,6 +177,36 @@
             this.btnReservarMesa.TabIndex = 10;
             this.btnReservarMesa.Text = "Reservar Mesa [F10]";
             this.btnReservarMesa.UseVisualStyleBackColor = false;
+            this.btnReservarMesa.Click += new System.EventHandler(this.btnReservarMesa_Click);
+            // 
+            // btnAdicionarConta
+            // 
+            this.btnAdicionarConta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAdicionarConta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
+            this.btnAdicionarConta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdicionarConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarConta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAdicionarConta.Location = new System.Drawing.Point(370, 507);
+            this.btnAdicionarConta.Name = "btnAdicionarConta";
+            this.btnAdicionarConta.Size = new System.Drawing.Size(173, 48);
+            this.btnAdicionarConta.TabIndex = 11;
+            this.btnAdicionarConta.Text = "Adicionar Conta [F11]";
+            this.btnAdicionarConta.UseVisualStyleBackColor = false;
+            this.btnAdicionarConta.Click += new System.EventHandler(this.btnAdicionarConta_Click);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
+            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSalvar.Location = new System.Drawing.Point(655, 507);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(173, 48);
+            this.btnSalvar.TabIndex = 12;
+            this.btnSalvar.Text = "Salvar [F5]";
+            this.btnSalvar.UseVisualStyleBackColor = false;
             // 
             // FrmDetalheMesa
             // 
@@ -195,6 +214,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(840, 567);
+            this.Controls.Add(this.btnSalvar);
+            this.Controls.Add(this.btnAdicionarConta);
             this.Controls.Add(this.btnReservarMesa);
             this.Controls.Add(this.btnOcuparMesa);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -203,11 +224,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmDetalheMesa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalhes da Mesa";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmDetalheMesa_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -221,7 +242,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton btnMenosPessoas;
         private Syncfusion.Windows.Forms.Tools.IntegerTextBox txtQuantidadePessoas;
@@ -231,5 +251,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnOcuparMesa;
         private System.Windows.Forms.Button btnReservarMesa;
+        private System.Windows.Forms.Button btnAdicionarConta;
+        private System.Windows.Forms.Button btnSalvar;
     }
 }

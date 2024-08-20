@@ -56,6 +56,11 @@ namespace Lunar.Telas.ArquivosContabilidade
         }
         private async void btnEnviar_Click(object sender, EventArgs e)
         {
+            string localFilePath = !String.IsNullOrEmpty(txtPasta.Texts) ? txtPasta.Texts + @"\" : Path.GetTempPath();
+            txtPasta.Texts = localFilePath + txtAno.Text + txtMes.Text;
+            if (!Directory.Exists(txtPasta.Texts))
+                Directory.CreateDirectory(txtPasta.Texts);
+
             if (VerificarNotasComRejeicao())
             {
                 if (VerificarPreenchimentoCampos())
@@ -176,8 +181,7 @@ namespace Lunar.Telas.ArquivosContabilidade
         {
             // Mostrar o ProgressBar e configurar o estilo de espera
             progressBarAdv1.Visible = true;
-            string localFilePath = !String.IsNullOrEmpty(txtPasta.Texts) ? txtPasta.Texts + @"\" : Path.GetTempPath();
-            txtPasta.Texts = localFilePath + @"\" + txtAno.Text + txtMes.Text;
+
             try
             {
                 //await Task.Delay(5000); // Remova ou substitua por suas operações reais
@@ -186,7 +190,7 @@ namespace Lunar.Telas.ArquivosContabilidade
                 lblInfo.Text = "Gerando Relátorio NFe e NFCe...";
                 await Task.Run(() => gerarRelatorioNfeENfce());
                 lblInfo.Text = "Gerando Sintegra...";
-                await Task.Run(() => gerarSintegra());
+                 await Task.Run(() => gerarSintegra());
                 if (chkRegistro74.Checked == true)
                 {
                     lblInfo.Text = "Gerando Inventário...";
@@ -197,7 +201,7 @@ namespace Lunar.Telas.ArquivosContabilidade
                 if (!String.IsNullOrEmpty(txtPasta.Texts))
                 {
                     LunarApiNotas lunarApiNotas = new LunarApiNotas();
-                    var retor = await lunarApiNotas.coletarArquivosContabeisEConferir(Sessao.empresaFilialLogada.Cnpj, txtMes.Text, txtAno.Text, localFilePath);
+                    var retor = await lunarApiNotas.coletarArquivosContabeisEConferir(Sessao.empresaFilialLogada.Cnpj, txtMes.Text, txtAno.Text, txtPasta.Texts);
 
                     if (retor != null)
                     {
@@ -725,7 +729,7 @@ namespace Lunar.Telas.ArquivosContabilidade
                 { "Periodo", periodo },
                 {"Modelo", "NFC-e MOD. 65" }
             };
-            GerarRelatorioPDF(txtPasta.Texts + @"\Relatorio NFC-e 65.pdf", parametros, "65");
+            GerarRelatorioPDF(txtPasta.Texts + @"\Inventario.pdf", parametros, "Inventario");
 
             //GERAR RELATORIO 55
             parametros = new Dictionary<string, string>

@@ -198,6 +198,8 @@ namespace Lunar.Utils.OrganizacaoNF
         {
             if (cnpj.Equals("42988444000127"))
                 Sessao.serialPainel = "C0021738-FAD3-45D8-95E4-2CD28D6E6DF3";
+            if(cnpj.Equals("03492833000105"))
+                Sessao.serialPainel = "041BBFA6-4F6B-410F-BBAC-B0D509D2113B";
 
             string url = "https://lunarsoftware.com.br/painel/api/api-invoice-get.php";
             HttpClient httpClient = new HttpClient();

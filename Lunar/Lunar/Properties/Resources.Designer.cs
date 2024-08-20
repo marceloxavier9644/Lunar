@@ -173,6 +173,16 @@ namespace Lunar.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_lunar_food {
+            get {
+                object obj = ResourceManager.GetObject("logo_lunar_food", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lunarIcone {
             get {
                 object obj = ResourceManager.GetObject("lunarIcone", resourceCulture);

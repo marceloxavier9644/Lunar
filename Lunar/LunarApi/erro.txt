@@ -1,1 +1,1 @@
-ERRO CONEXAOUnable to connect to any of the specified MySQL hosts.
+ERRO CONEXAOCould not compile the mapping document: LunarBase.HBM.Atendimento.hbm.xml

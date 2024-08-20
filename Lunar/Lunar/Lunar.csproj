@@ -881,6 +881,18 @@
     <Compile Include="Telas\Food\FrmDetalheMesa.Designer.cs">
       <DependentUpon>FrmDetalheMesa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Food\FrmPdvFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Food\FrmPdvFood.Designer.cs">
+      <DependentUpon>FrmPdvFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Food\ProdutoItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telas\Food\ProdutoItemControl.Designer.cs">
+      <DependentUpon>ProdutoItemControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Food\UpdateTela.cs" />
     <Compile Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.cs">
       <SubType>Form</SubType>
@@ -1600,6 +1612,12 @@
     <EmbeddedResource Include="Telas\Food\FrmDetalheMesa.resx">
       <DependentUpon>FrmDetalheMesa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Food\FrmPdvFood.resx">
+      <DependentUpon>FrmPdvFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Food\ProdutoItemControl.resx">
+      <DependentUpon>ProdutoItemControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\FormaPagamentoRecebimento\Adicionais\FrmCrediarioOrdemServico.resx">
       <DependentUpon>FrmCrediarioOrdemServico.cs</DependentUpon>
     </EmbeddedResource>
@@ -2302,6 +2320,7 @@
     <None Include="Resources\LunarLogoBmp.bmp" />
     <None Include="Resources\login_black_24dp 1.png" />
     <None Include="Resources\img-wellcome-sis-lunar.png" />
+    <None Include="Resources\logo_lunar_food.png" />
     <Content Include="Resources\Mark all as read.png" />
     <Content Include="Resources\Message Priview.png" />
     <Content Include="Resources\more.png" />

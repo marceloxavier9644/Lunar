@@ -77,5 +77,17 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar grupo! Erro: " + e.Message);
             }
         }
+
+        public IList<ProdutoGrupo> selecionarTodosGruposFood()
+        {
+            try
+            {
+                return dao.selecionarTodosGruposFood();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar grupo! Erro: " + e.Message);
+            }
+        }
     }
 }

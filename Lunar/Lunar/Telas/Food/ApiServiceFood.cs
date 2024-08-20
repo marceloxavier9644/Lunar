@@ -1,5 +1,8 @@
-﻿using LunarBase.Classes;
+﻿using iTextSharp.text;
+using Lunar.Utils;
+using LunarBase.Classes;
 using LunarBase.ClassesDTO;
+using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Newtonsoft.Json;
 using System;
@@ -49,22 +52,27 @@ namespace Lunar.Telas.Food
         //Deletar as Mesas anteriores
         public static async Task DeleteAllMesasAsync()
         {
-            string ip = "";
-            string porta = "";
-            if (!String.IsNullOrEmpty(Sessao.atendimentoConfig.IpServidor))
+            AtendimentoMesaController atendimentoMesaController = new AtendimentoMesaController();
+            IList<AtendimentoMesa> listaMesa = atendimentoMesaController.selecionarTodasMesas();
+            if (listaMesa.Count > 0)
             {
-                ip = Sessao.atendimentoConfig.IpServidor;
-                porta = Sessao.atendimentoConfig.PortaApi;
-            }
-            try
-            {
-                HttpResponseMessage response = await client.DeleteAsync("http://"+ip+":"+porta+ "/api/Mesas/DeletarTodas");
-                response.EnsureSuccessStatusCode();
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                string ip = "";
+                string porta = "";
+                if (!String.IsNullOrEmpty(Sessao.atendimentoConfig.IpServidor))
+                {
+                    ip = Sessao.atendimentoConfig.IpServidor;
+                    porta = Sessao.atendimentoConfig.PortaApi;
+                }
+                try
+                {
+                    HttpResponseMessage response = await client.DeleteAsync("http://" + ip + ":" + porta + "/api/Mesas/DeletarTodas");
+                    response.EnsureSuccessStatusCode();
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine("\nException Caught!");
+                    Console.WriteLine("Message :{0} ", e.Message);
+                }
             }
         }
 
@@ -226,7 +234,7 @@ namespace Lunar.Telas.Food
                 porta = Sessao.atendimentoConfig.PortaApi;
             }
 
-            var url = "http://" + ip + ":" + porta + "/api/AtendimentoMaster"; 
+            var url = "http://" + ip + ":" + porta + "/api/SalvarAtendimentoMaster"; 
             var json = JsonConvert.SerializeObject(atendimentoMasterDto);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -242,6 +250,28 @@ namespace Lunar.Telas.Food
                 // Log and handle the exception as needed
                 Console.WriteLine($"Request error: {e.Message}");
                 return null;
+            }
+        }
+
+
+        public static async Task<List<AtendimentoVinculoDto>> GetListaVinculoPorAtendimento(int idAtendimento)
+        {
+            try
+            {
+                // Defina a URL da API com o ID do atendimento
+                string apiUrl = $"http://{Sessao.atendimentoConfig.IpServidor}:{Sessao.atendimentoConfig.PortaApi}/api/AtendimentoVinculo/{idAtendimento}";
+
+                using (HttpClient client = new HttpClient())
+                {
+                    var response = await client.GetStringAsync(apiUrl);
+                    var vinculos = JsonConvert.DeserializeObject<List<AtendimentoVinculoDto>>(response);
+                    return vinculos;
+                }
+            }
+            catch (Exception ex)
+            {
+                GenericaDesktop.ShowErro($"Erro ao carregar vínculos: {ex.Message}");
+                return new List<AtendimentoVinculoDto>(); // Retorne uma lista vazia em caso de erro
             }
         }
 

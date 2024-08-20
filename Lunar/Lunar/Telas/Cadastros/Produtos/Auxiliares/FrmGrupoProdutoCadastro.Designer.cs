@@ -37,17 +37,21 @@
             this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.txtGrupo = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.chkFood = new System.Windows.Forms.CheckBox();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtCaminhoImagem = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnPesquisarImagem = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // autoLabel3
             // 
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel3.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
             this.autoLabel3.Location = new System.Drawing.Point(25, 62);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(55, 18);
+            this.autoLabel3.Size = new System.Drawing.Size(51, 16);
             this.autoLabel3.TabIndex = 239;
             this.autoLabel3.Text = "Código";
             this.autoLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -55,11 +59,11 @@
             // autoLabel6
             // 
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel6.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
             this.autoLabel6.Location = new System.Drawing.Point(136, 60);
             this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(49, 18);
+            this.autoLabel6.Size = new System.Drawing.Size(44, 16);
             this.autoLabel6.TabIndex = 238;
             this.autoLabel6.Text = "Grupo";
             // 
@@ -77,11 +81,11 @@
             // autoLabel4
             // 
             this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel4.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel4.ForeColor = System.Drawing.Color.White;
             this.autoLabel4.Location = new System.Drawing.Point(5, 7);
             this.autoLabel4.Name = "autoLabel4";
-            this.autoLabel4.Size = new System.Drawing.Size(203, 29);
+            this.autoLabel4.Size = new System.Drawing.Size(182, 25);
             this.autoLabel4.TabIndex = 198;
             this.autoLabel4.Text = "Grupo de Produto";
             // 
@@ -95,7 +99,7 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             this.btnFechar.IconColor = System.Drawing.Color.White;
             this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFechar.IconSize = 30;
@@ -115,7 +119,7 @@
             this.txtCodigo.BorderSize = 2;
             this.txtCodigo.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCodigo.Location = new System.Drawing.Point(13, 71);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
@@ -125,9 +129,11 @@
             this.txtCodigo.PasswordChar = false;
             this.txtCodigo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtCodigo.PlaceholderText = "";
-            this.txtCodigo.Size = new System.Drawing.Size(102, 39);
+            this.txtCodigo.ReadOnly = false;
+            this.txtCodigo.Size = new System.Drawing.Size(102, 37);
             this.txtCodigo.TabIndex = 233;
             this.txtCodigo.Tag = "";
+            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodigo.Texts = "";
             this.txtCodigo.UnderlinedStyle = false;
             // 
@@ -143,7 +149,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Location = new System.Drawing.Point(489, 145);
+            this.btnSalvar.Location = new System.Drawing.Point(489, 242);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(298, 45);
             this.btnSalvar.TabIndex = 235;
@@ -166,7 +172,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelar.Location = new System.Drawing.Point(185, 145);
+            this.btnCancelar.Location = new System.Drawing.Point(185, 242);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(298, 45);
             this.btnCancelar.TabIndex = 236;
@@ -184,7 +190,7 @@
             this.txtGrupo.BorderRadius = 8;
             this.txtGrupo.BorderSize = 2;
             this.txtGrupo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtGrupo.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtGrupo.Location = new System.Drawing.Point(123, 71);
             this.txtGrupo.Margin = new System.Windows.Forms.Padding(4);
@@ -194,18 +200,86 @@
             this.txtGrupo.PasswordChar = false;
             this.txtGrupo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtGrupo.PlaceholderText = "";
-            this.txtGrupo.Size = new System.Drawing.Size(664, 39);
+            this.txtGrupo.ReadOnly = false;
+            this.txtGrupo.Size = new System.Drawing.Size(664, 37);
             this.txtGrupo.TabIndex = 234;
             this.txtGrupo.Tag = "";
+            this.txtGrupo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGrupo.Texts = "";
             this.txtGrupo.UnderlinedStyle = false;
+            // 
+            // chkFood
+            // 
+            this.chkFood.AutoSize = true;
+            this.chkFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFood.Location = new System.Drawing.Point(19, 170);
+            this.chkFood.Name = "chkFood";
+            this.chkFood.Size = new System.Drawing.Size(62, 22);
+            this.chkFood.TabIndex = 240;
+            this.chkFood.Text = "Food";
+            this.chkFood.UseVisualStyleBackColor = true;
+            // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel1.Location = new System.Drawing.Point(25, 112);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(56, 16);
+            this.autoLabel1.TabIndex = 242;
+            this.autoLabel1.Text = "Imagem";
+            // 
+            // txtCaminhoImagem
+            // 
+            this.txtCaminhoImagem.BackColor = System.Drawing.Color.White;
+            this.txtCaminhoImagem.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCaminhoImagem.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCaminhoImagem.BorderRadius = 8;
+            this.txtCaminhoImagem.BorderSize = 2;
+            this.txtCaminhoImagem.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCaminhoImagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCaminhoImagem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCaminhoImagem.Location = new System.Drawing.Point(13, 123);
+            this.txtCaminhoImagem.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCaminhoImagem.Multiline = false;
+            this.txtCaminhoImagem.Name = "txtCaminhoImagem";
+            this.txtCaminhoImagem.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCaminhoImagem.PasswordChar = false;
+            this.txtCaminhoImagem.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCaminhoImagem.PlaceholderText = "";
+            this.txtCaminhoImagem.ReadOnly = false;
+            this.txtCaminhoImagem.Size = new System.Drawing.Size(730, 37);
+            this.txtCaminhoImagem.TabIndex = 241;
+            this.txtCaminhoImagem.Tag = "";
+            this.txtCaminhoImagem.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCaminhoImagem.Texts = "";
+            this.txtCaminhoImagem.UnderlinedStyle = false;
+            // 
+            // btnPesquisarImagem
+            // 
+            this.btnPesquisarImagem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisarImagem.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisarImagem.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(19)))), ((int)(((byte)(255)))));
+            this.btnPesquisarImagem.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPesquisarImagem.IconSize = 24;
+            this.btnPesquisarImagem.Location = new System.Drawing.Point(750, 125);
+            this.btnPesquisarImagem.Name = "btnPesquisarImagem";
+            this.btnPesquisarImagem.Size = new System.Drawing.Size(36, 35);
+            this.btnPesquisarImagem.TabIndex = 243;
+            this.btnPesquisarImagem.UseVisualStyleBackColor = true;
+            this.btnPesquisarImagem.Click += new System.EventHandler(this.btnPesquisarImagem_Click);
             // 
             // FrmGrupoProdutoCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 224);
+            this.ClientSize = new System.Drawing.Size(800, 299);
+            this.Controls.Add(this.btnPesquisarImagem);
+            this.Controls.Add(this.autoLabel1);
+            this.Controls.Add(this.txtCaminhoImagem);
+            this.Controls.Add(this.chkFood);
             this.Controls.Add(this.autoLabel3);
             this.Controls.Add(this.autoLabel6);
             this.Controls.Add(this.panelTitleBar);
@@ -238,5 +312,9 @@
         private RJ_UI.Classes.RJButton btnSalvar;
         private RJ_UI.Classes.RJButton btnCancelar;
         private RJ_UI.Classes.RJTextBox txtGrupo;
+        private System.Windows.Forms.CheckBox chkFood;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
+        private RJ_UI.Classes.RJTextBox txtCaminhoImagem;
+        private FontAwesome.Sharp.IconButton btnPesquisarImagem;
     }
 }

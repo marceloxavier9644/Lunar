@@ -61,5 +61,16 @@ namespace LunarBase.ClassesBO
         {
             return true;
         }
+        public IList<AtendimentoConta> selecionarTodosAtendimentoConta(int idAtendimento)
+        {
+            try
+            {
+                return dao.selecionarTodosAtendimentoConta(idAtendimento);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Atendimento Conta! Erro: " + e.Message);
+            }
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace LunarBase.Classes
         private DateTime data;
         private string observacao;
         private int empresaFilial;
+        private string status;
+
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -22,6 +24,7 @@ namespace LunarBase.Classes
         public virtual string Observacao { get => observacao; set => observacao = value; }
         [Anotacao("Filial")]
         public virtual int EmpresaFilial { get => empresaFilial; set => empresaFilial = value; }
-
+        [Anotacao("Filial")]
+        public virtual string Status { get => status; set => status = value; }
     }
 }

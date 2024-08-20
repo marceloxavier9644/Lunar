@@ -13,5 +13,14 @@ namespace LunarBase.ClassesDAO
             IList<ProdutoGrupo> retorno = Session.CreateQuery(sql).List<ProdutoGrupo>();
             return retorno;
         }
+
+        public IList<ProdutoGrupo> selecionarTodosGruposFood()
+        {
+            Session = Conexao.GetSession();
+            String sql = "FROM ProdutoGrupo as Tabela WHERE Tabela.Food = true and Tabela.FlagExcluido <> true" +
+                         " order by Tabela.Descricao";
+            IList<ProdutoGrupo> retorno = Session.CreateQuery(sql).List<ProdutoGrupo>();
+            return retorno;
+        }
     }
 }

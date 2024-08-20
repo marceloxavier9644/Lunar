@@ -51,13 +51,46 @@ namespace LunarBase.ClassesDAO
         public IList<RetProd> selecionarSomaItensNFCeParaSintegra(string dataInicial, string dataFinal, EmpresaFilial filial)
         {
             Session = Conexao.GetSession();
-            String sql = "SELECT cast(nfeproduto.PRODUTO as Char(255)) as codprod, SUM(nfeproduto.VPROD - nfeproduto.VDESC) as valor, sum(nfeproduto.QuantidadeEntrada) as quantidade, " +
-                "sum(nfeproduto.VBC) as baseCalc, nfeProduto.Ncm as ncm, nfeProduto.XProd as descricao, nfeProduto.UComConvertida as unidadeMedida, " +
-                "nfeProduto.AliqIpi as aliquotaIpi, nfeProduto.PIcms as aliquotaIcms FROM `NfeProduto` INNER JOIN nfe nf ON nfeproduto.NFE = nf.ID " +
-                "WHERE nfeproduto.FLAGEXCLUIDO <> true and nf.NfeStatus = 1 and nf.EmpresaFilial = " + filial.Id + " and nf.FLAGEXCLUIDO <> true and nf.Modelo = '65' and nf.DATAEMISSAO BETWEEN '" + dataInicial+"' and '"+dataFinal+ "' and nf.Lancada = true group by nfeproduto.Produto";
-            IList<RetProd> retorno = Session.CreateSQLQuery(sql).SetResultTransformer(Transformers.AliasToBean<RetProd>()).List<RetProd>().ToList();
+            String sql = "SELECT " +
+                "cast(nfeproduto.PRODUTO as Char(255)) as codprod, " +
+                "SUM(nfeproduto.VPROD - nfeproduto.VDESC) as valor, " +
+                "SUM(nfeproduto.QuantidadeEntrada) as quantidade, " +
+                "SUM(nfeproduto.VBC) as baseCalc, " +
+                "ANY_VALUE(nfeProduto.Ncm) as ncm, " +
+                "ANY_VALUE(nfeProduto.XProd) as descricao, " +
+                "ANY_VALUE(nfeProduto.UComConvertida) as unidadeMedida, " +
+                "ANY_VALUE(nfeProduto.AliqIpi) as aliquotaIpi, " +
+                "ANY_VALUE(nfeProduto.PIcms) as aliquotaIcms " +
+                "FROM `NfeProduto` " +
+                "INNER JOIN nfe nf ON nfeproduto.NFE = nf.ID " +
+                "WHERE nfeproduto.FLAGEXCLUIDO <> true " +
+                "AND nf.NfeStatus = 1 " +
+                "AND nf.EmpresaFilial = " + filial.Id + " " +
+                "AND nf.FLAGEXCLUIDO <> true " +
+                "AND nf.Modelo = '65' " +
+                "AND nf.DATAEMISSAO BETWEEN '" + dataInicial + "' AND '" + dataFinal + "' " +
+                "AND nf.Lancada = true " +
+                "GROUP BY nfeproduto.Produto";
+
+            IList<RetProd> retorno = Session.CreateSQLQuery(sql)
+                .SetResultTransformer(Transformers.AliasToBean<RetProd>())
+                .List<RetProd>()
+                .ToList();
+
             return retorno;
         }
+
+        //Erro group by
+        //public IList<RetProd> selecionarSomaItensNFCeParaSintegra(string dataInicial, string dataFinal, EmpresaFilial filial)
+        //{
+        //    Session = Conexao.GetSession();
+        //    String sql = "SELECT cast(nfeproduto.PRODUTO as Char(255)) as codprod, SUM(nfeproduto.VPROD - nfeproduto.VDESC) as valor, sum(nfeproduto.QuantidadeEntrada) as quantidade, " +
+        //        "sum(nfeproduto.VBC) as baseCalc, nfeProduto.Ncm as ncm, nfeProduto.XProd as descricao, nfeProduto.UComConvertida as unidadeMedida, " +
+        //        "nfeProduto.AliqIpi as aliquotaIpi, nfeProduto.PIcms as aliquotaIcms FROM `NfeProduto` INNER JOIN nfe nf ON nfeproduto.NFE = nf.ID " +
+        //        "WHERE nfeproduto.FLAGEXCLUIDO <> true and nf.NfeStatus = 1 and nf.EmpresaFilial = " + filial.Id + " and nf.FLAGEXCLUIDO <> true and nf.Modelo = '65' and nf.DATAEMISSAO BETWEEN '" + dataInicial+"' and '"+dataFinal+ "' and nf.Lancada = true group by nfeproduto.Produto";
+        //    IList<RetProd> retorno = Session.CreateSQLQuery(sql).SetResultTransformer(Transformers.AliasToBean<RetProd>()).List<RetProd>().ToList();
+        //    return retorno;
+        //}
 
         //Utiliza o campo quantidade de entrada pois qdo na entrada de uma nota o operador pode alterar de caixa pra unidade, e colocar uma entrada maior.
         //msm caso para UCOM Convertida - pegamos a unidade ja convertida

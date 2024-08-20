@@ -34,6 +34,33 @@ namespace LunarApi.Controllers
 
             return Ok(atendimentoVinculo.Id);
         }
+
+        [HttpGet("{idAtendimento}")]
+        public IActionResult GetVinculosPorAtendimento(int idAtendimento)
+        {
+            try
+            {
+                var controller = LunarBase.ControllerBO.Controller.getInstance();
+                var atendimentoVinculoController = new LunarBase.ControllerBO.AtendimentoVinculoController();
+
+                IList<AtendimentoVinculo> listaVinculos = atendimentoVinculoController.selecionarVinculosPorAtendimento(idAtendimento);
+
+                var vinculosDto = listaVinculos.Select(v => new AtendimentoVinculoDto
+                {
+                    Id = v.Id,
+                    IdAtendimento = v.AtendimentoId,
+                    IdConta = v.ContaId,
+                    IdMesa = v.MesaId,
+                    Operador = v.OperadorCadastro
+                }).ToList();
+
+                return Ok(vinculosDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
     }
 }
 

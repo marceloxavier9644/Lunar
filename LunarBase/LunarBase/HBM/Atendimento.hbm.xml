@@ -8,7 +8,9 @@
 		<property name="Data" column="DATA" type="DateTime"/>
 		<property name="Observacao" column="OBSERVACAO" type="String" length="250"/>
 		<property name="EmpresaFilial" column="EMPRESAFILIAL" type="int"/>
+		<property name="Status" column="STATUS" type="String" length="80"/>
 
+		
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
 		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>

@@ -23,5 +23,27 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+
+        public IList<ProdutoGrupo> selecionarTodosGruposFood()
+        {
+            ProdutoGrupoBO bo = new ProdutoGrupoBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarTodosGruposFood();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
+
+
+
+
     }
 }
