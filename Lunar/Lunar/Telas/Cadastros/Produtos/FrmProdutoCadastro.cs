@@ -7,10 +7,15 @@ using LunarBase.ClassesBO;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using MaterialSkin;
+using MaterialSkin.Controls;
+using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -31,6 +36,8 @@ namespace Lunar.Telas.Cadastros.Produtos
             }
             return DialogResult;
         }
+        List<string> tiposDeProduto = new List<string>();
+        private IList<ProdutoInsumo> insumos = new List<ProdutoInsumo>();
         bool passou = false;
         MarcaController marcaController = new MarcaController();
         UnidadeMedidaController unidadeMedidaController = new UnidadeMedidaController();
@@ -58,6 +65,7 @@ namespace Lunar.Telas.Cadastros.Produtos
         ProdutoSetorController produtoSetorController = new ProdutoSetorController();
         GrupoFiscalController grupoFiscalController = new GrupoFiscalController();
         bool inicio = false;
+        bool editarInsumo = false;
 
         public FrmProdutoCadastro()
         {
@@ -132,6 +140,7 @@ namespace Lunar.Telas.Cadastros.Produtos
 
             }
             iniciarTributosPadroes();
+            CarregarInsumosNoGrid(produto.Id);
             lblIdGrade.Text = "";
         }
 
@@ -163,6 +172,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             {
                 tabControlAdv2.SelectedTab = tabPageAdv3;
             }
+            CarregarInsumosNoGrid(produto.Id);
             lblIdGrade.Text = "";
         }
 
@@ -285,14 +295,14 @@ namespace Lunar.Telas.Cadastros.Produtos
         }
         private void gerarTiposDeProdutos()
         {
-            List<string> tiposDeProduto = new List<string>();
+            tiposDeProduto = new List<string>();
             tiposDeProduto.Add("REVENDA");
             tiposDeProduto.Add("USO E CONSUMO");
             tiposDeProduto.Add("MATÉRIA PRIMA");
             tiposDeProduto.Add("ATIVO IMOBILIZADO");
+            tiposDeProduto.Add("PRODUÇÃO PRÓPRIA");
+            tiposDeProduto.Add("ADICIONAL/COMPLEMENTO");
             comboTipoProduto.DataSource = tiposDeProduto;
-            comboTipoProduto.SelectedIndex = 0;
-            //MessageBox.Show(tiposDeProduto.Count.ToString());
         }
 
         private void get_Produto(Produto produto)
@@ -357,10 +367,16 @@ namespace Lunar.Telas.Cadastros.Produtos
             txtNCM.Texts = produto.Ncm;
             txtCEST.Texts = produto.Cest;
 
-            if(!String.IsNullOrEmpty(produto.TipoProduto))
-                comboTipoProduto.Text = produto.TipoProduto;
+            string tipoProduto = produto.TipoProduto;
+            if (tiposDeProduto.Contains(tipoProduto))
+            {
+                comboTipoProduto.SelectedItem = tipoProduto;
+            }
             else
-                comboTipoProduto.SelectedIndex = 0;
+            {
+                // Caso o item não esteja na lista, define a seleção para o índice padrão
+                comboTipoProduto.SelectedIndex = 0; // ou o índice que você deseja como padrão
+            }
 
             txtEstoqueAuxiliar.Texts = produto.EstoqueAuxiliar.ToString();
             txtEstoque.Texts = produto.Estoque.ToString();
@@ -1175,7 +1191,7 @@ namespace Lunar.Telas.Cadastros.Produtos
                 if (String.IsNullOrEmpty(txtCodOrigem.Texts))
                     txtCodOrigem.Texts = "0";
                 atualizaDescricaoCsts();
-                comboTipoProduto.SelectedIndex = 0;
+                //comboTipoProduto.SelectedIndex = 0;
             }
         }
 
@@ -1338,7 +1354,7 @@ namespace Lunar.Telas.Cadastros.Produtos
                 else
                     produto.Markup = "";
 
-                produto.Observacoes = txtObservacoes.Texts;
+                produto.Observacoes = txtObs.Texts;
                 if (chkControlaEstoque.Checked == true)
                     produto.ControlaEstoque = true;
                 if (chkVenderLojaVirtual.Checked == true)
@@ -1500,46 +1516,49 @@ namespace Lunar.Telas.Cadastros.Produtos
 
 
                 //Salvar Grade Principal e codigo de barras
-                {
-                    ProdutoGrade produtoGrade = new ProdutoGrade();
-                    if (produto.GradePrincipal == null)
-                        produtoGrade.Id = 0;
-                    else
-                        produtoGrade.Id = produto.GradePrincipal.Id;
-                    produtoGrade.Descricao = produto.UnidadeMedida.Descricao;
-                    produtoGrade.Produto = produto;
-                    produtoGrade.UnidadeMedida = produto.UnidadeMedida;
-                    produtoGrade.QuantidadeMedida = 1;
-                    produtoGrade.ValorVenda = decimal.Parse(txtValorVenda.Texts);
-                    produtoGrade.Principal = true;
+                ProdutoGrade produtoGrade = new ProdutoGrade();
+                if (produto.GradePrincipal == null)
+                    produtoGrade.Id = 0;
+                else
+                    produtoGrade.Id = produto.GradePrincipal.Id;
+                produtoGrade.Descricao = produto.UnidadeMedida.Descricao;
+                produtoGrade.Produto = produto;
+                produtoGrade.UnidadeMedida = produto.UnidadeMedida;
+                produtoGrade.QuantidadeMedida = 1;
+                produtoGrade.ValorVenda = decimal.Parse(txtValorVenda.Texts);
+                produtoGrade.Principal = true;
       
-                    ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
-                    if (!String.IsNullOrEmpty(txtCodBarras.Texts))
-                    {
-                        produtoCodigoBarras.CodigoBarras = txtCodBarras.Texts;
-                        produtoCodigoBarras.Produto = produto;
-                        produtoCodigoBarras.ProdutoGrade = produtoGrade;
-                    }
-                    else
-                    {
-                        btnGerarCodigoBarras.PerformClick();
-                        produtoCodigoBarras.CodigoBarras = txtCodBarras.Texts;
-                        produtoCodigoBarras.Produto = produto;
-                        produtoCodigoBarras.ProdutoGrade = produtoGrade;
-                    }
-               
-                    Controller.getInstance().salvar(produtoGrade);
-                    produto.GradePrincipal = produtoGrade;
-                    if (!String.IsNullOrEmpty(produtoCodigoBarras.CodigoBarras))
-                    {
-                        bool codigoBarrasExiste = CodigoBarrasExiste(produtoCodigoBarras.CodigoBarras);
-                        if (!codigoBarrasExiste)
-                        {
-                            Controller.getInstance().salvar(produtoCodigoBarras);
-                        }
-                    }
-                    Controller.getInstance().salvar(produto);
+                ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
+                if (!String.IsNullOrEmpty(txtCodBarras.Texts))
+                {
+                    produtoCodigoBarras.CodigoBarras = txtCodBarras.Texts;
+                    produtoCodigoBarras.Produto = produto;
+                    produtoCodigoBarras.ProdutoGrade = produtoGrade;
                 }
+                else
+                {
+                    btnGerarCodigoBarras.PerformClick();
+                    produtoCodigoBarras.CodigoBarras = txtCodBarras.Texts;
+                    produtoCodigoBarras.Produto = produto;
+                    produtoCodigoBarras.ProdutoGrade = produtoGrade;
+                }
+               
+                Controller.getInstance().salvar(produtoGrade);
+                produto.GradePrincipal = produtoGrade;
+                if (!String.IsNullOrEmpty(produtoCodigoBarras.CodigoBarras))
+                {
+                    bool codigoBarrasExiste = CodigoBarrasExiste(produtoCodigoBarras.CodigoBarras);
+                    if (!codigoBarrasExiste)
+                    {
+                        Controller.getInstance().salvar(produtoCodigoBarras);
+                    }
+                }
+                Controller.getInstance().salvar(produto);
+                txtID.Texts = produto.Id.ToString();
+                //se tiver insumos salva, se nao tem verifica se tem para deletar
+                salvarInsumos();
+                
+
                 GenericaDesktop.ShowInfo("Registrado com sucesso!");
                 get_Produto(produto);
                 getGrade();
@@ -1676,6 +1695,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             //this.Close();
         }
 
+        
         private void txtCSOSN_Leave(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txtCSOSN.Texts))
@@ -2557,11 +2577,29 @@ namespace Lunar.Telas.Cadastros.Produtos
 
             }
         }
+        private void CarregarInsumosNoGrid(int codigoProduto)
+        {
+            ProdutoInsumoController produtoInsumoController = new ProdutoInsumoController();
+            try
+            {
+                insumos = produtoInsumoController.selecionarInsumoPorProduto(codigoProduto);
 
+                gridInsumo.DataSource = insumos;
+                gridInsumo.Refresh();
+                if (insumos.Count>0)
+                    CalcularCustoTotalProducao();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar insumos: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void FrmProdutoCadastro_Load(object sender, EventArgs e)
         {
-            if(passou == false)
+
+            if (passou == false)
             {
+                gridInsumo.DataSource = insumos;
                 //Ajustar Permissoes de usuario
                 if (Sessao.permissoes.Count > 0)
                 {
@@ -3015,6 +3053,514 @@ namespace Lunar.Telas.Cadastros.Produtos
         private void txtValorVendaGrade_KeyPress(object sender, KeyPressEventArgs e)
         {
             generica.SoNumeroEVirgula(txtValorVendaGrade.Texts, e);
+        }
+
+        private void chkHabilitarAtendimentoFood_CheckStateChanged(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    if (chkHabilitarAtendimentoFood.Checked == true)
+            //        tabPageAdv5.TabVisible = true;
+            //    else
+            //        tabPageAdv5.TabVisible = false;
+            //}
+            //catch
+            //{
+
+            //}
+        }
+
+        private void btnPesquisaProdutoInsumo_Click(object sender, EventArgs e)
+        {
+            Object produtoObjeto = new Produto();
+            txtProdutoInsumo.Texts = "";
+            txtCodProdutoInsumo.Texts = "";
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Produto", "and Tabela.TipoProduto = 'MATÉRIA PRIMA'"))
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("Produto", "", ref produtoObjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmProdutoCadastro form = new FrmProdutoCadastro();
+                            if (form.showModalNovo(ref produtoObjeto, false) == DialogResult.OK)
+                            {
+                                txtProdutoInsumo.Texts = ((Produto)produtoObjeto).Descricao;
+                                txtCodProdutoInsumo.Texts = ((Produto)produtoObjeto).Id.ToString();
+                                txtCustoUnitarioInsumo.Texts = string.Format("{0:N2}", ((Produto)produtoObjeto).ValorCusto);
+                                txtQuantidadeInsumo.Texts = "1";
+                                txtCustoTotalInsumo.Texts = string.Format("{0:N2}", (((Produto)produtoObjeto).ValorCusto * decimal.Parse(txtQuantidadeInsumo.Texts)));
+                                produto = ((Produto)produtoObjeto);
+                                txtQuantidadeInsumo.Focus();
+                                txtQuantidadeInsumo.SelectAll();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtProdutoInsumo.Texts = ((Produto)produtoObjeto).Descricao;
+                            txtCodProdutoInsumo.Texts = ((Produto)produtoObjeto).Id.ToString();
+                            txtCustoUnitarioInsumo.Texts = string.Format("{0:N2}", ((Produto)produtoObjeto).ValorCusto);
+                            txtQuantidadeInsumo.Texts = "1";
+                            txtCustoTotalInsumo.Texts = string.Format("{0:N2}", (((Produto)produtoObjeto).ValorCusto * decimal.Parse(txtQuantidadeInsumo.Texts)));
+                            produto = ((Produto)produtoObjeto);
+                            txtQuantidadeInsumo.Focus();
+                            txtQuantidadeInsumo.SelectAll();
+                            break;
+                    }
+
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        private void txtProdutoInsumo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                Object produtoObjeto = new Produto();
+                //txtProdutoInsumo.Texts = "";
+                txtCodProdutoInsumo.Texts = "";
+                Form formBackground = new Form();
+                try
+                {
+                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Produto", "and Tabela.TipoProduto = 'MATÉRIA PRIMA' and Tabela.Descricao like '%"+txtProdutoInsumo.Texts+"%'"))
+                    {
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        switch (uu.showModal("Produto", "", ref produtoObjeto))
+                        {
+                            case DialogResult.Ignore:
+                                uu.Dispose();
+                                FrmProdutoCadastro form = new FrmProdutoCadastro();
+                                if (form.showModalNovo(ref produtoObjeto, false) == DialogResult.OK)
+                                {
+                                    txtProdutoInsumo.Texts = ((Produto)produtoObjeto).Descricao;
+                                    txtCodProdutoInsumo.Texts = ((Produto)produtoObjeto).Id.ToString();
+                                    txtCustoUnitarioInsumo.Texts = string.Format("{0:N2}", ((Produto)produtoObjeto).ValorCusto);
+                                    txtQuantidadeInsumo.Texts = "1";
+                                    txtCustoTotalInsumo.Texts = string.Format("{0:N2}", (((Produto)produtoObjeto).ValorCusto * decimal.Parse(txtQuantidadeInsumo.Texts)));
+                                    produto = ((Produto)produtoObjeto);
+                                    txtQuantidadeInsumo.Focus();
+                                    txtQuantidadeInsumo.SelectAll();
+                                }
+                                form.Dispose();
+                                break;
+                            case DialogResult.OK:
+                                txtProdutoInsumo.Texts = ((Produto)produtoObjeto).Descricao;
+                                txtCodProdutoInsumo.Texts = ((Produto)produtoObjeto).Id.ToString();
+                                txtCustoUnitarioInsumo.Texts = string.Format("{0:N2}", ((Produto)produtoObjeto).ValorCusto);
+                                txtQuantidadeInsumo.Texts = "1";
+                                txtCustoTotalInsumo.Texts = string.Format("{0:N2}", (((Produto)produtoObjeto).ValorCusto * decimal.Parse(txtQuantidadeInsumo.Texts)));
+                                produto = ((Produto)produtoObjeto);
+                                txtQuantidadeInsumo.Focus();
+                                txtQuantidadeInsumo.SelectAll();
+                                break;
+                        }
+
+                        formBackground.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    formBackground.Dispose();
+                }
+            }
+        }
+
+        private void RecalcularCustoTotal(object sender, EventArgs e)
+        {
+            // Validar se os campos estão preenchidos
+            if (decimal.TryParse(txtCustoUnitarioInsumo.Texts, out decimal custoUnitario) &&
+                decimal.TryParse(txtQuantidadeInsumo.Texts, out decimal quantidade))
+            {
+                // Recalcular o custo total
+                decimal custoTotal = custoUnitario * quantidade;
+
+                // Atualizar o campo de custo total
+                txtCustoTotalInsumo.Texts = custoTotal.ToString("N2"); // Formatar com duas casas decimais
+            }
+            else
+            {
+                // Se não estiverem preenchidos corretamente, limpar o campo de custo total
+                txtCustoTotalInsumo.Texts = string.Empty;
+            }
+        }
+
+        private void txtQuantidadeInsumo__TextChanged(object sender, EventArgs e)
+        {
+            RecalcularCustoTotal(sender, e);
+        }
+
+        private void txtQuantidadeInsumo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            generica.SoNumeroEVirgula(txtQuantidadeInsumo.Texts, e);
+            if(e.KeyChar == 13)
+            {
+                btnAdicionarInsumo.PerformClick();
+            }
+        }
+        //public class Insumo
+        //{
+        //    public int Codigo { get; set; }
+        //    public string Descricao { get; set; }
+        //    public decimal CustoUnitario { get; set; }
+        //    public double Quantidade { get; set; }
+        //    public decimal CustoTotal { get; set; }
+        //}
+
+        //private void btnAdicionarInsumo_Click(object sender, EventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(txtCodProdutoInsumo.Texts) &&
+        //!string.IsNullOrEmpty(txtProdutoInsumo.Texts) &&
+        //!string.IsNullOrEmpty(txtCustoUnitarioInsumo.Texts) &&
+        //!string.IsNullOrEmpty(txtQuantidadeInsumo.Texts))
+        //    {
+        //        Produto product = new Produto();
+        //        product.Id = int.Parse(txtCodProdutoInsumo.Texts);
+        //        product = (Produto)Controller.getInstance().selecionar(product);
+        //        var insumo = new ProdutoInsumo
+        //        {
+        //            Produto = product,
+        //            Id = 0,
+        //            CustoUnitario = decimal.Parse(txtCustoUnitarioInsumo.Texts),
+        //            Quantidade = double.Parse(txtQuantidadeInsumo.Texts),
+        //            CustoTotal = decimal.Parse(txtCustoTotalInsumo.Texts)
+        //        };
+
+        //        insumos.Add(insumo);
+        //        gridInsumo.DataSource = null;  
+        //        gridInsumo.DataSource = insumos;  
+        //        gridInsumo.Refresh();
+
+        //        // Limpa os campos de texto
+        //        txtCodProdutoInsumo.Texts = "";
+        //        txtProdutoInsumo.Texts = "";
+        //        txtCustoUnitarioInsumo.Texts = "";
+        //        txtQuantidadeInsumo.Texts = "";
+        //        txtCustoTotalInsumo.Texts = "";
+        //        // Calcula o custo total da produção
+        //        CalcularCustoTotalProducao();
+        //        txtProdutoInsumo.Focus();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Por favor, preencha todos os campos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+        //}
+
+        private void btnAdicionarInsumo_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCodProdutoInsumo.Texts) &&
+                !string.IsNullOrEmpty(txtProdutoInsumo.Texts) &&
+                !string.IsNullOrEmpty(txtCustoUnitarioInsumo.Texts) &&
+                !string.IsNullOrEmpty(txtQuantidadeInsumo.Texts))
+            {
+                Produto product = new Produto();
+                product.Id = int.Parse(txtCodProdutoInsumo.Texts);
+                product = (Produto)Controller.getInstance().selecionar(product);
+
+                var insumo = new ProdutoInsumo
+                {
+                    Produto = product,
+                    Id = 0,  // O ID será definido apenas se estiver editando um item existente
+                    CustoUnitario = decimal.Parse(txtCustoUnitarioInsumo.Texts),
+                    Quantidade = double.Parse(txtQuantidadeInsumo.Texts),
+                    CustoTotal = decimal.Parse(txtCustoTotalInsumo.Texts)
+                };
+
+                if (editarInsumo)
+                {
+                    // Atualiza o item existente na lista
+                    var itemToUpdate = txtProdutoInsumo.Tag as ProdutoInsumo;
+                    if (itemToUpdate != null)
+                    {
+                        var index = insumos.IndexOf(itemToUpdate);
+                        if (index >= 0)
+                        {
+                            insumos[index] = insumo;
+                        }
+                    }
+                    txtQuantidadeInsumo.Focus();
+                    txtQuantidadeInsumo.SelectAll();
+                    editarInsumo = false; // Reseta o estado de edição
+                }
+                else
+                {
+                    // Adiciona o novo item na lista
+                    insumos.Add(insumo);
+                }
+
+                // Atualiza o DataSource do grid
+                gridInsumo.DataSource = null;
+                gridInsumo.DataSource = insumos;
+                gridInsumo.Refresh();
+
+                // Limpa os campos de texto
+                txtCodProdutoInsumo.Texts = "";
+                txtProdutoInsumo.Texts = "";
+                txtCustoUnitarioInsumo.Texts = "";
+                txtQuantidadeInsumo.Texts = "";
+                txtCustoTotalInsumo.Texts = "";
+
+                // Calcula o custo total da produção
+                CalcularCustoTotalProducao();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, preencha todos os campos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void gridInsumo_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void gridInsumo_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.Style.BackColor = Color.WhiteSmoke;
+            else
+                e.Style.BackColor = Color.White;
+        }
+
+        private void CalcularCustoTotalProducao()
+        {
+            decimal custoTotalProducao = 0;
+
+            foreach (var insumo in insumos)
+            {
+                custoTotalProducao += insumo.CustoTotal;
+            }
+
+            txtCustoTotalProducao.Texts = string.Format("{0:N2}", custoTotalProducao);
+        }
+
+        private void gridInsumo_RecordDeleting(object sender, Syncfusion.WinForms.DataGrid.Events.RecordDeletingEventArgs e)
+        {
+            deletarInsumo();
+        }
+
+        private void deletarInsumo()
+        {
+            // Verifica se há um item selecionado
+            if (gridInsumo.SelectedItem != null)
+            {
+                // Obtém o item selecionado
+                ProdutoInsumo insumoParaRemover = (ProdutoInsumo)gridInsumo.SelectedItem;
+
+                // Confirma a exclusão com o usuário
+                var result = MessageBox.Show($"Você tem certeza que deseja remover o insumo '{insumoParaRemover.Produto.Descricao}'?", "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Remove o insumo da lista
+                    insumos.Remove(insumoParaRemover);
+
+                    // Atualiza a fonte de dados do grid
+                    gridInsumo.DataSource = null;
+                    gridInsumo.DataSource = insumos;
+                    gridInsumo.Refresh(); // Atualiza o grid
+
+                    // Recalcula o custo total da produção
+                    CalcularCustoTotalProducao();
+                    txtProdutoInsumo.Focus();
+                    txtProdutoInsumo.Select();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione um insumo para remover.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void comboTipoProduto_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (comboTipoProduto.SelectedItem != null && (comboTipoProduto.SelectedItem.ToString() == "PRODUÇÃO PRÓPRIA" ||
+                comboTipoProduto.SelectedItem.ToString() == "ADICIONAL/COMPLEMENTO"))
+            {
+                tabPageAdv5.TabVisible = true;
+            }
+            else
+            {
+                tabPageAdv5.TabVisible = false;
+                if(insumos.Count > 0)
+                {
+                    if(GenericaDesktop.ShowConfirmacao("Este produto possui cadastro de insumos/Ficha Técnica, deseja excluir os insumos da ficha?"))
+                    {
+                        ProdutoInsumoController produtoInsumoController = new ProdutoInsumoController();
+                        if (!String.IsNullOrEmpty(txtID.Texts))
+                        {
+                            var insumosAntigos = produtoInsumoController.selecionarInsumoPorProduto(int.Parse(txtID.Texts));
+                            if(insumosAntigos.Count > 0)
+                            {
+                                foreach(ProdutoInsumo produtoInsumo in insumosAntigos)
+                                {
+                                    Controller.getInstance().excluir(produtoInsumo);
+                                }
+                                insumos = new List<ProdutoInsumo>();
+                                gridInsumo.DataSource = insumos;
+                                gridInsumo.Refresh();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(txtID.Texts))
+                        {
+                            Produto prod = new Produto();
+                            prod.Id = int.Parse(txtID.Texts);
+                            prod = (Produto)Controller.getInstance().selecionar(prod);
+                            comboTipoProduto.SelectedItem = prod.TipoProduto;
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        private void btnDeletarInsumo_Click(object sender, EventArgs e)
+        {
+            deletarInsumo();
+        }
+
+        private void salvarInsumos()
+        {
+            ProdutoInsumoController produtoInsumoController = new ProdutoInsumoController();
+
+            int codigoProduto = 0;
+            if (!String.IsNullOrEmpty(txtID.Texts))
+                codigoProduto = int.Parse(txtID.Texts);
+
+            // Recupera os insumos atuais do banco de dados
+            var insumosAntigos = produtoInsumoController.selecionarInsumoPorProduto(codigoProduto);
+            var insumosAtuais = (List<ProdutoInsumo>)gridInsumo.DataSource;
+
+            // Conjunto de IDs dos insumos atuais para verificar quais insumos precisam ser atualizados ou adicionados
+            var idsAtuais = new HashSet<int>(insumosAtuais.Select(i => i.Id));
+
+            // Excluir insumos antigos que não estão mais presentes
+            foreach (var insumoAntigo in insumosAntigos)
+            {
+                if (!idsAtuais.Contains(insumoAntigo.Id))
+                {
+                    produtoInsumoController.excluir(insumoAntigo);
+                }
+            }
+
+            // Adicionar ou atualizar os insumos
+            foreach (var insumoAtual in insumosAtuais)
+            {
+                try
+                {
+                    var insumoExistente = insumosAntigos.FirstOrDefault(i => i.Id == insumoAtual.Id);
+                    if (insumoExistente != null)
+                    {
+                        // Atualizar insumo existente
+                        insumoExistente.CustoUnitario = insumoAtual.CustoUnitario;
+                        insumoExistente.Quantidade = insumoAtual.Quantidade;
+                        insumoExistente.CustoTotal = insumoAtual.CustoTotal;
+                        insumoExistente.Produto = insumoAtual.Produto; // Se necessário, defina o produto
+                        produtoInsumoController.salvar(insumoExistente);
+                    }
+                    else
+                    {
+                        // Adicionar novo insumo
+                        var novoInsumo = new ProdutoInsumo
+                        {
+                            Id = insumoAtual.Id,
+                            Produto = insumoAtual.Produto,
+                            CustoUnitario = insumoAtual.CustoUnitario,
+                            Quantidade = insumoAtual.Quantidade,
+                            CustoTotal = insumoAtual.CustoTotal,
+                            IdProdutoProduzido = codigoProduto.ToString() 
+                        };
+
+                        produtoInsumoController.salvar(novoInsumo);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao salvar insumo: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            if(insumosAtuais.Count > 0)
+            {
+                string custo = txtCustoTotalProducao.Texts;
+                if (custo.Contains("R$"))
+                    custo = custo.Replace("R$", "").Trim();
+                if (!String.IsNullOrEmpty(custo))
+                {
+                    produto.ValorCusto = decimal.Parse(custo);
+                    Controller.getInstance().salvar(produto);
+                }
+            }
+        }
+
+        private void txtCustoUnitarioInsumo__TextChanged(object sender, EventArgs e)
+        {
+            RecalcularCustoTotal(sender, e);
+        }
+
+        private void txtCustoUnitarioInsumo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            generica.SoNumeroEVirgula(txtCustoUnitarioInsumo.Texts, e);
+        }
+
+        private void gridInsumo_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        {
+            var selectedRow = gridInsumo.SelectedItem;
+
+            if (selectedRow is ProdutoInsumo produtoInsumo)
+            {
+                // Preenche os TextBoxes com os valores da linha selecionada
+                txtProdutoInsumo.Texts = produtoInsumo.Produto.Descricao;
+                txtCodProdutoInsumo.Texts = produtoInsumo.Produto.Id.ToString();
+                txtCustoUnitarioInsumo.Texts = produtoInsumo.CustoUnitario.ToString("N2");
+                txtQuantidadeInsumo.Texts = produtoInsumo.Quantidade.ToString();
+                txtCustoTotalInsumo.Texts = produtoInsumo.CustoTotal.ToString("N2");
+
+                // Armazena a linha para posterior uso
+                txtProdutoInsumo.Tag = produtoInsumo;
+                editarInsumo = true;
+            }
         }
     }
 }

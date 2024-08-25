@@ -197,7 +197,9 @@ namespace Lunar.Telas.Cadastros.Produtos
                     uu.Owner = formBackground;
                     uu.ShowDialog();
                     formBackground.Dispose();
-                    carregarLista();
+
+                    txtPesquisaProdutoPorCodigoUnico.Texts = produto.Id.ToString();
+                    PesquisarProdutoPorCodigo();
                 }
             }
             catch (Exception ex)

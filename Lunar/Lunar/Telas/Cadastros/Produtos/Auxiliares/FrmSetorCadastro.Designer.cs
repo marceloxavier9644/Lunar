@@ -34,20 +34,22 @@
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtSetor = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.comboImpressoras = new System.Windows.Forms.ComboBox();
             this.btnFechar = new FontAwesome.Sharp.IconButton();
+            this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.panelTitleBar = new System.Windows.Forms.Panel();
             this.panelTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // autoLabel3
             // 
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel3.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel3.Location = new System.Drawing.Point(25, 59);
+            this.autoLabel3.Location = new System.Drawing.Point(13, 54);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(55, 18);
+            this.autoLabel3.Size = new System.Drawing.Size(51, 16);
             this.autoLabel3.TabIndex = 238;
             this.autoLabel3.Text = "Código";
             this.autoLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -61,9 +63,9 @@
             this.txtCodigo.BorderSize = 2;
             this.txtCodigo.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodigo.Location = new System.Drawing.Point(13, 68);
+            this.txtCodigo.Location = new System.Drawing.Point(13, 74);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Multiline = false;
             this.txtCodigo.Name = "txtCodigo";
@@ -71,9 +73,11 @@
             this.txtCodigo.PasswordChar = false;
             this.txtCodigo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtCodigo.PlaceholderText = "";
-            this.txtCodigo.Size = new System.Drawing.Size(102, 39);
+            this.txtCodigo.ReadOnly = false;
+            this.txtCodigo.Size = new System.Drawing.Size(102, 37);
             this.txtCodigo.TabIndex = 233;
             this.txtCodigo.Tag = "";
+            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodigo.Texts = "";
             this.txtCodigo.UnderlinedStyle = false;
             // 
@@ -89,7 +93,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Location = new System.Drawing.Point(489, 142);
+            this.btnSalvar.Location = new System.Drawing.Point(489, 224);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(298, 45);
             this.btnSalvar.TabIndex = 235;
@@ -112,7 +116,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelar.Location = new System.Drawing.Point(185, 142);
+            this.btnCancelar.Location = new System.Drawing.Point(185, 224);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(298, 45);
             this.btnCancelar.TabIndex = 236;
@@ -125,11 +129,11 @@
             // autoLabel6
             // 
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel6.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(136, 57);
+            this.autoLabel6.Location = new System.Drawing.Point(123, 54);
             this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(42, 18);
+            this.autoLabel6.Size = new System.Drawing.Size(39, 16);
             this.autoLabel6.TabIndex = 237;
             this.autoLabel6.Text = "Setor";
             // 
@@ -141,9 +145,9 @@
             this.txtSetor.BorderRadius = 8;
             this.txtSetor.BorderSize = 2;
             this.txtSetor.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtSetor.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSetor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSetor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSetor.Location = new System.Drawing.Point(123, 68);
+            this.txtSetor.Location = new System.Drawing.Point(123, 74);
             this.txtSetor.Margin = new System.Windows.Forms.Padding(4);
             this.txtSetor.Multiline = false;
             this.txtSetor.Name = "txtSetor";
@@ -151,11 +155,66 @@
             this.txtSetor.PasswordChar = false;
             this.txtSetor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtSetor.PlaceholderText = "";
-            this.txtSetor.Size = new System.Drawing.Size(664, 39);
+            this.txtSetor.ReadOnly = false;
+            this.txtSetor.Size = new System.Drawing.Size(664, 37);
             this.txtSetor.TabIndex = 234;
             this.txtSetor.Tag = "";
+            this.txtSetor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtSetor.Texts = "";
             this.txtSetor.UnderlinedStyle = false;
+            // 
+            // autoLabel5
+            // 
+            this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel5.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel5.Location = new System.Drawing.Point(13, 120);
+            this.autoLabel5.Name = "autoLabel5";
+            this.autoLabel5.Size = new System.Drawing.Size(129, 16);
+            this.autoLabel5.TabIndex = 316;
+            this.autoLabel5.Text = "Impressora do Setor";
+            // 
+            // comboImpressoras
+            // 
+            this.comboImpressoras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboImpressoras.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.comboImpressoras.FormattingEnabled = true;
+            this.comboImpressoras.Location = new System.Drawing.Point(13, 140);
+            this.comboImpressoras.Name = "comboImpressoras";
+            this.comboImpressoras.Size = new System.Drawing.Size(774, 32);
+            this.comboImpressoras.TabIndex = 315;
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.BackColor = System.Drawing.Color.Transparent;
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFechar.FlatAppearance.BorderSize = 0;
+            this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
+            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
+            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Multiply;
+            this.btnFechar.IconColor = System.Drawing.Color.White;
+            this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFechar.IconSize = 30;
+            this.btnFechar.Location = new System.Drawing.Point(759, 3);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(39, 41);
+            this.btnFechar.TabIndex = 2;
+            this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            // 
+            // autoLabel4
+            // 
+            this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel4.ForeColor = System.Drawing.Color.White;
+            this.autoLabel4.Location = new System.Drawing.Point(5, 7);
+            this.autoLabel4.Name = "autoLabel4";
+            this.autoLabel4.Size = new System.Drawing.Size(295, 25);
+            this.autoLabel4.TabIndex = 198;
+            this.autoLabel4.Text = "Setor/Localização de Produto";
             // 
             // panelTitleBar
             // 
@@ -168,44 +227,14 @@
             this.panelTitleBar.Size = new System.Drawing.Size(800, 44);
             this.panelTitleBar.TabIndex = 239;
             // 
-            // autoLabel4
-            // 
-            this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel4.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel4.ForeColor = System.Drawing.Color.White;
-            this.autoLabel4.Location = new System.Drawing.Point(5, 7);
-            this.autoLabel4.Name = "autoLabel4";
-            this.autoLabel4.Size = new System.Drawing.Size(321, 29);
-            this.autoLabel4.TabIndex = 198;
-            this.autoLabel4.Text = "Setor/Localização de Produto";
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.BackColor = System.Drawing.Color.Transparent;
-            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFechar.FlatAppearance.BorderSize = 0;
-            this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
-            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
-            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnFechar.IconColor = System.Drawing.Color.White;
-            this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnFechar.IconSize = 30;
-            this.btnFechar.Location = new System.Drawing.Point(759, 3);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(39, 41);
-            this.btnFechar.TabIndex = 2;
-            this.btnFechar.UseVisualStyleBackColor = false;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            // 
             // FrmSetorCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 218);
+            this.ClientSize = new System.Drawing.Size(800, 281);
+            this.Controls.Add(this.autoLabel5);
+            this.Controls.Add(this.comboImpressoras);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.autoLabel3);
             this.Controls.Add(this.txtCodigo);
@@ -235,8 +264,10 @@
         private RJ_UI.Classes.RJButton btnCancelar;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private RJ_UI.Classes.RJTextBox txtSetor;
-        private System.Windows.Forms.Panel panelTitleBar;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel5;
+        private System.Windows.Forms.ComboBox comboImpressoras;
         private FontAwesome.Sharp.IconButton btnFechar;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
+        private System.Windows.Forms.Panel panelTitleBar;
     }
 }

@@ -136,5 +136,11 @@ namespace LunarBase.Constantes
         public const int NFESTATUS_CANCELADO = 4;
         public const int NFESTATUS_INUTILIZADO = 5;
         public const int NFESTATUS_CONTIGENCIA = 6;
+
+        //Tamanho - Padrão
+        public const int TAMANHO_P = 1;
+        public const int TAMANHO_M = 2;
+        public const int TAMANHO_G = 3;
+        public const int TAMANHO_GG = 4;
     }
 }

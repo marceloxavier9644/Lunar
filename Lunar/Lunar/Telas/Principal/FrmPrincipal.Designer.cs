@@ -80,6 +80,7 @@
             this.dropMenuFiscal = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnComprasFiscal = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEmitirNfe = new System.Windows.Forms.ToolStripMenuItem();
+            this.inutilizarNúmeraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMonitoramentoFiscal = new System.Windows.Forms.ToolStripMenuItem();
             this.btnNaturezaOperacao = new System.Windows.Forms.ToolStripMenuItem();
             this.notaFiscalAgrupadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,7 +102,10 @@
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.foodServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inutilizarNúmeraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropMenuProduto = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
+            this.btnCadastroProduto = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGrupo = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSetor = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -114,6 +118,7 @@
             this.dropMenuServico.SuspendLayout();
             this.dropMenuRelatorios.SuspendLayout();
             this.dropMenuVendas.SuspendLayout();
+            this.dropMenuProduto.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -781,7 +786,7 @@
             this.dropMenuFiscal.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFiscal.Name = "rjDropdownMenu1";
             this.dropMenuFiscal.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFiscal.Size = new System.Drawing.Size(327, 158);
+            this.dropMenuFiscal.Size = new System.Drawing.Size(327, 136);
             // 
             // btnComprasFiscal
             // 
@@ -796,6 +801,13 @@
             this.btnEmitirNfe.Size = new System.Drawing.Size(326, 22);
             this.btnEmitirNfe.Text = "Emitir NF-e";
             this.btnEmitirNfe.Click += new System.EventHandler(this.btnEmitirNfe_Click);
+            // 
+            // inutilizarNúmeraçãoToolStripMenuItem
+            // 
+            this.inutilizarNúmeraçãoToolStripMenuItem.Name = "inutilizarNúmeraçãoToolStripMenuItem";
+            this.inutilizarNúmeraçãoToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
+            this.inutilizarNúmeraçãoToolStripMenuItem.Text = "Inutilizar Númeração";
+            this.inutilizarNúmeraçãoToolStripMenuItem.Click += new System.EventHandler(this.inutilizarNúmeraçãoToolStripMenuItem_Click);
             // 
             // btnMonitoramentoFiscal
             // 
@@ -974,12 +986,41 @@
             this.transferênciaFilialToolStripMenuItem.Text = "Transferência Filial";
             this.transferênciaFilialToolStripMenuItem.Click += new System.EventHandler(this.transferênciaFilialToolStripMenuItem_Click);
             // 
-            // inutilizarNúmeraçãoToolStripMenuItem
+            // dropMenuProduto
             // 
-            this.inutilizarNúmeraçãoToolStripMenuItem.Name = "inutilizarNúmeraçãoToolStripMenuItem";
-            this.inutilizarNúmeraçãoToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
-            this.inutilizarNúmeraçãoToolStripMenuItem.Text = "Inutilizar Númeração";
-            this.inutilizarNúmeraçãoToolStripMenuItem.Click += new System.EventHandler(this.inutilizarNúmeraçãoToolStripMenuItem_Click);
+            this.dropMenuProduto.CursorSelecionado = System.Windows.Forms.Cursors.Hand;
+            this.dropMenuProduto.Font = new System.Drawing.Font("Verdana", 10F);
+            this.dropMenuProduto.IsMainMenu = false;
+            this.dropMenuProduto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCadastroProduto,
+            this.btnGrupo,
+            this.btnSetor});
+            this.dropMenuProduto.MenuItemHeight = 25;
+            this.dropMenuProduto.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.dropMenuProduto.Name = "rjDropdownMenu1";
+            this.dropMenuProduto.PrimaryColor = System.Drawing.Color.Empty;
+            this.dropMenuProduto.Size = new System.Drawing.Size(211, 92);
+            // 
+            // btnCadastroProduto
+            // 
+            this.btnCadastroProduto.Name = "btnCadastroProduto";
+            this.btnCadastroProduto.Size = new System.Drawing.Size(210, 22);
+            this.btnCadastroProduto.Text = "Produto";
+            this.btnCadastroProduto.Click += new System.EventHandler(this.btnCadastroProduto_Click);
+            // 
+            // btnGrupo
+            // 
+            this.btnGrupo.Name = "btnGrupo";
+            this.btnGrupo.Size = new System.Drawing.Size(210, 22);
+            this.btnGrupo.Text = "Grupo";
+            this.btnGrupo.Click += new System.EventHandler(this.btnGrupo_Click);
+            // 
+            // btnSetor
+            // 
+            this.btnSetor.Name = "btnSetor";
+            this.btnSetor.Size = new System.Drawing.Size(210, 22);
+            this.btnSetor.Text = "Setor (Localização)";
+            this.btnSetor.Click += new System.EventHandler(this.btnSetor_Click);
             // 
             // FrmPrincipal
             // 
@@ -1011,6 +1052,7 @@
             this.dropMenuServico.ResumeLayout(false);
             this.dropMenuRelatorios.ResumeLayout(false);
             this.dropMenuVendas.ResumeLayout(false);
+            this.dropMenuProduto.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1089,5 +1131,9 @@
         private System.Windows.Forms.ToolStripMenuItem integraçõesEcommerceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem foodServiceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inutilizarNúmeraçãoToolStripMenuItem;
+        private RJ_UI.Classes.RJDropdownMenu dropMenuProduto;
+        private System.Windows.Forms.ToolStripMenuItem btnCadastroProduto;
+        private System.Windows.Forms.ToolStripMenuItem btnGrupo;
+        private System.Windows.Forms.ToolStripMenuItem btnSetor;
     }
 }

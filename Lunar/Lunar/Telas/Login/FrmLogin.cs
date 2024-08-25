@@ -31,6 +31,7 @@ namespace Lunar
         private string usuarioBanco = "";
         private string senhaBanco = "";
         private string nomeBanco = "";
+        string atualizaBanco = @"C:\Lunar\Atualizador\AtualizaBanco.txt";
         public FrmLogin()
         {
             InitializeComponent();
@@ -48,6 +49,7 @@ namespace Lunar
                     txtUsuario.Texts = "SUPORTE";
                     txtSenha.Texts = "ESTAC2UL";
                 }
+               
             }
             catch
             {
@@ -214,7 +216,15 @@ namespace Lunar
 
         private void FrmLogin_Paint(object sender, PaintEventArgs e)
         {
-
+            if (File.Exists(atualizaBanco))
+            {
+                lblStatus.Visible = true;
+                lblStatus.Text = "Aguarde Atualização...";
+                Controller.getInstanceAtualiza();
+                Controller.getInstance().geraValoresPadrao();
+                lblStatus.Text = "Atualização Concluída com Sucesso...";
+                File.Delete(atualizaBanco);
+            }
         }
 
         private void FrmLogin_KeyPress(object sender, KeyPressEventArgs e)

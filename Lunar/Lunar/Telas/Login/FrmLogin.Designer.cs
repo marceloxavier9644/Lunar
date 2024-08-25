@@ -120,11 +120,11 @@
             // lblStatus
             // 
             this.lblStatus.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(33, 303);
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(25, 303);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(56, 13);
+            this.lblStatus.Size = new System.Drawing.Size(68, 16);
             this.lblStatus.TabIndex = 22;
             this.lblStatus.Text = "Aguarde...";
             this.lblStatus.Visible = false;

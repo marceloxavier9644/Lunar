@@ -3,6 +3,7 @@ using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using System;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
@@ -25,15 +26,29 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
         public FrmSetorCadastro()
         {
             InitializeComponent();
+            CarregarImpressoras();
         }
         public FrmSetorCadastro(ProdutoSetor setor)
         {
             InitializeComponent();
-            InitializeComponent();
             this.setor = setor;
+            CarregarImpressoras();
             get_Setor();
-        }
 
+        }
+        private void CarregarImpressoras()
+        {
+            comboImpressoras.Items.Clear();
+            PrinterSettings.StringCollection impressoras = PrinterSettings.InstalledPrinters;
+            foreach (string impressora in impressoras)
+            {
+                comboImpressoras.Items.Add(impressora);
+            }
+            if (comboImpressoras.Items.Count > 0)
+            {
+                comboImpressoras.SelectedIndex = -1;
+            }
+        }
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -50,6 +65,7 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
                     setor.Id = 0;
                 setor.Descricao = txtSetor.Texts;
                 setor.EmpresaFilial = Sessao.empresaFilialLogada;
+                setor.Impressora = comboImpressoras.SelectedItem.ToString();
 
                 Controller.getInstance().salvar(setor);
                 GenericaDesktop.ShowInfo("Registrado com sucesso");
@@ -64,6 +80,10 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
         {
             txtCodigo.Texts = setor.Id.ToString();
             txtSetor.Texts = setor.Descricao;
+            if (!string.IsNullOrEmpty(setor.Impressora))
+            {
+                comboImpressoras.SelectedItem = setor.Impressora;
+            }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)

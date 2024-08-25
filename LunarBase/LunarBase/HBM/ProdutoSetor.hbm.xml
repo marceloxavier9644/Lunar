@@ -5,7 +5,8 @@
 			<generator class="native" />
 		</id>
 		<property name="Descricao" column="DESCRICAO" type="String" length="100"/>
-
+		<property name="Impressora" column="IMPRESSORA" type="String" length="200"/>
+		
 		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_PRODUTOSETOR_EMPRESAFILIAL" lazy="false"/>
 
 		<!-- Dados do objeto padrão -->

@@ -73,23 +73,23 @@ namespace LunarAtualizador
             instanciaAtualizador = this;
             //parametros para verificar integracao com dashboards
             lerParametrosSistema();
-            string atualizaBanco = @"C:\Lunar\Atualizador\AtualizaBanco.txt";
+            //string atualizaBanco = @"C:\Lunar\Atualizador\AtualizaBanco.txt";
             //Atualiza o sistema se tiver novas atualizacoes
             atualizarAoAbrir();
 
             //Atualiza o BD se existir o arquivo
-            if (File.Exists(atualizaBanco))
-            {
-                ExibirFormulario();
-                lblNovaVersaoLocalizada.Enabled = true;
-                lblNovaVersaoLocalizada.Visible = true;
-                lblNovaVersaoLocalizada.Text = "Aguarde, Atualizando Banco de Dados.... Não feche!!!";
-                lblNovaVersaoLocalizada.ForeColor = Color.Red;
-                AtualizarBancoDeDados();
-                lblNovaVersaoLocalizada.Visible = false;
-                lblNovaVersaoLocalizada.Text = "";
-                File.Delete(atualizaBanco);
-            }
+            //if (File.Exists(atualizaBanco))
+            //{
+            //    ExibirFormulario();
+            //    lblNovaVersaoLocalizada.Enabled = true;
+            //    lblNovaVersaoLocalizada.Visible = true;
+            //    lblNovaVersaoLocalizada.Text = "Aguarde, Atualizando Banco de Dados.... Não feche!!!";
+            //    lblNovaVersaoLocalizada.ForeColor = Color.Red;
+            //    AtualizarBancoDeDados();
+            //    lblNovaVersaoLocalizada.Visible = false;
+            //    lblNovaVersaoLocalizada.Text = "";
+            //    File.Delete(atualizaBanco);
+            //}
             conferirHorarioMensagens();
             if (ativarMensagemLembreteExame.Equals("True"))
             {

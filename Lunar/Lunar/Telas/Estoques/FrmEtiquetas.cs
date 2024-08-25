@@ -58,19 +58,12 @@ namespace Lunar.Telas.Estoques
 
         private void CarregarImpressoras()
         {
-            // Limpa o ComboBox para evitar duplicatas
             comboImpressoras.Items.Clear();
-
-            // Obtém uma coleção de todas as impressoras instaladas no sistema
             PrinterSettings.StringCollection impressoras = PrinterSettings.InstalledPrinters;
-
-            // Adiciona cada impressora ao ComboBox
             foreach (string impressora in impressoras)
             {
                 comboImpressoras.Items.Add(impressora);
             }
-
-            // Seleciona a primeira impressora por padrão, se houver alguma
             if (comboImpressoras.Items.Count > 0)
             {
                 comboImpressoras.SelectedIndex = 0;

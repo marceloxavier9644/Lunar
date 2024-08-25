@@ -179,9 +179,13 @@ namespace LunarAtualizador
         //DUMP
         public static void ExportDatabase(string userName, string password, string databaseName, string outputPath)
         {
+            Logger looger = new Logger();
             try
             {
                 string caminhoMysqlDump = Path.Combine(@"C:\wamp64\bin\mysql\mysql5.7.36\bin", "mysqldump.exe");
+                if(!File.Exists(caminhoMysqlDump))
+                    caminhoMysqlDump = Path.Combine(@"C:\Lunar\MySql64\bin", "mysqldump.exe");
+
                 string arguments = $"-u {userName} -p{password} {databaseName}";
 
                 ProcessStartInfo psi = new ProcessStartInfo(caminhoMysqlDump, arguments);
@@ -219,13 +223,14 @@ namespace LunarAtualizador
                         process.BeginErrorReadLine();
                         process.WaitForExit();
 
-                        Console.WriteLine("Exportação do banco de dados concluída com sucesso.");
+             
+                        looger.WriteLog("Exportação do banco de dados concluída com sucesso.","LogExport");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao exportar banco de dados: {ex.Message}");
+                looger.WriteLog($"Erro ao exportar banco de dados: {ex.Message}", "LogExport");
             }
         }
 

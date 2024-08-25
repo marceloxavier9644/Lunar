@@ -40,6 +40,8 @@ namespace LunarBase.ClassesBO
         NfeStatusController nfeStatusController = new NfeStatusController();
         NaturezaOperacao naturezaOperacao = new NaturezaOperacao();
         NaturezaOperacaoController naturezaOperacaoController = new NaturezaOperacaoController();
+        Tamanho tamanho = new Tamanho();
+        TamanhoController tamanhoController = new TamanhoController();
         public bool gerarValoresPadrao()
         {
             try
@@ -61,6 +63,7 @@ namespace LunarBase.ClassesBO
                 gerarNfeStatusPadrao();
                 gerarNaturezaOperacaoPadrao();
                 gerarPlanoContaPadrao();
+                gerarTamanhoPadrao();
                 return true;
             }
             catch (Exception e)
@@ -1384,6 +1387,42 @@ namespace LunarBase.ClassesBO
             {
                 naturezaOperacao.Id = 0;
                 Controller.getInstance().salvar(naturezaOperacao);
+            }
+        }
+
+        public void gerarTamanhoPadrao()
+        {
+            tamanho = new Tamanho();
+            try
+            {
+                tamanho.Id = LunarConstantes.TAMANHO_P;
+                tamanho.Descricao = "P";
+                tamanho.Ordem = 1;
+                tamanhoController.salvarSeNaoExistir(tamanho);
+
+                tamanho = new Tamanho();
+                tamanho.Id = LunarConstantes.TAMANHO_M;
+                tamanho.Descricao = "M";
+                tamanho.Ordem = 2;
+                tamanhoController.salvarSeNaoExistir(tamanho);
+
+                tamanho = new Tamanho();
+                tamanho.Id = LunarConstantes.TAMANHO_G;
+                tamanho.Descricao = "G";
+                tamanho.Ordem = 3;
+                tamanhoController.salvarSeNaoExistir(tamanho);
+
+                tamanho = new Tamanho();
+                tamanho.Id = LunarConstantes.TAMANHO_GG;
+                tamanho.Descricao = "GG";
+                tamanho.Ordem = 4;
+                tamanhoController.salvarSeNaoExistir(tamanho);
+            }
+            catch
+            {
+                tamanho.Id = 0;
+                Controller.getInstance().salvar(tamanho);
+
             }
         }
     }

@@ -188,7 +188,7 @@ namespace Lunar.Telas.OrdensDeServico
                     decimal valorUnitForm = ordemServicoProduto.ValorUnitario;
                     row.SetField("ValorUnitario", string.Format("{0:0.00}", valorUnitForm));
                     row.SetField("Quantidade", ordemServicoProduto.Quantidade.ToString());
-                    decimal valorTotal = ordemServicoProduto.ValorTotal;
+                    decimal valorTotal = valorUnitForm * decimal.Parse(ordemServicoProduto.Quantidade.ToString());
                     row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
                     row.SetField("Desconto", string.Format("{0:0.00}", ordemServicoProduto.Desconto));
                     row.SetField("Acrescimo", string.Format("{0:0.00}", ordemServicoProduto.Acrescimo));
@@ -234,7 +234,7 @@ namespace Lunar.Telas.OrdensDeServico
                     decimal valorUnitForm = ordemServicoServico.ValorUnitario;
                     row.SetField("ValorUnitario", string.Format("{0:0.00}", valorUnitForm));
                     row.SetField("Quantidade", ordemServicoServico.Quantidade.ToString());
-                    decimal valorTotal = ordemServicoServico.ValorTotal;
+                    decimal valorTotal = valorUnitForm * decimal.Parse(ordemServicoServico.Quantidade.ToString());
                     row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
                     row.SetField("Desconto", string.Format("{0:0.00}", ordemServicoServico.Desconto));
                     row.SetField("Acrescimo", string.Format("{0:0.00}", ordemServicoServico.Acrescimo));
@@ -337,6 +337,8 @@ namespace Lunar.Telas.OrdensDeServico
                     dsAnexo.Tables[0].Rows.Add(row);
                 }
             }
+
+            calculoDescontoGeral();
         }
 
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
@@ -1106,7 +1108,7 @@ namespace Lunar.Telas.OrdensDeServico
                 decimal valorUnitForm = decimal.Parse(txtValorUnitarioItem.Texts);
                 row.SetField("ValorUnitario", string.Format("{0:0.00}", valorUnitForm));
                 row.SetField("Quantidade", txtQuantidadeItem.Texts);
-                decimal valorTotal = decimal.Parse(txtValorTotalItem.Texts);
+                decimal valorTotal = decimal.Parse(txtValorTotalItem.Texts) + decimal.Parse(txtDescontoItem.Texts);
                 row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
                 row.SetField("Desconto", string.Format("{0:0.00}", decimal.Parse(txtDescontoItem.Texts)));
                 row.SetField("Acrescimo", string.Format("{0:0.00}", decimal.Parse(txtAcrescimoItem.Texts)));
@@ -1168,11 +1170,12 @@ namespace Lunar.Telas.OrdensDeServico
 
                         if (!String.IsNullOrEmpty(dataRowView.Row[0].ToString()))
                             descontoItem = descontoItem + decimal.Parse(dataRowView.Row["Desconto"].ToString());
-                        valorTotalProdutos = valorTotalProdutos + decimal.Parse(dataRowView.Row["ValorComDesconto"].ToString());
+                        valorTotalProdutos = valorTotalProdutos + decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
                         pecas = pecas + double.Parse(dataRowView.Row["Quantidade"].ToString());
                     }
                     txtValorTotalTodosProdutos.Texts = string.Format("{0:0.00}", valorTotalProdutos);
                     txtTotalGeralProdutoServico.Texts = string.Format("{0:0.00}", valorTotalProdutos + decimal.Parse(txtValorTotalTodosServicos.Texts) - decimal.Parse(txtDescontoTotal.Texts));
+         
                 }
             }
             catch
@@ -1258,9 +1261,9 @@ namespace Lunar.Telas.OrdensDeServico
         {
             if (!String.IsNullOrEmpty(txtCodProduto.Texts))
             {
-                //produto = new Produto();
-                //produto.Id = int.Parse(txtCodProduto.Texts);
-                //produto = (Produto)Controller.getInstance().selecionar(produto);
+                produto = new Produto();
+                produto.Id = int.Parse(txtCodProduto.Texts);
+                produto = (Produto)Controller.getInstance().selecionar(produto);
                 inserirItem(this.produto);
                 calculoDescontoGeral();
             }
@@ -1773,7 +1776,7 @@ namespace Lunar.Telas.OrdensDeServico
                 decimal valorUnitForm = decimal.Parse(txtValorUnitarioServico.Texts);
                 row.SetField("ValorUnitario", string.Format("{0:0.00}", valorUnitForm));
                 row.SetField("Quantidade", txtQuantidadeServico.Texts);
-                decimal valorTotal = decimal.Parse(txtValorTotalServico.Texts);
+                decimal valorTotal = decimal.Parse(txtValorTotalServico.Texts) + decimal.Parse(txtDescontoServico.Texts);
                 row.SetField("ValorTotal", string.Format("{0:0.00}", valorTotal));
                 row.SetField("Desconto", string.Format("{0:0.00}", decimal.Parse(txtDescontoServico.Texts)));
                 row.SetField("Acrescimo", string.Format("{0:0.00}", decimal.Parse(txtAcrescimoServico.Texts)));
@@ -2962,15 +2965,17 @@ namespace Lunar.Telas.OrdensDeServico
             var valorTotal = dataRow["ValorTotal"].ToString();
             var codigo = dataRow["Codigo"].ToString();
             var vendedor = dataRow["Vendedor"].ToString();
+            var desconto = dataRow["Desconto"].ToString();
 
             // indexEditando = this.gridProdutos.SelectedIndex;
             txtPesquisaProduto.Texts = descricao;
             txtCodProduto.Texts = codigo;
             txtQuantidadeItem.Texts = quantidade;
             txtValorUnitarioItem.Texts = string.Format("{0:0.00}", valorUnitario);
-            txtValorTotalItem.Texts = string.Format("{0:0.00}", valorTotal);
+            txtValorTotalItem.Texts = string.Format("{0:0.00}", decimal.Parse(valorTotal)-decimal.Parse(desconto));
             txtVendedorProduto.Texts = "";
             txtCodVendedorProduto.Texts = "";
+            txtDescontoItem.Texts = string.Format("{0:0.00}", desconto);
             Pessoa pessoaVend = new Pessoa();
             if (!String.IsNullOrEmpty(vendedor)) 
             {
@@ -3145,13 +3150,15 @@ namespace Lunar.Telas.OrdensDeServico
             var valorTotal = dataRow["ValorTotal"].ToString();
             var codigo = dataRow["Codigo"].ToString();
             var vendedor = dataRow["Vendedor"].ToString();
+            var desconto = dataRow["Desconto"].ToString();
 
             // indexEditando = this.gridProdutos.SelectedIndex;
             txtPesquisaServico.Texts = descricao;
             txtCodServico.Texts = codigo;
             txtQuantidadeServico.Texts = quantidade;
             txtValorUnitarioServico.Texts = string.Format("{0:0.00}", valorUnitario);
-            txtValorTotalServico.Texts = string.Format("{0:0.00}", valorTotal);
+            txtValorTotalServico.Texts = string.Format("{0:0.00}", decimal.Parse(valorTotal) - decimal.Parse(desconto));
+            txtDescontoServico.Texts = string.Format("{0:0.00}", desconto);
             txtVendedorServico.Texts = "";
             txtCodVendedorServico.Texts = "";
             Pessoa pessoaVend = new Pessoa();

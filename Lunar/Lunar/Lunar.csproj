@@ -58,6 +58,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\Program Files\Seagull\BarTender 2022\SDK\Print Server API Samples\TaskMaster\bin\Interop.BarTender.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialSkin">
+      <HintPath>.\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.JScript" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
@@ -491,6 +494,12 @@
     <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoFiscalCadastro.Designer.cs">
       <DependentUpon>FrmGrupoFiscalCadastro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoLista.Designer.cs">
+      <DependentUpon>FrmGrupoLista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoProdutoCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -514,6 +523,12 @@
     </Compile>
     <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmSetorCadastro.Designer.cs">
       <DependentUpon>FrmSetorCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmSetorLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmSetorLista.Designer.cs">
+      <DependentUpon>FrmSetorLista.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmSubGrupoCadastro.cs">
       <SubType>Form</SubType>
@@ -1299,6 +1314,8 @@
     <Compile Include="Telas\VisualizadorPDF\FrmPDF.Designer.cs">
       <DependentUpon>FrmPDF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Balancas\BalancaService.cs" />
+    <Compile Include="Utils\Balancas\ItemBalanca.cs" />
     <Compile Include="Utils\ConverterMoedaPorExtenso.cs" />
     <Compile Include="Utils\GalaxyPay_API\Charges.cs" />
     <Compile Include="Utils\GalaxyPay_API\CustomerEdicao.cs" />
@@ -1427,6 +1444,9 @@
     <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoFiscalCadastro.resx">
       <DependentUpon>FrmGrupoFiscalCadastro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoLista.resx">
+      <DependentUpon>FrmGrupoLista.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmGrupoProdutoCadastro.resx">
       <DependentUpon>FrmGrupoProdutoCadastro.cs</DependentUpon>
     </EmbeddedResource>
@@ -1438,6 +1458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmSetorCadastro.resx">
       <DependentUpon>FrmSetorCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmSetorLista.resx">
+      <DependentUpon>FrmSetorLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmSubGrupoCadastro.resx">
       <DependentUpon>FrmSubGrupoCadastro.cs</DependentUpon>

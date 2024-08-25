@@ -61,6 +61,12 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridCheckBoxColumn gridCheckBoxColumn1 = new Syncfusion.WinForms.DataGrid.GridCheckBoxColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn9 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn10 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             this.cidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dDDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -228,6 +234,7 @@
             this.tabControlAdv2 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.metroPanel6 = new MetroFramework.Controls.MetroPanel();
+            this.chkHabilitarAtendimentoFood = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.autoLabel98 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.comboTipoProduto = new Syncfusion.WinForms.ListView.SfComboBox();
             this.chkVeiculo = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
@@ -342,6 +349,7 @@
             this.autoLabel73 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel72 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.tabPageAdv4 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.lblIdGrade = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnGerarCodigoBarrasGrade = new FontAwesome.Sharp.IconButton();
             this.autoLabel104 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel103 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -354,8 +362,19 @@
             this.btnRemoverGrade = new FontAwesome.Sharp.IconButton();
             this.btnConfirmarGrade = new FontAwesome.Sharp.IconButton();
             this.btnPesquisaUnidadeMedidaGrade = new FontAwesome.Sharp.IconButton();
+            this.tabPageAdv5 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.btnDeletarInsumo = new FontAwesome.Sharp.IconButton();
+            this.autoLabel110 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnAdicionarInsumo = new MaterialSkin.Controls.MaterialButton();
+            this.autoLabel109 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel108 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel107 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.gridInsumo = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            this.lblProdutoCompoe = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnPesquisaProdutoInsumo = new FontAwesome.Sharp.IconButton();
+            this.autoLabel105 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel106 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnEtiqueta = new FontAwesome.Sharp.IconButton();
-            this.lblIdGrade = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnNovo = new Lunar.RJ_UI.Classes.RJButton();
             this.btnSalva = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancela = new Lunar.RJ_UI.Classes.RJButton();
@@ -444,6 +463,12 @@
             this.txtDescricaoGrade = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCodUnidadeMedidaGrade = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtUnidadeMedidaGrade = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCustoTotalProducao = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCustoTotalInsumo = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtQuantidadeInsumo = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCustoUnitarioInsumo = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCodProdutoInsumo = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtProdutoInsumo = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.txtRazaoSocial = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -478,6 +503,8 @@
             this.txtLocalTrabalho = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtMae = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtPai = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox2 = new MaterialSkin.Controls.MaterialCheckbox();
             ((System.ComponentModel.ISupportInitialize)(this.dsTelefone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Telefone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridEnderecoAdicional)).BeginInit();
@@ -520,6 +547,7 @@
             this.tabControlAdv2.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
             this.metroPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHabilitarAtendimentoFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboTipoProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVeiculo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkProdutoPesavel)).BeginInit();
@@ -543,6 +571,8 @@
             this.tabPageAdv4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridGrade)).BeginInit();
+            this.tabPageAdv5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridInsumo)).BeginInit();
             this.SuspendLayout();
             // 
             // cidadeDataGridViewTextBoxColumn
@@ -2587,6 +2617,7 @@
             this.tabControlAdv2.Controls.Add(this.tabPageAdv2);
             this.tabControlAdv2.Controls.Add(this.tabPageAdv3);
             this.tabControlAdv2.Controls.Add(this.tabPageAdv4);
+            this.tabControlAdv2.Controls.Add(this.tabPageAdv5);
             this.tabControlAdv2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabControlAdv2.FocusOnTabClick = false;
             this.tabControlAdv2.ImageAlignmentR = Syncfusion.Windows.Forms.Tools.RelativeImageAlignment.RightOfText;
@@ -2621,6 +2652,7 @@
             // 
             // metroPanel6
             // 
+            this.metroPanel6.Controls.Add(this.chkHabilitarAtendimentoFood);
             this.metroPanel6.Controls.Add(this.autoLabel98);
             this.metroPanel6.Controls.Add(this.txtMarkup);
             this.metroPanel6.Controls.Add(this.comboTipoProduto);
@@ -2698,6 +2730,23 @@
             this.metroPanel6.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel6.VerticalScrollbarSize = 10;
             // 
+            // chkHabilitarAtendimentoFood
+            // 
+            this.chkHabilitarAtendimentoFood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.chkHabilitarAtendimentoFood.BeforeTouchSize = new System.Drawing.Size(308, 27);
+            this.chkHabilitarAtendimentoFood.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.chkHabilitarAtendimentoFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkHabilitarAtendimentoFood.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.chkHabilitarAtendimentoFood.HotBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.chkHabilitarAtendimentoFood.Location = new System.Drawing.Point(542, 420);
+            this.chkHabilitarAtendimentoFood.Name = "chkHabilitarAtendimentoFood";
+            this.chkHabilitarAtendimentoFood.Size = new System.Drawing.Size(308, 27);
+            this.chkHabilitarAtendimentoFood.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Office2016White;
+            this.chkHabilitarAtendimentoFood.TabIndex = 278;
+            this.chkHabilitarAtendimentoFood.Text = " Habilitar No Atendimento Food";
+            this.chkHabilitarAtendimentoFood.ThemeName = "Office2016White";
+            this.chkHabilitarAtendimentoFood.CheckStateChanged += new System.EventHandler(this.chkHabilitarAtendimentoFood_CheckStateChanged);
+            // 
             // autoLabel98
             // 
             this.autoLabel98.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -2738,6 +2787,7 @@
             this.comboTipoProduto.ThemeName = "Office2016White";
             this.comboTipoProduto.ToolTipOption.ShadowVisible = false;
             this.comboTipoProduto.Watermark = "Selecione";
+            this.comboTipoProduto.SelectedIndexChanged += new System.EventHandler(this.comboTipoProduto_SelectedIndexChanged_1);
             // 
             // chkVeiculo
             // 
@@ -4566,6 +4616,22 @@
             this.tabPageAdv4.Text = "Grade/Unidade";
             this.tabPageAdv4.ThemesEnabled = false;
             // 
+            // lblIdGrade
+            // 
+            this.lblIdGrade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblIdGrade.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblIdGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdGrade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.lblIdGrade.Location = new System.Drawing.Point(3, 7);
+            this.lblIdGrade.Name = "lblIdGrade";
+            this.lblIdGrade.Size = new System.Drawing.Size(21, 16);
+            this.lblIdGrade.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
+            this.lblIdGrade.TabIndex = 266;
+            this.lblIdGrade.Text = "20";
+            this.lblIdGrade.ThemeName = "Office2016White";
+            this.lblIdGrade.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
+            this.lblIdGrade.Visible = false;
+            // 
             // btnGerarCodigoBarrasGrade
             // 
             this.btnGerarCodigoBarrasGrade.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -4787,6 +4853,230 @@
             this.btnPesquisaUnidadeMedidaGrade.UseVisualStyleBackColor = true;
             this.btnPesquisaUnidadeMedidaGrade.Click += new System.EventHandler(this.btnPesquisaUnidadeMedidaGrade_Click);
             // 
+            // tabPageAdv5
+            // 
+            this.tabPageAdv5.Controls.Add(this.materialCheckbox2);
+            this.tabPageAdv5.Controls.Add(this.materialCheckbox1);
+            this.tabPageAdv5.Controls.Add(this.btnDeletarInsumo);
+            this.tabPageAdv5.Controls.Add(this.autoLabel110);
+            this.tabPageAdv5.Controls.Add(this.btnAdicionarInsumo);
+            this.tabPageAdv5.Controls.Add(this.autoLabel109);
+            this.tabPageAdv5.Controls.Add(this.autoLabel108);
+            this.tabPageAdv5.Controls.Add(this.autoLabel107);
+            this.tabPageAdv5.Controls.Add(this.gridInsumo);
+            this.tabPageAdv5.Controls.Add(this.lblProdutoCompoe);
+            this.tabPageAdv5.Controls.Add(this.btnPesquisaProdutoInsumo);
+            this.tabPageAdv5.Controls.Add(this.autoLabel105);
+            this.tabPageAdv5.Controls.Add(this.autoLabel106);
+            this.tabPageAdv5.Controls.Add(this.txtCustoTotalProducao);
+            this.tabPageAdv5.Controls.Add(this.txtCustoTotalInsumo);
+            this.tabPageAdv5.Controls.Add(this.txtQuantidadeInsumo);
+            this.tabPageAdv5.Controls.Add(this.txtCustoUnitarioInsumo);
+            this.tabPageAdv5.Controls.Add(this.txtCodProdutoInsumo);
+            this.tabPageAdv5.Controls.Add(this.txtProdutoInsumo);
+            this.tabPageAdv5.Image = null;
+            this.tabPageAdv5.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPageAdv5.Location = new System.Drawing.Point(1, 33);
+            this.tabPageAdv5.Name = "tabPageAdv5";
+            this.tabPageAdv5.ShowCloseButton = true;
+            this.tabPageAdv5.Size = new System.Drawing.Size(974, 494);
+            this.tabPageAdv5.TabFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.tabPageAdv5.TabIndex = 6;
+            this.tabPageAdv5.TabVisible = false;
+            this.tabPageAdv5.Text = "Ficha Técnica";
+            this.tabPageAdv5.ThemesEnabled = false;
+            // 
+            // btnDeletarInsumo
+            // 
+            this.btnDeletarInsumo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeletarInsumo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDeletarInsumo.FlatAppearance.BorderSize = 0;
+            this.btnDeletarInsumo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDeletarInsumo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDeletarInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeletarInsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeletarInsumo.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.btnDeletarInsumo.IconColor = System.Drawing.Color.Red;
+            this.btnDeletarInsumo.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnDeletarInsumo.IconSize = 30;
+            this.btnDeletarInsumo.Location = new System.Drawing.Point(17, 422);
+            this.btnDeletarInsumo.Name = "btnDeletarInsumo";
+            this.btnDeletarInsumo.Size = new System.Drawing.Size(36, 34);
+            this.btnDeletarInsumo.TabIndex = 242;
+            this.btnDeletarInsumo.UseVisualStyleBackColor = true;
+            this.btnDeletarInsumo.Click += new System.EventHandler(this.btnDeletarInsumo_Click);
+            // 
+            // autoLabel110
+            // 
+            this.autoLabel110.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel110.Enabled = false;
+            this.autoLabel110.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel110.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel110.Location = new System.Drawing.Point(797, 423);
+            this.autoLabel110.Name = "autoLabel110";
+            this.autoLabel110.Size = new System.Drawing.Size(137, 16);
+            this.autoLabel110.TabIndex = 241;
+            this.autoLabel110.Text = "Custo Total Produção";
+            // 
+            // btnAdicionarInsumo
+            // 
+            this.btnAdicionarInsumo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAdicionarInsumo.Depth = 0;
+            this.btnAdicionarInsumo.DrawShadows = true;
+            this.btnAdicionarInsumo.HighEmphasis = true;
+            this.btnAdicionarInsumo.Icon = null;
+            this.btnAdicionarInsumo.Location = new System.Drawing.Point(863, 86);
+            this.btnAdicionarInsumo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAdicionarInsumo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAdicionarInsumo.Name = "btnAdicionarInsumo";
+            this.btnAdicionarInsumo.Size = new System.Drawing.Size(98, 36);
+            this.btnAdicionarInsumo.TabIndex = 239;
+            this.btnAdicionarInsumo.Text = "Adicionar";
+            this.btnAdicionarInsumo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAdicionarInsumo.UseAccentColor = false;
+            this.btnAdicionarInsumo.UseVisualStyleBackColor = true;
+            this.btnAdicionarInsumo.Click += new System.EventHandler(this.btnAdicionarInsumo_Click);
+            // 
+            // autoLabel109
+            // 
+            this.autoLabel109.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel109.Enabled = false;
+            this.autoLabel109.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel109.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel109.Location = new System.Drawing.Point(718, 66);
+            this.autoLabel109.Name = "autoLabel109";
+            this.autoLabel109.Size = new System.Drawing.Size(75, 16);
+            this.autoLabel109.TabIndex = 238;
+            this.autoLabel109.Text = "Custo Total";
+            // 
+            // autoLabel108
+            // 
+            this.autoLabel108.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel108.Enabled = false;
+            this.autoLabel108.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel108.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel108.Location = new System.Drawing.Point(602, 65);
+            this.autoLabel108.Name = "autoLabel108";
+            this.autoLabel108.Size = new System.Drawing.Size(77, 16);
+            this.autoLabel108.TabIndex = 236;
+            this.autoLabel108.Text = "Quantidade";
+            // 
+            // autoLabel107
+            // 
+            this.autoLabel107.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel107.Enabled = false;
+            this.autoLabel107.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel107.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel107.Location = new System.Drawing.Point(457, 66);
+            this.autoLabel107.Name = "autoLabel107";
+            this.autoLabel107.Size = new System.Drawing.Size(90, 16);
+            this.autoLabel107.TabIndex = 234;
+            this.autoLabel107.Text = "Custo Unitário";
+            // 
+            // gridInsumo
+            // 
+            this.gridInsumo.AccessibleName = "Table";
+            this.gridInsumo.AllowDeleting = true;
+            this.gridInsumo.AllowEditing = false;
+            this.gridInsumo.AutoGenerateColumns = false;
+            this.gridInsumo.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            gridTextColumn7.AllowEditing = false;
+            gridTextColumn7.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn7.HeaderText = "ID Insumo";
+            gridTextColumn7.MappingName = "Id";
+            gridTextColumn7.Visible = false;
+            gridTextColumn8.AllowEditing = false;
+            gridTextColumn8.HeaderText = "Código";
+            gridTextColumn8.MappingName = "Produto.Id";
+            gridTextColumn9.AllowEditing = false;
+            gridTextColumn9.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn9.HeaderText = "Descrição";
+            gridTextColumn9.MappingName = "Produto.Descricao";
+            gridNumericColumn1.AllowEditing = false;
+            gridNumericColumn1.FormatMode = Syncfusion.WinForms.Input.Enums.FormatMode.Currency;
+            gridNumericColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn1.HeaderText = "Custo Unitário";
+            gridNumericColumn1.MappingName = "CustoUnitario";
+            gridTextColumn10.AllowEditing = false;
+            gridTextColumn10.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn10.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn10.HeaderText = "Quantidade";
+            gridTextColumn10.MappingName = "Quantidade";
+            gridNumericColumn2.AllowEditing = false;
+            gridNumericColumn2.FormatMode = Syncfusion.WinForms.Input.Enums.FormatMode.Currency;
+            gridNumericColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn2.HeaderText = "Custo Total";
+            gridNumericColumn2.MappingName = "CustoTotal";
+            this.gridInsumo.Columns.Add(gridTextColumn7);
+            this.gridInsumo.Columns.Add(gridTextColumn8);
+            this.gridInsumo.Columns.Add(gridTextColumn9);
+            this.gridInsumo.Columns.Add(gridNumericColumn1);
+            this.gridInsumo.Columns.Add(gridTextColumn10);
+            this.gridInsumo.Columns.Add(gridNumericColumn2);
+            this.gridInsumo.Location = new System.Drawing.Point(16, 141);
+            this.gridInsumo.Name = "gridInsumo";
+            this.gridInsumo.Size = new System.Drawing.Size(952, 278);
+            this.gridInsumo.TabIndex = 232;
+            this.gridInsumo.Text = "sfDataGrid1";
+            this.gridInsumo.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.gridInsumo_QueryRowStyle);
+            this.gridInsumo.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.gridInsumo_CellDoubleClick);
+            this.gridInsumo.RecordDeleting += new Syncfusion.WinForms.DataGrid.Events.RecordDeletingEventHandler(this.gridInsumo_RecordDeleting);
+            this.gridInsumo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridInsumo_KeyDown);
+            // 
+            // lblProdutoCompoe
+            // 
+            this.lblProdutoCompoe.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblProdutoCompoe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProdutoCompoe.ForeColor = System.Drawing.Color.Black;
+            this.lblProdutoCompoe.Location = new System.Drawing.Point(16, 19);
+            this.lblProdutoCompoe.Name = "lblProdutoCompoe";
+            this.lblProdutoCompoe.Size = new System.Drawing.Size(278, 20);
+            this.lblProdutoCompoe.TabIndex = 226;
+            this.lblProdutoCompoe.Text = "Informe os Produtos que Compõe";
+            // 
+            // btnPesquisaProdutoInsumo
+            // 
+            this.btnPesquisaProdutoInsumo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaProdutoInsumo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaProdutoInsumo.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaProdutoInsumo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaProdutoInsumo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaProdutoInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaProdutoInsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaProdutoInsumo.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaProdutoInsumo.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaProdutoInsumo.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaProdutoInsumo.IconSize = 38;
+            this.btnPesquisaProdutoInsumo.Location = new System.Drawing.Point(301, 89);
+            this.btnPesquisaProdutoInsumo.Name = "btnPesquisaProdutoInsumo";
+            this.btnPesquisaProdutoInsumo.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaProdutoInsumo.TabIndex = 222;
+            this.btnPesquisaProdutoInsumo.UseVisualStyleBackColor = true;
+            this.btnPesquisaProdutoInsumo.Click += new System.EventHandler(this.btnPesquisaProdutoInsumo_Click);
+            // 
+            // autoLabel105
+            // 
+            this.autoLabel105.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel105.Enabled = false;
+            this.autoLabel105.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel105.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel105.Location = new System.Drawing.Point(345, 65);
+            this.autoLabel105.Name = "autoLabel105";
+            this.autoLabel105.Size = new System.Drawing.Size(85, 16);
+            this.autoLabel105.TabIndex = 225;
+            this.autoLabel105.Text = "Cód. Produto";
+            // 
+            // autoLabel106
+            // 
+            this.autoLabel106.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel106.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel106.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel106.Location = new System.Drawing.Point(16, 66);
+            this.autoLabel106.Name = "autoLabel106";
+            this.autoLabel106.Size = new System.Drawing.Size(195, 16);
+            this.autoLabel106.TabIndex = 224;
+            this.autoLabel106.Text = "Produto (Insumo/Matéria Prima)";
+            // 
             // btnEtiqueta
             // 
             this.btnEtiqueta.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -4807,22 +5097,6 @@
             this.btnEtiqueta.UseVisualStyleBackColor = true;
             this.btnEtiqueta.Visible = false;
             this.btnEtiqueta.Click += new System.EventHandler(this.btnEtiqueta_Click);
-            // 
-            // lblIdGrade
-            // 
-            this.lblIdGrade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblIdGrade.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lblIdGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdGrade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.lblIdGrade.Location = new System.Drawing.Point(3, 7);
-            this.lblIdGrade.Name = "lblIdGrade";
-            this.lblIdGrade.Size = new System.Drawing.Size(21, 16);
-            this.lblIdGrade.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
-            this.lblIdGrade.TabIndex = 266;
-            this.lblIdGrade.Text = "20";
-            this.lblIdGrade.ThemeName = "Office2016White";
-            this.lblIdGrade.ThemeStyle.BackColor = System.Drawing.Color.Turquoise;
-            this.lblIdGrade.Visible = false;
             // 
             // btnNovo
             // 
@@ -7150,6 +7424,170 @@
             this.txtUnidadeMedidaGrade.UnderlinedStyle = false;
             this.txtUnidadeMedidaGrade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidadeMedidaGrade_KeyPress);
             // 
+            // txtCustoTotalProducao
+            // 
+            this.txtCustoTotalProducao.BackColor = System.Drawing.Color.White;
+            this.txtCustoTotalProducao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCustoTotalProducao.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCustoTotalProducao.BorderRadius = 8;
+            this.txtCustoTotalProducao.BorderSize = 2;
+            this.txtCustoTotalProducao.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCustoTotalProducao.Enabled = false;
+            this.txtCustoTotalProducao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustoTotalProducao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCustoTotalProducao.Location = new System.Drawing.Point(770, 442);
+            this.txtCustoTotalProducao.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCustoTotalProducao.Multiline = false;
+            this.txtCustoTotalProducao.Name = "txtCustoTotalProducao";
+            this.txtCustoTotalProducao.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCustoTotalProducao.PasswordChar = false;
+            this.txtCustoTotalProducao.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCustoTotalProducao.PlaceholderText = "";
+            this.txtCustoTotalProducao.ReadOnly = false;
+            this.txtCustoTotalProducao.Size = new System.Drawing.Size(191, 37);
+            this.txtCustoTotalProducao.TabIndex = 240;
+            this.txtCustoTotalProducao.Tag = "";
+            this.txtCustoTotalProducao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCustoTotalProducao.Texts = "";
+            this.txtCustoTotalProducao.UnderlinedStyle = false;
+            // 
+            // txtCustoTotalInsumo
+            // 
+            this.txtCustoTotalInsumo.BackColor = System.Drawing.Color.White;
+            this.txtCustoTotalInsumo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCustoTotalInsumo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCustoTotalInsumo.BorderRadius = 8;
+            this.txtCustoTotalInsumo.BorderSize = 2;
+            this.txtCustoTotalInsumo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCustoTotalInsumo.Enabled = false;
+            this.txtCustoTotalInsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustoTotalInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCustoTotalInsumo.Location = new System.Drawing.Point(718, 86);
+            this.txtCustoTotalInsumo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCustoTotalInsumo.Multiline = false;
+            this.txtCustoTotalInsumo.Name = "txtCustoTotalInsumo";
+            this.txtCustoTotalInsumo.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCustoTotalInsumo.PasswordChar = false;
+            this.txtCustoTotalInsumo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCustoTotalInsumo.PlaceholderText = "";
+            this.txtCustoTotalInsumo.ReadOnly = false;
+            this.txtCustoTotalInsumo.Size = new System.Drawing.Size(137, 37);
+            this.txtCustoTotalInsumo.TabIndex = 237;
+            this.txtCustoTotalInsumo.Tag = "";
+            this.txtCustoTotalInsumo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCustoTotalInsumo.Texts = "";
+            this.txtCustoTotalInsumo.UnderlinedStyle = false;
+            // 
+            // txtQuantidadeInsumo
+            // 
+            this.txtQuantidadeInsumo.BackColor = System.Drawing.Color.White;
+            this.txtQuantidadeInsumo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtQuantidadeInsumo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtQuantidadeInsumo.BorderRadius = 8;
+            this.txtQuantidadeInsumo.BorderSize = 2;
+            this.txtQuantidadeInsumo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtQuantidadeInsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantidadeInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtQuantidadeInsumo.Location = new System.Drawing.Point(602, 85);
+            this.txtQuantidadeInsumo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQuantidadeInsumo.Multiline = false;
+            this.txtQuantidadeInsumo.Name = "txtQuantidadeInsumo";
+            this.txtQuantidadeInsumo.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtQuantidadeInsumo.PasswordChar = false;
+            this.txtQuantidadeInsumo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtQuantidadeInsumo.PlaceholderText = "";
+            this.txtQuantidadeInsumo.ReadOnly = false;
+            this.txtQuantidadeInsumo.Size = new System.Drawing.Size(108, 37);
+            this.txtQuantidadeInsumo.TabIndex = 235;
+            this.txtQuantidadeInsumo.Tag = "";
+            this.txtQuantidadeInsumo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtQuantidadeInsumo.Texts = "";
+            this.txtQuantidadeInsumo.UnderlinedStyle = false;
+            this.txtQuantidadeInsumo._TextChanged += new System.EventHandler(this.txtQuantidadeInsumo__TextChanged);
+            this.txtQuantidadeInsumo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidadeInsumo_KeyPress);
+            // 
+            // txtCustoUnitarioInsumo
+            // 
+            this.txtCustoUnitarioInsumo.BackColor = System.Drawing.Color.White;
+            this.txtCustoUnitarioInsumo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCustoUnitarioInsumo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCustoUnitarioInsumo.BorderRadius = 8;
+            this.txtCustoUnitarioInsumo.BorderSize = 2;
+            this.txtCustoUnitarioInsumo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCustoUnitarioInsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustoUnitarioInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCustoUnitarioInsumo.Location = new System.Drawing.Point(457, 86);
+            this.txtCustoUnitarioInsumo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCustoUnitarioInsumo.Multiline = false;
+            this.txtCustoUnitarioInsumo.Name = "txtCustoUnitarioInsumo";
+            this.txtCustoUnitarioInsumo.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCustoUnitarioInsumo.PasswordChar = false;
+            this.txtCustoUnitarioInsumo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCustoUnitarioInsumo.PlaceholderText = "";
+            this.txtCustoUnitarioInsumo.ReadOnly = false;
+            this.txtCustoUnitarioInsumo.Size = new System.Drawing.Size(137, 37);
+            this.txtCustoUnitarioInsumo.TabIndex = 233;
+            this.txtCustoUnitarioInsumo.Tag = "";
+            this.txtCustoUnitarioInsumo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCustoUnitarioInsumo.Texts = "";
+            this.txtCustoUnitarioInsumo.UnderlinedStyle = false;
+            this.txtCustoUnitarioInsumo._TextChanged += new System.EventHandler(this.txtCustoUnitarioInsumo__TextChanged);
+            this.txtCustoUnitarioInsumo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustoUnitarioInsumo_KeyPress);
+            // 
+            // txtCodProdutoInsumo
+            // 
+            this.txtCodProdutoInsumo.BackColor = System.Drawing.Color.White;
+            this.txtCodProdutoInsumo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodProdutoInsumo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodProdutoInsumo.BorderRadius = 8;
+            this.txtCodProdutoInsumo.BorderSize = 2;
+            this.txtCodProdutoInsumo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCodProdutoInsumo.Enabled = false;
+            this.txtCodProdutoInsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodProdutoInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodProdutoInsumo.Location = new System.Drawing.Point(345, 85);
+            this.txtCodProdutoInsumo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodProdutoInsumo.Multiline = false;
+            this.txtCodProdutoInsumo.Name = "txtCodProdutoInsumo";
+            this.txtCodProdutoInsumo.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodProdutoInsumo.PasswordChar = false;
+            this.txtCodProdutoInsumo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodProdutoInsumo.PlaceholderText = "";
+            this.txtCodProdutoInsumo.ReadOnly = false;
+            this.txtCodProdutoInsumo.Size = new System.Drawing.Size(104, 37);
+            this.txtCodProdutoInsumo.TabIndex = 223;
+            this.txtCodProdutoInsumo.Tag = "";
+            this.txtCodProdutoInsumo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodProdutoInsumo.Texts = "";
+            this.txtCodProdutoInsumo.UnderlinedStyle = false;
+            // 
+            // txtProdutoInsumo
+            // 
+            this.txtProdutoInsumo.BackColor = System.Drawing.Color.White;
+            this.txtProdutoInsumo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtProdutoInsumo.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtProdutoInsumo.BorderRadius = 8;
+            this.txtProdutoInsumo.BorderSize = 2;
+            this.txtProdutoInsumo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtProdutoInsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdutoInsumo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtProdutoInsumo.Location = new System.Drawing.Point(16, 86);
+            this.txtProdutoInsumo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtProdutoInsumo.Multiline = false;
+            this.txtProdutoInsumo.Name = "txtProdutoInsumo";
+            this.txtProdutoInsumo.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtProdutoInsumo.PasswordChar = false;
+            this.txtProdutoInsumo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtProdutoInsumo.PlaceholderText = "";
+            this.txtProdutoInsumo.ReadOnly = false;
+            this.txtProdutoInsumo.Size = new System.Drawing.Size(278, 37);
+            this.txtProdutoInsumo.TabIndex = 221;
+            this.txtProdutoInsumo.Tag = "";
+            this.txtProdutoInsumo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtProdutoInsumo.Texts = "";
+            this.txtProdutoInsumo.UnderlinedStyle = false;
+            this.txtProdutoInsumo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProdutoInsumo_KeyPress);
+            // 
             // btnSalvar
             // 
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -7987,6 +8425,36 @@
             this.txtPai.Texts = "";
             this.txtPai.UnderlinedStyle = false;
             // 
+            // materialCheckbox1
+            // 
+            this.materialCheckbox1.AutoSize = true;
+            this.materialCheckbox1.Depth = 0;
+            this.materialCheckbox1.Location = new System.Drawing.Point(313, 19);
+            this.materialCheckbox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox1.Name = "materialCheckbox1";
+            this.materialCheckbox1.Ripple = true;
+            this.materialCheckbox1.Size = new System.Drawing.Size(244, 37);
+            this.materialCheckbox1.TabIndex = 243;
+            this.materialCheckbox1.Text = "Possui Variação de Tamanho";
+            this.materialCheckbox1.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckbox2
+            // 
+            this.materialCheckbox2.AutoSize = true;
+            this.materialCheckbox2.Depth = 0;
+            this.materialCheckbox2.Location = new System.Drawing.Point(578, 19);
+            this.materialCheckbox2.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox2.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox2.Name = "materialCheckbox2";
+            this.materialCheckbox2.Ripple = true;
+            this.materialCheckbox2.Size = new System.Drawing.Size(217, 37);
+            this.materialCheckbox2.TabIndex = 244;
+            this.materialCheckbox2.Text = "Possui Variação de Sabor";
+            this.materialCheckbox2.UseVisualStyleBackColor = true;
+            // 
             // FrmProdutoCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8056,6 +8524,7 @@
             this.tabPageAdv1.ResumeLayout(false);
             this.metroPanel6.ResumeLayout(false);
             this.metroPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHabilitarAtendimentoFood)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboTipoProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVeiculo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkProdutoPesavel)).EndInit();
@@ -8082,6 +8551,9 @@
             this.tabPageAdv4.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridGrade)).EndInit();
+            this.tabPageAdv5.ResumeLayout(false);
+            this.tabPageAdv5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridInsumo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -8505,5 +8977,26 @@
         private RJ_UI.Classes.RJTextBox txtCodigoBarrasGrade;
         private FontAwesome.Sharp.IconButton btnGerarCodigoBarrasGrade;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblIdGrade;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkHabilitarAtendimentoFood;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv5;
+        private FontAwesome.Sharp.IconButton btnPesquisaProdutoInsumo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel105;
+        private RJ_UI.Classes.RJTextBox txtCodProdutoInsumo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel106;
+        private RJ_UI.Classes.RJTextBox txtProdutoInsumo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lblProdutoCompoe;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel108;
+        private RJ_UI.Classes.RJTextBox txtQuantidadeInsumo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel107;
+        private RJ_UI.Classes.RJTextBox txtCustoUnitarioInsumo;
+        private Syncfusion.WinForms.DataGrid.SfDataGrid gridInsumo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel109;
+        private RJ_UI.Classes.RJTextBox txtCustoTotalInsumo;
+        private MaterialSkin.Controls.MaterialButton btnAdicionarInsumo;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel110;
+        private RJ_UI.Classes.RJTextBox txtCustoTotalProducao;
+        private FontAwesome.Sharp.IconButton btnDeletarInsumo;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox2;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox1;
     }
 }

@@ -7,6 +7,7 @@ using Lunar.Telas.Cadastros.Empresas;
 using Lunar.Telas.Cadastros.Financeiro.Cartoes;
 using Lunar.Telas.Cadastros.Financeiro.PlanoContas.PlanosPorGrupos;
 using Lunar.Telas.Cadastros.Produtos;
+using Lunar.Telas.Cadastros.Produtos.Auxiliares;
 using Lunar.Telas.CaixaConferencia;
 using Lunar.Telas.CaixaConferencia.Reports;
 using Lunar.Telas.Compras.Manifestos;
@@ -348,8 +349,9 @@ namespace Lunar.Telas.Principal
 
         private void btnProduto_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmProdutoLista(), sender);
-            //ActivateButton(sender, RGBColors.color2);
+            //OpenChildForm(() => new FrmProdutoLista(), sender);
+
+            dropMenuProduto.Show(btnProduto, btnProduto.Width, 0);
         }
 
         //private void OpenChildForm(Form childForm)
@@ -590,6 +592,11 @@ namespace Lunar.Telas.Principal
             dropMenuVendas.PrimaryColor = Color.FromArgb(37, 36, 81);
             dropMenuVendas.MenuItemTextColor = Color.White;
             dropMenuVendas.Cursor = Cursors.Hand;
+
+            dropMenuProduto.IsMainMenu = true;
+            dropMenuProduto.PrimaryColor = Color.FromArgb(37, 36, 81);
+            dropMenuProduto.MenuItemTextColor = Color.White;
+            dropMenuProduto.Cursor = Cursors.Hand;
 
             int w = Screen.PrimaryScreen.Bounds.Width;
             int h = Screen.PrimaryScreen.Bounds.Height;
@@ -1250,6 +1257,21 @@ namespace Lunar.Telas.Principal
             {
                 formBackground.Dispose();
             }
+        }
+
+        private void btnCadastroProduto_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(() => new FrmProdutoLista(), btnProduto);
+        }
+
+        private void btnGrupo_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(() => new FrmGrupoLista(), btnProduto);
+        }
+
+        private void btnSetor_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(() => new FrmSetorLista(), btnProduto);
         }
     }
 }
