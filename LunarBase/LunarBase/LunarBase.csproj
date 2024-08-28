@@ -23,6 +23,7 @@
     <None Remove="HBM\Banco.hbm.xml" />
     <None Remove="HBM\BandeiraCartao.hbm.xml" />
     <None Remove="HBM\Caixa.hbm.xml" />
+    <None Remove="HBM\Caracteristica.hbm.xml" />
     <None Remove="HBM\Cest.hbm.xml" />
     <None Remove="HBM\Cfop.hbm.xml" />
     <None Remove="HBM\Cheque.hbm.xml" />
@@ -80,6 +81,7 @@
     <None Remove="HBM\PessoaTelefone.hbm.xml" />
     <None Remove="HBM\PlanoConta.hbm.xml" />
     <None Remove="HBM\Produto.hbm.xml" />
+    <None Remove="HBM\ProdutoCaracteristica.hbm.xml" />
     <None Remove="HBM\ProdutoCodigoBarras.hbm.xml" />
     <None Remove="HBM\ProdutoGrade.hbm.xml" />
     <None Remove="HBM\ProdutoGrupo.hbm.xml" />
@@ -91,7 +93,6 @@
     <None Remove="HBM\Servico.hbm.xml" />
     <None Remove="HBM\Spc.hbm.xml" />
     <None Remove="HBM\TabelaPreco.hbm.xml" />
-    <None Remove="HBM\Tamanho.hbm.xml" />
     <None Remove="HBM\TipoObjeto.hbm.xml" />
     <None Remove="HBM\TransferenciaEstoque.hbm.xml" />
     <None Remove="HBM\TransferenciaEstoqueProduto.hbm.xml" />
@@ -120,6 +121,7 @@
     <EmbeddedResource Include="HBM\NfePagamento.hbm.xml" />
     <EmbeddedResource Include="HBM\OsComissao.hbm.xml" />
     <EmbeddedResource Include="HBM\PermissaoUsuario.hbm.xml" />
+    <EmbeddedResource Include="HBM\ProdutoCaracteristica.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoCodigoBarras.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoGrade.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoInsumo.hbm.xml" />
@@ -187,7 +189,7 @@
     <EmbeddedResource Include="HBM\Servico.hbm.xml" />
     <EmbeddedResource Include="HBM\Spc.hbm.xml" />
     <EmbeddedResource Include="HBM\TabelaPreco.hbm.xml" />
-    <EmbeddedResource Include="HBM\Tamanho.hbm.xml" />
+    <EmbeddedResource Include="HBM\Caracteristica.hbm.xml" />
     <EmbeddedResource Include="HBM\TipoObjeto.hbm.xml" />
     <EmbeddedResource Include="HBM\TransferenciaEstoque.hbm.xml" />
     <EmbeddedResource Include="HBM\TransferenciaEstoqueProduto.hbm.xml" />

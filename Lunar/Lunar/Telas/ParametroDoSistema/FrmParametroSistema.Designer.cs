@@ -91,6 +91,7 @@
             this.txtJuro = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtMulta = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabOrdemServico = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.chkSelecionarGradePorCodigoBarras = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioTermicaCondicional = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.radioA4Condicional = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
@@ -220,7 +221,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.chkSelecionarGradePorCodigoBarras = new System.Windows.Forms.CheckBox();
+            this.chkViasDiferentesOrdemServico = new System.Windows.Forms.CheckBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -1265,6 +1266,7 @@
             // 
             // tabOrdemServico
             // 
+            this.tabOrdemServico.Controls.Add(this.chkViasDiferentesOrdemServico);
             this.tabOrdemServico.Controls.Add(this.chkSelecionarGradePorCodigoBarras);
             this.tabOrdemServico.Controls.Add(this.groupBox3);
             this.tabOrdemServico.Controls.Add(this.autoLabel13);
@@ -1282,6 +1284,18 @@
             this.tabOrdemServico.Text = "O.S/Vendas";
             this.tabOrdemServico.ThemesEnabled = false;
             // 
+            // chkSelecionarGradePorCodigoBarras
+            // 
+            this.chkSelecionarGradePorCodigoBarras.AutoSize = true;
+            this.chkSelecionarGradePorCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSelecionarGradePorCodigoBarras.Location = new System.Drawing.Point(16, 170);
+            this.chkSelecionarGradePorCodigoBarras.Name = "chkSelecionarGradePorCodigoBarras";
+            this.chkSelecionarGradePorCodigoBarras.Size = new System.Drawing.Size(810, 22);
+            this.chkSelecionarGradePorCodigoBarras.TabIndex = 209;
+            this.chkSelecionarGradePorCodigoBarras.Text = "Obrigar seleção de grade de produtos na venda ao bipar o código de barras (se hou" +
+    "ver mais de uma grade cadastrada)";
+            this.chkSelecionarGradePorCodigoBarras.UseVisualStyleBackColor = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.radioTermicaCondicional);
@@ -1289,10 +1303,10 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(16, 73);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(235, 91);
+            this.groupBox3.Size = new System.Drawing.Size(285, 91);
             this.groupBox3.TabIndex = 208;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tipo Impressora Condicional";
+            this.groupBox3.Text = "Tipo Impressora Condicional e O.S";
             // 
             // radioTermicaCondicional
             // 
@@ -3204,17 +3218,16 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // chkSelecionarGradePorCodigoBarras
+            // chkViasDiferentesOrdemServico
             // 
-            this.chkSelecionarGradePorCodigoBarras.AutoSize = true;
-            this.chkSelecionarGradePorCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelecionarGradePorCodigoBarras.Location = new System.Drawing.Point(16, 170);
-            this.chkSelecionarGradePorCodigoBarras.Name = "chkSelecionarGradePorCodigoBarras";
-            this.chkSelecionarGradePorCodigoBarras.Size = new System.Drawing.Size(810, 22);
-            this.chkSelecionarGradePorCodigoBarras.TabIndex = 209;
-            this.chkSelecionarGradePorCodigoBarras.Text = "Obrigar seleção de grade de produtos na venda ao bipar o código de barras (se hou" +
-    "ver mais de uma grade cadastrada)";
-            this.chkSelecionarGradePorCodigoBarras.UseVisualStyleBackColor = true;
+            this.chkViasDiferentesOrdemServico.AutoSize = true;
+            this.chkViasDiferentesOrdemServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkViasDiferentesOrdemServico.Location = new System.Drawing.Point(16, 198);
+            this.chkViasDiferentesOrdemServico.Name = "chkViasDiferentesOrdemServico";
+            this.chkViasDiferentesOrdemServico.Size = new System.Drawing.Size(427, 22);
+            this.chkViasDiferentesOrdemServico.TabIndex = 210;
+            this.chkViasDiferentesOrdemServico.Text = "Abrir Opção de Imprimir Vias diferentes na Ordem de Serviço";
+            this.chkViasDiferentesOrdemServico.UseVisualStyleBackColor = true;
             // 
             // FrmParametroSistema
             // 
@@ -3488,5 +3501,6 @@
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioTermicaCondicional;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioA4Condicional;
         private System.Windows.Forms.CheckBox chkSelecionarGradePorCodigoBarras;
+        private System.Windows.Forms.CheckBox chkViasDiferentesOrdemServico;
     }
 }

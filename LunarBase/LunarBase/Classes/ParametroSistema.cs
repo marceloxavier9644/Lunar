@@ -80,6 +80,8 @@ namespace LunarBase.Classes
         private string usuarioNuvem;
         private string senhaNuvem;
 
+        private bool viaImpressaoOs;
+
         public virtual int Id { get => id; set => id = value; }
         public virtual string UltNsu { get => ultNsu; set => ultNsu = value; }
         public virtual string ProximoNumeroNFCe { get => proximoNumeroNFCe; set => proximoNumeroNFCe = value; }
@@ -146,5 +148,6 @@ namespace LunarBase.Classes
         public virtual string SenhaNuvem { get => senhaNuvem; set => senhaNuvem = value; }
         public virtual string TipoImpressoraCondicional { get => tipoImpressoraCondicional; set => tipoImpressoraCondicional = value; }
         public virtual bool SelecionarGradeEan { get => selecionarGradeEan; set => selecionarGradeEan = value; }
+        public virtual bool ViaImpressaoOs { get => viaImpressaoOs; set => viaImpressaoOs = value; }
     }
 }

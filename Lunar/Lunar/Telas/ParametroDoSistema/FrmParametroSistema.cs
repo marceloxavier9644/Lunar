@@ -48,7 +48,7 @@ namespace Lunar.Telas.ParametroDoSistema
             if (parametro.AmbienteProducao == true)
                 radioProducao.Checked = true;
             else
-                radioHomologacao.Checked = true;
+                radioHomologacao.Checked = false;
 
             if (parametro.ChequeContaReceber == true)
                 chkChequeContaReceber.Checked = true;
@@ -254,6 +254,11 @@ namespace Lunar.Telas.ParametroDoSistema
             txtUsuarioNuvem.Text = parametro.UsuarioNuvem;
             if(!String.IsNullOrEmpty(parametro.SenhaNuvem))
                 txtSenhaNuvem.Text = GenericaDesktop.Descriptografa(parametro.SenhaNuvem);
+
+            if (parametro.ViaImpressaoOs == true)
+                chkViasDiferentesOrdemServico.Checked = true;
+            else
+                chkViasDiferentesOrdemServico.Checked = false;
         }
 
         private void setParametro()
@@ -451,6 +456,12 @@ namespace Lunar.Telas.ParametroDoSistema
             parametro.BancoNuvem = txtBancoNuvem.Text;
             parametro.UsuarioNuvem = txtUsuarioNuvem.Text;
             parametro.SenhaNuvem = GenericaDesktop.Criptografa(txtSenhaNuvem.Text);
+
+            //ORDEM SERVICO
+            if (chkViasDiferentesOrdemServico.Checked == true)
+                parametro.ViaImpressaoOs = true;
+            else
+                parametro.ViaImpressaoOs = false;
 
             Sessao.parametroSistema = parametro;
         }

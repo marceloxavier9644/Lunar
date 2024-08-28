@@ -482,6 +482,12 @@
     <Compile Include="Telas\Cadastros\Financeiro\PlanoContas\PlanosPorGrupos\FrmPlanoConta.Designer.cs">
       <DependentUpon>FrmPlanoConta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmCadastroVariacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmCadastroVariacoes.Designer.cs">
+      <DependentUpon>FrmCadastroVariacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmCESTCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -994,10 +1000,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsOrdemServico.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoExame.cs">
+      <DependentUpon>dsOrdemServicoExame.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoExame.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsOrdemServicoExame.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoPagamento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOrdemServicoPagamento.xsd</DependentUpon>
     </Compile>
     <Compile Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoProduto.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1044,6 +1058,12 @@
     </Compile>
     <Compile Include="Telas\OrdensDeServico\FrmImprimirNumeroOS.Designer.cs">
       <DependentUpon>FrmImprimirNumeroOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmImprimirViasOtica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\OrdensDeServico\FrmImprimirViasOtica.Designer.cs">
+      <DependentUpon>FrmImprimirViasOtica.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\OrdensDeServico\FrmOrdemServico.cs">
       <SubType>Form</SubType>
@@ -1438,6 +1458,9 @@
     <EmbeddedResource Include="Telas\Cadastros\Financeiro\PlanoContas\PlanosPorGrupos\FrmPlanoConta.resx">
       <DependentUpon>FrmPlanoConta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmCadastroVariacoes.resx">
+      <DependentUpon>FrmCadastroVariacoes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmCESTCadastro.resx">
       <DependentUpon>FrmCESTCadastro.cs</DependentUpon>
     </EmbeddedResource>
@@ -1703,6 +1726,9 @@
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmImprimirNumeroOS.resx">
       <DependentUpon>FrmImprimirNumeroOS.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\OrdensDeServico\FrmImprimirViasOtica.resx">
+      <DependentUpon>FrmImprimirViasOtica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\OrdensDeServico\FrmOrdemServico.resx">
       <DependentUpon>FrmOrdemServico.cs</DependentUpon>
     </EmbeddedResource>
@@ -1713,6 +1739,9 @@
     <EmbeddedResource Include="Telas\OrdensDeServico\ImprimirNumeroOS.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServico.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServicoOtica.rdlc" />
+    <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServicoTermicaCliente.rdlc" />
+    <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServicoTermicaLaboratorio.rdlc" />
+    <EmbeddedResource Include="Telas\OrdensDeServico\ReportOrdemServicoTermicaLoja.rdlc" />
     <EmbeddedResource Include="Telas\OrdensDeServico\Servicos\FrmServicoCadastro.resx">
       <DependentUpon>FrmServicoCadastro.cs</DependentUpon>
     </EmbeddedResource>
@@ -2215,6 +2244,17 @@
     </None>
     <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoExame.xss">
       <DependentUpon>dsOrdemServicoExame.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoPagamento.xsc">
+      <DependentUpon>dsOrdemServicoPagamento.xsd</DependentUpon>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoPagamento.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOrdemServicoPagamento.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoPagamento.xss">
+      <DependentUpon>dsOrdemServicoPagamento.xsd</DependentUpon>
     </None>
     <None Include="Telas\OrdensDeServico\DataSetOrdemServico\dsOrdemServicoProduto.xsc">
       <DependentUpon>dsOrdemServicoProduto.xsd</DependentUpon>

@@ -38,6 +38,7 @@ namespace Lunar.Telas.Cadastros.Produtos
         }
         List<string> tiposDeProduto = new List<string>();
         private IList<ProdutoInsumo> insumos = new List<ProdutoInsumo>();
+        private IList<Caracteristica> listaVariacoes = new List<Caracteristica>();
         bool passou = false;
         MarcaController marcaController = new MarcaController();
         UnidadeMedidaController unidadeMedidaController = new UnidadeMedidaController();
@@ -66,7 +67,7 @@ namespace Lunar.Telas.Cadastros.Produtos
         GrupoFiscalController grupoFiscalController = new GrupoFiscalController();
         bool inicio = false;
         bool editarInsumo = false;
-
+        bool editarVariacao = false;
         public FrmProdutoCadastro()
         {
             InitializeComponent();
@@ -80,6 +81,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             tabPageAdv3.TabVisible = false;
             tabPageAdv4.TabVisible = false;
             lblIdGrade.Text = "";
+            carregarComboVariacoes();
         }
         private void LimparCampos(Control control)
         {
@@ -123,6 +125,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             gerarCoresVeiculos();
             gerarDadosVeiculos();
             gerarTiposDeProdutos();
+       
             //aba veiculo nao apresenta se nao marcar o checkbox veiculo
             tabPageAdv3.TabVisible = false;
 
@@ -141,6 +144,9 @@ namespace Lunar.Telas.Cadastros.Produtos
             }
             iniciarTributosPadroes();
             CarregarInsumosNoGrid(produto.Id);
+            carregarComboVariacoes();
+            carregarGridVariacoes();
+            PreencherTreeViewAdv();
             lblIdGrade.Text = "";
         }
 
@@ -152,6 +158,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             gerarCoresVeiculos();
             gerarDadosVeiculos();
             gerarTiposDeProdutos();
+
             //aba veiculo nao apresenta se nao marcar o checkbox veiculo
             tabPageAdv3.TabVisible = false;
 
@@ -174,6 +181,9 @@ namespace Lunar.Telas.Cadastros.Produtos
             }
             CarregarInsumosNoGrid(produto.Id);
             lblIdGrade.Text = "";
+            carregarComboVariacoes();
+            carregarGridVariacoes();
+            PreencherTreeViewAdv();
         }
 
         private void gerarDadosVeiculos()
@@ -2594,6 +2604,8 @@ namespace Lunar.Telas.Cadastros.Produtos
                 MessageBox.Show($"Erro ao carregar insumos: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
         private void FrmProdutoCadastro_Load(object sender, EventArgs e)
         {
 
@@ -3562,5 +3574,115 @@ namespace Lunar.Telas.Cadastros.Produtos
                 editarInsumo = true;
             }
         }
+
+        private void carregarComboVariacoes()
+        {
+            CaracteristicaController caracteristicaController = new CaracteristicaController();
+            ObjetoPadrao caract = new Caracteristica();
+            IList<ObjetoPadrao> listaVariacoesPadrao = caracteristicaController.selecionarTodos(caract);
+            List<Caracteristica> listaVariacoes = listaVariacoesPadrao.Cast<Caracteristica>().ToList();
+
+            // Configurando o sfComboBox
+            comboVariacoes.DataSource = listaVariacoes; 
+            comboVariacoes.DisplayMember = "Descricao"; 
+            comboVariacoes.ValueMember = "Id";
+
+            if (listaVariacoes.Count > 0)
+            {
+                comboVariacoes.SelectedIndex = 0;
+            }
+        }
+        private void btnAdicionarVariacao_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (comboVariacoes.SelectedItem != null && !String.IsNullOrEmpty(txtDescricaoVariacao.Texts))
+                {
+                    Caracteristica caracteristicaSelecionada = comboVariacoes.SelectedItem as Caracteristica;
+
+                    if (caracteristicaSelecionada != null)
+                    {
+                        int idSelecionado = caracteristicaSelecionada.Id;
+                        string descricaoSelecionada = caracteristicaSelecionada.Descricao;
+
+                        ProdutoCaracteristica produtoCaracteristica = new ProdutoCaracteristica();
+                        produtoCaracteristica.Caracteristica = caracteristicaSelecionada;
+                        produtoCaracteristica.Descricao = txtDescricaoVariacao.Texts;
+                        Produto prod = new Produto();
+                        if (!String.IsNullOrEmpty(txtID.Texts))
+                        {
+                            prod.Id = int.Parse(txtID.Texts);
+                            prod = (Produto)Controller.getInstance().selecionar(prod);
+                            produtoCaracteristica.Produto = prod;
+                        }
+                        else
+                            set_Produto();
+                        Controller.getInstance().salvar(produtoCaracteristica);
+                        carregarGridVariacoes();
+                        txtDescricaoVariacao.Texts = "";
+                        
+                    }
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Preencha todos os campos");
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void carregarGridVariacoes()
+        {
+            if (!String.IsNullOrEmpty(txtID.Texts))
+            {
+                ProdutoCaracteristicaController produtoCaracteristicaController = new ProdutoCaracteristicaController();
+                IList<ProdutoCaracteristica> listaCaracteristicas = produtoCaracteristicaController.selecionarProdutoCaracteristica(int.Parse(txtID.Texts));
+
+                if (listaCaracteristicas.Count > 0)
+                {
+                    gridVariacaoProduto.DataSource = null; 
+                    gridVariacaoProduto.DataSource = listaCaracteristicas; 
+                    gridVariacaoProduto.Refresh();
+                }
+            }
+        }
+
+        private void gridVariacaoProduto_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.Style.BackColor = Color.WhiteSmoke;
+            else
+                e.Style.BackColor = Color.White;
+        }
+
+        private void PreencherTreeViewAdv()
+        {
+            // Limpa os nós existentes, se houver
+            treeViewAdv1.Nodes.Clear();
+
+            ProdutoCaracteristicaController produtoCaracteristicaController = new ProdutoCaracteristicaController();
+            // Suponha que você tenha uma lista de ProdutoCaracteristica
+            IList<ProdutoCaracteristica> listaProdutoCaracteristicas = produtoCaracteristicaController.selecionarProdutoCaracteristica(int.Parse(txtID.Texts));
+
+            // Cria um nó raiz para o produto
+            var rootNode = new Syncfusion.Windows.Forms.Tools.TreeNodeAdv("Características do Produto");
+
+            foreach (var produtoCaracteristica in listaProdutoCaracteristicas)
+            {
+                // Para cada característica, adiciona um subnó
+                var childNode = new Syncfusion.Windows.Forms.Tools.TreeNodeAdv($"{produtoCaracteristica.Descricao}: {produtoCaracteristica.Caracteristica.Descricao}");
+                rootNode.Nodes.Add(childNode);
+            }
+
+            // Adiciona o nó raiz ao TreeViewAdv
+            treeViewAdv1.Nodes.Add(rootNode);
+
+            // Expande todos os nós para exibir as características
+            treeViewAdv1.ExpandAll();
+        }
+
     }
 }

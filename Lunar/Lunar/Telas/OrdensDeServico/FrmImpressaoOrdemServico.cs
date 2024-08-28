@@ -6,6 +6,8 @@ using LunarBase.Utilidades;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -22,7 +24,9 @@ namespace Lunar.Telas.OrdensDeServico
             if (Sessao.empresaFilialLogada.Otica == false)
                 gerarImpressao();
             else
+            {
                 gerarImpressaoOrdemServicoOtica();
+            }
         }
 
         private void gerarImpressao()
@@ -405,9 +409,13 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void gerarImpressaoOrdemServicoOtica()
         {
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.OrdensDeServico.ReportOrdemServicoOtica.rdlc";
-
+            
             this.reportViewer1.LocalReport.EnableExternalImages = true;
+            if (Sessao.parametroSistema.TipoImpressoraCondicional.Equals("TERMICA"))
+                this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.OrdensDeServico.ReportOrdemServicoTermicaCliente.rdlc";
+            else
+                this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.OrdensDeServico.ReportOrdemServicoOtica.rdlc";
+
             Microsoft.Reporting.WinForms.ReportDataSource dsOrdem = new Microsoft.Reporting.WinForms.ReportDataSource();
             dsOrdem.Name = "dsOrdemServico";
             dsOrdem.Value = this.bindingSourceOrdem;
@@ -518,7 +526,7 @@ namespace Lunar.Telas.OrdensDeServico
                 }
             }
 
-            ReportParameter[] p = new ReportParameter[14];
+            ReportParameter[] p = new ReportParameter[17];
             p[0] = (new ReportParameter("Empresa", Sessao.empresaFilialLogada.NomeFantasia));
             p[1] = (new ReportParameter("OrdemServicoID", ordemServico.Id.ToString()));
             p[2] = (new ReportParameter("CNPJ", cnpjFormatado));
@@ -533,6 +541,10 @@ namespace Lunar.Telas.OrdensDeServico
             p[11] = (new ReportParameter("CidadeEmpresa", cidadeEmpresa));
             p[12] = (new ReportParameter("InscricaoEstadual", ordemServico.Filial.InscricaoEstadual));
             p[13] = (new ReportParameter("CidadeCliente", cidadeCliente));
+            p[14] = (new ReportParameter("Via", ""));
+            p[15] = (new ReportParameter("DataPrevista", ordemServico.DataServico.ToShortDateString()));
+            p[16] = (new ReportParameter("Data", ordemServico.DataAbertura.ToShortDateString() + " " + ordemServico.DataAbertura.ToShortTimeString()));
+
             reportViewer1.LocalReport.SetParameters(p);
 
             //dsOrdemServico ds = new dsOrdemServico();
@@ -554,7 +566,7 @@ namespace Lunar.Telas.OrdensDeServico
                 foreach (OrdemServicoProduto ordemServicoProduto in listaProdutos)
                 {
                     dsOrdemServicoProduto.OrdemServicoProduto.AddOrdemServicoProdutoRow(ordemServicoProduto.Id, ordemServicoProduto.Produto.Id.ToString(),
-                        ordemServicoProduto.DescricaoProduto, ordemServicoProduto.ValorUnitario, ordemServicoProduto.Desconto,
+                        ordemServicoProduto.Produto.Id.ToString() + " - " + ordemServicoProduto.DescricaoProduto, ordemServicoProduto.ValorUnitario, ordemServicoProduto.Desconto,
                         ordemServicoProduto.Acrescimo, ordemServicoProduto.Quantidade, ordemServicoProduto.ValorTotal, ordemServico.Id);
                 }
             }
@@ -587,11 +599,90 @@ namespace Lunar.Telas.OrdensDeServico
                         ordemServicoExame.PeEsferico, ordemServicoExame.PeCilindrico, ordemServicoExame.PePosicao, ordemServicoExame.PeDp, 
                         ordemServicoExame.PeAltura, ordemServicoExame.Armacao, ordemServicoExame.Lente, ordemServicoExame.ProximoExame, 
                         ordemServicoExame.Adicao, ordemServicoExame.DataEntrega.ToShortDateString(), 
-                        ordemServicoExame.DataExame.ToShortDateString());
+                        ordemServicoExame.DataExame.ToShortDateString(), ordemServicoExame.Examinador);
                 }
             }
 
             this.reportViewer1.RefreshReport();
+            //if (Sessao.parametroSistema.TipoImpressoraCondicional.Equals("TERMICA"))
+            //{
+            //    ImprimirDiretoNaImpressora(reportViewer1.LocalReport);
+            //}         
         }
+
+
+
+        private void ImprimirDiretoNaImpressora(LocalReport relatorio)
+        {
+            // Configurações de impressão
+            PrinterSettings printerSettings = new PrinterSettings();
+            PageSettings pageSettings = new PageSettings(printerSettings);
+
+            // Renderiza o relatório como uma string de comandos EMF
+            Warning[] warnings;
+            string deviceInfo = @"
+<DeviceInfo>
+    <OutputFormat>EMF</OutputFormat>
+    <PageWidth>8.5in</PageWidth>
+    <PageHeight>11in</PageHeight>
+    <MarginTop>0.25in</MarginTop>
+    <MarginLeft>0.25in</MarginLeft>
+    <MarginRight>0.25in</MarginRight>
+    <MarginBottom>0.25in</MarginBottom>
+</DeviceInfo>";
+
+            var streams = new List<Stream>();
+            relatorio.Render("Image", deviceInfo, (name, fileNameExtension, encoding, mimeType, willSeek) =>
+            {
+                Stream stream = new MemoryStream();
+                streams.Add(stream);
+                return stream;
+            }, out warnings);
+
+            // Ajusta as streams para o início
+            foreach (Stream stream in streams)
+                stream.Position = 0;
+
+            if (streams.Count > 0)
+            {
+                // Índice da página atual sendo impressa
+                int currentPageIndex = 0;
+
+                // Realiza a impressão
+                PrintDocument printDoc = new PrintDocument
+                {
+                    PrinterSettings = printerSettings,
+                    DefaultPageSettings = pageSettings
+                };
+                printDoc.PrintPage += (sender, ev) =>
+                {
+                    if (currentPageIndex >= 0 && currentPageIndex < streams.Count)
+                    {
+                        Metafile pageImage = new Metafile(streams[currentPageIndex]);
+
+                        ev.Graphics.DrawImage(pageImage, ev.PageBounds);
+
+                        currentPageIndex++; // Próxima página
+
+                        ev.HasMorePages = currentPageIndex < streams.Count;
+                    }
+                    else
+                    {
+                        // Tratamento para o caso de um índice fora do intervalo
+                        ev.HasMorePages = false; // Não há mais páginas a serem impressas
+                    }
+                };
+
+                // Inicia a impressão
+                printDoc.Print();
+
+                // Libera os recursos das streams
+                foreach (Stream stream in streams)
+                    stream.Close();
+            }
+        }
+
+
+
     }
 }

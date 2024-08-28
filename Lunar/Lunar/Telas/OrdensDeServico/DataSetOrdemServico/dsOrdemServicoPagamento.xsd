@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsOrdemServicoPagamento" targetNamespace="http://tempuri.org/dsOrdemServicoPagamento.xsd" xmlns:mstns="http://tempuri.org/dsOrdemServicoPagamento.xsd" xmlns="http://tempuri.org/dsOrdemServicoPagamento.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsOrdemServicoPagamento" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsOrdemServicoPagamento" msprop:Generator_DataSetName="dsOrdemServicoPagamento">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OrdemServicoPagamento" msprop:Generator_RowEvHandlerName="OrdemServicoPagamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="OrdemServicoPagamentoRowDeleted" msprop:Generator_RowDeletingName="OrdemServicoPagamentoRowDeleting" msprop:Generator_RowEvArgName="OrdemServicoPagamentoRowChangeEvent" msprop:Generator_TablePropName="OrdemServicoPagamento" msprop:Generator_RowChangedName="OrdemServicoPagamentoRowChanged" msprop:Generator_RowChangingName="OrdemServicoPagamentoRowChanging" msprop:Generator_TableClassName="OrdemServicoPagamentoDataTable" msprop:Generator_RowClassName="OrdemServicoPagamentoRow" msprop:Generator_TableVarName="tableOrdemServicoPagamento" msprop:Generator_UserTableName="OrdemServicoPagamento">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DataRecebimento" msprop:Generator_ColumnPropNameInRow="DataRecebimento" msprop:Generator_ColumnPropNameInTable="DataRecebimentoColumn" msprop:Generator_ColumnVarNameInTable="columnDataRecebimento" msprop:Generator_UserColumnName="DataRecebimento" type="xs:string" minOccurs="0" />
+              <xs:element name="Valor" msprop:Generator_ColumnPropNameInRow="Valor" msprop:Generator_ColumnPropNameInTable="ValorColumn" msprop:Generator_ColumnVarNameInTable="columnValor" msprop:Generator_UserColumnName="Valor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FormaPagamento" msprop:Generator_ColumnPropNameInRow="FormaPagamento" msprop:Generator_ColumnPropNameInTable="FormaPagamentoColumn" msprop:Generator_ColumnVarNameInTable="columnFormaPagamento" msprop:Generator_UserColumnName="FormaPagamento" type="xs:string" minOccurs="0" />
+              <xs:element name="TipoCartao" msprop:Generator_ColumnPropNameInRow="TipoCartao" msprop:Generator_ColumnPropNameInTable="TipoCartaoColumn" msprop:Generator_ColumnVarNameInTable="columnTipoCartao" msprop:Generator_UserColumnName="TipoCartao" type="xs:string" minOccurs="0" />
+              <xs:element name="Parcelas" msprop:Generator_ColumnPropNameInRow="Parcelas" msprop:Generator_ColumnPropNameInTable="ParcelasColumn" msprop:Generator_ColumnVarNameInTable="columnParcelas" msprop:Generator_UserColumnName="Parcelas" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

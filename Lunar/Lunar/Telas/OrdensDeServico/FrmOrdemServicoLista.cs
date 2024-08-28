@@ -729,7 +729,20 @@ namespace Lunar.Telas.OrdensDeServico
                 GenericaDesktop.ShowAlerta("Clique primeiro na Ordem de Serviço que deseja imprimir");
             }
         }
-
+        private void imprimirOSComViasDiferentes()
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                ordemServico = new OrdemServico();
+                ordemServico = (OrdemServico)grid.SelectedItem;
+                FrmImprimirViasOtica frmImpressaoOrdemServico = new FrmImprimirViasOtica(ordemServico);
+                frmImpressaoOrdemServico.ShowDialog();
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Clique primeiro na Ordem de Serviço que deseja imprimir");
+            }
+        }
         private void imprimirOS()
         {
             if (grid.SelectedIndex >= 0)
@@ -1839,8 +1852,12 @@ namespace Lunar.Telas.OrdensDeServico
 
         private void btnImprimir1_Click(object sender, EventArgs e)
         {
-            imprimirOS();
-
+            if (Sessao.parametroSistema.ViaImpressaoOs == true)
+            {
+                imprimirOSComViasDiferentes();
+            }
+            else
+                imprimirOS();
         }
 
         private void btnImprimir1_DropDowItemClicked(object sender, ToolStripItemClickedEventArgs e)

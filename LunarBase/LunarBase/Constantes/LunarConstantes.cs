@@ -138,9 +138,8 @@ namespace LunarBase.Constantes
         public const int NFESTATUS_CONTIGENCIA = 6;
 
         //Tamanho - Padrão
-        public const int TAMANHO_P = 1;
-        public const int TAMANHO_M = 2;
-        public const int TAMANHO_G = 3;
-        public const int TAMANHO_GG = 4;
+        public const int CARACTERISTICA_TAMANHO = 1;
+        public const int CARACTERISTICA_COR = 2;
+
     }
 }

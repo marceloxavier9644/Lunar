@@ -106,6 +106,7 @@
             this.btnCadastroProduto = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGrupo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSetor = new System.Windows.Forms.ToolStripMenuItem();
+            this.variaçõesCaracterísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -994,33 +995,41 @@
             this.dropMenuProduto.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCadastroProduto,
             this.btnGrupo,
-            this.btnSetor});
+            this.btnSetor,
+            this.variaçõesCaracterísticasToolStripMenuItem});
             this.dropMenuProduto.MenuItemHeight = 25;
             this.dropMenuProduto.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuProduto.Name = "rjDropdownMenu1";
             this.dropMenuProduto.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuProduto.Size = new System.Drawing.Size(211, 92);
+            this.dropMenuProduto.Size = new System.Drawing.Size(251, 114);
             // 
             // btnCadastroProduto
             // 
             this.btnCadastroProduto.Name = "btnCadastroProduto";
-            this.btnCadastroProduto.Size = new System.Drawing.Size(210, 22);
+            this.btnCadastroProduto.Size = new System.Drawing.Size(250, 22);
             this.btnCadastroProduto.Text = "Produto";
             this.btnCadastroProduto.Click += new System.EventHandler(this.btnCadastroProduto_Click);
             // 
             // btnGrupo
             // 
             this.btnGrupo.Name = "btnGrupo";
-            this.btnGrupo.Size = new System.Drawing.Size(210, 22);
+            this.btnGrupo.Size = new System.Drawing.Size(250, 22);
             this.btnGrupo.Text = "Grupo";
             this.btnGrupo.Click += new System.EventHandler(this.btnGrupo_Click);
             // 
             // btnSetor
             // 
             this.btnSetor.Name = "btnSetor";
-            this.btnSetor.Size = new System.Drawing.Size(210, 22);
+            this.btnSetor.Size = new System.Drawing.Size(250, 22);
             this.btnSetor.Text = "Setor (Localização)";
             this.btnSetor.Click += new System.EventHandler(this.btnSetor_Click);
+            // 
+            // variaçõesCaracterísticasToolStripMenuItem
+            // 
+            this.variaçõesCaracterísticasToolStripMenuItem.Name = "variaçõesCaracterísticasToolStripMenuItem";
+            this.variaçõesCaracterísticasToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.variaçõesCaracterísticasToolStripMenuItem.Text = "Variações/Características";
+            this.variaçõesCaracterísticasToolStripMenuItem.Click += new System.EventHandler(this.variaçõesCaracterísticasToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1135,5 +1144,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnCadastroProduto;
         private System.Windows.Forms.ToolStripMenuItem btnGrupo;
         private System.Windows.Forms.ToolStripMenuItem btnSetor;
+        private System.Windows.Forms.ToolStripMenuItem variaçõesCaracterísticasToolStripMenuItem;
     }
 }

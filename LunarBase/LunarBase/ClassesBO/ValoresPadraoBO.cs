@@ -40,8 +40,8 @@ namespace LunarBase.ClassesBO
         NfeStatusController nfeStatusController = new NfeStatusController();
         NaturezaOperacao naturezaOperacao = new NaturezaOperacao();
         NaturezaOperacaoController naturezaOperacaoController = new NaturezaOperacaoController();
-        Tamanho tamanho = new Tamanho();
-        TamanhoController tamanhoController = new TamanhoController();
+        Caracteristica caracteristica = new Caracteristica();
+        CaracteristicaController caracteristicaController = new CaracteristicaController();
         public bool gerarValoresPadrao()
         {
             try
@@ -1392,36 +1392,24 @@ namespace LunarBase.ClassesBO
 
         public void gerarTamanhoPadrao()
         {
-            tamanho = new Tamanho();
+            caracteristica = new Caracteristica();
             try
             {
-                tamanho.Id = LunarConstantes.TAMANHO_P;
-                tamanho.Descricao = "P";
-                tamanho.Ordem = 1;
-                tamanhoController.salvarSeNaoExistir(tamanho);
+                caracteristica.Id = LunarConstantes.CARACTERISTICA_TAMANHO;
+                caracteristica.Descricao = "TAMANHO";
+                caracteristica.Ordem = 1;
+                caracteristicaController.salvarSeNaoExistir(caracteristica);
 
-                tamanho = new Tamanho();
-                tamanho.Id = LunarConstantes.TAMANHO_M;
-                tamanho.Descricao = "M";
-                tamanho.Ordem = 2;
-                tamanhoController.salvarSeNaoExistir(tamanho);
-
-                tamanho = new Tamanho();
-                tamanho.Id = LunarConstantes.TAMANHO_G;
-                tamanho.Descricao = "G";
-                tamanho.Ordem = 3;
-                tamanhoController.salvarSeNaoExistir(tamanho);
-
-                tamanho = new Tamanho();
-                tamanho.Id = LunarConstantes.TAMANHO_GG;
-                tamanho.Descricao = "GG";
-                tamanho.Ordem = 4;
-                tamanhoController.salvarSeNaoExistir(tamanho);
+                caracteristica = new Caracteristica();
+                caracteristica.Id = LunarConstantes.CARACTERISTICA_COR;
+                caracteristica.Descricao = "COR";
+                caracteristica.Ordem = 2;
+                caracteristicaController.salvarSeNaoExistir(caracteristica);
             }
             catch
             {
-                tamanho.Id = 0;
-                Controller.getInstance().salvar(tamanho);
+                caracteristica.Id = 0;
+                Controller.getInstance().salvar(caracteristica);
 
             }
         }

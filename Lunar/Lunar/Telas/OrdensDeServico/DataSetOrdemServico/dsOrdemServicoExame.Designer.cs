@@ -337,6 +337,8 @@ namespace Lunar.Telas.OrdensDeServico.DataSetOrdemServico {
             
             private global::System.Data.DataColumn columnDataExame;
             
+            private global::System.Data.DataColumn columnMedico;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ExameDataTable() {
@@ -604,6 +606,14 @@ namespace Lunar.Telas.OrdensDeServico.DataSetOrdemServico {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MedicoColumn {
+                get {
+                    return this.columnMedico;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -668,7 +678,8 @@ namespace Lunar.Telas.OrdensDeServico.DataSetOrdemServico {
                         string ProximoExame, 
                         string Adicao, 
                         string DataEntrega, 
-                        string DataExame) {
+                        string DataExame, 
+                        string Medico) {
                 ExameRow rowExameRow = ((ExameRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -699,7 +710,8 @@ namespace Lunar.Telas.OrdensDeServico.DataSetOrdemServico {
                         ProximoExame,
                         Adicao,
                         DataEntrega,
-                        DataExame};
+                        DataExame,
+                        Medico};
                 rowExameRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowExameRow);
                 return rowExameRow;
@@ -751,6 +763,7 @@ namespace Lunar.Telas.OrdensDeServico.DataSetOrdemServico {
                 this.columnAdicao = base.Columns["Adicao"];
                 this.columnDataEntrega = base.Columns["DataEntrega"];
                 this.columnDataExame = base.Columns["DataExame"];
+                this.columnMedico = base.Columns["Medico"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -814,6 +827,8 @@ namespace Lunar.Telas.OrdensDeServico.DataSetOrdemServico {
                 base.Columns.Add(this.columnDataEntrega);
                 this.columnDataExame = new global::System.Data.DataColumn("DataExame", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataExame);
+                this.columnMedico = new global::System.Data.DataColumn("Medico", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMedico);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1420,6 +1435,22 @@ namespace Lunar.Telas.OrdensDeServico.DataSetOrdemServico {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Medico {
+                get {
+                    try {
+                        return ((string)(this[this.tableExame.MedicoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Medico\' na tabela \'Exame\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableExame.MedicoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIdNull() {
                 return this.IsNull(this.tableExame.IdColumn);
             }
@@ -1764,6 +1795,18 @@ namespace Lunar.Telas.OrdensDeServico.DataSetOrdemServico {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDataExameNull() {
                 this[this.tableExame.DataExameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMedicoNull() {
+                return this.IsNull(this.tableExame.MedicoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMedicoNull() {
+                this[this.tableExame.MedicoColumn] = global::System.Convert.DBNull;
             }
         }
         

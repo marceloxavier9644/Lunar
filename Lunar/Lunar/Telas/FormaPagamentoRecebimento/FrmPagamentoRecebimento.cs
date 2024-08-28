@@ -2938,7 +2938,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             foreach (ContaPagar contaPagar in listaPagar)
             {
                 if (String.IsNullOrEmpty(parcelas))
-                    parcelas = contaPagar.NumeroDocumento;
+                    parcelas = contaPagar.Id.ToString();
                 else
                     parcelas = parcelas + " - " + contaPagar.Id;
 

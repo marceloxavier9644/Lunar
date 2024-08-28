@@ -686,5 +686,20 @@ namespace Lunar.Telas.ContasPagar
                 }
             }
         }
+
+        private void txtNumeroDocumento_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                ContaPagarController contaPagarController = new ContaPagarController();
+                IList<ContaPagar> listaPagar = contaPagarController.selecionarContaPagarPorSql("From ContaPagar Tabela Where Tabela.NumeroDocumento = '" + txtNumeroDocumento.Texts.Trim() + "' and Tabela.Pessoa = " +txtCodClienteFornecedor.Texts+ " and Tabela.FlagExcluido <> true");
+                if (listaPagar.Count > 0)
+                    GenericaDesktop.ShowAlerta("Já existe uma fatura deste fornecedor com o mesmo número de documento, verifique antes de continuar!");
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

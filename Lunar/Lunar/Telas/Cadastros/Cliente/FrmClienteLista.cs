@@ -208,6 +208,7 @@ namespace Lunar.Telas.Cadastros.Cliente
         private void btnNovo_Click(object sender, EventArgs e)
         {
             abrirNovoCadastro();
+
         }
 
         private void abrirNovoCadastro()
@@ -232,7 +233,7 @@ namespace Lunar.Telas.Cadastros.Cliente
                     uu.Owner = formBackground;
                     uu.ShowDialog();
                     formBackground.Dispose();
-                    //carregarLista();
+                    carregarLista();
                 }
             }
             catch (Exception ex)
