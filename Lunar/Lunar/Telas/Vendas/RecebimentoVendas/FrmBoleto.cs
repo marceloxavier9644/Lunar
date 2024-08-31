@@ -296,6 +296,10 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             }
         }
 
-       
+        private void txtParcelas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                inserirParcelas();
+        }
     }
 }

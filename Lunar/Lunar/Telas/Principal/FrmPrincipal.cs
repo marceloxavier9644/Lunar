@@ -93,9 +93,7 @@ namespace Lunar.Telas.Principal
 
             if (File.Exists(Sessao.parametroSistema.Logo))
             {
-                panelDesktop.BackColor = Color.White;
-                panelDesktop.BackgroundImageLayout = ImageLayout.Center;
-                panelDesktop.BackgroundImage = Image.FromFile(Sessao.parametroSistema.Logo);
+                ajustarImagemFundo();
             }
 
             lblCaption.Text = "Página Inicial - " + Sessao.usuarioLogado.Login;
@@ -112,7 +110,20 @@ namespace Lunar.Telas.Principal
         {
             
         }
+        private Image RedimensionarImagemPadrao(Image imagemOriginal, int larguraPadrao = 500, int alturaPadrao = 300)
+        {
+            var proporcao = Math.Min((float)larguraPadrao / imagemOriginal.Width, (float)alturaPadrao / imagemOriginal.Height);
+            var larguraNova = (int)(imagemOriginal.Width * proporcao);
+            var alturaNova = (int)(imagemOriginal.Height * proporcao);
 
+            var imagemRedimensionada = new Bitmap(larguraNova, alturaNova);
+            using (var g = Graphics.FromImage(imagemRedimensionada))
+            {
+                g.DrawImage(imagemOriginal, 0, 0, larguraNova, alturaNova);
+            }
+
+            return imagemRedimensionada;
+        }
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -710,6 +721,7 @@ namespace Lunar.Telas.Principal
                 fr.ShowDialog();
                 formBackground.Dispose();
                 fr.Dispose();
+   
             }
         }
 
@@ -718,6 +730,21 @@ namespace Lunar.Telas.Principal
             dropMenuFiscal.Show(btnDepartamentoFiscal, btnDepartamentoFiscal.Width, 0);
         }
 
+        private void ajustarImagemFundo()
+        {
+            if (File.Exists(Sessao.parametroSistema.Logo))
+            {
+                panelDesktop.BackColor = Color.White;
+                var imagemOriginal = Image.FromFile(Sessao.parametroSistema.Logo);
+                var imagemRedimensionada = RedimensionarImagemPadrao(imagemOriginal);
+                panelDesktop.BackgroundImageLayout = ImageLayout.Center; // Pode ser Center ou Zoom dependendo da necessidade
+                panelDesktop.BackgroundImage = imagemRedimensionada;
+
+                //panelDesktop.BackColor = Color.White;
+                //panelDesktop.BackgroundImageLayout = ImageLayout.Center;
+                //panelDesktop.BackgroundImage = Image.FromFile(Sessao.parametroSistema.Logo);
+            }
+        }
         private void btnContaReceberLista_Click(object sender, EventArgs e)
         {
             OpenChildForm(() => new FrmContaReceberLista(), btnFinanceiro);
@@ -1309,5 +1336,29 @@ namespace Lunar.Telas.Principal
                 formBackground.Dispose();
             }
         }
+
+        private void abrirCaixaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            FrmAbrirCaixa fr = new FrmAbrirCaixa();
+            fr.Owner = formBackground;
+            fr.ShowDialog();
+            formBackground.Dispose();
+            fr.Dispose();
+        }
+
+
     }
 }

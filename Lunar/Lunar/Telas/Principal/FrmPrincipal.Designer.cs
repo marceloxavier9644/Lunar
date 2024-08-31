@@ -107,6 +107,7 @@
             this.btnGrupo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSetor = new System.Windows.Forms.ToolStripMenuItem();
             this.variaçõesCaracterísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -701,6 +702,7 @@
             this.dropMenuFinanceiro.Font = new System.Drawing.Font("Verdana", 10F);
             this.dropMenuFinanceiro.IsMainMenu = false;
             this.dropMenuFinanceiro.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirCaixaToolStripMenuItem,
             this.adiantamentoValeToolStripMenuItem,
             this.toolStripMenuItem4,
             this.btnContaReceberLista,
@@ -713,7 +715,7 @@
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 180);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 224);
             // 
             // adiantamentoValeToolStripMenuItem
             // 
@@ -1001,7 +1003,7 @@
             this.dropMenuProduto.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuProduto.Name = "rjDropdownMenu1";
             this.dropMenuProduto.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuProduto.Size = new System.Drawing.Size(251, 114);
+            this.dropMenuProduto.Size = new System.Drawing.Size(251, 92);
             // 
             // btnCadastroProduto
             // 
@@ -1030,6 +1032,13 @@
             this.variaçõesCaracterísticasToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.variaçõesCaracterísticasToolStripMenuItem.Text = "Variações/Características";
             this.variaçõesCaracterísticasToolStripMenuItem.Click += new System.EventHandler(this.variaçõesCaracterísticasToolStripMenuItem_Click);
+            // 
+            // abrirCaixaToolStripMenuItem
+            // 
+            this.abrirCaixaToolStripMenuItem.Name = "abrirCaixaToolStripMenuItem";
+            this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.abrirCaixaToolStripMenuItem.Text = "Abrir Caixa";
+            this.abrirCaixaToolStripMenuItem.Click += new System.EventHandler(this.abrirCaixaToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1145,5 +1154,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnGrupo;
         private System.Windows.Forms.ToolStripMenuItem btnSetor;
         private System.Windows.Forms.ToolStripMenuItem variaçõesCaracterísticasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abrirCaixaToolStripMenuItem;
     }
 }

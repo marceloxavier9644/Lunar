@@ -502,7 +502,7 @@ namespace Lunar.Telas.Estoques
             }
         }
 
-        private void ajustarQuantidadeProdutoPeloMovimentoEstoque()
+        public void ajustarQuantidadeProdutoPeloMovimentoEstoque()
         {
             lblEfetivacao.Text = "Conferindo estoque, aguarde...";
             GenericaDesktop generica = new GenericaDesktop();

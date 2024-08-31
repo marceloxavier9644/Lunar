@@ -1,4 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
+using Lunar.Telas.Estoques;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -12,6 +13,7 @@ namespace Lunar.Utils.ImportadorSistemas
 {
     public partial class FrmImportarCSV : Form
     {
+        EstoqueController estoqueController = new EstoqueController();
         ProdutoController produtoController = new ProdutoController();
         UnidadeMedidaController unidadeMedidaController = new UnidadeMedidaController();
         MarcaController marcaController = new MarcaController();
@@ -22,9 +24,9 @@ namespace Lunar.Utils.ImportadorSistemas
         public FrmImportarCSV()
         {
             InitializeComponent();
-            caminhoBanco = "C:\\Ultra_Inst\\Banco\\Gestao.fdb";
+            caminhoBanco = "C:\\DADOS\\Gestao.fdb";
             txtCaminhoBancoUltra.Text = caminhoBanco;
-            conexaoFirebird2 = "User=SYSDBA;Password=masterkey;Database=" + caminhoBanco + ";DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;\r\nServerType=0;";
+            conexaoFirebird2 = "User=SYSDBA;Password=masterkey;Database="+@txtCaminhoBancoUltra.Text+";DataSource=localhost;Port=3050;Dialect=3;Charset=UTF8;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;ServerType=0;";
         }
 
     private void lerCSV(string path)
@@ -83,34 +85,39 @@ namespace Lunar.Utils.ImportadorSistemas
         private void btnConfirmarImportacao_Click(object sender, EventArgs e)
         {
             lblInformacao.Visible = true;
-            if (radioClientes.Checked == true)
+            
+            //CSV
+            if (radioClientes.Checked == true && !String.IsNullOrEmpty(txtCaminhoArquivo.Text))
             {
                 Thread th = new Thread(() => importarClientesFornecedores());
                 th.Start();
                 Application.DoEvents();
                 th.Join();
             }
-            if (radioProdutos.Checked == true)
+            //CSV
+            if (radioProdutos.Checked == true && !String.IsNullOrEmpty(txtCaminhoArquivo.Text))
             {
                 Thread th = new Thread(() => importarProdutos());
                 th.Start();
                 Application.DoEvents();
                 th.Join();
             }
-            if (radioContasReceber.Checked == true)
+            //CSV
+            if (radioContasReceber.Checked == true && !String.IsNullOrEmpty(txtCaminhoArquivo.Text))
             {
                 Thread th = new Thread(() => importarContaReceber());
                 th.Start();
                 Application.DoEvents();
                 th.Join();
             }
-            if (radioOrdemServico.Checked == true)
-            {
-                Thread th = new Thread(() => importarOS(dtEmployee));
-                th.Start();
-                Application.DoEvents();
-                th.Join();
-            }
+            //BANCO ULTRA
+            //if (radioOrdemServico.Checked == true)
+            //{
+            //    Thread th = new Thread(() => importarOS(dtEmployee));
+            //    th.Start();
+            //    Application.DoEvents();
+            //    th.Join();
+            //}
         }
 
         private void importarClientesFornecedores()
@@ -523,7 +530,78 @@ namespace Lunar.Utils.ImportadorSistemas
             }
         }
 
-        private void puxarDadosFirebird()
+        private void puxarContaReceberUltra()
+        {
+            try
+            {
+                int i = 0;
+                lblInformacao.Text = "Importação iniciada...";
+                foreach (DataGridViewRow col in dataGridView1.Rows)
+                {
+                    i++;
+                    ContaReceber receber = new ContaReceber();
+                    lblInformacao.Text = "Importação de Contas a Receber: " + i + " de " + dataGridView1.Rows.Count;
+                    receber.Id = 0;
+                    receber.AcrescimoRecebidoBaixa = 0;
+                    receber.CaixaRecebimento = "";
+                    receber.Concluido = true;
+
+                    Pessoa pessoa = new Pessoa();
+                    pessoa = pessoaController.selecionarPessoaPorCodigoImportado(col.Cells[0].Value.ToString());
+                    receber.Cliente = pessoa;
+
+                    receber.CnpjCliente = pessoa.Cnpj;
+                    receber.DataExclusao = DateTime.Parse("0001-01-01 00:00:00");
+                    receber.DataRecebimento = DateTime.Parse("0001-01-01 00:00:00");
+                    receber.DescontoRecebidoBaixa = 0;
+                    receber.Descricao = "IMPORTADO ULTRA";
+                    receber.DescricaoRecebimento = "";
+                    receber.Documento = col.Cells[3].Value.ToString();
+                    receber.EmpresaFilial = Sessao.empresaFilialLogada;
+
+                    string endereco = "";
+                    if (pessoa.EnderecoPrincipal != null)
+                    {
+                        endereco = pessoa.EnderecoPrincipal.Logradouro + ", " + pessoa.EnderecoPrincipal.Numero;
+                    }
+                    receber.EnderecoCliente = endereco;
+                    FormaPagamento forma = new FormaPagamento();
+                    forma.Id = 6;
+                    forma = (FormaPagamento)FormaPagamentoController.getInstance().selecionar(forma);
+                    receber.FormaPagamento = forma;
+
+                    receber.Juro = 0;
+                    receber.Multa = 0;
+                    receber.NomeCliente = pessoa.RazaoSocial;
+                    receber.OrdemServico = null;
+                    receber.Origem = "IMPORTADO";
+                    receber.Parcela = col.Cells[4].Value.ToString();
+                    receber.PlanoConta = null;
+                    receber.Recebido = false;
+
+                    receber.Data = DateTime.Parse(col.Cells[8].Value.ToString());
+                    if (!String.IsNullOrEmpty(col.Cells[9].Value.ToString()))
+                    {
+                        receber.ValorParcela = decimal.Parse(col.Cells[9].Value.ToString());
+                        receber.ValorTotal = receber.ValorParcela;
+                        receber.ValorTotalOrigem = receber.ValorParcela;
+                    }
+                    receber.ValorRecebido = 0;
+                    receber.ValorRecebimentoParcial = 0;
+                    receber.Vencimento = DateTime.Parse(col.Cells[5].Value.ToString());
+                    receber.Venda = null;
+                    receber.VendaFormaPagamento = null;
+                    Controller.getInstance().salvar(receber);
+                }
+                GenericaDesktop.ShowInfo("Contas a Receber Importado com Sucesso!");
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowErro("Erro ao Importar Contas a Receber: " + erro.Message);
+            }
+        }
+
+        private void puxarDadosFirebird_EImportarOS()
         {
             dataGridView1.Visible = true;
             FbConnection fbConn = new FbConnection(conexaoFirebird2);
@@ -536,6 +614,15 @@ namespace Lunar.Utils.ImportadorSistemas
                 dtEmployee = new DataTable();
                 fbDa.Fill(dtEmployee);
                 dataGridView1.DataSource = dtEmployee;
+
+                //BANCO ULTRA
+                if (radioOrdemServico.Checked == true)
+                {
+                    Thread th = new Thread(() => importarOS(dtEmployee));
+                    th.Start();
+                    Application.DoEvents();
+                    th.Join();
+                }
             }
             catch (FbException fbex)
             {
@@ -550,7 +637,7 @@ namespace Lunar.Utils.ImportadorSistemas
         private void btnFirebird_Click(object sender, EventArgs e)
         {
             if(radioOrdemServico.Checked == true)
-                puxarDadosFirebird();
+                puxarDadosFirebird_EImportarOS();
             if (radioOrdemServicoProdutos.Checked == true)
             {
                 lblInformacao.Visible = true;
@@ -584,6 +671,35 @@ namespace Lunar.Utils.ImportadorSistemas
                 Application.DoEvents();
                 th.Join();
             }
+            //Se nao tem csv selecionado, importa pelo bd
+            if (radioClientes.Checked == true && string.IsNullOrEmpty(txtCaminhoArquivo.Text))
+            {
+                lblInformacao.Visible = true;
+                dataGridView1.Visible = true;
+                Thread th = new Thread(() => puxarParceirosUltra());
+                th.Start();
+                Application.DoEvents();
+                th.Join();
+            }
+            if (radioProdutos.Checked == true && string.IsNullOrEmpty(txtCaminhoArquivo.Text))
+            {
+                lblInformacao.Visible = true;
+                dataGridView1.Visible = true;
+                Thread th = new Thread(() => puxarProdutosUltra());
+                th.Start();
+                Application.DoEvents();
+                th.Join();
+            }
+            ////Se nao tem csv selecionado, importa pelo bd (A DESENVOLVER)
+            //if (radioContasReceber.Checked == true && string.IsNullOrEmpty(txtCaminhoArquivo.Text))
+            //{
+            //    lblInformacao.Visible = true;
+            //    dataGridView1.Visible = true;
+            //    Thread th = new Thread(() => puxarContarReceberUltra());
+            //    th.Start();
+            //    Application.DoEvents();
+            //    th.Join();
+            //}
         }
         //selecionar exame: select * from os_otica oo where oo.os = 9150
         //selecionar produtos: select * from os_produtos_alocados osprod where osprod.os = 9150
@@ -931,7 +1047,8 @@ namespace Lunar.Utils.ImportadorSistemas
             {
                 txtCaminhoBancoUltra.Text = @openFileDialog.FileName;
                 caminhoBanco = txtCaminhoBancoUltra.Text;
-                conexaoFirebird2 = "User=SYSDBA;Password=masterkey;Database=" + caminhoBanco + ";DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;\r\nServerType=0;";
+                
+                conexaoFirebird2 = "User=SYSDBA;Password=masterkey;Database=" + @caminhoBanco + ";DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;ServerType=0;";
             }
         }
 
@@ -989,5 +1106,573 @@ namespace Lunar.Utils.ImportadorSistemas
                 fbConn.Close();
             }
         }
+
+
+        private void puxarParceirosUltra()
+        {
+            //dataGridView1.Visible = true;
+            FbConnection fbConn = new FbConnection(conexaoFirebird2);
+            FbCommand fbCmd = new FbCommand("select p.parceiro,p.razao_social, p.nome, p.fantasia,p.endereco, p.numero," +
+                "p.complemento,p.bairro, p.municipio, p.uf, p.cep, p.celular,p.cnpj,p.telefone,p.pessoa_fj,p.idn_sexo, p.cpf, p.rg,p.data_cadastro," +
+                "p.ativo, p.idn_cliente, p.idn_fornecedor,p.idn_transportadora, p.idn_funcionario, p.idn_vendedor, p.pai, p.mae, " +
+                "p.nascimento, p.conjuge, p.ie,p.email " +
+                "from parceiros p where p.ativo = 'S'", fbConn);
+
+            try
+            {
+                fbConn.Open();
+                FbDataAdapter fbDa = new FbDataAdapter(fbCmd);
+                dtEmployee = new DataTable();
+                fbDa.Fill(dtEmployee);
+                //dataGridView1.DataSource = dtEmployee;
+
+                //Importar
+                if (dtEmployee.Rows.Count > 0)
+                {
+                    int a = 0;
+                    for (int i = 0; i < dtEmployee.Rows.Count; i++)
+                    {
+                        a++;
+                        lblInformacao.Text = "Pessoa/Parceiro: " + a + " de " + dtEmployee.Rows.Count;
+                        Pessoa pessoa = new Pessoa();
+                        pessoa.Id = 0;
+                        string teste = dtEmployee.Rows[i]["IDN_CLIENTE"].ToString();
+                        if (dtEmployee.Rows[i]["IDN_CLIENTE"].ToString().Equals("S"))
+                            pessoa.Cliente = true;
+                        if (dtEmployee.Rows[i]["IDN_FORNECEDOR"].ToString().Equals("S"))
+                            pessoa.Fornecedor = true;
+                        if (dtEmployee.Rows[i]["IDN_VENDEDOR"].ToString().Equals("S"))
+                            pessoa.Vendedor = true;
+                        if (dtEmployee.Rows[i]["IDN_TRANSPORTADORA"].ToString().Equals("S"))
+                            pessoa.Transportadora = true;
+                        if (dtEmployee.Rows[i]["IDN_FUNCIONARIO"].ToString().Equals("S"))
+                            pessoa.Funcionario = true;
+
+                        if(!String.IsNullOrEmpty(dtEmployee.Rows[i]["CNPJ"].ToString()))
+                            pessoa.Cnpj = GenericaDesktop.RemoveCaracteres(dtEmployee.Rows[i]["CNPJ"].ToString());
+                        else if(!String.IsNullOrEmpty(dtEmployee.Rows[i]["CPF"].ToString()))
+                            pessoa.Cnpj = GenericaDesktop.RemoveCaracteres(dtEmployee.Rows[i]["CPF"].ToString());
+                        if (String.IsNullOrEmpty(pessoa.Cnpj))
+                            pessoa.Cnpj = "";
+
+                        pessoa.ReceberLembrete = false;
+                        pessoa.Email = dtEmployee.Rows[i]["EMAIL"].ToString();
+                        pessoa.Mae = dtEmployee.Rows[i]["MAE"].ToString();
+                        pessoa.Pai = dtEmployee.Rows[i]["PAI"].ToString();
+                        pessoa.Cobrador = false;
+                        pessoa.CodigoImportacao = dtEmployee.Rows[i]["PARCEIRO"].ToString();
+                        pessoa.ComissaoVendedor = 0;
+                        pessoa.ContatoTrabalho = "";
+                        if(!String.IsNullOrEmpty(dtEmployee.Rows[i]["NASCIMENTO"].ToString()))
+                         pessoa.DataNascimento = DateTime.Parse(dtEmployee.Rows[i]["NASCIMENTO"].ToString());
+                        pessoa.EscritorioCobranca = false;
+                        pessoa.FlagExcluido = false;
+                        pessoa.FuncaoTrabalho = "";
+                        pessoa.InscricaoEstadual = dtEmployee.Rows[i]["IE"].ToString();
+                        pessoa.LimiteCredito = 0;
+                        pessoa.LocalTrabalho = "";
+                        if (!String.IsNullOrEmpty(dtEmployee.Rows[i]["FANTASIA"].ToString()))
+                            pessoa.NomeFantasia = dtEmployee.Rows[i]["FANTASIA"].ToString();
+                        else if(!String.IsNullOrEmpty(dtEmployee.Rows[i]["NOME"].ToString()))
+                            pessoa.NomeFantasia = dtEmployee.Rows[i]["NOME"].ToString();
+                        else
+                            pessoa.NomeFantasia = dtEmployee.Rows[i]["RAZAO_SOCIAL"].ToString();
+                        if(!String.IsNullOrEmpty(dtEmployee.Rows[i]["RAZAO_SOCIAL"].ToString()))
+                            pessoa.RazaoSocial = dtEmployee.Rows[i]["RAZAO_SOCIAL"].ToString();
+                        else
+                            pessoa.RazaoSocial = dtEmployee.Rows[i]["NOME"].ToString();
+
+                        pessoa.Observacoes = "IMPORTADO ULTRA";
+                        pessoa.PessoaTelefone = null;
+                        pessoa.EnderecoPrincipal = null;
+                        pessoa.ReceberLembrete = false;
+                        pessoa.RegistradoSpc = false;
+                        pessoa.Rg = dtEmployee.Rows[i]["RG"].ToString();
+                        pessoa.SalarioTrabalho = "";
+                        if (!String.IsNullOrEmpty(dtEmployee.Rows[i]["IDN_SEXO"].ToString()))
+                            pessoa.Sexo = dtEmployee.Rows[i]["IDN_SEXO"].ToString();
+                        pessoa.Tecnico = false;
+                        pessoa.TelefoneTrabalho = "";
+                        pessoa.TempoTrabalho = "";
+                        pessoa.TipoParceiroImportado = "";
+                        pessoa.TipoPessoa = "PF";
+                        if(dtEmployee.Rows[i]["PESSOA_FJ"].ToString().Equals("J"))
+                            pessoa.TipoPessoa = "PJ";
+                        Controller.getInstance().salvar(pessoa);
+
+                        Endereco endereco = new Endereco();
+                        CidadeController cidadeController = new CidadeController();
+                        Cidade cidade = new Cidade();
+                        try 
+                        { 
+                            cidade = cidadeController.selecionarCidadePorDescricaoEUf(dtEmployee.Rows[i]["MUNICIPIO"].ToString(), dtEmployee.Rows[i]["UF"].ToString()); 
+                        }
+                        catch 
+                        { 
+                            cidade = cidadeController.selecionarCidadePorDescricaoEUf("UNAI", "MG"); 
+                        }
+                        if (cidade != null)
+                            endereco.Cidade = cidade;
+                        else
+                        {
+                            cidade = cidadeController.selecionarCidadePorDescricao("UNAI");
+                            endereco.Cidade = cidade;
+                        }
+                        endereco.Logradouro = dtEmployee.Rows[i]["ENDERECO"].ToString();
+                        if (String.IsNullOrEmpty(endereco.Logradouro))
+                            endereco.Logradouro = "SEM PREENCHIMENTO";
+                        endereco.Numero = dtEmployee.Rows[i]["NUMERO"].ToString();
+                        if (String.IsNullOrEmpty(endereco.Numero))
+                            endereco.Numero = "S/N";
+                        endereco.Bairro = dtEmployee.Rows[i]["BAIRRO"].ToString();
+                        endereco.Complemento = dtEmployee.Rows[i]["COMPLEMENTO"].ToString();
+                        endereco.EmpresaFilial = Sessao.empresaFilialLogada;
+                        endereco.Referencia = "";
+                        endereco.Pessoa = pessoa;
+
+                        Controller.getInstance().salvar(endereco);
+                        pessoa.EnderecoPrincipal = endereco;
+                        Controller.getInstance().salvar(pessoa);
+
+                    }
+                    GenericaDesktop.ShowInfo("Importação de "+ dtEmployee.Rows.Count + " Parceiros Realizada com Sucesso!");
+                }
+                
+            }
+            catch (FbException fbex)
+            {
+                MessageBox.Show("Erro ao acessar o FireBird " + fbex.Message, "Erro");
+            }
+            finally
+            {
+                fbConn.Close();
+            }
+        }
+
+
+        private void puxarProdutosUltra()
+        {
+            //dataGridView1.Visible = true;
+            FbConnection fbConn = new FbConnection(conexaoFirebird2);
+            FbCommand fbCmd = new FbCommand("SELECT DISTINCT p.codproduto, pc.codproduto_clas, pc.dscproduto_clas, p.dscproduto, p.idn_revenda, p.codgrupo, p.und_medida, p.marca, gf.dscgrupo_fiscal, COALESCE(pc.cod_ncm, p.cod_ncm) AS ncm, pc.codbarras, pc.ref_fabrica, COALESCE((SELECT FIRST 1 custo1.custo_unitario FROM custo_reposicao_atual custo1 WHERE custo1.codproduto = pc.codproduto ORDER BY custo1.data_ultima_entrada DESC), 0.00) AS preco_custo, COALESCE((SELECT FIRST 1 pr1.preco FROM precos pr1 WHERE pr1.codproduto = pc.codproduto ORDER BY pr1.data_criacao_alteracao DESC), 0.00) AS preco, COALESCE(pc.cest, nc.cest) AS cest, COALESCE(NULLIF(sal_agg.qtdc, 0), 0) AS qtdc, CASE WHEN COALESCE(sal_agg.qtd, 0) < 0 THEN 0 ELSE COALESCE(sal_agg.qtd, 0) END AS qtd FROM produtos p INNER JOIN produtos_clas pc ON pc.codproduto = p.codproduto LEFT JOIN ncm_cest nc ON nc.cod_ncm = COALESCE(pc.cod_ncm, p.cod_ncm) LEFT JOIN grupos_fiscais gf ON gf.grupo_fiscal = p.grupo_fiscal LEFT JOIN (SELECT codproduto, codproduto_clas, SUM(qtdc) AS qtdc, SUM(qtd) AS qtd FROM estoque_saldo_atual GROUP BY codproduto, codproduto_clas) sal_agg ON sal_agg.codproduto = p.codproduto AND sal_agg.codproduto_clas = pc.codproduto_clas WHERE p.dtabaixa IS NULL;", fbConn);
+
+            try
+            {
+                fbConn.Open();
+                FbDataAdapter fbDa = new FbDataAdapter(fbCmd);
+                dtEmployee = new DataTable();
+                fbDa.Fill(dtEmployee);
+                //dataGridView1.DataSource = dtEmployee;
+                
+                //Importar
+                if (dtEmployee.Rows.Count > 0)
+                {
+                    int a = 0;
+                    for (int i = 0; i < dtEmployee.Rows.Count; i++)
+                    {
+                        a++;
+                        bool cadastrarGradeExtra = false;
+                        lblInformacao.Text = "Produto: " + a + " de " + dtEmployee.Rows.Count + " COD: " + dtEmployee.Rows[i]["CODPRODUTO"].ToString();
+                        Produto produto = new Produto();
+
+                        produto.Id = int.Parse(dtEmployee.Rows[i]["CODPRODUTO"].ToString());
+
+                        try { produto = (Produto)Controller.getInstance().selecionar(produto); } catch { produto = new Produto(); }
+                        if(produto != null)
+                        {
+                            if (!String.IsNullOrEmpty(produto.Descricao))
+                                cadastrarGradeExtra = true;
+                        }
+
+                        produto.Id = int.Parse(dtEmployee.Rows[i]["CODPRODUTO"].ToString());
+                        produto.AnoVeiculo = "";
+                        produto.CapacidadeTracao = "";
+
+                        string cest = "";
+                        if (!String.IsNullOrEmpty(dtEmployee.Rows[i]["CEST"].ToString()))
+                            cest = GenericaDesktop.RemoveCaracteres(dtEmployee.Rows[i]["CEST"].ToString());
+                        produto.Cest = cest;
+                        if (dtEmployee.Rows[i]["DSCGRUPO_FISCAL"].ToString().Equals("TRIBUTADO"))
+                        {
+                            produto.CfopVenda = "5102";
+                            produto.CstIcms = "102";
+                            GrupoFiscal grupoFiscal = new GrupoFiscal();
+                            grupoFiscal.Id = 1;
+                            grupoFiscal = (GrupoFiscal)Controller.getInstance().selecionar(grupoFiscal);
+                            produto.GrupoFiscal = grupoFiscal;
+                        }
+                        else if (dtEmployee.Rows[i]["DSCGRUPO_FISCAL"].ToString().Equals("SUBSTITUICAO TRIBUTARIA"))
+                        {
+                            produto.CfopVenda = "5405";
+                            produto.CstIcms = "500";
+                            GrupoFiscal grupoFiscal = new GrupoFiscal();
+                            grupoFiscal.Id = 2;
+                            grupoFiscal = (GrupoFiscal)Controller.getInstance().selecionar(grupoFiscal);
+                            produto.GrupoFiscal = grupoFiscal;
+                        }
+                        string aaat = "";
+                        if (produto.Id == 39)
+                            aaat = "";
+                        produto.Chassi = "";
+                        produto.CilindradaCc = "";
+                        produto.CodAnp = "";
+                        produto.CodSeloIpi = "";
+                        produto.Combustivel = "";
+                        produto.CondicaoProduto = "";
+                        produto.CondicaoVeiculo = "";
+                        produto.ControlaEstoque = true;
+                        produto.CorDenatran = "";
+                        produto.CorMontadora = "";
+                        produto.CstCofins = "99";
+                        produto.CstIpi = "99";
+                        produto.CstPis = "99";
+                        produto.DataCadastro = DateTime.Now;
+                        produto.Descricao = dtEmployee.Rows[i]["DSCPRODUTO"].ToString();
+                        produto.DistanciaEixo = "";
+                        produto.Ean = dtEmployee.Rows[i]["CODBARRAS"].ToString();
+                        produto.Ecommerce = false;
+                        produto.Empresa = Sessao.empresaFilialLogada.Empresa;
+                        produto.EmpresaFilial = Sessao.empresaFilialLogada;
+                        produto.EnqIpi = "999";
+                        produto.EspecieVeiculo = "";
+
+                        //Estoque
+                        //produto.Estoque = double.Parse(dtEmployee.Rows[i]["QTDC"].ToString());
+                        //produto.EstoqueAuxiliar = double.Parse(dtEmployee.Rows[i]["QTD"].ToString());
+                        produto.Estoque = 0;
+                        produto.EstoqueAuxiliar = 0;
+
+                        produto.FlagExcluido = false;
+                        produto.Grade = false;
+                        produto.GradePrincipal = null;
+                        produto.IdComplementar = "";
+                        produto.KmEntrada = "";
+                        produto.LotacaoVeiculo = "";
+
+                        Marca marca = new Marca();
+                        marca = marcaController.selecionarMarcaPorDescricao(dtEmployee.Rows[i]["MARCA"].ToString());
+                        if (marca != null)
+                        {
+                            if (marca.Id > 0)
+                            {
+                                produto.Marca = marca;
+                            }
+                            else
+                            {
+                                if (!String.IsNullOrEmpty(dtEmployee.Rows[i]["MARCA"].ToString()))
+                                {
+                                    marca = new Marca();
+                                    marca.Id = 0;
+                                    marca.Descricao = dtEmployee.Rows[i]["MARCA"].ToString();
+                                    marca.Empresa = Sessao.empresaFilialLogada.Empresa;
+                                    Controller.getInstance().salvar(marca);
+                                    produto.Marca = marca;
+                                }
+                                else
+                                    produto.Marca = null;
+                            }
+                        }
+                        else
+                        {
+                            if (!String.IsNullOrEmpty(dtEmployee.Rows[i]["MARCA"].ToString()))
+                            {
+                                marca = new Marca();
+                                marca.Id = 0;
+                                marca.Descricao = dtEmployee.Rows[i]["MARCA"].ToString();
+                                marca.Empresa = Sessao.empresaFilialLogada.Empresa;
+                                Controller.getInstance().salvar(marca);
+                                produto.Marca = marca;
+                            }
+                            else
+                                produto.Marca = null;
+                        }
+                        produto.MarcaModelo = "";
+                        produto.Markup = "";
+                        produto.ModeloVeiculo = "";
+                        string ncm = "";
+                        if (!String.IsNullOrEmpty(dtEmployee.Rows[i]["NCM"].ToString()))
+                            ncm = GenericaDesktop.RemoveCaracteres(dtEmployee.Rows[i]["NCM"].ToString());
+                        produto.Ncm = ncm;
+                        produto.NumeroMotor = "";
+                        produto.Observacoes = "IMPORTADO ULTRA";
+                        produto.OperadorCadastro = "1";
+                        produto.OrigemIcms = "0";
+                        produto.PercentualCofins = "";
+                        produto.PercentualIcms = "";
+                        produto.PercentualIpi = "";
+                        produto.PercentualPis = "";
+                        produto.PercGlp = 0;
+                        produto.PercGni = 0;
+                        produto.PercGnn = 0;
+                        produto.Pesavel = false;
+                        produto.PesoBrutoVeiculo = "";
+                        produto.PesoLiquidoVeiculo = "";
+                        produto.Placa = "";
+                        produto.PotenciaCv = "";
+                        ProdutoGrupo grupo = new ProdutoGrupo();
+                        grupo.Id = 1;
+                        grupo = (ProdutoGrupo)ProdutoGrupoController.getInstance().selecionar(grupo);
+                        produto.ProdutoGrupo = grupo;
+                        produto.ProdutoSetor = null;
+                        produto.ProdutoSubGrupo = null;
+                        produto.Referencia = dtEmployee.Rows[i]["REF_FABRICA"].ToString();
+                        produto.Renavam = "";
+                        produto.RestricaoVeiculo = "";
+                        produto.SolicitaNumeroSerie = false;
+                        produto.TipoCambio = "";
+                        produto.TipoEntrada = "";
+                        produto.TipoPintura = "";
+                        if(dtEmployee.Rows[i]["IDN_REVENDA"].ToString().Equals("S"))
+                            produto.TipoProduto = "REVENDA";
+                        else
+                            produto.TipoProduto = "USO E CONSUMO";
+                        produto.TipoVeiculo = "";
+
+                        UnidadeMedida unidadeMedida = new UnidadeMedida();
+                        if (!String.IsNullOrEmpty(dtEmployee.Rows[i]["UND_MEDIDA"].ToString()))
+                        {
+                            unidadeMedida = unidadeMedidaController.selecionarUnidadeMedidaPorSigla(dtEmployee.Rows[i]["UND_MEDIDA"].ToString());
+                            if (unidadeMedida != null)
+                            {
+                                if (unidadeMedida.Id > 0)
+                                    produto.UnidadeMedida = unidadeMedida;
+                            }
+                            else
+                            {
+                                unidadeMedida = unidadeMedidaController.selecionarUnidadeMedidaPorSigla("UN");
+                                if (unidadeMedida.Id > 0)
+                                    produto.UnidadeMedida = unidadeMedida;
+                            }
+                        }
+                        else
+                        {
+                            unidadeMedida = unidadeMedidaController.selecionarUnidadeMedidaPorSigla("UN");
+                            if (unidadeMedida.Id > 0)
+                                produto.UnidadeMedida = unidadeMedida;
+                        }
+                        produto.ValorCusto = decimal.Parse(dtEmployee.Rows[i]["PRECO_CUSTO"].ToString());
+                        produto.ValorPartida = 0;
+                        produto.ValorVenda = decimal.Parse(dtEmployee.Rows[i]["PRECO"].ToString());
+                        if (produto.ValorVenda == 0)
+                            produto.ValorVenda = 1;
+                        produto.Veiculo = false;
+                        produto.VeiculoNovo = false;
+            
+                        Controller.getInstance().salvar(produto);
+
+                
+                        ProdutoGrade produtoGrade = new ProdutoGrade();
+                        if (cadastrarGradeExtra == false)
+                        {
+                            produtoGrade.Produto = produto;
+                            produtoGrade.Principal = true;
+                            produtoGrade.ValorVenda = produto.ValorVenda;
+                            string descClass = dtEmployee.Rows[i]["DSCPRODUTO_CLAS"].ToString();
+                            if (String.IsNullOrEmpty(descClass))
+                                descClass = dtEmployee.Rows[i]["CODPRODUTO_CLAS"].ToString();
+                            produtoGrade.Descricao = descClass;
+                            produtoGrade.Id = 0;
+                            produtoGrade.QuantidadeMedida = 1;
+                            produtoGrade.UnidadeMedida = produto.UnidadeMedida;
+                            Controller.getInstance().salvar(produtoGrade);
+                            produto.GradePrincipal = produtoGrade;
+                            Controller.getInstance().salvar(produto);
+                        }
+                        else
+                        {
+                            produtoGrade.Produto = produto;
+                            produtoGrade.Principal = false;
+                            produtoGrade.ValorVenda = produto.ValorVenda;
+                            string descClass = dtEmployee.Rows[i]["DSCPRODUTO_CLAS"].ToString();
+                            if (String.IsNullOrEmpty(descClass))
+                                descClass = dtEmployee.Rows[i]["CODPRODUTO_CLAS"].ToString();
+                            produtoGrade.Descricao = descClass;
+                            produtoGrade.Id = 0;
+                            produtoGrade.QuantidadeMedida = 1;
+                            produtoGrade.UnidadeMedida = produto.UnidadeMedida;
+                            Controller.getInstance().salvar(produtoGrade);
+                            produto.Grade = true;
+                            Controller.getInstance().salvar(produto);
+                        }
+                        if (!String.IsNullOrEmpty(produto.Ean) && produtoGrade != null)
+                        {
+                            ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
+                            produtoCodigoBarras.Produto = produto;
+                            produtoCodigoBarras.CodigoBarras = produto.Ean;
+                            produtoCodigoBarras.ProdutoGrade = produtoGrade;
+                            produtoCodigoBarras.OperadorCadastro = "1";
+                            produtoCodigoBarras.FlagExcluido = false;
+                            produtoCodigoBarras.Id = 0;
+                            Controller.getInstance().salvar(produtoCodigoBarras);
+                        }
+                        else if (produtoGrade != null)
+                        {
+                            ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
+                            produtoCodigoBarras.Produto = produto;
+                            produtoCodigoBarras.CodigoBarras = gerarBarras();
+                            produtoCodigoBarras.ProdutoGrade = produtoGrade;
+                            produtoCodigoBarras.OperadorCadastro = "1";
+                            produtoCodigoBarras.FlagExcluido = false;
+                            produtoCodigoBarras.Id = 0;
+                            Controller.getInstance().salvar(produtoCodigoBarras);
+                        }
+ 
+                        //Estoque estoque = new Estoque();
+                        //if (produto.Estoque > 0)
+                        //{
+                        //    estoque.Produto = produto;
+                        //    estoque.Entrada = true;
+                        //    estoque.FlagExcluido = false;
+                        //    estoque.EmpresaFilial = Sessao.empresaFilialLogada;
+                        //    estoque.Origem = "IMPORTACAO ULTRA";
+                        //    estoque.Pessoa = null;
+                        //    estoque.BalancoEstoque = null;
+                        //    estoque.DataEntradaSaida = DateTime.Now;
+                        //    estoque.Conciliado = true;
+                        //    estoque.Descricao = "IMPORTADO SISTEMA ANTERIOR";
+                        //    estoque.Quantidade = produto.Estoque;
+                        //    estoque.QuantidadeInventario = 0;
+                        //    estoque.Saida = false;
+                        //    Controller.getInstance().salvar(estoque); 
+                        //}
+                        //if (produto.EstoqueAuxiliar > 0)
+                        //{
+                        //    estoque = new Estoque();
+                        //    estoque.Produto = produto;
+                        //    estoque.Entrada = true;
+                        //    estoque.FlagExcluido = false;
+                        //    estoque.EmpresaFilial = Sessao.empresaFilialLogada;
+                        //    estoque.Origem = "IMPORTACAO ULTRA";
+                        //    estoque.Pessoa = null;
+                        //    estoque.BalancoEstoque = null;
+                        //    estoque.DataEntradaSaida = DateTime.Now;
+                        //    estoque.Conciliado = false;
+                        //    estoque.Descricao = "IMPORTADO SISTEMA ANTERIOR";
+                        //    estoque.Quantidade = produto.EstoqueAuxiliar;
+                        //    estoque.QuantidadeInventario = 0;
+                        //    estoque.Saida = false;
+                        //    Controller.getInstance().salvar(estoque);
+                        //}
+                    }
+                    //lblInformacao.Text = "Ajustando estoque, aguarde...";
+                    //FrmBalancoEstoqueLista frm = new FrmBalancoEstoqueLista();
+                    //frm.ajustarQuantidadeProdutoPeloMovimentoEstoque();
+                    GenericaDesktop.ShowInfo("Importação de " + dtEmployee.Rows.Count + " Produtos Realizada com Sucesso!");
+                    lblInformacao.Visible = false;
+                }
+
+            }
+            catch (FbException fbex)
+            {
+                MessageBox.Show("Erro ao acessar o FireBird " + fbex.Message, "Erro");
+            }
+            finally
+            {
+                fbConn.Close();
+            }
+        }
+        private Ean13 ean13 = null;
+        private int RandomNumber(int min, int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max);
+        }
+        public void CreateEan13()
+        {
+            ean13 = new Ean13();
+            ean13.CountryCode = RandomNumber(10, 78).ToString();
+            ean13.ManufacturerCode = RandomNumber(79000, 99000).ToString();
+            ean13.ProductCode = RandomNumber(10000, 99000).ToString();
+            ean13.ChecksumDigit = RandomNumber(1, 9).ToString();
+        }
+        private string gerarBarras()
+        {
+            string codigoBarras;
+            ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
+
+            // Função para gerar um código de barras único
+            do
+            {
+                CreateEan13();
+                ean13.Scale = 1;
+                codigoBarras = ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit;
+
+                // Verifica se o código de barras gerado já existe na base de dados
+                IList<ProdutoCodigoBarras> listaProd = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL(
+                    "SELECT * FROM ProdutoCodigoBarras AS Tabela WHERE Tabela.FlagExcluido <> true AND Tabela.CodigoBarras = '" + codigoBarras + "'"
+                );
+
+                // Se o código de barras não existir, retorna-o
+                if (listaProd.Count == 0)
+                    return codigoBarras;
+
+            } while (true); // Continua gerando até encontrar um código de barras único
+        }
+
+        private void btnImportarSaldoEstoque_Click(object sender, EventArgs e)
+        {
+            Thread th = new Thread(() => importarSaldo());
+            th.Start();
+            Application.DoEvents();
+            th.Join();
+        }
+
+        private void importarSaldo()
+        {
+            int i = 0;
+            lblInformacao.Text = "Importação de Estoque Iniciada...";
+            foreach (DataGridViewRow col in dataGridView1.Rows)
+            {
+                i++;
+                Produto produto = new Produto();
+                produto.Id = int.Parse(col.Cells[0].Value.ToString());
+                produto = (Produto)Controller.getInstance().selecionar(produto);
+                if (radioConciliado.Checked == true)
+                    produto.Estoque = double.Parse(col.Cells[1].Value.ToString());
+                else
+                    produto.EstoqueAuxiliar = double.Parse(col.Cells[1].Value.ToString());
+
+                Estoque estoque = new Estoque();
+                if (produto.Estoque > 0)
+                {
+                    estoque.Produto = produto;
+                    estoque.Entrada = true;
+                    estoque.FlagExcluido = false;
+                    estoque.EmpresaFilial = Sessao.empresaFilialLogada;
+                    estoque.Origem = "IMPORTACAO ULTRA";
+                    estoque.Pessoa = null;
+                    estoque.BalancoEstoque = null;
+                    estoque.DataEntradaSaida = DateTime.Now;
+                    estoque.Conciliado = true;
+                    estoque.Descricao = "IMPORTADO SISTEMA ANTERIOR";
+                    estoque.Quantidade = produto.Estoque;
+                    estoque.QuantidadeInventario = 0;
+                    estoque.Saida = false;
+                    Controller.getInstance().salvar(estoque);
+                }
+                if (produto.EstoqueAuxiliar > 0)
+                {
+                    estoque = new Estoque();
+                    estoque.Produto = produto;
+                    estoque.Entrada = true;
+                    estoque.FlagExcluido = false;
+                    estoque.EmpresaFilial = Sessao.empresaFilialLogada;
+                    estoque.Origem = "IMPORTACAO ULTRA";
+                    estoque.Pessoa = null;
+                    estoque.BalancoEstoque = null;
+                    estoque.DataEntradaSaida = DateTime.Now;
+                    estoque.Conciliado = false;
+                    estoque.Descricao = "IMPORTADO SISTEMA ANTERIOR";
+                    estoque.Quantidade = produto.EstoqueAuxiliar;
+                    estoque.QuantidadeInventario = 0;
+                    estoque.Saida = false;
+                    Controller.getInstance().salvar(estoque);
+                }
+                lblInformacao.Text = "Importação de Estoque " + i + " de " + dataGridView1.Rows.Count;
+            }
+            FrmBalancoEstoqueLista frm = new FrmBalancoEstoqueLista();
+            frm.ajustarQuantidadeProdutoPeloMovimentoEstoque();
+        }
+
     }
 }

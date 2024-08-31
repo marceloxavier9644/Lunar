@@ -31,7 +31,14 @@ namespace LunarBase.ClassesBO
             try
             {
                 objeto = dao.Selecionar(objeto, ((Produto)objeto).Id);
-                if (objeto.FlagExcluido == true)
+                if (objeto != null)
+                {
+                    if (objeto.FlagExcluido == true)
+                    {
+                        throw new Exception();
+                    }
+                }
+                else
                 {
                     throw new Exception();
                 }

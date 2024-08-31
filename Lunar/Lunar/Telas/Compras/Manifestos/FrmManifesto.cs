@@ -689,7 +689,14 @@ namespace Lunar.Telas.Compras.Manifestos
                             }
                             else
                             {
-                                GenericaDesktop.ShowAlerta("Atenção, esse xml não tem a empresa " + Sessao.empresaFilialLogada.NomeFantasia + " como destinatário!");
+                                if(GenericaDesktop.ShowConfirmacao("Atenção, esse xml não tem a empresa " + Sessao.empresaFilialLogada.NomeFantasia + " como destinatário! Deseja continuar assim mesmo? "))
+                                {
+                                    genericos.gravarXMLNoBanco(nfXML, 0, "E", 0, true);
+                                    nfe = nfeController.selecionarNotaPorChave(GenericaDesktop.RemoveCaracteres(nfXML.protNFe.infProt.chNFe.Trim()));
+                                    FrmLancarNotaFiscalCompra frmLancarNota = new FrmLancarNotaFiscalCompra(nfXML, nfe);
+                                    frmLancarNota.ShowDialog();
+                                    grid.Refresh();
+                                }
                             }
                         }
                         else

@@ -7,7 +7,7 @@ namespace Lunar.Telas.VisualizadorPDF
 {
     public partial class FrmPDF : Form
     {
-        PdfiumViewer.PdfViewer pdf;
+        //PdfiumViewer.PdfViewer pdf;
         String caminhoPDF = "";
 
         public FrmPDF(String caminhoPDF)

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.btnFechar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -72,11 +72,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 33);
+            this.label1.Size = new System.Drawing.Size(83, 29);
             this.label1.TabIndex = 155;
             this.label1.Text = "Boleto";
             // 
@@ -84,11 +84,11 @@
             // 
             this.autoLabel1.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
             this.autoLabel1.Location = new System.Drawing.Point(20, 96);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(75, 18);
+            this.autoLabel1.Size = new System.Drawing.Size(73, 16);
             this.autoLabel1.TabIndex = 218;
             this.autoLabel1.Text = "Valor Total";
             // 
@@ -99,7 +99,7 @@
             this.txtValor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtValor.BorderRadius = 8;
             this.txtValor.BorderSize = 2;
-            this.txtValor.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtValor.Location = new System.Drawing.Point(9, 108);
             this.txtValor.Margin = new System.Windows.Forms.Padding(4);
@@ -110,7 +110,7 @@
             this.txtValor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtValor.PlaceholderText = "";
             this.txtValor.ReadOnly = false;
-            this.txtValor.Size = new System.Drawing.Size(261, 39);
+            this.txtValor.Size = new System.Drawing.Size(261, 37);
             this.txtValor.TabIndex = 217;
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtValor.Texts = "";
@@ -121,7 +121,7 @@
             this.btnConfirmaParcelas.FlatAppearance.BorderSize = 0;
             this.btnConfirmaParcelas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmaParcelas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmaParcelas.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.btnConfirmaParcelas.IconChar = FontAwesome.Sharp.IconChar.CircleCheck;
             this.btnConfirmaParcelas.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnConfirmaParcelas.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnConfirmaParcelas.IconSize = 40;
@@ -139,25 +139,25 @@
             this.gridParcelas.AccessibleName = "Table";
             this.gridParcelas.AllowEditing = false;
             this.gridParcelas.AllowSorting = false;
-            gridTextColumn4.AllowEditing = false;
-            gridTextColumn4.AllowSorting = false;
-            gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn4.HeaderText = "Parcela";
-            gridTextColumn4.MappingName = "PARCELA";
-            gridTextColumn5.AllowEditing = false;
-            gridTextColumn5.AllowSorting = false;
-            gridTextColumn5.Format = "dd/MM/yyyy";
-            gridTextColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn5.HeaderText = "Vencimento";
-            gridTextColumn5.MappingName = "VENCIMENTO";
-            gridTextColumn6.AllowEditing = false;
-            gridTextColumn6.AllowSorting = false;
-            gridTextColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn6.HeaderText = "Valor";
-            gridTextColumn6.MappingName = "VALOR";
-            this.gridParcelas.Columns.Add(gridTextColumn4);
-            this.gridParcelas.Columns.Add(gridTextColumn5);
-            this.gridParcelas.Columns.Add(gridTextColumn6);
+            gridTextColumn1.AllowEditing = false;
+            gridTextColumn1.AllowSorting = false;
+            gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn1.HeaderText = "Parcela";
+            gridTextColumn1.MappingName = "PARCELA";
+            gridTextColumn2.AllowEditing = false;
+            gridTextColumn2.AllowSorting = false;
+            gridTextColumn2.Format = "dd/MM/yyyy";
+            gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn2.HeaderText = "Vencimento";
+            gridTextColumn2.MappingName = "VENCIMENTO";
+            gridTextColumn3.AllowEditing = false;
+            gridTextColumn3.AllowSorting = false;
+            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn3.HeaderText = "Valor";
+            gridTextColumn3.MappingName = "VALOR";
+            this.gridParcelas.Columns.Add(gridTextColumn1);
+            this.gridParcelas.Columns.Add(gridTextColumn2);
+            this.gridParcelas.Columns.Add(gridTextColumn3);
             this.gridParcelas.Location = new System.Drawing.Point(10, 217);
             this.gridParcelas.Name = "gridParcelas";
             this.gridParcelas.Size = new System.Drawing.Size(438, 155);
@@ -170,7 +170,7 @@
             // 
             this.txtDataVencimento.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtDataVencimento.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
-            this.txtDataVencimento.Font = new System.Drawing.Font("Montserrat Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataVencimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataVencimento.Location = new System.Drawing.Point(9, 180);
             this.txtDataVencimento.Name = "txtDataVencimento";
             this.txtDataVencimento.Size = new System.Drawing.Size(193, 31);
@@ -182,11 +182,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(6, 151);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 26);
+            this.label2.Size = new System.Drawing.Size(134, 24);
             this.label2.TabIndex = 215;
             this.label2.Text = "1º Vencimento";
             // 
@@ -194,11 +194,11 @@
             // 
             this.autoLabel10.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel10.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel10.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel10.ForeColor = System.Drawing.Color.Black;
             this.autoLabel10.Location = new System.Drawing.Point(290, 96);
             this.autoLabel10.Name = "autoLabel10";
-            this.autoLabel10.Size = new System.Drawing.Size(91, 18);
+            this.autoLabel10.Size = new System.Drawing.Size(85, 16);
             this.autoLabel10.TabIndex = 214;
             this.autoLabel10.Text = "Qtd Parcelas";
             // 
@@ -209,7 +209,7 @@
             this.txtParcelas.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtParcelas.BorderRadius = 8;
             this.txtParcelas.BorderSize = 2;
-            this.txtParcelas.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParcelas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtParcelas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtParcelas.Location = new System.Drawing.Point(278, 108);
             this.txtParcelas.Margin = new System.Windows.Forms.Padding(4);
@@ -220,21 +220,22 @@
             this.txtParcelas.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtParcelas.PlaceholderText = "";
             this.txtParcelas.ReadOnly = false;
-            this.txtParcelas.Size = new System.Drawing.Size(171, 39);
+            this.txtParcelas.Size = new System.Drawing.Size(171, 37);
             this.txtParcelas.TabIndex = 210;
             this.txtParcelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtParcelas.Texts = "";
             this.txtParcelas.UnderlinedStyle = false;
+            this.txtParcelas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtParcelas_KeyPress);
             this.txtParcelas.Leave += new System.EventHandler(this.txtParcelas_Leave);
             // 
             // lblFaltante
             // 
             this.lblFaltante.AutoSize = true;
-            this.lblFaltante.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFaltante.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFaltante.ForeColor = System.Drawing.Color.IndianRed;
             this.lblFaltante.Location = new System.Drawing.Point(13, 55);
             this.lblFaltante.Name = "lblFaltante";
-            this.lblFaltante.Size = new System.Drawing.Size(144, 26);
+            this.lblFaltante.Size = new System.Drawing.Size(125, 24);
             this.lblFaltante.TabIndex = 213;
             this.lblFaltante.Text = "Valor Faltante";
             // 

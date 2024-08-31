@@ -24,6 +24,7 @@ namespace LunarBase.Classes
         private string senhaCertificado;
         private bool otica;
         private string emailXml;
+        private string telefoneLaboratorioOtica;
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -63,6 +64,9 @@ namespace LunarBase.Classes
         [Anotacao("Email XML")]
         [OcultarEmGridsEPesquisas]
         public virtual string EmailXml { get => emailXml; set => emailXml = value; }
+        [Anotacao("Lab Whats")]
+        [OcultarEmGridsEPesquisas]
+        public virtual string TelefoneLaboratorioOtica { get => telefoneLaboratorioOtica; set => telefoneLaboratorioOtica = value; }
 
         public override string ToString()
         {

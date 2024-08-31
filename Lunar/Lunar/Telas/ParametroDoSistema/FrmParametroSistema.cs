@@ -148,9 +148,9 @@ namespace Lunar.Telas.ParametroDoSistema
             if (parametro.ModeloEtiquetaNumeroOs != null)
                 txtEtiquetaImprimirNumeroOs.Text = parametro.ModeloEtiquetaNumeroOs;
             if (parametro.TokenGalaxyPay != null)
-                txtTokenGalaxyPay.Texts = parametro.TokenGalaxyPay;
+                txtTokenGalaxyPay.Text = parametro.TokenGalaxyPay;
             if (parametro.IdGalaxyPay != null)
-                txtIdGalaxyPay.Texts = parametro.IdGalaxyPay;
+                txtIdGalaxyPay.Text = parametro.IdGalaxyPay;
             if (parametro.IntegracaoGalaxyPay == true)
                 chkIntegracaoGalaxyPay.Checked = true;
             else
@@ -373,8 +373,8 @@ namespace Lunar.Telas.ParametroDoSistema
 
             parametro.ModeloEtiquetaPadrao = txtEtiquetaPadrao.Text.Trim();
             parametro.ModeloEtiquetaNumeroOs = txtEtiquetaImprimirNumeroOs.Text.Trim();
-            parametro.TokenGalaxyPay = txtTokenGalaxyPay.Texts.Trim();
-            parametro.IdGalaxyPay = txtIdGalaxyPay.Texts.Trim();
+            parametro.TokenGalaxyPay = txtTokenGalaxyPay.Text.Trim();
+            parametro.IdGalaxyPay = txtIdGalaxyPay.Text.Trim();
             if (chkIntegracaoGalaxyPay.Checked == true)
                 parametro.IntegracaoGalaxyPay = true;
             else
@@ -946,6 +946,8 @@ namespace Lunar.Telas.ParametroDoSistema
                 pictureLogo.ImageLocation = file.FileName;
                 txtCaminhoLogo.Texts = file.FileName;
                 parametro.Logo = txtCaminhoLogo.Text;
+                Sessao.parametroSistema = parametro;
+        
             }
         }
 

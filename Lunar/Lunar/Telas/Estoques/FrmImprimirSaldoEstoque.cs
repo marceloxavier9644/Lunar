@@ -38,7 +38,12 @@ namespace Lunar.Telas.Estoques
             if (!String.IsNullOrEmpty(empresaSelecionada.Endereco.Bairro))
                 comp = comp + " - " + empresaSelecionada.Endereco.Bairro;
 
-            string fone = GenericaDesktop.formatarFone(empresaSelecionada.DddPrincipal + empresaSelecionada.TelefonePrincipal.Trim());
+            string fone = "";
+            if (!String.IsNullOrEmpty(empresaSelecionada.DddPrincipal) && !String.IsNullOrEmpty(empresaSelecionada.TelefonePrincipal))
+            {
+                fone = GenericaDesktop.formatarFone(empresaSelecionada.DddPrincipal + empresaSelecionada.TelefonePrincipal.Trim());
+            }
+             
 
             ReportParameter[] p = new ReportParameter[6];
             p[0] = (new ReportParameter("RazaoSocial", empresaSelecionada.RazaoSocial));

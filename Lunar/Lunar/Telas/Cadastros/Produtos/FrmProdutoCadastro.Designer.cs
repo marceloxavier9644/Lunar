@@ -54,6 +54,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo treeNodeAdvStyleInfo1 = new Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
@@ -73,7 +74,6 @@
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn16 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo treeNodeAdvStyleInfo1 = new Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo();
             this.cidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dDDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -469,6 +469,7 @@
             this.txtAnoFabricacao = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtTipoPintura = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabPageAdv6 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.treeViewAdv1 = new Syncfusion.Windows.Forms.Tools.TreeViewAdv();
             this.gridVariacaoProduto = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.autoLabel112 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtDescricaoVariacao = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -517,7 +518,6 @@
             this.btnNovo = new Lunar.RJ_UI.Classes.RJButton();
             this.btnSalva = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancela = new Lunar.RJ_UI.Classes.RJButton();
-            this.treeViewAdv1 = new Syncfusion.Windows.Forms.Tools.TreeViewAdv();
             ((System.ComponentModel.ISupportInitialize)(this.dsTelefone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Telefone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridEnderecoAdicional)).BeginInit();
@@ -582,6 +582,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboCorDenatran)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboCorMontadora)).BeginInit();
             this.tabPageAdv6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.treeViewAdv1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridVariacaoProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboVariacoes)).BeginInit();
             this.tabPageAdv4.SuspendLayout();
@@ -589,7 +590,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridGrade)).BeginInit();
             this.tabPageAdv5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsumo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeViewAdv1)).BeginInit();
             this.SuspendLayout();
             // 
             // cidadeDataGridViewTextBoxColumn
@@ -7549,8 +7549,49 @@
             this.tabPageAdv6.Size = new System.Drawing.Size(974, 494);
             this.tabPageAdv6.TabFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.tabPageAdv6.TabIndex = 7;
+            this.tabPageAdv6.TabVisible = false;
             this.tabPageAdv6.Text = "Variações";
             this.tabPageAdv6.ThemesEnabled = false;
+            // 
+            // treeViewAdv1
+            // 
+            treeNodeAdvStyleInfo1.CheckBoxTickThickness = 1;
+            treeNodeAdvStyleInfo1.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            treeNodeAdvStyleInfo1.EnsureDefaultOptionedChild = true;
+            treeNodeAdvStyleInfo1.IntermediateCheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            treeNodeAdvStyleInfo1.OptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            treeNodeAdvStyleInfo1.SelectedOptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            this.treeViewAdv1.BaseStylePairs.AddRange(new Syncfusion.Windows.Forms.Tools.StyleNamePair[] {
+            new Syncfusion.Windows.Forms.Tools.StyleNamePair("Standard", treeNodeAdvStyleInfo1)});
+            this.treeViewAdv1.BeforeTouchSize = new System.Drawing.Size(942, 172);
+            // 
+            // 
+            // 
+            this.treeViewAdv1.HelpTextControl.BaseThemeName = null;
+            this.treeViewAdv1.HelpTextControl.Location = new System.Drawing.Point(0, 0);
+            this.treeViewAdv1.HelpTextControl.Name = "";
+            this.treeViewAdv1.HelpTextControl.Size = new System.Drawing.Size(392, 112);
+            this.treeViewAdv1.HelpTextControl.TabIndex = 0;
+            this.treeViewAdv1.HelpTextControl.Visible = true;
+            this.treeViewAdv1.InactiveSelectedNodeForeColor = System.Drawing.SystemColors.ControlText;
+            this.treeViewAdv1.Location = new System.Drawing.Point(26, 311);
+            this.treeViewAdv1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.treeViewAdv1.Name = "treeViewAdv1";
+            this.treeViewAdv1.SelectedNodeForeColor = System.Drawing.SystemColors.HighlightText;
+            this.treeViewAdv1.Size = new System.Drawing.Size(942, 172);
+            this.treeViewAdv1.TabIndex = 275;
+            this.treeViewAdv1.Text = "treeViewAdv1";
+            this.treeViewAdv1.ThemeStyle.TreeNodeAdvStyle.CheckBoxTickThickness = 0;
+            this.treeViewAdv1.ThemeStyle.TreeNodeAdvStyle.EnsureDefaultOptionedChild = true;
+            // 
+            // 
+            // 
+            this.treeViewAdv1.ToolTipControl.BaseThemeName = null;
+            this.treeViewAdv1.ToolTipControl.Location = new System.Drawing.Point(0, 0);
+            this.treeViewAdv1.ToolTipControl.Name = "";
+            this.treeViewAdv1.ToolTipControl.Size = new System.Drawing.Size(392, 112);
+            this.treeViewAdv1.ToolTipControl.TabIndex = 0;
+            this.treeViewAdv1.ToolTipControl.Visible = true;
             // 
             // gridVariacaoProduto
             // 
@@ -7769,9 +7810,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.gridGrade);
-            this.panel2.Location = new System.Drawing.Point(16, 225);
+            this.panel2.Location = new System.Drawing.Point(16, 130);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(871, 250);
+            this.panel2.Size = new System.Drawing.Size(951, 345);
             this.panel2.TabIndex = 260;
             // 
             // gridGrade
@@ -7817,9 +7858,10 @@
             this.gridGrade.Columns.Add(gridTextColumn11);
             this.gridGrade.Columns.Add(gridTextColumn12);
             this.gridGrade.Columns.Add(gridCheckBoxColumn1);
-            this.gridGrade.Location = new System.Drawing.Point(0, 43);
+            this.gridGrade.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridGrade.Location = new System.Drawing.Point(0, 0);
             this.gridGrade.Name = "gridGrade";
-            this.gridGrade.Size = new System.Drawing.Size(840, 301);
+            this.gridGrade.Size = new System.Drawing.Size(951, 345);
             this.gridGrade.Style.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.gridGrade.TabIndex = 0;
             this.gridGrade.Text = "sfDataGrid1";
@@ -8584,44 +8626,6 @@
             this.btnCancela.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancela.UseVisualStyleBackColor = false;
             // 
-            // treeViewAdv1
-            // 
-            treeNodeAdvStyleInfo1.CheckBoxTickThickness = 1;
-            treeNodeAdvStyleInfo1.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            treeNodeAdvStyleInfo1.EnsureDefaultOptionedChild = true;
-            treeNodeAdvStyleInfo1.IntermediateCheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            treeNodeAdvStyleInfo1.OptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            treeNodeAdvStyleInfo1.SelectedOptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
-            this.treeViewAdv1.BaseStylePairs.AddRange(new Syncfusion.Windows.Forms.Tools.StyleNamePair[] {
-            new Syncfusion.Windows.Forms.Tools.StyleNamePair("Standard", treeNodeAdvStyleInfo1)});
-            this.treeViewAdv1.BeforeTouchSize = new System.Drawing.Size(942, 172);
-            // 
-            // 
-            // 
-            this.treeViewAdv1.HelpTextControl.BaseThemeName = null;
-            this.treeViewAdv1.HelpTextControl.Location = new System.Drawing.Point(0, 0);
-            this.treeViewAdv1.HelpTextControl.Name = "";
-            this.treeViewAdv1.HelpTextControl.Size = new System.Drawing.Size(392, 112);
-            this.treeViewAdv1.HelpTextControl.TabIndex = 0;
-            this.treeViewAdv1.HelpTextControl.Visible = true;
-            this.treeViewAdv1.InactiveSelectedNodeForeColor = System.Drawing.SystemColors.ControlText;
-            this.treeViewAdv1.Location = new System.Drawing.Point(26, 311);
-            this.treeViewAdv1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.treeViewAdv1.Name = "treeViewAdv1";
-            this.treeViewAdv1.SelectedNodeForeColor = System.Drawing.SystemColors.HighlightText;
-            this.treeViewAdv1.Size = new System.Drawing.Size(942, 172);
-            this.treeViewAdv1.TabIndex = 275;
-            this.treeViewAdv1.Text = "treeViewAdv1";
-            // 
-            // 
-            // 
-            this.treeViewAdv1.ToolTipControl.BaseThemeName = null;
-            this.treeViewAdv1.ToolTipControl.Location = new System.Drawing.Point(0, 0);
-            this.treeViewAdv1.ToolTipControl.Name = "";
-            this.treeViewAdv1.ToolTipControl.Size = new System.Drawing.Size(392, 112);
-            this.treeViewAdv1.ToolTipControl.TabIndex = 0;
-            this.treeViewAdv1.ToolTipControl.Visible = true;
-            // 
             // FrmProdutoCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8716,6 +8720,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboCorMontadora)).EndInit();
             this.tabPageAdv6.ResumeLayout(false);
             this.tabPageAdv6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.treeViewAdv1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridVariacaoProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboVariacoes)).EndInit();
             this.tabPageAdv4.ResumeLayout(false);
@@ -8725,7 +8730,6 @@
             this.tabPageAdv5.ResumeLayout(false);
             this.tabPageAdv5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridInsumo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeViewAdv1)).EndInit();
             this.ResumeLayout(false);
 
         }

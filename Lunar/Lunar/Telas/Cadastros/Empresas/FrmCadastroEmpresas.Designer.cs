@@ -90,6 +90,8 @@
             this.txtReferencia = new Lunar.RJ_UI.Classes.RJTextBox();
             this.RJtx = new Lunar.RJ_UI.Classes.RJButton();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.autoLabel26 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtEmailContabilidadeXml = new System.Windows.Forms.TextBox();
             this.chkOtica = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.btnConfirmaCertificado = new FontAwesome.Sharp.IconButton();
             this.autoLabel24 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -105,8 +107,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
-            this.txtEmailContabilidadeXml = new System.Windows.Forms.TextBox();
-            this.autoLabel26 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.lblWhatsLaboratorio = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtWhatsappLaboratorio = new System.Windows.Forms.TextBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -1276,6 +1278,8 @@
             // 
             // tabPageAdv2
             // 
+            this.tabPageAdv2.Controls.Add(this.lblWhatsLaboratorio);
+            this.tabPageAdv2.Controls.Add(this.txtWhatsappLaboratorio);
             this.tabPageAdv2.Controls.Add(this.autoLabel26);
             this.tabPageAdv2.Controls.Add(this.txtEmailContabilidadeXml);
             this.tabPageAdv2.Controls.Add(this.chkOtica);
@@ -1303,6 +1307,24 @@
             this.tabPageAdv2.Text = "Fiscal";
             this.tabPageAdv2.ThemesEnabled = false;
             // 
+            // autoLabel26
+            // 
+            this.autoLabel26.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel26.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel26.Location = new System.Drawing.Point(14, 143);
+            this.autoLabel26.Name = "autoLabel26";
+            this.autoLabel26.Size = new System.Drawing.Size(168, 16);
+            this.autoLabel26.TabIndex = 272;
+            this.autoLabel26.Text = "E-mail Contabilidade XMLs";
+            // 
+            // txtEmailContabilidadeXml
+            // 
+            this.txtEmailContabilidadeXml.Location = new System.Drawing.Point(14, 162);
+            this.txtEmailContabilidadeXml.Name = "txtEmailContabilidadeXml";
+            this.txtEmailContabilidadeXml.Size = new System.Drawing.Size(607, 29);
+            this.txtEmailContabilidadeXml.TabIndex = 271;
+            // 
             // chkOtica
             // 
             this.chkOtica.BeforeTouchSize = new System.Drawing.Size(313, 30);
@@ -1311,6 +1333,7 @@
             this.chkOtica.Size = new System.Drawing.Size(313, 30);
             this.chkOtica.TabIndex = 270;
             this.chkOtica.Text = "Habilitar Módulo de O.S Ótica";
+            this.chkOtica.CheckStateChanged += new System.EventHandler(this.chkOtica_CheckStateChanged);
             // 
             // btnConfirmaCertificado
             // 
@@ -1573,23 +1596,26 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtEmailContabilidadeXml
+            // lblWhatsLaboratorio
             // 
-            this.txtEmailContabilidadeXml.Location = new System.Drawing.Point(14, 162);
-            this.txtEmailContabilidadeXml.Name = "txtEmailContabilidadeXml";
-            this.txtEmailContabilidadeXml.Size = new System.Drawing.Size(607, 29);
-            this.txtEmailContabilidadeXml.TabIndex = 271;
+            this.lblWhatsLaboratorio.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblWhatsLaboratorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWhatsLaboratorio.ForeColor = System.Drawing.Color.Black;
+            this.lblWhatsLaboratorio.Location = new System.Drawing.Point(627, 143);
+            this.lblWhatsLaboratorio.Name = "lblWhatsLaboratorio";
+            this.lblWhatsLaboratorio.Size = new System.Drawing.Size(141, 16);
+            this.lblWhatsLaboratorio.TabIndex = 274;
+            this.lblWhatsLaboratorio.Text = "Whatsapp Laboratório";
+            this.lblWhatsLaboratorio.Visible = false;
             // 
-            // autoLabel26
+            // txtWhatsappLaboratorio
             // 
-            this.autoLabel26.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel26.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel26.Location = new System.Drawing.Point(14, 143);
-            this.autoLabel26.Name = "autoLabel26";
-            this.autoLabel26.Size = new System.Drawing.Size(168, 16);
-            this.autoLabel26.TabIndex = 272;
-            this.autoLabel26.Text = "E-mail Contabilidade XMLs";
+            this.txtWhatsappLaboratorio.Location = new System.Drawing.Point(627, 162);
+            this.txtWhatsappLaboratorio.Name = "txtWhatsappLaboratorio";
+            this.txtWhatsappLaboratorio.Size = new System.Drawing.Size(362, 29);
+            this.txtWhatsappLaboratorio.TabIndex = 273;
+            this.txtWhatsappLaboratorio.Visible = false;
+            this.txtWhatsappLaboratorio.Leave += new System.EventHandler(this.txtWhatsappLaboratorio_Leave);
             // 
             // FrmCadastroEmpresas
             // 
@@ -1701,5 +1727,7 @@
         private FontAwesome.Sharp.IconButton btnPesquisaCnpj;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel26;
         private System.Windows.Forms.TextBox txtEmailContabilidadeXml;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lblWhatsLaboratorio;
+        private System.Windows.Forms.TextBox txtWhatsappLaboratorio;
     }
 }

@@ -3,9 +3,13 @@ using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais
@@ -263,6 +267,45 @@ namespace Lunar.Telas.Cadastros.Cliente.PessoaAdicionais
                 case Keys.F5:
                     btnSalvar.PerformClick();
                     break;
+            }
+        }
+
+        private async void btnPesquisaCep_Click(object sender, EventArgs e)
+        {
+            await pesquisaCepAPIAsync();
+        }
+        class EnderecoCep
+        {
+            public string Cep { get; set; }
+            public string Logradouro { get; set; }
+            public string Complemento { get; set; }
+            public string Bairro { get; set; }
+            public string Localidade { get; set; }
+            public string Uf { get; set; }
+        }
+        private async Task pesquisaCepAPIAsync()
+        {
+            string cep = GenericaDesktop.RemoveCaracteres(txtCEP.Texts);
+
+            string url = $"https://viacep.com.br/ws/{cep}/json/";
+
+            using (WebClient client = new WebClient())
+            {
+                client.Encoding = Encoding.UTF8;
+                string json = client.DownloadString(url);
+                EnderecoCep enderecoCep = JsonConvert.DeserializeObject<EnderecoCep>(json);
+
+                txtEndereco.Texts = generica.RemoverAcentos(enderecoCep.Logradouro);
+                txtComplemento.Texts = enderecoCep.Complemento;
+                cidade = new Cidade();
+                cidade = cidadeController.selecionarCidadePorDescricao(generica.RemoverAcentos(enderecoCep.Localidade));
+                if (cidade != null)
+                {
+                    txtCidade.Texts = cidade.Descricao;
+                    txtUF.Texts = enderecoCep.Uf;
+                    txtBairro.Texts = enderecoCep.Bairro;
+                }
+                txtNumero.Focus();
             }
         }
     }

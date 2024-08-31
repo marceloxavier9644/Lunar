@@ -1,4 +1,5 @@
-﻿using LunarBase.Utilidades;
+﻿using Lunar.Utils;
+using LunarBase.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,12 @@ namespace Lunar.Telas.OrdensDeServico
         }
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            telefone = txtNumeroCliente.Text.Trim();
+            telefone = GenericaDesktop.RemoveCaracteres(txtNumeroCliente.Text.Trim());
+            if (!telefone.StartsWith("55"))
+            {
+                telefone = "55" + telefone;
+            }
+
             nome = txtNomeCliente.Text;
             mensagem = txtMensagem.Text;
             if (radioPdfOs.Checked == true)
@@ -95,6 +101,16 @@ namespace Lunar.Telas.OrdensDeServico
                 case Keys.F5:
                     btnEnviar.PerformClick();
                     break;
+            }
+        }
+
+        private void radioProdutoDisponivel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioProdutoDisponivel.Checked == true)
+            {
+                txtMensagem.Text = "*" + Sessao.empresaFilialLogada.NomeFantasia + ":* " + "Olá" + ", " + nome + "! queremos agradecer pela " +
+                    "preferência e confiança em nossos Produtos/Serviços. Estamos felizes em informar que seu produto " +
+                    "já está disponível para retirada em nossa loja. Conte conosco para proporcionar a melhor experiência possível.";
             }
         }
     }

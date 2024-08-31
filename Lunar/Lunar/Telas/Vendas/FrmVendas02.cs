@@ -8,6 +8,7 @@ using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.Vendas.RecebimentoVendas;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
+using Lunar.Utils.GalaxyPay_API;
 using Lunar.Utils.OrganizacaoNF;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
@@ -3217,13 +3218,9 @@ namespace Lunar.Telas.Vendas
                 IList<ContaReceber> lisRec = new List<ContaReceber>();
                 //Salva na tabela vendaItens
                 salvarProdutosVenda();
-                //Nota nao foi gerada para ser gerada posteriormente agrupada!
-                //if (temNota == false)
-                //{
-                    AtualizaEstoque(false, "VENDA: <" + vendaConclusao.Id + "> " + txtClienteAbaPagamento.Texts);
-                //}
-                //else
-                //    AtualizaEstoque(true);
+
+                AtualizaEstoque(false, "VENDA: <" + vendaConclusao.Id + "> " + txtClienteAbaPagamento.Texts);
+
 
                 vendaConclusao.Concluida = true;
                 if(this.condicional1 != null)
@@ -3236,14 +3233,29 @@ namespace Lunar.Telas.Vendas
 
                 ContaReceberController contaReceberController = new ContaReceberController();
                 IList<ContaReceber> listaContaReceber = contaReceberController.selecionarContaReceberPorVenda(vendaConclusao.Id);
+                IList<ContaReceber> listaGerarBoleto = new List<ContaReceber>();
+                GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
                 if (listaContaReceber.Count > 0)
                 {
+                    int i = 0;
                     foreach (ContaReceber cr in listaContaReceber)
                     {
+                        i++;
                         cr.Concluido = true;
-                        cr.Documento = "V" + vendaConclusao.Id + "/" + cr.Parcela;
+                        cr.Documento = "V" + vendaConclusao.Id + "/" + i;
+                        cr.Parcela = i.ToString();
                         Controller.getInstance().salvar(cr);
                         lisRec.Add(cr);
+
+                        //Gerar boletos
+                        if(cr.FormaPagamento.Id == 5)
+                        {
+                            listaGerarBoleto.Add(cr);
+                        }
+                    }
+                    if(listaGerarBoleto.Count > 0)
+                    {
+                        gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaGerarBoleto, vendaConclusao.Cliente);
                     }
                 }
 

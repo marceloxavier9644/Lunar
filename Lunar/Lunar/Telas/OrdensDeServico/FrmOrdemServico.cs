@@ -1855,7 +1855,7 @@ namespace Lunar.Telas.OrdensDeServico
 
                         if (!String.IsNullOrEmpty(dataRowView.Row[0].ToString()))
                             descontoItem = descontoItem + decimal.Parse(dataRowView.Row["Desconto"].ToString());
-                        valorTotalServicos = valorTotalServicos + decimal.Parse(dataRowView.Row["ValorUnitario"].ToString());
+                        valorTotalServicos = valorTotalServicos + decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
                         pecas = pecas + double.Parse(dataRowView.Row["Quantidade"].ToString());
 
                     }
@@ -2238,8 +2238,16 @@ namespace Lunar.Telas.OrdensDeServico
 
                     if (GenericaDesktop.ShowConfirmacao("Ordem de Serviço " + ordemServico.Id + " Registrada com Sucesso, deseja imprimir?"))
                     {
-                        FrmImpressaoOrdemServico frmImprimirOrdem = new FrmImpressaoOrdemServico(ordemServico);
-                        frmImprimirOrdem.ShowDialog();
+                        if (Sessao.parametroSistema.ViaImpressaoOs == true)
+                        {
+                            FrmImprimirViasOtica frmImprimirOrdem = new FrmImprimirViasOtica(ordemServico);
+                            frmImprimirOrdem.ShowDialog();
+                        }
+                        else
+                        {
+                            FrmImpressaoOrdemServico frmImprimirOrdem = new FrmImpressaoOrdemServico(ordemServico);
+                            frmImprimirOrdem.ShowDialog();
+                        }
                     }
                 }
                 else

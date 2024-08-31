@@ -3,7 +3,11 @@ using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.Reporting.WinForms;
-using PdfiumViewer;
+using Syncfusion.Pdf.Parsing;
+
+using Syncfusion.Windows.Forms.PdfViewer;
+
+//using Spire.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
@@ -29,6 +33,8 @@ namespace Lunar.Telas.OrdensDeServico
             }
             if (ordemServico.Cliente.PessoaTelefone != null)
                 txtWhatsappCliente.Text = GenericaDesktop.formatarFone(ordemServico.Cliente.PessoaTelefone.Ddd + ordemServico.Cliente.PessoaTelefone.Telefone);
+            if (!String.IsNullOrEmpty(Sessao.empresaFilialLogada.TelefoneLaboratorioOtica))
+                txtWhatsappLaboratorio.Text = GenericaDesktop.formatarFone(Sessao.empresaFilialLogada.TelefoneLaboratorioOtica);
         }
 
         private void FrmImprimirViasOtica_KeyDown(object sender, KeyEventArgs e)
@@ -148,9 +154,13 @@ namespace Lunar.Telas.OrdensDeServico
             reportParameters[5] = new ReportParameter("logo", Sessao.parametroSistema.Logo);
 
             // Cliente
-            string cpfFormatado = ordemServico.Cliente.Cnpj.Length == 14
-                ? Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"00\.000\.000\/0000\-00")
-                : Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"000\.000\.000\-00");
+            string cpfFormatado = "";
+            if (!String.IsNullOrEmpty(ordemServico.Cliente.Cnpj))
+            {
+                cpfFormatado = ordemServico.Cliente.Cnpj.Length == 14
+                    ? Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"00\.000\.000\/0000\-00")
+                    : Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"000\.000\.000\-00");
+            }
 
             reportParameters[6] = new ReportParameter("Cliente", ordemServico.Cliente.RazaoSocial);
             reportParameters[7] = new ReportParameter("CpfCliente", cpfFormatado);
@@ -259,10 +269,13 @@ namespace Lunar.Telas.OrdensDeServico
                 : foneEmp.Length == 10 ? long.Parse(foneEmp).ToString(@"(00) 0000-0000")
                 : long.Parse(foneEmp).ToString(@"00000-0000");
 
-            // Cliente
-            string cpfFormatado = ordemServico.Cliente.Cnpj.Length == 14
-                ? Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"00\.000\.000\/0000\-00")
-                : Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"000\.000\.000\-00");
+            string cpfFormatado = "";
+            if (!String.IsNullOrEmpty(ordemServico.Cliente.Cnpj))
+            {
+                cpfFormatado = ordemServico.Cliente.Cnpj.Length == 14
+                    ? Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"00\.000\.000\/0000\-00")
+                    : Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"000\.000\.000\-00");
+            }
 
             // Endereço do cliente
             string cidadeCliente = ordemServico.Cliente.EnderecoPrincipal?.Cidade?.Descricao + " - " + ordemServico.Cliente.EnderecoPrincipal?.Cidade?.Estado?.Uf;
@@ -401,9 +414,13 @@ namespace Lunar.Telas.OrdensDeServico
             reportParameters[5] = new ReportParameter("logo", Sessao.parametroSistema.Logo);
 
             // Cliente
-            string cpfFormatado = ordemServico.Cliente.Cnpj.Length == 14
-                ? Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"00\.000\.000\/0000\-00")
-                : Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"000\.000\.000\-00");
+            string cpfFormatado = "";
+            if (!String.IsNullOrEmpty(ordemServico.Cliente.Cnpj))
+            {
+                cpfFormatado = ordemServico.Cliente.Cnpj.Length == 14
+                    ? Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"00\.000\.000\/0000\-00")
+                    : Convert.ToUInt64(ordemServico.Cliente.Cnpj).ToString(@"000\.000\.000\-00");
+            }
 
             reportParameters[6] = new ReportParameter("Cliente", ordemServico.Cliente.RazaoSocial);
             reportParameters[7] = new ReportParameter("CpfCliente", cpfFormatado);
@@ -497,37 +514,34 @@ namespace Lunar.Telas.OrdensDeServico
                 ImprimirPDF(caminhoArquivo, comboImpressoras.SelectedItem.ToString());
         }
 
-
         private void ImprimirPDF(string caminhoArquivo, string nomeImpressora)
         {
             try
             {
-                // Criar um objeto de impressão
-                using (var printDocument = new PrintDocument())
-                {
-                    // Definir a impressora
-                    printDocument.PrinterSettings.PrinterName = nomeImpressora;
+                // Carregar o documento PDF.
+                PdfLoadedDocument loadedDocument = new PdfLoadedDocument(caminhoArquivo);
 
-                    // Configurar o evento de impressão
-                    printDocument.PrintPage += (sender, e) =>
-                    {
-                        using (var pdfDocument = PdfDocument.Load(caminhoArquivo))
-                        using (var pdfViewer = new PdfViewer())
-                        {
-                            // Obter a página atual para impressão
-                            var page = pdfDocument.Render(0, 300, 300, true); // Renderiza a primeira página
-                            e.Graphics.DrawImage(page, e.MarginBounds);
-                        }
-                    };
-                    printDocument.Print();
-                }
+                // Criar um visualizador PDF.
+                PdfViewerControl pdfViewer = new PdfViewerControl();
+
+                // Carregar o documento no visualizador.
+                pdfViewer.Load(loadedDocument);
+
+                // Configurar a impressora.
+                PrintDocument printDocument = pdfViewer.PrintDocument;
+                printDocument.PrinterSettings.PrinterName = nomeImpressora;
+
+                // Imprimir o documento.
+                printDocument.Print();
+
+                // Fechar o documento carregado.
+                loadedDocument.Close(true);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao imprimir o PDF: " + ex.Message);
             }
         }
-
         private async void btnEnviarWhatsapp_Click(object sender, EventArgs e)
         {
             imprimir = false;

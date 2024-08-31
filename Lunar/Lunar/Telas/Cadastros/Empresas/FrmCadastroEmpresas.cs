@@ -113,7 +113,10 @@ namespace Lunar.Telas.Cadastros.Empresas
             if(!String.IsNullOrEmpty(empresaFilial.SenhaCertificado))
                 txtSenhaCertificado.Texts = GenericaDesktop.Descriptografa(empresaFilial.SenhaCertificado);
             if (empresaFilial.Otica == true)
+            {
                 chkOtica.Checked = true;
+                txtWhatsappLaboratorio.Text = GenericaDesktop.formatarFone(empresaFilial.TelefoneLaboratorioOtica);
+            }
             else
                 chkOtica.Checked = false;
             txtEmailContabilidadeXml.Text = empresaFilial.EmailXml;
@@ -253,9 +256,15 @@ namespace Lunar.Telas.Cadastros.Empresas
                         empresaFilial.Empresa = empresa;
                         empresaFilial.EmailXml = txtEmailContabilidadeXml.Text.Trim();
                         if (chkOtica.Checked == true)
+                        {
                             empresaFilial.Otica = true;
+                            empresaFilial.TelefoneLaboratorioOtica = GenericaDesktop.RemoveCaracteres(txtWhatsappLaboratorio.Text.Trim());
+                        }
                         else
+                        {
                             empresaFilial.Otica = false;
+                            empresaFilial.TelefoneLaboratorioOtica = "";
+                        }
                         empresaFilial.SenhaCertificado = GenericaDesktop.Criptografa(txtSenhaCertificado.Texts);
                         if (!String.IsNullOrEmpty(txtCodRegimeTributario.Texts))
                         {
@@ -662,6 +671,39 @@ namespace Lunar.Telas.Cadastros.Empresas
             catch
             {
                 GenericaDesktop.ShowErro("Falha na consulta automática de dados do cnpj, preencha os dados manualmente");
+            }
+        }
+
+        private void chkOtica_CheckStateChanged(object sender, EventArgs e)
+        {
+            try 
+            {
+                if(chkOtica.Checked == true)
+                {
+                    lblWhatsLaboratorio.Visible = true;
+                    txtWhatsappLaboratorio.Visible = true;
+                }
+                else
+                {
+                    lblWhatsLaboratorio.Visible = false;
+                    txtWhatsappLaboratorio.Visible = false;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txtWhatsappLaboratorio_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                txtWhatsappLaboratorio.Text = GenericaDesktop.formatarFone(txtWhatsappLaboratorio.Text);
+            }
+            catch
+            {
+
             }
         }
     }

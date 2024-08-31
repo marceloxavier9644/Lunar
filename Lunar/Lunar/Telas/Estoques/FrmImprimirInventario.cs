@@ -38,10 +38,13 @@ namespace Lunar.Telas.Estoques
             this.reportViewer1.LocalReport.DataSources.Add(dsInvent);
 
             string comp = "";
-            if (!String.IsNullOrEmpty(Sessao.empresaFilialLogada.Endereco.Complemento))
-                comp = " - " + Sessao.empresaFilialLogada.Endereco.Complemento;
-            if (!String.IsNullOrEmpty(Sessao.empresaFilialLogada.Endereco.Bairro))
-                comp = comp + " - " + Sessao.empresaFilialLogada.Endereco.Bairro;
+            if (Sessao.empresaFilialLogada.Endereco != null)
+            {
+                if (!String.IsNullOrEmpty(Sessao.empresaFilialLogada.Endereco.Complemento))
+                    comp = " - " + Sessao.empresaFilialLogada.Endereco.Complemento;
+                if (!String.IsNullOrEmpty(Sessao.empresaFilialLogada.Endereco.Bairro))
+                    comp = comp + " - " + Sessao.empresaFilialLogada.Endereco.Bairro;
+            }
 
             string fone = GenericaDesktop.formatarFone(Sessao.empresaFilialLogada.DddPrincipal+Sessao.empresaFilialLogada.TelefonePrincipal.Trim());
 

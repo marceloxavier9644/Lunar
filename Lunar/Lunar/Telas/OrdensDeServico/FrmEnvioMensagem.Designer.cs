@@ -42,7 +42,9 @@
             this.txtMensagem = new System.Windows.Forms.TextBox();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioProdutoDisponivel = new System.Windows.Forms.RadioButton();
             this.panelTitleBar.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -59,11 +61,11 @@
             // autoLabel25
             // 
             this.autoLabel25.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel25.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel25.ForeColor = System.Drawing.Color.White;
             this.autoLabel25.Location = new System.Drawing.Point(12, 0);
             this.autoLabel25.Name = "autoLabel25";
-            this.autoLabel25.Size = new System.Drawing.Size(217, 35);
+            this.autoLabel25.Size = new System.Drawing.Size(199, 25);
             this.autoLabel25.TabIndex = 198;
             this.autoLabel25.Text = "Envio de Whatsapp";
             // 
@@ -100,11 +102,11 @@
             // 
             this.autoLabel17.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel17.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel17.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel17.ForeColor = System.Drawing.Color.Black;
             this.autoLabel17.Location = new System.Drawing.Point(12, 52);
             this.autoLabel17.Name = "autoLabel17";
-            this.autoLabel17.Size = new System.Drawing.Size(161, 27);
+            this.autoLabel17.Size = new System.Drawing.Size(140, 20);
             this.autoLabel17.TabIndex = 259;
             this.autoLabel17.Text = "Número do Cliente";
             // 
@@ -142,11 +144,11 @@
             // 
             this.autoLabel1.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
             this.autoLabel1.Location = new System.Drawing.Point(273, 52);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(145, 27);
+            this.autoLabel1.Size = new System.Drawing.Size(126, 20);
             this.autoLabel1.TabIndex = 262;
             this.autoLabel1.Text = "Nome do Cliente";
             // 
@@ -154,11 +156,11 @@
             // 
             this.autoLabel2.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel2.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel2.ForeColor = System.Drawing.Color.Black;
             this.autoLabel2.Location = new System.Drawing.Point(12, 126);
             this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(272, 31);
+            this.autoLabel2.Size = new System.Drawing.Size(249, 24);
             this.autoLabel2.TabIndex = 264;
             this.autoLabel2.Text = "Escolha o que deseja enviar";
             // 
@@ -167,7 +169,7 @@
             this.radioPdfOs.AutoSize = true;
             this.radioPdfOs.Checked = true;
             this.radioPdfOs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioPdfOs.Location = new System.Drawing.Point(43, 174);
+            this.radioPdfOs.Location = new System.Drawing.Point(43, 109);
             this.radioPdfOs.Name = "radioPdfOs";
             this.radioPdfOs.Size = new System.Drawing.Size(215, 24);
             this.radioPdfOs.TabIndex = 2;
@@ -179,7 +181,7 @@
             // 
             this.radioTecnicoCaminho.AutoSize = true;
             this.radioTecnicoCaminho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioTecnicoCaminho.Location = new System.Drawing.Point(264, 174);
+            this.radioTecnicoCaminho.Location = new System.Drawing.Point(264, 109);
             this.radioTecnicoCaminho.Name = "radioTecnicoCaminho";
             this.radioTecnicoCaminho.Size = new System.Drawing.Size(210, 24);
             this.radioTecnicoCaminho.TabIndex = 3;
@@ -190,7 +192,7 @@
             // txtMensagem
             // 
             this.txtMensagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMensagem.Location = new System.Drawing.Point(12, 218);
+            this.txtMensagem.Location = new System.Drawing.Point(12, 169);
             this.txtMensagem.Multiline = true;
             this.txtMensagem.Name = "txtMensagem";
             this.txtMensagem.Size = new System.Drawing.Size(492, 142);
@@ -200,21 +202,37 @@
             // 
             this.autoLabel3.BackColor = System.Drawing.Color.Transparent;
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel3.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel3.ForeColor = System.Drawing.Color.Red;
             this.autoLabel3.Location = new System.Drawing.Point(174, 58);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(91, 18);
+            this.autoLabel3.Size = new System.Drawing.Size(86, 13);
             this.autoLabel3.TabIndex = 266;
             this.autoLabel3.Text = "DDI + DDD + Nº";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioProdutoDisponivel);
+            this.groupBox1.Controls.Add(this.txtMensagem);
+            this.groupBox1.Controls.Add(this.radioTecnicoCaminho);
+            this.groupBox1.Controls.Add(this.radioPdfOs);
             this.groupBox1.Location = new System.Drawing.Point(0, 44);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(514, 385);
             this.groupBox1.TabIndex = 267;
             this.groupBox1.TabStop = false;
+            // 
+            // radioProdutoDisponivel
+            // 
+            this.radioProdutoDisponivel.AutoSize = true;
+            this.radioProdutoDisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioProdutoDisponivel.Location = new System.Drawing.Point(156, 139);
+            this.radioProdutoDisponivel.Name = "radioProdutoDisponivel";
+            this.radioProdutoDisponivel.Size = new System.Drawing.Size(210, 24);
+            this.radioProdutoDisponivel.TabIndex = 4;
+            this.radioProdutoDisponivel.Text = "Aviso - Produto Disponível";
+            this.radioProdutoDisponivel.UseVisualStyleBackColor = true;
+            this.radioProdutoDisponivel.CheckedChanged += new System.EventHandler(this.radioProdutoDisponivel_CheckedChanged);
             // 
             // FrmEnvioMensagem
             // 
@@ -223,9 +241,6 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(516, 428);
             this.Controls.Add(this.autoLabel3);
-            this.Controls.Add(this.txtMensagem);
-            this.Controls.Add(this.radioTecnicoCaminho);
-            this.Controls.Add(this.radioPdfOs);
             this.Controls.Add(this.autoLabel2);
             this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.autoLabel1);
@@ -243,6 +258,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmEnvioMensagem_KeyDown);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +281,6 @@
         private System.Windows.Forms.TextBox txtMensagem;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioProdutoDisponivel;
     }
 }

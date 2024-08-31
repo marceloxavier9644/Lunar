@@ -815,7 +815,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             txtCodBarras.Texts = codigoBarras;
         }
 
-        private void CreateEan13()
+        public void CreateEan13()
         {
             ean13 = new Ean13();
             ean13.CountryCode = RandomNumber(10, 78).ToString();
@@ -3660,28 +3660,19 @@ namespace Lunar.Telas.Cadastros.Produtos
 
         private void PreencherTreeViewAdv()
         {
-            // Limpa os nós existentes, se houver
-            treeViewAdv1.Nodes.Clear();
+            //treeViewAdv1.Nodes.Clear();
+            //ProdutoCaracteristicaController produtoCaracteristicaController = new ProdutoCaracteristicaController();
+            //IList<ProdutoCaracteristica> listaProdutoCaracteristicas = produtoCaracteristicaController.selecionarProdutoCaracteristica(int.Parse(txtID.Texts));
 
-            ProdutoCaracteristicaController produtoCaracteristicaController = new ProdutoCaracteristicaController();
-            // Suponha que você tenha uma lista de ProdutoCaracteristica
-            IList<ProdutoCaracteristica> listaProdutoCaracteristicas = produtoCaracteristicaController.selecionarProdutoCaracteristica(int.Parse(txtID.Texts));
+            //var rootNode = new Syncfusion.Windows.Forms.Tools.TreeNodeAdv("Características do Produto");
+            //foreach (var produtoCaracteristica in listaProdutoCaracteristicas)
+            //{
+            //    var childNode = new Syncfusion.Windows.Forms.Tools.TreeNodeAdv($"{produtoCaracteristica.Descricao}: {produtoCaracteristica.Caracteristica.Descricao}");
+            //    rootNode.Nodes.Add(childNode);
+            //}
 
-            // Cria um nó raiz para o produto
-            var rootNode = new Syncfusion.Windows.Forms.Tools.TreeNodeAdv("Características do Produto");
-
-            foreach (var produtoCaracteristica in listaProdutoCaracteristicas)
-            {
-                // Para cada característica, adiciona um subnó
-                var childNode = new Syncfusion.Windows.Forms.Tools.TreeNodeAdv($"{produtoCaracteristica.Descricao}: {produtoCaracteristica.Caracteristica.Descricao}");
-                rootNode.Nodes.Add(childNode);
-            }
-
-            // Adiciona o nó raiz ao TreeViewAdv
-            treeViewAdv1.Nodes.Add(rootNode);
-
-            // Expande todos os nós para exibir as características
-            treeViewAdv1.ExpandAll();
+            //treeViewAdv1.Nodes.Add(rootNode);
+            //treeViewAdv1.ExpandAll();
         }
 
     }

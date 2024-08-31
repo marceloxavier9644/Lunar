@@ -40,11 +40,14 @@ namespace Lunar.Utils.GalaxyPay_API
             try
             {
                 String url = "https://api.galaxpay.com.br/v2/token";
+                if (Sessao.parametroSistema.TokenGalaxyPay.Equals("83Mw5u8988Qj6fZqS4Z8K7LzOo1j28S706R0BeFe"))
+                    url = "https://api.sandbox.cel.cash/v2/token";
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "POST";
                 requisicaoWeb.ContentType = "application/json";
                 requisicaoWeb.Headers.Add("Authorization", "Basic " + EncodeToBase64(galaxId + ":" + galaxHash));
-                requisicaoWeb.Headers.Add("AuthorizationPartner", "Basic " + EncodeToBase64(galaxIdParceiro + ":" + galaxHashParceiro));
+                if (!Sessao.parametroSistema.TokenGalaxyPay.Equals("83Mw5u8988Qj6fZqS4Z8K7LzOo1j28S706R0BeFe"))
+                    requisicaoWeb.Headers.Add("AuthorizationPartner", "Basic " + EncodeToBase64(galaxIdParceiro + ":" + galaxHashParceiro));
 
 
                 using (var streamWriter = new StreamWriter(requisicaoWeb.GetRequestStream()))
@@ -98,6 +101,12 @@ namespace Lunar.Utils.GalaxyPay_API
             try
             {
                 String url = "https://api.galaxpay.com.br/v2/customers?documents=" + cpfCnpj + "&startAt=0&limit=100";
+
+                //homologacao
+                if(galaxHash.Equals("83Mw5u8988Qj6fZqS4Z8K7LzOo1j28S706R0BeFe"))
+                    url = "https://api.sandbox.cel.cash/v2/customers?documents=" + cpfCnpj + "&startAt=0&limit=100";
+
+
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "GET";
                 requisicaoWeb.Headers.Add("Authorization", "Bearer " + tokenAcesso);
@@ -125,7 +134,7 @@ namespace Lunar.Utils.GalaxyPay_API
                             // Use await para aguardar a conclusão do método assíncrono GalaxyPay_CadastrarCliente
                             string retornoCadastro = await GalaxyPay_CadastrarCliente(pessoa);
 
-                            if (retornoCadastro.Equals("True"))
+                            if (retornoCadastro.Equals("True") || retornoCadastro.Equals("Sucesso"))
                             {
                                 totalQtdFoundInPage = "1";
                             }
@@ -155,6 +164,8 @@ namespace Lunar.Utils.GalaxyPay_API
             {
                 Address address = new Address();
                 string url = "https://api.galaxpay.com.br/v2/customers";
+                if(galaxHash.Equals("83Mw5u8988Qj6fZqS4Z8K7LzOo1j28S706R0BeFe"))
+                    url = "https://api.sandbox.cel.cash/v2/customers";
 
                 var httpClient = new HttpClient();
                 httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenAcesso);
@@ -234,6 +245,8 @@ namespace Lunar.Utils.GalaxyPay_API
             {
                 Address address = new Address();
                 String url = "https://api.galaxpay.com.br/v2/customers/" + pessoa.Id + "/myId";
+                if(galaxHash.Equals("83Mw5u8988Qj6fZqS4Z8K7LzOo1j28S706R0BeFe"))
+                    url = "https://api.sandbox.cel.cash/v2/customers/" + pessoa.Id + "/myId";
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "PUT";
                 requisicaoWeb.ContentType = "application/json";
@@ -287,7 +300,7 @@ namespace Lunar.Utils.GalaxyPay_API
             }
             catch (Exception err)
             {
-                GenericaDesktop.ShowErro("Falha ao atualizar cliente: " + err.Message);
+                //GenericaDesktop.ShowErro("Falha ao atualizar cliente: " + err.Message);
                 return "";
             }
         }
@@ -300,6 +313,10 @@ namespace Lunar.Utils.GalaxyPay_API
                 string retornoBoletosValidos = "";
                 Address address = new Address();
                 String url = "https://api.galaxpay.com.br/v2/charges";
+
+                //Chave do ambiente de homologacao do celcash
+                if (galaxHash.Equals("83Mw5u8988Qj6fZqS4Z8K7LzOo1j28S706R0BeFe"))
+                    url = "https://api.sandbox.cel.cash/v2/charges";
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "POST";
                 requisicaoWeb.ContentType = "application/json";
@@ -529,6 +546,8 @@ namespace Lunar.Utils.GalaxyPay_API
             {
                 Address address = new Address();
                 String url = "https://api.galaxpay.com.br/v2/boletos/charges";
+                if(galaxHash.Equals("83Mw5u8988Qj6fZqS4Z8K7LzOo1j28S706R0BeFe"))
+                    url = "https://api.sandbox.cel.cash/v2/boletos/charges";
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "POST";
                 requisicaoWeb.ContentType = "application/json";

@@ -408,7 +408,7 @@
             <rd:DefaultName>Textbox5</rd:DefaultName>
             <Top>4.54766cm</Top>
             <Left>0.00553cm</Left>
-            <Height>0.6cm</Height>
+            <Height>0.52945cm</Height>
             <Width>6.77201cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
@@ -2293,6 +2293,7 @@
             </TablixRowHierarchy>
             <DataSetName>dsOrdemServicoExame</DataSetName>
             <Top>6.42385cm</Top>
+            <Left>0.13411cm</Left>
             <Height>7.14712cm</Height>
             <Width>6.55014cm</Width>
             <ZIndex>7</ZIndex>
@@ -2667,7 +2668,7 @@
             </TablixRowHierarchy>
             <DataSetName>dsOrdemServicoProduto</DataSetName>
             <Top>14.36088cm</Top>
-            <Left>0.00553cm</Left>
+            <Left>0.13687cm</Left>
             <Height>1.8cm</Height>
             <Width>6.54461cm</Width>
             <ZIndex>8</ZIndex>
@@ -2696,9 +2697,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox175</rd:DefaultName>
             <Top>13.69033cm</Top>
-            <Left>0.04082cm</Left>
+            <Left>0.21625cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.41509cm</Width>
+            <Width>2.23966cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -2738,9 +2739,8 @@
             </Paragraphs>
             <rd:DefaultName>OrdemServicoID</rd:DefaultName>
             <Top>2.2987cm</Top>
-            <Left>0.1202cm</Left>
             <Height>0.6cm</Height>
-            <Width>6.42994cm</Width>
+            <Width>6.81836cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -2772,7 +2772,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
             <Top>5.18294cm</Top>
-            <Height>0.6cm</Height>
+            <Height>0.52063cm</Height>
             <Width>6.81836cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
@@ -2803,7 +2803,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>16.51428cm</Top>
-            <Left>1.59015cm</Left>
+            <Left>1.60779cm</Left>
             <Height>0.6cm</Height>
             <Width>3.60278cm</Width>
             <ZIndex>12</ZIndex>
@@ -2824,8 +2824,8 @@
       <Width>2.68439in</Width>
       <Page>
         <PageHeight>29cm</PageHeight>
-        <PageWidth>7cm</PageWidth>
-        <LeftMargin>0.1cm</LeftMargin>
+        <PageWidth>7.5cm</PageWidth>
+        <LeftMargin>0.2cm</LeftMargin>
         <RightMargin>0.1cm</RightMargin>
         <TopMargin>0cm</TopMargin>
         <BottomMargin>0.1cm</BottomMargin>

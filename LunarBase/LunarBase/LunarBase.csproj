@@ -23,6 +23,7 @@
     <None Remove="HBM\Banco.hbm.xml" />
     <None Remove="HBM\BandeiraCartao.hbm.xml" />
     <None Remove="HBM\Caixa.hbm.xml" />
+    <None Remove="HBM\CaixaAbertura.hbm.xml" />
     <None Remove="HBM\Caracteristica.hbm.xml" />
     <None Remove="HBM\Cest.hbm.xml" />
     <None Remove="HBM\Cfop.hbm.xml" />
@@ -115,6 +116,7 @@
     <EmbeddedResource Include="HBM\AtendimentoVinculo.hbm.xml" />
     <EmbeddedResource Include="HBM\BalancoEstoque.hbm.xml" />
     <EmbeddedResource Include="HBM\BalancoEstoqueProduto.hbm.xml" />
+    <EmbeddedResource Include="HBM\CaixaAbertura.hbm.xml" />
     <EmbeddedResource Include="HBM\ComissaoVenda.hbm.xml" />
     <EmbeddedResource Include="HBM\CondicionalDevolucao.hbm.xml" />
     <EmbeddedResource Include="HBM\MensagemPosVenda.hbm.xml" />
