@@ -36,7 +36,8 @@ namespace Lunar
         {
             InitializeComponent();
             verificaLicencaSistema();
-            abrirAtualizador("LunarAtualizador", @"C:\Lunar\Atualizador\LunarAtualizador.exe");
+            if(File.Exists(@"C:\Lunar\Atualizador\LunarAtualizador.exe"))
+                abrirAtualizador("LunarAtualizador", @"C:\Lunar\Atualizador\LunarAtualizador.exe");
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             try
             {
@@ -246,10 +247,6 @@ namespace Lunar
                 case Keys.F9:
                     //_ = LunarNFe.emitirNfe();
                     _ = LunarNFe.AutorizarNFe();
-                    break;
-                case Keys.Enter:
-                    if(!String.IsNullOrEmpty(txtUsuario.Texts))
-                        Login();
                     break;
             }
         }
@@ -511,5 +508,25 @@ namespace Lunar
             public int id { get; set; }
             public bool is_selected { get; set; }
         }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+            {
+                txtSenha.Focus();
+                txtSenha.SelectAll();
+            }
+        }
+
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (!String.IsNullOrEmpty(txtUsuario.Texts))
+                    Login();
+            }
+        }
+
+
     }
 }

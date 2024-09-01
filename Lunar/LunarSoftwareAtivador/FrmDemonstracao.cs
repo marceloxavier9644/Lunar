@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -85,6 +86,15 @@ namespace LunarSoftwareAtivador
             {
                 executionLimiter.IncrementExecutionCount();
                 // Continue a inicialização do formulário principal
+            }
+
+            if (File.Exists("C:\\Lunar\\Terminal.txt"))
+            {
+                chkTerminal.Checked = true;
+            }
+            else
+            {
+                chkServidor.Checked = true;
             }
         }
         private async Task cadastrarEstadoCidades()
@@ -350,6 +360,9 @@ namespace LunarSoftwareAtivador
         {
             try
             {
+                string servidor = "localhost";
+                if (chkTerminal.Checked == true)
+                    servidor = txtServidor.Text.Trim();
                 string dateToEncrypt = validade.ToShortDateString();
                 var (key, iv) = CryptoUtils.GenerateKeyAndIV();
                 File.WriteAllBytes("lunar.bin", key);
@@ -369,7 +382,7 @@ namespace LunarSoftwareAtivador
                     xmlWriter.WriteElementString("AppComon", block);
                     xmlWriter.WriteElementString("AppOper", frm.Criptografa(txtCnpj.Text));
                     xmlWriter.WriteElementString("AppClient", frm.Criptografa(chavePainel));
-                    xmlWriter.WriteElementString("Servidor", "localhost");
+                    xmlWriter.WriteElementString("Servidor", servidor);
                     xmlWriter.WriteElementString("Usuario", "marcelo");
                     xmlWriter.WriteElementString("Senha", frm.Criptografa("mx123"));
                     xmlWriter.WriteEndElement();
@@ -576,91 +589,99 @@ namespace LunarSoftwareAtivador
                 //Gera arquivo de config
                 consultarRetornoAPI(chave);
 
-                Empresa empresa = new Empresa();
-                EmpresaFilial empresaFilial = new EmpresaFilial();
-                empresa.Id = 1;
-                empresa.Cnpj = txtCnpj.Text;
-                empresa.Responsavel = txtResponsavel.Text;
-                empresa.CpfResponsavel = txtCpfResponsavel.Text;
-                empresa.ValidadeLicenca = DateTime.Today.AddDays(7);
-                empresa.Contador = "";
-                empresa.RazaoSocial = txtRazaoSocial.Text;
-
-                empresa.CrcContador = "";
-                empresa.DataAbertura = DateTime.Now;
-                if (!string.IsNullOrEmpty(txtCelular.Text) && txtCelular.Text.Length >= 2)
+                if (chkServidor.Checked == true)
                 {
-                    empresa.DddPrincipal = txtCelular.Text.Substring(0, 2);
-                    empresa.TelefonePrincipal = txtCelular.Text.Substring(2);
+                    Empresa empresa = new Empresa();
+                    EmpresaFilial empresaFilial = new EmpresaFilial();
+                    empresa.Id = 1;
+                    empresa.Cnpj = txtCnpj.Text;
+                    empresa.Responsavel = txtResponsavel.Text;
+                    empresa.CpfResponsavel = txtCpfResponsavel.Text;
+                    empresa.ValidadeLicenca = DateTime.Today.AddDays(7);
+                    empresa.Contador = "";
+                    empresa.RazaoSocial = txtRazaoSocial.Text;
+
+                    empresa.CrcContador = "";
+                    empresa.DataAbertura = DateTime.Now;
+                    if (!string.IsNullOrEmpty(txtCelular.Text) && txtCelular.Text.Length >= 2)
+                    {
+                        empresa.DddPrincipal = txtCelular.Text.Substring(0, 2);
+                        empresa.TelefonePrincipal = txtCelular.Text.Substring(2);
+                    }
+                    else
+                    {
+                        empresa.DddPrincipal = string.Empty;
+                        empresa.TelefonePrincipal = txtCelular.Text;
+                    }
+                    empresa.TelefoneSecundario = "";
+                    empresa.DddSecundario = "";
+                    empresa.Email = txtEmail.Text;
+                    empresa.EmailContador = "";
+                    Endereco endereco = new Endereco();
+                    endereco.Logradouro = txtEndereco.Text;
+                    endereco.Numero = txtNumero.Text;
+                    endereco.Pessoa = null;
+                    endereco.EmpresaFilial = null;
+                    endereco.Complemento = txtComplemento.Text;
+                    if (!String.IsNullOrEmpty(txtCidade.Text))
+                    {
+                        CidadeController cidadeController = new CidadeController();
+                        endereco.Cidade = new Cidade();
+                        endereco.Cidade = cidadeController.selecionarCidadePorDescricaoEUf(txtCidade.Text, txtUf.Text);
+                    }
+                    endereco.Cep = GenericaDesktop.RemoveCaracteres(txtCep.Text);
+                    endereco.Bairro = txtBairro.Text;
+                    endereco.Pessoa = null;
+                    endereco.EmpresaFilial = null;
+                    Controller.getInstance().salvar(endereco);
+
+                    empresa.Endereco = endereco;
+                    if (endereco != null)
+                    {
+                        if (endereco.Id > 0)
+                        {
+                            empresaFilial = new EmpresaFilial();
+                            empresaFilial.Id = 1;
+                            empresaFilial.Cnae = cnae;
+                            empresaFilial.Cnpj = GenericaDesktop.RemoveCaracteres(txtCnpj.Text);
+                            empresaFilial.DataAbertura = DateTime.Now;
+                            empresaFilial.DddPrincipal = empresa.DddPrincipal;
+                            empresaFilial.TelefonePrincipal = empresa.TelefonePrincipal;
+                            empresaFilial.DddSecundario = "";
+                            empresaFilial.TelefoneSecundario = "";
+                            empresaFilial.Email = txtEmail.Text;
+                            empresaFilial.InscricaoEstadual = txtIe.Text;
+                            empresaFilial.NomeFantasia = txtNomeFantasia.Text;
+                            empresaFilial.RazaoSocial = txtRazaoSocial.Text;
+                            empresaFilial.Endereco = endereco;
+                            empresaFilial.Empresa = empresa;
+                            empresaFilial.Otica = true;
+                            //empresaFilial.SenhaCertificado = GenericaDesktop.Criptografa(txtSenhaCertificado.Texts);
+
+                            RegimeEmpresa regimeTributario = new RegimeEmpresa();
+                            regimeTributario.Id = int.Parse("1");
+                            regimeTributario = (RegimeEmpresa)Controller.getInstance().selecionar(regimeTributario);
+                            empresaFilial.RegimeEmpresa = regimeTributario;
+                            Controller.getInstance().salvar(empresa);
+                            Controller.getInstance().salvar(empresaFilial);
+
+                            endereco.EmpresaFilial = empresaFilial;
+                            Controller.getInstance().salvar(endereco);
+                        }
+                    }
+
+                    GenericaDesktop.ShowInfo("Empresa já possui cadastro, cadastre um usuário para logar no sistema!");
+
+                    chamarFormCadastroUsuario();
+                    this.Close();
+                    th = new Thread(opennewform);
+                    th.SetApartmentState(ApartmentState.STA);
+                    th.Start();
                 }
                 else
                 {
-                    empresa.DddPrincipal = string.Empty;
-                    empresa.TelefonePrincipal = txtCelular.Text;
+                    //como fecho esse form e chamo meu aplicativo que ta instalado no c:\Lunar\Lunar.exe sem dar erro aqui nesse form?  
                 }
-                empresa.TelefoneSecundario = "";
-                empresa.DddSecundario = "";
-                empresa.Email = txtEmail.Text;
-                empresa.EmailContador = "";
-                Endereco endereco = new Endereco();
-                endereco.Logradouro = txtEndereco.Text;
-                endereco.Numero = txtNumero.Text;
-                endereco.Pessoa = null;
-                endereco.EmpresaFilial = null;
-                endereco.Complemento = txtComplemento.Text;
-                if (!String.IsNullOrEmpty(txtCidade.Text))
-                {
-                    CidadeController cidadeController = new CidadeController();
-                    endereco.Cidade = new Cidade();
-                    endereco.Cidade = cidadeController.selecionarCidadePorDescricaoEUf(txtCidade.Text, txtUf.Text);
-                }
-                endereco.Cep = GenericaDesktop.RemoveCaracteres(txtCep.Text);
-                endereco.Bairro = txtBairro.Text;
-                endereco.Pessoa = null;
-                endereco.EmpresaFilial = null;
-                Controller.getInstance().salvar(endereco);
-
-                empresa.Endereco = endereco;
-                if (endereco != null)
-                {
-                    if (endereco.Id > 0)
-                    {
-                        empresaFilial = new EmpresaFilial();
-                        empresaFilial.Id = 1;
-                        empresaFilial.Cnae = cnae;
-                        empresaFilial.Cnpj = GenericaDesktop.RemoveCaracteres(txtCnpj.Text);
-                        empresaFilial.DataAbertura = DateTime.Now;
-                        empresaFilial.DddPrincipal = empresa.DddPrincipal;
-                        empresaFilial.TelefonePrincipal = empresa.TelefonePrincipal;
-                        empresaFilial.DddSecundario = "";
-                        empresaFilial.TelefoneSecundario = "";
-                        empresaFilial.Email = txtEmail.Text;
-                        empresaFilial.InscricaoEstadual = txtIe.Text;
-                        empresaFilial.NomeFantasia = txtNomeFantasia.Text;
-                        empresaFilial.RazaoSocial = txtRazaoSocial.Text;
-                        empresaFilial.Endereco = endereco;
-                        empresaFilial.Empresa = empresa;
-                        empresaFilial.Otica = true;
-                        //empresaFilial.SenhaCertificado = GenericaDesktop.Criptografa(txtSenhaCertificado.Texts);
-
-                        RegimeEmpresa regimeTributario = new RegimeEmpresa();
-                        regimeTributario.Id = int.Parse("1");
-                        regimeTributario = (RegimeEmpresa)Controller.getInstance().selecionar(regimeTributario);
-                        empresaFilial.RegimeEmpresa = regimeTributario;
-                        Controller.getInstance().salvar(empresa);
-                        Controller.getInstance().salvar(empresaFilial);
-
-                        endereco.EmpresaFilial = empresaFilial;
-                        Controller.getInstance().salvar(endereco);
-                    }
-                }
-                GenericaDesktop.ShowInfo("Empresa já possui cadastro, cadastre um usuário para logar no sistema!");
-                
-                chamarFormCadastroUsuario();
-                this.Close();
-                th = new Thread(opennewform);
-                th.SetApartmentState(ApartmentState.STA);
-                th.Start();
             }
         }
 
@@ -1217,6 +1238,48 @@ namespace LunarSoftwareAtivador
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void chkTerminal_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(chkTerminal.Checked == true)
+                {
+                    chkServidor.Checked = false;
+                    txtServidor.Visible = true;
+                    lblServidor.Visible = true;
+                    txtServidor.Focus();
+                }
+                else
+                {
+                    chkServidor.Checked = true;
+                    txtServidor.Visible = false;
+                    lblServidor.Visible = false;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void chkServidor_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkServidor.Checked == true)
+                    chkTerminal.Checked = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void FrmDemonstracao_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Process.Start(@"C:\Lunar\Lunar.exe");
         }
     }
 }

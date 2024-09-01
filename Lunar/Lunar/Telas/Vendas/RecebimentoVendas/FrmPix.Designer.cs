@@ -53,6 +53,7 @@
             this.txtCodigoQrCode = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtValor = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnImprimirQr = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsConta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ContaBancaria)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -265,7 +266,7 @@
             this.btnCopiaQr.IconColor = System.Drawing.Color.Salmon;
             this.btnCopiaQr.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnCopiaQr.IconSize = 35;
-            this.btnCopiaQr.Location = new System.Drawing.Point(766, 18);
+            this.btnCopiaQr.Location = new System.Drawing.Point(732, 18);
             this.btnCopiaQr.Name = "btnCopiaQr";
             this.btnCopiaQr.Size = new System.Drawing.Size(33, 31);
             this.btnCopiaQr.TabIndex = 177;
@@ -363,7 +364,7 @@
             this.txtCodigoQrCode.PlaceholderColor = System.Drawing.Color.Black;
             this.txtCodigoQrCode.PlaceholderText = "";
             this.txtCodigoQrCode.ReadOnly = false;
-            this.txtCodigoQrCode.Size = new System.Drawing.Size(282, 29);
+            this.txtCodigoQrCode.Size = new System.Drawing.Size(248, 29);
             this.txtCodigoQrCode.TabIndex = 176;
             this.txtCodigoQrCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodigoQrCode.Texts = "";
@@ -418,12 +419,35 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
+            // btnImprimirQr
+            // 
+            this.btnImprimirQr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimirQr.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnImprimirQr.FlatAppearance.BorderSize = 0;
+            this.btnImprimirQr.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirQr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirQr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirQr.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirQr.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimirQr.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnImprimirQr.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnImprimirQr.IconSize = 35;
+            this.btnImprimirQr.Location = new System.Drawing.Point(767, 18);
+            this.btnImprimirQr.Name = "btnImprimirQr";
+            this.btnImprimirQr.Size = new System.Drawing.Size(33, 31);
+            this.btnImprimirQr.TabIndex = 262;
+            this.btnImprimirQr.TabStop = false;
+            this.btnImprimirQr.UseVisualStyleBackColor = true;
+            this.btnImprimirQr.Visible = false;
+            this.btnImprimirQr.Click += new System.EventHandler(this.btnImprimirQr_Click);
+            // 
             // FrmPix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(838, 402);
+            this.Controls.Add(this.btnImprimirQr);
             this.Controls.Add(this.txtCodContaBancaria);
             this.Controls.Add(this.btnPesquisaContaBancaria);
             this.Controls.Add(this.txtContaBancaria);
@@ -485,5 +509,6 @@
         private RJ_UI.Classes.RJTextBox txtCodContaBancaria;
         private FontAwesome.Sharp.IconButton btnPesquisaContaBancaria;
         private RJ_UI.Classes.RJTextBox txtContaBancaria;
+        private FontAwesome.Sharp.IconButton btnImprimirQr;
     }
 }

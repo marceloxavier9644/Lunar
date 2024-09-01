@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -290,7 +291,16 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
 
                             }
                             else
-                                pessoa = null;
+                            {
+                                //pessoa = null;
+                                //faz um cadastro no nome da propria empresa
+                                pessoa = new Pessoa();
+                                pessoa.Cnpj = Sessao.empresaFilialLogada.Cnpj;
+                                pessoa.RazaoSocial = Sessao.empresaFilialLogada.RazaoSocial;
+                                pessoa.NomeFantasia = Sessao.empresaFilialLogada.NomeFantasia;
+                                pessoa.Email = Sessao.empresaFilialLogada.Email;
+                                pessoa.EnderecoPrincipal = Sessao.empresaFilialLogada.Endereco;
+                            }
                         }
 
                         if (pessoa != null)
@@ -308,6 +318,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                                     txtCodigoQrCode.Texts = linkGerado;
                                     txtCodigoQrCode.Visible = true;
                                     btnCopiaQr.Visible = true;
+                                    btnImprimirQr.Visible = true;
                                     if (origem.Equals("VENDA"))
                                     {
                                         venda.QrCodePix = linkGerado;
@@ -340,7 +351,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 finally
                 {
                         // Feche o formulário de "Aguarde..." usando Invoke
-                        aguardeForm.Invoke(new Action(() =>
+                        aguardeForm.BeginInvoke(new Action(() =>
                         {
                             aguardeForm.Close();
                         })); 
@@ -396,6 +407,8 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
 
         private async void btnPixQR_Click(object sender, EventArgs e)
         {
+            txtData.Enabled = false;
+            txtData.Value = DateTime.Now;
             await VerificarPagamentoPixAsync();
             if (pagamentoConcluido == true)
             {
@@ -515,6 +528,75 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             {
                 formBackground.Dispose();
             }
+        }
+
+        private void PrintQRCode(string valor)
+        {
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += (sender, e) =>
+            {
+                // Defina o tamanho da página de acordo com a largura da bobina térmica
+                int pageWidth = e.PageBounds.Width;
+                int pageHeight = e.PageBounds.Height;
+
+                // Desenhar o QR Code a partir do PictureBox
+                Image qrImage = picQRCode.Image;
+                if (qrImage != null)
+                {
+                    // Define a posição e o tamanho do QR Code na página
+                    int qrCodeX = 50;
+                    int qrCodeY = 100; // Ajuste a posição conforme necessário
+
+                    // Desenhar o QR Code na página
+                    e.Graphics.DrawImage(qrImage, new Point(qrCodeX, qrCodeY)); // Ajuste a posição conforme necessário
+
+                    // Defina a fonte para o texto do nome da loja
+                    Font fontLoja = new Font("Arial", 14, FontStyle.Bold);
+                    SolidBrush brushLoja = new SolidBrush(Color.Black);
+
+                    // Calcule o tamanho do texto da loja
+                    SizeF lojaTextSize = e.Graphics.MeasureString(Sessao.empresaFilialLogada.NomeFantasia, fontLoja);
+
+                    // Calcule a posição do texto da loja acima do QR Code
+                    float lojaTextX = (pageWidth - lojaTextSize.Width) / 2;
+                    float lojaTextY = qrCodeY - lojaTextSize.Height - 10; // Ajuste a posição conforme necessário
+
+                    // Defina a fonte para o texto do valor
+                    Font fontValor = new Font("Arial", 16);
+                    SolidBrush brushValor = new SolidBrush(Color.Black);
+
+                    // Calcule o tamanho do texto
+                    SizeF valorTextSize = e.Graphics.MeasureString(valor, fontValor);
+
+                    // Calcule a posição do texto do valor centralizado abaixo do QR Code
+                    float valorTextX = (pageWidth - valorTextSize.Width) / 2;
+                    float valorTextY = qrCodeY + qrImage.Height + 10; // Ajuste a posição conforme necessário
+
+                    // Desenhar o texto da loja
+                    e.Graphics.DrawString(Sessao.empresaFilialLogada.NomeFantasia, fontLoja, brushLoja, new PointF(lojaTextX, lojaTextY));
+
+                    // Desenhar o texto do valor
+                    e.Graphics.DrawString(valor, fontValor, brushValor, new PointF(valorTextX, valorTextY));
+                }
+            };
+
+            // Exibir a caixa de diálogo de impressão
+            PrintDialog printDialog = new PrintDialog
+            {
+                Document = printDocument
+            };
+
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Imprimir diretamente sem mostrar a visualização
+                printDocument.Print();
+            }
+        }
+
+        private void btnImprimirQr_Click(object sender, EventArgs e)
+        {
+            string valor = txtValor.Texts; 
+            PrintQRCode(valor);
         }
     }
 }

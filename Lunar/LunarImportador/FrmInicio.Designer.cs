@@ -294,6 +294,7 @@
             sfButton1.Size = new Size(96, 28);
             sfButton1.TabIndex = 24;
             sfButton1.Text = "Teste";
+            sfButton1.Visible = false;
             sfButton1.Click += sfButton1_Click;
             // 
             // chkIdProduto

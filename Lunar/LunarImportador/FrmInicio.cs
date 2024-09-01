@@ -1,5 +1,7 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using LunarBase.Classes;
+using LunarBase.ClassesDAO;
+using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
@@ -106,6 +108,13 @@ namespace LunarImportador
                     progressBar1.Visible = true;
                     lblStatus.Visible = true;
                     Thread importarThread = new Thread(() => ImportarGruposEProdutosSGBR(selectedDatabase, firebirdDatabasePath));
+                    importarThread.Start();
+                }
+                if (chkContasAPagar.Checked == true)
+                {
+                    progressBar1.Visible = true;
+                    lblStatus.Visible = true;
+                    Thread importarThread = new Thread(() => ImportarContasPagarSgbr(selectedDatabase, firebirdDatabasePath));
                     importarThread.Start();
                 }
             }
@@ -764,6 +773,7 @@ namespace LunarImportador
                             estoque.Quantidade = double.Parse(firebirdReader["qtde"].ToString());
                             estoque.QuantidadeInventario = 0;
                             estoque.Saida = false;
+                           
 
                             //Grava estoque auxiliar ou apenas o contabil
                             if (chkSaldoEstoque.Checked == true)
@@ -927,6 +937,8 @@ namespace LunarImportador
 
                     mysqlCommand.ExecuteNonQuery();
                     int idProduto = (int)mysqlCommand.LastInsertedId;
+                    if(chkIdProduto.Checked == true)
+                        idProduto = produto.Id;
 
                     string mysqlQueryEstoque = @"
                         INSERT INTO Estoque 
@@ -1147,5 +1159,187 @@ namespace LunarImportador
             string firebirdDatabasePath = txtBancoOrigem.Text;
             ImportarGrupoProdutosSgbr(selectedDatabase, firebirdDatabasePath);
         }
+
+
+        private void ImportarContasPagarSgbr(string database, string firebirdDatabasePath)
+        {
+            int i = 0;
+            UpdateUI(() =>
+            {
+                lblStatus.Text = "Importação de Contas a Pagar";
+            });
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;";
+            FbConnection firebirdConnection = new FbConnection(firebirdConnectionString);
+            FbCommand firebirdCommand = new FbCommand("SELECT * FROM tPagar Where tPagar.Quitada = 'NÃO' AND tPagar.DATAVENCIMENTO > '2024-08-01'", firebirdConnection);
+
+            // Conexão com o banco de dados MySQL
+            string mysqlConnectionString = $"Server=localhost;Database={database};User Id=marcelo;Password=mx123;";
+            MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+            try
+            {
+                firebirdConnection.Open();
+                mysqlConnection.Open();
+
+                // Obter a quantidade total de registros
+                FbCommand firebirdCountCommand = new FbCommand("SELECT COUNT(*) FROM tPagar Where tPagar.Quitada = 'NÃO' AND tPagar.DATAVENCIMENTO > '2024-08-01'", firebirdConnection);
+                int totalRegistros = (int)firebirdCountCommand.ExecuteScalar();
+
+                // Configurar a ProgressBar
+                UpdateUI(() =>
+                {
+                    progressBar1.Minimum = 0;
+                    progressBar1.Maximum = totalRegistros;
+                    progressBar1.Value = 0;
+                });
+
+                FbDataReader firebirdReader = firebirdCommand.ExecuteReader();
+                while (firebirdReader.Read())
+                {
+                    i++;
+                    ContaPagar contaPagar = new ContaPagar();
+                    //ID no SGBR
+
+                    PessoaController pessoaControlle = new PessoaController();
+                    PessoaDAO pessoaDAO = new PessoaDAO();
+                    contaPagar.Pessoa = pessoaDAO.selecionarPessoaPorCodigoImportadoEFornecedor(firebirdReader["codfornecedor"].ToString(), true);
+                    contaPagar.NDup = firebirdReader["documento"].ToString();
+                    contaPagar.VDup = decimal.Parse(firebirdReader["valoraserpago"].ToString());
+                    contaPagar.DVenc = DateTime.Parse(firebirdReader["datavencimento"].ToString());
+                    contaPagar.Nfe = null;
+                    contaPagar.DataExclusao = DateTime.Now.AddYears(-100);
+                    contaPagar.DataOrigem = DateTime.Parse(firebirdReader["datahoracadastro"].ToString());
+                    contaPagar.AcrescimoBaixa = 0;
+                    contaPagar.CaixaPagamento = "";
+                    contaPagar.DataPagamento = DateTime.Now.AddYears(-100);
+                    contaPagar.DescontoBaixa = 0;
+                    contaPagar.Descricao = firebirdReader["descricaolancamento"].ToString();
+                    contaPagar.DescricaoPagamento = "";
+                    EmpresaFilial empresaFilial = new EmpresaFilial();
+                    empresaFilial.Id = 1;
+                    empresaFilial = (EmpresaFilial)Controller.getInstance().selecionar(empresaFilial);
+                    contaPagar.EmpresaFilial = empresaFilial;
+                    contaPagar.FlagExcluido = false;
+                    FormaPagamento formaPagamento = new FormaPagamento();
+                    formaPagamento.Id = 5;
+                    formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    contaPagar.FormaPagamento = formaPagamento;
+                    contaPagar.Historico = "";
+                    contaPagar.NumeroDocumento = firebirdReader["documento"].ToString();
+                    contaPagar.Pago = false;
+                    PlanoConta planoConta = new PlanoConta();
+                    planoConta.Id = 2;
+                    planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                    contaPagar.PlanoConta = planoConta;
+                    contaPagar.ValorPago = 0;
+                    contaPagar.ValorTotal = decimal.Parse(firebirdReader["valoraserpago"].ToString());
+
+
+                    // Inserir dados no MySQL
+                    string mysqlQuery = @"
+    INSERT INTO contapagar 
+    (
+        Pessoa, 
+        NDup, 
+        VDup, 
+        DVenc, 
+        Nfe, 
+        DataExclusao, 
+        DataOrigem, 
+        AcrescimoBaixa, 
+        CaixaPagamento, 
+        DataPagamento, 
+        DescontoBaixa, 
+        Descricao, 
+        DescricaoPagamento, 
+        EmpresaFilial, 
+        FlagExcluido, 
+        FormaPagamento, 
+        Historico, 
+        NumeroDocumento, 
+        Pago, 
+        PlanoConta, 
+        ValorPago, 
+        ValorTotal
+    ) 
+    VALUES 
+    (
+        @Pessoa, 
+        @NDup, 
+        @VDup, 
+        @DVenc, 
+        @Nfe, 
+        @DataExclusao, 
+        @DataOrigem, 
+        @AcrescimoBaixa, 
+        @CaixaPagamento, 
+        @DataPagamento, 
+        @DescontoBaixa, 
+        @Descricao, 
+        @DescricaoPagamento, 
+        @EmpresaFilial, 
+        @FlagExcluido, 
+        @FormaPagamento, 
+        @Historico, 
+        @NumeroDocumento, 
+        @Pago, 
+        @PlanoConta, 
+        @ValorPago, 
+        @ValorTotal
+    )";
+
+                    MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+                    mysqlCommand.Parameters.AddWithValue("@Pessoa", contaPagar.Pessoa.Id);
+                    mysqlCommand.Parameters.AddWithValue("@NDup", contaPagar.NDup);
+                    mysqlCommand.Parameters.AddWithValue("@VDup", contaPagar.VDup);
+                    mysqlCommand.Parameters.AddWithValue("@DVenc", contaPagar.DVenc);
+                    mysqlCommand.Parameters.AddWithValue("@Nfe", (object)contaPagar.Nfe ?? DBNull.Value);
+                    mysqlCommand.Parameters.AddWithValue("@DataExclusao", contaPagar.DataExclusao);
+                    mysqlCommand.Parameters.AddWithValue("@DataOrigem", contaPagar.DataOrigem);
+                    mysqlCommand.Parameters.AddWithValue("@AcrescimoBaixa", contaPagar.AcrescimoBaixa);
+                    mysqlCommand.Parameters.AddWithValue("@CaixaPagamento", contaPagar.CaixaPagamento);
+                    mysqlCommand.Parameters.AddWithValue("@DataPagamento", contaPagar.DataPagamento);
+                    mysqlCommand.Parameters.AddWithValue("@DescontoBaixa", contaPagar.DescontoBaixa);
+                    mysqlCommand.Parameters.AddWithValue("@Descricao", contaPagar.Descricao);
+                    mysqlCommand.Parameters.AddWithValue("@DescricaoPagamento", contaPagar.DescricaoPagamento);
+                    mysqlCommand.Parameters.AddWithValue("@EmpresaFilial", contaPagar.EmpresaFilial.Id);
+                    mysqlCommand.Parameters.AddWithValue("@FlagExcluido", contaPagar.FlagExcluido);
+                    mysqlCommand.Parameters.AddWithValue("@FormaPagamento", contaPagar.FormaPagamento.Id);
+                    mysqlCommand.Parameters.AddWithValue("@Historico", contaPagar.Historico);
+                    mysqlCommand.Parameters.AddWithValue("@NumeroDocumento", contaPagar.NumeroDocumento);
+                    mysqlCommand.Parameters.AddWithValue("@Pago", contaPagar.Pago);
+                    mysqlCommand.Parameters.AddWithValue("@PlanoConta", contaPagar.PlanoConta.Id);
+                    mysqlCommand.Parameters.AddWithValue("@ValorPago", contaPagar.ValorPago);
+                    mysqlCommand.Parameters.AddWithValue("@ValorTotal", contaPagar.ValorTotal);
+
+                    mysqlCommand.ExecuteNonQuery();
+                    long contaPagarID = mysqlCommand.LastInsertedId;
+
+                    UpdateUI(() =>
+                    {
+                        progressBar1.Value += 1;
+                        lblStatus.Text = "Conta Pagar " + i + " de " + totalRegistros;
+                    });
+                }
+                firebirdReader.Close();
+                UpdateUI(() =>
+                {
+                    progressBar1.Value = 0;
+                    lblStatus.Text = "Contas a Pagar Importado com Sucesso";
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao importar dados: " + ex.Message);
+            }
+            finally
+            {
+                firebirdConnection.Close();
+                mysqlConnection.Close();
+            }
+        }
+
+
     }
 }

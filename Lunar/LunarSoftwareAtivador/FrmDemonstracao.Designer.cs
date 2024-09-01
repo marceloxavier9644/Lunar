@@ -74,6 +74,10 @@
             this.btnPesquisarCidade = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblLoading = new System.Windows.Forms.Label();
+            this.chkTerminal = new System.Windows.Forms.CheckBox();
+            this.chkServidor = new System.Windows.Forms.CheckBox();
+            this.lblServidor = new System.Windows.Forms.Label();
+            this.txtServidor = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtRazaoSocial
@@ -334,7 +338,7 @@
             this.btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfirmar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnConfirmar.Location = new System.Drawing.Point(624, 461);
+            this.btnConfirmar.Location = new System.Drawing.Point(624, 581);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(164, 44);
             this.btnConfirmar.TabIndex = 22;
@@ -357,7 +361,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(12, 456);
+            this.label15.Location = new System.Drawing.Point(12, 576);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(236, 20);
             this.label15.TabIndex = 31;
@@ -366,7 +370,7 @@
             // txtCnpjRepresentante
             // 
             this.txtCnpjRepresentante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtCnpjRepresentante.Location = new System.Drawing.Point(16, 479);
+            this.txtCnpjRepresentante.Location = new System.Drawing.Point(16, 599);
             this.txtCnpjRepresentante.Mask = "00,000,000/0000-00";
             this.txtCnpjRepresentante.Name = "txtCnpjRepresentante";
             this.txtCnpjRepresentante.Size = new System.Drawing.Size(232, 26);
@@ -378,7 +382,7 @@
             // 
             this.chkTermosUso.AutoSize = true;
             this.chkTermosUso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkTermosUso.Location = new System.Drawing.Point(368, 474);
+            this.chkTermosUso.Location = new System.Drawing.Point(368, 594);
             this.chkTermosUso.Name = "chkTermosUso";
             this.chkTermosUso.Size = new System.Drawing.Size(163, 20);
             this.chkTermosUso.TabIndex = 21;
@@ -390,7 +394,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(527, 475);
+            this.linkLabel1.Location = new System.Drawing.Point(527, 595);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(92, 16);
             this.linkLabel1.TabIndex = 34;
@@ -476,7 +480,7 @@
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(366, 497);
+            this.lblStatus.Location = new System.Drawing.Point(366, 617);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(37, 13);
             this.lblStatus.TabIndex = 46;
@@ -487,7 +491,7 @@
             // 
             this.button2.BackgroundImage = global::LunarSoftwareAtivador.Properties.Resources.Lupa1;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(320, 478);
+            this.button2.Location = new System.Drawing.Point(320, 598);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(31, 30);
             this.button2.TabIndex = 47;
@@ -529,12 +533,61 @@
             this.lblLoading.Text = "CNPJ";
             this.lblLoading.Visible = false;
             // 
+            // chkTerminal
+            // 
+            this.chkTerminal.AutoSize = true;
+            this.chkTerminal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTerminal.Location = new System.Drawing.Point(110, 421);
+            this.chkTerminal.Name = "chkTerminal";
+            this.chkTerminal.Size = new System.Drawing.Size(88, 24);
+            this.chkTerminal.TabIndex = 49;
+            this.chkTerminal.Text = "Terminal";
+            this.chkTerminal.UseVisualStyleBackColor = true;
+            this.chkTerminal.CheckedChanged += new System.EventHandler(this.chkTerminal_CheckedChanged);
+            // 
+            // chkServidor
+            // 
+            this.chkServidor.AutoSize = true;
+            this.chkServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkServidor.Location = new System.Drawing.Point(16, 421);
+            this.chkServidor.Name = "chkServidor";
+            this.chkServidor.Size = new System.Drawing.Size(86, 24);
+            this.chkServidor.TabIndex = 50;
+            this.chkServidor.Text = "Servidor";
+            this.chkServidor.UseVisualStyleBackColor = true;
+            this.chkServidor.CheckedChanged += new System.EventHandler(this.chkServidor_CheckedChanged);
+            // 
+            // lblServidor
+            // 
+            this.lblServidor.AutoSize = true;
+            this.lblServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServidor.Location = new System.Drawing.Point(12, 448);
+            this.lblServidor.Name = "lblServidor";
+            this.lblServidor.Size = new System.Drawing.Size(176, 20);
+            this.lblServidor.TabIndex = 52;
+            this.lblServidor.Text = "Nome ou IP do Servidor";
+            this.lblServidor.Visible = false;
+            // 
+            // txtServidor
+            // 
+            this.txtServidor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServidor.Location = new System.Drawing.Point(16, 471);
+            this.txtServidor.Name = "txtServidor";
+            this.txtServidor.Size = new System.Drawing.Size(772, 26);
+            this.txtServidor.TabIndex = 51;
+            this.txtServidor.Visible = false;
+            // 
             // FrmDemonstracao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 517);
+            this.ClientSize = new System.Drawing.Size(800, 637);
+            this.Controls.Add(this.lblServidor);
+            this.Controls.Add(this.txtServidor);
+            this.Controls.Add(this.chkServidor);
+            this.Controls.Add(this.chkTerminal);
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lblStatus);
@@ -587,6 +640,7 @@
             this.Name = "FrmDemonstracao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Empresa";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDemonstracao_FormClosed);
             this.Load += new System.EventHandler(this.FrmDemonstracao_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmDemonstracao_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmDemonstracao_KeyDown);
@@ -642,5 +696,9 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblLoading;
+        private System.Windows.Forms.CheckBox chkTerminal;
+        private System.Windows.Forms.CheckBox chkServidor;
+        private System.Windows.Forms.Label lblServidor;
+        private System.Windows.Forms.TextBox txtServidor;
     }
 }

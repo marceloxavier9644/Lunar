@@ -929,7 +929,7 @@ namespace Lunar.Utils.ImportadorSistemas
         {
             dataGridView1.Visible = true;
             FbConnection fbConn = new FbConnection(conexaoFirebird2);
-            FbCommand fbCmd = new FbCommand("select fp.docto, fp.parceiro, fp.data_emissao, fpp.parcela, fpp.data_vencimento,fpp.saldo, fpp.data_quitacao, desp.dscdespesa, fp.historico from faturas_pagar fp inner join faturas_pagar_parcelas fpp on fp.faturas_pagar_id = fpp.faturas_pagar_id INNER JOIN despesas desp on fp.despesa_principal = desp.despesa where fpp.data_quitacao is null and fpp.anovencto = 2023", fbConn);
+            FbCommand fbCmd = new FbCommand("select fp.docto, fp.parceiro, fp.data_emissao, fpp.parcela, fpp.data_vencimento,fpp.saldo, fpp.data_quitacao, desp.dscdespesa, fp.historico from faturas_pagar fp inner join faturas_pagar_parcelas fpp on fp.faturas_pagar_id = fpp.faturas_pagar_id INNER JOIN despesas desp on fp.despesa_principal = desp.despesa where fpp.data_quitacao is null", fbConn);
 
             try
             {
