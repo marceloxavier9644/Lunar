@@ -34,6 +34,7 @@ namespace Lunar.Telas.Cadastros.Cliente
 {
     public partial class FrmClienteLista : Form
     {
+        private ToolTip toolTip1;
         GenericaDesktop genericaDesktop = new GenericaDesktop();
         private IList<Pessoa> listaClientes;
         PessoaController pessoaController = new PessoaController();
@@ -44,7 +45,24 @@ namespace Lunar.Telas.Cadastros.Cliente
             InitializeComponent();
             this.Opacity = 0.0;
             carregarLista();
-            
+            iniciarToolTip();
+        }
+
+        private void iniciarToolTip()
+        {
+            toolTip1 = new ToolTip();
+
+            // Configurações adicionais opcionais
+            toolTip1.AutoPopDelay = 5000;  // Duração em milissegundos que o ToolTip ficará visível
+            toolTip1.InitialDelay = 500;  // Tempo em milissegundos antes de aparecer
+            toolTip1.ReshowDelay = 1000;    // Tempo entre ToolTips sucessivos
+            toolTip1.ShowAlways = true;    // Mostra o ToolTip mesmo que o controle não tenha foco
+
+            // Associa o ToolTip ao botão e define o texto
+            toolTip1.SetToolTip(btnMensagemAlerta, "Inserir mensagem de alerta ao selecionar o cliente");
+            toolTip1.SetToolTip(btnExportarPDF, "Exportar em PDF Ficha Simples do Cliente");
+            toolTip1.SetToolTip(btnAnaliseCliente, "Análise do cliente");
+            toolTip1.SetToolTip(btnExportarExcel, "Gerar XLSX Excel");
         }
         public DataTable selectProdutos()
         {

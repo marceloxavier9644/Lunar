@@ -31,22 +31,32 @@ namespace Lunar.Telas.Cadastros.Produtos
 
         private void carregarLista()
         {
-            listaProdutos = produtoController.selecionarTodosProdutorPorFilial(Sessao.empresaFilialLogada);
+            txtPesquisaProdutoPorDescricao.Texts = "";
+            txtPesquisaProdutoPorCodigoUnico.Texts = "";
+            listaProdutos = produtoController.selecionarTodosProdutosPaginando(0, 50, "");
 
-            if (listaProdutos.Count > 0)
+            sfDataPager1.DataSource = new List<int>();
+            if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
+                sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
+            else
+                sfDataPager1.PageSize = 50;
+            sfDataPager1.AllowOnDemandPaging = true;
+
+            Int64 totalPessoas = produtoController.totalTodosProdutosPaginando("");
+            int totalPaginas = (int)Math.Ceiling(Double.Parse((totalPessoas / sfDataPager1.PageSize).ToString()));
+            if (totalPaginas < 1)
             {
-                sfDataPager1.DataSource = listaProdutos;
-                if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
-                    sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
-                else
-                    sfDataPager1.PageSize = 100;
-                grid.DataSource = sfDataPager1.PagedSource;
-                sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
-
-                grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
-                this.grid.Columns["Descricao"].AutoSizeColumnsMode = AutoSizeColumnsMode.Fill;
-                grid.AutoSizeController.Refresh();
+                totalPaginas = 1;
             }
+
+            sfDataPager1.PageCount = totalPaginas;
+
+            grid.DataSource = listaProdutos;
+
+            grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+            this.grid.Columns["Descricao"].AutoSizeColumnsMode = AutoSizeColumnsMode.Fill;
+
+            txtPesquisaProdutoPorDescricao.Focus();
         }
 
         private void sfDataPager1_OnDemandLoading(object sender, Syncfusion.WinForms.DataPager.Events.OnDemandLoadingEventArgs e)
@@ -112,33 +122,34 @@ namespace Lunar.Telas.Cadastros.Produtos
 
         private void PesquisarProdutoPorCodigo()
         {
-            if (!String.IsNullOrEmpty(txtPesquisaProdutoPorCodigoUnico.Texts)) 
-            { 
-                produto = new Produto();
-                produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(txtPesquisaProdutoPorCodigoUnico.Texts), Sessao.empresaFilialLogada);
-                listaProdutos = new List<Produto>();
-                listaProdutos.Add(produto);
+            if (!String.IsNullOrEmpty(txtPesquisaProdutoPorCodigoUnico.Texts))
+            {
+                // Busca o produto baseado no código único e na filial logada
+                Produto produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(txtPesquisaProdutoPorCodigoUnico.Texts), Sessao.empresaFilialLogada);
+
                 if (produto != null)
                 {
-                    sfDataPager1.DataSource = listaProdutos;
-                    if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
-                        sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
-                    else
-                        sfDataPager1.PageSize = 100;
-                    grid.DataSource = sfDataPager1.PagedSource;
-                    if (listaProdutos.Count == 0)
-                    {
-                        GenericaDesktop.ShowAlerta("Nenhum registro encontrado!");
-                        txtPesquisaProdutoPorCodigoUnico.Texts = "";
-                        txtPesquisaProdutoPorCodigoUnico.PlaceholderText = "";
-                        txtPesquisaProdutoPorCodigoUnico.Select();
-                    }
-                }
-                txtPesquisaProdutoPorCodigoUnico.Texts = "";
+                    // Cria uma lista com o único produto encontrado
+                    listaProdutos = new List<Produto> { produto };
 
-                grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
-                this.grid.Columns["Descricao"].AutoSizeColumnsMode = AutoSizeColumnsMode.Fill;
-                grid.AutoSizeController.Refresh();
+                    // Atribui a lista diretamente ao DataSource do grid
+                    grid.DataSource = listaProdutos;
+
+                    // Ajustes na apresentação dos dados no grid
+                    grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+                    this.grid.Columns["Descricao"].AutoSizeColumnsMode = AutoSizeColumnsMode.Fill;
+                    grid.AutoSizeController.Refresh();
+                }
+                else
+                {
+                    // Exibe uma mensagem se o produto não for encontrado
+                    GenericaDesktop.ShowAlerta("Nenhum registro encontrado!");
+                    txtPesquisaProdutoPorCodigoUnico.Texts = "";
+                    txtPesquisaProdutoPorCodigoUnico.Select();
+                }
+
+                // Limpa o campo de texto após a pesquisa
+                txtPesquisaProdutoPorCodigoUnico.Texts = "";
             }
         }
 
@@ -146,8 +157,7 @@ namespace Lunar.Telas.Cadastros.Produtos
         {
             if (e.KeyChar == 13)
             {
-                if (!String.IsNullOrEmpty(txtPesquisaProdutoPorDescricao.Texts))
-                    PesquisarProdutoPorDescricao(txtPesquisaProdutoPorDescricao.Texts.Trim());
+                    PesquisarProdutoPorDescricaoPaginando(txtPesquisaProdutoPorDescricao.Texts.Trim(),0);
             }
         }
 
@@ -432,6 +442,45 @@ namespace Lunar.Telas.Cadastros.Produtos
             }
             else
                 GenericaDesktop.ShowAlerta("Clique na linha do produto que deseja excluir!");
+        }
+
+        private void sfDataPager1_PageIndexChanged(object sender, Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs e)
+        {
+            PesquisarProdutoPorDescricaoPaginando(txtPesquisaProdutoPorDescricao.Texts.Trim(), e.NewPageIndex);
+        }
+
+        private void PesquisarProdutoPorDescricaoPaginando(string valor, int paginaAtual)
+        {
+            //paginacao.DataSource = listaClientes;
+            if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
+                sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
+            else
+                sfDataPager1.PageSize = 50;
+
+            Int64 totalProdutos = produtoController.totalTodosProdutosPaginando(valor);
+            double totalPaginas = (double)totalProdutos / sfDataPager1.PageSize;
+            if (totalPaginas < 1)
+            {
+                totalPaginas = 1;
+            }
+
+            sfDataPager1.PageCount = (int)Math.Ceiling(totalPaginas);
+            sfDataPager1.Refresh();
+
+
+            listaProdutos = produtoController.selecionarTodosProdutosPaginando(paginaAtual * sfDataPager1.PageSize, sfDataPager1.PageSize, valor);
+            grid.DataSource = listaProdutos;
+
+            grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+            this.grid.Columns["Descricao"].AutoSizeColumnsMode = AutoSizeColumnsMode.Fill;
+
+            if (listaProdutos.Count == 0)
+            {
+                GenericaDesktop.ShowAlerta("Nenhum registro encontrado!");
+                txtPesquisaProdutoPorDescricao.Texts = "";
+                txtPesquisaProdutoPorCodigoUnico.PlaceholderText = "";
+                txtPesquisaProdutoPorDescricao.Select();
+            }
         }
     }
 }

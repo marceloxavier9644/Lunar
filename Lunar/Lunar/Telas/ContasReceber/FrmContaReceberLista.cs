@@ -3,6 +3,7 @@ using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.RelatoriosDiversos;
+using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.GalaxyPay_API;
 using Lunar.WSCorreios;
@@ -10,6 +11,7 @@ using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using Microsoft.ProjectServer.Client;
 using Syncfusion.Data;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
@@ -24,16 +26,20 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
+using static LunarBase.Utilidades.ManifestoDownload;
 using Exception = System.Exception;
 
 namespace Lunar.Telas.ContasReceber
 {
     public partial class FrmContaReceberLista : Form
     {
+        private ToolTip toolTip1;
         ContaReceber contaReceber = new ContaReceber();
-        ContaReceberController ContaReceberController = new ContaReceberController();
+        ContaReceberController contaReceberController = new ContaReceberController();
         IList<ContaReceber> listaContaReceber = new List<ContaReceber>();
         IList<ContaReceber> listaContaReceberCalculado = new List<ContaReceber>();
         bool passou = false;
@@ -50,6 +56,7 @@ namespace Lunar.Telas.ContasReceber
             {
                 btnRetornoBoletos.Enabled = true;
             }
+            iniciarToolTip();
         }
         public FrmContaReceberLista(Pessoa pessoa)
         {
@@ -66,6 +73,24 @@ namespace Lunar.Telas.ContasReceber
             {
                 btnRetornoBoletos.Enabled = true;
             }
+            iniciarToolTip();
+        }
+
+        private void iniciarToolTip()
+        {
+            toolTip1 = new ToolTip();
+
+            // Configurações adicionais opcionais
+            toolTip1.AutoPopDelay = 5000;  // Duração em milissegundos que o ToolTip ficará visível
+            toolTip1.InitialDelay = 500;  // Tempo em milissegundos antes de aparecer
+            toolTip1.ReshowDelay = 1000;    // Tempo entre ToolTips sucessivos
+            toolTip1.ShowAlways = true;    // Mostra o ToolTip mesmo que o controle não tenha foco
+
+            // Associa o ToolTip ao botão e define o texto
+            toolTip1.SetToolTip(btnEmail, "Enviar Boleto e NFe por E-mail");
+            toolTip1.SetToolTip(btnImprimirBoleto, "Imprimir Boleto Selecionado");
+            toolTip1.SetToolTip(btnExtratoCliente, "Extrato do Cliente");
+            toolTip1.SetToolTip(btnExportarPDF, "Gerar PDF");
         }
         private void pesquisarContaReceber()
         {
@@ -113,7 +138,7 @@ namespace Lunar.Telas.ContasReceber
                 if (chkApenasEscritorioCobranca.Checked == true || chkApenasSPC.Checked == true)
                     orderBy = "order by Pessoa.Id, Tabela.Vencimento";
                 string sqlx = (sql + orderBy);
-                listaContaReceber = ContaReceberController.selecionarContaReceberPorSqlNativo(sql + orderBy);
+                listaContaReceber = contaReceberController.selecionarContaReceberPorSqlNativo(sql + orderBy);
                 if (listaContaReceber.Count > 0)
                 {
                     calculaTotalNotas();
@@ -442,71 +467,87 @@ namespace Lunar.Telas.ContasReceber
                 }
             }
         }
-
+        PessoaController pessoaController = new PessoaController();
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
-            Pessoa pessoaOjeto = new Pessoa();
-            Form formBackground = new Form();
-            try
+            IList<Pessoa> listaCliente = pessoaController.selecionarClientesComVariosFiltros(txtCliente.Texts);
+            if (listaCliente.Count == 1)
             {
-                using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(txtCliente.Texts))
+                foreach (Pessoa pessoa in listaCliente)
                 {
-                    txtCodCliente.Texts = "";
-                    txtCliente.Texts = "";
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    //formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    //formBackground.Left = Top = 0;
-                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = false;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-                    uu.Owner = formBackground;
-                    switch (uu.showModal(ref pessoaOjeto))
-                    {
-                        case DialogResult.Ignore:
-                            uu.Dispose();
-                            FrmClienteCadastro form = new FrmClienteCadastro();
-                            Object pessoaObj = new Pessoa();
-                            if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
-                            {
-                                txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
-                                txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
-                                txtNumeroDocumento.Focus();
-                                generica.buscarAlertaCadastrado((Pessoa)pessoaObj);
-                            }
-                            form.Dispose();
-                            break;
-                        case DialogResult.OK:
-                            txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
-                            txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
-                            txtNumeroDocumento.Focus();
-                            btnPesquisar.PerformClick();
-                            if(((Pessoa)pessoaOjeto).RegistradoSpc == true)
-                            {
-                                GenericaDesktop.ShowAlerta("Cliente com marcação de registro no SPC/Serasa no cadastro!");
-                            }
-                            if (((Pessoa)pessoaOjeto).EscritorioCobranca == true)
-                            {
-                                GenericaDesktop.ShowAlerta("Cliente com marcação de cobrança externa!");
-                            }
-                            generica.buscarAlertaCadastrado((Pessoa)pessoaOjeto);
-                            break;
-                    }
-                    formBackground.Dispose();
+                    txtCliente.Texts = pessoa.RazaoSocial;
+                    txtCodCliente.Texts = pessoa.Id.ToString();
+                    txtNumeroDocumento.Focus();
+                    generica.buscarAlertaCadastrado(pessoa);
+                    btnPesquisar.PerformClick();
                 }
             }
-            catch (Exception ex)
+            //se tem mais de um cliente ou nenhum o sistema entra na pesquisa
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
+                Pessoa pessoaOjeto = new Pessoa();
+                Form formBackground = new Form();
+                try
+                {
+                    using (FrmPesquisaPessoa uu = new FrmPesquisaPessoa(txtCliente.Texts))
+                    {
+                        txtCodCliente.Texts = "";
+                        txtCliente.Texts = "";
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        switch (uu.showModal(ref pessoaOjeto))
+                        {
+                            case DialogResult.Ignore:
+                                uu.Dispose();
+                                FrmClienteCadastro form = new FrmClienteCadastro();
+                                Object pessoaObj = new Pessoa();
+                                if (form.showModalNovo(ref pessoaObj) == DialogResult.OK)
+                                {
+                                    txtCliente.Texts = ((Pessoa)pessoaObj).RazaoSocial;
+                                    txtCodCliente.Texts = ((Pessoa)pessoaObj).Id.ToString();
+                                    txtNumeroDocumento.Focus();
+                                    generica.buscarAlertaCadastrado((Pessoa)pessoaObj);
+                                }
+                                form.Dispose();
+                                break;
+                            case DialogResult.OK:
+                                txtCliente.Texts = ((Pessoa)pessoaOjeto).RazaoSocial;
+                                txtCodCliente.Texts = ((Pessoa)pessoaOjeto).Id.ToString();
+                                txtNumeroDocumento.Focus();
+                                btnPesquisar.PerformClick();
+                                if (((Pessoa)pessoaOjeto).RegistradoSpc == true)
+                                {
+                                    GenericaDesktop.ShowAlerta("Cliente com marcação de registro no SPC/Serasa no cadastro!");
+                                }
+                                if (((Pessoa)pessoaOjeto).EscritorioCobranca == true)
+                                {
+                                    GenericaDesktop.ShowAlerta("Cliente com marcação de cobrança externa!");
+                                }
+                                generica.buscarAlertaCadastrado((Pessoa)pessoaOjeto);
+                                break;
+                        }
+                        formBackground.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    formBackground.Dispose();
+                }
             }
         }
 
@@ -1044,13 +1085,309 @@ namespace Lunar.Telas.ContasReceber
                         i++;
                     }
                 }
-                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
-                string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
-                string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(arrayFatura);
-                if (!String.IsNullOrEmpty(link))
-                    System.Diagnostics.Process.Start(link);
+                if (i > 0)
+                {
+                    GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                    string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                    string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(arrayFatura);
+                    if (!String.IsNullOrEmpty(link))
+                        System.Diagnostics.Process.Start(link);
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Boleto não encontrado ou gerado por outra plataforma!");
+                }
             }
 
         }
+
+        private async void btnEmail_Click(object sender, EventArgs e)
+        {
+            string IDcliente = "";
+            int idNotaFiscal = 0;
+
+            if (grid.SelectedItems.Count == 1)
+            {
+                List<string> listaFaturas = new List<string>();
+
+                foreach (var selectedItem in grid.SelectedItems)
+                {
+                    var conta = selectedItem as ContaReceber;
+                    contaReceber = conta;
+                    if (conta.BoletoGerado == true)
+                    {
+                        string documento = conta.Documento;
+                        IDcliente = conta.Cliente.Id.ToString();
+                        IList<ContaReceber> contaReceberAssociado = new List<ContaReceber>();
+
+                        if (conta.Venda != null)
+                            contaReceberAssociado = ObterParcelasAssociadas(conta.Venda, null, IDcliente);
+
+                        if (conta.OrdemServico != null)
+                            contaReceberAssociado = ObterParcelasAssociadas(null, conta.OrdemServico, IDcliente);
+
+                        foreach (var receber in contaReceberAssociado)
+                        {
+                            listaFaturas.Add(receber.Id.ToString());
+
+                            if (receber.OrdemServico != null)
+                            {
+                                if (receber.OrdemServico.Nfe != null)
+                                    idNotaFiscal = receber.OrdemServico.Nfe.Id;
+                            }
+                            else if (receber.Venda != null)
+                            {
+                                if (receber.Venda.Nfe != null)
+                                    idNotaFiscal = receber.Venda.Nfe.Id;
+                            }
+                        }
+                    }
+                }
+
+                if (!String.IsNullOrEmpty(contaReceber.Cliente.Email))
+                {
+                    // Coleta o PDF dos boletos
+                    GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                    string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                    string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(listaFaturas.ToArray());
+
+                    // O método BaixarPDFAsync agora é aguardado assincronamente
+                    string localBoleto = await BaixarPDFAsync(link, int.Parse(IDcliente));
+
+                    // Coleta nota fiscal se houver
+                    List<Tuple<string, string>> listaCaminhoNotasParaEnviarEmail = new List<Tuple<string, string>>();
+                    if (idNotaFiscal > 0)
+                    {
+                        Nfe nfe = new Nfe();
+                        nfe.Id = idNotaFiscal;
+                        nfe = (Nfe)Controller.getInstance().selecionar(nfe);
+
+                        var caminhos = coletarNotaFiscalPDFeXML(nfe);
+                        listaCaminhoNotasParaEnviarEmail.Add(caminhos);
+                    }
+                    String assuntoEmail = "Boleto TXT Informática";
+                    List<string> listaCaminhosFinal = new List<string>();
+                    if (listaCaminhoNotasParaEnviarEmail.Count > 0)
+                    {
+                        assuntoEmail = "Boleto e Nota Fiscal TXT Informática";
+                        foreach (var caminhoNota in listaCaminhoNotasParaEnviarEmail)
+                        {
+                            listaCaminhosFinal.Add(caminhoNota.Item1); // Adiciona o caminho do PDF da Nota Fiscal
+                            listaCaminhosFinal.Add(caminhoNota.Item2); // Adiciona o caminho do XML da Nota Fiscal
+                        }
+                    }
+                    listaCaminhosFinal.Add(localBoleto);
+
+                    bool retornoEmail = false;
+                    if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.ServidorEmail))
+                        retornoEmail = generica.enviarEmail(contaReceber.Cliente.Email, assuntoEmail, "E-mail disparado via Lunar Software", "Prezado(a) Cliente, Segue em anexo.", listaCaminhosFinal);
+                    else
+                        retornoEmail = generica.enviarEmailPeloLunar(contaReceber.Cliente.Email, assuntoEmail, "E-mail disparado pelo sistema Lunar Software", "Prezado(a) Cliente, Segue em anexo.", listaCaminhosFinal);
+
+                    if (retornoEmail == true)
+                        GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Cadastro do cliente não possui e-mail informado!");
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Selecione apenas 1 parcela da venda, o sistema irá capturar todas parcelas e nota fiscal para enviar no e-mail!");
+            }
+        }
+
+        static async Task<string> BaixarPDFAsync(string url, int idCliente)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                // Fazer a requisição HTTP GET para obter o PDF
+                byte[] pdfBytes = await client.GetByteArrayAsync(url);
+
+                // Gerar um nome de arquivo único com poucos caracteres
+                string nomeArquivo = "BOLETO_"+ idCliente + $"_{Guid.NewGuid().ToString().Substring(0, 8)}.pdf";
+
+                // Definir o caminho para a pasta temporária
+                string caminhoParaSalvar = Path.Combine(Path.GetTempPath(), nomeArquivo);
+
+                // Salvar o PDF na pasta temporária
+                File.WriteAllBytes(caminhoParaSalvar, pdfBytes);
+
+                // Retornar o caminho completo onde o arquivo foi salvo
+                return caminhoParaSalvar;
+            }
+        }
+
+        private IList<ContaReceber> ObterParcelasAssociadas(Venda venda, OrdemServico ordemServico, string cliente)
+        {
+            IList<ContaReceber> listaReceber = new List<ContaReceber>();
+            ContaReceberController contaReceberController = new ContaReceberController();
+            if (venda != null)
+            {
+                listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber " +
+                    "Tabela Where Tabela.Cliente = " + cliente + " and Tabela.Venda = " + venda.Id + " and Tabela.Recebido = false");
+            }
+            else if (ordemServico != null)
+            {
+                listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber " +
+                                 "Tabela Where Tabela.Cliente = " + cliente + " and Tabela.OrdemServico = " + ordemServico.Id + " and Tabela.Recebido = false");
+            }
+            
+            return listaReceber;
+        }
+
+        private void gerarPDF2(Nfe nfe, String pdf, String chave, bool imprimir)
+        {
+            if (nfe.TipoOperacao == "S" && nfe.Modelo.Equals("65"))
+            {
+                if (!File.Exists(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf"))
+                {
+                    byte[] bytes = Convert.FromBase64String(pdf);
+                    System.IO.FileStream stream = new FileStream(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf", FileMode.CreateNew);
+                    System.IO.BinaryWriter writer =
+                        new BinaryWriter(stream);
+                    writer.Write(bytes, 0, bytes.Length);
+                    writer.Close();
+                }
+                if (imprimir == true)
+                {
+                    //Process.Start(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf");
+                    FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf");
+                    frmPDF.ShowDialog();
+                }
+
+            }
+            else if (nfe.Modelo.Equals("55"))
+            {
+                if (!File.Exists(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf"))
+                {
+                    byte[] bytes = Convert.FromBase64String(pdf);
+                    System.IO.FileStream stream = new FileStream(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf", FileMode.CreateNew);
+                    System.IO.BinaryWriter writer =
+                        new BinaryWriter(stream);
+                    writer.Write(bytes, 0, bytes.Length);
+                    writer.Close();
+                }
+                if (imprimir == true)
+                {
+                    FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf");
+                    frmPDF.ShowDialog();
+                    //Process.Start(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf");
+                }
+            }
+        }
+
+        private void gerarPDF2Canceladas(Nfe nfe, String pdf, String chave, bool imprimir)
+        {
+            if (nfe.TipoOperacao == "S" && nfe.Modelo.Equals("65"))
+            {
+                if (!File.Exists(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\" + chave + "-CAN.pdf"))
+                {
+                    byte[] bytes = Convert.FromBase64String(pdf);
+                    System.IO.FileStream stream = new FileStream(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\" + chave + "-CAN.pdf", FileMode.CreateNew);
+                    System.IO.BinaryWriter writer =
+                        new BinaryWriter(stream);
+                    writer.Write(bytes, 0, bytes.Length);
+                    writer.Close();
+                }
+                if (imprimir == true)
+                {
+                    //Process.Start(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf");
+                    FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\" + chave + "-CAN.pdf");
+                    frmPDF.ShowDialog();
+                }
+
+            }
+            else if (nfe.Modelo.Equals("55"))
+            {
+                if (!File.Exists(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\" + chave + "-CAN.pdf"))
+                {
+                    byte[] bytes = Convert.FromBase64String(pdf);
+                    System.IO.FileStream stream = new FileStream(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\" + chave + "-CAN.pdf", FileMode.CreateNew);
+                    System.IO.BinaryWriter writer =
+                        new BinaryWriter(stream);
+                    writer.Write(bytes, 0, bytes.Length);
+                    writer.Close();
+                }
+                if (imprimir == true)
+                {
+                    FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\" + chave + "-CAN.pdf");
+                    frmPDF.ShowDialog();
+                    //Process.Start(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFe.pdf");
+                }
+            }
+        }
+        private Tuple<string, string> coletarNotaFiscalPDFeXML(Nfe nfe)
+        {
+            string caminhoXML = "";
+            string caminhoPDF = "";
+
+            NFeDownloadProc55 nFeDownloadProc55 = new NFeDownloadProc55();
+            NFCeDownloadProc nFCeDownloadProc = new NFCeDownloadProc();
+
+            if (nfe.Modelo.Equals("65"))
+            {
+                if (nfe.NfeStatus.Id == 1)
+                {
+                    nFCeDownloadProc = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
+                    caminhoXML = @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.xml";
+                    if (!File.Exists(caminhoXML))
+                    {
+                        generica.gravarXMLNaPasta(nFCeDownloadProc.nfeProc.xml, nfe.Chave, @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFCe.xml");
+                    }
+                    gerarPDF2(nfe, nFCeDownloadProc.pdf, nfe.Chave, false);
+                    caminhoPDF = @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf";
+                }
+                if (nfe.NfeStatus.Id == 4)
+                {
+                    var nfceCancelada = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj.Trim(), nfe.Chave);
+                    if (nfceCancelada != null)
+                    {
+                        caminhoXML = @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\";
+                        string nomeArquivo = nfe.Chave + @"-CAN.xml";
+                        if (!File.Exists(caminhoXML + nomeArquivo))
+                        {
+                            generica.gravarXMLNaPasta(nfceCancelada.retEvento.xml, nfe.Chave, caminhoXML, nomeArquivo);
+                            caminhoXML = caminhoXML + nomeArquivo;
+                        }
+                        if (nfceCancelada.pdfCancelamento != null)
+                        {
+                            gerarPDF2Canceladas(nfe, nfceCancelada.pdfCancelamento, nfe.Chave, false);
+                            caminhoPDF = @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\" + nfe.Chave + "-CAN.pdf";
+                        }
+                    }
+                }
+            }
+            if (nfe.Modelo.Equals("55"))
+            {
+                if (nfe.NfeStatus.Id == 1)
+                {
+                    caminhoXML = @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
+                    if (!File.Exists(caminhoXML))
+                    {
+                        generica.gravarXMLNaPasta(nFeDownloadProc55.xml, nfe.Chave, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.xml");
+                    }
+                    gerarPDF2(nfe, nFeDownloadProc55.pdf, nfe.Chave, false);
+                    caminhoPDF = @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf";
+                }
+                if (nfe.NfeStatus.Id == 4)
+                {
+                    var nfceCancelada = generica.ns_DownloadEventoCanceladoOuCCE55(nfe, true, false, "");
+                    if (nfceCancelada != null)
+                    {
+                        caminhoXML = @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\" + nfe.Chave + "-CAN.xml";
+                        if (!File.Exists(caminhoXML))
+                        {
+                            generica.gravarXMLNaPasta(nfceCancelada.xml, nfe.Chave, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\", nfe.Chave + "-CAN.xml");
+                        }
+                        gerarPDF2Canceladas(nfe, nfceCancelada.pdf, nfe.Chave, false);
+                        caminhoPDF = @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Canceladas\" + nfe.Chave + "-CAN.pdf";
+                    }
+                }
+            }
+
+            return Tuple.Create(caminhoXML, caminhoPDF);
+        }
+
+
     }
 }

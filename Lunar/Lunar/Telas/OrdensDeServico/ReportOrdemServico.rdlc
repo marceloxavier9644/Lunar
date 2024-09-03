@@ -1758,7 +1758,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dsOrdemServicoServico</DataSetName>
-            <Top>3.44813cm</Top>
+            <Top>3.76563cm</Top>
             <Left>0.31585cm</Left>
             <Height>1.8cm</Height>
             <Width>19.203cm</Width>
@@ -1820,7 +1820,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>2.72419cm</Top>
+            <Top>3.04169cm</Top>
             <Left>0.29106cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
@@ -1855,7 +1855,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox36</rd:DefaultName>
-            <Top>6.14687cm</Top>
+            <Top>6.46437cm</Top>
             <Left>15.77531cm</Left>
             <Height>0.6cm</Height>
             <Width>3.74354cm</Width>
@@ -1893,7 +1893,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox37</rd:DefaultName>
-            <Top>5.48449cm</Top>
+            <Top>5.80199cm</Top>
             <Left>15.77531cm</Left>
             <Height>0.6cm</Height>
             <Width>3.74354cm</Width>
@@ -1910,7 +1910,7 @@
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>8.19475cm</Top>
+            <Top>9.78225cm</Top>
             <Left>5.39266cm</Left>
             <Height>0cm</Height>
             <Width>9.27333cm</Width>
@@ -1940,7 +1940,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Cliente1</rd:DefaultName>
-            <Top>8.30058cm</Top>
+            <Top>9.88808cm</Top>
             <Left>5.39266cm</Left>
             <Height>0.62646cm</Height>
             <Width>9.27333cm</Width>
@@ -1956,13 +1956,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>3.97916in</Height>
+        <Height>4.67708in</Height>
         <Style />
       </Body>
-      <Width>8.74108in</Width>
+      <Width>7.68459in</Width>
       <Page>
         <PageHeader>
-          <Height>8.71954cm</Height>
+          <Height>10.04246cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2318,7 +2318,7 @@
               <rd:DefaultName>Observacoes</rd:DefaultName>
               <Top>7.58061cm</Top>
               <Left>0.29106cm</Left>
-              <Height>0.91667cm</Height>
+              <Height>2.28546cm</Height>
               <Width>19.17819cm</Width>
               <ZIndex>10</ZIndex>
               <Style>
@@ -2660,11 +2660,29 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="Via">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DataPrevista">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Data">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>4</NumberOfRows>
+      <NumberOfRows>5</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -2745,6 +2763,21 @@
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>3</RowIndex>
           <ParameterName>DataServico</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>4</RowIndex>
+          <ParameterName>Via</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>4</RowIndex>
+          <ParameterName>DataPrevista</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>4</RowIndex>
+          <ParameterName>Data</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

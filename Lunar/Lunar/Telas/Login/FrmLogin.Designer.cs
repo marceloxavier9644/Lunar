@@ -256,6 +256,7 @@
             this.txtUsuario.Texts = "";
             this.txtUsuario.UnderlinedStyle = false;
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
+            this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
             // 
             // btnLogin
             // 

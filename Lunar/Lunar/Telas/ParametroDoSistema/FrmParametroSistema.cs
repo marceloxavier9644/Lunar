@@ -48,7 +48,7 @@ namespace Lunar.Telas.ParametroDoSistema
             if (parametro.AmbienteProducao == true)
                 radioProducao.Checked = true;
             else
-                radioHomologacao.Checked = false;
+                radioHomologacao.Checked = true;
 
             if (parametro.ChequeContaReceber == true)
                 chkChequeContaReceber.Checked = true;

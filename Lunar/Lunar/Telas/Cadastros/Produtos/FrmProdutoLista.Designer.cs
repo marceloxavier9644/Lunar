@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn3 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn4 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnExcluirProduto = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExtratoProduto = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
             this.btnExportarExcel = new FontAwesome.Sharp.IconButton();
@@ -51,7 +52,6 @@
             this.txtPesquisaProdutoPorDescricao = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtPesquisaProdutoPorCodigoUnico = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnExcluirProduto = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -67,69 +67,69 @@
             this.grid.AutoGenerateColumns = false;
             this.grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.ColumnHeader;
             this.grid.BackColor = System.Drawing.Color.White;
-            gridNumericColumn3.AllowEditing = false;
-            gridNumericColumn3.AllowFiltering = true;
-            gridNumericColumn3.AllowResizing = true;
-            gridNumericColumn3.CellStyle.Font.Facename = "Microsoft Sans Serif";
-            gridNumericColumn3.CellStyle.Font.Size = 12F;
-            gridNumericColumn3.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridNumericColumn3.Format = "0";
-            gridNumericColumn3.HeaderStyle.Font.Size = 12F;
-            gridNumericColumn3.HeaderText = "Código";
-            gridNumericColumn3.MappingName = "Id";
-            gridNumericColumn3.MaxValue = 1E+16D;
-            gridNumericColumn3.MinValue = 0D;
-            gridNumericColumn3.NullDisplayText = "0";
-            gridTextColumn5.AllowEditing = false;
-            gridTextColumn5.AllowFiltering = true;
-            gridTextColumn5.AllowResizing = true;
-            gridTextColumn5.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.ColumnHeader;
-            gridTextColumn5.CellStyle.Font.Facename = "Microsoft Sans Serif";
-            gridTextColumn5.CellStyle.Font.Size = 12F;
-            gridTextColumn5.HeaderStyle.Font.Size = 12F;
-            gridTextColumn5.HeaderText = "Descrição do Produto";
-            gridTextColumn5.MappingName = "Descricao";
-            gridTextColumn6.AllowEditing = false;
-            gridTextColumn6.AllowFiltering = true;
-            gridTextColumn6.AllowResizing = true;
-            gridTextColumn6.CellStyle.Font.Facename = "Microsoft Sans Serif";
-            gridTextColumn6.CellStyle.Font.Size = 12F;
-            gridTextColumn6.HeaderStyle.Font.Size = 12F;
-            gridTextColumn6.HeaderText = "Marca";
-            gridTextColumn6.MappingName = "Marca.Descricao";
-            gridTextColumn7.AllowEditing = false;
-            gridTextColumn7.AllowFiltering = true;
-            gridTextColumn7.AllowResizing = true;
-            gridTextColumn7.CellStyle.Font.Facename = "Microsoft Sans Serif";
-            gridTextColumn7.CellStyle.Font.Size = 12F;
-            gridTextColumn7.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn7.HeaderStyle.Font.Size = 12F;
-            gridTextColumn7.HeaderText = "Estoque Auxiliar";
-            gridTextColumn7.MappingName = "EstoqueAuxiliar";
-            gridTextColumn8.AllowEditing = false;
-            gridTextColumn8.AllowFiltering = true;
-            gridTextColumn8.AllowResizing = true;
-            gridTextColumn8.CellStyle.Font.Facename = "Microsoft Sans Serif";
-            gridTextColumn8.CellStyle.Font.Size = 12F;
-            gridTextColumn8.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridTextColumn8.HeaderStyle.Font.Size = 12F;
-            gridTextColumn8.HeaderText = "Estoque";
-            gridTextColumn8.MappingName = "Estoque";
-            gridNumericColumn4.AllowEditing = false;
-            gridNumericColumn4.AllowFiltering = true;
-            gridNumericColumn4.AllowResizing = true;
-            gridNumericColumn4.CellStyle.Font.Facename = "Microsoft Sans Serif";
-            gridNumericColumn4.CellStyle.Font.Size = 12F;
-            gridNumericColumn4.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            gridNumericColumn4.HeaderStyle.Font.Size = 12F;
-            gridNumericColumn4.HeaderText = "Preço Venda";
-            gridNumericColumn4.MappingName = "ValorVenda";
-            this.grid.Columns.Add(gridNumericColumn3);
-            this.grid.Columns.Add(gridTextColumn5);
-            this.grid.Columns.Add(gridTextColumn6);
-            this.grid.Columns.Add(gridTextColumn7);
-            this.grid.Columns.Add(gridTextColumn8);
-            this.grid.Columns.Add(gridNumericColumn4);
+            gridNumericColumn1.AllowEditing = false;
+            gridNumericColumn1.AllowFiltering = true;
+            gridNumericColumn1.AllowResizing = true;
+            gridNumericColumn1.CellStyle.Font.Facename = "Microsoft Sans Serif";
+            gridNumericColumn1.CellStyle.Font.Size = 12F;
+            gridNumericColumn1.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridNumericColumn1.Format = "0";
+            gridNumericColumn1.HeaderStyle.Font.Size = 12F;
+            gridNumericColumn1.HeaderText = "Código";
+            gridNumericColumn1.MappingName = "Id";
+            gridNumericColumn1.MaxValue = 1E+16D;
+            gridNumericColumn1.MinValue = 0D;
+            gridNumericColumn1.NullDisplayText = "0";
+            gridTextColumn1.AllowEditing = false;
+            gridTextColumn1.AllowFiltering = true;
+            gridTextColumn1.AllowResizing = true;
+            gridTextColumn1.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.ColumnHeader;
+            gridTextColumn1.CellStyle.Font.Facename = "Microsoft Sans Serif";
+            gridTextColumn1.CellStyle.Font.Size = 12F;
+            gridTextColumn1.HeaderStyle.Font.Size = 12F;
+            gridTextColumn1.HeaderText = "Descrição do Produto";
+            gridTextColumn1.MappingName = "Descricao";
+            gridTextColumn2.AllowEditing = false;
+            gridTextColumn2.AllowFiltering = true;
+            gridTextColumn2.AllowResizing = true;
+            gridTextColumn2.CellStyle.Font.Facename = "Microsoft Sans Serif";
+            gridTextColumn2.CellStyle.Font.Size = 12F;
+            gridTextColumn2.HeaderStyle.Font.Size = 12F;
+            gridTextColumn2.HeaderText = "Marca";
+            gridTextColumn2.MappingName = "Marca.Descricao";
+            gridTextColumn3.AllowEditing = false;
+            gridTextColumn3.AllowFiltering = true;
+            gridTextColumn3.AllowResizing = true;
+            gridTextColumn3.CellStyle.Font.Facename = "Microsoft Sans Serif";
+            gridTextColumn3.CellStyle.Font.Size = 12F;
+            gridTextColumn3.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn3.HeaderStyle.Font.Size = 12F;
+            gridTextColumn3.HeaderText = "Estoque Auxiliar";
+            gridTextColumn3.MappingName = "EstoqueAuxiliar";
+            gridTextColumn4.AllowEditing = false;
+            gridTextColumn4.AllowFiltering = true;
+            gridTextColumn4.AllowResizing = true;
+            gridTextColumn4.CellStyle.Font.Facename = "Microsoft Sans Serif";
+            gridTextColumn4.CellStyle.Font.Size = 12F;
+            gridTextColumn4.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn4.HeaderStyle.Font.Size = 12F;
+            gridTextColumn4.HeaderText = "Estoque";
+            gridTextColumn4.MappingName = "Estoque";
+            gridNumericColumn2.AllowEditing = false;
+            gridNumericColumn2.AllowFiltering = true;
+            gridNumericColumn2.AllowResizing = true;
+            gridNumericColumn2.CellStyle.Font.Facename = "Microsoft Sans Serif";
+            gridNumericColumn2.CellStyle.Font.Size = 12F;
+            gridNumericColumn2.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridNumericColumn2.HeaderStyle.Font.Size = 12F;
+            gridNumericColumn2.HeaderText = "Preço Venda";
+            gridNumericColumn2.MappingName = "ValorVenda";
+            this.grid.Columns.Add(gridNumericColumn1);
+            this.grid.Columns.Add(gridTextColumn1);
+            this.grid.Columns.Add(gridTextColumn2);
+            this.grid.Columns.Add(gridTextColumn3);
+            this.grid.Columns.Add(gridTextColumn4);
+            this.grid.Columns.Add(gridNumericColumn2);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grid.Location = new System.Drawing.Point(3, 16);
@@ -156,6 +156,30 @@
             this.groupBox2.Size = new System.Drawing.Size(1001, 76);
             this.groupBox2.TabIndex = 160;
             this.groupBox2.TabStop = false;
+            // 
+            // btnExcluirProduto
+            // 
+            this.btnExcluirProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirProduto.BackColor = System.Drawing.Color.White;
+            this.btnExcluirProduto.BackgroundColor = System.Drawing.Color.White;
+            this.btnExcluirProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluirProduto.BorderRadius = 8;
+            this.btnExcluirProduto.BorderSize = 2;
+            this.btnExcluirProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluirProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluirProduto.FlatAppearance.BorderSize = 2;
+            this.btnExcluirProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluirProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnExcluirProduto.Location = new System.Drawing.Point(184, 19);
+            this.btnExcluirProduto.Name = "btnExcluirProduto";
+            this.btnExcluirProduto.Size = new System.Drawing.Size(165, 45);
+            this.btnExcluirProduto.TabIndex = 219;
+            this.btnExcluirProduto.Text = "Excluir Produto";
+            this.btnExcluirProduto.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnExcluirProduto.UseVisualStyleBackColor = false;
+            this.btnExcluirProduto.Click += new System.EventHandler(this.btnExcluirProduto_Click);
             // 
             // btnExtratoProduto
             // 
@@ -271,11 +295,11 @@
             // 
             this.autoLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
             this.autoLabel15.Location = new System.Drawing.Point(482, 36);
             this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(94, 21);
+            this.autoLabel15.Size = new System.Drawing.Size(90, 16);
             this.autoLabel15.TabIndex = 210;
             this.autoLabel15.Text = "Reg. por Pág.";
             // 
@@ -289,6 +313,7 @@
             this.sfDataPager1.Name = "sfDataPager1";
             this.sfDataPager1.Size = new System.Drawing.Size(395, 48);
             this.sfDataPager1.TabIndex = 154;
+            this.sfDataPager1.PageIndexChanged += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs>(this.sfDataPager1_PageIndexChanged);
             this.sfDataPager1.OnDemandLoading += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.OnDemandLoadingEventArgs>(this.sfDataPager1_OnDemandLoading);
             // 
             // groupBox3
@@ -327,7 +352,7 @@
             this.rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.rjTextBox1.BorderRadius = 8;
             this.rjTextBox1.BorderSize = 2;
-            this.rjTextBox1.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rjTextBox1.Location = new System.Drawing.Point(249, 13);
             this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
@@ -338,7 +363,7 @@
             this.rjTextBox1.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.rjTextBox1.PlaceholderText = "";
             this.rjTextBox1.ReadOnly = false;
-            this.rjTextBox1.Size = new System.Drawing.Size(208, 44);
+            this.rjTextBox1.Size = new System.Drawing.Size(208, 37);
             this.rjTextBox1.TabIndex = 214;
             this.rjTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.rjTextBox1.Texts = "";
@@ -349,22 +374,22 @@
             // autoLabel2
             // 
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel2.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel2.ForeColor = System.Drawing.Color.Black;
             this.autoLabel2.Location = new System.Drawing.Point(127, 36);
             this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(68, 21);
+            this.autoLabel2.Size = new System.Drawing.Size(64, 16);
             this.autoLabel2.TabIndex = 213;
             this.autoLabel2.Text = "Pesquisa";
             // 
             // autoLabel1
             // 
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
             this.autoLabel1.Location = new System.Drawing.Point(17, 36);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(56, 21);
+            this.autoLabel1.Size = new System.Drawing.Size(51, 16);
             this.autoLabel1.TabIndex = 212;
             this.autoLabel1.Text = "Código";
             // 
@@ -377,7 +402,7 @@
             this.txtPesquisaProdutoPorDescricao.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtPesquisaProdutoPorDescricao.BorderRadius = 8;
             this.txtPesquisaProdutoPorDescricao.BorderSize = 2;
-            this.txtPesquisaProdutoPorDescricao.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisaProdutoPorDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisaProdutoPorDescricao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPesquisaProdutoPorDescricao.Location = new System.Drawing.Point(117, 48);
             this.txtPesquisaProdutoPorDescricao.Margin = new System.Windows.Forms.Padding(4);
@@ -388,7 +413,7 @@
             this.txtPesquisaProdutoPorDescricao.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtPesquisaProdutoPorDescricao.PlaceholderText = "";
             this.txtPesquisaProdutoPorDescricao.ReadOnly = false;
-            this.txtPesquisaProdutoPorDescricao.Size = new System.Drawing.Size(349, 44);
+            this.txtPesquisaProdutoPorDescricao.Size = new System.Drawing.Size(349, 37);
             this.txtPesquisaProdutoPorDescricao.TabIndex = 211;
             this.txtPesquisaProdutoPorDescricao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPesquisaProdutoPorDescricao.Texts = "";
@@ -404,7 +429,7 @@
             this.txtRegistroPorPagina.BorderRadius = 8;
             this.txtRegistroPorPagina.BorderSize = 2;
             this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtRegistroPorPagina.Location = new System.Drawing.Point(474, 48);
             this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
@@ -416,7 +441,7 @@
             this.txtRegistroPorPagina.PlaceholderText = "";
             this.txtRegistroPorPagina.ReadOnly = false;
             this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 44);
+            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
             this.txtRegistroPorPagina.TabIndex = 209;
             this.txtRegistroPorPagina.Tag = "";
             this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -430,7 +455,7 @@
             this.txtPesquisaProdutoPorCodigoUnico.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtPesquisaProdutoPorCodigoUnico.BorderRadius = 8;
             this.txtPesquisaProdutoPorCodigoUnico.BorderSize = 2;
-            this.txtPesquisaProdutoPorCodigoUnico.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisaProdutoPorCodigoUnico.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisaProdutoPorCodigoUnico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPesquisaProdutoPorCodigoUnico.Location = new System.Drawing.Point(10, 48);
             this.txtPesquisaProdutoPorCodigoUnico.Margin = new System.Windows.Forms.Padding(4);
@@ -441,36 +466,12 @@
             this.txtPesquisaProdutoPorCodigoUnico.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtPesquisaProdutoPorCodigoUnico.PlaceholderText = "";
             this.txtPesquisaProdutoPorCodigoUnico.ReadOnly = false;
-            this.txtPesquisaProdutoPorCodigoUnico.Size = new System.Drawing.Size(99, 44);
+            this.txtPesquisaProdutoPorCodigoUnico.Size = new System.Drawing.Size(99, 37);
             this.txtPesquisaProdutoPorCodigoUnico.TabIndex = 153;
             this.txtPesquisaProdutoPorCodigoUnico.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPesquisaProdutoPorCodigoUnico.Texts = "";
             this.txtPesquisaProdutoPorCodigoUnico.UnderlinedStyle = false;
             this.txtPesquisaProdutoPorCodigoUnico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisaProdutoPorCodigoUnico_KeyPress);
-            // 
-            // btnExcluirProduto
-            // 
-            this.btnExcluirProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirProduto.BackColor = System.Drawing.Color.White;
-            this.btnExcluirProduto.BackgroundColor = System.Drawing.Color.White;
-            this.btnExcluirProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluirProduto.BorderRadius = 8;
-            this.btnExcluirProduto.BorderSize = 2;
-            this.btnExcluirProduto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluirProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluirProduto.FlatAppearance.BorderSize = 2;
-            this.btnExcluirProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluirProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnExcluirProduto.Location = new System.Drawing.Point(184, 19);
-            this.btnExcluirProduto.Name = "btnExcluirProduto";
-            this.btnExcluirProduto.Size = new System.Drawing.Size(165, 45);
-            this.btnExcluirProduto.TabIndex = 219;
-            this.btnExcluirProduto.Text = "Excluir Produto";
-            this.btnExcluirProduto.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnExcluirProduto.UseVisualStyleBackColor = false;
-            this.btnExcluirProduto.Click += new System.EventHandler(this.btnExcluirProduto_Click);
             // 
             // FrmProdutoLista
             // 

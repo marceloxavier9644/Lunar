@@ -1,5 +1,6 @@
 ﻿using Lunar.Utils;
 using LunarBase.Anotations;
+using LunarBase.Classes;
 using LunarBase.ConexaoBD;
 using LunarBase.ControllerBO;
 using NHibernate;
@@ -50,6 +51,21 @@ namespace Lunar.Telas.PesquisaPadrao
             pesquisar(Tabela, Sql);
             txtPesquisa.Select();
             //txtPesquisa.Select();
+        }
+
+        public FrmPesquisaPadrao(IList<Produto> listaProdutos)
+        {
+            InitializeComponent();
+
+            sfDataPager1.DataSource = listaProdutos;
+            if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
+                sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
+            else
+                sfDataPager1.PageSize = 100;
+            gridPesquisa.DataSource = sfDataPager1.PagedSource;
+            sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
+
+            txtPesquisa.Select();
         }
 
         private void pesquisar(string Tabela, string Sql)
@@ -128,9 +144,6 @@ namespace Lunar.Telas.PesquisaPadrao
                 }
                 if (Resultado.Count >= 1)
                 {
-                    //var record = this.gridPesquisa.View.Records[0];
-                    //var column = this.gridPesquisa.Columns[0];
-                    //this.gridPesquisa.SelectCell(record, column);
                     this.gridPesquisa.TableControl.Select();
                     this.gridPesquisa.MoveToCurrentCell(new Syncfusion.WinForms.GridCommon.ScrollAxis.RowColumnIndex(1, 0));
                 }

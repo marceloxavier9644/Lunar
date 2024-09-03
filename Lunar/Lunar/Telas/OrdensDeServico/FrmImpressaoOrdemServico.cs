@@ -141,7 +141,7 @@ namespace Lunar.Telas.OrdensDeServico
                 }
             }
 
-            ReportParameter[] p = new ReportParameter[16];
+            ReportParameter[] p = new ReportParameter[17];
             p[0] = (new ReportParameter("Empresa", Sessao.empresaFilialLogada.NomeFantasia));
             p[1] = (new ReportParameter("OrdemServicoID", ordemServico.Id.ToString()));
             p[2] = (new ReportParameter("CNPJ", cnpjFormatado));
@@ -163,6 +163,7 @@ namespace Lunar.Telas.OrdensDeServico
                 p[15] = (new ReportParameter("DataServico", "DATA PREVISTA: " + ordemServico.DataServico.ToShortDateString() + " " + ordemServico.DataServico.ToShortTimeString()));
             else
                 p[15] = (new ReportParameter("DataServico", ""));
+            p[16] = (new ReportParameter("Via", ""));
             reportViewer1.LocalReport.SetParameters(p);
 
             //dsOrdemServico ds = new dsOrdemServico();

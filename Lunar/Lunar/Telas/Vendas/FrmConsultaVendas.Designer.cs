@@ -49,12 +49,8 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn9 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn10 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnVerificarPix = new FontAwesome.Sharp.IconButton();
-            this.btnPesquisaVender = new FontAwesome.Sharp.IconButton();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.iconPesquisar = new FontAwesome.Sharp.IconButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chkAtivarData = new System.Windows.Forms.CheckBox();
             this.txtDataInicial = new Syncfusion.WinForms.Input.SfDateTimeEdit();
@@ -63,7 +59,6 @@
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
@@ -74,6 +69,11 @@
             this.gridProduto = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
+            this.btnVerificarPix = new FontAwesome.Sharp.IconButton();
+            this.btnPesquisaVender = new FontAwesome.Sharp.IconButton();
+            this.iconPesquisar = new FontAwesome.Sharp.IconButton();
+            this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.btnTicket = new Lunar.RJ_UI.Classes.RJButton();
             this.btnReceber = new Lunar.RJ_UI.Classes.RJButton();
             this.btnGerarNFCe = new Lunar.RJ_UI.Classes.RJButton();
@@ -107,27 +107,6 @@
             this.panel1.Size = new System.Drawing.Size(1008, 40);
             this.panel1.TabIndex = 1;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
-            this.btnClose.IconColor = System.Drawing.Color.White;
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnClose.IconSize = 30;
-            this.btnClose.Location = new System.Drawing.Point(966, 9);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(39, 28);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -155,47 +134,6 @@
             this.groupBox1.TabIndex = 244;
             this.groupBox1.TabStop = false;
             // 
-            // btnVerificarPix
-            // 
-            this.btnVerificarPix.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVerificarPix.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnVerificarPix.FlatAppearance.BorderSize = 0;
-            this.btnVerificarPix.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnVerificarPix.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnVerificarPix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerificarPix.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerificarPix.IconChar = FontAwesome.Sharp.IconChar.RodSnake;
-            this.btnVerificarPix.IconColor = System.Drawing.Color.SlateGray;
-            this.btnVerificarPix.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnVerificarPix.IconSize = 38;
-            this.btnVerificarPix.Location = new System.Drawing.Point(956, 140);
-            this.btnVerificarPix.Name = "btnVerificarPix";
-            this.btnVerificarPix.Size = new System.Drawing.Size(36, 34);
-            this.btnVerificarPix.TabIndex = 247;
-            this.btnVerificarPix.UseVisualStyleBackColor = true;
-            this.btnVerificarPix.Visible = false;
-            this.btnVerificarPix.Click += new System.EventHandler(this.btnVerificarPix_Click);
-            // 
-            // btnPesquisaVender
-            // 
-            this.btnPesquisaVender.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaVender.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaVender.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaVender.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaVender.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaVender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaVender.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaVender.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaVender.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaVender.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaVender.IconSize = 38;
-            this.btnPesquisaVender.Location = new System.Drawing.Point(611, 137);
-            this.btnPesquisaVender.Name = "btnPesquisaVender";
-            this.btnPesquisaVender.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaVender.TabIndex = 246;
-            this.btnPesquisaVender.UseVisualStyleBackColor = true;
-            this.btnPesquisaVender.Click += new System.EventHandler(this.btnPesquisaVender_Click);
-            // 
             // autoLabel6
             // 
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -206,28 +144,6 @@
             this.autoLabel6.Size = new System.Drawing.Size(67, 16);
             this.autoLabel6.TabIndex = 245;
             this.autoLabel6.Text = "Vendedor";
-            // 
-            // iconPesquisar
-            // 
-            this.iconPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconPesquisar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconPesquisar.FlatAppearance.BorderSize = 0;
-            this.iconPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconPesquisar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.iconPesquisar.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.iconPesquisar.IconColor = System.Drawing.Color.White;
-            this.iconPesquisar.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconPesquisar.IconSize = 40;
-            this.iconPesquisar.Location = new System.Drawing.Point(674, 124);
-            this.iconPesquisar.Name = "iconPesquisar";
-            this.iconPesquisar.Size = new System.Drawing.Size(44, 36);
-            this.iconPesquisar.TabIndex = 243;
-            this.iconPesquisar.UseVisualStyleBackColor = false;
-            this.iconPesquisar.Click += new System.EventHandler(this.iconPesquisar_Click);
             // 
             // groupBox2
             // 
@@ -329,26 +245,6 @@
             this.autoLabel2.Size = new System.Drawing.Size(51, 16);
             this.autoLabel2.TabIndex = 231;
             this.autoLabel2.Text = "Código";
-            // 
-            // btnPesquisaCliente
-            // 
-            this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaCliente.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaCliente.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaCliente.IconSize = 38;
-            this.btnPesquisaCliente.Location = new System.Drawing.Point(399, 23);
-            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
-            this.btnPesquisaCliente.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaCliente.TabIndex = 230;
-            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
-            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
             // 
             // autoLabel1
             // 
@@ -737,6 +633,110 @@
             this.btnExportarPDF.TabIndex = 252;
             this.btnExportarPDF.UseVisualStyleBackColor = true;
             this.btnExportarPDF.Click += new System.EventHandler(this.btnExportarPDF_Click);
+            // 
+            // btnVerificarPix
+            // 
+            this.btnVerificarPix.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerificarPix.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnVerificarPix.FlatAppearance.BorderSize = 0;
+            this.btnVerificarPix.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnVerificarPix.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnVerificarPix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerificarPix.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerificarPix.IconChar = FontAwesome.Sharp.IconChar.RodSnake;
+            this.btnVerificarPix.IconColor = System.Drawing.Color.SlateGray;
+            this.btnVerificarPix.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnVerificarPix.IconSize = 38;
+            this.btnVerificarPix.Location = new System.Drawing.Point(956, 140);
+            this.btnVerificarPix.Name = "btnVerificarPix";
+            this.btnVerificarPix.Size = new System.Drawing.Size(36, 34);
+            this.btnVerificarPix.TabIndex = 247;
+            this.btnVerificarPix.UseVisualStyleBackColor = true;
+            this.btnVerificarPix.Visible = false;
+            this.btnVerificarPix.Click += new System.EventHandler(this.btnVerificarPix_Click);
+            // 
+            // btnPesquisaVender
+            // 
+            this.btnPesquisaVender.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaVender.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaVender.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaVender.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaVender.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaVender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaVender.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaVender.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaVender.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaVender.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaVender.IconSize = 38;
+            this.btnPesquisaVender.Location = new System.Drawing.Point(611, 137);
+            this.btnPesquisaVender.Name = "btnPesquisaVender";
+            this.btnPesquisaVender.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaVender.TabIndex = 246;
+            this.btnPesquisaVender.UseVisualStyleBackColor = true;
+            this.btnPesquisaVender.Click += new System.EventHandler(this.btnPesquisaVender_Click);
+            // 
+            // iconPesquisar
+            // 
+            this.iconPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconPesquisar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconPesquisar.FlatAppearance.BorderSize = 0;
+            this.iconPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconPesquisar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.iconPesquisar.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconPesquisar.IconColor = System.Drawing.Color.White;
+            this.iconPesquisar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconPesquisar.IconSize = 40;
+            this.iconPesquisar.Location = new System.Drawing.Point(674, 124);
+            this.iconPesquisar.Name = "iconPesquisar";
+            this.iconPesquisar.Size = new System.Drawing.Size(44, 36);
+            this.iconPesquisar.TabIndex = 243;
+            this.iconPesquisar.UseVisualStyleBackColor = false;
+            this.iconPesquisar.Click += new System.EventHandler(this.iconPesquisar_Click);
+            // 
+            // btnPesquisaCliente
+            // 
+            this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaCliente.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaCliente.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaCliente.IconSize = 38;
+            this.btnPesquisaCliente.Location = new System.Drawing.Point(399, 23);
+            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
+            this.btnPesquisaCliente.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaCliente.TabIndex = 230;
+            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
+            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
+            this.btnClose.IconColor = System.Drawing.Color.White;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClose.IconSize = 30;
+            this.btnClose.Location = new System.Drawing.Point(966, 9);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(39, 28);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnTicket
             // 

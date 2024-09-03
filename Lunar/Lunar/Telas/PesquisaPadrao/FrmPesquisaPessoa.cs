@@ -174,5 +174,10 @@ namespace Lunar.Telas.PesquisaPadrao
             else
                 btnPesquisar.PerformClick();
         }
+
+        private void FrmPesquisaPessoa_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

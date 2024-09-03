@@ -45,15 +45,15 @@
             this.txtComplemento = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtBairro = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblCidade = new System.Windows.Forms.Label();
             this.txtCidade = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblUf = new System.Windows.Forms.Label();
             this.txtUf = new System.Windows.Forms.TextBox();
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblCelular = new System.Windows.Forms.Label();
             this.txtFoneFixo = new System.Windows.Forms.MaskedTextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblFone = new System.Windows.Forms.Label();
+            this.lblSegmento = new System.Windows.Forms.Label();
             this.txtSegmento = new System.Windows.Forms.TextBox();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
@@ -65,9 +65,9 @@
             this.txtIe = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lblNome = new System.Windows.Forms.Label();
             this.txtResponsavel = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
+            this.lblCpf = new System.Windows.Forms.Label();
             this.txtCpfResponsavel = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -235,15 +235,15 @@
             this.txtBairro.Size = new System.Drawing.Size(324, 26);
             this.txtBairro.TabIndex = 10;
             // 
-            // label9
+            // lblCidade
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(342, 232);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 20);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Cidade";
+            this.lblCidade.AutoSize = true;
+            this.lblCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCidade.Location = new System.Drawing.Point(342, 232);
+            this.lblCidade.Name = "lblCidade";
+            this.lblCidade.Size = new System.Drawing.Size(59, 20);
+            this.lblCidade.TabIndex = 18;
+            this.lblCidade.Text = "Cidade";
             // 
             // txtCidade
             // 
@@ -255,15 +255,15 @@
             this.txtCidade.Size = new System.Drawing.Size(324, 26);
             this.txtCidade.TabIndex = 11;
             // 
-            // label10
+            // lblUf
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(709, 232);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 20);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "UF";
+            this.lblUf.AutoSize = true;
+            this.lblUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUf.Location = new System.Drawing.Point(709, 232);
+            this.lblUf.Name = "lblUf";
+            this.lblUf.Size = new System.Drawing.Size(31, 20);
+            this.lblUf.TabIndex = 20;
+            this.lblUf.Text = "UF";
             // 
             // txtUf
             // 
@@ -284,15 +284,15 @@
             this.txtCelular.TabIndex = 15;
             this.txtCelular.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // label11
+            // lblCelular
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(484, 307);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(135, 20);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "Celular Whatsapp";
+            this.lblCelular.AutoSize = true;
+            this.lblCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCelular.Location = new System.Drawing.Point(484, 307);
+            this.lblCelular.Name = "lblCelular";
+            this.lblCelular.Size = new System.Drawing.Size(135, 20);
+            this.lblCelular.TabIndex = 22;
+            this.lblCelular.Text = "Celular Whatsapp";
             // 
             // txtFoneFixo
             // 
@@ -303,25 +303,25 @@
             this.txtFoneFixo.Size = new System.Drawing.Size(147, 26);
             this.txtFoneFixo.TabIndex = 16;
             // 
-            // label12
+            // lblFone
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(637, 307);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 20);
-            this.label12.TabIndex = 24;
-            this.label12.Text = "Fone Fixo";
+            this.lblFone.AutoSize = true;
+            this.lblFone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFone.Location = new System.Drawing.Point(637, 307);
+            this.lblFone.Name = "lblFone";
+            this.lblFone.Size = new System.Drawing.Size(79, 20);
+            this.lblFone.TabIndex = 24;
+            this.lblFone.Text = "Fone Fixo";
             // 
-            // label13
+            // lblSegmento
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 307);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(425, 20);
-            this.label13.TabIndex = 27;
-            this.label13.Text = "Segmento da Empresa (Exemplo: Ótica, Loja de Roupas...)";
+            this.lblSegmento.AutoSize = true;
+            this.lblSegmento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSegmento.Location = new System.Drawing.Point(12, 307);
+            this.lblSegmento.Name = "lblSegmento";
+            this.lblSegmento.Size = new System.Drawing.Size(425, 20);
+            this.lblSegmento.TabIndex = 27;
+            this.lblSegmento.Text = "Segmento da Empresa (Exemplo: Ótica, Loja de Roupas...)";
             // 
             // txtSegmento
             // 
@@ -439,15 +439,15 @@
             this.txtEmail.Size = new System.Drawing.Size(421, 26);
             this.txtEmail.TabIndex = 4;
             // 
-            // label18
+            // lblNome
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(12, 366);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(215, 20);
-            this.label18.TabIndex = 41;
-            this.label18.Text = "Nome Responsável Empresa";
+            this.lblNome.AutoSize = true;
+            this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNome.Location = new System.Drawing.Point(12, 366);
+            this.lblNome.Name = "lblNome";
+            this.lblNome.Size = new System.Drawing.Size(215, 20);
+            this.lblNome.TabIndex = 41;
+            this.lblNome.Text = "Nome Responsável Empresa";
             // 
             // txtResponsavel
             // 
@@ -458,15 +458,15 @@
             this.txtResponsavel.Size = new System.Drawing.Size(581, 26);
             this.txtResponsavel.TabIndex = 17;
             // 
-            // label20
+            // lblCpf
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(599, 366);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(136, 20);
-            this.label20.TabIndex = 45;
-            this.label20.Text = "CPF Responsável";
+            this.lblCpf.AutoSize = true;
+            this.lblCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCpf.Location = new System.Drawing.Point(599, 366);
+            this.lblCpf.Name = "lblCpf";
+            this.lblCpf.Size = new System.Drawing.Size(136, 20);
+            this.lblCpf.TabIndex = 45;
+            this.lblCpf.Text = "CPF Responsável";
             // 
             // txtCpfResponsavel
             // 
@@ -591,9 +591,9 @@
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.label20);
+            this.Controls.Add(this.lblCpf);
             this.Controls.Add(this.txtCpfResponsavel);
-            this.Controls.Add(this.label18);
+            this.Controls.Add(this.lblNome);
             this.Controls.Add(this.txtResponsavel);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtEmail);
@@ -605,16 +605,16 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.btnConfirmar);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblSegmento);
             this.Controls.Add(this.txtSegmento);
             this.Controls.Add(this.txtFoneFixo);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblFone);
             this.Controls.Add(this.txtCelular);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblCelular);
             this.Controls.Add(this.btnPesquisarCidade);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.lblUf);
             this.Controls.Add(this.txtUf);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblCidade);
             this.Controls.Add(this.txtCidade);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtBairro);
@@ -668,16 +668,16 @@
         private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtBairro;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblCidade;
         private System.Windows.Forms.TextBox txtCidade;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblUf;
         private System.Windows.Forms.TextBox txtUf;
         private System.Windows.Forms.Button btnPesquisarCidade;
         private System.Windows.Forms.MaskedTextBox txtCelular;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblCelular;
         private System.Windows.Forms.MaskedTextBox txtFoneFixo;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblFone;
+        private System.Windows.Forms.Label lblSegmento;
         private System.Windows.Forms.TextBox txtSegmento;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Label label14;
@@ -689,9 +689,9 @@
         private System.Windows.Forms.TextBox txtIe;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.TextBox txtResponsavel;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblCpf;
         private System.Windows.Forms.TextBox txtCpfResponsavel;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button button2;

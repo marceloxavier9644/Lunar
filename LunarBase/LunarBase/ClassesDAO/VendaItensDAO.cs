@@ -27,5 +27,25 @@ namespace LunarBase.ClassesDAO
             IList<VendaItens> retorno = Session.CreateQuery(sql).List<VendaItens>();
             return retorno;
         }
+
+        public IList<ProdutoVendido> SelecionarProdutosVendidosPorSqlNativo(string sql)
+        {
+            Session = Conexao.GetSession();
+
+            // Executa a query nativa e projeta o resultado na classe ProdutoVendido
+            var resultado = Session.CreateSQLQuery(sql)
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean<ProdutoVendido>())
+                .List<ProdutoVendido>();
+
+            return resultado;
+        }
+
+        public class ProdutoVendido
+        {
+            public int ID { get; set; }
+            public string Descricao { get; set; }
+            public double Quantidade { get; set; }
+            public decimal ValorTotal { get; set; }
+        }
     }
 }

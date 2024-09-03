@@ -2485,7 +2485,7 @@ namespace Lunar.Utils
                 StringBuilder mensagemEmail = new StringBuilder();
                 Email = new MailMessage();
                 Email.To.Add(new MailAddress(emailDestino));
-                Email.From = new MailAddress("arquivosfiscais@lunarsoftware.com.br", "Lunar Software");
+                Email.From = new MailAddress("arquivosfiscais@lunarsoftware.com.br", Sessao.empresaFilialLogada.NomeFantasia);
                 Email.Subject = (assuntoEmail);
                 Email.IsBodyHtml = true;
                 mensagemEmail.Append("<span style=\"font-weight: bold; font-size: 18px\">" + tituloCorpoEmail + "</span><br />");

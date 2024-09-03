@@ -99,5 +99,40 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+        public IList<Produto> selecionarTodosProdutosPaginando(int paginaAtual, int itensPorPagina, string valor)
+        {
+            ProdutoBO bo = new ProdutoBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarTodosPaginando(paginaAtual, itensPorPagina, valor);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
+
+        public Int64 totalTodosProdutosPaginando(string valor)
+        {
+            ProdutoBO bo = new ProdutoBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.totalTodosProdutosPaginando(valor);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

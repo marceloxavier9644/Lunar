@@ -408,6 +408,7 @@ namespace LunarSoftwareAtivador
         {
             if (chkTermosUso.Checked == true)
             {
+                btnConfirmar.Enabled = false;
                 if (ValidarCampos())
                 {
                     int idRepresentante = capturarRepresentante();
@@ -680,27 +681,30 @@ namespace LunarSoftwareAtivador
                 }
                 else
                 {
-                    //como fecho esse form e chamo meu aplicativo que ta instalado no c:\Lunar\Lunar.exe sem dar erro aqui nesse form?  
+                    this.Close();
                 }
             }
         }
 
         private bool ValidarCampos()
         {
-            // Lista de controles de entrada que deseja validar (TextBox e MaskedTextBox)
             List<Control> campos = new List<Control>
-        {
-            txtRazaoSocial,
-            txtCnpj,
-            txtRazaoSocial,
-            txtNomeFantasia,
-            txtCep,
-            txtEndereco,
-            txtCelular,
-            txtCidade,
-            txtResponsavel,
-            txtSegmento,
-        };
+            {
+                txtRazaoSocial,
+                txtCnpj,
+                txtRazaoSocial,
+                txtNomeFantasia
+            };
+
+            if (chkServidor.Checked)
+            {
+                campos.Add(txtCidade);
+                campos.Add(txtCep);
+                campos.Add(txtEndereco);
+                campos.Add(txtCelular);
+                campos.Add(txtResponsavel);
+                campos.Add(txtSegmento);
+            }
 
             foreach (Control campo in campos)
             {
@@ -1249,6 +1253,22 @@ namespace LunarSoftwareAtivador
                     chkServidor.Checked = false;
                     txtServidor.Visible = true;
                     lblServidor.Visible = true;
+
+                    lblCelular.Visible = false;
+                    lblCidade.Visible = false;
+                    lblCpf.Visible = false;
+                    lblFone.Visible = false;
+                    lblNome.Visible = false;
+                    lblSegmento.Visible = false;
+                    lblUf.Visible = false;
+                    txtCelular.Visible = false;
+                    txtCidade.Visible = false;
+                    txtCpfResponsavel.Visible = false;
+                    txtFoneFixo.Visible = false;
+                    txtResponsavel.Visible = false;
+                    txtSegmento.Visible = false;
+                    txtUf.Visible = false;
+                    btnPesquisarCidade.Visible = false;
                     txtServidor.Focus();
                 }
                 else
@@ -1256,6 +1276,22 @@ namespace LunarSoftwareAtivador
                     chkServidor.Checked = true;
                     txtServidor.Visible = false;
                     lblServidor.Visible = false;
+
+                    lblCelular.Visible = true;
+                    lblCidade.Visible = true;
+                    lblCpf.Visible = true;
+                    lblFone.Visible = true;
+                    lblNome.Visible = true;
+                    lblSegmento.Visible = true;
+                    lblUf.Visible = true;
+                    txtCelular.Visible = true;
+                    txtCidade.Visible = true;
+                    txtCpfResponsavel.Visible = true;
+                    txtFoneFixo.Visible = true;
+                    txtResponsavel.Visible = true;
+                    txtSegmento.Visible = true;
+                    txtUf.Visible = true;
+                    btnPesquisarCidade.Visible = true;
                 }
             }
             catch
@@ -1279,7 +1315,8 @@ namespace LunarSoftwareAtivador
 
         private void FrmDemonstracao_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Process.Start(@"C:\Lunar\Lunar.exe");
+            if(!String.IsNullOrEmpty(txtRazaoSocial.Text))
+                Process.Start(@"C:\Lunar\Lunar.exe");
         }
     }
 }

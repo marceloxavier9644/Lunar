@@ -17,6 +17,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using Newtonsoft.Json;
+using NSSuite_CSharp.src.JSON.NFe;
 using OpenQA.Selenium.Internal;
 using Syncfusion.Data;
 using Syncfusion.WinForms.DataGrid;
@@ -93,7 +94,7 @@ namespace Lunar.Telas.Vendas
             this.gridProdutos.DataSource = dsProduto.Tables["Produto"];
             this.gridRecebimento.DataSource = dsPagamento.Tables["Pagamento"];
             this.condicional1 = condicional;
-            
+
             if (condicional1 != null)
             {
                 EsconderTabPagamento();
@@ -547,7 +548,7 @@ namespace Lunar.Telas.Vendas
                             //formBackground.FormBorderStyle = FormBorderStyle.None;
                             formBackground.Opacity = .50d;
                             formBackground.BackColor = Color.Black;
-                           // formBackground.Left = Top = 0;
+                            // formBackground.Left = Top = 0;
                             formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
                             formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
                             formBackground.WindowState = FormWindowState.Maximized;
@@ -607,7 +608,7 @@ namespace Lunar.Telas.Vendas
                             //formBackground.FormBorderStyle = FormBorderStyle.None;
                             formBackground.Opacity = .50d;
                             formBackground.BackColor = Color.Black;
-                           // formBackground.Left = Top = 0;
+                            // formBackground.Left = Top = 0;
                             formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
                             formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
                             formBackground.WindowState = FormWindowState.Maximized;
@@ -667,7 +668,7 @@ namespace Lunar.Telas.Vendas
                             //formBackground.FormBorderStyle = FormBorderStyle.None;
                             formBackground.Opacity = .50d;
                             formBackground.BackColor = Color.Black;
-                           // formBackground.Left = Top = 0;
+                            // formBackground.Left = Top = 0;
                             formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
                             formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
                             formBackground.WindowState = FormWindowState.Maximized;
@@ -766,7 +767,7 @@ namespace Lunar.Telas.Vendas
                     bandeira = " " + vendaFormaPagamento.BandeiraCartao.Descricao;
                     if (!String.IsNullOrEmpty(vendaFormaPagamento.AutorizacaoCartao))
                         aut = " AUT: " + vendaFormaPagamento.AutorizacaoCartao;
-                    if(vendaFormaPagamento.ParcelamentoFk != null)
+                    if (vendaFormaPagamento.ParcelamentoFk != null)
                     {
                         if (vendaFormaPagamento.ParcelamentoFk.Debito == true)
                             condicao = " DÉBITO";
@@ -774,7 +775,7 @@ namespace Lunar.Telas.Vendas
                             condicao = " " + vendaFormaPagamento.Parcelamento.ToString() + "X";
                     }
 
-                        
+
                     adquirente = (" - ") + vendaFormaPagamento.AdquirenteCartao.Descricao;
                 }
                 if (vendaFormaPagamento.FormaPagamento.Crediario == true)
@@ -842,12 +843,11 @@ namespace Lunar.Telas.Vendas
         {
             if (e.KeyChar == 13)
             {
-                //PesquisarProdutoPorDescricao(txtPesquisaProduto.Texts.Trim());
-                PesquisarProdutoNovoMetodo(txtPesquisaProduto.Texts.Trim());
+                PesquisarProduto(txtPesquisaProduto.Texts.Trim());
             }
         }
 
-        private void PesquisarProdutoNovoMetodo(string valor)
+        private void PesquisarProduto(string valor)
         {
             txtQuantidade.TextAlign = HorizontalAlignment.Center;
             txtValorUnitario.TextAlign = HorizontalAlignment.Center;
@@ -867,7 +867,7 @@ namespace Lunar.Telas.Vendas
                 //String sql = "SELECT p.Id AS ProdutoId, p.DESCRICAO AS ProdutoNome, pg.Id AS ProdutoGradeId, pg.Descricao AS DescricaoGrade, COALESCE(um.Descricao, p.UnidadeMedida) AS UnidadeMedida, COALESCE(pg.ValorVenda, p.ValorVenda) AS ValorVenda, COALESCE(pcb.CodigoBarras, (SELECT pcb2.CodigoBarras FROM ProdutoCodigoBarras pcb2 WHERE pcb2.Produto = p.Id LIMIT 1)) AS CodigoBarras FROM Produto p LEFT JOIN ProdutoGrade pg ON p.Id = pg.Produto LEFT JOIN ProdutoCodigoBarras pcb ON pg.Id = pcb.PRODUTOGRADE LEFT JOIN UnidadeMedida um ON pg.UnidadeMedida = um.Id WHERE (pcb.CodigoBarras = '" + valor+"' OR (pg.Id IS NULL AND pcb.CodigoBarras IS NULL AND p.Id IN (SELECT p2.Id FROM Produto p2 LEFT JOIN ProdutoCodigoBarras pcb2 ON p2.Id = pcb2.Produto WHERE pcb2.CodigoBarras = '"+valor+"'))) AND p.FlagExcluido = 0 AND (pg.FlagExcluido = 0 OR pg.FlagExcluido IS NULL) AND (pcb.FlagExcluido = 0 OR pcb.FlagExcluido IS NULL) AND (um.FlagExcluido = 0 OR um.FlagExcluido IS NULL);";
 
                 //Consulta para casos que todos itens tenha uma grade
-                String sql = "SELECT p.Id AS ProdutoId, p.DESCRICAO AS ProdutoNome, pg.Id AS ProdutoGradeId, pg.Descricao AS DescricaoGrade, COALESCE(um.Id, p.UnidadeMedida) AS UnidadeMedida, COALESCE(pg.ValorVenda, p.ValorVenda) AS ValorVenda, COALESCE(pcb.CodigoBarras, (SELECT pcb2.CodigoBarras FROM ProdutoCodigoBarras pcb2 WHERE pcb2.Produto = p.Id LIMIT 1)) AS CodigoBarras FROM Produto p JOIN ProdutoGrade pg ON p.Id = pg.Produto LEFT JOIN ProdutoCodigoBarras pcb ON pg.Id = pcb.ProdutoGrade LEFT JOIN UnidadeMedida um ON pg.UnidadeMedida = um.Id WHERE pcb.CodigoBarras = '"+valor+"' AND p.FlagExcluido = 0 AND pg.FlagExcluido = 0 AND (pcb.FlagExcluido = 0 OR pcb.FlagExcluido IS NULL) AND (um.FlagExcluido = 0 OR um.FlagExcluido IS NULL)";
+                String sql = "SELECT p.Id AS ProdutoId, p.DESCRICAO AS ProdutoNome, pg.Id AS ProdutoGradeId, pg.Descricao AS DescricaoGrade, COALESCE(um.Id, p.UnidadeMedida) AS UnidadeMedida, COALESCE(pg.ValorVenda, p.ValorVenda) AS ValorVenda, COALESCE(pcb.CodigoBarras, (SELECT pcb2.CodigoBarras FROM ProdutoCodigoBarras pcb2 WHERE pcb2.Produto = p.Id LIMIT 1)) AS CodigoBarras FROM Produto p JOIN ProdutoGrade pg ON p.Id = pg.Produto LEFT JOIN ProdutoCodigoBarras pcb ON pg.Id = pcb.ProdutoGrade LEFT JOIN UnidadeMedida um ON pg.UnidadeMedida = um.Id WHERE pcb.CodigoBarras = '" + valor + "' AND p.FlagExcluido = 0 AND pg.FlagExcluido = 0 AND (pcb.FlagExcluido = 0 OR pcb.FlagExcluido IS NULL) AND (um.FlagExcluido = 0 OR um.FlagExcluido IS NULL)";
 
                 ProdutoGradeController produtoGradeController = new ProdutoGradeController();
                 IList<ProdutoResult> lista = produtoDAO.selecionarProdutosPorSqlResult(sql);
@@ -938,7 +938,7 @@ namespace Lunar.Telas.Vendas
                         }
                     }
                 }
-                
+
             }
             //Verifica se é Id do produto
             else if (ENumeroMenorQue5Digitos(valor))
@@ -969,7 +969,7 @@ namespace Lunar.Telas.Vendas
                                 this.produto = prod;
                                 this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
                                 lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-              
+
                                 produto.GradePrincipal = produtoGrade;
 
                                 //inserirItem(this.produto);
@@ -1005,7 +1005,7 @@ namespace Lunar.Telas.Vendas
             //Pesquisa por descricao ou referencia
             else
             {
-                PesquisarProdutoPorDescricao(valor);
+                novaPesquisaProdutos();
             }
         }
 
@@ -1072,7 +1072,7 @@ namespace Lunar.Telas.Vendas
             btnAdicionar.Enabled = true;
         }
 
-        private void PesquisarProdutoPorDescricao(string valor)
+        private async void PesquisarProdutoPorDescricao(string valor)
         {
             txtQuantidade.TextAlign = HorizontalAlignment.Center;
             txtValorUnitario.TextAlign = HorizontalAlignment.Center;
@@ -1084,14 +1084,18 @@ namespace Lunar.Telas.Vendas
             if (valor.Contains("*"))
                 valor = valor.Substring(valor.IndexOf("*") + 1);
 
-            listaProdutos = produtoController.selecionarProdutosComVariosFiltros(valor, Sessao.empresaFilialLogada);
+            lblCarregando.Visible = true;
+            listaProdutos = await Task.Run(() => produtoController.selecionarProdutosComVariosFiltros(valor, Sessao.empresaFilialLogada));
+            lblCarregando.Visible = false;
+
+            //listaProdutos = produtoController.selecionarProdutosComVariosFiltros(valor, Sessao.empresaFilialLogada);
             if (listaProdutos.Count == 1)
             {
-        
+
                 desbloquearCamposValorQuantidade();
                 foreach (Produto prod in listaProdutos)
                 {
-                    if(prod.Veiculo == true)
+                    if (prod.Veiculo == true)
                     {
                         FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
                         frmProdutoCadastro.ShowDialog();
@@ -1135,13 +1139,13 @@ namespace Lunar.Telas.Vendas
                     }
                 }
             }
-            else if (listaProdutos.Count > 1)
+            else if (listaProdutos.Count > 1 && listaProdutos.Count < 50)
             {
                 Object produtoOjeto = new Produto();
                 Form formBackground = new Form();
                 try
                 {
-                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Produto", "and CONCAT(Tabela.Id, ' ', Tabela.Descricao, ' ', Tabela.Ean, ' ', Tabela.Referencia, ' ', Tabela.Ncm) like '%" + valor + "%'"))
+                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Produto", "and CONCAT(Tabela.Id, ' ', Tabela.Descricao, ' ', Tabela.Ean, ' ', Tabela.Referencia) like '%" + valor + "%'"))
                     {
                         formBackground.StartPosition = FormStartPosition.Manual;
                         //formBackground.FormBorderStyle = FormBorderStyle.None;
@@ -1269,7 +1273,142 @@ namespace Lunar.Telas.Vendas
                 {
                     formBackground.Dispose();
                 }
-               // GenericaDesktop.ShowInfo("Função de pesquisa extra em desenvolvimento...");
+                // GenericaDesktop.ShowInfo("Função de pesquisa extra em desenvolvimento...");
+            }
+            else if (listaProdutos.Count >= 50)
+            {
+                Object produtoOjeto = new Produto();
+                Form formBackground = new Form();
+                try
+                {
+                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao(listaProdutos))
+                    {
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        switch (uu.showModal("Produto", "", ref produtoOjeto))
+                        {
+                            case DialogResult.Ignore:
+                                uu.Dispose();
+                                FrmProdutoCadastro form = new FrmProdutoCadastro();
+                                if (form.showModalNovo(ref produtoOjeto, false) == DialogResult.OK)
+                                {
+                                    desbloquearCamposValorQuantidade();
+                                    txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
+                                    txtQuantidade.Texts = "1";
+                                    txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
+                                    txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
+                                    this.produto = ((Produto)produtoOjeto);
+                                    if (this.produto.Grade == true)
+                                    {
+                                        ProdutoGrade produtoGrade = new ProdutoGrade();
+                                        produtoGrade = selecionarGrade(produto);
+
+                                        if (produtoGrade != null)
+                                        {
+                                            txtPesquisaProduto.Texts = produto.Descricao;
+                                            txtQuantidade.Texts = "1";
+                                            txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                            txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                            this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                                            lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
+                                            this.produto.GradePrincipal = produtoGrade;
+                                            //inserirItem(this.produto);
+                                            txtQuantidade.Focus();
+                                            txtQuantidade.Select();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (valorAux.Contains("*"))
+                                            txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                                        if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()))
+                                            inserirItem(this.produto);
+                                        else
+                                        {
+                                            txtQuantidade.Focus();
+                                            txtQuantidade.SelectAll();
+                                        }
+                                        if (((Produto)produtoOjeto).Veiculo == true)
+                                        {
+                                            FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
+                                            frmProdutoCadastro.ShowDialog();
+                                        }
+                                    }
+                                }
+                                form.Dispose();
+                                break;
+                            case DialogResult.OK:
+
+                                desbloquearCamposValorQuantidade();
+                                txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
+
+                                Produto prod = ((Produto)produtoOjeto);
+                                if (prod.Grade == true)
+                                {
+                                    ProdutoGrade produtoGrade = new ProdutoGrade();
+                                    produtoGrade = selecionarGrade(prod);
+
+                                    if (produtoGrade != null)
+                                    {
+                                        txtPesquisaProduto.Texts = prod.Descricao;
+                                        txtQuantidade.Texts = "1";
+                                        txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                        txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                        this.produto = prod;
+                                        this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                                        lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
+                                        this.produto.GradePrincipal = produtoGrade;
+                                        //inserirItem(this.produto);
+                                        txtQuantidade.Focus();
+                                        txtQuantidade.Select();
+                                    }
+                                }
+                                else
+                                {
+
+                                    txtQuantidade.Texts = "1";
+                                    txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
+                                    txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
+                                    this.produto = ((Produto)produtoOjeto);
+                                    if (valorAux.Contains("*"))
+                                        txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                                    if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()) && !String.IsNullOrEmpty(valor))
+                                        inserirItem(this.produto);
+                                    else
+                                    {
+                                        txtQuantidade.Focus();
+                                        txtQuantidade.SelectAll();
+                                    }
+                                    if (((Produto)produtoOjeto).Veiculo == true)
+                                    {
+                                        FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
+                                        frmProdutoCadastro.ShowDialog();
+                                    }
+                                }
+                                break;
+                        }
+                        formBackground.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    formBackground.Dispose();
+                }
             }
             else
             {
@@ -1336,7 +1475,19 @@ namespace Lunar.Telas.Vendas
         {
             if (e.KeyChar == 13)
             {
-                btnPesquisaCliente.PerformClick();
+                IList<Pessoa> listaCliente = pessoaController.selecionarClientesComVariosFiltros(txtPesquisaCliente.Texts);
+                if (listaCliente.Count == 1)
+                {
+                    foreach (Pessoa pessoa in listaCliente)
+                    {
+                        txtPesquisaCliente.Texts = pessoa.RazaoSocial;
+                        txtCodCliente.Texts = pessoa.Id.ToString();
+                        txtPesquisaProduto.Focus();
+                        generica.buscarAlertaCadastrado(pessoa);
+                    }
+                }
+                else
+                    btnPesquisaCliente.PerformClick();
             }
         }
 
@@ -1476,13 +1627,13 @@ namespace Lunar.Telas.Vendas
             int h = Screen.PrimaryScreen.Bounds.Height;
             if (w == 1920 && h == 1080)
             {
-               // MessageBox.Show("Full HD");
+                // MessageBox.Show("Full HD");
                 this.panelPagamento.Location = new Point(this.panel6.Size.Width / 3, this.panelPagamento.Location.Y);
                 this.panel4.Location = new Point(this.panel6.Size.Width / 2, this.panel4.Location.Y);
             }
             else
             {
-               // MessageBox.Show("Não é Full HD");
+                // MessageBox.Show("Não é Full HD");
                 this.panelPagamento.Location = new Point(this.panel6.Size.Width / 9, this.panelPagamento.Location.Y);
                 this.panel4.Location = new Point(this.panel6.Size.Width / 4, this.panel4.Location.Y);
                 // lblNumeroVenda.Location = new Point(this.panel6.Size.Width / 3, this.lblNumeroVenda.Location.Y);
@@ -1493,7 +1644,7 @@ namespace Lunar.Telas.Vendas
             lblFormaPagamento.BorderColor = System.Drawing.Color.White;
             lblFormaPagamento.Enabled = false;
 
-          
+
             if (Sessao.permissoes.Count > 0)
             {
                 // Habilitar ou desabilitar os controles com base nas permissões
@@ -1504,7 +1655,7 @@ namespace Lunar.Telas.Vendas
                 btnPesquisaVendedor.Enabled = Sessao.permissoes.Contains("64");
                 btnSelecionaVendedorTela2.Enabled = Sessao.permissoes.Contains("64");
                 txtVendedorSelecionado.Enabled = Sessao.permissoes.Contains("64");
-                txtCodVendedor.Enabled = Sessao.permissoes.Contains("64"); 
+                txtCodVendedor.Enabled = Sessao.permissoes.Contains("64");
                 txtNomeVendedor.Enabled = Sessao.permissoes.Contains("64");
                 btnCrediario.Enabled = Sessao.permissoes.Contains("65");
                 btnBoleto.Enabled = Sessao.permissoes.Contains("66");
@@ -1545,7 +1696,7 @@ namespace Lunar.Telas.Vendas
                         break;
 
                     case Keys.F6:
-                        if(Sessao.permissoes.Contains("62"))
+                        if (Sessao.permissoes.Contains("62"))
                             btnDescontoItem.PerformClick();
                         break;
 
@@ -1590,7 +1741,7 @@ namespace Lunar.Telas.Vendas
                         break;
 
                     case Keys.F10:
-                        if(Sessao.permissoes.Contains("66"))
+                        if (Sessao.permissoes.Contains("66"))
                             btnBoleto.PerformClick();
                         break;
                     case Keys.F11:
@@ -1645,7 +1796,7 @@ namespace Lunar.Telas.Vendas
                     //     e.Style.Font.FontStyle = FontStyle.Strikeout;
                     if (dataRowView != null && !dataRowView["ItemExcluido"].ToString().Equals("True"))
                     {
-                        if(!String.IsNullOrEmpty(dataRowView.Row[7].ToString()))
+                        if (!String.IsNullOrEmpty(dataRowView.Row[7].ToString()))
                             descontoItem = descontoItem + decimal.Parse(dataRowView.Row[7].ToString());
                         valorTotal = valorTotal + decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
                         pecas = pecas + double.Parse(dataRowView.Row["Quantidade"].ToString());
@@ -1655,10 +1806,10 @@ namespace Lunar.Telas.Vendas
 
                     }
                 }
-                if(inseridoDescontoItem == true)
+                if (inseridoDescontoItem == true)
                     txtDesconto.Texts = descontoItem.ToString("C2", CultureInfo.CurrentCulture);
 
-               // decimal descontoPercentualNaVenda = 0;
+                // decimal descontoPercentualNaVenda = 0;
                 //if(inseridoDescontoTotal == true)
                 //{
                 //    //Ratear desconto nos produtos
@@ -1668,7 +1819,7 @@ namespace Lunar.Telas.Vendas
 
                 txtValorTotalProdutos.Texts = valorTotal.ToString("C2", CultureInfo.CurrentCulture);
                 txtTotalItens.Texts = pecas + " Total";
-                if(!String.IsNullOrEmpty(txtDesconto.Texts))
+                if (!String.IsNullOrEmpty(txtDesconto.Texts))
                 {
                     valorComDesconto = valorTotal - decimal.Parse(txtDesconto.Texts.Replace("R$ ", ""));
                 }
@@ -1819,7 +1970,7 @@ namespace Lunar.Telas.Vendas
                 formBackground.Dispose();
             }
         }
-        
+
         private void gridProdutos_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
         {
             if (e.RowIndex % 2 == 0)
@@ -1861,7 +2012,7 @@ namespace Lunar.Telas.Vendas
             PessoaPropriedadeController pessoaPropriedadeController = new PessoaPropriedadeController();
             IList<PessoaPropriedade> listaPropriedades = new List<PessoaPropriedade>();
             listaPropriedades = pessoaPropriedadeController.selecionarPropriedadesPorPessoa(cliente.Id);
-            if(listaPropriedades.Count > 0)
+            if (listaPropriedades.Count > 0)
             {
                 //GenericaDesktop.ShowInfo("Cliente possui propriedades cadastradas, selecione a propriedade para ativar a inscrição estadual e endereço corretamente!");
                 Object pessoaPropriedadeOjeto = new PessoaPropriedade();
@@ -2297,7 +2448,7 @@ namespace Lunar.Telas.Vendas
                         vfp.Id = int.Parse(row.ItemArray[3].ToString());
                         vfp = (VendaFormaPagamento)Controller.getInstance().selecionar(vfp);
 
- 
+
                         //Somente se for forma de pagamento que tem conta a receber
                         if (vfp.FormaPagamento.Crediario == true || vfp.FormaPagamento.Cheque == true || vfp.FormaPagamento.Boleto == true)
                         {
@@ -2426,7 +2577,7 @@ namespace Lunar.Telas.Vendas
                         //Concluir a venda antes de gerar a nota
                         concluirVenda(venda, true);
                         numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFCe;
-       
+
                         xmlStrEnvio = emitirNFCe.gerarXMLNfce(valorTotal, valorComDesconto, decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFCe, listaProdutosNFe, venda.Cliente, venda, null, null, "");
                         if (!String.IsNullOrEmpty(xmlStrEnvio))
                         {
@@ -2505,7 +2656,7 @@ namespace Lunar.Telas.Vendas
                     nfeProduto.ValorCofins = 0;
                     nfeProduto.ValorDesconto = descontoItem;
                     nfeProduto.ValorFinal = Math.Round((produto.ValorVenda * decimal.Parse(quantidade.ToString())) - descontoItem, 4);
-  
+
                     nfeProduto.UComConvertida = produto.UnidadeMedida.Sigla;
                     nfeProduto.ValorIpi = 0;
                     nfeProduto.ValorPis = 0;
@@ -2513,7 +2664,7 @@ namespace Lunar.Telas.Vendas
 
                     listaProdutosNFe.Add(nfeProduto);
                 }
-            } 
+            }
         }
 
         private void enviarXMLNFCeParaApi(string xmlNfce)
@@ -2546,12 +2697,12 @@ namespace Lunar.Telas.Vendas
                     }
                     nfe.Lancada = true;
                     Controller.getInstance().salvar(nfe);
-                    
+
                     //Estoque
                     AtualizaEstoque(true, "NF SAÍDA: " + nfe.NNf + " MOD: " + nfe.Modelo);
                     armazenaXmlAutorizadoNoBanco();
                     GenericaDesktop.ShowInfo("Venda concluída com Sucesso, nota autorizada!");
-                   
+
                     if (File.Exists(caminhoXML + nfe.Chave + "-procNFe.pdf"))
                     {
                         FrmPDF frmPDF = new FrmPDF(caminhoXML + nfe.Chave + "-procNFe.pdf");
@@ -2584,10 +2735,10 @@ namespace Lunar.Telas.Vendas
                             {
                                 nfe.Nuvem = true;
                                 Controller.getInstance().salvar(nfe);
-                                
+
                             }
                         }
-                    }   
+                    }
                 }
 
                 //Falha conexao
@@ -2639,16 +2790,16 @@ namespace Lunar.Telas.Vendas
             {
                 Directory.CreateDirectory(caminhoArmazenamento);
             }
-            if(!(caminhoArmazenamento.Length - 1).Equals(@"\"))
+            if (!(caminhoArmazenamento.Length - 1).Equals(@"\"))
             {
-                caminhoArmazenamento = caminhoArmazenamento + @"\"; 
+                caminhoArmazenamento = caminhoArmazenamento + @"\";
             }
             string arquivo = caminhoArmazenamento + nomeArquivo;
             if (!File.Exists(arquivo))
             {
                 XmlDocument doc = new XmlDocument();
                 doc.LoadXml(xml);
-                
+
                 XmlWriterSettings settings = new XmlWriterSettings();
                 settings.Encoding = new UTF8Encoding(false);
                 using (XmlWriter writer = XmlWriter.Create(arquivo, settings))
@@ -2657,7 +2808,7 @@ namespace Lunar.Telas.Vendas
                     writer.Close();
                 }
             }
-            if(emiteContigencia == true)
+            if (emiteContigencia == true)
             {
                 if (!String.IsNullOrEmpty(Sessao.parametroSistema.PastaRemessaNsCloud))
                 {
@@ -2671,7 +2822,7 @@ namespace Lunar.Telas.Vendas
                 else
                     GenericaDesktop.ShowAlerta("Venda Concluída, porém a pasta de envio em contigência não foi configurada, " +
                         "favor solicite suporte a sua revenda autorizada e solicite a configuração, enquanto isso sua nota ficará " +
-                        "na tela de gerenciamento de notas para você tentar reenviar a sefaz");          
+                        "na tela de gerenciamento de notas para você tentar reenviar a sefaz");
             }
         }
 
@@ -2683,7 +2834,7 @@ namespace Lunar.Telas.Vendas
         private async void aguardarParaLerRetornoContigencia(string arquivoTXT)
         {
             await GenericaDesktop.VerificaProgramaContigenciaEstaEmExecucao();
-            
+
             //Aguarda até gerar o arquivo txt na pasta de retorno ou em 10 segundos retorna com falha
             abrirFormAguardar();
 
@@ -2802,7 +2953,7 @@ namespace Lunar.Telas.Vendas
                 if (linha != null)
                 {
                     string[] DadosColetados = linha.Split('|');
-                    if(DadosColetados.Length > 4)
+                    if (DadosColetados.Length > 4)
                     {
                         chave = DadosColetados[5].Replace("NFe", "");
                         statusContigencia = DadosColetados[4];
@@ -2896,7 +3047,7 @@ namespace Lunar.Telas.Vendas
                     vendaItens.ValorPis = 0;
                     vendaItens.Venda = venda;
 
-                    Controller.getInstance().salvar(vendaItens);  
+                    Controller.getInstance().salvar(vendaItens);
                 }
             }
         }
@@ -2909,7 +3060,7 @@ namespace Lunar.Telas.Vendas
             foreach (var record in records)
             {
                 var dataRowView = record.Data as DataRowView;
-                if(!String.IsNullOrEmpty(dataRowView.Row[7].ToString()))
+                if (!String.IsNullOrEmpty(dataRowView.Row[7].ToString()))
                     descontoEmItens = descontoEmItens + decimal.Parse(dataRowView.Row[7].ToString());
             }
             if (descontoEmItens <= 0)
@@ -2970,7 +3121,7 @@ namespace Lunar.Telas.Vendas
             else
             {
                 if (GenericaDesktop.ShowConfirmacao("Você possui desconto em itens avulsos, ao adicionar desconto no total da venda é desconsiderado o desconto em itens, deseja continuar?"))
-                {       
+                {
                     var records2 = gridProdutos.View.Records;
                     int i = 1;
                     foreach (var record in records2)
@@ -3061,8 +3212,8 @@ namespace Lunar.Telas.Vendas
             {
                 //Se deu diferenca de centavos, ajustar no ultimo item
                 decimal diferenca = decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")) - somarDescontoTotal;
-               // MessageBox.Show("Diferença " + diferenca.ToString("N2"));
-                if(somarDescontoTotal > decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")))
+                // MessageBox.Show("Diferença " + diferenca.ToString("N2"));
+                if (somarDescontoTotal > decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")))
                 {
                     valorDescontoInformado = valorDescontoInformado - diferenca;
                     int index = gridProdutos.RowCount - 1;
@@ -3094,7 +3245,7 @@ namespace Lunar.Telas.Vendas
                     {
                         formBackground.StartPosition = FormStartPosition.Manual;
                         //formBackground.FormBorderStyle = FormBorderStyle.None;
-                        formBackground.Opacity = .50d; 
+                        formBackground.Opacity = .50d;
                         formBackground.BackColor = Color.Black;
                         //formBackground.Left = Top = 0;
                         formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
@@ -3121,7 +3272,7 @@ namespace Lunar.Telas.Vendas
                                         foreach (var record in records)
                                         {
                                             var dataRowView = record.Data as DataRowView;
-                                            if(!String.IsNullOrEmpty(dataRowView.Row[7].ToString()))
+                                            if (!String.IsNullOrEmpty(dataRowView.Row[7].ToString()))
                                                 somaValorTotalDescontoItens = somaValorTotalDescontoItens + decimal.Parse(dataRowView.Row[7].ToString());
                                         }
                                         txtDesconto.Texts = somaValorTotalDescontoItens.ToString("C2", CultureInfo.CurrentCulture);
@@ -3223,7 +3374,7 @@ namespace Lunar.Telas.Vendas
 
 
                 vendaConclusao.Concluida = true;
-                if(this.condicional1 != null)
+                if (this.condicional1 != null)
                 {
                     if (this.condicional1.Id > 0)
                         vendaConclusao.Condicional = this.condicional1;
@@ -3248,12 +3399,12 @@ namespace Lunar.Telas.Vendas
                         lisRec.Add(cr);
 
                         //Gerar boletos
-                        if(cr.FormaPagamento.Id == 5)
+                        if (cr.FormaPagamento.Id == 5)
                         {
                             listaGerarBoleto.Add(cr);
                         }
                     }
-                    if(listaGerarBoleto.Count > 0)
+                    if (listaGerarBoleto.Count > 0)
                     {
                         gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaGerarBoleto, vendaConclusao.Cliente);
                     }
@@ -3269,7 +3420,7 @@ namespace Lunar.Telas.Vendas
                         Controller.getInstance().salvar(cx);
                     }
                 }
-                if(lisRec.Count > 0)
+                if (lisRec.Count > 0)
                 {
                     FrmImprimirDuplicata frDup = new FrmImprimirDuplicata(vendaConclusao.Cliente, lisRec);
                     frDup.ShowDialog();
@@ -3282,7 +3433,7 @@ namespace Lunar.Telas.Vendas
                     MensagemPosVenda msgPos = new MensagemPosVenda();
                     if (Sessao.parametroSistema.AtivarMensagemPosVendas == true && venda.Cliente != null)
                     {
-                        if (venda.Cliente.Id > 0) 
+                        if (venda.Cliente.Id > 0)
                         {
                             msgPos.DataAgendamento = DateTime.Now.AddMinutes(int.Parse(Sessao.parametroSistema.MensagemPosVendasQtdDiasOuMinutos));
                             if (msgPos.DataAgendamento.TimeOfDay > TimeSpan.Parse("18:00:00"))
@@ -3313,7 +3464,7 @@ namespace Lunar.Telas.Vendas
                         }
                         this.condicional1.DataEncerramento = DateTime.Now;
                         this.condicional1.Venda = vendaConclusao;
-                 
+
                         Controller.getInstance().salvar(this.condicional1);
                         this.Close();
                     }
@@ -3323,7 +3474,7 @@ namespace Lunar.Telas.Vendas
             catch (Exception erro)
             {
                 GenericaDesktop.ShowErro("Falha ao concluir venda: " + erro.Message);
-            }    
+            }
         }
 
         private void AtualizaEstoque(bool conciliado, string descricaoEstoque)
@@ -3357,14 +3508,14 @@ namespace Lunar.Telas.Vendas
                         prod.EstoqueAuxiliar = prod.EstoqueAuxiliar - estoque.Quantidade;
                         estoque.Conciliado = false;
                     }
-                
+
                     Controller.getInstance().salvar(estoque);
                     Controller.getInstance().salvar(prod);
                     //prod = estoque.Produto;
                 }
             }
         }
-       private void limparCampos()
+        private void limparCampos()
         {
             tabControlAdv1.SelectedTab = tabVenda;
             venda = new Venda();
@@ -3444,8 +3595,115 @@ namespace Lunar.Telas.Vendas
 
         private void btnPesquisaProduto_Click(object sender, EventArgs e)
         {
-            PesquisarProdutoPorDescricao(txtPesquisaProduto.Texts.Trim());
+            //PesquisarProdutoPorDescricao(txtPesquisaProduto.Texts.Trim());
+            novaPesquisaProdutos();
         }
+
+        private void novaPesquisaProdutos()
+        {
+            object produtoOjeto = new Produto();
+            Produto product = new Produto();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaProduto uu = new FrmPesquisaProduto(txtPesquisaProduto.Texts))
+                {
+                    txtPesquisaProduto.Texts = "";
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal(ref product))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmProdutoCadastro form = new FrmProdutoCadastro();
+                            Object produtoObj = new Produto();
+                            if (form.showModalNovo(ref produtoObj, false) == DialogResult.OK)
+                            {
+                                txtPesquisaProduto.Texts = ((Produto)produtoObj).Descricao;
+                                produto = ((Produto)produtoObj);
+                                desbloquearCamposValorQuantidade();
+                                puxarGradePorProduto(product);
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtPesquisaProduto.Texts = product.Descricao;
+                            produto = product;
+                            desbloquearCamposValorQuantidade();
+                            puxarGradePorProduto(product);
+                            //txtPesquisaProduto.Focus();
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        private void puxarGradePorProduto(Produto prod)
+        {
+            string valorAux = txtPesquisaProduto.Texts.Trim();
+            if (prod.Grade == true)
+            {
+                ProdutoGrade produtoGrade = new ProdutoGrade();
+                produtoGrade = selecionarGrade(prod);
+
+                if (produtoGrade != null)
+                {
+                    txtPesquisaProduto.Texts = prod.Descricao;
+                    txtQuantidade.Texts = "1";
+                    txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                    txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                    this.produto = prod;
+                    this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                    lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
+                    this.produto.GradePrincipal = produtoGrade;
+                    //inserirItem(this.produto);
+                    txtQuantidade.Focus();
+                    txtQuantidade.Select();
+                }
+            }
+            else
+            {
+
+                txtQuantidade.Texts = "1";
+                txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                this.produto = prod;
+                if (txtPesquisaProduto.Texts.Contains("*"))
+                    txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                if (prod.Ean.Equals(txtPesquisaProduto.Texts.Trim()) && !String.IsNullOrEmpty(txtPesquisaProduto.Texts))
+                    inserirItem(this.produto);
+                else
+                {
+                    txtQuantidade.Focus();
+                    txtQuantidade.SelectAll();
+                }
+                if (prod.Veiculo == true)
+                {
+                    FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
+                    frmProdutoCadastro.ShowDialog();
+                }
+            }
+        }       
 
         private void btnImprimirRecibo_Click(object sender, EventArgs e)
         {

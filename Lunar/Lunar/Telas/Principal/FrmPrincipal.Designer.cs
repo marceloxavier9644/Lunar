@@ -69,6 +69,7 @@
             this.btnImportar = new System.Windows.Forms.ToolStripMenuItem();
             this.integraçõesEcommerceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuFinanceiro = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
+            this.abrirCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adiantamentoValeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnContaReceberLista = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,7 +108,7 @@
             this.btnGrupo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSetor = new System.Windows.Forms.ToolStripMenuItem();
             this.variaçõesCaracterísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendasPorProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -715,7 +716,14 @@
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 224);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 202);
+            // 
+            // abrirCaixaToolStripMenuItem
+            // 
+            this.abrirCaixaToolStripMenuItem.Name = "abrirCaixaToolStripMenuItem";
+            this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.abrirCaixaToolStripMenuItem.Text = "Abrir Caixa";
+            this.abrirCaixaToolStripMenuItem.Click += new System.EventHandler(this.abrirCaixaToolStripMenuItem_Click);
             // 
             // adiantamentoValeToolStripMenuItem
             // 
@@ -877,7 +885,7 @@
             this.dropMenuRelatorios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuRelatorios.Name = "rjDropdownMenu1";
             this.dropMenuRelatorios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuRelatorios.Size = new System.Drawing.Size(238, 136);
+            this.dropMenuRelatorios.Size = new System.Drawing.Size(238, 158);
             // 
             // toolStripMenuItem1
             // 
@@ -933,7 +941,8 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnConsultaVendasRelatorio});
+            this.btnConsultaVendasRelatorio,
+            this.vendasPorProdutoToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(237, 22);
             this.toolStripMenuItem2.Text = "Vendas";
@@ -941,7 +950,7 @@
             // btnConsultaVendasRelatorio
             // 
             this.btnConsultaVendasRelatorio.Name = "btnConsultaVendasRelatorio";
-            this.btnConsultaVendasRelatorio.Size = new System.Drawing.Size(194, 22);
+            this.btnConsultaVendasRelatorio.Size = new System.Drawing.Size(217, 22);
             this.btnConsultaVendasRelatorio.Text = "Consulta Vendas";
             this.btnConsultaVendasRelatorio.Click += new System.EventHandler(this.btnConsultaVendasRelatorio_Click);
             // 
@@ -1033,12 +1042,12 @@
             this.variaçõesCaracterísticasToolStripMenuItem.Text = "Variações/Características";
             this.variaçõesCaracterísticasToolStripMenuItem.Click += new System.EventHandler(this.variaçõesCaracterísticasToolStripMenuItem_Click);
             // 
-            // abrirCaixaToolStripMenuItem
+            // vendasPorProdutoToolStripMenuItem
             // 
-            this.abrirCaixaToolStripMenuItem.Name = "abrirCaixaToolStripMenuItem";
-            this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.abrirCaixaToolStripMenuItem.Text = "Abrir Caixa";
-            this.abrirCaixaToolStripMenuItem.Click += new System.EventHandler(this.abrirCaixaToolStripMenuItem_Click);
+            this.vendasPorProdutoToolStripMenuItem.Name = "vendasPorProdutoToolStripMenuItem";
+            this.vendasPorProdutoToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.vendasPorProdutoToolStripMenuItem.Text = "Vendas por Produto";
+            this.vendasPorProdutoToolStripMenuItem.Click += new System.EventHandler(this.vendasPorProdutoToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1155,5 +1164,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnSetor;
         private System.Windows.Forms.ToolStripMenuItem variaçõesCaracterísticasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abrirCaixaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vendasPorProdutoToolStripMenuItem;
     }
 }

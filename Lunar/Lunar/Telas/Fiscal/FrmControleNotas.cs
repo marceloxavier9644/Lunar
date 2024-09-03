@@ -614,6 +614,10 @@ namespace Lunar.Telas.Fiscal
 
         private void gerarPDF2(String pdf, String chave, bool imprimir)
         {
+            if (!Directory.Exists(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\"))
+                Directory.CreateDirectory(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\");
+            if (!Directory.Exists(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\"))
+                Directory.CreateDirectory(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\");
             if (nfe.TipoOperacao == "S" && nfe.Modelo.Equals("65"))
             {
                 if (!File.Exists(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + chave + "-procNFCe.pdf"))
@@ -2120,8 +2124,8 @@ namespace Lunar.Telas.Fiscal
         private void iconEmail_Click(object sender, EventArgs e)
         {
             
-            _lunarChatService.SendMessageAsync("5538988069644", "Teste de API");
-            //dispararEmail();
+            //_lunarChatService.SendMessageAsync("5538988069644", "Teste de API");
+            dispararEmail();
         }
 
         private void dispararEmail()

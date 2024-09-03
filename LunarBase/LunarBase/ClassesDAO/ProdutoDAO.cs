@@ -68,5 +68,21 @@ namespace LunarBase.ClassesDAO
             IList<Produto> retorno = Session.CreateQuery(sql).List<Produto>();
             return retorno;
         }
+
+        public IList<Produto> selecionarTodosProdutosPaginando(int paginaAtual, int itensPorPagina, string valor)
+        {
+            Session = Conexao.GetSession();
+            String sql = "FROM Produto as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.Descricao, ' ', Tabela.Referencia, ' ', Tabela.Ean) like '%" + valor + "%' and Tabela.FlagExcluido <> true " +
+                         "order by Tabela.Descricao";
+            IList<Produto> retorno = Session.CreateQuery(sql).SetFirstResult(paginaAtual).SetMaxResults(itensPorPagina).List<Produto>();
+            return retorno;
+        }
+
+        public Int64 totalTodosProdutosPaginando(string valor)
+        {
+            Session = Conexao.GetSession();
+            String sql = "SELECT COUNT(*) FROM Produto as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.Descricao, ' ', Tabela.Referencia, ' ', Tabela.Ean) like '%" + valor + "%' and Tabela.FlagExcluido <> true ";
+            return Session.CreateQuery(sql).UniqueResult<Int64>();
+        }
     }
 }

@@ -85,6 +85,7 @@
             this.btnNovaFatura = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
             this.btnReceber = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnEmail = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasEscritorioCobranca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasSPC)).BeginInit();
@@ -510,7 +511,7 @@
             this.lblCalculando.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblCalculando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCalculando.ForeColor = System.Drawing.Color.Red;
-            this.lblCalculando.Location = new System.Drawing.Point(165, 580);
+            this.lblCalculando.Location = new System.Drawing.Point(224, 589);
             this.lblCalculando.Name = "lblCalculando";
             this.lblCalculando.Size = new System.Drawing.Size(175, 16);
             this.lblCalculando.TabIndex = 242;
@@ -979,12 +980,34 @@
             this.btnReceber.UseVisualStyleBackColor = false;
             this.btnReceber.Click += new System.EventHandler(this.btnReceber_Click);
             // 
+            // btnEmail
+            // 
+            this.btnEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEmail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEmail.FlatAppearance.BorderSize = 0;
+            this.btnEmail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEmail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmail.IconChar = FontAwesome.Sharp.IconChar.Envelope;
+            this.btnEmail.IconColor = System.Drawing.Color.DarkSlateGray;
+            this.btnEmail.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnEmail.IconSize = 38;
+            this.btnEmail.Location = new System.Drawing.Point(175, 571);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(36, 34);
+            this.btnEmail.TabIndex = 247;
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
             // FrmContaReceberLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1055, 668);
+            this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.btnImprimirBoleto);
             this.Controls.Add(this.btnExtratoCliente);
             this.Controls.Add(this.btnRetornoBoletos);
@@ -1061,5 +1084,6 @@
         private RJ_UI.Classes.RJButton btnRetornoBoletos;
         private FontAwesome.Sharp.IconButton btnExtratoCliente;
         private FontAwesome.Sharp.IconButton btnImprimirBoleto;
+        private FontAwesome.Sharp.IconButton btnEmail;
     }
 }

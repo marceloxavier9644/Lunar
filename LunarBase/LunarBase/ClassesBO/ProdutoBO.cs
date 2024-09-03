@@ -141,5 +141,33 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar produtos! Erro: " + e.Message);
             }
         }
+
+        public IList<Produto> selecionarTodosPaginando(int paginaAtual, int itensPorPagina, string valor)
+        {
+            dao = new ProdutoDAO();
+            try
+            {
+                return dao.selecionarTodosProdutosPaginando(paginaAtual, itensPorPagina, valor);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao selecionar Produto!" + e.Message);
+            }
+
+        }
+
+        public Int64 totalTodosProdutosPaginando(string valor)
+        {
+            dao = new ProdutoDAO();
+            try
+            {
+                return dao.totalTodosProdutosPaginando(valor);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao totalizar Produto!" + e.Message);
+            }
+
+        }
     }
 }

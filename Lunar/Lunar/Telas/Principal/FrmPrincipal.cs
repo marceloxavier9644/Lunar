@@ -32,6 +32,7 @@ using Lunar.Telas.TransferenciaEstoques;
 using Lunar.Telas.UsuarioRegistro;
 using Lunar.Telas.ValeFuncionarios;
 using Lunar.Telas.Vendas;
+using Lunar.Telas.Vendas.Relatorios;
 using Lunar.Utils;
 using Lunar.Utils.ImportadorSistemas;
 using LunarBase.Classes;
@@ -59,7 +60,7 @@ namespace Lunar.Telas.Principal
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
-
+        Logger logger = new Logger();
         //Novo
 
         private DragControl dragControl; // Lets you drag the form.
@@ -70,6 +71,7 @@ namespace Lunar.Telas.Principal
         {
             InitializeComponent();
 
+            logger.WriteLog("Inicialize Componentes Principal","log");
             CollapseMenu();
             this.Padding = new Padding(borderSize);//Border size
             this.BackColor = Color.FromArgb(98, 102, 244);//Border color
@@ -91,6 +93,7 @@ namespace Lunar.Telas.Principal
             Sessao.empresaFilialLogada.Id = 1;
             Sessao.empresaFilialLogada = (EmpresaFilial)Controller.getInstance().selecionar(Sessao.empresaFilialLogada);
 
+            logger.WriteLog("Inicialize ajustar logo", "log");
             if (File.Exists(Sessao.parametroSistema.Logo))
             {
                 ajustarImagemFundo();
@@ -736,9 +739,9 @@ namespace Lunar.Telas.Principal
             {
                 panelDesktop.BackColor = Color.White;
                 var imagemOriginal = Image.FromFile(Sessao.parametroSistema.Logo);
-                var imagemRedimensionada = RedimensionarImagemPadrao(imagemOriginal);
+                //var imagemRedimensionada = RedimensionarImagemPadrao(imagemOriginal);
                 panelDesktop.BackgroundImageLayout = ImageLayout.Center; // Pode ser Center ou Zoom dependendo da necessidade
-                panelDesktop.BackgroundImage = imagemRedimensionada;
+                panelDesktop.BackgroundImage = imagemOriginal;
 
                 //panelDesktop.BackColor = Color.White;
                 //panelDesktop.BackgroundImageLayout = ImageLayout.Center;
@@ -1359,6 +1362,18 @@ namespace Lunar.Telas.Principal
             fr.Dispose();
         }
 
-
+        private void vendasPorProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Sessao.permissoes.Contains("71"))
+            {
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (71)!");
+            }
+            else if (!Sessao.permissoes.Contains("72"))
+            {
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (72)!");
+            }
+            else
+                OpenChildForm(() => new FrmVendaProdutos(), btnRelatorios);
+        }
     }
 }

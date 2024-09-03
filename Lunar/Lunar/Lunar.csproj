@@ -1125,6 +1125,12 @@
     <Compile Include="Telas\PesquisaPadrao\FrmPesquisaPessoa.Designer.cs">
       <DependentUpon>FrmPesquisaPessoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\PesquisaPadrao\FrmPesquisaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\PesquisaPadrao\FrmPesquisaProduto.Designer.cs">
+      <DependentUpon>FrmPesquisaProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Principal\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1333,6 +1339,12 @@
     </Compile>
     <Compile Include="Telas\Vendas\RecebimentoVendas\FrmPix.Designer.cs">
       <DependentUpon>FrmPix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\Relatorios\FrmVendaProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Relatorios\FrmVendaProdutos.Designer.cs">
+      <DependentUpon>FrmVendaProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\VisualizadorPDF\FrmPDF.cs">
       <SubType>Form</SubType>
@@ -1772,6 +1784,9 @@
     <EmbeddedResource Include="Telas\PesquisaPadrao\FrmPesquisaPessoa.resx">
       <DependentUpon>FrmPesquisaPessoa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\PesquisaPadrao\FrmPesquisaProduto.resx">
+      <DependentUpon>FrmPesquisaProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Principal\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -1869,6 +1884,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmPix.resx">
       <DependentUpon>FrmPix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Relatorios\FrmVendaProdutos.resx">
+      <DependentUpon>FrmVendaProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Vendas01.rdlc" />
     <EmbeddedResource Include="Telas\VisualizadorPDF\FrmPDF.resx">

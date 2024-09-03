@@ -1,4 +1,5 @@
-﻿using LunarBase.Utilidades;
+﻿using LunarBase.Classes;
+using LunarBase.Utilidades;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
@@ -71,21 +72,20 @@ namespace LunarBase.ConexaoBD
 
                     if (String.IsNullOrEmpty(servidor))
                     {
-                        //servidor = "localhost";
-                        //usuario = "marcelo";
-                        //senha = "mx123";
-                        //bancoDados = "lunar";
-
+                        Logger logger = new Logger();
+                        logger.WriteLog("Servidor 1: " + Sessao.servidor, "log");
                         if (!String.IsNullOrEmpty(Sessao.servidor))
                         {
                             servidor = Sessao.servidor;
                             usuario = Sessao.usuarioBanco;
                             senha = Sessao.senhaBanco;
                             bancoDados = Sessao.nomeBanco;
+
                         }
                         else
                         {
                             servidor = "localhost";
+                            logger.WriteLog("Servidor 2: " + servidor, "log");
                             usuario = "marcelo";
                             senha = "mx123";
                             bancoDados = "lunar";

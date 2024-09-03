@@ -32,11 +32,15 @@ namespace Lunar
         private string senhaBanco = "";
         private string nomeBanco = "";
         string atualizaBanco = @"C:\Lunar\Atualizador\AtualizaBanco.txt";
+        //UsuarioController usuarioController = new UsuarioController();
+        Logger logger = new Logger();
         public FrmLogin()
         {
             InitializeComponent();
+            logger.WriteLog("Loggin inicialize", "log");
             verificaLicencaSistema();
-            if(File.Exists(@"C:\Lunar\Atualizador\LunarAtualizador.exe"))
+            logger.WriteLog("Loggin Licenca verificada", "log");
+            if (File.Exists(@"C:\Lunar\Atualizador\LunarAtualizador.exe"))
                 abrirAtualizador("LunarAtualizador", @"C:\Lunar\Atualizador\LunarAtualizador.exe");
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             try
@@ -524,6 +528,27 @@ namespace Lunar
             {
                 if (!String.IsNullOrEmpty(txtUsuario.Texts))
                     Login();
+            }
+        }
+
+        private void txtUsuario_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtUsuario.Texts.Trim()))
+            {
+                UsuarioController usuarioController = new UsuarioController();
+                IList<Usuario> listaUser = usuarioController.selecionarUsuarioComVariosFiltros(txtUsuario.Texts.Trim());
+                if (listaUser.Count == 1)
+                {
+                    foreach (Usuario usuario in listaUser)
+                    {
+                        txtUsuario.Texts = usuario.Login;
+                        txtSenha.Focus();
+                    }
+                }
+                //else if (listaUser.Count == 0)
+                //{
+                //    GenericaDesktop.ShowAlerta("Usuário não encontrado!");
+                //}
             }
         }
 

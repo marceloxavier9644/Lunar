@@ -1196,64 +1196,125 @@ namespace Lunar.Telas.Compras
 
         private void btnSelecionarProduto_Click(object sender, EventArgs e)
         {
-			if (gridProdutos.SelectedIndex >= 0)
-			{
-				Object produtoObjeto = new Produto();
-				Form formBackground = new Form();
-				try
-				{
-					using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Produto", ""))
-					{
-						formBackground.StartPosition = FormStartPosition.Manual;
-						//formBackground.FormBorderStyle = FormBorderStyle.None;
-						formBackground.Opacity = .50d;
-						formBackground.BackColor = Color.Black;
-						//formBackground.Left = Top = 0;
-						formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-						formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-						formBackground.WindowState = FormWindowState.Maximized;
-						formBackground.TopMost = false;
-						formBackground.Location = this.Location;
-						formBackground.ShowInTaskbar = false;
-						formBackground.Show();
-						uu.Owner = formBackground;
-						switch (uu.showModal("Produto", "", ref produtoObjeto))
-						{
-							case DialogResult.Ignore:
-								uu.Dispose();
-								formBackground.Dispose();
-								break;
-							case DialogResult.OK:
-								prod = (Produto)produtoObjeto;
-								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["CodigoInterno"].MappingName, prod.Id.ToString());
-								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["DescricaoInterna"].MappingName, prod.Descricao);
-								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
-								gridProdutos.Refresh();
-								if(string.IsNullOrEmpty(prod.Ncm))
-								{
+            if (gridProdutos.SelectedIndex >= 0)
+            {
+                Produto produtoObjeto = new Produto();
+                Form formBackground = new Form();
+                try
+                {
+                    using (FrmPesquisaProduto uu = new FrmPesquisaProduto(""))
+                    {
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        switch (uu.showModal(ref produtoObjeto))
+                        {
+                            case DialogResult.Ignore:
+                                uu.Dispose();
+                                formBackground.Dispose();
+                                break;
+                            case DialogResult.OK:
+                                prod = (Produto)produtoObjeto;
+                                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["CodigoInterno"].MappingName, prod.Id.ToString());
+                                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["DescricaoInterna"].MappingName, prod.Descricao);
+                                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
+                                gridProdutos.Refresh();
+                                if (string.IsNullOrEmpty(prod.Ncm))
+                                {
                                     NfeProduto nnfeProd = (NfeProduto)gridProdutos.SelectedItem;
-									prod.Ncm = nnfeProd.Ncm;
-									Controller.getInstance().salvar(prod);
+                                    prod.Ncm = nnfeProd.Ncm;
+                                    Controller.getInstance().salvar(prod);
                                 }
-								verificarProdutosCadastrados();
-								break;
-						}
+                                verificarProdutosCadastrados();
+                                break;
+                        }
 
-						formBackground.Dispose();
-					}
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message);
-				}
-				finally
-				{
-					formBackground.Dispose();
-				}
-			}
-			else
-				GenericaDesktop.ShowAlerta("Clique no produto da nota que deseja selecionar");
-		}
+                        formBackground.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    formBackground.Dispose();
+                }
+            }
+            else
+                GenericaDesktop.ShowAlerta("Clique no produto da nota que deseja selecionar");
+        }
+
+		private void selecionarProdutoMetodoAntigo()
+		{
+            if (gridProdutos.SelectedIndex >= 0)
+            {
+                Object produtoObjeto = new Produto();
+                Form formBackground = new Form();
+                try
+                {
+                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Produto", ""))
+                    {
+                        formBackground.StartPosition = FormStartPosition.Manual;
+                        //formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Opacity = .50d;
+                        formBackground.BackColor = Color.Black;
+                        //formBackground.Left = Top = 0;
+                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                        formBackground.WindowState = FormWindowState.Maximized;
+                        formBackground.TopMost = false;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                        uu.Owner = formBackground;
+                        switch (uu.showModal("Produto", "", ref produtoObjeto))
+                        {
+                            case DialogResult.Ignore:
+                                uu.Dispose();
+                                formBackground.Dispose();
+                                break;
+                            case DialogResult.OK:
+                                prod = (Produto)produtoObjeto;
+                                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["CodigoInterno"].MappingName, prod.Id.ToString());
+                                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["DescricaoInterna"].MappingName, prod.Descricao);
+                                gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
+                                gridProdutos.Refresh();
+                                if (string.IsNullOrEmpty(prod.Ncm))
+                                {
+                                    NfeProduto nnfeProd = (NfeProduto)gridProdutos.SelectedItem;
+                                    prod.Ncm = nnfeProd.Ncm;
+                                    Controller.getInstance().salvar(prod);
+                                }
+                                verificarProdutosCadastrados();
+                                break;
+                        }
+
+                        formBackground.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    formBackground.Dispose();
+                }
+            }
+            else
+                GenericaDesktop.ShowAlerta("Clique no produto da nota que deseja selecionar");
+        }
 
         private void gridProdutos_CurrentCellValidating(object sender, Syncfusion.WinForms.DataGrid.Events.CurrentCellValidatingEventArgs e)
         {
