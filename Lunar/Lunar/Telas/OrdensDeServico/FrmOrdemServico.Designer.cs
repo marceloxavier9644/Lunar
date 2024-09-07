@@ -870,13 +870,11 @@
             gridTextColumn11.AllowSorting = false;
             gridTextColumn11.HeaderText = "Grade";
             gridTextColumn11.MappingName = "ProdutoGrade";
-            gridTextColumn11.Visible = false;
             gridTextColumn12.AllowEditing = false;
             gridTextColumn12.AllowResizing = true;
             gridTextColumn12.AllowSorting = false;
             gridTextColumn12.HeaderText = "Qtd Baixa";
             gridTextColumn12.MappingName = "QuantidadeBaixa";
-            gridTextColumn12.Visible = false;
             this.gridProdutos.Columns.Add(gridTextColumn1);
             this.gridProdutos.Columns.Add(gridTextColumn2);
             this.gridProdutos.Columns.Add(gridTextColumn3);

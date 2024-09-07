@@ -34,9 +34,10 @@
             comboDestino = new ComboBox();
             btnPesquisaBancoOrigem = new Button();
             txtBancoOrigem = new TextBox();
-            label5 = new Label();
+            lblOrigem = new Label();
             label2 = new Label();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            radioLinkPro = new RadioButton();
             radioSGBR = new RadioButton();
             radioUltra = new RadioButton();
             label3 = new Label();
@@ -114,15 +115,15 @@
             txtBancoOrigem.Size = new Size(689, 29);
             txtBancoOrigem.TabIndex = 1;
             // 
-            // label5
+            // lblOrigem
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Microsoft JhengHei", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(12, 9);
-            label5.Name = "label5";
-            label5.Size = new Size(407, 21);
-            label5.TabIndex = 9;
-            label5.Text = "Banco de Dados Origem (Sistema Antigo do Cliente)";
+            lblOrigem.AutoSize = true;
+            lblOrigem.Font = new Font("Microsoft JhengHei", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblOrigem.Location = new Point(12, 9);
+            lblOrigem.Name = "lblOrigem";
+            lblOrigem.Size = new Size(407, 21);
+            lblOrigem.TabIndex = 9;
+            lblOrigem.Text = "Banco de Dados Origem (Sistema Antigo do Cliente)";
             // 
             // label2
             // 
@@ -139,6 +140,7 @@
             gradientPanel1.Border3DStyle = Border3DStyle.Raised;
             gradientPanel1.BorderColor = Color.FromArgb(217, 217, 217);
             gradientPanel1.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel1.Controls.Add(radioLinkPro);
             gradientPanel1.Controls.Add(radioSGBR);
             gradientPanel1.Controls.Add(radioUltra);
             gradientPanel1.Controls.Add(label3);
@@ -146,6 +148,19 @@
             gradientPanel1.Name = "gradientPanel1";
             gradientPanel1.Size = new Size(820, 100);
             gradientPanel1.TabIndex = 15;
+            // 
+            // radioLinkPro
+            // 
+            radioLinkPro.AutoSize = true;
+            radioLinkPro.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            radioLinkPro.Location = new Point(237, 47);
+            radioLinkPro.Name = "radioLinkPro";
+            radioLinkPro.Size = new Size(163, 23);
+            radioLinkPro.TabIndex = 14;
+            radioLinkPro.TabStop = true;
+            radioLinkPro.Text = "LinkPro (Cervantes)";
+            radioLinkPro.UseVisualStyleBackColor = true;
+            radioLinkPro.CheckedChanged += radioLinkPro_CheckedChanged;
             // 
             // radioSGBR
             // 
@@ -186,7 +201,7 @@
             gradientPanel2.Border3DStyle = Border3DStyle.Raised;
             gradientPanel2.BorderColor = Color.FromArgb(217, 217, 217);
             gradientPanel2.BorderStyle = BorderStyle.FixedSingle;
-            gradientPanel2.Controls.Add(label5);
+            gradientPanel2.Controls.Add(lblOrigem);
             gradientPanel2.Controls.Add(txtBancoOrigem);
             gradientPanel2.Controls.Add(btnPesquisaBancoOrigem);
             gradientPanel2.Location = new Point(32, 190);
@@ -366,7 +381,7 @@
         private TextBox txtBancoOrigem;
         private ComboBox comboDestino;
         private Button btnImportarDados;
-        private Label label5;
+        private Label lblOrigem;
         private Label label2;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
         private Label label3;
@@ -384,5 +399,6 @@
         private Syncfusion.WinForms.Controls.SfButton sfButton1;
         private CheckBox chkIdProduto;
         private CheckBox chkServicos;
+        private RadioButton radioLinkPro;
     }
 }

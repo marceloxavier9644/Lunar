@@ -1,4 +1,6 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
+using Lunar.Telas.ContasReceber.Reports;
+using Lunar.Telas.ParametroDoSistema;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.VisualizadorPDF;
@@ -11,6 +13,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using Newtonsoft.Json;
+using NSSuite_CSharp.src.JSON.CTe;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -29,6 +32,7 @@ namespace Lunar.Telas.Vendas
 {
     public partial class FrmConsultaVendas : Form
     {
+        GenericaDesktop genericaDesktop = new GenericaDesktop();
         CaixaController caixaController = new CaixaController();
         EmitirSincronoRetNFCe retornoNFCe = new EmitirSincronoRetNFCe();
         string codStatusRet = "";
@@ -1269,6 +1273,164 @@ namespace Lunar.Telas.Vendas
             frm.ShowDialog();
         }
 
+        private void btnAlterarVenda_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedItems.Count > 0)
+            {
+                venda = (Venda)grid.SelectedItem;
+                Form formBackground = new Form();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                //formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                FrmAlterarVenda fr = new FrmAlterarVenda(venda);
+                fr.Owner = formBackground;
+                fr.ShowDialog();
+                formBackground.Dispose();
+                fr.Dispose();
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Clique na venda que deseja alterar");
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                venda = new Venda();
+                venda = (Venda)grid.SelectedItem;
+                ContaReceberController contaReceberController = new ContaReceberController();
+                if (venda != null)
+                {
+                    IList<ContaReceber> lis = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.Venda = " + venda.Id + " and Tabela.FlagExcluido <> True");
+                    if (lis.Count > 0)
+                    {
+                        FrmImprimirDuplicata frDup = new FrmImprimirDuplicata(venda.Cliente, lis);
+                        frDup.ShowDialog();
+                    }
+                    else
+                        GenericaDesktop.ShowAlerta("Não foi encontrado duplicata(s) para essa ordem de serviço!");
+
+                }
+            }
+        }
+
+        private void btnImprimir_DropDowItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string btnClicado = e.ClickedItem.Text;
+            if (btnClicado.Equals("Imprimir NFe"))
+            {
+                if (grid.SelectedIndex >= 0)
+                {
+                    NfeController nfeController = new NfeController();
+                    venda = new Venda();
+                    venda = (Venda)grid.SelectedItem;
+                    if (venda.Nfe != null) 
+                    {
+                        imprimirNF(venda.Nfe);
+                    }
+                    else
+                        GenericaDesktop.ShowAlerta("Venda sem nota vinculada!");
+                }
+             }
+            if (btnClicado.Equals("Imprimir Boleto"))
+            {
+                if (grid.SelectedIndex >= 0)
+                {
+                    ContaReceberController contaReceberController = new ContaReceberController();
+                    venda = new Venda();
+                    venda = (Venda)grid.SelectedItem;
+                    IList<ContaReceber> lis = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.Venda = " + venda.Id + " and Tabela.FlagExcluido <> True");
+                    if (lis.Count > 0)
+                    {
+                        List<string> listaFaturas = new List<string>();
+                        foreach (ContaReceber contaReceber in lis)
+                        {
+                            if(contaReceber.BoletoGerado == true)
+                            {
+                                listaFaturas.Add(contaReceber.Id.ToString());
+                            }
+                        }
+                        // Coleta o PDF dos boletos
+                        GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                        string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                        string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(listaFaturas.ToArray());
+                        System.Diagnostics.Process.Start(link);
+                    }
+                }
+            }
+        }
+
+
+        private void imprimirNF(Nfe nfe)
+        {
+            if (nfe.Status.Contains("Autorizado o uso"))
+            {
+                if (nfe.Modelo.Equals("65"))
+                {
+                    if (File.Exists(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf"))
+                    {
+                        //Process.Start(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
+                        FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFCe.pdf");
+                        frmPDF.ShowDialog();
+                    }
+                    else
+                    {
+                        if (nfe.Modelo.Equals("65"))
+                        {
+                            NFCeDownloadProc nFCeDownloadProc = new NFCeDownloadProc();
+                            nFCeDownloadProc = generica.ConsultaNFCeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
+                            if (nFCeDownloadProc != null)
+                            {
+                                genericaDesktop.gerarPDF2(nFCeDownloadProc.pdf, nfe.Chave, true, @"Fiscal\XML\NFCe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFCe.pdf");
+                            }
+                        }
+                    }
+                    if (nfe.NfeStatus.Id == 6)
+                    {
+                        if (Directory.Exists(Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs"))
+                        {
+                            string caminhoPDF = Sessao.parametroSistema.PastaRemessaNsCloud + @"\PDFs\" + Sessao.empresaFilialLogada.Cnpj.Trim() + @"\" + nfe.DataCadastro.Year + @"\" + nfe.DataCadastro.Month.ToString().PadLeft(2, '0') + @"\" + nfe.DataCadastro.Day.ToString().PadLeft(2, '0') + @"\" + nfe.Chave + ".pdf";
+                            if (File.Exists(caminhoPDF))
+                            {
+                                //System.Diagnostics.Process.Start(caminhoPDF);
+                                FrmPDF frmPDF = new FrmPDF(caminhoPDF);
+                                frmPDF.ShowDialog();
+                            }
+                        }
+                    }
+
+                }
+                if (nfe.Modelo.Equals("55"))
+                {
+                    if (File.Exists(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf"))
+                    {
+                        FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf");
+                        frmPDF.ShowDialog();
+                        //Process.Start(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf");
+                    }
+                    else
+                    {
+                        NFeDownloadProc55 nFeDownloadProc55 = new NFeDownloadProc55();
+                        nFeDownloadProc55 = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
+                        if (nFeDownloadProc55 != null)
+                        {
+                            genericaDesktop.gerarPDF2(nFeDownloadProc55.pdf, nfe.Chave, true, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.pdf");
+                        }
+                    }
+                }
+            }
+        }
 
 
     }

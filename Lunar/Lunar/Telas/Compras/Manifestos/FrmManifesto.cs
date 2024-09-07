@@ -73,10 +73,13 @@ namespace Lunar.Telas.Compras.Manifestos
                     if (JaExiste == false && !String.IsNullOrEmpty(manifesto.xmls[i].xml))
                     {
                         if (!String.IsNullOrEmpty(manifesto.xmls[i].xml))
-                            generica.gravarXMLNaPasta(manifesto.xmls[i].xml, manifesto.xmls[i].chave, @"XML\", manifesto.xmls[i].chave + ".xml");
+                        {
+                            string cnpj = manifesto.xmls[i].emitCnpj;
+                            generica.gravarXMLNaPasta(manifesto.xmls[i].xml, manifesto.xmls[i].chave, @"XML\"+ cnpj+@"\", manifesto.xmls[i].chave + ".xml");
+                        }
 
                         if (!String.IsNullOrEmpty(manifesto.xmls[i].pdf))
-                            gerarPDF2(manifesto.xmls[i].pdf, manifesto.xmls[i].chave, false);
+                            gerarPDF2(manifesto.xmls[i].pdf, manifesto.xmls[i].chave, false, manifesto.xmls[i].emitCnpj);
 
                         var nfe = Genericos.LoadFromXMLString<TNfeProc>(manifesto.xmls[i].xml);
                         Genericos genericos = new Genericos();
@@ -127,19 +130,23 @@ namespace Lunar.Telas.Compras.Manifestos
             }
         }
 
-        private void gerarPDF2(String pdf, String chave, bool imprimir)
+        private void gerarPDF2(String pdf, String chave, bool imprimir, string cnpjEmitente)
         {
-            if (!File.Exists(@"XML\" + chave + ".pdf"))
+            //Criar pasta para armazenar xmls e pdf separados por cnpj do fornecedor
+            if (!Directory.Exists(@"XML\" + cnpjEmitente + @"\"))
+                Directory.CreateDirectory(@"XML\" + cnpjEmitente + @"\");
+
+            if (!File.Exists(@"XML\" + cnpjEmitente + @"\" + chave + ".pdf"))
             {
                 byte[] bytes = Convert.FromBase64String(pdf);
-                System.IO.FileStream stream = new FileStream(@"XML\" + chave + ".pdf", FileMode.CreateNew);
+                System.IO.FileStream stream = new FileStream(@"XML\" + cnpjEmitente + @"\" + chave + ".pdf", FileMode.CreateNew);
                 System.IO.BinaryWriter writer =
                     new BinaryWriter(stream);
                 writer.Write(bytes, 0, bytes.Length);
                 writer.Close();
             }
             if (imprimir == true)
-                Process.Start(@"XML\" + chave + ".pdf");
+                Process.Start(@"XML\" + cnpjEmitente + @"\" + chave + ".pdf");
         }
 
       
@@ -175,8 +182,8 @@ namespace Lunar.Telas.Compras.Manifestos
                 nfe = (Nfe)grid.SelectedItem;
                 //MessageBox.Show(dataRowView.Row["CHAVE"].ToString());
 
-                if (File.Exists(@"XML\" + nfe.Chave + ".pdf"))
-                    Process.Start(@"XML\" + nfe.Chave + ".pdf");
+                if (File.Exists(@"XML\" + nfe.CnpjEmitente +@"\"+ nfe.Chave + ".pdf"))
+                    Process.Start(@"XML\" + nfe.CnpjEmitente + @"\" + nfe.Chave + ".pdf");
                 else
                 {
                     NotaUnique notaUnique = new NotaUnique();
@@ -184,7 +191,7 @@ namespace Lunar.Telas.Compras.Manifestos
                     if (notaUnique != null)
                     {
                         if(notaUnique.listaDocs == false)
-                            gerarPDF2(notaUnique.pdf, notaUnique.chave, true);
+                            gerarPDF2(notaUnique.pdf, notaUnique.chave, true, nfe.CnpjEmitente);
                     }
                 }
 

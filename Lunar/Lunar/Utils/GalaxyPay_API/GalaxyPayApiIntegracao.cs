@@ -174,9 +174,23 @@ namespace Lunar.Utils.GalaxyPay_API
                     ? new string[] { pessoa.Email }
                     : new string[] { pessoa.Cnpj + "@email.com.br" };
 
-                string[] arrayFone = !string.IsNullOrEmpty(pessoa.PessoaTelefone.Ddd + pessoa.PessoaTelefone.Telefone)
-               ? new string[] { pessoa.PessoaTelefone.Ddd + pessoa.PessoaTelefone.Telefone }
-               : new string[] { pessoa.Cnpj.Substring(0,11) };
+                string[] arrayFone;
+
+                if (pessoa.PessoaTelefone != null
+                    && !string.IsNullOrEmpty(pessoa.PessoaTelefone.Ddd)
+                    && !string.IsNullOrEmpty(pessoa.PessoaTelefone.Telefone))
+                {
+                    arrayFone = new string[] { pessoa.PessoaTelefone.Ddd + pessoa.PessoaTelefone.Telefone };
+                }
+                else
+                {
+                    // Verifica se pessoa.Cnpj tem pelo menos 11 caracteres
+                    string cnpjSubstring = pessoa.Cnpj.Length >= 11
+                        ? pessoa.Cnpj.Substring(0, 11)
+                        : string.Empty;
+
+                    arrayFone = new string[] { cnpjSubstring };
+                }
 
                 if (pessoa.EnderecoPrincipal != null)
                 {
@@ -194,13 +208,13 @@ namespace Lunar.Utils.GalaxyPay_API
                     return "";
                 }
 
-                var requestContent = new
+                var requestContent = new 
                 {
                     myId = pessoa.Id,
                     name = pessoa.RazaoSocial,
                     document = pessoa.Cnpj,
                     emails = arrayEmail,
-                    phones = arrayFone,
+                    //phones = arrayFone,
                     Address = address
                 };
 

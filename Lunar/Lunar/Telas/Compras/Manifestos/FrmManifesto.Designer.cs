@@ -231,10 +231,10 @@
             this.grid.Columns.Add(gridTextColumn5);
             this.grid.Columns.Add(gridTextColumn6);
             this.grid.Columns.Add(gridTextColumn7);
-            this.grid.Location = new System.Drawing.Point(12, 170);
+            this.grid.Location = new System.Drawing.Point(12, 168);
             this.grid.Name = "grid";
             this.grid.SelectionUnit = Syncfusion.WinForms.DataGrid.Enums.SelectionUnit.Cell;
-            this.grid.Size = new System.Drawing.Size(1146, 174);
+            this.grid.Size = new System.Drawing.Size(1146, 176);
             this.grid.Style.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.grid.TabIndex = 202;
             this.grid.Text = "sfDataGrid1";
@@ -297,11 +297,11 @@
             // 
             this.autoLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
             this.autoLabel15.Location = new System.Drawing.Point(597, 8);
             this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(94, 21);
+            this.autoLabel15.Size = new System.Drawing.Size(90, 16);
             this.autoLabel15.TabIndex = 218;
             this.autoLabel15.Text = "Reg. por Pág.";
             // 
@@ -320,11 +320,11 @@
             // autoLabel1
             // 
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
             this.autoLabel1.Location = new System.Drawing.Point(19, 8);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(68, 21);
+            this.autoLabel1.Size = new System.Drawing.Size(64, 16);
             this.autoLabel1.TabIndex = 219;
             this.autoLabel1.Text = "Pesquisa";
             // 
@@ -372,22 +372,22 @@
             // autoLabel4
             // 
             this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel4.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel4.ForeColor = System.Drawing.Color.Black;
             this.autoLabel4.Location = new System.Drawing.Point(224, 62);
             this.autoLabel4.Name = "autoLabel4";
-            this.autoLabel4.Size = new System.Drawing.Size(153, 21);
+            this.autoLabel4.Size = new System.Drawing.Size(143, 16);
             this.autoLabel4.TabIndex = 223;
             this.autoLabel4.Text = "Data de Emissão Final";
             // 
             // autoLabel3
             // 
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel3.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
             this.autoLabel3.Location = new System.Drawing.Point(17, 62);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(161, 21);
+            this.autoLabel3.Size = new System.Drawing.Size(148, 16);
             this.autoLabel3.TabIndex = 222;
             this.autoLabel3.Text = "Data de Emissão Inicial";
             // 
@@ -399,7 +399,7 @@
             this.btnAtualizarNotas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnAtualizarNotas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnAtualizarNotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAtualizarNotas.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtualizarNotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtualizarNotas.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateForward;
             this.btnAtualizarNotas.IconColor = System.Drawing.Color.Gray;
             this.btnAtualizarNotas.IconFont = FontAwesome.Sharp.IconFont.Solid;
@@ -418,7 +418,7 @@
             // 
             this.txtDataFinal.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtDataFinal.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
-            this.txtDataFinal.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataFinal.Location = new System.Drawing.Point(218, 79);
             this.txtDataFinal.Name = "txtDataFinal";
             this.txtDataFinal.Size = new System.Drawing.Size(185, 35);
@@ -432,7 +432,7 @@
             // 
             this.txtDataInicial.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtDataInicial.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
-            this.txtDataInicial.Font = new System.Drawing.Font("Montserrat", 14.25F);
+            this.txtDataInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtDataInicial.Location = new System.Drawing.Point(12, 79);
             this.txtDataInicial.Name = "txtDataInicial";
             this.txtDataInicial.Size = new System.Drawing.Size(185, 35);
@@ -451,7 +451,7 @@
             this.txtPesquisa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtPesquisa.BorderRadius = 8;
             this.txtPesquisa.BorderSize = 2;
-            this.txtPesquisa.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPesquisa.Location = new System.Drawing.Point(8, 20);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
@@ -462,7 +462,7 @@
             this.txtPesquisa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtPesquisa.PlaceholderText = "";
             this.txtPesquisa.ReadOnly = false;
-            this.txtPesquisa.Size = new System.Drawing.Size(573, 44);
+            this.txtPesquisa.Size = new System.Drawing.Size(573, 37);
             this.txtPesquisa.TabIndex = 215;
             this.txtPesquisa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPesquisa.Texts = "";
@@ -478,7 +478,7 @@
             this.txtRegistroPorPagina.BorderRadius = 8;
             this.txtRegistroPorPagina.BorderSize = 2;
             this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtRegistroPorPagina.Location = new System.Drawing.Point(589, 20);
             this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
@@ -490,7 +490,7 @@
             this.txtRegistroPorPagina.PlaceholderText = "";
             this.txtRegistroPorPagina.ReadOnly = false;
             this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 44);
+            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
             this.txtRegistroPorPagina.TabIndex = 217;
             this.txtRegistroPorPagina.Tag = "";
             this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;

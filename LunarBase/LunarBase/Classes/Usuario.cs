@@ -17,6 +17,10 @@ namespace LunarBase.Classes
         private string email;
         private EmpresaFilial empresaFilial;
         private GrupoUsuario grupoUsuario;
+        private string ddd;
+        private string fone;
+        private bool notificacoes;
+
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -31,6 +35,12 @@ namespace LunarBase.Classes
         public virtual EmpresaFilial EmpresaFilial { get => empresaFilial; set => empresaFilial = value; }
         [Anotacao("Grupo de Permissões")]
         public virtual GrupoUsuario GrupoUsuario { get => grupoUsuario; set => grupoUsuario = value; }
+        [Anotacao("DDD")]
+        public virtual string Ddd { get => ddd; set => ddd = value; }
+        [Anotacao("Fone")]
+        public virtual string Fone { get => fone; set => fone = value; }
+        [Anotacao("Notificações")]
+        public virtual bool Notificacoes { get => notificacoes; set => notificacoes = value; }
 
         public override string ToString()
         {

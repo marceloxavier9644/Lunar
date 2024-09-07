@@ -3164,6 +3164,18 @@ namespace Lunar.Telas.OrdensDeServico
             var codigo = dataRow["Codigo"].ToString();
             var vendedor = dataRow["Vendedor"].ToString();
             var desconto = dataRow["Desconto"].ToString();
+            var idGrade = dataRow["ProdutoGrade"].ToString();
+            var qtdBaixa = dataRow["QuantidadeBaixa"].ToString();
+
+            produto = new Produto();
+            produto.Id = int.Parse(codigo);
+            produto = (Produto)Controller.getInstance().selecionar(produto);
+            //int i = produto.GradePrincipal.Id;
+            produtoGrade = new ProdutoGrade();
+            produtoGrade.Id = int.Parse(idGrade);
+            produtoGrade = (ProdutoGrade)Controller.getInstance().selecionar(produtoGrade);
+
+            produto.GradePrincipal = produtoGrade;
 
             // indexEditando = this.gridProdutos.SelectedIndex;
             txtPesquisaProduto.Texts = descricao;

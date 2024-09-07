@@ -1375,5 +1375,19 @@ namespace Lunar.Telas.Principal
             else
                 OpenChildForm(() => new FrmVendaProdutos(), btnRelatorios);
         }
+
+        private void consultaVendasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Sessao.permissoes.Contains("71"))
+            {
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (71)!");
+            }
+            else if (!Sessao.permissoes.Contains("72"))
+            {
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (72)!");
+            }
+            else
+                OpenChildForm(() => new FrmConsultaVendas(), btnMenuVenda);
+        }
     }
 }

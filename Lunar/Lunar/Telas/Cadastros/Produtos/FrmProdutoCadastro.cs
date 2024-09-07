@@ -146,7 +146,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             CarregarInsumosNoGrid(produto.Id);
             carregarComboVariacoes();
             carregarGridVariacoes();
-            PreencherTreeViewAdv();
+            //PreencherTreeViewAdv();
             lblIdGrade.Text = "";
         }
 
@@ -183,7 +183,7 @@ namespace Lunar.Telas.Cadastros.Produtos
             lblIdGrade.Text = "";
             carregarComboVariacoes();
             carregarGridVariacoes();
-            PreencherTreeViewAdv();
+            //PreencherTreeViewAdv();
         }
 
         private void gerarDadosVeiculos()
@@ -1270,7 +1270,10 @@ namespace Lunar.Telas.Cadastros.Produtos
                     produto = (Produto)produtoController.selecionar(produto);
                 }
                 else
+                {
                     produto.Id = 0;
+                    produto.GradePrincipal = null;
+                }
                 produto.Descricao = txtDescricao.Texts.Trim();
                 produto.Referencia = txtReferenciaProduto.Texts;
 
@@ -1389,6 +1392,7 @@ namespace Lunar.Telas.Cadastros.Produtos
                 produto.CstCofins = txtCodCofins.Texts;
                 produto.PercentualCofins = txtPercentualCofins.Texts;
                 produto.CodAnp = txtCodANP.Texts;
+  
                 if (!String.IsNullOrEmpty(txtCodANP.Texts) && txtCodANP.Texts.Length > 3)
                 {
                     if(!String.IsNullOrEmpty(txtPercGLP.Texts))
@@ -1516,8 +1520,15 @@ namespace Lunar.Telas.Cadastros.Produtos
                 bool tipoAjusteEntradaOuSaida2 = true;
                 if (quantidadeAjusteNaoConciliado < 0)
                     tipoAjusteEntradaOuSaida2 = false;
-                
+
+
+               
+                ProdutoGrade produtoGrade = new ProdutoGrade();
+                //produtoGrade.Id = 1;
+                //produtoGrade = (ProdutoGrade)Controller.getInstance().selecionar(produtoGrade);
+                //produto.GradePrincipal = produtoGrade;
                 Controller.getInstance().salvar(produto);
+
                 //Ajusta o estoque
                 if (quantidadeAjusteConciliado > 0 || quantidadeAjusteConciliado < 0)
                     generica.atualizarEstoqueConciliado(produto, double.Parse(GenericaDesktop.RemoveCaracteres(quantidadeAjusteConciliado.ToString())), tipoAjusteEntradaOuSaida, "PRODUTO", "AJUSTE DE ESTOQUE NO CADASTRO, USUARIO: " + Sessao.usuarioLogado.Id + " - " + Sessao.usuarioLogado.Login, null, DateTime.Now, null);
@@ -1526,7 +1537,7 @@ namespace Lunar.Telas.Cadastros.Produtos
 
 
                 //Salvar Grade Principal e codigo de barras
-                ProdutoGrade produtoGrade = new ProdutoGrade();
+                produtoGrade = new ProdutoGrade();
                 if (produto.GradePrincipal == null)
                     produtoGrade.Id = 0;
                 else

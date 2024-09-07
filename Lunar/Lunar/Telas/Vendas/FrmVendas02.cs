@@ -2569,6 +2569,7 @@ namespace Lunar.Telas.Vendas
             {
                 //Emitir NFCe pela nova classe
                 EmitirNFCe emitirNFCe = new EmitirNFCe();
+                
                 carregarListaProdutos();
                 try
                 {
@@ -3353,7 +3354,7 @@ namespace Lunar.Telas.Vendas
         private void atualizarProximoNumeroNota()
         {
             //ATUALIZA NUMERO DA NOTA 
-            ParametroSistema param = new ParametroSistema();
+            ParametroSistema param = new ParametroSistema(); 
             param = Sessao.parametroSistema;
             if (nfe.Modelo.Equals("65"))
                 param.ProximoNumeroNFCe = (int.Parse(nfe.NNf) + 1).ToString();
@@ -3670,8 +3671,8 @@ namespace Lunar.Telas.Vendas
                 {
                     txtPesquisaProduto.Texts = prod.Descricao;
                     txtQuantidade.Texts = "1";
-                    txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                    txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                    txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                    txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
                     this.produto = prod;
                     this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
                     lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;

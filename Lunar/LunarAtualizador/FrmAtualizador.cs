@@ -1,5 +1,6 @@
 ﻿using LunarAtualiza.Utils;
 using LunarBase.Classes;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
@@ -7,6 +8,7 @@ using MySql.Data.MySqlClient;
 using SharpCompress.Common;
 using SharpCompress.Readers;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -71,25 +73,9 @@ namespace LunarAtualizador
             webClient = new WebClient();
             webClient.DownloadProgressChanged += WebClientDownloadProgressChanged;
             instanciaAtualizador = this;
-            //parametros para verificar integracao com dashboards
-            lerParametrosSistema();
-            //string atualizaBanco = @"C:\Lunar\Atualizador\AtualizaBanco.txt";
-            //Atualiza o sistema se tiver novas atualizacoes
-            atualizarAoAbrir();
 
-            //Atualiza o BD se existir o arquivo
-            //if (File.Exists(atualizaBanco))
-            //{
-            //    ExibirFormulario();
-            //    lblNovaVersaoLocalizada.Enabled = true;
-            //    lblNovaVersaoLocalizada.Visible = true;
-            //    lblNovaVersaoLocalizada.Text = "Aguarde, Atualizando Banco de Dados.... Não feche!!!";
-            //    lblNovaVersaoLocalizada.ForeColor = Color.Red;
-            //    AtualizarBancoDeDados();
-            //    lblNovaVersaoLocalizada.Visible = false;
-            //    lblNovaVersaoLocalizada.Text = "";
-            //    File.Delete(atualizaBanco);
-            //}
+            lerParametrosSistema();
+            atualizarAoAbrir();
             conferirHorarioMensagens();
             if (ativarMensagemLembreteExame.Equals("True"))
             {
@@ -711,11 +697,12 @@ namespace LunarAtualizador
                     // Verifica novas mensagens a cada 10 minutos
                     if (agora.Minute % 10 == 0)
                     {
-                        //logger.WriteLog("Este é o servidor confirmado, verificação de 10 minutos...");
+                        logger.WriteLog("Este é o servidor confirmado, preparando consulta de msg", "LogMensagem");
                         consultaMensagens();
+                        logger.WriteLog("Mensagens Agendadas: " + Sessao.MensagensAgendadas.Count + " " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString(), "LogMensagem");
                         if (Sessao.MensagensAgendadas.Count > 0)
                         {
-                            logger.WriteLog("Sessao.MensagensAgendadas.Count > 0...OK ---- " + Sessao.MensagensAgendadas.Count, "LogMensagem");
+                            logger.WriteLog("Sessao.MensagensAgendadas.Count > 0...OK ---- Mensagens: " + Sessao.MensagensAgendadas.Count, "LogMensagem");
                             foreach (var mensagem in Sessao.MensagensAgendadas.ToList()) // Usar ToList para evitar exceção de modificação durante a iteração
                             {
                                 if (agora >= mensagem.DataAgendamento)
@@ -725,10 +712,20 @@ namespace LunarAtualizador
                                     {
                                         try
                                         {
-                                            dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
-                                            mensagem.FlagEnviada = true;
-                                            mensagem.DataAlteracao = DateTime.Now;
-                                            Controller.getInstance().salvar(mensagem);
+                                            if (mensagem.Pessoa != null)
+                                            {
+                                                dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
+                                                mensagem.FlagEnviada = true;
+                                                mensagem.DataAlteracao = DateTime.Now;
+                                                Controller.getInstance().salvar(mensagem);
+                                            }
+                                            else
+                                            {
+                                                mensagem.FlagExcluido = true;
+                                                mensagem.DataAlteracao = DateTime.Now;
+                                                mensagem.NomeCliente = "CLIENTE INVÁLIDO, MSG EXCLUIDA PELO SISTEMA";
+                                                Controller.getInstance().salvar(mensagem);
+                                            }
                                         }
                                         catch
                                         {
@@ -787,7 +784,7 @@ namespace LunarAtualizador
 
                     connection.Open();
                     Sessao.parametroSistema = new ParametroSistema();
-                    string query = "SELECT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento INNER JOIN Pessoa ON MP.Pessoa = Pessoa.Id INNER JOIN PessoaTelefone ON Pessoa.ID = PessoaTelefone.PESSOA WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false AND PessoaTelefone.ddd IS NOT NULL AND PessoaTelefone.Telefone IS NOT NULL";
+                    string query = "SELECT DISTINCT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento INNER JOIN Pessoa ON MP.Pessoa = Pessoa.Id INNER JOIN PessoaTelefone ON Pessoa.ID = PessoaTelefone.PESSOA WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false AND PessoaTelefone.ddd IS NOT NULL AND PessoaTelefone.Telefone IS NOT NULL;\r\n";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         using (MySqlDataReader reader = command.ExecuteReader())
@@ -800,14 +797,15 @@ namespace LunarAtualizador
                                 msgPos.NomeCliente = $"{reader["NomeCliente"]}";
                                 msgPos.Pessoa = new Pessoa();
                                 msgPos.Pessoa.Id = Convert.ToInt32(reader["Pessoa"]);
-                                msgPos.Pessoa = (Pessoa)Controller.getInstance().selecionar(msgPos.Pessoa);
+                                try { msgPos.Pessoa = (Pessoa)Controller.getInstance().selecionar(msgPos.Pessoa); } catch { msgPos.Pessoa = null; }
                                 msgPos.FlagEnviada = false;
-                                if (String.IsNullOrEmpty(msgPos.NomeCliente))
+                                if (String.IsNullOrEmpty(msgPos.NomeCliente) && msgPos.Pessoa != null)
                                     msgPos.NomeCliente = msgPos.Pessoa.RazaoSocial;
                                 Sessao.MensagensAgendadas.Add(msgPos);
 
-                                logger.WriteLog("Mensagens agendadas: " + Sessao.MensagensAgendadas.Count, "LogMensagem");
+                          
 
+                                logger.WriteLog("Mensagens agendadas: " + Sessao.MensagensAgendadas.Count, "LogMensagem");
                             }
                         }
                     }
@@ -1244,6 +1242,20 @@ namespace LunarAtualizador
                         string conteudoLog = $"Data e Hora: {DateTime.Now}\nNúmero de Telefone: {numeroLimpo}\nTexto da Mensagem: {mensagemAjustada}\n\n";
                         // Escrever o conteúdo no arquivo (append para adicionar ao conteúdo existente)
                         File.AppendAllText(caminhoArquivo, conteudoLog);
+
+                        if (pessoa != null)
+                        {
+                            MensagemPosVendaDAO mensagemPosVendaDAO = new MensagemPosVendaDAO();
+                            IList<MensagemPosVenda> lista = mensagemPosVendaDAO.selecionarTodasMensagensNaoEnviadasPorCliente(pessoa.Id);
+                            if(lista.Count > 0)
+                            {
+                                foreach(MensagemPosVenda mens in lista)
+                                {
+                                    mens.FlagEnviada = true;
+                                    Controller.getInstance().salvar(mens);
+                                }
+                            }
+                        }
                     }
                 }
             }

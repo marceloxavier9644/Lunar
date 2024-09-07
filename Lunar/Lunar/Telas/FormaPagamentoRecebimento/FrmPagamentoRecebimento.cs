@@ -17,6 +17,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
 
 namespace Lunar.Telas.FormaPagamentoRecebimento
 {
@@ -1927,6 +1928,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                     FrmImprimirDuplicata frDup = new FrmImprimirDuplicata(ordemServico.Cliente, lis);
                     frDup.ShowDialog();
                 }
+
+                enviarMensagemUsuarioResponsavel(ordemServico);
                 GenericaDesktop.ShowInfo("Ordem de Serviço encerrada com sucesso");
                 this.Close();
             }
@@ -1936,7 +1939,25 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
             }
         }
 
-
+        private async void enviarMensagemUsuarioResponsavel(OrdemServico ordemServico)
+        {
+            if (!String.IsNullOrEmpty(ordemServico.OperadorCadastro))
+            {
+                Usuario userResponsavel = new Usuario();
+                userResponsavel.Id = (int.Parse(ordemServico.OperadorCadastro));
+                userResponsavel = (Usuario)Controller.getInstance().selecionar(userResponsavel);
+                //Enviar msg finalizacao de O.S para usuario
+                if (!String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats) && userResponsavel.Notificacoes == true)
+                {
+                    if (!String.IsNullOrEmpty(userResponsavel.Ddd + userResponsavel.Fone))
+                    {
+                        var client = new EnviarMensagemWhatsapp();
+                        string telefoneCompleto = EnviarMensagemWhatsapp.TratarTelefone(Sessao.usuarioLogado.Ddd, Sessao.usuarioLogado.Fone);
+                        await client.SendMessageAsync(telefoneCompleto, "*" + Sessao.empresaFilialLogada.NomeFantasia + "*: Ordem de Serviço " + ordemServico.Id.ToString() + " do Cliente " + ordemServico.Cliente.RazaoSocial + " foi Finalizada pelo Usuário: " + Sessao.usuarioLogado.Login.ToString() + " às " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss. Valor Total " + ordemServico.ValorTotal.ToString("C")));
+                    }
+                }
+            }
+        }
         private void concluirRecebimentoCondicional()
         {
             try

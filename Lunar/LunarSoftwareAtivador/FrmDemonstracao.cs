@@ -306,6 +306,15 @@ namespace LunarSoftwareAtivador
         public void consultarRetornoAPI(string chavePainel)
         {
             string url = "https://lunarsoftware.com.br/painel/api/api-auth.php";
+
+            OperatingSystem os = Environment.OSVersion;
+            Version version = os.Version;
+
+            if (os.Platform == PlatformID.Win32NT && version.Major == 6 && version.Minor == 1)
+            {
+                url = "http://lunarsoftware.com.br/painel/api/api-auth.php";
+            }
+
             try
             {
                 var requisicaoWeb = WebRequest.CreateHttp(url);
@@ -442,6 +451,13 @@ namespace LunarSoftwareAtivador
                     else
                     {
                         string callbackUrl = "https://lunarsoftware.com.br/painel/cadastro-sucesso.html";
+                        OperatingSystem os = Environment.OSVersion;
+                        Version version = os.Version;
+
+                        if (os.Platform == PlatformID.Win32NT && version.Major == 6 && version.Minor == 1)
+                        {
+                            callbackUrl = "http://lunarsoftware.com.br/painel/cadastro-sucesso.html";
+                        }
                         cadastroSucesso = await ClienteService.CadastrarClienteAsync(cliente, callbackUrl);
 
                         if (cadastroSucesso)

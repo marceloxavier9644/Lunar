@@ -62,6 +62,12 @@ namespace Lunar.Telas.UsuarioRegistro
             txtLogin.Texts = usuario.Login;
             txtSenha.Texts = GenericaDesktop.Descriptografa(usuario.Senha);
             txtEmail.Texts = usuario.Email;
+            txtDDD.Texts = usuario.Ddd;
+            txtTelefonePrincipal.Texts = usuario.Fone;
+            if (usuario.Notificacoes == true)
+                chkReceberNotificacoes.Checked = true;
+            else
+                chkReceberNotificacoes.Checked = false;
             if(usuario.GrupoUsuario != null)
             {
                 txtGrupo.Texts = usuario.GrupoUsuario.Descricao;
@@ -95,6 +101,15 @@ namespace Lunar.Telas.UsuarioRegistro
             usuario.Login = txtLogin.Texts.Trim();
             usuario.Senha = GenericaDesktop.Criptografa(txtSenha.Texts.Trim());
             usuario.Email = txtEmail.Texts.Trim();
+            usuario.Ddd = txtDDD.Texts.Trim();
+            if (!String.IsNullOrEmpty(txtTelefonePrincipal.Texts.Trim()))
+                usuario.Fone = GenericaDesktop.RemoveCaracteres(txtTelefonePrincipal.Texts.Trim());
+            else
+                usuario.Fone = "";
+            if (chkReceberNotificacoes.Checked == true)
+                usuario.Notificacoes = true;
+            else
+                usuario.Notificacoes = false;
             if (!String.IsNullOrEmpty(txtCodGrupo.Texts))
             {
                 grupoUsuario.Id = int.Parse(txtCodGrupo.Texts);
@@ -276,6 +291,15 @@ namespace Lunar.Telas.UsuarioRegistro
         {
             this.Opacity = 0.0;
             timer1.Start();
+        }
+
+        private void txtTelefonePrincipal_Leave(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtTelefonePrincipal.Texts))
+            {
+                string tel = txtTelefonePrincipal.Texts;
+                txtTelefonePrincipal.Texts = GenericaDesktop.formatarFone(tel);
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
 	<class name="LunarBase.Classes.Produto" table="produto">
 		<id name="Id" column="ID" type="int">
-			<!--<generator class="native"></generator>-->
+			<generator class="native"></generator>
 		</id>
 		<property name="Descricao" column="DESCRICAO" type="String" length="120"/>
 		<property name="Ean" column="EAN" type="String" length="30"/>

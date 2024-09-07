@@ -40,7 +40,12 @@ namespace LunarBase.ConexaoBD
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message + System.Environment.NewLine + e.StackTrace);
+                //throw new Exception(e.Message + System.Environment.NewLine + e.StackTrace);
+                throw new Exception("Erro ao fazer commit da transação." +
+                           System.Environment.NewLine +
+                           "Mensagem: " + e.Message +
+                           System.Environment.NewLine +
+                           "StackTrace: " + e.StackTrace);
             }
         }
 

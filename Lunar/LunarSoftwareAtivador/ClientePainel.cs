@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MySqlX.XDevAPI;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -62,8 +63,15 @@ namespace LunarSoftwareAtivador
                 var dataAux = new { data = dataObject }; // O objeto a ser enviado
                 var json = JsonConvert.SerializeObject(dataAux); // Converte o objeto para JSON
                 var content = new StringContent(json, Encoding.UTF8, "application/json"); //
+                string url = "https://lunarsoftware.com.br/painel/client_register_lunar.php";
 
-                var response = await client.PostAsync("https://lunarsoftware.com.br/painel/client_register_lunar.php", content);
+                OperatingSystem os = Environment.OSVersion;
+                Version version = os.Version;
+                if (os.Platform == PlatformID.Win32NT && version.Major == 6 && version.Minor == 1)
+                {
+                    url = "http://lunarsoftware.com.br/painel/cadastro-sucesso.html";
+                }
+                var response = await client.PostAsync(url, content);
                 //var response = await client.PostAsync("http://localhost:3000/receive_post", content);
                 response.EnsureSuccessStatusCode();
                 return true;

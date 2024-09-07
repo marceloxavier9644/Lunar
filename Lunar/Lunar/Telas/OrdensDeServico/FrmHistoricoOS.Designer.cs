@@ -35,6 +35,7 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHistoricoOS));
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -131,6 +132,15 @@
             gridNumericColumn2.HeaderStyle.Font.Size = 12F;
             gridNumericColumn2.HeaderText = "Troco";
             gridNumericColumn2.MappingName = "Troco";
+            gridTextColumn6.AllowDragging = true;
+            gridTextColumn6.AllowEditing = false;
+            gridTextColumn6.AllowFiltering = true;
+            gridTextColumn6.AllowResizing = true;
+            gridTextColumn6.CellStyle.Font.Size = 12F;
+            gridTextColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn6.HeaderStyle.Font.Size = 12F;
+            gridTextColumn6.HeaderText = "Conta Bancária";
+            gridTextColumn6.MappingName = "ContaBancaria.Descricao";
             this.grid.Columns.Add(gridTextColumn1);
             this.grid.Columns.Add(gridTextColumn2);
             this.grid.Columns.Add(gridTextColumn3);
@@ -138,7 +148,8 @@
             this.grid.Columns.Add(gridTextColumn5);
             this.grid.Columns.Add(gridNumericColumn1);
             this.grid.Columns.Add(gridNumericColumn2);
-            this.grid.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grid.Columns.Add(gridTextColumn6);
+            this.grid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grid.Location = new System.Drawing.Point(13, 66);
             this.grid.Name = "grid";
             this.grid.Size = new System.Drawing.Size(922, 292);

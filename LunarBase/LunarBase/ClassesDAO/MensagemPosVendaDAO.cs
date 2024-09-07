@@ -22,5 +22,12 @@ namespace LunarBase.ClassesDAO
             IList<MensagemPosVenda> retorno = Session.CreateQuery(sql).List<MensagemPosVenda>();
             return retorno;
         }
+        public IList<MensagemPosVenda> selecionarTodasMensagensNaoEnviadasPorCliente(int idCliente)
+        {
+            Session = Conexao.GetSession();
+            String sql = "FROM MensagemPosVenda as Tabela WHERE Tabela.FlagExcluido <> true and Tabela.FlagEnviada = false and Tabela.Pessoa = " + idCliente;
+            IList<MensagemPosVenda> retorno = Session.CreateQuery(sql).List<MensagemPosVenda>();
+            return retorno;
+        }
     }
 }

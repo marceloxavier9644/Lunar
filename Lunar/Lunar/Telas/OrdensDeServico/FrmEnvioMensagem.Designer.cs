@@ -43,6 +43,7 @@
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioProdutoDisponivel = new System.Windows.Forms.RadioButton();
+            this.radioMensagemLivre = new System.Windows.Forms.RadioButton();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -126,7 +127,7 @@
             this.btnEnviar.Location = new System.Drawing.Point(177, 378);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(163, 38);
-            this.btnEnviar.TabIndex = 4;
+            this.btnEnviar.TabIndex = 2;
             this.btnEnviar.Text = "Enviar [F5]";
             this.btnEnviar.TextColor = System.Drawing.Color.White;
             this.btnEnviar.UseVisualStyleBackColor = false;
@@ -167,15 +168,14 @@
             // radioPdfOs
             // 
             this.radioPdfOs.AutoSize = true;
-            this.radioPdfOs.Checked = true;
             this.radioPdfOs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioPdfOs.Location = new System.Drawing.Point(43, 109);
+            this.radioPdfOs.Location = new System.Drawing.Point(43, 139);
             this.radioPdfOs.Name = "radioPdfOs";
             this.radioPdfOs.Size = new System.Drawing.Size(215, 24);
-            this.radioPdfOs.TabIndex = 2;
-            this.radioPdfOs.TabStop = true;
+            this.radioPdfOs.TabIndex = 3;
             this.radioPdfOs.Text = "Ordem de Serviço em PDF";
             this.radioPdfOs.UseVisualStyleBackColor = true;
+            this.radioPdfOs.CheckedChanged += new System.EventHandler(this.radioPdfOs_CheckedChanged);
             // 
             // radioTecnicoCaminho
             // 
@@ -184,7 +184,7 @@
             this.radioTecnicoCaminho.Location = new System.Drawing.Point(264, 109);
             this.radioTecnicoCaminho.Name = "radioTecnicoCaminho";
             this.radioTecnicoCaminho.Size = new System.Drawing.Size(210, 24);
-            this.radioTecnicoCaminho.TabIndex = 3;
+            this.radioTecnicoCaminho.TabIndex = 2;
             this.radioTecnicoCaminho.Text = "Aviso - Técnico a caminho";
             this.radioTecnicoCaminho.UseVisualStyleBackColor = true;
             this.radioTecnicoCaminho.CheckedChanged += new System.EventHandler(this.radioTecnicoCaminho_CheckedChanged);
@@ -196,7 +196,7 @@
             this.txtMensagem.Multiline = true;
             this.txtMensagem.Name = "txtMensagem";
             this.txtMensagem.Size = new System.Drawing.Size(492, 142);
-            this.txtMensagem.TabIndex = 265;
+            this.txtMensagem.TabIndex = 0;
             // 
             // autoLabel3
             // 
@@ -212,6 +212,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioMensagemLivre);
             this.groupBox1.Controls.Add(this.radioProdutoDisponivel);
             this.groupBox1.Controls.Add(this.txtMensagem);
             this.groupBox1.Controls.Add(this.radioTecnicoCaminho);
@@ -226,13 +227,26 @@
             // 
             this.radioProdutoDisponivel.AutoSize = true;
             this.radioProdutoDisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioProdutoDisponivel.Location = new System.Drawing.Point(156, 139);
+            this.radioProdutoDisponivel.Location = new System.Drawing.Point(264, 139);
             this.radioProdutoDisponivel.Name = "radioProdutoDisponivel";
             this.radioProdutoDisponivel.Size = new System.Drawing.Size(210, 24);
             this.radioProdutoDisponivel.TabIndex = 4;
             this.radioProdutoDisponivel.Text = "Aviso - Produto Disponível";
             this.radioProdutoDisponivel.UseVisualStyleBackColor = true;
             this.radioProdutoDisponivel.CheckedChanged += new System.EventHandler(this.radioProdutoDisponivel_CheckedChanged);
+            // 
+            // radioMensagemLivre
+            // 
+            this.radioMensagemLivre.AutoSize = true;
+            this.radioMensagemLivre.Checked = true;
+            this.radioMensagemLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioMensagemLivre.Location = new System.Drawing.Point(43, 109);
+            this.radioMensagemLivre.Name = "radioMensagemLivre";
+            this.radioMensagemLivre.Size = new System.Drawing.Size(143, 24);
+            this.radioMensagemLivre.TabIndex = 1;
+            this.radioMensagemLivre.Text = "Mensagem Livre";
+            this.radioMensagemLivre.UseVisualStyleBackColor = true;
+            this.radioMensagemLivre.CheckedChanged += new System.EventHandler(this.radioMensagemLivre_CheckedChanged);
             // 
             // FrmEnvioMensagem
             // 
@@ -282,5 +296,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioProdutoDisponivel;
+        private System.Windows.Forms.RadioButton radioMensagemLivre;
     }
 }

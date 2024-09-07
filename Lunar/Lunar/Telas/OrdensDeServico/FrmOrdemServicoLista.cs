@@ -665,10 +665,14 @@ namespace Lunar.Telas.OrdensDeServico
                         if (Sessao.permissoes.Contains("33"))
                         {
                             editarCadastro(ordemServico);
+                            btnPesquisar.PerformClick();
                         }
                     }
                     else
+                    {
                         editarCadastro(ordemServico);
+                        btnPesquisar.PerformClick();
+                    }
                 }
             }
             else
@@ -2411,6 +2415,10 @@ namespace Lunar.Telas.OrdensDeServico
                         await enviarPDfPeloWhats(ordemServico, numero, nome, mensagem);
                     }
                     else if (escolha.Equals("Envio Técnico"))
+                    {
+                        await enviarMensagemPeloWhats(ordemServico, numero, nome, mensagem);
+                    }
+                    else
                     {
                         await enviarMensagemPeloWhats(ordemServico, numero, nome, mensagem);
                     }

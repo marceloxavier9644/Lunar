@@ -477,50 +477,53 @@ namespace Lunar.Utils.ImportadorSistemas
                     
                     Pessoa pessoa = new Pessoa();
                     pessoa = pessoaController.selecionarPessoaPorCodigoImportado(col.Cells[0].Value.ToString());
-                    receber.Cliente = pessoa;
-
-                    receber.CnpjCliente = pessoa.Cnpj;
-                    receber.DataExclusao = DateTime.Parse("0001-01-01 00:00:00");
-                    receber.DataRecebimento = DateTime.Parse("0001-01-01 00:00:00");
-                    receber.DescontoRecebidoBaixa = 0;
-                    receber.Descricao = "IMPORTADO ULTRA";
-                    receber.DescricaoRecebimento = "";
-                    receber.Documento = col.Cells[3].Value.ToString();
-                    receber.EmpresaFilial = Sessao.empresaFilialLogada;
-
-                    string endereco = "";
-                    if(pessoa.EnderecoPrincipal != null)
+                    if (pessoa != null)
                     {
-                        endereco = pessoa.EnderecoPrincipal.Logradouro + ", " + pessoa.EnderecoPrincipal.Numero;
-                    }
-                    receber.EnderecoCliente = endereco;
-                    FormaPagamento forma = new FormaPagamento();
-                    forma.Id = 6;
-                    forma = (FormaPagamento)FormaPagamentoController.getInstance().selecionar(forma);
-                    receber.FormaPagamento = forma;
+                        receber.Cliente = pessoa;
 
-                    receber.Juro = 0;
-                    receber.Multa = 0;
-                    receber.NomeCliente = pessoa.RazaoSocial;
-                    receber.OrdemServico = null;
-                    receber.Origem = "IMPORTADO";
-                    receber.Parcela = col.Cells[4].Value.ToString();
-                    receber.PlanoConta = null;
-                    receber.Recebido = false;
-              
-                    receber.Data = DateTime.Parse(col.Cells[8].Value.ToString());
-                    if (!String.IsNullOrEmpty(col.Cells[9].Value.ToString())) 
-                    {
-                        receber.ValorParcela = decimal.Parse(col.Cells[9].Value.ToString());
-                        receber.ValorTotal = receber.ValorParcela;
-                        receber.ValorTotalOrigem = receber.ValorParcela;
+                        receber.CnpjCliente = pessoa.Cnpj;
+                        receber.DataExclusao = DateTime.Parse("0001-01-01 00:00:00");
+                        receber.DataRecebimento = DateTime.Parse("0001-01-01 00:00:00");
+                        receber.DescontoRecebidoBaixa = 0;
+                        receber.Descricao = "IMPORTADO ULTRA";
+                        receber.DescricaoRecebimento = "";
+                        receber.Documento = col.Cells[3].Value.ToString();
+                        receber.EmpresaFilial = Sessao.empresaFilialLogada;
+
+                        string endereco = "";
+                        if (pessoa.EnderecoPrincipal != null)
+                        {
+                            endereco = pessoa.EnderecoPrincipal.Logradouro + ", " + pessoa.EnderecoPrincipal.Numero;
+                        }
+                        receber.EnderecoCliente = endereco;
+                        FormaPagamento forma = new FormaPagamento();
+                        forma.Id = 6;
+                        forma = (FormaPagamento)FormaPagamentoController.getInstance().selecionar(forma);
+                        receber.FormaPagamento = forma;
+
+                        receber.Juro = 0;
+                        receber.Multa = 0;
+                        receber.NomeCliente = pessoa.RazaoSocial;
+                        receber.OrdemServico = null;
+                        receber.Origem = "IMPORTADO";
+                        receber.Parcela = col.Cells[4].Value.ToString();
+                        receber.PlanoConta = null;
+                        receber.Recebido = false;
+
+                        receber.Data = DateTime.Parse(col.Cells[8].Value.ToString());
+                        if (!String.IsNullOrEmpty(col.Cells[9].Value.ToString()))
+                        {
+                            receber.ValorParcela = decimal.Parse(col.Cells[9].Value.ToString());
+                            receber.ValorTotal = receber.ValorParcela;
+                            receber.ValorTotalOrigem = receber.ValorParcela;
+                        }
+                        receber.ValorRecebido = 0;
+                        receber.ValorRecebimentoParcial = 0;
+                        receber.Vencimento = DateTime.Parse(col.Cells[5].Value.ToString());
+                        receber.Venda = null;
+                        receber.VendaFormaPagamento = null;
+                        Controller.getInstance().salvar(receber);
                     }
-                    receber.ValorRecebido = 0;
-                    receber.ValorRecebimentoParcial = 0;
-                    receber.Vencimento = DateTime.Parse(col.Cells[5].Value.ToString());
-                    receber.Venda = null;
-                    receber.VendaFormaPagamento = null;
-                    Controller.getInstance().salvar(receber);
                 }
                 GenericaDesktop.ShowInfo("Contas a Receber Importado com Sucesso!");
             }
@@ -774,9 +777,11 @@ namespace Lunar.Utils.ImportadorSistemas
             IList<OrdemServico> listaOrdem = ordemServicoController.selecionarTodasOS();
             if(listaOrdem.Count > 0)
             {
-                foreach(OrdemServico ordemServico in listaOrdem)
+                int a = 0;
+                foreach (OrdemServico ordemServico in listaOrdem)
                 {
-                    dataGridView1.Visible = true;
+                    a++;
+                    //dataGridView1.Visible = true;
                     FbConnection fbConn = new FbConnection(conexaoFirebird2);
                     FbCommand fbCmd = new FbCommand("Select * from os_produtos_alocados where os_produtos_alocados.OS = " + ordemServico.NumeroSerie, fbConn);
 
@@ -786,17 +791,15 @@ namespace Lunar.Utils.ImportadorSistemas
                         FbDataAdapter fbDa = new FbDataAdapter(fbCmd);
                         dtEmployee = new DataTable();
                         fbDa.Fill(dtEmployee);
-                        //dataGridView1.DataSource = dtEmployee;
 
                         //Importar
                         if (dtEmployee.Rows.Count > 0)
                         {
-                            int a = 0;
+                     
                             for (int i = 0; i < dtEmployee.Rows.Count; i++)
                             {
-                        
-                                a++;
-                                lblInformacao.Text = "Produtos da Ordem de Serviço: " + a + " de " + dtEmployee.Rows.Count;
+                       
+                                lblInformacao.Text = "Produtos da Ordem de Serviço: " + a + " de " + listaOrdem.Count;
                                 OrdemServicoProduto ordemServicoProduto = new OrdemServicoProduto();
                                 ordemServicoProduto.Id = 0;
                                 ordemServicoProduto.Acrescimo = 0;
@@ -806,18 +809,34 @@ namespace Lunar.Utils.ImportadorSistemas
                                 if (String.IsNullOrEmpty(ordemServicoProduto.DescricaoProduto))
                                     ordemServicoProduto.DescricaoProduto = "NÃO PREENCHIDO";
                                 ordemServicoProduto.OrdemServico = ordemServico;
+                               
                                 int cod = 0;
                                 //tratando para nao vir null em produtos possivelmente exluidos!
                                 try { cod = Convert.ToInt32(dtEmployee.Rows[i]["PRODUTO"]); } catch { cod = 0; }
+                                string b = "";
                                 if (cod > 0)
                                 {
                                     ordemServicoProduto.Produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(Convert.ToInt32(dtEmployee.Rows[i]["PRODUTO"]), Sessao.empresaFilialLogada);
                                     if (ordemServicoProduto.Produto != null)
                                     {
-                                        ordemServicoProduto.Quantidade = double.Parse(dtEmployee.Rows[i]["QTD"].ToString());
-                                        ordemServicoProduto.ValorTotal = decimal.Parse(dtEmployee.Rows[i]["LIQUIDO"].ToString());
-                                        ordemServicoProduto.ValorUnitario = decimal.Parse(dtEmployee.Rows[i]["UNITARIO"].ToString());
-                                        Controller.getInstance().salvar(ordemServicoProduto);
+                                        if (ordemServicoProduto.Produto.GradePrincipal != null)
+                                        {
+                                            ordemServicoProduto.ProdutoGrade = ordemServicoProduto.Produto.GradePrincipal;
+                                            ordemServicoProduto.Quantidade = double.Parse(dtEmployee.Rows[i]["QTD"].ToString());
+                                            ordemServicoProduto.ValorTotal = decimal.Parse(dtEmployee.Rows[i]["LIQUIDO"].ToString());
+                                            ordemServicoProduto.ValorUnitario = decimal.Parse(dtEmployee.Rows[i]["UNITARIO"].ToString());
+                                            Controller.getInstance().salvar(ordemServicoProduto);
+                                        }
+                                        else
+                                        {
+                                            Logger logger = new Logger();
+                                            logger.WriteLog("Produto sem grade: " + ordemServicoProduto.Produto.Id, "LOGIMPORTACAO");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        //SO PRA DEBUGAR E VER ERRO
+                                        b = "";
                                     }
                                 }
                             }
@@ -1229,6 +1248,8 @@ namespace Lunar.Utils.ImportadorSistemas
                         endereco.EmpresaFilial = Sessao.empresaFilialLogada;
                         endereco.Referencia = "";
                         endereco.Pessoa = pessoa;
+                        if(!String.IsNullOrEmpty(dtEmployee.Rows[i]["CEP"].ToString()))
+                            endereco.Cep = Generica.RemoveCaracteres(dtEmployee.Rows[i]["CEP"].ToString());
 
                         Controller.getInstance().salvar(endereco);
                         pessoa.EnderecoPrincipal = endereco;
@@ -1249,7 +1270,22 @@ namespace Lunar.Utils.ImportadorSistemas
             }
         }
 
-
+        private void escreverMensagemTela(string mensagem) 
+        {
+            if (lblInformacao.InvokeRequired)
+            {
+                // Define o método que será chamado na thread da UI
+                lblInformacao.Invoke(new Action(() =>
+                {
+                    lblInformacao.Text = mensagem;
+                }));
+            }
+            else
+            {
+                // Atualiza o controle diretamente se já estiver na thread da UI
+                lblInformacao.Text = mensagem;
+            }
+        }
         private void puxarProdutosUltra()
         {
             //dataGridView1.Visible = true;
@@ -1619,6 +1655,7 @@ namespace Lunar.Utils.ImportadorSistemas
 
         private void importarSaldo()
         {
+            lblInformacao.Visible = true;
             int i = 0;
             lblInformacao.Text = "Importação de Estoque Iniciada...";
             foreach (DataGridViewRow col in dataGridView1.Rows)
@@ -1672,6 +1709,8 @@ namespace Lunar.Utils.ImportadorSistemas
             }
             FrmBalancoEstoqueLista frm = new FrmBalancoEstoqueLista();
             frm.ajustarQuantidadeProdutoPeloMovimentoEstoque();
+            lblInformacao.Visible = false;
+            GenericaDesktop.ShowInfo("Importação de saldo finalizada!");
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using Lunar.Telas.VisualizadorPDF;
+﻿using Lunar.Telas.Vendas.Adicionais;
+using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
 using Lunar.Utils.Sintegra;
@@ -1284,12 +1285,67 @@ namespace Lunar.Telas.Fiscal
             }
         }
 
-        private async void btnReenviar_Click(object sender, EventArgs e)
+        private async Task ConsultarNFComFormAguarde()
         {
-            reenvioNF();
+            // Cria o formulário de espera
+            var frmAguarde = new FrmAguarde();
+
+            // Mostra o formulário de forma não modal para não bloquear a UI
+            frmAguarde.Show();
+
+            // Executa a chamada da API em segundo plano
+            await Task.Run(() =>
+            {
+                try
+                {
+                    // A função de reenvio da NF pode demorar
+                    consultarNF();
+                }
+                catch (Exception ex)
+                {
+                    // Aqui você pode tratar exceções relacionadas à API (tempo de resposta, etc.)
+                    MessageBox.Show("Houve um problema ao processar a requisição: " + ex.Message);
+                }
+            });
+
+            // Fecha o formulário de espera após a conclusão da chamada da API
+            frmAguarde.Close();
         }
 
-        private void reenvioNF()
+
+        private async Task ReenviarNFComFormAguarde()
+        {
+            // Cria o formulário de espera
+            var frmAguarde = new FrmAguarde();
+
+            // Mostra o formulário de forma não modal para não bloquear a UI
+            frmAguarde.Show();
+
+            // Executa a chamada da API em segundo plano
+            await Task.Run(() =>
+            {
+                try
+                {
+                    // A função de reenvio da NF pode demorar
+                    reenvioNF();
+                }
+                catch (Exception ex)
+                {
+                    // Aqui você pode tratar exceções relacionadas à API (tempo de resposta, etc.)
+                    MessageBox.Show("Houve um problema ao processar a requisição: " + ex.Message);
+                }
+            });
+
+            // Fecha o formulário de espera após a conclusão da chamada da API
+            frmAguarde.Close();
+        }
+
+        private async void btnReenviar_Click(object sender, EventArgs e)
+        {
+            await ReenviarNFComFormAguarde();
+        }
+
+        private async Task reenvioNF()
         {
             try
             {
@@ -1571,31 +1627,6 @@ namespace Lunar.Telas.Fiscal
                     }
                     else
                         GenericaDesktop.ShowAlerta("Só é possível reenviar uma nota que esteja com status de rejeição!");
-                    //Verifica se houve falha do sistema e confere na pasta de contigencia se a nota esta em contigencia
-                    //else
-                    //{
-                    //    string ret = lerTXT2(Sessao.parametroSistema.PastaRemessaNsCloud + @"\Processados\nsConcluido\" + nfe.NNf + ".txt");
-                    //    await Task.Delay(3000);
-                    //    if (ret != null)
-                    //    {
-                    //        if (nfe.Modelo.Equals("65"))
-                    //        {
-                    //            NFCeDownloadProc nFCeDownloadProc = generica.NS_ConsultaStatusNota65(nfe.Chave);
-                    //            if (nFCeDownloadProc.nfeProc.xMotivo.Contains("Autorizado o uso da NF-e"))
-                    //            {
-                    //                modificarNotaParaAutorizado(nFCeDownloadProc, nfe);
-                    //            }
-                    //        }
-                    //        else if (nfe.Modelo.Equals("55"))
-                    //        {
-                    //            //NFCeDownloadProc nFCeDownloadProc = generica.NS_ConsultaStatusNota(nfe.Chave);
-                    //            //if (nFCeDownloadProc.nfeProc.xMotivo.Contains("Autorizado o uso da NF-e"))
-                    //            //{
-                    //            //    modificarNotaParaAutorizado(nFCeDownloadProc, nfe);
-                    //            //}
-                    //        }
-                    //    }
-                    //}
                 }
                 else
                 {
@@ -1604,8 +1635,25 @@ namespace Lunar.Telas.Fiscal
             }
             catch (Exception erro)
             {
-                GenericaDesktop.ShowErro("Falha ao reenviar nota: " + erro.Message);
-
+                if (!String.IsNullOrEmpty(erro.Message))
+                {
+                    if(erro.Message.Contains("Unexpected character encountered while parsing value"))
+                    {
+                        GenericaDesktop.ShowErro("Falha ao reenviar nota: Instabilidade da Sefaz,tente reenviar mais tarde...");
+                        //DateTime primeiroDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                        //DateTime ultimoDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                        //ultimoDiaDoMes = ultimoDiaDoMes.AddMonths(1).AddDays(-1);
+                        //reenviarNotasEmContigencia(primeiroDiaDoMes.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), ultimoDiaDoMes.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
+                    }
+                    else
+                    {
+                        GenericaDesktop.ShowErro("Falha ao reenviar nota: " + erro.Message);
+                    }
+                }
+                else
+                {
+                    GenericaDesktop.ShowErro("Falha ao reenviar nota: " + erro.Message);
+                }
             }
         }
 
@@ -1843,7 +1891,12 @@ namespace Lunar.Telas.Fiscal
         }
 
 
-        private void btnConsultarNota_Click(object sender, EventArgs e)
+        private async void btnConsultarNota_Click(object sender, EventArgs e)
+        {
+            await ConsultarNFComFormAguarde();
+        }
+
+        private void consultarNF()
         {
             //downloadXML();
             if (grid.SelectedItem == null)
@@ -1873,9 +1926,9 @@ namespace Lunar.Telas.Fiscal
                 }
                 DownloadRespNFCe DownloadRespNFCe = new DownloadRespNFCe();
                 DownloadRespNFe downloadRespNFe = new DownloadRespNFe();
-                if(nfe.Modelo == "65")
+                if (nfe.Modelo == "65")
                     DownloadRespNFCe = JsonConvert.DeserializeObject<DownloadRespNFCe>(Retorno);
-                if(nfe.Modelo == "55")
+                if (nfe.Modelo == "55")
                     downloadRespNFe = JsonConvert.DeserializeObject<DownloadRespNFe>(Retorno);
 
                 if (DownloadRespNFCe.pdf != null && DownloadRespNFCe.nfeProc != null)
@@ -1896,8 +1949,6 @@ namespace Lunar.Telas.Fiscal
                     GenericaDesktop.ShowAlerta("Falha ao consultar, tente reenviar a nota fiscal!");
             }
         }
-
-        
 
         private void armazenaXmlAutorizadoNoBanco()
         {

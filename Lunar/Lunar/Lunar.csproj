@@ -1250,6 +1250,12 @@
     <Compile Include="Telas\Vendas\Adicionais\FrmAguarde2.Designer.cs">
       <DependentUpon>FrmAguarde2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmAlterarVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmAlterarVenda.Designer.cs">
+      <DependentUpon>FrmAlterarVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Vendas\Adicionais\FrmDescontoTotal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1838,6 +1844,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmAguarde2.resx">
       <DependentUpon>FrmAguarde2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmAlterarVenda.resx">
+      <DependentUpon>FrmAlterarVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmDescontoTotal.resx">
       <DependentUpon>FrmDescontoTotal.cs</DependentUpon>

@@ -2,6 +2,7 @@
 using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
@@ -210,7 +211,7 @@ namespace Lunar.Telas.Mensagens
 
                         connection.Open();
                         //string query = "SELECT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento INNER JOIN Pessoa ON MP.Pessoa = Pessoa.Id INNER JOIN PessoaTelefone ON Pessoa.ID = PessoaTelefone.PESSOA WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false AND PessoaTelefone.ddd IS NOT NULL AND PessoaTelefone.Telefone IS NOT NULL";
-                        string query = "SELECT DISTINCT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento INNER JOIN Pessoa ON MP.Pessoa = Pessoa.Id INNER JOIN (SELECT DISTINCT PessoaTelefone.PESSOA, PessoaTelefone.ddd, PessoaTelefone.Telefone FROM PessoaTelefone WHERE PessoaTelefone.ddd IS NOT NULL AND PessoaTelefone.Telefone IS NOT NULL) AS PessoaTelefoneDistinct ON Pessoa.ID = PessoaTelefoneDistinct.PESSOA WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false";
+                        string query = "SELECT DISTINCT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento INNER JOIN Pessoa ON MP.Pessoa = Pessoa.Id INNER JOIN PessoaTelefone ON Pessoa.ID = PessoaTelefone.PESSOA WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false AND PessoaTelefone.ddd IS NOT NULL AND PessoaTelefone.Telefone IS NOT NULL;\r\n";
 
 
                         using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -295,6 +296,20 @@ namespace Lunar.Telas.Mensagens
                                             string conteudoLog = $"Data e Hora: {DateTime.Now}\nNúmero de Telefone: {numeroLimpo}\nTexto da Mensagem: {mensagemAjustada}\n\n";
                                             // Escrever o conteúdo no arquivo (append para adicionar ao conteúdo existente)
                                             File.AppendAllText(caminhoArquivo, conteudoLog);
+
+                                            if (mensagem.Pessoa != null)
+                                            {
+                                                MensagemPosVendaDAO mensagemPosVendaDAO = new MensagemPosVendaDAO();
+                                                IList<MensagemPosVenda> lista = mensagemPosVendaDAO.selecionarTodasMensagensNaoEnviadasPorCliente(mensagem.Pessoa.Id);
+                                                if (lista.Count > 0)
+                                                {
+                                                    foreach (MensagemPosVenda mens in lista)
+                                                    {
+                                                        mens.FlagEnviada = true;
+                                                        Controller.getInstance().salvar(mens);
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }

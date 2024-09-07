@@ -24,7 +24,8 @@ namespace Lunar.Telas.OrdensDeServico
             txtNumeroCliente.Text = numeroTelefone;
             txtNomeCliente.Text = nomeCliente;
             nome = nomeCliente;
-            txtMensagem.Text = "Olá, [nome]! Segue cópia da Ordem de Serviço. Data/Hora Envio: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ", clique e faça o download do PDF.";
+            txtMensagem.Text = "";
+            txtMensagem.Focus();
         }
 
         public string GetEscolha()
@@ -57,7 +58,7 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 Escolha = "Envio PDF";
             }
-            else
+            else if (radioTecnicoCaminho.Checked == true)
             {
                 Escolha = "Envio Técnico";
             }
@@ -78,10 +79,6 @@ namespace Lunar.Telas.OrdensDeServico
                     "preferência e confiança em nossos serviços. Estamos felizes em informar que nosso técnico/responsável pelo serviço " +
                     "solicitado está a caminho para atendê-lo. Conte conosco para proporcionar a melhor experiência possível. " +
                     "Obrigado pela sua escolha.";
-            }
-            else if (radioPdfOs.Checked == true)
-            {
-                txtMensagem.Text = "Olá, [nome]! Segue cópia da Ordem de Serviço. Data/Hora Envio: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ", clique e faça o download do PDF.";
             }
         }
 
@@ -111,6 +108,22 @@ namespace Lunar.Telas.OrdensDeServico
                 txtMensagem.Text = "*" + Sessao.empresaFilialLogada.NomeFantasia + ":* " + "Olá" + ", " + nome + "! queremos agradecer pela " +
                     "preferência e confiança em nossos Produtos/Serviços. Estamos felizes em informar que seu produto " +
                     "já está disponível para retirada em nossa loja. Conte conosco para proporcionar a melhor experiência possível.";
+            }
+        }
+
+        private void radioPdfOs_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioPdfOs.Checked == true)
+            {
+                txtMensagem.Text = "Olá, [nome]! Segue cópia da Ordem de Serviço. Data/Hora Envio: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ", clique e faça o download do PDF.";
+            }
+        }
+
+        private void radioMensagemLivre_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioMensagemLivre.Checked == true)
+            {
+                txtMensagem.Text = "";
             }
         }
     }

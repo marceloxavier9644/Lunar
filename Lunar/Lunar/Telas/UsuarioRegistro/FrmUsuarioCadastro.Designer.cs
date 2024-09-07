@@ -54,7 +54,13 @@
             this.txtEmpresa = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtID = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtLogin = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtTelefonePrincipal = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtDDD = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.chkReceberNotificacoes = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panelTitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkReceberNotificacoes)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -143,7 +149,7 @@
             this.btnPesquisaEmpresa.Location = new System.Drawing.Point(582, 208);
             this.btnPesquisaEmpresa.Name = "btnPesquisaEmpresa";
             this.btnPesquisaEmpresa.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaEmpresa.TabIndex = 5;
+            this.btnPesquisaEmpresa.TabIndex = 8;
             this.btnPesquisaEmpresa.UseVisualStyleBackColor = true;
             this.btnPesquisaEmpresa.Click += new System.EventHandler(this.btnPesquisaEmpresa_Click);
             // 
@@ -163,7 +169,7 @@
             this.autoLabel14.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel14.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel14.Location = new System.Drawing.Point(16, 184);
+            this.autoLabel14.Location = new System.Drawing.Point(13, 184);
             this.autoLabel14.Name = "autoLabel14";
             this.autoLabel14.Size = new System.Drawing.Size(147, 16);
             this.autoLabel14.TabIndex = 213;
@@ -226,7 +232,7 @@
             this.btnPesquisaGrupo.Location = new System.Drawing.Point(582, 142);
             this.btnPesquisaGrupo.Name = "btnPesquisaGrupo";
             this.btnPesquisaGrupo.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaGrupo.TabIndex = 221;
+            this.btnPesquisaGrupo.TabIndex = 5;
             this.btnPesquisaGrupo.UseVisualStyleBackColor = true;
             this.btnPesquisaGrupo.Click += new System.EventHandler(this.btnPesquisaGrupo_Click);
             // 
@@ -278,7 +284,7 @@
             this.txtCodGrupo.PlaceholderText = "";
             this.txtCodGrupo.ReadOnly = false;
             this.txtCodGrupo.Size = new System.Drawing.Size(137, 37);
-            this.txtCodGrupo.TabIndex = 222;
+            this.txtCodGrupo.TabIndex = 6;
             this.txtCodGrupo.Tag = "";
             this.txtCodGrupo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodGrupo.Texts = "";
@@ -305,7 +311,7 @@
             this.txtGrupo.PlaceholderText = "";
             this.txtGrupo.ReadOnly = false;
             this.txtGrupo.Size = new System.Drawing.Size(201, 37);
-            this.txtGrupo.TabIndex = 219;
+            this.txtGrupo.TabIndex = 4;
             this.txtGrupo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGrupo.Texts = "";
             this.txtGrupo.UnderlinedStyle = false;
@@ -323,10 +329,10 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Location = new System.Drawing.Point(461, 271);
+            this.btnSalvar.Location = new System.Drawing.Point(461, 361);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(298, 45);
-            this.btnSalvar.TabIndex = 7;
+            this.btnSalvar.TabIndex = 13;
             this.btnSalvar.Text = "Salvar [F5]";
             this.btnSalvar.TextColor = System.Drawing.Color.White;
             this.btnSalvar.UseVisualStyleBackColor = false;
@@ -347,10 +353,10 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelar.Location = new System.Drawing.Point(157, 271);
+            this.btnCancelar.Location = new System.Drawing.Point(157, 361);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(298, 45);
-            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.TabIndex = 14;
             this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -426,7 +432,7 @@
             this.txtCodEmpresa.PlaceholderText = "";
             this.txtCodEmpresa.ReadOnly = false;
             this.txtCodEmpresa.Size = new System.Drawing.Size(137, 37);
-            this.txtCodEmpresa.TabIndex = 6;
+            this.txtCodEmpresa.TabIndex = 9;
             this.txtCodEmpresa.Tag = "";
             this.txtCodEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodEmpresa.Texts = "";
@@ -452,7 +458,7 @@
             this.txtEmpresa.PlaceholderText = "";
             this.txtEmpresa.ReadOnly = false;
             this.txtEmpresa.Size = new System.Drawing.Size(562, 37);
-            this.txtEmpresa.TabIndex = 4;
+            this.txtEmpresa.TabIndex = 7;
             this.txtEmpresa.Tag = "";
             this.txtEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEmpresa.Texts = "";
@@ -511,12 +517,107 @@
             this.txtLogin.Texts = "";
             this.txtLogin.UnderlinedStyle = false;
             // 
+            // autoLabel7
+            // 
+            this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel7.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel7.Location = new System.Drawing.Point(123, 245);
+            this.autoLabel7.Name = "autoLabel7";
+            this.autoLabel7.Size = new System.Drawing.Size(69, 16);
+            this.autoLabel7.TabIndex = 228;
+            this.autoLabel7.Text = "Whatsapp";
+            // 
+            // txtTelefonePrincipal
+            // 
+            this.txtTelefonePrincipal.BackColor = System.Drawing.Color.White;
+            this.txtTelefonePrincipal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTelefonePrincipal.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTelefonePrincipal.BorderRadius = 8;
+            this.txtTelefonePrincipal.BorderSize = 2;
+            this.txtTelefonePrincipal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtTelefonePrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefonePrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTelefonePrincipal.Location = new System.Drawing.Point(123, 265);
+            this.txtTelefonePrincipal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTelefonePrincipal.Multiline = false;
+            this.txtTelefonePrincipal.Name = "txtTelefonePrincipal";
+            this.txtTelefonePrincipal.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTelefonePrincipal.PasswordChar = false;
+            this.txtTelefonePrincipal.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtTelefonePrincipal.PlaceholderText = "";
+            this.txtTelefonePrincipal.ReadOnly = false;
+            this.txtTelefonePrincipal.Size = new System.Drawing.Size(248, 37);
+            this.txtTelefonePrincipal.TabIndex = 11;
+            this.txtTelefonePrincipal.Tag = "";
+            this.txtTelefonePrincipal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtTelefonePrincipal.Texts = "";
+            this.txtTelefonePrincipal.UnderlinedStyle = false;
+            this.txtTelefonePrincipal.Leave += new System.EventHandler(this.txtTelefonePrincipal_Leave);
+            // 
+            // autoLabel8
+            // 
+            this.autoLabel8.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel8.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel8.Location = new System.Drawing.Point(13, 245);
+            this.autoLabel8.Name = "autoLabel8";
+            this.autoLabel8.Size = new System.Drawing.Size(37, 16);
+            this.autoLabel8.TabIndex = 227;
+            this.autoLabel8.Text = "DDD";
+            // 
+            // txtDDD
+            // 
+            this.txtDDD.BackColor = System.Drawing.Color.White;
+            this.txtDDD.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDDD.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDDD.BorderRadius = 8;
+            this.txtDDD.BorderSize = 2;
+            this.txtDDD.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDDD.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDDD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDDD.Location = new System.Drawing.Point(13, 265);
+            this.txtDDD.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDDD.Multiline = false;
+            this.txtDDD.Name = "txtDDD";
+            this.txtDDD.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtDDD.PasswordChar = false;
+            this.txtDDD.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtDDD.PlaceholderText = "";
+            this.txtDDD.ReadOnly = false;
+            this.txtDDD.Size = new System.Drawing.Size(102, 37);
+            this.txtDDD.TabIndex = 10;
+            this.txtDDD.Tag = "";
+            this.txtDDD.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtDDD.Texts = "";
+            this.txtDDD.UnderlinedStyle = false;
+            // 
+            // chkReceberNotificacoes
+            // 
+            this.chkReceberNotificacoes.BeforeTouchSize = new System.Drawing.Size(270, 30);
+            this.chkReceberNotificacoes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkReceberNotificacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkReceberNotificacoes.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkReceberNotificacoes.Location = new System.Drawing.Point(13, 309);
+            this.chkReceberNotificacoes.Name = "chkReceberNotificacoes";
+            this.chkReceberNotificacoes.Size = new System.Drawing.Size(270, 30);
+            this.chkReceberNotificacoes.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            this.chkReceberNotificacoes.TabIndex = 12;
+            this.chkReceberNotificacoes.TabStop = false;
+            this.chkReceberNotificacoes.Text = "Receber Notificações do Sistema";
+            this.chkReceberNotificacoes.ThemeName = "Metro";
+            // 
             // FrmUsuarioCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(774, 328);
+            this.ClientSize = new System.Drawing.Size(774, 418);
+            this.Controls.Add(this.chkReceberNotificacoes);
+            this.Controls.Add(this.autoLabel7);
+            this.Controls.Add(this.txtTelefonePrincipal);
+            this.Controls.Add(this.autoLabel8);
+            this.Controls.Add(this.txtDDD);
             this.Controls.Add(this.lblAutomatico);
             this.Controls.Add(this.btnPesquisaGrupo);
             this.Controls.Add(this.autoLabel6);
@@ -547,6 +648,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmUsuarioCadastro_KeyDown);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkReceberNotificacoes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,5 +681,10 @@
         private RJ_UI.Classes.RJTextBox txtCodGrupo;
         private System.Windows.Forms.Timer timer1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblAutomatico;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
+        private RJ_UI.Classes.RJTextBox txtTelefonePrincipal;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel8;
+        private RJ_UI.Classes.RJTextBox txtDDD;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkReceberNotificacoes;
     }
 }

@@ -49,7 +49,7 @@
             this.lblVersaoAtualizador.Name = "lblVersaoAtualizador";
             this.lblVersaoAtualizador.Size = new System.Drawing.Size(77, 13);
             this.lblVersaoAtualizador.TabIndex = 0;
-            this.lblVersaoAtualizador.Text = "Atualizador 1.0";
+            this.lblVersaoAtualizador.Text = "Atualizador 1.2";
             // 
             // btnVerificarAtualização
             // 

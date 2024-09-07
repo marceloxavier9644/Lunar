@@ -533,7 +533,7 @@ namespace Lunar
 
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtUsuario.Texts.Trim()))
+            if (!String.IsNullOrEmpty(txtUsuario.Texts.Trim()) && String.IsNullOrEmpty(txtSenha.Texts))
             {
                 UsuarioController usuarioController = new UsuarioController();
                 IList<Usuario> listaUser = usuarioController.selecionarUsuarioComVariosFiltros(txtUsuario.Texts.Trim());
@@ -545,10 +545,6 @@ namespace Lunar
                         txtSenha.Focus();
                     }
                 }
-                //else if (listaUser.Count == 0)
-                //{
-                //    GenericaDesktop.ShowAlerta("Usuário não encontrado!");
-                //}
             }
         }
 

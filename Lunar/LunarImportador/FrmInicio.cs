@@ -4,12 +4,16 @@ using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
+using Npgsql;
+using System.Data;
 using System.Text.RegularExpressions;
 
 namespace LunarImportador
 {
     public partial class FrmInicio : Form
     {
+        string connectionStringLinkPro = "Host=seu_servidor;Port=5432;Username=seu_usuario;Password=sua_senha;Database=seu_banco_de_dados";
         public FrmInicio()
         {
             InitializeComponent();
@@ -103,7 +107,7 @@ namespace LunarImportador
                     Thread importarThread = new Thread(() => ImportarClientesEFornecedores(selectedDatabase, firebirdDatabasePath));
                     importarThread.Start();
                 }
-                if(chkProdutos.Checked == true)
+                if (chkProdutos.Checked == true)
                 {
                     progressBar1.Visible = true;
                     lblStatus.Visible = true;
@@ -115,6 +119,17 @@ namespace LunarImportador
                     progressBar1.Visible = true;
                     lblStatus.Visible = true;
                     Thread importarThread = new Thread(() => ImportarContasPagarSgbr(selectedDatabase, firebirdDatabasePath));
+                    importarThread.Start();
+                }
+            }
+
+            if(radioLinkPro.Checked == true)
+            {
+                if (chkProdutos.Checked == true)
+                {
+                    progressBar1.Visible = true;
+                    lblStatus.Visible = true;
+                    Thread importarThread = new Thread(() => importarProdutosLinkProCervantes());
                     importarThread.Start();
                 }
             }
@@ -723,6 +738,7 @@ namespace LunarImportador
                     i++;
                     Produto produto = new Produto();
                     //ID no SGBR
+                    
                     if (chkIdProduto.Checked == true)
                         produto.Id = int.Parse(firebirdReader["controle"].ToString());
                     else
@@ -753,7 +769,7 @@ namespace LunarImportador
                     produto.EnqIpi = "999";
                     produto.EspecieVeiculo = "";
                     int idGrupo = 0;
-                    try { idGrupo = int.Parse(firebirdReader["codgrupo"].ToString()); } catch { idGrupo = 0;}
+                    try { idGrupo = int.Parse(firebirdReader["codgrupo"].ToString()); } catch { idGrupo = 0; }
                     object grupoIdValue = (idGrupo == 0) ? DBNull.Value : (object)idGrupo;
                     Estoque estoque = new Estoque();
                     try
@@ -761,7 +777,7 @@ namespace LunarImportador
                         if (double.Parse(firebirdReader["qtde"].ToString()) > 0)
                         {
                             produto.Estoque = double.Parse(firebirdReader["qtde"].ToString());
-                            
+
                             estoque.BalancoEstoque = null;
                             estoque.Conciliado = true;
                             estoque.DataEntradaSaida = DateTime.Now;
@@ -773,7 +789,7 @@ namespace LunarImportador
                             estoque.Quantidade = double.Parse(firebirdReader["qtde"].ToString());
                             estoque.QuantidadeInventario = 0;
                             estoque.Saida = false;
-                           
+
 
                             //Grava estoque auxiliar ou apenas o contabil
                             if (chkSaldoEstoque.Checked == true)
@@ -937,14 +953,14 @@ namespace LunarImportador
 
                     mysqlCommand.ExecuteNonQuery();
                     int idProduto = (int)mysqlCommand.LastInsertedId;
-                    if(chkIdProduto.Checked == true)
+                    if (chkIdProduto.Checked == true)
                         idProduto = produto.Id;
 
                     string mysqlQueryEstoque = @"
                         INSERT INTO Estoque 
                             (BalancoEstoque, Conciliado, DataEntradaSaida, Descricao, Entrada, FlagExcluido, Origem, Pessoa, Quantidade, QuantidadeInventario, Saida, EmpresaFilial, Produto) 
                         VALUES 
-                            (@BalancoEstoque, @Conciliado, @DataEntradaSaida, @Descricao, @Entrada, @FlagExcluido, @Origem, @Pessoa, @Quantidade, @QuantidadeInventario, @Saida, 1, "+ idProduto + ")";
+                            (@BalancoEstoque, @Conciliado, @DataEntradaSaida, @Descricao, @Entrada, @FlagExcluido, @Origem, @Pessoa, @Quantidade, @QuantidadeInventario, @Saida, 1, " + idProduto + ")";
 
                     MySqlCommand mysqlCommandEstoque = new MySqlCommand(mysqlQueryEstoque, mysqlConnection);
 
@@ -961,7 +977,7 @@ namespace LunarImportador
                     mysqlCommandEstoque.Parameters.AddWithValue("@Saida", estoque.Saida);
                     // Execute o comando
                     mysqlCommandEstoque.ExecuteNonQuery();
-                    if(chkSaldoEstoque.Checked == true)
+                    if (chkSaldoEstoque.Checked == true)
                     {
                         //Nao conciliado
                         estoque.Conciliado = false;
@@ -969,7 +985,7 @@ namespace LunarImportador
                         INSERT INTO Estoque 
                             (BalancoEstoque, Conciliado, DataEntradaSaida, Descricao, Entrada, FlagExcluido, Origem, Pessoa, Quantidade, QuantidadeInventario, Saida, EmpresaFilial, Produto) 
                         VALUES 
-                            (@BalancoEstoque, @Conciliado, @DataEntradaSaida, @Descricao, @Entrada, @FlagExcluido, @Origem, @Pessoa, @Quantidade, @QuantidadeInventario, @Saida, 1, "+ idProduto + ")";
+                            (@BalancoEstoque, @Conciliado, @DataEntradaSaida, @Descricao, @Entrada, @FlagExcluido, @Origem, @Pessoa, @Quantidade, @QuantidadeInventario, @Saida, 1, " + idProduto + ")";
 
                         mysqlCommandEstoque = new MySqlCommand(mysqlQueryEstoque, mysqlConnection);
                         mysqlCommandEstoque.Parameters.AddWithValue("@BalancoEstoque", (object)estoque.BalancoEstoque ?? DBNull.Value);
@@ -1005,7 +1021,7 @@ namespace LunarImportador
             catch (Exception ex)
             {
                 //if (ex.ToString().Contains("Duplicate entry"))
-                    MessageBox.Show("Erro ao importar produtos: " + ex.Message);
+                MessageBox.Show("Erro ao importar produtos: " + ex.Message);
             }
             finally
             {
@@ -1081,7 +1097,7 @@ namespace LunarImportador
             }
             catch (Exception ex)
             {
-                if(!ex.ToString().Contains("Duplicate entry"))
+                if (!ex.ToString().Contains("Duplicate entry"))
                     MessageBox.Show("Erro ao importar dados: " + ex.Message);
             }
             finally
@@ -1100,6 +1116,16 @@ namespace LunarImportador
         }
         private int ObterOuCriarMarca(string nomeMarca, MySqlConnection mysqlConnection)
         {
+            if (mysqlConnection == null)
+            {
+                throw new InvalidOperationException("A conexão MySQL não foi inicializada.");
+            }
+
+            // Certifique-se de que a conexão está aberta
+            if (mysqlConnection.State != ConnectionState.Open)
+            {
+                mysqlConnection.Open();
+            }
             // Verificar se a marca já existe
             string queryVerificarMarca = "SELECT Id FROM Marca WHERE descricao = @nomeMarca LIMIT 1";
             MySqlCommand commandVerificarMarca = new MySqlCommand(queryVerificarMarca, mysqlConnection);
@@ -1127,6 +1153,17 @@ namespace LunarImportador
 
         private int ObterOuCriarUnidadeMedida(string descricaoUnidade, MySqlConnection mysqlConnection)
         {
+            if (mysqlConnection == null)
+            {
+                throw new InvalidOperationException("A conexão MySQL não foi inicializada.");
+            }
+
+            // Certifique-se de que a conexão está aberta
+            if (mysqlConnection.State != ConnectionState.Open)
+            {
+                mysqlConnection.Open();
+            }
+
             // Verificar se a unidade de medida já existe
             string queryVerificarUnidade = "SELECT Id FROM UnidadeMedida WHERE Sigla = @descricaoUnidade LIMIT 1";
             MySqlCommand commandVerificarUnidade = new MySqlCommand(queryVerificarUnidade, mysqlConnection);
@@ -1340,6 +1377,509 @@ namespace LunarImportador
             }
         }
 
+        private void importarProdutosLinkProCervantes()
+        {
+            connectionStringLinkPro = "Host="+txtBancoOrigem.Text.Trim()+ ";Port=5432;Username=postgres;Password=postgres;Database=InkDB";
+            try
+            {
+                //connectionStringLinkPro = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=InkDB";
 
+                using (var connection = new NpgsqlConnection(connectionStringLinkPro))
+                {
+                    connection.Open();
+                    string countQuery = "SELECT COUNT(*) FROM produto p INNER JOIN prod_cod_barras pcb ON pcb.id_produto = p.id_produto";
+
+                    int totalRecords;
+                    using (var countCommand = new NpgsqlCommand(countQuery, connection))
+                    {
+                        totalRecords = Convert.ToInt32(countCommand.ExecuteScalar());
+                        Console.WriteLine($"Número total de registros: {totalRecords}");
+                    }
+
+                    lblStatus.Text = "Conexão estabelecida";
+                    using (var command = new NpgsqlCommand("SELECT p.produto_codigo, p.descricao, p.inativo, p.qtd_estoque, " +
+                        "p.cod_ncm, p.preco_custo, p.preco_venda, p.cest, pcb.codigo_barra FROM produto p inner join prod_cod_barras pcb on pcb.id_produto = p.id_produto", connection))
+                    {
+                        command.CommandTimeout = 300; // Aumenta o tempo limite para 5 minutos
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                int rowIndex = 0;
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    try
+                                    {
+                                        rowIndex++;
+                                        // Exemplo de leitura de dados
+                                        var produto_codigo = reader["produto_codigo"].ToString();
+                                        var descricao = reader["descricao"].ToString();
+                                        var inativo = reader["inativo"].ToString();
+                                        var qtd_estoque = reader["qtd_estoque"].ToString();
+                                        var cod_ncm = reader["cod_ncm"].ToString();
+                                        var preco_custo = reader["preco_custo"].ToString();
+                                        var preco_venda = reader["preco_venda"].ToString();
+                                        var cest = reader["cest"].ToString();
+                                        var codigo_barra = reader["codigo_barra"].ToString();
+
+                                        Produto produto = new Produto();
+                                        if (chkIdProduto.Checked == true)
+                                            produto.Id = int.Parse(produto_codigo);
+                                        else
+                                            produto.Id = 0;
+                                        produto.Observacoes = produto_codigo + " SGBR";
+                                        produto.AnoVeiculo = "";
+                                        produto.CapacidadeTracao = "";
+                                        if(cest != "null" && cest != "Null" && cest != "NULL")
+                                            produto.Cest = Generica.RemoveCaracteres(cest);
+
+                                        produto.CfopVenda = Generica.RemoveCaracteres("");
+                                        produto.Chassi = "";
+                                        produto.CilindradaCc = "";
+                                        produto.CodAnp = "";
+                                        produto.CodSeloIpi = "";
+                                        produto.Combustivel = "";
+                                        produto.CondicaoProduto = "";
+                                        produto.ControlaEstoque = true;
+                                        produto.CorDenatran = "";
+                                        produto.CorMontadora = "";
+                                        produto.CstCofins = "99";
+                                        produto.CstIcms = "102";
+                                        produto.CstIpi = "99";
+                                        produto.CstPis = "99";
+                                        produto.DataCadastro = DateTime.Now;
+                                        produto.Descricao = descricao;
+                                        produto.DistanciaEixo = "";
+                                        produto.Ean = codigo_barra;
+                                        produto.Ecommerce = false;
+                                        produto.EnqIpi = "999";
+                                        produto.EspecieVeiculo = "";
+
+                                        produto.FlagExcluido = false;
+                                        produto.Grade = false;
+                                        string grupoFiscal = "1";
+                                        produto.IdComplementar = "";
+                                        produto.KmEntrada = "";
+                                        produto.LotacaoVeiculo = "";
+                                        produto.Marca = null;
+                                        produto.MarcaModelo = "";
+                                        produto.Markup = "";
+                                        produto.ModeloVeiculo = "";
+                                        produto.Ncm = cod_ncm;
+                                        produto.NumeroMotor = "";
+                                        produto.OperadorCadastro = "1";
+                                        produto.OrigemIcms = "0";
+                                        produto.PercentualCofins = "0";
+                                        produto.PercentualIcms = "0";
+                                        produto.PercentualIpi = "0";
+                                        produto.PercentualPis = "0";
+                                        try { produto.PercGlp = double.Parse("0"); } catch { produto.PercGlp = 0; }
+                                        try { produto.PercGni = double.Parse("0"); } catch { produto.PercGni = 0; }
+                                        try { produto.PercGnn = double.Parse("0"); } catch { produto.PercGnn = 0; }
+                                        produto.Pesavel = false;
+                                        produto.PesoBrutoVeiculo = "";
+                                        produto.PesoLiquidoVeiculo = "";
+                                        produto.Placa = "";
+                                        produto.PotenciaCv = "";
+                                        produto.ProdutoSetor = null;
+                                        produto.ProdutoSubGrupo = null;
+                                        produto.Referencia = "";
+                                        produto.Renavam = "";
+                                        produto.RestricaoVeiculo = "";
+                                        produto.SolicitaNumeroSerie = false;
+                                        produto.TipoCambio = "";
+                                        produto.TipoEntrada = "";
+                                        produto.TipoPintura = "";
+                                        produto.TipoProduto = "REVENDA";
+                                        produto.TipoVeiculo = "";
+                                        string selectedDatabase = "";
+                                        if (comboDestino.InvokeRequired)
+                                        {
+                                            // Se a chamada precisa ser feita na thread da UI, use Invoke
+                                            comboDestino.Invoke(new Action(() =>
+                                            {
+                                                selectedDatabase = comboDestino.SelectedItem?.ToString();
+                                                // Agora você pode usar selectedDatabase aqui
+                                            }));
+                                        }
+                                        else
+                                        {
+                                            // Caso contrário, faça o acesso diretamente
+                                            selectedDatabase = comboDestino.SelectedItem?.ToString();
+                                            // Agora você pode usar selectedDatabase aqui
+                                        }
+                                        string mysqlConnectionString = $"Server=localhost;Database={selectedDatabase};User Id=marcelo;Password=mx123;";
+                                        MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+                                        int unidadeMedida = ObterOuCriarUnidadeMedida(RemoverCedilha("PC"), mysqlConnection);
+                                        produto.UnidadeMedida = new UnidadeMedida();
+                                        produto.UnidadeMedida.Id = unidadeMedida;
+                                        produto.GrupoFiscal = new GrupoFiscal();
+                                        produto.GrupoFiscal.Id = 1;
+
+                                        try { produto.ValorCusto = decimal.Parse(preco_custo); } catch { produto.ValorCusto = 0; }
+                                        produto.ValorPartida = 0;
+                                        try { produto.ValorVenda = decimal.Parse(preco_venda); } catch { produto.ValorVenda = 1; }
+                                        produto.Veiculo = false;
+                                        produto.VeiculoNovo = false;
+
+                                        ProdutoGrade produtoGrade = new ProdutoGrade();
+                                        produtoGrade.ValorVenda = produto.ValorVenda;
+                                        produtoGrade.DataCadastro = DateTime.Now;
+                                        produtoGrade.QuantidadeMedida = 1;
+                                        produtoGrade.Descricao = "PRINCIPAL";
+                                        produtoGrade.FlagExcluido = false;
+                                        produtoGrade.UnidadeMedida = new UnidadeMedida();
+                                        produtoGrade.UnidadeMedida.Id = 2;
+                                        produtoGrade.ValorVenda = produto.ValorVenda;
+                                        produtoGrade.Principal = true;
+
+                                        Estoque estoque = new Estoque();
+                                        try
+                                        {
+                                            if (double.Parse(qtd_estoque) > 0)
+                                            {
+                                                produto.Estoque = 0;
+                                                estoque.BalancoEstoque = null;
+                                                estoque.Conciliado = false;
+                                                estoque.DataEntradaSaida = DateTime.Now;
+                                                estoque.Descricao = "IMPORTACAO LINK";
+                                                estoque.Entrada = true;
+                                                estoque.FlagExcluido = false;
+                                                estoque.Origem = "LINK PRO";
+                                                estoque.Pessoa = null;
+                                                estoque.Quantidade = double.Parse(qtd_estoque);
+                                                estoque.QuantidadeInventario = 0;
+                                                estoque.Saida = false;
+
+
+                                                //Grava estoque auxiliar ou apenas o contabil
+                                                if (chkSaldoEstoque.Checked == true)
+                                                    produto.EstoqueAuxiliar = double.Parse(qtd_estoque);
+                                                else
+                                                    produto.EstoqueAuxiliar = 0;
+                                            }
+                                        }
+                                        catch
+                                        {
+                                            produto.Estoque = 0;
+                                            produto.EstoqueAuxiliar = 0;
+                                        }
+                                        i++;
+                                        salvarProdutoLinkNoMysql(produto, estoque, produtoGrade, mysqlConnection);
+                                        lblStatus.Text = "Produto " + i + " de " + totalRecords;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine($"Erro ao ler a linha {rowIndex}: {ex.Message}");
+                                        // Talvez seja interessante parar o loop se um erro ocorrer
+                                        break;
+                                    }
+                                    lblStatus.Text = "Produtos Importados: " + i;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nenhum dado encontrado.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao conectar ou executar a consulta: {ex.Message}");
+            }
+
+        }
+
+        private void radioLinkPro_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioLinkPro.Checked == true)
+            {
+                lblOrigem.Text = "Digite aqui o Nome do Servidor do LinkPro (Apenas Importação de Produtos Disponível)";
+                txtBancoOrigem.Enabled = true;
+                txtBancoOrigem.ReadOnly = false;
+                txtBancoOrigem.Focus();
+                txtBancoOrigem.SelectAll();
+                chkClientes.Checked = false;
+                chkContasAPagar.Checked = false;
+                chkContasAReceber.Checked = false;
+                chkServicos.Checked = false;
+                chkClientes.Enabled = false;
+                chkContasAPagar.Enabled = false;
+                chkContasAReceber.Enabled = false;
+                chkServicos.Enabled = false;
+            }
+            else
+            {
+                lblOrigem.Text = "Banco de Dados Origem(Sistema Antigo do Cliente)";
+                txtBancoOrigem.Enabled = false;
+                txtBancoOrigem.ReadOnly = true;
+                txtBancoOrigem.Text = "";
+                chkClientes.Checked = true;
+                chkContasAPagar.Checked = true;
+                chkContasAReceber.Checked = true;
+                chkServicos.Checked = true;
+                chkClientes.Enabled = true;
+                chkContasAPagar.Enabled = true;
+                chkContasAReceber.Enabled = true;
+                chkServicos.Enabled = true;
+            }
+        }
+
+        private void salvarProdutoLinkNoMysql(Produto produto,Estoque estoque,ProdutoGrade produtoGrade, MySqlConnection mysqlConnection)
+        {
+            string mysqlQuery = @"
+                INSERT INTO Produto 
+                (Id, Observacoes, AnoVeiculo, CapacidadeTracao, Cest, CfopVenda, Chassi, CilindradaCc, CodAnp, CodSeloIpi, Combustivel, 
+                CondicaoProduto, ControlaEstoque, CorDenatran, CorMontadora, CstCofins, CstIcms, CstIpi, CstPis, DataCadastro, Descricao, 
+                DistanciaEixo, Ean, Ecommerce, EnqIpi, EspecieVeiculo, Estoque, EstoqueAuxiliar, FlagExcluido, Grade, IdComplementar, 
+                KmEntrada, LotacaoVeiculo, Marca, MarcaModelo, Markup, ModeloVeiculo, Ncm, NumeroMotor, OperadorCadastro, OrigemIcms, 
+                PercentualCofins, PercentualIcms, PercentualIpi, PercentualPis, PercGlp, PercGni, PercGnn, Pesavel, PesoBrutoVeiculo, 
+                PesoLiquidoVeiculo, Placa, PotenciaCv, ProdutoSetor, Referencia, Renavam, RestricaoVeiculo, 
+                SolicitaNumeroSerie, TipoCambio, TipoEntrada, TipoPintura, TipoProduto, TipoVeiculo, UnidadeMedida, ValorCusto, 
+                ValorPartida, ValorVenda, Veiculo, VeiculoNovo, Empresa, EmpresaFilial, GrupoFiscal, ProdutoGrupo) 
+                VALUES 
+                (@Id, @Observacoes, @AnoVeiculo, @CapacidadeTracao, @Cest, @CfopVenda, @Chassi, @CilindradaCc, @CodAnp, @CodSeloIpi, @Combustivel, 
+                @CondicaoProduto, @ControlaEstoque, @CorDenatran, @CorMontadora, @CstCofins, @CstIcms, @CstIpi, @CstPis, @DataCadastro, @Descricao, 
+                @DistanciaEixo, @Ean, @Ecommerce, @EnqIpi, @EspecieVeiculo, @Estoque, @EstoqueAuxiliar, @FlagExcluido, @Grade, @IdComplementar, 
+                @KmEntrada, @LotacaoVeiculo, @MarcaId, @MarcaModelo, @Markup, @ModeloVeiculo, @Ncm, @NumeroMotor, @OperadorCadastro, @OrigemIcms, 
+                @PercentualCofins, @PercentualIcms, @PercentualIpi, @PercentualPis, @PercGlp, @PercGni, @PercGnn, @Pesavel, @PesoBrutoVeiculo, 
+                @PesoLiquidoVeiculo, @Placa, @PotenciaCv, @ProdutoSetor, @Referencia, @Renavam, @RestricaoVeiculo, 
+                @SolicitaNumeroSerie, @TipoCambio, @TipoEntrada, @TipoPintura, @TipoProduto, @TipoVeiculo, @UnidadeMedidaId, @ValorCusto, 
+                @ValorPartida, @ValorVenda, @Veiculo, @VeiculoNovo, 1,1, "+produto.GrupoFiscal.Id+", @GrupoProduto)";
+
+            MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+            mysqlCommand.Parameters.AddWithValue("@Id", produto.Id);
+            mysqlCommand.Parameters.AddWithValue("@Observacoes", produto.Observacoes);
+            mysqlCommand.Parameters.AddWithValue("@AnoVeiculo", produto.AnoVeiculo);
+            mysqlCommand.Parameters.AddWithValue("@CapacidadeTracao", produto.CapacidadeTracao);
+            mysqlCommand.Parameters.AddWithValue("@Cest", produto.Cest);
+            mysqlCommand.Parameters.AddWithValue("@CfopVenda", produto.CfopVenda);
+            mysqlCommand.Parameters.AddWithValue("@Chassi", produto.Chassi);
+            mysqlCommand.Parameters.AddWithValue("@CilindradaCc", produto.CilindradaCc);
+            mysqlCommand.Parameters.AddWithValue("@CodAnp", produto.CodAnp);
+            mysqlCommand.Parameters.AddWithValue("@CodSeloIpi", produto.CodSeloIpi);
+            mysqlCommand.Parameters.AddWithValue("@Combustivel", produto.Combustivel);
+            mysqlCommand.Parameters.AddWithValue("@CondicaoProduto", produto.CondicaoProduto);
+            mysqlCommand.Parameters.AddWithValue("@ControlaEstoque", produto.ControlaEstoque);
+            mysqlCommand.Parameters.AddWithValue("@CorDenatran", produto.CorDenatran);
+            mysqlCommand.Parameters.AddWithValue("@CorMontadora", produto.CorMontadora);
+            mysqlCommand.Parameters.AddWithValue("@CstCofins", produto.CstCofins);
+            mysqlCommand.Parameters.AddWithValue("@CstIcms", produto.CstIcms);
+            mysqlCommand.Parameters.AddWithValue("@CstIpi", produto.CstIpi);
+            mysqlCommand.Parameters.AddWithValue("@CstPis", produto.CstPis);
+            mysqlCommand.Parameters.AddWithValue("@DataCadastro", produto.DataCadastro);
+            mysqlCommand.Parameters.AddWithValue("@Descricao", produto.Descricao);
+            mysqlCommand.Parameters.AddWithValue("@DistanciaEixo", produto.DistanciaEixo);
+            mysqlCommand.Parameters.AddWithValue("@Ean", produto.Ean);
+            mysqlCommand.Parameters.AddWithValue("@Ecommerce", produto.Ecommerce);
+            mysqlCommand.Parameters.AddWithValue("@EnqIpi", produto.EnqIpi);
+            mysqlCommand.Parameters.AddWithValue("@EspecieVeiculo", produto.EspecieVeiculo);
+            mysqlCommand.Parameters.AddWithValue("@Estoque", produto.Estoque);
+            mysqlCommand.Parameters.AddWithValue("@EstoqueAuxiliar", produto.EstoqueAuxiliar);
+            mysqlCommand.Parameters.AddWithValue("@FlagExcluido", produto.FlagExcluido);
+            mysqlCommand.Parameters.AddWithValue("@Grade", produto.Grade);
+            mysqlCommand.Parameters.AddWithValue("@IdComplementar", produto.IdComplementar);
+            mysqlCommand.Parameters.AddWithValue("@KmEntrada", produto.KmEntrada);
+            mysqlCommand.Parameters.AddWithValue("@LotacaoVeiculo", produto.LotacaoVeiculo);
+            mysqlCommand.Parameters.AddWithValue("@MarcaId", null);
+            mysqlCommand.Parameters.AddWithValue("@MarcaModelo", produto.MarcaModelo);
+            mysqlCommand.Parameters.AddWithValue("@Markup", produto.Markup);
+            mysqlCommand.Parameters.AddWithValue("@ModeloVeiculo", produto.ModeloVeiculo);
+            mysqlCommand.Parameters.AddWithValue("@Ncm", produto.Ncm);
+            mysqlCommand.Parameters.AddWithValue("@NumeroMotor", produto.NumeroMotor);
+            mysqlCommand.Parameters.AddWithValue("@OperadorCadastro", produto.OperadorCadastro);
+            mysqlCommand.Parameters.AddWithValue("@OrigemIcms", produto.OrigemIcms);
+            mysqlCommand.Parameters.AddWithValue("@PercentualCofins", produto.PercentualCofins);
+            mysqlCommand.Parameters.AddWithValue("@PercentualIcms", produto.PercentualIcms);
+            mysqlCommand.Parameters.AddWithValue("@PercentualIpi", produto.PercentualIpi);
+            mysqlCommand.Parameters.AddWithValue("@PercentualPis", produto.PercentualPis);
+            mysqlCommand.Parameters.AddWithValue("@PercGlp", produto.PercGlp);
+            mysqlCommand.Parameters.AddWithValue("@PercGni", produto.PercGni);
+            mysqlCommand.Parameters.AddWithValue("@PercGnn", produto.PercGnn);
+            mysqlCommand.Parameters.AddWithValue("@Pesavel", produto.Pesavel);
+            mysqlCommand.Parameters.AddWithValue("@PesoBrutoVeiculo", produto.PesoBrutoVeiculo);
+            mysqlCommand.Parameters.AddWithValue("@PesoLiquidoVeiculo", produto.PesoLiquidoVeiculo);
+            mysqlCommand.Parameters.AddWithValue("@Placa", produto.Placa);
+            mysqlCommand.Parameters.AddWithValue("@PotenciaCv", produto.PotenciaCv);
+            mysqlCommand.Parameters.AddWithValue("@ProdutoSetor", produto.ProdutoSetor);
+            mysqlCommand.Parameters.AddWithValue("@ProdutoSubGrupo", null);
+            mysqlCommand.Parameters.AddWithValue("@Referencia", produto.Referencia);
+            mysqlCommand.Parameters.AddWithValue("@Renavam", produto.Renavam);
+            mysqlCommand.Parameters.AddWithValue("@RestricaoVeiculo", produto.RestricaoVeiculo);
+            mysqlCommand.Parameters.AddWithValue("@SolicitaNumeroSerie", produto.SolicitaNumeroSerie);
+            mysqlCommand.Parameters.AddWithValue("@TipoCambio", produto.TipoCambio);
+            mysqlCommand.Parameters.AddWithValue("@TipoEntrada", produto.TipoEntrada);
+            mysqlCommand.Parameters.AddWithValue("@TipoPintura", produto.TipoPintura);
+            mysqlCommand.Parameters.AddWithValue("@TipoProduto", produto.TipoProduto);
+            mysqlCommand.Parameters.AddWithValue("@TipoVeiculo", produto.TipoVeiculo);
+            mysqlCommand.Parameters.AddWithValue("@UnidadeMedidaId", produto.UnidadeMedida.Id);
+            mysqlCommand.Parameters.AddWithValue("@ValorCusto", produto.ValorCusto);
+            mysqlCommand.Parameters.AddWithValue("@ValorPartida", produto.ValorPartida);
+            mysqlCommand.Parameters.AddWithValue("@ValorVenda", produto.ValorVenda);
+            mysqlCommand.Parameters.AddWithValue("@Veiculo", produto.Veiculo);
+            mysqlCommand.Parameters.AddWithValue("@VeiculoNovo", produto.VeiculoNovo);
+            mysqlCommand.Parameters.AddWithValue("@GrupoProduto", 1);
+
+            mysqlCommand.ExecuteNonQuery();
+            int idProduto = (int)mysqlCommand.LastInsertedId;
+            if (chkIdProduto.Checked == true)
+                idProduto = produto.Id;
+
+
+            // Defina a consulta SQL para inserir dados na tabela ProdutoGrade
+            string mysqlQueryProdutoGrade = @"
+    INSERT INTO ProdutoGrade 
+        (ValorVenda, DataCadastro, QuantidadeMedida, Descricao, FlagExcluido, UnidadeMedida, Principal, Produto) 
+    VALUES 
+        (@ValorVenda, @DataCadastro, @QuantidadeMedida, @Descricao, @FlagExcluido, @UnidadeMedida, @Principal, @Produto);
+    SELECT LAST_INSERT_ID();";  // Adiciona a consulta para obter o ID inserido
+
+            int idGradePrincipal = 0;
+            // Crie o comando MySqlCommand
+            using (MySqlCommand mysqlCommandProdutoGrade = new MySqlCommand(mysqlQueryProdutoGrade, mysqlConnection))
+            {
+                // Adicione os parâmetros com os valores do objeto produtoGrade
+                mysqlCommandProdutoGrade.Parameters.AddWithValue("@ValorVenda", produtoGrade.ValorVenda);
+                mysqlCommandProdutoGrade.Parameters.AddWithValue("@DataCadastro", produtoGrade.DataCadastro);
+                mysqlCommandProdutoGrade.Parameters.AddWithValue("@QuantidadeMedida", produtoGrade.QuantidadeMedida);
+                mysqlCommandProdutoGrade.Parameters.AddWithValue("@Descricao", produtoGrade.Descricao);
+                mysqlCommandProdutoGrade.Parameters.AddWithValue("@FlagExcluido", produtoGrade.FlagExcluido);
+                mysqlCommandProdutoGrade.Parameters.AddWithValue("@UnidadeMedida", 2);
+                mysqlCommandProdutoGrade.Parameters.AddWithValue("@Principal", produtoGrade.Principal);
+                mysqlCommandProdutoGrade.Parameters.AddWithValue("@Produto", idProduto);
+
+                // Execute o comando e obtenha o ID inserido
+                var idInserido = mysqlCommandProdutoGrade.ExecuteScalar();  // ExecuteScalar é usado para retornar um valor único
+                idGradePrincipal = int.Parse(idInserido.ToString());
+            }
+
+            string mysqlQueryUpdateProduto = @"
+    UPDATE Produto 
+    SET GradePrincipal = @GradePrincipal 
+    WHERE Id = @IdProduto";
+
+            // Crie o comando MySqlCommand para o UPDATE
+            using (MySqlCommand mysqlCommandUpdateProduto = new MySqlCommand(mysqlQueryUpdateProduto, mysqlConnection))
+            {
+                // Adicione os parâmetros com os valores apropriados
+                mysqlCommandUpdateProduto.Parameters.AddWithValue("@GradePrincipal", idGradePrincipal);
+                mysqlCommandUpdateProduto.Parameters.AddWithValue("@IdProduto", idProduto);  // Supondo que idProduto é o identificador do produto a ser atualizado
+
+                // Execute o comando
+                int rowsAffected = mysqlCommandUpdateProduto.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    Console.WriteLine("Produto atualizado com sucesso.");
+                }
+                else
+                {
+                    Console.WriteLine("Nenhum produto foi atualizado. Verifique o IdProduto.");
+                }
+            }
+
+
+            if (String.IsNullOrEmpty(produto.Ean))
+            {
+                string codigoBarras;
+                bool codigoExiste;
+
+                do
+                {
+                    CreateEan13();
+                    ean13.Scale = 1;
+                    codigoBarras = ean13.CountryCode + ean13.ManufacturerCode + ean13.ProductCode + ean13.ChecksumDigit;
+                    codigoExiste = CodigoBarrasExiste(codigoBarras);
+                } while (codigoExiste);
+
+                produto.Ean = codigoBarras;
+            }
+            ProdutoCodigoBarras produtoCodigoBarras = new ProdutoCodigoBarras();
+            produtoCodigoBarras.CodigoBarras = produto.Ean;
+            produtoCodigoBarras.ProdutoGrade = new ProdutoGrade();
+            produtoCodigoBarras.ProdutoGrade.Id = idGradePrincipal;
+            produtoCodigoBarras.DataCadastro = DateTime.Now;
+            produtoCodigoBarras.OperadorCadastro = "1";
+            produtoCodigoBarras.FlagExcluido = false;
+            produtoCodigoBarras.Produto = new Produto();
+            produtoCodigoBarras.Produto.Id = idProduto;
+
+            string mysqlQueryProdutoCodigoBarras = @"
+                INSERT INTO ProdutoCodigoBarras 
+                    (CodigoBarras, ProdutoGrade, DataCadastro, OperadorCadastro, FlagExcluido, Produto) 
+                VALUES 
+                    (@CodigoBarras, @ProdutoGrade, @DataCadastro, @OperadorCadastro, @FlagExcluido, @Produto);
+                SELECT LAST_INSERT_ID();";  // Adiciona a consulta para obter o ID inserido
+
+            using (MySqlCommand mysqlCommandProdutoCodigoBarras = new MySqlCommand(mysqlQueryProdutoCodigoBarras, mysqlConnection))
+            {
+                // Adicione os parâmetros com os valores do objeto produtoCodigoBarras
+                mysqlCommandProdutoCodigoBarras.Parameters.AddWithValue("@CodigoBarras", produtoCodigoBarras.CodigoBarras);
+                mysqlCommandProdutoCodigoBarras.Parameters.AddWithValue("@ProdutoGrade", produtoCodigoBarras.ProdutoGrade.Id);
+                mysqlCommandProdutoCodigoBarras.Parameters.AddWithValue("@DataCadastro", produtoCodigoBarras.DataCadastro);
+                mysqlCommandProdutoCodigoBarras.Parameters.AddWithValue("@OperadorCadastro", produtoCodigoBarras.OperadorCadastro);
+                mysqlCommandProdutoCodigoBarras.Parameters.AddWithValue("@FlagExcluido", produtoCodigoBarras.FlagExcluido);
+                mysqlCommandProdutoCodigoBarras.Parameters.AddWithValue("@Produto", idProduto);
+
+                // Execute o comando e obtenha o ID inserido
+                var idInserido = mysqlCommandProdutoCodigoBarras.ExecuteScalar();  // ExecuteScalar é usado para retornar um valor único
+                int idProdutoCodigoBarras = int.Parse(idInserido.ToString());
+            }
+
+
+            if (chkSaldoEstoque.Checked == true && produto.EstoqueAuxiliar > 0)
+            {
+                //Nao conciliado
+                estoque.Conciliado = false;
+                string mysqlQueryEstoque = @"
+                        INSERT INTO Estoque 
+                            (BalancoEstoque, Conciliado, DataEntradaSaida, Descricao, Entrada, FlagExcluido, Origem, Pessoa, Quantidade, QuantidadeInventario, Saida, EmpresaFilial, Produto) 
+                        VALUES 
+                            (@BalancoEstoque, @Conciliado, @DataEntradaSaida, @Descricao, @Entrada, @FlagExcluido, @Origem, @Pessoa, @Quantidade, @QuantidadeInventario, @Saida, 1, " + idProduto + ")";
+     
+
+                MySqlCommand mysqlCommandEstoque = new MySqlCommand(mysqlQueryEstoque, mysqlConnection);
+                mysqlCommandEstoque = new MySqlCommand(mysqlQueryEstoque, mysqlConnection);
+                mysqlCommandEstoque.Parameters.AddWithValue("@BalancoEstoque", (object)estoque.BalancoEstoque ?? DBNull.Value);
+                mysqlCommandEstoque.Parameters.AddWithValue("@Conciliado", estoque.Conciliado);
+                mysqlCommandEstoque.Parameters.AddWithValue("@DataEntradaSaida", estoque.DataEntradaSaida);
+                mysqlCommandEstoque.Parameters.AddWithValue("@Descricao", estoque.Descricao);
+                mysqlCommandEstoque.Parameters.AddWithValue("@Entrada", estoque.Entrada);
+                mysqlCommandEstoque.Parameters.AddWithValue("@FlagExcluido", estoque.FlagExcluido);
+                mysqlCommandEstoque.Parameters.AddWithValue("@Origem", estoque.Origem);
+                mysqlCommandEstoque.Parameters.AddWithValue("@Pessoa", (object)estoque.Pessoa ?? DBNull.Value);
+                mysqlCommandEstoque.Parameters.AddWithValue("@Quantidade", estoque.Quantidade);
+                mysqlCommandEstoque.Parameters.AddWithValue("@QuantidadeInventario", estoque.QuantidadeInventario);
+                mysqlCommandEstoque.Parameters.AddWithValue("@Saida", estoque.Saida);
+                // Execute o comando
+                mysqlCommandEstoque.ExecuteNonQuery();
+            }
+        }
+        private Ean13 ean13 = null;
+        public void CreateEan13()
+        {
+            ean13 = new Ean13();
+            ean13.CountryCode = RandomNumber(10, 78).ToString();
+            ean13.ManufacturerCode = RandomNumber(79000, 99000).ToString();
+            ean13.ProductCode = RandomNumber(10000, 99000).ToString();
+            ean13.ChecksumDigit = RandomNumber(1, 9).ToString();
+        }
+        private int RandomNumber(int min, int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max);
+        }
+        public bool CodigoBarrasExiste(string codigoBarras)
+        {
+            ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
+            string sql = $"SELECT * FROM ProdutoCodigoBarras WHERE CodigoBarras = '{codigoBarras}' and FlagExcluido <> True";
+            IList<ProdutoCodigoBarras> resultado = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL(sql);
+            return resultado.Count > 0;
+        }
     }
 }
