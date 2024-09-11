@@ -14,6 +14,7 @@ namespace LunarBase.Utilidades
 
         public static EmpresaFilial empresaFilialLogada;
         public static Usuario usuarioLogado;
+        public static CaixaAbertura caixaLogado;
 
         public static decimal vendasRecebimento_ValorRecebido;
         public static Cidade cidadeSelecionada;

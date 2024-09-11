@@ -5,6 +5,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using SharpCompress.Common;
 using SharpCompress.Readers;
 using System;
@@ -17,6 +18,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +28,7 @@ namespace LunarAtualizador
 {
     public partial class FrmAtualizador : Form
     {
+        private static bool sairClicked = false;
         Logger logger = new Logger();
         string nomeDoComputador = "";
         string nomeServidorConfigurado = "";
@@ -77,6 +80,7 @@ namespace LunarAtualizador
             lerParametrosSistema();
             atualizarAoAbrir();
             conferirHorarioMensagens();
+            lblVersaoAtualizador.Text = "Atualizador " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
             if (ativarMensagemLembreteExame.Equals("True"))
             {
                 if (!String.IsNullOrEmpty(horarioLembreteExame))
@@ -134,13 +138,14 @@ namespace LunarAtualizador
         }
         private static void ExibirFormulario()
         {
-            // Verifica se há uma instância válida antes de exibir o formulário
-            if (instanciaAtualizador != null && !instanciaAtualizador.IsDisposed)
+            if (instanciaAtualizador == null || instanciaAtualizador.IsDisposed)
             {
-                instanciaAtualizador.Show();
-                instanciaAtualizador.WindowState = FormWindowState.Normal;
-                instanciaAtualizador.BringToFront();
+                instanciaAtualizador = new FrmAtualizador();
             }
+
+            instanciaAtualizador.Show();
+            instanciaAtualizador.WindowState = FormWindowState.Normal;
+            instanciaAtualizador.BringToFront();
         }
         private static ContextMenuStrip CriarMenu()
         {
@@ -156,18 +161,17 @@ namespace LunarAtualizador
             ToolStripMenuItem itemSair = new ToolStripMenuItem("Sair");
             itemSair.Click += (sender, e) =>
             {
-                // Verifica se o formulário principal está aberto e fecha-o
+                sairClicked = true;  
+                                    
                 Form principalForm = Application.OpenForms.OfType<FrmAtualizador>().FirstOrDefault();
                 if (principalForm != null)
                 {
-                    principalForm.Close();
+                    principalForm.Close(); 
                 }
-
-                // Finaliza o aplicativo
                 Application.Exit();
             };
-            contextMenuStrip.Items.Add(itemSair);
 
+            contextMenuStrip.Items.Add(itemSair);
             return contextMenuStrip;
         }
         private void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -217,6 +221,8 @@ namespace LunarAtualizador
                     progressBarAdv1.Visible = true;
                     //progressBarAdv1.Value = 0;
                     await BaixarEAtualizarAsync();
+
+                    EnviarEmailAposAtualizacaoAsync();
                     //}
                 }
                 else
@@ -622,14 +628,16 @@ namespace LunarAtualizador
 
         private void FrmAtualizador_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Se o usuário clicou no botão de fechar, cancelar o fechamento e minimizar para a bandeja
+            if (sairClicked)
+            {
+                return;
+            }
+
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                e.Cancel = true;  // Cancelar o fechamento
-                this.WindowState = FormWindowState.Minimized;  // Minimizar para a bandeja do sistema
-                this.ShowInTaskbar = false;  // Ocultar o formulário da barra de tarefas
-
-                // Ocultar o formulário da tela antes de minimizá-lo
+                e.Cancel = true; 
+                this.WindowState = FormWindowState.Minimized;  
+                this.ShowInTaskbar = false;  
                 this.Hide();
             }
         }

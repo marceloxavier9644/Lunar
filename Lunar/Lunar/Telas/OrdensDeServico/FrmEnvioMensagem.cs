@@ -27,6 +27,18 @@ namespace Lunar.Telas.OrdensDeServico
             txtMensagem.Text = "";
             txtMensagem.Focus();
         }
+        public FrmEnvioMensagem(String numeroTelefone, String nomeCliente, bool aniversario, string mensagemSugestao)
+        {
+            InitializeComponent();
+            txtNumeroCliente.Text = numeroTelefone;
+            txtNomeCliente.Text = nomeCliente;
+            nome = nomeCliente;
+            txtMensagem.Text = mensagemSugestao;
+            txtMensagem.Focus();
+            radioPdfOs.Visible = false;
+            radioProdutoDisponivel.Visible = false;
+            radioTecnicoCaminho.Visible = false;
+        }
 
         public string GetEscolha()
         {

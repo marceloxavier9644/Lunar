@@ -45,7 +45,7 @@
             // lblVersaoAtualizador
             // 
             this.lblVersaoAtualizador.AutoSize = true;
-            this.lblVersaoAtualizador.Location = new System.Drawing.Point(290, 141);
+            this.lblVersaoAtualizador.Location = new System.Drawing.Point(271, 144);
             this.lblVersaoAtualizador.Name = "lblVersaoAtualizador";
             this.lblVersaoAtualizador.Size = new System.Drawing.Size(77, 13);
             this.lblVersaoAtualizador.TabIndex = 0;

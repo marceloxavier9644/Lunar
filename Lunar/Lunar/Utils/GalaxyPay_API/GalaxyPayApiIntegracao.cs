@@ -406,6 +406,105 @@ namespace Lunar.Utils.GalaxyPay_API
             }
         }
 
+        public string GalaxyPay_CancelarBoletos(IList<ContaReceber> contasReceber)
+        {
+            int contagemCancelada = 0;
+            try
+            {
+                foreach (var contaReceber in contasReceber)
+                {
+                    string galaxPayId = contaReceber.IdBoleto; // Id da cobrança gerada pelo sistema GalaxyPay
+                    string typeId = "galaxPayId"; // Usando o ID do sistema GalaxyPay
+
+                    if (string.IsNullOrEmpty(galaxPayId))
+                    {
+                        continue; // Pula se não tiver boleto gerado
+                    }
+
+                    string url = $"https://api.galaxpay.com.br/v2/charges/{galaxPayId}/{typeId}";
+
+                    // Verifica se é ambiente de homologação
+                    if (galaxHash.Equals("83Mw5u8988Qj6fZqS4Z8K7LzOo1j28S706R0BeFe"))
+                        url = $"https://api.sandbox.cel.cash/v2/charges/{galaxPayId}/{typeId}";
+
+                    // Cria a requisição DELETE
+                    var requisicaoWeb = WebRequest.CreateHttp(url);
+                    requisicaoWeb.Method = "DELETE";
+                    requisicaoWeb.Headers.Add("Authorization", "Bearer " + tokenAcesso);
+
+                    // Faz a requisição e trata a resposta
+                    try
+                    {
+                        var httpResponse = (HttpWebResponse)requisicaoWeb.GetResponse();
+
+                        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                        {
+                            var result = streamReader.ReadToEnd();
+
+                            // Tenta deserializar a resposta em um objeto JSON
+                            var ret = JsonConvert.DeserializeObject<Dictionary<string, object>>(result);
+
+                            // Verifica se a resposta contém um erro
+                            if (ret.ContainsKey("error"))
+                            {
+                                var error = JsonConvert.DeserializeObject<Dictionary<string, string>>(ret["error"].ToString());
+                                if (error.ContainsKey("message"))
+                                {
+                                    GenericaDesktop.ShowErro("Erro ao cancelar boleto: " + error["message"]);
+                                }
+                            }
+                            // Se não há erro, verifica se "type" é true
+                            else if (ret.ContainsKey("type") && Convert.ToBoolean(ret["type"]) == true)
+                            {
+                                // Marca a conta como cancelada
+                                contaReceber.BoletoGerado = false;
+                                Controller.getInstance().salvar(contaReceber);
+                                contagemCancelada++;
+                            }
+                        }
+                    }
+                    catch (WebException ex)
+                    {
+                        var response = (HttpWebResponse)ex.Response;
+
+                        if (response != null)
+                        {
+                            switch ((int)response.StatusCode)
+                            {
+                                case 400:
+                                    GenericaDesktop.ShowErro("Erro de validação ao cancelar boleto.");
+                                    break;
+                                case 401:
+                                    GenericaDesktop.ShowErro("Falha ao autenticar.");
+                                    break;
+                                case 403:
+                                    GenericaDesktop.ShowErro("Validação de segurança falhou.");
+                                    break;
+                                case 404:
+                                    GenericaDesktop.ShowErro("Cobrança não encontrada.");
+                                    break;
+                                default:
+                                    GenericaDesktop.ShowErro("Erro inesperado: " + response.StatusCode);
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            GenericaDesktop.ShowErro("Erro de rede ao tentar cancelar boletos.");
+                        }
+                    }
+                }
+
+                return $"{contagemCancelada} boletos cancelados com sucesso.";
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowErro("Falha ao Cancelar Boletos no Sistema da Galaxy Pay: " + err.Message);
+                return $"{contagemCancelada} boletos cancelados, mas ocorreram erros: {err.Message}";
+            }
+        }
+
+
 
         public async Task<string> GalaxyPay_GerarPix(string tabelaOrigem, string idOrigem, decimal valorPix, Pessoa pessoa)
         {
@@ -626,11 +725,13 @@ namespace Lunar.Utils.GalaxyPay_API
                         {
                             for (int x = 0; x < retStatus.Transactions.Length; x++)
                             {
-                                if (retStatus.Transactions[x].chargeMyId != null)
+                                if (retStatus.Transactions[x].chargeMyId != null && retStatus.Transactions[x].status.Contains("Boleto"))
                                 {
                                     ContaReceber contaReceber = new ContaReceber();
                                     contaReceber.Id = int.Parse(retStatus.Transactions[x].chargeMyId);
                                     contaReceber = (ContaReceber)Controller.getInstance().selecionar(contaReceber);
+                                    //ContaReceberController contaReceberController = new ContaReceberController();
+                                    //IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela Where Tabela.IdBoleto = '"+ retStatus.Transactions[x].galaxPayId.ToString() + "'");
                                     if (contaReceber.Recebido == false && Sessao.parametroSistema.ContaBancariaVinculadaApi != null)
                                     {
                                         contagemNovosBoletosBaixados++;
@@ -643,7 +744,7 @@ namespace Lunar.Utils.GalaxyPay_API
                                         string valorFinal = valorAjustadoReais + "," + valorAjustadoCentavos;
                                         decimal valorRecebido = decimal.Parse(valorFinal);
                                         contaReceber.ValorRecebido = valorRecebido;
-                                    
+
                                         Controller.getInstance().salvar(contaReceber);
                                         Caixa caixa = new Caixa();
                                         caixa.Cobrador = null;
@@ -661,6 +762,7 @@ namespace Lunar.Utils.GalaxyPay_API
                                         caixa.Tipo = "E";
                                         caixa.Usuario = Sessao.usuarioLogado;
                                         caixa.Valor = valorRecebido;
+                                        caixa.Observacoes = "RETORNO AUTOMÁTICO BANCO, PUXADO EM: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
                                         Controller.getInstance().salvar(caixa);
                                     }
                                     else if (Sessao.parametroSistema.ContaBancariaVinculadaApi == null)
@@ -674,7 +776,7 @@ namespace Lunar.Utils.GalaxyPay_API
                         }
                     }
                     if(contagemNovosBoletosBaixados > 0)
-                        GenericaDesktop.ShowInfo(contagemNovosBoletosBaixados.ToString() + " Boleto(s) Baixado(s) pelo sistema GalaxyPay!");
+                        GenericaDesktop.ShowInfo(contagemNovosBoletosBaixados.ToString() + " Boleto(s) Baixado(s) pelo sistema CelCash!");
                     return retStatus;
                 }
             }

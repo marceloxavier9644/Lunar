@@ -43,6 +43,7 @@ namespace Lunar.Telas.ContasPagar
             txtEmpresa.Texts = Sessao.empresaFilialLogada.NomeFantasia;
             txtCodEmpresa.Texts = Sessao.empresaFilialLogada.Id.ToString();
             txtClienteFornecedor.Focus();
+            txtDataEmissao.Value = DateTime.Now;
         }
 
         public FrmNovaFaturaPagar(ContaPagar contaPagar)

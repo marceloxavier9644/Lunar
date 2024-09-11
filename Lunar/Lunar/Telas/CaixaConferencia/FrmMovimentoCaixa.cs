@@ -1342,20 +1342,23 @@ namespace Lunar.Telas.CaixaConferencia
         private void CalcularSaldo()
         {
             decimal saldo = 0;
-            if (grid.View.Records.Count > 0)
+            if (grid.View.Records != null)
             {
-                foreach (var row in grid.View.Records)
+                if (grid.View.Records.Count > 0)
                 {
-                    var caixa = row.Data as Caixa;
-                    if (caixa != null)
+                    foreach (var row in grid.View.Records)
                     {
-                        if (caixa.Tipo == "E" && caixa.FormaPagamento.Id != 8 && caixa.FormaPagamento.Id != 9)
+                        var caixa = row.Data as Caixa;
+                        if (caixa != null)
                         {
-                            saldo += caixa.Valor;
-                        }
-                        else if (caixa.Tipo == "S") // Saída
-                        {
-                            saldo -= caixa.Valor;
+                            if (caixa.Tipo == "E" && caixa.FormaPagamento.Id != 8 && caixa.FormaPagamento.Id != 9)
+                            {
+                                saldo += caixa.Valor;
+                            }
+                            else if (caixa.Tipo == "S") // Saída
+                            {
+                                saldo -= caixa.Valor;
+                            }
                         }
                     }
                 }

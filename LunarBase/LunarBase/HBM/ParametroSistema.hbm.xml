@@ -26,6 +26,7 @@
 		<property name="DddWhats" column="DDDWHATS" type="String"/>
 		<property name="FoneWhats" column="FONEWHATS" type="String"/>
 		<property name="LembreteVencimento" column="LEMBRETEVENCIMENTO" type="String" length="400"/>
+		<property name="TipoCaixa" column="TIPOCAIXA" type="String" length="15"/>
 		
 		<property name="ServidorEmail" column="SERVIDOREMAIL" type="String" length="100"/>
 		<property name="PortaEmail" column="PORTAEMAIL" type="String" length="10"/>
@@ -82,7 +83,9 @@
 		<many-to-one name="PlanoContaUsoConsumo" column="PLANOCONTAUSOCONSUMO" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTAUSOCONSUMO" lazy="false"/>
 		<many-to-one name="ContaBancariaVinculadaApi" column="CONTABANCARIAVINCULADAAPI" class="LunarBase.Classes.ContaBancaria" not-null="false" foreign-key="FK_PARAMENTROS_CONTABANCARIAAPI" lazy="false"/>
 
-		
+
+		<many-to-one name="PlanoContaAjusteCaixaEntrada" column="PLANOCONTAAJUSTECAIXAENTRADA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTACAIXAENTRADA" lazy="false"/>
+		<many-to-one name="PlanoContaAjusteCaixaSaida" column="PLANOCONTAAJUSTECAIXASAIDA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_PARAMENTROS_PLANOCONTACAIXASAIDA" lazy="false"/>
 
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>

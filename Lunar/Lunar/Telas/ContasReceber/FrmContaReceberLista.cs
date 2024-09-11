@@ -1,11 +1,14 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento;
+using Lunar.Telas.OrdensDeServico;
+using Lunar.Telas.OrdensDeServico.DataSetOrdemServico;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.RelatoriosDiversos;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.GalaxyPay_API;
+using Lunar.Utils.LunarChatIntegracao;
 using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
@@ -24,12 +27,14 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
+using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
 using static LunarBase.Utilidades.ManifestoDownload;
 using Exception = System.Exception;
 
@@ -91,6 +96,7 @@ namespace Lunar.Telas.ContasReceber
             toolTip1.SetToolTip(btnImprimirBoleto, "Imprimir Boleto Selecionado");
             toolTip1.SetToolTip(btnExtratoCliente, "Extrato do Cliente");
             toolTip1.SetToolTip(btnExportarPDF, "Gerar PDF");
+            toolTip1.SetToolTip(btnEnviarWhats, "Enviar Boleto e NFe pelo WhatsApp");
         }
         private void pesquisarContaReceber()
         {
@@ -381,6 +387,16 @@ namespace Lunar.Telas.ContasReceber
             {
                 passou = true;
                 txtCliente.Focus();
+                if (!String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats))
+                {
+                    btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.whatsapp_logo_icone;
+                    btnEnviarWhats.Enabled = true;
+                }
+                else
+                {
+                    btnEnviarWhats.Enabled = false;
+                    btnEnviarWhats.BackgroundImage = Lunar.Properties.Resources.WhatsappCinza2_1;
+                }
             }
         }
 
@@ -693,9 +709,17 @@ namespace Lunar.Telas.ContasReceber
                         var conta = selectedItem as ContaReceber;
                         if (conta.Recebido == false)
                         {
+                            //Se possuir boleto cancela boleto na plataforma
+                            if(conta.BoletoGerado == true)
+                            {
+                                IList<ContaReceber> listaBoletos = new List<ContaReceber>();
+                                listaBoletos.Add(conta);
+                                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                                string retorno = galaxyPayApiIntegracao.GalaxyPay_CancelarBoletos(listaBoletos);
+                            }
+                            //Cancela conta a receber
                             Controller.getInstance().excluir(conta);
                             i++;
-                            
                         }
                         else
                             GenericaDesktop.ShowAlerta("Não é possível excluir uma conta ja recebida!");
@@ -1031,14 +1055,19 @@ namespace Lunar.Telas.ContasReceber
                                         IList<ContaReceber> listaReceberRec = new List<ContaReceber>();
                                         for (int x = 0; x < retGalaxy.Transactions.Length; x++)
                                         {
-                                            if (retGalaxy.Transactions[x].chargeMyId != null)
+                                            if (retGalaxy.Transactions[x].chargeMyId != null && retGalaxy.Transactions[x].status.Contains("Boleto"))
                                             {
                                                 ContaReceber contaReceber = new ContaReceber();
                                                 contaReceber.Id = int.Parse(retGalaxy.Transactions[x].chargeMyId);
                                                 contaReceber = (ContaReceber)Controller.getInstance().selecionar(contaReceber);
                                                 listaReceberRec.Add(contaReceber);
                                             }
+                                        }
+                                        if (listaReceberRec.Count > 0)
+                                        {
                                             listaContaReceber = listaReceberRec;
+                                            calculaTotalNotas();
+                                            sfDataPager1.DataSource = listaContaReceberCalculado;
                                         }
                                     }
                                 }
@@ -1070,7 +1099,18 @@ namespace Lunar.Telas.ContasReceber
                         System.Diagnostics.Process.Start(link);
                 }
                 else
-                    GenericaDesktop.ShowAlerta("Fatura Não Possui Boleto Gerado");
+                {
+                    if (GenericaDesktop.ShowConfirmacao("Deseja gerar o boleto selecionado? "))
+                    {
+                        IList<ContaReceber> listaCrediario = new List<ContaReceber>();
+                        listaCrediario.Add(contaReceber);
+                        GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
+                        Pessoa clienteBoleto = new Pessoa();
+                        clienteBoleto = contaReceber.Cliente;
+                        gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
+
+                    }
+                }
             }
             else if (grid.SelectedItems.Count > 1)
             {
@@ -1101,6 +1141,149 @@ namespace Lunar.Telas.ContasReceber
 
         }
 
+        private async void enviarBoletoENFPorWhatsApp()
+        {
+            try
+            {
+                string IDcliente = "";
+                int idNotaFiscal = 0;
+
+                if (grid.SelectedItems.Count == 1)
+                {
+                    List<string> listaFaturas = new List<string>();
+
+                    foreach (var selectedItem in grid.SelectedItems)
+                    {
+                        var conta = selectedItem as ContaReceber;
+                        contaReceber = conta;
+                        if (conta.BoletoGerado == true)
+                        {
+                            string documento = conta.Documento;
+                            IDcliente = conta.Cliente.Id.ToString();
+                            IList<ContaReceber> contaReceberAssociado = new List<ContaReceber>();
+
+                            if (conta.Venda != null)
+                                contaReceberAssociado = ObterParcelasAssociadas(conta.Venda, null, IDcliente);
+
+                            if (conta.OrdemServico != null)
+                                contaReceberAssociado = ObterParcelasAssociadas(null, conta.OrdemServico, IDcliente);
+
+                            foreach (var receber in contaReceberAssociado)
+                            {
+                                listaFaturas.Add(receber.Id.ToString());
+
+                                if (receber.OrdemServico != null)
+                                {
+                                    if (receber.OrdemServico.Nfe != null)
+                                        idNotaFiscal = receber.OrdemServico.Nfe.Id;
+                                }
+                                else if (receber.Venda != null)
+                                {
+                                    if (receber.Venda.Nfe != null)
+                                        idNotaFiscal = receber.Venda.Nfe.Id;
+                                }
+                            }
+                        }
+                    }
+
+                    // Coleta o PDF dos boletos
+                    if (contaReceber.BoletoGerado == true)
+                    {
+                        GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                        string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                        string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(listaFaturas.ToArray());
+
+                        // O método BaixarPDFAsync agora é aguardado assincronamente
+                        string localBoleto = await BaixarPDFAsync(link, int.Parse(IDcliente));
+
+                        // Coleta nota fiscal se houver
+                        List<Tuple<string, string>> listaCaminhoNotasParaEnviarEmail = new List<Tuple<string, string>>();
+                        if (idNotaFiscal > 0)
+                        {
+                            Nfe nfe = new Nfe();
+                            nfe.Id = idNotaFiscal;
+                            nfe = (Nfe)Controller.getInstance().selecionar(nfe);
+
+                            var caminhos = coletarNotaFiscalPDFeXML(nfe);
+                            listaCaminhoNotasParaEnviarEmail.Add(caminhos);
+                        }
+                        String assuntoEmail = "Boleto " + Sessao.empresaFilialLogada.NomeFantasia;
+                        List<string> listaCaminhosFinal = new List<string>();
+                        if (listaCaminhoNotasParaEnviarEmail.Count > 0)
+                        {
+                            assuntoEmail = "Boleto e Nota Fiscal " + Sessao.empresaFilialLogada.NomeFantasia;
+                            foreach (var caminhoNota in listaCaminhoNotasParaEnviarEmail)
+                            {
+                                listaCaminhosFinal.Add(caminhoNota.Item1); // Adiciona o caminho do PDF da Nota Fiscal
+                                listaCaminhosFinal.Add(caminhoNota.Item2); // Adiciona o caminho do XML da Nota Fiscal
+                            }
+                        }
+                        listaCaminhosFinal.Add(localBoleto);
+
+                        bool retornoMensagem = false;
+                        if (!String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats))
+                        {
+                            string telefoneCompleto = "";
+                            if (contaReceber.Cliente.PessoaTelefone != null)
+                            {
+                                telefoneCompleto = EnviarMensagemWhatsapp.TratarTelefone(contaReceber.Cliente.PessoaTelefone.Ddd, contaReceber.Cliente.PessoaTelefone.Telefone);
+                            }
+                            FrmEnvioMensagem frmEnvioMensagem = new FrmEnvioMensagem(telefoneCompleto, capturarPrimeiroNomeParaMensagem(contaReceber.Cliente.RazaoSocial));
+                            if (frmEnvioMensagem.ShowDialog() == DialogResult.OK)
+                            {
+                                string escolha = frmEnvioMensagem.GetEscolha();
+                                string numero = frmEnvioMensagem.GetTelefone();
+                                string nome = frmEnvioMensagem.GetNome();
+                                string mensagem = frmEnvioMensagem.GetMensagem();
+                                EnviarMensagemWhatsapp enviarMsg = new EnviarMensagemWhatsapp();
+                                if (!String.IsNullOrEmpty(mensagem))
+                                    await enviarMsg.SendMessageAsync(numero, mensagem);
+                                foreach (string caminho in listaCaminhosFinal)
+                                {
+                                    await enviarMsg.SendMediaMessageAsync(numero, caminho);
+                                }
+                            }
+                        }
+                    }
+                    else
+                        GenericaDesktop.ShowAlerta("Essa parcela não possui boleto gerado pelo sistema Lunar!");
+                }
+                else if (grid.SelectedItems.Count > 1)
+                {
+                    GenericaDesktop.ShowAlerta("Selecione apenas 1 parcela da venda, o sistema irá capturar todas parcelas (da mesma venda) e nota fiscal para enviar no e-mail!");
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Selecione pelo menos 1 parcela");
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowErro("Falha ao enviar mensagem: " + erro.Message);
+            }
+        }
+        private string capturarPrimeiroNomeParaMensagem(string nomeCompleto)
+        {
+            if (string.IsNullOrWhiteSpace(nomeCompleto))
+            {
+                return nomeCompleto;
+            }
+
+            string[] partes = nomeCompleto.Split(' ');
+            TextInfo textInfo = new CultureInfo("pt-BR", false).TextInfo;
+            string nomeFormatado = "";
+
+            if (partes.Length >= 2)
+            {
+                string primeiroNomeFormatado = textInfo.ToTitleCase(partes[0].ToLower());
+                string segundoNomeFormatado = textInfo.ToTitleCase(partes[1].ToLower());
+                nomeFormatado = $"{primeiroNomeFormatado} {segundoNomeFormatado}";
+            }
+            else
+            {
+                nomeFormatado = textInfo.ToTitleCase(nomeCompleto.ToLower());
+            }
+
+            return nomeFormatado;
+        }
         private async void btnEmail_Click(object sender, EventArgs e)
         {
             string IDcliente = "";
@@ -1364,6 +1547,7 @@ namespace Lunar.Telas.ContasReceber
                     caminhoXML = @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.xml";
                     if (!File.Exists(caminhoXML))
                     {
+                        nFeDownloadProc55 = generica.ConsultaNFeEmitida(Sessao.empresaFilialLogada.Cnpj, nfe.Chave);
                         generica.gravarXMLNaPasta(nFeDownloadProc55.xml, nfe.Chave, @"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\", nfe.Chave + "-procNFe.xml");
                     }
                     gerarPDF2(nfe, nFeDownloadProc55.pdf, nfe.Chave, false);
@@ -1388,6 +1572,9 @@ namespace Lunar.Telas.ContasReceber
             return Tuple.Create(caminhoXML, caminhoPDF);
         }
 
-
+        private void btnEnviarWhats_Click(object sender, EventArgs e)
+        {
+            enviarBoletoENFPorWhatsApp();
+        }
     }
 }

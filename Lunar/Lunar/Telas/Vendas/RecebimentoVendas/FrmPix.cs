@@ -89,6 +89,11 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             this.valorFaltante = valorFaltante;
             txtValor.TextAlign = HorizontalAlignment.Center;
             this.venda = venda;
+            if (Sessao.caixaLogado != null)
+            {
+                if (Sessao.caixaLogado.Id > 0)
+                    txtData.Value = Sessao.caixaLogado.DataAbertura;
+            }
         }
 
         public FrmPix(decimal valorFaltante, IList<ContaReceber> listaReceber, OrdemServico ordemServico)
@@ -114,6 +119,11 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             lblFaltante.Text = "Valor Faltante: " + valorFaltante.ToString("N2");
             this.valorFaltante = valorFaltante;
             txtValor.TextAlign = HorizontalAlignment.Center;
+            if (Sessao.caixaLogado != null)
+            {
+                if (Sessao.caixaLogado.Id > 0)
+                    txtData.Value = Sessao.caixaLogado.DataAbertura;
+            }
         }
 
         private void FrmPix_Paint(object sender, PaintEventArgs e)

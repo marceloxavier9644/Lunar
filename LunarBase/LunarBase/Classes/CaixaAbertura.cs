@@ -16,6 +16,7 @@ namespace LunarBase.Classes
         private string status;
         private int idCaixaAnterior;
         private EmpresaFilial empresaFilial;
+        private bool logado;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -37,6 +38,7 @@ namespace LunarBase.Classes
         public virtual int IdCaixaAnterior { get => idCaixaAnterior; set => idCaixaAnterior = value; }
         [Anotacao("Filial")]
         public virtual EmpresaFilial EmpresaFilial { get => empresaFilial; set => empresaFilial = value; }
-
+        [Anotacao("Logado")]
+        public virtual bool Logado { get => logado; set => logado = value; }
     }
 }

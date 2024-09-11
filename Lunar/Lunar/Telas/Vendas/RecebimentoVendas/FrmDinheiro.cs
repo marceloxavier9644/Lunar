@@ -101,7 +101,15 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     caixa.Conciliado = false;
                     caixa.IdOrigem = venda.Id.ToString();
                     caixa.ContaBancaria = null;
-                    caixa.DataLancamento = DateTime.Now;
+                    if (Sessao.caixaLogado != null)
+                    {
+                        if (Sessao.caixaLogado.Id > 0)
+                            caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                        else
+                            caixa.DataLancamento = DateTime.Now;
+                    }
+                    else
+                        caixa.DataLancamento = DateTime.Now;
                     caixa.Descricao = "RECEBIMENTO VENDA " + venda.Id + " EM DINHEIRO";
                     caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                     caixa.FormaPagamento = vendaFormaPagamento.FormaPagamento;

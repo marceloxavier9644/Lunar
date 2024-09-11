@@ -3,6 +3,7 @@ using Lunar.Telas.ArquivosContabilidade;
 using Lunar.Telas.Cadastros.Bancos;
 using Lunar.Telas.Cadastros.BandeirasCartao;
 using Lunar.Telas.Cadastros.Cliente;
+using Lunar.Telas.Cadastros.Cliente.PessoaAdicionais;
 using Lunar.Telas.Cadastros.Empresas;
 using Lunar.Telas.Cadastros.Financeiro.Cartoes;
 using Lunar.Telas.Cadastros.Financeiro.PlanoContas.PlanosPorGrupos;
@@ -36,6 +37,7 @@ using Lunar.Telas.Vendas.Relatorios;
 using Lunar.Utils;
 using Lunar.Utils.ImportadorSistemas;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Newtonsoft.Json;
@@ -45,6 +47,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -99,7 +102,7 @@ namespace Lunar.Telas.Principal
                 ajustarImagemFundo();
             }
 
-            lblCaption.Text = "Página Inicial - " + Sessao.usuarioLogado.Login;
+            //lblCaption.Text = "Página Inicial - " + Sessao.usuarioLogado.Login;
         }
 
         //Drag Form
@@ -112,6 +115,44 @@ namespace Lunar.Telas.Principal
         private void panelDesktop_Paint(object sender, PaintEventArgs e)
         {
             
+        }
+
+        private void logarCaixa()
+        {
+            Sessao.caixaLogado = new CaixaAbertura();
+            CaixaAberturaController caixaAberturaController = new CaixaAberturaController();
+            if (Sessao.parametroSistema.TipoCaixa == "GERAL")
+            {
+                IList<CaixaAbertura> listaCaixa = caixaAberturaController.selecionarTodosCaixasAbertos();
+                if(listaCaixa.Count >= 1)
+                {
+                    foreach(CaixaAbertura caixaAbertura in listaCaixa)
+                    {
+                        if (caixaAbertura.Logado == true)
+                        {
+                            Sessao.caixaLogado = caixaAbertura;
+                            if (Sessao.caixaLogado.DataAbertura.ToShortDateString() != DateTime.Now.ToShortDateString())
+                                GenericaDesktop.ShowAlerta("O caixa que está aberto tem uma data diferente da de hoje. Suas vendas serão registradas com a data do caixa: " + Sessao.caixaLogado.DataAbertura.ToShortDateString());
+                        }
+                    }
+                }
+            }
+            //Caixa Individual
+            else
+            {
+                IList<CaixaAbertura> listaCaixa = caixaAberturaController.selecionarAberturaCaixaPorUsuario(Sessao.usuarioLogado.Id);
+                if (listaCaixa.Count >= 1)
+                {
+                    foreach (CaixaAbertura caixaAbertura in listaCaixa)
+                    {
+                        if (caixaAbertura.Logado == true)
+                            Sessao.caixaLogado = caixaAbertura;
+                        if (Sessao.caixaLogado.DataAbertura.ToShortDateString() != DateTime.Now.ToShortDateString())
+                            GenericaDesktop.ShowAlerta("O caixa que está aberto tem uma data diferente da de hoje. Suas vendas serão registradas com a data do caixa: " + Sessao.caixaLogado.DataAbertura.ToShortDateString());
+                    }
+                }
+            }
+            verificaUsuarioLogado();
         }
         private Image RedimensionarImagemPadrao(Image imagemOriginal, int larguraPadrao = 500, int alturaPadrao = 300)
         {
@@ -625,13 +666,29 @@ namespace Lunar.Telas.Principal
             }
 
             abrirNsCloud();
+            logarCaixa();
 
-
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            lblVersaoSistema.Text = "Versão do Sistema: " + version;
             UpdateScript updateScript = new UpdateScript();
             updateScript.ExecutarScript();
 
         }
 
+        private void verificaUsuarioLogado()
+        {
+            if (Sessao.caixaLogado != null)
+            {
+                if(Sessao.caixaLogado.Id > 0)
+                    lblUserLogado.Text = Sessao.usuarioLogado.Login + " - CAIXA ABERTO: " + Sessao.caixaLogado.DataAbertura.ToShortDateString();
+                else
+                    lblUserLogado.Text = "Usuário Logado: " + Sessao.usuarioLogado.Login;
+            }
+            else
+            {
+                lblUserLogado.Text = "Usuário Logado: " + Sessao.usuarioLogado.Login;
+            }
+        }
         private async Task abrirNsCloud()
         {
             await GenericaDesktop.VerificaProgramaContigenciaEstaEmExecucao();
@@ -1360,6 +1417,7 @@ namespace Lunar.Telas.Principal
             fr.ShowDialog();
             formBackground.Dispose();
             fr.Dispose();
+            logarCaixa();
         }
 
         private void vendasPorProdutoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1388,6 +1446,28 @@ namespace Lunar.Telas.Principal
             }
             else
                 OpenChildForm(() => new FrmConsultaVendas(), btnMenuVenda);
+        }
+
+        private void aniversariantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            FrmAniversariantes fr = new FrmAniversariantes();
+            fr.Owner = formBackground;
+            fr.ShowDialog();
+            formBackground.Dispose();
+            fr.Dispose();
         }
     }
 }

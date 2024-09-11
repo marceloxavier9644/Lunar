@@ -11,7 +11,8 @@
 		<property name="DiferencaFechamento" column="DIFERENCAFECHAMENTO" type="decimal"/>
 		<property name="Status" column="STATUS" type="String" length="30"/>
 		<property name="IdCaixaAnterior" column="IDCAIXAANTERIOR" type="int"/>
-
+		<property name="Logado" column="LOGADO" type="Boolean"/>
+		
 		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_CAIXAABERTURA_FILIAL" lazy="false"/>
 		<many-to-one name="Usuario" column="USUARIO" class="LunarBase.Classes.Usuario" not-null="false" foreign-key="FK_CAIXAABERTURA_USER" lazy="false"/>
 		

@@ -137,7 +137,7 @@ namespace Lunar
 
                 }
             }
-            catch
+            catch (Exception erro)
             {
                 ShowMessage("Usuário ou senha incorreto");
                 txtUsuario.PlaceholderText = "";
@@ -145,6 +145,10 @@ namespace Lunar
                 txtUsuario.Texts = "";
                 txtSenha.Texts = "";
                 txtUsuario.Focus();
+                if (erro.Message.Contains("Erro de conexão"))
+                {
+                    ShowMessage("Erro de conexão com o servidor!");
+                }
             }
 
         }
@@ -533,18 +537,26 @@ namespace Lunar
 
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtUsuario.Texts.Trim()) && String.IsNullOrEmpty(txtSenha.Texts))
+            try
             {
-                UsuarioController usuarioController = new UsuarioController();
-                IList<Usuario> listaUser = usuarioController.selecionarUsuarioComVariosFiltros(txtUsuario.Texts.Trim());
-                if (listaUser.Count == 1)
+                if (!String.IsNullOrEmpty(txtUsuario.Texts.Trim()) && String.IsNullOrEmpty(txtSenha.Texts))
                 {
-                    foreach (Usuario usuario in listaUser)
+                    UsuarioController usuarioController = new UsuarioController();
+                    IList<Usuario> listaUser = usuarioController.selecionarUsuarioComVariosFiltros(txtUsuario.Texts.Trim());
+                    if (listaUser.Count == 1)
                     {
-                        txtUsuario.Texts = usuario.Login;
-                        txtSenha.Focus();
+                        foreach (Usuario usuario in listaUser)
+                        {
+                            txtUsuario.Texts = usuario.Login;
+                            txtSenha.Focus();
+                        }
                     }
                 }
+            }
+            catch (Exception erro)
+            {
+                if(erro.Message.Contains("conexão"))
+                ShowMessage("Erro de conexão");
             }
         }
 

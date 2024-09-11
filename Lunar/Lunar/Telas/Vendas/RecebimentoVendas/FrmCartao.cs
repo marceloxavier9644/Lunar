@@ -99,6 +99,12 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             txtValor.TextAlign = HorizontalAlignment.Center;
 
             this.venda = venda;
+
+            if (Sessao.caixaLogado != null)
+            {
+                if (Sessao.caixaLogado.Id > 0)
+                    txtData.Value = Sessao.caixaLogado.DataAbertura;
+            }
         }
 
         public FrmCartao(decimal valorFaltante, IList<ContaReceber> listaReceber, OrdemServico ordemServico)
@@ -143,6 +149,11 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             txtValor.TextAlign = HorizontalAlignment.Center;
 
             this.listaReceber = listaReceber;
+            if (Sessao.caixaLogado != null)
+            {
+                if (Sessao.caixaLogado.Id > 0)
+                    txtData.Value = Sessao.caixaLogado.DataAbertura;
+            }
         }
 
 

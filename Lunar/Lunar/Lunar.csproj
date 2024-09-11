@@ -404,6 +404,12 @@
     <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAnaliseCliente.Designer.cs">
       <DependentUpon>FrmAnaliseCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAniversariantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAniversariantes.Designer.cs">
+      <DependentUpon>FrmAniversariantes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroDependente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -571,11 +577,24 @@
     <Compile Include="Telas\Cadastros\Produtos\RelatoriosCadastro\FrmExtratoProduto.Designer.cs">
       <DependentUpon>FrmExtratoProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\CaixaConferencia\ClassesAuxiliaresCaixa\CaixaService.cs" />
     <Compile Include="Telas\CaixaConferencia\FrmAbrirCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Telas\CaixaConferencia\FrmAbrirCaixa.Designer.cs">
       <DependentUpon>FrmAbrirCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmAjusteSaldoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmAjusteSaldoCaixa.Designer.cs">
+      <DependentUpon>FrmAjusteSaldoCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmFecharCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmFecharCaixa.Designer.cs">
+      <DependentUpon>FrmFecharCaixa.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\CaixaConferencia\FrmLancamentoCaixa.cs">
       <SubType>Form</SubType>
@@ -1262,6 +1281,12 @@
     <Compile Include="Telas\Vendas\Adicionais\FrmDescontoTotal.Designer.cs">
       <DependentUpon>FrmDescontoTotal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmDevolucaoVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmDevolucaoVenda.Designer.cs">
+      <DependentUpon>FrmDevolucaoVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Vendas\Adicionais\FrmExcluirItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1443,6 +1468,9 @@
     <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAnaliseCliente.resx">
       <DependentUpon>FrmAnaliseCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmAniversariantes.resx">
+      <DependentUpon>FrmAniversariantes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroDependente.resx">
       <DependentUpon>FrmCadastroDependente.cs</DependentUpon>
     </EmbeddedResource>
@@ -1527,6 +1555,12 @@
     <EmbeddedResource Include="Telas\Cadastros\Produtos\RelatoriosCadastro\ReportExtratoProduto.rdlc" />
     <EmbeddedResource Include="Telas\CaixaConferencia\FrmAbrirCaixa.resx">
       <DependentUpon>FrmAbrirCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CaixaConferencia\FrmAjusteSaldoCaixa.resx">
+      <DependentUpon>FrmAjusteSaldoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CaixaConferencia\FrmFecharCaixa.resx">
+      <DependentUpon>FrmFecharCaixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\CaixaConferencia\FrmLancamentoCaixa.resx">
       <DependentUpon>FrmLancamentoCaixa.cs</DependentUpon>
@@ -1850,6 +1884,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmDescontoTotal.resx">
       <DependentUpon>FrmDescontoTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmDevolucaoVenda.resx">
+      <DependentUpon>FrmDevolucaoVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmExcluirItem.resx">
       <DependentUpon>FrmExcluirItem.cs</DependentUpon>
@@ -2429,6 +2466,8 @@
     <Content Include="Resources\New search folder.png" />
     <None Include="Resources\Only-Logo.png" />
     <None Include="Resources\Only-Logo-white.png" />
+    <None Include="Resources\Niver1.jpg" />
+    <None Include="Resources\Niver2.jpg" />
     <Content Include="Resources\Open in New Window.png" />
     <Content Include="Resources\Outlook ic-10.png" />
     <Content Include="Resources\Outlook icon-01.png" />

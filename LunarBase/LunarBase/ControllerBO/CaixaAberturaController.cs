@@ -41,5 +41,23 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+
+        public IList<CaixaAbertura> selecionarTodosCaixasAbertos()
+        {
+            CaixaAberturaBO bo = new CaixaAberturaBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarTodosCaixasAbertos();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

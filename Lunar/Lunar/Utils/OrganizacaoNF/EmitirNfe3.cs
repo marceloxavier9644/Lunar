@@ -750,7 +750,7 @@ namespace Lunar.Utils.OrganizacaoNF
                             new TNFeInfNFePagDetPag
                             {
                                 indPag = indPagamento,
-                                xPag = GenericaDesktop.RemoveCaracteres(formaPagamento.Descricao),
+                                //xPag = GenericaDesktop.RemoveCaracteres(formaPagamento.Descricao),
                                 tPag = formaPagamento.CodigoSefaz,
                                 vPag = formatMoedaNf(nfe.VNf),
                                 card = new TNFeInfNFePagDetPagCard

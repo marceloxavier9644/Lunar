@@ -1860,7 +1860,8 @@ namespace Lunar.Utils.OrganizacaoNF
                             new TNFeInfNFePagDetPag
                             {
                                 indPag = indPagamento,
-                                xPag = vendaFormaPagamento.FormaPagamento.Descricao,
+                                //XPAG so pode ser inserido em tipo 99
+                                //xPag = vendaFormaPagamento.FormaPagamento.Descricao,
                                 tPag = vendaFormaPagamento.FormaPagamento.CodigoSefaz,
                                 vPag = formatMoedaNf(vendaFormaPagamento.ValorRecebido),
                                 card = new TNFeInfNFePagDetPagCard

@@ -31,6 +31,11 @@ namespace LunarBase.Classes
         private PlanoConta planoContaCompraRevenda;
         private PlanoConta planoContaCompraImobilizado;
         private PlanoConta planoContaUsoConsumo;
+
+        private PlanoConta planoContaAjusteCaixaEntrada;
+        private PlanoConta planoContaAjusteCaixaSaida;
+        private string tipoCaixa;
+
         private string logo;
         private string dddWhats;
         private string foneWhats;
@@ -149,5 +154,8 @@ namespace LunarBase.Classes
         public virtual string TipoImpressoraCondicional { get => tipoImpressoraCondicional; set => tipoImpressoraCondicional = value; }
         public virtual bool SelecionarGradeEan { get => selecionarGradeEan; set => selecionarGradeEan = value; }
         public virtual bool ViaImpressaoOs { get => viaImpressaoOs; set => viaImpressaoOs = value; }
+        public virtual PlanoConta PlanoContaAjusteCaixaEntrada { get => planoContaAjusteCaixaEntrada; set => planoContaAjusteCaixaEntrada = value; }
+        public virtual PlanoConta PlanoContaAjusteCaixaSaida { get => planoContaAjusteCaixaSaida; set => planoContaAjusteCaixaSaida = value; }
+        public virtual string TipoCaixa { get => tipoCaixa; set => tipoCaixa = value; }
     }
 }

@@ -132,6 +132,24 @@ namespace LunarBase.ControllerBO
             }
         }
 
+        public IList<Pessoa> selecionarClientesPorDataAniversarioSql(string sql)
+        {
+            PessoaBO bo = new PessoaBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarClientesPorDataAniversarioSql(sql);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
+
         public void salvarPessoaComItensAdicionais(Pessoa pessoa, IList<PessoaTelefone> listaTelefone, IList<Endereco> listaEndereco, IList<PessoaPropriedade> listaPropriedades, IList<PessoaReferenciaPessoal> listaReferenciaPessoal, IList<PessoaReferenciaComercial> listaReferenciaComercial, IList<PessoaDependente> listaDependentes)
         {
             PessoaBO pessoaBO = new PessoaBO();

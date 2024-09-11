@@ -26,6 +26,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Security;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
@@ -1316,10 +1317,10 @@ namespace Lunar.Telas.Fiscal
         private async Task ReenviarNFComFormAguarde()
         {
             // Cria o formulário de espera
-            var frmAguarde = new FrmAguarde();
+           // var frmAguarde = new FrmAguarde();
 
             // Mostra o formulário de forma não modal para não bloquear a UI
-            frmAguarde.Show();
+            //frmAguarde.Show();
 
             // Executa a chamada da API em segundo plano
             await Task.Run(() =>
@@ -1337,7 +1338,7 @@ namespace Lunar.Telas.Fiscal
             });
 
             // Fecha o formulário de espera após a conclusão da chamada da API
-            frmAguarde.Close();
+           // frmAguarde.Close();
         }
 
         private async void btnReenviar_Click(object sender, EventArgs e)
@@ -1500,6 +1501,18 @@ namespace Lunar.Telas.Fiscal
                                                 }
                                             }
                                             pesquisaNotas();
+                                        }
+                                        else if (retConsulta.xMotivo.Contains("Duplicidade de NF-e, com diferenca na Chave de Acesso"))
+                                        {
+                                            string padrao = @"chNFe:\s*(\d+)";
+                                            Match match = Regex.Match(retConsulta.xMotivo, padrao);
+
+                                            if (match.Success)
+                                            {
+                                                string chaveDeAcesso = match.Groups[1].Value;
+                                                nfe.Chave = chaveDeAcesso;
+                                                Controller.getInstance().salvar(nfe);
+                                            }
                                         }
                                         //Reenvia a nota
                                         else

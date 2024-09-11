@@ -1,6 +1,7 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ConexaoBD;
 using LunarBase.ControllerBO;
+using LunarBase.Utilidades;
 using NHibernate;
 using System;
 
@@ -97,6 +98,11 @@ namespace Lunar.Utils
 
                     session.Transaction.Commit();
                     logger.WriteLog("SCRIPT ATUALIZACAO EXECUTADO COM SUCESSO", "LOG");
+                }
+                if(Sessao.parametroSistema.TipoCaixa == null)
+                {
+                    Sessao.parametroSistema.TipoCaixa = "INDIVIDUAL";
+                    Controller.getInstance().salvar(Sessao.parametroSistema);
                 }
             }
             catch (Exception ex)

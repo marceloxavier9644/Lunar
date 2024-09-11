@@ -32,7 +32,7 @@
         {
             public string pdf { get; set; }
             public string bankLine { get; set; }
-            public int bankNumber { get; set; }
+            public string bankNumber { get; set; }
             public string barCode { get; set; }
             public string bankEmissor { get; set; }
             public string bankAgency { get; set; }

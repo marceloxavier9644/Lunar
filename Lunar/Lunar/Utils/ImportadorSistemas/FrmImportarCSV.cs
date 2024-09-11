@@ -6,6 +6,7 @@ using LunarBase.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -1713,5 +1714,84 @@ namespace Lunar.Utils.ImportadorSistemas
             GenericaDesktop.ShowInfo("Importação de saldo finalizada!");
         }
 
+        private void importarTelefone()
+        {
+      
+            int i = 0;
+            foreach (DataGridViewRow col in dataGridView1.Rows)
+            {
+                i++;
+                Pessoa pessoa = new Pessoa();
+                int idImportado = int.Parse(col.Cells[0].Value.ToString());
+                pessoa = pessoaController.selecionarPessoaPorCodigoImportado(idImportado.ToString());
+               
+                if (pessoa.PessoaTelefone == null)
+                {
+                    PessoaTelefone pessoaTelefone = new PessoaTelefone();
+                    pessoaTelefone.Pessoa = pessoa;
+                    //captura o celular
+                    pessoaTelefone.Telefone = col.Cells[3].Value.ToString();
+                    //se nao tiver celular captura o fixo
+                    if(String.IsNullOrEmpty(pessoaTelefone.Telefone))
+                        pessoaTelefone.Telefone = col.Cells[2].Value.ToString();
+                    pessoaTelefone.Observacoes = "";
+
+                    // aqui preciso tratar o telefone para alimentar o ddd
+                    string ddd;
+                    string numero;
+                    ExtrairDDDENumero(pessoaTelefone.Telefone, out ddd, out numero);
+                    pessoaTelefone.Ddd = ddd;
+                    pessoaTelefone.Telefone = numero;
+
+                    if (!String.IsNullOrEmpty(pessoaTelefone.Telefone))
+                    {
+                        Controller.getInstance().salvar(pessoaTelefone);
+                        pessoa.PessoaTelefone = pessoaTelefone;
+                        Controller.getInstance().salvar(pessoa);
+                    }
+                }
+                // Atualiza o lblInformacao na thread principal
+                lblInformacao.Text = "Fone: " + i + " de " + dataGridView1.Rows.Count;
+            }
+        }
+
+        private void ExtrairDDDENumero(string telefone, out string ddd, out string numero)
+        {
+            // Inicializa os valores de ddd e numero
+            ddd = "";
+            numero = telefone;
+
+            // Remove caracteres não numéricos para facilitar o processamento
+            telefone = new string(telefone.Where(c => char.IsDigit(c)).ToArray());
+
+            // Verifica se o telefone tem 11 dígitos (DDD + 9 dígitos)
+            if (telefone.Length == 11)
+            {
+                // Extrai o DDD e o número
+                ddd = telefone.Substring(0, 2);
+                numero = telefone.Substring(2);
+            }
+            else if (telefone.Length == 10)
+            {
+                // Extrai o DDD e o número
+                ddd = telefone.Substring(0, 2);
+                numero = telefone.Substring(2);
+            }
+            else if (telefone.Length == 8)
+            {
+                // Extrai o DDD e o número
+                ddd = Sessao.empresaFilialLogada.DddPrincipal;
+                numero = telefone;
+            }
+        }
+
+        private void btnImportarCsvFones_Click(object sender, EventArgs e)
+        {
+            lblInformacao.Visible = true;
+            Thread th = new Thread(() => importarTelefone());
+            th.Start();
+            Application.DoEvents();
+            th.Join();
+        }
     }
 }

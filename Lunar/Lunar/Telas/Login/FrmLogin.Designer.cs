@@ -29,10 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
-            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.progressBar1 = new MetroFramework.Controls.MetroProgressSpinner();
             this.lblStatus = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblErrorMessage = new System.Windows.Forms.Label();
@@ -41,26 +38,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtSenha = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtUsuario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnLogin = new Lunar.RJ_UI.Classes.RJCircularPictureBox();
-            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogin)).BeginInit();
             this.SuspendLayout();
-            // 
-            // autoLabel2
-            // 
-            this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel2.Location = new System.Drawing.Point(169, 215);
-            this.autoLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(231, 20);
-            this.autoLabel2.TabIndex = 7;
-            this.autoLabel2.Text = "Se você não possuir uma conta";
             // 
             // linkLabel1
             // 
@@ -76,39 +62,11 @@
             this.linkLabel1.Text = "Esqueceu a Senha?";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // linkLabel2
-            // 
-            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel2.ForeColor = System.Drawing.Color.Black;
-            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
-            this.linkLabel2.Location = new System.Drawing.Point(422, 215);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(72, 20);
-            this.linkLabel2.TabIndex = 19;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Crie uma";
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel3.ForeColor = System.Drawing.Color.Black;
-            this.linkLabel3.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
-            this.linkLabel3.Location = new System.Drawing.Point(168, 237);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(43, 20);
-            this.linkLabel3.TabIndex = 20;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "aqui.";
-            // 
             // progressBar1
             // 
             this.progressBar1.BackColor = System.Drawing.Color.PapayaWhip;
             this.progressBar1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.progressBar1.Location = new System.Drawing.Point(44, 254);
+            this.progressBar1.Location = new System.Drawing.Point(44, 238);
             this.progressBar1.Maximum = 100;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(49, 46);
@@ -121,7 +79,7 @@
             // 
             this.lblStatus.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(25, 303);
+            this.lblStatus.Location = new System.Drawing.Point(25, 284);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(68, 16);
@@ -136,7 +94,7 @@
             this.lblErrorMessage.ForeColor = System.Drawing.Color.IndianRed;
             this.lblErrorMessage.Image = ((System.Drawing.Image)(resources.GetObject("lblErrorMessage.Image")));
             this.lblErrorMessage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblErrorMessage.Location = new System.Drawing.Point(167, 282);
+            this.lblErrorMessage.Location = new System.Drawing.Point(166, 243);
             this.lblErrorMessage.MaximumSize = new System.Drawing.Size(365, 0);
             this.lblErrorMessage.Name = "lblErrorMessage";
             this.lblErrorMessage.Size = new System.Drawing.Size(88, 18);
@@ -207,6 +165,28 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // autoLabel1
+            // 
+            this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Location = new System.Drawing.Point(163, 51);
+            this.autoLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(64, 20);
+            this.autoLabel1.TabIndex = 25;
+            this.autoLabel1.Text = "Usuário";
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Location = new System.Drawing.Point(163, 113);
+            this.autoLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(56, 20);
+            this.autoLabel3.TabIndex = 26;
+            this.autoLabel3.Text = "Senha";
+            // 
             // txtSenha
             // 
             this.txtSenha.BackColor = System.Drawing.SystemColors.InactiveBorder;
@@ -269,7 +249,7 @@
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.GradientAngle = 50F;
             this.btnLogin.Image = global::Lunar.Properties.Resources.login_black_24dp_1;
-            this.btnLogin.Location = new System.Drawing.Point(441, 254);
+            this.btnLogin.Location = new System.Drawing.Point(447, 222);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(62, 62);
             this.btnLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -277,44 +257,19 @@
             this.btnLogin.TabStop = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // autoLabel1
-            // 
-            this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel1.Location = new System.Drawing.Point(163, 51);
-            this.autoLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(64, 20);
-            this.autoLabel1.TabIndex = 25;
-            this.autoLabel1.Text = "Usuário";
-            // 
-            // autoLabel3
-            // 
-            this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel3.Location = new System.Drawing.Point(163, 113);
-            this.autoLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(56, 20);
-            this.autoLabel3.TabIndex = 26;
-            this.autoLabel3.Text = "Senha";
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CaptionForeColor = System.Drawing.Color.SlateBlue;
-            this.ClientSize = new System.Drawing.Size(548, 323);
+            this.ClientSize = new System.Drawing.Size(548, 304);
             this.Controls.Add(this.autoLabel3);
             this.Controls.Add(this.autoLabel1);
             this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.linkLabel3);
-            this.Controls.Add(this.linkLabel2);
-            this.Controls.Add(this.autoLabel2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtSenha);
@@ -343,13 +298,10 @@
         }
 
         #endregion
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private RJ_UI.Classes.RJTextBox txtUsuario;
         private RJ_UI.Classes.RJTextBox txtSenha;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel3;
         private RJ_UI.Classes.RJCircularPictureBox btnLogin;
         private MetroFramework.Controls.MetroProgressSpinner progressBar1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblStatus;

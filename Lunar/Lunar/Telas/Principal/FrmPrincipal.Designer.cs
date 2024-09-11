@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.lblVersaoSistema = new System.Windows.Forms.Label();
             this.btnRelatorios = new FontAwesome.Sharp.IconButton();
             this.btnUtilitarios = new FontAwesome.Sharp.IconButton();
             this.btnSair = new FontAwesome.Sharp.IconButton();
@@ -45,6 +46,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMenu = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.lblUserLogado = new System.Windows.Forms.Label();
             this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.btnMinimize = new FontAwesome.Sharp.IconButton();
             this.btnMaximize = new FontAwesome.Sharp.IconButton();
@@ -89,6 +91,7 @@
             this.btnOrdemServico = new System.Windows.Forms.ToolStripMenuItem();
             this.btnServico = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuRelatorios = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
+            this.aniversariantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnComissoes = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,6 +104,7 @@
             this.vendasPorProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuVendas = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnVendaPDV = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultaVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCondicionalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.foodServiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transferênciaFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,7 +113,6 @@
             this.btnGrupo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSetor = new System.Windows.Forms.ToolStripMenuItem();
             this.variaçõesCaracterísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultaVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -128,6 +131,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panelMenu.Controls.Add(this.lblVersaoSistema);
             this.panelMenu.Controls.Add(this.btnRelatorios);
             this.panelMenu.Controls.Add(this.btnUtilitarios);
             this.panelMenu.Controls.Add(this.btnSair);
@@ -145,6 +149,18 @@
             this.panelMenu.Padding = new System.Windows.Forms.Padding(0, 0, 0, 15);
             this.panelMenu.Size = new System.Drawing.Size(230, 612);
             this.panelMenu.TabIndex = 0;
+            // 
+            // lblVersaoSistema
+            // 
+            this.lblVersaoSistema.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblVersaoSistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersaoSistema.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lblVersaoSistema.Location = new System.Drawing.Point(0, 584);
+            this.lblVersaoSistema.Name = "lblVersaoSistema";
+            this.lblVersaoSistema.Size = new System.Drawing.Size(230, 13);
+            this.lblVersaoSistema.TabIndex = 23;
+            this.lblVersaoSistema.Text = "Versão do Sistema:";
+            this.lblVersaoSistema.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnRelatorios
             // 
@@ -198,8 +214,8 @@
             // 
             // btnSair
             // 
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSair.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnSair.FlatAppearance.BorderSize = 0;
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -209,11 +225,11 @@
             this.btnSair.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSair.IconSize = 30;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(0, 551);
+            this.btnSair.Location = new System.Drawing.Point(3, 535);
             this.btnSair.Name = "btnSair";
             this.btnSair.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnSair.Size = new System.Drawing.Size(230, 46);
-            this.btnSair.TabIndex = 8;
+            this.btnSair.TabIndex = 24;
             this.btnSair.Tag = "Sair";
             this.btnSair.Text = "      Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -437,6 +453,7 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panelTitleBar.Controls.Add(this.lblUserLogado);
             this.panelTitleBar.Controls.Add(this.iconCurrentChildForm);
             this.panelTitleBar.Controls.Add(this.btnMinimize);
             this.panelTitleBar.Controls.Add(this.btnMaximize);
@@ -448,12 +465,24 @@
             this.panelTitleBar.TabIndex = 1;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
+            // lblUserLogado
+            // 
+            this.lblUserLogado.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblUserLogado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserLogado.ForeColor = System.Drawing.Color.GhostWhite;
+            this.lblUserLogado.Location = new System.Drawing.Point(30, 0);
+            this.lblUserLogado.Name = "lblUserLogado";
+            this.lblUserLogado.Size = new System.Drawing.Size(814, 28);
+            this.lblUserLogado.TabIndex = 22;
+            this.lblUserLogado.Text = "Usuário Logado:";
+            this.lblUserLogado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // iconCurrentChildForm
             // 
-            this.iconCurrentChildForm.BackColor = System.Drawing.Color.White;
+            this.iconCurrentChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.iconCurrentChildForm.Dock = System.Windows.Forms.DockStyle.Left;
             this.iconCurrentChildForm.ForeColor = System.Drawing.Color.MediumPurple;
-            this.iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
             this.iconCurrentChildForm.IconColor = System.Drawing.Color.MediumPurple;
             this.iconCurrentChildForm.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconCurrentChildForm.IconSize = 28;
@@ -462,7 +491,6 @@
             this.iconCurrentChildForm.Size = new System.Drawing.Size(30, 28);
             this.iconCurrentChildForm.TabIndex = 5;
             this.iconCurrentChildForm.TabStop = false;
-            this.iconCurrentChildForm.Visible = false;
             // 
             // btnMinimize
             // 
@@ -723,7 +751,7 @@
             // 
             this.abrirCaixaToolStripMenuItem.Name = "abrirCaixaToolStripMenuItem";
             this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.abrirCaixaToolStripMenuItem.Text = "Abrir Caixa";
+            this.abrirCaixaToolStripMenuItem.Text = "Abrir/Fechar Caixa";
             this.abrirCaixaToolStripMenuItem.Click += new System.EventHandler(this.abrirCaixaToolStripMenuItem_Click);
             // 
             // adiantamentoValeToolStripMenuItem
@@ -876,6 +904,7 @@
             this.dropMenuRelatorios.Font = new System.Drawing.Font("Verdana", 10F);
             this.dropMenuRelatorios.IsMainMenu = false;
             this.dropMenuRelatorios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aniversariantesToolStripMenuItem,
             this.toolStripMenuItem1,
             this.btnComissoes,
             this.estoqueToolStripMenuItem,
@@ -886,7 +915,14 @@
             this.dropMenuRelatorios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuRelatorios.Name = "rjDropdownMenu1";
             this.dropMenuRelatorios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuRelatorios.Size = new System.Drawing.Size(238, 136);
+            this.dropMenuRelatorios.Size = new System.Drawing.Size(238, 158);
+            // 
+            // aniversariantesToolStripMenuItem
+            // 
+            this.aniversariantesToolStripMenuItem.Name = "aniversariantesToolStripMenuItem";
+            this.aniversariantesToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.aniversariantesToolStripMenuItem.Text = "Aniversariantes";
+            this.aniversariantesToolStripMenuItem.Click += new System.EventHandler(this.aniversariantesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -977,7 +1013,7 @@
             this.dropMenuVendas.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuVendas.Name = "rjDropdownMenu1";
             this.dropMenuVendas.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuVendas.Size = new System.Drawing.Size(203, 136);
+            this.dropMenuVendas.Size = new System.Drawing.Size(203, 114);
             // 
             // btnVendaPDV
             // 
@@ -985,6 +1021,13 @@
             this.btnVendaPDV.Size = new System.Drawing.Size(202, 22);
             this.btnVendaPDV.Text = "Venda - PDV";
             this.btnVendaPDV.Click += new System.EventHandler(this.btnVendaPDV_Click);
+            // 
+            // consultaVendasToolStripMenuItem
+            // 
+            this.consultaVendasToolStripMenuItem.Name = "consultaVendasToolStripMenuItem";
+            this.consultaVendasToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.consultaVendasToolStripMenuItem.Text = "Consulta Vendas";
+            this.consultaVendasToolStripMenuItem.Click += new System.EventHandler(this.consultaVendasToolStripMenuItem_Click);
             // 
             // btnCondicionalMenu
             // 
@@ -1050,13 +1093,6 @@
             this.variaçõesCaracterísticasToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.variaçõesCaracterísticasToolStripMenuItem.Text = "Variações/Características";
             this.variaçõesCaracterísticasToolStripMenuItem.Click += new System.EventHandler(this.variaçõesCaracterísticasToolStripMenuItem_Click);
-            // 
-            // consultaVendasToolStripMenuItem
-            // 
-            this.consultaVendasToolStripMenuItem.Name = "consultaVendasToolStripMenuItem";
-            this.consultaVendasToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.consultaVendasToolStripMenuItem.Text = "Consulta Vendas";
-            this.consultaVendasToolStripMenuItem.Click += new System.EventHandler(this.consultaVendasToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1175,5 +1211,8 @@
         private System.Windows.Forms.ToolStripMenuItem abrirCaixaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vendasPorProdutoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultaVendasToolStripMenuItem;
+        internal System.Windows.Forms.Label lblUserLogado;
+        internal System.Windows.Forms.Label lblVersaoSistema;
+        private System.Windows.Forms.ToolStripMenuItem aniversariantesToolStripMenuItem;
     }
 }

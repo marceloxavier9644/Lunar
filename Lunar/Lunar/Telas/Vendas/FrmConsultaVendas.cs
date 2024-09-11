@@ -280,10 +280,23 @@ namespace Lunar.Telas.Vendas
                         IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorVenda(venda.Id);
                         if (listaReceber.Count > 0)
                         {
+                            IList<ContaReceber> listaBoletos = new List<ContaReceber>();
                             foreach (ContaReceber contaReceber in listaReceber)
                             {
                                 contaReceber.FlagExcluido = true;
                                 Controller.getInstance().excluir(contaReceber);
+
+                                if(contaReceber.BoletoGerado == true)
+                                {
+                                    listaBoletos.Add(contaReceber);
+                                }
+                            }
+                            if(listaBoletos.Count > 0)
+                            {
+                                GenericaDesktop.ShowInfo("Existem parcelas com boletos gerados. O sistema tentará cancelar esses boletos na plataforma correspondente.");
+                                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                                string retorno = galaxyPayApiIntegracao.GalaxyPay_CancelarBoletos(listaBoletos);
+                                GenericaDesktop.ShowInfo(retorno);
                             }
                         }
 
@@ -1319,7 +1332,7 @@ namespace Lunar.Telas.Vendas
                         frDup.ShowDialog();
                     }
                     else
-                        GenericaDesktop.ShowAlerta("Não foi encontrado duplicata(s) para essa ordem de serviço!");
+                        GenericaDesktop.ShowAlerta("Não foi encontrado duplicata(s) para essa venda!");
 
                 }
             }
@@ -1432,6 +1445,34 @@ namespace Lunar.Telas.Vendas
             }
         }
 
-
+        private void btnDevolucaoVenda_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedItems.Count > 0)
+            {
+                venda = (Venda)grid.SelectedItem;
+                Form formBackground = new Form();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                //formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                FrmDevolucaoVenda fr = new FrmDevolucaoVenda(venda);
+                fr.Owner = formBackground;
+                fr.ShowDialog();
+                formBackground.Dispose();
+                fr.Dispose();
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Clique na venda que deseja devolver");
+            }
+        }
     }
 }

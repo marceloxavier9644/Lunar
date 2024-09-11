@@ -434,7 +434,10 @@ namespace Lunar.Telas.Cadastros.Produtos
                 txtOrigem.Texts = origem.Descricao;
             }
 
-
+            if(produto.Pesavel == true)
+            {
+                chkProdutoPesavel.Checked = true;
+            }
             txtCodIPI.Texts = produto.CstIpi;
             txtPercentualIPI.Texts = produto.PercentualIpi;
             txtCodEnqIPI.Texts = produto.EnqIpi;

@@ -5,6 +5,7 @@ using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
+using Lunar.Utils.GalaxyPay_API;
 using Lunar.Utils.LunarChatIntegracao;
 using Lunar.Utils.OrganizacaoNF;
 using LunarBase.Classes;
@@ -1791,10 +1792,23 @@ namespace Lunar.Telas.OrdensDeServico
                         IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber as Tabela Where Tabela.OrdemServico = " + ordemServico.Id);
                         if (listaReceber.Count > 0)
                         {
+                            IList<ContaReceber> listaBoletos = new List<ContaReceber>();
                             GenericaDesktop.ShowAlerta("O.S Já foi encerrada e gerado faturas a receber, será excluído as parcelas do contas a receber!");
                             foreach (ContaReceber contaReceber in listaReceber)
                             {
                                 Controller.getInstance().excluir(contaReceber);
+                                if (contaReceber.BoletoGerado == true)
+                                {
+                                    listaBoletos.Add(contaReceber);
+                                }
+                            }
+                            //Se possui boletos, cancela na celcash
+                            if (listaBoletos.Count > 0)
+                            {
+                                GenericaDesktop.ShowInfo("Existem parcelas com boletos gerados. O sistema tentará cancelar esses boletos na plataforma correspondente.");
+                                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                                string retorno = galaxyPayApiIntegracao.GalaxyPay_CancelarBoletos(listaBoletos);
+                                GenericaDesktop.ShowInfo(retorno);
                             }
                         }
                         CaixaController caixaController = new CaixaController();

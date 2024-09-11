@@ -38,6 +38,9 @@
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.txtSaldoInicial = new MaterialSkin.Controls.MaterialTextBox();
             this.btnAbrirCaixa = new MaterialSkin.Controls.MaterialButton();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.btnFecharCaixa = new MaterialSkin.Controls.MaterialButton();
             this.btnAjustar = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
@@ -109,18 +112,22 @@
             // 
             // txtDataAbertura
             // 
+            this.txtDataAbertura.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDataAbertura.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
             this.txtDataAbertura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDataAbertura.Location = new System.Drawing.Point(12, 117);
             this.txtDataAbertura.Name = "txtDataAbertura";
-            this.txtDataAbertura.Size = new System.Drawing.Size(138, 50);
+            this.txtDataAbertura.Size = new System.Drawing.Size(187, 50);
             this.txtDataAbertura.TabIndex = 6;
+            this.txtDataAbertura.Click += new System.EventHandler(this.txtDataAbertura_Click);
+            this.txtDataAbertura.Leave += new System.EventHandler(this.txtDataAbertura_Leave);
             // 
             // materialLabel4
             // 
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.Location = new System.Drawing.Point(156, 95);
+            this.materialLabel4.Location = new System.Drawing.Point(202, 96);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(177, 19);
@@ -133,12 +140,12 @@
             this.txtSaldoInicial.Depth = 0;
             this.txtSaldoInicial.Enabled = false;
             this.txtSaldoInicial.Font = new System.Drawing.Font("Roboto", 12F);
-            this.txtSaldoInicial.Location = new System.Drawing.Point(156, 118);
+            this.txtSaldoInicial.Location = new System.Drawing.Point(205, 118);
             this.txtSaldoInicial.MaxLength = 50;
             this.txtSaldoInicial.MouseState = MaterialSkin.MouseState.OUT;
             this.txtSaldoInicial.Multiline = false;
             this.txtSaldoInicial.Name = "txtSaldoInicial";
-            this.txtSaldoInicial.Size = new System.Drawing.Size(317, 50);
+            this.txtSaldoInicial.Size = new System.Drawing.Size(268, 50);
             this.txtSaldoInicial.TabIndex = 7;
             this.txtSaldoInicial.Text = "";
             // 
@@ -151,7 +158,7 @@
             this.btnAbrirCaixa.DrawShadows = true;
             this.btnAbrirCaixa.HighEmphasis = true;
             this.btnAbrirCaixa.Icon = null;
-            this.btnAbrirCaixa.Location = new System.Drawing.Point(153, 231);
+            this.btnAbrirCaixa.Location = new System.Drawing.Point(231, 340);
             this.btnAbrirCaixa.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAbrirCaixa.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAbrirCaixa.Name = "btnAbrirCaixa";
@@ -162,6 +169,51 @@
             this.btnAbrirCaixa.UseAccentColor = false;
             this.btnAbrirCaixa.UseVisualStyleBackColor = true;
             this.btnAbrirCaixa.Click += new System.EventHandler(this.btnAbrirCaixa_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 24;
+            this.listBox1.Location = new System.Drawing.Point(12, 195);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(187, 100);
+            this.listBox1.TabIndex = 11;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.Location = new System.Drawing.Point(12, 173);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(187, 19);
+            this.materialLabel5.TabIndex = 12;
+            this.materialLabel5.Text = "Caixas Abertos do Usuário";
+            // 
+            // btnFecharCaixa
+            // 
+            this.btnFecharCaixa.AutoSize = false;
+            this.btnFecharCaixa.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnFecharCaixa.BackColor = System.Drawing.Color.Gray;
+            this.btnFecharCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFecharCaixa.Depth = 0;
+            this.btnFecharCaixa.DrawShadows = true;
+            this.btnFecharCaixa.HighEmphasis = true;
+            this.btnFecharCaixa.Icon = null;
+            this.btnFecharCaixa.Location = new System.Drawing.Point(39, 340);
+            this.btnFecharCaixa.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnFecharCaixa.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnFecharCaixa.Name = "btnFecharCaixa";
+            this.btnFecharCaixa.Size = new System.Drawing.Size(184, 50);
+            this.btnFecharCaixa.TabIndex = 13;
+            this.btnFecharCaixa.Text = "Fechar Caixa";
+            this.btnFecharCaixa.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnFecharCaixa.UseAccentColor = false;
+            this.btnFecharCaixa.UseVisualStyleBackColor = false;
+            this.btnFecharCaixa.Click += new System.EventHandler(this.btnFecharCaixa_Click);
             // 
             // btnAjustar
             // 
@@ -179,13 +231,17 @@
             this.btnAjustar.Text = "Ajustar";
             this.btnAjustar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAjustar.UseVisualStyleBackColor = true;
+            this.btnAjustar.Click += new System.EventHandler(this.btnAjustar_Click);
             // 
             // FrmAbrirCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(490, 296);
+            this.ClientSize = new System.Drawing.Size(490, 405);
+            this.Controls.Add(this.btnFecharCaixa);
+            this.Controls.Add(this.materialLabel5);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnAjustar);
             this.Controls.Add(this.btnAbrirCaixa);
             this.Controls.Add(this.materialLabel4);
@@ -204,6 +260,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Abertura de Caixa";
             this.Load += new System.EventHandler(this.FrmAbrirCaixa_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmAbrirCaixa_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +278,8 @@
         private MaterialSkin.Controls.MaterialTextBox txtSaldoInicial;
         private MaterialSkin.Controls.MaterialButton btnAbrirCaixa;
         private FontAwesome.Sharp.IconButton btnAjustar;
+        private System.Windows.Forms.ListBox listBox1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialButton btnFecharCaixa;
     }
 }

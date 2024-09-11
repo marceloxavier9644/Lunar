@@ -36,6 +36,9 @@
             this.radioClientes = new System.Windows.Forms.RadioButton();
             this.radioProdutos = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioNaoConciliado = new System.Windows.Forms.RadioButton();
+            this.radioConciliado = new System.Windows.Forms.RadioButton();
+            this.btnImportarSaldoEstoque = new System.Windows.Forms.Button();
             this.btnFirebird = new System.Windows.Forms.Button();
             this.lblInformacao = new System.Windows.Forms.Label();
             this.btnConfirmarImportacao = new System.Windows.Forms.Button();
@@ -47,9 +50,7 @@
             this.txtCaminhoBancoUltra = new System.Windows.Forms.TextBox();
             this.btnLocalizarBancoUltra = new System.Windows.Forms.Button();
             this.radioAnexosOS = new System.Windows.Forms.RadioButton();
-            this.btnImportarSaldoEstoque = new System.Windows.Forms.Button();
-            this.radioConciliado = new System.Windows.Forms.RadioButton();
-            this.radioNaoConciliado = new System.Windows.Forms.RadioButton();
+            this.btnImportarCsvFones = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -137,6 +138,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnImportarCsvFones);
             this.groupBox1.Controls.Add(this.radioNaoConciliado);
             this.groupBox1.Controls.Add(this.radioConciliado);
             this.groupBox1.Controls.Add(this.btnImportarSaldoEstoque);
@@ -149,10 +151,43 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
+            // radioNaoConciliado
+            // 
+            this.radioNaoConciliado.AutoSize = true;
+            this.radioNaoConciliado.Location = new System.Drawing.Point(355, 19);
+            this.radioNaoConciliado.Name = "radioNaoConciliado";
+            this.radioNaoConciliado.Size = new System.Drawing.Size(45, 17);
+            this.radioNaoConciliado.TabIndex = 16;
+            this.radioNaoConciliado.Text = "N/C";
+            this.radioNaoConciliado.UseVisualStyleBackColor = true;
+            // 
+            // radioConciliado
+            // 
+            this.radioConciliado.AutoSize = true;
+            this.radioConciliado.Checked = true;
+            this.radioConciliado.Location = new System.Drawing.Point(317, 19);
+            this.radioConciliado.Name = "radioConciliado";
+            this.radioConciliado.Size = new System.Drawing.Size(32, 17);
+            this.radioConciliado.TabIndex = 15;
+            this.radioConciliado.TabStop = true;
+            this.radioConciliado.Text = "C";
+            this.radioConciliado.UseVisualStyleBackColor = true;
+            // 
+            // btnImportarSaldoEstoque
+            // 
+            this.btnImportarSaldoEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportarSaldoEstoque.Location = new System.Drawing.Point(243, 36);
+            this.btnImportarSaldoEstoque.Name = "btnImportarSaldoEstoque";
+            this.btnImportarSaldoEstoque.Size = new System.Drawing.Size(157, 32);
+            this.btnImportarSaldoEstoque.TabIndex = 14;
+            this.btnImportarSaldoEstoque.Text = "Importar CSV - Saldo Estoque";
+            this.btnImportarSaldoEstoque.UseVisualStyleBackColor = true;
+            this.btnImportarSaldoEstoque.Click += new System.EventHandler(this.btnImportarSaldoEstoque_Click);
+            // 
             // btnFirebird
             // 
             this.btnFirebird.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFirebird.Location = new System.Drawing.Point(546, 31);
+            this.btnFirebird.Location = new System.Drawing.Point(546, 36);
             this.btnFirebird.Name = "btnFirebird";
             this.btnFirebird.Size = new System.Drawing.Size(134, 32);
             this.btnFirebird.TabIndex = 13;
@@ -164,7 +199,7 @@
             // 
             this.lblInformacao.AutoSize = true;
             this.lblInformacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInformacao.Location = new System.Drawing.Point(8, 16);
+            this.lblInformacao.Location = new System.Drawing.Point(6, 9);
             this.lblInformacao.Name = "lblInformacao";
             this.lblInformacao.Size = new System.Drawing.Size(94, 20);
             this.lblInformacao.TabIndex = 12;
@@ -174,7 +209,7 @@
             // btnConfirmarImportacao
             // 
             this.btnConfirmarImportacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmarImportacao.Location = new System.Drawing.Point(406, 31);
+            this.btnConfirmarImportacao.Location = new System.Drawing.Point(406, 36);
             this.btnConfirmarImportacao.Name = "btnConfirmarImportacao";
             this.btnConfirmarImportacao.Size = new System.Drawing.Size(134, 32);
             this.btnConfirmarImportacao.TabIndex = 12;
@@ -266,38 +301,16 @@
             this.radioAnexosOS.Text = "Anexos O.S";
             this.radioAnexosOS.UseVisualStyleBackColor = true;
             // 
-            // btnImportarSaldoEstoque
+            // btnImportarCsvFones
             // 
-            this.btnImportarSaldoEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImportarSaldoEstoque.Location = new System.Drawing.Point(243, 31);
-            this.btnImportarSaldoEstoque.Name = "btnImportarSaldoEstoque";
-            this.btnImportarSaldoEstoque.Size = new System.Drawing.Size(157, 32);
-            this.btnImportarSaldoEstoque.TabIndex = 14;
-            this.btnImportarSaldoEstoque.Text = "Importar CSV - Saldo Estoque";
-            this.btnImportarSaldoEstoque.UseVisualStyleBackColor = true;
-            this.btnImportarSaldoEstoque.Click += new System.EventHandler(this.btnImportarSaldoEstoque_Click);
-            // 
-            // radioConciliado
-            // 
-            this.radioConciliado.AutoSize = true;
-            this.radioConciliado.Checked = true;
-            this.radioConciliado.Location = new System.Drawing.Point(317, 8);
-            this.radioConciliado.Name = "radioConciliado";
-            this.radioConciliado.Size = new System.Drawing.Size(32, 17);
-            this.radioConciliado.TabIndex = 15;
-            this.radioConciliado.TabStop = true;
-            this.radioConciliado.Text = "C";
-            this.radioConciliado.UseVisualStyleBackColor = true;
-            // 
-            // radioNaoConciliado
-            // 
-            this.radioNaoConciliado.AutoSize = true;
-            this.radioNaoConciliado.Location = new System.Drawing.Point(355, 8);
-            this.radioNaoConciliado.Name = "radioNaoConciliado";
-            this.radioNaoConciliado.Size = new System.Drawing.Size(45, 17);
-            this.radioNaoConciliado.TabIndex = 16;
-            this.radioNaoConciliado.Text = "N/C";
-            this.radioNaoConciliado.UseVisualStyleBackColor = true;
+            this.btnImportarCsvFones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportarCsvFones.Location = new System.Drawing.Point(80, 36);
+            this.btnImportarCsvFones.Name = "btnImportarCsvFones";
+            this.btnImportarCsvFones.Size = new System.Drawing.Size(157, 32);
+            this.btnImportarCsvFones.TabIndex = 17;
+            this.btnImportarCsvFones.Text = "Importar CSV - Telefones";
+            this.btnImportarCsvFones.UseVisualStyleBackColor = true;
+            this.btnImportarCsvFones.Click += new System.EventHandler(this.btnImportarCsvFones_Click);
             // 
             // FrmImportarCSV
             // 
@@ -359,5 +372,6 @@
         private System.Windows.Forms.Button btnImportarSaldoEstoque;
         private System.Windows.Forms.RadioButton radioNaoConciliado;
         private System.Windows.Forms.RadioButton radioConciliado;
+        private System.Windows.Forms.Button btnImportarCsvFones;
     }
 }

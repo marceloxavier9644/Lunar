@@ -12,6 +12,7 @@
 		<property name="DataLancamento" column="DATALANCAMENTO" type="DateTime"/>
 		<property name="Conciliado" column="CONCILIADO" type="Boolean"/>
 		<property name="Concluido" column="CONCLUIDO" type="Boolean"/>
+		<property name="Observacoes" column="OBSERVACOES" type="String" length="900"/>
 
 		<many-to-one name="FormaPagamento" column="FORMAPAGAMENTO" class="LunarBase.Classes.FormaPagamento" not-null="true" foreign-key="FK_CAIXA_FORMAPAGAMENTO" lazy="false"/>
 		<many-to-one name="PlanoConta" column="PLANOCONTA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_CAIXA_PLANOCONTA" lazy="false"/>

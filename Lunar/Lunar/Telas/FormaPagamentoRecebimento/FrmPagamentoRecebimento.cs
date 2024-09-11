@@ -1272,7 +1272,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
-                            caixa.DataLancamento = DateTime.Now;
+                            if (Sessao.caixaLogado != null)
+                            {
+                                if (Sessao.caixaLogado.Id > 0)
+                                    caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
+                            }
+                            else
+                                caixa.DataLancamento = DateTime.Now;
                             caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                             caixa.FormaPagamento = formaPagamento;
@@ -1308,7 +1316,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
-                            caixa.DataLancamento = DateTime.Now;
+                            if (Sessao.caixaLogado != null)
+                            {
+                                if (Sessao.caixaLogado.Id > 0)
+                                    caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
+                            }
+                            else
+                                caixa.DataLancamento = DateTime.Now;
                             caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                             caixa.FormaPagamento = formaPagamento;
@@ -1343,7 +1359,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = contaBancaria;
-                                caixa.DataLancamento = DateTime.Now;
+                                if (Sessao.caixaLogado != null)
+                                {
+                                    if (Sessao.caixaLogado.Id > 0)
+                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
+                                }
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
                                 caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -1373,7 +1397,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = contaBancaria;
-                                caixa.DataLancamento = DateTime.Now;
+                                if (Sessao.caixaLogado != null)
+                                {
+                                    if (Sessao.caixaLogado.Id > 0)
+                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
+                                }
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
                                 caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -1420,7 +1452,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     caixa.Conciliado = true;
                                     caixa.Concluido = true;
                                     caixa.ContaBancaria = null;
-                                    caixa.DataLancamento = DateTime.Now;
+                                    if (Sessao.caixaLogado != null)
+                                    {
+                                        if (Sessao.caixaLogado.Id > 0)
+                                            caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                        else
+                                            caixa.DataLancamento = DateTime.Now;
+                                    }
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
                                     caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                                     caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                     caixa.FormaPagamento = formaPagamento;
@@ -1474,7 +1514,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
-                            caixa.DataLancamento = DateTime.Now;
+                            if (Sessao.caixaLogado != null)
+                            {
+                                if (Sessao.caixaLogado.Id > 0)
+                                    caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
+                            }
+                            else
+                                caixa.DataLancamento = DateTime.Now;
                             caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                             caixa.FormaPagamento = formaPagamento;
@@ -1576,7 +1624,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
-                            caixa.DataLancamento = DateTime.Now;
+                            if (Sessao.caixaLogado != null)
+                            {
+                                if (Sessao.caixaLogado.Id > 0)
+                                    caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
+                            }
+                            else
+                                caixa.DataLancamento = DateTime.Now;
                             caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                             caixa.FormaPagamento = formaPagamento;
@@ -1612,7 +1668,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
-                            caixa.DataLancamento = DateTime.Now;
+                            if (Sessao.caixaLogado != null)
+                            {
+                                if (Sessao.caixaLogado.Id > 0)
+                                    caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
+                            }
+                            else
+                                caixa.DataLancamento = DateTime.Now;
                             caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                             caixa.FormaPagamento = formaPagamento;
@@ -1647,7 +1711,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = contaBancaria;
-                                caixa.DataLancamento = DateTime.Now;
+                                if (Sessao.caixaLogado != null)
+                                {
+                                    if (Sessao.caixaLogado.Id > 0)
+                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
+                                }
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
                                 caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -1677,7 +1749,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = contaBancaria;
-                                caixa.DataLancamento = DateTime.Now;
+                                if (Sessao.caixaLogado != null)
+                                {
+                                    if (Sessao.caixaLogado.Id > 0)
+                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
+                                }
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
                                 caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -1747,7 +1827,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     caixa.Conciliado = true;
                                     caixa.Concluido = true;
                                     caixa.ContaBancaria = null;
-                                    caixa.DataLancamento = DateTime.Now;
+                                    if (Sessao.caixaLogado != null)
+                                    {
+                                        if (Sessao.caixaLogado.Id > 0)
+                                            caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                        else
+                                            caixa.DataLancamento = DateTime.Now;
+                                    }
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
                                     caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                                     caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                     caixa.FormaPagamento = formaPagamento;
@@ -1836,7 +1924,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
-                            caixa.DataLancamento = DateTime.Now;
+                            if (Sessao.caixaLogado != null)
+                            {
+                                if (Sessao.caixaLogado.Id > 0)
+                                    caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
+                            }
+                            else
+                                caixa.DataLancamento = DateTime.Now;
                             caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial + "-ORIGEM: " + origemPagamentoCredito + " - DT_CX: " + dataCaixaCreditoOriginal.ToShortDateString();
                             //colocar aqui forma q foi a origem do credito!
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
@@ -2022,7 +2118,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
-                            caixa.DataLancamento = DateTime.Now;
+                            if (Sessao.caixaLogado != null)
+                            {
+                                if (Sessao.caixaLogado.Id > 0)
+                                    caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
+                            }
+                            else
+                                caixa.DataLancamento = DateTime.Now;
                             caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                             caixa.FormaPagamento = formaPagamento;
@@ -2058,7 +2162,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
-                            caixa.DataLancamento = DateTime.Now;
+                            if (Sessao.caixaLogado != null)
+                            {
+                                if (Sessao.caixaLogado.Id > 0)
+                                    caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
+                            }
+                            else
+                                caixa.DataLancamento = DateTime.Now;
                             caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                             caixa.FormaPagamento = formaPagamento;
@@ -2093,7 +2205,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = contaBancaria;
-                                caixa.DataLancamento = DateTime.Now;
+                                if (Sessao.caixaLogado != null)
+                                {
+                                    if (Sessao.caixaLogado.Id > 0)
+                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
+                                }
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
                                 caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -2123,7 +2243,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = contaBancaria;
-                                caixa.DataLancamento = DateTime.Now;
+                                if (Sessao.caixaLogado != null)
+                                {
+                                    if (Sessao.caixaLogado.Id > 0)
+                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
+                                }
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
                                 caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -2194,7 +2322,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     caixa.Conciliado = true;
                                     caixa.Concluido = true;
                                     caixa.ContaBancaria = null;
-                                    caixa.DataLancamento = DateTime.Now;
+                                    if (Sessao.caixaLogado != null)
+                                    {
+                                        if (Sessao.caixaLogado.Id > 0)
+                                            caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                        else
+                                            caixa.DataLancamento = DateTime.Now;
+                                    }
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
                                     caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial;
                                     caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                     caixa.FormaPagamento = formaPagamento;
@@ -2283,7 +2419,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
-                            caixa.DataLancamento = DateTime.Now;
+                            if (Sessao.caixaLogado != null)
+                            {
+                                if (Sessao.caixaLogado.Id > 0)
+                                    caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
+                            }
+                            else
+                                caixa.DataLancamento = DateTime.Now;
                             caixa.Descricao = "REC. " + origem + " " + venda.Id.ToString() + " - " + venda.Cliente.RazaoSocial + "-ORIGEM: " + origemPagamentoCredito + " - DT_CX: " + dataCaixaCreditoOriginal.ToShortDateString();
                             //colocar aqui forma q foi a origem do credito!
                             caixa.EmpresaFilial = Sessao.empresaFilialLogada;
@@ -2677,7 +2821,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoRecebimento + " (" +formaPagamento.Descricao + ")";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -2712,7 +2864,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoRecebimento + " (" + dataRowView.Row["Parcelamento"].ToString()+ " " + dataRowView.Row["Bandeira"].ToString() + ")";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -2739,7 +2899,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = contaBancaria;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoRecebimento + " (" + formaPagamento.Descricao + " " + contaBancaria.Descricao + ")";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -2766,7 +2934,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = contaBancaria;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoRecebimento + " (" + formaPagamento.Descricao + " " + contaBancaria.Descricao + ")";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -2794,7 +2970,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = null;
-                                caixa.DataLancamento = DateTime.Now;
+                                if (Sessao.caixaLogado != null)
+                                {
+                                    if (Sessao.caixaLogado.Id > 0)
+                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
+                                }
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
                                 caixa.Descricao = descricaoRecebimento;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -2821,7 +3005,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoRecebimento;
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -2988,7 +3180,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoPagamento + " (" + formaPagamento.Descricao + ")";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3018,7 +3218,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoPagamento + " (" + dataRowView.Row["Parcelamento"].ToString() + " " + dataRowView.Row["Bandeira"].ToString() + ")";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3041,7 +3249,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = contaBancaria;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoPagamento + " (" + formaPagamento.Descricao + " " + contaBancaria.Descricao + ")";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3064,7 +3280,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = contaBancaria;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoPagamento + " (" + formaPagamento.Descricao + " " + contaBancaria.Descricao + ")";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3090,8 +3314,16 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
                                 caixa.ContaBancaria = contaBancaria;
                                 caixa.Conciliado = true;
-                                caixa.Concluido = true;    
-                                caixa.DataLancamento = DateTime.Now;
+                                caixa.Concluido = true;
+                                if (Sessao.caixaLogado != null)
+                                {
+                                    if (Sessao.caixaLogado.Id > 0)
+                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
+                                }
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
                                 caixa.Descricao = descricaoPagamento + " - (CHEQUE)";
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -3114,7 +3346,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = descricaoPagamento;
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3143,7 +3383,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = "ABATIMENTO FATURA A RECEBER";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3535,7 +3783,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = "REC. " + origem + " " + idOr + " - " + client;
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3569,7 +3825,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = "REC. " + origem + " " + idOr + " - " + client;
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3595,7 +3859,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = contaBancaria;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = "REC. " + origem + " " + idOr + " - " + client;
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3621,7 +3893,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = contaBancaria;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = "REC. " + origem + " " + idOr + " - " + client;
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;
@@ -3666,7 +3946,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = null;
-                                caixa.DataLancamento = DateTime.Now;
+                                if (Sessao.caixaLogado != null)
+                                {
+                                    if (Sessao.caixaLogado.Id > 0)
+                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                                    else
+                                        caixa.DataLancamento = DateTime.Now;
+                                }
+                                else
+                                    caixa.DataLancamento = DateTime.Now;
                                 caixa.Descricao = "REC. " + origem + " " + idOr + " - " + client;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -3692,7 +3980,15 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
-                        caixa.DataLancamento = DateTime.Now;
+                        if (Sessao.caixaLogado != null)
+                        {
+                            if (Sessao.caixaLogado.Id > 0)
+                                caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
+                            else
+                                caixa.DataLancamento = DateTime.Now;
+                        }
+                        else
+                            caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = "REC. " + origem + " " + idOr + " - " + client;
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                         caixa.FormaPagamento = formaPagamento;

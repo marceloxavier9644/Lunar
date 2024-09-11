@@ -1,6 +1,7 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ClassesDAO;
 using LunarBase.Interface;
+using NHibernate.Linq.Functions;
 
 namespace LunarBase.ClassesBO
 {
@@ -218,6 +219,20 @@ namespace LunarBase.ClassesBO
             {
                 throw new Exception("Falha ao selecionar pessoa! Erro: " + e.Message);
             }
+        }
+
+        public IList<Pessoa> selecionarClientesPorDataAniversarioSql(string sql)
+        {
+            dao = new PessoaDAO();
+            try
+            {
+                return dao.selecionarClientesPorDataAniversarioSql(sql);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao selecionar Pessoa!" + e.Message);
+            }
+
         }
     }
 }

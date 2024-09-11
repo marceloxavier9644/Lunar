@@ -25,6 +25,7 @@ using Syncfusion.WinForms.DataGrid.Enums;
 using Syncfusion.WinForms.DataGrid.Events;
 using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -847,6 +848,31 @@ namespace Lunar.Telas.Vendas
             }
         }
 
+        private void ProcessarCodigoBarras(string codigoBarras)
+        {
+            // Ignora o primeiro dígito verificador
+            string codigoProdutoComZeros = codigoBarras.Substring(1, 6); // Captura os 6 dígitos do código do produto
+            string codigoProduto = codigoProdutoComZeros.TrimStart('0');
+            string valorTotalString = codigoBarras.Substring(7, 5);
+            decimal valorTotal = Convert.ToDecimal(valorTotalString) / 100;
+            Produto produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(codigoProduto), Sessao.empresaFilialLogada); // Método para obter o produto pelo código
+
+            if (produto != null)
+            {
+                decimal quantidade = valorTotal / produto.ValorVenda;
+                if(quantidade.ToString().Length >=6)
+                    txtPesquisaProduto.Texts = quantidade.ToString().Substring(0,6) + "*" + codigoProduto;
+                else
+                    txtPesquisaProduto.Texts = quantidade.ToString() + "*" + codigoProduto;
+                PesquisarProduto(txtPesquisaProduto.Texts.Trim());
+                //MessageBox.Show($"Código do Produto: {codigoProduto}\nValor Total: {valorTotal:C}\nQuantidade: {quantidade}");
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Produto não encontrado");
+            }
+        }
+
         private void PesquisarProduto(string valor)
         {
             txtQuantidade.TextAlign = HorizontalAlignment.Center;
@@ -938,13 +964,80 @@ namespace Lunar.Telas.Vendas
                         }
                     }
                 }
-
+                //Verificando se é um produto de balança
+                else if (valor.StartsWith("2") && valor.Substring(1,1).Equals("0"))
+                {
+                    ProcessarCodigoBarras(txtPesquisaProduto.Texts.Trim());
+                    return;
+                }
             }
             //Verifica se é Id do produto
             else if (ENumeroMenorQue5Digitos(valor))
             {
                 listaProdutos = new List<Produto>();
                 listaProdutos = produtoController.selecionarProdutosPorSql("From Produto Tabela Where Tabela.FlagExcluido = false and Tabela.Id = " + valor);
+                if (listaProdutos.Count > 0)
+                {
+                    desbloquearCamposValorQuantidade();
+                    foreach (Produto prod in listaProdutos)
+                    {
+                        if (prod.Veiculo == true)
+                        {
+                            FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
+                            frmProdutoCadastro.ShowDialog();
+                        }
+                        if (prod.Grade == true)
+                        {
+                            ProdutoGrade produtoGrade = new ProdutoGrade();
+                            produtoGrade = selecionarGrade(prod);
+
+                            if (produtoGrade != null)
+                            {
+                                txtPesquisaProduto.Texts = prod.Descricao;
+                                txtQuantidade.Texts = "1";
+                                txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
+                                this.produto = prod;
+                                this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
+                                lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
+
+                                produto.GradePrincipal = produtoGrade;
+
+                                //inserirItem(this.produto);
+                                txtQuantidade.Focus();
+                                txtQuantidade.Select();
+                            }
+                        }
+                        else
+                        {
+                            txtPesquisaProduto.Texts = prod.Descricao;
+                            txtQuantidade.Texts = "1";
+                            txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                            txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
+                            this.produto = prod;
+                            if (valorAux.Contains("*"))
+                                txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
+                            if (prod.Ean.Equals(valor.Trim()) || prod.Pesavel == true)
+                                inserirItem(this.produto);
+                            else
+                            {
+                                txtQuantidade.Focus();
+                                txtQuantidade.Select();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //pode ser uma referencia, ai ele pesquisa por descricao e referencia
+                    PesquisarProdutoPorDescricao(valor);
+                }
+            }
+            //Pesquisa por descricao ou referencia
+            else if (valor.Contains("/"))
+            {
+                listaProdutos = new List<Produto>();
+                listaProdutos = produtoController.selecionarProdutosPorSql("From Produto Tabela Where Tabela.FlagExcluido = false and Tabela.Referencia = '" + valor.Replace("/","") + "'");
                 if (listaProdutos.Count > 0)
                 {
                     desbloquearCamposValorQuantidade();
@@ -1002,7 +1095,6 @@ namespace Lunar.Telas.Vendas
                     PesquisarProdutoPorDescricao(valor);
                 }
             }
-            //Pesquisa por descricao ou referencia
             else
             {
                 novaPesquisaProdutos();
@@ -2534,10 +2626,12 @@ namespace Lunar.Telas.Vendas
 
         private void btnGerarNFCe_Click(object sender, EventArgs e)
         {
+            btnGerarNFCe.Enabled = false;
             Thread th = new Thread(abrirAguarde2);
             th.Start();
             gerarNFCe();
             th.Join();
+            btnGerarNFCe.Enabled = true;
         }
 
         private void abrirAguarde2()
@@ -2980,7 +3074,25 @@ namespace Lunar.Telas.Vendas
 
         private void salvarProdutosVenda()
         {
+            IList<VendaItens> listaProdutosVendaDeletar = new List<VendaItens>();
+            VendaItensController vendaItensController = new VendaItensController();
+            if (venda != null)
+            {
+                if (venda.Id > 0)
+                {
+                    listaProdutosVendaDeletar = vendaItensController.selecionarProdutosPorVenda(venda.Id);
+                    if(listaProdutosVendaDeletar.Count > 0)
+                    {
+                        foreach(VendaItens item in listaProdutosVendaDeletar)
+                        {
+                            Controller.getInstance().excluir(item);
+                        }
+                    }
+                }
+            }
+
             IList<VendaItens> listaProdutosVenda = new List<VendaItens>();
+           
             var records = gridProdutos.View.Records;
             //int i = 0;
             foreach (var record in records)

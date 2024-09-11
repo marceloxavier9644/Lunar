@@ -118,35 +118,38 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Completed-Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Completed-Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="confirmacao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\confirmacao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo_lunar_food" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_lunar_food.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Produto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Produto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Empresa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Empresa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="img-wellcome-sis-lunar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\img-wellcome-sis-lunar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AniversariantesTeste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AniversariantesTeste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CloseDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CloseDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="XML_PNG_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\XML_PNG_64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Group 137" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Group 137.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="XML-PNG-64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XML-PNG-64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="WhatsappCinza2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WhatsappCinza2_1.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LunarLogoBmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LunarLogoBmp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CloseDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lunarIcone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lunarIcone.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsAppCinza1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhatsAppCinza1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings_24dp_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings_24dp_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DinheiroExemplo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DinheiroExemplo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="XML64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XML64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,49 +157,52 @@
   <data name="XML-PNG-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XML-PNG-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="confirmacao" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\confirmacao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="User1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\User1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Only-Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Only-Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="settings_24dp_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings_24dp_Black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="settings_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AniversariantesTeste" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AniversariantesTeste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dinheiro01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dinheiro01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="WhatsAppCinza1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WhatsAppCinza1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Empresa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Empresa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Only-Logo-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Only-Logo-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="whatsapp-logo-icone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\whatsapp-logo-icone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="login_black_24dp 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login_black_24dp 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DinheiroExemplo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DinheiroExemplo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Only-Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Only-Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="whatsapp-logo-icone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\whatsapp-logo-icone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Dinheiro01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dinheiro01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Group 137" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Group 137.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Produto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Produto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_lunar_food" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_lunar_food.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Niver1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Niver1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="User1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\User1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Only-Logo-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Only-Logo-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="XML_PNG_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\XML_PNG_64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img-wellcome-sis-lunar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img-wellcome-sis-lunar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Completed-Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Completed-Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsappCinza2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhatsappCinza2_1.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LunarLogoBmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LunarLogoBmp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Niver2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Niver2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

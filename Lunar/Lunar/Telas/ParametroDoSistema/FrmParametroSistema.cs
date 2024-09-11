@@ -110,6 +110,16 @@ namespace Lunar.Telas.ParametroDoSistema
                 txtPlanoContaVendas.Texts = parametro.PlanoContaVenda.Descricao;
                 txtCodPlanoContaVendas.Texts = parametro.PlanoContaVenda.Id.ToString();
             }
+            if (parametro.PlanoContaAjusteCaixaEntrada != null)
+            {
+                txtPlanoContaAjusteEntrada.Texts = parametro.PlanoContaAjusteCaixaEntrada.Descricao;
+                txtCodPlanoContaAjusteEntrada.Texts = parametro.PlanoContaAjusteCaixaEntrada.Id.ToString();
+            }
+            if (parametro.PlanoContaAjusteCaixaSaida != null)
+            {
+                txtPlanoContaAjusteSaida.Texts = parametro.PlanoContaAjusteCaixaSaida.Descricao;
+                txtCodPlanoContaAjusteSaida.Texts = parametro.PlanoContaAjusteCaixaSaida.Id.ToString();
+            }
             if (parametro.Logo != null)
             {
                 txtCaminhoLogo.Texts = parametro.Logo;
@@ -118,6 +128,13 @@ namespace Lunar.Telas.ParametroDoSistema
                     pictureLogo.Visible = true;
                     pictureLogo.ImageLocation = parametro.Logo;
                 }
+            }
+            if(parametro.TipoCaixa != null)
+            {
+                if (parametro.TipoCaixa.Equals("GERAL"))
+                    radioCaixaGeral.Checked = true;
+                else
+                    radioCaixaIndividual.Checked = true;
             }
             if(!String.IsNullOrEmpty(parametro.LembreteVencimento))
                 txtLembreteVencimento.Text = parametro.LembreteVencimento;
@@ -245,8 +262,11 @@ namespace Lunar.Telas.ParametroDoSistema
             txtDiasEnvioMensagemLembreteExame.Text = parametro.MensagemLembreteExameQtdDias;
             txtHorarioDisparoLembreteExame.Text = parametro.MensagemLembreteExameHorario;
             txtMensagemLembreteExame.Text = parametro.MensagemLembreteExame;
-            if(!String.IsNullOrEmpty(parametro.NomeServidor))
+            if (!String.IsNullOrEmpty(parametro.NomeServidor))
+            {
                 txtNomeServidor.Text = parametro.NomeServidor;
+                txtNomeServidorRede.Text = parametro.NomeServidor;
+            }
 
             //nuvem
             txtServidorNuvem.Text = parametro.ServidorNuvem;
@@ -349,6 +369,28 @@ namespace Lunar.Telas.ParametroDoSistema
                 else
                     parametro.PlanoContaVenda = null;
             }
+
+            if (!String.IsNullOrEmpty(txtCodPlanoContaAjusteEntrada.Texts))
+            {
+                PlanoConta planoConta = new PlanoConta();
+                planoConta.Id = int.Parse(txtCodPlanoContaAjusteEntrada.Texts);
+                planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                if (planoConta != null)
+                    parametro.PlanoContaAjusteCaixaEntrada = planoConta;
+                else
+                    parametro.PlanoContaAjusteCaixaEntrada = null;
+            }
+            if (!String.IsNullOrEmpty(txtCodPlanoContaAjusteSaida.Texts))
+            {
+                PlanoConta planoConta = new PlanoConta();
+                planoConta.Id = int.Parse(txtCodPlanoContaAjusteSaida.Texts);
+                planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                if (planoConta != null)
+                    parametro.PlanoContaAjusteCaixaSaida = planoConta;
+                else
+                    parametro.PlanoContaAjusteCaixaSaida = null;
+            }
+
             parametro.Logo = txtCaminhoLogo.Texts;
             parametro.DddWhats = txtDDDWhats.Texts;
             parametro.FoneWhats = txtNumeroWhats.Texts;
@@ -408,6 +450,11 @@ namespace Lunar.Telas.ParametroDoSistema
             else
                 parametro.TipoImpressoraCondicional = "A4";
 
+            if (radioCaixaGeral.Checked == true)
+                parametro.TipoCaixa = "GERAL";
+            else
+                parametro.TipoCaixa = "INDIVIDUAL";
+
             //Whatsapp
             if (chkEnvioNFCeNFeWhats.Checked == true)
                 parametro.EnvioNotasPorWhats = true;
@@ -447,12 +494,18 @@ namespace Lunar.Telas.ParametroDoSistema
             parametro.MensagemLembreteExameQtdDias = txtDiasEnvioMensagemLembreteExame.Text;
             parametro.MensagemLembreteExameHorario = txtHorarioDisparoLembreteExame.Text;
             parametro.MensagemLembreteExame = txtMensagemLembreteExame.Text;
-            if (!String.IsNullOrEmpty(txtNomeServidor.Text))
+            if (!String.IsNullOrEmpty(txtNomeServidor.Text.Trim()))
                 parametro.NomeServidor = txtNomeServidor.Text;
+            else if (!String.IsNullOrEmpty(txtNomeServidorRede.Text.Trim()))
+                parametro.NomeServidor = txtNomeServidorRede.Text;
+            else
+                parametro.NomeServidor = "";
 
 
-            //DASHBOARDS NUVEM
-            parametro.ServidorNuvem = txtServidorNuvem.Text;
+
+
+         //DASHBOARDS NUVEM
+         parametro.ServidorNuvem = txtServidorNuvem.Text;
             parametro.BancoNuvem = txtBancoNuvem.Text;
             parametro.UsuarioNuvem = txtUsuarioNuvem.Text;
             parametro.SenhaNuvem = GenericaDesktop.Criptografa(txtSenhaNuvem.Text);
@@ -1242,6 +1295,98 @@ namespace Lunar.Telas.ParametroDoSistema
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://www.lunarchat.com.br") { UseShellExecute = true });
+        }
+
+        private void btnPesquisaPlanoAjusteEntra_Click(object sender, EventArgs e)
+        {
+            Object objeto = new PlanoConta();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("PlanoConta", " and Tabela.TipoConta = 'RECEITA'"))
+                {
+                    txtPlanoContaAjusteEntrada.Texts = "";
+                    txtCodPlanoContaAjusteEntrada.Texts = "";
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("PlanoConta", "", ref objeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtPlanoContaAjusteEntrada.Texts = ((PlanoConta)objeto).Descricao;
+                            txtCodPlanoContaAjusteEntrada.Texts = ((PlanoConta)objeto).Id.ToString();
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
+        }
+
+        private void btnPesquisaPlanoContaAjusteSaida_Click(object sender, EventArgs e)
+        {
+            Object objeto = new PlanoConta();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("PlanoConta", " and Tabela.TipoConta = 'DESPESA'"))
+                {
+                    txtPlanoContaAjusteSaida.Texts = "";
+                    txtCodPlanoContaAjusteSaida.Texts = "";
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("PlanoConta", "", ref objeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtPlanoContaAjusteSaida.Texts = ((PlanoConta)objeto).Descricao;
+                            txtCodPlanoContaAjusteSaida.Texts = ((PlanoConta)objeto).Id.ToString();
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
     }
 }

@@ -86,6 +86,7 @@
             this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
             this.btnReceber = new Lunar.RJ_UI.Classes.RJButton();
             this.btnEmail = new FontAwesome.Sharp.IconButton();
+            this.btnEnviarWhats = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasEscritorioCobranca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasSPC)).BeginInit();
@@ -511,7 +512,7 @@
             this.lblCalculando.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblCalculando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCalculando.ForeColor = System.Drawing.Color.Red;
-            this.lblCalculando.Location = new System.Drawing.Point(224, 589);
+            this.lblCalculando.Location = new System.Drawing.Point(850, 589);
             this.lblCalculando.Name = "lblCalculando";
             this.lblCalculando.Size = new System.Drawing.Size(175, 16);
             this.lblCalculando.TabIndex = 242;
@@ -862,7 +863,7 @@
             this.btnImprimirBoleto.IconColor = System.Drawing.Color.DarkSlateGray;
             this.btnImprimirBoleto.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnImprimirBoleto.IconSize = 38;
-            this.btnImprimirBoleto.Location = new System.Drawing.Point(133, 571);
+            this.btnImprimirBoleto.Location = new System.Drawing.Point(174, 571);
             this.btnImprimirBoleto.Name = "btnImprimirBoleto";
             this.btnImprimirBoleto.Size = new System.Drawing.Size(36, 34);
             this.btnImprimirBoleto.TabIndex = 246;
@@ -994,12 +995,37 @@
             this.btnEmail.IconColor = System.Drawing.Color.DarkSlateGray;
             this.btnEmail.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnEmail.IconSize = 38;
-            this.btnEmail.Location = new System.Drawing.Point(175, 571);
+            this.btnEmail.Location = new System.Drawing.Point(216, 571);
             this.btnEmail.Name = "btnEmail";
             this.btnEmail.Size = new System.Drawing.Size(36, 34);
             this.btnEmail.TabIndex = 247;
             this.btnEmail.UseVisualStyleBackColor = true;
             this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
+            // btnEnviarWhats
+            // 
+            this.btnEnviarWhats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEnviarWhats.BackColor = System.Drawing.Color.White;
+            this.btnEnviarWhats.BackgroundColor = System.Drawing.Color.White;
+            this.btnEnviarWhats.BackgroundImage = global::Lunar.Properties.Resources.whatsapp_logo_icone;
+            this.btnEnviarWhats.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEnviarWhats.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEnviarWhats.BorderRadius = 8;
+            this.btnEnviarWhats.BorderSize = 2;
+            this.btnEnviarWhats.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnviarWhats.FlatAppearance.BorderSize = 0;
+            this.btnEnviarWhats.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEnviarWhats.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEnviarWhats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnviarWhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviarWhats.ForeColor = System.Drawing.Color.Black;
+            this.btnEnviarWhats.Location = new System.Drawing.Point(133, 568);
+            this.btnEnviarWhats.Name = "btnEnviarWhats";
+            this.btnEnviarWhats.Size = new System.Drawing.Size(35, 37);
+            this.btnEnviarWhats.TabIndex = 259;
+            this.btnEnviarWhats.TextColor = System.Drawing.Color.Black;
+            this.btnEnviarWhats.UseVisualStyleBackColor = false;
+            this.btnEnviarWhats.Click += new System.EventHandler(this.btnEnviarWhats_Click);
             // 
             // FrmContaReceberLista
             // 
@@ -1007,6 +1033,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1055, 668);
+            this.Controls.Add(this.btnEnviarWhats);
             this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.btnImprimirBoleto);
             this.Controls.Add(this.btnExtratoCliente);
@@ -1085,5 +1112,6 @@
         private FontAwesome.Sharp.IconButton btnExtratoCliente;
         private FontAwesome.Sharp.IconButton btnImprimirBoleto;
         private FontAwesome.Sharp.IconButton btnEmail;
+        private RJ_UI.Classes.RJButton btnEnviarWhats;
     }
 }

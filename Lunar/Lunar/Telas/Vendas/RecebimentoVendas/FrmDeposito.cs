@@ -78,6 +78,12 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             this.valorFaltante = valorFaltante;
             txtValor.TextAlign = HorizontalAlignment.Center;
             this.venda = venda;
+
+            if (Sessao.caixaLogado != null)
+            {
+                if (Sessao.caixaLogado.Id > 0)
+                    txtData.Value = Sessao.caixaLogado.DataAbertura;
+            }
         }
 
         public FrmDeposito(decimal valorFaltante, IList<ContaReceber> listaReceber, OrdemServico ordemServico)
@@ -109,6 +115,11 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             lblFaltante.Text = "Valor Faltante: " + valorFaltante.ToString("C2", CultureInfo.CurrentCulture);
             this.valorFaltante = valorFaltante;
             txtValor.TextAlign = HorizontalAlignment.Center;
+            if (Sessao.caixaLogado != null)
+            {
+                if (Sessao.caixaLogado.Id > 0)
+                    txtData.Value = Sessao.caixaLogado.DataAbertura;
+            }
         }
 
         private void FrmDeposito_Paint(object sender, PaintEventArgs e)

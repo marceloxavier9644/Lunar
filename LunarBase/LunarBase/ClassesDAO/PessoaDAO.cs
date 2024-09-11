@@ -87,5 +87,12 @@ namespace LunarBase.ClassesDAO
             Session = Conexao.GetSession();
             return Session.CreateQuery("from Pessoa as Tabela where Tabela.CodigoImportacao = '" + codigoImportacao + "'and Tabela.Fornecedor = "+ fornecedor + " and Tabela.FlagExcluido <> true").UniqueResult<Pessoa>();
         }
+
+        public IList<Pessoa> selecionarClientesPorDataAniversarioSql(string sql)
+        {
+            Session = Conexao.GetSession();
+            IList<Pessoa> retorno = Session.CreateQuery(sql).List<Pessoa>();
+            return retorno;
+        }
     }
 }

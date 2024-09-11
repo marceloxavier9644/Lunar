@@ -574,9 +574,20 @@ namespace Lunar.Telas.CaixaConferencia
                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
 
                 FormaPagamento formaPagamento = new FormaPagamento();
-                formaPagamento.Id = 1;
-                formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
-                caixa.FormaPagamento = formaPagamento;
+                if (String.IsNullOrEmpty(txtCodConta.Texts))
+                {
+                    formaPagamento.Id = 4;
+                    formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    caixa.FormaPagamento = formaPagamento;
+                }
+                else
+                {
+                    formaPagamento.Id = 1;
+                    formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                    caixa.FormaPagamento = formaPagamento;
+                }
+
+
 
                 caixa.IdOrigem = "";
                 caixa.Pessoa = null;
