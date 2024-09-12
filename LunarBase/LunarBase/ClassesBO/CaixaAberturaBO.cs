@@ -91,6 +91,18 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar abertura de caixa! Erro: " + e.Message);
             }
         }
+
+        public IList<CaixaAbertura> selecionarAberturaCaixaPorData(string dataInicial, string dataFinal)
+        {
+            try
+            {
+                return dao.selecionarAberturaCaixaPorData(dataInicial, dataFinal);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar abertura de caixa! Erro: " + e.Message);
+            }
+        }
         public IList<CaixaAbertura> selecionarTodosCaixasAbertos()
         {
             try

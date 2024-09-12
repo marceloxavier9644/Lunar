@@ -32,31 +32,37 @@
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnFechar = new FontAwesome.Sharp.IconButton();
             this.autoLabel18 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtEmpresa = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.rjTextBox1 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.rjTextBox2 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.rjTextBox3 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.rjTextBox4 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.comboBandeiraCartao = new Syncfusion.WinForms.ListView.SfComboBox();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.sfComboBox1 = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.comboAdquirente = new Syncfusion.WinForms.ListView.SfComboBox();
             this.radioPF = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.radioPJ = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
-            this.rjTextBox5 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.dsBandeira = new System.Data.DataSet();
             this.Bandeira = new System.Data.DataTable();
             this.dataColumn3 = new System.Data.DataColumn();
             this.dataColumn4 = new System.Data.DataColumn();
+            this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.lbl1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.lbl2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtTaxaAntecipacao = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtDiasRecebimentoAntecipacao = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
+            this.txtTarifaAdicional = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtDiasRecebimento = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtTaxa = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtQtdParcela = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtDescricaoParcelamento = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.rjTextBox5 = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBandeiraCartao)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboAdquirente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioPF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioPJ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsBandeira)).BeginInit();
@@ -77,11 +83,11 @@
             // autoLabel4
             // 
             this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel4.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel4.ForeColor = System.Drawing.Color.White;
             this.autoLabel4.Location = new System.Drawing.Point(5, 7);
             this.autoLabel4.Name = "autoLabel4";
-            this.autoLabel4.Size = new System.Drawing.Size(367, 29);
+            this.autoLabel4.Size = new System.Drawing.Size(344, 25);
             this.autoLabel4.TabIndex = 198;
             this.autoLabel4.Text = "Parcelamento - Taxas dos Cartões";
             // 
@@ -95,7 +101,7 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnFechar.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             this.btnFechar.IconColor = System.Drawing.Color.White;
             this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFechar.IconSize = 30;
@@ -108,183 +114,57 @@
             // autoLabel18
             // 
             this.autoLabel18.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel18.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel18.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel18.Location = new System.Drawing.Point(22, 53);
+            this.autoLabel18.Location = new System.Drawing.Point(12, 115);
             this.autoLabel18.Name = "autoLabel18";
-            this.autoLabel18.Size = new System.Drawing.Size(188, 18);
+            this.autoLabel18.Size = new System.Drawing.Size(175, 16);
             this.autoLabel18.TabIndex = 208;
             this.autoLabel18.Text = "Descrição do Parcelamento";
-            // 
-            // txtEmpresa
-            // 
-            this.txtEmpresa.BackColor = System.Drawing.Color.White;
-            this.txtEmpresa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtEmpresa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtEmpresa.BorderRadius = 8;
-            this.txtEmpresa.BorderSize = 2;
-            this.txtEmpresa.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtEmpresa.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmpresa.Location = new System.Drawing.Point(13, 66);
-            this.txtEmpresa.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmpresa.Multiline = false;
-            this.txtEmpresa.Name = "txtEmpresa";
-            this.txtEmpresa.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtEmpresa.PasswordChar = false;
-            this.txtEmpresa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtEmpresa.PlaceholderText = "";
-            this.txtEmpresa.Size = new System.Drawing.Size(352, 39);
-            this.txtEmpresa.TabIndex = 0;
-            this.txtEmpresa.Tag = "";
-            this.txtEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtEmpresa.Texts = "";
-            this.txtEmpresa.UnderlinedStyle = false;
             // 
             // autoLabel1
             // 
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel1.Location = new System.Drawing.Point(383, 53);
+            this.autoLabel1.Location = new System.Drawing.Point(372, 115);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(91, 18);
+            this.autoLabel1.Size = new System.Drawing.Size(85, 16);
             this.autoLabel1.TabIndex = 210;
             this.autoLabel1.Text = "Qtd Parcelas";
-            // 
-            // rjTextBox1
-            // 
-            this.rjTextBox1.BackColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox1.BorderRadius = 8;
-            this.rjTextBox1.BorderSize = 2;
-            this.rjTextBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rjTextBox1.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox1.Location = new System.Drawing.Point(373, 66);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox1.Multiline = false;
-            this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox1.PasswordChar = false;
-            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox1.PlaceholderText = "";
-            this.rjTextBox1.Size = new System.Drawing.Size(129, 39);
-            this.rjTextBox1.TabIndex = 1;
-            this.rjTextBox1.Tag = "";
-            this.rjTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox1.Texts = "";
-            this.rjTextBox1.UnderlinedStyle = false;
             // 
             // autoLabel2
             // 
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel2.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel2.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel2.Location = new System.Drawing.Point(519, 53);
+            this.autoLabel2.Location = new System.Drawing.Point(509, 115);
             this.autoLabel2.Name = "autoLabel2";
-            this.autoLabel2.Size = new System.Drawing.Size(52, 18);
+            this.autoLabel2.Size = new System.Drawing.Size(53, 16);
             this.autoLabel2.TabIndex = 212;
             this.autoLabel2.Text = "Taxa %";
-            // 
-            // rjTextBox2
-            // 
-            this.rjTextBox2.BackColor = System.Drawing.Color.White;
-            this.rjTextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox2.BorderRadius = 8;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rjTextBox2.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox2.Location = new System.Drawing.Point(510, 66);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox2.PlaceholderText = "";
-            this.rjTextBox2.Size = new System.Drawing.Size(103, 39);
-            this.rjTextBox2.TabIndex = 2;
-            this.rjTextBox2.Tag = "";
-            this.rjTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = false;
             // 
             // autoLabel3
             // 
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel3.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel3.Location = new System.Drawing.Point(21, 113);
+            this.autoLabel3.Location = new System.Drawing.Point(13, 176);
             this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(129, 18);
+            this.autoLabel3.Size = new System.Drawing.Size(119, 16);
             this.autoLabel3.TabIndex = 214;
             this.autoLabel3.Text = "Dias Recebimento";
-            // 
-            // rjTextBox3
-            // 
-            this.rjTextBox3.BackColor = System.Drawing.Color.White;
-            this.rjTextBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox3.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox3.BorderRadius = 8;
-            this.rjTextBox3.BorderSize = 2;
-            this.rjTextBox3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rjTextBox3.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox3.Location = new System.Drawing.Point(13, 126);
-            this.rjTextBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox3.Multiline = false;
-            this.rjTextBox3.Name = "rjTextBox3";
-            this.rjTextBox3.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox3.PasswordChar = false;
-            this.rjTextBox3.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox3.PlaceholderText = "";
-            this.rjTextBox3.Size = new System.Drawing.Size(150, 39);
-            this.rjTextBox3.TabIndex = 4;
-            this.rjTextBox3.Tag = "";
-            this.rjTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox3.Texts = "";
-            this.rjTextBox3.UnderlinedStyle = false;
             // 
             // autoLabel5
             // 
             this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel5.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel5.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel5.Location = new System.Drawing.Point(629, 53);
+            this.autoLabel5.Location = new System.Drawing.Point(620, 115);
             this.autoLabel5.Name = "autoLabel5";
-            this.autoLabel5.Size = new System.Drawing.Size(109, 18);
+            this.autoLabel5.Size = new System.Drawing.Size(121, 16);
             this.autoLabel5.TabIndex = 216;
-            this.autoLabel5.Text = "Tarifa Adicional";
-            // 
-            // rjTextBox4
-            // 
-            this.rjTextBox4.BackColor = System.Drawing.Color.White;
-            this.rjTextBox4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox4.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox4.BorderRadius = 8;
-            this.rjTextBox4.BorderSize = 2;
-            this.rjTextBox4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rjTextBox4.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox4.Location = new System.Drawing.Point(621, 66);
-            this.rjTextBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox4.Multiline = false;
-            this.rjTextBox4.Name = "rjTextBox4";
-            this.rjTextBox4.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox4.PasswordChar = false;
-            this.rjTextBox4.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox4.PlaceholderText = "";
-            this.rjTextBox4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rjTextBox4.Size = new System.Drawing.Size(150, 39);
-            this.rjTextBox4.TabIndex = 3;
-            this.rjTextBox4.Tag = "";
-            this.rjTextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox4.Texts = "0,00";
-            this.rjTextBox4.UnderlinedStyle = false;
+            this.autoLabel5.Text = "Tarifa Adicional R$";
             // 
             // comboBandeiraCartao
             // 
@@ -293,11 +173,11 @@
             this.comboBandeiraCartao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBandeiraCartao.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
             this.comboBandeiraCartao.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.comboBandeiraCartao.Font = new System.Drawing.Font("Montserrat", 14.25F);
-            this.comboBandeiraCartao.Location = new System.Drawing.Point(477, 132);
+            this.comboBandeiraCartao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.comboBandeiraCartao.Location = new System.Drawing.Point(372, 79);
             this.comboBandeiraCartao.MaxDropDownItems = 15;
             this.comboBandeiraCartao.Name = "comboBandeiraCartao";
-            this.comboBandeiraCartao.Size = new System.Drawing.Size(294, 33);
+            this.comboBandeiraCartao.Size = new System.Drawing.Size(398, 34);
             this.comboBandeiraCartao.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.comboBandeiraCartao.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
             this.comboBandeiraCartao.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
@@ -306,11 +186,11 @@
             this.comboBandeiraCartao.Style.EditorStyle.BorderColor = System.Drawing.Color.White;
             this.comboBandeiraCartao.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
             this.comboBandeiraCartao.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
-            this.comboBandeiraCartao.Style.EditorStyle.Font = new System.Drawing.Font("Montserrat", 14.25F);
-            this.comboBandeiraCartao.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Montserrat", 14.25F);
+            this.comboBandeiraCartao.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.comboBandeiraCartao.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.comboBandeiraCartao.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.comboBandeiraCartao.Style.TokenStyle.Font = new System.Drawing.Font("Montserrat", 14.25F);
-            this.comboBandeiraCartao.Style.ToolTipStyle.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBandeiraCartao.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.comboBandeiraCartao.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBandeiraCartao.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
             this.comboBandeiraCartao.TabIndex = 6;
             this.comboBandeiraCartao.ToolTipOption.ShadowVisible = false;
@@ -318,96 +198,53 @@
             // autoLabel6
             // 
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel6.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(481, 113);
+            this.autoLabel6.Location = new System.Drawing.Point(372, 55);
             this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(135, 18);
+            this.autoLabel6.Size = new System.Drawing.Size(124, 16);
             this.autoLabel6.TabIndex = 218;
             this.autoLabel6.Text = "Bandeira do Cartão";
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnSalvar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnSalvar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnSalvar.BorderRadius = 8;
-            this.btnSalvar.BorderSize = 0;
-            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalvar.FlatAppearance.BorderSize = 0;
-            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Location = new System.Drawing.Point(555, 233);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(216, 45);
-            this.btnSalvar.TabIndex = 9;
-            this.btnSalvar.Text = "Salvar [F5]";
-            this.btnSalvar.TextColor = System.Drawing.Color.White;
-            this.btnSalvar.UseVisualStyleBackColor = false;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.White;
-            this.btnCancelar.BackgroundColor = System.Drawing.Color.White;
-            this.btnCancelar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCancelar.BorderRadius = 8;
-            this.btnCancelar.BorderSize = 2;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelar.Location = new System.Drawing.Point(333, 233);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(216, 45);
-            this.btnCancelar.TabIndex = 10;
-            this.btnCancelar.TabStop = false;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // autoLabel7
             // 
             this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel7.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel7.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel7.Location = new System.Drawing.Point(174, 113);
+            this.autoLabel7.Location = new System.Drawing.Point(12, 55);
             this.autoLabel7.Name = "autoLabel7";
-            this.autoLabel7.Size = new System.Drawing.Size(175, 18);
+            this.autoLabel7.Size = new System.Drawing.Size(152, 16);
             this.autoLabel7.TabIndex = 222;
             this.autoLabel7.Text = "Adquirente (Maquininha)";
             // 
-            // sfComboBox1
+            // comboAdquirente
             // 
-            this.sfComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.sfComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.sfComboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.sfComboBox1.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
-            this.sfComboBox1.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.sfComboBox1.Font = new System.Drawing.Font("Montserrat", 14.25F);
-            this.sfComboBox1.Location = new System.Drawing.Point(170, 132);
-            this.sfComboBox1.MaxDropDownItems = 15;
-            this.sfComboBox1.Name = "sfComboBox1";
-            this.sfComboBox1.Size = new System.Drawing.Size(301, 33);
-            this.sfComboBox1.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.sfComboBox1.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
-            this.sfComboBox1.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
-            this.sfComboBox1.Style.DropDownStyle.BorderColor = System.Drawing.Color.White;
-            this.sfComboBox1.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
-            this.sfComboBox1.Style.EditorStyle.BorderColor = System.Drawing.Color.White;
-            this.sfComboBox1.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
-            this.sfComboBox1.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
-            this.sfComboBox1.Style.EditorStyle.Font = new System.Drawing.Font("Montserrat", 14.25F);
-            this.sfComboBox1.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Montserrat", 14.25F);
-            this.sfComboBox1.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.sfComboBox1.Style.TokenStyle.Font = new System.Drawing.Font("Montserrat", 14.25F);
-            this.sfComboBox1.Style.ToolTipStyle.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sfComboBox1.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
-            this.sfComboBox1.TabIndex = 5;
-            this.sfComboBox1.ToolTipOption.ShadowVisible = false;
+            this.comboAdquirente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboAdquirente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboAdquirente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboAdquirente.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
+            this.comboAdquirente.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
+            this.comboAdquirente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.comboAdquirente.Location = new System.Drawing.Point(12, 79);
+            this.comboAdquirente.MaxDropDownItems = 15;
+            this.comboAdquirente.Name = "comboAdquirente";
+            this.comboAdquirente.Size = new System.Drawing.Size(352, 33);
+            this.comboAdquirente.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.comboAdquirente.Style.ClearButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboAdquirente.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.comboAdquirente.Style.DropDownStyle.BorderColor = System.Drawing.Color.White;
+            this.comboAdquirente.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.comboAdquirente.Style.EditorStyle.BorderColor = System.Drawing.Color.White;
+            this.comboAdquirente.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.comboAdquirente.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.comboAdquirente.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.comboAdquirente.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.comboAdquirente.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.comboAdquirente.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.comboAdquirente.Style.ToolTipStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboAdquirente.Style.ToolTipStyle.SeparatorColor = System.Drawing.Color.White;
+            this.comboAdquirente.TabIndex = 5;
+            this.comboAdquirente.ToolTipOption.ShadowVisible = false;
             // 
             // radioPF
             // 
@@ -415,12 +252,11 @@
             this.radioPF.BeforeTouchSize = new System.Drawing.Size(150, 29);
             this.radioPF.Border3DStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
             this.radioPF.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.radioPF.Checked = true;
             this.radioPF.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioPF.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioPF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.radioPF.HotBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.radioPF.Location = new System.Drawing.Point(24, 178);
+            this.radioPF.Location = new System.Drawing.Point(23, 261);
             this.radioPF.MetroColor = System.Drawing.Color.Black;
             this.radioPF.Name = "radioPF";
             this.radioPF.Size = new System.Drawing.Size(150, 29);
@@ -436,10 +272,10 @@
             this.radioPJ.Border3DStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
             this.radioPJ.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.radioPJ.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioPJ.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioPJ.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.radioPJ.HotBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.radioPJ.Location = new System.Drawing.Point(176, 178);
+            this.radioPJ.Location = new System.Drawing.Point(175, 261);
             this.radioPJ.MetroColor = System.Drawing.Color.Black;
             this.radioPJ.Name = "radioPJ";
             this.radioPJ.Size = new System.Drawing.Size(116, 29);
@@ -448,31 +284,6 @@
             this.radioPJ.TabStop = false;
             this.radioPJ.Text = "  Crédito";
             this.radioPJ.ThemeName = "Metro";
-            // 
-            // rjTextBox5
-            // 
-            this.rjTextBox5.BackColor = System.Drawing.Color.White;
-            this.rjTextBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox5.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.rjTextBox5.BorderRadius = 8;
-            this.rjTextBox5.BorderSize = 2;
-            this.rjTextBox5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rjTextBox5.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox5.Location = new System.Drawing.Point(13, 173);
-            this.rjTextBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox5.Multiline = false;
-            this.rjTextBox5.Name = "rjTextBox5";
-            this.rjTextBox5.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.rjTextBox5.PasswordChar = false;
-            this.rjTextBox5.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.rjTextBox5.PlaceholderText = "";
-            this.rjTextBox5.Size = new System.Drawing.Size(758, 39);
-            this.rjTextBox5.TabIndex = 225;
-            this.rjTextBox5.Tag = "";
-            this.rjTextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.rjTextBox5.Texts = "";
-            this.rjTextBox5.UnderlinedStyle = false;
             // 
             // dsBandeira
             // 
@@ -496,30 +307,340 @@
             // 
             this.dataColumn4.ColumnName = "Bandeira";
             // 
+            // autoLabel8
+            // 
+            this.autoLabel8.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel8.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel8.Location = new System.Drawing.Point(13, 237);
+            this.autoLabel8.Name = "autoLabel8";
+            this.autoLabel8.Size = new System.Drawing.Size(97, 16);
+            this.autoLabel8.TabIndex = 226;
+            this.autoLabel8.Text = "Tipo de Cartão";
+            // 
+            // materialCheckbox1
+            // 
+            this.materialCheckbox1.AutoSize = true;
+            this.materialCheckbox1.Depth = 0;
+            this.materialCheckbox1.Location = new System.Drawing.Point(180, 196);
+            this.materialCheckbox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox1.Name = "materialCheckbox1";
+            this.materialCheckbox1.Ripple = true;
+            this.materialCheckbox1.Size = new System.Drawing.Size(168, 37);
+            this.materialCheckbox1.TabIndex = 227;
+            this.materialCheckbox1.Text = "Ativar Antecipação";
+            this.materialCheckbox1.UseVisualStyleBackColor = true;
+            // 
+            // lbl1
+            // 
+            this.lbl1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.ForeColor = System.Drawing.Color.Black;
+            this.lbl1.Location = new System.Drawing.Point(372, 176);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(159, 16);
+            this.lbl1.TabIndex = 229;
+            this.lbl1.Text = "Dias Recebimento Antec.";
+            this.lbl1.Visible = false;
+            // 
+            // lbl2
+            // 
+            this.lbl2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2.ForeColor = System.Drawing.Color.Black;
+            this.lbl2.Location = new System.Drawing.Point(554, 176);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(161, 16);
+            this.lbl2.TabIndex = 231;
+            this.lbl2.Text = "Taxa Antecipação Mês %";
+            this.lbl2.Visible = false;
+            // 
+            // txtTaxaAntecipacao
+            // 
+            this.txtTaxaAntecipacao.BackColor = System.Drawing.Color.White;
+            this.txtTaxaAntecipacao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTaxaAntecipacao.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTaxaAntecipacao.BorderRadius = 8;
+            this.txtTaxaAntecipacao.BorderSize = 2;
+            this.txtTaxaAntecipacao.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtTaxaAntecipacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTaxaAntecipacao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTaxaAntecipacao.Location = new System.Drawing.Point(554, 196);
+            this.txtTaxaAntecipacao.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTaxaAntecipacao.Multiline = false;
+            this.txtTaxaAntecipacao.Name = "txtTaxaAntecipacao";
+            this.txtTaxaAntecipacao.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTaxaAntecipacao.PasswordChar = false;
+            this.txtTaxaAntecipacao.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtTaxaAntecipacao.PlaceholderText = "";
+            this.txtTaxaAntecipacao.ReadOnly = false;
+            this.txtTaxaAntecipacao.Size = new System.Drawing.Size(200, 37);
+            this.txtTaxaAntecipacao.TabIndex = 230;
+            this.txtTaxaAntecipacao.Tag = "";
+            this.txtTaxaAntecipacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtTaxaAntecipacao.Texts = "";
+            this.txtTaxaAntecipacao.UnderlinedStyle = false;
+            this.txtTaxaAntecipacao.Visible = false;
+            // 
+            // txtDiasRecebimentoAntecipacao
+            // 
+            this.txtDiasRecebimentoAntecipacao.BackColor = System.Drawing.Color.White;
+            this.txtDiasRecebimentoAntecipacao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDiasRecebimentoAntecipacao.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDiasRecebimentoAntecipacao.BorderRadius = 8;
+            this.txtDiasRecebimentoAntecipacao.BorderSize = 2;
+            this.txtDiasRecebimentoAntecipacao.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDiasRecebimentoAntecipacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiasRecebimentoAntecipacao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDiasRecebimentoAntecipacao.Location = new System.Drawing.Point(372, 196);
+            this.txtDiasRecebimentoAntecipacao.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDiasRecebimentoAntecipacao.Multiline = false;
+            this.txtDiasRecebimentoAntecipacao.Name = "txtDiasRecebimentoAntecipacao";
+            this.txtDiasRecebimentoAntecipacao.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtDiasRecebimentoAntecipacao.PasswordChar = false;
+            this.txtDiasRecebimentoAntecipacao.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtDiasRecebimentoAntecipacao.PlaceholderText = "";
+            this.txtDiasRecebimentoAntecipacao.ReadOnly = false;
+            this.txtDiasRecebimentoAntecipacao.Size = new System.Drawing.Size(174, 37);
+            this.txtDiasRecebimentoAntecipacao.TabIndex = 228;
+            this.txtDiasRecebimentoAntecipacao.Tag = "";
+            this.txtDiasRecebimentoAntecipacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtDiasRecebimentoAntecipacao.Texts = "1";
+            this.txtDiasRecebimentoAntecipacao.UnderlinedStyle = false;
+            this.txtDiasRecebimentoAntecipacao.Visible = false;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnSalvar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnSalvar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSalvar.BorderRadius = 8;
+            this.btnSalvar.BorderSize = 0;
+            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvar.FlatAppearance.BorderSize = 0;
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.ForeColor = System.Drawing.Color.White;
+            this.btnSalvar.Location = new System.Drawing.Point(554, 316);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(216, 45);
+            this.btnSalvar.TabIndex = 9;
+            this.btnSalvar.Text = "Salvar [F5]";
+            this.btnSalvar.TextColor = System.Drawing.Color.White;
+            this.btnSalvar.UseVisualStyleBackColor = false;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
+            this.btnCancelar.BackgroundColor = System.Drawing.Color.White;
+            this.btnCancelar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCancelar.BorderRadius = 8;
+            this.btnCancelar.BorderSize = 2;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancelar.Location = new System.Drawing.Point(332, 316);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(216, 45);
+            this.btnCancelar.TabIndex = 10;
+            this.btnCancelar.TabStop = false;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // txtTarifaAdicional
+            // 
+            this.txtTarifaAdicional.BackColor = System.Drawing.Color.White;
+            this.txtTarifaAdicional.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTarifaAdicional.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTarifaAdicional.BorderRadius = 8;
+            this.txtTarifaAdicional.BorderSize = 2;
+            this.txtTarifaAdicional.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtTarifaAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTarifaAdicional.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTarifaAdicional.Location = new System.Drawing.Point(620, 135);
+            this.txtTarifaAdicional.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTarifaAdicional.Multiline = false;
+            this.txtTarifaAdicional.Name = "txtTarifaAdicional";
+            this.txtTarifaAdicional.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTarifaAdicional.PasswordChar = false;
+            this.txtTarifaAdicional.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtTarifaAdicional.PlaceholderText = "";
+            this.txtTarifaAdicional.ReadOnly = false;
+            this.txtTarifaAdicional.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtTarifaAdicional.Size = new System.Drawing.Size(150, 37);
+            this.txtTarifaAdicional.TabIndex = 3;
+            this.txtTarifaAdicional.Tag = "";
+            this.txtTarifaAdicional.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtTarifaAdicional.Texts = "0,00";
+            this.txtTarifaAdicional.UnderlinedStyle = false;
+            // 
+            // txtDiasRecebimento
+            // 
+            this.txtDiasRecebimento.BackColor = System.Drawing.Color.White;
+            this.txtDiasRecebimento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDiasRecebimento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDiasRecebimento.BorderRadius = 8;
+            this.txtDiasRecebimento.BorderSize = 2;
+            this.txtDiasRecebimento.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDiasRecebimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiasRecebimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDiasRecebimento.Location = new System.Drawing.Point(13, 196);
+            this.txtDiasRecebimento.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDiasRecebimento.Multiline = false;
+            this.txtDiasRecebimento.Name = "txtDiasRecebimento";
+            this.txtDiasRecebimento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtDiasRecebimento.PasswordChar = false;
+            this.txtDiasRecebimento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtDiasRecebimento.PlaceholderText = "";
+            this.txtDiasRecebimento.ReadOnly = false;
+            this.txtDiasRecebimento.Size = new System.Drawing.Size(150, 37);
+            this.txtDiasRecebimento.TabIndex = 4;
+            this.txtDiasRecebimento.Tag = "";
+            this.txtDiasRecebimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtDiasRecebimento.Texts = "30";
+            this.txtDiasRecebimento.UnderlinedStyle = false;
+            // 
+            // txtTaxa
+            // 
+            this.txtTaxa.BackColor = System.Drawing.Color.White;
+            this.txtTaxa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTaxa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtTaxa.BorderRadius = 8;
+            this.txtTaxa.BorderSize = 2;
+            this.txtTaxa.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtTaxa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTaxa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTaxa.Location = new System.Drawing.Point(509, 135);
+            this.txtTaxa.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTaxa.Multiline = false;
+            this.txtTaxa.Name = "txtTaxa";
+            this.txtTaxa.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtTaxa.PasswordChar = false;
+            this.txtTaxa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtTaxa.PlaceholderText = "";
+            this.txtTaxa.ReadOnly = false;
+            this.txtTaxa.Size = new System.Drawing.Size(103, 37);
+            this.txtTaxa.TabIndex = 2;
+            this.txtTaxa.Tag = "";
+            this.txtTaxa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtTaxa.Texts = "";
+            this.txtTaxa.UnderlinedStyle = false;
+            // 
+            // txtQtdParcela
+            // 
+            this.txtQtdParcela.BackColor = System.Drawing.Color.White;
+            this.txtQtdParcela.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtQtdParcela.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtQtdParcela.BorderRadius = 8;
+            this.txtQtdParcela.BorderSize = 2;
+            this.txtQtdParcela.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtQtdParcela.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQtdParcela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtQtdParcela.Location = new System.Drawing.Point(372, 135);
+            this.txtQtdParcela.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQtdParcela.Multiline = false;
+            this.txtQtdParcela.Name = "txtQtdParcela";
+            this.txtQtdParcela.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtQtdParcela.PasswordChar = false;
+            this.txtQtdParcela.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtQtdParcela.PlaceholderText = "";
+            this.txtQtdParcela.ReadOnly = false;
+            this.txtQtdParcela.Size = new System.Drawing.Size(129, 37);
+            this.txtQtdParcela.TabIndex = 1;
+            this.txtQtdParcela.Tag = "";
+            this.txtQtdParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtQtdParcela.Texts = "";
+            this.txtQtdParcela.UnderlinedStyle = false;
+            // 
+            // txtDescricaoParcelamento
+            // 
+            this.txtDescricaoParcelamento.BackColor = System.Drawing.Color.White;
+            this.txtDescricaoParcelamento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDescricaoParcelamento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtDescricaoParcelamento.BorderRadius = 8;
+            this.txtDescricaoParcelamento.BorderSize = 2;
+            this.txtDescricaoParcelamento.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDescricaoParcelamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescricaoParcelamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDescricaoParcelamento.Location = new System.Drawing.Point(12, 135);
+            this.txtDescricaoParcelamento.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescricaoParcelamento.Multiline = false;
+            this.txtDescricaoParcelamento.Name = "txtDescricaoParcelamento";
+            this.txtDescricaoParcelamento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtDescricaoParcelamento.PasswordChar = false;
+            this.txtDescricaoParcelamento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtDescricaoParcelamento.PlaceholderText = "";
+            this.txtDescricaoParcelamento.ReadOnly = false;
+            this.txtDescricaoParcelamento.Size = new System.Drawing.Size(352, 37);
+            this.txtDescricaoParcelamento.TabIndex = 0;
+            this.txtDescricaoParcelamento.Tag = "";
+            this.txtDescricaoParcelamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtDescricaoParcelamento.Texts = "";
+            this.txtDescricaoParcelamento.UnderlinedStyle = false;
+            // 
+            // rjTextBox5
+            // 
+            this.rjTextBox5.BackColor = System.Drawing.Color.White;
+            this.rjTextBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox5.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.rjTextBox5.BorderRadius = 8;
+            this.rjTextBox5.BorderSize = 2;
+            this.rjTextBox5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rjTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjTextBox5.Location = new System.Drawing.Point(13, 257);
+            this.rjTextBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox5.Multiline = false;
+            this.rjTextBox5.Name = "rjTextBox5";
+            this.rjTextBox5.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.rjTextBox5.PasswordChar = false;
+            this.rjTextBox5.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.rjTextBox5.PlaceholderText = "";
+            this.rjTextBox5.ReadOnly = false;
+            this.rjTextBox5.Size = new System.Drawing.Size(757, 37);
+            this.rjTextBox5.TabIndex = 225;
+            this.rjTextBox5.Tag = "";
+            this.rjTextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.rjTextBox5.Texts = "";
+            this.rjTextBox5.UnderlinedStyle = false;
+            // 
             // FrmParcelamentoCartao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 292);
+            this.ClientSize = new System.Drawing.Size(784, 377);
+            this.Controls.Add(this.lbl2);
+            this.Controls.Add(this.txtTaxaAntecipacao);
+            this.Controls.Add(this.lbl1);
+            this.Controls.Add(this.txtDiasRecebimentoAntecipacao);
+            this.Controls.Add(this.materialCheckbox1);
+            this.Controls.Add(this.autoLabel8);
             this.Controls.Add(this.radioPF);
             this.Controls.Add(this.radioPJ);
             this.Controls.Add(this.autoLabel7);
-            this.Controls.Add(this.sfComboBox1);
+            this.Controls.Add(this.comboAdquirente);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.autoLabel6);
             this.Controls.Add(this.comboBandeiraCartao);
             this.Controls.Add(this.autoLabel5);
-            this.Controls.Add(this.rjTextBox4);
+            this.Controls.Add(this.txtTarifaAdicional);
             this.Controls.Add(this.autoLabel3);
-            this.Controls.Add(this.rjTextBox3);
+            this.Controls.Add(this.txtDiasRecebimento);
             this.Controls.Add(this.autoLabel2);
-            this.Controls.Add(this.rjTextBox2);
+            this.Controls.Add(this.txtTaxa);
             this.Controls.Add(this.autoLabel1);
-            this.Controls.Add(this.rjTextBox1);
+            this.Controls.Add(this.txtQtdParcela);
             this.Controls.Add(this.autoLabel18);
-            this.Controls.Add(this.txtEmpresa);
+            this.Controls.Add(this.txtDescricaoParcelamento);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.rjTextBox5);
             this.Name = "FrmParcelamentoCartao";
@@ -529,7 +650,7 @@
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBandeiraCartao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sfComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboAdquirente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioPF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioPJ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsBandeira)).EndInit();
@@ -545,21 +666,21 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
         private FontAwesome.Sharp.IconButton btnFechar;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel18;
-        private RJ_UI.Classes.RJTextBox txtEmpresa;
+        private RJ_UI.Classes.RJTextBox txtDescricaoParcelamento;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
-        private RJ_UI.Classes.RJTextBox rjTextBox1;
+        private RJ_UI.Classes.RJTextBox txtQtdParcela;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
-        private RJ_UI.Classes.RJTextBox rjTextBox2;
+        private RJ_UI.Classes.RJTextBox txtTaxa;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
-        private RJ_UI.Classes.RJTextBox rjTextBox3;
+        private RJ_UI.Classes.RJTextBox txtDiasRecebimento;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel5;
-        private RJ_UI.Classes.RJTextBox rjTextBox4;
+        private RJ_UI.Classes.RJTextBox txtTarifaAdicional;
         private Syncfusion.WinForms.ListView.SfComboBox comboBandeiraCartao;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private RJ_UI.Classes.RJButton btnSalvar;
         private RJ_UI.Classes.RJButton btnCancelar;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
-        private Syncfusion.WinForms.ListView.SfComboBox sfComboBox1;
+        private Syncfusion.WinForms.ListView.SfComboBox comboAdquirente;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioPF;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioPJ;
         private RJ_UI.Classes.RJTextBox rjTextBox5;
@@ -567,5 +688,11 @@
         private System.Data.DataTable Bandeira;
         private System.Data.DataColumn dataColumn3;
         private System.Data.DataColumn dataColumn4;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel8;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox1;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lbl1;
+        private RJ_UI.Classes.RJTextBox txtDiasRecebimentoAntecipacao;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lbl2;
+        private RJ_UI.Classes.RJTextBox txtTaxaAntecipacao;
     }
 }

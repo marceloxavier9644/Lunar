@@ -176,9 +176,7 @@ namespace Lunar.Utils.GalaxyPay_API
 
                 string[] arrayFone;
 
-                if (pessoa.PessoaTelefone != null
-                    && !string.IsNullOrEmpty(pessoa.PessoaTelefone.Ddd)
-                    && !string.IsNullOrEmpty(pessoa.PessoaTelefone.Telefone))
+                if (pessoa.PessoaTelefone != null)
                 {
                     arrayFone = new string[] { pessoa.PessoaTelefone.Ddd + pessoa.PessoaTelefone.Telefone };
                 }

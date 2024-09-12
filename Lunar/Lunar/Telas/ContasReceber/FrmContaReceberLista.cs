@@ -1102,12 +1102,21 @@ namespace Lunar.Telas.ContasReceber
                 {
                     if (GenericaDesktop.ShowConfirmacao("Deseja gerar o boleto selecionado? "))
                     {
-                        IList<ContaReceber> listaCrediario = new List<ContaReceber>();
-                        listaCrediario.Add(contaReceber);
-                        GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
-                        Pessoa clienteBoleto = new Pessoa();
-                        clienteBoleto = contaReceber.Cliente;
-                        gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
+                        string mensagem = "";
+                        bool isValid = GenericaDesktop.ValidarClienteEmissaoBoleto(contaReceber.Cliente, out mensagem);
+                        if (isValid == true)
+                        {
+                            IList<ContaReceber> listaCrediario = new List<ContaReceber>();
+                            listaCrediario.Add(contaReceber);
+                            GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
+                            Pessoa clienteBoleto = new Pessoa();
+                            clienteBoleto = contaReceber.Cliente;
+                            gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
+                        }
+                        else
+                        {
+                            GenericaDesktop.ShowErro(mensagem);
+                        }
 
                     }
                 }

@@ -1316,6 +1316,9 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
+                            if (adquirenteCartao.ContaBancaria != null)
+                                caixa.ContaBancaria = adquirenteCartao.ContaBancaria;
+
                             if (Sessao.caixaLogado != null)
                             {
                                 if (Sessao.caixaLogado.Id > 0)
@@ -1668,6 +1671,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
+                            if (adquirenteCartao.ContaBancaria != null)
+                                caixa.ContaBancaria = adquirenteCartao.ContaBancaria;
                             if (Sessao.caixaLogado != null)
                             {
                                 if (Sessao.caixaLogado.Id > 0)
@@ -2162,6 +2167,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             caixa.Conciliado = true;
                             caixa.Concluido = true;
                             caixa.ContaBancaria = null;
+                            if (adquirenteCartao.ContaBancaria != null)
+                                caixa.ContaBancaria = adquirenteCartao.ContaBancaria;
                             if (Sessao.caixaLogado != null)
                             {
                                 if (Sessao.caixaLogado.Id > 0)
@@ -2864,6 +2871,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
+                        if (adquirenteCartao.ContaBancaria != null)
+                            caixa.ContaBancaria = adquirenteCartao.ContaBancaria;
                         if (Sessao.caixaLogado != null)
                         {
                             if (Sessao.caixaLogado.Id > 0)
@@ -3218,6 +3227,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
+                        if (adquirenteCartao.ContaBancaria != null)
+                            caixa.ContaBancaria = adquirenteCartao.ContaBancaria;
                         if (Sessao.caixaLogado != null)
                         {
                             if (Sessao.caixaLogado.Id > 0)
@@ -3825,6 +3836,8 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Conciliado = true;
                         caixa.Concluido = true;
                         caixa.ContaBancaria = null;
+                        if (adquirenteCartao.ContaBancaria != null)
+                            caixa.ContaBancaria = adquirenteCartao.ContaBancaria;
                         if (Sessao.caixaLogado != null)
                         {
                             if (Sessao.caixaLogado.Id > 0)

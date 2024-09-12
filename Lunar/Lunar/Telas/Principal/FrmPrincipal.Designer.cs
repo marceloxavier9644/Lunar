@@ -113,6 +113,7 @@
             this.btnGrupo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSetor = new System.Windows.Forms.ToolStripMenuItem();
             this.variaçõesCaracterísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendasEOrdensDeServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -915,7 +916,7 @@
             this.dropMenuRelatorios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuRelatorios.Name = "rjDropdownMenu1";
             this.dropMenuRelatorios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuRelatorios.Size = new System.Drawing.Size(238, 158);
+            this.dropMenuRelatorios.Size = new System.Drawing.Size(238, 180);
             // 
             // aniversariantesToolStripMenuItem
             // 
@@ -979,7 +980,8 @@
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnConsultaVendasRelatorio,
-            this.vendasPorProdutoToolStripMenuItem});
+            this.vendasPorProdutoToolStripMenuItem,
+            this.vendasEOrdensDeServiçoToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(237, 22);
             this.toolStripMenuItem2.Text = "Vendas";
@@ -987,14 +989,14 @@
             // btnConsultaVendasRelatorio
             // 
             this.btnConsultaVendasRelatorio.Name = "btnConsultaVendasRelatorio";
-            this.btnConsultaVendasRelatorio.Size = new System.Drawing.Size(217, 22);
+            this.btnConsultaVendasRelatorio.Size = new System.Drawing.Size(274, 22);
             this.btnConsultaVendasRelatorio.Text = "Consulta Vendas";
             this.btnConsultaVendasRelatorio.Click += new System.EventHandler(this.btnConsultaVendasRelatorio_Click);
             // 
             // vendasPorProdutoToolStripMenuItem
             // 
             this.vendasPorProdutoToolStripMenuItem.Name = "vendasPorProdutoToolStripMenuItem";
-            this.vendasPorProdutoToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.vendasPorProdutoToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.vendasPorProdutoToolStripMenuItem.Text = "Vendas por Produto";
             this.vendasPorProdutoToolStripMenuItem.Click += new System.EventHandler(this.vendasPorProdutoToolStripMenuItem_Click);
             // 
@@ -1093,6 +1095,13 @@
             this.variaçõesCaracterísticasToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.variaçõesCaracterísticasToolStripMenuItem.Text = "Variações/Características";
             this.variaçõesCaracterísticasToolStripMenuItem.Click += new System.EventHandler(this.variaçõesCaracterísticasToolStripMenuItem_Click);
+            // 
+            // vendasEOrdensDeServiçoToolStripMenuItem
+            // 
+            this.vendasEOrdensDeServiçoToolStripMenuItem.Name = "vendasEOrdensDeServiçoToolStripMenuItem";
+            this.vendasEOrdensDeServiçoToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.vendasEOrdensDeServiçoToolStripMenuItem.Text = "Vendas e Ordens de Serviço";
+            this.vendasEOrdensDeServiçoToolStripMenuItem.Click += new System.EventHandler(this.vendasEOrdensDeServiçoToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1214,5 +1223,6 @@
         internal System.Windows.Forms.Label lblUserLogado;
         internal System.Windows.Forms.Label lblVersaoSistema;
         private System.Windows.Forms.ToolStripMenuItem aniversariantesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vendasEOrdensDeServiçoToolStripMenuItem;
     }
 }

@@ -1371,6 +1371,12 @@
     <Compile Include="Telas\Vendas\RecebimentoVendas\FrmPix.Designer.cs">
       <DependentUpon>FrmPix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Vendas\Relatorios\FrmVendaEOrdemPorPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Relatorios\FrmVendaEOrdemPorPeriodo.Designer.cs">
+      <DependentUpon>FrmVendaEOrdemPorPeriodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Vendas\Relatorios\FrmVendaProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1930,6 +1936,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmPix.resx">
       <DependentUpon>FrmPix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Relatorios\FrmVendaEOrdemPorPeriodo.resx">
+      <DependentUpon>FrmVendaEOrdemPorPeriodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Relatorios\FrmVendaProdutos.resx">
       <DependentUpon>FrmVendaProdutos.cs</DependentUpon>

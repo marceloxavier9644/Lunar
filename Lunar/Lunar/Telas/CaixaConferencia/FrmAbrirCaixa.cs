@@ -41,7 +41,11 @@ namespace Lunar.Telas.CaixaConferencia
         {
             calcularSaldoInicial();
             CaixaAberturaController caixaAberturaController = new CaixaAberturaController();
-            IList<CaixaAbertura> listaCaixa = caixaAberturaController.selecionarAberturaCaixaPorUsuario(Sessao.usuarioLogado.Id);
+            IList<CaixaAbertura> listaCaixa = new List<CaixaAbertura>();
+            if(Sessao.parametroSistema.TipoCaixa.Equals("INDIVIDUAL"))
+                listaCaixa = caixaAberturaController.selecionarAberturaCaixaPorUsuario(Sessao.usuarioLogado.Id);
+            else
+                listaCaixa = caixaAberturaController.selecionarTodosCaixasAbertos();
             if (listaCaixa.Count > 0)
             {
                 listBox1.DataSource = listaCaixa;
@@ -53,8 +57,11 @@ namespace Lunar.Telas.CaixaConferencia
         {
             string dataInicial = DateTime.Parse(txtDataAbertura.Value.ToString()).ToString("yyyy-MM-dd");
             string dataFinal = DateTime.Parse(txtDataAbertura.Value.ToString()).ToString("yyyy-MM-dd");
-
-            IList<CaixaAbertura> listaAbertura = caixaAberturaController.selecionarAberturaCaixaPorUsuarioEData(Sessao.usuarioLogado.Id, dataInicial, dataFinal);
+            IList<CaixaAbertura> listaAbertura = new List<CaixaAbertura>();
+            if(Sessao.parametroSistema.TipoCaixa.Equals("INDIVIDUAL"))
+                listaAbertura = caixaAberturaController.selecionarAberturaCaixaPorUsuarioEData(Sessao.usuarioLogado.Id, dataInicial, dataFinal);
+            else
+                listaAbertura = caixaAberturaController.selecionarAberturaCaixaPorData(dataInicial, dataFinal);
             if (listaAbertura.Count <= 0)
             {
 

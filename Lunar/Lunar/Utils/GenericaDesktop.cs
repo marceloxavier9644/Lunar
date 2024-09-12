@@ -221,6 +221,53 @@ namespace Lunar.Utils
                     return false;
             }
         }
+
+        public static bool ValidarClienteEmissaoBoleto(Pessoa pessoa, out string msg)
+        {
+            bool pessoaValida = true;
+            List<string> mensagensErro = new List<string>();
+
+            if (string.IsNullOrEmpty(pessoa.Cnpj))
+            {
+                pessoaValida = false;
+                mensagensErro.Add("Pessoa sem CPF ou CNPJ Informado!");
+            }
+            if (string.IsNullOrEmpty(pessoa.RazaoSocial))
+            {
+                pessoaValida = false;
+                mensagensErro.Add("Pessoa sem Nome Informado!");
+            }
+            if (pessoa.EnderecoPrincipal == null)
+            {
+                pessoaValida = false;
+                mensagensErro.Add("Endereço do Cliente Inválido!");
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(pessoa.EnderecoPrincipal.Cep))
+                {
+                    pessoaValida = false;
+                    mensagensErro.Add("CEP do Cliente Inválido!");
+                }
+                if (string.IsNullOrEmpty(pessoa.EnderecoPrincipal.Logradouro))
+                {
+                    pessoaValida = false;
+                    mensagensErro.Add("Endereço/Logradouro do Cliente Inválido!");
+                }
+                if (pessoa.EnderecoPrincipal.Cidade == null)
+                {
+                    pessoaValida = false;
+                    mensagensErro.Add("Cidade do Cliente Inválida!");
+                }
+            }
+
+            // Juntar todas as mensagens de erro em uma única string, separadas por linha
+            msg = string.Join(Environment.NewLine, mensagensErro);
+
+            return pessoaValida;
+        }
+
+
         public bool ValidarEmail(String email)
         {
             bool emailValido = false;

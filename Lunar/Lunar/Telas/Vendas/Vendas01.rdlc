@@ -149,7 +149,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Nº</Value>
+                                  <Value>IDENTIFICAÇÃO</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -181,7 +181,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Valor Total</Value>
+                                  <Value>VALOR TOTAL</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -245,7 +245,6 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Cliente">
-                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -290,7 +289,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>

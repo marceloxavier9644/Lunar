@@ -6,6 +6,8 @@
 		</id>
 		<property name="Descricao" column="DESCRICAO" type="String" length="100"/>
 		<property name="Cnpj" column="CNPJ" type="String" length="20"/>
+
+		<many-to-one name="ContaBancaria" column="CONTABANCARIA" class="LunarBase.Classes.ContaBancaria" not-null="false" foreign-key="FK_ADQUIRENTE_CONTA" lazy="false"/>
 		
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>

@@ -574,7 +574,7 @@ namespace Lunar.Telas.CaixaConferencia
                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
 
                 FormaPagamento formaPagamento = new FormaPagamento();
-                if (String.IsNullOrEmpty(txtCodConta.Texts))
+                if (!String.IsNullOrEmpty(txtCodConta.Texts))
                 {
                     formaPagamento.Id = 4;
                     formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);

@@ -1,5 +1,6 @@
 ﻿using Lunar.Utils;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using System;
@@ -227,6 +228,8 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                         caixa.Conciliado = false;
                         caixa.IdOrigem = venda.Id.ToString();
                         caixa.ContaBancaria = null;
+                        if (adquirente.ContaBancaria != null)
+                            caixa.ContaBancaria = adquirente.ContaBancaria;
                         caixa.DataLancamento = DateTime.Now;
                         caixa.Descricao = "RECEBIMENTO VENDA " + venda.Id + " NO CARTÃO";
                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;

@@ -26,6 +26,7 @@ namespace Lunar.Telas.CaixaConferencia
             InitializeComponent();
             txtDataFinal.Text = DateTime.Now.ToShortDateString();
             txtDataInicial.Text = DateTime.Now.ToShortDateString();
+            CalcularSaldoTotal();
         }
 
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -351,6 +352,7 @@ namespace Lunar.Telas.CaixaConferencia
         {
             try
             {
+                CalcularSaldoTotal();
                 Usuario usuario = new Usuario();
                 PlanoConta planoConta = new PlanoConta();
                 ContaBancaria contaBancaria = new ContaBancaria();
@@ -1368,6 +1370,33 @@ namespace Lunar.Telas.CaixaConferencia
             else
                 lblSaldo.ForeColor = Color.Red;
             lblSaldo.Text = saldo.ToString("C2"); // Formata o saldo como valor monetário
+        }
+
+        private void CalcularSaldoTotal()
+        {
+            decimal saldo = 0;
+            CaixaController caixaController = new CaixaController();
+            IList<Caixa> listaCaixa = new List<Caixa>();
+            listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.FormaPagamento <> 9 and Tabela.FormaPagamento <> 8 and Tabela.FlagExcluido <> true");
+            if (listaCaixa.Count > 0)
+            {
+                foreach (Caixa caixa in listaCaixa)
+                {
+                    if (caixa.Tipo == "E" && caixa.FormaPagamento.Id != 8 && caixa.FormaPagamento.Id != 9)
+                    {
+                        saldo += caixa.Valor;
+                    }
+                    else if (caixa.Tipo == "S") // Saída
+                    {
+                        saldo -= caixa.Valor;
+                    }
+                }
+            }
+            if (saldo > 0)
+                lblSaldoTotal.ForeColor = Color.Blue;
+            else
+                lblSaldoTotal.ForeColor = Color.Red;
+            lblSaldoTotal.Text = saldo.ToString("C2"); // Formata o saldo como valor monetário
         }
     }
 }

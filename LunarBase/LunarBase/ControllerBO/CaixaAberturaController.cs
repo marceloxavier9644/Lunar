@@ -42,6 +42,24 @@ namespace LunarBase.ControllerBO
             }
         }
 
+        public IList<CaixaAbertura> selecionarAberturaCaixaPorData(string dataInicial, string dataFinal)
+        {
+            CaixaAberturaBO bo = new CaixaAberturaBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarAberturaCaixaPorData(dataInicial, dataFinal);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
+
         public IList<CaixaAbertura> selecionarTodosCaixasAbertos()
         {
             CaixaAberturaBO bo = new CaixaAberturaBO();
