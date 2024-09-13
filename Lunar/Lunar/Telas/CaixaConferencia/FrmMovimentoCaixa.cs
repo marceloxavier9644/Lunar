@@ -410,6 +410,7 @@ namespace Lunar.Telas.CaixaConferencia
                 {
                     sql = sql + "and Tabela.Tipo = 'S' and Tabela.TabelaOrigem <> 'DEPOSITO_BANCARIO' ";
                 }
+                //MessageBox.Show(sql);
                 CaixaController caixaController = new CaixaController();
                 IList<Caixa> listaCaixa = new List<Caixa>();
                 listaCaixa = caixaController.selecionarCaixaPorSql(sql);

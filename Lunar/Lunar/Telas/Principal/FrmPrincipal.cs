@@ -74,7 +74,6 @@ namespace Lunar.Telas.Principal
         {
             InitializeComponent();
 
-            logger.WriteLog("Inicialize Componentes Principal","log");
             CollapseMenu();
             this.Padding = new Padding(borderSize);//Border size
             this.BackColor = Color.FromArgb(98, 102, 244);//Border color
@@ -96,7 +95,6 @@ namespace Lunar.Telas.Principal
             Sessao.empresaFilialLogada.Id = 1;
             Sessao.empresaFilialLogada = (EmpresaFilial)Controller.getInstance().selecionar(Sessao.empresaFilialLogada);
 
-            logger.WriteLog("Inicialize ajustar logo", "log");
             if (File.Exists(Sessao.parametroSistema.Logo))
             {
                 ajustarImagemFundo();
@@ -1399,25 +1397,32 @@ namespace Lunar.Telas.Principal
 
         private void abrirCaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            formBackground.StartPosition = FormStartPosition.Manual;
-            //formBackground.FormBorderStyle = FormBorderStyle.None;
-            formBackground.Opacity = .50d;
-            formBackground.BackColor = Color.Black;
-            formBackground.Left = Top = 0;
-            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            formBackground.WindowState = FormWindowState.Maximized;
-            formBackground.TopMost = false;
-            formBackground.Location = this.Location;
-            formBackground.ShowInTaskbar = false;
-            formBackground.Show();
-            FrmAbrirCaixa fr = new FrmAbrirCaixa();
-            fr.Owner = formBackground;
-            fr.ShowDialog();
-            formBackground.Dispose();
-            fr.Dispose();
-            logarCaixa();
+            if (!Sessao.permissoes.Contains("206"))
+            {
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (206)!");
+            }
+            else
+            {
+                Form formBackground = new Form();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                FrmAbrirCaixa fr = new FrmAbrirCaixa();
+                fr.Owner = formBackground;
+                fr.ShowDialog();
+                formBackground.Dispose();
+                fr.Dispose();
+                logarCaixa();
+            }
         }
 
         private void vendasPorProdutoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1482,6 +1487,35 @@ namespace Lunar.Telas.Principal
             }
             else
                 OpenChildForm(() => new FrmVendaEOrdemPorPeriodo(), btnRelatorios);
+        }
+
+        private void saldoContasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Sessao.permissoes.Contains("207"))
+            {
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (207)!");
+            }
+            else
+            {
+                Form formBackground = new Form();
+                formBackground.StartPosition = FormStartPosition.Manual;
+                //formBackground.FormBorderStyle = FormBorderStyle.None;
+                formBackground.Opacity = .50d;
+                formBackground.BackColor = Color.Black;
+                formBackground.Left = Top = 0;
+                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                formBackground.WindowState = FormWindowState.Maximized;
+                formBackground.TopMost = false;
+                formBackground.Location = this.Location;
+                formBackground.ShowInTaskbar = false;
+                formBackground.Show();
+                FrmSaldoContas fr = new FrmSaldoContas();
+                fr.Owner = formBackground;
+                fr.ShowDialog();
+                formBackground.Dispose();
+                fr.Dispose();
+            }
         }
     }
 }

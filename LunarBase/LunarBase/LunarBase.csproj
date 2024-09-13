@@ -94,6 +94,7 @@
     <None Remove="HBM\Servico.hbm.xml" />
     <None Remove="HBM\Spc.hbm.xml" />
     <None Remove="HBM\TabelaPreco.hbm.xml" />
+    <None Remove="HBM\TaxaCartao.hbm.xml" />
     <None Remove="HBM\TipoObjeto.hbm.xml" />
     <None Remove="HBM\TransferenciaEstoque.hbm.xml" />
     <None Remove="HBM\TransferenciaEstoqueProduto.hbm.xml" />
@@ -192,6 +193,7 @@
     <EmbeddedResource Include="HBM\Spc.hbm.xml" />
     <EmbeddedResource Include="HBM\TabelaPreco.hbm.xml" />
     <EmbeddedResource Include="HBM\Caracteristica.hbm.xml" />
+    <EmbeddedResource Include="HBM\TaxaCartao.hbm.xml" />
     <EmbeddedResource Include="HBM\TipoObjeto.hbm.xml" />
     <EmbeddedResource Include="HBM\TransferenciaEstoque.hbm.xml" />
     <EmbeddedResource Include="HBM\TransferenciaEstoqueProduto.hbm.xml" />

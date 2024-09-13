@@ -241,7 +241,7 @@ namespace Lunar.Telas.PermissoesUsuarios
         //Caixa
         private void capturarCheckAbaCaixa()
         {
-            for (int i = 200; i <= 205; i++)
+            for (int i = 200; i <= 207; i++)
             {
                 string checkBoxName = "chk" + i;
 

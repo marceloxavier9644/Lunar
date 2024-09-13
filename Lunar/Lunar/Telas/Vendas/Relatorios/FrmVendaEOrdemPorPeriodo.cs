@@ -19,8 +19,10 @@ namespace Lunar.Telas.Vendas.Relatorios
         public FrmVendaEOrdemPorPeriodo()
         {
             InitializeComponent();
-            txtDataInicial.Value = DateTime.Now;
+            DateTime primeiroDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            txtDataInicial.Value = primeiroDiaDoMes;
             txtDataFinal.Value = DateTime.Now;
+            txtDataInicial.Focus();
         }
 
         private async void Pesquisar()
@@ -43,6 +45,9 @@ namespace Lunar.Telas.Vendas.Relatorios
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.Vendas.Vendas01.rdlc";
             reportViewer1.LocalReport.EnableExternalImages = true;
+            reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+            reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
+            reportViewer1.ZoomPercent = 100;
 
             // Define os parâmetros do relatório
             ReportParameter[] parametros = new ReportParameter[4];

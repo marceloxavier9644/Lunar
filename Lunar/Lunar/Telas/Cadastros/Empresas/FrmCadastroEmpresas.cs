@@ -641,7 +641,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                                 cidadePrincipal = cidade;
                             }
 
-                            txtEmail.Focus();
+                            //txtEmail.Focus();
                         }
                         else if (txtCNPJ.Texts.Trim().Length == 11 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
                         {

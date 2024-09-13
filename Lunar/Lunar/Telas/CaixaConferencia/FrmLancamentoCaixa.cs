@@ -656,7 +656,12 @@ namespace Lunar.Telas.CaixaConferencia
             Form formBackground = new Form();
             try
             {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("PlanoConta", "and Tabela.Descricao like '%" + txtPlanoContas.Texts + "%'"))
+                string sqlAdicional = "";
+                if (this.tipoLancamento.Equals("SAIDA"))
+                    sqlAdicional = "and Tabela.TipoConta = 'DESPESA'";
+                else
+                    sqlAdicional = "and Tabela.TipoConta = 'RECEITA'";
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("PlanoConta", "and Tabela.Descricao like '%" + txtPlanoContas.Texts + "%' " + sqlAdicional))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     //formBackground.FormBorderStyle = FormBorderStyle.None;

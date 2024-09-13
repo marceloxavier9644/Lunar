@@ -30,7 +30,12 @@ namespace LunarBase.ControllerBO
             instancia = new Controller(atualizaBanco);
             return instancia;
         }
-
+        public static async Task<Controller> getInstanceAtualizaAsync(Boolean atualizaBanco = true)
+        {
+            // Executa o código de forma assíncrona
+            instancia = await Task.Run(() => new Controller(atualizaBanco));
+            return instancia;
+        }
         public static Controller getInstance(Boolean atualizaBanco = false)
         {
             if (instancia == null)

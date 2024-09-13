@@ -14,8 +14,10 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Net;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Xml;
@@ -223,15 +225,30 @@ namespace Lunar
             //backgroundWorker1.RunWorkerAsync();
         }
 
-        private void FrmLogin_Paint(object sender, PaintEventArgs e)
+        private async void FrmLogin_Paint(object sender, PaintEventArgs e)
         {
             if (File.Exists(atualizaBanco))
             {
                 lblStatus.Visible = true;
-                lblStatus.Text = "Aguarde Atualização...";
-                Controller.getInstanceAtualiza();
-                Controller.getInstance().geraValoresPadrao();
-                lblStatus.Text = "Atualização Concluída com Sucesso...";
+                lblStatus.Text = "Aguarde, atualizando o sistema para a versão " + Assembly.GetExecutingAssembly().GetName().Version.ToString() + "...";
+                txtSenha.Enabled = false;
+                txtUsuario.Enabled = false;
+                btnLogin.Enabled = false;
+                btnFechar.Enabled = false;
+                // Executa o processo de atualização de forma assíncrona
+                await Task.Run(async () =>
+                {
+                    lblStatus.Text = "Aguarde, atualizando o sistema. Isso pode levar um tempinho, não feche...";
+                    await Controller.getInstanceAtualizaAsync();
+                    lblStatus.Text = "Quase pronto. Finalizando a atualização...";
+                    Controller.getInstance().geraValoresPadrao();
+                });
+
+                txtSenha.Enabled = true;
+                txtUsuario.Enabled = true;
+                btnLogin.Enabled = true;
+                btnFechar.Enabled = true;
+                lblStatus.Text = "Atualização concluída com sucesso!";
                 File.Delete(atualizaBanco);
             }
         }

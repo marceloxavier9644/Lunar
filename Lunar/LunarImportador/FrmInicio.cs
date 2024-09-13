@@ -1,5 +1,6 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -123,6 +124,7 @@ namespace LunarImportador
                 }
             }
 
+            //LINK PRO
             if(radioLinkPro.Checked == true)
             {
                 if (chkProdutos.Checked == true)
@@ -130,6 +132,13 @@ namespace LunarImportador
                     progressBar1.Visible = true;
                     lblStatus.Visible = true;
                     Thread importarThread = new Thread(() => importarProdutosLinkProCervantes());
+                    importarThread.Start();
+                }
+                if (chkClientes.Checked == true)
+                {
+                    progressBar1.Visible = true;
+                    lblStatus.Visible = true;
+                    Thread importarThread = new Thread(() => importarClientesLinkProCervantes());
                     importarThread.Start();
                 }
             }
@@ -1595,6 +1604,313 @@ namespace LunarImportador
 
         }
 
+        private void importarClientesLinkProCervantes()
+        {
+            connectionStringLinkPro = "Host=" + txtBancoOrigem.Text.Trim() + ";Port=5432;Username=postgres;Password=postgres;Database=InkDB";
+            try
+            {
+                //connectionStringLinkPro = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=InkDB";
+
+                using (var connection = new NpgsqlConnection(connectionStringLinkPro))
+                {
+                    connection.Open();
+                    string countQuery = "SELECT COUNT(*) FROM cliente";
+
+                    int totalRecords;
+                    using (var countCommand = new NpgsqlCommand(countQuery, connection))
+                    {
+                        totalRecords = Convert.ToInt32(countCommand.ExecuteScalar());
+                        Console.WriteLine($"Número total de registros: {totalRecords}");
+                    }
+
+                    //lblStatus.Text = "Conexão estabelecida";
+                    using (var command = new NpgsqlCommand("SELECT c.id_cliente, c.nome, c.fone, cid.descricao,cid.sigla_estado, " +
+                        "c.logradouro, c.numero, c.complemento, c.bairro, c.cep, c.email, c.cpf, c.data_nascimento, " +
+                        "c.nome_pai, c.nome_mae FROM cliente c inner join cidade cid on cid.id_cidade = c.id_cidade", connection))
+                    {
+                        command.CommandTimeout = 300; // Aumenta o tempo limite para 5 minutos
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                int rowIndex = 0;
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    try
+                                    {
+                                        rowIndex++;
+                                        Pessoa pessoa = new Pessoa();
+                                        // Exemplo de leitura de dados
+                                        pessoa.Id = 0;
+                                        pessoa.Cliente = true;
+                                        pessoa.Email = reader["email"].ToString();
+                                        if(reader["cpf"].ToString() != "null")
+                                            pessoa.Cnpj = reader["cpf"].ToString();
+                                        else
+                                            pessoa.Cnpj = "";
+                                        pessoa.Cobrador = false;
+                                        pessoa.CodigoImportacao = reader["id_cliente"].ToString();
+                                        pessoa.ComissaoVendedor = 0;
+                                        pessoa.ContatoTrabalho = "";
+                                        pessoa.DataCadastro = DateTime.Now;
+                                        if(reader["data_nascimento"].ToString() == "Null") 
+                                            pessoa.DataNascimento = DateTime.Parse("1900-01-01 00:00:00");
+                                        else
+                                            pessoa.DataNascimento = DateTime.Parse(reader["data_nascimento"].ToString());
+                                        pessoa.EnderecoPrincipal = null;
+                                        pessoa.EscritorioCobranca = false;
+                                        pessoa.FlagExcluido = false;
+                                        pessoa.Fornecedor = false;
+                                        pessoa.FuncaoTrabalho = "";
+                                        pessoa.Funcionario = false;
+                                        pessoa.InscricaoEstadual = "";
+                                        pessoa.LimiteCredito = 0;
+                                        pessoa.LocalTrabalho = "";
+                                        pessoa.Mae = reader["nome_mae"].ToString();
+                                        pessoa.NomeFantasia = reader["nome"].ToString();
+                                        pessoa.Observacoes = "IMPORTADO SISTEMA LINK";
+                                        pessoa.PessoaTelefone = null;
+                                        pessoa.RazaoSocial = reader["nome"].ToString();
+                                        pessoa.ReceberLembrete = false;
+                                        pessoa.RegistradoSpc = false;
+                                        pessoa.Rg = "";
+                                        pessoa.SalarioTrabalho = "";
+                                        pessoa.Sexo = "";
+                                        pessoa.Tecnico = false;
+                                        pessoa.TelefoneTrabalho = "";
+                                        pessoa.TempoTrabalho = "";
+                                        pessoa.TipoParceiroImportado = "";
+                                        if (pessoa.Cnpj.Length == 11)
+                                            pessoa.TipoPessoa = "PF";
+                                        else if (pessoa.Cnpj.Length == 14)
+                                            pessoa.TipoPessoa = "PJ";
+                                        else pessoa.TipoPessoa = "PF";
+                                        pessoa.Transportadora = false;
+                                        pessoa.Vendedor = false;
+
+                                       //Conecta com banco lunar
+                                        string selectedDatabase = "";
+                                        if (comboDestino.InvokeRequired)
+                                        {
+                                            // Se a chamada precisa ser feita na thread da UI, use Invoke
+                                            comboDestino.Invoke(new Action(() =>
+                                            {
+                                                selectedDatabase = comboDestino.SelectedItem?.ToString();
+                                                // Agora você pode usar selectedDatabase aqui
+                                            }));
+                                        }
+                                        else
+                                        {
+                                            // Caso contrário, faça o acesso diretamente
+                                            selectedDatabase = comboDestino.SelectedItem?.ToString();
+                                            // Agora você pode usar selectedDatabase aqui
+                                        }
+                                        string mysqlConnectionString = $"Server=localhost;Database={selectedDatabase};User Id=marcelo;Password=mx123;";
+                                        MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+
+
+                                        //Ajustar cidade e endereco
+                                        Endereco endereco = new Endereco();
+                                        Cidade cidade = null;
+
+                                        string uf = reader["sigla_estado"].ToString();
+                                        string cidadeDescricao = reader["descricao"].ToString();
+
+                                        string mysqlQueryCidade = @"
+                        SELECT c.*
+                        FROM Cidade c
+                        INNER JOIN Estado e ON c.Estado = e.Id
+                        WHERE c.Descricao = @descricao AND e.Uf = @uf
+                        LIMIT 1";
+
+                                        MySqlCommand mysqlCommandCidade = new MySqlCommand(mysqlQueryCidade, mysqlConnection);
+                                        mysqlCommandCidade.Parameters.AddWithValue("@descricao", cidadeDescricao);
+                                        mysqlCommandCidade.Parameters.AddWithValue("@uf", uf);
+
+                                        using (MySqlDataReader cidadeReader = mysqlCommandCidade.ExecuteReader())
+                                        {
+                                            if (cidadeReader.Read())
+                                            {
+                                                cidade = new Cidade
+                                                {
+                                                    Id = cidadeReader.GetInt32("Id"),
+                                                    Descricao = cidadeReader.GetString("Descricao")
+                                                };
+                                            }
+                                        }
+                                        if (cidade != null)
+                                        {
+                                            if (cidade.Id > 0)
+                                            {
+                                                endereco.Referencia = "";
+                                                if(reader["cep"].ToString() != "" || reader["cep"].ToString() != "Null")
+                                                    endereco.Cep = reader["cep"].ToString();
+                                                else
+                                                    endereco.Cep = "38610000";
+                                                endereco.Numero = reader["numero"].ToString();
+                                                endereco.Bairro = reader["bairro"].ToString();
+                                                endereco.Cidade = new Cidade();
+                                                endereco.Cidade = cidade;
+                                                endereco.Logradouro = reader["logradouro"].ToString();
+                                                endereco.Complemento = reader["complemento"].ToString();
+                                            }
+                                        }
+                                        PessoaTelefone pessoaTelefone = new PessoaTelefone();
+                                        if (!String.IsNullOrEmpty(reader["fone"].ToString()))
+                                        {
+                                            pessoaTelefone = ProcessarTelefone(reader["fone"].ToString());
+                                        }
+
+
+                                        i++;
+                                        salvarClienteLinkProCervantes(mysqlConnectionString, pessoa,endereco,pessoaTelefone);
+                                        //salvarProdutoLinkNoMysql(produto, estoque, produtoGrade, mysqlConnection);
+                                        //lblStatus.Text = "Pessoa " + i + " de " + totalRecords;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine($"Erro ao ler a linha {rowIndex}: {ex.Message}");
+                                        // Talvez seja interessante parar o loop se um erro ocorrer
+                                        break;
+                                    }
+                                    //lblStatus.Text = "Pessoa Importados: " + i;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nenhum dado encontrado.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao conectar ou executar a consulta: {ex.Message}");
+            }
+
+        }
+
+        private void salvarClienteLinkProCervantes(String mySqlConnectionString, Pessoa pessoa, Endereco endereco, PessoaTelefone pessoaTelefone)
+        {
+            using (var connection = new MySqlConnection(mySqlConnectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        // Insert into Pessoa
+                        string mysqlQueryPessoa = @"
+                INSERT INTO Pessoa 
+                (CodigoImportacao, Observacoes, RazaoSocial, NomeFantasia, Cnpj, Email, ReceberLembrete, Vendedor, Cliente, Fornecedor, FlagExcluido, Funcionario, Transportadora, EscritorioCobranca, Tecnico, FuncaoTrabalho, InscricaoEstadual, ComissaoVendedor, ContatoTrabalho, DataNascimento, LimiteCredito, LocalTrabalho, Mae, Pai, RegistradoSpc, Rg, SalarioTrabalho, Sexo, TelefoneTrabalho, TempoTrabalho, TipoParceiroImportado, TipoPessoa, DataCadastro)
+                VALUES 
+                (@CodigoImportacao, @Observacoes, @RazaoSocial, @NomeFantasia, @Cnpj, @Email, @ReceberLembrete, @Vendedor, @Cliente, @Fornecedor, @FlagExcluido, @Funcionario, @Transportadora, @EscritorioCobranca, @Tecnico, @FuncaoTrabalho, @InscricaoEstadual, @ComissaoVendedor, @ContatoTrabalho, @DataNascimento, @LimiteCredito, @LocalTrabalho, @Mae, @Pai, @RegistradoSpc, @Rg, @SalarioTrabalho, @Sexo, @TelefoneTrabalho, @TempoTrabalho, @TipoParceiroImportado, @TipoPessoa, @DataCadastro)";
+
+                        var mysqlCommandPessoa = new MySqlCommand(mysqlQueryPessoa, connection, transaction);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@CodigoImportacao", pessoa.CodigoImportacao);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Observacoes", pessoa.Observacoes);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@RazaoSocial", pessoa.RazaoSocial);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@NomeFantasia", pessoa.NomeFantasia);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Cnpj", pessoa.Cnpj);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Email", pessoa.Email);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@ReceberLembrete", pessoa.ReceberLembrete);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Vendedor", pessoa.Vendedor);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Cliente", pessoa.Cliente);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Fornecedor", pessoa.Fornecedor);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@FlagExcluido", pessoa.FlagExcluido);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Funcionario", pessoa.Funcionario);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Transportadora", pessoa.Transportadora);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@EscritorioCobranca", pessoa.EscritorioCobranca);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Tecnico", pessoa.Tecnico);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@FuncaoTrabalho", pessoa.FuncaoTrabalho);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@InscricaoEstadual", pessoa.InscricaoEstadual);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@ComissaoVendedor", pessoa.ComissaoVendedor);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@ContatoTrabalho", pessoa.ContatoTrabalho);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@DataNascimento", pessoa.DataNascimento == DateTime.MinValue ? (object)DBNull.Value : pessoa.DataNascimento);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@LimiteCredito", pessoa.LimiteCredito);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@LocalTrabalho", pessoa.LocalTrabalho);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Mae", pessoa.Mae);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Pai", pessoa.Pai);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@RegistradoSpc", pessoa.RegistradoSpc);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Rg", pessoa.Rg);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@SalarioTrabalho", pessoa.SalarioTrabalho);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@Sexo", pessoa.Sexo);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@TelefoneTrabalho", pessoa.TelefoneTrabalho);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@TempoTrabalho", pessoa.TempoTrabalho);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@TipoParceiroImportado", pessoa.TipoParceiroImportado);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@TipoPessoa", pessoa.TipoPessoa);
+                        mysqlCommandPessoa.Parameters.AddWithValue("@DataCadastro", pessoa.DataCadastro);
+
+                        mysqlCommandPessoa.ExecuteNonQuery();
+                        long pessoaId = mysqlCommandPessoa.LastInsertedId;
+
+                        // Insert Endereco if necessary
+                        if (pessoaId > 0 && !string.IsNullOrEmpty(endereco.Logradouro))
+                        {
+                            string mysqlQueryEndereco = @"
+                    INSERT INTO Endereco (logradouro, numero, bairro, cep, complemento, cidade, pessoa, empresafilial, referencia) 
+                    VALUES (@logradouro, @numero, @bairro, @cep, @complemento, @cidadeId, @pessoaId, 1, @referencia)";
+
+                            var mysqlCommandEndereco = new MySqlCommand(mysqlQueryEndereco, connection, transaction);
+                            mysqlCommandEndereco.Parameters.AddWithValue("@logradouro", endereco.Logradouro);
+                            mysqlCommandEndereco.Parameters.AddWithValue("@numero", endereco.Numero);
+                            mysqlCommandEndereco.Parameters.AddWithValue("@bairro", endereco.Bairro);
+                            mysqlCommandEndereco.Parameters.AddWithValue("@cep", endereco.Cep);
+                            mysqlCommandEndereco.Parameters.AddWithValue("@complemento", endereco.Complemento);
+                            mysqlCommandEndereco.Parameters.AddWithValue("@cidadeId", endereco.Cidade.Id);
+                            mysqlCommandEndereco.Parameters.AddWithValue("@pessoaId", pessoaId);
+                            mysqlCommandEndereco.Parameters.AddWithValue("@referencia", endereco.Referencia);
+                            mysqlCommandEndereco.ExecuteNonQuery();
+                            long enderecoId = mysqlCommandEndereco.LastInsertedId;
+
+                            // Update Pessoa with EnderecoPrincipal
+                            string mysqlUpdatePessoaEndereco = "UPDATE Pessoa SET enderecoPrincipal = @enderecoPrincipal WHERE id = @pessoaId";
+                            var mysqlCommandUpdatePessoaEndereco = new MySqlCommand(mysqlUpdatePessoaEndereco, connection, transaction);
+                            mysqlCommandUpdatePessoaEndereco.Parameters.AddWithValue("@enderecoPrincipal", enderecoId);
+                            mysqlCommandUpdatePessoaEndereco.Parameters.AddWithValue("@pessoaId", pessoaId);
+                            mysqlCommandUpdatePessoaEndereco.ExecuteNonQuery();
+                        }
+
+                        // Insert PessoaTelefone if necessary
+                        if (!string.IsNullOrEmpty(pessoaTelefone.Telefone))
+                        {
+                            string mysqlQueryTelefone = @"
+                    INSERT INTO PessoaTelefone (ddd, telefone, observacoes, pessoa) 
+                    VALUES (@ddd, @telefone, @observacoes, @pessoa)";
+
+                            var mysqlCommandTelefone = new MySqlCommand(mysqlQueryTelefone, connection, transaction);
+                            mysqlCommandTelefone.Parameters.AddWithValue("@ddd", pessoaTelefone.Ddd);
+                            mysqlCommandTelefone.Parameters.AddWithValue("@telefone", pessoaTelefone.Telefone);
+                            mysqlCommandTelefone.Parameters.AddWithValue("@observacoes", "IMPORTADO SGBR");
+                            mysqlCommandTelefone.Parameters.AddWithValue("@pessoa", pessoaId);
+                            mysqlCommandTelefone.ExecuteNonQuery();
+                            long pessoaTelefoneId = mysqlCommandTelefone.LastInsertedId;
+
+                            // Update Pessoa with PessoaTelefone
+                            string mysqlUpdatePessoaTelefone = "UPDATE Pessoa SET pessoaTelefone = @pessoaTelefone WHERE id = @pessoaId";
+                            var mysqlCommandUpdatePessoaTelefone = new MySqlCommand(mysqlUpdatePessoaTelefone, connection, transaction);
+                            mysqlCommandUpdatePessoaTelefone.Parameters.AddWithValue("@pessoaTelefone", pessoaTelefoneId);
+                            mysqlCommandUpdatePessoaTelefone.Parameters.AddWithValue("@pessoaId", pessoaId);
+                            mysqlCommandUpdatePessoaTelefone.ExecuteNonQuery();
+                        }
+
+                        // Commit transaction
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Rollback transaction on error
+                        transaction.Rollback();
+                        Console.WriteLine($"Error: {ex.Message}");
+                    }
+                }
+            }
+        }
+
         private void radioLinkPro_CheckedChanged(object sender, EventArgs e)
         {
             if (radioLinkPro.Checked == true)
@@ -1604,11 +1920,11 @@ namespace LunarImportador
                 txtBancoOrigem.ReadOnly = false;
                 txtBancoOrigem.Focus();
                 txtBancoOrigem.SelectAll();
-                chkClientes.Checked = false;
+                //chkClientes.Checked = false;
                 chkContasAPagar.Checked = false;
                 chkContasAReceber.Checked = false;
                 chkServicos.Checked = false;
-                chkClientes.Enabled = false;
+                //chkClientes.Enabled = false;
                 chkContasAPagar.Enabled = false;
                 chkContasAReceber.Enabled = false;
                 chkServicos.Enabled = false;

@@ -22,5 +22,17 @@ namespace Lunar.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Script {
+            get {
+                return ((bool)(this["Script"]));
+            }
+            set {
+                this["Script"] = value;
+            }
+        }
     }
 }

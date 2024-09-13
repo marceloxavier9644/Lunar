@@ -619,6 +619,12 @@
     <Compile Include="Telas\CaixaConferencia\Reports\FrmRelatorioCaixa.Designer.cs">
       <DependentUpon>FrmRelatorioCaixa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\CaixaConferencia\Reports\FrmSaldoContas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\Reports\FrmSaldoContas.Designer.cs">
+      <DependentUpon>FrmSaldoContas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Compras\FrmDesmembrarItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1576,6 +1582,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\CaixaConferencia\Reports\FrmRelatorioCaixa.resx">
       <DependentUpon>FrmRelatorioCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CaixaConferencia\Reports\FrmSaldoContas.resx">
+      <DependentUpon>FrmSaldoContas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\CaixaConferencia\Reports\RelatorioCaixa01.rdlc" />
     <EmbeddedResource Include="Telas\Compras\FrmDesmembrarItem.resx">

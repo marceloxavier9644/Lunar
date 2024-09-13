@@ -117,6 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnFechar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAAOpgAADqYAYcnGMIAAADASURBVChTbZBdDoJADIR7ImDZ
+        XX53T+KDJt4AJYZIojflKDjTrASMD82W6dd2ilhrl7qun845ybJMjDHSdZ2EEKTve6mqirVFAM1I1rIs
+        xzzPNzDGyNqAQSvipZ0QbhQATUVR6KSmae7UMOCBEBUZu+4r8gu3IB8JbSBXMQCcErDiPXvv1coGcv0/
+        ECH0TTsK0jg8Deg8rMa3Hqhguk6PQWHiGk7fH6MghDkJ49dP27Zqh1tS7X344b8gXxyEmls+23df9YBX
+        KloAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="dsReferenciaComercial.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>186, 17</value>
   </metadata>

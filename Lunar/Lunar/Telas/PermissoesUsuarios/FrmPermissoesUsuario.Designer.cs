@@ -115,6 +115,8 @@
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaGrupo = new FontAwesome.Sharp.IconButton();
             this.btnSalvar = new Syncfusion.WinForms.Controls.SfButton();
+            this.chk206 = new System.Windows.Forms.CheckBox();
+            this.chk207 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
@@ -972,6 +974,8 @@
             // 
             // tabPageAdv5
             // 
+            this.tabPageAdv5.Controls.Add(this.chk207);
+            this.tabPageAdv5.Controls.Add(this.chk206);
             this.tabPageAdv5.Controls.Add(this.btnDesmarcarTodosAbaCaixa);
             this.tabPageAdv5.Controls.Add(this.btnMarcarTodosAbaCaixa);
             this.tabPageAdv5.Controls.Add(this.chk205);
@@ -1200,6 +1204,26 @@
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // chk206
+            // 
+            this.chk206.AutoSize = true;
+            this.chk206.Location = new System.Drawing.Point(13, 157);
+            this.chk206.Name = "chk206";
+            this.chk206.Size = new System.Drawing.Size(175, 17);
+            this.chk206.TabIndex = 271;
+            this.chk206.Text = "206. Permitir Abrir/Fechar Caixa";
+            this.chk206.UseVisualStyleBackColor = true;
+            // 
+            // chk207
+            // 
+            this.chk207.AutoSize = true;
+            this.chk207.Location = new System.Drawing.Point(13, 180);
+            this.chk207.Name = "chk207";
+            this.chk207.Size = new System.Drawing.Size(217, 17);
+            this.chk207.TabIndex = 272;
+            this.chk207.Text = "207. Permitir Visualizar Saldo das Contas";
+            this.chk207.UseVisualStyleBackColor = true;
+            // 
             // FrmPermissoesUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1329,5 +1353,7 @@
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv6;
         private System.Windows.Forms.CheckBox chk301;
         private System.Windows.Forms.CheckBox chk300;
+        private System.Windows.Forms.CheckBox chk207;
+        private System.Windows.Forms.CheckBox chk206;
     }
 }
