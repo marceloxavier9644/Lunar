@@ -55,6 +55,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             this.valorFaltante = valorFaltante;
             txtValor.TextAlign = HorizontalAlignment.Center;
             this.venda = venda;
+
         }
 
         public FrmBoleto(decimal valorFaltante, OrdemServico ordemservico)
@@ -65,15 +66,18 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             this.valorFaltante = valorFaltante;
             txtValor.TextAlign = HorizontalAlignment.Center;
             this.ordemservico = ordemservico;
+
         }
 
         private void FrmBoleto_Paint(object sender, PaintEventArgs e)
         {
+            gridParcelas.Columns["VENCIMENTO"].AllowEditing = true;
             txtValor.Texts = string.Format("{0:0.00}", valorFaltante);
             if (String.IsNullOrEmpty(txtValor.Texts))
             {
-                txtValor.Focus();
                 txtParcelas.Texts = "1";
+                txtParcelas.Focus();
+                txtParcelas.SelectAll();
             }
             txtDataVencimento.Value = DateTime.Now.AddMonths(1);
         }
@@ -300,6 +304,55 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
         {
             if (e.KeyChar == 13)
                 inserirParcelas();
+        }
+
+        private void gridParcelas_CurrentCellValidating(object sender, Syncfusion.WinForms.DataGrid.Events.CurrentCellValidatingEventArgs e)
+        {
+            if (e.Column.MappingName == "VENCIMENTO")
+            {
+                try
+                {
+                    UpdateVencimentos();
+                    DateTime dataValida = DateTime.Parse(e.NewValue.ToString());
+                    e.IsValid = true;
+                    //GenericaDesktop.ShowInfo("Alterado com Sucesso");
+                }
+                catch
+                {
+                    e.IsValid = false;
+                    e.ErrorMessage = "Data Inválida, digite no formato 00/00/0000";
+
+                }
+            }
+        }
+
+        private void UpdateVencimentos()
+        {
+            try
+            {
+                DateTime baseDate = DateTime.Parse(txtDataVencimento.Value.ToString());
+                foreach (DataRow row in dsParcelas.Tables[0].Rows)
+                {
+                    DateTime vencimento = DateTime.Parse(row["VENCIMENTO"].ToString());
+
+                    if (vencimento != baseDate)
+                    {
+                        // Recalcule os vencimentos baseados na nova data
+                        int monthsToAdd = (vencimento.Year - baseDate.Year) * 12 + vencimento.Month - baseDate.Month;
+                        baseDate = baseDate.AddMonths(monthsToAdd);
+
+                        // Atualize o vencimento na tabela
+                        row["VENCIMENTO"] = baseDate.ToShortDateString();
+                    }
+                }
+
+                // Atualize o grid
+                gridParcelas.DataSource = dsParcelas.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao atualizar vencimentos: " + ex.Message);
+            }
         }
     }
 }

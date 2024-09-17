@@ -1,9 +1,11 @@
 ﻿using Lunar.Telas.Cadastros.Cliente;
+using Lunar.Telas.OrdensDeServico;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas;
 using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
+using LunarBase.Utilidades;
 using Syncfusion.Data;
 using Syncfusion.WinForms.DataGrid;
 using Syncfusion.WinForms.DataGrid.Enums;
@@ -12,7 +14,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
 using Exception = System.Exception;
 
 namespace Lunar.Telas.Condicionais
@@ -775,5 +779,54 @@ namespace Lunar.Telas.Condicionais
                 return false;
         }
 
+        private async void btnEnviarWhats_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                Condicional condicional = new Condicional();
+                condicional = (Condicional)grid.SelectedItem;
+                string telefoneCompleto = "";
+                if (condicional.Cliente.PessoaTelefone != null)
+                {
+                    telefoneCompleto = EnviarMensagemWhatsapp.TratarTelefone(condicional.Cliente.PessoaTelefone.Ddd, condicional.Cliente.PessoaTelefone.Telefone);
+                }
+                FrmEnvioMensagem frmEnvioMensagem = new FrmEnvioMensagem(telefoneCompleto, EnviarMensagemWhatsapp.capturarNomeParaMensagem(condicional.Cliente.RazaoSocial), true, "Olá, [nome]! Segue cópia da condicional realizada na " + Sessao.empresaFilialLogada.NomeFantasia);
+                if (frmEnvioMensagem.ShowDialog() == DialogResult.OK)
+                {
+                    string escolha = frmEnvioMensagem.GetEscolha();
+                    string numero = frmEnvioMensagem.GetTelefone();
+                    string nome = frmEnvioMensagem.GetNome();
+                    string mensagem = frmEnvioMensagem.GetMensagem();
+                    //Ajusta nome
+                    if (mensagem.Contains("[nome]"))
+                    {
+                        mensagem = mensagem.Replace("[nome]", EnviarMensagemWhatsapp.capturarNomeParaMensagem(nome));
+                    }
+                    if (escolha.Equals("Envio PDF") || string.IsNullOrEmpty(escolha))
+                    {
+                        await enviarPDfPeloWhats(condicional, numero, nome, mensagem);
+                    }
+                }
+            }
+        }
+
+        private async Task enviarPDfPeloWhats(Condicional condicional, string numero, string nome, string mensagem)
+        {
+            string caminhoPDF = "";
+
+            if (grid.SelectedIndex >= 0)
+            {
+                FrmImprimirCondicional frmImprimirCondicional = new FrmImprimirCondicional(condicional);
+                caminhoPDF = frmImprimirCondicional.GerarPDF(condicional);
+            }
+
+            if (!String.IsNullOrEmpty(caminhoPDF))
+            {
+                var client = new EnviarMensagemWhatsapp();
+                await client.SendMessageAsync(numero, mensagem);
+                await client.SendMediaMessageAsync(numero, caminhoPDF);
+                GenericaDesktop.ShowInfo("Mensagem enviada com Sucesso!");
+            }
+        }
     }
 }

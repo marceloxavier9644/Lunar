@@ -3485,7 +3485,6 @@ namespace Lunar.Telas.Vendas
 
                 AtualizaEstoque(false, "VENDA: <" + vendaConclusao.Id + "> " + txtClienteAbaPagamento.Texts);
 
-
                 vendaConclusao.Concluida = true;
                 if (this.condicional1 != null)
                 {
@@ -3971,6 +3970,7 @@ namespace Lunar.Telas.Vendas
 
         private void btnGerarNfe_Click(object sender, EventArgs e)
         {
+            concluirVenda(venda, true);
             Thread th = new Thread(abrirAguarde2);
             th.Start();
             gerarNFE();
@@ -4015,19 +4015,8 @@ namespace Lunar.Telas.Vendas
                     {
                         if (validador.validarProdutosNota(listaProdutosNFe))
                         {
-                            concluirVenda(venda, true);
+                            //concluirVenda(venda, true);
                             numeroNFCe = Sessao.parametroSistema.ProximoNumeroNFe;
-                            //Nfe nfConferencia = new Nfe();
-                            //NfeController nfeController = new NfeController();
-                            //nfConferencia = nfeController.selecionarUltimoNumeroNota("55");
-                            //if (nfConferencia != null)
-                            //{
-                            //    if (nfConferencia.Id > 0)
-                            //    {
-                            //        if (numeroNFCe != (int.Parse(nfConferencia.NNf) + 1).ToString())
-                            //            numeroNFCe = (int.Parse(nfConferencia.NNf.ToString()) + 1).ToString();
-                            //    }
-                            //}
                             xmlStrEnvio = emitirNFe.gerarXMLNfe(valorTotal, valorComDesconto, decimal.Parse(txtDesconto.Texts.Replace("R$ ", "")), numeroNFCe, listaProdutosNFe, cli, venda, false, "VENDA", null);
                             if (!String.IsNullOrEmpty(xmlStrEnvio))
                             {

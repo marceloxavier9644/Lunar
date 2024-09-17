@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.btnFechar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -137,27 +137,26 @@
             // gridParcelas
             // 
             this.gridParcelas.AccessibleName = "Table";
-            this.gridParcelas.AllowEditing = false;
             this.gridParcelas.AllowSorting = false;
-            gridTextColumn1.AllowEditing = false;
-            gridTextColumn1.AllowSorting = false;
-            gridTextColumn1.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn1.HeaderText = "Parcela";
-            gridTextColumn1.MappingName = "PARCELA";
-            gridTextColumn2.AllowEditing = false;
-            gridTextColumn2.AllowSorting = false;
-            gridTextColumn2.Format = "dd/MM/yyyy";
-            gridTextColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn2.HeaderText = "Vencimento";
-            gridTextColumn2.MappingName = "VENCIMENTO";
-            gridTextColumn3.AllowEditing = false;
-            gridTextColumn3.AllowSorting = false;
-            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridTextColumn3.HeaderText = "Valor";
-            gridTextColumn3.MappingName = "VALOR";
-            this.gridParcelas.Columns.Add(gridTextColumn1);
-            this.gridParcelas.Columns.Add(gridTextColumn2);
-            this.gridParcelas.Columns.Add(gridTextColumn3);
+            gridTextColumn4.AllowEditing = false;
+            gridTextColumn4.AllowSorting = false;
+            gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn4.HeaderText = "Parcela";
+            gridTextColumn4.MappingName = "PARCELA";
+            gridTextColumn5.AllowEditing = false;
+            gridTextColumn5.AllowSorting = false;
+            gridTextColumn5.Format = "dd/MM/yyyy";
+            gridTextColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn5.HeaderText = "Vencimento";
+            gridTextColumn5.MappingName = "VENCIMENTO";
+            gridTextColumn6.AllowEditing = false;
+            gridTextColumn6.AllowSorting = false;
+            gridTextColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn6.HeaderText = "Valor";
+            gridTextColumn6.MappingName = "VALOR";
+            this.gridParcelas.Columns.Add(gridTextColumn4);
+            this.gridParcelas.Columns.Add(gridTextColumn5);
+            this.gridParcelas.Columns.Add(gridTextColumn6);
             this.gridParcelas.Location = new System.Drawing.Point(10, 217);
             this.gridParcelas.Name = "gridParcelas";
             this.gridParcelas.Size = new System.Drawing.Size(438, 155);
@@ -165,6 +164,7 @@
             this.gridParcelas.TabIndex = 212;
             this.gridParcelas.Text = "sfDataGrid1";
             this.gridParcelas.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.gridParcelas_QueryRowStyle);
+            this.gridParcelas.CurrentCellValidating += new Syncfusion.WinForms.DataGrid.Events.CurrentCellValidatingEventHandler(this.gridParcelas_CurrentCellValidating);
             // 
             // txtDataVencimento
             // 
@@ -223,7 +223,7 @@
             this.txtParcelas.Size = new System.Drawing.Size(171, 37);
             this.txtParcelas.TabIndex = 210;
             this.txtParcelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtParcelas.Texts = "";
+            this.txtParcelas.Texts = "1";
             this.txtParcelas.UnderlinedStyle = false;
             this.txtParcelas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtParcelas_KeyPress);
             this.txtParcelas.Leave += new System.EventHandler(this.txtParcelas_Leave);

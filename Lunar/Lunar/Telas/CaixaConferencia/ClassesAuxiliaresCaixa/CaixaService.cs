@@ -42,6 +42,21 @@ namespace Lunar.Telas.CaixaConferencia.ClassesAuxiliaresCaixa
             }
             return saldo;
         }
+
+
+        public async Task<decimal> ObterSaldoGeralEmpresaAsync()
+        {
+            decimal saldo = 0;
+            string sql = "";
+
+            sql = "SELECT SUM(CASE WHEN Tabela.Tipo = 'E' THEN Tabela.Valor WHEN Tabela.Tipo = 'S' THEN -Tabela.Valor ELSE 0 END) AS Saldo " +
+                  "FROM Caixa Tabela WHERE Tabela.FormaPagamento <> 8 and Tabela.FormaPagamento <> 9 " +
+                  "AND Tabela.FLAGEXCLUIDO <> true";
+
+            saldo = await caixaDAO.SelecionarSaldoPorSqlNativoAsync(sql);
+
+            return saldo;
+        }
     }
 
 }

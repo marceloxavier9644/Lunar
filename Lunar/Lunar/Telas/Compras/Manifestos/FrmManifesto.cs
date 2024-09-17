@@ -63,10 +63,13 @@ namespace Lunar.Telas.Compras.Manifestos
                         foreach (var record in records)
                         {
                             var dataRowView = record.Data as DataRowView;
-                            chaveVerificada = dataRowView.Row["CHAVE"].ToString();
-                            if (chaveVerificada.Equals(manifesto.xmls[i].chave))
+                            if (dataRowView != null)
                             {
-                                JaExiste = true;
+                                chaveVerificada = dataRowView.Row["CHAVE"].ToString();
+                                if (chaveVerificada.Equals(manifesto.xmls[i].chave))
+                                {
+                                    JaExiste = true;
+                                }
                             }
                         }
                     }
@@ -220,9 +223,12 @@ namespace Lunar.Telas.Compras.Manifestos
                 this.grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
                 this.grid.AutoSizeController.Refresh();
             }
-            catch
+            catch (Exception erro)
             {
-
+                if (erro.Message.Contains("query did not return a unique result: 2"))
+                    GenericaDesktop.ShowErro("Falha ao selecionar fornecedor, você possui um mesmo fornecedor cadastrado 2 vezes com o msm cpf/cnpj. \n" + erro.Message);
+                else
+                    GenericaDesktop.ShowErro("Erro: " + erro.Message);
             }
         }
 

@@ -1,5 +1,7 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ConexaoBD;
+using NHibernate.Transform;
+using NHibernate;
 
 namespace LunarBase.ClassesDAO
 {
@@ -93,6 +95,32 @@ namespace LunarBase.ClassesDAO
             Session = Conexao.GetSession();
             IList<Pessoa> retorno = Session.CreateQuery(sql).List<Pessoa>();
             return retorno;
+        }
+
+        public IList<PessoaConsulta> SelecionarPessoasSemComprasPorSQLNativo(string sql)
+        {
+            using (var session = Conexao.GetSession())
+            {
+                IList<PessoaConsulta> retorno = session.CreateSQLQuery(sql)
+                    .AddScalar("ID", NHibernateUtil.Int32)
+                    .AddScalar("RazaoSocial", NHibernateUtil.String)
+                    .AddScalar("UltimaCompra", NHibernateUtil.DateTime)
+                    .AddScalar("TotalCompras", NHibernateUtil.Decimal)
+                    .AddScalar("Telefone", NHibernateUtil.String)
+                    .SetResultTransformer(Transformers.AliasToBean(typeof(PessoaConsulta)))
+                    .List<PessoaConsulta>();
+
+                return retorno;
+            }
+        }
+
+        public class PessoaConsulta
+        {
+            public int ID { get; set; }
+            public string RazaoSocial { get; set; }
+            public DateTime? UltimaCompra { get; set; }
+            public decimal? TotalCompras { get; set; }
+            public string Telefone { get; set; } // Para armazenar o telefone formatado (ddd + telefone)
         }
     }
 }

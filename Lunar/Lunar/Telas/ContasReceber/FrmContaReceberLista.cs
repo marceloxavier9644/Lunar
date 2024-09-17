@@ -702,6 +702,7 @@ namespace Lunar.Telas.ContasReceber
             if (GenericaDesktop.ShowConfirmacao("Tem certeza que deseja excluir as parcelas selecionadas?"))
             {
                 int i = 0;
+                OrdemServico ordem = new OrdemServico();
                 if (grid.SelectedItems.Count > 0)
                 {
                     foreach (var selectedItem in grid.SelectedItems)
@@ -719,6 +720,8 @@ namespace Lunar.Telas.ContasReceber
                             }
                             //Cancela conta a receber
                             Controller.getInstance().excluir(conta);
+                            if (conta.OrdemServico != null)
+                                ordem = conta.OrdemServico;
                             i++;
                         }
                         else
@@ -728,6 +731,27 @@ namespace Lunar.Telas.ContasReceber
                     {
                         GenericaDesktop.ShowInfo(i + " Contas a Receber Excluídas com Sucesso!");
                         btnPesquisar.PerformClick();
+                    }
+                    if(ordem != null)
+                    {
+                        if (ordem.Id > 0)
+                        {
+                            if (GenericaDesktop.ShowConfirmacao("Deseja reabrir a ordem de serviço ? " + ordem.Id + ", se houver registros no caixa, também serão excluidos! "))
+                            {
+                                ordem.Status = "ABERTA";
+                                Controller.getInstance().salvar(ordem);
+                                CaixaController caixaController = new CaixaController();
+                                IList<Caixa> listaCaixa = caixaController.selecionarCaixaPorOrigem("ORDEMSERVICO", ordem.Id.ToString());
+                                if (listaCaixa.Count > 0)
+                                {
+                                    foreach (Caixa caixa in listaCaixa)
+                                    {
+                                        Controller.getInstance().excluir(caixa);
+                                    }
+                                }
+                                GenericaDesktop.ShowInfo("Ordem de Serviço reaberta com Sucesso!");
+                            }
+                        }
                     }
 
                 }

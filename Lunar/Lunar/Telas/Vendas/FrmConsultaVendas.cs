@@ -132,6 +132,8 @@ namespace Lunar.Telas.Vendas
 
                 if (!String.IsNullOrEmpty(txtVendedor.Texts))
                     sql = sql + "and Tabela.Vendedor = " + txtVendedor.Texts + " ";
+                if (chkVendasCanceladas.Checked == true)
+                    sql = sql + "and Tabela.Cancelado = true ";
 
                 if (chkAtivarData.Checked == true)
                 {

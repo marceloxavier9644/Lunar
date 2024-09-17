@@ -267,7 +267,9 @@ namespace Lunar.Utils.OrganizacaoNF
                     string cest = null;
                     if (!String.IsNullOrEmpty(produto.Cest))
                         cest = produto.Cest;
-                    string descricaoProduto = produto.Produto.Descricao;
+                    string descricaoProduto = produto.Produto.Descricao.Trim();
+                    if (descricaoProduto.Length > 120)
+                        descricaoProduto = descricaoProduto.Substring(0, 119);
                     if (Sessao.parametroSistema.AmbienteProducao == false)
                         descricaoProduto = "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
 

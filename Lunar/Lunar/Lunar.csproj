@@ -494,6 +494,12 @@
     <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmCadastroVariacoes.Designer.cs">
       <DependentUpon>FrmCadastroVariacoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmCargaBalanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmCargaBalanca.Designer.cs">
+      <DependentUpon>FrmCargaBalanca.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Cadastros\Produtos\Auxiliares\FrmCESTCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1377,6 +1383,12 @@
     <Compile Include="Telas\Vendas\RecebimentoVendas\FrmPix.Designer.cs">
       <DependentUpon>FrmPix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Vendas\Relatorios\FrmRelatorioReativarClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Relatorios\FrmRelatorioReativarClientes.Designer.cs">
+      <DependentUpon>FrmRelatorioReativarClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Vendas\Relatorios\FrmVendaEOrdemPorPeriodo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1524,6 +1536,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmCadastroVariacoes.resx">
       <DependentUpon>FrmCadastroVariacoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmCargaBalanca.resx">
+      <DependentUpon>FrmCargaBalanca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Produtos\Auxiliares\FrmCESTCadastro.resx">
       <DependentUpon>FrmCESTCadastro.cs</DependentUpon>
@@ -1945,6 +1960,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\RecebimentoVendas\FrmPix.resx">
       <DependentUpon>FrmPix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Relatorios\FrmRelatorioReativarClientes.resx">
+      <DependentUpon>FrmRelatorioReativarClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Relatorios\FrmVendaEOrdemPorPeriodo.resx">
       <DependentUpon>FrmVendaEOrdemPorPeriodo.cs</DependentUpon>

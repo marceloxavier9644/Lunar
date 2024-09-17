@@ -173,7 +173,7 @@ namespace Lunar.Utils.OrganizacaoNF
             if (cliente != null)
             {
                 nfe.Cliente = cliente;
-                nfe.Destinatario = cliente.RazaoSocial;
+                nfe.Destinatario = cliente.RazaoSocial.Trim();
                 nfe.CnpjDestinatario = GenericaDesktop.RemoveCaracteres(cliente.Cnpj);
             }
             if (naturezaOperacao.Contains("VENDA"))
@@ -380,7 +380,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     string cest = null;
                     if (!String.IsNullOrEmpty(produto.Cest))
                         cest = produto.Cest;
-                    string descricaoProduto = produto.Produto.Descricao;
+                    string descricaoProduto = produto.Produto.Descricao.Trim();
                     if (Sessao.parametroSistema.AmbienteProducao == false)
                         descricaoProduto = "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
 
@@ -514,7 +514,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     string cest = null;
                     if (!String.IsNullOrEmpty(produto.Cest))
                         cest = produto.Cest;
-                    string descricaoProduto = produto.Produto.Descricao;
+                    string descricaoProduto = produto.Produto.Descricao.Trim();
                     if (Sessao.parametroSistema.AmbienteProducao == false)
                         descricaoProduto = "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
 
@@ -759,7 +759,7 @@ namespace Lunar.Utils.OrganizacaoNF
             }
             else
             {
-                throw new Exception("O Produto " + produto.Id.ToString() + " - " + produto.Descricao + " Está sem CST de ICMS ou está inválido, favor corrigir este produto em Cadastro de produtos, aba de tributação!");
+                throw new Exception("O Produto " + produto.Id.ToString() + " - " + produto.Descricao.Trim() + " Está sem CST de ICMS ou está inválido, favor corrigir este produto em Cadastro de produtos, aba de tributação!");
             }
         }
 
@@ -1312,7 +1312,7 @@ namespace Lunar.Utils.OrganizacaoNF
             }
             else
             {
-                throw new Exception("O Produto " + produto.Id.ToString() + " - " + produto.Descricao + " Está sem CST de PIS ou está inválido, favor corrigir este produto em Cadastro de produtos, aba de tributação!");
+                throw new Exception("O Produto " + produto.Id.ToString() + " - " + produto.Descricao.Trim() + " Está sem CST de PIS ou está inválido, favor corrigir este produto em Cadastro de produtos, aba de tributação!");
             }
         }
 
@@ -1472,7 +1472,7 @@ namespace Lunar.Utils.OrganizacaoNF
             }
             else
             {
-                throw new Exception("O Produto " + produto.Id.ToString() + " - " + produto.Descricao + " Está sem CST de COFINS ou está inválido, favor corrigir este produto em Cadastro de produtos, aba de tributação!");
+                throw new Exception("O Produto " + produto.Id.ToString() + " - " + produto.Descricao.Trim() + " Está sem CST de COFINS ou está inválido, favor corrigir este produto em Cadastro de produtos, aba de tributação!");
             }
         }
         private string gerarNFeComConsumidor_4(Nfe nfe, TAmb tpAmbiente, Venda venda, OrdemServico ordemServico)
@@ -1644,12 +1644,12 @@ namespace Lunar.Utils.OrganizacaoNF
                     indIEDest = retornarTipoIE(),
                     enderDest = new TEndereco
                     {
-                        xLgr = nfe.Cliente.EnderecoPrincipal.Logradouro,
+                        xLgr = nfe.Cliente.EnderecoPrincipal.Logradouro.Trim(),
                         nro = nfe.Cliente.EnderecoPrincipal.Numero,
-                        xBairro = nfe.Cliente.EnderecoPrincipal.Bairro,
+                        xBairro = nfe.Cliente.EnderecoPrincipal.Bairro.Trim(),
                         //ajustar
                         cMun = nfe.Cliente.EnderecoPrincipal.Cidade.Ibge,
-                        xMun = nfe.Cliente.EnderecoPrincipal.Cidade.Descricao,
+                        xMun = nfe.Cliente.EnderecoPrincipal.Cidade.Descricao.Trim(),
                         UF = tratarCampo.Retornar_TUf(nfe.Cliente.EnderecoPrincipal.Cidade.Estado.Uf),
                         CEP = (GenericaDesktop.RemoveCaracteres(nfe.Cliente.EnderecoPrincipal.Cep)),
                         cPais = "1058",
@@ -1670,12 +1670,12 @@ namespace Lunar.Utils.OrganizacaoNF
                     IE = GenericaDesktop.RemoveCaracteres(cliente.InscricaoEstadual),
                     enderDest = new TEndereco
                     {
-                        xLgr = nfe.Cliente.EnderecoPrincipal.Logradouro,
+                        xLgr = nfe.Cliente.EnderecoPrincipal.Logradouro.Trim(),
                         nro = nfe.Cliente.EnderecoPrincipal.Numero,
-                        xBairro = nfe.Cliente.EnderecoPrincipal.Bairro,
+                        xBairro = nfe.Cliente.EnderecoPrincipal.Bairro.Trim(),
                         //ajustar
                         cMun = nfe.Cliente.EnderecoPrincipal.Cidade.Ibge,
-                        xMun = nfe.Cliente.EnderecoPrincipal.Cidade.Descricao,
+                        xMun = nfe.Cliente.EnderecoPrincipal.Cidade.Descricao.Trim(),
                         UF = tratarCampo.Retornar_TUf(nfe.Cliente.EnderecoPrincipal.Cidade.Estado.Uf),
                         CEP = (GenericaDesktop.RemoveCaracteres(nfe.Cliente.EnderecoPrincipal.Cep)),
                         cPais = "1058",
@@ -1751,7 +1751,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     nro = numeroEndereco,
                     xBairro = bairro,
                     cMun = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge,
-                    xMun = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao,
+                    xMun = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao.Trim(),
                     UF = tratarCampo.Retornar_TUfEmi(Sessao.empresaFilialLogada.Endereco.Cidade.Estado.Uf),
                     CEP = GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Endereco.Cep),
                     fone = fone

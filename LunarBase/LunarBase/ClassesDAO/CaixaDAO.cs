@@ -44,6 +44,16 @@ namespace LunarBase.ClassesDAO
                 return saldo;
             }
         }
+        public async Task<decimal> SelecionarSaldoPorSqlNativoAsync(string sql)
+        {
+            using (var session = Conexao.GetSession())
+            {
+                // Execute a consulta SQL de forma assíncrona e retorne o valor escalar
+                decimal saldo = await session.CreateSQLQuery(sql).UniqueResultAsync<decimal>();
+
+                return saldo;
+            }
+        }
 
     }
 }

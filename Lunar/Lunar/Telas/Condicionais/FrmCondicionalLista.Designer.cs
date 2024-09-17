@@ -67,6 +67,7 @@
             this.btnDevolver = new Lunar.RJ_UI.Classes.RJButton();
             this.btnImprimir = new Lunar.RJ_UI.Classes.RJButton();
             this.btnFaturar = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnEnviarWhats = new Lunar.RJ_UI.Classes.RJButton();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -84,7 +85,7 @@
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1039, 44);
+            this.panelTitleBar.Size = new System.Drawing.Size(1084, 44);
             this.panelTitleBar.TabIndex = 252;
             // 
             // btnClose
@@ -101,7 +102,7 @@
             this.btnClose.IconColor = System.Drawing.Color.White;
             this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnClose.IconSize = 30;
-            this.btnClose.Location = new System.Drawing.Point(998, 3);
+            this.btnClose.Location = new System.Drawing.Point(1043, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(39, 41);
             this.btnClose.TabIndex = 2;
@@ -128,7 +129,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 44);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1039, 180);
+            this.groupBox1.Size = new System.Drawing.Size(1084, 180);
             this.groupBox1.TabIndex = 253;
             this.groupBox1.TabStop = false;
             // 
@@ -609,7 +610,7 @@
             this.grid.Location = new System.Drawing.Point(12, 240);
             this.grid.Name = "grid";
             this.grid.SelectionMode = Syncfusion.WinForms.DataGrid.Enums.GridSelectionMode.Extended;
-            this.grid.Size = new System.Drawing.Size(1018, 92);
+            this.grid.Size = new System.Drawing.Size(1063, 92);
             this.grid.Style.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.grid.Style.HeaderStyle.Font.Size = 12F;
             this.grid.TabIndex = 254;
@@ -631,7 +632,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.Black;
-            this.btnExcluir.Location = new System.Drawing.Point(225, 338);
+            this.btnExcluir.Location = new System.Drawing.Point(270, 338);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(193, 45);
             this.btnExcluir.TabIndex = 257;
@@ -653,7 +654,7 @@
             this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.ForeColor = System.Drawing.Color.Transparent;
-            this.btnNovo.Location = new System.Drawing.Point(828, 338);
+            this.btnNovo.Location = new System.Drawing.Point(873, 338);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(199, 45);
             this.btnNovo.TabIndex = 256;
@@ -675,7 +676,7 @@
             this.btnDevolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDevolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDevolver.ForeColor = System.Drawing.Color.Black;
-            this.btnDevolver.Location = new System.Drawing.Point(623, 338);
+            this.btnDevolver.Location = new System.Drawing.Point(668, 338);
             this.btnDevolver.Name = "btnDevolver";
             this.btnDevolver.Size = new System.Drawing.Size(199, 45);
             this.btnDevolver.TabIndex = 255;
@@ -697,7 +698,7 @@
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.Black;
-            this.btnImprimir.Location = new System.Drawing.Point(26, 338);
+            this.btnImprimir.Location = new System.Drawing.Point(71, 338);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(193, 45);
             this.btnImprimir.TabIndex = 259;
@@ -719,7 +720,7 @@
             this.btnFaturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFaturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFaturar.ForeColor = System.Drawing.Color.Black;
-            this.btnFaturar.Location = new System.Drawing.Point(424, 338);
+            this.btnFaturar.Location = new System.Drawing.Point(469, 338);
             this.btnFaturar.Name = "btnFaturar";
             this.btnFaturar.Size = new System.Drawing.Size(193, 45);
             this.btnFaturar.TabIndex = 260;
@@ -728,12 +729,38 @@
             this.btnFaturar.UseVisualStyleBackColor = false;
             this.btnFaturar.Click += new System.EventHandler(this.btnFaturar_Click);
             // 
+            // btnEnviarWhats
+            // 
+            this.btnEnviarWhats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEnviarWhats.BackColor = System.Drawing.Color.White;
+            this.btnEnviarWhats.BackgroundColor = System.Drawing.Color.White;
+            this.btnEnviarWhats.BackgroundImage = global::Lunar.Properties.Resources.whatsapp_logo_icone;
+            this.btnEnviarWhats.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEnviarWhats.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEnviarWhats.BorderRadius = 8;
+            this.btnEnviarWhats.BorderSize = 2;
+            this.btnEnviarWhats.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnviarWhats.FlatAppearance.BorderSize = 0;
+            this.btnEnviarWhats.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEnviarWhats.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEnviarWhats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnviarWhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviarWhats.ForeColor = System.Drawing.Color.Black;
+            this.btnEnviarWhats.Location = new System.Drawing.Point(30, 343);
+            this.btnEnviarWhats.Name = "btnEnviarWhats";
+            this.btnEnviarWhats.Size = new System.Drawing.Size(35, 37);
+            this.btnEnviarWhats.TabIndex = 261;
+            this.btnEnviarWhats.TextColor = System.Drawing.Color.Black;
+            this.btnEnviarWhats.UseVisualStyleBackColor = false;
+            this.btnEnviarWhats.Click += new System.EventHandler(this.btnEnviarWhats_Click);
+            // 
             // FrmCondicionalLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1039, 392);
+            this.ClientSize = new System.Drawing.Size(1084, 392);
+            this.Controls.Add(this.btnEnviarWhats);
             this.Controls.Add(this.btnFaturar);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnExcluir);
@@ -795,5 +822,6 @@
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioTodas;
         private RJ_UI.Classes.RJButton btnImprimir;
         private RJ_UI.Classes.RJButton btnFaturar;
+        private RJ_UI.Classes.RJButton btnEnviarWhats;
     }
 }

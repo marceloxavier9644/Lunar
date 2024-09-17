@@ -3,6 +3,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -210,6 +211,31 @@ namespace Lunar.Utils.LunarChatIntegracao
                 string telefoneCompleto = "55" + ddd + telefone;
 
                 return telefoneCompleto;
+            }
+
+            public static string capturarNomeParaMensagem(string nomeCompleto)
+            {
+                if (string.IsNullOrWhiteSpace(nomeCompleto))
+                {
+                    return nomeCompleto;
+                }
+
+                string[] partes = nomeCompleto.Split(' ');
+                TextInfo textInfo = new CultureInfo("pt-BR", false).TextInfo;
+                string nomeFormatado = "";
+
+                if (partes.Length >= 2)
+                {
+                    string primeiroNomeFormatado = textInfo.ToTitleCase(partes[0].ToLower());
+                    string segundoNomeFormatado = textInfo.ToTitleCase(partes[1].ToLower());
+                    nomeFormatado = $"{primeiroNomeFormatado} {segundoNomeFormatado}";
+                }
+                else
+                {
+                    nomeFormatado = textInfo.ToTitleCase(nomeCompleto.ToLower());
+                }
+
+                return nomeFormatado;
             }
 
         }

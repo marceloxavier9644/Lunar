@@ -363,7 +363,10 @@ namespace Lunar.Telas.Estoques
                     produto = (Produto)ProdutoController.getInstance().selecionar(produto);
                     produto.Descricao = dataRowView.Row["Descricao"].ToString();
                     produto.ValorVenda = decimal.Parse(dataRowView.Row["Valor"].ToString());
-                    produto.Estoque = double.Parse(dataRowView.Row["Quantidade"].ToString());
+                    if(!String.IsNullOrEmpty(dataRowView.Row["Quantidade"].ToString()))
+                        produto.Estoque = double.Parse(dataRowView.Row["Quantidade"].ToString());
+                    else
+                        produto.Estoque =1;
                     produto.Observacoes = txtObservacoes.Texts;
                     listaProdutosEtiquetas.Add(produto);
                 }

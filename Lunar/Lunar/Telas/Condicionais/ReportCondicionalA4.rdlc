@@ -664,7 +664,7 @@
       <Width>6.78125in</Width>
       <Page>
         <PageHeader>
-          <Height>5.06828cm</Height>
+          <Height>5.10356cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -687,6 +687,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>0.03528cm</Top>
               <Height>0.88787cm</Height>
               <Width>17.22438cm</Width>
               <Style>
@@ -736,7 +737,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Empresa</rd:DefaultName>
-              <Top>1.9812cm</Top>
+              <Top>2.01648cm</Top>
               <Left>0.34078cm</Left>
               <Height>0.6cm</Height>
               <Width>9.485cm</Width>
@@ -776,7 +777,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Cliente</rd:DefaultName>
-              <Top>3.48933cm</Top>
+              <Top>3.52461cm</Top>
               <Left>0.34078cm</Left>
               <Height>0.6cm</Height>
               <Width>16.54938cm</Width>
@@ -808,7 +809,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
-              <Top>2.75759cm</Top>
+              <Top>2.79287cm</Top>
               <Left>0.34078cm</Left>
               <Height>0.6cm</Height>
               <Width>5.27812cm</Width>
@@ -848,7 +849,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>EnderecoCliente</rd:DefaultName>
-              <Top>4.03288cm</Top>
+              <Top>4.06816cm</Top>
               <Left>0.34078cm</Left>
               <Height>0.6cm</Height>
               <Width>16.54938cm</Width>
@@ -880,7 +881,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Vendedor</rd:DefaultName>
-              <Top>2.75759cm</Top>
+              <Top>2.79287cm</Top>
               <Left>7.51099cm</Left>
               <Height>0.6cm</Height>
               <Width>9.37917cm</Width>
@@ -914,7 +915,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Id</rd:DefaultName>
-              <Top>0.86317cm</Top>
+              <Top>0.89845cm</Top>
               <Left>6.69078cm</Left>
               <Height>0.68764cm</Height>
               <Width>3.79646cm</Width>
@@ -930,7 +931,7 @@
               </Style>
             </Textbox>
             <Line Name="Line2">
-              <Top>1.7272cm</Top>
+              <Top>1.76248cm</Top>
               <Left>0.34078cm</Left>
               <Height>0cm</Height>
               <Width>16.54937cm</Width>
@@ -969,7 +970,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox28</rd:DefaultName>
-              <Top>1.9812cm</Top>
+              <Top>2.01648cm</Top>
               <Left>11.28162cm</Left>
               <Height>0.6cm</Height>
               <Width>5.60854cm</Width>
@@ -988,9 +989,9 @@
               <Source>External</Source>
               <Value>="file:\\\"&amp;Parameters!logo.Value</Value>
               <Sizing>FitProportional</Sizing>
-              <Top>0.28575cm</Top>
-              <Height>1.30034cm</Height>
-              <Width>3.95111cm</Width>
+              <Left>0.34078cm</Left>
+              <Height>1.58609cm</Height>
+              <Width>3.02599cm</Width>
               <ZIndex>9</ZIndex>
               <Style>
                 <Border>

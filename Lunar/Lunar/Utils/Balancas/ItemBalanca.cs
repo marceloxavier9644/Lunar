@@ -229,7 +229,7 @@
         /// Deve ter 2 bytes por balança.
         /// Exemplo: Para associar balanças 2 e 5 com itens inativos: |0205|
         /// </summary>
-        public string BalançasInativas { get; set; }
+        public string BalancasInativas { get; set; }
 
         /// <summary>
         /// Código EAN-13 especial (G).

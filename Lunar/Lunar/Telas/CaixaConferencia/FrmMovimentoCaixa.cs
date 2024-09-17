@@ -1,6 +1,7 @@
 ﻿using Lunar.consultaSPCBrasil;
 using Lunar.Telas.Cadastros.Bancos;
 using Lunar.Telas.Cadastros.Empresas;
+using Lunar.Telas.CaixaConferencia.ClassesAuxiliaresCaixa;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.SPCs;
 using Lunar.Telas.UsuarioRegistro;
@@ -8,6 +9,7 @@ using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
 using Lunar.Utils.SPCBrasilIntegracao;
 using LunarBase.Classes;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using System;
@@ -1373,26 +1375,14 @@ namespace Lunar.Telas.CaixaConferencia
             lblSaldo.Text = saldo.ToString("C2"); // Formata o saldo como valor monetário
         }
 
-        private void CalcularSaldoTotal()
+        private async void CalcularSaldoTotal()
         {
-            decimal saldo = 0;
-            CaixaController caixaController = new CaixaController();
+            CaixaDAO caixaDAO = new CaixaDAO();
+            //CaixaController caixaController = new CaixaController();
             IList<Caixa> listaCaixa = new List<Caixa>();
-            listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.FormaPagamento <> 9 and Tabela.FormaPagamento <> 8 and Tabela.FlagExcluido <> true");
-            if (listaCaixa.Count > 0)
-            {
-                foreach (Caixa caixa in listaCaixa)
-                {
-                    if (caixa.Tipo == "E" && caixa.FormaPagamento.Id != 8 && caixa.FormaPagamento.Id != 9)
-                    {
-                        saldo += caixa.Valor;
-                    }
-                    else if (caixa.Tipo == "S") // Saída
-                    {
-                        saldo -= caixa.Valor;
-                    }
-                }
-            }
+            CaixaService caixaService = new CaixaService();
+            decimal saldo = await caixaService.ObterSaldoGeralEmpresaAsync();
+   
             if (saldo > 0)
                 lblSaldoTotal.ForeColor = Color.Blue;
             else

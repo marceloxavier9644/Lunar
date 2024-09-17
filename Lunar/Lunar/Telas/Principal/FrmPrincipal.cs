@@ -1517,5 +1517,71 @@ namespace Lunar.Telas.Principal
                 fr.Dispose();
             }
         }
+
+        private void reativaçãoDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            FrmRelatorioReativarClientes fr = new FrmRelatorioReativarClientes();
+            fr.Owner = formBackground;
+            fr.ShowDialog();
+            formBackground.Dispose();
+            fr.Dispose();
+        }
+
+        private void aniversariantesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            FrmAniversariantes fr = new FrmAniversariantes();
+            fr.Owner = formBackground;
+            fr.ShowDialog();
+            formBackground.Dispose();
+            fr.Dispose();
+        }
+
+        private void enviarProdutosBalançaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            FrmCargaBalanca fr = new FrmCargaBalanca();
+            fr.Owner = formBackground;
+            fr.ShowDialog();
+            formBackground.Dispose();
+            fr.Dispose();
+        }
     }
 }

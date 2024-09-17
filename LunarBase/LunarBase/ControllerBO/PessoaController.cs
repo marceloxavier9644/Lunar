@@ -180,7 +180,8 @@ namespace LunarBase.ControllerBO
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                string mensagemErro = $"Erro ao selecionar pessoa por CPF/CNPJ '{cpfCNPJ}': {e.Message}";
+                throw new Exception(mensagemErro, e);
             }
             finally
             {

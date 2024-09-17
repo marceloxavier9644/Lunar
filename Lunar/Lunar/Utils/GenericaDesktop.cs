@@ -993,7 +993,7 @@ namespace Lunar.Utils
                 }
                 else
                 {
-                    GenericaDesktop.ShowErro("Arquivo já existe: " + caminhoCompleto);
+                    //GenericaDesktop.ShowErro("Arquivo já existe: " + caminhoCompleto);
                 }
             }
             catch (Exception err)

@@ -9,6 +9,9 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using MySql.Data.MySqlClient;
+using NHibernate.Exceptions;
 using Syncfusion.WinForms.DataGrid.Interactivity;
 using System;
 using System.Collections.Generic;
@@ -1587,9 +1590,41 @@ namespace Lunar.Telas.Cadastros.Produtos
                 get_Produto(produto);
                 getGrade();
             }
-            catch (Exception ex) 
+            catch (GenericADOException adoEx)
             {
-                GenericaDesktop.ShowErro("Erro ao gravar produto \n" + ex.Message);
+                // Captura a exceção específica de NHibernate
+                string mensagemErro = $"Erro ao gravar produto\n" +
+                    $"Mensagem: {adoEx.Message}\n" +
+                    $"StackTrace: {adoEx.StackTrace}";
+
+                // Captura a exceção interna, se disponível
+                if (adoEx.InnerException is MySqlException sqlEx)
+                {
+                    mensagemErro += $"\nCódigo de Erro MySQL: {sqlEx.Number}\n" +
+                                    $"Mensagem MySQL: {sqlEx.Message}\n" +
+                                    $"StackTrace MySQL: {sqlEx.StackTrace}";
+                }
+
+                // Exibe a mensagem amigável ao usuário
+                GenericaDesktop.ShowErro("Erro ao gravar produto. Por favor, verifique os dados e tente novamente.");
+
+                // Registra o erro detalhado
+                Logger logger = new Logger();
+                logger.WriteLog(mensagemErro, "log");
+            }
+            catch (Exception ex)
+            {
+                // Captura outras exceções
+                string mensagemErro = $"Erro ao gravar produto\n" +
+                    $"Mensagem: {ex.Message}\n" +
+                    $"StackTrace: {ex.StackTrace}";
+
+                // Exibe a mensagem amigável ao usuário
+                GenericaDesktop.ShowErro("Ocorreu um erro inesperado ao gravar o produto. Por favor, tente novamente.");
+
+                // Registra o erro detalhado
+                Logger logger = new Logger();
+                logger.WriteLog(mensagemErro, "log");
             }
         }
         public bool CodigoBarrasExiste(string codigoBarras)

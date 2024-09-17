@@ -1392,7 +1392,7 @@ namespace Lunar.Telas.Fiscal
                         IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
                         foreach (NfeProduto nfeProduto in listaProdutos)
                         {
-                            totalNotaSemDesconto = (totalNotaSemDesconto + nfeProduto.VUnCom) * decimal.Parse(nfeProduto.QCom);
+                            totalNotaSemDesconto = totalNotaSemDesconto + (nfeProduto.ValorProduto * decimal.Parse(nfeProduto.QCom));
                             totalDesconto = totalDesconto + nfeProduto.VDesc;
                             nfeProduto.Ncm = nfeProduto.Produto.Ncm;
                             nfeProduto.Cest = nfeProduto.Produto.Cest;
@@ -1408,6 +1408,7 @@ namespace Lunar.Telas.Fiscal
 
                         totalNotaComDesconto = totalNotaSemDesconto - totalDesconto;
                         nfe.VNf = totalNotaComDesconto;
+                        //MessageBox.Show("NF COM DESC. " + totalNotaComDesconto.ToString("N2") + " " + "Total Desc: " + totalDesconto.ToString("N2"));
                         Controller.getInstance().salvar(nfe);
                         //Reenvia nota
                         if (venda != null || ordemServico != null)

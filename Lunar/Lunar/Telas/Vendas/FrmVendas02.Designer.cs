@@ -67,6 +67,7 @@
             this.btnCancelarVenda = new Lunar.RJ_UI.Classes.RJButton();
             this.btnDescontoGeral = new Lunar.RJ_UI.Classes.RJButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblCarregando = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -185,7 +186,6 @@
             this.dataColumn10 = new System.Data.DataColumn();
             this.dataColumn11 = new System.Data.DataColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblCarregando = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabVenda.SuspendLayout();
@@ -575,6 +575,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1005, 705);
             this.panel2.TabIndex = 149;
+            // 
+            // lblCarregando
+            // 
+            this.lblCarregando.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCarregando.BackColor = System.Drawing.Color.Transparent;
+            this.lblCarregando.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblCarregando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCarregando.ForeColor = System.Drawing.Color.Black;
+            this.lblCarregando.Location = new System.Drawing.Point(858, 60);
+            this.lblCarregando.Name = "lblCarregando";
+            this.lblCarregando.Size = new System.Drawing.Size(88, 16);
+            this.lblCarregando.TabIndex = 199;
+            this.lblCarregando.Text = "Carregando...";
+            this.lblCarregando.Visible = false;
             // 
             // btnPesquisaCliente
             // 
@@ -2655,20 +2669,6 @@
             this.dataColumn11.Caption = "VendaForma";
             this.dataColumn11.ColumnName = "VendaForma";
             this.dataColumn11.DataType = typeof(int);
-            // 
-            // lblCarregando
-            // 
-            this.lblCarregando.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCarregando.BackColor = System.Drawing.Color.Transparent;
-            this.lblCarregando.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblCarregando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCarregando.ForeColor = System.Drawing.Color.Black;
-            this.lblCarregando.Location = new System.Drawing.Point(858, 60);
-            this.lblCarregando.Name = "lblCarregando";
-            this.lblCarregando.Size = new System.Drawing.Size(88, 16);
-            this.lblCarregando.TabIndex = 199;
-            this.lblCarregando.Text = "Carregando...";
-            this.lblCarregando.Visible = false;
             // 
             // FrmVendas02
             // 

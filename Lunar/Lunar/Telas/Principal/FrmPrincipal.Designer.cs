@@ -80,6 +80,7 @@
             this.btnPlanoDecontas1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMovimentoCaixa = new System.Windows.Forms.ToolStripMenuItem();
             this.reciboAvulsoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saldoContasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuFiscal = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnComprasFiscal = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEmitirNfe = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,7 +92,9 @@
             this.btnOrdemServico = new System.Windows.Forms.ToolStripMenuItem();
             this.btnServico = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuRelatorios = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
-            this.aniversariantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aniversariantesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reativaçãoDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnComissoes = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,7 +117,7 @@
             this.btnGrupo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSetor = new System.Windows.Forms.ToolStripMenuItem();
             this.variaçõesCaracterísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saldoContasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enviarProdutosBalançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -748,7 +751,7 @@
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 246);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 224);
             // 
             // abrirCaixaToolStripMenuItem
             // 
@@ -812,6 +815,13 @@
             this.reciboAvulsoToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.reciboAvulsoToolStripMenuItem.Text = "Recibo Avulso";
             this.reciboAvulsoToolStripMenuItem.Click += new System.EventHandler(this.reciboAvulsoToolStripMenuItem_Click);
+            // 
+            // saldoContasToolStripMenuItem
+            // 
+            this.saldoContasToolStripMenuItem.Name = "saldoContasToolStripMenuItem";
+            this.saldoContasToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.saldoContasToolStripMenuItem.Text = "Saldo Contas";
+            this.saldoContasToolStripMenuItem.Click += new System.EventHandler(this.saldoContasToolStripMenuItem_Click);
             // 
             // dropMenuFiscal
             // 
@@ -907,7 +917,7 @@
             this.dropMenuRelatorios.Font = new System.Drawing.Font("Verdana", 10F);
             this.dropMenuRelatorios.IsMainMenu = false;
             this.dropMenuRelatorios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aniversariantesToolStripMenuItem,
+            this.clientesToolStripMenuItem,
             this.toolStripMenuItem1,
             this.btnComissoes,
             this.estoqueToolStripMenuItem,
@@ -920,12 +930,28 @@
             this.dropMenuRelatorios.PrimaryColor = System.Drawing.Color.Empty;
             this.dropMenuRelatorios.Size = new System.Drawing.Size(238, 158);
             // 
-            // aniversariantesToolStripMenuItem
+            // clientesToolStripMenuItem
             // 
-            this.aniversariantesToolStripMenuItem.Name = "aniversariantesToolStripMenuItem";
-            this.aniversariantesToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.aniversariantesToolStripMenuItem.Text = "Aniversariantes";
-            this.aniversariantesToolStripMenuItem.Click += new System.EventHandler(this.aniversariantesToolStripMenuItem_Click);
+            this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aniversariantesToolStripMenuItem1,
+            this.reativaçãoDeClientesToolStripMenuItem});
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            // 
+            // aniversariantesToolStripMenuItem1
+            // 
+            this.aniversariantesToolStripMenuItem1.Name = "aniversariantesToolStripMenuItem1";
+            this.aniversariantesToolStripMenuItem1.Size = new System.Drawing.Size(233, 22);
+            this.aniversariantesToolStripMenuItem1.Text = "Aniversariantes";
+            this.aniversariantesToolStripMenuItem1.Click += new System.EventHandler(this.aniversariantesToolStripMenuItem1_Click);
+            // 
+            // reativaçãoDeClientesToolStripMenuItem
+            // 
+            this.reativaçãoDeClientesToolStripMenuItem.Name = "reativaçãoDeClientesToolStripMenuItem";
+            this.reativaçãoDeClientesToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.reativaçãoDeClientesToolStripMenuItem.Text = "Reativação de Clientes";
+            this.reativaçãoDeClientesToolStripMenuItem.Click += new System.EventHandler(this.reativaçãoDeClientesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -1070,12 +1096,13 @@
             this.btnCadastroProduto,
             this.btnGrupo,
             this.btnSetor,
-            this.variaçõesCaracterísticasToolStripMenuItem});
+            this.variaçõesCaracterísticasToolStripMenuItem,
+            this.enviarProdutosBalançaToolStripMenuItem});
             this.dropMenuProduto.MenuItemHeight = 25;
             this.dropMenuProduto.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuProduto.Name = "rjDropdownMenu1";
             this.dropMenuProduto.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuProduto.Size = new System.Drawing.Size(251, 92);
+            this.dropMenuProduto.Size = new System.Drawing.Size(251, 136);
             // 
             // btnCadastroProduto
             // 
@@ -1105,12 +1132,12 @@
             this.variaçõesCaracterísticasToolStripMenuItem.Text = "Variações/Características";
             this.variaçõesCaracterísticasToolStripMenuItem.Click += new System.EventHandler(this.variaçõesCaracterísticasToolStripMenuItem_Click);
             // 
-            // saldoContasToolStripMenuItem
+            // enviarProdutosBalançaToolStripMenuItem
             // 
-            this.saldoContasToolStripMenuItem.Name = "saldoContasToolStripMenuItem";
-            this.saldoContasToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.saldoContasToolStripMenuItem.Text = "Saldo Contas";
-            this.saldoContasToolStripMenuItem.Click += new System.EventHandler(this.saldoContasToolStripMenuItem_Click);
+            this.enviarProdutosBalançaToolStripMenuItem.Name = "enviarProdutosBalançaToolStripMenuItem";
+            this.enviarProdutosBalançaToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.enviarProdutosBalançaToolStripMenuItem.Text = "Enviar Produtos Balança";
+            this.enviarProdutosBalançaToolStripMenuItem.Click += new System.EventHandler(this.enviarProdutosBalançaToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -1231,8 +1258,11 @@
         private System.Windows.Forms.ToolStripMenuItem consultaVendasToolStripMenuItem;
         internal System.Windows.Forms.Label lblUserLogado;
         internal System.Windows.Forms.Label lblVersaoSistema;
-        private System.Windows.Forms.ToolStripMenuItem aniversariantesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vendasEOrdensDeServiçoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saldoContasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reativaçãoDeClientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aniversariantesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem enviarProdutosBalançaToolStripMenuItem;
     }
 }
