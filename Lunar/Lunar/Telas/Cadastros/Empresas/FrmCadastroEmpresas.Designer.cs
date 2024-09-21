@@ -90,25 +90,28 @@
             this.txtReferencia = new Lunar.RJ_UI.Classes.RJTextBox();
             this.RJtx = new Lunar.RJ_UI.Classes.RJButton();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.btnRegistrarLicencaPainel = new Lunar.RJ_UI.Classes.RJButton();
+            this.lblWhatsLaboratorio = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtWhatsappLaboratorio = new System.Windows.Forms.TextBox();
             this.autoLabel26 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtEmailContabilidadeXml = new System.Windows.Forms.TextBox();
             this.chkOtica = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.btnConfirmaCertificado = new FontAwesome.Sharp.IconButton();
             this.autoLabel24 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtSenhaCertificado = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnPesquisaCertificado = new FontAwesome.Sharp.IconButton();
             this.autoLabel25 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtCertificado = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnPesquisaRegimerTributario = new FontAwesome.Sharp.IconButton();
             this.autoLabel22 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel23 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtSenhaCertificado = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCertificado = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCodRegimeTributario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtRegimeTributario = new Lunar.RJ_UI.Classes.RJTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
-            this.lblWhatsLaboratorio = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtWhatsappLaboratorio = new System.Windows.Forms.TextBox();
+            this.autoLabel27 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtInscricaoMunicipal = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -167,7 +170,7 @@
             this.autoLabel8.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel8.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel8.Location = new System.Drawing.Point(27, 4);
+            this.autoLabel8.Location = new System.Drawing.Point(14, 4);
             this.autoLabel8.Name = "autoLabel8";
             this.autoLabel8.Size = new System.Drawing.Size(51, 16);
             this.autoLabel8.TabIndex = 207;
@@ -179,7 +182,7 @@
             this.autoLabel17.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.autoLabel17.Location = new System.Drawing.Point(24, 67);
+            this.autoLabel17.Location = new System.Drawing.Point(14, 65);
             this.autoLabel17.Name = "autoLabel17";
             this.autoLabel17.Size = new System.Drawing.Size(88, 16);
             this.autoLabel17.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
@@ -193,7 +196,7 @@
             this.autoLabel42.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel42.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel42.Location = new System.Drawing.Point(513, 68);
+            this.autoLabel42.Location = new System.Drawing.Point(501, 65);
             this.autoLabel42.Name = "autoLabel42";
             this.autoLabel42.Size = new System.Drawing.Size(99, 16);
             this.autoLabel42.TabIndex = 204;
@@ -204,7 +207,7 @@
             this.lblInscricaoEstadual.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblInscricaoEstadual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInscricaoEstadual.ForeColor = System.Drawing.Color.Black;
-            this.lblInscricaoEstadual.Location = new System.Drawing.Point(473, 4);
+            this.lblInscricaoEstadual.Location = new System.Drawing.Point(422, 4);
             this.lblInscricaoEstadual.Name = "lblInscricaoEstadual";
             this.lblInscricaoEstadual.Size = new System.Drawing.Size(117, 16);
             this.lblInscricaoEstadual.TabIndex = 212;
@@ -215,7 +218,7 @@
             this.lblCNPJ.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblCNPJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCNPJ.ForeColor = System.Drawing.Color.Black;
-            this.lblCNPJ.Location = new System.Drawing.Point(142, 4);
+            this.lblCNPJ.Location = new System.Drawing.Point(129, 4);
             this.lblCNPJ.Name = "lblCNPJ";
             this.lblCNPJ.Size = new System.Drawing.Size(42, 16);
             this.lblCNPJ.TabIndex = 211;
@@ -226,7 +229,7 @@
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel1.Location = new System.Drawing.Point(772, 2);
+            this.autoLabel1.Location = new System.Drawing.Point(853, 4);
             this.autoLabel1.Name = "autoLabel1";
             this.autoLabel1.Size = new System.Drawing.Size(99, 16);
             this.autoLabel1.TabIndex = 214;
@@ -237,7 +240,7 @@
             this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel4.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel4.Location = new System.Drawing.Point(229, 135);
+            this.autoLabel4.Location = new System.Drawing.Point(216, 132);
             this.autoLabel4.Name = "autoLabel4";
             this.autoLabel4.Size = new System.Drawing.Size(45, 16);
             this.autoLabel4.TabIndex = 229;
@@ -248,7 +251,7 @@
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel3.Location = new System.Drawing.Point(285, 265);
+            this.autoLabel3.Location = new System.Drawing.Point(275, 261);
             this.autoLabel3.Name = "autoLabel3";
             this.autoLabel3.Size = new System.Drawing.Size(43, 16);
             this.autoLabel3.TabIndex = 241;
@@ -270,7 +273,7 @@
             this.btnPesquisaCidade.Location = new System.Drawing.Point(809, 285);
             this.btnPesquisaCidade.Name = "btnPesquisaCidade";
             this.btnPesquisaCidade.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaCidade.TabIndex = 17;
+            this.btnPesquisaCidade.TabIndex = 19;
             this.btnPesquisaCidade.UseVisualStyleBackColor = true;
             this.btnPesquisaCidade.Click += new System.EventHandler(this.btnPesquisaCidade_Click);
             // 
@@ -279,7 +282,7 @@
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel15.Location = new System.Drawing.Point(866, 266);
+            this.autoLabel15.Location = new System.Drawing.Point(853, 261);
             this.autoLabel15.Name = "autoLabel15";
             this.autoLabel15.Size = new System.Drawing.Size(25, 16);
             this.autoLabel15.TabIndex = 240;
@@ -290,7 +293,7 @@
             this.autoLabel14.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel14.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel14.Location = new System.Drawing.Point(553, 266);
+            this.autoLabel14.Location = new System.Drawing.Point(543, 261);
             this.autoLabel14.Name = "autoLabel14";
             this.autoLabel14.Size = new System.Drawing.Size(59, 16);
             this.autoLabel14.TabIndex = 239;
@@ -301,7 +304,7 @@
             this.autoLabel13.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel13.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel13.Location = new System.Drawing.Point(21, 265);
+            this.autoLabel13.Location = new System.Drawing.Point(14, 261);
             this.autoLabel13.Name = "autoLabel13";
             this.autoLabel13.Size = new System.Drawing.Size(73, 16);
             this.autoLabel13.TabIndex = 238;
@@ -312,7 +315,7 @@
             this.autoLabel12.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel12.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel12.Location = new System.Drawing.Point(754, 198);
+            this.autoLabel12.Location = new System.Drawing.Point(742, 195);
             this.autoLabel12.Name = "autoLabel12";
             this.autoLabel12.Size = new System.Drawing.Size(91, 16);
             this.autoLabel12.TabIndex = 237;
@@ -323,7 +326,7 @@
             this.autoLabel11.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel11.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel11.Location = new System.Drawing.Point(642, 199);
+            this.autoLabel11.Location = new System.Drawing.Point(632, 198);
             this.autoLabel11.Name = "autoLabel11";
             this.autoLabel11.Size = new System.Drawing.Size(55, 16);
             this.autoLabel11.TabIndex = 236;
@@ -334,7 +337,7 @@
             this.autoLabel9.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel9.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel9.Location = new System.Drawing.Point(164, 199);
+            this.autoLabel9.Location = new System.Drawing.Point(152, 198);
             this.autoLabel9.Name = "autoLabel9";
             this.autoLabel9.Size = new System.Drawing.Size(74, 16);
             this.autoLabel9.TabIndex = 235;
@@ -345,7 +348,7 @@
             this.autoLabel10.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel10.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel10.Location = new System.Drawing.Point(21, 199);
+            this.autoLabel10.Location = new System.Drawing.Point(14, 198);
             this.autoLabel10.Name = "autoLabel10";
             this.autoLabel10.Size = new System.Drawing.Size(42, 16);
             this.autoLabel10.TabIndex = 234;
@@ -356,7 +359,7 @@
             this.lblDataNascimento.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataNascimento.ForeColor = System.Drawing.Color.Black;
-            this.lblDataNascimento.Location = new System.Drawing.Point(25, 134);
+            this.lblDataNascimento.Location = new System.Drawing.Point(21, 132);
             this.lblDataNascimento.Name = "lblDataNascimento";
             this.lblDataNascimento.Size = new System.Drawing.Size(98, 16);
             this.lblDataNascimento.TabIndex = 233;
@@ -367,7 +370,7 @@
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(755, 134);
+            this.autoLabel6.Location = new System.Drawing.Point(742, 132);
             this.autoLabel6.Name = "autoLabel6";
             this.autoLabel6.Size = new System.Drawing.Size(116, 16);
             this.autoLabel6.TabIndex = 232;
@@ -378,7 +381,7 @@
             this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel5.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel5.Location = new System.Drawing.Point(643, 134);
+            this.autoLabel5.Location = new System.Drawing.Point(632, 132);
             this.autoLabel5.Name = "autoLabel5";
             this.autoLabel5.Size = new System.Drawing.Size(37, 16);
             this.autoLabel5.TabIndex = 230;
@@ -401,7 +404,7 @@
             this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel7.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel7.Location = new System.Drawing.Point(21, 368);
+            this.autoLabel7.Location = new System.Drawing.Point(14, 365);
             this.autoLabel7.Name = "autoLabel7";
             this.autoLabel7.Size = new System.Drawing.Size(44, 16);
             this.autoLabel7.TabIndex = 245;
@@ -412,7 +415,7 @@
             this.autoLabel16.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel16.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel16.Location = new System.Drawing.Point(433, 367);
+            this.autoLabel16.Location = new System.Drawing.Point(422, 363);
             this.autoLabel16.Name = "autoLabel16";
             this.autoLabel16.Size = new System.Drawing.Size(33, 16);
             this.autoLabel16.TabIndex = 247;
@@ -423,7 +426,7 @@
             this.autoLabel18.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel18.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel18.Location = new System.Drawing.Point(707, 366);
+            this.autoLabel18.Location = new System.Drawing.Point(694, 363);
             this.autoLabel18.Name = "autoLabel18";
             this.autoLabel18.Size = new System.Drawing.Size(93, 16);
             this.autoLabel18.TabIndex = 249;
@@ -434,7 +437,7 @@
             this.autoLabel19.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel19.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel19.Location = new System.Drawing.Point(707, 468);
+            this.autoLabel19.Location = new System.Drawing.Point(699, 467);
             this.autoLabel19.Name = "autoLabel19";
             this.autoLabel19.Size = new System.Drawing.Size(35, 16);
             this.autoLabel19.TabIndex = 255;
@@ -445,7 +448,7 @@
             this.autoLabel20.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel20.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel20.Location = new System.Drawing.Point(433, 467);
+            this.autoLabel20.Location = new System.Drawing.Point(422, 467);
             this.autoLabel20.Name = "autoLabel20";
             this.autoLabel20.Size = new System.Drawing.Size(89, 16);
             this.autoLabel20.TabIndex = 253;
@@ -456,7 +459,7 @@
             this.autoLabel21.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel21.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel21.Location = new System.Drawing.Point(21, 468);
+            this.autoLabel21.Location = new System.Drawing.Point(14, 467);
             this.autoLabel21.Name = "autoLabel21";
             this.autoLabel21.Size = new System.Drawing.Size(102, 16);
             this.autoLabel21.TabIndex = 251;
@@ -496,6 +499,8 @@
             // 
             // tabPageAdv1
             // 
+            this.tabPageAdv1.Controls.Add(this.autoLabel27);
+            this.tabPageAdv1.Controls.Add(this.txtInscricaoMunicipal);
             this.tabPageAdv1.Controls.Add(this.btnPesquisaCnpj);
             this.tabPageAdv1.Controls.Add(this.txtDataAbertura);
             this.tabPageAdv1.Controls.Add(this.autoLabel42);
@@ -577,10 +582,10 @@
             this.btnPesquisaCnpj.IconColor = System.Drawing.Color.SlateGray;
             this.btnPesquisaCnpj.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnPesquisaCnpj.IconSize = 38;
-            this.btnPesquisaCnpj.Location = new System.Drawing.Point(419, 26);
+            this.btnPesquisaCnpj.Location = new System.Drawing.Point(379, 20);
             this.btnPesquisaCnpj.Name = "btnPesquisaCnpj";
             this.btnPesquisaCnpj.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaCnpj.TabIndex = 258;
+            this.btnPesquisaCnpj.TabIndex = 2;
             this.btnPesquisaCnpj.UseVisualStyleBackColor = true;
             this.btnPesquisaCnpj.Click += new System.EventHandler(this.btnPesquisaCnpj_Click);
             // 
@@ -601,7 +606,7 @@
             this.txtDataAbertura.Style.FocusedBorderColor = System.Drawing.Color.White;
             this.txtDataAbertura.Style.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDataAbertura.Style.HoverBorderColor = System.Drawing.Color.White;
-            this.txtDataAbertura.TabIndex = 6;
+            this.txtDataAbertura.TabIndex = 8;
             this.txtDataAbertura.Value = new System.DateTime(2021, 11, 20, 0, 0, 0, 0);
             // 
             // txtID
@@ -651,7 +656,7 @@
             this.txtNomeFantasia.PlaceholderText = "";
             this.txtNomeFantasia.ReadOnly = false;
             this.txtNomeFantasia.Size = new System.Drawing.Size(489, 37);
-            this.txtNomeFantasia.TabIndex = 5;
+            this.txtNomeFantasia.TabIndex = 7;
             this.txtNomeFantasia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNomeFantasia.Texts = "";
             this.txtNomeFantasia.UnderlinedStyle = false;
@@ -703,7 +708,7 @@
             this.txtRazaoSocial.PlaceholderText = "";
             this.txtRazaoSocial.ReadOnly = false;
             this.txtRazaoSocial.Size = new System.Drawing.Size(479, 37);
-            this.txtRazaoSocial.TabIndex = 4;
+            this.txtRazaoSocial.TabIndex = 6;
             this.txtRazaoSocial.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtRazaoSocial.Texts = "";
             this.txtRazaoSocial.UnderlinedStyle = false;
@@ -728,7 +733,7 @@
             this.txtCRCContador.PlaceholderText = "";
             this.txtCRCContador.ReadOnly = false;
             this.txtCRCContador.Size = new System.Drawing.Size(296, 37);
-            this.txtCRCContador.TabIndex = 24;
+            this.txtCRCContador.TabIndex = 26;
             this.txtCRCContador.Tag = "";
             this.txtCRCContador.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCRCContador.Texts = "";
@@ -754,7 +759,7 @@
             this.txtCPFContador.PlaceholderText = "";
             this.txtCPFContador.ReadOnly = false;
             this.txtCPFContador.Size = new System.Drawing.Size(266, 37);
-            this.txtCPFContador.TabIndex = 23;
+            this.txtCPFContador.TabIndex = 25;
             this.txtCPFContador.Tag = "";
             this.txtCPFContador.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCPFContador.Texts = "";
@@ -779,7 +784,7 @@
             this.txtCNPJ.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCNPJ.PlaceholderText = "";
             this.txtCNPJ.ReadOnly = false;
-            this.txtCNPJ.Size = new System.Drawing.Size(283, 37);
+            this.txtCNPJ.Size = new System.Drawing.Size(241, 37);
             this.txtCNPJ.TabIndex = 1;
             this.txtCNPJ.Tag = "";
             this.txtCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -807,7 +812,7 @@
             this.txtNomeContador.PlaceholderText = "";
             this.txtNomeContador.ReadOnly = false;
             this.txtNomeContador.Size = new System.Drawing.Size(398, 37);
-            this.txtNomeContador.TabIndex = 22;
+            this.txtNomeContador.TabIndex = 24;
             this.txtNomeContador.Tag = "";
             this.txtNomeContador.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNomeContador.Texts = "";
@@ -823,7 +828,7 @@
             this.txtInscricaoEstadual.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtInscricaoEstadual.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInscricaoEstadual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtInscricaoEstadual.Location = new System.Drawing.Point(462, 19);
+            this.txtInscricaoEstadual.Location = new System.Drawing.Point(422, 19);
             this.txtInscricaoEstadual.Margin = new System.Windows.Forms.Padding(4);
             this.txtInscricaoEstadual.Multiline = false;
             this.txtInscricaoEstadual.Name = "txtInscricaoEstadual";
@@ -832,8 +837,8 @@
             this.txtInscricaoEstadual.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtInscricaoEstadual.PlaceholderText = "";
             this.txtInscricaoEstadual.ReadOnly = false;
-            this.txtInscricaoEstadual.Size = new System.Drawing.Size(289, 37);
-            this.txtInscricaoEstadual.TabIndex = 2;
+            this.txtInscricaoEstadual.Size = new System.Drawing.Size(224, 37);
+            this.txtInscricaoEstadual.TabIndex = 3;
             this.txtInscricaoEstadual.Tag = "";
             this.txtInscricaoEstadual.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtInscricaoEstadual.Texts = "";
@@ -859,7 +864,7 @@
             this.txtCargoResponsavel.PlaceholderText = "";
             this.txtCargoResponsavel.ReadOnly = false;
             this.txtCargoResponsavel.Size = new System.Drawing.Size(296, 37);
-            this.txtCargoResponsavel.TabIndex = 21;
+            this.txtCargoResponsavel.TabIndex = 23;
             this.txtCargoResponsavel.Tag = "";
             this.txtCargoResponsavel.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCargoResponsavel.Texts = "";
@@ -875,7 +880,7 @@
             this.txtCNAE.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCNAE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCNAE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCNAE.Location = new System.Drawing.Point(759, 19);
+            this.txtCNAE.Location = new System.Drawing.Point(853, 19);
             this.txtCNAE.Margin = new System.Windows.Forms.Padding(4);
             this.txtCNAE.Multiline = false;
             this.txtCNAE.Name = "txtCNAE";
@@ -884,8 +889,8 @@
             this.txtCNAE.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCNAE.PlaceholderText = "";
             this.txtCNAE.ReadOnly = false;
-            this.txtCNAE.Size = new System.Drawing.Size(231, 37);
-            this.txtCNAE.TabIndex = 3;
+            this.txtCNAE.Size = new System.Drawing.Size(133, 37);
+            this.txtCNAE.TabIndex = 5;
             this.txtCNAE.Tag = "";
             this.txtCNAE.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCNAE.Texts = "";
@@ -911,7 +916,7 @@
             this.txtCPFResponsavel.PlaceholderText = "";
             this.txtCPFResponsavel.ReadOnly = false;
             this.txtCPFResponsavel.Size = new System.Drawing.Size(266, 37);
-            this.txtCPFResponsavel.TabIndex = 20;
+            this.txtCPFResponsavel.TabIndex = 22;
             this.txtCPFResponsavel.Tag = "";
             this.txtCPFResponsavel.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCPFResponsavel.Texts = "";
@@ -938,7 +943,7 @@
             this.txtDDD.PlaceholderText = "";
             this.txtDDD.ReadOnly = false;
             this.txtDDD.Size = new System.Drawing.Size(102, 37);
-            this.txtDDD.TabIndex = 8;
+            this.txtDDD.TabIndex = 10;
             this.txtDDD.Tag = "";
             this.txtDDD.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDDD.Texts = "";
@@ -964,7 +969,7 @@
             this.txtNomeResponsavel.PlaceholderText = "";
             this.txtNomeResponsavel.ReadOnly = false;
             this.txtNomeResponsavel.Size = new System.Drawing.Size(398, 37);
-            this.txtNomeResponsavel.TabIndex = 19;
+            this.txtNomeResponsavel.TabIndex = 21;
             this.txtNomeResponsavel.Tag = "";
             this.txtNomeResponsavel.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNomeResponsavel.Texts = "";
@@ -990,7 +995,7 @@
             this.txtTelefonePrincipal.PlaceholderText = "";
             this.txtTelefonePrincipal.ReadOnly = false;
             this.txtTelefonePrincipal.Size = new System.Drawing.Size(248, 37);
-            this.txtTelefonePrincipal.TabIndex = 9;
+            this.txtTelefonePrincipal.TabIndex = 11;
             this.txtTelefonePrincipal.Tag = "";
             this.txtTelefonePrincipal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtTelefonePrincipal.Texts = "";
@@ -1042,7 +1047,7 @@
             this.txtEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.Size = new System.Drawing.Size(408, 39);
-            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TabIndex = 9;
             this.txtEmail.Texts = "";
             this.txtEmail.UnderlinedStyle = false;
             // 
@@ -1066,7 +1071,7 @@
             this.txtCEP.PlaceholderText = "";
             this.txtCEP.ReadOnly = false;
             this.txtCEP.Size = new System.Drawing.Size(130, 37);
-            this.txtCEP.TabIndex = 10;
+            this.txtCEP.TabIndex = 12;
             this.txtCEP.Tag = "";
             this.txtCEP.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCEP.Texts = "";
@@ -1093,7 +1098,7 @@
             this.txtBairro.PlaceholderText = "";
             this.txtBairro.ReadOnly = false;
             this.txtBairro.Size = new System.Drawing.Size(260, 37);
-            this.txtBairro.TabIndex = 15;
+            this.txtBairro.TabIndex = 17;
             this.txtBairro.Tag = "";
             this.txtBairro.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtBairro.Texts = "";
@@ -1119,7 +1124,7 @@
             this.txtEndereco.PlaceholderText = "";
             this.txtEndereco.ReadOnly = false;
             this.txtEndereco.Size = new System.Drawing.Size(472, 37);
-            this.txtEndereco.TabIndex = 11;
+            this.txtEndereco.TabIndex = 13;
             this.txtEndereco.Tag = "";
             this.txtEndereco.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEndereco.Texts = "";
@@ -1146,7 +1151,7 @@
             this.txtUF.PlaceholderText = "";
             this.txtUF.ReadOnly = false;
             this.txtUF.Size = new System.Drawing.Size(137, 37);
-            this.txtUF.TabIndex = 18;
+            this.txtUF.TabIndex = 20;
             this.txtUF.Tag = "";
             this.txtUF.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUF.Texts = "";
@@ -1172,7 +1177,7 @@
             this.txtNumero.PlaceholderText = "";
             this.txtNumero.ReadOnly = false;
             this.txtNumero.Size = new System.Drawing.Size(102, 37);
-            this.txtNumero.TabIndex = 12;
+            this.txtNumero.TabIndex = 14;
             this.txtNumero.Tag = "";
             this.txtNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNumero.Texts = "";
@@ -1199,7 +1204,7 @@
             this.txtCidade.PlaceholderText = "";
             this.txtCidade.ReadOnly = false;
             this.txtCidade.Size = new System.Drawing.Size(260, 37);
-            this.txtCidade.TabIndex = 16;
+            this.txtCidade.TabIndex = 18;
             this.txtCidade.Tag = "";
             this.txtCidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCidade.Texts = "";
@@ -1225,7 +1230,7 @@
             this.txtComplemento.PlaceholderText = "";
             this.txtComplemento.ReadOnly = false;
             this.txtComplemento.Size = new System.Drawing.Size(248, 37);
-            this.txtComplemento.TabIndex = 13;
+            this.txtComplemento.TabIndex = 15;
             this.txtComplemento.Tag = "";
             this.txtComplemento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtComplemento.Texts = "";
@@ -1251,7 +1256,7 @@
             this.txtReferencia.PlaceholderText = "";
             this.txtReferencia.ReadOnly = false;
             this.txtReferencia.Size = new System.Drawing.Size(253, 37);
-            this.txtReferencia.TabIndex = 14;
+            this.txtReferencia.TabIndex = 16;
             this.txtReferencia.Tag = "";
             this.txtReferencia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtReferencia.Texts = "";
@@ -1278,6 +1283,7 @@
             // 
             // tabPageAdv2
             // 
+            this.tabPageAdv2.Controls.Add(this.btnRegistrarLicencaPainel);
             this.tabPageAdv2.Controls.Add(this.lblWhatsLaboratorio);
             this.tabPageAdv2.Controls.Add(this.txtWhatsappLaboratorio);
             this.tabPageAdv2.Controls.Add(this.autoLabel26);
@@ -1285,13 +1291,13 @@
             this.tabPageAdv2.Controls.Add(this.chkOtica);
             this.tabPageAdv2.Controls.Add(this.btnConfirmaCertificado);
             this.tabPageAdv2.Controls.Add(this.autoLabel24);
-            this.tabPageAdv2.Controls.Add(this.txtSenhaCertificado);
             this.tabPageAdv2.Controls.Add(this.btnPesquisaCertificado);
             this.tabPageAdv2.Controls.Add(this.autoLabel25);
-            this.tabPageAdv2.Controls.Add(this.txtCertificado);
             this.tabPageAdv2.Controls.Add(this.btnPesquisaRegimerTributario);
             this.tabPageAdv2.Controls.Add(this.autoLabel22);
             this.tabPageAdv2.Controls.Add(this.autoLabel23);
+            this.tabPageAdv2.Controls.Add(this.txtSenhaCertificado);
+            this.tabPageAdv2.Controls.Add(this.txtCertificado);
             this.tabPageAdv2.Controls.Add(this.txtCodRegimeTributario);
             this.tabPageAdv2.Controls.Add(this.txtRegimeTributario);
             this.tabPageAdv2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1306,6 +1312,49 @@
             this.tabPageAdv2.TabIndex = 2;
             this.tabPageAdv2.Text = "Fiscal";
             this.tabPageAdv2.ThemesEnabled = false;
+            // 
+            // btnRegistrarLicencaPainel
+            // 
+            this.btnRegistrarLicencaPainel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegistrarLicencaPainel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnRegistrarLicencaPainel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnRegistrarLicencaPainel.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnRegistrarLicencaPainel.BorderRadius = 8;
+            this.btnRegistrarLicencaPainel.BorderSize = 0;
+            this.btnRegistrarLicencaPainel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrarLicencaPainel.FlatAppearance.BorderSize = 0;
+            this.btnRegistrarLicencaPainel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarLicencaPainel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarLicencaPainel.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrarLicencaPainel.Location = new System.Drawing.Point(14, 243);
+            this.btnRegistrarLicencaPainel.Name = "btnRegistrarLicencaPainel";
+            this.btnRegistrarLicencaPainel.Size = new System.Drawing.Size(215, 45);
+            this.btnRegistrarLicencaPainel.TabIndex = 275;
+            this.btnRegistrarLicencaPainel.Text = "Cadastrar Licenca NS";
+            this.btnRegistrarLicencaPainel.TextColor = System.Drawing.Color.White;
+            this.btnRegistrarLicencaPainel.UseVisualStyleBackColor = false;
+            this.btnRegistrarLicencaPainel.Click += new System.EventHandler(this.btnRegistrarLicencaPainel_Click);
+            // 
+            // lblWhatsLaboratorio
+            // 
+            this.lblWhatsLaboratorio.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblWhatsLaboratorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWhatsLaboratorio.ForeColor = System.Drawing.Color.Black;
+            this.lblWhatsLaboratorio.Location = new System.Drawing.Point(627, 143);
+            this.lblWhatsLaboratorio.Name = "lblWhatsLaboratorio";
+            this.lblWhatsLaboratorio.Size = new System.Drawing.Size(141, 16);
+            this.lblWhatsLaboratorio.TabIndex = 274;
+            this.lblWhatsLaboratorio.Text = "Whatsapp Laboratório";
+            this.lblWhatsLaboratorio.Visible = false;
+            // 
+            // txtWhatsappLaboratorio
+            // 
+            this.txtWhatsappLaboratorio.Location = new System.Drawing.Point(627, 162);
+            this.txtWhatsappLaboratorio.Name = "txtWhatsappLaboratorio";
+            this.txtWhatsappLaboratorio.Size = new System.Drawing.Size(362, 29);
+            this.txtWhatsappLaboratorio.TabIndex = 273;
+            this.txtWhatsappLaboratorio.Visible = false;
+            this.txtWhatsappLaboratorio.Leave += new System.EventHandler(this.txtWhatsappLaboratorio_Leave);
             // 
             // autoLabel26
             // 
@@ -1366,32 +1415,6 @@
             this.autoLabel24.TabIndex = 251;
             this.autoLabel24.Text = "Senha do Certificado";
             // 
-            // txtSenhaCertificado
-            // 
-            this.txtSenhaCertificado.BackColor = System.Drawing.Color.White;
-            this.txtSenhaCertificado.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtSenhaCertificado.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtSenhaCertificado.BorderRadius = 8;
-            this.txtSenhaCertificado.BorderSize = 2;
-            this.txtSenhaCertificado.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtSenhaCertificado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenhaCertificado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSenhaCertificado.Location = new System.Drawing.Point(671, 93);
-            this.txtSenhaCertificado.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSenhaCertificado.Multiline = false;
-            this.txtSenhaCertificado.Name = "txtSenhaCertificado";
-            this.txtSenhaCertificado.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtSenhaCertificado.PasswordChar = true;
-            this.txtSenhaCertificado.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtSenhaCertificado.PlaceholderText = "";
-            this.txtSenhaCertificado.ReadOnly = false;
-            this.txtSenhaCertificado.Size = new System.Drawing.Size(277, 37);
-            this.txtSenhaCertificado.TabIndex = 250;
-            this.txtSenhaCertificado.Tag = "";
-            this.txtSenhaCertificado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtSenhaCertificado.Texts = "";
-            this.txtSenhaCertificado.UnderlinedStyle = false;
-            // 
             // btnPesquisaCertificado
             // 
             this.btnPesquisaCertificado.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1405,7 +1428,7 @@
             this.btnPesquisaCertificado.IconColor = System.Drawing.Color.SlateGray;
             this.btnPesquisaCertificado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnPesquisaCertificado.IconSize = 38;
-            this.btnPesquisaCertificado.Location = new System.Drawing.Point(628, 104);
+            this.btnPesquisaCertificado.Location = new System.Drawing.Point(628, 96);
             this.btnPesquisaCertificado.Name = "btnPesquisaCertificado";
             this.btnPesquisaCertificado.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaCertificado.TabIndex = 247;
@@ -1423,33 +1446,6 @@
             this.autoLabel25.TabIndex = 249;
             this.autoLabel25.Text = "Certificado Digital";
             // 
-            // txtCertificado
-            // 
-            this.txtCertificado.BackColor = System.Drawing.Color.White;
-            this.txtCertificado.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCertificado.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCertificado.BorderRadius = 8;
-            this.txtCertificado.BorderSize = 2;
-            this.txtCertificado.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtCertificado.Enabled = false;
-            this.txtCertificado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCertificado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCertificado.Location = new System.Drawing.Point(14, 94);
-            this.txtCertificado.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCertificado.Multiline = false;
-            this.txtCertificado.Name = "txtCertificado";
-            this.txtCertificado.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCertificado.PasswordChar = false;
-            this.txtCertificado.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtCertificado.PlaceholderText = "";
-            this.txtCertificado.ReadOnly = false;
-            this.txtCertificado.Size = new System.Drawing.Size(607, 37);
-            this.txtCertificado.TabIndex = 246;
-            this.txtCertificado.Tag = "";
-            this.txtCertificado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCertificado.Texts = "";
-            this.txtCertificado.UnderlinedStyle = false;
-            // 
             // btnPesquisaRegimerTributario
             // 
             this.btnPesquisaRegimerTributario.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1463,7 +1459,7 @@
             this.btnPesquisaRegimerTributario.IconColor = System.Drawing.Color.SlateGray;
             this.btnPesquisaRegimerTributario.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnPesquisaRegimerTributario.IconSize = 38;
-            this.btnPesquisaRegimerTributario.Location = new System.Drawing.Point(795, 36);
+            this.btnPesquisaRegimerTributario.Location = new System.Drawing.Point(795, 32);
             this.btnPesquisaRegimerTributario.Name = "btnPesquisaRegimerTributario";
             this.btnPesquisaRegimerTributario.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaRegimerTributario.TabIndex = 242;
@@ -1491,6 +1487,59 @@
             this.autoLabel23.Size = new System.Drawing.Size(123, 16);
             this.autoLabel23.TabIndex = 244;
             this.autoLabel23.Text = "Regime Tributário *";
+            // 
+            // txtSenhaCertificado
+            // 
+            this.txtSenhaCertificado.BackColor = System.Drawing.Color.White;
+            this.txtSenhaCertificado.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtSenhaCertificado.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtSenhaCertificado.BorderRadius = 8;
+            this.txtSenhaCertificado.BorderSize = 2;
+            this.txtSenhaCertificado.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtSenhaCertificado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenhaCertificado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSenhaCertificado.Location = new System.Drawing.Point(671, 93);
+            this.txtSenhaCertificado.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSenhaCertificado.Multiline = false;
+            this.txtSenhaCertificado.Name = "txtSenhaCertificado";
+            this.txtSenhaCertificado.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtSenhaCertificado.PasswordChar = true;
+            this.txtSenhaCertificado.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtSenhaCertificado.PlaceholderText = "";
+            this.txtSenhaCertificado.ReadOnly = false;
+            this.txtSenhaCertificado.Size = new System.Drawing.Size(277, 37);
+            this.txtSenhaCertificado.TabIndex = 250;
+            this.txtSenhaCertificado.Tag = "";
+            this.txtSenhaCertificado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtSenhaCertificado.Texts = "";
+            this.txtSenhaCertificado.UnderlinedStyle = false;
+            // 
+            // txtCertificado
+            // 
+            this.txtCertificado.BackColor = System.Drawing.Color.White;
+            this.txtCertificado.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCertificado.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCertificado.BorderRadius = 8;
+            this.txtCertificado.BorderSize = 2;
+            this.txtCertificado.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCertificado.Enabled = false;
+            this.txtCertificado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCertificado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCertificado.Location = new System.Drawing.Point(14, 94);
+            this.txtCertificado.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCertificado.Multiline = false;
+            this.txtCertificado.Name = "txtCertificado";
+            this.txtCertificado.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCertificado.PasswordChar = false;
+            this.txtCertificado.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCertificado.PlaceholderText = "";
+            this.txtCertificado.ReadOnly = false;
+            this.txtCertificado.Size = new System.Drawing.Size(607, 37);
+            this.txtCertificado.TabIndex = 246;
+            this.txtCertificado.Tag = "";
+            this.txtCertificado.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCertificado.Texts = "";
+            this.txtCertificado.UnderlinedStyle = false;
             // 
             // txtCodRegimeTributario
             // 
@@ -1596,26 +1645,42 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // lblWhatsLaboratorio
+            // autoLabel27
             // 
-            this.lblWhatsLaboratorio.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lblWhatsLaboratorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWhatsLaboratorio.ForeColor = System.Drawing.Color.Black;
-            this.lblWhatsLaboratorio.Location = new System.Drawing.Point(627, 143);
-            this.lblWhatsLaboratorio.Name = "lblWhatsLaboratorio";
-            this.lblWhatsLaboratorio.Size = new System.Drawing.Size(141, 16);
-            this.lblWhatsLaboratorio.TabIndex = 274;
-            this.lblWhatsLaboratorio.Text = "Whatsapp Laboratório";
-            this.lblWhatsLaboratorio.Visible = false;
+            this.autoLabel27.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel27.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel27.Location = new System.Drawing.Point(654, 4);
+            this.autoLabel27.Name = "autoLabel27";
+            this.autoLabel27.Size = new System.Drawing.Size(121, 16);
+            this.autoLabel27.TabIndex = 260;
+            this.autoLabel27.Text = "Inscrição Municipal";
             // 
-            // txtWhatsappLaboratorio
+            // txtInscricaoMunicipal
             // 
-            this.txtWhatsappLaboratorio.Location = new System.Drawing.Point(627, 162);
-            this.txtWhatsappLaboratorio.Name = "txtWhatsappLaboratorio";
-            this.txtWhatsappLaboratorio.Size = new System.Drawing.Size(362, 29);
-            this.txtWhatsappLaboratorio.TabIndex = 273;
-            this.txtWhatsappLaboratorio.Visible = false;
-            this.txtWhatsappLaboratorio.Leave += new System.EventHandler(this.txtWhatsappLaboratorio_Leave);
+            this.txtInscricaoMunicipal.BackColor = System.Drawing.Color.White;
+            this.txtInscricaoMunicipal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtInscricaoMunicipal.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtInscricaoMunicipal.BorderRadius = 8;
+            this.txtInscricaoMunicipal.BorderSize = 2;
+            this.txtInscricaoMunicipal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtInscricaoMunicipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInscricaoMunicipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtInscricaoMunicipal.Location = new System.Drawing.Point(654, 19);
+            this.txtInscricaoMunicipal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtInscricaoMunicipal.Multiline = false;
+            this.txtInscricaoMunicipal.Name = "txtInscricaoMunicipal";
+            this.txtInscricaoMunicipal.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtInscricaoMunicipal.PasswordChar = false;
+            this.txtInscricaoMunicipal.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtInscricaoMunicipal.PlaceholderText = "";
+            this.txtInscricaoMunicipal.ReadOnly = false;
+            this.txtInscricaoMunicipal.Size = new System.Drawing.Size(191, 37);
+            this.txtInscricaoMunicipal.TabIndex = 4;
+            this.txtInscricaoMunicipal.Tag = "";
+            this.txtInscricaoMunicipal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtInscricaoMunicipal.Texts = "";
+            this.txtInscricaoMunicipal.UnderlinedStyle = false;
             // 
             // FrmCadastroEmpresas
             // 
@@ -1729,5 +1794,8 @@
         private System.Windows.Forms.TextBox txtEmailContabilidadeXml;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblWhatsLaboratorio;
         private System.Windows.Forms.TextBox txtWhatsappLaboratorio;
+        private RJ_UI.Classes.RJButton btnRegistrarLicencaPainel;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel27;
+        private RJ_UI.Classes.RJTextBox txtInscricaoMunicipal;
     }
 }

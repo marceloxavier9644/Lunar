@@ -777,8 +777,7 @@ namespace LunarImportador
                     produto.Ecommerce = false;
                     produto.EnqIpi = "999";
                     produto.EspecieVeiculo = "";
-                    int idGrupo = 0;
-                    try { idGrupo = int.Parse(firebirdReader["codgrupo"].ToString()); } catch { idGrupo = 0; }
+                    int idGrupo = 1;
                     object grupoIdValue = (idGrupo == 0) ? DBNull.Value : (object)idGrupo;
                     Estoque estoque = new Estoque();
                     try
@@ -1096,6 +1095,101 @@ namespace LunarImportador
                         progressBar1.Value += 1;
                         lblStatus.Text = "Grupo " + i + " de " + totalRegistros;
                     });
+                }
+                firebirdReader.Close();
+                //MessageBox.Show("Importação de fornecedores concluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateUI(() =>
+                {
+                    progressBar1.Value = 0;
+                });
+            }
+            catch (Exception ex)
+            {
+                if (!ex.ToString().Contains("Duplicate entry"))
+                    MessageBox.Show("Erro ao importar dados: " + ex.Message);
+            }
+            finally
+            {
+                firebirdConnection.Close();
+                mysqlConnection.Close();
+            }
+        }
+
+        private void ImportarCondicionaisSgbr(string database, string firebirdDatabasePath)
+        {
+            int i = 0;
+            UpdateUI(() => { lblStatus.Text = "Importação de Condicionais"; });
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;";
+            FbConnection firebirdConnection = new FbConnection(firebirdConnectionString);
+            FbCommand firebirdCommand = new FbCommand("SELECT * FROM tCondicional WHERE tCondicional.Status = 'ABERTO'", firebirdConnection);
+
+            // Conexão com o banco de dados MySQL
+            string mysqlConnectionString = $"Server=localhost;Database={database};User Id=marcelo;Password=mx123;";
+            MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+            try
+            {
+                firebirdConnection.Open();
+                mysqlConnection.Open();
+
+                // Obter a quantidade total de registros
+                FbCommand firebirdCountCommand = new FbCommand("SELECT COUNT(*) FROM tCondicional WHERE tCondicional.Status = 'ABERTO'", firebirdConnection);
+                int totalRegistros = (int)firebirdCountCommand.ExecuteScalar();
+
+                // Configurar a ProgressBar
+                UpdateUI(() =>
+                {
+                    progressBar1.Minimum = 0;
+                    progressBar1.Maximum = totalRegistros;
+                    progressBar1.Value = 0;
+                });
+
+                FbDataReader firebirdReader = firebirdCommand.ExecuteReader();
+                while (firebirdReader.Read())
+                {
+                    i++;
+                    Condicional condicional = new Condicional();
+                    //ID no SGBR
+                    condicional.Cliente = new Pessoa();
+                    PessoaDAO pessoaDAO = new PessoaDAO();
+                    condicional.Cliente = pessoaDAO.selecionarPessoaPorCodigoImportado(firebirdReader["codcliente"].ToString());
+
+                    condicional.Venda = null;
+                    condicional.Vendedor = null;
+                    condicional.QuantidadeDevolvida = 0;
+                    condicional.Data = DateTime.Parse(firebirdReader["data"].ToString());
+                    condicional.DataCadastro = DateTime.Now;
+                    condicional.QtdPeca = 0;
+                    condicional.Encerrado = false;
+                    condicional.DataPrevisao = condicional.Data.AddDays(2);
+                    condicional.Filial = new EmpresaFilial();
+                    condicional.Filial.Id = 1;
+                    condicional.Filial = (EmpresaFilial)Controller.getInstance().selecionar(condicional.Filial);
+                    condicional.FlagExcluido = false;
+                    condicional.Observacoes = firebirdReader["observacao"].ToString();
+                    condicional.Vendedor = new Pessoa();
+                    condicional.Vendedor = null;
+                    condicional.ValorTotal = decimal.Parse(firebirdReader["valortotal"].ToString());
+
+
+                    string mysqlQuery = @"
+                        INSERT INTO ProdutoGrupo 
+                        (Id, Descricao, FlagExcluido, Empresa) 
+                        VALUES 
+                        (@Id, @Descricao, @FlagExcluido, 1)";
+
+                    //MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+                    //mysqlCommand.Parameters.AddWithValue("@Id", produtoGrupo.Id);
+                    //mysqlCommand.Parameters.AddWithValue("@Descricao", produtoGrupo.Descricao);
+                    //mysqlCommand.Parameters.AddWithValue("@FlagExcluido", produtoGrupo.FlagExcluido);
+
+                    //mysqlCommand.ExecuteNonQuery();
+                    //UpdateUI(() =>
+                    //{
+                    //    progressBar1.Value += 1;
+                    //    lblStatus.Text = "Grupo " + i + " de " + totalRegistros;
+                    //});
                 }
                 firebirdReader.Close();
                 //MessageBox.Show("Importação de fornecedores concluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);

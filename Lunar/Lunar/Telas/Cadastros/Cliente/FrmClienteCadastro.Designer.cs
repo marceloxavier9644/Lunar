@@ -66,6 +66,7 @@
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabIdentidade = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.btnPesquisaCnpj = new FontAwesome.Sharp.IconButton();
             this.btnPesquisaCep = new FontAwesome.Sharp.IconButton();
             this.chkEscritorioCobranca = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.chkSPC = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
@@ -386,6 +387,7 @@
             // 
             // metroPanel2
             // 
+            this.metroPanel2.Controls.Add(this.btnPesquisaCnpj);
             this.metroPanel2.Controls.Add(this.btnPesquisaCep);
             this.metroPanel2.Controls.Add(this.chkEscritorioCobranca);
             this.metroPanel2.Controls.Add(this.chkSPC);
@@ -443,6 +445,27 @@
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // btnPesquisaCnpj
+            // 
+            this.btnPesquisaCnpj.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaCnpj.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaCnpj.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaCnpj.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCnpj.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCnpj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaCnpj.IconChar = FontAwesome.Sharp.IconChar.BuildingCircleArrowRight;
+            this.btnPesquisaCnpj.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaCnpj.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaCnpj.IconSize = 38;
+            this.btnPesquisaCnpj.Location = new System.Drawing.Point(236, 13);
+            this.btnPesquisaCnpj.Name = "btnPesquisaCnpj";
+            this.btnPesquisaCnpj.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaCnpj.TabIndex = 220;
+            this.btnPesquisaCnpj.UseVisualStyleBackColor = true;
+            this.btnPesquisaCnpj.Visible = false;
+            this.btnPesquisaCnpj.Click += new System.EventHandler(this.btnPesquisaCnpj_Click);
             // 
             // btnPesquisaCep
             // 
@@ -514,7 +537,7 @@
             this.lblRazaoSocial.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRazaoSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.lblRazaoSocial.Location = new System.Drawing.Point(233, 0);
+            this.lblRazaoSocial.Location = new System.Drawing.Point(289, 0);
             this.lblRazaoSocial.Name = "lblRazaoSocial";
             this.lblRazaoSocial.Size = new System.Drawing.Size(52, 16);
             this.lblRazaoSocial.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
@@ -534,7 +557,7 @@
             this.txtRazaoSocial.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRazaoSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRazaoSocial.Location = new System.Drawing.Point(223, 10);
+            this.txtRazaoSocial.Location = new System.Drawing.Point(279, 10);
             this.txtRazaoSocial.Margin = new System.Windows.Forms.Padding(4);
             this.txtRazaoSocial.Multiline = false;
             this.txtRazaoSocial.Name = "txtRazaoSocial";
@@ -543,7 +566,7 @@
             this.txtRazaoSocial.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtRazaoSocial.PlaceholderText = "";
             this.txtRazaoSocial.ReadOnly = false;
-            this.txtRazaoSocial.Size = new System.Drawing.Size(463, 37);
+            this.txtRazaoSocial.Size = new System.Drawing.Size(405, 37);
             this.txtRazaoSocial.TabIndex = 1;
             this.txtRazaoSocial.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtRazaoSocial.Texts = "";
@@ -1255,7 +1278,7 @@
             this.txtCNPJ.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCNPJ.PlaceholderText = "";
             this.txtCNPJ.ReadOnly = false;
-            this.txtCNPJ.Size = new System.Drawing.Size(201, 37);
+            this.txtCNPJ.Size = new System.Drawing.Size(259, 37);
             this.txtCNPJ.TabIndex = 0;
             this.txtCNPJ.Tag = "";
             this.txtCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -4045,5 +4068,6 @@
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkCobrador;
         private FontAwesome.Sharp.IconButton btnPesquisaCep;
         private RJ_UI.Classes.RJButton btnSPCBrasil;
+        private FontAwesome.Sharp.IconButton btnPesquisaCnpj;
     }
 }

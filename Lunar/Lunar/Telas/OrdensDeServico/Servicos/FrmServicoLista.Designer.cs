@@ -32,6 +32,8 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -70,11 +72,11 @@
             // autoLabel1
             // 
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
             this.autoLabel1.Location = new System.Drawing.Point(22, 31);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(68, 21);
+            this.autoLabel1.Size = new System.Drawing.Size(64, 16);
             this.autoLabel1.TabIndex = 211;
             this.autoLabel1.Text = "Pesquisa";
             // 
@@ -82,11 +84,11 @@
             // 
             this.autoLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
             this.autoLabel15.Location = new System.Drawing.Point(518, 36);
             this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(94, 21);
+            this.autoLabel15.Size = new System.Drawing.Size(90, 16);
             this.autoLabel15.TabIndex = 210;
             this.autoLabel15.Text = "Reg. por Pág.";
             // 
@@ -99,7 +101,7 @@
             this.txtRegistroPorPagina.BorderRadius = 8;
             this.txtRegistroPorPagina.BorderSize = 2;
             this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtRegistroPorPagina.Location = new System.Drawing.Point(510, 48);
             this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
@@ -111,7 +113,7 @@
             this.txtRegistroPorPagina.PlaceholderText = "";
             this.txtRegistroPorPagina.ReadOnly = false;
             this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 44);
+            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
             this.txtRegistroPorPagina.TabIndex = 209;
             this.txtRegistroPorPagina.Tag = "";
             this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -139,7 +141,7 @@
             this.txtPesquisa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtPesquisa.BorderRadius = 8;
             this.txtPesquisa.BorderSize = 2;
-            this.txtPesquisa.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPesquisa.Location = new System.Drawing.Point(10, 48);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
@@ -150,7 +152,7 @@
             this.txtPesquisa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtPesquisa.PlaceholderText = "";
             this.txtPesquisa.ReadOnly = false;
-            this.txtPesquisa.Size = new System.Drawing.Size(492, 44);
+            this.txtPesquisa.Size = new System.Drawing.Size(492, 37);
             this.txtPesquisa.TabIndex = 153;
             this.txtPesquisa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPesquisa.Texts = "";
@@ -322,11 +324,29 @@
             gridNumericColumn1.HeaderStyle.Font.Size = 12F;
             gridNumericColumn1.HeaderText = "Valor";
             gridNumericColumn1.MappingName = "Valor";
+            gridTextColumn3.AllowEditing = false;
+            gridTextColumn3.AllowFiltering = true;
+            gridTextColumn3.CellStyle.Font.Size = 12F;
+            gridTextColumn3.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn3.HeaderStyle.Font.Size = 12F;
+            gridTextColumn3.HeaderText = "Código NFSe";
+            gridTextColumn3.MappingName = "CodigoServicoNfse";
+            gridTextColumn4.AllowEditing = false;
+            gridTextColumn4.AllowFiltering = true;
+            gridTextColumn4.CellStyle.Font.Size = 12F;
+            gridTextColumn4.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            gridTextColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn4.HeaderStyle.Font.Size = 12F;
+            gridTextColumn4.HeaderText = "Aliquota ISS";
+            gridTextColumn4.MappingName = "AliquotaIss";
             this.grid.Columns.Add(gridTextColumn1);
             this.grid.Columns.Add(gridTextColumn2);
             this.grid.Columns.Add(gridNumericColumn1);
+            this.grid.Columns.Add(gridTextColumn3);
+            this.grid.Columns.Add(gridTextColumn4);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grid.Location = new System.Drawing.Point(3, 16);
             this.grid.Name = "grid";
             this.grid.SelectionUnit = Syncfusion.WinForms.DataGrid.Enums.SelectionUnit.Cell;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Ports;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -11,9 +12,9 @@ namespace Lunar.Utils.Balancas
 {
     public class BalancaService
     {
-        public void GerarArquivoItens(List<ItemBalanca> itens)
+        public void GerarArquivoItensMgv6(List<ItemBalanca> itens)
         {
-            string caminhoAreaDeTrabalho = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string caminhoAreaDeTrabalho = "C:\\Lunar\\Balanca\\ArquivosGerados";
             string caminhoArquivo = Path.Combine(caminhoAreaDeTrabalho, "Itensmgv.txt");
 
             using (StreamWriter sw = new StreamWriter(caminhoArquivo))
@@ -36,7 +37,7 @@ namespace Lunar.Utils.Balancas
                                    item.CodigoFornecedor.PadLeft(4, '0') +  // 4 caracteres
                                    item.Lote.PadRight(12) +  // 12 caracteres
                                    item.CodigoEANEspecial.PadLeft(11, '0') +  // 11 caracteres
-                                   item.VersaoPreco.PadLeft(1, '0') +  // 1 caractere
+                                   item.VersaoPreco.PadLeft(1, '1') +  // 1 caractere
                                    item.CodigoSom.PadLeft(4, '0') +  // 4 caracteres
                                    item.CodigoTara.PadLeft(4, '0') +  // 4 caracteres
                                    item.CodigoFracionador.PadLeft(4, '0') +  // 4 caracteres
@@ -45,7 +46,7 @@ namespace Lunar.Utils.Balancas
                                    item.CodigoConservacao.PadLeft(4, '0') +  // 4 caracteres
                                    item.EANFornecedor.PadLeft(12, '0') +  // 12 caracteres
                                    item.PercentualGlaciamento.PadLeft(6, '0') +  // 6 caracteres
-                                   "|DA|" +  // Marcação de início dos departamentos associados
+                                   "|01|" +  // Marcação de início dos departamentos associados
                                    item.Descritivo3.PadRight(35) +  // 35 caracteres
                                    item.Descritivo4.PadRight(35) +  // 35 caracteres
                                    item.CodigoCampoExtra3.PadLeft(6, '0') +  // 6 caracteres
@@ -53,17 +54,44 @@ namespace Lunar.Utils.Balancas
                                    item.CodigoMidia.PadLeft(6, '0') +  // 6 caracteres
                                    item.PrecoPromocional.PadLeft(6, '0') +  // 6 caracteres
                                    item.SolicitacaoFornecedor.PadLeft(1, '0') +  // 1 caractere
-                                   "|" + item.CodigoFornecedorAssociado.PadLeft(4, '0') + "|" +  // 4 caracteres para o código do fornecedor associado
+                                   "|" + /*item.CodigoFornecedorAssociado.PadLeft(4, '0')*/  "|" +  // 4 caracteres para o código do fornecedor associado
                                    item.SolicitacaoTara.PadLeft(1, '0') +  // 1 caractere
-                                   "|" + item.BalancasInativas + "|" +  // Sequência de balanças inativas
+                                   "|" + /*item.BalancasInativas +*/ "|" +  // Sequência de balanças inativas
                                    item.CodigoEANEspecialG1.PadLeft(12, '0') +  // 12 caracteres
                                    item.PercentualGlaciamentoPG.PadLeft(4, '0');  // 4 caracteres
 
                     sw.WriteLine(linha);
                 }
+                GenericaDesktop.ShowInfo("Arquivo gerado com sucesso em " + "C:\\Lunar\\Balanca\\ArquivosGerados");
             }
         }
 
+        public void GerarArquivoItensMgv6_2(List<ItemMGV6> itens)
+        {
+            string caminhoAreaDeTrabalho = "C:\\Lunar\\Balanca\\ArquivosGerados";
+            string caminhoArquivo = Path.Combine(caminhoAreaDeTrabalho, "Itensmgv.txt");
+
+            using (StreamWriter sw = new StreamWriter(caminhoArquivo))
+            {
+                // Iterando por todos os itens da lista
+                foreach (var item in itens)
+                {
+                    // Gerando a linha formatada de acordo com as especificações do MGV6
+                    string linha = item.CodigoDepartamento.PadLeft(2, '0') +  // DD - 2 caracteres
+                                   item.EtiquetaDepartamento.PadLeft(2, '0') +  // EE - 2 caracteres
+                                   item.TipoProduto.PadLeft(1, '0') +  // O - 1 caractere
+                                   item.CodigoItem.PadLeft(6, '0') +  // CCCCCCC - 6 caracteres
+                                   item.Preco.ToString("0.00").Replace(",", "").PadLeft(6, '0') +  // Preço com 6 caracteres
+                                   item.Descritivo.PadRight(25, ' ') +  // Nome do produto - 25 caracteres (pode ser ajustado)
+                                   item.OutrosCampos.PadRight(100, '0') +  // Preenche com zeros (ajustar conforme necessário)
+                                   item.Separador;   // Por exemplo, "|01|"
+
+                    // Escrevendo a linha formatada no arquivo
+                    sw.WriteLine(linha);
+                }
+            }
+        }
+    
 
         // Método para simular a obtenção dos itens da base de dados
         public List<ItemBalanca> ObterItensDaBaseDeDados()
@@ -134,6 +162,36 @@ namespace Lunar.Utils.Balancas
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro ao enviar arquivo para a balança: {ex.Message}");
+            }
+        }
+
+        public void EnviarArquivoParaBalancaSerial(string caminhoArquivo, string portaSerial)
+        {
+            try
+            {
+                byte[] arquivoBytes = File.ReadAllBytes(caminhoArquivo);
+
+                using (SerialPort serialPort = new SerialPort(portaSerial, 9600, Parity.None, 8, StopBits.One))
+                {
+                    // Configura o tempo limite de leitura e escrita
+                    serialPort.ReadTimeout = 5000;
+                    serialPort.WriteTimeout = 5000;
+
+                    // Abre a porta serial
+                    serialPort.Open();
+
+                    // Envia o arquivo
+                    serialPort.Write(arquivoBytes, 0, arquivoBytes.Length);
+
+                    // Fecha a porta serial
+                    serialPort.Close();
+
+                    GenericaDesktop.ShowInfo("Arquivo enviado com sucesso para a balança via cabo serial.");
+                }
+            }
+            catch (Exception ex)
+            {
+                GenericaDesktop.ShowErro($"Erro ao enviar arquivo para a balança via cabo serial: {ex.Message}");
             }
         }
 
@@ -268,6 +326,41 @@ namespace Lunar.Utils.Balancas
 
             return false; // Conexão falhou
         }
+        
+            public void GerarArquivoItensMgv5(List<ItemBalancaMGV5> itens)
+            {
+                // Definindo o caminho do arquivo na área de trabalho
+                string caminhoAreaDeTrabalho = "C:\\Lunar\\Balanca\\ArquivosGerados";
+                string caminhoArquivo = Path.Combine(caminhoAreaDeTrabalho, "Itensmgv.txt");
+
+                // Abrindo o arquivo para escrita
+                using (StreamWriter sw = new StreamWriter(caminhoArquivo))
+                {
+                    // Iterando por todos os itens da lista
+                    foreach (var item in itens)
+                    {
+                        // Gerando a linha formatada de acordo com as especificações
+                        string linha = item.CodigoDepartamento.PadLeft(2, '0') +  // DD - 2 caracteres
+                                       item.EtiquetaDepartamento.PadLeft(2, '0') +  // EE - 2 caracteres
+                                       item.TipoProduto.PadLeft(1, '0') +  // O - 1 caractere
+                                       item.CodigoItem.PadLeft(6, '0') +  // CCCCCCC - 6 caracteres
+                                       item.Preco.ToString("0.00").Replace(",", "").PadLeft(6, '0') +  // PPPPPP - Preço 6 caracteres
+                                       item.DiasValidade.ToString().PadLeft(3, '0') +  // VVV - 3 caracteres
+                                       item.Descritivo1.PadRight(25, ' ') +  // D1 - 25 caracteres
+                                       item.Descritivo2.PadRight(25, ' ') +  // D2 - 25 caracteres
+                                       item.Receita1.PadRight(50, ' ') +  // R1 - 50 caracteres
+                                       item.Receita2.PadRight(50, ' ') +  // R2 - 50 caracteres
+                                       item.Receita3.PadRight(50, ' ') +  // R3 - 50 caracteres
+                                       item.Receita4.PadRight(50, ' ') +  // R4 - 50 caracteres
+                                       item.Receita5.PadRight(50, ' ');   // R5 - 50 caracteres
+
+                        // Escrevendo a linha formatada no arquivo
+                        sw.WriteLine(linha);
+                    }
+                GenericaDesktop.ShowInfo("Arquivo gerado com sucesso em " + "C:\\Lunar\\Balanca\\ArquivosGerados");
+            }
+        }
+
 
     }
 }

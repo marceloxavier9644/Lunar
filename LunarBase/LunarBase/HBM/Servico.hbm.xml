@@ -6,7 +6,9 @@
 		</id>
 		<property name="Descricao" column="DESCRICAO" type="String" length="200"/>
 		<property name="Valor" column="VALOR" type="decimal"/>
-
+		<property name="CodigoServicoNfse" column="CODIGOSERVICONFSE" type="String" length="20"/>
+		<property name="AliquotaIss" column="ALIQUOTAISS" type="String" length="20"/>
+		
 		<many-to-one name="Filial" column="FILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="false" foreign-key="FK_SERVICO_FILIAL" lazy="false"/>
 		
 		<!-- Dados do objeto padrão -->

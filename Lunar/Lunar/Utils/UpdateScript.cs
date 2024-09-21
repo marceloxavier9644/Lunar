@@ -4,6 +4,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using NHibernate;
 using System;
+using System.IO;
 
 namespace Lunar.Utils
 {
@@ -20,7 +21,11 @@ namespace Lunar.Utils
         }
         public void ExecutarScript()
         {
-            if (!Properties.Settings.Default.Script)
+            string diretorioAtual = AppDomain.CurrentDomain.BaseDirectory;
+            string nomeArquivo = "update.txt";
+            string caminhoArquivo = Path.Combine(diretorioAtual, nomeArquivo);
+
+            if (!Properties.Settings.Default.Script || (File.Exists(caminhoArquivo)))
             {
                 Logger logger = new Logger();
                 try
@@ -100,6 +105,7 @@ namespace Lunar.Utils
 
                         session.Transaction.Commit();
                         logger.WriteLog("SCRIPT ATUALIZACAO EXECUTADO COM SUCESSO", "LOG");
+                        File.Delete(caminhoArquivo);
                     }
                     if (Sessao.parametroSistema.TipoCaixa == null)
                     {
@@ -122,7 +128,7 @@ namespace Lunar.Utils
                         }
                     }
                     GenericaDesktop ge = new GenericaDesktop();
-                    ge.enviarEmailPeloLunar("marcelo.xs@hotmail.com", "Atualização Lunar 1.0.0.31", Sessao.empresaFilialLogada.NomeFantasia, Environment.MachineName + " Sistema atualizado em " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString() + " Pelo Usuário: " + Sessao.usuarioLogado.Login, null);
+                    ge.enviarEmailPeloLunar("marcelo.xs@hotmail.com", "Atualização Lunar 1.0.0.32", Sessao.empresaFilialLogada.NomeFantasia, Environment.MachineName + " Sistema atualizado em " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString() + " Pelo Usuário: " + Sessao.usuarioLogado.Login, null);
                 }
                 catch (Exception ex)
                 {

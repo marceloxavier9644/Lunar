@@ -11,6 +11,7 @@ namespace LunarBase.Classes
         private string nomeFantasia;
         private string cnpj;
         private string inscricaoEstadual;
+        private string inscricaoMunicipal;
         private Endereco endereco;
         private Empresa empresa;
         private string cnae;
@@ -67,6 +68,8 @@ namespace LunarBase.Classes
         [Anotacao("Lab Whats")]
         [OcultarEmGridsEPesquisas]
         public virtual string TelefoneLaboratorioOtica { get => telefoneLaboratorioOtica; set => telefoneLaboratorioOtica = value; }
+        [Anotacao("Insc. Municipal")]
+        public virtual string InscricaoMunicipal { get => inscricaoMunicipal; set => inscricaoMunicipal = value; }
 
         public override string ToString()
         {

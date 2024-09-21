@@ -851,7 +851,7 @@ namespace Lunar.Telas.Vendas
         private void ProcessarCodigoBarras(string codigoBarras)
         {
             // Ignora o primeiro dígito verificador
-            string codigoProdutoComZeros = codigoBarras.Substring(1, 6); // Captura os 6 dígitos do código do produto
+            string codigoProdutoComZeros = codigoBarras.Substring(1, 4); // Captura os 6 dígitos do código do produto
             string codigoProduto = codigoProdutoComZeros.TrimStart('0');
             string valorTotalString = codigoBarras.Substring(7, 5);
             decimal valorTotal = Convert.ToDecimal(valorTotalString) / 100;
@@ -965,7 +965,7 @@ namespace Lunar.Telas.Vendas
                     }
                 }
                 //Verificando se é um produto de balança
-                else if (valor.StartsWith("2") && valor.Substring(1,1).Equals("0"))
+                else if (valor.StartsWith("2") && valor.Substring(6,1).Equals("0") && valor.Substring(7, 1).Equals("0"))
                 {
                     ProcessarCodigoBarras(txtPesquisaProduto.Texts.Trim());
                     return;

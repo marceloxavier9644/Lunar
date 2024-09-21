@@ -16,6 +16,7 @@ using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using static Lunar.Utils.Balancas.BalancaService;
 using static LunarBase.ClassesDAO.ProdutoDAO;
 
 namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
@@ -33,6 +34,7 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
             panel3.Visible = false;
             panel4.Visible = false;
             txtPortaBalanca.Text = "9000";
+            txtPortaSerial.Text = "COM1";
         }
         private bool ValidarIp(string ip)
         {
@@ -78,14 +80,9 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
     
         private async void enviarCargaBalanca()
         {
-            // Obter a lista de itens (simulado ou da base de dados)
-            List<ItemBalanca> itens = balancaService.ObterItensDaBaseDeDados();
-
-            // Gerar o arquivo de itens
-            balancaService.GerarArquivoItens(itens);
-
-            // Caminho do arquivo gerado
-            string caminhoAreaDeTrabalho = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            List<ItemBalanca> itens = ObterItensMGV6DoGrid();
+            balancaService.GerarArquivoItensMgv6(itens);
+            string caminhoAreaDeTrabalho = "C:\\Lunar\\Balanca\\ArquivosGerados";
             string caminhoArquivo = Path.Combine(caminhoAreaDeTrabalho, "Itensmgv.txt");
 
             // Enviar arquivo para a balança via TCP/IP
@@ -527,6 +524,9 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
             // Atualiza a fonte de dados do grid
             gridProdutos.DataSource = null; // Limpa a fonte de dados atual
             gridProdutos.DataSource = produtos;
+            produto = new Produto();
+            txtCodProduto.Texts = "";
+            txtPesquisaProduto.Texts = "";
         }
 
         private void RemoverProdutoDoGrid(int id)
@@ -568,10 +568,48 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
 
         private void btnGerarArquivo_Click(object sender, EventArgs e)
         {
-            balancaService.GerarArquivoItens(ObterItensDoGrid());
+            if (!Directory.Exists("C:\\Lunar\\Balanca\\ArquivosGerados"))
+                Directory.CreateDirectory("C:\\Lunar\\Balanca\\ArquivosGerados");
+
+            if (radiomgv6.Checked == true)
+                //balancaService.GerarArquivoItensMgv6(ObterItensMGV6DoGrid());
+                balancaService.GerarArquivoItensMgv6(ObterItensMGV6DoGrid());
+            if (radiomgv5.Checked == true)
+                balancaService.GerarArquivoItensMgv5(ObterItensMGV5DoGrid());
+            
         }
 
-        private List<ItemBalanca> ObterItensDoGrid()
+        private List<ItemMGV6> ObterItensMgv6_2DoGrid()
+        {
+            var listaItens = new List<ItemMGV6>();
+
+            foreach (var item in gridProdutos.View.Records)
+            {
+                var produto = item.Data as Produto; // Assumindo que o tipo de dados é Produto
+
+                if (produto != null)
+                {
+                    var itemMgv6 = new ItemMGV6
+                    {
+                        CodigoDepartamento = produto.ProdutoGrupo != null ? produto.ProdutoGrupo.Id.ToString().PadLeft(2, '0') : "01",
+                        EtiquetaDepartamento = "00",  // Ajuste conforme necessário
+                        TipoProduto = "0",  // Ajuste conforme necessário
+                        CodigoItem = produto.Id.ToString("D6"),  // Garante que o código tenha 6 dígitos
+                        Preco = decimal.TryParse(produto.ValorVenda.ToString(), out var valorVendaDecimal)
+                                    ? valorVendaDecimal
+                                    : 0,  // Ajuste o preço com base no valor do produto
+                        Descritivo = produto.Descricao?.PadRight(25) ?? "".PadRight(25),
+                        OutrosCampos = "".PadRight(100, '0'),  // Placeholder para preencher com zeros
+                        Separador = "|01|"  // Ajuste conforme necessário
+                    };
+
+                    listaItens.Add(itemMgv6);
+                }
+            }
+
+            return listaItens;
+        }
+        private List<ItemBalanca> ObterItensMGV6DoGrid()
         {
             var listaItens = new List<ItemBalanca>();
 
@@ -590,9 +628,7 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
                     var itemBalanca = new ItemBalanca();
 
 
-                    itemBalanca.CodigoDepartamento = produto.ProdutoGrupo != null
-                        ? produto.ProdutoGrupo.Id.ToString().PadLeft(2, '0')
-                        : "01";
+                    itemBalanca.CodigoDepartamento = "01";
 
                     itemBalanca.TipoProduto = "0";
 
@@ -601,8 +637,8 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
                     decimal valorVendaDecimal;
                     if (decimal.TryParse(produto.ValorVenda.ToString(), out valorVendaDecimal))
                     {
-                        // Formata o preço para 2 casas decimais e garante que o total tenha exatamente 6 caracteres
-                        itemBalanca.Preco = valorVendaDecimal.ToString("0.00").Replace(",", ".").PadLeft(6, '0').Substring(0, 6);
+                        // Multiplica por 100 e remove o ponto, garantindo que o número tenha exatamente 6 caracteres
+                        itemBalanca.Preco = (valorVendaDecimal * 100).ToString("F0").PadLeft(6, '0').Substring(0, 6);
                     }
                     else
                     {
@@ -611,13 +647,12 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
 
                     itemBalanca.DiasValidade = "000"; // Ajuste conforme necessário
 
+                    if (produto.Descricao.Length > 25)
+                        produto.Descricao = produto.Descricao.Substring(0, 25);
                     itemBalanca.Descritivo1 = produto.Descricao?.PadRight(25) ?? "".PadRight(25);
+                    itemBalanca.Descritivo2 = "".PadRight(25);
 
-                    itemBalanca.Descritivo2 = produto.Marca != null
-                        ? produto.Marca.Descricao?.PadRight(25) ?? "".PadRight(25)
-                        : "".PadRight(25);
-
-                    itemBalanca.CodigoInfoExtra = "".PadLeft(6, '0'); // Preenche com zeros se necessário
+                    itemBalanca.CodigoInfoExtra = "000000".PadLeft(6, '0'); // Preenche com zeros se necessário
 
                     itemBalanca.CodigoImagem = "".PadLeft(4, '0'); // Preenche com zeros
 
@@ -629,13 +664,13 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
 
                     itemBalanca.CodigoFornecedor = "0000"; // Preenche com zeros
 
-                    itemBalanca.Lote = "000000000001"; // Preenche com zeros
+                    itemBalanca.Lote = "000000000000"; // Preenche com zeros
 
-                    itemBalanca.CodigoEANEspecial = produto.Ean.PadLeft(13, '0'); // Ajuste para comprimento esperado
+                    itemBalanca.CodigoEANEspecial = "".PadLeft(11, '0'); // Ajuste para comprimento esperado
 
                     itemBalanca.VersaoPreco = "1"; // Ajuste conforme necessário
 
-                    itemBalanca.CodigoSom = "0001"; // Preenche com zeros
+                    itemBalanca.CodigoSom = "0000"; // Preenche com zeros
 
                     itemBalanca.CodigoTara = "0000"; // Preenche com zeros
 
@@ -645,11 +680,11 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
 
                     itemBalanca.CodigoCampoExtra2 = "0000"; // Preenche com zeros
 
-                    itemBalanca.CodigoConservacao = "0001"; // Preenche com zeros
+                    itemBalanca.CodigoConservacao = "0000"; // Preenche com zeros
 
-                    itemBalanca.EANFornecedor = produto.Ean.PadLeft(12, '0'); // Ajuste para comprimento esperado
+                    itemBalanca.EANFornecedor = "".PadLeft(12, '0'); // Ajuste para comprimento esperado
 
-                    itemBalanca.PercentualGlaciamento = "000000"; // Preenche com zeros
+                    itemBalanca.PercentualGlaciamento = "0000"; // Preenche com zeros
 
                     itemBalanca.Descritivo3 = "".PadRight(35); // Preenche com espaços
 
@@ -671,9 +706,9 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
 
                     itemBalanca.BalancasInativas = "0"; // Ajuste conforme necessário
 
-                    itemBalanca.CodigoEANEspecialG1 = produto.Ean.PadLeft(12, '0'); // Ajuste para comprimento esperado
+                    itemBalanca.CodigoEANEspecialG1 = "".PadLeft(12, '0'); // Ajuste para comprimento esperado
 
-                    itemBalanca.PercentualGlaciamentoPG = "0000"; // Preenche com zeros
+                    itemBalanca.PercentualGlaciamentoPG = "00"; // Preenche com zeros
 
                     listaItens.Add(itemBalanca);
                 }
@@ -682,6 +717,98 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
             return listaItens;
         }
 
+        private List<ItemBalancaMGV5> ObterItensMGV5DoGrid()
+        {
+            var listaItens = new List<ItemBalancaMGV5>();
 
+            foreach (var item in gridProdutos.View.Records)
+            {
+                var produto = item.Data as Produto; // Assumindo que o tipo de dados é Produto
+
+                if (produto != null)
+                {
+                    var itemMgv5 = new ItemBalancaMGV5();
+
+                    itemMgv5.CodigoDepartamento = produto.ProdutoGrupo != null
+                        ? produto.ProdutoGrupo.Id.ToString().PadLeft(2, '0')
+                        : "01";  // Valor padrão caso o produto não tenha grupo
+
+                    itemMgv5.EtiquetaDepartamento = "00";  // Defina conforme necessário (substituir por valor real se aplicável)
+
+                    itemMgv5.TipoProduto = "0";  // Ajuste conforme necessário (substituir por valor real se aplicável)
+
+                    itemMgv5.CodigoItem = produto.Id.ToString("D6");  // Garante que o CódigoItem tenha 6 dígitos
+
+                    decimal valorVendaDecimal;
+                    if (decimal.TryParse(produto.ValorVenda.ToString(), out valorVendaDecimal))
+                    {
+                        itemMgv5.Preco = valorVendaDecimal;  // Defina o preço diretamente como decimal
+                    }
+                    else
+                    {
+                        itemMgv5.Preco = 0;  // Valor padrão se não conseguir converter
+                    }
+
+                    itemMgv5.DiasValidade = 0;  // Ajuste conforme necessário (substituir por valor real se aplicável)
+
+                    itemMgv5.Descritivo1 = produto.Descricao?.PadRight(25) ?? "".PadRight(25);  // Descrição principal do produto
+
+                    itemMgv5.Descritivo2 = produto.Marca != null
+                        ? produto.Marca.Descricao?.PadRight(25) ?? "".PadRight(25)
+                        : "".PadRight(25);  // Marca ou campo vazio
+
+                    itemMgv5.Receita1 = "Receita1".PadRight(50);  // Ajuste conforme necessário (substituir por valor real se aplicável)
+                    itemMgv5.Receita2 = "Receita2".PadRight(50);  // Ajuste conforme necessário (substituir por valor real se aplicável)
+                    itemMgv5.Receita3 = "Receita3".PadRight(50);  // Ajuste conforme necessário (substituir por valor real se aplicável)
+                    itemMgv5.Receita4 = "Receita4".PadRight(50);  // Ajuste conforme necessário (substituir por valor real se aplicável)
+                    itemMgv5.Receita5 = "Receita5".PadRight(50);  // Ajuste conforme necessário (substituir por valor real se aplicável)
+
+                    // Adicionar o item à lista
+                    listaItens.Add(itemMgv5);
+                }
+            }
+
+            return listaItens;
+        }
+
+        private void btnConfirmaItem_Click(object sender, EventArgs e)
+        {
+            if(produto.Id > 0)
+                AdicionarProdutoAoGrid(produto.Id, produto.Descricao, produto.ValorVenda);
+        }
+
+        private void btnTodosPesaveis_Click(object sender, EventArgs e)
+        {
+            produtos = new List<Produto>();
+            IList<Produto> listaProdutos = produtoController.selecionarProdutosPorSql("From Produto Tabela Where Tabela.Pesavel = true and Tabela.FlagExcluido <> true");
+            foreach(Produto prod in listaProdutos)
+            {
+                AdicionarProdutoAoGrid(prod.Id, prod.Descricao, prod.ValorVenda);
+            }
+        }
+
+        private void btnEnviarCarga_Click(object sender, EventArgs e)
+        {
+            enviarCargaBalanca();
+        }
+
+        private void btnEnviarCargaSerial_Click(object sender, EventArgs e)
+        {
+            List<ItemBalanca> itens = ObterItensMGV6DoGrid();
+            balancaService.GerarArquivoItensMgv6(itens);
+            string caminhoAreaDeTrabalho = "C:\\Lunar\\Balanca\\ArquivosGerados";
+            string caminhoArquivo = Path.Combine(caminhoAreaDeTrabalho, "Itensmgv.txt");
+
+            string portaBalancaSerial = txtPortaSerial.Text; 
+            balancaService.EnviarArquivoParaBalancaSerial(caminhoArquivo, portaBalancaSerial);
+        }
+
+        private void btnRemoverProduto_Click(object sender, EventArgs e)
+        {
+            if (gridProdutos.SelectedItem is Produto produtoSelecionado)
+            {
+                RemoverProdutoDoGrid(produtoSelecionado.Id);
+            }
+        }
     }
 }

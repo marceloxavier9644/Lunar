@@ -110,6 +110,8 @@ namespace Lunar.Telas.Cadastros.Bancos
 
         private void btnPesquisaBanco_Click(object sender, EventArgs e)
         {
+            txtBanco.Texts = "";
+            txtCodBanco.Texts = "";
             Object bancoObjeto = new Banco();
             Form formBackground = new Form();
             try

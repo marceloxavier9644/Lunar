@@ -33,6 +33,10 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCargaBalanca));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtPortaSerial = new Syncfusion.Windows.Forms.Tools.MaskedEditBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.radiomgv6 = new System.Windows.Forms.RadioButton();
+            this.radiomgv5 = new System.Windows.Forms.RadioButton();
             this.btnParar = new FontAwesome.Sharp.IconButton();
             this.progressBarBalanca = new System.Windows.Forms.ProgressBar();
             this.btnGerarTxt = new MaterialSkin.Controls.MaterialButton();
@@ -48,14 +52,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnEnviarCarga = new MaterialSkin.Controls.MaterialButton();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnEnviarCargaSerial = new MaterialSkin.Controls.MaterialButton();
             this.btnGerarArquivo = new MaterialSkin.Controls.MaterialButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.gridProdutos = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.btnConfirmaItem = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTodosPesaveis = new MaterialSkin.Controls.MaterialButton();
             this.txtPesquisaProduto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCodProduto = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnRemoverProduto = new MaterialSkin.Controls.MaterialButton();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPortaSerial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPortaBalanca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIpBalanca)).BeginInit();
             this.panel4.SuspendLayout();
@@ -66,6 +74,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtPortaSerial);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.radiomgv6);
+            this.panel1.Controls.Add(this.radiomgv5);
             this.panel1.Controls.Add(this.btnParar);
             this.panel1.Controls.Add(this.progressBarBalanca);
             this.panel1.Controls.Add(this.btnGerarTxt);
@@ -78,8 +90,51 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(818, 136);
+            this.panel1.Size = new System.Drawing.Size(818, 155);
             this.panel1.TabIndex = 0;
+            // 
+            // txtPortaSerial
+            // 
+            this.txtPortaSerial.BeforeTouchSize = new System.Drawing.Size(258, 24);
+            this.txtPortaSerial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPortaSerial.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPortaSerial.Location = new System.Drawing.Point(422, 30);
+            this.txtPortaSerial.Name = "txtPortaSerial";
+            this.txtPortaSerial.Size = new System.Drawing.Size(100, 24);
+            this.txtPortaSerial.TabIndex = 241;
+            this.txtPortaSerial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(419, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 18);
+            this.label4.TabIndex = 240;
+            this.label4.Text = "Porta Serial";
+            // 
+            // radiomgv6
+            // 
+            this.radiomgv6.AutoSize = true;
+            this.radiomgv6.Checked = true;
+            this.radiomgv6.Location = new System.Drawing.Point(76, 130);
+            this.radiomgv6.Name = "radiomgv6";
+            this.radiomgv6.Size = new System.Drawing.Size(55, 17);
+            this.radiomgv6.TabIndex = 239;
+            this.radiomgv6.TabStop = true;
+            this.radiomgv6.Text = "MGV6";
+            this.radiomgv6.UseVisualStyleBackColor = true;
+            // 
+            // radiomgv5
+            // 
+            this.radiomgv5.AutoSize = true;
+            this.radiomgv5.Location = new System.Drawing.Point(15, 130);
+            this.radiomgv5.Name = "radiomgv5";
+            this.radiomgv5.Size = new System.Drawing.Size(55, 17);
+            this.radiomgv5.TabIndex = 238;
+            this.radiomgv5.Text = "MGV5";
+            this.radiomgv5.UseVisualStyleBackColor = true;
             // 
             // btnParar
             // 
@@ -94,7 +149,7 @@
             this.btnParar.IconColor = System.Drawing.Color.Red;
             this.btnParar.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnParar.IconSize = 38;
-            this.btnParar.Location = new System.Drawing.Point(446, 63);
+            this.btnParar.Location = new System.Drawing.Point(529, 63);
             this.btnParar.Name = "btnParar";
             this.btnParar.Size = new System.Drawing.Size(36, 30);
             this.btnParar.TabIndex = 237;
@@ -106,7 +161,7 @@
             // 
             this.progressBarBalanca.Location = new System.Drawing.Point(15, 101);
             this.progressBarBalanca.Name = "progressBarBalanca";
-            this.progressBarBalanca.Size = new System.Drawing.Size(424, 23);
+            this.progressBarBalanca.Size = new System.Drawing.Size(507, 23);
             this.progressBarBalanca.TabIndex = 8;
             this.progressBarBalanca.Visible = false;
             // 
@@ -123,9 +178,9 @@
             this.btnGerarTxt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnGerarTxt.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGerarTxt.Name = "btnGerarTxt";
-            this.btnGerarTxt.Size = new System.Drawing.Size(96, 29);
+            this.btnGerarTxt.Size = new System.Drawing.Size(179, 29);
             this.btnGerarTxt.TabIndex = 7;
-            this.btnGerarTxt.Text = "Gerar TXT";
+            this.btnGerarTxt.Text = "Gerar TXT ou Via Cabo";
             this.btnGerarTxt.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnGerarTxt.UseAccentColor = false;
             this.btnGerarTxt.UseVisualStyleBackColor = true;
@@ -154,11 +209,11 @@
             // 
             // txtPortaBalanca
             // 
-            this.txtPortaBalanca.BeforeTouchSize = new System.Drawing.Size(294, 24);
+            this.txtPortaBalanca.BeforeTouchSize = new System.Drawing.Size(258, 24);
             this.txtPortaBalanca.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPortaBalanca.Location = new System.Drawing.Point(315, 30);
+            this.txtPortaBalanca.Location = new System.Drawing.Point(279, 30);
             this.txtPortaBalanca.Name = "txtPortaBalanca";
-            this.txtPortaBalanca.Size = new System.Drawing.Size(124, 24);
+            this.txtPortaBalanca.Size = new System.Drawing.Size(137, 24);
             this.txtPortaBalanca.TabIndex = 5;
             this.txtPortaBalanca.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPortaBalanca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPortaBalanca_KeyPress);
@@ -167,19 +222,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(312, 9);
+            this.label2.Location = new System.Drawing.Point(276, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 18);
+            this.label2.Size = new System.Drawing.Size(140, 18);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Porta Balança";
+            this.label2.Text = "Porta Balança Rede";
             // 
             // txtIpBalanca
             // 
-            this.txtIpBalanca.BeforeTouchSize = new System.Drawing.Size(294, 24);
+            this.txtIpBalanca.BeforeTouchSize = new System.Drawing.Size(258, 24);
             this.txtIpBalanca.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIpBalanca.Location = new System.Drawing.Point(15, 30);
             this.txtIpBalanca.Name = "txtIpBalanca";
-            this.txtIpBalanca.Size = new System.Drawing.Size(294, 24);
+            this.txtIpBalanca.Size = new System.Drawing.Size(258, 24);
             this.txtIpBalanca.TabIndex = 3;
             this.txtIpBalanca.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtIpBalanca.Leave += new System.EventHandler(this.txtIpBalanca_Leave);
@@ -280,19 +335,22 @@
             this.btnEnviarCarga.Enabled = false;
             this.btnEnviarCarga.HighEmphasis = true;
             this.btnEnviarCarga.Icon = null;
-            this.btnEnviarCarga.Location = new System.Drawing.Point(702, 12);
+            this.btnEnviarCarga.Location = new System.Drawing.Point(641, 12);
             this.btnEnviarCarga.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEnviarCarga.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEnviarCarga.Name = "btnEnviarCarga";
-            this.btnEnviarCarga.Size = new System.Drawing.Size(112, 36);
+            this.btnEnviarCarga.Size = new System.Drawing.Size(164, 36);
             this.btnEnviarCarga.TabIndex = 212;
-            this.btnEnviarCarga.Text = "Enviar Carga";
+            this.btnEnviarCarga.Text = "Enviar Carga Rede";
             this.btnEnviarCarga.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnEnviarCarga.UseAccentColor = false;
             this.btnEnviarCarga.UseVisualStyleBackColor = true;
+            this.btnEnviarCarga.Click += new System.EventHandler(this.btnEnviarCarga_Click);
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btnRemoverProduto);
+            this.panel4.Controls.Add(this.btnEnviarCargaSerial);
             this.panel4.Controls.Add(this.btnGerarArquivo);
             this.panel4.Controls.Add(this.btnEnviarCarga);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -300,6 +358,28 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(818, 54);
             this.panel4.TabIndex = 212;
+            // 
+            // btnEnviarCargaSerial
+            // 
+            this.btnEnviarCargaSerial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEnviarCargaSerial.AutoSize = false;
+            this.btnEnviarCargaSerial.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEnviarCargaSerial.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnviarCargaSerial.Depth = 0;
+            this.btnEnviarCargaSerial.DrawShadows = true;
+            this.btnEnviarCargaSerial.HighEmphasis = true;
+            this.btnEnviarCargaSerial.Icon = null;
+            this.btnEnviarCargaSerial.Location = new System.Drawing.Point(469, 12);
+            this.btnEnviarCargaSerial.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEnviarCargaSerial.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEnviarCargaSerial.Name = "btnEnviarCargaSerial";
+            this.btnEnviarCargaSerial.Size = new System.Drawing.Size(164, 36);
+            this.btnEnviarCargaSerial.TabIndex = 214;
+            this.btnEnviarCargaSerial.Text = "Enviar Carga Serial";
+            this.btnEnviarCargaSerial.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEnviarCargaSerial.UseAccentColor = false;
+            this.btnEnviarCargaSerial.UseVisualStyleBackColor = true;
+            this.btnEnviarCargaSerial.Click += new System.EventHandler(this.btnEnviarCargaSerial_Click);
             // 
             // btnGerarArquivo
             // 
@@ -311,11 +391,11 @@
             this.btnGerarArquivo.DrawShadows = true;
             this.btnGerarArquivo.HighEmphasis = true;
             this.btnGerarArquivo.Icon = null;
-            this.btnGerarArquivo.Location = new System.Drawing.Point(582, 12);
+            this.btnGerarArquivo.Location = new System.Drawing.Point(297, 12);
             this.btnGerarArquivo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnGerarArquivo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGerarArquivo.Name = "btnGerarArquivo";
-            this.btnGerarArquivo.Size = new System.Drawing.Size(112, 36);
+            this.btnGerarArquivo.Size = new System.Drawing.Size(164, 36);
             this.btnGerarArquivo.TabIndex = 213;
             this.btnGerarArquivo.Text = "Gerar TXT";
             this.btnGerarArquivo.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -401,9 +481,11 @@
             this.btnConfirmaItem.Size = new System.Drawing.Size(46, 38);
             this.btnConfirmaItem.TabIndex = 210;
             this.btnConfirmaItem.UseVisualStyleBackColor = true;
+            this.btnConfirmaItem.Click += new System.EventHandler(this.btnConfirmaItem_Click);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnTodosPesaveis);
             this.panel2.Controls.Add(this.btnConfirmaItem);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txtPesquisaProduto);
@@ -412,10 +494,31 @@
             this.panel2.Controls.Add(this.autoLabel3);
             this.panel2.Controls.Add(this.btnPesquisaProduto);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 136);
+            this.panel2.Location = new System.Drawing.Point(0, 155);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(818, 128);
+            this.panel2.Size = new System.Drawing.Size(818, 104);
             this.panel2.TabIndex = 210;
+            // 
+            // btnTodosPesaveis
+            // 
+            this.btnTodosPesaveis.AutoSize = false;
+            this.btnTodosPesaveis.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTodosPesaveis.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTodosPesaveis.Depth = 0;
+            this.btnTodosPesaveis.DrawShadows = true;
+            this.btnTodosPesaveis.HighEmphasis = true;
+            this.btnTodosPesaveis.Icon = null;
+            this.btnTodosPesaveis.Location = new System.Drawing.Point(685, 67);
+            this.btnTodosPesaveis.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnTodosPesaveis.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnTodosPesaveis.Name = "btnTodosPesaveis";
+            this.btnTodosPesaveis.Size = new System.Drawing.Size(125, 29);
+            this.btnTodosPesaveis.TabIndex = 240;
+            this.btnTodosPesaveis.Text = "Todos Pesaveis";
+            this.btnTodosPesaveis.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnTodosPesaveis.UseAccentColor = false;
+            this.btnTodosPesaveis.UseVisualStyleBackColor = true;
+            this.btnTodosPesaveis.Click += new System.EventHandler(this.btnTodosPesaveis_Click);
             // 
             // txtPesquisaProduto
             // 
@@ -467,6 +570,28 @@
             this.txtCodProduto.UnderlinedStyle = false;
             this.txtCodProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodProduto_KeyPress);
             // 
+            // btnRemoverProduto
+            // 
+            this.btnRemoverProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoverProduto.AutoSize = false;
+            this.btnRemoverProduto.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRemoverProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoverProduto.Depth = 0;
+            this.btnRemoverProduto.DrawShadows = true;
+            this.btnRemoverProduto.HighEmphasis = true;
+            this.btnRemoverProduto.Icon = null;
+            this.btnRemoverProduto.Location = new System.Drawing.Point(125, 12);
+            this.btnRemoverProduto.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRemoverProduto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRemoverProduto.Name = "btnRemoverProduto";
+            this.btnRemoverProduto.Size = new System.Drawing.Size(164, 36);
+            this.btnRemoverProduto.TabIndex = 215;
+            this.btnRemoverProduto.Text = "Remover Produto";
+            this.btnRemoverProduto.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnRemoverProduto.UseAccentColor = false;
+            this.btnRemoverProduto.UseVisualStyleBackColor = true;
+            this.btnRemoverProduto.Click += new System.EventHandler(this.btnRemoverProduto_Click);
+            // 
             // FrmCargaBalanca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,6 +610,7 @@
             this.Load += new System.EventHandler(this.FrmCargaBalanca_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPortaSerial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPortaBalanca)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIpBalanca)).EndInit();
             this.panel4.ResumeLayout(false);
@@ -521,5 +647,12 @@
         private FontAwesome.Sharp.IconButton btnParar;
         private FontAwesome.Sharp.IconButton btnConfirmaItem;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton radiomgv6;
+        private System.Windows.Forms.RadioButton radiomgv5;
+        private MaterialSkin.Controls.MaterialButton btnTodosPesaveis;
+        private Syncfusion.Windows.Forms.Tools.MaskedEditBox txtPortaSerial;
+        private System.Windows.Forms.Label label4;
+        private MaterialSkin.Controls.MaterialButton btnEnviarCargaSerial;
+        private MaterialSkin.Controls.MaterialButton btnRemoverProduto;
     }
 }

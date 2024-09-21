@@ -1,18 +1,22 @@
 ﻿using Lunar.Telas.Cadastros.Cidades;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
+using Lunar.Utils.OrganizacaoNF;
 using Lunar.Utils.SintegrawsConsultas;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static LunarBase.Utilidades.Ns_ConsultaCNPJ;
 
@@ -217,13 +221,32 @@ namespace Lunar.Telas.Cadastros.Empresas
                         {
                             foreach (Empresa emp in listaEmpresa)
                             {
-                                empresa = new Empresa();
+                                emp.Cnae = txtCNAE.Texts;
+                                emp.Cnpj = GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts);
+                                emp.Contador = txtNomeContador.Texts;
+                                emp.CpfContador = txtCPFContador.Texts;
+                                emp.CpfResponsavel = GenericaDesktop.RemoveCaracteres(txtCPFResponsavel.Texts);
+                                emp.CrcContador = txtCRCContador.Texts;
+                                emp.DataAbertura = DateTime.Parse(txtDataAbertura.Value.ToString());
+                                emp.DddPrincipal = txtDDD.Texts;
+                                emp.TelefonePrincipal = GenericaDesktop.RemoveCaracteres(txtTelefonePrincipal.Texts);
+                                emp.RazaoSocial = txtRazaoSocial.Texts;
+                                emp.NomeFantasia = txtNomeFantasia.Texts;
+                                emp.Responsavel = txtNomeResponsavel.Texts;
+                                emp.FuncaoResponsavel = txtCargoResponsavel.Texts;
+                                emp.InscricaoEstadual = txtInscricaoEstadual.Texts;
+                                emp.Email = txtEmail.Texts;
+                                emp.EmailContador = "";
+                                emp.DddSecundario = "";
+                                emp.TelefoneSecundario = "";
+
                                 emp.Responsavel = txtNomeResponsavel.Texts;
                                 emp.FuncaoResponsavel = txtCargoResponsavel.Texts;
                                 emp.CpfResponsavel = txtCPFResponsavel.Texts;
                                 emp.Contador = txtNomeContador.Texts;
                                 emp.CpfContador = txtCPFContador.Texts;
                                 emp.CrcContador = txtCRCContador.Texts;
+                                emp.Endereco = endereco;
                                 Controller.getInstance().salvar(emp);
                                 empresa = emp;
                             }
@@ -564,7 +587,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                 if (String.IsNullOrEmpty(txtSenhaCertificado.Texts))
                 {
                     txtSenhaCertificado.Focus();
-                    GenericaDesktop.ShowInfo("Informe a senha do certificado e clique no botão confirmar!");
+                    //GenericaDesktop.ShowInfo("Informe a senha do certificado e clique no botão confirmar!");
                 }
                 else
                     btnConfirmaCertificado.PerformClick();
@@ -604,8 +627,26 @@ namespace Lunar.Telas.Cadastros.Empresas
                 
             }
         }
+        public static string ConvertImageToBase64(string imagePath)
+        {
+            // Verifica se o arquivo existe no caminho informado
+            if (File.Exists(imagePath))
+            {
+                // Lê os bytes do arquivo de imagem
+                byte[] imageBytes = File.ReadAllBytes(imagePath);
 
-        private void btnPesquisaCnpj_Click(object sender, EventArgs e)
+                // Converte os bytes para uma string Base64
+                string base64String = Convert.ToBase64String(imageBytes);
+
+                return base64String;
+            }
+            else
+            {
+                throw new FileNotFoundException("O arquivo de imagem não foi encontrado.", imagePath);
+            }
+        }
+    
+    private void btnPesquisaCnpj_Click(object sender, EventArgs e)
         {
             try
             {
@@ -630,6 +671,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                             txtComplemento.Texts = consulta.retConsCad.infCons.infCad[0].ender.xCpl;
                             txtBairro.Texts = consulta.retConsCad.infCons.infCad[0].ender.xBairro;
                             txtInscricaoEstadual.Texts = consulta.retConsCad.infCons.infCad[0].IE;
+                            //txtInscricaoMunicipal.Texts = consulta.retConsCad.infCons.infCad[0].;
                             txtCNAE.Texts = consulta.retConsCad.infCons.infCad[0].CNAE.ToString();
 
                             cidade = new Cidade();
@@ -705,6 +747,254 @@ namespace Lunar.Telas.Cadastros.Empresas
             {
 
             }
+        }
+        private static readonly string authToken = "VFhUIElORk9STUFUSUNBT3JQSEQ=";
+        private static readonly string apiUrl = "https://painelapi.ns.eti.br/licenca/salvarDados";
+        private async void cadastrarLicencasNs()
+        {
+            var certContents = File.ReadAllBytes(txtCertificado.Texts);
+            string certificadoBase64 = Convert.ToBase64String(certContents);
+
+            // Crie uma lista de licenças
+            List<LicencaNs> licencas = new List<LicencaNs>();
+
+            // Adicione a primeira licença
+            licencas.Add(new LicencaNs
+            {
+                situacao = 1,
+                envia_email_sendgrid = false,
+                liberado = 1,
+                usarcertns = false,
+                manifesta_auto = false,
+                buscacte = false,
+                buscanfse = false,
+                receber90dias = false,
+                idprojeto = 1, // NS NFe
+                certificado = new CertificadoNs
+                {
+                    certificado = certificadoBase64,
+                    senha = txtSenhaCertificado.Texts
+                },
+                logotipo = !string.IsNullOrEmpty(Sessao.parametroSistema.Logo) && File.Exists(Sessao.parametroSistema.Logo)
+        ? new LogotipoNs
+        {
+            arquivo = ConvertImageToBase64(Sessao.parametroSistema.Logo)
+        }
+        : null,
+                pessoa = new PessoaNs
+                {
+                    cnpj = GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Cnpj),
+                    ie = Sessao.empresaFilialLogada.InscricaoEstadual,
+                    razao = Sessao.empresaFilialLogada.RazaoSocial,
+                    fantasia = Sessao.empresaFilialLogada.NomeFantasia,
+                    tpicms = 1,  // Contribuinte ICMS
+                    site = "",
+                    datanasc = Sessao.empresaFilialLogada.DataAbertura.ToShortDateString(),
+                    skype = "",
+                    emails = new[] { new EmailNs { email = Sessao.empresaFilialLogada.Email } },
+                    enderecos = new[]
+                    {
+                new EnderecoNs
+                {
+                    endereco = Sessao.empresaFilialLogada.Endereco.Logradouro,
+                    numero = int.Parse(Sessao.empresaFilialLogada.Endereco.Numero),
+                    bairro = Sessao.empresaFilialLogada.Endereco.Bairro,
+                    cep = Sessao.empresaFilialLogada.Endereco.Cep,
+                    cidadeNs = new CidadeNs { cIBGE = int.Parse(GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Endereco.Cidade.Ibge)), nome = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao }
+                }
+            },
+                    telefones = new[] { new TelefoneNs { numero = Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal } }
+                }
+            });
+
+            // Adicione uma segunda licença com um idprojeto diferente, se necessário
+            licencas.Add(new LicencaNs
+            {
+                situacao = 1,
+                envia_email_sendgrid = false,
+                liberado = 1,
+                usarcertns = false,
+                manifesta_auto = true,
+                buscacte = false,
+                buscanfse = false,
+                receber90dias = true,
+                idprojeto = 22, // DDFE
+                certificado = new CertificadoNs
+                {
+                    certificado = certificadoBase64,
+                    senha = txtSenhaCertificado.Texts
+                },
+                pessoa = new PessoaNs
+                {
+                    cnpj = GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Cnpj),
+                    ie = Sessao.empresaFilialLogada.InscricaoEstadual,
+                    razao = Sessao.empresaFilialLogada.RazaoSocial,
+                    fantasia = Sessao.empresaFilialLogada.NomeFantasia,
+                    tpicms = 1,
+                    emails = new[] { new EmailNs { email = Sessao.empresaFilialLogada.Email } },
+                    enderecos = new[]
+                    {
+                new EnderecoNs
+                {
+                    endereco = Sessao.empresaFilialLogada.Endereco.Logradouro,
+                    numero = int.Parse(Sessao.empresaFilialLogada.Endereco.Numero),
+                    bairro = Sessao.empresaFilialLogada.Endereco.Bairro,
+                    cep = Sessao.empresaFilialLogada.Endereco.Cep,
+                    cidadeNs = new CidadeNs { cIBGE = int.Parse(GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Endereco.Cidade.Ibge)), nome = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao }
+                }
+            },
+                    telefones = new[] { new TelefoneNs { numero = Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal } }
+                }
+            });
+
+            // Adicione uma segunda licença com um idprojeto diferente, se necessário
+            licencas.Add(new LicencaNs
+            {
+                situacao = 1,
+                envia_email_sendgrid = false,
+                liberado = 1,
+                usarcertns = false,
+                manifesta_auto = false,
+                buscacte = false,
+                buscanfse = false,
+                receber90dias = false,
+                idprojeto = 20, //nfce
+                certificado = new CertificadoNs
+                {
+                    certificado = certificadoBase64,
+                    senha = txtSenhaCertificado.Texts
+                },
+                logotipo = !string.IsNullOrEmpty(Sessao.parametroSistema.Logo) && File.Exists(Sessao.parametroSistema.Logo)
+        ? new LogotipoNs
+        {
+            arquivo = ConvertImageToBase64(Sessao.parametroSistema.Logo)
+        }
+        : null,
+                csc = new Csc
+                {
+                    csc = Sessao.parametroSistema.CscNfce,
+                    codcsc = Sessao.parametroSistema.TokenNfce,
+                    tpamb = 1
+                },
+                pessoa = new PessoaNs
+                {
+                    cnpj = GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Cnpj),
+                    ie = Sessao.empresaFilialLogada.InscricaoEstadual,
+                    razao = Sessao.empresaFilialLogada.RazaoSocial,
+                    fantasia = Sessao.empresaFilialLogada.NomeFantasia,
+                    tpicms = 1,
+                    emails = new[] { new EmailNs { email = Sessao.empresaFilialLogada.Email } },
+                    enderecos = new[]
+                    {
+                new EnderecoNs
+                {
+                    endereco = Sessao.empresaFilialLogada.Endereco.Logradouro,
+                    numero = int.Parse(Sessao.empresaFilialLogada.Endereco.Numero),
+                    bairro = Sessao.empresaFilialLogada.Endereco.Bairro,
+                    cep = Sessao.empresaFilialLogada.Endereco.Cep,
+                    cidadeNs = new CidadeNs { cIBGE = int.Parse(GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Endereco.Cidade.Ibge)), nome = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao }
+                }
+            },
+                    telefones = new[] { new TelefoneNs { numero = Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal } }
+                }
+            });
+
+            // Envia a lista de licenças
+            await SalvarDadosLicenca(licencas);
+        }
+
+        public static async Task SalvarDadosLicenca(List<LicencaNs> licencas)
+        {
+            using (var client = new HttpClient())
+            {
+                // Configura o cabeçalho da requisição com o token de autenticação
+                client.DefaultRequestHeaders.Add("X-AUTH-TOKEN", authToken);
+
+                // Serializa a lista de licenças em JSON
+                var json = JsonConvert.SerializeObject(new { licencas });
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                // Envia a requisição POST
+                HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                // Verifica o status da resposta
+                if (response.IsSuccessStatusCode)
+                {
+                    GenericaDesktop.ShowInfo("Licenças registradas com sucesso!");
+                }
+                else
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    GenericaDesktop.ShowErro($"Erro ao salvar licenças: {response.StatusCode} " + responseContent);
+                    Console.WriteLine(responseContent);
+                }
+            }
+        }
+     
+
+        private void btnRegistrarLicencaPainel_Click(object sender, EventArgs e)
+        {
+            if (ValidarCamposLicencaNS())
+            {
+                cadastrarLicencasNs();
+            }
+        }
+
+      
+        private bool ValidarCamposLicencaNS()
+        {
+            // Verifica se o campo txtCertificado está preenchido
+            if (string.IsNullOrWhiteSpace(txtCertificado.Texts))
+            {
+                GenericaDesktop.ShowErro("O campo de certificado deve estar preenchido.");
+                return false;
+            }
+
+            // Verifica se a Sessao.EmpresaFilial não é nula
+            if (Sessao.empresaFilialLogada == null)
+            {
+                GenericaDesktop.ShowErro("Empresa filial não está configurada.");
+                return false;
+            }
+
+            // Verifica se os campos de endereço da EmpresaFilial não são nulos
+            if (Sessao.empresaFilialLogada.Endereco == null)
+            {
+                GenericaDesktop.ShowErro("O endereço da empresa filial não está configurado.");
+                return false;
+            }
+
+            // Verifica se os campos principais de endereço estão preenchidos
+            if (string.IsNullOrWhiteSpace(Sessao.empresaFilialLogada.Endereco.Logradouro) ||
+                string.IsNullOrWhiteSpace(Sessao.empresaFilialLogada.Endereco.Numero) ||
+                string.IsNullOrWhiteSpace(Sessao.empresaFilialLogada.Endereco.Bairro) ||
+                string.IsNullOrWhiteSpace(Sessao.empresaFilialLogada.Endereco.Cep) ||
+                Sessao.empresaFilialLogada.Endereco.Cidade == null)
+            {
+                GenericaDesktop.ShowErro("Os campos de endereço principal devem estar preenchidos.");
+                return false;
+            }
+            // Verifica se os campos principais de endereço estão preenchidos
+            if (string.IsNullOrWhiteSpace(Sessao.empresaFilialLogada.TelefonePrincipal) ||
+                string.IsNullOrWhiteSpace(Sessao.empresaFilialLogada.DddPrincipal))
+            {
+                GenericaDesktop.ShowErro("Os campos de telefone principal devem estar preenchidos na filial.");
+                return false;
+            }
+
+            if (String.IsNullOrEmpty(Sessao.parametroSistema.TokenNfce))
+            {
+                GenericaDesktop.ShowErro("O Token NFC-e em parâmetros não está configurado.");
+                return false;
+            }
+            if (String.IsNullOrEmpty(Sessao.parametroSistema.CscNfce))
+            {
+                GenericaDesktop.ShowErro("O CSC para Emissão de NFCe em parâmetros não está configurado.");
+                return false;
+            }
+
+            // Se todas as validações passarem
+            return true;
         }
     }
 }

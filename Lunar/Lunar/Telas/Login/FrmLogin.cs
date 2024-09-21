@@ -151,6 +151,17 @@ namespace Lunar
                 {
                     ShowMessage("Erro de conexão com o servidor!");
                 }
+                if (erro.Message.Contains("NHibernate"))
+                {
+                    ShowMessage("Aguarde, atualizando banco de dados!");
+                    lblStatus.Visible = true;
+                    lblStatus.Text = "Aguarde atualização...";
+                    Controller.getInstanceAtualiza();
+                    Controller.getInstance().geraValoresPadrao();
+                    lblStatus.Text = "Atualizado...";
+                    lblStatus.Visible = false;
+                    ShowMessage("Faça o Login novamente!");
+                }
             }
 
         }

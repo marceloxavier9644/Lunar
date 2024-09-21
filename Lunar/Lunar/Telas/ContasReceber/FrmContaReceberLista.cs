@@ -15,6 +15,7 @@ using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.ProjectServer.Client;
+using NHibernate.Criterion;
 using Syncfusion.Data;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Grid;
@@ -34,6 +35,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
+using static Lunar.Utils.GalaxyPay_API.GalaxyPayApiIntegracao;
 using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
 using static LunarBase.Utilidades.ManifestoDownload;
 using Exception = System.Exception;
@@ -1069,30 +1071,31 @@ namespace Lunar.Telas.ContasReceber
                         try
                         {
                             GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
-                            GalaxyPay_RetornoStatus retGalaxy = galaxyPayApiIntegracao.GalaxyPay_ListarTransacoes(dataInicial.ToString("yyyy-MM-dd"), dataFinal.ToString("yyyy-MM-dd"));
+                            GalaxyPay_Result retGalaxy = galaxyPayApiIntegracao.GalaxyPay_ListarTransacoes(dataInicial.ToString("yyyy-MM-dd"), dataFinal.ToString("yyyy-MM-dd"));
                             if (retGalaxy != null)
                             {
-                                if (retGalaxy.Transactions != null)
+                                listaContaReceber = retGalaxy.ContasRecebidas;
+                                if (listaContaReceber.Count > 0)
                                 {
-                                    if (retGalaxy.Transactions.Length > 0)
+                                    calculaTotalNotas();
+                                    sfDataPager1.DataSource = listaContaReceberCalculado;
+                                    if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
+                                        sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
+                                    else
+                                        sfDataPager1.PageSize = 100;
+                                    grid.DataSource = sfDataPager1.PagedSource;
+                                    sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
+
+                                    this.grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+                                    this.grid.AutoSizeController.Refresh();
+                                    grid.Refresh();
+                                    this.grid.MoveToCurrentCell(new Syncfusion.WinForms.GridCommon.ScrollAxis.RowColumnIndex(1, 0));
+
+                                    int w = Screen.PrimaryScreen.Bounds.Width;
+                                    int h = Screen.PrimaryScreen.Bounds.Height;
+                                    if (w == 1920 && h == 1080)
                                     {
-                                        IList<ContaReceber> listaReceberRec = new List<ContaReceber>();
-                                        for (int x = 0; x < retGalaxy.Transactions.Length; x++)
-                                        {
-                                            if (retGalaxy.Transactions[x].chargeMyId != null && retGalaxy.Transactions[x].status.Contains("Boleto"))
-                                            {
-                                                ContaReceber contaReceber = new ContaReceber();
-                                                contaReceber.Id = int.Parse(retGalaxy.Transactions[x].chargeMyId);
-                                                contaReceber = (ContaReceber)Controller.getInstance().selecionar(contaReceber);
-                                                listaReceberRec.Add(contaReceber);
-                                            }
-                                        }
-                                        if (listaReceberRec.Count > 0)
-                                        {
-                                            listaContaReceber = listaReceberRec;
-                                            calculaTotalNotas();
-                                            sfDataPager1.DataSource = listaContaReceberCalculado;
-                                        }
+                                        this.grid.View.Records.CollectionChanged += Records_CollectionChanged;
                                     }
                                 }
                             }

@@ -13,8 +13,7 @@ namespace Lunar.Telas.Estoques
     public partial class FrmImprimirSaldoEstoque : Form
     {
         GenericaDesktop generica = new GenericaDesktop();
-
-        public FrmImprimirSaldoEstoque(IList<Produto> listaProduto)
+        public FrmImprimirSaldoEstoque(IList<Produto> listaProduto, bool apresentarCusto, bool apresentarVenda)
         {
             InitializeComponent();
             this.reportViewer1.Visible = true;
@@ -53,9 +52,10 @@ namespace Lunar.Telas.Estoques
             p[4] = (new ReportParameter("FoneFilial", fone));
             p[5] = (new ReportParameter("Logo", Sessao.parametroSistema.Logo));
             reportViewer1.LocalReport.SetParameters(p);
-
+           
             foreach (Produto produto in listaProduto)
             {
+
                 string grupo = "";
                 string subGrupo = "";
                 string localizacao = "";
@@ -66,8 +66,17 @@ namespace Lunar.Telas.Estoques
                 if (produto.ProdutoSetor != null)
                     localizacao = produto.ProdutoSetor.Descricao;
 
+                decimal custo = produto.ValorCusto;
+                if (apresentarCusto == false)
+                    custo = 0;
+
+                decimal precoVenda = produto.ValorVenda;
+                if (apresentarVenda == false)
+                    precoVenda = 0;
+
+
                 dsSaldoEstoque.Produto.AddProdutoRow(produto.Id + produto.IdComplementar, produto.Descricao, grupo, subGrupo, localizacao,
-                    produto.Ncm, produto.CfopVenda, produto.ValorCusto, produto.Estoque, produto.EstoqueAuxiliar, produto.ValorVenda);
+                    produto.Ncm, produto.CfopVenda, custo, produto.Estoque, produto.EstoqueAuxiliar, precoVenda);
             }
 
             this.reportViewer1.RefreshReport();

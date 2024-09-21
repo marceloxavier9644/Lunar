@@ -232,6 +232,34 @@ namespace Lunar.Telas.Compras.Manifestos
             }
         }
 
+        private void verificarNotasSefazReload_DataAntiga()
+        {
+            try
+            {
+                string ultimaDataNotaBaixada = "";
+                ultimaDataNotaBaixada = DateTime.Now.AddMonths(-2).ToShortDateString();
+
+                DateTime ultDt = DateTime.Parse(ultimaDataNotaBaixada);
+                if (ultDt < DateTime.Now.AddMonths(-2))
+                    ultDt = DateTime.Now.AddMonths(-2);
+                Task<ManifestoDownload.Manifesto> taskNota = Task.Run(() => generica.ConsultaNotas_Manifesto(Sessao.empresaFilialLogada.Cnpj, ultDt));
+                taskNota.Wait();
+                var result = taskNota.Result;
+                if (result != null)
+                    inserirNotasNoGrid(result);
+                grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+                this.grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+                this.grid.AutoSizeController.Refresh();
+            }
+            catch (Exception erro)
+            {
+                if (erro.Message.Contains("query did not return a unique result: 2"))
+                    GenericaDesktop.ShowErro("Falha ao selecionar fornecedor, você possui um mesmo fornecedor cadastrado 2 vezes com o msm cpf/cnpj. \n" + erro.Message);
+                else
+                    GenericaDesktop.ShowErro("Erro: " + erro.Message);
+            }
+        }
+
         private void selecionarNotasBancoDados(string dataInicial, string dataFinal)
         {
             lista = nfeController.selecionarNotasEntradaPorPeriodo(dataInicial, dataFinal);
@@ -641,6 +669,9 @@ namespace Lunar.Telas.Compras.Manifestos
                     break;
                 case Keys.F8:
                     btnImprimir.PerformClick();
+                    break;
+                case Keys.F9:
+                    verificarNotasSefazReload_DataAntiga();
                     break;
             }
         }

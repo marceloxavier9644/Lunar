@@ -1126,6 +1126,7 @@
     <Compile Include="Telas\OrdensDeServico\Servicos\FrmServicoLista.Designer.cs">
       <DependentUpon>FrmServicoLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\OrdensDeServico\Servicos\ItemServicoNfse.cs" />
     <Compile Include="Telas\OrdensDeServico\TipoObjetos\FrmTipoObjetoCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1409,6 +1410,8 @@
     </Compile>
     <Compile Include="Utils\Balancas\BalancaService.cs" />
     <Compile Include="Utils\Balancas\ItemBalanca.cs" />
+    <Compile Include="Utils\Balancas\ItemBalancaMGV5.cs" />
+    <Compile Include="Utils\Balancas\ItemMgv6.cs" />
     <Compile Include="Utils\ConverterMoedaPorExtenso.cs" />
     <Compile Include="Utils\GalaxyPay_API\Charges.cs" />
     <Compile Include="Utils\GalaxyPay_API\CustomerEdicao.cs" />
@@ -1435,6 +1438,7 @@
     <Compile Include="Utils\OrganizacaoNF\EmitirNfe2.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNfe3.cs" />
     <Compile Include="Utils\OrganizacaoNF\Ftp.cs" />
+    <Compile Include="Utils\OrganizacaoNF\LicencaNs.cs" />
     <Compile Include="Utils\OrganizacaoNF\LunarApiNotas.cs" />
     <Compile Include="Utils\OrganizacaoNF\RetCartaCorrecao.cs" />
     <Compile Include="Utils\OrganizacaoNF\RetConsultaNfe.cs" />

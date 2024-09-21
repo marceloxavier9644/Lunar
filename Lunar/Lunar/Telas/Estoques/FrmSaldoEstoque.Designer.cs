@@ -30,16 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSaldoEstoque));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkPesaveis = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButtonAdv1 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
-            this.radioButtonAdv3 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioEstoque = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioEstoqueAuxiliar = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioSomenteNegativos = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.radioTodos = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.radioSomentePositivos = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
-            this.checkBoxAdv2 = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
-            this.checkBoxAdv1 = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkVenda = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkCusto = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.btnPesquisaProduto = new FontAwesome.Sharp.IconButton();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCodProduto = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -49,7 +50,6 @@
             this.btnPesquisar = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel56 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.comboTipoProduto = new Syncfusion.WinForms.ListView.SfComboBox();
-            this.btnPesquisaNCM = new FontAwesome.Sharp.IconButton();
             this.autoLabel30 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtNCM = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnPesquisaSetor = new FontAwesome.Sharp.IconButton();
@@ -69,25 +69,27 @@
             this.txtGrupo = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPesaveis)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioButtonAdv1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioButtonAdv3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioEstoque)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioEstoqueAuxiliar)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioSomenteNegativos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioTodos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioSomentePositivos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkBoxAdv2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkBoxAdv1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVenda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCusto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboTipoProduto)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkPesaveis);
             this.panel1.Controls.Add(this.iconButton1);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.checkBoxAdv2);
-            this.panel1.Controls.Add(this.checkBoxAdv1);
+            this.panel1.Controls.Add(this.chkVenda);
+            this.panel1.Controls.Add(this.chkCusto);
             this.panel1.Controls.Add(this.btnPesquisaProduto);
             this.panel1.Controls.Add(this.autoLabel1);
             this.panel1.Controls.Add(this.txtCodProduto);
@@ -97,7 +99,6 @@
             this.panel1.Controls.Add(this.btnPesquisar);
             this.panel1.Controls.Add(this.autoLabel56);
             this.panel1.Controls.Add(this.comboTipoProduto);
-            this.panel1.Controls.Add(this.btnPesquisaNCM);
             this.panel1.Controls.Add(this.autoLabel30);
             this.panel1.Controls.Add(this.txtNCM);
             this.panel1.Controls.Add(this.btnPesquisaSetor);
@@ -120,6 +121,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1008, 304);
             this.panel1.TabIndex = 0;
+            // 
+            // chkPesaveis
+            // 
+            this.chkPesaveis.BeforeTouchSize = new System.Drawing.Size(198, 21);
+            this.chkPesaveis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPesaveis.Location = new System.Drawing.Point(519, 197);
+            this.chkPesaveis.Name = "chkPesaveis";
+            this.chkPesaveis.Size = new System.Drawing.Size(198, 21);
+            this.chkPesaveis.TabIndex = 286;
+            this.chkPesaveis.Text = " Mostrar Somente Pesaveis";
             // 
             // iconButton1
             // 
@@ -144,8 +155,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButtonAdv1);
-            this.groupBox2.Controls.Add(this.radioButtonAdv3);
+            this.groupBox2.Controls.Add(this.radioEstoque);
+            this.groupBox2.Controls.Add(this.radioEstoqueAuxiliar);
             this.groupBox2.Location = new System.Drawing.Point(13, 195);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(180, 94);
@@ -153,27 +164,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tipo de Conferência";
             // 
-            // radioButtonAdv1
+            // radioEstoque
             // 
-            this.radioButtonAdv1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonAdv1.Location = new System.Drawing.Point(6, 19);
-            this.radioButtonAdv1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
-            this.radioButtonAdv1.Name = "radioButtonAdv1";
-            this.radioButtonAdv1.Size = new System.Drawing.Size(150, 21);
-            this.radioButtonAdv1.TabIndex = 280;
-            this.radioButtonAdv1.TabStop = false;
-            this.radioButtonAdv1.Text = " Estoque";
+            this.radioEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioEstoque.Location = new System.Drawing.Point(6, 19);
+            this.radioEstoque.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioEstoque.Name = "radioEstoque";
+            this.radioEstoque.Size = new System.Drawing.Size(150, 21);
+            this.radioEstoque.TabIndex = 280;
+            this.radioEstoque.TabStop = false;
+            this.radioEstoque.Text = " Estoque";
             // 
-            // radioButtonAdv3
+            // radioEstoqueAuxiliar
             // 
-            this.radioButtonAdv3.Checked = true;
-            this.radioButtonAdv3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonAdv3.Location = new System.Drawing.Point(6, 43);
-            this.radioButtonAdv3.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
-            this.radioButtonAdv3.Name = "radioButtonAdv3";
-            this.radioButtonAdv3.Size = new System.Drawing.Size(150, 21);
-            this.radioButtonAdv3.TabIndex = 281;
-            this.radioButtonAdv3.Text = " Estoque Auxiliar";
+            this.radioEstoqueAuxiliar.Checked = true;
+            this.radioEstoqueAuxiliar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioEstoqueAuxiliar.Location = new System.Drawing.Point(6, 43);
+            this.radioEstoqueAuxiliar.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioEstoqueAuxiliar.Name = "radioEstoqueAuxiliar";
+            this.radioEstoqueAuxiliar.Size = new System.Drawing.Size(150, 21);
+            this.radioEstoqueAuxiliar.TabIndex = 281;
+            this.radioEstoqueAuxiliar.Text = " Estoque Auxiliar";
             // 
             // groupBox1
             // 
@@ -200,49 +211,49 @@
             // 
             // radioTodos
             // 
+            this.radioTodos.Checked = true;
             this.radioTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioTodos.Location = new System.Drawing.Point(6, 66);
             this.radioTodos.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
             this.radioTodos.Name = "radioTodos";
             this.radioTodos.Size = new System.Drawing.Size(150, 21);
             this.radioTodos.TabIndex = 282;
-            this.radioTodos.TabStop = false;
             this.radioTodos.Text = " Todos";
             // 
             // radioSomentePositivos
             // 
-            this.radioSomentePositivos.Checked = true;
             this.radioSomentePositivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioSomentePositivos.Location = new System.Drawing.Point(6, 43);
             this.radioSomentePositivos.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
             this.radioSomentePositivos.Name = "radioSomentePositivos";
             this.radioSomentePositivos.Size = new System.Drawing.Size(150, 21);
             this.radioSomentePositivos.TabIndex = 281;
+            this.radioSomentePositivos.TabStop = false;
             this.radioSomentePositivos.Text = " Somente Positivos";
             // 
-            // checkBoxAdv2
+            // chkVenda
             // 
-            this.checkBoxAdv2.BeforeTouchSize = new System.Drawing.Size(175, 21);
-            this.checkBoxAdv2.Checked = true;
-            this.checkBoxAdv2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAdv2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAdv2.Location = new System.Drawing.Point(519, 170);
-            this.checkBoxAdv2.Name = "checkBoxAdv2";
-            this.checkBoxAdv2.Size = new System.Drawing.Size(175, 21);
-            this.checkBoxAdv2.TabIndex = 279;
-            this.checkBoxAdv2.Text = " Mostrar Preço de Venda";
+            this.chkVenda.BeforeTouchSize = new System.Drawing.Size(175, 21);
+            this.chkVenda.Checked = true;
+            this.chkVenda.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkVenda.Location = new System.Drawing.Point(519, 170);
+            this.chkVenda.Name = "chkVenda";
+            this.chkVenda.Size = new System.Drawing.Size(175, 21);
+            this.chkVenda.TabIndex = 279;
+            this.chkVenda.Text = " Mostrar Preço de Venda";
             // 
-            // checkBoxAdv1
+            // chkCusto
             // 
-            this.checkBoxAdv1.BeforeTouchSize = new System.Drawing.Size(175, 21);
-            this.checkBoxAdv1.Checked = true;
-            this.checkBoxAdv1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAdv1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAdv1.Location = new System.Drawing.Point(519, 143);
-            this.checkBoxAdv1.Name = "checkBoxAdv1";
-            this.checkBoxAdv1.Size = new System.Drawing.Size(175, 21);
-            this.checkBoxAdv1.TabIndex = 278;
-            this.checkBoxAdv1.Text = " Mostrar Preço de Custo";
+            this.chkCusto.BeforeTouchSize = new System.Drawing.Size(175, 21);
+            this.chkCusto.Checked = true;
+            this.chkCusto.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCusto.Location = new System.Drawing.Point(519, 143);
+            this.chkCusto.Name = "chkCusto";
+            this.chkCusto.Size = new System.Drawing.Size(175, 21);
+            this.chkCusto.TabIndex = 278;
+            this.chkCusto.Text = " Mostrar Preço de Custo";
             // 
             // btnPesquisaProduto
             // 
@@ -262,6 +273,8 @@
             this.btnPesquisaProduto.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaProduto.TabIndex = 274;
             this.btnPesquisaProduto.UseVisualStyleBackColor = true;
+            this.btnPesquisaProduto.Visible = false;
+            this.btnPesquisaProduto.Click += new System.EventHandler(this.btnPesquisaProduto_Click);
             // 
             // autoLabel1
             // 
@@ -274,6 +287,7 @@
             this.autoLabel1.Size = new System.Drawing.Size(85, 16);
             this.autoLabel1.TabIndex = 277;
             this.autoLabel1.Text = "Cód. Produto";
+            this.autoLabel1.Visible = false;
             // 
             // txtCodProduto
             // 
@@ -301,6 +315,7 @@
             this.txtCodProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodProduto.Texts = "";
             this.txtCodProduto.UnderlinedStyle = false;
+            this.txtCodProduto.Visible = false;
             // 
             // autoLabel2
             // 
@@ -312,6 +327,7 @@
             this.autoLabel2.Size = new System.Drawing.Size(54, 16);
             this.autoLabel2.TabIndex = 276;
             this.autoLabel2.Text = "Produto";
+            this.autoLabel2.Visible = false;
             // 
             // txtProduto
             // 
@@ -321,6 +337,7 @@
             this.txtProduto.BorderRadius = 8;
             this.txtProduto.BorderSize = 2;
             this.txtProduto.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtProduto.Enabled = false;
             this.txtProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtProduto.Location = new System.Drawing.Point(13, 151);
@@ -338,6 +355,7 @@
             this.txtProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtProduto.Texts = "";
             this.txtProduto.UnderlinedStyle = false;
+            this.txtProduto.Visible = false;
             // 
             // iconPesquisar
             // 
@@ -400,7 +418,7 @@
             this.comboTipoProduto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboTipoProduto.DropDownPosition = Syncfusion.WinForms.Core.Enums.PopupRelativeAlignment.Center;
             this.comboTipoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboTipoProduto.Location = new System.Drawing.Point(752, 103);
+            this.comboTipoProduto.Location = new System.Drawing.Point(752, 101);
             this.comboTipoProduto.MaxDropDownItems = 15;
             this.comboTipoProduto.Name = "comboTipoProduto";
             this.comboTipoProduto.Size = new System.Drawing.Size(244, 28);
@@ -421,25 +439,6 @@
             this.comboTipoProduto.ThemeName = "Office2016White";
             this.comboTipoProduto.ToolTipOption.ShadowVisible = false;
             this.comboTipoProduto.Watermark = "Selecione";
-            // 
-            // btnPesquisaNCM
-            // 
-            this.btnPesquisaNCM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaNCM.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaNCM.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaNCM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaNCM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaNCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaNCM.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaNCM.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaNCM.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaNCM.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaNCM.IconSize = 38;
-            this.btnPesquisaNCM.Location = new System.Drawing.Point(710, 100);
-            this.btnPesquisaNCM.Name = "btnPesquisaNCM";
-            this.btnPesquisaNCM.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaNCM.TabIndex = 267;
-            this.btnPesquisaNCM.UseVisualStyleBackColor = true;
             // 
             // autoLabel30
             // 
@@ -471,7 +470,7 @@
             this.txtNCM.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtNCM.PlaceholderText = "";
             this.txtNCM.ReadOnly = false;
-            this.txtNCM.Size = new System.Drawing.Size(184, 37);
+            this.txtNCM.Size = new System.Drawing.Size(226, 37);
             this.txtNCM.TabIndex = 266;
             this.txtNCM.Tag = "";
             this.txtNCM.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -496,6 +495,7 @@
             this.btnPesquisaSetor.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaSetor.TabIndex = 258;
             this.btnPesquisaSetor.UseVisualStyleBackColor = true;
+            this.btnPesquisaSetor.Click += new System.EventHandler(this.btnPesquisaSetor_Click);
             // 
             // autoLabel36
             // 
@@ -555,6 +555,7 @@
             this.txtSetor.BorderRadius = 8;
             this.txtSetor.BorderSize = 2;
             this.txtSetor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtSetor.Enabled = false;
             this.txtSetor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSetor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSetor.Location = new System.Drawing.Point(13, 94);
@@ -591,6 +592,7 @@
             this.btnPesquisaSubGrupo.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaSubGrupo.TabIndex = 255;
             this.btnPesquisaSubGrupo.UseVisualStyleBackColor = true;
+            this.btnPesquisaSubGrupo.Click += new System.EventHandler(this.btnPesquisaSubGrupo_Click);
             // 
             // autoLabel34
             // 
@@ -650,6 +652,7 @@
             this.txtSubGrupo.BorderRadius = 8;
             this.txtSubGrupo.BorderSize = 2;
             this.txtSubGrupo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtSubGrupo.Enabled = false;
             this.txtSubGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSubGrupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSubGrupo.Location = new System.Drawing.Point(519, 42);
@@ -686,6 +689,7 @@
             this.btnPesquisaGrupo.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaGrupo.TabIndex = 252;
             this.btnPesquisaGrupo.UseVisualStyleBackColor = true;
+            this.btnPesquisaGrupo.Click += new System.EventHandler(this.btnPesquisaGrupo_Click);
             // 
             // autoLabel32
             // 
@@ -745,6 +749,7 @@
             this.txtGrupo.BorderRadius = 8;
             this.txtGrupo.BorderSize = 2;
             this.txtGrupo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtGrupo.Enabled = false;
             this.txtGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtGrupo.Location = new System.Drawing.Point(13, 42);
@@ -786,15 +791,16 @@
             this.Load += new System.EventHandler(this.FrmSaldoEstoque_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPesaveis)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radioButtonAdv1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioButtonAdv3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioEstoque)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioEstoqueAuxiliar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioSomenteNegativos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioTodos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioSomentePositivos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkBoxAdv2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkBoxAdv1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVenda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCusto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboTipoProduto)).EndInit();
             this.ResumeLayout(false);
 
@@ -819,7 +825,6 @@
         private RJ_UI.Classes.RJTextBox txtcodGrupo;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel33;
         private RJ_UI.Classes.RJTextBox txtGrupo;
-        private FontAwesome.Sharp.IconButton btnPesquisaNCM;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel30;
         private RJ_UI.Classes.RJTextBox txtNCM;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel56;
@@ -831,15 +836,16 @@
         private RJ_UI.Classes.RJTextBox txtProduto;
         private FontAwesome.Sharp.IconButton iconPesquisar;
         private RJ_UI.Classes.RJButton btnPesquisar;
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv checkBoxAdv2;
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv checkBoxAdv1;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkVenda;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkCusto;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioTodos;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioSomentePositivos;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioSomenteNegativos;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioButtonAdv1;
-        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioButtonAdv3;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioEstoque;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioEstoqueAuxiliar;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkPesaveis;
     }
 }

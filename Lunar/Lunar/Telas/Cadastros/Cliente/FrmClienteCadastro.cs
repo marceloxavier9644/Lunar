@@ -111,6 +111,8 @@ namespace Lunar.Telas.Cadastros.Cliente
             txtObservacoes.Location = new System.Drawing.Point(12, 269);
             autoLabel16.Location = new System.Drawing.Point(25, 255);
             tabDocumentos.TabVisible = false;
+            btnPesquisaCnpj.Visible = true;
+            txtCNPJ.Size = new System.Drawing.Size(217, 37);
             //picFoto.Image = null;
             picFoto.BackgroundImage = Lunar.Properties.Resources.Empresa;
             txtCNPJ.Focus();
@@ -147,6 +149,8 @@ namespace Lunar.Telas.Cadastros.Cliente
             autoLabel16.Location = new System.Drawing.Point(365, 256);
             tabDocumentos.TabVisible = true;
             picFoto.BackgroundImage = Lunar.Properties.Resources.User1;
+            btnPesquisaCnpj.Visible = false;
+            txtCNPJ.Size = new System.Drawing.Size(259, 37);
             txtCNPJ.Focus();
             if (pessoa != null)
             {
@@ -165,73 +169,7 @@ namespace Lunar.Telas.Cadastros.Cliente
 
         private void txtCNPJ_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                if (!String.IsNullOrEmpty(txtCNPJ.Texts))
-                {
-                    pessoa = pessoaController.selecionarPessoaPorCPFCNPJ(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()));
-                    if (pessoa == null)
-                    {
-                        if (Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 14 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
-                        {
-                            if (radioPJ.Checked == false)
-                                radioPJ.Checked = true;
-
-                            //SintegraConsultaCnpj consulta = new SintegraConsultaCnpj();
-                            //consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
-                            ConsultEmpresaNs empr = new ConsultEmpresaNs();
-                            empr = generica.consultarEmpresaPorCnpj_NS(Sessao.empresaFilialLogada.Cnpj, Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
-                            if (empr != null)
-                            {
-                                txtRazaoSocial.Texts = empr.retConsCad.infCons.infCad[0].xNome;
-                                txtNomeFantasia.Texts = empr.retConsCad.infCons.infCad[0].xFant;
-                                txtCEP.Texts = empr.retConsCad.infCons.infCad[0].ender.CEP;
-                                // txtDataAbertura.Value = DateTime.Parse(consulta.data_inicio_atividade);
-                                txtEndereco.Texts = empr.retConsCad.infCons.infCad[0].ender.xLgr;
-                                txtNumero.Texts = empr.retConsCad.infCons.infCad[0].ender.nro;
-                                txtComplemento.Texts = empr.retConsCad.infCons.infCad[0].ender.xCpl;
-                                txtBairro.Texts = empr.retConsCad.infCons.infCad[0].ender.xBairro;
-                                txtInscricaoProdutor.Texts = empr.retConsCad.infCons.infCad[0].IE;
-                                //txtCNAE.Texts = consulta.cnae_principal.code;
-
-                                cidade = new Cidade();
-                                cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(empr.retConsCad.infCons.infCad[0].ender.xMun, empr.retConsCad.infCons.infCad[0].ender.cMun);
-                                if (cidade != null)
-                                {
-                                    txtCidade.Texts = cidade.Descricao;
-                                    txtUF.Texts = cidade.Estado.Uf;
-                                    //cidadePrincipal = cidade;
-                                }
-                            }
-                            txtDDD.Focus();
-                        }
-                        else if (txtCNPJ.Texts.Trim().Length == 11 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
-                        {
-                            txtCNPJ.Texts = generica.FormatarCPF(txtCNPJ.Texts);
-                            if (radioPJ.Checked == true)
-                                radioPJ.Checked = false;
-                        }
-                        else if (txtCNPJ.Texts.Trim().Length == 0)
-                        {
-
-                        }
-                        else
-                        {
-                            GenericaDesktop.ShowAlerta("Documento inválido!");
-                            txtCNPJ.Texts = "";
-                        }
-                    }
-                    else if(pessoa != null && String.IsNullOrEmpty(txtCodCliente.Texts))
-                    {
-                        GenericaDesktop.ShowAlerta("Cliente/Pessoa já possui cadastro no sistema!");
-                        get_Pessoa(pessoa);
-                    }
-                }
-            }
-            catch (Exception erro)
-            {
-                GenericaDesktop.ShowErro(erro.Message);
-            }
+           
         }
 
         private void pesquisaCidadePorNome(string descricaoCidade)
@@ -1834,6 +1772,85 @@ namespace Lunar.Telas.Cadastros.Cliente
                 formAguarde.Close();
 
                 GenericaDesktop.ShowAlerta(erro.Message);
+            }
+        }
+
+        private void btnPesquisaCnpj_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(txtCNPJ.Texts))
+                {
+                    pessoa = pessoaController.selecionarPessoaPorCPFCNPJ(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()));
+                    if (pessoa == null)
+                    {
+                        if (Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 14 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
+                        {
+                            if (radioPJ.Checked == false)
+                                radioPJ.Checked = true;
+
+                            //SintegraConsultaCnpj consulta = new SintegraConsultaCnpj();
+                            //consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
+                            ConsultEmpresaNs empr = new ConsultEmpresaNs();
+                            //generica.consultarEmpresaPorCnpj_NS("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
+                            empr = generica.consultarEmpresaPorCnpj_NS("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
+
+                            if (empr != null && empr.retConsCad != null && empr.retConsCad.infCons != null && empr.retConsCad.infCons.infCad != null)
+                            {
+                                var cadastro = empr.retConsCad.infCons.infCad[0];
+
+                                txtRazaoSocial.Texts = !string.IsNullOrEmpty(cadastro.xNome) ? cadastro.xNome : "";
+                                txtNomeFantasia.Texts = !string.IsNullOrEmpty(cadastro.xFant) ? cadastro.xFant : "";
+
+                                if (cadastro.ender != null)
+                                {
+                                    txtCEP.Texts = !string.IsNullOrEmpty(cadastro.ender.CEP) ? cadastro.ender.CEP : "";
+                                    txtEndereco.Texts = !string.IsNullOrEmpty(cadastro.ender.xLgr) ? cadastro.ender.xLgr : "";
+                                    txtNumero.Texts = !string.IsNullOrEmpty(cadastro.ender.nro) ? cadastro.ender.nro : "";
+                                    txtComplemento.Texts = !string.IsNullOrEmpty(cadastro.ender.xCpl) ? cadastro.ender.xCpl : "";
+                                    txtBairro.Texts = !string.IsNullOrEmpty(cadastro.ender.xBairro) ? cadastro.ender.xBairro : "";
+                                }
+
+                                txtInscricaoProdutor.Texts = !string.IsNullOrEmpty(cadastro.IE) ? cadastro.IE : "";
+
+                                cidade = new Cidade();
+                                cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(cadastro.ender?.xMun, cadastro.ender?.cMun);
+
+                                if (cidade != null)
+                                {
+                                    txtCidade.Texts = !string.IsNullOrEmpty(cidade.Descricao) ? cidade.Descricao : "";
+                                    txtUF.Texts = !string.IsNullOrEmpty(cidade.Estado.Uf) ? cidade.Estado.Uf : "";
+                                }
+                            }
+
+                            txtDDD.Focus();
+                        }
+                        else if (txtCNPJ.Texts.Trim().Length == 11 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
+                        {
+                            txtCNPJ.Texts = generica.FormatarCPF(txtCNPJ.Texts);
+                            if (radioPJ.Checked == true)
+                                radioPJ.Checked = false;
+                        }
+                        else if (txtCNPJ.Texts.Trim().Length == 0)
+                        {
+
+                        }
+                        else
+                        {
+                            GenericaDesktop.ShowAlerta("Documento inválido!");
+                            txtCNPJ.Texts = "";
+                        }
+                    }
+                    else if (pessoa != null && String.IsNullOrEmpty(txtCodCliente.Texts))
+                    {
+                        GenericaDesktop.ShowAlerta("Cliente/Pessoa já possui cadastro no sistema!");
+                        get_Pessoa(pessoa);
+                    }
+                }
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowErro(erro.Message);
             }
         }
     }

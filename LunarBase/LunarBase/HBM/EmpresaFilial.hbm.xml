@@ -8,6 +8,7 @@
 		<property name="NomeFantasia" column="NOMEFANTASIA" type="String" length="100"/>
 		<property name="Cnpj" column="CNPJ" type="String" length="14"/>
 		<property name="InscricaoEstadual" column="INSCRICAOESTADUAL" type="String" length="20"/>
+		<property name="InscricaoMunicipal" column="INSCRICAOMUNICIPAL" type="String" length="20"/>
 		<property name="Cnae" column="CNAE" type="String" length="20"/>
 		<property name="DataAbertura" column="DATAABERTURA" type="DateTime"/>
 		<property name="Email" column="EMAIL" type="String" length="80"/>

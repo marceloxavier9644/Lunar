@@ -697,10 +697,11 @@ namespace Lunar.Utils.GalaxyPay_API
             }
         }
 
-        public GalaxyPay_RetornoStatus GalaxyPay_ListarTransacoes(string dataInicial, string dataFinal)
+        public GalaxyPay_Result GalaxyPay_ListarTransacoes(string dataInicial, string dataFinal)
         {
             try
             {
+                IList<ContaReceber> listaRecebidos = new List<ContaReceber>();
                 int contagemNovosBoletosBaixados = 0;
                 GalaxyPay_TokenAcesso();
                 Thread.Sleep(3000);
@@ -742,15 +743,16 @@ namespace Lunar.Utils.GalaxyPay_API
                                         string valorFinal = valorAjustadoReais + "," + valorAjustadoCentavos;
                                         decimal valorRecebido = decimal.Parse(valorFinal);
                                         contaReceber.ValorRecebido = valorRecebido;
-
                                         Controller.getInstance().salvar(contaReceber);
+                                        listaRecebidos.Add(contaReceber);
+
                                         Caixa caixa = new Caixa();
                                         caixa.Cobrador = null;
                                         caixa.Conciliado = true;
                                         caixa.Concluido = true;
                                         caixa.ContaBancaria = Sessao.parametroSistema.ContaBancariaVinculadaApi;
                                         caixa.DataLancamento = contaReceber.DataRecebimento;
-                                        caixa.Descricao = "REC. DE BOLETO - GALAXY PAY " + contaReceber.Documento + " " + contaReceber.Cliente.RazaoSocial;
+                                        caixa.Descricao = "REC. DE BOLETO - GALAXY PAY/CELCASH " + contaReceber.Documento + " " + contaReceber.Cliente.RazaoSocial;
                                         caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                         caixa.FormaPagamento = contaReceber.FormaPagamento;
                                         caixa.IdOrigem = contaReceber.Id.ToString();
@@ -775,13 +777,28 @@ namespace Lunar.Utils.GalaxyPay_API
                     }
                     if(contagemNovosBoletosBaixados > 0)
                         GenericaDesktop.ShowInfo(contagemNovosBoletosBaixados.ToString() + " Boleto(s) Baixado(s) pelo sistema CelCash!");
-                    return retStatus;
+                    return new GalaxyPay_Result
+                    {
+                        RetornoStatus = retStatus,
+                        ContasRecebidas = listaRecebidos
+                    };
                 }
             }
             catch (Exception err)
             {
                 GenericaDesktop.ShowAlerta("Erro ao ler retorno do sistema Galaxy Pay: " + err.Message);
                 return null;
+            }
+        }
+
+        public class GalaxyPay_Result
+        {
+            public GalaxyPay_RetornoStatus RetornoStatus { get; set; }
+            public IList<ContaReceber> ContasRecebidas { get; set; }
+
+            public GalaxyPay_Result()
+            {
+                ContasRecebidas = new List<ContaReceber>();
             }
         }
 
