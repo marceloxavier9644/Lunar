@@ -79,6 +79,23 @@ namespace LunarBase.ClassesDAO
             return Session.CreateQuery("from Pessoa as Tabela where Tabela.Cnpj = '" + cpfCNPJ + "' and Tabela.FlagExcluido <> true").UniqueResult<Pessoa>();
         }
 
+        public Pessoa SelecionarPessoaPorID(string id)
+        {
+            using (var session = Conexao.GetSession())
+            {
+                // Utilizando consulta SQL nativa
+                var sql = @"SELECT * FROM Pessoa 
+                    WHERE ID = :id 
+                    AND FLAGEXCLUIDO <> 1";
+
+                // Executando a consulta nativa e mapeando o resultado para a classe Pessoa
+                return session.CreateSQLQuery(sql)
+                              .AddEntity(typeof(Pessoa)) // Mapeia o resultado para a entidade Pessoa
+                              .SetParameter("id", id)    // Define o parâmetro ID
+                              .UniqueResult<Pessoa>();   // Retorna o único resultado
+            }
+        }
+
         public Pessoa selecionarPessoaPorCodigoImportado(string codigoImportacao)
         {
             Session = Conexao.GetSession();

@@ -39,9 +39,7 @@ namespace Lunar
         public FrmLogin()
         {
             InitializeComponent();
-            logger.WriteLog("Loggin inicialize", "log");
             verificaLicencaSistema();
-            logger.WriteLog("Loggin Licenca verificada", "log");
             if (File.Exists(@"C:\Lunar\Atualizador\LunarAtualizador.exe"))
                 abrirAtualizador("LunarAtualizador", @"C:\Lunar\Atualizador\LunarAtualizador.exe");
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -150,17 +148,6 @@ namespace Lunar
                 if (erro.Message.Contains("Erro de conexão"))
                 {
                     ShowMessage("Erro de conexão com o servidor!");
-                }
-                if (erro.Message.Contains("NHibernate"))
-                {
-                    ShowMessage("Aguarde, atualizando banco de dados!");
-                    lblStatus.Visible = true;
-                    lblStatus.Text = "Aguarde atualização...";
-                    Controller.getInstanceAtualiza();
-                    Controller.getInstance().geraValoresPadrao();
-                    lblStatus.Text = "Atualizado...";
-                    lblStatus.Visible = false;
-                    ShowMessage("Faça o Login novamente!");
                 }
             }
 

@@ -599,10 +599,10 @@
             this.tab2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tab2.Image = null;
             this.tab2.ImageSize = new System.Drawing.Size(16, 16);
-            this.tab2.Location = new System.Drawing.Point(1, 0);
+            this.tab2.Location = new System.Drawing.Point(1, 37);
             this.tab2.Name = "tab2";
             this.tab2.ShowCloseButton = true;
-            this.tab2.Size = new System.Drawing.Size(1257, 536);
+            this.tab2.Size = new System.Drawing.Size(1257, 499);
             this.tab2.TabFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tab2.TabIndex = 2;
             this.tab2.Text = "Pagamento";
@@ -799,7 +799,7 @@
             this.sfDataPager2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.sfDataPager2.BackColor = System.Drawing.Color.White;
             this.sfDataPager2.CanOverrideStyle = true;
-            this.sfDataPager2.Location = new System.Drawing.Point(20, -174);
+            this.sfDataPager2.Location = new System.Drawing.Point(20, -211);
             this.sfDataPager2.Name = "sfDataPager2";
             this.sfDataPager2.PageSize = 200;
             this.sfDataPager2.Size = new System.Drawing.Size(333, 33);

@@ -11,7 +11,7 @@ namespace LunarBase.Utilidades.NFSe
         private string apiKey;
         private string baseUrl;
 
-        public FocusNFSeClient(string apiKey, bool homologacao = true)
+        public FocusNFSeClient(string apiKey, bool homologacao)
         {
             this.apiKey = apiKey;
             this.baseUrl = homologacao ? "https://homologacao.focusnfe.com.br/v2" : "https://api.focusnfe.com.br/v2";

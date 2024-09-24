@@ -1063,14 +1063,14 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 valorTotal = ordemServico.ValorTotal;
             else if (ordemServico.Id > 0 && origem == "ORDEMSERVICO_SINAL")
                 valorTotal = Sessao.valorSinalOrdemServico;
-            if (listaOrdemServico.Count > 0)
-            {
-                foreach (OrdemServico or in listaOrdemServico)
-                {
-                    clienteLista = or.Cliente;
-                    valorTotal = valorTotal + or.ValorTotal;
-                }
-            }
+            //if (listaOrdemServico.Count > 0)
+            //{
+            //    foreach (OrdemServico or in listaOrdemServico)
+            //    {
+            //        clienteLista = or.Cliente;
+            //        valorTotal = valorTotal + or.ValorTotal;
+            //    }
+            //}
             CreditoClienteController creditoClienteController = new CreditoClienteController();
             if (GenericaDesktop.ShowConfirmacao("O cliente é " + clienteLista.RazaoSocial + " CPF/CNPJ: " + clienteLista.Cnpj + "?"))
             {
@@ -1716,15 +1716,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = contaBancaria;
-                                if (Sessao.caixaLogado != null)
-                                {
-                                    if (Sessao.caixaLogado.Id > 0)
-                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
-                                    else
-                                        caixa.DataLancamento = DateTime.Now;
-                                }
-                                else
-                                    caixa.DataLancamento = DateTime.Now;
+                                caixa.DataLancamento = DateTime.Parse(dataRowView.Row["DataPix"].ToString());
                                 caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;
@@ -1754,15 +1746,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 caixa.Conciliado = true;
                                 caixa.Concluido = true;
                                 caixa.ContaBancaria = contaBancaria;
-                                if (Sessao.caixaLogado != null)
-                                {
-                                    if (Sessao.caixaLogado.Id > 0)
-                                        caixa.DataLancamento = Sessao.caixaLogado.DataAbertura;
-                                    else
-                                        caixa.DataLancamento = DateTime.Now;
-                                }
-                                else
-                                    caixa.DataLancamento = DateTime.Now;
+                                caixa.DataLancamento = DateTime.Parse(dataRowView.Row["DataPix"].ToString());
                                 caixa.Descricao = "REC. " + origem + " " + ordemServico.Id.ToString() + " - " + ordemServico.Cliente.RazaoSocial;
                                 caixa.EmpresaFilial = Sessao.empresaFilialLogada;
                                 caixa.FormaPagamento = formaPagamento;

@@ -85,7 +85,8 @@ namespace LunarBase.ConexaoBD
                             usuario = Sessao.usuarioBanco;
                             senha = Sessao.senhaBanco;
                             bancoDados = Sessao.nomeBanco;
-
+                            if (String.IsNullOrEmpty(bancoDados))
+                                bancoDados = "lunar";
                         }
                         else
                         {

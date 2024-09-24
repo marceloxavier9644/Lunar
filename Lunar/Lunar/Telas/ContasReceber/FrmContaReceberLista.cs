@@ -1075,21 +1075,28 @@ namespace Lunar.Telas.ContasReceber
                             if (retGalaxy != null)
                             {
                                 listaContaReceber = retGalaxy.ContasRecebidas;
-                                if (listaContaReceber.Count > 0)
+                                if (listaContaReceber != null && listaContaReceber.Count > 0)
                                 {
                                     calculaTotalNotas();
                                     sfDataPager1.DataSource = listaContaReceberCalculado;
-                                    if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
-                                        sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
+
+                                    int pageSize;
+                                    if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts) && int.TryParse(txtRegistroPorPagina.Texts, out pageSize))
+                                        sfDataPager1.PageSize = pageSize;
                                     else
                                         sfDataPager1.PageSize = 100;
+
                                     grid.DataSource = sfDataPager1.PagedSource;
                                     sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
 
                                     this.grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
                                     this.grid.AutoSizeController.Refresh();
                                     grid.Refresh();
-                                    this.grid.MoveToCurrentCell(new Syncfusion.WinForms.GridCommon.ScrollAxis.RowColumnIndex(1, 0));
+
+                                    // Garantir que a célula atual está sendo atualizada corretamente
+                                    this.grid.BeginInvoke((Action)(() => {
+                                        this.grid.MoveToCurrentCell(new Syncfusion.WinForms.GridCommon.ScrollAxis.RowColumnIndex(1, 0));
+                                    }));
 
                                     int w = Screen.PrimaryScreen.Bounds.Width;
                                     int h = Screen.PrimaryScreen.Bounds.Height;

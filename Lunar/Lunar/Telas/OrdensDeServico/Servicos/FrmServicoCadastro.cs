@@ -117,17 +117,23 @@ namespace Lunar.Telas.OrdensDeServico.Servicos
             txtCodigo.Texts = servico.Id.ToString();
             txtDescricao.Texts = servico.Descricao;
             txtValor.Texts = string.Format("{0:0.00}",servico.Valor);
-            txtAliquotaIss.Texts = servico.AliquotaIss;
+            if (!String.IsNullOrEmpty(servico.AliquotaIss))
+                txtAliquotaIss.Texts = servico.AliquotaIss;
+            else
+                txtAliquotaIss.Texts = "";
 
-            string codigoServicoCombo = ConverterCodigoParaSalvo(servico.CodigoServicoNfse);
-
-            for (int i = 0; i < comboItemServico.Items.Count; i++)
+            if (!String.IsNullOrEmpty(servico.CodigoServicoNfse))
             {
-                var item = (ComboItemServico)comboItemServico.Items[i];
-                if (item.Value.ToString().Contains(codigoServicoCombo)) 
+                string codigoServicoCombo = ConverterCodigoParaSalvo(servico.CodigoServicoNfse);
+
+                for (int i = 0; i < comboItemServico.Items.Count; i++)
                 {
-                    comboItemServico.SelectedIndex = i;
-                    return;
+                    var item = (ComboItemServico)comboItemServico.Items[i];
+                    if (item.Value.ToString().Contains(codigoServicoCombo))
+                    {
+                        comboItemServico.SelectedIndex = i;
+                        return;
+                    }
                 }
             }
         }

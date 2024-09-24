@@ -1,9 +1,30 @@
 ﻿using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace LunarBase.Utilidades
 {
     public class Generica
     {
+        public static void ShowInfo(String mensagem)
+        {
+            MessageBox.Show(mensagem, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static void ShowAlerta(String mensagem)
+        {
+            MessageBox.Show(mensagem, "Informação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        public static void ShowErro(String mensagem)
+        {
+            MessageBox.Show(mensagem, "Aconteceu algo errado...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static bool ShowConfirmacao(String mensagem)
+        {
+            return MessageBox.Show(mensagem, "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
         public string RemoverAcentos(string texto)
         {
             if (string.IsNullOrEmpty(texto))

@@ -3,6 +3,7 @@ using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
 using Lunar.Utils.OrganizacaoNF;
 using Lunar.Utils.SintegrawsConsultas;
+using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -19,6 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static LunarBase.Utilidades.Ns_ConsultaCNPJ;
+using Exception = System.Exception;
 
 namespace Lunar.Telas.Cadastros.Empresas
 {
@@ -416,6 +418,9 @@ namespace Lunar.Telas.Cadastros.Empresas
                 case Keys.F5:
                     btnSalvar.PerformClick();
                     break;
+                case Keys.F12:
+                    btnRegistrarLicencaPainel.Visible = true;
+                    break;
             }
         }
 
@@ -780,31 +785,8 @@ namespace Lunar.Telas.Cadastros.Empresas
         {
             arquivo = ConvertImageToBase64(Sessao.parametroSistema.Logo)
         }
-        : null,
-                pessoa = new PessoaNs
-                {
-                    cnpj = GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Cnpj),
-                    ie = Sessao.empresaFilialLogada.InscricaoEstadual,
-                    razao = Sessao.empresaFilialLogada.RazaoSocial,
-                    fantasia = Sessao.empresaFilialLogada.NomeFantasia,
-                    tpicms = 1,  // Contribuinte ICMS
-                    site = "",
-                    datanasc = Sessao.empresaFilialLogada.DataAbertura.ToShortDateString(),
-                    skype = "",
-                    emails = new[] { new EmailNs { email = Sessao.empresaFilialLogada.Email } },
-                    enderecos = new[]
-                    {
-                new EnderecoNs
-                {
-                    endereco = Sessao.empresaFilialLogada.Endereco.Logradouro,
-                    numero = int.Parse(Sessao.empresaFilialLogada.Endereco.Numero),
-                    bairro = Sessao.empresaFilialLogada.Endereco.Bairro,
-                    cep = Sessao.empresaFilialLogada.Endereco.Cep,
-                    cidadeNs = new CidadeNs { cIBGE = int.Parse(GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Endereco.Cidade.Ibge)), nome = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao }
-                }
-            },
-                    telefones = new[] { new TelefoneNs { numero = Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal } }
-                }
+        : null
+
             });
 
             // Adicione uma segunda licença com um idprojeto diferente, se necessário
@@ -824,27 +806,6 @@ namespace Lunar.Telas.Cadastros.Empresas
                     certificado = certificadoBase64,
                     senha = txtSenhaCertificado.Texts
                 },
-                pessoa = new PessoaNs
-                {
-                    cnpj = GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Cnpj),
-                    ie = Sessao.empresaFilialLogada.InscricaoEstadual,
-                    razao = Sessao.empresaFilialLogada.RazaoSocial,
-                    fantasia = Sessao.empresaFilialLogada.NomeFantasia,
-                    tpicms = 1,
-                    emails = new[] { new EmailNs { email = Sessao.empresaFilialLogada.Email } },
-                    enderecos = new[]
-                    {
-                new EnderecoNs
-                {
-                    endereco = Sessao.empresaFilialLogada.Endereco.Logradouro,
-                    numero = int.Parse(Sessao.empresaFilialLogada.Endereco.Numero),
-                    bairro = Sessao.empresaFilialLogada.Endereco.Bairro,
-                    cep = Sessao.empresaFilialLogada.Endereco.Cep,
-                    cidadeNs = new CidadeNs { cIBGE = int.Parse(GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Endereco.Cidade.Ibge)), nome = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao }
-                }
-            },
-                    telefones = new[] { new TelefoneNs { numero = Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal } }
-                }
             });
 
             // Adicione uma segunda licença com um idprojeto diferente, se necessário
@@ -859,6 +820,12 @@ namespace Lunar.Telas.Cadastros.Empresas
                 buscanfse = false,
                 receber90dias = false,
                 idprojeto = 20, //nfce
+                csc = new Csc
+                {
+                    csc = Sessao.parametroSistema.CscNfce,
+                    codcsc = Sessao.parametroSistema.TokenNfce,
+                    tpamb = 1
+                },
                 certificado = new CertificadoNs
                 {
                     certificado = certificadoBase64,
@@ -869,23 +836,20 @@ namespace Lunar.Telas.Cadastros.Empresas
         {
             arquivo = ConvertImageToBase64(Sessao.parametroSistema.Logo)
         }
-        : null,
-                csc = new Csc
-                {
-                    csc = Sessao.parametroSistema.CscNfce,
-                    codcsc = Sessao.parametroSistema.TokenNfce,
-                    tpamb = 1
-                },
-                pessoa = new PessoaNs
-                {
-                    cnpj = GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Cnpj),
-                    ie = Sessao.empresaFilialLogada.InscricaoEstadual,
-                    razao = Sessao.empresaFilialLogada.RazaoSocial,
-                    fantasia = Sessao.empresaFilialLogada.NomeFantasia,
-                    tpicms = 1,
-                    emails = new[] { new EmailNs { email = Sessao.empresaFilialLogada.Email } },
-                    enderecos = new[]
-                    {
+        : null
+       
+            });
+
+            var pessoa = new PessoaNs
+            {
+                cnpj = GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Cnpj),
+                ie = Sessao.empresaFilialLogada.InscricaoEstadual,
+                razao = Sessao.empresaFilialLogada.RazaoSocial,
+                fantasia = Sessao.empresaFilialLogada.NomeFantasia,
+                tpicms = 1,
+                emails = new[] { new EmailNs { email = Sessao.empresaFilialLogada.Email } },
+                enderecos = new[]
+                   {
                 new EnderecoNs
                 {
                     endereco = Sessao.empresaFilialLogada.Endereco.Logradouro,
@@ -895,15 +859,20 @@ namespace Lunar.Telas.Cadastros.Empresas
                     cidadeNs = new CidadeNs { cIBGE = int.Parse(GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Endereco.Cidade.Ibge)), nome = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao }
                 }
             },
-                    telefones = new[] { new TelefoneNs { numero = Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal } }
-                }
-            });
+                telefones = new[] { new TelefoneNs { numero = Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal } }
+            };
+
+            var licencaMaster = new LicencaNsMaster
+            {
+                licencas = licencas,
+                pessoa = pessoa
+            };
 
             // Envia a lista de licenças
-            await SalvarDadosLicenca(licencas);
+            await SalvarDadosLicenca(licencaMaster);
         }
 
-        public static async Task SalvarDadosLicenca(List<LicencaNs> licencas)
+        public static async Task SalvarDadosLicenca(LicencaNsMaster licencaMaster)
         {
             using (var client = new HttpClient())
             {
@@ -911,7 +880,8 @@ namespace Lunar.Telas.Cadastros.Empresas
                 client.DefaultRequestHeaders.Add("X-AUTH-TOKEN", authToken);
 
                 // Serializa a lista de licenças em JSON
-                var json = JsonConvert.SerializeObject(new { licencas });
+                //var json = JsonConvert.SerializeObject(new { licencaMaster });
+                var json = JsonConvert.SerializeObject(licencaMaster, Formatting.Indented);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 // Envia a requisição POST

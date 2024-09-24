@@ -649,6 +649,12 @@
     <Compile Include="Telas\Compras\FrmLancarNotaFiscalCompra.Designer.cs">
       <DependentUpon>FrmLancarNotaFiscalCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Compras\FrmPrecificacaoPorNotaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Compras\FrmPrecificacaoPorNotaCompra.Designer.cs">
+      <DependentUpon>FrmPrecificacaoPorNotaCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Compras\Manifestos\FrmManifesto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1614,6 +1620,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Compras\FrmLancarNotaFiscalCompra.resx">
       <DependentUpon>FrmLancarNotaFiscalCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Compras\FrmPrecificacaoPorNotaCompra.resx">
+      <DependentUpon>FrmPrecificacaoPorNotaCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Compras\Manifestos\FrmManifesto.resx">
       <DependentUpon>FrmManifesto.cs</DependentUpon>

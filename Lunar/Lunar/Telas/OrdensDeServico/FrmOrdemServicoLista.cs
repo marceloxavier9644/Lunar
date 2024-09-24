@@ -2355,7 +2355,7 @@ namespace Lunar.Telas.OrdensDeServico
                     abrirHistorico();
                     break;
                 case Keys.F12:
-                    await ExecutarNFSe();
+                    await EmitirNFSe();
                     break;
             }
         }
@@ -2506,265 +2506,186 @@ namespace Lunar.Telas.OrdensDeServico
                 Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
             }
         }
-        public async Task ExecutarNFSe()
+        public async Task EmitirNFSe()
         {
             if (grid.SelectedIndex >= 0)
             {
                 ordemServico = new OrdemServico();
                 ordemServico = (OrdemServico)grid.SelectedItem;
-                if (!ValidarDadosOrdemServicoECliente(ordemServico))
+                if (ordemServico.ValorServico > 0)
                 {
-                    return;
-                }
-
-                string cpf = ordemServico.Cliente.Cnpj;
-                string cnpj = ordemServico.Cliente.Cnpj;
-                if (ordemServico.Cliente.Cnpj.Length == 14)
-                    cpf = "";
-                else
-                    cnpj = "";
-
-                //Key homologacao
-                var client = new FocusNFSeClient("SeI85jiSMPTjLG5KriiT81ty4aYzXs15");
-
-                OrdemServicoServicoController ordemServicoServicoController = new OrdemServicoServicoController();
-                IList<OrdemServicoServico> listaServico = new List<OrdemServicoServico>();
-                listaServico = ordemServicoServicoController.selecionarServicosPorOrdemServico(ordemServico.Id);
-                decimal valorTotalServico = 0m;
-                var descricoes = new List<string>();
-                foreach (OrdemServicoServico ordemServicoServico in listaServico)
-                {
-                    valorTotalServico = valorTotalServico + ordemServicoServico.ValorTotal;
-                    descricoes.Add(ordemServicoServico.DescricaoServico);
-                }
-                string descricaoServico = string.Join(" / ", descricoes);
-                // Criar uma NFSe
-                var nfse = new NFSeRequest
-                {
-                    data_emissao = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"),
-                    natureza_operacao = "1",
-                    optante_simples_nacional = true,
-                    prestador = new Prestador
-                    {
-                        cnpj = Sessao.empresaFilialLogada.Cnpj,
-                        inscricao_municipal = Sessao.empresaFilialLogada.InscricaoEstadual,
-                        codigo_municipio = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge
-                    },
-                    tomador = new Tomador
-                    {
-                        cpf = string.IsNullOrEmpty(cpf) ? null : cpf,
-                        cnpj = string.IsNullOrEmpty(cnpj) ? null : cnpj,
-                        razao_social = ordemServico.Cliente.RazaoSocial,
-                        email = ordemServico.Cliente.Email,
-                        endereco = new EnderecoNFs
-                        {
-                            logradouro = ordemServico.Cliente.EnderecoPrincipal.Logradouro,
-                            numero = ordemServico.Cliente.EnderecoPrincipal.Numero,
-                            complemento = string.IsNullOrEmpty(ordemServico.Cliente.EnderecoPrincipal.Complemento)
-                      ? null
-                      : ordemServico.Cliente.EnderecoPrincipal.Complemento,
-                            bairro = ordemServico.Cliente.EnderecoPrincipal.Bairro,
-                            codigo_municipio = ordemServico.Cliente.EnderecoPrincipal.Cidade.Ibge,
-                            uf = ordemServico.Cliente.EnderecoPrincipal.Cidade.Estado.Uf,
-                            cep = GenericaDesktop.RemoveAcentos(ordemServico.Cliente.EnderecoPrincipal.Cep)
-                        }
-                    },
-                    servico = new ServicoNFS
-                    {
-                        valor_servicos = valorTotalServico,  // valor_servicos(*)
-                        valor_deducoes = 0m,    // valor_deducoes
-                        valor_pis = 0m,         // valor_pis
-                        valor_cofins = 0m,      // valor_cofins
-                        valor_inss = 0m,        // valor_inss
-                        valor_ir = 0m,          // valor_ir
-                        valor_csll = 0m,        // valor_csll
-                        iss_retido = false,     // iss_retido(*)
-                        valor_iss = 0m,         // valor_iss
-                        valor_iss_retido = 0m,   // valor_iss_retido
-                        outras_retencoes = 0m,  // outras_retencoes
-                        base_calculo = valorTotalServico,    // base_calculo
-                        aliquota = 0.0251022716m,         // aliquota
-                        desconto_incondicionado = 0m, // desconto_incondicionado
-                        desconto_condicionado = 0m,   // desconto_condicionado
-                        item_lista_servico = "0107",   // item_lista_servico(*)
-                        codigo_cnae = Sessao.empresaFilialLogada.Cnae,      // codigo_cnae
-                        discriminacao = descricaoServico, // discriminacao(*)
-                        codigo_municipio = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge, // codigo_municipio(*)
-                        percentual_total_tributos = 5.0m, // percentual_total_tributos
-                        fonte_total_tributos = "IBPT" // fonte_total_tributos
-                    }
-                };
-
-                // Enviar NFSe
-                var referencia = Sessao.empresaFilialLogada.Cnpj + ordemServico.Id;
-                var respostaCriacao = await client.CriarNFSeAsync(referencia, nfse);
-                Console.WriteLine("Resposta Criação: " + respostaCriacao);
-
-                await Task.Delay(2000);
-
-                // Consultar NFSe
-                var respostaConsulta = await client.ConsultarNFSeAsync(referencia);
-                Console.WriteLine("Resposta Consulta: " + respostaConsulta);
-                NFSeResponse nfseResponse = JsonConvert.DeserializeObject<NFSeResponse>(respostaConsulta);
-
-                if (nfseResponse.status == "autorizado")
-                {
-                    GenericaDesktop.ShowInfo("NFSe autorizada com sucesso!");
-
-                    Console.WriteLine($"Código de Verificação: {nfseResponse.codigo_verificacao}");
-                    Console.WriteLine($"URL da Nota: {nfseResponse.url}");
-                }
-                else if (nfseResponse.status == "rejeitado")
-                {
-                    GenericaDesktop.ShowErro("NFSe foi rejeitada.");
+                    NFSeFocusService nfseService = new NFSeFocusService(Sessao.parametroSistema.AmbienteProducao);
+                    await nfseService.EmitirNFSe(ordemServico);
                 }
                 else
-                {
-                    GenericaDesktop.ShowAlerta($"Status da NFSe: {nfseResponse.status}. A nota pode ainda estar em processamento.");
-                }
-
-                // Cancelar NFSe
-                //var respostaCancelamento = await client.CancelarNFSeAsync(referencia);
-                // Console.WriteLine("Resposta Cancelamento: " + respostaCancelamento);
+                    GenericaDesktop.ShowAlerta("Valor do serviço deve ser maior que zero para emissão de nota fiscal de serviço!");
             }
+            else
+                GenericaDesktop.ShowAlerta("Selecione uma ordem de serviço!");
         }
 
-        public bool ValidarDadosOrdemServicoECliente(OrdemServico ordemServico)
-        {
-            // Verificar se a ordem de serviço é nula
-            if (ordemServico == null)
-            {
-                GenericaDesktop.ShowAlerta("Ordem de serviço é inválida.");
-                return false;
-            }
 
-            // Verificar dados do cliente
-            var cliente = ordemServico.Cliente;
-            if (cliente == null)
-            {
-                GenericaDesktop.ShowAlerta("Cliente não pode ser nulo.");
-                return false;
-            }
+        //private async void executarTeste()
+        //{
+        //    TimeSpan timeout = TimeSpan.FromMinutes(2);
+        //    TimeSpan pollingInterval = TimeSpan.FromSeconds(8);
+        //    DateTime startTime = DateTime.Now;
+        //    NFSeResponse nfseResponse = null;
 
-            if (string.IsNullOrEmpty(cliente.Cnpj))
-            {
-                GenericaDesktop.ShowAlerta("CPF ou CNPJ do cliente é obrigatório.");
-                return false;
-            }
+        //    if (grid.SelectedIndex >= 0)
+        //    {
+        //        ordemServico = new OrdemServico();
+        //        ordemServico = (OrdemServico)grid.SelectedItem;
+        //        if (!ValidarDadosOrdemServicoECliente(ordemServico))
+        //        {
+        //            return;
+        //        }
 
-            if (string.IsNullOrEmpty(cliente.RazaoSocial))
-            {
-                GenericaDesktop.ShowAlerta("Razão social do cliente é obrigatória.");
-                return false;
-            }
+        //        string cpf = ordemServico.Cliente.Cnpj;
+        //        string cnpj = ordemServico.Cliente.Cnpj;
+        //        if (ordemServico.Cliente.Cnpj.Length == 14)
+        //            cpf = "";
+        //        else
+        //            cnpj = "";
 
-            if (string.IsNullOrEmpty(cliente.Email))
-            {
-                GenericaDesktop.ShowAlerta("E-mail do cliente é obrigatório.");
-                return false;
-            }
+        //        //Key homologacao
+        //        var client = new FocusNFSeClient("SeI85jiSMPTjLG5KriiT81ty4aYzXs15", true);
 
-            // Verificar endereço do cliente
-            var endereco = cliente.EnderecoPrincipal;
-            if (endereco == null)
-            {
-                GenericaDesktop.ShowAlerta("Endereço do cliente é obrigatório.");
-                return false;
-            }
+        //        //Key producao
+        //        if (Sessao.parametroSistema.AmbienteProducao == true)
+        //            client = new FocusNFSeClient("xhYFolRs9uanlrt57NakIlbgvOdn8pjM", false);
 
-            if (string.IsNullOrEmpty(endereco.Logradouro))
-            {
-                GenericaDesktop.ShowAlerta("Logradouro do endereço é obrigatório.");
-                return false;
-            }
+        //        OrdemServicoServicoController ordemServicoServicoController = new OrdemServicoServicoController();
+        //        IList<OrdemServicoServico> listaServico = new List<OrdemServicoServico>();
+        //        listaServico = ordemServicoServicoController.selecionarServicosPorOrdemServico(ordemServico.Id);
+        //        decimal valorTotalServico = 0m;
+        //        var descricoes = new List<string>();
+        //        decimal aliquotaServico = 0;
+        //        string itemListaServico = "";
+        //        foreach (OrdemServicoServico ordemServicoServico in listaServico)
+        //        {
+        //            valorTotalServico = valorTotalServico + ordemServicoServico.ValorTotal;
+        //            descricoes.Add(ordemServicoServico.DescricaoServico);
+        //            aliquotaServico = decimal.Parse(ordemServicoServico.Servico.AliquotaIss);
+        //            itemListaServico = ordemServicoServico.Servico.CodigoServicoNfse;
+        //        }
+        //        string descricaoServico = string.Join(" / ", descricoes);
+        //        // Criar uma NFSe
+        //        var nfse = new NFSeRequest
+        //        {
+        //            data_emissao = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"),
+        //            natureza_operacao = "1",
+        //            optante_simples_nacional = true,
+        //            prestador = new Prestador
+        //            {
+        //                cnpj = Sessao.empresaFilialLogada.Cnpj,
+        //                inscricao_municipal = Sessao.empresaFilialLogada.InscricaoEstadual,
+        //                codigo_municipio = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge
+        //            },
+        //            tomador = new Tomador
+        //            {
+        //                cpf = string.IsNullOrEmpty(cpf) ? null : cpf,
+        //                cnpj = string.IsNullOrEmpty(cnpj) ? null : cnpj,
+        //                razao_social = ordemServico.Cliente.RazaoSocial,
+        //                email = string.IsNullOrWhiteSpace(ordemServico.Cliente.Email) ? null : ordemServico.Cliente.Email,
+        //                endereco = new EnderecoNFs
+        //                {
+        //                    logradouro = ordemServico.Cliente.EnderecoPrincipal.Logradouro,
+        //                    numero = ordemServico.Cliente.EnderecoPrincipal.Numero,
+        //                    complemento = string.IsNullOrEmpty(ordemServico.Cliente.EnderecoPrincipal.Complemento)
+        //              ? null
+        //              : ordemServico.Cliente.EnderecoPrincipal.Complemento,
+        //                    bairro = ordemServico.Cliente.EnderecoPrincipal.Bairro,
+        //                    codigo_municipio = ordemServico.Cliente.EnderecoPrincipal.Cidade.Ibge,
+        //                    uf = ordemServico.Cliente.EnderecoPrincipal.Cidade.Estado.Uf,
+        //                    cep = GenericaDesktop.RemoveAcentos(ordemServico.Cliente.EnderecoPrincipal.Cep)
+        //                }
+        //            },
+        //            servico = new ServicoNFS
+        //            {
+        //                valor_servicos = valorTotalServico,  // valor_servicos(*)
+        //                valor_deducoes = 0m,    // valor_deducoes
+        //                valor_pis = 0m,         // valor_pis
+        //                valor_cofins = 0m,      // valor_cofins
+        //                valor_inss = 0m,        // valor_inss
+        //                valor_ir = 0m,          // valor_ir
+        //                valor_csll = 0m,        // valor_csll
+        //                iss_retido = false,     // iss_retido(*)
+        //                valor_iss = 0m,         // valor_iss
+        //                valor_iss_retido = 0m,   // valor_iss_retido
+        //                outras_retencoes = 0m,  // outras_retencoes
+        //                base_calculo = valorTotalServico,    // base_calculo
+        //                //aliquota = 0.0251022716m,
+        //                aliquota = aliquotaServico,// aliquota
+        //                desconto_incondicionado = 0m, // desconto_incondicionado
+        //                desconto_condicionado = 0m,   // desconto_condicionado
+        //                item_lista_servico = itemListaServico,   // item_lista_servico(*)
+        //                codigo_cnae = Sessao.empresaFilialLogada.Cnae,      // codigo_cnae
+        //                discriminacao = descricaoServico, // discriminacao(*)
+        //                codigo_municipio = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge, // codigo_municipio(*)
+        //                percentual_total_tributos = aliquotaServico, // percentual_total_tributos
+        //                fonte_total_tributos = "IBPT" // fonte_total_tributos
+        //            }
+        //        };
 
-            if (string.IsNullOrEmpty(endereco.Numero))
-            {
-                GenericaDesktop.ShowAlerta("Número do endereço é obrigatório.");
-                return false;
-            }
+        //        // Enviar NFSe
+        //        var referencia = Sessao.empresaFilialLogada.Cnpj + ordemServico.Id;
+        //        var respostaCriacao = await client.CriarNFSeAsync(referencia, nfse);
+        //        Console.WriteLine("Resposta Criação: " + respostaCriacao);
 
-            if (string.IsNullOrEmpty(endereco.Bairro))
-            {
-                GenericaDesktop.ShowAlerta("Bairro do endereço é obrigatório.");
-                return false;
-            }
+        //        await Task.Delay(8000);
 
-            if (endereco.Cidade == null || string.IsNullOrEmpty(endereco.Cidade.Ibge))
-            {
-                GenericaDesktop.ShowAlerta("Código IBGE da cidade é obrigatório.");
-                return false;
-            }
+        //        while (DateTime.Now - startTime < timeout)
+        //        {
+        //            // Consultar a NFSe
+        //            var respostaConsulta = await client.ConsultarNFSeAsync(referencia);
+        //            Console.WriteLine("Resposta Consulta: " + respostaConsulta);
+        //            nfseResponse = JsonConvert.DeserializeObject<NFSeResponse>(respostaConsulta);
 
-            if (endereco.Cidade.Estado == null || string.IsNullOrEmpty(endereco.Cidade.Estado.Uf))
-            {
-                GenericaDesktop.ShowAlerta("UF do estado é obrigatório.");
-                return false;
-            }
+        //            // Verificar se o status ainda está em processamento
+        //            if (!nfseResponse.status.Equals("processando_autorizacao"))
+        //            {
+        //                // Status final obtido, sair do loop
+        //                break;
+        //            }
 
-            if (string.IsNullOrEmpty(endereco.Cep))
-            {
-                GenericaDesktop.ShowAlerta("CEP é obrigatório.");
-                return false;
-            }
+        //            // Aguardar o intervalo de polling antes da próxima consulta
+        //            await Task.Delay(pollingInterval);
+        //        }
+        //        if (nfseResponse == null || nfseResponse.status.Equals("processando_autorizacao"))
+        //        {
+        //            GenericaDesktop.ShowAlerta("Timeout atingido. A NFSe ainda está processando.");
+        //        }
+        //        else if (nfseResponse.status == "autorizado")
+        //        {
+        //            GenericaDesktop.ShowInfo("NFSe autorizada com sucesso!");
+        //            Process.Start(new ProcessStartInfo
+        //            {
+        //                FileName = nfseResponse.url,
+        //                UseShellExecute = true   // Necessário para abrir a URL no navegador padrão
+        //            });
+        //            Console.WriteLine($"Código de Verificação: {nfseResponse.codigo_verificacao}");
+        //            Console.WriteLine($"URL da Nota: {nfseResponse.url}");
+        //        }
+        //        else if (nfseResponse.status == "rejeitado")
+        //        {
+        //            GenericaDesktop.ShowErro("NFSe foi rejeitada.");
+        //        }
+        //        else
+        //        {
+        //            string erros = nfseResponse.erros != null && nfseResponse.erros.Count > 0
+        //                ? string.Join("\n", nfseResponse.erros.Select(e => $"Código: {e.codigo}, Mensagem: {e.mensagem}"))
+        //                : "Nenhum erro encontrado";
 
-            // Validar serviços da ordem de serviço
-            OrdemServicoServicoController ordemServicoServicoController = new OrdemServicoServicoController();
-            IList<OrdemServicoServico> listaServico = ordemServicoServicoController.selecionarServicosPorOrdemServico(ordemServico.Id);
+        //            // Exibe a mensagem de alerta incluindo o status e os erros
+        //            GenericaDesktop.ShowAlerta($"Status da NFSe: {nfseResponse.status}. \n\nErros:\n{erros}");
+        //        }
+        //    }
+        //}
 
-            if (listaServico == null || listaServico.Count == 0)
-            {
-                GenericaDesktop.ShowAlerta("A ordem de serviço não possui serviços cadastrados.");
-                return false;
-            }
-
-            decimal valorTotalServico = 0m;
-            foreach (var servico in listaServico)
-            {
-                if (string.IsNullOrEmpty(servico.DescricaoServico))
-                {
-                    GenericaDesktop.ShowAlerta("Descrição do serviço é obrigatória.");
-                    return false;
-                }
-
-                valorTotalServico += servico.ValorTotal;
-            }
-
-            if (valorTotalServico <= 0)
-            {
-                GenericaDesktop.ShowAlerta("O valor total do serviço deve ser maior que zero.");
-                return false;
-            }
-
-            // Validar dados da empresa (prestador)
-            var empresa = Sessao.empresaFilialLogada;
-            if (empresa == null)
-            {
-                GenericaDesktop.ShowAlerta("Empresa não está logada.");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(empresa.Cnpj))
-            {
-                GenericaDesktop.ShowAlerta("CNPJ da empresa é obrigatório.");
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(empresa.InscricaoEstadual))
-            {
-                GenericaDesktop.ShowAlerta("Inscrição municipal da empresa é obrigatória.");
-                return false;
-            }
-
-            if (empresa.Endereco == null || empresa.Endereco.Cidade == null || string.IsNullOrEmpty(empresa.Endereco.Cidade.Ibge))
-            {
-                GenericaDesktop.ShowAlerta("Código IBGE do município da empresa é obrigatório.");
-                return false;
-            }
-
-            // Se todas as validações passarem, retorna true
-            return true;
-        }
+        // Cancelar NFSe
+        //var respostaCancelamento = await client.CancelarNFSeAsync(referencia);
+        // Console.WriteLine("Resposta Cancelamento: " + respostaCancelamento);
 
     }
 }

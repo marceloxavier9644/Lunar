@@ -46,7 +46,7 @@ namespace LunarBase.ClassesBO
         {
             try
             {
-                gerarEmpresaPadrao();
+                //gerarEmpresaPadrao();
                 gerarGrupoUsuarioPadrao();
                 gerarUsuarioPadrao();
                 gerarUnidadeMedidaPadrao();
@@ -55,7 +55,7 @@ namespace LunarBase.ClassesBO
                 gerarCstIcmsPadrao();
                 gerarCSOSNPadrao();
                 gerarRegimeTributarioPadrao();
-                gerarEmpresaFilialPadrao();
+                //gerarEmpresaFilialPadrao();
                 gerarFormaPagamentoPadrao();
                 gerarBandeiraCartaoPadrao();
                 gerarParametroSistema();
@@ -215,8 +215,8 @@ namespace LunarBase.ClassesBO
             }
             catch
             {
-                grupoUsuario.Id = 0;
-                Controller.getInstance().salvar(empresa);
+                //grupoUsuario.Id = 0;
+                //Controller.getInstance().salvar(empresa);
 
             }
         }

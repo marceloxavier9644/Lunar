@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LunarBase.Classes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,8 +86,15 @@ namespace LunarBase.Utilidades.NFSe
         public DateTime data_emissao { get; set; }
         public string url { get; set; }
         public string caminho_xml_nota_fiscal { get; set; }
+        public List<ErroNFS> erros { get; set; }
     }
 
+    public class ErroNFS
+    {
+        public string codigo { get; set; }
+        public string mensagem { get; set; }
+        public string correcao { get; set; }
+    }
 
 
 }

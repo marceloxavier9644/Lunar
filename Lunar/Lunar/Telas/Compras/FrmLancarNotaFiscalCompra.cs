@@ -57,7 +57,7 @@ namespace Lunar.Telas.Compras
 		
 		}
 
-		private void alimentarInformacoes()
+        private void alimentarInformacoes()
 		{
 			if(Sessao.parametroSistema.PlanoContaCompraRevenda != null)
             {
@@ -903,7 +903,7 @@ namespace Lunar.Telas.Compras
 			}
 		}
 
-		private decimal calcularCustoProduto()
+		public decimal calcularCustoProduto()
         {
 			decimal ipiUnitario = nfeProd.ValorIpi / decimal.Parse(nfeProd.QuantidadeEntrada.ToString());
 			decimal stUnitario = nfeProd.VICMSSt / decimal.Parse(nfeProd.QuantidadeEntrada.ToString());
@@ -1086,9 +1086,26 @@ namespace Lunar.Telas.Compras
                                     }
 								}
 							}
-
 						}
-					}
+                        //Se o produto continua sem associação, segue a busca apenas por referencia
+                        if (String.IsNullOrEmpty(produtoSelecionado.ProdutoAssociado))
+                        {
+                            //Faz uma busca na tabela produto para verificar apenas a referencia
+                            IList<Produto> listaProdsFornecedor = produtoController.selecionarProdutosPorSql("From Produto Tabela Where Tabela.Referencia = '"+ produtoSelecionado.CProd + "' and Tabela.FlagExcluido <> true");
+                            if (listaProdsFornecedor.Count == 1)
+                            {
+                                foreach (Produto prod in listaProdsFornecedor)
+                                {
+                                    gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["CodigoInterno"].MappingName, prod.Id.ToString());
+                                    gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["DescricaoInterna"].MappingName, prod.Descricao);
+                                    gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
+                                    produtoSelecionado.Produto = prod;
+                                    selecionadoPeloSistema = true;
+                                }
+                            }
+
+                        }
+                    }
 					if (!String.IsNullOrEmpty(produtoSelecionado.ProdutoAssociado))
 					{
 						//SetCellTextColor(new RowColumnIndex(index, 0), Color.FromArgb(0, 0, 255));

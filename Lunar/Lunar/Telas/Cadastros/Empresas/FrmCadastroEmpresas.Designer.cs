@@ -61,6 +61,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.autoLabel27 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtInscricaoMunicipal = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnPesquisaCnpj = new FontAwesome.Sharp.IconButton();
             this.txtDataAbertura = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.txtID = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -110,8 +112,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnSalvar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
-            this.autoLabel27 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtInscricaoMunicipal = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -568,6 +568,43 @@
             this.tabPageAdv1.TabIndex = 1;
             this.tabPageAdv1.Text = "Dados";
             this.tabPageAdv1.ThemesEnabled = false;
+            // 
+            // autoLabel27
+            // 
+            this.autoLabel27.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel27.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel27.Location = new System.Drawing.Point(654, 4);
+            this.autoLabel27.Name = "autoLabel27";
+            this.autoLabel27.Size = new System.Drawing.Size(121, 16);
+            this.autoLabel27.TabIndex = 260;
+            this.autoLabel27.Text = "Inscrição Municipal";
+            // 
+            // txtInscricaoMunicipal
+            // 
+            this.txtInscricaoMunicipal.BackColor = System.Drawing.Color.White;
+            this.txtInscricaoMunicipal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtInscricaoMunicipal.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtInscricaoMunicipal.BorderRadius = 8;
+            this.txtInscricaoMunicipal.BorderSize = 2;
+            this.txtInscricaoMunicipal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtInscricaoMunicipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInscricaoMunicipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtInscricaoMunicipal.Location = new System.Drawing.Point(654, 19);
+            this.txtInscricaoMunicipal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtInscricaoMunicipal.Multiline = false;
+            this.txtInscricaoMunicipal.Name = "txtInscricaoMunicipal";
+            this.txtInscricaoMunicipal.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtInscricaoMunicipal.PasswordChar = false;
+            this.txtInscricaoMunicipal.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtInscricaoMunicipal.PlaceholderText = "";
+            this.txtInscricaoMunicipal.ReadOnly = false;
+            this.txtInscricaoMunicipal.Size = new System.Drawing.Size(191, 37);
+            this.txtInscricaoMunicipal.TabIndex = 4;
+            this.txtInscricaoMunicipal.Tag = "";
+            this.txtInscricaoMunicipal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtInscricaoMunicipal.Texts = "";
+            this.txtInscricaoMunicipal.UnderlinedStyle = false;
             // 
             // btnPesquisaCnpj
             // 
@@ -1315,7 +1352,6 @@
             // 
             // btnRegistrarLicencaPainel
             // 
-            this.btnRegistrarLicencaPainel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegistrarLicencaPainel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.btnRegistrarLicencaPainel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.btnRegistrarLicencaPainel.BorderColor = System.Drawing.Color.PaleVioletRed;
@@ -1326,13 +1362,14 @@
             this.btnRegistrarLicencaPainel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrarLicencaPainel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarLicencaPainel.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarLicencaPainel.Location = new System.Drawing.Point(14, 243);
+            this.btnRegistrarLicencaPainel.Location = new System.Drawing.Point(14, 276);
             this.btnRegistrarLicencaPainel.Name = "btnRegistrarLicencaPainel";
             this.btnRegistrarLicencaPainel.Size = new System.Drawing.Size(215, 45);
             this.btnRegistrarLicencaPainel.TabIndex = 275;
             this.btnRegistrarLicencaPainel.Text = "Cadastrar Licenca NS";
             this.btnRegistrarLicencaPainel.TextColor = System.Drawing.Color.White;
             this.btnRegistrarLicencaPainel.UseVisualStyleBackColor = false;
+            this.btnRegistrarLicencaPainel.Visible = false;
             this.btnRegistrarLicencaPainel.Click += new System.EventHandler(this.btnRegistrarLicencaPainel_Click);
             // 
             // lblWhatsLaboratorio
@@ -1644,43 +1681,6 @@
             this.btnCancelar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // autoLabel27
-            // 
-            this.autoLabel27.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel27.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel27.Location = new System.Drawing.Point(654, 4);
-            this.autoLabel27.Name = "autoLabel27";
-            this.autoLabel27.Size = new System.Drawing.Size(121, 16);
-            this.autoLabel27.TabIndex = 260;
-            this.autoLabel27.Text = "Inscrição Municipal";
-            // 
-            // txtInscricaoMunicipal
-            // 
-            this.txtInscricaoMunicipal.BackColor = System.Drawing.Color.White;
-            this.txtInscricaoMunicipal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtInscricaoMunicipal.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtInscricaoMunicipal.BorderRadius = 8;
-            this.txtInscricaoMunicipal.BorderSize = 2;
-            this.txtInscricaoMunicipal.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtInscricaoMunicipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInscricaoMunicipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtInscricaoMunicipal.Location = new System.Drawing.Point(654, 19);
-            this.txtInscricaoMunicipal.Margin = new System.Windows.Forms.Padding(4);
-            this.txtInscricaoMunicipal.Multiline = false;
-            this.txtInscricaoMunicipal.Name = "txtInscricaoMunicipal";
-            this.txtInscricaoMunicipal.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtInscricaoMunicipal.PasswordChar = false;
-            this.txtInscricaoMunicipal.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtInscricaoMunicipal.PlaceholderText = "";
-            this.txtInscricaoMunicipal.ReadOnly = false;
-            this.txtInscricaoMunicipal.Size = new System.Drawing.Size(191, 37);
-            this.txtInscricaoMunicipal.TabIndex = 4;
-            this.txtInscricaoMunicipal.Tag = "";
-            this.txtInscricaoMunicipal.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtInscricaoMunicipal.Texts = "";
-            this.txtInscricaoMunicipal.UnderlinedStyle = false;
             // 
             // FrmCadastroEmpresas
             // 

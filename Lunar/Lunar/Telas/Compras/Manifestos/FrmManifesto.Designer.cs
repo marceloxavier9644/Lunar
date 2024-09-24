@@ -71,6 +71,7 @@
             this.btnRejeitarNota = new Lunar.RJ_UI.Classes.RJButton();
             this.btnLancarNota = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmarNota = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnPrecificacao = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManifesto)).BeginInit();
@@ -680,12 +681,34 @@
             this.btnConfirmarNota.UseVisualStyleBackColor = false;
             this.btnConfirmarNota.Click += new System.EventHandler(this.btnConfirmarNota_Click);
             // 
+            // btnPrecificacao
+            // 
+            this.btnPrecificacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPrecificacao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrecificacao.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPrecificacao.FlatAppearance.BorderSize = 0;
+            this.btnPrecificacao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPrecificacao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPrecificacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrecificacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrecificacao.IconChar = FontAwesome.Sharp.IconChar.Receipt;
+            this.btnPrecificacao.IconColor = System.Drawing.Color.Purple;
+            this.btnPrecificacao.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPrecificacao.IconSize = 38;
+            this.btnPrecificacao.Location = new System.Drawing.Point(96, 350);
+            this.btnPrecificacao.Name = "btnPrecificacao";
+            this.btnPrecificacao.Size = new System.Drawing.Size(36, 34);
+            this.btnPrecificacao.TabIndex = 225;
+            this.btnPrecificacao.UseVisualStyleBackColor = true;
+            this.btnPrecificacao.Click += new System.EventHandler(this.btnPrecificacao_Click);
+            // 
             // FrmManifesto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1163, 450);
+            this.Controls.Add(this.btnPrecificacao);
             this.Controls.Add(this.btnImportarXML);
             this.Controls.Add(this.btnCancelarLancamento);
             this.Controls.Add(this.btnExportarPDF);
@@ -750,5 +773,6 @@
         private RJ_UI.Classes.RJButton btnCancelarLancamento;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private RJ_UI.Classes.RJButton btnImportarXML;
+        private FontAwesome.Sharp.IconButton btnPrecificacao;
     }
 }

@@ -19,7 +19,6 @@ namespace Lunar.Utils.OrganizacaoNF
         public bool receber90dias { get; set; } = false;
         public int idprojeto { get; set; }
         public CertificadoNs certificado { get; set; }
-        public PessoaNs pessoa { get; set; }
         public Csc csc { get; set; }
         public LogotipoNs logotipo { get; set; }
     }
@@ -77,5 +76,11 @@ namespace Lunar.Utils.OrganizacaoNF
     public class TelefoneNs
     {
         public string numero { get; set; }
+    }
+
+    public class LicencaNsMaster
+    {
+        public List<LicencaNs> licencas { get; set; }
+        public PessoaNs pessoa { get; set; }
     }
 }

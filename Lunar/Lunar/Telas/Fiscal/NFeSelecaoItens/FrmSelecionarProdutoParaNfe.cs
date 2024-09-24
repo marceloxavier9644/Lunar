@@ -1129,5 +1129,11 @@ namespace Lunar.Telas.Fiscal.NFeSelecaoItens
                 GenericaDesktop.ShowAlerta("Primeiro você deve clicar na linha do produto que deseja remover!");
             }
         }
+
+        private void tabControlAdv1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControlAdv1.SelectedTab == tabPageAdv3)
+                txtPercentualMercadoriaDevolvida.Texts = "100";
+        }
     }
 }

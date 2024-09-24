@@ -536,8 +536,11 @@ namespace LunarAtualizador
                 string verificaBloqueio = "100";
                 try
                 {
-                    //XmlTextReader reader = new XmlTextReader(System.IO.Path.GetDirectoryName(@"C:\Lunar\MXSystem.xml"));
+                   // XmlTextReader reader = new XmlTextReader(System.IO.Path.GetDirectoryName(@"C:\Lunar\MXSystem.xml"));
                     XmlTextReader reader = new XmlTextReader(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "C:\\Lunar\\MXSystem.xml"));
+                   // string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MXSystem.xml");
+                    //XmlTextReader reader = new XmlTextReader(path);
+
                     while (reader.Read())
                     {
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppUser")
@@ -563,8 +566,11 @@ namespace LunarAtualizador
                     Sessao.usuarioBanco = usuarioBanco;
                     Sessao.senhaBanco = senhaBanco;
 
-                    //reader = new XmlTextReader(System.IO.Path.GetDirectoryName(@"C:\Lunar\MXSystem.xml"));
+                    reader = new XmlTextReader(System.IO.Path.GetDirectoryName(@"C:\Lunar\MXSystem.xml"));
                     reader = new XmlTextReader(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "C:\\Lunar\\MXSystem.xml"));
+                    //path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MXSystem.xml");
+                    //reader = new XmlTextReader(path);
+
                     while (reader.Read())
                     {
                         if (reader.NodeType == XmlNodeType.Element && reader.Name == "AppUser")
@@ -615,7 +621,7 @@ namespace LunarAtualizador
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Ocorreu uma falha ao validar a chave do sistema. Arquivo não Localizado!" + e.Message);
+                    MessageBox.Show("Ocorreu uma falha ao validar a chave do sistema! " + e.Message);
                     Environment.Exit(0);
                 }
             }
@@ -762,19 +768,27 @@ namespace LunarAtualizador
                 logger.WriteLog("Sessao.MensagensAgendadas.Count > 0...OK ---- " + Sessao.MensagensAgendadas.Count, "LogMensagem");
                 foreach (var mensagem in Sessao.MensagensAgendadas.ToList()) // Usar ToList para evitar exceção de modificação durante a iteração
                 {
-                    logger.WriteLog("Preparando Disparo de Mensagem ---- NOME: " + mensagem.NomeCliente + " MENSAGEM: " + mensagemPosVenda + " FLAGENVIADA: " + mensagem.FlagEnviada, "LogMensagem");
+                    logger.WriteLog("Preparando Disparo de Mensagem ---- ID: " + mensagem.Id + " NOME: " + mensagem.NomeCliente + " MENSAGEM: " + mensagemPosVenda + " FLAGENVIADA: " + mensagem.FlagEnviada, "LogMensagem");
                     if (!String.IsNullOrEmpty(mensagem.NomeCliente) && !String.IsNullOrEmpty(mensagemPosVenda) && !mensagem.FlagEnviada)
                     {
                         try
                         {
                             dispararMensagemPosVenda(mensagem.NomeCliente, mensagemPosVenda, mensagem.Pessoa);
-                            mensagem.FlagEnviada = true;
-                            Controller.getInstance().salvar(mensagem);
+                            Controller controller = new Controller();
+                            MensagemPosVenda msg = new MensagemPosVenda();
+                            msg.Id = mensagem.Id;
+                            msg = (MensagemPosVenda)Controller.getInstance().selecionar(msg);
+                            msg.FlagEnviada = true;
+                            Controller.getInstance().salvar(msg);
                         }
                         catch
                         {
-                            mensagem.FlagEnviada = true;
-                            Controller.getInstance().salvar(mensagem);
+                            Controller controller = new Controller();
+                            MensagemPosVenda msg = new MensagemPosVenda();
+                            msg.Id = mensagem.Id;
+                            msg = (MensagemPosVenda)Controller.getInstance().selecionar(msg);
+                            msg.FlagEnviada = true;
+                            Controller.getInstance().salvar(msg);
                         }
                     }
                 }
@@ -789,10 +803,11 @@ namespace LunarAtualizador
                 try
                 {
                     // Abra a conexão
-
+                    Sessao.MensagensAgendadas = new List<MensagemPosVenda>();
+                    Sessao.MensagensAgendadas.Clear();
                     connection.Open();
                     Sessao.parametroSistema = new ParametroSistema();
-                    string query = "SELECT DISTINCT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento INNER JOIN Pessoa ON MP.Pessoa = Pessoa.Id INNER JOIN PessoaTelefone ON Pessoa.ID = PessoaTelefone.PESSOA WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false AND PessoaTelefone.ddd IS NOT NULL AND PessoaTelefone.Telefone IS NOT NULL;\r\n";
+                    string query = "SELECT DISTINCT MP.* FROM MensagemPosVenda MP INNER JOIN (SELECT Pessoa, MIN(DataAgendamento) AS MinDataAgendamento FROM MensagemPosVenda WHERE DATE(DataAgendamento) <= CURDATE() AND FlagEnviada = false GROUP BY Pessoa) AS PessoasUnicas ON MP.Pessoa = PessoasUnicas.Pessoa AND MP.DataAgendamento = PessoasUnicas.MinDataAgendamento INNER JOIN Pessoa ON MP.Pessoa = Pessoa.Id INNER JOIN PessoaTelefone ON Pessoa.ID = PessoaTelefone.PESSOA WHERE DATE(MP.DataAgendamento) <= CURDATE() AND MP.FlagEnviada = false AND PessoaTelefone.ddd IS NOT NULL AND PessoaTelefone.Telefone IS NOT NULL;";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         using (MySqlDataReader reader = command.ExecuteReader())
@@ -805,13 +820,14 @@ namespace LunarAtualizador
                                 msgPos.NomeCliente = $"{reader["NomeCliente"]}";
                                 msgPos.Pessoa = new Pessoa();
                                 msgPos.Pessoa.Id = Convert.ToInt32(reader["Pessoa"]);
+                                Controller controller = new Controller();
+                                PessoaDAO pessoaDAO = new PessoaDAO();
+                                Pessoa pessoa = new Pessoa();
                                 try { msgPos.Pessoa = (Pessoa)Controller.getInstance().selecionar(msgPos.Pessoa); } catch { msgPos.Pessoa = null; }
                                 msgPos.FlagEnviada = false;
                                 if (String.IsNullOrEmpty(msgPos.NomeCliente) && msgPos.Pessoa != null)
                                     msgPos.NomeCliente = msgPos.Pessoa.RazaoSocial;
                                 Sessao.MensagensAgendadas.Add(msgPos);
-
-                          
 
                                 logger.WriteLog("Mensagens agendadas: " + Sessao.MensagensAgendadas.Count, "LogMensagem");
                             }
@@ -1156,6 +1172,7 @@ namespace LunarAtualizador
         {
             dispararMensagens_passo01();
             consultaMensagens();
+            disparoManualMensagens();
         }
 
         static bool ValidarNumeroTelefone(string numero)
@@ -1218,7 +1235,7 @@ namespace LunarAtualizador
             if (Sessao.parametroSistema.TokenWhats == null)
                 conferirHorarioMensagens();
 
-            //Zapi zapi = new Zapi();
+            
             LunarChatAPI lunarChatAPI = new LunarChatAPI();
             if (pessoa.PessoaTelefone != null)
             {

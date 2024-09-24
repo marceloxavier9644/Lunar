@@ -117,8 +117,8 @@ namespace Lunar.Utils
                         if (Sessao.usuarioLogado.GrupoUsuario.Id == 1)
                         {
                             // Faz a atualização das permissões
-                            Sessao.usuarioLogado.GrupoUsuario.Permissoes = "OzE7MjszOzQ7NTs2Ozc7ODs5OzEwOzExOzEyOzEzOzE0OzE1OzE2OzE3OzMwOzMxOzMyOzMzOzM0OzM1OzM2OzM3OzM4OzM5OzQwOzQxOzQzOzQ0OzQ1OzYwOzYxOzYyOzYzOzY0OzY1OzY4OzY5OzcwOzcxOzcyOzEwMDsxMDE7MTAyOzEwMzsxMDQ7MTA1OzEwNjsxMDc7MTA4OzIwMDsyMDE7MjAyOzIwMzsyMDQ7MjA1OzIwNjsyMDc7MzAwOzMwMQ==";
-
+                            // Sessao.usuarioLogado.GrupoUsuario.Permissoes = "OzE7MjszOzQ7NTs2Ozc7ODs5OzEwOzExOzEyOzEzOzE0OzE1OzE2OzE3OzMwOzMxOzMyOzMzOzM0OzM1OzM2OzM3OzM4OzM5OzQwOzQxOzQzOzQ0OzQ1OzYwOzYxOzYyOzYzOzY0OzY1OzY4OzY5OzcwOzcxOzcyOzEwMDsxMDE7MTAyOzEwMzsxMDQ7MTA1OzEwNjsxMDc7MTA4OzIwMDsyMDE7MjAyOzIwMzsyMDQ7MjA1OzIwNjsyMDc7MzAwOzMwMQ==";
+                            Sessao.usuarioLogado.GrupoUsuario.Permissoes = "OzE7MjszOzQ7NTs2Ozc7ODs5OzEwOzExOzEyOzEzOzE0OzE1OzE2OzE3OzMwOzMxOzMyOzMzOzM0OzM1OzM2OzM3OzM4OzM5OzQwOzQxOzQzOzQ0OzQ1OzYwOzYxOzYyOzYzOzY0OzY1OzY2OzY3OzY4OzY5OzcwOzcxOzcyOzEwMDsxMDE7MTAyOzEwMzsxMDQ7MTA1OzEwNjsxMDc7MTA4OzIwMDsyMDE7MjAyOzIwMzsyMDQ7MjA1OzIwNjsyMDc7MzAwOzMwMQ==";
                             // Marca a configuração como atualizada
                             Properties.Settings.Default.Script = true;
                             Properties.Settings.Default.Save();

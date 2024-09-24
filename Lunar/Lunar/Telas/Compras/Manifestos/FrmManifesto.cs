@@ -788,5 +788,15 @@ namespace Lunar.Telas.Compras.Manifestos
                 calculaTotalNotas();
             }
         }
+
+        private void btnPrecificacao_Click(object sender, EventArgs e)
+        {
+            Nfe nfeGrid = (Nfe)grid.SelectedItem;
+            if (nfeGrid.Lancada == true)
+            {
+                FrmPrecificacaoPorNotaCompra frm = new FrmPrecificacaoPorNotaCompra(nfeGrid.Id);
+                frm.Show();
+            }
+        }
     }
 }
