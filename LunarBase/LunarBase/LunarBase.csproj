@@ -64,6 +64,7 @@
     <None Remove="HBM\NfeProduto.hbm.xml" />
     <None Remove="HBM\NfeReferencia.hbm.xml" />
     <None Remove="HBM\NfeStatus.hbm.xml" />
+    <None Remove="HBM\Nfse.hbm.xml" />
     <None Remove="HBM\OrdemServico.hbm.xml" />
     <None Remove="HBM\OrdemServicoExame.hbm.xml" />
     <None Remove="HBM\OrdemServicoPagamento.hbm.xml" />
@@ -122,6 +123,7 @@
     <EmbeddedResource Include="HBM\CondicionalDevolucao.hbm.xml" />
     <EmbeddedResource Include="HBM\MensagemPosVenda.hbm.xml" />
     <EmbeddedResource Include="HBM\NfePagamento.hbm.xml" />
+    <EmbeddedResource Include="HBM\Nfse.hbm.xml" />
     <EmbeddedResource Include="HBM\OsComissao.hbm.xml" />
     <EmbeddedResource Include="HBM\PermissaoUsuario.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoCaracteristica.hbm.xml" />

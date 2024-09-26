@@ -134,6 +134,8 @@ namespace Lunar.Telas.Cadastros.Produtos
 
             this.produto = produto;
             get_Produto(produto);
+            if(inserindoNotaFiscal == true)
+                txtCodBarras.Texts = produto.Ean;
             this.FormBorderStyle = FormBorderStyle.None;
             txtDescricao.Focus();
             txtDescricao.Select();

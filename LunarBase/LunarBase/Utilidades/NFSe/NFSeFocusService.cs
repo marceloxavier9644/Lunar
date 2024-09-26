@@ -54,7 +54,7 @@ namespace LunarBase.Utilidades.NFSe
                 var respostaConsulta = await client.ConsultarNFSeAsync(referencia);
                 nfseResponse = JsonConvert.DeserializeObject<NFSeResponse>(respostaConsulta);
                 Console.WriteLine("Resposta Consulta: " + respostaConsulta);
-
+                nfseResponse = JsonConvert.DeserializeObject<NFSeResponse>(respostaConsulta);
                 // Se não estiver mais processando, sair do loop
                 if (!nfseResponse.status.Equals("processando_autorizacao"))
                 {
@@ -66,7 +66,7 @@ namespace LunarBase.Utilidades.NFSe
             }
 
             // Tratar o resultado da consulta
-            ProcessarResposta(nfseResponse);
+            ProcessarResposta(nfseResponse, ordemServico);
         }
 
         private NFSeRequest CriarNFSeRequest(OrdemServico ordemServico)
@@ -76,11 +76,26 @@ namespace LunarBase.Utilidades.NFSe
             var listaServico = ordemServicoServicoController.selecionarServicosPorOrdemServico(ordemServico.Id);
             decimal valorTotalServico = listaServico.Sum(s => s.ValorTotal);
             string descricaoServico = string.Join(" / ", listaServico.Select(s => s.DescricaoServico));
-            decimal aliquotaServico = decimal.Parse(listaServico.First().Servico.AliquotaIss);
+            string aliquotaIssString = listaServico.First().Servico.AliquotaIss;
+            decimal? aliquotaServico = null;
+            if (!string.IsNullOrEmpty(aliquotaIssString))
+            {
+                if (decimal.TryParse(aliquotaIssString, out decimal parsedAliquota))
+                {
+                    aliquotaServico = parsedAliquota == 0 ? (decimal?)null : parsedAliquota;
+                }
+            }
+
             string itemListaServico = listaServico.First().Servico.CodigoServicoNfse;
 
-            string cpf = ordemServico.Cliente.Cnpj.Length == 14 ? ordemServico.Cliente.Cnpj : "";
-            string cnpj = ordemServico.Cliente.Cnpj.Length == 14 ? "" : ordemServico.Cliente.Cnpj;
+            string cpf = null;
+            string cnpj = null;
+            if (ordemServico.Cliente.Cnpj.Length == 11)
+                cpf = ordemServico.Cliente.Cnpj;
+            
+            else if (ordemServico.Cliente.Cnpj.Length == 14)
+                cnpj = ordemServico.Cliente.Cnpj;
+            
 
             return new NFSeRequest
             {
@@ -90,13 +105,13 @@ namespace LunarBase.Utilidades.NFSe
                 prestador = new Prestador
                 {
                     cnpj = Sessao.empresaFilialLogada.Cnpj,
-                    inscricao_municipal = Sessao.empresaFilialLogada.InscricaoEstadual,
+                    inscricao_municipal = Sessao.empresaFilialLogada.InscricaoMunicipal,
                     codigo_municipio = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge
                 },
                 tomador = new Tomador
                 {
-                    cpf = string.IsNullOrEmpty(cpf) ? null : cpf,
-                    cnpj = string.IsNullOrEmpty(cnpj) ? null : cnpj,
+                    cpf = cpf,
+                    cnpj = cnpj,
                     razao_social = ordemServico.Cliente.RazaoSocial,
                     email = string.IsNullOrWhiteSpace(ordemServico.Cliente.Email) ? null : ordemServico.Cliente.Email,
                     endereco = new EnderecoNFs
@@ -124,7 +139,7 @@ namespace LunarBase.Utilidades.NFSe
                     valor_iss = 0m,
                     valor_iss_retido = 0m,
                     outras_retencoes = 0m,
-                    base_calculo = valorTotalServico,
+                    base_calculo = 0m,
                     aliquota = aliquotaServico,
                     desconto_incondicionado = 0m,
                     desconto_condicionado = 0m,
@@ -132,14 +147,16 @@ namespace LunarBase.Utilidades.NFSe
                     codigo_cnae = Sessao.empresaFilialLogada.Cnae,
                     discriminacao = descricaoServico,
                     codigo_municipio = Sessao.empresaFilialLogada.Endereco.Cidade.Ibge,
-                    percentual_total_tributos = aliquotaServico,
+                    //percentual_total_tributos = aliquotaServico,
                     fonte_total_tributos = "IBPT"
                 }
             };
         }
 
-        private void ProcessarResposta(NFSeResponse nfseResponse)
+        private void ProcessarResposta(NFSeResponse nfseResponse, OrdemServico ordemServico)
         {
+            salvarNfse(ordemServico, nfseResponse);
+
             if (nfseResponse == null || nfseResponse.status.Equals("processando_autorizacao"))
             {
                 Generica.ShowAlerta("Timeout atingido. A NFSe ainda está processando.");
@@ -147,11 +164,22 @@ namespace LunarBase.Utilidades.NFSe
             else if (nfseResponse.status == "autorizado")
             {
                 Generica.ShowInfo("NFSe autorizada com sucesso!");
-                Process.Start(new ProcessStartInfo
+                if (!String.IsNullOrEmpty(nfseResponse.url_danfse))
                 {
-                    FileName = nfseResponse.url,
-                    UseShellExecute = true
-                });
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = nfseResponse.url_danfse,
+                        UseShellExecute = true
+                    });
+                }
+                else if (!String.IsNullOrEmpty(nfseResponse.url))
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = nfseResponse.url,
+                        UseShellExecute = true
+                    });
+                }
                 Console.WriteLine($"Código de Verificação: {nfseResponse.codigo_verificacao}");
                 Console.WriteLine($"URL da Nota: {nfseResponse.url}");
             }
@@ -167,6 +195,23 @@ namespace LunarBase.Utilidades.NFSe
 
                 Generica.ShowAlerta($"Status da NFSe: {nfseResponse.status}. \n\nErros:\n{erros}");
             }
+        }
+
+        private void salvarNfse(OrdemServico ordemServico, NFSeResponse nfseResponse)
+        {
+            Nfse nfse = new Nfse();
+            nfse.Referencia = nfseResponse.referencia;
+            nfse.CaminhoXml = nfseResponse.caminho_xml_nota_fiscal;
+            nfse.CodigoVerificacao = nfseResponse.codigo_verificacao;
+            nfse.DataEmissao = nfseResponse.data_emissao;
+            nfse.Numero = int.Parse(nfseResponse.numero);
+            nfse.NumeroRps = nfseResponse.numero_rps;
+            nfse.OrdemServico = ordemServico;
+            nfse.SerieRps = nfseResponse.serie_rps;
+            nfse.Status = nfseResponse.status;
+            nfse.Url = nfseResponse.url;
+            nfse.UrlDanfe = nfseResponse.url_danfse;
+            Controller.getInstance().salvar(nfse);
         }
 
         public bool ValidarDadosOrdemServicoECliente(OrdemServico ordemServico)
@@ -268,8 +313,9 @@ namespace LunarBase.Utilidades.NFSe
                 }
                 if (string.IsNullOrEmpty(servico.Servico.AliquotaIss))
                 {
-                    Generica.ShowAlerta("Aliquota do serviço é obrigatória.");
-                    return false;
+                    servico.Servico.AliquotaIss = "0";
+                    //Generica.ShowAlerta("Aliquota do serviço é obrigatória.");
+                    //return false;
                 }
                 if (string.IsNullOrEmpty(servico.Servico.CodigoServicoNfse))
                 {
@@ -297,6 +343,16 @@ namespace LunarBase.Utilidades.NFSe
             if (string.IsNullOrEmpty(empresa.Cnpj))
             {
                 Generica.ShowAlerta("CNPJ da empresa é obrigatório.");
+                return false;
+            }
+            if (String.IsNullOrEmpty(empresa.Cnae))
+            {
+                Generica.ShowAlerta("Cnae da sua empresa não pode ser nulo. (Utilitário/Cadastro Filial)");
+                return false;
+            }
+            if (String.IsNullOrEmpty(empresa.InscricaoMunicipal))
+            {
+                Generica.ShowAlerta("Inscrição Municipal da sua empresa não pode ser nulo. (Utilitário/Cadastro Filial)");
                 return false;
             }
 

@@ -60,7 +60,7 @@ namespace Lunar.Telas.ParametroDoSistema
             else
                 chkSelecionarGradePorCodigoBarras.Checked = false;
 
-            txtCSC.Texts = parametro.CscNfce;
+            txtCSC.Text = parametro.CscNfce;
             txtTokenNFCe.Texts = parametro.TokenNfce;
             txtInformacaoAdicionalNFCe.Texts = parametro.InformacaoAdicionalNFCe;
             txtInformacaoAdicionalNFE.Texts = parametro.InformacaoAdicionalNFe;
@@ -215,8 +215,13 @@ namespace Lunar.Telas.ParametroDoSistema
                 }
             }
 
+            txtNumeroRps.Text = parametro.NumeroRps.ToString();
+            txtSerieRps.Text = parametro.SerieRps;
+            txtUsuarioNfse.Text = parametro.UsuarioNfse;
+            txtSenhaNfse.Text = parametro.SenhaNfse;
+
+
             //Whatsapp
-            
             if (parametro.EnvioNotasPorWhats == true)
                 chkEnvioNFCeNFeWhats.Checked = true;
             else
@@ -292,7 +297,7 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.AmbienteProducao = true;
             else
                 parametro.AmbienteProducao = false;
-            parametro.CscNfce = txtCSC.Texts.Trim();
+            parametro.CscNfce = txtCSC.Text.Trim();
             parametro.TokenNfce = txtTokenNFCe.Texts.Trim();
             parametro.InformacaoAdicionalNFCe = txtInformacaoAdicionalNFCe.Texts.Trim();
             parametro.InformacaoAdicionalNFe = txtInformacaoAdicionalNFE.Texts.Trim();
@@ -318,6 +323,16 @@ namespace Lunar.Telas.ParametroDoSistema
             parametro.IdInstanciaWhats = txtUrlWhatsapp.Text;
             parametro.TokenWhats = txtTokenWhatsapp.Text;
             parametro.LembreteVencimento = txtLembreteVencimento.Text;
+
+            if (!String.IsNullOrEmpty(txtNumeroRps.Text))
+                parametro.NumeroRps = int.Parse(txtNumeroRps.Text);
+            else
+                parametro.NumeroRps = 0;
+            parametro.SerieRps = txtSerieRps.Text;
+            parametro.UsuarioNfse = txtUsuarioNfse.Text;
+            parametro.SenhaNfse = txtSenhaNfse.Text;
+
+
             if (!String.IsNullOrEmpty(txtCodTipoObjeto.Texts))
             {
                 TipoObjeto tipoObjeto = new TipoObjeto();

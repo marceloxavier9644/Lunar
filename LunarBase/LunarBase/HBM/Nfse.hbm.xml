@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.Nfse" table="nfse">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="Referencia" column="REFERENCIA" type="String" length="150"/>
+		<property name="NumeroRps" column="NUMERORPS" type="String" length="50"/>
+		<property name="SerieRps" column="SERIERPS" type="String" length="50"/>
+		<property name="Status" column="STATUS" type="String" length="50"/>
+		<property name="Numero" column="NUMERO" type="int"/>
+		<property name="CodigoVerificacao" column="CODIGOVERIFICACAO" type="String" length="50"/>
+		<property name="DataEmissao" column="DATAEMISSAO" type="DateTime"/>
+		<property name="Url" column="URL" type="String" length="200"/>
+		<property name="CaminhoXml" column="CAMINHOXML" type="String" length="1000"/>
+		<property name="UrlDanfe" column="URLDANFE" type="String" length="300"/>
+
+		<many-to-one name="OrdemServico" column="ORDEMSERVICO" class="LunarBase.Classes.OrdemServico" not-null="false" foreign-key="FK_NFSE_ORDEMSERVICO" lazy="false"/>
+		
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+
+	</class>
+</hibernate-mapping>

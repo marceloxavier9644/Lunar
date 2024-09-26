@@ -17,10 +17,13 @@ using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static LunarBase.Utilidades.Ns_ConsultaCNPJ;
 using Exception = System.Exception;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Lunar.Telas.Cadastros.Empresas
 {
@@ -103,7 +106,8 @@ namespace Lunar.Telas.Cadastros.Empresas
             txtDDD.Texts = empresaFilial.DddPrincipal;
             txtTelefonePrincipal.Texts = GenericaDesktop.MascaraTelefone(GenericaDesktop.RemoveCaracteres(empresaFilial.TelefonePrincipal));
             txtInscricaoEstadual.Texts = empresaFilial.InscricaoEstadual;
-
+            txtInscricaoMunicipal.Texts = empresaFilial.InscricaoMunicipal;
+            txtCNAE.Texts = empresaFilial.Cnae;
             if (empresaFilial.RegimeEmpresa != null)
             {
                 txtRegimeTributario.Texts = empresaFilial.RegimeEmpresa.Descricao;
@@ -117,7 +121,7 @@ namespace Lunar.Telas.Cadastros.Empresas
             txtCPFResponsavel.Texts = empresaFilial.Empresa.CpfResponsavel;
             txtCargoResponsavel.Texts = empresaFilial.Empresa.FuncaoResponsavel;
             if(!String.IsNullOrEmpty(empresaFilial.SenhaCertificado))
-                txtSenhaCertificado.Texts = GenericaDesktop.Descriptografa(empresaFilial.SenhaCertificado);
+                txtSenhaCertificado.Text = GenericaDesktop.Descriptografa(empresaFilial.SenhaCertificado);
             if (empresaFilial.Otica == true)
             {
                 chkOtica.Checked = true;
@@ -275,6 +279,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                         empresaFilial.TelefoneSecundario = "";
                         empresaFilial.Email = txtEmail.Texts;
                         empresaFilial.InscricaoEstadual = txtInscricaoEstadual.Texts;
+                        empresaFilial.InscricaoMunicipal = txtInscricaoMunicipal.Texts.Trim();
                         empresaFilial.NomeFantasia = txtNomeFantasia.Texts;
                         empresaFilial.RazaoSocial = txtRazaoSocial.Texts;
                         empresaFilial.Endereco = endereco;
@@ -290,7 +295,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                             empresaFilial.Otica = false;
                             empresaFilial.TelefoneLaboratorioOtica = "";
                         }
-                        empresaFilial.SenhaCertificado = GenericaDesktop.Criptografa(txtSenhaCertificado.Texts);
+                        empresaFilial.SenhaCertificado = GenericaDesktop.Criptografa(txtSenhaCertificado.Text);
                         if (!String.IsNullOrEmpty(txtCodRegimeTributario.Texts))
                         {
                             regimeTributario = new RegimeEmpresa();
@@ -589,7 +594,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                 var certContents = File.ReadAllBytes(openFileDialog1.FileName);
                 certificadoBase64 = Convert.ToBase64String(certContents);
 
-                if (String.IsNullOrEmpty(txtSenhaCertificado.Texts))
+                if (String.IsNullOrEmpty(txtSenhaCertificado.Text))
                 {
                     txtSenhaCertificado.Focus();
                     //GenericaDesktop.ShowInfo("Informe a senha do certificado e clique no botão confirmar!");
@@ -601,15 +606,15 @@ namespace Lunar.Telas.Cadastros.Empresas
 
         private void btnConfirmaCertificado_Click(object sender, EventArgs e)
         {
-            if(!String.IsNullOrEmpty(txtCertificado.Texts) && !String.IsNullOrEmpty(txtSenhaCertificado.Texts))
+            if(!String.IsNullOrEmpty(txtCertificado.Texts) && !String.IsNullOrEmpty(txtSenhaCertificado.Text))
             {
                 if (!txtCertificado.Texts.Substring(0, 4).Contains("VENC"))
                 {
                     if (GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 14)
                     {
-                        string ret55 = generica.NS_EnviarCertificadoDigitalParaNFe55(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()), txtSenhaCertificado.Texts, certificadoBase64);
-                        string ret65 = generica.NS_EnviarCertificadoDigitalParaNFCe65(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()), txtSenhaCertificado.Texts, certificadoBase64);
-                        string retDDFe = generica.NS_EnviarCertificadoDigitalParaDDFe(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()), txtSenhaCertificado.Texts, certificadoBase64);
+                        string ret55 = generica.NS_EnviarCertificadoDigitalParaNFe55(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()), txtSenhaCertificado.Text, certificadoBase64);
+                        string ret65 = generica.NS_EnviarCertificadoDigitalParaNFCe65(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()), txtSenhaCertificado.Text, certificadoBase64);
+                        string retDDFe = generica.NS_EnviarCertificadoDigitalParaDDFe(GenericaDesktop.RemoveCaracteres(txtCNPJ.Texts.Trim()), txtSenhaCertificado.Text, certificadoBase64);
 
                         if (ret55.Equals("Certificado salvo com sucesso") && ret65.Equals("Certificado salvo com sucesso") && retDDFe.Equals("Certificado salvo com sucesso"))
                         {
@@ -778,14 +783,14 @@ namespace Lunar.Telas.Cadastros.Empresas
                 certificado = new CertificadoNs
                 {
                     certificado = certificadoBase64,
-                    senha = txtSenhaCertificado.Texts
-                },
-                logotipo = !string.IsNullOrEmpty(Sessao.parametroSistema.Logo) && File.Exists(Sessao.parametroSistema.Logo)
-        ? new LogotipoNs
-        {
-            arquivo = ConvertImageToBase64(Sessao.parametroSistema.Logo)
-        }
-        : null
+                    senha = txtSenhaCertificado.Text
+                }
+        //        logotipo = !string.IsNullOrEmpty(Sessao.parametroSistema.Logo) && File.Exists(Sessao.parametroSistema.Logo)
+        //? new LogotipoNs
+        //{
+        //    arquivo = ConvertImageToBase64(Sessao.parametroSistema.Logo)
+        //}
+        //: null
 
             });
 
@@ -804,7 +809,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                 certificado = new CertificadoNs
                 {
                     certificado = certificadoBase64,
-                    senha = txtSenhaCertificado.Texts
+                    senha = txtSenhaCertificado.Text
                 },
             });
 
@@ -829,14 +834,14 @@ namespace Lunar.Telas.Cadastros.Empresas
                 certificado = new CertificadoNs
                 {
                     certificado = certificadoBase64,
-                    senha = txtSenhaCertificado.Texts
-                },
-                logotipo = !string.IsNullOrEmpty(Sessao.parametroSistema.Logo) && File.Exists(Sessao.parametroSistema.Logo)
-        ? new LogotipoNs
-        {
-            arquivo = ConvertImageToBase64(Sessao.parametroSistema.Logo)
-        }
-        : null
+                    senha = txtSenhaCertificado.Text
+                }
+        //        logotipo = !string.IsNullOrEmpty(Sessao.parametroSistema.Logo) && File.Exists(Sessao.parametroSistema.Logo)
+        //? new LogotipoNs
+        //{
+        //    arquivo = ConvertImageToBase64(Sessao.parametroSistema.Logo)
+        //}
+        //: null
        
             });
 
@@ -856,10 +861,10 @@ namespace Lunar.Telas.Cadastros.Empresas
                     numero = int.Parse(Sessao.empresaFilialLogada.Endereco.Numero),
                     bairro = Sessao.empresaFilialLogada.Endereco.Bairro,
                     cep = Sessao.empresaFilialLogada.Endereco.Cep,
-                    cidadeNs = new CidadeNs { cIBGE = int.Parse(GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Endereco.Cidade.Ibge)), nome = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao }
+                    cidade = new CidadeNs { cIBGE = int.Parse(GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.Endereco.Cidade.Ibge)), nome = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao }
                 }
             },
-                telefones = new[] { new TelefoneNs { numero = Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal } }
+                telefones = new[] { new TelefoneNs { numero = GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.DddPrincipal + Sessao.empresaFilialLogada.TelefonePrincipal).Trim() } }
             };
 
             var licencaMaster = new LicencaNsMaster
@@ -881,7 +886,13 @@ namespace Lunar.Telas.Cadastros.Empresas
 
                 // Serializa a lista de licenças em JSON
                 //var json = JsonConvert.SerializeObject(new { licencaMaster });
-                var json = JsonConvert.SerializeObject(licencaMaster, Formatting.Indented);
+                var options = new JsonSerializerOptions
+                {
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull, // Ignora valores null
+                    WriteIndented = true // (Opcional) Formatação amigável para leitura
+                };
+                string json = JsonSerializer.Serialize(licencaMaster, options);
+                //var json = JsonConvert.SerializeObject(licencaMaster, Formatting.Indented);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 // Envia a requisição POST

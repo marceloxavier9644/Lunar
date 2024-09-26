@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static LunarBase.ClassesDAO.ProdutoDAO;
 
 namespace Lunar.Telas.PesquisaPadrao
 {
@@ -42,6 +43,40 @@ namespace Lunar.Telas.PesquisaPadrao
             PesquisarProdutoPorDescricaoPaginando(valor,0);
         }
 
+        public FrmPesquisaProduto(IList<Produto> lista)
+        {
+            InitializeComponent();
+
+            listaProdutos = new List<Produto>();
+            listaProdutos = lista;
+            if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts))
+                sfDataPager1.PageSize = int.Parse(txtRegistroPorPagina.Texts);
+            else
+                sfDataPager1.PageSize = 50;
+            sfDataPager1.AllowOnDemandPaging = true;
+
+            Int64 totalProdutos = listaProdutos.Count;
+            double totalPaginas = (double)totalProdutos / sfDataPager1.PageSize;
+            if (totalPaginas < 1)
+            {
+                totalPaginas = 1;
+            }
+            sfDataPager1.PageCount = (int)Math.Ceiling(totalPaginas);
+            sfDataPager1.Refresh();
+
+            //listaProdutos = produtoController.selecionarTodosProdutosPaginando(0 * sfDataPager1.PageSize, sfDataPager1.PageSize, valor);
+            grid.DataSource = listaProdutos;
+            grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+            this.grid.Columns["Descricao"].AutoSizeColumnsMode = AutoSizeColumnsMode.Fill;
+            if (listaProdutos.Count == 0)
+            {
+                GenericaDesktop.ShowAlerta("Nenhum registro encontrado!");
+                txtPesquisa.Texts = "";
+                txtPesquisa.Select();
+            }
+        }
+
+       
         private void sfDataPager1_PageIndexChanged(object sender, Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs e)
         {
             PesquisarProdutoPorDescricaoPaginando(txtPesquisa.Texts.Trim(), e.NewPageIndex);

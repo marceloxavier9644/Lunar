@@ -58,6 +58,24 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+
+        public Cidade selecionarCidadePorCodigoIBGE(string codigoIBGE)
+        {
+            CidadeBO bo = new CidadeBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarCidadePorCodigoIBGE(codigoIBGE);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
         public IList<Cidade> selecionarListaCidadePorDescricao(string descricao)
         {
             CidadeBO bo = new CidadeBO();

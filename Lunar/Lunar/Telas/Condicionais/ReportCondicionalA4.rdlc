@@ -753,7 +753,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Cliente">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -825,7 +824,6 @@
               </Style>
             </Textbox>
             <Textbox Name="EnderecoCliente">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -988,7 +986,7 @@
             <Image Name="Image2">
               <Source>External</Source>
               <Value>="file:\\\"&amp;Parameters!logo.Value</Value>
-              <Sizing>FitProportional</Sizing>
+              <Sizing>Fit</Sizing>
               <Left>0.34078cm</Left>
               <Height>1.58609cm</Height>
               <Width>3.02599cm</Width>

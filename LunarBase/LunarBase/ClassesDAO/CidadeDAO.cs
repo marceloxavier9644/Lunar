@@ -23,6 +23,12 @@ namespace LunarBase.ClassesDAO
             return Session.CreateQuery("from Cidade as Tabela where Tabela.Descricao = '" + descricao + "' and Tabela.Ibge = '" + codigoIBGE + "' and Tabela.FlagExcluido <> true").UniqueResult<Cidade>();
         }
 
+        public Cidade selecionarCidadePorCodigoIBGE(string codigoIBGE)
+        {
+            Session = Conexao.GetSession();
+            return Session.CreateQuery("from Cidade as Tabela where Tabela.Ibge = '" + codigoIBGE + "' and Tabela.FlagExcluido <> true").UniqueResult<Cidade>();
+        }
+
         public IList<Cidade> selecionarListaCidadePorDescricao(string descricao)
         {
             Session = Conexao.GetSession();

@@ -85,6 +85,12 @@ namespace LunarBase.Classes
         private string usuarioNuvem;
         private string senhaNuvem;
 
+        //Nota de Serviço
+        private int numeroRps;
+        private string serieRps;
+        private string usuarioNfse;
+        private string senhaNfse;
+
         private bool viaImpressaoOs;
 
         public virtual int Id { get => id; set => id = value; }
@@ -157,5 +163,9 @@ namespace LunarBase.Classes
         public virtual PlanoConta PlanoContaAjusteCaixaEntrada { get => planoContaAjusteCaixaEntrada; set => planoContaAjusteCaixaEntrada = value; }
         public virtual PlanoConta PlanoContaAjusteCaixaSaida { get => planoContaAjusteCaixaSaida; set => planoContaAjusteCaixaSaida = value; }
         public virtual string TipoCaixa { get => tipoCaixa; set => tipoCaixa = value; }
+        public virtual int NumeroRps { get => numeroRps; set => numeroRps = value; }
+        public virtual string SerieRps { get => serieRps; set => serieRps = value; }
+        public virtual string UsuarioNfse { get => usuarioNfse; set => usuarioNfse = value; }
+        public virtual string SenhaNfse { get => senhaNfse; set => senhaNfse = value; }
     }
 }

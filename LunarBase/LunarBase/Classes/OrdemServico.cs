@@ -24,6 +24,7 @@ namespace LunarBase.Classes
         private TipoObjeto tipoObjeto;
         private EmpresaFilial filial;
         private Nfe nfe;
+        private Nfe nfse;
         private Pessoa vendedor;
         private bool entrada;
         private string operadorEncerramento;
@@ -75,5 +76,7 @@ namespace LunarBase.Classes
         public virtual bool MensagemVencimentoExameOtica { get => mensagemVencimentoExameOtica; set => mensagemVencimentoExameOtica = value; }
         [Anotacao("Data Serviço")]
         public virtual DateTime DataServico { get => dataServico; set => dataServico = value; }
+        [Anotacao("Nota de Serviço")]
+        public virtual Nfe Nfse { get => nfse; set => nfse = value; }
     }
 }

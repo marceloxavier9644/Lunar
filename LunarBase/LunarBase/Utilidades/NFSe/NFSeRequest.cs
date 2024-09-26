@@ -61,7 +61,7 @@ namespace LunarBase.Utilidades.NFSe
         public decimal valor_iss_retido { get; set; } // valor_iss_retido
         public decimal outras_retencoes { get; set; } // outras_retencoes
         public decimal base_calculo { get; set; } // base_calculo
-        public decimal aliquota { get; set; } // aliquota
+        public decimal? aliquota { get; set; }
         public decimal desconto_incondicionado { get; set; } // desconto_incondicionado
         public decimal desconto_condicionado { get; set; } // desconto_condicionado
         public string item_lista_servico { get; set; } // item_lista_servico(*)
@@ -69,7 +69,7 @@ namespace LunarBase.Utilidades.NFSe
         //public string codigo_tributario_municipio { get; set; } // codigo_tributario_municipio
         public string discriminacao { get; set; } // discriminacao(*)
         public string codigo_municipio { get; set; } // codigo_municipio(*)
-        public decimal percentual_total_tributos { get; set; } // percentual_total_tributos
+        //public decimal? percentual_total_tributos { get; set; } // percentual_total_tributos
         public string fonte_total_tributos { get; set; } // fonte_total_tributos
     }
 
@@ -85,6 +85,7 @@ namespace LunarBase.Utilidades.NFSe
         public string codigo_verificacao { get; set; }
         public DateTime data_emissao { get; set; }
         public string url { get; set; }
+        public string url_danfse { get; set; }     
         public string caminho_xml_nota_fiscal { get; set; }
         public List<ErroNFS> erros { get; set; }
     }

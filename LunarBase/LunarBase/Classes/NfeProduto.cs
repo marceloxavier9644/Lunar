@@ -145,6 +145,7 @@ namespace LunarBase.Classes
         private string produtoAssociado;
         private Nfe nfe;
         private Produto produto;
+        private ProdutoGrade produtoGrade;
         private string item;
 
         public virtual int Id { get => id; set => id = value; }
@@ -275,5 +276,6 @@ namespace LunarBase.Classes
         public virtual string UComConvertida { get => uComConvertida; set => uComConvertida = value; }
         public virtual decimal VipiDevolvido { get => vipiDevolvido; set => vipiDevolvido = value; }
         public virtual string InfAdProd { get => infAdProd; set => infAdProd = value; }
+        public virtual ProdutoGrade ProdutoGrade { get => produtoGrade; set => produtoGrade = value; }
     }
 }

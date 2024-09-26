@@ -105,6 +105,17 @@ namespace LunarBase.ClassesBO
                 throw new Exception("Falha ao selecionar cidade! Erro: " + e.Message);
             }
         }
+        public Cidade selecionarCidadePorCodigoIBGE(string codigoIBGE)
+        {
+            try
+            {
+                return dao.selecionarCidadePorCodigoIBGE(codigoIBGE);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar cidade! Erro: " + e.Message);
+            }
+        }
 
         public IList<Cidade> selecionarListaCidadePorDescricao(string descricao)
         {

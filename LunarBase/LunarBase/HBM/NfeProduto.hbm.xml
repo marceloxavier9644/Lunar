@@ -148,6 +148,7 @@
 		
 		<many-to-one name="Nfe" column="NFE" class="LunarBase.Classes.Nfe" not-null="true" foreign-key="FK_NFEPRODUTO_NFE" lazy="false"/>
 		<many-to-one name="Produto" column="PRODUTO" class="LunarBase.Classes.Produto" not-null="true" foreign-key="FK_NFEPRODUTO_PRODUTO" lazy="false"/>
+		<many-to-one name="ProdutoGrade" column="PRODUTOGRADE" class="LunarBase.Classes.ProdutoGrade" not-null="false" foreign-key="FK_NFEPRODUTO_GRADE" lazy="false"/>
 		<property name="Item" column="ITEM" type="String" length="30"/>
 		
 		<!-- Dados do objeto padrão -->

@@ -691,8 +691,8 @@
             this.btnPrecificacao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPrecificacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrecificacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrecificacao.IconChar = FontAwesome.Sharp.IconChar.Receipt;
-            this.btnPrecificacao.IconColor = System.Drawing.Color.Purple;
+            this.btnPrecificacao.IconChar = FontAwesome.Sharp.IconChar.FileInvoiceDollar;
+            this.btnPrecificacao.IconColor = System.Drawing.Color.DarkGreen;
             this.btnPrecificacao.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnPrecificacao.IconSize = 38;
             this.btnPrecificacao.Location = new System.Drawing.Point(96, 350);

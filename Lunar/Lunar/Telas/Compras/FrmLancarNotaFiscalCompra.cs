@@ -1,6 +1,8 @@
 ﻿using Lunar.Telas.Cadastros.Produtos;
 using Lunar.Telas.PesquisaPadrao;
+using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
+using Lunar.Utils.Modal;
 using LunarBase.Classes;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
@@ -1210,7 +1212,7 @@ namespace Lunar.Telas.Compras
 				verificarProdutosCadastrados();
 			}
         }
-
+        ProdutoGradeHelper gradeHelper = new ProdutoGradeHelper();
         private void btnSelecionarProduto_Click(object sender, EventArgs e)
         {
             if (gridProdutos.SelectedIndex >= 0)
@@ -1242,9 +1244,12 @@ namespace Lunar.Telas.Compras
                                 break;
                             case DialogResult.OK:
                                 prod = (Produto)produtoObjeto;
+                                //ProdutoGrade grade = gradeHelper.ObterOuSelecionarGrade(prod);
                                 gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["CodigoInterno"].MappingName, prod.Id.ToString());
                                 gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["DescricaoInterna"].MappingName, prod.Descricao);
                                 gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
+                                //if(grade != null)
+									//gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["ProdutoGrade"].MappingName, grade);
                                 gridProdutos.Refresh();
                                 if (string.IsNullOrEmpty(prod.Ncm))
                                 {
@@ -1271,8 +1276,9 @@ namespace Lunar.Telas.Compras
             else
                 GenericaDesktop.ShowAlerta("Clique no produto da nota que deseja selecionar");
         }
-
-		private void selecionarProdutoMetodoAntigo()
+       
+        
+        private void selecionarProdutoMetodoAntigo()
 		{
             if (gridProdutos.SelectedIndex >= 0)
             {
@@ -1332,7 +1338,21 @@ namespace Lunar.Telas.Compras
             else
                 GenericaDesktop.ShowAlerta("Clique no produto da nota que deseja selecionar");
         }
-
+        private ProdutoGrade selecionarGrade(Produto produto)
+        {
+            using (var frmSelecionarGrade = new FrmSelecionarGrade(produto))
+            {
+                if (FormModalHelper.ShowModalWithBackground(frmSelecionarGrade) == DialogResult.OK)
+                {
+                    var gradeSelecionada = frmSelecionarGrade.GradeSelecionada;
+                    if (gradeSelecionada != null)
+                    {
+                        return gradeSelecionada;
+                    }
+                }
+            }
+            return null;
+        }
         private void gridProdutos_CurrentCellValidating(object sender, Syncfusion.WinForms.DataGrid.Events.CurrentCellValidatingEventArgs e)
         {
 			if (e.Column.MappingName == "QuantidadeEntrada")
@@ -1712,9 +1732,10 @@ namespace Lunar.Telas.Compras
 				endereco.Bairro = notaXML.NFe.infNFe.emit.enderEmit.xBairro.ToUpper();
 			endereco.Cep = notaXML.NFe.infNFe.emit.enderEmit.CEP;
 			endereco.Cidade = cidadeController.selecionarCidadePorDescricaoEIBGE(notaXML.NFe.infNFe.emit.enderEmit.xMun, notaXML.NFe.infNFe.emit.enderEmit.cMun);
-			if (endereco.Cidade == null)
-				endereco.Cidade = null;
-			endereco.EmpresaFilial = Sessao.empresaFilialLogada;
+			if(endereco.Cidade == null)
+                endereco.Cidade = cidadeController.selecionarCidadePorCodigoIBGE(notaXML.NFe.infNFe.emit.enderEmit.cMun);
+
+            endereco.EmpresaFilial = Sessao.empresaFilialLogada;
 			if (notaXML.NFe.infNFe.emit.enderEmit.xLgr != null)
 				endereco.Logradouro = notaXML.NFe.infNFe.emit.enderEmit.xLgr.ToUpper();
 			endereco.Numero = notaXML.NFe.infNFe.emit.enderEmit.nro;

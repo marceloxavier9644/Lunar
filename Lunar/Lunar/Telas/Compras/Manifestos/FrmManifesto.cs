@@ -51,46 +51,48 @@ namespace Lunar.Telas.Compras.Manifestos
             String chaveVerificada = "";
             int ultimoNsuSalvo = 0;
 
-            for (int i = 0; i < manifesto.xmls.Length; i++)
-            {
-                nfe = new Nfe();
-                nfe = nfeController.selecionarNotaPorChave(manifesto.xmls[i].chave);
-                if (nfe is null)
+            if(manifesto.xmls != null) {
+                for (int i = 0; i < manifesto.xmls.Length; i++)
                 {
-                    var records = grid.View.Records;
-                    if (records.Count > 0)
+                    nfe = new Nfe();
+                    nfe = nfeController.selecionarNotaPorChave(manifesto.xmls[i].chave);
+                    if (nfe is null)
                     {
-                        foreach (var record in records)
+                        var records = grid.View.Records;
+                        if (records.Count > 0)
                         {
-                            var dataRowView = record.Data as DataRowView;
-                            if (dataRowView != null)
+                            foreach (var record in records)
                             {
-                                chaveVerificada = dataRowView.Row["CHAVE"].ToString();
-                                if (chaveVerificada.Equals(manifesto.xmls[i].chave))
+                                var dataRowView = record.Data as DataRowView;
+                                if (dataRowView != null)
                                 {
-                                    JaExiste = true;
+                                    chaveVerificada = dataRowView.Row["CHAVE"].ToString();
+                                    if (chaveVerificada.Equals(manifesto.xmls[i].chave))
+                                    {
+                                        JaExiste = true;
+                                    }
                                 }
                             }
                         }
-                    }
-                    if (JaExiste == false && !String.IsNullOrEmpty(manifesto.xmls[i].xml))
-                    {
-                        if (!String.IsNullOrEmpty(manifesto.xmls[i].xml))
+                        if (JaExiste == false && !String.IsNullOrEmpty(manifesto.xmls[i].xml))
                         {
-                            string cnpj = manifesto.xmls[i].emitCnpj;
-                            generica.gravarXMLNaPasta(manifesto.xmls[i].xml, manifesto.xmls[i].chave, @"XML\"+ cnpj+@"\", manifesto.xmls[i].chave + ".xml");
+                            if (!String.IsNullOrEmpty(manifesto.xmls[i].xml))
+                            {
+                                string cnpj = manifesto.xmls[i].emitCnpj;
+                                generica.gravarXMLNaPasta(manifesto.xmls[i].xml, manifesto.xmls[i].chave, @"XML\" + cnpj + @"\", manifesto.xmls[i].chave + ".xml");
+                            }
+
+                            if (!String.IsNullOrEmpty(manifesto.xmls[i].pdf))
+                                gerarPDF2(manifesto.xmls[i].pdf, manifesto.xmls[i].chave, false, manifesto.xmls[i].emitCnpj);
+
+                            var nfe = Genericos.LoadFromXMLString<TNfeProc>(manifesto.xmls[i].xml);
+                            Genericos genericos = new Genericos();
+                            genericos.gravarXMLNoBanco(nfe, manifesto.xmls[i].nsu, "E", 0, true);
+                            Sessao.parametroSistema.UltNsu = manifesto.ultNSU.ToString();
+                            Controller.getInstance().salvar(Sessao.parametroSistema);
                         }
-
-                        if (!String.IsNullOrEmpty(manifesto.xmls[i].pdf))
-                            gerarPDF2(manifesto.xmls[i].pdf, manifesto.xmls[i].chave, false, manifesto.xmls[i].emitCnpj);
-
-                        var nfe = Genericos.LoadFromXMLString<TNfeProc>(manifesto.xmls[i].xml);
-                        Genericos genericos = new Genericos();
-                        genericos.gravarXMLNoBanco(nfe, manifesto.xmls[i].nsu, "E", 0, true);
-                        Sessao.parametroSistema.UltNsu = manifesto.ultNSU.ToString();
-                        Controller.getInstance().salvar(Sessao.parametroSistema);
+                        JaExiste = false;
                     }
-                    JaExiste = false;
                 }
             }
             ultimoNsuSalvo = nfeController.selecionarUltimoNsu();

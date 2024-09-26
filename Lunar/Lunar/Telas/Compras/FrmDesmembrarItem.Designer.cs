@@ -86,6 +86,7 @@
             this.txtProdutoNota = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnRemoverItem = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridProdutos)).BeginInit();
@@ -531,6 +532,7 @@
             this.txtValorTotal.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtValorTotal.BorderRadius = 8;
             this.txtValorTotal.BorderSize = 2;
+            this.txtValorTotal.Enabled = false;
             this.txtValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtValorTotal.Location = new System.Drawing.Point(641, 250);
@@ -571,6 +573,8 @@
             this.txtValorUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtValorUnitario.Texts = "";
             this.txtValorUnitario.UnderlinedStyle = false;
+            this.txtValorUnitario._TextChanged += new System.EventHandler(this.txtValorUnitario__TextChanged);
+            this.txtValorUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorUnitario_KeyPress);
             // 
             // txtQuantidade
             // 
@@ -595,6 +599,8 @@
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtQuantidade.Texts = "";
             this.txtQuantidade.UnderlinedStyle = false;
+            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
+            this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
             // 
             // txtCodProduto
             // 
@@ -908,7 +914,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(437, 476);
+            this.btnCancelar.Location = new System.Drawing.Point(241, 477);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(189, 45);
             this.btnCancelar.TabIndex = 275;
@@ -917,12 +923,35 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // btnRemoverItem
+            // 
+            this.btnRemoverItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoverItem.BackColor = System.Drawing.Color.RosyBrown;
+            this.btnRemoverItem.BackgroundColor = System.Drawing.Color.RosyBrown;
+            this.btnRemoverItem.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnRemoverItem.BorderRadius = 8;
+            this.btnRemoverItem.BorderSize = 0;
+            this.btnRemoverItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoverItem.FlatAppearance.BorderSize = 0;
+            this.btnRemoverItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverItem.ForeColor = System.Drawing.Color.White;
+            this.btnRemoverItem.Location = new System.Drawing.Point(437, 477);
+            this.btnRemoverItem.Name = "btnRemoverItem";
+            this.btnRemoverItem.Size = new System.Drawing.Size(189, 45);
+            this.btnRemoverItem.TabIndex = 276;
+            this.btnRemoverItem.Text = "Remover Item";
+            this.btnRemoverItem.TextColor = System.Drawing.Color.White;
+            this.btnRemoverItem.UseVisualStyleBackColor = false;
+            this.btnRemoverItem.Click += new System.EventHandler(this.btnRemoverItem_Click);
+            // 
             // FrmDesmembrarItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(834, 534);
+            this.Controls.Add(this.btnRemoverItem);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.gridProdutos);
@@ -1023,5 +1052,6 @@
         private Syncfusion.WinForms.DataGrid.SfDataGrid gridProdutos;
         private RJ_UI.Classes.RJButton btnConfirmar;
         private RJ_UI.Classes.RJButton btnCancelar;
+        private RJ_UI.Classes.RJButton btnRemoverItem;
     }
 }

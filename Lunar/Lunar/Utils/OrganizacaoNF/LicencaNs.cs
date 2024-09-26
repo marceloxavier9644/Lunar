@@ -20,7 +20,7 @@ namespace Lunar.Utils.OrganizacaoNF
         public int idprojeto { get; set; }
         public CertificadoNs certificado { get; set; }
         public Csc csc { get; set; }
-        public LogotipoNs logotipo { get; set; }
+        //public LogotipoNs logotipo { get; set; }
     }
     public class CertificadoNs
     {
@@ -64,7 +64,7 @@ namespace Lunar.Utils.OrganizacaoNF
         public int numero { get; set; }
         public string bairro { get; set; }
         public string cep { get; set; }
-        public CidadeNs cidadeNs { get; set; }
+        public CidadeNs cidade { get; set; }
     }
 
     public class CidadeNs

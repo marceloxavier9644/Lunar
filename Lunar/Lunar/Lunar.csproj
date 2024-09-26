@@ -1439,6 +1439,8 @@
     </Compile>
     <Compile Include="Utils\LunarChatIntegracao\LunarChatMensagem.cs" />
     <Compile Include="Utils\MeuCrediarioIntegracao\MeuCrediario.cs" />
+    <Compile Include="Utils\Modal\FormModalHelper.cs" />
+    <Compile Include="Utils\Modal\ProdutoGradeHelper.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFCe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNfe2.cs" />
@@ -1452,6 +1454,7 @@
     <Compile Include="Utils\OrganizacaoNF\RetInutilizacao.cs" />
     <Compile Include="Utils\OrganizacaoNF\RetornoJsonVariados.cs" />
     <Compile Include="Utils\OrganizacaoNF\ValidadorNotaSaida.cs" />
+    <Compile Include="Utils\PesquisasClass\ProdutoPesquisaService.cs" />
     <Compile Include="Utils\SintegrawsConsultas\SintegraConsultaCnpj.cs" />
     <Compile Include="Utils\Sintegra\GeradorSintegra.cs" />
     <Compile Include="Utils\SPCBrasilIntegracao\ConsultaSpcBrasilLunar.cs" />
