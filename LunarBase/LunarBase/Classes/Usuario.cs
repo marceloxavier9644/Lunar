@@ -20,7 +20,7 @@ namespace LunarBase.Classes
         private string ddd;
         private string fone;
         private bool notificacoes;
-
+        private string notificacoesSelecionadas;
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -41,6 +41,8 @@ namespace LunarBase.Classes
         public virtual string Fone { get => fone; set => fone = value; }
         [Anotacao("Notificações")]
         public virtual bool Notificacoes { get => notificacoes; set => notificacoes = value; }
+        [Anotacao("Notificações Selecionadas")]
+        public virtual string NotificacoesSelecionadas { get => notificacoesSelecionadas; set => notificacoesSelecionadas = value; }
 
         public override string ToString()
         {

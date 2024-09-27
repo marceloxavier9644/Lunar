@@ -93,6 +93,8 @@ namespace LunarBase.Classes
 
         private bool viaImpressaoOs;
 
+        private DateTime notificacaoPagar;
+
         public virtual int Id { get => id; set => id = value; }
         public virtual string UltNsu { get => ultNsu; set => ultNsu = value; }
         public virtual string ProximoNumeroNFCe { get => proximoNumeroNFCe; set => proximoNumeroNFCe = value; }
@@ -167,5 +169,6 @@ namespace LunarBase.Classes
         public virtual string SerieRps { get => serieRps; set => serieRps = value; }
         public virtual string UsuarioNfse { get => usuarioNfse; set => usuarioNfse = value; }
         public virtual string SenhaNfse { get => senhaNfse; set => senhaNfse = value; }
+        public virtual DateTime NotificacaoPagar { get => notificacaoPagar; set => notificacaoPagar = value; }
     }
 }

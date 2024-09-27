@@ -7,6 +7,7 @@ using Lunar.Telas.OrdensDeServico.TipoObjetos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
+using Lunar.Utils.ClassesRepeticoes;
 using LunarBase.Classes;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
@@ -21,6 +22,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static LunarBase.ClassesDAO.ProdutoDAO;
 using Exception = System.Exception;
@@ -48,7 +50,7 @@ namespace Lunar.Telas.OrdensDeServico
         OrdemServico ordemServico = new OrdemServico();
         Servico servico = new Servico();
         IList<OrdemServicoProduto> listaProdutos = new List<OrdemServicoProduto>();
-
+        LunarChatAPI lunarChatAPI = new LunarChatAPI();
         IList<OrdemServicoServico> listaServicos = new List<OrdemServicoServico>();
         IList<OrdemServicoExame> listaExames = new List<OrdemServicoExame>();
         OrdemServicoController ordemServicoController = new OrdemServicoController();
@@ -2354,7 +2356,7 @@ namespace Lunar.Telas.OrdensDeServico
             txtLEAltura.Texts = txtPEAltura.Texts;
         }
 
-        private void set_OrdemServico()
+        private async Task set_OrdemServico()
         {
             ordemServico = new OrdemServico();
             if (!String.IsNullOrEmpty(txtNumeroOS.Texts))
@@ -2403,6 +2405,12 @@ namespace Lunar.Telas.OrdensDeServico
 
                     ordemServicoController.salvarOrdemServicoComItensAdicionais(ordemServico, listaProdutos, listaServicos, listaExames, listaAnexo);
                     lblAutomatico.Visible = false;
+                    //somente para o.s nova
+                    if (String.IsNullOrEmpty(txtNumeroOS.Texts))
+                    {
+                        NotificacaoService notificacaoService = new NotificacaoService();
+                        await notificacaoService.NotificarAberturaOrdemServicoAsync(ordemServico);
+                    }
                     txtNumeroOS.Texts = ordemServico.Id.ToString();
 
                     //WhatsAPP Pós Venda

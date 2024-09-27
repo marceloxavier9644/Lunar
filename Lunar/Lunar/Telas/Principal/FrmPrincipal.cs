@@ -35,6 +35,7 @@ using Lunar.Telas.ValeFuncionarios;
 using Lunar.Telas.Vendas;
 using Lunar.Telas.Vendas.Relatorios;
 using Lunar.Utils;
+using Lunar.Utils.ClassesRepeticoes;
 using Lunar.Utils.ImportadorSistemas;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
@@ -670,6 +671,10 @@ namespace Lunar.Telas.Principal
             lblVersaoSistema.Text = "Versão do Sistema: " + version;
             UpdateScript updateScript = new UpdateScript();
             updateScript.ExecutarScript();
+
+
+        //    NotificacaoService notificacaoService = new NotificacaoService();
+        // if(Sessao.parametroSistema.NomeServidor.Equals(""))
 
         }
 

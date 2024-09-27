@@ -614,6 +614,12 @@
     <Compile Include="Telas\CaixaConferencia\FrmMovimentoCaixa.Designer.cs">
       <DependentUpon>FrmMovimentoCaixa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmTransferenciaSaldo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CaixaConferencia\FrmTransferenciaSaldo.Designer.cs">
+      <DependentUpon>FrmTransferenciaSaldo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\CaixaConferencia\Reports\Dados\dsCaixa.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1418,6 +1424,7 @@
     <Compile Include="Utils\Balancas\ItemBalanca.cs" />
     <Compile Include="Utils\Balancas\ItemBalancaMGV5.cs" />
     <Compile Include="Utils\Balancas\ItemMgv6.cs" />
+    <Compile Include="Utils\ClassesRepeticoes\NotificacaoService.cs" />
     <Compile Include="Utils\ConverterMoedaPorExtenso.cs" />
     <Compile Include="Utils\GalaxyPay_API\Charges.cs" />
     <Compile Include="Utils\GalaxyPay_API\CustomerEdicao.cs" />
@@ -1439,8 +1446,8 @@
     </Compile>
     <Compile Include="Utils\LunarChatIntegracao\LunarChatMensagem.cs" />
     <Compile Include="Utils\MeuCrediarioIntegracao\MeuCrediario.cs" />
-    <Compile Include="Utils\Modal\FormModalHelper.cs" />
-    <Compile Include="Utils\Modal\ProdutoGradeHelper.cs" />
+    <Compile Include="Utils\ClassesRepeticoes\FormModalHelper.cs" />
+    <Compile Include="Utils\ClassesRepeticoes\ProdutoGradeHelper.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFCe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNfe2.cs" />
@@ -1607,6 +1614,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\CaixaConferencia\FrmMovimentoCaixa.resx">
       <DependentUpon>FrmMovimentoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CaixaConferencia\FrmTransferenciaSaldo.resx">
+      <DependentUpon>FrmTransferenciaSaldo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\CaixaConferencia\Reports\FrmRelatorioCaixa.resx">
       <DependentUpon>FrmRelatorioCaixa.cs</DependentUpon>
@@ -2486,6 +2496,7 @@
     <None Include="Resources\Completed-Logo.png" />
     <None Include="Resources\CloseDark.png" />
     <None Include="Resources\confirmacao.png" />
+    <None Include="Resources\Delete1.png" />
     <Content Include="Resources\Delete_1.png" />
     <None Include="Resources\DinheiroExemplo1.jpg" />
     <None Include="Resources\Empresa.png" />
@@ -2534,6 +2545,7 @@
     <Content Include="Resources\Outlook icon-10.png" />
     <Content Include="Resources\Outlook icon-12.png" />
     <None Include="Resources\Produto.png" />
+    <None Include="Resources\PessoaEdit.png" />
     <Content Include="Resources\Reading Pane.png" />
     <Content Include="Resources\Reminder Windows.png" />
     <Content Include="Resources\Rename folder.png" />
@@ -2553,6 +2565,7 @@
     <Content Include="Resources\Team Email.png" />
     <Content Include="Resources\To Do Bar.png" />
     <Content Include="Resources\To manger.png" />
+    <None Include="Resources\transfer.png" />
     <Content Include="Resources\Update Folder.png" />
     <None Include="Resources\User1.png" />
     <Content Include="Resources\View in server.png" />
@@ -2595,6 +2608,9 @@
     </PackageReference>
     <PackageReference Include="JWT">
       <Version>5.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="MaterialIcons">
+      <Version>1.0.3</Version>
     </PackageReference>
     <PackageReference Include="MetroFramework">
       <Version>1.2.0.3</Version>

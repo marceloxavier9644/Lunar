@@ -659,9 +659,18 @@ namespace LunarAtualizador
                 DateTime horarioVerificacao3 = new DateTime(agora.Year, agora.Month, agora.Day, 10, 5, 0);
                 DateTime horarioVerificacao2 = new DateTime(agora.Year, agora.Month, agora.Day, 15, 30, 0);
                 DateTime horarioVerificacao4 = new DateTime(agora.Year, agora.Month, agora.Day, 17, 0, 0);
-
-
                 DateTime horarioVerificacao4LembreteExame = new DateTime(agora.Year, agora.Month, agora.Day, 12, 0, 0);
+
+                if(nomeDoComputador.Equals(nomeServidorConfigurado, StringComparison.OrdinalIgnoreCase)) 
+                {
+                    if (agora.Hour == horarioVerificacao1.Hour && agora.Minute == horarioVerificacao1.Minute)
+                    {
+                        if(Sessao.parametroSistema.NotificacaoPagar.Date != agora.Date && Sessao.parametroSistema.NotificacaoPagar.Hour != horarioVerificacao1.Hour)
+                        {
+                            
+                        }
+                    }
+                }
 
                 if (ativarMensagemLembreteExame.Equals("True"))
                 {

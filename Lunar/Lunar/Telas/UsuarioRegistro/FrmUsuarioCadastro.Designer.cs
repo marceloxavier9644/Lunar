@@ -59,8 +59,20 @@
             this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtDDD = new Lunar.RJ_UI.Classes.RJTextBox();
             this.chkReceberNotificacoes = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
+            this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.chk5 = new System.Windows.Forms.CheckBox();
+            this.chk4 = new System.Windows.Forms.CheckBox();
+            this.chk3 = new System.Windows.Forms.CheckBox();
+            this.chk2 = new System.Windows.Forms.CheckBox();
+            this.chk1 = new System.Windows.Forms.CheckBox();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkReceberNotificacoes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
+            this.tabControlAdv1.SuspendLayout();
+            this.tabPageAdv1.SuspendLayout();
+            this.tabPageAdv2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -71,7 +83,7 @@
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(774, 44);
+            this.panelTitleBar.Size = new System.Drawing.Size(808, 44);
             this.panelTitleBar.TabIndex = 201;
             // 
             // autoLabel2
@@ -99,7 +111,7 @@
             this.btnClose.IconColor = System.Drawing.Color.White;
             this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnClose.IconSize = 30;
-            this.btnClose.Location = new System.Drawing.Point(733, 3);
+            this.btnClose.Location = new System.Drawing.Point(767, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(39, 41);
             this.btnClose.TabIndex = 0;
@@ -112,7 +124,7 @@
             this.lblRazaoSocial.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRazaoSocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.lblRazaoSocial.Location = new System.Drawing.Point(171, 53);
+            this.lblRazaoSocial.Location = new System.Drawing.Point(174, 11);
             this.lblRazaoSocial.Name = "lblRazaoSocial";
             this.lblRazaoSocial.Size = new System.Drawing.Size(89, 16);
             this.lblRazaoSocial.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
@@ -127,7 +139,7 @@
             this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel3.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel3.Location = new System.Drawing.Point(13, 53);
+            this.autoLabel3.Location = new System.Drawing.Point(16, 11);
             this.autoLabel3.Name = "autoLabel3";
             this.autoLabel3.Size = new System.Drawing.Size(51, 16);
             this.autoLabel3.TabIndex = 207;
@@ -146,7 +158,7 @@
             this.btnPesquisaEmpresa.IconColor = System.Drawing.Color.SlateGray;
             this.btnPesquisaEmpresa.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnPesquisaEmpresa.IconSize = 38;
-            this.btnPesquisaEmpresa.Location = new System.Drawing.Point(582, 208);
+            this.btnPesquisaEmpresa.Location = new System.Drawing.Point(585, 166);
             this.btnPesquisaEmpresa.Name = "btnPesquisaEmpresa";
             this.btnPesquisaEmpresa.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaEmpresa.TabIndex = 8;
@@ -158,7 +170,7 @@
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel15.Location = new System.Drawing.Point(626, 184);
+            this.autoLabel15.Location = new System.Drawing.Point(629, 142);
             this.autoLabel15.Name = "autoLabel15";
             this.autoLabel15.Size = new System.Drawing.Size(51, 16);
             this.autoLabel15.TabIndex = 214;
@@ -169,7 +181,7 @@
             this.autoLabel14.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel14.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel14.Location = new System.Drawing.Point(13, 184);
+            this.autoLabel14.Location = new System.Drawing.Point(16, 142);
             this.autoLabel14.Name = "autoLabel14";
             this.autoLabel14.Size = new System.Drawing.Size(147, 16);
             this.autoLabel14.TabIndex = 213;
@@ -181,7 +193,7 @@
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.autoLabel1.Location = new System.Drawing.Point(484, 53);
+            this.autoLabel1.Location = new System.Drawing.Point(487, 11);
             this.autoLabel1.Name = "autoLabel1";
             this.autoLabel1.Size = new System.Drawing.Size(54, 16);
             this.autoLabel1.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
@@ -195,7 +207,7 @@
             this.autoLabel4.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel4.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel4.Location = new System.Drawing.Point(13, 117);
+            this.autoLabel4.Location = new System.Drawing.Point(16, 75);
             this.autoLabel4.Name = "autoLabel4";
             this.autoLabel4.Size = new System.Drawing.Size(45, 16);
             this.autoLabel4.TabIndex = 218;
@@ -207,7 +219,7 @@
             this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.autoLabel5.Location = new System.Drawing.Point(374, 117);
+            this.autoLabel5.Location = new System.Drawing.Point(377, 75);
             this.autoLabel5.Name = "autoLabel5";
             this.autoLabel5.Size = new System.Drawing.Size(139, 16);
             this.autoLabel5.Style = Syncfusion.Windows.Forms.Tools.AutoLabelStyle.Office2016White;
@@ -229,7 +241,7 @@
             this.btnPesquisaGrupo.IconColor = System.Drawing.Color.SlateGray;
             this.btnPesquisaGrupo.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnPesquisaGrupo.IconSize = 38;
-            this.btnPesquisaGrupo.Location = new System.Drawing.Point(582, 142);
+            this.btnPesquisaGrupo.Location = new System.Drawing.Point(585, 100);
             this.btnPesquisaGrupo.Name = "btnPesquisaGrupo";
             this.btnPesquisaGrupo.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaGrupo.TabIndex = 5;
@@ -241,7 +253,7 @@
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(626, 117);
+            this.autoLabel6.Location = new System.Drawing.Point(629, 75);
             this.autoLabel6.Name = "autoLabel6";
             this.autoLabel6.Size = new System.Drawing.Size(51, 16);
             this.autoLabel6.TabIndex = 223;
@@ -257,7 +269,7 @@
             this.lblAutomatico.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblAutomatico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAutomatico.ForeColor = System.Drawing.Color.LightGray;
-            this.lblAutomatico.Location = new System.Drawing.Point(52, 84);
+            this.lblAutomatico.Location = new System.Drawing.Point(55, 42);
             this.lblAutomatico.Name = "lblAutomatico";
             this.lblAutomatico.Size = new System.Drawing.Size(74, 16);
             this.lblAutomatico.TabIndex = 224;
@@ -274,7 +286,7 @@
             this.txtCodGrupo.Enabled = false;
             this.txtCodGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodGrupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodGrupo.Location = new System.Drawing.Point(626, 138);
+            this.txtCodGrupo.Location = new System.Drawing.Point(629, 96);
             this.txtCodGrupo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodGrupo.Multiline = false;
             this.txtCodGrupo.Name = "txtCodGrupo";
@@ -301,7 +313,7 @@
             this.txtGrupo.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrupo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtGrupo.Location = new System.Drawing.Point(374, 137);
+            this.txtGrupo.Location = new System.Drawing.Point(377, 95);
             this.txtGrupo.Margin = new System.Windows.Forms.Padding(4);
             this.txtGrupo.Multiline = false;
             this.txtGrupo.Name = "txtGrupo";
@@ -329,9 +341,9 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Location = new System.Drawing.Point(461, 361);
+            this.btnSalvar.Location = new System.Drawing.Point(588, 389);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(298, 45);
+            this.btnSalvar.Size = new System.Drawing.Size(205, 45);
             this.btnSalvar.TabIndex = 13;
             this.btnSalvar.Text = "Salvar [F5]";
             this.btnSalvar.TextColor = System.Drawing.Color.White;
@@ -353,9 +365,9 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancelar.Location = new System.Drawing.Point(157, 361);
+            this.btnCancelar.Location = new System.Drawing.Point(377, 389);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(298, 45);
+            this.btnCancelar.Size = new System.Drawing.Size(205, 45);
             this.btnCancelar.TabIndex = 14;
             this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "Cancelar";
@@ -372,7 +384,7 @@
             this.txtEmail.BorderSize = 2;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmail.Location = new System.Drawing.Point(13, 137);
+            this.txtEmail.Location = new System.Drawing.Point(16, 95);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Multiline = false;
             this.txtEmail.Name = "txtEmail";
@@ -396,7 +408,7 @@
             this.txtSenha.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSenha.Location = new System.Drawing.Point(484, 73);
+            this.txtSenha.Location = new System.Drawing.Point(487, 31);
             this.txtSenha.Margin = new System.Windows.Forms.Padding(4);
             this.txtSenha.Multiline = false;
             this.txtSenha.Name = "txtSenha";
@@ -422,7 +434,7 @@
             this.txtCodEmpresa.Enabled = false;
             this.txtCodEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodEmpresa.Location = new System.Drawing.Point(626, 204);
+            this.txtCodEmpresa.Location = new System.Drawing.Point(629, 162);
             this.txtCodEmpresa.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodEmpresa.Multiline = false;
             this.txtCodEmpresa.Name = "txtCodEmpresa";
@@ -448,7 +460,7 @@
             this.txtEmpresa.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmpresa.Location = new System.Drawing.Point(13, 204);
+            this.txtEmpresa.Location = new System.Drawing.Point(16, 162);
             this.txtEmpresa.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmpresa.Multiline = false;
             this.txtEmpresa.Name = "txtEmpresa";
@@ -475,7 +487,7 @@
             this.txtID.Enabled = false;
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtID.Location = new System.Drawing.Point(13, 73);
+            this.txtID.Location = new System.Drawing.Point(16, 31);
             this.txtID.Margin = new System.Windows.Forms.Padding(4);
             this.txtID.Multiline = false;
             this.txtID.Name = "txtID";
@@ -502,7 +514,7 @@
             this.txtLogin.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtLogin.Location = new System.Drawing.Point(171, 73);
+            this.txtLogin.Location = new System.Drawing.Point(174, 31);
             this.txtLogin.Margin = new System.Windows.Forms.Padding(4);
             this.txtLogin.Multiline = false;
             this.txtLogin.Name = "txtLogin";
@@ -522,7 +534,7 @@
             this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel7.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel7.Location = new System.Drawing.Point(123, 245);
+            this.autoLabel7.Location = new System.Drawing.Point(126, 203);
             this.autoLabel7.Name = "autoLabel7";
             this.autoLabel7.Size = new System.Drawing.Size(69, 16);
             this.autoLabel7.TabIndex = 228;
@@ -538,7 +550,7 @@
             this.txtTelefonePrincipal.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtTelefonePrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefonePrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTelefonePrincipal.Location = new System.Drawing.Point(123, 265);
+            this.txtTelefonePrincipal.Location = new System.Drawing.Point(126, 223);
             this.txtTelefonePrincipal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefonePrincipal.Multiline = false;
             this.txtTelefonePrincipal.Name = "txtTelefonePrincipal";
@@ -560,7 +572,7 @@
             this.autoLabel8.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel8.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel8.Location = new System.Drawing.Point(13, 245);
+            this.autoLabel8.Location = new System.Drawing.Point(16, 203);
             this.autoLabel8.Name = "autoLabel8";
             this.autoLabel8.Size = new System.Drawing.Size(37, 16);
             this.autoLabel8.TabIndex = 227;
@@ -576,7 +588,7 @@
             this.txtDDD.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtDDD.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDDD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDDD.Location = new System.Drawing.Point(13, 265);
+            this.txtDDD.Location = new System.Drawing.Point(16, 223);
             this.txtDDD.Margin = new System.Windows.Forms.Padding(4);
             this.txtDDD.Multiline = false;
             this.txtDDD.Name = "txtDDD";
@@ -598,7 +610,7 @@
             this.chkReceberNotificacoes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkReceberNotificacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkReceberNotificacoes.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkReceberNotificacoes.Location = new System.Drawing.Point(13, 309);
+            this.chkReceberNotificacoes.Location = new System.Drawing.Point(381, 227);
             this.chkReceberNotificacoes.Name = "chkReceberNotificacoes";
             this.chkReceberNotificacoes.Size = new System.Drawing.Size(270, 30);
             this.chkReceberNotificacoes.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
@@ -606,39 +618,136 @@
             this.chkReceberNotificacoes.TabStop = false;
             this.chkReceberNotificacoes.Text = "Receber Notificações do Sistema";
             this.chkReceberNotificacoes.ThemeName = "Metro";
+            this.chkReceberNotificacoes.CheckStateChanged += new System.EventHandler(this.chkReceberNotificacoes_CheckStateChanged);
+            // 
+            // tabControlAdv1
+            // 
+            this.tabControlAdv1.ActiveTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.tabControlAdv1.BeforeTouchSize = new System.Drawing.Size(789, 306);
+            this.tabControlAdv1.Controls.Add(this.tabPageAdv1);
+            this.tabControlAdv1.Controls.Add(this.tabPageAdv2);
+            this.tabControlAdv1.FocusOnTabClick = false;
+            this.tabControlAdv1.Location = new System.Drawing.Point(12, 50);
+            this.tabControlAdv1.Name = "tabControlAdv1";
+            this.tabControlAdv1.Size = new System.Drawing.Size(789, 306);
+            this.tabControlAdv1.TabIndex = 229;
+            this.tabControlAdv1.TabPanelBackColor = System.Drawing.SystemColors.Control;
+            this.tabControlAdv1.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererIE7);
+            this.tabControlAdv1.ThemeName = "TabRendererIE7";
+            // 
+            // tabPageAdv1
+            // 
+            this.tabPageAdv1.Controls.Add(this.autoLabel3);
+            this.tabPageAdv1.Controls.Add(this.chkReceberNotificacoes);
+            this.tabPageAdv1.Controls.Add(this.txtLogin);
+            this.tabPageAdv1.Controls.Add(this.autoLabel7);
+            this.tabPageAdv1.Controls.Add(this.lblRazaoSocial);
+            this.tabPageAdv1.Controls.Add(this.txtTelefonePrincipal);
+            this.tabPageAdv1.Controls.Add(this.txtID);
+            this.tabPageAdv1.Controls.Add(this.autoLabel8);
+            this.tabPageAdv1.Controls.Add(this.txtEmpresa);
+            this.tabPageAdv1.Controls.Add(this.txtDDD);
+            this.tabPageAdv1.Controls.Add(this.autoLabel14);
+            this.tabPageAdv1.Controls.Add(this.lblAutomatico);
+            this.tabPageAdv1.Controls.Add(this.txtCodEmpresa);
+            this.tabPageAdv1.Controls.Add(this.btnPesquisaGrupo);
+            this.tabPageAdv1.Controls.Add(this.autoLabel15);
+            this.tabPageAdv1.Controls.Add(this.autoLabel6);
+            this.tabPageAdv1.Controls.Add(this.btnPesquisaEmpresa);
+            this.tabPageAdv1.Controls.Add(this.txtCodGrupo);
+            this.tabPageAdv1.Controls.Add(this.txtSenha);
+            this.tabPageAdv1.Controls.Add(this.autoLabel5);
+            this.tabPageAdv1.Controls.Add(this.autoLabel1);
+            this.tabPageAdv1.Controls.Add(this.txtGrupo);
+            this.tabPageAdv1.Controls.Add(this.txtEmail);
+            this.tabPageAdv1.Controls.Add(this.autoLabel4);
+            this.tabPageAdv1.Image = null;
+            this.tabPageAdv1.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPageAdv1.Location = new System.Drawing.Point(1, 33);
+            this.tabPageAdv1.Name = "tabPageAdv1";
+            this.tabPageAdv1.ShowCloseButton = true;
+            this.tabPageAdv1.Size = new System.Drawing.Size(786, 271);
+            this.tabPageAdv1.TabIndex = 1;
+            this.tabPageAdv1.Text = "Cadastro";
+            this.tabPageAdv1.ThemesEnabled = false;
+            // 
+            // tabPageAdv2
+            // 
+            this.tabPageAdv2.Controls.Add(this.chk5);
+            this.tabPageAdv2.Controls.Add(this.chk4);
+            this.tabPageAdv2.Controls.Add(this.chk3);
+            this.tabPageAdv2.Controls.Add(this.chk2);
+            this.tabPageAdv2.Controls.Add(this.chk1);
+            this.tabPageAdv2.Image = null;
+            this.tabPageAdv2.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabPageAdv2.Location = new System.Drawing.Point(1, 33);
+            this.tabPageAdv2.Name = "tabPageAdv2";
+            this.tabPageAdv2.ShowCloseButton = true;
+            this.tabPageAdv2.Size = new System.Drawing.Size(786, 271);
+            this.tabPageAdv2.TabIndex = 2;
+            this.tabPageAdv2.TabVisible = false;
+            this.tabPageAdv2.Text = "Notificações";
+            this.tabPageAdv2.ThemesEnabled = false;
+            // 
+            // chk5
+            // 
+            this.chk5.AutoSize = true;
+            this.chk5.Location = new System.Drawing.Point(17, 114);
+            this.chk5.Name = "chk5";
+            this.chk5.Size = new System.Drawing.Size(274, 17);
+            this.chk5.TabIndex = 12;
+            this.chk5.Text = "5. Receber Notificação de Contas a Receber do Dia";
+            this.chk5.UseVisualStyleBackColor = true;
+            // 
+            // chk4
+            // 
+            this.chk4.AutoSize = true;
+            this.chk4.Location = new System.Drawing.Point(17, 91);
+            this.chk4.Name = "chk4";
+            this.chk4.Size = new System.Drawing.Size(261, 17);
+            this.chk4.TabIndex = 11;
+            this.chk4.Text = "4. Receber Notificação de Contas a Pagar do Dia";
+            this.chk4.UseVisualStyleBackColor = true;
+            // 
+            // chk3
+            // 
+            this.chk3.AutoSize = true;
+            this.chk3.Location = new System.Drawing.Point(17, 68);
+            this.chk3.Name = "chk3";
+            this.chk3.Size = new System.Drawing.Size(245, 17);
+            this.chk3.TabIndex = 10;
+            this.chk3.Text = "3. Receber Notificação de Vendas Realizadas";
+            this.chk3.UseVisualStyleBackColor = true;
+            // 
+            // chk2
+            // 
+            this.chk2.AutoSize = true;
+            this.chk2.Location = new System.Drawing.Point(17, 45);
+            this.chk2.Name = "chk2";
+            this.chk2.Size = new System.Drawing.Size(389, 17);
+            this.chk2.TabIndex = 9;
+            this.chk2.Text = "2. Receber Notificação de Todas Ordens de Serviço Encerradas/Finalizadas";
+            this.chk2.UseVisualStyleBackColor = true;
+            // 
+            // chk1
+            // 
+            this.chk1.AutoSize = true;
+            this.chk1.Location = new System.Drawing.Point(17, 22);
+            this.chk1.Name = "chk1";
+            this.chk1.Size = new System.Drawing.Size(384, 17);
+            this.chk1.TabIndex = 8;
+            this.chk1.Text = "1. Receber Notificação de Todas Ordens De Serviço Abertas com Detalhes";
+            this.chk1.UseVisualStyleBackColor = true;
             // 
             // FrmUsuarioCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(774, 418);
-            this.Controls.Add(this.chkReceberNotificacoes);
-            this.Controls.Add(this.autoLabel7);
-            this.Controls.Add(this.txtTelefonePrincipal);
-            this.Controls.Add(this.autoLabel8);
-            this.Controls.Add(this.txtDDD);
-            this.Controls.Add(this.lblAutomatico);
-            this.Controls.Add(this.btnPesquisaGrupo);
-            this.Controls.Add(this.autoLabel6);
-            this.Controls.Add(this.txtCodGrupo);
-            this.Controls.Add(this.autoLabel5);
-            this.Controls.Add(this.txtGrupo);
+            this.ClientSize = new System.Drawing.Size(808, 446);
+            this.Controls.Add(this.tabControlAdv1);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.autoLabel4);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.autoLabel1);
-            this.Controls.Add(this.txtSenha);
-            this.Controls.Add(this.btnPesquisaEmpresa);
-            this.Controls.Add(this.autoLabel15);
-            this.Controls.Add(this.txtCodEmpresa);
-            this.Controls.Add(this.autoLabel14);
-            this.Controls.Add(this.txtEmpresa);
-            this.Controls.Add(this.autoLabel3);
-            this.Controls.Add(this.txtID);
-            this.Controls.Add(this.lblRazaoSocial);
-            this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.panelTitleBar);
             this.KeyPreview = true;
             this.Name = "FrmUsuarioCadastro";
@@ -649,8 +758,13 @@
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkReceberNotificacoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).EndInit();
+            this.tabControlAdv1.ResumeLayout(false);
+            this.tabPageAdv1.ResumeLayout(false);
+            this.tabPageAdv1.PerformLayout();
+            this.tabPageAdv2.ResumeLayout(false);
+            this.tabPageAdv2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -686,5 +800,13 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel8;
         private RJ_UI.Classes.RJTextBox txtDDD;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkReceberNotificacoes;
+        private Syncfusion.Windows.Forms.Tools.TabControlAdv tabControlAdv1;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv1;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv2;
+        private System.Windows.Forms.CheckBox chk5;
+        private System.Windows.Forms.CheckBox chk4;
+        private System.Windows.Forms.CheckBox chk3;
+        private System.Windows.Forms.CheckBox chk2;
+        private System.Windows.Forms.CheckBox chk1;
     }
 }

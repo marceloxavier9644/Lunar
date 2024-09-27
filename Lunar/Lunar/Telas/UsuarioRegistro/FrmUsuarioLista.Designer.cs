@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn1 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
-            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -47,6 +47,7 @@
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -61,11 +62,11 @@
             // 
             this.autoLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
             this.autoLabel15.Location = new System.Drawing.Point(482, 36);
             this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(94, 18);
+            this.autoLabel15.Size = new System.Drawing.Size(90, 16);
             this.autoLabel15.TabIndex = 210;
             this.autoLabel15.Text = "Reg. por Pág.";
             // 
@@ -78,7 +79,7 @@
             this.txtRegistroPorPagina.BorderRadius = 8;
             this.txtRegistroPorPagina.BorderSize = 2;
             this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtRegistroPorPagina.Location = new System.Drawing.Point(474, 48);
             this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
@@ -88,10 +89,12 @@
             this.txtRegistroPorPagina.PasswordChar = false;
             this.txtRegistroPorPagina.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtRegistroPorPagina.PlaceholderText = "";
+            this.txtRegistroPorPagina.ReadOnly = false;
             this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 39);
+            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
             this.txtRegistroPorPagina.TabIndex = 209;
             this.txtRegistroPorPagina.Tag = "";
+            this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtRegistroPorPagina.Texts = "100";
             this.txtRegistroPorPagina.UnderlinedStyle = false;
             // 
@@ -116,7 +119,7 @@
             this.txtPesquisa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtPesquisa.BorderRadius = 8;
             this.txtPesquisa.BorderSize = 2;
-            this.txtPesquisa.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPesquisa.Location = new System.Drawing.Point(10, 48);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
@@ -126,8 +129,10 @@
             this.txtPesquisa.PasswordChar = false;
             this.txtPesquisa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtPesquisa.PlaceholderText = "Pesquise por Código, Login ou E-mail";
-            this.txtPesquisa.Size = new System.Drawing.Size(456, 39);
+            this.txtPesquisa.ReadOnly = false;
+            this.txtPesquisa.Size = new System.Drawing.Size(456, 37);
             this.txtPesquisa.TabIndex = 153;
+            this.txtPesquisa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPesquisa.Texts = "";
             this.txtPesquisa.UnderlinedStyle = false;
             this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
@@ -158,6 +163,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnExcluir);
             this.groupBox2.Controls.Add(this.btnExportarPDF);
             this.groupBox2.Controls.Add(this.btnExportarExcel);
             this.groupBox2.Controls.Add(this.btnNovo);
@@ -240,37 +246,37 @@
             this.grid.AutoGenerateColumns = false;
             this.grid.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
             this.grid.BackColor = System.Drawing.Color.White;
-            gridNumericColumn1.AllowEditing = false;
-            gridNumericColumn1.AllowFiltering = true;
-            gridNumericColumn1.Format = "0";
-            gridNumericColumn1.HeaderText = "Código";
-            gridNumericColumn1.MappingName = "Id";
-            gridNumericColumn1.MaxValue = 1E+16D;
-            gridNumericColumn1.MinValue = 0D;
-            gridNumericColumn1.NullDisplayText = "0";
-            gridTextColumn1.AllowEditing = false;
-            gridTextColumn1.AllowFiltering = true;
-            gridTextColumn1.HeaderText = "Login";
-            gridTextColumn1.MappingName = "Login";
-            gridTextColumn2.AllowEditing = false;
-            gridTextColumn2.AllowFiltering = true;
-            gridTextColumn2.HeaderText = "E-mail";
-            gridTextColumn2.MappingName = "Email";
-            gridTextColumn3.AllowEditing = false;
-            gridTextColumn3.AllowFiltering = true;
-            gridTextColumn3.HeaderText = "Grupo";
-            gridTextColumn3.MappingName = "GrupoUsuario.Descricao";
-            gridTextColumn4.AllowEditing = false;
-            gridTextColumn4.AllowFiltering = true;
-            gridTextColumn4.HeaderText = "Empresa de Trabalho";
-            gridTextColumn4.MappingName = "EmpresaFilial.NomeFantasia";
-            this.grid.Columns.Add(gridNumericColumn1);
-            this.grid.Columns.Add(gridTextColumn1);
-            this.grid.Columns.Add(gridTextColumn2);
-            this.grid.Columns.Add(gridTextColumn3);
-            this.grid.Columns.Add(gridTextColumn4);
+            gridNumericColumn2.AllowEditing = false;
+            gridNumericColumn2.AllowFiltering = true;
+            gridNumericColumn2.Format = "0";
+            gridNumericColumn2.HeaderText = "Código";
+            gridNumericColumn2.MappingName = "Id";
+            gridNumericColumn2.MaxValue = 1E+16D;
+            gridNumericColumn2.MinValue = 0D;
+            gridNumericColumn2.NullDisplayText = "0";
+            gridTextColumn5.AllowEditing = false;
+            gridTextColumn5.AllowFiltering = true;
+            gridTextColumn5.HeaderText = "Login";
+            gridTextColumn5.MappingName = "Login";
+            gridTextColumn6.AllowEditing = false;
+            gridTextColumn6.AllowFiltering = true;
+            gridTextColumn6.HeaderText = "E-mail";
+            gridTextColumn6.MappingName = "Email";
+            gridTextColumn7.AllowEditing = false;
+            gridTextColumn7.AllowFiltering = true;
+            gridTextColumn7.HeaderText = "Grupo";
+            gridTextColumn7.MappingName = "GrupoUsuario.Descricao";
+            gridTextColumn8.AllowEditing = false;
+            gridTextColumn8.AllowFiltering = true;
+            gridTextColumn8.HeaderText = "Empresa de Trabalho";
+            gridTextColumn8.MappingName = "EmpresaFilial.NomeFantasia";
+            this.grid.Columns.Add(gridNumericColumn2);
+            this.grid.Columns.Add(gridTextColumn5);
+            this.grid.Columns.Add(gridTextColumn6);
+            this.grid.Columns.Add(gridTextColumn7);
+            this.grid.Columns.Add(gridTextColumn8);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grid.Location = new System.Drawing.Point(3, 16);
             this.grid.Name = "grid";
             this.grid.SelectionUnit = Syncfusion.WinForms.DataGrid.Enums.SelectionUnit.Cell;
@@ -304,6 +310,30 @@
             this.groupBox1.Size = new System.Drawing.Size(1001, 100);
             this.groupBox1.TabIndex = 162;
             this.groupBox1.TabStop = false;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluir.BackColor = System.Drawing.Color.White;
+            this.btnExcluir.BackgroundColor = System.Drawing.Color.White;
+            this.btnExcluir.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluir.BorderRadius = 8;
+            this.btnExcluir.BorderSize = 2;
+            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluir.FlatAppearance.BorderSize = 2;
+            this.btnExcluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnExcluir.Location = new System.Drawing.Point(99, 19);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(293, 45);
+            this.btnExcluir.TabIndex = 218;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // FrmUsuarioLista
             // 
@@ -343,5 +373,6 @@
         private Syncfusion.WinForms.DataGrid.SfDataGrid grid;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private RJ_UI.Classes.RJButton btnExcluir;
     }
 }

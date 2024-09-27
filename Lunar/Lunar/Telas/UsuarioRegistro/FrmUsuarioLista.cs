@@ -269,5 +269,18 @@ namespace Lunar.Telas.UsuarioRegistro
         {
             selecionarParaEditar();
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedItem != null)
+            {
+                if (GenericaDesktop.ShowConfirmacao("Deseja realmente excluir? "))
+                {
+                    usuario = new Usuario();
+                    usuario = (Usuario)grid.SelectedItem;
+                    Controller.getInstance().excluir(usuario);
+                }
+            }
+        }
     }
 }

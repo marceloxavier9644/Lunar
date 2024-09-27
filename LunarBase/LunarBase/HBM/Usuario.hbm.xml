@@ -10,6 +10,7 @@
 		<property name="Ddd" column="DDD" type="String" length="3"/>
 		<property name="Fone" column="FONE" type="String" length="20"/>
 		<property name="Notificacoes" column="NOTIFICACOES" type="Boolean"/>
+		<property name="NotificacoesSelecionadas" column="NOTIFICACOESSELECIONADAS" type="String" length="500"/>
 		
 		<many-to-one name="GrupoUsuario" column="GRUPOUSUARIO" class="LunarBase.Classes.GrupoUsuario" not-null="false" foreign-key="FK_USUARIO_GRUPOUSUARIO" lazy="false"/>
 		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="false" foreign-key="FK_USUARIO_EMPRESAFILIAL" lazy="false"/>

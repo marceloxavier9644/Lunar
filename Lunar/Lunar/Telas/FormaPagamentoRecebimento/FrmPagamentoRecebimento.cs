@@ -5,6 +5,7 @@ using Lunar.Telas.FormaPagamentoRecebimento.Adicionais;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas.RecebimentoVendas;
 using Lunar.Utils;
+using Lunar.Utils.ClassesRepeticoes;
 using Lunar.Utils.GalaxyPay_API;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
@@ -1229,8 +1230,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
         {
             if(listaReceber.Count > 0)
                 concluirRecebimentoContaReceber();
+            //Concluir O.S
             if (ordemServico.Id > 0 && origem != "ORDEMSERVICO_SINAL")
                 concluirRecebimentoOrdemServico();
+            //Concluir Sinal O.S
             if(ordemServico.Id > 0 && origem.Equals("ORDEMSERVICO_SINAL"))
                 concluirRecebimentoSinalOs();
             if (listaPagar.Count > 0)
@@ -1586,7 +1589,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                 GenericaDesktop.ShowErro("Erro ao encerrar a O.S " + ordemServico.Id + "\n\n" + err.Message);
             }
         }
-        private void concluirRecebimentoOrdemServico()
+        private async void concluirRecebimentoOrdemServico()
         {
             try
             {
@@ -1943,8 +1946,6 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     caixa.Cobrador = null;
                             }
                             Controller.getInstance().salvar(caixa);
-
-                            
                         }
                     }
                     listaOrdemServicoPagamento.Add(ordemServicoPagamento);
@@ -1992,9 +1993,10 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         Controller.getInstance().salvar(msgPos);
                     }
                 }
-
-
                 Controller.getInstance().salvar(ordemServico);
+
+                NotificacaoService notificacaoService = new NotificacaoService();
+                await notificacaoService.NotificarEncerramentoOrdemServicoAsync(ordemServico);
                 GenericaDesktop generica = new GenericaDesktop();
                 IList<OrdemServicoProduto> listaProdutoOS = new List<OrdemServicoProduto>();
                 OrdemServicoProdutoController ordemServicoProdutoController = new OrdemServicoProdutoController();

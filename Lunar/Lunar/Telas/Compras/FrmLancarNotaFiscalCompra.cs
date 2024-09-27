@@ -4,6 +4,7 @@ using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
 using Lunar.Utils.Modal;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -54,9 +55,7 @@ namespace Lunar.Telas.Compras
 			gridProdutos.AllowEditing = true;
 			txtEmpresaLogada.Texts = Sessao.empresaFilialLogada.NomeFantasia;
 
-
 			verificarProdutosCadastrados();
-		
 		}
 
         private void alimentarInformacoes()
@@ -1053,7 +1052,7 @@ namespace Lunar.Telas.Compras
 					//Se nao tem produto ainda selecionado pelo usuario o sistema verifica se existe ja cadastro no sistema...
 					if (String.IsNullOrEmpty(produtoSelecionado.ProdutoAssociado))
 					{
-						if (!String.IsNullOrEmpty(produtoSelecionado.CEANTrib))
+						if (!String.IsNullOrEmpty(produtoSelecionado.CEANTrib) && produtoSelecionado.CEANTrib != "SEM GTIN")
 						{
 							listaProds = produtoController.selecionarProdutoPorCodigoBarras(produtoSelecionado.CEANTrib);
 							if (listaProds.Count > 0)
@@ -1110,8 +1109,20 @@ namespace Lunar.Telas.Compras
                     }
 					if (!String.IsNullOrEmpty(produtoSelecionado.ProdutoAssociado))
 					{
-						//SetCellTextColor(new RowColumnIndex(index, 0), Color.FromArgb(0, 0, 255));
-						if(selecionadoPeloSistema == true)
+						try
+						{
+							if (produtoSelecionado.Produto != null)
+							{
+								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["CodigoInterno"].MappingName, produtoSelecionado.Produto.Id.ToString());
+								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["DescricaoInterna"].MappingName, produtoSelecionado.Produto.Descricao);
+								gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["ProdutoAssociado"].MappingName, "OK");
+							}
+						}
+						catch
+						{
+
+						}
+                        if (selecionadoPeloSistema == true)
 							SetCellBackgroundColor(new RowColumnIndex(index, 0), Color.FromArgb(240, 255, 240));
 						else
 							SetCellBackgroundColor(new RowColumnIndex(index, 0), Color.FromArgb(154, 205, 50));
@@ -1576,7 +1587,7 @@ namespace Lunar.Telas.Compras
 							nfeProd.DataEntrada = DateTime.Parse(txtDataLancamento.Value.ToString());
 							nfeProd.Produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(nfeProd.CodigoInterno), Sessao.empresaFilialLogada);
 							nfeProd.UComConvertida = nfeProd.Produto.UnidadeMedida.Sigla;
-
+						
 							//Ratear Frete
 							if (nfe.VFrete > 0)
 							{
@@ -1609,6 +1620,9 @@ namespace Lunar.Telas.Compras
 							produtoSelecionado.Estoque = produtoSelecionado.Estoque + nfeProd.QuantidadeEntrada;
 							produtoSelecionado.EstoqueAuxiliar = produtoSelecionado.EstoqueAuxiliar + nfeProd.QuantidadeEntrada;
 							produtoSelecionado.ValorCusto = nfeProd.VProd / decimal.Parse(nfeProd.QuantidadeEntrada.ToString());
+							//Atualiza referencia
+							if(!String.IsNullOrEmpty(nfeProd.CProd))
+								produtoSelecionado.Referencia = nfeProd.CProd;
 
                             Controller.getInstance().salvar(produtoSelecionado);
 
@@ -1942,16 +1956,43 @@ namespace Lunar.Telas.Compras
 
         private void btnDesmembrar_Click(object sender, EventArgs e)
         {
-            if (gridProdutos.SelectedIndex >= 0)
-            {
-                NfeProdutoController nfeProdutoController = new NfeProdutoController();
-                nfeProd = new NfeProduto();
-                nfeProd = (NfeProduto)gridProdutos.SelectedItem;
+			if (gridProdutos.SelectedIndex >= 0)
+			{
+				NfeProdutoController nfeProdutoController = new NfeProdutoController();
+				nfeProd = (NfeProduto)gridProdutos.SelectedItem; // Captura o produto selecionado
+				nfeProd.Nfe = nfe; // Atribui a NFe ao produto
 
-                FrmDesmembrarItem frm = new FrmDesmembrarItem(nfeProd);
-                frm.ShowDialog();
-            }
+				// Armazena o índice do produto que será desmembrado
+				int indiceProdutoDesmembrado = gridProdutos.SelectedIndex;
+
+				using (var formDesmembramento = new FrmDesmembrarItem(nfeProd))
+				{
+					if (formDesmembramento.ShowDialog() == DialogResult.OK)
+					{
+						// Acessa a lista retornada
+						var produtosDesmembrados = formDesmembramento.listaProdutosDesmembrados;
+
+						// Remove o produto original da lista
+						listaProdutos.RemoveAt(indiceProdutoDesmembrado);
+
+						// Adiciona os produtos desmembrados à lista
+						foreach (var produto in produtosDesmembrados)
+						{
+							listaProdutos.Add(produto);
+						}
+
+						// Atualiza o grid
+						gridProdutos.DataSource = null;
+						gridProdutos.DataSource = listaProdutos;
+						gridProdutos.Refresh();
+
+						// Verifica produtos cadastrados, se necessário
+						verificarProdutosCadastrados();
+					}
+				}
+			}
         }
+
     }	
 }
 

@@ -222,32 +222,43 @@ namespace Lunar
         {
             //backgroundWorker1.RunWorkerAsync();
         }
-
+        private bool isUpdating = false; 
         private async void FrmLogin_Paint(object sender, PaintEventArgs e)
         {
+            // Verifica se já está em processo de atualização
+            if (isUpdating)
+                return;
+
             if (File.Exists(atualizaBanco))
             {
+                isUpdating = true; // Marca que estamos atualizando
                 lblStatus.Visible = true;
                 lblStatus.Text = "Aguarde, atualizando o sistema para a versão " + Assembly.GetExecutingAssembly().GetName().Version.ToString() + "...";
                 txtSenha.Enabled = false;
                 txtUsuario.Enabled = false;
                 btnLogin.Enabled = false;
                 btnFechar.Enabled = false;
+
+                // Exibe mensagem ao usuário
+                GenericaDesktop.ShowInfo("Clique em OK e Aguarde, estamos atualizando o sistema. Isso pode levar um tempinho, não feche...");
+                lblStatus.Text = "Aguarde, atualizando o sistema. Isso pode levar um tempinho, não feche...";
+
                 // Executa o processo de atualização de forma assíncrona
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
-                    lblStatus.Text = "Aguarde, atualizando o sistema. Isso pode levar um tempinho, não feche...";
-                    await Controller.getInstanceAtualizaAsync();
-                    lblStatus.Text = "Quase pronto. Finalizando a atualização...";
+                    Controller.getInstanceAtualiza();
                     Controller.getInstance().geraValoresPadrao();
                 });
+
+                lblStatus.Text = "Atualização concluída com sucesso!";
 
                 txtSenha.Enabled = true;
                 txtUsuario.Enabled = true;
                 btnLogin.Enabled = true;
                 btnFechar.Enabled = true;
-                lblStatus.Text = "Atualização concluída com sucesso!";
+
                 File.Delete(atualizaBanco);
+                isUpdating = false; // Reseta a variável após a atualização
             }
         }
 

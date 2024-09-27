@@ -82,5 +82,23 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
+
+        public IList<Usuario> selecionarTodosUsuariosComNotificoes()
+        {
+            UsuarioBO bo = new UsuarioBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarTodosUsuariosComNotificoes();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

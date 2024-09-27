@@ -1957,7 +1957,7 @@ namespace Lunar.Telas.Fiscal
                     Genericos genericosNF = new Genericos();
                     var nota = Genericos.LoadFromXMLString<TNfeProc>(downloadRespNFe.xml);
                     genericosNF.gravarXMLNoBanco(nota, 0, nfe.TipoOperacao, nfe.Id, false);
-                    btnPesquisar.PerformClick();
+                    //btnPesquisar.PerformClick();
                 }
                 else
                     GenericaDesktop.ShowAlerta("Falha ao consultar, tente reenviar a nota fiscal!");

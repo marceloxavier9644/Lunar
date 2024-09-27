@@ -994,7 +994,7 @@ namespace Lunar.Telas.CaixaConferencia
 
         private void btnExcluir2_Click(object sender, EventArgs e)
         {
-            btnExcluir.PerformClick();
+         
         }
 
         private void btnDespesa_Click(object sender, EventArgs e)
@@ -1118,85 +1118,7 @@ namespace Lunar.Telas.CaixaConferencia
 
         private void btnAjustarCobrador_Click(object sender, EventArgs e)
         {
-            Object pessoaOjeto = new Pessoa();
-            Form formBackground = new Form();
-            try
-            {
-                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and Tabela.Cobrador = true"))
-                {
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    //formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    //formBackground.Left = Top = 0;
-                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = false;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-                    uu.Owner = formBackground;
-                    switch (uu.showModal("Pessoa", "and Tabela.Cobrador = true", ref pessoaOjeto))
-                    {
-                        case DialogResult.Ignore:
-                            uu.Dispose();
-                            if (grid.SelectedItems.Count > 0)
-                            {
-                                var caixa = grid.SelectedItem as Caixa;
-                                if (caixa.Cobrador != null)
-                                {
-                                    if (GenericaDesktop.ShowConfirmacao("Deseja excluir o cobrador(a) no lancamento selecionado?"))
-                                    {
-                                        caixa.Cobrador = null;
-                                        Controller.getInstance().salvar(caixa);
-                                        GenericaDesktop.ShowInfo("Removido com Sucesso");
-                                    }
-                                }
-                            }
-                            break;
-                        case DialogResult.Cancel:
-                            uu.Dispose();
-                            if (grid.SelectedItems.Count > 0)
-                            {
-                                var caixa = grid.SelectedItem as Caixa;
-                                if (caixa.Cobrador != null)
-                                {
-                                    if (GenericaDesktop.ShowConfirmacao("Deseja excluir o cobrador(a) no lancamento selecionado?"))
-                                    {
-                                        caixa.Cobrador = null;
-                                        Controller.getInstance().salvar(caixa);
-                                        GenericaDesktop.ShowInfo("Removido com Sucesso");
-                                    }
-                                }
-                            }
-                            break;
-                        case DialogResult.OK:
-                            Pessoa pessoaCobrador = ((Pessoa)pessoaOjeto);
-                            if (grid.SelectedItems.Count > 0)
-                            {
-                                var caixa = grid.SelectedItem as Caixa;
-                                if (GenericaDesktop.ShowConfirmacao("Deseja inserir o cobrador(a) " + pessoaCobrador.RazaoSocial + " no lancamento selecionado?"))
-                                {
-                                    caixa.Cobrador = pessoaCobrador;
-                                    Controller.getInstance().salvar(caixa);
-                                    GenericaDesktop.ShowInfo("Ajustado com Sucesso");
-                                }
-                            }
-
-                            break;
-                    }
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
+         
         }
 
         private void btnTesteBoleto_Click(object sender, EventArgs e)
@@ -1388,6 +1310,122 @@ namespace Lunar.Telas.CaixaConferencia
             else
                 lblSaldoTotal.ForeColor = Color.Red;
             lblSaldoTotal.Text = saldo.ToString("C2"); // Formata o saldo como valor monetário
+        }
+
+        private void btnTransferenciaContas_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnTransferenciaConta_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            FrmTransferenciaSaldo uu = new FrmTransferenciaSaldo();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            //formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            uu.Owner = formBackground;
+            uu.ShowDialog();
+            formBackground.Dispose();
+            uu.Dispose();
+            pesquisar();
+        }
+
+        private void btnRemoverMovimento_Click(object sender, EventArgs e)
+        {
+            btnExcluir.PerformClick();
+        }
+
+        private void btnEditarCobrador1_Click(object sender, EventArgs e)
+        {
+            Object pessoaOjeto = new Pessoa();
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Pessoa", "and Tabela.Cobrador = true"))
+                {
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("Pessoa", "and Tabela.Cobrador = true", ref pessoaOjeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            if (grid.SelectedItems.Count > 0)
+                            {
+                                var caixa = grid.SelectedItem as Caixa;
+                                if (caixa.Cobrador != null)
+                                {
+                                    if (GenericaDesktop.ShowConfirmacao("Deseja excluir o cobrador(a) no lancamento selecionado?"))
+                                    {
+                                        caixa.Cobrador = null;
+                                        Controller.getInstance().salvar(caixa);
+                                        GenericaDesktop.ShowInfo("Removido com Sucesso");
+                                    }
+                                }
+                            }
+                            break;
+                        case DialogResult.Cancel:
+                            uu.Dispose();
+                            if (grid.SelectedItems.Count > 0)
+                            {
+                                var caixa = grid.SelectedItem as Caixa;
+                                if (caixa.Cobrador != null)
+                                {
+                                    if (GenericaDesktop.ShowConfirmacao("Deseja excluir o cobrador(a) no lancamento selecionado?"))
+                                    {
+                                        caixa.Cobrador = null;
+                                        Controller.getInstance().salvar(caixa);
+                                        GenericaDesktop.ShowInfo("Removido com Sucesso");
+                                    }
+                                }
+                            }
+                            break;
+                        case DialogResult.OK:
+                            Pessoa pessoaCobrador = ((Pessoa)pessoaOjeto);
+                            if (grid.SelectedItems.Count > 0)
+                            {
+                                var caixa = grid.SelectedItem as Caixa;
+                                if (GenericaDesktop.ShowConfirmacao("Deseja inserir o cobrador(a) " + pessoaCobrador.RazaoSocial + " no lancamento selecionado?"))
+                                {
+                                    caixa.Cobrador = pessoaCobrador;
+                                    Controller.getInstance().salvar(caixa);
+                                    GenericaDesktop.ShowInfo("Ajustado com Sucesso");
+                                }
+                            }
+
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
+            }
         }
     }
 }

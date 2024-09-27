@@ -245,8 +245,10 @@ namespace LunarBase.Utilidades.NFSe
 
             if (string.IsNullOrEmpty(cliente.Email))
             {
-                Generica.ShowAlerta("E-mail do cliente é obrigatório.");
-                return false;
+                cliente.Email = cliente.RazaoSocial.Replace(" ", "") + "@clientetxt.com.br";
+                ordemServico.Cliente.Email = cliente.RazaoSocial.Replace(" ", "") + "@clientetxt.com.br";
+                //Generica.ShowAlerta("E-mail do cliente é obrigatório.");
+                //return false;
             }
 
             // Verificar endereço do cliente

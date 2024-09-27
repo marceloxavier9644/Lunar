@@ -151,11 +151,17 @@
   <data name="DinheiroExemplo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DinheiroExemplo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Niver2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Niver2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="XML64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XML64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="XML-PNG-32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XML-PNG-32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="whatsapp-logo-icone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\whatsapp-logo-icone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,6 +190,9 @@
   <data name="XML_PNG_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XML_PNG_64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="transfer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\transfer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="img-wellcome-sis-lunar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img-wellcome-sis-lunar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -202,7 +211,7 @@
   <data name="LunarLogoBmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LunarLogoBmp.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Niver2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Niver2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PessoaEdit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PessoaEdit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

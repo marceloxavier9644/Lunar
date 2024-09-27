@@ -24,5 +24,13 @@ namespace LunarBase.ClassesDAO
             IList<Usuario> retorno = Session.CreateQuery(sql).List<Usuario>();
             return retorno;
         }
+
+        public IList<Usuario> selecionarTodosUsuariosComNotificoes()
+        {
+            Session = Conexao.GetSession();
+            String sql = "FROM Usuario as Tabela WHERE Tabela.FlagExcluido <> true and Tabela.Id <> 1 and Tabela.Notificacoes = true";
+            IList<Usuario> retorno = Session.CreateQuery(sql).List<Usuario>();
+            return retorno;
+        }
     }
 }

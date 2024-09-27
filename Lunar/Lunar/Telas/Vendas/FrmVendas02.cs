@@ -8,6 +8,7 @@ using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Telas.Vendas.RecebimentoVendas;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
+using Lunar.Utils.ClassesRepeticoes;
 using Lunar.Utils.GalaxyPay_API;
 using Lunar.Utils.OrganizacaoNF;
 using LunarBase.Classes;
@@ -299,6 +300,8 @@ namespace Lunar.Telas.Vendas
             {
                 tabControlAdv1.TabPages.Add(tabVenda);
             }
+            txtPesquisaProduto.Focus();
+            txtPesquisaProduto.SelectAll();
         }
 
         // Mostrar a aba
@@ -3475,10 +3478,11 @@ namespace Lunar.Telas.Vendas
             Controller.getInstance().salvar(param);
             Sessao.parametroSistema = param;
         }
-        private void concluirVenda(Venda vendaConclusao, bool temNota)
+        private async void concluirVenda(Venda vendaConclusao, bool temNota)
         {
             try
             {
+
                 IList<ContaReceber> lisRec = new List<ContaReceber>();
                 //Salva na tabela vendaItens
                 salvarProdutosVenda();
@@ -3581,6 +3585,8 @@ namespace Lunar.Telas.Vendas
                         this.Close();
                     }
                 }
+                NotificacaoService notificacaoService = new NotificacaoService();
+                await notificacaoService.NotificarVendaRealizadaAsync(vendaConclusao);
                 EsconderTabPagamento();
             }
             catch (Exception erro)

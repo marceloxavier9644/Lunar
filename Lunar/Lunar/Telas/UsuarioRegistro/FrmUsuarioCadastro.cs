@@ -5,13 +5,16 @@ using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.UsuarioRegistro
 {
     public partial class FrmUsuarioCadastro : Form
     {
+        string permissoesMarcadas = string.Empty;
         Usuario usuario = new Usuario();
         UsuarioController usuarioController = new UsuarioController();
         EmpresaFilial empresaFilial = new EmpresaFilial();
@@ -80,6 +83,28 @@ namespace Lunar.Telas.UsuarioRegistro
                 txtCodEmpresa.Texts = usuario.EmpresaFilial.Id.ToString();
                 empresaFilial = usuario.EmpresaFilial;
             }
+
+            if (!String.IsNullOrEmpty(usuario.NotificacoesSelecionadas))
+            {
+                string[] permissions = usuario.NotificacoesSelecionadas.Split(';');
+                HashSet<string> notify = new HashSet<string>(permissions);
+
+                foreach (Syncfusion.Windows.Forms.Tools.TabPageAdv tabPage in tabControlAdv1.TabPages)
+                {
+                    foreach (string permissao in notify)
+                    {
+                        string nomeCheckbox = "chk" + permissao;
+
+                        Control[] controles = tabPage.Controls.Find(nomeCheckbox, true);
+
+                        if (controles.Length > 0 && controles[0] is CheckBox checkBox)
+                        {
+                            checkBox.Checked = true;
+                        }
+                    }
+                }
+            }
+            tabControlAdv1.SelectedTab = tabPageAdv1;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -119,6 +144,20 @@ namespace Lunar.Telas.UsuarioRegistro
             {
                 empresaFilial.Id = int.Parse(txtCodEmpresa.Texts);
                 usuario.EmpresaFilial = (EmpresaFilial)Controller.getInstance().selecionar(empresaFilial);
+            }
+
+            for (int i = 1; i <= 6; i++)
+            {
+                string checkBoxName = "chk" + i;
+                CheckBox checkBox = tabControlAdv1.Controls.Find(checkBoxName, true).FirstOrDefault() as CheckBox;
+
+                if (checkBox != null)
+                {
+                    if (checkBox.Checked)
+                    {
+                        usuario.NotificacoesSelecionadas += ";" + i;
+                    }
+                }
             }
         }
 
@@ -299,6 +338,27 @@ namespace Lunar.Telas.UsuarioRegistro
             {
                 string tel = txtTelefonePrincipal.Texts;
                 txtTelefonePrincipal.Texts = GenericaDesktop.formatarFone(tel);
+            }
+        }
+
+        private void chkReceberNotificacoes_CheckStateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(chkReceberNotificacoes.Checked == true)
+                {
+                    tabPageAdv2.TabVisible = true;
+                    tabControlAdv1.SelectedTab = tabPageAdv2;
+                }
+                else
+                {
+                    tabPageAdv2.TabVisible = false;
+                    tabControlAdv1.SelectedTab = tabPageAdv1;
+                }
+            }
+            catch
+            {
+
             }
         }
     }

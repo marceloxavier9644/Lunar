@@ -120,6 +120,18 @@ namespace LunarBase.ClassesBO
             }
         }
 
+        public IList<Usuario> selecionarTodosUsuariosComNotificoes()
+        {
+            try
+            {
+                return dao.selecionarTodosUsuariosComNotificoes();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Usuario! Erro: " + e.Message);
+            }
+        }
+
         public IList<Usuario> selecionarUsuarioComVariosFiltros(string valor)
         {
             try
