@@ -36,9 +36,11 @@ namespace LunarBase.ClassesDAO
 
         public IList<Produto> selecionarProdutosPorSql(string sql)
         {
-            Session = Conexao.GetSession();
-            IList<Produto> retorno = Session.CreateQuery(sql).List<Produto>();
-            return retorno;
+            using (var statelessSession = Conexao.GetStatelessSession())  // Utilizando StatelessSession
+            {
+                IList<Produto> retorno = statelessSession.CreateQuery(sql).List<Produto>();
+                return retorno;
+            }
         }
 
         public IList<ProdutoResult> selecionarProdutosPorSqlResult(string sql)
@@ -60,6 +62,7 @@ namespace LunarBase.ClassesDAO
             public int UnidadeMedida { get; set; }
             public decimal? ValorVenda { get; set; }
             public string CodigoBarras { get; set; }
+            public string UnidadeMedidaDesc { get; set; }
         }
         public IList<Produto> selecionarProdutoPorCodigoBarras(string valor)
         {

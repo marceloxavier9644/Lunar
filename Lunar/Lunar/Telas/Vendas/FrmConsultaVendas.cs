@@ -1180,9 +1180,20 @@ namespace Lunar.Telas.Vendas
             {
                 venda = new Venda();
                 venda = (Venda)grid.SelectedItem;
-                //Imprimir Ticket
-                FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda);
-                frmImprimirTicket.ShowDialog();
+                if (Sessao.parametroSistema.TipoImpressoraCondicional.Equals("A4"))
+                {
+                    IList<VendaItens> listaProdutos = new List<VendaItens>();
+                    VendaItensController vendaItensController = new VendaItensController();
+                    listaProdutos = vendaItensController.selecionarProdutosPorVenda(venda.Id);
+                    FrmImprimirTicketVendaA4 frmImprimirTicket = new FrmImprimirTicketVendaA4(venda, listaProdutos);
+                    frmImprimirTicket.ShowDialog();
+                }
+                else
+                {
+                    //Imprimir Ticket
+                    FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda);
+                    frmImprimirTicket.ShowDialog();
+                }
             }
             catch
             {

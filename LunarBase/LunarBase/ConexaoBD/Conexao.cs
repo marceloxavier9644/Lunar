@@ -3,6 +3,7 @@ using LunarBase.Utilidades;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
+using System.Reflection;
 using System.Windows;
 
 namespace LunarBase.ConexaoBD
@@ -48,7 +49,10 @@ namespace LunarBase.ConexaoBD
                            "StackTrace: " + e.StackTrace);
             }
         }
-
+        public static IStatelessSession GetStatelessSession()
+        {
+            return Factory.OpenStatelessSession();
+        }
         public static void RollBack()
         {
             Transaction.Rollback();
@@ -69,11 +73,6 @@ namespace LunarBase.ConexaoBD
                     String senha = "";
                     String servidor = "";
                     String bancoDados = "";
-
-                    //servidor = SessaoVariaveis.servidor;
-                    //usuario = SessaoVariaveis.usuario;
-                    //senha = SessaoVariaveis.senha;
-                    //bancoDados = SessaoVariaveis.bancoDadosPrincipal;
 
                     if (String.IsNullOrEmpty(servidor))
                     {
@@ -96,24 +95,10 @@ namespace LunarBase.ConexaoBD
                             senha = "mx123";
                             bancoDados = "lunar";
                         }
-
-                        //Online
-                        //servidor = "mysql.lunarsoftware.com.br";
-                        //usuario = "lunarsoftware01";
-                        //senha = "aranha1";
-                        //bancoDados = "lunarsoftware01";
                     }
 
                     IDictionary<string, string> props = new Dictionary<string, string>();
                     String connectionString = null;
-
-                    //connectionString = "Server=mysql.kooby.com.br;Port=3306;Database=kooby01;User ID=kooby01;Password=lunar123;SslMode = none";
-
-                    //Save in cloud
-                    //connectionString = "Server=node85252-lunar.jelastic.saveincloud.net;Port=12087;Database=lunar;Uid=jelastic-6535703;Pwd=R6JbWtucyk9h1LOGjOB1;SslMode=none";
-
-                    ////Google
-                    //connectionString = @"Server=35.247.215.65;Port=3306;Database=lunar;Uid=marcelo;Pwd=mx123;";
 
                     ////Normal
                     connectionString = "Server=" + servidor + ";Port=3306;Database=" + bancoDados + ";User ID=" + usuario + ";Password=" + senha + ";SslMode = none";
@@ -130,7 +115,8 @@ namespace LunarBase.ConexaoBD
                     props.Add("show_sql", "true");
                     Configuration cfg = new Configuration();
                     cfg.AddProperties(props);
-                    cfg.Configure(path + @"\Configuracao.cfg.xml");
+
+                    cfg.Configure(Path.Combine(path, "Configuracao.cfg.xml"));
                     if (atualizaBanco)
                         new SchemaUpdate(cfg).Execute(true, true);
                     Factory = cfg.BuildSessionFactory();

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6OAB4p59lu0=",
+  "dgSpecHash": "Y9bLke5lr/A=",
   "success": true,
   "projectFilePath": "C:\\Desenvolvimento\\Lunar\\LunarBase\\LunarBase\\LunarBase.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,7 @@
     "C:\\Users\\marce\\.nuget\\packages\\google.protobuf\\3.15.0\\google.protobuf.3.15.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\iesi.collections\\4.0.4\\iesi.collections.4.0.4.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\marce\\.nuget\\packages\\nhibernate\\5.3.10\\nhibernate.5.3.10.nupkg.sha512",
+    "C:\\Users\\marce\\.nuget\\packages\\nhibernate\\5.5.2\\nhibernate.5.5.2.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\remotion.linq\\2.2.0\\remotion.linq.2.2.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\remotion.linq.eagerfetching\\2.2.0\\remotion.linq.eagerfetching.2.2.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
@@ -26,16 +26,5 @@
     "C:\\Users\\marce\\.nuget\\packages\\system.security.cryptography.x509certificates\\4.3.0\\system.security.cryptography.x509certificates.4.3.0.nupkg.sha512",
     "C:\\Users\\marce\\.nuget\\packages\\zxing.net\\0.16.9\\zxing.net.0.16.9.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'NHibernate' 5.3.10 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-fg4q-ccq8-3r5q",
-      "libraryId": "NHibernate",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.7.2"
-      ]
-    }
-  ]
+  "logs": []
 }

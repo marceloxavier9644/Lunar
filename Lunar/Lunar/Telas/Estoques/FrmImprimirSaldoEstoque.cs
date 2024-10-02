@@ -32,10 +32,13 @@ namespace Lunar.Telas.Estoques
             EmpresaFilial empresaSelecionada = Sessao.empresaFilialLogada;
 
             string comp = "";
-            if (!String.IsNullOrEmpty(empresaSelecionada.Endereco.Complemento))
-                comp = " - " + empresaSelecionada.Endereco.Complemento;
-            if (!String.IsNullOrEmpty(empresaSelecionada.Endereco.Bairro))
-                comp = comp + " - " + empresaSelecionada.Endereco.Bairro;
+            if (empresaSelecionada.Endereco != null)
+            {
+                if (!String.IsNullOrEmpty(empresaSelecionada.Endereco.Complemento))
+                    comp = " - " + empresaSelecionada.Endereco.Complemento;
+                if (!String.IsNullOrEmpty(empresaSelecionada.Endereco.Bairro))
+                    comp = comp + " - " + empresaSelecionada.Endereco.Bairro;
+            }
 
             string fone = "";
             if (!String.IsNullOrEmpty(empresaSelecionada.DddPrincipal) && !String.IsNullOrEmpty(empresaSelecionada.TelefonePrincipal))

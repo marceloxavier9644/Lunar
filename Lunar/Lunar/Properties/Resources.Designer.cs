@@ -293,6 +293,16 @@ namespace Lunar.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sicredi {
+            get {
+                object obj = ResourceManager.GetObject("sicredi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap transfer {
             get {
                 object obj = ResourceManager.GetObject("transfer", resourceCulture);

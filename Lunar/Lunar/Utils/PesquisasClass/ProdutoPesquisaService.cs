@@ -78,7 +78,8 @@ namespace Lunar.Utils.PesquisasClass
             if (IsNumericAndHasMoreThan7Digits(codigoDeBarras))
             {
                 string sql = "SELECT p.Id AS ProdutoId, p.DESCRICAO AS ProdutoNome, pg.Id AS ProdutoGradeId, pg.Descricao AS DescricaoGrade, " +
-                             "COALESCE(um.Descricao, p.UnidadeMedida) AS UnidadeMedida, " +
+                             "COALESCE(um.Descricao, p.UnidadeMedida) AS UnidadeMedidaDesc, " +
+                             "p.UnidadeMedida AS UnidadeMedida, " +
                              "COALESCE(pg.ValorVenda, p.ValorVenda) AS ValorVenda, " +
                              "COALESCE(pcb.CodigoBarras, (SELECT pcb2.CodigoBarras FROM ProdutoCodigoBarras pcb2 WHERE pcb2.Produto = p.Id LIMIT 1)) AS CodigoBarras " +
                              "FROM Produto p " +

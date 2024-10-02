@@ -37,6 +37,7 @@
             lblOrigem = new Label();
             label2 = new Label();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            radioSoftSystemCosmos = new RadioButton();
             radioLinkPro = new RadioButton();
             radioSGBR = new RadioButton();
             radioUltra = new RadioButton();
@@ -53,6 +54,7 @@
             sfButton1 = new Syncfusion.WinForms.Controls.SfButton();
             chkIdProduto = new CheckBox();
             chkServicos = new CheckBox();
+            chkVendas = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
@@ -140,6 +142,7 @@
             gradientPanel1.Border3DStyle = Border3DStyle.Raised;
             gradientPanel1.BorderColor = Color.FromArgb(217, 217, 217);
             gradientPanel1.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel1.Controls.Add(radioSoftSystemCosmos);
             gradientPanel1.Controls.Add(radioLinkPro);
             gradientPanel1.Controls.Add(radioSGBR);
             gradientPanel1.Controls.Add(radioUltra);
@@ -148,6 +151,18 @@
             gradientPanel1.Name = "gradientPanel1";
             gradientPanel1.Size = new Size(820, 100);
             gradientPanel1.TabIndex = 15;
+            // 
+            // radioSoftSystemCosmos
+            // 
+            radioSoftSystemCosmos.AutoSize = true;
+            radioSoftSystemCosmos.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            radioSoftSystemCosmos.Location = new Point(406, 47);
+            radioSoftSystemCosmos.Name = "radioSoftSystemCosmos";
+            radioSoftSystemCosmos.Size = new Size(176, 23);
+            radioSoftSystemCosmos.TabIndex = 15;
+            radioSoftSystemCosmos.TabStop = true;
+            radioSoftSystemCosmos.Text = "SoftSystem - Cosmos";
+            radioSoftSystemCosmos.UseVisualStyleBackColor = true;
             // 
             // radioLinkPro
             // 
@@ -336,12 +351,25 @@
             chkServicos.Text = "Serviços";
             chkServicos.UseVisualStyleBackColor = true;
             // 
+            // chkVendas
+            // 
+            chkVendas.AutoSize = true;
+            chkVendas.Checked = true;
+            chkVendas.CheckState = CheckState.Checked;
+            chkVendas.Location = new Point(492, 442);
+            chkVendas.Name = "chkVendas";
+            chkVendas.Size = new Size(63, 19);
+            chkVendas.TabIndex = 27;
+            chkVendas.Text = "Vendas";
+            chkVendas.UseVisualStyleBackColor = true;
+            // 
             // FrmInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(884, 608);
+            Controls.Add(chkVendas);
             Controls.Add(chkServicos);
             Controls.Add(chkIdProduto);
             Controls.Add(sfButton1);
@@ -400,5 +428,7 @@
         private CheckBox chkIdProduto;
         private CheckBox chkServicos;
         private RadioButton radioLinkPro;
+        private RadioButton radioSoftSystemCosmos;
+        private CheckBox chkVendas;
     }
 }

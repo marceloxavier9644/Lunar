@@ -93,6 +93,18 @@ namespace LunarBase.ClassesBO
             }
         }
 
+        public IList<ContaReceber> selecionarContaReceberPorOrdemServico(int idOrdemServico)
+        {
+            try
+            {
+                return dao.selecionarContaReceberPorOrdemServico(idOrdemServico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar Conta Receber! Erro: " + e.Message);
+            }
+        }
+
         public IList<ContaReceber> selecionarContaReceberPorSql(string sql)
         {
             try

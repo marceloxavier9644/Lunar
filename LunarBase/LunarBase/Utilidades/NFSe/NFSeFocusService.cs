@@ -212,6 +212,8 @@ namespace LunarBase.Utilidades.NFSe
             nfse.Url = nfseResponse.url;
             nfse.UrlDanfe = nfseResponse.url_danfse;
             Controller.getInstance().salvar(nfse);
+            ordemServico.Nfse = nfse;
+            Controller.getInstance().salvar(ordemServico);
         }
 
         public bool ValidarDadosOrdemServicoECliente(OrdemServico ordemServico)

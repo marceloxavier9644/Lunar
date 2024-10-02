@@ -21,6 +21,14 @@ namespace LunarBase.ClassesDAO
             return retorno;
         }
 
+        public IList<ContaReceber> selecionarContaReceberPorOrdemServico(int idOrdemServico)
+        {
+            Session = Conexao.GetSession();
+            String sql = "FROM ContaReceber as Tabela WHERE Tabela.FlagExcluido <> true and Tabela.OrdemServico = " + idOrdemServico;
+            IList<ContaReceber> retorno = Session.CreateQuery(sql).List<ContaReceber>();
+            return retorno;
+        }
+
         public IList<ContaReceber> selecionarContaReceberPorSql(string sql)
         {
             Session = Conexao.GetSession();

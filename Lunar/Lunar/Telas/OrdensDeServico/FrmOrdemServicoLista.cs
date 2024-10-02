@@ -34,6 +34,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using Windows.Media.Protection.PlayReady;
 using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
 using static Lunar.Utils.OrganizacaoNF.RetConsultaProcessamento;
 using static LunarBase.Utilidades.ManifestoDownload;
@@ -1907,6 +1908,13 @@ namespace Lunar.Telas.OrdensDeServico
                     GenericaDesktop.ShowAlerta("Clique primeiro na Ordem de Serviço que deseja imprimir as duplicatas");
                 }
             }
+            else if (btnClicado.Equals("Imprimir Nota de Serviço"))
+            {
+               if(ordemServico.Nfse != null)
+                {
+                    Process.Start(ordemServico.Nfse.UrlDanfe);
+                }
+            }
             else if (btnClicado.Equals("Imprimir Nota Fiscal"))
             {
                 imprimirNF();
@@ -2436,6 +2444,10 @@ namespace Lunar.Telas.OrdensDeServico
                     {
                         await enviarMensagemPeloWhats(ordemServico, numero, nome, mensagem);
                     }
+                    else if (escolha.Equals("Nota e Boleto"))
+                    {
+                        await enviarPDfNotaEBoletoPeloWhats(ordemServico, numero, nome, mensagem);
+                    }
                     else
                     {
                         await enviarMensagemPeloWhats(ordemServico, numero, nome, mensagem);
@@ -2459,6 +2471,54 @@ namespace Lunar.Telas.OrdensDeServico
                 var client = new EnviarMensagemWhatsapp();
                 await client.SendMessageAsync(numero, mensagem);
                 await client.SendMediaMessageAsync(numero, caminhoPDF); 
+            }
+        }
+
+        private async Task enviarPDfNotaEBoletoPeloWhats(OrdemServico ordem, string numero, string nome, string mensagem)
+        {
+            string caminhoPDF = "";
+
+            if (grid.SelectedIndex >= 0)
+            {
+                //FrmImpressaoOrdemServico frmImpressaoOrdemServico = new FrmImpressaoOrdemServico(ordem);
+                //caminhoPDF = frmImpressaoOrdemServico.GerarPDF(ordem);
+                if(ordem.Nfe != null)
+                {
+
+                }
+                if(ordem.Nfse != null)
+                {
+
+                }
+                IList<ContaReceber> listaReceber = new List<ContaReceber>();
+                //IList<ContaReceber> listaReceberComBoleto = new List<ContaReceber>();
+                string[] arrayFatura = new string[grid.SelectedItems.Count];
+                ContaReceberController contaReceberController = new ContaReceberController();
+                listaReceber = contaReceberController.selecionarContaReceberPorOrdemServico(ordem.Id);
+                if (listaReceber.Count > 0) 
+                {
+                    int i = 0;
+                    foreach (ContaReceber contaReceber in listaReceber)
+                    {
+                        if(contaReceber.BoletoGerado == true)
+                        {
+                            arrayFatura[i] = contaReceber.Id.ToString();
+                            i++;
+                        }
+                    }
+                    GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                    string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                    string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(arrayFatura.ToArray());
+                    string localBoleto = await galaxyPayApiIntegracao.BaixarPDFBoletosAsync(link, ordem.Cliente.Id);
+                    List<Tuple<string, string>> listaCaminhoNotasParaEnviarEmail = new List<Tuple<string, string>>();
+                }
+            }
+
+            if (!String.IsNullOrEmpty(caminhoPDF))
+            {
+                var client = new EnviarMensagemWhatsapp();
+                await client.SendMessageAsync(numero, mensagem);
+                await client.SendMediaMessageAsync(numero, caminhoPDF);
             }
         }
 

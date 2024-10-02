@@ -21,6 +21,8 @@ using System.Linq;
 using Newtonsoft.Json;
 using NSSuite_CSharp.src.JSON.NFe;
 using NSSuite_CSharp.src.JSON.MDFe;
+using Lunar.Utils.ClassesRepeticoes;
+using Lunar.Utils.PesquisasClass;
 
 namespace Lunar.Telas.Estoques
 {
@@ -38,6 +40,7 @@ namespace Lunar.Telas.Estoques
             CarregarModelosEtiquetas();
             CarregarImpressoras();
             txtParcelas.TextAlign = HorizontalAlignment.Center;
+            carregarPadraoUtilizado();
         }
 
         public FrmEtiquetas(Produto produto, double quantidade)
@@ -54,6 +57,7 @@ namespace Lunar.Telas.Estoques
             else
                 txtQuantidade.Texts = "1";
             inserirItem(produto);
+            carregarPadraoUtilizado();
         }
 
         private void CarregarImpressoras()
@@ -276,7 +280,31 @@ namespace Lunar.Telas.Estoques
         {
             if (e.KeyChar == 13)
             {
-                PesquisarProduto(txtProduto.Texts);
+                //PesquisarProduto(txtPesquisaProduto.Texts);
+                string valorPesquisa = txtProduto.Texts.Trim(); // Captura o valor digitado no campo de texto
+
+                ProdutoPesquisaService produtoService = new ProdutoPesquisaService();
+                var resultado = produtoService.PesquisarProduto(valorPesquisa); // Chama o serviço de pesquisa
+
+                // Aqui você vai verificar o retorno
+                if (resultado.produto != null && resultado.grade != null)
+                {
+                    Produto produto = resultado.produto;
+                    ProdutoGrade grade = resultado.grade;
+
+                    // Preenche os campos da tela com os dados retornados
+                    txtProduto.Texts = produto.Descricao;
+                    txtQuantidade.Texts = "1";
+                    txtCodProduto.Texts = produto.Id.ToString();
+                    txtQuantidade.Focus();
+                    txtQuantidade.SelectAll();
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Produto não encontrados ou não selecionado!");
+                    txtProduto.Texts = "";
+                    txtQuantidade.Texts = "1";
+                }
             }
         }
 
@@ -372,11 +400,45 @@ namespace Lunar.Telas.Estoques
                 }
                 string nomeArquivoEtiqueta = comboModeloEtiqueta.SelectedItem.ToString();
                 string nomeImpressoraSelecionada = comboImpressoras.SelectedItem.ToString();
+                salvarPadraoUtilizado();
                 PrintLabel3(nomeArquivoEtiqueta, listaProdutosEtiquetas, nomeImpressoraSelecionada);
             }
             else
             {
                 GenericaDesktop.ShowAlerta("Insira os produtos que deseja imprimir!");
+            }
+        }
+
+        private void salvarPadraoUtilizado()
+        {
+            string nomeArquivoEtiqueta = comboModeloEtiqueta.SelectedItem.ToString();
+            string nomeImpressoraSelecionada = comboImpressoras.SelectedItem.ToString();
+            string parcelas = txtParcelas.Texts.Trim();
+            ConfigIniManager configManager = new ConfigIniManager();
+            configManager.Etiquetas_SalvarConfiguracao(nomeArquivoEtiqueta, nomeImpressoraSelecionada, parcelas, txtObservacoes.Texts);
+        }
+
+        private void carregarPadraoUtilizado()
+        {
+            ConfigIniManager configManager = new ConfigIniManager();
+            var (modeloEtiqueta, impressora, parcelas, observacoes) = configManager.Etiquetas_CarregarConfiguracao();
+            if (!string.IsNullOrEmpty(modeloEtiqueta) && comboModeloEtiqueta.Items.Contains(modeloEtiqueta))
+            {
+                comboModeloEtiqueta.SelectedItem = modeloEtiqueta;
+            }
+
+            if (!string.IsNullOrEmpty(impressora) && comboImpressoras.Items.Contains(impressora))
+            {
+                comboImpressoras.SelectedItem = impressora;
+            }
+
+            if (!string.IsNullOrEmpty(parcelas))
+            {
+                txtParcelas.Texts = parcelas;
+            }
+            if (!string.IsNullOrEmpty(observacoes))
+            {
+                txtObservacoes.Texts = observacoes;
             }
         }
 
@@ -694,6 +756,11 @@ namespace Lunar.Telas.Estoques
         {
             Random random = new Random();
             return random.Next(min, max);
+        }
+
+        private void btnSalvarConfig_Click(object sender, EventArgs e)
+        {
+            salvarPadraoUtilizado();
         }
     }
 }

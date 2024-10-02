@@ -74,6 +74,10 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 Escolha = "Envio Técnico";
             }
+            else if (radioNotaEBoleto.Checked == true)
+            {
+                Escolha = "Nota e Boleto";
+            }
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

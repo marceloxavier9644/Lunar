@@ -141,8 +141,9 @@ namespace Lunar.Telas.Compras
 						contaPagar.Pago = false;
 						contaPagar.Pessoa = null;
 						contaPagar.PlanoConta = null;
-						contaPagar.ValorTotal = nfe.VNf;
-						contaPagar.VDup = decimal.Parse(notaXML.NFe.infNFe.cobr.dup[k].vDup.Replace(".", ","));
+						//contaPagar.ValorTotal = nfe.VNf;
+						contaPagar.ValorTotal = decimal.Parse(notaXML.NFe.infNFe.cobr.dup[k].vDup.Replace(".", ","));
+                        contaPagar.VDup = decimal.Parse(notaXML.NFe.infNFe.cobr.dup[k].vDup.Replace(".", ","));
 
 						listaContaPagar.Add(contaPagar);
 					}
@@ -1262,13 +1263,16 @@ namespace Lunar.Telas.Compras
                                 //if(grade != null)
 									//gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(gridProdutos.SelectedIndex + 1), gridProdutos.Columns["ProdutoGrade"].MappingName, grade);
                                 gridProdutos.Refresh();
-                                if (string.IsNullOrEmpty(prod.Ncm))
-                                {
-                                    NfeProduto nnfeProd = (NfeProduto)gridProdutos.SelectedItem;
-                                    prod.Ncm = nnfeProd.Ncm;
-                                    Controller.getInstance().salvar(prod);
-                                }
-                                verificarProdutosCadastrados();
+                                NfeProduto nnfeProd = (NfeProduto)gridProdutos.SelectedItem;
+								if (GenericaDesktop.ShowConfirmacao("Deseja atualizar a referencia, ncm e codigo de barras do produto?"))
+								{
+									prod.Ncm = nnfeProd.Ncm;
+									prod.Referencia = nnfeProd.CProd;
+									//if (!String.IsNullOrEmpty(nnfeProd.CEan))
+									//	prod.Ean = nnfeProd.CEan;
+									Controller.getInstance().salvar(prod);
+								}
+                                //verificarProdutosCadastrados();
                                 break;
                         }
 
@@ -1330,7 +1334,7 @@ namespace Lunar.Telas.Compras
                                     prod.Ncm = nnfeProd.Ncm;
                                     Controller.getInstance().salvar(prod);
                                 }
-                                verificarProdutosCadastrados();
+                                //verificarProdutosCadastrados();
                                 break;
                         }
 
@@ -1694,7 +1698,7 @@ namespace Lunar.Telas.Compras
 										planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
 										contaPagar.PlanoConta = planoConta;
 									}
-
+									//contaPagar.VDup = 
 									contaPagar.Pessoa = pessoa;
 									//if (radioNaoPagas.Checked == true)
 									contaPagar.Pago = false;
@@ -1766,18 +1770,20 @@ namespace Lunar.Telas.Compras
 			pessoa.LocalTrabalho = "";
 			pessoa.Mae = "";
 			pessoa.Email = "";
-			if (notaXML.NFe.infNFe.emit.xFant != null)
+            if (notaXML.NFe.infNFe.emit.xNome != null)
+                pessoa.RazaoSocial = notaXML.NFe.infNFe.emit.xNome.ToUpper();
+
+            if (notaXML.NFe.infNFe.emit.xFant != null)
 				pessoa.NomeFantasia = notaXML.NFe.infNFe.emit.xFant.ToUpper();
 			else if (notaXML.NFe.infNFe.emit.xNome != null)
 				pessoa.NomeFantasia = notaXML.NFe.infNFe.emit.xNome.ToUpper();
 			else
-				pessoa.NomeFantasia = "";
+				pessoa.NomeFantasia = pessoa.RazaoSocial;
 
             pessoa.Observacoes = "";
 			pessoa.Pai = "";
 			pessoa.PessoaTelefone = null;
-			if (notaXML.NFe.infNFe.emit.xNome != null)
-				pessoa.RazaoSocial = notaXML.NFe.infNFe.emit.xNome.ToUpper();
+
 			pessoa.Rg = "";
 			pessoa.SalarioTrabalho = "";
 			pessoa.Sexo = "";

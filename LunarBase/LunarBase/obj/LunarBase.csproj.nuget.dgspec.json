@@ -57,7 +57,7 @@
             },
             "NHibernate": {
               "target": "Package",
-              "version": "[5.3.10, )"
+              "version": "[5.5.2, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

@@ -837,6 +837,25 @@ namespace Lunar.Utils.GalaxyPay_API
             public string pdf { get; set; }
         }
 
+        public async Task<string> BaixarPDFBoletosAsync(string url, int idCliente)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                // Fazer a requisição HTTP GET para obter o PDF
+                byte[] pdfBytes = await client.GetByteArrayAsync(url);
 
+                // Gerar um nome de arquivo único com poucos caracteres
+                string nomeArquivo = "BOLETO_" + idCliente + $"_{Guid.NewGuid().ToString().Substring(0, 8)}.pdf";
+
+                // Definir o caminho para a pasta temporária
+                string caminhoParaSalvar = Path.Combine(Path.GetTempPath(), nomeArquivo);
+
+                // Salvar o PDF na pasta temporária
+                File.WriteAllBytes(caminhoParaSalvar, pdfBytes);
+
+                // Retornar o caminho completo onde o arquivo foi salvo
+                return caminhoParaSalvar;
+            }
+        }
     }
 }

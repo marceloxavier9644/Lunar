@@ -3,6 +3,7 @@ using Lunar.Telas.Cadastros.Produtos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Telas.Vendas.Adicionais;
 using Lunar.Utils;
+using Lunar.Utils.PesquisasClass;
 using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ClassesDAO;
@@ -58,7 +59,32 @@ namespace Lunar.Telas.Condicionais
         {
             if (e.KeyChar == 13)
             {
-                PesquisarProduto(txtPesquisaProduto.Texts);
+                //PesquisarProduto(txtPesquisaProduto.Texts);
+                string valorPesquisa = txtPesquisaProduto.Texts.Trim(); // Captura o valor digitado no campo de texto
+
+                ProdutoPesquisaService produtoService = new ProdutoPesquisaService();
+                var resultado = produtoService.PesquisarProduto(valorPesquisa); // Chama o serviço de pesquisa
+
+                // Aqui você vai verificar o retorno
+                if (resultado.produto != null && resultado.grade != null)
+                {
+                    Produto produto = resultado.produto;
+                    ProdutoGrade grade = resultado.grade;
+
+                    // Preenche os campos da tela com os dados retornados
+                    txtPesquisaProduto.Texts = produto.Descricao;
+                    txtQuantidadeItem.Texts = "1";
+                    txtValorUnitarioItem.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                    txtValorTotalItem.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                    txtCodProduto.Texts = produto.Id.ToString();
+                    txtQuantidadeItem.Focus();
+                    txtQuantidadeItem.SelectAll();
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Produto não encontrados ou não selecionado!");
+                    txtPesquisaProduto.Texts = "";
+                }
             }
         }
         public static bool eNumero(string input)

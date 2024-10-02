@@ -109,7 +109,7 @@ namespace Lunar.Utils.OrganizacaoNF
         {
             if (String.IsNullOrEmpty(chave))
             {
-                chave = nfe.CnpjEmitente + "_" + nfe.Modelo + "_"+ nfe.NNf + "_" + nfe.Serie;
+                chave = nfe.CnpjEmitente + "_" + nfe.Modelo + "_" + nfe.NNf + "_" + nfe.Serie;
                 nfe.Chave = chave;
                 Controller.getInstance().salvar(nfe);
             }
@@ -183,7 +183,7 @@ namespace Lunar.Utils.OrganizacaoNF
             //string caminho = @"C:\Users\marce\OneDrive\Área de Trabalho\Arquivos\";
             string fileName = mes + ano + ".zip";
 
-          
+
             using (var stream = await response.Content.ReadAsStreamAsync())
             {
                 using (Stream zip = File.OpenWrite(caminho + fileName))
@@ -194,27 +194,115 @@ namespace Lunar.Utils.OrganizacaoNF
             return caminho + fileName;
         }
 
+        //    public async Task<string> coletarArquivosContabeisEConferir(string cnpj, string mes, string ano, string caminho)
+        //    {
+        //        if (cnpj.Equals("42988444000127"))
+        //            Sessao.serialPainel = "C0021738-FAD3-45D8-95E4-2CD28D6E6DF3";
+        //        if(cnpj.Equals("03492833000105"))
+        //            Sessao.serialPainel = "041BBFA6-4F6B-410F-BBAC-B0D509D2113B";
+        //        if(cnpj.Equals("32837727000114"))
+        //            Sessao.serialPainel = "40C4830B-0F8E-4A9C-9C31-96AFE4DAD229";
+
+        //        string url = "https://lunarsoftware.com.br/painel/api/api-invoice-get.php";
+        //        HttpClient httpClient = new HttpClient();
+        //        MultipartFormDataContent form = new MultipartFormDataContent();
+
+        //        form.Add(new StringContent(cnpj), "cnpj");
+        //        form.Add(new StringContent(Sessao.serialPainel), "key");
+        //        form.Add(new StringContent(mes), "month");
+        //        form.Add(new StringContent(ano), "year");
+        //        HttpResponseMessage response = await httpClient.PostAsync(url, form);
+
+        //        string fileName = mes + ano + ".zip";
+        //        string filePath = Path.Combine(caminho, fileName);
+        //        if (!Directory.Exists(caminho))
+        //            Directory.CreateDirectory(caminho);
+
+        //        // Salvar o arquivo zip
+        //        using (var stream = await response.Content.ReadAsStreamAsync())
+        //        {
+        //            using (Stream fileStream = File.OpenWrite(filePath))
+        //            {
+        //                await stream.CopyToAsync(fileStream);
+        //            }
+        //        }
+
+        //        // Verificar se o arquivo zip é válido e contém arquivos dentro
+        //        bool hasFilesInside = false;
+        //        using (FileStream fs = new FileStream(filePath, FileMode.Open))
+        //        {
+        //            try
+        //            {
+        //                using (System.IO.Compression.ZipArchive archive = new System.IO.Compression.ZipArchive(fs, ZipArchiveMode.Read))
+        //                {
+        //                    // Verifica se há arquivos dentro
+        //                    if (archive.Entries.Any())
+        //                    {
+        //                        hasFilesInside = true;
+        //                    }
+        //                }
+        //            }
+        //            catch (InvalidDataException)
+        //            {
+        //                // Se o arquivo zip estiver corrompido ou não for válido, trata o erro aqui
+        //                hasFilesInside = false;
+        //            }
+        //        }
+
+        //        // Retorna o caminho do arquivo apenas se houver arquivos dentro
+        //        if (hasFilesInside)
+        //        {
+        //            return filePath;
+        //        }
+        //        else
+        //        {
+        //            // Se não houver arquivos dentro, exclua o arquivo e retorne null ou uma mensagem indicando a ausência de arquivos
+        //            File.Delete(filePath);
+        //            return null;
+        //        }
+        //    }
+        //}
+
         public async Task<string> coletarArquivosContabeisEConferir(string cnpj, string mes, string ano, string caminho)
         {
+            // Definir serial com base no CNPJ
             if (cnpj.Equals("42988444000127"))
                 Sessao.serialPainel = "C0021738-FAD3-45D8-95E4-2CD28D6E6DF3";
-            if(cnpj.Equals("03492833000105"))
+            if (cnpj.Equals("03492833000105"))
                 Sessao.serialPainel = "041BBFA6-4F6B-410F-BBAC-B0D509D2113B";
+            if (cnpj.Equals("32837727000114"))
+                Sessao.serialPainel = "40C4830B-0F8E-4A9C-9C31-96AFE4DAD229";
 
             string url = "https://lunarsoftware.com.br/painel/api/api-invoice-get.php";
             HttpClient httpClient = new HttpClient();
             MultipartFormDataContent form = new MultipartFormDataContent();
 
+            // Adicionar os campos ao form
             form.Add(new StringContent(cnpj), "cnpj");
             form.Add(new StringContent(Sessao.serialPainel), "key");
             form.Add(new StringContent(mes), "month");
             form.Add(new StringContent(ano), "year");
+
+            // Enviar a requisição e obter a resposta
             HttpResponseMessage response = await httpClient.PostAsync(url, form);
 
+            // Verificar se a requisição foi bem-sucedida
+            if (!response.IsSuccessStatusCode)
+            {
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Erro na requisição: " + errorMessage);
+                return null;
+            }
+
+            // Definir nome e caminho do arquivo
             string fileName = mes + ano + ".zip";
             string filePath = Path.Combine(caminho, fileName);
 
-            // Salvar o arquivo zip
+            // Criar o diretório se não existir
+            if (!Directory.Exists(caminho))
+                Directory.CreateDirectory(caminho);
+
+            // Salvar o arquivo zip no caminho especificado
             using (var stream = await response.Content.ReadAsStreamAsync())
             {
                 using (Stream fileStream = File.OpenWrite(filePath))
@@ -223,11 +311,11 @@ namespace Lunar.Utils.OrganizacaoNF
                 }
             }
 
-            // Verificar se o arquivo zip é válido e contém arquivos dentro
+            // Verificar se o arquivo ZIP é válido e contém arquivos dentro
             bool hasFilesInside = false;
-            using (FileStream fs = new FileStream(filePath, FileMode.Open))
+            try
             {
-                try
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
                 {
                     using (System.IO.Compression.ZipArchive archive = new System.IO.Compression.ZipArchive(fs, ZipArchiveMode.Read))
                     {
@@ -238,24 +326,30 @@ namespace Lunar.Utils.OrganizacaoNF
                         }
                     }
                 }
-                catch (InvalidDataException)
-                {
-                    // Se o arquivo zip estiver corrompido ou não for válido, trata o erro aqui
-                    hasFilesInside = false;
-                }
+            }
+            catch (InvalidDataException ex)
+            {
+                // Log do erro para facilitar o diagnóstico
+                GenericaDesktop.ShowErro("Erro ao processar o arquivo ZIP: " + ex.Message);
+                hasFilesInside = false;
             }
 
-            // Retorna o caminho do arquivo apenas se houver arquivos dentro
+            // Retorna o caminho do arquivo apenas se houver arquivos dentro, senão, exclui o arquivo
             if (hasFilesInside)
             {
                 return filePath;
             }
             else
             {
-                // Se não houver arquivos dentro, exclua o arquivo e retorne null ou uma mensagem indicando a ausência de arquivos
-                File.Delete(filePath);
+                // Excluir o arquivo se estiver corrompido ou vazio
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
                 return null;
             }
         }
+
+
     }
 }

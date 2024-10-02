@@ -42,8 +42,9 @@
             this.txtMensagem = new System.Windows.Forms.TextBox();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioProdutoDisponivel = new System.Windows.Forms.RadioButton();
             this.radioMensagemLivre = new System.Windows.Forms.RadioButton();
+            this.radioProdutoDisponivel = new System.Windows.Forms.RadioButton();
+            this.radioNotaEBoleto = new System.Windows.Forms.RadioButton();
             this.panelTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -124,7 +125,7 @@
             this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnviar.ForeColor = System.Drawing.Color.White;
-            this.btnEnviar.Location = new System.Drawing.Point(177, 378);
+            this.btnEnviar.Location = new System.Drawing.Point(177, 487);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(163, 38);
             this.btnEnviar.TabIndex = 2;
@@ -192,10 +193,10 @@
             // txtMensagem
             // 
             this.txtMensagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMensagem.Location = new System.Drawing.Point(12, 169);
+            this.txtMensagem.Location = new System.Drawing.Point(6, 199);
             this.txtMensagem.Multiline = true;
             this.txtMensagem.Name = "txtMensagem";
-            this.txtMensagem.Size = new System.Drawing.Size(492, 142);
+            this.txtMensagem.Size = new System.Drawing.Size(492, 231);
             this.txtMensagem.TabIndex = 0;
             // 
             // autoLabel3
@@ -212,6 +213,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioNotaEBoleto);
             this.groupBox1.Controls.Add(this.radioMensagemLivre);
             this.groupBox1.Controls.Add(this.radioProdutoDisponivel);
             this.groupBox1.Controls.Add(this.txtMensagem);
@@ -219,9 +221,23 @@
             this.groupBox1.Controls.Add(this.radioPdfOs);
             this.groupBox1.Location = new System.Drawing.Point(0, 44);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(514, 385);
+            this.groupBox1.Size = new System.Drawing.Size(514, 436);
             this.groupBox1.TabIndex = 267;
             this.groupBox1.TabStop = false;
+            // 
+            // radioMensagemLivre
+            // 
+            this.radioMensagemLivre.AutoSize = true;
+            this.radioMensagemLivre.Checked = true;
+            this.radioMensagemLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioMensagemLivre.Location = new System.Drawing.Point(43, 109);
+            this.radioMensagemLivre.Name = "radioMensagemLivre";
+            this.radioMensagemLivre.Size = new System.Drawing.Size(143, 24);
+            this.radioMensagemLivre.TabIndex = 1;
+            this.radioMensagemLivre.TabStop = true;
+            this.radioMensagemLivre.Text = "Mensagem Livre";
+            this.radioMensagemLivre.UseVisualStyleBackColor = true;
+            this.radioMensagemLivre.CheckedChanged += new System.EventHandler(this.radioMensagemLivre_CheckedChanged);
             // 
             // radioProdutoDisponivel
             // 
@@ -235,25 +251,23 @@
             this.radioProdutoDisponivel.UseVisualStyleBackColor = true;
             this.radioProdutoDisponivel.CheckedChanged += new System.EventHandler(this.radioProdutoDisponivel_CheckedChanged);
             // 
-            // radioMensagemLivre
+            // radioNotaEBoleto
             // 
-            this.radioMensagemLivre.AutoSize = true;
-            this.radioMensagemLivre.Checked = true;
-            this.radioMensagemLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioMensagemLivre.Location = new System.Drawing.Point(43, 109);
-            this.radioMensagemLivre.Name = "radioMensagemLivre";
-            this.radioMensagemLivre.Size = new System.Drawing.Size(143, 24);
-            this.radioMensagemLivre.TabIndex = 1;
-            this.radioMensagemLivre.Text = "Mensagem Livre";
-            this.radioMensagemLivre.UseVisualStyleBackColor = true;
-            this.radioMensagemLivre.CheckedChanged += new System.EventHandler(this.radioMensagemLivre_CheckedChanged);
+            this.radioNotaEBoleto.AutoSize = true;
+            this.radioNotaEBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioNotaEBoleto.Location = new System.Drawing.Point(43, 169);
+            this.radioNotaEBoleto.Name = "radioNotaEBoleto";
+            this.radioNotaEBoleto.Size = new System.Drawing.Size(213, 24);
+            this.radioNotaEBoleto.TabIndex = 5;
+            this.radioNotaEBoleto.Text = "Nota Fiscal e Boletos PDF";
+            this.radioNotaEBoleto.UseVisualStyleBackColor = true;
             // 
             // FrmEnvioMensagem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(516, 428);
+            this.ClientSize = new System.Drawing.Size(516, 537);
             this.Controls.Add(this.autoLabel3);
             this.Controls.Add(this.autoLabel2);
             this.Controls.Add(this.txtNomeCliente);
@@ -297,5 +311,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioProdutoDisponivel;
         private System.Windows.Forms.RadioButton radioMensagemLivre;
+        private System.Windows.Forms.RadioButton radioNotaEBoleto;
     }
 }

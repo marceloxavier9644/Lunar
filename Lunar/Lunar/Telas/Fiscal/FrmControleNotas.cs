@@ -1123,7 +1123,22 @@ namespace Lunar.Telas.Fiscal
                                 else if (retorno.status != "102")
                                 {
                                     if (retorno.retInutNFe != null)
+                                    {
                                         GenericaDesktop.ShowAlerta(retorno.motivo + "\n" + retorno.retInutNFe.cStat + " " + retorno.retInutNFe.xMotivo);
+                                        if(retorno.retInutNFe.xMotivo.Contains("Já existe pedido de Inutilização com a mesma faixa"))
+                                        {
+                                            nfe.Status = retorno.motivo;
+                                            nfe.CodStatus = retorno.status;
+                                            nfe.Cancelada = false;
+                                            NfeStatus nfStatus = new NfeStatus();
+                                            nfStatus.Id = 5;
+                                            nfStatus = (NfeStatus)Controller.getInstance().selecionar(nfStatus);
+                                            nfe.NfeStatus = nfStatus;
+                                            nfe.Destinatario = "NF INUTILIZADA";
+                                            nfe.IdInut = retorno.retInutNFe.idInut;
+                                            Controller.getInstance().salvar(nfe);
+                                        }
+                                    }
                                     else
                                         GenericaDesktop.ShowAlerta(retorno.motivo);
                                 }

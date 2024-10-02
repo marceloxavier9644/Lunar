@@ -860,12 +860,6 @@
     <Compile Include="Telas\Estoques\FrmSaldoEstoque.Designer.cs">
       <DependentUpon>FrmSaldoEstoque.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\FastReportTestes\FrmFastTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Telas\FastReportTestes\FrmFastTest.Designer.cs">
-      <DependentUpon>FrmFastTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Telas\Fiscal\Adicionais\FrmNaturezaOperacaoLista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -981,6 +975,12 @@
     </Compile>
     <Compile Include="Telas\FormaPagamentoRecebimento\FrmPagamentoRecebimento.Designer.cs">
       <DependentUpon>FrmPagamentoRecebimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\IntegracoesBancarias\FrmConfigurarEmissaoBoletos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\IntegracoesBancarias\FrmConfigurarEmissaoBoletos.Designer.cs">
+      <DependentUpon>FrmConfigurarEmissaoBoletos.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\IntegracoesEcommerce\NuvemShopIntegration\FrmIntegracaoNuvemShop.cs">
       <SubType>Form</SubType>
@@ -1324,6 +1324,18 @@
     <Compile Include="Telas\Vendas\Adicionais\FrmImprimirTicketVenda.Designer.cs">
       <DependentUpon>FrmImprimirTicketVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmImprimirTicketVendaA4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmImprimirTicketVendaA4.Designer.cs">
+      <DependentUpon>FrmImprimirTicketVendaA4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmObservacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Vendas\Adicionais\FrmObservacoes.Designer.cs">
+      <DependentUpon>FrmObservacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Vendas\Adicionais\FrmSelecionarGrade.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1424,6 +1436,7 @@
     <Compile Include="Utils\Balancas\ItemBalanca.cs" />
     <Compile Include="Utils\Balancas\ItemBalancaMGV5.cs" />
     <Compile Include="Utils\Balancas\ItemMgv6.cs" />
+    <Compile Include="Utils\ClassesRepeticoes\ConfigIniManager.cs" />
     <Compile Include="Utils\ClassesRepeticoes\NotificacaoService.cs" />
     <Compile Include="Utils\ConverterMoedaPorExtenso.cs" />
     <Compile Include="Utils\GalaxyPay_API\Charges.cs" />
@@ -1444,6 +1457,9 @@
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.Designer.cs">
       <DependentUpon>FrmImportarCSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\IntegracoesBancosBoletos\BoletoRequest.cs" />
+    <Compile Include="Utils\IntegracoesBancosBoletos\ImageExtensions.cs" />
+    <Compile Include="Utils\IntegracoesBancosBoletos\SicrediIntegration.cs" />
     <Compile Include="Utils\LunarChatIntegracao\LunarChatMensagem.cs" />
     <Compile Include="Utils\MeuCrediarioIntegracao\MeuCrediario.cs" />
     <Compile Include="Utils\ClassesRepeticoes\FormModalHelper.cs" />
@@ -1730,9 +1746,6 @@
     <EmbeddedResource Include="Telas\Estoques\reportConferenciaBalanco01.rdlc" />
     <EmbeddedResource Include="Telas\Estoques\reportInventario01.rdlc" />
     <EmbeddedResource Include="Telas\Estoques\ReportSaldoEstoque01.rdlc" />
-    <EmbeddedResource Include="Telas\FastReportTestes\FrmFastTest.resx">
-      <DependentUpon>FrmFastTest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fiscal\Adicionais\FrmNaturezaOperacaoLista.resx">
       <DependentUpon>FrmNaturezaOperacaoLista.cs</DependentUpon>
     </EmbeddedResource>
@@ -1789,6 +1802,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\FormaPagamentoRecebimento\FrmPagamentoRecebimento.resx">
       <DependentUpon>FrmPagamentoRecebimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\IntegracoesBancarias\FrmConfigurarEmissaoBoletos.resx">
+      <DependentUpon>FrmConfigurarEmissaoBoletos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\IntegracoesEcommerce\NuvemShopIntegration\FrmIntegracaoNuvemShop.resx">
       <DependentUpon>FrmIntegracaoNuvemShop.cs</DependentUpon>
@@ -1950,10 +1966,17 @@
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmImprimirTicketVenda.resx">
       <DependentUpon>FrmImprimirTicketVenda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmImprimirTicketVendaA4.resx">
+      <DependentUpon>FrmImprimirTicketVendaA4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmObservacoes.resx">
+      <DependentUpon>FrmObservacoes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Adicionais\FrmSelecionarGrade.resx">
       <DependentUpon>FrmSelecionarGrade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Vendas\Adicionais\reportTicketVenda.rdlc" />
+    <EmbeddedResource Include="Telas\Vendas\Adicionais\reportTicketVendaA4.rdlc" />
     <EmbeddedResource Include="Telas\Vendas\FrmConsultaVendas.resx">
       <DependentUpon>FrmConsultaVendas.cs</DependentUpon>
     </EmbeddedResource>
@@ -2562,6 +2585,7 @@
     <Content Include="Resources\Show all A to Z.png" />
     <Content Include="Resources\show in favorites.png" />
     <Content Include="Resources\Show Progress.png" />
+    <None Include="Resources\sicredi.png" />
     <Content Include="Resources\Team Email.png" />
     <Content Include="Resources\To Do Bar.png" />
     <Content Include="Resources\To manger.png" />
@@ -2603,6 +2627,9 @@
     <PackageReference Include="Google.Protobuf">
       <Version>3.15.0</Version>
     </PackageReference>
+    <PackageReference Include="itext7">
+      <Version>8.0.5</Version>
+    </PackageReference>
     <PackageReference Include="iTextSharp">
       <Version>5.5.13.3</Version>
     </PackageReference>
@@ -2640,7 +2667,7 @@
       <Version>8.0.27</Version>
     </PackageReference>
     <PackageReference Include="NHibernate">
-      <Version>5.3.10</Version>
+      <Version>5.5.2</Version>
     </PackageReference>
     <PackageReference Include="NuGet.CommandLine">
       <Version>6.10.0</Version>
@@ -2652,6 +2679,9 @@
     </PackageReference>
     <PackageReference Include="PDFium.x64">
       <Version>4648.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="RestSharp">
+      <Version>112.0.0</Version>
     </PackageReference>
     <PackageReference Include="Selenium.WebDriver">
       <Version>4.20.0</Version>

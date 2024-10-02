@@ -10,6 +10,7 @@ using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.ClassesRepeticoes;
 using Lunar.Utils.GalaxyPay_API;
+using Lunar.Utils.IntegracoesBancosBoletos;
 using Lunar.Utils.OrganizacaoNF;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
@@ -48,6 +49,7 @@ namespace Lunar.Telas.Vendas
 {
     public partial class FrmVendas02 : Form
     {
+        private string observacao = "";
         Condicional condicional1 = new Condicional();
         string arquivoContigencia = "";
         string nomeArquivoContigencia = "";
@@ -163,7 +165,7 @@ namespace Lunar.Telas.Vendas
         {
             InitializeComponent();
             bloquearCamposValorQuantidade();
-            btnCondicional.Visible = false;
+            btnObservacoes.Visible = false;
             btnFinalizar01.Visible = false;
             btnFinalizarTela2.Visible = false;
             this.Text = "Transferência entre Empresas";
@@ -3490,6 +3492,8 @@ namespace Lunar.Telas.Vendas
                 AtualizaEstoque(false, "VENDA: <" + vendaConclusao.Id + "> " + txtClienteAbaPagamento.Texts);
 
                 vendaConclusao.Concluida = true;
+                vendaConclusao.Observacoes = observacao;
+                observacao = "";
                 if (this.condicional1 != null)
                 {
                     if (this.condicional1.Id > 0)
@@ -3522,7 +3526,18 @@ namespace Lunar.Telas.Vendas
                     }
                     if (listaGerarBoleto.Count > 0)
                     {
-                        gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaGerarBoleto, vendaConclusao.Cliente);
+                        if(Sessao.parametroSistema.IntegracaoGalaxyPay == true)
+                            gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaGerarBoleto, vendaConclusao.Cliente);
+                        if(Sessao.parametroSistema.IntegracaoGalaxyPay == false)
+                        {
+                            
+                            IList<ContaReceber> listaReceber = new List<ContaReceber>();
+                            listaReceber = contaReceberController.selecionarContaReceberPorVenda(vendaConclusao.Id);
+                            foreach (ContaReceber contaReceber in listaReceber)
+                            {
+                                await GeraBoletoSicredi(vendaConclusao.Cliente, vendaConclusao.ValorFinal, contaReceber.Vencimento, contaReceber.Documento, contaReceber.Documento);
+                            }
+                        }
                     }
                 }
 
@@ -3543,9 +3558,23 @@ namespace Lunar.Telas.Vendas
                 }
                 if (temNota == false)
                 {
+
                     //Imprimir Ticket
-                    FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda);
-                    frmImprimirTicket.ShowDialog();
+                    if (Sessao.parametroSistema.TipoImpressoraCondicional.Equals("A4"))
+                    {
+                        VendaItensController vendaItensController = new VendaItensController();
+                        IList<VendaItens> listaProdsVendidos = new List<VendaItens>();
+                        listaProdsVendidos = vendaItensController.selecionarProdutosPorVenda(venda.Id);
+                        FrmImprimirTicketVendaA4 frmImprimirTicketA4 = new FrmImprimirTicketVendaA4(venda, listaProdsVendidos);
+                        frmImprimirTicketA4.ShowDialog();
+                    }
+                    else
+                    {
+                        FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda);
+                        frmImprimirTicket.ShowDialog();
+                    }
+            
+
                     MensagemPosVenda msgPos = new MensagemPosVenda();
                     if (Sessao.parametroSistema.AtivarMensagemPosVendas == true && venda.Cliente != null)
                     {
@@ -4245,57 +4274,12 @@ namespace Lunar.Telas.Vendas
 
         private void btnCondicional_Click(object sender, EventArgs e)
         {
-            if (GenericaDesktop.ShowConfirmacao("Confirma a geração da condicional?"))
+            FrmObservacoes frmObservacoes = new FrmObservacoes(observacao);
+
+            // Exibe o formulário como um diálogo
+            if (frmObservacoes.ShowDialog() == DialogResult.OK)
             {
-                if (!String.IsNullOrEmpty(txtCodCliente.Texts) && gridProdutos.RowCount > 0)
-                {
-                    Condicional condicional = new Condicional();
-                    Pessoa cliente = new Pessoa();
-                    cliente.Id = int.Parse(txtCodCliente.Texts);
-                    cliente = (Pessoa)Controller.getInstance().selecionar(cliente);
-                    condicional.Cliente = cliente;
-                    condicional.Data = DateTime.Now;
-                    condicional.Encerrado = false;
-                    condicional.Filial = Sessao.empresaFilialLogada;
-                    condicional.Observacoes = "";
-                    condicional.QtdPeca = pecas;
-                    condicional.DataCadastro = DateTime.Now;
-                    condicional.OperadorCadastro = Sessao.usuarioLogado.Id.ToString();
-                    condicional.ValorTotal = 0; // vai receber a soma nos produtos abaixo
-                    condicional.DataPrevisao = DateTime.Now.AddDays(1);
-
-                    IList<CondicionalProduto> listaItensCondicional = new List<CondicionalProduto>();
-                    var records = gridProdutos.View.Records;
-                    foreach (var record in records)
-                    {
-                        var dataRowView = record.Data as DataRowView;
-                        if (dataRowView != null && !dataRowView["ItemExcluido"].ToString().Equals("True"))
-                        {
-                            CondicionalProduto condicionalProduto = new CondicionalProduto();
-                            condicionalProduto.Condicional = condicional;
-                            condicionalProduto.Devolvido = false;
-
-                            Produto prod = new Produto();
-                            prod.Id = int.Parse(dataRowView.Row["Codigo"].ToString());
-                            prod = (Produto)Controller.getInstance().selecionar(prod);
-                            condicionalProduto.Produto = prod;
-                            condicionalProduto.Quantidade = double.Parse(dataRowView.Row["Quantidade"].ToString());
-                            decimal descontoItem = decimal.Parse(dataRowView.Row["DescontoItem"].ToString());
-                            descontoItem = descontoItem / decimal.Parse(condicionalProduto.Quantidade.ToString());
-                            descontoItem = Math.Round(descontoItem, 2);
-                            condicionalProduto.ValorUnitario = decimal.Parse(dataRowView.Row["ValorUnitario"].ToString()) - descontoItem;
-                            condicional.ValorTotal = condicional.ValorTotal + condicionalProduto.ValorUnitario;
-                            listaItensCondicional.Add(condicionalProduto);
-                        }
-                    }
-                    CondicionalController condicionalController = new CondicionalController();
-                    condicionalController.salvarCondicionalComProdutos(condicional, listaItensCondicional);
-                    limparCampos();
-                    GenericaDesktop.ShowInfo("Condicional realizada com sucesso");
-                    //Imprimir condicional
-                }
-                else
-                    GenericaDesktop.ShowAlerta("Para realizar uma condicional coloque o cliente e produtos corretamente!");
+                observacao = frmObservacoes.Observacao;
             }
         }
 
@@ -4429,5 +4413,41 @@ namespace Lunar.Telas.Vendas
                 btnVoltar.PerformClick();
                 }
         }
+
+ 
+        public async Task GeraBoletoSicredi(Pessoa pessoa, decimal valor, DateTime vencimento, string documento, string nossoNumero)
+        {
+            var boletoService = new BoletoService();
+            var boletoRequest = boletoService.AlimentarDadosBoleto(pessoa, valor, vencimento, documento, nossoNumero);
+
+            SicrediIntegration sicredi = new SicrediIntegration(
+                isProduction: false, 
+                username: "123456789",
+                password: "teste123",
+                cooperativa: "6789",
+                posto: "03"
+            );
+
+            // Autenticação
+            if (await sicredi.AuthenticateAsync())
+            {
+                // Chamada para gerar o boleto
+                var sucesso = await sicredi.CreateBoletoAsync(boletoRequest);
+                if (sucesso)
+                {
+                    Console.WriteLine("Boleto gerado com sucesso.");
+                }
+                else
+                {
+                    Console.WriteLine("Falha ao gerar o boleto.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Falha na autenticação.");
+            }
+        }
     }
+
+
 }

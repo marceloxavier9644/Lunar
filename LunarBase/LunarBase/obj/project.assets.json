@@ -57,7 +57,7 @@
           }
         }
       },
-      "NHibernate/5.3.10": {
+      "NHibernate/5.5.2": {
         "type": "package",
         "dependencies": {
           "Antlr3.Runtime": "[3.5.1, 4.0.0)",
@@ -470,10 +470,10 @@
         "packageIcon.png"
       ]
     },
-    "NHibernate/5.3.10": {
-      "sha512": "iHy1Lml/yoeQQzAyB4kcqN2lw5mVWTYjNLtq2FWgLOVwGp/Vf8pa0HKr6mj/hKzPSzHOSXgC12Xd+LePp8/pNA==",
+    "NHibernate/5.5.2": {
+      "sha512": "qTFlQDp7eDW96u2vNwpaa28uWz5eSKT/73P7RfUob3Aj2Zop7xnMZyAm7wlJmf5eX3DVn8W7SwM5QrXfkvVR/w==",
       "type": "package",
-      "path": "nhibernate/5.3.10",
+      "path": "nhibernate/5.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -495,13 +495,19 @@
         "NHibernate.releasenotes.txt",
         "lib/net461/NHibernate.dll",
         "lib/net461/NHibernate.xml",
+        "lib/net48/NHibernate.dll",
+        "lib/net48/NHibernate.xml",
+        "lib/net6.0/NHibernate.dll",
+        "lib/net6.0/NHibernate.xml",
         "lib/netcoreapp2.0/NHibernate.dll",
         "lib/netcoreapp2.0/NHibernate.xml",
         "lib/netstandard2.0/NHibernate.dll",
         "lib/netstandard2.0/NHibernate.xml",
+        "lib/netstandard2.1/NHibernate.dll",
+        "lib/netstandard2.1/NHibernate.xml",
         "nhibernate-configuration.xsd",
         "nhibernate-mapping.xsd",
-        "nhibernate.5.3.10.nupkg.sha512",
+        "nhibernate.5.5.2.nupkg.sha512",
         "nhibernate.nuspec"
       ]
     },
@@ -1201,7 +1207,7 @@
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
       "Google.Protobuf >= 3.15.0",
-      "NHibernate >= 5.3.10",
+      "NHibernate >= 5.5.2",
       "Newtonsoft.Json >= 13.0.1",
       "System.Net.Http >= 4.3.4",
       "System.Net.WebSockets.Client >= 4.3.2",
@@ -1265,7 +1271,7 @@
           },
           "NHibernate": {
             "target": "Package",
-            "version": "[5.3.10, )"
+            "version": "[5.5.2, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -1287,17 +1293,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1902",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'NHibernate' 5.3.10 tem uma moderado vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-fg4q-ccq8-3r5q",
-      "libraryId": "NHibernate",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.7.2"
-      ]
-    }
-  ]
+  }
 }

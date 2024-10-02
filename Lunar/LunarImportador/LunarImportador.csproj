@@ -15,10 +15,12 @@
 
   <ItemGroup>
     <PackageReference Include="FirebirdSql.Data.FirebirdClient" Version="9.1.1" />
-    <PackageReference Include="MySql.Data" Version="8.0.27" />
+    <PackageReference Include="Microsoft.XmlSerializer.Generator" Version="8.0.0" />
+    <PackageReference Include="MySql.Data" Version="9.0.0" />
     <PackageReference Include="NHibernate" Version="5.5.2" />
     <PackageReference Include="Npgsql" Version="8.0.3" />
     <PackageReference Include="Syncfusion.Core.WinForms" Version="26.1.41" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>

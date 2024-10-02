@@ -74,6 +74,19 @@ namespace LunarImportador
                     }
                 }
             }
+            if (radioSoftSystemCosmos.Checked == true)
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Firebird Database Files (*.fdb;*.gdb)|*.fdb;*.gdb|All Files (*.*)|*.*";
+                    openFileDialog.Title = "Selecione o Banco de Dados Firebird";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        txtBancoOrigem.Text = openFileDialog.FileName;
+                    }
+                }
+            }
             else
                 MessageBox.Show("Selecione um sistema de origem");
 
@@ -142,6 +155,32 @@ namespace LunarImportador
                     importarThread.Start();
                 }
             }
+
+            //SoftSystem cosmos
+            if (radioSoftSystemCosmos.Checked == true)
+            {
+                if (chkClientes.Checked == true)
+                {
+                    progressBar1.Visible = true;
+                    lblStatus.Visible = true;
+                    Thread importarThread = new Thread(() => ImportarClientesEFornecedoresSoftsystem(selectedDatabase, firebirdDatabasePath));
+                    importarThread.Start();
+                }
+                if (chkProdutos.Checked == true)
+                {
+                    progressBar1.Visible = true;
+                    lblStatus.Visible = true;
+                    Thread importarThread = new Thread(() => ImportarProdutosSoftsystem(selectedDatabase, firebirdDatabasePath));
+                    importarThread.Start();
+                }
+                if (chkVendas.Checked == true)
+                {
+                    progressBar1.Visible = true;
+                    lblStatus.Visible = true;
+                    Thread importarThread = new Thread(() => ImportarVendasSoftsystem(selectedDatabase, firebirdDatabasePath));
+                    importarThread.Start();
+                }
+            }
         }
 
         private void ImportarClientesEFornecedores(string database, string firebirdDatabasePath)
@@ -165,6 +204,12 @@ namespace LunarImportador
             {
                 action();
             }
+        }
+
+        private void ImportarClientesEFornecedoresSoftsystem(string database, string firebirdDatabasePath)
+        {
+            ImportarClientesSoftsystem(database, firebirdDatabasePath);
+            ImportarFornecedoresSoftsystem(database, firebirdDatabasePath);
         }
         private void ImportarClientesSgbr(string database, string firebirdDatabasePath)
         {
@@ -419,7 +464,7 @@ namespace LunarImportador
                 mysqlConnection.Close();
             }
         }
-
+        
         private void ImportarFornecedoresSgbr(string database, string firebirdDatabasePath)
         {
             int i = 0;
@@ -699,12 +744,21 @@ namespace LunarImportador
             else
             {
                 resultado.Ddd = "00"; // DDD padrão ou vazio caso não encontrado
+                if(telefone.Length > 9)
+                    resultado.Ddd = telefone.Substring(0, 2);
             }
 
             // Regex para extrair o número de telefone sem o DDD
             string numeroTelefone = Regex.Replace(telefone, @"\(\d{2}\)", "").Trim();
             numeroTelefone = numeroTelefone.Replace("-", "").Replace(" ", "");
+            if (numeroTelefone.Length > 9)
+                numeroTelefone = numeroTelefone.Substring(2);
+
+
             resultado.Telefone = numeroTelefone;
+            resultado.FlagExcluido = false;
+            resultado.DataCadastro = DateTime.Now;
+            resultado.OperadorCadastro = "1";
 
             return resultado;
         }
@@ -1253,6 +1307,7 @@ namespace LunarImportador
                 return (int)commandInserirMarca.LastInsertedId;
             }
         }
+
 
         private int ObterOuCriarUnidadeMedida(string descricaoUnidade, MySqlConnection mysqlConnection)
         {
@@ -2291,5 +2346,1272 @@ namespace LunarImportador
             IList<ProdutoCodigoBarras> resultado = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL(sql);
             return resultado.Count > 0;
         }
+
+        private void ImportarClientesSoftsystem(string database, string firebirdDatabasePath)
+        {
+            int i = 0;
+            UpdateUI(() =>
+            {
+                lblStatus.Text = "Importação de Clientes";
+            });
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;Charset=ISO8859_1;";
+            FbConnection firebirdConnection = new FbConnection(firebirdConnectionString);
+            FbCommand firebirdCommand = new FbCommand("SELECT * FROM Clientes", firebirdConnection);
+
+            // Conexão com o banco de dados MySQL
+            string mysqlConnectionString = $"Server=localhost;Database={database};User Id=marcelo;Password=mx123;";
+            MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+            try
+            {
+                firebirdConnection.Open();
+                mysqlConnection.Open();
+
+                // Obter a quantidade total de registros
+                FbCommand firebirdCountCommand = new FbCommand("SELECT COUNT(*) FROM Clientes", firebirdConnection);
+                long totalRegistros = (long)firebirdCountCommand.ExecuteScalar();
+
+                // Configurar a ProgressBar
+                UpdateUI(() =>
+                {
+                    progressBar1.Minimum = 0;
+                    progressBar1.Maximum = (int)Math.Min(totalRegistros, int.MaxValue);
+                    progressBar1.Value = 0;
+                });
+
+                FbDataReader firebirdReader = firebirdCommand.ExecuteReader();
+                while (firebirdReader.Read())
+                {
+                    i++;
+                    Pessoa pessoa = new Pessoa();
+                    //ID no SGBR
+                    pessoa.CodigoImportacao = firebirdReader["cgc"].ToString();
+                    pessoa.Observacoes = "";
+                    pessoa.RazaoSocial = firebirdReader["razaosocial"].ToString();
+                    if (pessoa.RazaoSocial.Length > 80)
+                    {
+                        pessoa.RazaoSocial = pessoa.RazaoSocial.Substring(0, 80);
+                    }
+                    pessoa.NomeFantasia = firebirdReader["nomefantasia"].ToString();
+                    if (pessoa.NomeFantasia.Length > 80)
+                    {
+                        pessoa.NomeFantasia = pessoa.NomeFantasia.Substring(0, 80);
+                    }
+                    //remove letras e deixa somente numeros
+                    pessoa.Cnpj = Regex.Replace(firebirdReader["cgc"].ToString(), @"[^\d]", "");
+                    pessoa.Email = firebirdReader["email"].ToString();
+
+                    pessoa.ReceberLembrete = false;
+                    pessoa.Vendedor = false;
+                    pessoa.Cliente = true;
+                    pessoa.Fornecedor = false;
+                    pessoa.FlagExcluido = false;
+                    pessoa.Funcionario = false;
+                    pessoa.Transportadora = false;
+                    pessoa.EscritorioCobranca = false;
+                    pessoa.Tecnico = false;
+                    pessoa.FuncaoTrabalho = "";
+                    pessoa.InscricaoEstadual = Generica.RemoveCaracteres(firebirdReader["inscestadual"].ToString());
+                    if (pessoa.InscricaoEstadual.Equals("ISENTO"))
+                        pessoa.InscricaoEstadual = "";
+                    pessoa.ComissaoVendedor = 0;
+                    pessoa.ContatoTrabalho = "";
+                    try
+                    {
+                        pessoa.DataNascimento = string.IsNullOrEmpty(firebirdReader["aniversario"].ToString())
+                                                ? new DateTime(1900, 1, 1)
+                                                : DateTime.Parse(firebirdReader["aniversario"].ToString());
+                    }
+                    catch
+                    {
+                        pessoa.DataNascimento = new DateTime(1900, 1, 1); // Define a data padrão em caso de erro
+                    }
+                    pessoa.LimiteCredito = 0;
+                    pessoa.LocalTrabalho = "";
+                    pessoa.Mae = firebirdReader["nomemae"].ToString();
+                    pessoa.Pai = firebirdReader["nomepai"].ToString();
+                    pessoa.RegistradoSpc = false;
+                    pessoa.Rg = "";
+                    pessoa.SalarioTrabalho = "";
+                    pessoa.Sexo = firebirdReader["sexo"]?.ToString() ?? "";
+                    pessoa.DataCadastro = DateTime.Parse(firebirdReader["datacadastro"].ToString());
+                    pessoa.FlagExcluido = firebirdReader["inativo"] != DBNull.Value && firebirdReader["inativo"].ToString().Equals("T");
+                    pessoa.TelefoneTrabalho = "";
+                    pessoa.TempoTrabalho = "";
+                    pessoa.TipoParceiroImportado = "";
+                    pessoa.TipoPessoa = "PF";
+                    if (firebirdReader["cgc"].ToString().Length == 14)
+                        pessoa.TipoPessoa = "PJ";
+
+                    pessoa.EnderecoPrincipal = null;
+                    pessoa.PessoaTelefone = null;
+
+                    Endereco endereco = new Endereco();
+
+                    Cidade cidade = null;
+                    string uf = firebirdReader["uf"].ToString();
+                    string cidadeDescricao = firebirdReader["cidade"].ToString();
+
+                    string mysqlQueryCidade = @"
+                        SELECT c.*
+                        FROM Cidade c
+                        INNER JOIN Estado e ON c.Estado = e.Id
+                        WHERE c.Descricao = @descricao AND e.Uf = @uf
+                        LIMIT 1";
+
+                    MySqlCommand mysqlCommandCidade = new MySqlCommand(mysqlQueryCidade, mysqlConnection);
+                    mysqlCommandCidade.Parameters.AddWithValue("@descricao", cidadeDescricao);
+                    mysqlCommandCidade.Parameters.AddWithValue("@uf", uf);
+
+                    using (MySqlDataReader cidadeReader = mysqlCommandCidade.ExecuteReader())
+                    {
+                        if (cidadeReader.Read())
+                        {
+                            cidade = new Cidade
+                            {
+                                Id = cidadeReader.GetInt32("Id"),
+                                Descricao = cidadeReader.GetString("Descricao")
+                            };
+                        }
+                    }
+                    if (cidade != null)
+                    {
+                        if (cidade.Id > 0)
+                        {
+                            string num = extrairNumeroString(firebirdReader["endereco"].ToString());
+                            endereco.Referencia = "";
+                            endereco.Cep = Generica.RemoveCaracteres(firebirdReader["cep"].ToString());
+                            endereco.Numero = num;
+                            endereco.Bairro = firebirdReader["bairro"].ToString();
+                            endereco.Cidade = new Cidade();
+                            endereco.Cidade = cidade;
+                            endereco.Logradouro = firebirdReader["endereco"].ToString();
+                            endereco.Complemento = "";
+                        }
+                    }
+                    PessoaTelefone pessoaTelefone = new PessoaTelefone();
+                    PessoaTelefone pessoaTelefoneCelular = new PessoaTelefone();
+                    if (!String.IsNullOrEmpty(firebirdReader["fone"].ToString()))
+                        pessoaTelefone = ProcessarTelefone(firebirdReader["ddd"].ToString() + firebirdReader["fone"].ToString());
+                    if (!String.IsNullOrEmpty(firebirdReader["celular"].ToString()))
+                        pessoaTelefoneCelular = ProcessarTelefone(firebirdReader["ddd"].ToString() + firebirdReader["celular"].ToString());
+                    
+                    // Inserir dados no MySQL
+                    string mysqlQuery = @"
+                        INSERT INTO Pessoa 
+                        (CodigoImportacao, Observacoes, RazaoSocial, NomeFantasia, Cnpj, Email, ReceberLembrete, Vendedor, Cliente, Fornecedor, FlagExcluido, Funcionario, Transportadora, EscritorioCobranca, Tecnico, FuncaoTrabalho, InscricaoEstadual, ComissaoVendedor, ContatoTrabalho, DataNascimento, LimiteCredito, LocalTrabalho, Mae, Pai, RegistradoSpc, Rg, SalarioTrabalho, Sexo, TelefoneTrabalho, TempoTrabalho, TipoParceiroImportado, TipoPessoa, DataCadastro)
+                        VALUES 
+                        (@CodigoImportacao, @Observacoes, @RazaoSocial, @NomeFantasia, @Cnpj, @Email, @ReceberLembrete, @Vendedor, @Cliente, @Fornecedor, @FlagExcluido, @Funcionario, @Transportadora, @EscritorioCobranca, @Tecnico, @FuncaoTrabalho, @InscricaoEstadual, @ComissaoVendedor, @ContatoTrabalho, @DataNascimento, @LimiteCredito, @LocalTrabalho, @Mae, @Pai, @RegistradoSpc, @Rg, @SalarioTrabalho, @Sexo, @TelefoneTrabalho, @TempoTrabalho, @TipoParceiroImportado, @TipoPessoa, @DataCadastro)";
+
+                    MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+                    mysqlCommand.Parameters.AddWithValue("@CodigoImportacao", pessoa.CodigoImportacao);
+                    mysqlCommand.Parameters.AddWithValue("@Observacoes", pessoa.Observacoes);
+                    mysqlCommand.Parameters.AddWithValue("@RazaoSocial", pessoa.RazaoSocial);
+                    mysqlCommand.Parameters.AddWithValue("@NomeFantasia", pessoa.NomeFantasia);
+                    mysqlCommand.Parameters.AddWithValue("@Cnpj", pessoa.Cnpj);
+                    mysqlCommand.Parameters.AddWithValue("@Email", pessoa.Email);
+                    mysqlCommand.Parameters.AddWithValue("@ReceberLembrete", pessoa.ReceberLembrete);
+                    mysqlCommand.Parameters.AddWithValue("@Vendedor", pessoa.Vendedor);
+                    mysqlCommand.Parameters.AddWithValue("@Cliente", pessoa.Cliente);
+                    mysqlCommand.Parameters.AddWithValue("@Fornecedor", pessoa.Fornecedor);
+                    mysqlCommand.Parameters.AddWithValue("@FlagExcluido", pessoa.FlagExcluido);
+                    mysqlCommand.Parameters.AddWithValue("@Funcionario", pessoa.Funcionario);
+                    mysqlCommand.Parameters.AddWithValue("@Transportadora", pessoa.Transportadora);
+                    mysqlCommand.Parameters.AddWithValue("@EscritorioCobranca", pessoa.EscritorioCobranca);
+                    mysqlCommand.Parameters.AddWithValue("@Tecnico", pessoa.Tecnico);
+                    mysqlCommand.Parameters.AddWithValue("@FuncaoTrabalho", pessoa.FuncaoTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@InscricaoEstadual", pessoa.InscricaoEstadual);
+                    mysqlCommand.Parameters.AddWithValue("@ComissaoVendedor", pessoa.ComissaoVendedor);
+                    mysqlCommand.Parameters.AddWithValue("@ContatoTrabalho", pessoa.ContatoTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@DataNascimento", pessoa.DataNascimento == DateTime.MinValue ? (object)DBNull.Value : pessoa.DataNascimento);
+                    mysqlCommand.Parameters.AddWithValue("@LimiteCredito", pessoa.LimiteCredito);
+                    mysqlCommand.Parameters.AddWithValue("@LocalTrabalho", pessoa.LocalTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@Mae", pessoa.Mae);
+                    mysqlCommand.Parameters.AddWithValue("@Pai", pessoa.Pai);
+                    mysqlCommand.Parameters.AddWithValue("@RegistradoSpc", pessoa.RegistradoSpc);
+                    mysqlCommand.Parameters.AddWithValue("@Rg", pessoa.Rg);
+                    mysqlCommand.Parameters.AddWithValue("@SalarioTrabalho", pessoa.SalarioTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@Sexo", pessoa.Sexo);
+                    mysqlCommand.Parameters.AddWithValue("@TelefoneTrabalho", pessoa.TelefoneTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@TempoTrabalho", pessoa.TempoTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@TipoParceiroImportado", pessoa.TipoParceiroImportado);
+                    mysqlCommand.Parameters.AddWithValue("@TipoPessoa", pessoa.TipoPessoa);
+                    mysqlCommand.Parameters.AddWithValue("@DataCadastro", pessoa.DataCadastro);
+
+                    mysqlCommand.ExecuteNonQuery();
+                    long pessoaId = mysqlCommand.LastInsertedId;
+
+                    if (pessoaId > 0 && !String.IsNullOrEmpty(endereco.Logradouro))
+                    {
+                        string mysqlQueryEndereco = "INSERT INTO Endereco (logradouro, numero, bairro, cep, complemento, cidade, pessoa, empresafilial, referencia) VALUES (@logradouro, @numero, @bairro, @cep, @complemento, @cidadeId, @pessoaId, 1, @referencia)";
+                        MySqlCommand mysqlCommandEndereco = new MySqlCommand(mysqlQueryEndereco, mysqlConnection);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@logradouro", endereco.Logradouro);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@numero", endereco.Numero);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@bairro", endereco.Bairro);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@cep", endereco.Cep);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@complemento", endereco.Complemento);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@cidadeId", endereco.Cidade.Id);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@pessoaId", pessoaId);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@referencia", endereco.Referencia);
+                        mysqlCommandEndereco.ExecuteNonQuery();
+                        long enderecoId = mysqlCommandEndereco.LastInsertedId;
+
+                        // Atualizar Pessoa com o EnderecoPrincipal
+                        string mysqlUpdatePessoa = "UPDATE Pessoa SET enderecoPrincipal = @enderecoPrincipal WHERE id = @pessoaId";
+                        MySqlCommand mysqlCommandUpdatePessoa = new MySqlCommand(mysqlUpdatePessoa, mysqlConnection);
+                        mysqlCommandUpdatePessoa.Parameters.AddWithValue("@enderecoPrincipal", enderecoId);
+                        mysqlCommandUpdatePessoa.Parameters.AddWithValue("@pessoaId", pessoaId);
+
+                        mysqlCommandUpdatePessoa.ExecuteNonQuery();
+                    }
+                    // Salvar o telefone celular
+                    long pessoaTelefoneId = 0;
+                    if (!String.IsNullOrEmpty(pessoaTelefoneCelular.Telefone))
+                    {
+                        string mysqlQueryTelefoneCelular = "INSERT INTO PessoaTelefone (ddd, telefone, observacoes, pessoa) VALUES (@ddd, @telefone, @observacoes, @pessoa)";
+                        MySqlCommand mysqlCommandTelefoneCelular = new MySqlCommand(mysqlQueryTelefoneCelular, mysqlConnection);
+                        mysqlCommandTelefoneCelular.Parameters.AddWithValue("@ddd", pessoaTelefoneCelular.Ddd);
+                        mysqlCommandTelefoneCelular.Parameters.AddWithValue("@telefone", pessoaTelefoneCelular.Telefone);
+                        mysqlCommandTelefoneCelular.Parameters.AddWithValue("@observacoes", "IMPORTADO SOFTSYSTEM");
+                        mysqlCommandTelefoneCelular.Parameters.AddWithValue("@pessoa", pessoaId);
+                        mysqlCommandTelefoneCelular.ExecuteNonQuery();
+                        pessoaTelefoneId = mysqlCommandTelefoneCelular.LastInsertedId; // Define o celular como telefone principal
+                    }
+                    //Salvar fixo
+                    if (!String.IsNullOrEmpty(pessoaTelefone.Telefone))
+                    {
+                        string mysqlQueryTelefone = "INSERT INTO PessoaTelefone (ddd, telefone, observacoes, pessoa) VALUES (@ddd, @telefone, @observacoes, @pessoa)";
+                        MySqlCommand mysqlCommandTelefone = new MySqlCommand(mysqlQueryTelefone, mysqlConnection);
+                        mysqlCommandTelefone.Parameters.AddWithValue("@ddd", pessoaTelefone.Ddd);
+                        mysqlCommandTelefone.Parameters.AddWithValue("@telefone", pessoaTelefone.Telefone);
+                        mysqlCommandTelefone.Parameters.AddWithValue("@observacoes", "IMPORTADO SOFTSYSTEM");
+                        mysqlCommandTelefone.Parameters.AddWithValue("@pessoa", pessoaId);
+                        mysqlCommandTelefone.ExecuteNonQuery();
+                        if(pessoaTelefoneId == 0)
+                            pessoaTelefoneId = mysqlCommandTelefone.LastInsertedId; // Define o telefone fixo como telefone principal
+                    }
+
+                    // Atualizar Pessoa com o Telefone Principal
+                    if (pessoaTelefoneId > 0)
+                    {
+                        string mysqlUpdatePessoa = "UPDATE Pessoa SET pessoaTelefone = @pessoaTelefone WHERE id = @pessoaId";
+                        MySqlCommand mysqlCommandUpdatePessoa = new MySqlCommand(mysqlUpdatePessoa, mysqlConnection);
+                        mysqlCommandUpdatePessoa.Parameters.AddWithValue("@pessoaTelefone", pessoaTelefoneId);
+                        mysqlCommandUpdatePessoa.Parameters.AddWithValue("@pessoaId", pessoaId);
+                        mysqlCommandUpdatePessoa.ExecuteNonQuery();
+                    }
+
+                    UpdateUI(() =>
+                    {
+                        progressBar1.Value += 1;
+                        lblStatus.Text = "Cliente " + i + " de " + totalRegistros;
+                    });
+                }
+                firebirdReader.Close();
+                //MessageBox.Show("Importação de clientes concluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateUI(() =>
+                {
+                    progressBar1.Value = 0;
+                    lblStatus.Text = "Importação de clientes realizada com sucesso!";
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao importar dados: " + ex.Message);
+            }
+            finally
+            {
+                firebirdConnection.Close();
+                mysqlConnection.Close();
+            }
+        }
+
+        private void ImportarFornecedoresSoftsystem(string database, string firebirdDatabasePath)
+        {
+            int i = 0;
+            UpdateUI(() =>
+            {
+                lblStatus.Text = "Importação de Fornecedores";
+            });
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;Charset=ISO8859_1;";
+            FbConnection firebirdConnection = new FbConnection(firebirdConnectionString);
+            FbCommand firebirdCommand = new FbCommand("SELECT * FROM Fornecedores", firebirdConnection);
+
+            // Conexão com o banco de dados MySQL
+            string mysqlConnectionString = $"Server=localhost;Database={database};User Id=marcelo;Password=mx123;";
+            MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+            try
+            {
+                firebirdConnection.Open();
+                mysqlConnection.Open();
+
+                // Obter a quantidade total de registros
+                FbCommand firebirdCountCommand = new FbCommand("SELECT COUNT(*) FROM Fornecedores", firebirdConnection);
+                long totalRegistros = (long)firebirdCountCommand.ExecuteScalar();
+
+                // Configurar a ProgressBar
+                UpdateUI(() =>
+                {
+                    progressBar1.Minimum = 0;
+                    progressBar1.Maximum = (int)Math.Min(totalRegistros, int.MaxValue);
+                    progressBar1.Value = 0;
+                });
+
+                FbDataReader firebirdReader = firebirdCommand.ExecuteReader();
+                while (firebirdReader.Read())
+                {
+                    i++;
+                    Pessoa pessoa = new Pessoa();
+                    //ID no SGBR
+                    pessoa.CodigoImportacao = firebirdReader["codfornecedor"].ToString();
+                    pessoa.Observacoes = "";
+                    pessoa.RazaoSocial = firebirdReader["razaosocial"].ToString();
+                    if (pessoa.RazaoSocial.Length > 80)
+                    {
+                        pessoa.RazaoSocial = pessoa.RazaoSocial.Substring(0, 80);
+                    }
+                    pessoa.NomeFantasia = firebirdReader["nomefantasia"].ToString();
+                    if (pessoa.NomeFantasia.Length > 80)
+                    {
+                        pessoa.NomeFantasia = pessoa.NomeFantasia.Substring(0, 80);
+                    }
+                    //remove letras e deixa somente numeros
+                    pessoa.Cnpj = Regex.Replace(firebirdReader["cgc"].ToString(), @"[^\d]", "");
+                    pessoa.Email = firebirdReader["email"].ToString();
+
+                    pessoa.ReceberLembrete = false;
+                    pessoa.Vendedor = false;
+                    pessoa.Cliente = false;
+                    pessoa.Fornecedor = true;
+                    pessoa.FlagExcluido = false;
+                    pessoa.Funcionario = false;
+                    pessoa.Transportadora = false;
+                    pessoa.EscritorioCobranca = false;
+                    pessoa.Tecnico = false;
+                    pessoa.FuncaoTrabalho = "";
+                    pessoa.InscricaoEstadual = Generica.RemoveCaracteres(firebirdReader["ie"].ToString());
+                    if (pessoa.InscricaoEstadual.Equals("ISENTO"))
+                        pessoa.InscricaoEstadual = "";
+                    pessoa.ComissaoVendedor = 0;
+                    pessoa.ContatoTrabalho = "";
+                    pessoa.DataNascimento = new DateTime(1900, 1, 1); // Define a data padrão no cosmos nao tem data de abertura da empresa
+                    
+                    pessoa.LimiteCredito = 0;
+                    pessoa.LocalTrabalho = "";
+                    pessoa.Mae = "";
+                    pessoa.Pai = "";
+                    pessoa.RegistradoSpc = false;
+                    pessoa.Rg = "";
+                    pessoa.SalarioTrabalho = "";
+                    pessoa.Sexo = "";
+                    pessoa.DataCadastro = DateTime.Parse(firebirdReader["datacadastro"].ToString());
+                    pessoa.FlagExcluido = firebirdReader["inativo"] != DBNull.Value && firebirdReader["inativo"].ToString().Equals("T");
+                    pessoa.TelefoneTrabalho = "";
+                    pessoa.TempoTrabalho = "";
+                    pessoa.TipoParceiroImportado = "";
+                    pessoa.TipoPessoa = "PF";
+                    if (firebirdReader["cgc"].ToString().Length == 14)
+                        pessoa.TipoPessoa = "PJ";
+
+                    pessoa.EnderecoPrincipal = null;
+                    pessoa.PessoaTelefone = null;
+
+                    Endereco endereco = new Endereco();
+
+                    Cidade cidade = null;
+                    string uf = firebirdReader["uf"].ToString();
+                    string cidadeDescricao = firebirdReader["cidade"].ToString();
+
+                    string mysqlQueryCidade = @"
+                        SELECT c.*
+                        FROM Cidade c
+                        INNER JOIN Estado e ON c.Estado = e.Id
+                        WHERE c.Descricao = @descricao AND e.Uf = @uf
+                        LIMIT 1";
+
+                    MySqlCommand mysqlCommandCidade = new MySqlCommand(mysqlQueryCidade, mysqlConnection);
+                    mysqlCommandCidade.Parameters.AddWithValue("@descricao", cidadeDescricao);
+                    mysqlCommandCidade.Parameters.AddWithValue("@uf", uf);
+
+                    using (MySqlDataReader cidadeReader = mysqlCommandCidade.ExecuteReader())
+                    {
+                        if (cidadeReader.Read())
+                        {
+                            cidade = new Cidade
+                            {
+                                Id = cidadeReader.GetInt32("Id"),
+                                Descricao = cidadeReader.GetString("Descricao")
+                            };
+                        }
+                    }
+                    if (cidade != null)
+                    {
+                        if (cidade.Id > 0)
+                        {
+                            string num = extrairNumeroString(firebirdReader["endereco"].ToString());
+                            endereco.Referencia = "";
+                            endereco.Cep = Generica.RemoveCaracteres(firebirdReader["cep"].ToString());
+                            endereco.Numero = num;
+                            endereco.Bairro = firebirdReader["bairro"].ToString();
+                            endereco.Cidade = new Cidade();
+                            endereco.Cidade = cidade;
+                            endereco.Logradouro = firebirdReader["endereco"].ToString();
+                            endereco.Complemento = "";
+                        }
+                    }
+                    PessoaTelefone pessoaTelefone = new PessoaTelefone();
+                    PessoaTelefone pessoaTelefoneCelular = new PessoaTelefone();
+                    if (!String.IsNullOrEmpty(firebirdReader["fone"].ToString()))
+                        pessoaTelefone = ProcessarTelefone(firebirdReader["ddd"].ToString() + firebirdReader["fone"].ToString());
+                    if (!String.IsNullOrEmpty(firebirdReader["celular"].ToString()))
+                        pessoaTelefoneCelular = ProcessarTelefone(firebirdReader["ddd"].ToString() + firebirdReader["fone2"].ToString());
+
+                    // Inserir dados no MySQL
+                    string mysqlQuery = @"
+                        INSERT INTO Pessoa 
+                        (CodigoImportacao, Observacoes, RazaoSocial, NomeFantasia, Cnpj, Email, ReceberLembrete, Vendedor, Cliente, Fornecedor, FlagExcluido, Funcionario, Transportadora, EscritorioCobranca, Tecnico, FuncaoTrabalho, InscricaoEstadual, ComissaoVendedor, ContatoTrabalho, DataNascimento, LimiteCredito, LocalTrabalho, Mae, Pai, RegistradoSpc, Rg, SalarioTrabalho, Sexo, TelefoneTrabalho, TempoTrabalho, TipoParceiroImportado, TipoPessoa, DataCadastro)
+                        VALUES 
+                        (@CodigoImportacao, @Observacoes, @RazaoSocial, @NomeFantasia, @Cnpj, @Email, @ReceberLembrete, @Vendedor, @Cliente, @Fornecedor, @FlagExcluido, @Funcionario, @Transportadora, @EscritorioCobranca, @Tecnico, @FuncaoTrabalho, @InscricaoEstadual, @ComissaoVendedor, @ContatoTrabalho, @DataNascimento, @LimiteCredito, @LocalTrabalho, @Mae, @Pai, @RegistradoSpc, @Rg, @SalarioTrabalho, @Sexo, @TelefoneTrabalho, @TempoTrabalho, @TipoParceiroImportado, @TipoPessoa, @DataCadastro)";
+
+                    MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+                    mysqlCommand.Parameters.AddWithValue("@CodigoImportacao", pessoa.CodigoImportacao);
+                    mysqlCommand.Parameters.AddWithValue("@Observacoes", pessoa.Observacoes);
+                    mysqlCommand.Parameters.AddWithValue("@RazaoSocial", pessoa.RazaoSocial);
+                    mysqlCommand.Parameters.AddWithValue("@NomeFantasia", pessoa.NomeFantasia);
+                    mysqlCommand.Parameters.AddWithValue("@Cnpj", pessoa.Cnpj);
+                    mysqlCommand.Parameters.AddWithValue("@Email", pessoa.Email);
+                    mysqlCommand.Parameters.AddWithValue("@ReceberLembrete", pessoa.ReceberLembrete);
+                    mysqlCommand.Parameters.AddWithValue("@Vendedor", pessoa.Vendedor);
+                    mysqlCommand.Parameters.AddWithValue("@Cliente", pessoa.Cliente);
+                    mysqlCommand.Parameters.AddWithValue("@Fornecedor", pessoa.Fornecedor);
+                    mysqlCommand.Parameters.AddWithValue("@FlagExcluido", pessoa.FlagExcluido);
+                    mysqlCommand.Parameters.AddWithValue("@Funcionario", pessoa.Funcionario);
+                    mysqlCommand.Parameters.AddWithValue("@Transportadora", pessoa.Transportadora);
+                    mysqlCommand.Parameters.AddWithValue("@EscritorioCobranca", pessoa.EscritorioCobranca);
+                    mysqlCommand.Parameters.AddWithValue("@Tecnico", pessoa.Tecnico);
+                    mysqlCommand.Parameters.AddWithValue("@FuncaoTrabalho", pessoa.FuncaoTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@InscricaoEstadual", pessoa.InscricaoEstadual);
+                    mysqlCommand.Parameters.AddWithValue("@ComissaoVendedor", pessoa.ComissaoVendedor);
+                    mysqlCommand.Parameters.AddWithValue("@ContatoTrabalho", pessoa.ContatoTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@DataNascimento", pessoa.DataNascimento == DateTime.MinValue ? (object)DBNull.Value : pessoa.DataNascimento);
+                    mysqlCommand.Parameters.AddWithValue("@LimiteCredito", pessoa.LimiteCredito);
+                    mysqlCommand.Parameters.AddWithValue("@LocalTrabalho", pessoa.LocalTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@Mae", pessoa.Mae);
+                    mysqlCommand.Parameters.AddWithValue("@Pai", pessoa.Pai);
+                    mysqlCommand.Parameters.AddWithValue("@RegistradoSpc", pessoa.RegistradoSpc);
+                    mysqlCommand.Parameters.AddWithValue("@Rg", pessoa.Rg);
+                    mysqlCommand.Parameters.AddWithValue("@SalarioTrabalho", pessoa.SalarioTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@Sexo", pessoa.Sexo);
+                    mysqlCommand.Parameters.AddWithValue("@TelefoneTrabalho", pessoa.TelefoneTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@TempoTrabalho", pessoa.TempoTrabalho);
+                    mysqlCommand.Parameters.AddWithValue("@TipoParceiroImportado", pessoa.TipoParceiroImportado);
+                    mysqlCommand.Parameters.AddWithValue("@TipoPessoa", pessoa.TipoPessoa);
+                    mysqlCommand.Parameters.AddWithValue("@DataCadastro", pessoa.DataCadastro);
+
+                    mysqlCommand.ExecuteNonQuery();
+                    long pessoaId = mysqlCommand.LastInsertedId;
+
+                    if (pessoaId > 0 && !String.IsNullOrEmpty(endereco.Logradouro))
+                    {
+                        string mysqlQueryEndereco = "INSERT INTO Endereco (logradouro, numero, bairro, cep, complemento, cidade, pessoa, empresafilial, referencia) VALUES (@logradouro, @numero, @bairro, @cep, @complemento, @cidadeId, @pessoaId, 1, @referencia)";
+                        MySqlCommand mysqlCommandEndereco = new MySqlCommand(mysqlQueryEndereco, mysqlConnection);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@logradouro", endereco.Logradouro);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@numero", endereco.Numero);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@bairro", endereco.Bairro);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@cep", endereco.Cep);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@complemento", endereco.Complemento);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@cidadeId", endereco.Cidade.Id);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@pessoaId", pessoaId);
+                        mysqlCommandEndereco.Parameters.AddWithValue("@referencia", endereco.Referencia);
+                        mysqlCommandEndereco.ExecuteNonQuery();
+                        long enderecoId = mysqlCommandEndereco.LastInsertedId;
+
+                        // Atualizar Pessoa com o EnderecoPrincipal
+                        string mysqlUpdatePessoa = "UPDATE Pessoa SET enderecoPrincipal = @enderecoPrincipal WHERE id = @pessoaId";
+                        MySqlCommand mysqlCommandUpdatePessoa = new MySqlCommand(mysqlUpdatePessoa, mysqlConnection);
+                        mysqlCommandUpdatePessoa.Parameters.AddWithValue("@enderecoPrincipal", enderecoId);
+                        mysqlCommandUpdatePessoa.Parameters.AddWithValue("@pessoaId", pessoaId);
+
+                        mysqlCommandUpdatePessoa.ExecuteNonQuery();
+                    }
+                    // Salvar o telefone celular
+                    long pessoaTelefoneId = 0;
+                    if (!String.IsNullOrEmpty(pessoaTelefoneCelular.Telefone))
+                    {
+                        string mysqlQueryTelefoneCelular = "INSERT INTO PessoaTelefone (ddd, telefone, observacoes, pessoa) VALUES (@ddd, @telefone, @observacoes, @pessoa)";
+                        MySqlCommand mysqlCommandTelefoneCelular = new MySqlCommand(mysqlQueryTelefoneCelular, mysqlConnection);
+                        mysqlCommandTelefoneCelular.Parameters.AddWithValue("@ddd", pessoaTelefoneCelular.Ddd);
+                        mysqlCommandTelefoneCelular.Parameters.AddWithValue("@telefone", pessoaTelefoneCelular.Telefone);
+                        mysqlCommandTelefoneCelular.Parameters.AddWithValue("@observacoes", "IMPORTADO SOFTSYSTEM");
+                        mysqlCommandTelefoneCelular.Parameters.AddWithValue("@pessoa", pessoaId);
+                        mysqlCommandTelefoneCelular.ExecuteNonQuery();
+                        pessoaTelefoneId = mysqlCommandTelefoneCelular.LastInsertedId; // Define o celular como telefone principal
+                    }
+                    //Salvar fixo
+                    if (!String.IsNullOrEmpty(pessoaTelefone.Telefone))
+                    {
+                        string mysqlQueryTelefone = "INSERT INTO PessoaTelefone (ddd, telefone, observacoes, pessoa) VALUES (@ddd, @telefone, @observacoes, @pessoa)";
+                        MySqlCommand mysqlCommandTelefone = new MySqlCommand(mysqlQueryTelefone, mysqlConnection);
+                        mysqlCommandTelefone.Parameters.AddWithValue("@ddd", pessoaTelefone.Ddd);
+                        mysqlCommandTelefone.Parameters.AddWithValue("@telefone", pessoaTelefone.Telefone);
+                        mysqlCommandTelefone.Parameters.AddWithValue("@observacoes", "IMPORTADO SOFTSYSTEM");
+                        mysqlCommandTelefone.Parameters.AddWithValue("@pessoa", pessoaId);
+                        mysqlCommandTelefone.ExecuteNonQuery();
+                        if (pessoaTelefoneId == 0)
+                            pessoaTelefoneId = mysqlCommandTelefone.LastInsertedId; // Define o telefone fixo como telefone principal
+                    }
+
+                    // Atualizar Pessoa com o Telefone Principal
+                    if (pessoaTelefoneId > 0)
+                    {
+                        string mysqlUpdatePessoa = "UPDATE Pessoa SET pessoaTelefone = @pessoaTelefone WHERE id = @pessoaId";
+                        MySqlCommand mysqlCommandUpdatePessoa = new MySqlCommand(mysqlUpdatePessoa, mysqlConnection);
+                        mysqlCommandUpdatePessoa.Parameters.AddWithValue("@pessoaTelefone", pessoaTelefoneId);
+                        mysqlCommandUpdatePessoa.Parameters.AddWithValue("@pessoaId", pessoaId);
+                        mysqlCommandUpdatePessoa.ExecuteNonQuery();
+                    }
+
+                    UpdateUI(() =>
+                    {
+                        progressBar1.Value += 1;
+                        lblStatus.Text = "Fornecedor " + i + " de " + totalRegistros;
+                    });
+                }
+                firebirdReader.Close();
+                //MessageBox.Show("Importação de clientes concluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateUI(() =>
+                {
+                    progressBar1.Value = 0;
+                    lblStatus.Text = "Importação de fornecedores realizada com sucesso!";
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao importar dados: " + ex.Message);
+            }
+            finally
+            {
+                firebirdConnection.Close();
+                mysqlConnection.Close();
+            }
+        }
+
+        private string extrairNumeroString(string valor)
+        {
+            Regex regex = new Regex(@"(?:Nº|N)?\s*(\d+)");
+            Match match = regex.Match(valor);
+
+            // Verifica se encontrou um número
+            string numero = match.Success ? match.Groups[1].Value : "";
+            return numero;
+        }
+
+        private void ImportarProdutosSoftsystem(string database, string firebirdDatabasePath)
+        {
+            ImportarGruposSoftsystem(database, firebirdDatabasePath);
+            ImportarMarcasSoftsystem(database, firebirdDatabasePath);
+       
+            int i = 0;
+            UpdateUI(() => { lblStatus.Text = "Importação de Produtos"; });
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;Charset=ISO8859_1;";
+            FbConnection firebirdConnection = new FbConnection(firebirdConnectionString);
+            FbCommand firebirdCommand = new FbCommand("SELECT * FROM produtos order by codproduto", firebirdConnection);
+
+            // Conexão com o banco de dados MySQL
+            string mysqlConnectionString = $"Server=localhost;Database={database};User Id=marcelo;Password=mx123;";
+            MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+            try
+            {
+                firebirdConnection.Open();
+                mysqlConnection.Open();
+
+                // Obter a quantidade total de registros
+                FbCommand firebirdCountCommand = new FbCommand("SELECT COUNT(*) FROM produtos", firebirdConnection);
+                long totalRegistros = (long)firebirdCountCommand.ExecuteScalar();
+
+                // Configurar a ProgressBar
+                UpdateUI(() =>
+                {
+                    progressBar1.Minimum = 0;
+                    progressBar1.Maximum = (int)Math.Min(totalRegistros, int.MaxValue);
+                    progressBar1.Value = 0;
+                });
+
+                FbDataReader firebirdReader = firebirdCommand.ExecuteReader();
+                while (firebirdReader.Read())
+                {
+                    i++;
+                    Produto produto = new Produto();
+                    //ID no SGBR
+
+                    if (chkIdProduto.Checked == true)
+                        produto.Id = int.Parse(firebirdReader["codproduto"].ToString());
+                    else
+                        produto.Id = 0;
+                    produto.Observacoes = firebirdReader["codproduto"].ToString() + " SOFTSYSTEM";
+                    produto.AnoVeiculo = "";
+                    produto.CapacidadeTracao = "";
+                    produto.Cest = Generica.RemoveCaracteres(firebirdReader["cest"].ToString());
+                    produto.CfopVenda = VerificarCFOPPorProdutoSoftsystem(firebirdReader["CODCLFISCAL"].ToString(), firebirdDatabasePath);
+                    if (String.IsNullOrEmpty(produto.CfopVenda))
+                        produto.CfopVenda = "5102";
+                    produto.Chassi = "";
+                    produto.CilindradaCc = "";
+                    produto.CodAnp = firebirdReader["codigoanp"].ToString();
+                    produto.CodSeloIpi = "";
+                    produto.Combustivel = "";
+                    produto.CondicaoProduto = "";
+                    produto.ControlaEstoque = true;
+                    produto.CorDenatran = "";
+                    produto.CorMontadora = "";
+                    produto.CstCofins = "99";
+                    if(produto.CfopVenda.Equals("5102"))
+                        produto.CstIcms = "102";
+                    if (produto.CfopVenda.Equals("5405"))
+                        produto.CstIcms = "500";
+                    produto.CstIpi = "99"; 
+                    produto.CstPis = "99";
+                    if (!String.IsNullOrEmpty(firebirdReader["datacadastro"].ToString()))
+                        produto.DataCadastro = DateTime.Parse(firebirdReader["datacadastro"].ToString());
+                    else if (!String.IsNullOrEmpty(firebirdReader["dataatualizacao"].ToString()))
+                        produto.DataCadastro = DateTime.Parse(firebirdReader["dataatualizacao"].ToString());
+                    else
+                        produto.DataCadastro = DateTime.Now;
+                    produto.Descricao = firebirdReader["descricao"].ToString();
+                    produto.DistanciaEixo = "";
+                    produto.Ean = firebirdReader["codbarras"].ToString();
+                    produto.Ecommerce = false;
+                    produto.EnqIpi = "999";
+                    produto.EspecieVeiculo = "";
+                    int idGrupo = 1;
+                    object grupoIdValue = (idGrupo == 0) ? DBNull.Value : (object)idGrupo;
+                    Estoque estoque = new Estoque();
+                    try
+                    {
+                        String quantidade = VerificarEstoquePorProdutoSoftsystem(produto.Id.ToString(), firebirdDatabasePath);
+                        if (double.Parse(quantidade) > 0)
+                        {
+                            produto.Estoque = double.Parse(quantidade);
+
+                            estoque.BalancoEstoque = null;
+                            estoque.Conciliado = true;
+                            estoque.DataEntradaSaida = DateTime.Now;
+                            estoque.Descricao = "IMPORTACAO SOFTSYSTEM";
+                            estoque.Entrada = true;
+                            estoque.FlagExcluido = false;
+                            estoque.Origem = "SOFTSYSTEM";
+                            estoque.Pessoa = null;
+                            estoque.Quantidade = double.Parse(quantidade);
+                            estoque.QuantidadeInventario = 0;
+                            estoque.Saida = false;
+
+                            //Grava estoque auxiliar ou apenas o contabil
+                            if (chkSaldoEstoque.Checked == true)
+                                produto.EstoqueAuxiliar = double.Parse(quantidade);
+                            else
+                                produto.EstoqueAuxiliar = 0;
+                        }
+                    }
+                    catch
+                    {
+                        produto.Estoque = 0;
+                        produto.EstoqueAuxiliar = 0;
+                    }
+                    produto.FlagExcluido = false;
+                    if (firebirdReader["INATIVO"].ToString().Equals("T"))
+                    {
+                        produto.FlagExcluido = true;
+                    }
+                    produto.Grade = false;
+                    string grupoFiscal = "2";
+                    if (produto.CfopVenda.Equals("5101") || produto.CfopVenda.Equals("5102") || produto.CfopVenda.Equals("6102") || produto.CstIcms.Equals("102") || produto.CstIcms.Equals("101"))
+                        grupoFiscal = "1";
+                    produto.IdComplementar = "";
+                    produto.KmEntrada = "";
+                    produto.LotacaoVeiculo = "";
+                    string idMarca = "0";
+                    if (!String.IsNullOrEmpty(firebirdReader["codmarca"].ToString()))
+                        idMarca = firebirdReader["codmarca"].ToString();
+                    else
+                        idMarca = null;
+                    produto.MarcaModelo = "";
+                    produto.Markup = "";
+                    produto.ModeloVeiculo = "";
+                    produto.Ncm = firebirdReader["nbm"].ToString();
+                    produto.NumeroMotor = "";
+                    produto.OperadorCadastro = "1";
+                    produto.OrigemIcms = "0";
+                    produto.PercentualCofins = "0";
+                    produto.PercentualIcms = "0";
+                    produto.PercentualIpi = "0";
+                    produto.PercentualPis = "0";
+                    try { produto.PercGlp = 0; } catch { produto.PercGlp = 0; }
+                    try { produto.PercGni = 0; } catch { produto.PercGni = 0; }
+                    try { produto.PercGnn = 0; } catch { produto.PercGnn = 0; }
+                    produto.Pesavel = false;
+                    produto.PesoBrutoVeiculo = "";
+                    produto.PesoLiquidoVeiculo = "";
+                    produto.Placa = "";
+                    produto.PotenciaCv = "";
+                    produto.ProdutoSetor = null;
+                    produto.ProdutoSubGrupo = null;
+                    produto.Referencia = firebirdReader["codreferencia"].ToString();
+                    produto.Renavam = "";
+                    produto.RestricaoVeiculo = "";
+                    produto.SolicitaNumeroSerie = false;
+                    produto.TipoCambio = "";
+                    produto.TipoEntrada = "";
+                    produto.TipoPintura = "";
+                    produto.TipoProduto = "REVENDA";
+                    produto.TipoVeiculo = "";
+                    int unidadeMedida = ObterOuCriarUnidadeMedida(RemoverCedilha(firebirdReader["codembalagem"].ToString()), mysqlConnection);
+                    try { produto.ValorCusto = decimal.Parse(firebirdReader["PRECOAQUISICAO"].ToString()); } catch { produto.ValorCusto = 0; }
+                    produto.ValorPartida = 0;
+                    try { produto.ValorVenda = decimal.Parse(firebirdReader["preco"].ToString()); } catch { produto.ValorVenda = 1; }
+                    produto.Veiculo = false;
+                    produto.VeiculoNovo = false;
+
+                    string mysqlQuery = @"
+                INSERT INTO Produto 
+                (Id, Observacoes, AnoVeiculo, CapacidadeTracao, Cest, CfopVenda, Chassi, CilindradaCc, CodAnp, CodSeloIpi, Combustivel, 
+                CondicaoProduto, ControlaEstoque, CorDenatran, CorMontadora, CstCofins, CstIcms, CstIpi, CstPis, DataCadastro, Descricao, 
+                DistanciaEixo, Ean, Ecommerce, EnqIpi, EspecieVeiculo, Estoque, EstoqueAuxiliar, FlagExcluido, Grade, IdComplementar, 
+                KmEntrada, LotacaoVeiculo, Marca, MarcaModelo, Markup, ModeloVeiculo, Ncm, NumeroMotor, OperadorCadastro, OrigemIcms, 
+                PercentualCofins, PercentualIcms, PercentualIpi, PercentualPis, PercGlp, PercGni, PercGnn, Pesavel, PesoBrutoVeiculo, 
+                PesoLiquidoVeiculo, Placa, PotenciaCv, ProdutoSetor, Referencia, Renavam, RestricaoVeiculo, 
+                SolicitaNumeroSerie, TipoCambio, TipoEntrada, TipoPintura, TipoProduto, TipoVeiculo, UnidadeMedida, ValorCusto, 
+                ValorPartida, ValorVenda, Veiculo, VeiculoNovo, Empresa, EmpresaFilial, GrupoFiscal, ProdutoGrupo) 
+                VALUES 
+                (@Id, @Observacoes, @AnoVeiculo, @CapacidadeTracao, @Cest, @CfopVenda, @Chassi, @CilindradaCc, @CodAnp, @CodSeloIpi, @Combustivel, 
+                @CondicaoProduto, @ControlaEstoque, @CorDenatran, @CorMontadora, @CstCofins, @CstIcms, @CstIpi, @CstPis, @DataCadastro, @Descricao, 
+                @DistanciaEixo, @Ean, @Ecommerce, @EnqIpi, @EspecieVeiculo, @Estoque, @EstoqueAuxiliar, @FlagExcluido, @Grade, @IdComplementar, 
+                @KmEntrada, @LotacaoVeiculo, @MarcaId, @MarcaModelo, @Markup, @ModeloVeiculo, @Ncm, @NumeroMotor, @OperadorCadastro, @OrigemIcms, 
+                @PercentualCofins, @PercentualIcms, @PercentualIpi, @PercentualPis, @PercGlp, @PercGni, @PercGnn, @Pesavel, @PesoBrutoVeiculo, 
+                @PesoLiquidoVeiculo, @Placa, @PotenciaCv, @ProdutoSetor, @Referencia, @Renavam, @RestricaoVeiculo, 
+                @SolicitaNumeroSerie, @TipoCambio, @TipoEntrada, @TipoPintura, @TipoProduto, @TipoVeiculo, @UnidadeMedidaId, @ValorCusto, 
+                @ValorPartida, @ValorVenda, @Veiculo, @VeiculoNovo, 1,1, " + grupoFiscal + ", @GrupoProduto)";
+
+                    MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+                    mysqlCommand.Parameters.AddWithValue("@Id", produto.Id);
+                    mysqlCommand.Parameters.AddWithValue("@Observacoes", produto.Observacoes);
+                    mysqlCommand.Parameters.AddWithValue("@AnoVeiculo", produto.AnoVeiculo);
+                    mysqlCommand.Parameters.AddWithValue("@CapacidadeTracao", produto.CapacidadeTracao);
+                    mysqlCommand.Parameters.AddWithValue("@Cest", produto.Cest);
+                    mysqlCommand.Parameters.AddWithValue("@CfopVenda", produto.CfopVenda);
+                    mysqlCommand.Parameters.AddWithValue("@Chassi", produto.Chassi);
+                    mysqlCommand.Parameters.AddWithValue("@CilindradaCc", produto.CilindradaCc);
+                    mysqlCommand.Parameters.AddWithValue("@CodAnp", produto.CodAnp);
+                    mysqlCommand.Parameters.AddWithValue("@CodSeloIpi", produto.CodSeloIpi);
+                    mysqlCommand.Parameters.AddWithValue("@Combustivel", produto.Combustivel);
+                    mysqlCommand.Parameters.AddWithValue("@CondicaoProduto", produto.CondicaoProduto);
+                    mysqlCommand.Parameters.AddWithValue("@ControlaEstoque", produto.ControlaEstoque);
+                    mysqlCommand.Parameters.AddWithValue("@CorDenatran", produto.CorDenatran);
+                    mysqlCommand.Parameters.AddWithValue("@CorMontadora", produto.CorMontadora);
+                    mysqlCommand.Parameters.AddWithValue("@CstCofins", produto.CstCofins);
+                    mysqlCommand.Parameters.AddWithValue("@CstIcms", produto.CstIcms);
+                    mysqlCommand.Parameters.AddWithValue("@CstIpi", produto.CstIpi);
+                    mysqlCommand.Parameters.AddWithValue("@CstPis", produto.CstPis);
+                    mysqlCommand.Parameters.AddWithValue("@DataCadastro", produto.DataCadastro);
+                    mysqlCommand.Parameters.AddWithValue("@Descricao", produto.Descricao);
+                    mysqlCommand.Parameters.AddWithValue("@DistanciaEixo", produto.DistanciaEixo);
+                    mysqlCommand.Parameters.AddWithValue("@Ean", produto.Ean);
+                    mysqlCommand.Parameters.AddWithValue("@Ecommerce", produto.Ecommerce);
+                    mysqlCommand.Parameters.AddWithValue("@EnqIpi", produto.EnqIpi);
+                    mysqlCommand.Parameters.AddWithValue("@EspecieVeiculo", produto.EspecieVeiculo);
+                    mysqlCommand.Parameters.AddWithValue("@Estoque", produto.Estoque);
+                    mysqlCommand.Parameters.AddWithValue("@EstoqueAuxiliar", produto.EstoqueAuxiliar);
+                    mysqlCommand.Parameters.AddWithValue("@FlagExcluido", produto.FlagExcluido);
+                    mysqlCommand.Parameters.AddWithValue("@Grade", produto.Grade);
+                    mysqlCommand.Parameters.AddWithValue("@IdComplementar", produto.IdComplementar);
+                    mysqlCommand.Parameters.AddWithValue("@KmEntrada", produto.KmEntrada);
+                    mysqlCommand.Parameters.AddWithValue("@LotacaoVeiculo", produto.LotacaoVeiculo);
+                    mysqlCommand.Parameters.AddWithValue("@MarcaId", idMarca);
+                    mysqlCommand.Parameters.AddWithValue("@MarcaModelo", produto.MarcaModelo);
+                    mysqlCommand.Parameters.AddWithValue("@Markup", produto.Markup);
+                    mysqlCommand.Parameters.AddWithValue("@ModeloVeiculo", produto.ModeloVeiculo);
+                    mysqlCommand.Parameters.AddWithValue("@Ncm", produto.Ncm);
+                    mysqlCommand.Parameters.AddWithValue("@NumeroMotor", produto.NumeroMotor);
+                    mysqlCommand.Parameters.AddWithValue("@OperadorCadastro", produto.OperadorCadastro);
+                    mysqlCommand.Parameters.AddWithValue("@OrigemIcms", produto.OrigemIcms);
+                    mysqlCommand.Parameters.AddWithValue("@PercentualCofins", produto.PercentualCofins);
+                    mysqlCommand.Parameters.AddWithValue("@PercentualIcms", produto.PercentualIcms);
+                    mysqlCommand.Parameters.AddWithValue("@PercentualIpi", produto.PercentualIpi);
+                    mysqlCommand.Parameters.AddWithValue("@PercentualPis", produto.PercentualPis);
+                    mysqlCommand.Parameters.AddWithValue("@PercGlp", produto.PercGlp);
+                    mysqlCommand.Parameters.AddWithValue("@PercGni", produto.PercGni);
+                    mysqlCommand.Parameters.AddWithValue("@PercGnn", produto.PercGnn);
+                    mysqlCommand.Parameters.AddWithValue("@Pesavel", produto.Pesavel);
+                    mysqlCommand.Parameters.AddWithValue("@PesoBrutoVeiculo", produto.PesoBrutoVeiculo);
+                    mysqlCommand.Parameters.AddWithValue("@PesoLiquidoVeiculo", produto.PesoLiquidoVeiculo);
+                    mysqlCommand.Parameters.AddWithValue("@Placa", produto.Placa);
+                    mysqlCommand.Parameters.AddWithValue("@PotenciaCv", produto.PotenciaCv);
+                    mysqlCommand.Parameters.AddWithValue("@ProdutoSetor", produto.ProdutoSetor);
+                    mysqlCommand.Parameters.AddWithValue("@ProdutoSubGrupo", null);
+                    mysqlCommand.Parameters.AddWithValue("@Referencia", produto.Referencia);
+                    mysqlCommand.Parameters.AddWithValue("@Renavam", produto.Renavam);
+                    mysqlCommand.Parameters.AddWithValue("@RestricaoVeiculo", produto.RestricaoVeiculo);
+                    mysqlCommand.Parameters.AddWithValue("@SolicitaNumeroSerie", produto.SolicitaNumeroSerie);
+                    mysqlCommand.Parameters.AddWithValue("@TipoCambio", produto.TipoCambio);
+                    mysqlCommand.Parameters.AddWithValue("@TipoEntrada", produto.TipoEntrada);
+                    mysqlCommand.Parameters.AddWithValue("@TipoPintura", produto.TipoPintura);
+                    mysqlCommand.Parameters.AddWithValue("@TipoProduto", produto.TipoProduto);
+                    mysqlCommand.Parameters.AddWithValue("@TipoVeiculo", produto.TipoVeiculo);
+                    mysqlCommand.Parameters.AddWithValue("@UnidadeMedidaId", unidadeMedida);
+                    mysqlCommand.Parameters.AddWithValue("@ValorCusto", produto.ValorCusto);
+                    mysqlCommand.Parameters.AddWithValue("@ValorPartida", produto.ValorPartida);
+                    mysqlCommand.Parameters.AddWithValue("@ValorVenda", produto.ValorVenda);
+                    mysqlCommand.Parameters.AddWithValue("@Veiculo", produto.Veiculo);
+                    mysqlCommand.Parameters.AddWithValue("@VeiculoNovo", produto.VeiculoNovo);
+                    mysqlCommand.Parameters.AddWithValue("@GrupoProduto", grupoIdValue);
+
+                    mysqlCommand.ExecuteNonQuery();
+                    int idProduto = (int)mysqlCommand.LastInsertedId;
+                    if (chkIdProduto.Checked == true)
+                        idProduto = produto.Id;
+
+                    string mysqlQueryEstoque = @"
+                        INSERT INTO Estoque 
+                            (BalancoEstoque, Conciliado, DataEntradaSaida, Descricao, Entrada, FlagExcluido, Origem, Pessoa, Quantidade, QuantidadeInventario, Saida, EmpresaFilial, Produto) 
+                        VALUES 
+                            (@BalancoEstoque, @Conciliado, @DataEntradaSaida, @Descricao, @Entrada, @FlagExcluido, @Origem, @Pessoa, @Quantidade, @QuantidadeInventario, @Saida, 1, " + idProduto + ")";
+
+                    MySqlCommand mysqlCommandEstoque = new MySqlCommand(mysqlQueryEstoque, mysqlConnection);
+
+                    mysqlCommandEstoque.Parameters.AddWithValue("@BalancoEstoque", (object)estoque.BalancoEstoque ?? DBNull.Value);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@Conciliado", estoque.Conciliado);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@DataEntradaSaida", estoque.DataEntradaSaida);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@Descricao", estoque.Descricao);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@Entrada", estoque.Entrada);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@FlagExcluido", estoque.FlagExcluido);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@Origem", estoque.Origem);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@Pessoa", (object)estoque.Pessoa ?? DBNull.Value);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@Quantidade", estoque.Quantidade);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@QuantidadeInventario", estoque.QuantidadeInventario);
+                    mysqlCommandEstoque.Parameters.AddWithValue("@Saida", estoque.Saida);
+                    // Execute o comando
+                    mysqlCommandEstoque.ExecuteNonQuery();
+                    if (chkSaldoEstoque.Checked == true)
+                    {
+                        //Nao conciliado
+                        estoque.Conciliado = false;
+                        mysqlQueryEstoque = @"
+                        INSERT INTO Estoque 
+                            (BalancoEstoque, Conciliado, DataEntradaSaida, Descricao, Entrada, FlagExcluido, Origem, Pessoa, Quantidade, QuantidadeInventario, Saida, EmpresaFilial, Produto) 
+                        VALUES 
+                            (@BalancoEstoque, @Conciliado, @DataEntradaSaida, @Descricao, @Entrada, @FlagExcluido, @Origem, @Pessoa, @Quantidade, @QuantidadeInventario, @Saida, 1, " + idProduto + ")";
+
+                        mysqlCommandEstoque = new MySqlCommand(mysqlQueryEstoque, mysqlConnection);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@BalancoEstoque", (object)estoque.BalancoEstoque ?? DBNull.Value);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@Conciliado", estoque.Conciliado);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@DataEntradaSaida", estoque.DataEntradaSaida);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@Descricao", estoque.Descricao);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@Entrada", estoque.Entrada);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@FlagExcluido", estoque.FlagExcluido);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@Origem", estoque.Origem);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@Pessoa", (object)estoque.Pessoa ?? DBNull.Value);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@Quantidade", estoque.Quantidade);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@QuantidadeInventario", estoque.QuantidadeInventario);
+                        mysqlCommandEstoque.Parameters.AddWithValue("@Saida", estoque.Saida);
+                        // Execute o comando
+                        mysqlCommandEstoque.ExecuteNonQuery();
+                    }
+
+                    UpdateUI(() =>
+                    {
+                        progressBar1.Value += 1;
+                        lblStatus.Text = "Produto " + i + " de " + totalRegistros;
+                    });
+                }
+                firebirdReader.Close();
+                //MessageBox.Show("Importação de fornecedores concluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateUI(() =>
+                {
+                    lblStatus.Text = "Importação de produtos concluída com sucesso!";
+                    progressBar1.Value = 0;
+                    progressBar1.Visible = false;
+                });
+            }
+            catch (Exception ex)
+            {
+                //if (ex.ToString().Contains("Duplicate entry"))
+                MessageBox.Show("Erro ao importar produtos: " + ex.Message);
+            }
+            finally
+            {
+                firebirdConnection.Close();
+                mysqlConnection.Close();
+            }
+        }
+
+        private void ImportarGruposSoftsystem(string database, string firebirdDatabasePath)
+        {
+            int i = 0;
+            UpdateUI(() => { lblStatus.Text = "Importação de Grupos de Produtos"; });
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;Charset=ISO8859_1;";
+            FbConnection firebirdConnection = new FbConnection(firebirdConnectionString);
+            FbCommand firebirdCommand = new FbCommand("SELECT * FROM aplicacao order by codaplicacao", firebirdConnection);
+
+            // Conexão com o banco de dados MySQL
+            string mysqlConnectionString = $"Server=localhost;Database={database};User Id=marcelo;Password=mx123;";
+            MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+            try
+            {
+                firebirdConnection.Open();
+                mysqlConnection.Open();
+
+                // Obter a quantidade total de registros
+                FbCommand firebirdCountCommand = new FbCommand("SELECT COUNT(*) FROM aplicacao", firebirdConnection);
+                long totalRegistros = (long)firebirdCountCommand.ExecuteScalar();
+
+                // Configurar a ProgressBar
+                UpdateUI(() =>
+                {
+                    progressBar1.Minimum = 0;
+                    progressBar1.Maximum = (int)Math.Min(totalRegistros, int.MaxValue);
+                    progressBar1.Value = 0;
+                });
+
+                FbDataReader firebirdReader = firebirdCommand.ExecuteReader();
+                while (firebirdReader.Read())
+                {
+                    i++;
+                    ProdutoGrupo produtoGrupo = new ProdutoGrupo();
+                    produtoGrupo.Descricao = firebirdReader["aplicacao"].ToString();
+                    produtoGrupo.Id = 0;
+                    produtoGrupo.FlagExcluido = false;
+
+                    string mysqlQuery = @"
+                        INSERT INTO ProdutoGrupo 
+                        (Id, Descricao, FlagExcluido, Empresa) 
+                        VALUES 
+                        (@Id, @Descricao, @FlagExcluido, 1)";
+
+                    MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+                    mysqlCommand.Parameters.AddWithValue("@Id", produtoGrupo.Id);
+                    mysqlCommand.Parameters.AddWithValue("@Descricao", produtoGrupo.Descricao);
+                    mysqlCommand.Parameters.AddWithValue("@FlagExcluido", produtoGrupo.FlagExcluido);
+
+                    mysqlCommand.ExecuteNonQuery();
+                    UpdateUI(() =>
+                    {
+                        progressBar1.Value += 1;
+                        lblStatus.Text = "Grupo " + i + " de " + totalRegistros;
+                    });
+                }
+                firebirdReader.Close();
+                //MessageBox.Show("Importação de fornecedores concluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateUI(() =>
+                {
+                    progressBar1.Value = 0;
+                });
+            }
+            catch (Exception ex)
+            {
+                if (!ex.ToString().Contains("Duplicate entry"))
+                    MessageBox.Show("Erro ao importar dados: " + ex.Message);
+            }
+            finally
+            {
+                firebirdConnection.Close();
+                mysqlConnection.Close();
+            }
+        }
+
+        private void ImportarMarcasSoftsystem(string database, string firebirdDatabasePath)
+        {
+            int i = 0;
+            UpdateUI(() => { lblStatus.Text = "Importação de Marcas de Produtos"; });
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;Charset=ISO8859_1;";
+            FbConnection firebirdConnection = new FbConnection(firebirdConnectionString);
+            FbCommand firebirdCommand = new FbCommand("SELECT * FROM Marcas order by codmarca", firebirdConnection);
+
+            // Conexão com o banco de dados MySQL
+            string mysqlConnectionString = $"Server=localhost;Database={database};User Id=marcelo;Password=mx123;";
+            MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+            try
+            {
+                firebirdConnection.Open();
+                mysqlConnection.Open();
+
+                // Obter a quantidade total de registros
+                FbCommand firebirdCountCommand = new FbCommand("SELECT COUNT(*) FROM Marcas", firebirdConnection);
+                long totalRegistros = (long)firebirdCountCommand.ExecuteScalar();
+
+                // Configurar a ProgressBar
+                UpdateUI(() =>
+                {
+                    progressBar1.Minimum = 0;
+                    progressBar1.Maximum = (int)Math.Min(totalRegistros, int.MaxValue);
+                    progressBar1.Value = 0;
+                });
+
+                FbDataReader firebirdReader = firebirdCommand.ExecuteReader();
+                while (firebirdReader.Read())
+                {
+                    i++;
+                    Marca marca = new Marca();
+                    marca.Descricao = firebirdReader["marca"].ToString();
+                    marca.Id = 0;
+                    marca.FlagExcluido = false;
+
+                    string mysqlQuery = @"
+                        INSERT INTO Marca 
+                        (Id, Descricao, FlagExcluido, Empresa) 
+                        VALUES 
+                        (@Id, @Descricao, @FlagExcluido, 1)";
+
+                    MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+                    mysqlCommand.Parameters.AddWithValue("@Id", marca.Id);
+                    mysqlCommand.Parameters.AddWithValue("@Descricao", marca.Descricao);
+                    mysqlCommand.Parameters.AddWithValue("@FlagExcluido", marca.FlagExcluido);
+
+                    mysqlCommand.ExecuteNonQuery();
+                    UpdateUI(() =>
+                    {
+                        progressBar1.Value += 1;
+                        lblStatus.Text = "Marca " + i + " de " + totalRegistros;
+                    });
+                }
+                firebirdReader.Close();
+                //MessageBox.Show("Importação de fornecedores concluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateUI(() =>
+                {
+                    progressBar1.Value = 0;
+                    lblStatus.Text = "Marcas importadas com sucesso!";
+                });
+            }
+            catch (Exception ex)
+            {
+                if (!ex.ToString().Contains("Duplicate entry"))
+                    MessageBox.Show("Erro ao importar dados: " + ex.Message);
+            }
+            finally
+            {
+                firebirdConnection.Close();
+                mysqlConnection.Close();
+            }
+        }
+
+        private string VerificarCFOPPorProdutoSoftsystem(string codClFiscal, string firebirdDatabasePath)
+        {
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;Charset=ISO8859_1;";
+            using (FbConnection firebirdConnection = new FbConnection(firebirdConnectionString))
+            {
+                try
+                {
+                    firebirdConnection.Open();
+
+                    // Comando para selecionar todos os CFOPs relacionados ao CODCLFISCAL fornecido
+                    string query = @"
+                SELECT CODCFOP 
+                FROM CLFISCAL 
+                WHERE CODCLFISCAL = @codClFiscal";
+                    using (FbCommand firebirdCommand = new FbCommand(query, firebirdConnection))
+                    {
+                        firebirdCommand.Parameters.AddWithValue("@codClFiscal", codClFiscal);
+
+                        using (FbDataReader firebirdReader = firebirdCommand.ExecuteReader())
+                        {
+                            while (firebirdReader.Read())
+                            {
+                                string codCFOP = firebirdReader["CODCFOP"].ToString();
+
+                                // Verifica se o CFOP é um dos desejados
+                                if (codCFOP == "5102" || codCFOP == "5405")
+                                {
+                                    return codCFOP; // Retorna o CFOP encontrado
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao verificar CFOPs: " + ex.Message);
+                }
+            }
+
+            return null; // Retorna null se nenhum CFOP encontrado
+        }
+
+        private string VerificarEstoquePorProdutoSoftsystem(string codproduto, string firebirdDatabasePath)
+        {
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;Charset=ISO8859_1;";
+            using (FbConnection firebirdConnection = new FbConnection(firebirdConnectionString))
+            {
+                try
+                {
+                    firebirdConnection.Open();
+
+                    // Comando para selecionar todos os CFOPs relacionados ao CODCLFISCAL fornecido
+                    string query = @"
+                SELECT Estoque 
+                FROM Estoque 
+                WHERE CODPRODUTO = @codProduto and Loja = 1";
+                    using (FbCommand firebirdCommand = new FbCommand(query, firebirdConnection))
+                    {
+                        firebirdCommand.Parameters.AddWithValue("@codProduto", codproduto);
+
+                        using (FbDataReader firebirdReader = firebirdCommand.ExecuteReader())
+                        {
+                            while (firebirdReader.Read())
+                            {
+                                return firebirdReader["ESTOQUE"].ToString();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao verificar ESTOQUE: " + ex.Message);
+                }
+            }
+
+            return "0"; // Retorna null se nenhum CFOP encontrado
+        }
+
+
+        private void ImportarVendasSoftsystem(string database, string firebirdDatabasePath)
+        {
+            int i = 0;
+            UpdateUI(() => { lblStatus.Text = "Importação de Vendas/Orcamentos"; });
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;Charset=ISO8859_1;";
+            FbConnection firebirdConnection = new FbConnection(firebirdConnectionString);
+            FbCommand firebirdCommand = new FbCommand("SELECT * FROM Orcamentos order by codorcamento", firebirdConnection);
+
+            // Conexão com o banco de dados MySQL
+            string mysqlConnectionString = $"Server=localhost;Database={database};User Id=marcelo;Password=mx123;";
+            MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+            try
+            {
+                firebirdConnection.Open();
+                mysqlConnection.Open();
+
+                // Obter a quantidade total de registros
+                FbCommand firebirdCountCommand = new FbCommand("SELECT COUNT(*) FROM Orcamentos", firebirdConnection);
+                long totalRegistros = (long)firebirdCountCommand.ExecuteScalar();
+
+                // Configurar a ProgressBar
+                UpdateUI(() =>
+                {
+                    progressBar1.Minimum = 0;
+                    progressBar1.Maximum = (int)Math.Min(totalRegistros, int.MaxValue);
+                    progressBar1.Value = 0;
+                });
+
+                FbDataReader firebirdReader = firebirdCommand.ExecuteReader();
+                while (firebirdReader.Read())
+                {
+                    i++;
+                    Venda venda = new Venda();
+                    Controller controller = new Controller();
+                    PessoaDAO pessoaDAO = new PessoaDAO();
+                    venda.Cancelado = false;
+                    venda.Cliente = pessoaDAO.selecionarPessoaPorCodigoImportado(firebirdReader["cgc"].ToString());
+                    venda.Concluida = true;
+                    venda.FlagExcluido = false;
+                    venda.Condicional = null;
+                    venda.DataCadastro = DateTime.Parse(firebirdReader["data"].ToString());
+                    venda.DataVenda = DateTime.Parse(firebirdReader["data"].ToString());
+                    EmpresaFilial empresaFilial = new EmpresaFilial();
+                    empresaFilial.Id = 1;
+                    venda.EmpresaFilial = (EmpresaFilial)Controller.getInstance().selecionar(empresaFilial);
+                    venda.EnderecoCliente = firebirdReader["endereco"].ToString();
+                    venda.Nfe = null;
+                    venda.NomeCliente = venda.Cliente.RazaoSocial;
+                    venda.NomeComputador = "";
+                    venda.Observacoes = firebirdReader["obspedido"].ToString();
+                    venda.OperadorCadastro = "1";
+                    venda.PessoaDependente = null;
+                    PlanoConta planoConta = new PlanoConta();
+                    planoConta.Id = 3;
+                    planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                    venda.PlanoConta = planoConta;
+                    venda.QrCodePix = "";
+                    venda.Quantidade = 0;
+                    venda.ValorAcrescimo = 0;
+                    venda.ValorDesconto = decimal.Parse(firebirdReader["descontor"].ToString());
+                    venda.ValorProdutos = decimal.Parse(firebirdReader["totalprodutos"].ToString());
+                    venda.ValorFinal = decimal.Parse(firebirdReader["totalpago"].ToString());
+                    venda.Vendedor = null;
+
+                    string mysqlQuery = @"
+    INSERT INTO Venda 
+    (Cancelado, Cliente, Concluida, FlagExcluido, Condicional, DataCadastro, 
+     DataVenda, EmpresaFilial, EnderecoCliente, Nfe, NomeCliente, NomeComputador, 
+     Observacoes, OperadorCadastro, PessoaDependente, PlanoConta, QrCodePix, Quantidade, 
+     ValorAcrescimo, ValorDesconto, ValorProdutos, ValorFinal, Vendedor) 
+    VALUES 
+    (@Cancelado, @ClienteId, @Concluida, @FlagExcluido, @Condicional, @DataCadastro, 
+     @DataVenda, @EmpresaFilialId, @EnderecoCliente, @Nfe, @NomeCliente, @NomeComputador, 
+     @Observacoes, @OperadorCadastro, @PessoaDependenteId, @PlanoContaId, @QrCodePix, @Quantidade, 
+     @ValorAcrescimo, @ValorDesconto, @ValorProdutos, @ValorFinal, @VendedorId)";
+
+                    MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+                    mysqlCommand.Parameters.AddWithValue("@Cancelado", venda.Cancelado);
+                    mysqlCommand.Parameters.AddWithValue("@ClienteId", venda.Cliente.Id);  
+                    mysqlCommand.Parameters.AddWithValue("@Concluida", venda.Concluida);
+                    mysqlCommand.Parameters.AddWithValue("@FlagExcluido", venda.FlagExcluido);
+                    mysqlCommand.Parameters.AddWithValue("@Condicional", venda.Condicional != null ? venda.Condicional : (object)DBNull.Value);
+                    mysqlCommand.Parameters.AddWithValue("@DataCadastro", venda.DataCadastro);
+                    mysqlCommand.Parameters.AddWithValue("@DataVenda", venda.DataVenda);
+                    mysqlCommand.Parameters.AddWithValue("@EmpresaFilialId", venda.EmpresaFilial.Id); 
+                    mysqlCommand.Parameters.AddWithValue("@EnderecoCliente", venda.EnderecoCliente);
+                    mysqlCommand.Parameters.AddWithValue("@Nfe", venda.Nfe != null ? venda.Nfe : (object)DBNull.Value);
+                    mysqlCommand.Parameters.AddWithValue("@NomeCliente", venda.NomeCliente);
+                    mysqlCommand.Parameters.AddWithValue("@NomeComputador", venda.NomeComputador);
+                    mysqlCommand.Parameters.AddWithValue("@Observacoes", venda.Observacoes);
+                    mysqlCommand.Parameters.AddWithValue("@OperadorCadastro", venda.OperadorCadastro);
+                    mysqlCommand.Parameters.AddWithValue("@PessoaDependenteId", venda.PessoaDependente != null ? venda.PessoaDependente.Id : (object)DBNull.Value);
+                    mysqlCommand.Parameters.AddWithValue("@PlanoContaId", venda.PlanoConta.Id); 
+                    mysqlCommand.Parameters.AddWithValue("@QrCodePix", venda.QrCodePix);
+                    mysqlCommand.Parameters.AddWithValue("@Quantidade", venda.Quantidade);
+                    mysqlCommand.Parameters.AddWithValue("@ValorAcrescimo", venda.ValorAcrescimo);
+                    mysqlCommand.Parameters.AddWithValue("@ValorDesconto", venda.ValorDesconto);
+                    mysqlCommand.Parameters.AddWithValue("@ValorProdutos", venda.ValorProdutos);
+                    mysqlCommand.Parameters.AddWithValue("@ValorFinal", venda.ValorFinal);
+                    mysqlCommand.Parameters.AddWithValue("@VendedorId", venda.Vendedor != null ? venda.Vendedor.Id : (object)DBNull.Value);
+
+                    mysqlCommand.ExecuteNonQuery();
+
+                    UpdateUI(() =>
+                    {
+                        progressBar1.Value += 1;
+                        lblStatus.Text = "Venda " + i + " de " + totalRegistros;
+                    });
+                }
+                firebirdReader.Close();
+                //MessageBox.Show("Importação de fornecedores concluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateUI(() =>
+                {
+                    progressBar1.Value = 0;
+                    lblStatus.Text = "Vendas importadas com sucesso!";
+                });
+            }
+            catch (Exception ex)
+            {
+                if (!ex.ToString().Contains("Duplicate entry"))
+                    MessageBox.Show("Erro ao importar dados: " + ex.Message);
+            }
+            finally
+            {
+                firebirdConnection.Close();
+                mysqlConnection.Close();
+            }
+        }
+
     }
 }

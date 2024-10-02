@@ -45,6 +45,7 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn9 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn10 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn11 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn12 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             this.btnImprimir1 = new Syncfusion.Windows.Forms.Tools.SplitButton();
             this.btnImprimirNF = new Syncfusion.Windows.Forms.Tools.toolstripitem();
             this.btnImprimirDuplicatas = new Syncfusion.Windows.Forms.Tools.toolstripitem();
@@ -110,6 +111,7 @@
             this.btnEncerrar = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            this.btnImprimirNfse = new Syncfusion.Windows.Forms.Tools.toolstripitem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataEntregaFinal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataEntregaInicial)).BeginInit();
@@ -136,6 +138,7 @@
             this.btnImprimir1.DropDownItems.Add(this.btnImprimirDuplicatas);
             this.btnImprimir1.DropDownItems.Add(this.btnImprimirDuplicataGrafica);
             this.btnImprimir1.DropDownItems.Add(this.btnImprimirNumeroOS);
+            this.btnImprimir1.DropDownItems.Add(this.btnImprimirNfse);
             this.btnImprimir1.DropDownPosition = Syncfusion.Windows.Forms.Tools.Position.Top;
             this.btnImprimir1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
@@ -352,7 +355,7 @@
             // 
             // txtDataEntregaFinal
             // 
-            this.txtDataEntregaFinal.BeforeTouchSize = new System.Drawing.Size(178, 35);
+            this.txtDataEntregaFinal.BeforeTouchSize = new System.Drawing.Size(141, 35);
             this.txtDataEntregaFinal.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
             this.txtDataEntregaFinal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtDataEntregaFinal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -368,17 +371,17 @@
             // autoLabel11
             // 
             this.autoLabel11.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel11.Font = new System.Drawing.Font("Montserrat", 9.749999F);
+            this.autoLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F);
             this.autoLabel11.ForeColor = System.Drawing.Color.Black;
             this.autoLabel11.Location = new System.Drawing.Point(173, 203);
             this.autoLabel11.Name = "autoLabel11";
-            this.autoLabel11.Size = new System.Drawing.Size(130, 21);
+            this.autoLabel11.Size = new System.Drawing.Size(118, 16);
             this.autoLabel11.TabIndex = 262;
             this.autoLabel11.Text = "Data Entrega Final";
             // 
             // txtDataEntregaInicial
             // 
-            this.txtDataEntregaInicial.BeforeTouchSize = new System.Drawing.Size(178, 35);
+            this.txtDataEntregaInicial.BeforeTouchSize = new System.Drawing.Size(141, 35);
             this.txtDataEntregaInicial.Border3DStyle = System.Windows.Forms.Border3DStyle.Flat;
             this.txtDataEntregaInicial.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtDataEntregaInicial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -394,11 +397,11 @@
             // autoLabel58
             // 
             this.autoLabel58.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel58.Font = new System.Drawing.Font("Montserrat", 9.749999F);
+            this.autoLabel58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F);
             this.autoLabel58.ForeColor = System.Drawing.Color.Black;
             this.autoLabel58.Location = new System.Drawing.Point(25, 203);
             this.autoLabel58.Name = "autoLabel58";
-            this.autoLabel58.Size = new System.Drawing.Size(138, 21);
+            this.autoLabel58.Size = new System.Drawing.Size(123, 16);
             this.autoLabel58.TabIndex = 260;
             this.autoLabel58.Text = "Data Entrega Inicial";
             // 
@@ -1329,20 +1332,20 @@
             gridTextColumn8.AllowFiltering = true;
             gridTextColumn8.AllowResizing = true;
             gridTextColumn8.CellStyle.Font.Size = 12F;
-            gridTextColumn8.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             gridTextColumn8.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridTextColumn8.HeaderStyle.Font.Size = 12F;
-            gridTextColumn8.HeaderText = "Usuário Cadastro";
-            gridTextColumn8.MappingName = "OperadorCadastro";
+            gridTextColumn8.HeaderText = "NFSe";
+            gridTextColumn8.MappingName = "Nfse.Numero";
             gridTextColumn9.AllowDragging = true;
             gridTextColumn9.AllowEditing = false;
             gridTextColumn9.AllowFiltering = true;
             gridTextColumn9.AllowResizing = true;
             gridTextColumn9.CellStyle.Font.Size = 12F;
+            gridTextColumn9.CellStyle.HorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             gridTextColumn9.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridTextColumn9.HeaderStyle.Font.Size = 12F;
-            gridTextColumn9.HeaderText = "Vendedor";
-            gridTextColumn9.MappingName = "Vendedor.RazaoSocial";
+            gridTextColumn9.HeaderText = "Usuário Cadastro";
+            gridTextColumn9.MappingName = "OperadorCadastro";
             gridTextColumn10.AllowDragging = true;
             gridTextColumn10.AllowEditing = false;
             gridTextColumn10.AllowFiltering = true;
@@ -1350,18 +1353,27 @@
             gridTextColumn10.CellStyle.Font.Size = 12F;
             gridTextColumn10.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridTextColumn10.HeaderStyle.Font.Size = 12F;
-            gridTextColumn10.HeaderText = "Usuário Encerramento";
-            gridTextColumn10.MappingName = "OperadorEncerramento";
+            gridTextColumn10.HeaderText = "Vendedor";
+            gridTextColumn10.MappingName = "Vendedor.RazaoSocial";
             gridTextColumn11.AllowDragging = true;
             gridTextColumn11.AllowEditing = false;
             gridTextColumn11.AllowFiltering = true;
             gridTextColumn11.AllowResizing = true;
             gridTextColumn11.CellStyle.Font.Size = 12F;
-            gridTextColumn11.Format = "dd/MM/yyyy";
             gridTextColumn11.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridTextColumn11.HeaderStyle.Font.Size = 12F;
-            gridTextColumn11.HeaderText = "Data Encerramento";
-            gridTextColumn11.MappingName = "DataEncerramento";
+            gridTextColumn11.HeaderText = "Usuário Encerramento";
+            gridTextColumn11.MappingName = "OperadorEncerramento";
+            gridTextColumn12.AllowDragging = true;
+            gridTextColumn12.AllowEditing = false;
+            gridTextColumn12.AllowFiltering = true;
+            gridTextColumn12.AllowResizing = true;
+            gridTextColumn12.CellStyle.Font.Size = 12F;
+            gridTextColumn12.Format = "dd/MM/yyyy";
+            gridTextColumn12.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn12.HeaderStyle.Font.Size = 12F;
+            gridTextColumn12.HeaderText = "Data Encerramento";
+            gridTextColumn12.MappingName = "DataEncerramento";
             this.grid.Columns.Add(gridTextColumn1);
             this.grid.Columns.Add(gridDateTimeColumn1);
             this.grid.Columns.Add(gridTextColumn2);
@@ -1378,8 +1390,9 @@
             this.grid.Columns.Add(gridTextColumn9);
             this.grid.Columns.Add(gridTextColumn10);
             this.grid.Columns.Add(gridTextColumn11);
+            this.grid.Columns.Add(gridTextColumn12);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grid.Location = new System.Drawing.Point(3, 16);
             this.grid.Name = "grid";
             this.grid.Size = new System.Drawing.Size(1115, 162);
@@ -1389,6 +1402,12 @@
             this.grid.TabIndex = 2;
             this.grid.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.grid_QueryRowStyle);
             this.grid.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.grid_CellDoubleClick);
+            // 
+            // btnImprimirNfse
+            // 
+            this.btnImprimirNfse.Name = "btnImprimirNfse";
+            this.btnImprimirNfse.Size = new System.Drawing.Size(23, 23);
+            this.btnImprimirNfse.Text = "Imprimir Nota Serviço";
             // 
             // FrmOrdemServicoLista
             // 
@@ -1493,5 +1512,6 @@
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioCanceladas;
         private RJ_UI.Classes.RJButton btnEnviarWhats;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private Syncfusion.Windows.Forms.Tools.toolstripitem btnImprimirNfse;
     }
 }

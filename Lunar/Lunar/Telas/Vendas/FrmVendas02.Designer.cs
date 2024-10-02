@@ -62,30 +62,23 @@
             this.txtTotalItens = new Lunar.RJ_UI.Classes.RJTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnTransferencia = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnCondicional = new Lunar.RJ_UI.Classes.RJButton();
             this.btnFinalizar01 = new Lunar.RJ_UI.Classes.RJButton();
             this.btnCancelarVenda = new Lunar.RJ_UI.Classes.RJButton();
             this.btnDescontoGeral = new Lunar.RJ_UI.Classes.RJButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblCarregando = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCodCliente = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.btnDadosCliente = new FontAwesome.Sharp.IconButton();
-            this.btnPesquisaProduto = new FontAwesome.Sharp.IconButton();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnPesquisaVendedor = new FontAwesome.Sharp.IconButton();
             this.txtNomeVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblUnidadeMedida = new System.Windows.Forms.Label();
             this.lblDependente = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblIdDependente = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnSelecionarDependente = new FontAwesome.Sharp.IconButton();
             this.autoLabel20 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnSelecionarPropriedades = new FontAwesome.Sharp.IconButton();
             this.lblIdPropriedade = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblInscricaoEstadual = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblPropriedade = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -113,17 +106,11 @@
             this.rjButton5 = new Lunar.RJ_UI.Classes.RJButton();
             this.btnVoltar = new Lunar.RJ_UI.Classes.RJButton();
             this.panelPagamentoTotal = new System.Windows.Forms.Panel();
-            this.btnGerarNfe = new FontAwesome.Sharp.IconButton();
             this.lblNumeroVenda = new System.Windows.Forms.Label();
-            this.btnGerarNFCe = new FontAwesome.Sharp.IconButton();
-            this.btnImprimirRecibo = new FontAwesome.Sharp.IconButton();
-            this.btnExcluirRecebimento = new FontAwesome.Sharp.IconButton();
             this.panel8 = new System.Windows.Forms.Panel();
             this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtClienteAbaPagamento = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnSelecionaVendedorTela2 = new FontAwesome.Sharp.IconButton();
-            this.btnSelecionaClienteTela2 = new FontAwesome.Sharp.IconButton();
             this.txtVendedorSelecionado = new Lunar.RJ_UI.Classes.RJTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -139,11 +126,8 @@
             this.autoLabel19 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel17 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel14 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.iconeCredito = new FontAwesome.Sharp.IconButton();
             this.btnCreditoCliente = new Lunar.RJ_UI.Classes.RJButton();
-            this.iconeDeposito = new FontAwesome.Sharp.IconButton();
             this.btnDeposito = new Lunar.RJ_UI.Classes.RJButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.autoLabel18 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnBoleto = new Lunar.RJ_UI.Classes.RJButton();
             this.autoLabel16 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -152,14 +136,9 @@
             this.autoLabel12 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel11 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.lblFormaPagamento = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.iconeCartao = new FontAwesome.Sharp.IconButton();
             this.btnCartaoCredito = new Lunar.RJ_UI.Classes.RJButton();
-            this.IconeDinheiro = new FontAwesome.Sharp.IconButton();
             this.btnDinheiro = new Lunar.RJ_UI.Classes.RJButton();
-            this.iconeCheque = new FontAwesome.Sharp.IconButton();
-            this.iconePix = new FontAwesome.Sharp.IconButton();
             this.btnCheque = new Lunar.RJ_UI.Classes.RJButton();
-            this.iconeCrediario = new FontAwesome.Sharp.IconButton();
             this.btnCrediario = new Lunar.RJ_UI.Classes.RJButton();
             this.btnPIX = new Lunar.RJ_UI.Classes.RJButton();
             this.dsProduto = new System.Data.DataSet();
@@ -186,6 +165,27 @@
             this.dataColumn10 = new System.Data.DataColumn();
             this.dataColumn11 = new System.Data.DataColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnObservacoes = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
+            this.btnDadosCliente = new FontAwesome.Sharp.IconButton();
+            this.btnPesquisaProduto = new FontAwesome.Sharp.IconButton();
+            this.btnPesquisaVendedor = new FontAwesome.Sharp.IconButton();
+            this.btnSelecionarDependente = new FontAwesome.Sharp.IconButton();
+            this.btnSelecionarPropriedades = new FontAwesome.Sharp.IconButton();
+            this.btnGerarNfe = new FontAwesome.Sharp.IconButton();
+            this.btnGerarNFCe = new FontAwesome.Sharp.IconButton();
+            this.btnImprimirRecibo = new FontAwesome.Sharp.IconButton();
+            this.btnExcluirRecebimento = new FontAwesome.Sharp.IconButton();
+            this.btnSelecionaVendedorTela2 = new FontAwesome.Sharp.IconButton();
+            this.btnSelecionaClienteTela2 = new FontAwesome.Sharp.IconButton();
+            this.iconeCredito = new FontAwesome.Sharp.IconButton();
+            this.iconeDeposito = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.iconeCartao = new FontAwesome.Sharp.IconButton();
+            this.IconeDinheiro = new FontAwesome.Sharp.IconButton();
+            this.iconeCheque = new FontAwesome.Sharp.IconButton();
+            this.iconePix = new FontAwesome.Sharp.IconButton();
+            this.iconeCrediario = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabVenda.SuspendLayout();
@@ -419,7 +419,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnTransferencia);
-            this.groupBox1.Controls.Add(this.btnCondicional);
+            this.groupBox1.Controls.Add(this.btnObservacoes);
             this.groupBox1.Controls.Add(this.btnFinalizar01);
             this.groupBox1.Controls.Add(this.btnCancelarVenda);
             this.groupBox1.Controls.Add(this.btnDescontoGeral);
@@ -455,31 +455,6 @@
             this.btnTransferencia.TextColor = System.Drawing.Color.White;
             this.btnTransferencia.UseVisualStyleBackColor = false;
             this.btnTransferencia.Click += new System.EventHandler(this.btnTransferencia_Click);
-            // 
-            // btnCondicional
-            // 
-            this.btnCondicional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCondicional.BackColor = System.Drawing.Color.White;
-            this.btnCondicional.BackgroundColor = System.Drawing.Color.White;
-            this.btnCondicional.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCondicional.BorderRadius = 8;
-            this.btnCondicional.BorderSize = 2;
-            this.btnCondicional.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCondicional.FlatAppearance.BorderSize = 0;
-            this.btnCondicional.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnCondicional.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnCondicional.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCondicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCondicional.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnCondicional.Location = new System.Drawing.Point(349, 13);
-            this.btnCondicional.Name = "btnCondicional";
-            this.btnCondicional.Size = new System.Drawing.Size(211, 45);
-            this.btnCondicional.TabIndex = 147;
-            this.btnCondicional.Text = "Condicional";
-            this.btnCondicional.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnCondicional.UseVisualStyleBackColor = false;
-            this.btnCondicional.Visible = false;
-            this.btnCondicional.Click += new System.EventHandler(this.btnCondicional_Click);
             // 
             // btnFinalizar01
             // 
@@ -590,27 +565,6 @@
             this.lblCarregando.Text = "Carregando...";
             this.lblCarregando.Visible = false;
             // 
-            // btnPesquisaCliente
-            // 
-            this.btnPesquisaCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaCliente.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaCliente.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaCliente.IconSize = 38;
-            this.btnPesquisaCliente.Location = new System.Drawing.Point(542, 24);
-            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
-            this.btnPesquisaCliente.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaCliente.TabIndex = 156;
-            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
-            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
-            // 
             // autoLabel6
             // 
             this.autoLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -691,48 +645,6 @@
             this.txtCodCliente.UnderlinedStyle = false;
             this.txtCodCliente.Visible = false;
             // 
-            // btnDadosCliente
-            // 
-            this.btnDadosCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDadosCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDadosCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnDadosCliente.FlatAppearance.BorderSize = 0;
-            this.btnDadosCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnDadosCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnDadosCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDadosCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDadosCliente.IconChar = FontAwesome.Sharp.IconChar.ListSquares;
-            this.btnDadosCliente.IconColor = System.Drawing.Color.SlateGray;
-            this.btnDadosCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnDadosCliente.IconSize = 38;
-            this.btnDadosCliente.Location = new System.Drawing.Point(584, 24);
-            this.btnDadosCliente.Name = "btnDadosCliente";
-            this.btnDadosCliente.Size = new System.Drawing.Size(36, 34);
-            this.btnDadosCliente.TabIndex = 191;
-            this.btnDadosCliente.UseVisualStyleBackColor = true;
-            this.btnDadosCliente.Click += new System.EventHandler(this.btnDadosCliente_Click);
-            // 
-            // btnPesquisaProduto
-            // 
-            this.btnPesquisaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPesquisaProduto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaProduto.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaProduto.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaProduto.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaProduto.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaProduto.IconSize = 38;
-            this.btnPesquisaProduto.Location = new System.Drawing.Point(953, 84);
-            this.btnPesquisaProduto.Name = "btnPesquisaProduto";
-            this.btnPesquisaProduto.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaProduto.TabIndex = 187;
-            this.btnPesquisaProduto.UseVisualStyleBackColor = true;
-            this.btnPesquisaProduto.Click += new System.EventHandler(this.btnPesquisaProduto_Click);
-            // 
             // autoLabel3
             // 
             this.autoLabel3.BackColor = System.Drawing.Color.Transparent;
@@ -744,27 +656,6 @@
             this.autoLabel3.Size = new System.Drawing.Size(133, 16);
             this.autoLabel3.TabIndex = 186;
             this.autoLabel3.Text = "Pesquisa de Produto";
-            // 
-            // btnPesquisaVendedor
-            // 
-            this.btnPesquisaVendedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPesquisaVendedor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaVendedor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaVendedor.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaVendedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaVendedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaVendedor.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaVendedor.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaVendedor.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaVendedor.IconSize = 38;
-            this.btnPesquisaVendedor.Location = new System.Drawing.Point(953, 22);
-            this.btnPesquisaVendedor.Name = "btnPesquisaVendedor";
-            this.btnPesquisaVendedor.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaVendedor.TabIndex = 195;
-            this.btnPesquisaVendedor.UseVisualStyleBackColor = true;
-            this.btnPesquisaVendedor.Click += new System.EventHandler(this.btnPesquisaVendedor_Click);
             // 
             // txtNomeVendedor
             // 
@@ -859,27 +750,6 @@
             this.lblIdDependente.Text = "ID Dependente";
             this.lblIdDependente.Visible = false;
             // 
-            // btnSelecionarDependente
-            // 
-            this.btnSelecionarDependente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionarDependente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSelecionarDependente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnSelecionarDependente.FlatAppearance.BorderSize = 0;
-            this.btnSelecionarDependente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionarDependente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionarDependente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelecionarDependente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionarDependente.IconChar = FontAwesome.Sharp.IconChar.PersonCircleCheck;
-            this.btnSelecionarDependente.IconColor = System.Drawing.Color.SlateGray;
-            this.btnSelecionarDependente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnSelecionarDependente.IconSize = 38;
-            this.btnSelecionarDependente.Location = new System.Drawing.Point(324, 336);
-            this.btnSelecionarDependente.Name = "btnSelecionarDependente";
-            this.btnSelecionarDependente.Size = new System.Drawing.Size(36, 34);
-            this.btnSelecionarDependente.TabIndex = 194;
-            this.btnSelecionarDependente.UseVisualStyleBackColor = true;
-            this.btnSelecionarDependente.Click += new System.EventHandler(this.btnSelecionarDependente_Click);
-            // 
             // autoLabel20
             // 
             this.autoLabel20.BackColor = System.Drawing.Color.Transparent;
@@ -891,27 +761,6 @@
             this.autoLabel20.Size = new System.Drawing.Size(186, 16);
             this.autoLabel20.TabIndex = 193;
             this.autoLabel20.Text = "Propriedades e Dependentes";
-            // 
-            // btnSelecionarPropriedades
-            // 
-            this.btnSelecionarPropriedades.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionarPropriedades.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSelecionarPropriedades.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnSelecionarPropriedades.FlatAppearance.BorderSize = 0;
-            this.btnSelecionarPropriedades.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionarPropriedades.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionarPropriedades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelecionarPropriedades.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionarPropriedades.IconChar = FontAwesome.Sharp.IconChar.Tractor;
-            this.btnSelecionarPropriedades.IconColor = System.Drawing.Color.SlateGray;
-            this.btnSelecionarPropriedades.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnSelecionarPropriedades.IconSize = 38;
-            this.btnSelecionarPropriedades.Location = new System.Drawing.Point(324, 299);
-            this.btnSelecionarPropriedades.Name = "btnSelecionarPropriedades";
-            this.btnSelecionarPropriedades.Size = new System.Drawing.Size(36, 34);
-            this.btnSelecionarPropriedades.TabIndex = 192;
-            this.btnSelecionarPropriedades.UseVisualStyleBackColor = true;
-            this.btnSelecionarPropriedades.Click += new System.EventHandler(this.btnSelecionarPropriedades_Click);
             // 
             // lblIdPropriedade
             // 
@@ -1574,30 +1423,6 @@
             this.panelPagamentoTotal.Size = new System.Drawing.Size(1005, 705);
             this.panelPagamentoTotal.TabIndex = 151;
             // 
-            // btnGerarNfe
-            // 
-            this.btnGerarNfe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGerarNfe.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGerarNfe.Enabled = false;
-            this.btnGerarNfe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnGerarNfe.FlatAppearance.BorderSize = 0;
-            this.btnGerarNfe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnGerarNfe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGerarNfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGerarNfe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerarNfe.IconChar = FontAwesome.Sharp.IconChar.Barcode;
-            this.btnGerarNfe.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
-            this.btnGerarNfe.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnGerarNfe.IconSize = 25;
-            this.btnGerarNfe.Location = new System.Drawing.Point(790, 471);
-            this.btnGerarNfe.Name = "btnGerarNfe";
-            this.btnGerarNfe.Size = new System.Drawing.Size(202, 37);
-            this.btnGerarNfe.TabIndex = 213;
-            this.btnGerarNfe.Text = " Gerar NF-e (55)  -  [F1]";
-            this.btnGerarNfe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGerarNfe.UseVisualStyleBackColor = true;
-            this.btnGerarNfe.Click += new System.EventHandler(this.btnGerarNfe_Click);
-            // 
             // lblNumeroVenda
             // 
             this.lblNumeroVenda.AutoSize = true;
@@ -1608,76 +1433,6 @@
             this.lblNumeroVenda.Size = new System.Drawing.Size(138, 25);
             this.lblNumeroVenda.TabIndex = 153;
             this.lblNumeroVenda.Text = "Nº Venda: 0";
-            // 
-            // btnGerarNFCe
-            // 
-            this.btnGerarNFCe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGerarNFCe.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGerarNFCe.Enabled = false;
-            this.btnGerarNFCe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnGerarNFCe.FlatAppearance.BorderSize = 0;
-            this.btnGerarNFCe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnGerarNFCe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGerarNFCe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGerarNFCe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerarNFCe.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
-            this.btnGerarNFCe.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
-            this.btnGerarNFCe.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnGerarNFCe.IconSize = 25;
-            this.btnGerarNFCe.Location = new System.Drawing.Point(792, 514);
-            this.btnGerarNFCe.Name = "btnGerarNFCe";
-            this.btnGerarNFCe.Size = new System.Drawing.Size(202, 37);
-            this.btnGerarNFCe.TabIndex = 212;
-            this.btnGerarNFCe.Text = " Gerar NFC-e (65)  -  [F2]";
-            this.btnGerarNFCe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGerarNFCe.UseVisualStyleBackColor = true;
-            this.btnGerarNFCe.Click += new System.EventHandler(this.btnGerarNFCe_Click);
-            // 
-            // btnImprimirRecibo
-            // 
-            this.btnImprimirRecibo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimirRecibo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImprimirRecibo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnImprimirRecibo.FlatAppearance.BorderSize = 0;
-            this.btnImprimirRecibo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnImprimirRecibo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnImprimirRecibo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirRecibo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirRecibo.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnImprimirRecibo.IconColor = System.Drawing.Color.Gray;
-            this.btnImprimirRecibo.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnImprimirRecibo.IconSize = 25;
-            this.btnImprimirRecibo.Location = new System.Drawing.Point(780, 428);
-            this.btnImprimirRecibo.Name = "btnImprimirRecibo";
-            this.btnImprimirRecibo.Size = new System.Drawing.Size(202, 37);
-            this.btnImprimirRecibo.TabIndex = 211;
-            this.btnImprimirRecibo.Text = " Imprimir Recibo";
-            this.btnImprimirRecibo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImprimirRecibo.UseVisualStyleBackColor = true;
-            this.btnImprimirRecibo.Click += new System.EventHandler(this.btnImprimirRecibo_Click);
-            // 
-            // btnExcluirRecebimento
-            // 
-            this.btnExcluirRecebimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirRecebimento.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluirRecebimento.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnExcluirRecebimento.FlatAppearance.BorderSize = 0;
-            this.btnExcluirRecebimento.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExcluirRecebimento.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnExcluirRecebimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirRecebimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirRecebimento.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnExcluirRecebimento.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-            this.btnExcluirRecebimento.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnExcluirRecebimento.IconSize = 25;
-            this.btnExcluirRecebimento.Location = new System.Drawing.Point(787, 385);
-            this.btnExcluirRecebimento.Name = "btnExcluirRecebimento";
-            this.btnExcluirRecebimento.Size = new System.Drawing.Size(202, 37);
-            this.btnExcluirRecebimento.TabIndex = 210;
-            this.btnExcluirRecebimento.Text = " Excluir Recebimento";
-            this.btnExcluirRecebimento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluirRecebimento.UseVisualStyleBackColor = true;
-            this.btnExcluirRecebimento.Click += new System.EventHandler(this.btnExcluirRecebimento_Click_1);
             // 
             // panel8
             // 
@@ -1742,46 +1497,6 @@
             this.autoLabel10.Size = new System.Drawing.Size(67, 16);
             this.autoLabel10.TabIndex = 200;
             this.autoLabel10.Text = "Vendedor";
-            // 
-            // btnSelecionaVendedorTela2
-            // 
-            this.btnSelecionaVendedorTela2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSelecionaVendedorTela2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnSelecionaVendedorTela2.FlatAppearance.BorderSize = 0;
-            this.btnSelecionaVendedorTela2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionaVendedorTela2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionaVendedorTela2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelecionaVendedorTela2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionaVendedorTela2.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnSelecionaVendedorTela2.IconColor = System.Drawing.Color.SlateGray;
-            this.btnSelecionaVendedorTela2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnSelecionaVendedorTela2.IconSize = 38;
-            this.btnSelecionaVendedorTela2.Location = new System.Drawing.Point(863, 22);
-            this.btnSelecionaVendedorTela2.Name = "btnSelecionaVendedorTela2";
-            this.btnSelecionaVendedorTela2.Size = new System.Drawing.Size(36, 34);
-            this.btnSelecionaVendedorTela2.TabIndex = 196;
-            this.btnSelecionaVendedorTela2.UseVisualStyleBackColor = true;
-            this.btnSelecionaVendedorTela2.Click += new System.EventHandler(this.btnSelecionaVendedorTela2_Click);
-            // 
-            // btnSelecionaClienteTela2
-            // 
-            this.btnSelecionaClienteTela2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSelecionaClienteTela2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnSelecionaClienteTela2.FlatAppearance.BorderSize = 0;
-            this.btnSelecionaClienteTela2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionaClienteTela2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionaClienteTela2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelecionaClienteTela2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionaClienteTela2.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnSelecionaClienteTela2.IconColor = System.Drawing.Color.SlateGray;
-            this.btnSelecionaClienteTela2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnSelecionaClienteTela2.IconSize = 38;
-            this.btnSelecionaClienteTela2.Location = new System.Drawing.Point(429, 22);
-            this.btnSelecionaClienteTela2.Name = "btnSelecionaClienteTela2";
-            this.btnSelecionaClienteTela2.Size = new System.Drawing.Size(36, 34);
-            this.btnSelecionaClienteTela2.TabIndex = 197;
-            this.btnSelecionaClienteTela2.UseVisualStyleBackColor = true;
-            this.btnSelecionaClienteTela2.Click += new System.EventHandler(this.btnSelecionaClienteTela2_Click);
             // 
             // txtVendedorSelecionado
             // 
@@ -2053,26 +1768,6 @@
             this.autoLabel14.TabIndex = 206;
             this.autoLabel14.Text = "[F9]";
             // 
-            // iconeCredito
-            // 
-            this.iconeCredito.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeCredito.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeCredito.FlatAppearance.BorderSize = 0;
-            this.iconeCredito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeCredito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeCredito.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
-            this.iconeCredito.IconColor = System.Drawing.Color.Purple;
-            this.iconeCredito.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeCredito.IconSize = 35;
-            this.iconeCredito.Location = new System.Drawing.Point(750, 215);
-            this.iconeCredito.Name = "iconeCredito";
-            this.iconeCredito.Size = new System.Drawing.Size(43, 35);
-            this.iconeCredito.TabIndex = 174;
-            this.iconeCredito.UseVisualStyleBackColor = true;
-            this.iconeCredito.Click += new System.EventHandler(this.iconeCredito_Click);
-            // 
             // btnCreditoCliente
             // 
             this.btnCreditoCliente.BackColor = System.Drawing.Color.White;
@@ -2100,26 +1795,6 @@
             this.btnCreditoCliente.UseVisualStyleBackColor = false;
             this.btnCreditoCliente.Click += new System.EventHandler(this.btnCreditoCliente_Click);
             // 
-            // iconeDeposito
-            // 
-            this.iconeDeposito.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeDeposito.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeDeposito.FlatAppearance.BorderSize = 0;
-            this.iconeDeposito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeDeposito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeDeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeDeposito.IconChar = FontAwesome.Sharp.IconChar.MoneyCheck;
-            this.iconeDeposito.IconColor = System.Drawing.Color.Olive;
-            this.iconeDeposito.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeDeposito.IconSize = 40;
-            this.iconeDeposito.Location = new System.Drawing.Point(756, 119);
-            this.iconeDeposito.Name = "iconeDeposito";
-            this.iconeDeposito.Size = new System.Drawing.Size(33, 27);
-            this.iconeDeposito.TabIndex = 168;
-            this.iconeDeposito.UseVisualStyleBackColor = true;
-            this.iconeDeposito.Click += new System.EventHandler(this.iconeDeposito_Click);
-            // 
             // btnDeposito
             // 
             this.btnDeposito.BackColor = System.Drawing.Color.White;
@@ -2146,26 +1821,6 @@
             this.btnDeposito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeposito.UseVisualStyleBackColor = false;
             this.btnDeposito.Click += new System.EventHandler(this.btnDeposito_Click);
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Barcode;
-            this.iconButton1.IconColor = System.Drawing.Color.Gray;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton1.IconSize = 35;
-            this.iconButton1.Location = new System.Drawing.Point(82, 224);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(49, 26);
-            this.iconButton1.TabIndex = 212;
-            this.iconButton1.UseVisualStyleBackColor = true;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // autoLabel18
             // 
@@ -2305,26 +1960,6 @@
             this.lblFormaPagamento.Texts = "SELECIONE A FORMA DE PAGAMENTO";
             this.lblFormaPagamento.UnderlinedStyle = false;
             // 
-            // iconeCartao
-            // 
-            this.iconeCartao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeCartao.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeCartao.FlatAppearance.BorderSize = 0;
-            this.iconeCartao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeCartao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeCartao.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeCartao.IconChar = FontAwesome.Sharp.IconChar.CreditCardAlt;
-            this.iconeCartao.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
-            this.iconeCartao.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeCartao.IconSize = 40;
-            this.iconeCartao.Location = new System.Drawing.Point(301, 115);
-            this.iconeCartao.Name = "iconeCartao";
-            this.iconeCartao.Size = new System.Drawing.Size(53, 34);
-            this.iconeCartao.TabIndex = 164;
-            this.iconeCartao.UseVisualStyleBackColor = true;
-            this.iconeCartao.Click += new System.EventHandler(this.iconeCartao_Click);
-            // 
             // btnCartaoCredito
             // 
             this.btnCartaoCredito.BackColor = System.Drawing.Color.White;
@@ -2351,26 +1986,6 @@
             this.btnCartaoCredito.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCartaoCredito.UseVisualStyleBackColor = false;
             this.btnCartaoCredito.Click += new System.EventHandler(this.btnCartaoCredito_Click);
-            // 
-            // IconeDinheiro
-            // 
-            this.IconeDinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.IconeDinheiro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.IconeDinheiro.FlatAppearance.BorderSize = 0;
-            this.IconeDinheiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.IconeDinheiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.IconeDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.IconeDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IconeDinheiro.IconChar = FontAwesome.Sharp.IconChar.MoneyBill1Wave;
-            this.IconeDinheiro.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-            this.IconeDinheiro.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.IconeDinheiro.IconSize = 40;
-            this.IconeDinheiro.Location = new System.Drawing.Point(78, 120);
-            this.IconeDinheiro.Name = "IconeDinheiro";
-            this.IconeDinheiro.Size = new System.Drawing.Size(49, 27);
-            this.IconeDinheiro.TabIndex = 162;
-            this.IconeDinheiro.UseVisualStyleBackColor = true;
-            this.IconeDinheiro.Click += new System.EventHandler(this.IconeDinheiro_Click);
             // 
             // btnDinheiro
             // 
@@ -2399,46 +2014,6 @@
             this.btnDinheiro.UseVisualStyleBackColor = false;
             this.btnDinheiro.Click += new System.EventHandler(this.btnDinheiro_Click);
             // 
-            // iconeCheque
-            // 
-            this.iconeCheque.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeCheque.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeCheque.FlatAppearance.BorderSize = 0;
-            this.iconeCheque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeCheque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeCheque.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
-            this.iconeCheque.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(173)))), ((int)(((byte)(78)))));
-            this.iconeCheque.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeCheque.IconSize = 40;
-            this.iconeCheque.Location = new System.Drawing.Point(531, 224);
-            this.iconeCheque.Name = "iconeCheque";
-            this.iconeCheque.Size = new System.Drawing.Size(39, 26);
-            this.iconeCheque.TabIndex = 172;
-            this.iconeCheque.UseVisualStyleBackColor = true;
-            this.iconeCheque.Click += new System.EventHandler(this.iconeCheque_Click);
-            // 
-            // iconePix
-            // 
-            this.iconePix.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconePix.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconePix.FlatAppearance.BorderSize = 0;
-            this.iconePix.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconePix.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconePix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconePix.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconePix.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
-            this.iconePix.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
-            this.iconePix.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconePix.IconSize = 35;
-            this.iconePix.Location = new System.Drawing.Point(526, 115);
-            this.iconePix.Name = "iconePix";
-            this.iconePix.Size = new System.Drawing.Size(47, 31);
-            this.iconePix.TabIndex = 167;
-            this.iconePix.UseVisualStyleBackColor = true;
-            this.iconePix.Click += new System.EventHandler(this.iconePix_Click);
-            // 
             // btnCheque
             // 
             this.btnCheque.BackColor = System.Drawing.Color.White;
@@ -2465,26 +2040,6 @@
             this.btnCheque.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCheque.UseVisualStyleBackColor = false;
             this.btnCheque.Click += new System.EventHandler(this.btnCheque_Click);
-            // 
-            // iconeCrediario
-            // 
-            this.iconeCrediario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconeCrediario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.iconeCrediario.FlatAppearance.BorderSize = 0;
-            this.iconeCrediario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.iconeCrediario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.iconeCrediario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconeCrediario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconeCrediario.IconChar = FontAwesome.Sharp.IconChar.Handshake;
-            this.iconeCrediario.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
-            this.iconeCrediario.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconeCrediario.IconSize = 45;
-            this.iconeCrediario.Location = new System.Drawing.Point(301, 224);
-            this.iconeCrediario.Name = "iconeCrediario";
-            this.iconeCrediario.Size = new System.Drawing.Size(54, 26);
-            this.iconeCrediario.TabIndex = 170;
-            this.iconeCrediario.UseVisualStyleBackColor = true;
-            this.iconeCrediario.Click += new System.EventHandler(this.iconeCrediario_Click);
             // 
             // btnCrediario
             // 
@@ -2670,6 +2225,450 @@
             this.dataColumn11.ColumnName = "VendaForma";
             this.dataColumn11.DataType = typeof(int);
             // 
+            // btnObservacoes
+            // 
+            this.btnObservacoes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnObservacoes.BackColor = System.Drawing.Color.White;
+            this.btnObservacoes.BackgroundColor = System.Drawing.Color.White;
+            this.btnObservacoes.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnObservacoes.BorderRadius = 8;
+            this.btnObservacoes.BorderSize = 2;
+            this.btnObservacoes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnObservacoes.FlatAppearance.BorderSize = 0;
+            this.btnObservacoes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnObservacoes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnObservacoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnObservacoes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnObservacoes.Location = new System.Drawing.Point(349, 13);
+            this.btnObservacoes.Name = "btnObservacoes";
+            this.btnObservacoes.Size = new System.Drawing.Size(211, 45);
+            this.btnObservacoes.TabIndex = 147;
+            this.btnObservacoes.Text = "Observações";
+            this.btnObservacoes.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnObservacoes.UseVisualStyleBackColor = false;
+            this.btnObservacoes.Click += new System.EventHandler(this.btnCondicional_Click);
+            // 
+            // btnPesquisaCliente
+            // 
+            this.btnPesquisaCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaCliente.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaCliente.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaCliente.IconSize = 38;
+            this.btnPesquisaCliente.Location = new System.Drawing.Point(542, 24);
+            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
+            this.btnPesquisaCliente.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaCliente.TabIndex = 156;
+            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
+            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
+            // 
+            // btnDadosCliente
+            // 
+            this.btnDadosCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDadosCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDadosCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnDadosCliente.FlatAppearance.BorderSize = 0;
+            this.btnDadosCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDadosCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDadosCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDadosCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDadosCliente.IconChar = FontAwesome.Sharp.IconChar.ListSquares;
+            this.btnDadosCliente.IconColor = System.Drawing.Color.SlateGray;
+            this.btnDadosCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnDadosCliente.IconSize = 38;
+            this.btnDadosCliente.Location = new System.Drawing.Point(584, 24);
+            this.btnDadosCliente.Name = "btnDadosCliente";
+            this.btnDadosCliente.Size = new System.Drawing.Size(36, 34);
+            this.btnDadosCliente.TabIndex = 191;
+            this.btnDadosCliente.UseVisualStyleBackColor = true;
+            this.btnDadosCliente.Click += new System.EventHandler(this.btnDadosCliente_Click);
+            // 
+            // btnPesquisaProduto
+            // 
+            this.btnPesquisaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPesquisaProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaProduto.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaProduto.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaProduto.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaProduto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaProduto.IconSize = 38;
+            this.btnPesquisaProduto.Location = new System.Drawing.Point(953, 84);
+            this.btnPesquisaProduto.Name = "btnPesquisaProduto";
+            this.btnPesquisaProduto.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaProduto.TabIndex = 187;
+            this.btnPesquisaProduto.UseVisualStyleBackColor = true;
+            this.btnPesquisaProduto.Click += new System.EventHandler(this.btnPesquisaProduto_Click);
+            // 
+            // btnPesquisaVendedor
+            // 
+            this.btnPesquisaVendedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPesquisaVendedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaVendedor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaVendedor.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaVendedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaVendedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaVendedor.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaVendedor.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaVendedor.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaVendedor.IconSize = 38;
+            this.btnPesquisaVendedor.Location = new System.Drawing.Point(953, 22);
+            this.btnPesquisaVendedor.Name = "btnPesquisaVendedor";
+            this.btnPesquisaVendedor.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaVendedor.TabIndex = 195;
+            this.btnPesquisaVendedor.UseVisualStyleBackColor = true;
+            this.btnPesquisaVendedor.Click += new System.EventHandler(this.btnPesquisaVendedor_Click);
+            // 
+            // btnSelecionarDependente
+            // 
+            this.btnSelecionarDependente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelecionarDependente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelecionarDependente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnSelecionarDependente.FlatAppearance.BorderSize = 0;
+            this.btnSelecionarDependente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSelecionarDependente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSelecionarDependente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelecionarDependente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelecionarDependente.IconChar = FontAwesome.Sharp.IconChar.PersonCircleCheck;
+            this.btnSelecionarDependente.IconColor = System.Drawing.Color.SlateGray;
+            this.btnSelecionarDependente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnSelecionarDependente.IconSize = 38;
+            this.btnSelecionarDependente.Location = new System.Drawing.Point(324, 336);
+            this.btnSelecionarDependente.Name = "btnSelecionarDependente";
+            this.btnSelecionarDependente.Size = new System.Drawing.Size(36, 34);
+            this.btnSelecionarDependente.TabIndex = 194;
+            this.btnSelecionarDependente.UseVisualStyleBackColor = true;
+            this.btnSelecionarDependente.Click += new System.EventHandler(this.btnSelecionarDependente_Click);
+            // 
+            // btnSelecionarPropriedades
+            // 
+            this.btnSelecionarPropriedades.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelecionarPropriedades.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelecionarPropriedades.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnSelecionarPropriedades.FlatAppearance.BorderSize = 0;
+            this.btnSelecionarPropriedades.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSelecionarPropriedades.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSelecionarPropriedades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelecionarPropriedades.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelecionarPropriedades.IconChar = FontAwesome.Sharp.IconChar.Tractor;
+            this.btnSelecionarPropriedades.IconColor = System.Drawing.Color.SlateGray;
+            this.btnSelecionarPropriedades.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnSelecionarPropriedades.IconSize = 38;
+            this.btnSelecionarPropriedades.Location = new System.Drawing.Point(324, 299);
+            this.btnSelecionarPropriedades.Name = "btnSelecionarPropriedades";
+            this.btnSelecionarPropriedades.Size = new System.Drawing.Size(36, 34);
+            this.btnSelecionarPropriedades.TabIndex = 192;
+            this.btnSelecionarPropriedades.UseVisualStyleBackColor = true;
+            this.btnSelecionarPropriedades.Click += new System.EventHandler(this.btnSelecionarPropriedades_Click);
+            // 
+            // btnGerarNfe
+            // 
+            this.btnGerarNfe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGerarNfe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerarNfe.Enabled = false;
+            this.btnGerarNfe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnGerarNfe.FlatAppearance.BorderSize = 0;
+            this.btnGerarNfe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnGerarNfe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGerarNfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGerarNfe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarNfe.IconChar = FontAwesome.Sharp.IconChar.Barcode;
+            this.btnGerarNfe.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
+            this.btnGerarNfe.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnGerarNfe.IconSize = 25;
+            this.btnGerarNfe.Location = new System.Drawing.Point(790, 471);
+            this.btnGerarNfe.Name = "btnGerarNfe";
+            this.btnGerarNfe.Size = new System.Drawing.Size(202, 37);
+            this.btnGerarNfe.TabIndex = 213;
+            this.btnGerarNfe.Text = " Gerar NF-e (55)  -  [F1]";
+            this.btnGerarNfe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGerarNfe.UseVisualStyleBackColor = true;
+            this.btnGerarNfe.Click += new System.EventHandler(this.btnGerarNfe_Click);
+            // 
+            // btnGerarNFCe
+            // 
+            this.btnGerarNFCe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGerarNFCe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerarNFCe.Enabled = false;
+            this.btnGerarNFCe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnGerarNFCe.FlatAppearance.BorderSize = 0;
+            this.btnGerarNFCe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnGerarNFCe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGerarNFCe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGerarNFCe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarNFCe.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
+            this.btnGerarNFCe.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
+            this.btnGerarNFCe.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnGerarNFCe.IconSize = 25;
+            this.btnGerarNFCe.Location = new System.Drawing.Point(792, 514);
+            this.btnGerarNFCe.Name = "btnGerarNFCe";
+            this.btnGerarNFCe.Size = new System.Drawing.Size(202, 37);
+            this.btnGerarNFCe.TabIndex = 212;
+            this.btnGerarNFCe.Text = " Gerar NFC-e (65)  -  [F2]";
+            this.btnGerarNFCe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGerarNFCe.UseVisualStyleBackColor = true;
+            this.btnGerarNFCe.Click += new System.EventHandler(this.btnGerarNFCe_Click);
+            // 
+            // btnImprimirRecibo
+            // 
+            this.btnImprimirRecibo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirRecibo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimirRecibo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnImprimirRecibo.FlatAppearance.BorderSize = 0;
+            this.btnImprimirRecibo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirRecibo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnImprimirRecibo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirRecibo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirRecibo.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnImprimirRecibo.IconColor = System.Drawing.Color.Gray;
+            this.btnImprimirRecibo.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnImprimirRecibo.IconSize = 25;
+            this.btnImprimirRecibo.Location = new System.Drawing.Point(780, 428);
+            this.btnImprimirRecibo.Name = "btnImprimirRecibo";
+            this.btnImprimirRecibo.Size = new System.Drawing.Size(202, 37);
+            this.btnImprimirRecibo.TabIndex = 211;
+            this.btnImprimirRecibo.Text = " Imprimir Recibo";
+            this.btnImprimirRecibo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimirRecibo.UseVisualStyleBackColor = true;
+            this.btnImprimirRecibo.Click += new System.EventHandler(this.btnImprimirRecibo_Click);
+            // 
+            // btnExcluirRecebimento
+            // 
+            this.btnExcluirRecebimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirRecebimento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluirRecebimento.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluirRecebimento.FlatAppearance.BorderSize = 0;
+            this.btnExcluirRecebimento.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExcluirRecebimento.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnExcluirRecebimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirRecebimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirRecebimento.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnExcluirRecebimento.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+            this.btnExcluirRecebimento.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExcluirRecebimento.IconSize = 25;
+            this.btnExcluirRecebimento.Location = new System.Drawing.Point(787, 385);
+            this.btnExcluirRecebimento.Name = "btnExcluirRecebimento";
+            this.btnExcluirRecebimento.Size = new System.Drawing.Size(202, 37);
+            this.btnExcluirRecebimento.TabIndex = 210;
+            this.btnExcluirRecebimento.Text = " Excluir Recebimento";
+            this.btnExcluirRecebimento.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcluirRecebimento.UseVisualStyleBackColor = true;
+            this.btnExcluirRecebimento.Click += new System.EventHandler(this.btnExcluirRecebimento_Click_1);
+            // 
+            // btnSelecionaVendedorTela2
+            // 
+            this.btnSelecionaVendedorTela2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelecionaVendedorTela2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnSelecionaVendedorTela2.FlatAppearance.BorderSize = 0;
+            this.btnSelecionaVendedorTela2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSelecionaVendedorTela2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSelecionaVendedorTela2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelecionaVendedorTela2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelecionaVendedorTela2.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnSelecionaVendedorTela2.IconColor = System.Drawing.Color.SlateGray;
+            this.btnSelecionaVendedorTela2.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnSelecionaVendedorTela2.IconSize = 38;
+            this.btnSelecionaVendedorTela2.Location = new System.Drawing.Point(863, 22);
+            this.btnSelecionaVendedorTela2.Name = "btnSelecionaVendedorTela2";
+            this.btnSelecionaVendedorTela2.Size = new System.Drawing.Size(36, 34);
+            this.btnSelecionaVendedorTela2.TabIndex = 196;
+            this.btnSelecionaVendedorTela2.UseVisualStyleBackColor = true;
+            this.btnSelecionaVendedorTela2.Click += new System.EventHandler(this.btnSelecionaVendedorTela2_Click);
+            // 
+            // btnSelecionaClienteTela2
+            // 
+            this.btnSelecionaClienteTela2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelecionaClienteTela2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnSelecionaClienteTela2.FlatAppearance.BorderSize = 0;
+            this.btnSelecionaClienteTela2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSelecionaClienteTela2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSelecionaClienteTela2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelecionaClienteTela2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelecionaClienteTela2.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnSelecionaClienteTela2.IconColor = System.Drawing.Color.SlateGray;
+            this.btnSelecionaClienteTela2.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnSelecionaClienteTela2.IconSize = 38;
+            this.btnSelecionaClienteTela2.Location = new System.Drawing.Point(429, 22);
+            this.btnSelecionaClienteTela2.Name = "btnSelecionaClienteTela2";
+            this.btnSelecionaClienteTela2.Size = new System.Drawing.Size(36, 34);
+            this.btnSelecionaClienteTela2.TabIndex = 197;
+            this.btnSelecionaClienteTela2.UseVisualStyleBackColor = true;
+            this.btnSelecionaClienteTela2.Click += new System.EventHandler(this.btnSelecionaClienteTela2_Click);
+            // 
+            // iconeCredito
+            // 
+            this.iconeCredito.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeCredito.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeCredito.FlatAppearance.BorderSize = 0;
+            this.iconeCredito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeCredito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeCredito.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
+            this.iconeCredito.IconColor = System.Drawing.Color.Purple;
+            this.iconeCredito.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeCredito.IconSize = 35;
+            this.iconeCredito.Location = new System.Drawing.Point(750, 215);
+            this.iconeCredito.Name = "iconeCredito";
+            this.iconeCredito.Size = new System.Drawing.Size(43, 35);
+            this.iconeCredito.TabIndex = 174;
+            this.iconeCredito.UseVisualStyleBackColor = true;
+            this.iconeCredito.Click += new System.EventHandler(this.iconeCredito_Click);
+            // 
+            // iconeDeposito
+            // 
+            this.iconeDeposito.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeDeposito.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeDeposito.FlatAppearance.BorderSize = 0;
+            this.iconeDeposito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeDeposito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeDeposito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeDeposito.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeDeposito.IconChar = FontAwesome.Sharp.IconChar.MoneyCheck;
+            this.iconeDeposito.IconColor = System.Drawing.Color.Olive;
+            this.iconeDeposito.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeDeposito.IconSize = 40;
+            this.iconeDeposito.Location = new System.Drawing.Point(756, 119);
+            this.iconeDeposito.Name = "iconeDeposito";
+            this.iconeDeposito.Size = new System.Drawing.Size(33, 27);
+            this.iconeDeposito.TabIndex = 168;
+            this.iconeDeposito.UseVisualStyleBackColor = true;
+            this.iconeDeposito.Click += new System.EventHandler(this.iconeDeposito_Click);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Barcode;
+            this.iconButton1.IconColor = System.Drawing.Color.Gray;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconButton1.IconSize = 35;
+            this.iconButton1.Location = new System.Drawing.Point(82, 224);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(49, 26);
+            this.iconButton1.TabIndex = 212;
+            this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // iconeCartao
+            // 
+            this.iconeCartao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeCartao.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeCartao.FlatAppearance.BorderSize = 0;
+            this.iconeCartao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeCartao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeCartao.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeCartao.IconChar = FontAwesome.Sharp.IconChar.CreditCardAlt;
+            this.iconeCartao.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(117)))), ((int)(((byte)(216)))));
+            this.iconeCartao.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeCartao.IconSize = 40;
+            this.iconeCartao.Location = new System.Drawing.Point(301, 115);
+            this.iconeCartao.Name = "iconeCartao";
+            this.iconeCartao.Size = new System.Drawing.Size(53, 34);
+            this.iconeCartao.TabIndex = 164;
+            this.iconeCartao.UseVisualStyleBackColor = true;
+            this.iconeCartao.Click += new System.EventHandler(this.iconeCartao_Click);
+            // 
+            // IconeDinheiro
+            // 
+            this.IconeDinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.IconeDinheiro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.IconeDinheiro.FlatAppearance.BorderSize = 0;
+            this.IconeDinheiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.IconeDinheiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.IconeDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IconeDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IconeDinheiro.IconChar = FontAwesome.Sharp.IconChar.MoneyBill1Wave;
+            this.IconeDinheiro.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
+            this.IconeDinheiro.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.IconeDinheiro.IconSize = 40;
+            this.IconeDinheiro.Location = new System.Drawing.Point(78, 120);
+            this.IconeDinheiro.Name = "IconeDinheiro";
+            this.IconeDinheiro.Size = new System.Drawing.Size(49, 27);
+            this.IconeDinheiro.TabIndex = 162;
+            this.IconeDinheiro.UseVisualStyleBackColor = true;
+            this.IconeDinheiro.Click += new System.EventHandler(this.IconeDinheiro_Click);
+            // 
+            // iconeCheque
+            // 
+            this.iconeCheque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeCheque.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeCheque.FlatAppearance.BorderSize = 0;
+            this.iconeCheque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeCheque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeCheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeCheque.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
+            this.iconeCheque.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(173)))), ((int)(((byte)(78)))));
+            this.iconeCheque.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeCheque.IconSize = 40;
+            this.iconeCheque.Location = new System.Drawing.Point(531, 224);
+            this.iconeCheque.Name = "iconeCheque";
+            this.iconeCheque.Size = new System.Drawing.Size(39, 26);
+            this.iconeCheque.TabIndex = 172;
+            this.iconeCheque.UseVisualStyleBackColor = true;
+            this.iconeCheque.Click += new System.EventHandler(this.iconeCheque_Click);
+            // 
+            // iconePix
+            // 
+            this.iconePix.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconePix.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconePix.FlatAppearance.BorderSize = 0;
+            this.iconePix.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconePix.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconePix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconePix.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconePix.IconChar = FontAwesome.Sharp.IconChar.Qrcode;
+            this.iconePix.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
+            this.iconePix.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconePix.IconSize = 35;
+            this.iconePix.Location = new System.Drawing.Point(526, 115);
+            this.iconePix.Name = "iconePix";
+            this.iconePix.Size = new System.Drawing.Size(47, 31);
+            this.iconePix.TabIndex = 167;
+            this.iconePix.UseVisualStyleBackColor = true;
+            this.iconePix.Click += new System.EventHandler(this.iconePix_Click);
+            // 
+            // iconeCrediario
+            // 
+            this.iconeCrediario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconeCrediario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.iconeCrediario.FlatAppearance.BorderSize = 0;
+            this.iconeCrediario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconeCrediario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.iconeCrediario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconeCrediario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconeCrediario.IconChar = FontAwesome.Sharp.IconChar.Handshake;
+            this.iconeCrediario.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(44)))));
+            this.iconeCrediario.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconeCrediario.IconSize = 45;
+            this.iconeCrediario.Location = new System.Drawing.Point(301, 224);
+            this.iconeCrediario.Name = "iconeCrediario";
+            this.iconeCrediario.Size = new System.Drawing.Size(54, 26);
+            this.iconeCrediario.TabIndex = 170;
+            this.iconeCrediario.UseVisualStyleBackColor = true;
+            this.iconeCrediario.Click += new System.EventHandler(this.iconeCrediario_Click);
+            // 
             // FrmVendas02
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2842,7 +2841,7 @@
         private System.Data.DataColumn dataColumn15;
         private System.Data.DataColumn dataColumn16;
         private FontAwesome.Sharp.IconButton btnGerarNfe;
-        private RJ_UI.Classes.RJButton btnCondicional;
+        private RJ_UI.Classes.RJButton btnObservacoes;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblInscricaoEstadual;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblPropriedade;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblIdPropriedade;

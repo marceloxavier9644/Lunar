@@ -32,7 +32,7 @@
 		<property name="ContatoTrabalho" column="CONTATOTRABALHO" type="String" length="80"/>
 		<property name="LimiteCredito" column="LIMITECREDITO" type="decimal"/>
 		<property name="ReceberLembrete" column="RECEBERLEMBRETE" type="Boolean"/>
-		<property name="CodigoImportacao" column="CODIGOIMPORTACAO" type="String" length="12"/>
+		<property name="CodigoImportacao" column="CODIGOIMPORTACAO" type="String" length="100"/>
 		<property name="TipoParceiroImportado" column="TIPOPARCEIROIMPORTADO" type="String" length="5"/>
 
 		<property name="RegistradoSpc" column="REGISTRADOSPC" type="Boolean"/>

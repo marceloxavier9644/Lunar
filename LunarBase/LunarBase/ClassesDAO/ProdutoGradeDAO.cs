@@ -5,12 +5,22 @@ namespace LunarBase.ClassesDAO
 {
     public class ProdutoGradeDAO : BaseDAO
     {
+        //public IList<ProdutoGrade> selecionarGradePorProduto(int idProduto)
+        //{
+        //    Session = Conexao.GetSession();
+        //    String sql = "FROM ProdutoGrade as Tabela WHERE Tabela.FlagExcluido <> true and Tabela.Produto = " + idProduto;
+        //    IList<ProdutoGrade> retorno = Session.CreateQuery(sql).List<ProdutoGrade>();
+        //    return retorno;
+        //}
         public IList<ProdutoGrade> selecionarGradePorProduto(int idProduto)
         {
-            Session = Conexao.GetSession();
-            String sql = "FROM ProdutoGrade as Tabela WHERE Tabela.FlagExcluido <> true and Tabela.Produto = " + idProduto;
-            IList<ProdutoGrade> retorno = Session.CreateQuery(sql).List<ProdutoGrade>();
-            return retorno;
+            using (var statelessSession = Conexao.GetStatelessSession())  // Utilizando StatelessSession
+            {
+                String sql = "FROM ProdutoGrade as Tabela WHERE Tabela.FlagExcluido <> true and Tabela.Produto = " + idProduto;
+                var query = statelessSession.CreateQuery(sql);
+                IList<ProdutoGrade> retorno = query.List<ProdutoGrade>();
+                return retorno;
+            }
         }
 
         public IList<ProdutoGradeDTO> selecionarGradeComBarrasPorProduto(int idProduto)

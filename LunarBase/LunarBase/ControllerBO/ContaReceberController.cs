@@ -42,6 +42,24 @@ namespace LunarBase.ControllerBO
             }
         }
 
+        public IList<ContaReceber> selecionarContaReceberPorOrdemServico(int idOrdemServico)
+        {
+            ContaReceberBO bo = new ContaReceberBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarContaReceberPorOrdemServico(idOrdemServico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
+
         public IList<ContaReceber> selecionarContaReceberPorSql(string sql)
         {
             ContaReceberBO bo = new ContaReceberBO();

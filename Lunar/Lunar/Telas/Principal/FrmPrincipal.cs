@@ -671,11 +671,6 @@ namespace Lunar.Telas.Principal
             lblVersaoSistema.Text = "Versão do Sistema: " + version;
             UpdateScript updateScript = new UpdateScript();
             updateScript.ExecutarScript();
-
-
-        //    NotificacaoService notificacaoService = new NotificacaoService();
-        // if(Sessao.parametroSistema.NomeServidor.Equals(""))
-
         }
 
         private void verificaUsuarioLogado()
