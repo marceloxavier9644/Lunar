@@ -1,4 +1,6 @@
-﻿using Lunar.Utils;
+﻿using Lunar.Telas.Cadastros.Bancos;
+using Lunar.Telas.PesquisaPadrao;
+using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -15,6 +17,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
 {
     public partial class FrmBoleto : Form
     {
+        BoletoConfigController boletoConfigController = new BoletoConfigController();
         decimal valorFaltante = 0;
         bool showModal = false;
         decimal valor = 0;
@@ -56,6 +59,23 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             txtValor.TextAlign = HorizontalAlignment.Center;
             this.venda = venda;
 
+
+            IList<BoletoConfig> listaBoletoConfig = new List<BoletoConfig>();
+            listaBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
+            if(listaBoletoConfig.Count > 0)
+            {
+                foreach(BoletoConfig bol in listaBoletoConfig)
+                {
+                    if(bol.ContaPadrao == true)
+                    {
+                        txtContaBancaria.Texts = bol.ContaBancaria.Descricao;
+                        txtCodContaBancaria.Texts = bol.ContaBancaria.Id.ToString();
+                    }
+                }
+            }
+            txtParcelas.Text = "1";
+            txtParcelas.Focus();
+            txtParcelas.SelectAll();
         }
 
         public FrmBoleto(decimal valorFaltante, OrdemServico ordemservico)
@@ -66,45 +86,84 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             this.valorFaltante = valorFaltante;
             txtValor.TextAlign = HorizontalAlignment.Center;
             this.ordemservico = ordemservico;
-
+            txtParcelas.Text = "1";
+            txtParcelas.Focus();
+            txtParcelas.SelectAll();
         }
 
         private void FrmBoleto_Paint(object sender, PaintEventArgs e)
         {
             gridParcelas.Columns["VENCIMENTO"].AllowEditing = true;
-            txtValor.Texts = string.Format("{0:0.00}", valorFaltante);
-            if (String.IsNullOrEmpty(txtValor.Texts))
+            txtValor.Text = string.Format("{0:0.00}", valorFaltante);
+            if (String.IsNullOrEmpty(txtValor.Text))
             {
-                txtParcelas.Texts = "1";
+                txtParcelas.Text = "1";
                 txtParcelas.Focus();
                 txtParcelas.SelectAll();
             }
             txtDataVencimento.Value = DateTime.Now.AddMonths(1);
         }
+        private bool ValidarCampos()
+        {
+            // Verifica se o campo de parcelas está preenchido
+            if (string.IsNullOrWhiteSpace(txtParcelas.Text))
+            {
+                MessageBox.Show("Por favor, preencha o campo de Parcelas.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtParcelas.Focus();
+                return false;
+            }
 
+            // Verifica se o campo de código da conta bancária está preenchido
+            if (string.IsNullOrWhiteSpace(txtCodContaBancaria.Texts))
+            {
+                MessageBox.Show("Por favor, preencha o campo de Código da Conta Bancária.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCodContaBancaria.Focus();
+                return false;
+            }
+
+            // Verifica se o campo de valor está preenchido e é um número válido
+            if (string.IsNullOrWhiteSpace(txtValor.Text) || !decimal.TryParse(txtValor.Text, out _))
+            {
+                MessageBox.Show("Por favor, preencha o campo de Valor com um número válido.", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtValor.Focus();
+                return false;
+            }
+
+            // Verifica se o grid de parcelas contém pelo menos uma linha
+            if (gridParcelas.RowCount == 1)
+            {
+                btnConfirmaParcelas.PerformClick();
+            }
+
+            return true; // Todos os campos estão válidos
+        }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             vendaFormaPagamento = new VendaFormaPagamento();
 
-            if (!String.IsNullOrEmpty(txtValor.Texts))
+            if (!String.IsNullOrEmpty(txtValor.Text) && ValidarCampos())
             {
-                if (decimal.Parse(txtValor.Texts) <= valorFaltante)
+                if (decimal.Parse(txtValor.Text) <= valorFaltante)
                 {
                     if (venda != null)
                     {
                         if (venda.Id > 0)
                         {
-                            this.valor = decimal.Parse(txtValor.Texts);
+                            this.valor = decimal.Parse(txtValor.Text);
                             FormaPagamento formaPagamento = new FormaPagamento();
                             formaPagamento.Id = 5;
                             vendaFormaPagamento.FormaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
-                            vendaFormaPagamento.Parcelamento = int.Parse(txtParcelas.Texts);
+                            vendaFormaPagamento.Parcelamento = int.Parse(txtParcelas.Text);
                             vendaFormaPagamento.ValorRecebido = valor;
                             vendaFormaPagamento.Cartao = false;
                             vendaFormaPagamento.AutorizacaoCartao = "";
                             vendaFormaPagamento.Venda = venda;
                             vendaFormaPagamento.TipoCartao = "";
                             vendaFormaPagamento.ParcelamentoFk = null;
+                            ContaBancaria contaBancaria = new ContaBancaria();
+                            contaBancaria.Id = int.Parse(txtCodContaBancaria.Texts);
+                            contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                            vendaFormaPagamento.ContaBancaria = contaBancaria;
                             Controller.getInstance().salvar(vendaFormaPagamento);
 
                             var records = gridParcelas.View.Records;
@@ -114,6 +173,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
 
                                 ContaReceber contaReceber = new ContaReceber();
                                 contaReceber.Id = 0;
+                                contaReceber.ContaBoleto = contaBancaria;
                                 contaReceber.NomeCliente = venda.Cliente.RazaoSocial;
                                 contaReceber.CnpjCliente = venda.Cliente.Cnpj;
                                 contaReceber.Data = DateTime.Now;
@@ -146,7 +206,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     {
                         if (ordemservico.Id > 0)
                         {
-                            this.valor = decimal.Parse(txtValor.Texts);
+                            this.valor = decimal.Parse(txtValor.Text);
                             FormaPagamento formaPagamento = new FormaPagamento();
                             formaPagamento.Id = 5;
                             formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
@@ -199,22 +259,18 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 }
 
             }
-            else
-            {
-                GenericaDesktop.ShowErro("Informe o valor recebido!");
-            }
         }
 
         private void inserirParcelas()
         {
             try
             {
-                if (String.IsNullOrEmpty(txtParcelas.Texts))
-                    txtParcelas.Texts = "1";
+                if (String.IsNullOrEmpty(txtParcelas.Text))
+                    txtParcelas.Text = "1";
                 dsParcelas.Tables[0].Clear();
                 DateTime vencimento = DateTime.Parse(txtDataVencimento.Value.ToString());
                 this.gridParcelas.DataSource = dsParcelas.Tables["Parcelas"];
-                for (int i = 1; i <= int.Parse(txtParcelas.Texts); i++)
+                for (int i = 1; i <= int.Parse(txtParcelas.Text); i++)
                 {
                     if (i > 1)
                         vencimento = vencimento.AddMonths(1);
@@ -226,7 +282,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     row.SetField("PARCELA", i);
                     row.SetField("VENCIMENTO", vencimento.ToShortDateString());
                     decimal valorParcela = 0;
-                    valorParcela = decimal.Parse(txtValor.Texts) / decimal.Parse(txtParcelas.Texts);
+                    valorParcela = decimal.Parse(txtValor.Text) / decimal.Parse(txtParcelas.Text);
                     row.SetField("VALOR", string.Format("{0:0.00}", valorParcela));
                     dsParcelas.Tables[0].Rows.Add(row);
                 }
@@ -242,15 +298,15 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                     valorCalculo = valorCalculo + decimal.Parse(dataRowView.Row["Valor"].ToString());
                     if (linhas == records.Count)
                     {
-                        if (valorCalculo > decimal.Parse(txtValor.Texts))
+                        if (valorCalculo > decimal.Parse(txtValor.Text))
                         {
-                            decimal valorCorrecao = valorCalculo - decimal.Parse(txtValor.Texts);
+                            decimal valorCorrecao = valorCalculo - decimal.Parse(txtValor.Text);
                             valorCorrecao = decimal.Parse(dataRowView.Row["Valor"].ToString()) - valorCorrecao;
                             gridParcelas.View.GetPropertyAccessProvider().SetValue(gridParcelas.GetRecordAtRowIndex(linhas), gridParcelas.Columns[2].MappingName, valorCorrecao);
                         }
-                        else if (valorCalculo < decimal.Parse(txtValor.Texts))
+                        else if (valorCalculo < decimal.Parse(txtValor.Text))
                         {
-                            decimal valorCorrecao = decimal.Parse(txtValor.Texts) - valorCalculo;
+                            decimal valorCorrecao = decimal.Parse(txtValor.Text) - valorCalculo;
                             valorCorrecao = valorCorrecao + decimal.Parse(dataRowView.Row["Valor"].ToString());
                             gridParcelas.View.GetPropertyAccessProvider().SetValue(gridParcelas.GetRecordAtRowIndex(linhas), gridParcelas.Columns[2].MappingName, valorCorrecao);
                         }
@@ -352,6 +408,60 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao atualizar vencimentos: " + ex.Message);
+            }
+        }
+
+        private void btnPesquisaContaBancaria_Click(object sender, EventArgs e)
+        {
+            Object objeto = new ContaBancaria();
+
+            Form formBackground = new Form();
+            try
+            {
+                using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("ContaBancaria", ""))
+                {
+                    txtCodContaBancaria.Texts = "";
+                    txtContaBancaria.Texts = "";
+                    formBackground.StartPosition = FormStartPosition.Manual;
+                    //formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Opacity = .50d;
+                    formBackground.BackColor = Color.Black;
+                    //formBackground.Left = Top = 0;
+                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+                    formBackground.WindowState = FormWindowState.Maximized;
+                    formBackground.TopMost = false;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                    uu.Owner = formBackground;
+                    switch (uu.showModal("PlanoConta", "", ref objeto))
+                    {
+                        case DialogResult.Ignore:
+                            uu.Dispose();
+                            FrmContaBancaria form = new FrmContaBancaria();
+                            if (form.showModal(ref objeto) == DialogResult.OK)
+                            {
+                                txtContaBancaria.Texts = ((ContaBancaria)objeto).Descricao;
+                                txtCodContaBancaria.Texts = ((ContaBancaria)objeto).Id.ToString();
+                            }
+                            form.Dispose();
+                            break;
+                        case DialogResult.OK:
+                            txtContaBancaria.Texts = ((ContaBancaria)objeto).Descricao;
+                            txtCodContaBancaria.Texts = ((ContaBancaria)objeto).Id.ToString();
+                            break;
+                    }
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                formBackground.Dispose();
             }
         }
     }

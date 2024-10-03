@@ -29,6 +29,11 @@
 		<property name="ValorTotalOrigem" column="VALORTOTALORIGEM" type="decimal"/>
 		<property name="BoletoGerado" column="BOLETOGERADO" type="Boolean"/>
 		<property name="IdBoleto" column="IDBOLETO" type="String" length="150"/>
+		<property name="NossoNumero" column="NOSSONUMERO" type="String" length="150"/>
+		<property name="LinhaDigitavel" column="LINHADIGITAVEL" type="String" length="150"/>
+		<property name="CodigoBarras" column="CODIGOBARRAS" type="String" length="150"/>
+		<property name="Txid" column="TXID" type="String" length="150"/>
+		<property name="QrCode" column="QRCODE" type="String" length="250"/>
 		
 		<many-to-one name="Cliente" column="CLIENTE" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_CONTARECEBER_CLIENTE" lazy="false"/>
 		<many-to-one name="FormaPagamento" column="FORMAPAGAMENTO" class="LunarBase.Classes.FormaPagamento" not-null="false" foreign-key="FK_CONTARECEBER_FORMAPAGAMENTO" lazy="false"/>
@@ -37,7 +42,7 @@
 		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="false" foreign-key="FK_CONTARECEBER_EMPRESAFILIAL" lazy="false"/>
 		<many-to-one name="PlanoConta" column="PLANOCONTA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_CONTARECEBER_PLANOCONTA" lazy="false"/>
 		<many-to-one name="OrdemServico" column="ORDEMSERVICO" class="LunarBase.Classes.OrdemServico" not-null="false" foreign-key="FK_CONTARECEBER_ORDEMSERVICO" lazy="false"/>
-
+		<many-to-one name="ContaBoleto" column="CONTABOLETO" class="LunarBase.Classes.ContaBancaria" not-null="false" foreign-key="FK_CONTARECEBER_CONTABOLETO" lazy="false"/>
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
 		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>

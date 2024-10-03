@@ -39,6 +39,12 @@ namespace LunarBase.Classes
         private decimal valorTotalOrigem;
         private bool boletoGerado;
         private string idBoleto;
+        private string nossoNumero;
+        private string linhaDigitavel;
+        private string codigoBarras;
+        private string txid;
+        private string qrCode;
+        private ContaBancaria contaBoleto;
 
         [Anotacao("Código")]
         public virtual int Id { get => id; set => id = value; }
@@ -109,6 +115,18 @@ namespace LunarBase.Classes
         [Anotacao("Boleto ID")]
         [OcultarEmGridsEPesquisas]
         public virtual string IdBoleto { get => idBoleto; set => idBoleto = value; }
+        [Anotacao("Nosso Numero")]
+        public virtual string NossoNumero { get => nossoNumero; set => nossoNumero = value; }
+        [Anotacao("Linha Digitavel")]
+        public virtual string LinhaDigitavel { get => linhaDigitavel; set => linhaDigitavel = value; }
+        [Anotacao("Codigo Barras")]
+        public virtual string CodigoBarras { get => codigoBarras; set => codigoBarras = value; }
+        [Anotacao("Txid")]
+        public virtual string Txid { get => txid; set => txid = value; }
+        [Anotacao("QR Code")]
+        public virtual string QrCode { get => qrCode; set => qrCode = value; }
+        [Anotacao("Conta Boleto")]
+        public virtual ContaBancaria ContaBoleto { get => contaBoleto; set => contaBoleto = value; }
 
         public override string ToString()
         {

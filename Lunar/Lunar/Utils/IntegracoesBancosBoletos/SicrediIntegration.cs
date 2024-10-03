@@ -1,16 +1,24 @@
 ﻿
 using iText.IO.Image;
 using iText.Kernel.Pdf;
+using iText.Kernel.Utils;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
+using Lunar.Utils.IntegracoesBancosBoletos;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OpenAC.Net.Core.Extensions;
 using RestSharp;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using static Lunar.Utils.IntegracoesBancosBoletos.BoletoService;
 
@@ -22,9 +30,17 @@ public class SicrediIntegration
     private const string SandboxBoletoUrl = "https://api-parceiro.sicredi.com.br/sb/cobranca/boleto/v1/boletos";
     private const string ProductionBoletoUrl = "https://api-parceiro.sicredi.com.br/cobranca/boletos";
 
+    private const string SandboxBoletoUrlPDF = "https://api-parceiro.sicredi.com.br/sb/cobranca/boleto/v1/boletos/pdf";
+    private const string ProductionBoletoUrlPDF = "https://api-parceiro.sicredi.com.br/cobranca/boleto/v1/boletos/pdf";
+
+    // URLs de consulta de boletos liquidados
+    private const string SandboxBoletosLiquidadosUrl = "https://api-parceiro.sicredi.com.br/sb/cobranca/boleto/v1/boletos/liquidados/dia";
+    private const string ProductionBoletosLiquidadosUrl = "https://api-parceiro.sicredi.com.br/cobranca/boleto/v1/boletos/liquidados/dia";
 
     private string _apiUrl;
     private string _boletoUrl;
+    private string _boletoUrlPDF;
+    private string _boletosLiquidadosUrl;
     private string _accessToken;
     private string _refreshToken;
     private DateTime _tokenExpiration;
@@ -35,16 +51,20 @@ public class SicrediIntegration
 
     private readonly string _cooperativa;
     private readonly string _posto;
+    private readonly string _codigoBeneficiario;
 
     // Construtor para configurar o ambiente
-    public SicrediIntegration(bool isProduction, string username, string password, string cooperativa, string posto)
+    public SicrediIntegration(bool isProduction, string username, string password, string cooperativa, string posto, string codigoBeneficiario)
     {
         _apiUrl = isProduction ? ProductionUrl : SandboxUrl;
         _boletoUrl = isProduction ? ProductionBoletoUrl : SandboxBoletoUrl;
+        _boletoUrlPDF = isProduction ? ProductionBoletoUrlPDF : SandboxBoletoUrlPDF;
+        _boletosLiquidadosUrl = isProduction ? ProductionBoletosLiquidadosUrl : SandboxBoletosLiquidadosUrl;
         _username = username;
         _password = password;
         _cooperativa = cooperativa;
         _posto = posto;
+        _codigoBeneficiario = codigoBeneficiario;
     }
 
     // Método para obter o access_token
@@ -109,29 +129,26 @@ public class SicrediIntegration
         return false;
     }
 
-    // Método para enviar a requisição de geração de boleto
-    public async Task<bool> CreateBoletoAsync(object boletoData)
+    public async Task<BoletoResponse> CreateBoletoAsync(object boletoData)
     {
-        // Verificar se o access_token está expirado
         if (DateTime.Now >= _tokenExpiration)
         {
             if (!await RefreshTokenAsync())
             {
-                return false; // Falha na renovação do token
+                return null;
             }
         }
 
-        var client = new RestClient(_boletoUrl); // Usando a URL de criação de boletos
-        var request = new RestRequest(_boletoUrl, Method.Post); // Passando a URL do boleto aqui
+        var client = new RestClient(_boletoUrl); 
+        var request = new RestRequest(_boletoUrl, Method.Post); 
 
-        // Adicionando os cabeçalhos
         request.AddHeader("Authorization", $"Bearer {_accessToken}");
         request.AddHeader("x-api-key", xApiKey);
         request.AddHeader("Content-Type", "application/json");
-        request.AddHeader("cooperativa", _cooperativa); // Adiciona o cabeçalho cooperativa
-        request.AddHeader("posto", _posto); // Adiciona o cabeçalho posto
+        request.AddHeader("cooperativa", _cooperativa); 
+        request.AddHeader("posto", _posto); 
 
-        request.AddJsonBody(boletoData); // Adiciona o corpo da requisição com os dados do boleto
+        request.AddJsonBody(boletoData); 
 
         var response = await client.ExecuteAsync(request);
         if (response.IsSuccessful)
@@ -139,54 +156,174 @@ public class SicrediIntegration
             Console.WriteLine("Boleto gerado com sucesso.");
             var jsonResponse = JObject.Parse(response.Content);
             var boletoResponse = jsonResponse.ToObject<BoletoResponse>();
-            CreateSicrediBoletoPdf(boletoResponse);
-            return true;
+            return boletoResponse;
         }
-
         GenericaDesktop.ShowErro($"Erro ao gerar boleto: {response.Content}");
-        return false;
+        return null;
     }
 
-    public void CreateSicrediBoletoPdf(BoletoResponse boletoResponse)
+
+    public async Task<string[]> DownloadAndOpenBoletoPdfs(string[] linhasDigitaveis)
     {
-        using (var stream = new MemoryStream())
+        // Usar uma lista temporária para armazenar os caminhos dos PDFs
+        List<string> pdfPaths = new List<string>();
+        int i = 1;
+        foreach (var linhaDigitavel in linhasDigitaveis)
         {
-            // Cria o documento PDF
-            using (var pdfWriter = new PdfWriter(stream))
-            using (var pdf = new PdfDocument(pdfWriter))
+            // Remover espaços e caracteres inesperados
+            string cleanedLinhaDigitavel = linhaDigitavel.Trim().Replace(" ", "").Replace("-", "");
+
+            // Verificar se a linha digitável possui 47 dígitos
+            if (cleanedLinhaDigitavel.Length != 47)
             {
-                Document document = new Document(pdf);
-
-                // Adiciona o logo do Sicredi
-                System.Drawing.Image logo = System.Drawing.Image.FromFile("caminho/para/sua/imagem/sicredi.png"); // Use o caminho adequado
-                var logoImage = ImageDataFactory.Create(logo.ToByteArray());
-                document.Add(new iText.Layout.Element.Image(logoImage).SetWidth(120)); // Defina a largura do logo conforme necessário
-
-                // Adiciona título
-                document.Add(new Paragraph("Boleto Bancário")
-                    .SetTextAlignment(TextAlignment.CENTER)
-                    .SetFontSize(20)
-                    .SetBold());
-
-                // Adiciona informações do boleto
-                document.Add(new Paragraph($"TXID: {boletoResponse.Txid}"));
-                document.Add(new Paragraph($"QR Code: {boletoResponse.QrCode}"));
-                document.Add(new Paragraph($"Linha Digitável: {boletoResponse.LinhaDigitavel}"));
-                document.Add(new Paragraph($"Código de Barras: {boletoResponse.CodigoBarras}"));
-                document.Add(new Paragraph($"Cooperativa: {boletoResponse.Cooperativa}"));
-                document.Add(new Paragraph($"Posto: {boletoResponse.Posto}"));
-                document.Add(new Paragraph($"Nosso Número: {boletoResponse.NossoNumero}"));
-
-                // Adiciona informações adicionais (se necessário)
-                document.Add(new Paragraph("Pagável preferencialmente na rede bancária ou correspondentes autorizados"));
-
-                // Fecha o documento
-                document.Close();
+                Console.WriteLine($"Linha digitável inválida: {cleanedLinhaDigitavel}. Deve ter 47 dígitos.");
+                continue; // Ignorar esta linha digitável inválida
             }
 
-            // Salva o PDF em um arquivo
-            File.WriteAllBytes("boleto_sicredi.pdf", stream.ToArray());
+            // Verificar se o access_token está expirado
+            if (DateTime.Now >= _tokenExpiration)
+            {
+                if (!await RefreshTokenAsync())
+                {
+                    return null; // Falha na renovação do token
+                }
+            }
+
+            // URL da API para obtenção do PDF do boleto
+            string pdfBoletoUrl = $"{_boletoUrlPDF}?linhaDigitavel={cleanedLinhaDigitavel}";
+
+            var client = new RestClient(pdfBoletoUrl);
+            var request = new RestRequest(pdfBoletoUrl, Method.Get);
+
+            // Headers obrigatórios
+            request.AddHeader("x-api-key", xApiKey);
+            request.AddHeader("Authorization", $"Bearer {_accessToken}");
+
+            var response = await client.ExecuteAsync(request);
+            if (response.IsSuccessful)
+            {
+                var pdfBytes = response.RawBytes;
+                try
+                {
+                    string tempFilePath = Path.Combine(Path.GetTempPath(), $"Boleto" + i + "_" + cleanedLinhaDigitavel + ".pdf");
+                    i++;
+                    File.WriteAllBytes(tempFilePath, pdfBytes);
+                    Console.WriteLine($"Boleto salvo com sucesso em {tempFilePath}");
+                    pdfPaths.Add(tempFilePath); // Armazenar caminho do PDF
+                }
+                catch (Exception ex)
+                {
+                    GenericaDesktop.ShowAlerta($"Boleto foi gerado, mas deu erro ao baixar o pdf do boleto:\n\n {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Erro ao baixar o boleto: {response.Content}");
+            }
+        }
+
+        // Verificar se há PDFs para combinar
+        if (pdfPaths.Count > 1)
+        {
+            string combinedPdfPath = Path.Combine(Path.GetTempPath(), "Boleto_Combinado.pdf");
+            CombinePdfs(pdfPaths.ToArray(), combinedPdfPath); 
+            FrmPDF frmPDF = new FrmPDF(combinedPdfPath);
+            frmPDF.ShowDialog();
+        }
+        else if (pdfPaths.Count == 1)
+        {
+            foreach (string pdfPath in pdfPaths)
+            {
+                FrmPDF frmPDF = new FrmPDF(pdfPath);
+                frmPDF.ShowDialog();
+            }
+        }
+
+        return pdfPaths.ToArray();
+    }
+
+    private void CombinePdfs(string[] pdfPaths, string outputFilePath)
+    {
+        using (PdfDocument pdfDocument = new PdfDocument(new PdfWriter(outputFilePath)))
+        {
+            PdfMerger merger = new PdfMerger(pdfDocument);
+
+            foreach (string pdfPath in pdfPaths)
+            {
+                if (File.Exists(pdfPath)) // Verifique se o arquivo PDF existe
+                {
+                    using (PdfDocument sourceDocument = new PdfDocument(new PdfReader(pdfPath)))
+                    {
+                        if (sourceDocument.GetNumberOfPages() > 0) // Verifique se o PDF tem páginas
+                        {
+                            merger.Merge(sourceDocument, 1, sourceDocument.GetNumberOfPages());
+                        }
+                        else
+                        {
+                            Console.WriteLine($"O arquivo {pdfPath} não contém páginas.");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"O arquivo {pdfPath} não existe.");
+                }
+            }
+        } 
+    }
+
+
+    public async Task<List<BoletoLiquidado>> ConsultarBoletosLiquidadosPorDiaAsync(string dia)
+    {
+        // Ensure dia is in the correct format (DD/MM/YYYY) and length (10 characters)
+        if (string.IsNullOrEmpty(dia) || dia.Length != 10)
+        {
+            Console.WriteLine("O parâmetro 'dia' deve estar no formato DD/MM/YYYY.");
+            return null;
+        }
+
+        string url = $"{_boletosLiquidadosUrl}?codigoBeneficiario={_codigoBeneficiario}&dia={dia}";
+
+        using (var client = new HttpClient())
+        {
+            try
+            {
+                // Adiciona os headers
+                client.DefaultRequestHeaders.Add("x-api-key", xApiKey);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
+                client.DefaultRequestHeaders.Add("cooperativa", _cooperativa);
+                client.DefaultRequestHeaders.Add("posto", _posto);
+                // Remove Content-Type for GET request
+                // client.DefaultRequestHeaders.Add("Content-Type", "application/x-wwwformurlencoded"); // Remove this line
+
+                // Faz a requisição GET
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                // Verifica a resposta da API
+                if (response.IsSuccessStatusCode)
+                {
+                    //string content = await response.Content.ReadAsStringAsync();
+                    //return content;
+                    string content = await response.Content.ReadAsStringAsync();
+                    var responseObject = JsonConvert.DeserializeObject<BoletoLiquidadoResponse>(content);
+                    return responseObject?.Items;
+                }
+                else
+                {
+                    // Read and log the response content for debugging
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    GenericaDesktop.ShowAlerta($"Erro na consulta: {response.StatusCode}, Mensagem: {errorContent}");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao fazer a requisição: {ex.Message}");
+                return null;
+            }
         }
     }
 
+
 }
+

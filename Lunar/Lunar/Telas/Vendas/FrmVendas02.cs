@@ -12,6 +12,7 @@ using Lunar.Utils.ClassesRepeticoes;
 using Lunar.Utils.GalaxyPay_API;
 using Lunar.Utils.IntegracoesBancosBoletos;
 using Lunar.Utils.OrganizacaoNF;
+using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
 using LunarBase.ClassesDAO;
@@ -794,6 +795,10 @@ namespace Lunar.Telas.Vendas
                 row.SetField("FormaPagamento", vendaFormaPagamento.FormaPagamento.Descricao + bandeira + condicao + aut + adquirente);
                 row.SetField("ValorRecebido", string.Format("{0:0.00}", vendaFormaPagamento.ValorRecebido));
                 row.SetField("VendaForma", vendaFormaPagamento.Id);
+                int idConta = 0;
+                if (vendaFormaPagamento.ContaBancaria != null)
+                    idConta = vendaFormaPagamento.ContaBancaria.Id;
+                row.SetField("ContaBancaria", idConta);
                 dsPagamento.Tables[0].Rows.Add(row);
 
                 calcularValorFaltantePagamento();
@@ -865,8 +870,8 @@ namespace Lunar.Telas.Vendas
             if (produto != null)
             {
                 decimal quantidade = valorTotal / produto.ValorVenda;
-                if(quantidade.ToString().Length >=6)
-                    txtPesquisaProduto.Texts = quantidade.ToString().Substring(0,6) + "*" + codigoProduto;
+                if (quantidade.ToString().Length >= 6)
+                    txtPesquisaProduto.Texts = quantidade.ToString().Substring(0, 6) + "*" + codigoProduto;
                 else
                     txtPesquisaProduto.Texts = quantidade.ToString() + "*" + codigoProduto;
                 PesquisarProduto(txtPesquisaProduto.Texts.Trim());
@@ -930,7 +935,7 @@ namespace Lunar.Telas.Vendas
 
                                     produto.GradePrincipal = produtoGrade;
 
-                                    //inserirItem(this.produto);
+                                    inserirItem(this.produto);
                                     txtQuantidade.Focus();
                                     txtQuantidade.Select();
                                 }
@@ -970,7 +975,7 @@ namespace Lunar.Telas.Vendas
                     }
                 }
                 //Verificando se é um produto de balança
-                else if (valor.StartsWith("2") && valor.Substring(6,1).Equals("0") && valor.Substring(7, 1).Equals("0"))
+                else if (valor.StartsWith("2") && valor.Substring(6, 1).Equals("0") && valor.Substring(7, 1).Equals("0"))
                 {
                     ProcessarCodigoBarras(txtPesquisaProduto.Texts.Trim());
                     return;
@@ -1042,7 +1047,7 @@ namespace Lunar.Telas.Vendas
             else if (valor.Contains("/"))
             {
                 listaProdutos = new List<Produto>();
-                listaProdutos = produtoController.selecionarProdutosPorSql("From Produto Tabela Where Tabela.FlagExcluido = false and Tabela.Referencia = '" + valor.Replace("/","") + "'");
+                listaProdutos = produtoController.selecionarProdutosPorSql("From Produto Tabela Where Tabela.FlagExcluido = false and Tabela.Referencia = '" + valor.Replace("/", "") + "'");
                 if (listaProdutos.Count > 0)
                 {
                     desbloquearCamposValorQuantidade();
@@ -2668,7 +2673,7 @@ namespace Lunar.Telas.Vendas
             {
                 //Emitir NFCe pela nova classe
                 EmitirNFCe emitirNFCe = new EmitirNFCe();
-                
+
                 carregarListaProdutos();
                 try
                 {
@@ -3086,9 +3091,9 @@ namespace Lunar.Telas.Vendas
                 if (venda.Id > 0)
                 {
                     listaProdutosVendaDeletar = vendaItensController.selecionarProdutosPorVenda(venda.Id);
-                    if(listaProdutosVendaDeletar.Count > 0)
+                    if (listaProdutosVendaDeletar.Count > 0)
                     {
-                        foreach(VendaItens item in listaProdutosVendaDeletar)
+                        foreach (VendaItens item in listaProdutosVendaDeletar)
                         {
                             Controller.getInstance().excluir(item);
                         }
@@ -3097,7 +3102,7 @@ namespace Lunar.Telas.Vendas
             }
 
             IList<VendaItens> listaProdutosVenda = new List<VendaItens>();
-           
+
             var records = gridProdutos.View.Records;
             //int i = 0;
             foreach (var record in records)
@@ -3471,7 +3476,7 @@ namespace Lunar.Telas.Vendas
         private void atualizarProximoNumeroNota()
         {
             //ATUALIZA NUMERO DA NOTA 
-            ParametroSistema param = new ParametroSistema(); 
+            ParametroSistema param = new ParametroSistema();
             param = Sessao.parametroSistema;
             if (nfe.Modelo.Equals("65"))
                 param.ProximoNumeroNFCe = (int.Parse(nfe.NNf) + 1).ToString();
@@ -3506,6 +3511,8 @@ namespace Lunar.Telas.Vendas
                 IList<ContaReceber> listaContaReceber = contaReceberController.selecionarContaReceberPorVenda(vendaConclusao.Id);
                 IList<ContaReceber> listaGerarBoleto = new List<ContaReceber>();
                 GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
+                IList<BoletoConfig> listaConfiguracoesBoletos = new List<BoletoConfig>();
+                BoletoConfigController boletoConfigController = new BoletoConfigController();
                 if (listaContaReceber.Count > 0)
                 {
                     int i = 0;
@@ -3521,23 +3528,23 @@ namespace Lunar.Telas.Vendas
                         //Gerar boletos
                         if (cr.FormaPagamento.Id == 5)
                         {
+                            if(cr.ContaBoleto != null)
+                                listaConfiguracoesBoletos = boletoConfigController.selecionarBoletoConfigPorContaBancaria(cr.ContaBoleto.Id);
                             listaGerarBoleto.Add(cr);
                         }
                     }
                     if (listaGerarBoleto.Count > 0)
                     {
-                        if(Sessao.parametroSistema.IntegracaoGalaxyPay == true)
+                        //logo remover essa opcao do galaxy pay aqui por fora e transferir ela pra dentro da config de boletos!
+                        if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
                             gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaGerarBoleto, vendaConclusao.Cliente);
-                        if(Sessao.parametroSistema.IntegracaoGalaxyPay == false)
+                        if (listaConfiguracoesBoletos.Count > 0)
                         {
-                            
-                            IList<ContaReceber> listaReceber = new List<ContaReceber>();
-                            listaReceber = contaReceberController.selecionarContaReceberPorVenda(vendaConclusao.Id);
-                            foreach (ContaReceber contaReceber in listaReceber)
-                            {
-                                await GeraBoletoSicredi(vendaConclusao.Cliente, vendaConclusao.ValorFinal, contaReceber.Vencimento, contaReceber.Documento, contaReceber.Documento);
-                            }
+                            BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaConclusao.Id, 0, null);
+                            await boletoManager.GeraBoletosSicredi(vendaConclusao.Cliente);
                         }
+                        else
+                            GenericaDesktop.ShowAlerta("Conta escolhida não foi configurada para emissão de boletos!");
                     }
                 }
 
@@ -3573,7 +3580,7 @@ namespace Lunar.Telas.Vendas
                         FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda);
                         frmImprimirTicket.ShowDialog();
                     }
-            
+
 
                     MensagemPosVenda msgPos = new MensagemPosVenda();
                     if (Sessao.parametroSistema.AtivarMensagemPosVendas == true && venda.Cliente != null)
@@ -3850,11 +3857,11 @@ namespace Lunar.Telas.Vendas
                     frmProdutoCadastro.ShowDialog();
                 }
             }
-        }       
+        }
 
         private void btnImprimirRecibo_Click(object sender, EventArgs e)
         {
-           // GenericaDesktop.Leitura_Contingencia("2056", @"\\txt_note\Processados\nsConcluido\");
+            // GenericaDesktop.Leitura_Contingencia("2056", @"\\txt_note\Processados\nsConcluido\");
         }
 
         private void btnBoleto_Click(object sender, EventArgs e)
@@ -3888,7 +3895,7 @@ namespace Lunar.Telas.Vendas
                 validacao = false;
                 abrirTelaEditarCliente(pessoa);
             }
-            if(pessoa.EnderecoPrincipal != null)
+            if (pessoa.EnderecoPrincipal != null)
             {
                 if (String.IsNullOrEmpty(pessoa.EnderecoPrincipal.Logradouro))
                 {
@@ -4000,7 +4007,7 @@ namespace Lunar.Telas.Vendas
 
         private void gridProdutos_QueryCellStyle(object sender, QueryCellStyleEventArgs e)
         {
-          
+
         }
 
         private void btnGerarNfe_Click(object sender, EventArgs e)
@@ -4130,7 +4137,7 @@ namespace Lunar.Telas.Vendas
                     }
                     nfe.Lancada = true;
                     Controller.getInstance().salvar(nfe);
-                    
+
                     //Estoque
                     AtualizaEstoque(true, "NF SAÍDA: " + nfe.NNf + " MOD: " + nfe.Modelo);
                     armazenaXmlAutorizadoNoBanco();
@@ -4171,7 +4178,7 @@ namespace Lunar.Telas.Vendas
                     else
                         consStatusProcessamentoReq.tpAmb = "2";
 
-                    
+
                     String retornoConsulta = NSSuite.consultarStatusProcessamento(nfe.Modelo, consStatusProcessamentoReq);
                     if (retornoConsulta != null)
                         retConsulta = JsonConvert.DeserializeObject<RetConsultaProcessamentoNF>(retornoConsulta);
@@ -4199,7 +4206,7 @@ namespace Lunar.Telas.Vendas
                                 //Process.Start(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf");
                                 FrmPDF frmPDF = new FrmPDF(@"Fiscal\XML\NFe\" + nfe.DataEmissao.Year + "-" + nfe.DataEmissao.Month.ToString().PadLeft(2, '0') + @"\Autorizadas\" + nfe.Chave + "-procNFe.pdf");
                                 frmPDF.ShowDialog();
-                            }  
+                            }
                             else
                             {
                                 NFeDownloadProc55 nFeDownloadProc55 = new NFeDownloadProc55();
@@ -4210,7 +4217,7 @@ namespace Lunar.Telas.Vendas
                                     gen.gerarPDF3(nfe, nFeDownloadProc55.pdf, nfe.Chave, true);
                                 }
                             }
-                            if(!String.IsNullOrEmpty(retConsulta.xMotivo))
+                            if (!String.IsNullOrEmpty(retConsulta.xMotivo))
                                 GenericaDesktop.ShowInfo(" (" + retConsulta.cStat + ") > " + retConsulta.xMotivo);
                         }
                         else if (retConsulta.xMotivo.Contains("Sem retorno de status da sefaz"))
@@ -4233,7 +4240,7 @@ namespace Lunar.Telas.Vendas
                     }
                 }
                 //se a nota continua nao autorizada, verifica se teve erros
-                if(String.IsNullOrEmpty(nfe.Chave) || nfe.Chave.Equals("123"))
+                if (String.IsNullOrEmpty(nfe.Chave) || nfe.Chave.Equals("123"))
                 {
                     Sessao.teveRetornoApi = true;
                     String erros = "";
@@ -4292,9 +4299,9 @@ namespace Lunar.Telas.Vendas
                 pessoa = (Pessoa)Controller.getInstance().selecionar(pessoa);
                 verificarPropriedadesCliente(pessoa);
             }
-            else 
+            else
                 GenericaDesktop.ShowAlerta("Selecione um cliente primeiro");
-            
+
         }
 
         private void btnSelecionarDependente_Click(object sender, EventArgs e)
@@ -4341,14 +4348,14 @@ namespace Lunar.Telas.Vendas
                         case DialogResult.OK:
                             txtPesquisaCliente.Texts = ((EmpresaFilial)empresaOjeto).RazaoSocial;
                             txtCodCliente.Texts = ((EmpresaFilial)empresaOjeto).Id.ToString();
-                            if(gridProdutos.RowCount > 1)
+                            if (gridProdutos.RowCount > 1)
                             {
                                 TransferenciaEstoque transferenciaEstoque = new TransferenciaEstoque();
                                 transferenciaEstoque.Data = DateTime.Now;
                                 transferenciaEstoque.Descricao = "TRANSFERENCIA ESTOQUE";
                                 transferenciaEstoque.EmpresaDestino = ((EmpresaFilial)empresaOjeto);
                                 transferenciaEstoque.EmpresaOrigem = Sessao.empresaFilialLogada;
-                                transferenciaEstoque.ValorTotal = decimal.Parse(txtTotalComDesconto.Texts.Replace("R$ ",""));
+                                transferenciaEstoque.ValorTotal = decimal.Parse(txtTotalComDesconto.Texts.Replace("R$ ", ""));
                                 Controller.getInstance().salvar(transferenciaEstoque);
 
                                 var records = gridProdutos.View.Records;
@@ -4408,46 +4415,69 @@ namespace Lunar.Telas.Vendas
 
         private void rjButton5_Click(object sender, EventArgs e)
         {
-            if(GenericaDesktop.ShowConfirmacao("Deseja realmente cancelar a venda?"))
-                {
+            if (GenericaDesktop.ShowConfirmacao("Deseja realmente cancelar a venda?"))
+            {
                 btnVoltar.PerformClick();
-                }
-        }
-
- 
-        public async Task GeraBoletoSicredi(Pessoa pessoa, decimal valor, DateTime vencimento, string documento, string nossoNumero)
-        {
-            var boletoService = new BoletoService();
-            var boletoRequest = boletoService.AlimentarDadosBoleto(pessoa, valor, vencimento, documento, nossoNumero);
-
-            SicrediIntegration sicredi = new SicrediIntegration(
-                isProduction: false, 
-                username: "123456789",
-                password: "teste123",
-                cooperativa: "6789",
-                posto: "03"
-            );
-
-            // Autenticação
-            if (await sicredi.AuthenticateAsync())
-            {
-                // Chamada para gerar o boleto
-                var sucesso = await sicredi.CreateBoletoAsync(boletoRequest);
-                if (sucesso)
-                {
-                    Console.WriteLine("Boleto gerado com sucesso.");
-                }
-                else
-                {
-                    Console.WriteLine("Falha ao gerar o boleto.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Falha na autenticação.");
             }
         }
+
+
+        //    public async Task GeraBoletosSicredi(Pessoa pessoa, IList<ContaReceber> contasReceber, BoletoConfig boletoConfig)
+        //    {
+        //        var boletoService = new BoletoService();
+        //        var linhasDigitaveis = new List<string>(); 
+
+        //        SicrediIntegration sicredi = new SicrediIntegration(
+        //            isProduction: false,
+        //            username: boletoConfig.Usuario,
+        //            password: GenericaDesktop.Descriptografa(boletoConfig.Senha),
+        //            cooperativa: boletoConfig.Cooperativa,
+        //            posto: boletoConfig.Posto
+        //        );
+
+        //        // Autenticação
+        //        if (await sicredi.AuthenticateAsync())
+        //        {
+        //            foreach (ContaReceber contaReceber in contasReceber)
+        //            {
+        //                // Alimentar dados do boleto
+        //                var boletoRequest = boletoService.AlimentarDadosBoleto(pessoa, contaReceber.ValorParcela, contaReceber.Vencimento, contaReceber.Documento, contaReceber.Documento, boletoConfig);
+
+        //                // Chamada para gerar o boleto
+        //                var boletoResponse = await sicredi.CreateBoletoAsync(boletoRequest);
+        //                if (boletoResponse != null)
+        //                {
+        //                    Console.WriteLine("Boleto gerado com sucesso.");
+        //                    contaReceber.BoletoGerado = true;
+        //                    contaReceber.IdBoleto = boletoResponse.Txid;
+        //                    contaReceber.Txid = boletoResponse.Txid;
+        //                    contaReceber.QrCode = boletoResponse.QrCode;
+        //                    contaReceber.NossoNumero = boletoResponse.NossoNumero;
+        //                    contaReceber.CodigoBarras = boletoResponse.CodigoBarras;
+        //                    contaReceber.LinhaDigitavel = boletoResponse.LinhaDigitavel;
+        //                    Controller.getInstance().salvar(contaReceber);
+
+        //                    linhasDigitaveis.Add(boletoResponse.LinhaDigitavel);
+        //                }
+        //                else
+        //                {
+        //                    Console.WriteLine("Falha ao gerar o boleto.");
+        //                }
+        //            }
+
+        //            // Chamar método para baixar e abrir PDFs
+        //            if (linhasDigitaveis.Count > 0)
+        //            {
+        //                await sicredi.DownloadAndOpenBoletoPdfs(linhasDigitaveis.ToArray());
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("Falha na autenticação.");
+        //        }
+        //    }
+        //}
+
+
     }
-
-
 }

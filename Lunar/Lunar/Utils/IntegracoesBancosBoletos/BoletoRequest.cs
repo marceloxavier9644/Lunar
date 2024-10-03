@@ -1,4 +1,5 @@
-﻿using LunarBase.Classes;
+﻿using iTextSharp.text;
+using LunarBase.Classes;
 using LunarBase.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -95,9 +96,12 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
     }
     public class BoletoService
     {
-        public BoletoRequest AlimentarDadosBoleto(Pessoa pessoa, decimal valor, DateTime vencimento, string numeroDocumento, string nossoNumero)
+        public BoletoRequest AlimentarDadosBoleto(Pessoa pessoa, decimal valor, DateTime vencimento, string numeroDocumento, string nossoNumero, BoletoConfig boletoConfig)
         {
             // Criar o pagador a partir do objeto pessoa
+            valor = decimal.Parse(valor.ToString("F2"));
+            boletoConfig.Multa = decimal.Parse(boletoConfig.Multa.ToString("F2"));
+            boletoConfig.JuroMensal = decimal.Parse(boletoConfig.JuroMensal.ToString("F2"));
             var pagador = new Pagador
             {
                 TipoPessoa = pessoa.TipoPessoa == "PF" ? "PESSOA_FISICA" : "PESSOA_JURIDICA", // Definir o tipo de pessoa (Física ou Jurídica)
@@ -129,13 +133,8 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
 
             var boletoRequest = new BoletoRequest
             {
-                //XApiKey = "58ae06aa-759c-4e27-b9da-46be855eb3aa", 
-                //Authorization = "Bearer 58ae06aa-759c-4e27-b9da-46be855eb3aa",  
-                //Cooperativa = "6789", 
-                //Posto = "03",  
-
-                TipoCobranca = "NORMAL",  // Tipo de cobrança NORMAL OU HIBRIDO COM QRCODE
-                CodigoBeneficiario = "12345", // 5 digitos para o sicredi  
+                TipoCobranca = boletoConfig.TipoBoleto,  // Tipo de cobrança NORMAL OU HIBRIDO COM QRCODE
+                CodigoBeneficiario = boletoConfig.CodigoBeneficiario.Trim(), // 5 digitos para o sicredi  
                 Pagador = pagador,  // Informações do pagador
                 BeneficiarioFinal = beneficiarioFinal,  // Informações do beneficiário final
                 Valor = valor,  // Valor do boleto
@@ -150,8 +149,8 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
                 //ValorDesconto1 = '',
                 //DataDesconto1 = "",
                 TipoJuros = "PERCENTUAL",  //A - VALOR ou B - PERCENTUAL
-                Juros = 1,
-                Multa = 2,
+                Juros = boletoConfig.JuroMensal,
+                Multa = boletoConfig.Multa,
                 Informativo = new List<string> { "Pagamento preferencialmente na rede bancária ou correspondentes autorizados" },  // Informações adicionais
             };
 

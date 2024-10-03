@@ -19,6 +19,7 @@ using Lunar.Telas.Estoques;
 using Lunar.Telas.Fiscal;
 using Lunar.Telas.Fiscal.Adicionais;
 using Lunar.Telas.Food;
+using Lunar.Telas.IntegracoesBancarias;
 using Lunar.Telas.IntegracoesEcommerce.NuvemShopIntegration;
 using Lunar.Telas.Mensagens;
 using Lunar.Telas.Orcamentos;
@@ -1582,6 +1583,58 @@ namespace Lunar.Telas.Principal
             fr.ShowDialog();
             formBackground.Dispose();
             fr.Dispose();
+        }
+
+        private void configurarEmissãoDeBoletosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            FrmConfigurarEmissaoBoletos fr = new FrmConfigurarEmissaoBoletos();
+            fr.Owner = formBackground;
+            fr.ShowDialog();
+            formBackground.Dispose();
+            fr.Dispose();
+        }
+
+        private void configurarEmissãoDeBoletosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            FrmConfigurarEmissaoBoletos fr = new FrmConfigurarEmissaoBoletos();
+            fr.Owner = formBackground;
+            fr.ShowDialog();
+            formBackground.Dispose();
+            fr.Dispose();
+        }
+
+        private void contaBancáriaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (!Sessao.permissoes.Contains("105"))
+                GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (105)!");
+            else
+                OpenChildForm(() => new FrmContaBancariaLista(), btnUtilitarios);
         }
     }
 }

@@ -14,8 +14,8 @@ namespace Lunar.Telas.VisualizadorPDF
         {
             InitializeComponent();
             this.caminhoPDF = caminhoPDF;
-            //abrirArquivo();
-            Process.Start(caminhoPDF);
+            abrirArquivo();
+            //Process.Start(caminhoPDF);
         }
 
         private void abrirArquivo()
@@ -38,7 +38,7 @@ namespace Lunar.Telas.VisualizadorPDF
 
         private void FrmPDF_Load(object sender, EventArgs e)
         {
-            this.Close();
+           
 
         }
 

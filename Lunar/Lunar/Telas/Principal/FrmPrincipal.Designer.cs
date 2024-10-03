@@ -61,7 +61,6 @@
             this.cartõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adquirenteMaquinaCartãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bandeirasDeCartãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contaBancáriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EmpresaMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.enviarArquivosContabilidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gerarSintegraTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +72,9 @@
             this.dropMenuFinanceiro = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.abrirCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adiantamentoValeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contasBancáriasEConfiguraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contaBancáriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurarEmissãoDeBoletosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnContaReceberLista = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLembreteVencimento = new System.Windows.Forms.ToolStripMenuItem();
@@ -623,7 +625,6 @@
             this.dropMenuUtilitarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnBalancoEstoque,
             this.cartõesToolStripMenuItem,
-            this.contaBancáriaToolStripMenuItem,
             this.EmpresaMenu,
             this.enviarArquivosContabilidadeToolStripMenuItem,
             this.gerarSintegraTool,
@@ -636,7 +637,7 @@
             this.dropMenuUtilitarios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuUtilitarios.Name = "rjDropdownMenu1";
             this.dropMenuUtilitarios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 246);
+            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 224);
             // 
             // btnBalancoEstoque
             // 
@@ -667,13 +668,6 @@
             this.bandeirasDeCartãoToolStripMenuItem1.Size = new System.Drawing.Size(279, 22);
             this.bandeirasDeCartãoToolStripMenuItem1.Text = "Bandeiras de Cartão";
             this.bandeirasDeCartãoToolStripMenuItem1.Click += new System.EventHandler(this.bandeirasDeCartãoToolStripMenuItem1_Click);
-            // 
-            // contaBancáriaToolStripMenuItem
-            // 
-            this.contaBancáriaToolStripMenuItem.Name = "contaBancáriaToolStripMenuItem";
-            this.contaBancáriaToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
-            this.contaBancáriaToolStripMenuItem.Text = "Conta Bancária";
-            this.contaBancáriaToolStripMenuItem.Click += new System.EventHandler(this.contaBancáriaToolStripMenuItem_Click);
             // 
             // EmpresaMenu
             // 
@@ -739,6 +733,7 @@
             this.dropMenuFinanceiro.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abrirCaixaToolStripMenuItem,
             this.adiantamentoValeToolStripMenuItem,
+            this.contasBancáriasEConfiguraçõesToolStripMenuItem,
             this.toolStripMenuItem4,
             this.btnContaReceberLista,
             this.btnLembreteVencimento,
@@ -751,75 +746,98 @@
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(229, 224);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(317, 246);
             // 
             // abrirCaixaToolStripMenuItem
             // 
             this.abrirCaixaToolStripMenuItem.Name = "abrirCaixaToolStripMenuItem";
-            this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.abrirCaixaToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
             this.abrirCaixaToolStripMenuItem.Text = "Abrir/Fechar Caixa";
             this.abrirCaixaToolStripMenuItem.Click += new System.EventHandler(this.abrirCaixaToolStripMenuItem_Click);
             // 
             // adiantamentoValeToolStripMenuItem
             // 
             this.adiantamentoValeToolStripMenuItem.Name = "adiantamentoValeToolStripMenuItem";
-            this.adiantamentoValeToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.adiantamentoValeToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
             this.adiantamentoValeToolStripMenuItem.Text = "Adiantamento (Vale)";
             this.adiantamentoValeToolStripMenuItem.Click += new System.EventHandler(this.adiantamentoValeToolStripMenuItem_Click);
+            // 
+            // contasBancáriasEConfiguraçõesToolStripMenuItem
+            // 
+            this.contasBancáriasEConfiguraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contaBancáriaToolStripMenuItem1,
+            this.configurarEmissãoDeBoletosToolStripMenuItem1});
+            this.contasBancáriasEConfiguraçõesToolStripMenuItem.Name = "contasBancáriasEConfiguraçõesToolStripMenuItem";
+            this.contasBancáriasEConfiguraçõesToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
+            this.contasBancáriasEConfiguraçõesToolStripMenuItem.Text = "Contas Bancárias e Configurações";
+            // 
+            // contaBancáriaToolStripMenuItem1
+            // 
+            this.contaBancáriaToolStripMenuItem1.Name = "contaBancáriaToolStripMenuItem1";
+            this.contaBancáriaToolStripMenuItem1.Size = new System.Drawing.Size(293, 22);
+            this.contaBancáriaToolStripMenuItem1.Text = "Conta Bancária";
+            this.contaBancáriaToolStripMenuItem1.Click += new System.EventHandler(this.contaBancáriaToolStripMenuItem1_Click);
+            // 
+            // configurarEmissãoDeBoletosToolStripMenuItem1
+            // 
+            this.configurarEmissãoDeBoletosToolStripMenuItem1.Name = "configurarEmissãoDeBoletosToolStripMenuItem1";
+            this.configurarEmissãoDeBoletosToolStripMenuItem1.Size = new System.Drawing.Size(293, 22);
+            this.configurarEmissãoDeBoletosToolStripMenuItem1.Text = "Configurar Emissão de Boletos";
+            this.configurarEmissãoDeBoletosToolStripMenuItem1.Click += new System.EventHandler(this.configurarEmissãoDeBoletosToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(228, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(316, 22);
             this.toolStripMenuItem4.Text = "Contas a Pagar";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // btnContaReceberLista
             // 
             this.btnContaReceberLista.Name = "btnContaReceberLista";
-            this.btnContaReceberLista.Size = new System.Drawing.Size(228, 22);
+            this.btnContaReceberLista.Size = new System.Drawing.Size(316, 22);
             this.btnContaReceberLista.Text = "Contas a Receber";
             this.btnContaReceberLista.Click += new System.EventHandler(this.btnContaReceberLista_Click);
             // 
             // btnLembreteVencimento
             // 
             this.btnLembreteVencimento.Name = "btnLembreteVencimento";
-            this.btnLembreteVencimento.Size = new System.Drawing.Size(228, 22);
+            this.btnLembreteVencimento.Size = new System.Drawing.Size(316, 22);
             this.btnLembreteVencimento.Text = "Lembrete Vencimento";
             this.btnLembreteVencimento.Click += new System.EventHandler(this.btnLembreteVencimento_Click);
             // 
             // orçamentoAvulsoToolStripMenuItem
             // 
             this.orçamentoAvulsoToolStripMenuItem.Name = "orçamentoAvulsoToolStripMenuItem";
-            this.orçamentoAvulsoToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.orçamentoAvulsoToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
             this.orçamentoAvulsoToolStripMenuItem.Text = "Orçamento Avulso";
             this.orçamentoAvulsoToolStripMenuItem.Click += new System.EventHandler(this.orçamentoAvulsoToolStripMenuItem_Click);
             // 
             // btnPlanoDecontas1
             // 
             this.btnPlanoDecontas1.Name = "btnPlanoDecontas1";
-            this.btnPlanoDecontas1.Size = new System.Drawing.Size(228, 22);
+            this.btnPlanoDecontas1.Size = new System.Drawing.Size(316, 22);
             this.btnPlanoDecontas1.Text = "Plano de Contas";
             this.btnPlanoDecontas1.Click += new System.EventHandler(this.btnPlanoDecontas1_Click);
             // 
             // btnMovimentoCaixa
             // 
             this.btnMovimentoCaixa.Name = "btnMovimentoCaixa";
-            this.btnMovimentoCaixa.Size = new System.Drawing.Size(228, 22);
+            this.btnMovimentoCaixa.Size = new System.Drawing.Size(316, 22);
             this.btnMovimentoCaixa.Text = "Movimento de Caixa";
             this.btnMovimentoCaixa.Click += new System.EventHandler(this.btnMovimentoCaixa_Click);
             // 
             // reciboAvulsoToolStripMenuItem
             // 
             this.reciboAvulsoToolStripMenuItem.Name = "reciboAvulsoToolStripMenuItem";
-            this.reciboAvulsoToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.reciboAvulsoToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
             this.reciboAvulsoToolStripMenuItem.Text = "Recibo Avulso";
             this.reciboAvulsoToolStripMenuItem.Click += new System.EventHandler(this.reciboAvulsoToolStripMenuItem_Click);
             // 
             // saldoContasToolStripMenuItem
             // 
             this.saldoContasToolStripMenuItem.Name = "saldoContasToolStripMenuItem";
-            this.saldoContasToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.saldoContasToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
             this.saldoContasToolStripMenuItem.Text = "Saldo Contas";
             this.saldoContasToolStripMenuItem.Click += new System.EventHandler(this.saldoContasToolStripMenuItem_Click);
             // 
@@ -1102,7 +1120,7 @@
             this.dropMenuProduto.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuProduto.Name = "rjDropdownMenu1";
             this.dropMenuProduto.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuProduto.Size = new System.Drawing.Size(251, 136);
+            this.dropMenuProduto.Size = new System.Drawing.Size(251, 114);
             // 
             // btnCadastroProduto
             // 
@@ -1207,7 +1225,6 @@
         private System.Windows.Forms.ToolStripMenuItem cartõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adquirenteMaquinaCartãoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bandeirasDeCartãoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem contaBancáriaToolStripMenuItem;
         private RJ_UI.Classes.RJDropdownMenu dropMenuFinanceiro;
         private System.Windows.Forms.ToolStripMenuItem btnContaReceberLista;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
@@ -1264,5 +1281,8 @@
         private System.Windows.Forms.ToolStripMenuItem reativaçãoDeClientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aniversariantesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem enviarProdutosBalançaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contasBancáriasEConfiguraçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contaBancáriaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem configurarEmissãoDeBoletosToolStripMenuItem1;
     }
 }

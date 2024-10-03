@@ -50,6 +50,7 @@ namespace Lunar.Telas.PesquisaPadrao
             //if(Tabela != "Pessoa") /*&& Tabela != "Produto"*/
             pesquisar(Tabela, Sql);
             txtPesquisa.Select();
+            txtPesquisa.Focus();
             //txtPesquisa.Select();
         }
 
@@ -66,6 +67,7 @@ namespace Lunar.Telas.PesquisaPadrao
             sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
 
             txtPesquisa.Select();
+            txtPesquisa.Focus();
         }
 
         private void pesquisar(string Tabela, string Sql)
@@ -142,15 +144,7 @@ namespace Lunar.Telas.PesquisaPadrao
                         }
                     }
                 }
-                if (Resultado.Count >= 1)
-                {
-                    this.gridPesquisa.TableControl.Select();
-                    this.gridPesquisa.MoveToCurrentCell(new Syncfusion.WinForms.GridCommon.ScrollAxis.RowColumnIndex(1, 0));
-                }
-                else
-                {
-                    txtPesquisa.Focus();
-                }
+                txtPesquisa.Focus();
             }
         }
 
