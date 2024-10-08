@@ -1,16 +1,12 @@
-﻿using Lunar.Utils;
+﻿using Ghostscript.NET.Rasterizer;
+using Lunar.Utils;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Lunar.Telas.Vendas.Adicionais
@@ -18,10 +14,12 @@ namespace Lunar.Telas.Vendas.Adicionais
     public partial class FrmImprimirTicketVenda : Form
     {
         Venda venda = new Venda();
-        public FrmImprimirTicketVenda(Venda venda)
+        bool imprimirDireto = false;
+        public FrmImprimirTicketVenda(Venda venda, bool imprimirDireto)
         {
             InitializeComponent();
             this.venda = venda;
+            this.imprimirDireto = imprimirDireto;
         }
 
         private void FrmImprimirTicketVenda_Load(object sender, EventArgs e)
@@ -184,6 +182,13 @@ namespace Lunar.Telas.Vendas.Adicionais
                     vendaItem.ValorProduto, vendaItem.ValorDesconto, vendaItem.Quantidade, vendaItem.ValorFinal);
             }
             this.reportViewer1.RefreshReport();
+
+            //if(imprimirDireto == true)
+            //    ImprimirRelatorio();
         }
+
+        
+
+
     }
 }

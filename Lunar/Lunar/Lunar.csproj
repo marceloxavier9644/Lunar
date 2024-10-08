@@ -1457,6 +1457,7 @@
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.Designer.cs">
       <DependentUpon>FrmImportarCSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\IntegracoesBancosBoletos\BoletoConfigService.cs" />
     <Compile Include="Utils\IntegracoesBancosBoletos\BoletoLiquidado.cs" />
     <Compile Include="Utils\IntegracoesBancosBoletos\BoletoSicrediManager.cs" />
     <Compile Include="Utils\IntegracoesBancosBoletos\BoletoRequest.cs" />
@@ -2628,6 +2629,9 @@
     </PackageReference>
     <PackageReference Include="FontAwesome.Sharp">
       <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Ghostscript.NET">
+      <Version>1.2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Google.Protobuf">
       <Version>3.15.0</Version>

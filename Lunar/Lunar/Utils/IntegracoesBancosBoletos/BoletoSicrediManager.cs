@@ -32,7 +32,7 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
             }
 
             _sicrediIntegration = new SicrediIntegration(
-                isProduction: false,
+                isProduction: true,
                 username: _boletoConfig.Usuario,
                 password: GenericaDesktop.Descriptografa(_boletoConfig.Senha),
                 cooperativa: _boletoConfig.Cooperativa,
@@ -72,7 +72,7 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
             return listaBc.FirstOrDefault(); // Retorna a primeira configuração encontrada ou null}
         }
 
-        public async Task<bool> GeraBoletosSicredi(Pessoa pessoa)
+        public async Task<bool> GeraBoletosSicredi(Pessoa pessoa, bool imprimirNaTela)
         {
             var linhasDigitaveis = new List<string>();
 
@@ -120,14 +120,14 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
             // Chamar método para baixar e abrir PDFs
             if (linhasDigitaveis.Count > 0)
             {
-                await _sicrediIntegration.DownloadAndOpenBoletoPdfs(linhasDigitaveis.ToArray());
+                await _sicrediIntegration.DownloadAndOpenBoletoPdfs(linhasDigitaveis.ToArray(), imprimirNaTela);
             }
 
             return true;
         }
 
         // Novo método para passar diretamente as linhas digitáveis e chamar o PDF
-        public async Task<bool> BaixarBoletosExistentesSicredi(string[] linhasDigitaveis)
+        public async Task<bool> BaixarBoletosExistentesSicredi1(string[] linhasDigitaveis, bool imprimirNaTela)
         {
             if (linhasDigitaveis == null || linhasDigitaveis.Length == 0)
             {
@@ -143,9 +143,43 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
             }
 
             // Chamar o método de download e abertura dos boletos já existentes
-            await _sicrediIntegration.DownloadAndOpenBoletoPdfs(linhasDigitaveis);
+            IList<string> listaBoleto = await _sicrediIntegration.DownloadAndOpenBoletoPdfs(linhasDigitaveis, imprimirNaTela);
+            //if(imprimirNaTela == false)
+            //{
+            //    if(listaBoleto.Count > 0)
+            //    {
+            //        foreach (string caminhoBoleto in listaBoleto)
+            //        {
 
+            //        }
+            //    }
+            //}
             return true;
+        }
+
+        public async Task<IList<string>> BaixarBoletosExistentesSicredi(string[] linhasDigitaveis, bool imprimirNaTela)
+        {
+            // Lista de caminhos dos boletos para retorno
+            IList<string> listaCaminhosBoletos = new List<string>();
+
+            if (linhasDigitaveis == null || linhasDigitaveis.Length == 0)
+            {
+                Console.WriteLine("Nenhuma linha digitável fornecida.");
+                return listaCaminhosBoletos; // Retorna a lista vazia
+            }
+
+            // Autenticação
+            if (!await _sicrediIntegration.AuthenticateAsync())
+            {
+                Console.WriteLine("Falha na autenticação.");
+                return listaCaminhosBoletos; // Retorna a lista vazia
+            }
+
+            // Chamar o método de download e abertura dos boletos já existentes
+            listaCaminhosBoletos = await _sicrediIntegration.DownloadAndOpenBoletoPdfs(linhasDigitaveis, imprimirNaTela);
+
+            // Retorna a lista de caminhos dos boletos
+            return listaCaminhosBoletos;
         }
 
         public async Task<string> ConsultarBoletosLiquidadosPorDiaAsync(DateTime data)

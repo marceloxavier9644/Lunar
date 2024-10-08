@@ -91,6 +91,7 @@
     <None Remove="HBM\ProdutoInsumo.hbm.xml" />
     <None Remove="HBM\ProdutoSetor.hbm.xml" />
     <None Remove="HBM\ProdutoSubGrupo.hbm.xml" />
+    <None Remove="HBM\ProdutoTamanho.hbm" />
     <None Remove="HBM\Query.hbm.xml" />
     <None Remove="HBM\RegimeEmpresa.hbm.xml" />
     <None Remove="HBM\Servico.hbm.xml" />
@@ -132,6 +133,7 @@
     <EmbeddedResource Include="HBM\ProdutoCodigoBarras.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoGrade.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoInsumo.hbm.xml" />
+    <EmbeddedResource Include="HBM\ProdutoTamanho.hbm" />
     <EmbeddedResource Include="HBM\Query.hbm.xml" />
     <EmbeddedResource Include="HBM\AdquirenteCartao.hbm.xml" />
     <EmbeddedResource Include="HBM\Anp.hbm.xml" />

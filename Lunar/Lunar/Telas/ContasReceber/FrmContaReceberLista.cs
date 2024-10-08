@@ -1,4 +1,6 @@
-﻿using Lunar.Telas.Cadastros.Bancos;
+﻿using iText.Kernel.Pdf;
+using iText.Kernel.Utils;
+using Lunar.Telas.Cadastros.Bancos;
 using Lunar.Telas.Cadastros.Cliente;
 using Lunar.Telas.ContasReceber.Reports;
 using Lunar.Telas.FormaPagamentoRecebimento;
@@ -36,6 +38,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Windows.Media.Protection.PlayReady;
 using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
 using static Lunar.Utils.GalaxyPay_API.GalaxyPayApiIntegracao;
 using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
@@ -1130,11 +1133,21 @@ namespace Lunar.Telas.ContasReceber
                             {
                                 if (boletoConfig.ContaBancaria.Banco.Descricao.ToUpper().Contains("SICREDI"))
                                 {
-                                    BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(0, 0, boletoConfig.ContaBancaria);
-                                    string resultado = await boletoSicrediManager.ConsultarBoletosLiquidadosPorDiaAsync(dataInicial);
-                                    if (!string.IsNullOrEmpty(resultado))
+                                    DateTime dataAtual = dataInicial;
+                                    while (dataAtual <= dataFinal)
                                     {
-                                        Console.WriteLine($"Boletos para {boletoConfig.CodigoBeneficiario} no dia {dataInicial.ToString("dd/MM/yyyy")}: {resultado}");
+                                        // Chama o método para consultar boletos liquidados na dataAtual
+                                        BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(0, 0, boletoConfig.ContaBancaria);
+                                        string resultado = await boletoSicrediManager.ConsultarBoletosLiquidadosPorDiaAsync(dataAtual);
+
+                                        // Exibe o resultado se houver boletos
+                                        if (!string.IsNullOrEmpty(resultado))
+                                        {
+                                            Console.WriteLine($"Boletos para {boletoConfig.CodigoBeneficiario} no dia {dataAtual.ToString("dd/MM/yyyy")}: {resultado}");
+                                        }
+
+                                        // Incrementa a data para o próximo dia
+                                        dataAtual = dataAtual.AddDays(1);
                                     }
                                 }
                             }
@@ -1335,6 +1348,8 @@ namespace Lunar.Telas.ContasReceber
         {
             try
             {
+                btnImprimirBoleto.Enabled = false;
+                Logger logger = new Logger();
                 if (!String.IsNullOrEmpty(txtCodCliente.Texts))
                 {
                     int vendaId = 0;
@@ -1364,6 +1379,7 @@ namespace Lunar.Telas.ContasReceber
 
                     if (contasSelecionadas.Count > 0)
                     {
+
                         int iGalaxyPay = 0;
                         List<string> linhasDigitaveisSicredi = new List<string>(); // Para armazenar as linhas digitáveis dos boletos Sicredi
 
@@ -1421,8 +1437,9 @@ namespace Lunar.Telas.ContasReceber
                                 else
                                 {
                                     // Gerar o boleto Sicredi
+                                    logger.WriteLog("Iniciando geração de boleto sicredi! ", "Log");
                                     BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto);
-                                    bool sucesso = await boletoManager.GeraBoletosSicredi(contaReceber.Cliente);
+                                    bool sucesso = await boletoManager.GeraBoletosSicredi(contaReceber.Cliente, true);
                                 }
                             }
                             else if (contaReceber.ContaBoleto.Banco.Descricao == "GALAXYPAY" || contaReceber.ContaBoleto.Banco.Descricao == "CELCASH" || contaReceber.ContaBoleto.Descricao == "CELCASH")
@@ -1468,13 +1485,13 @@ namespace Lunar.Telas.ContasReceber
                                 MessageBox.Show("Plataforma de geração de boleto desconhecida.");
                             }
                         }
-
+           
                         // Se houver boletos Sicredi já gerados, chamar o método para download
                         if (linhasDigitaveisSicredi.Count > 0)
                         {
                             BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contasSelecionadas.First().ContaBoleto);
                             string[] linhasDigitaveisArray = linhasDigitaveisSicredi.ToArray();
-                            await boletoSicrediManager.BaixarBoletosExistentesSicredi(linhasDigitaveisArray);
+                            await boletoSicrediManager.BaixarBoletosExistentesSicredi(linhasDigitaveisArray, true);
                         }
                     }
                 }
@@ -1482,6 +1499,7 @@ namespace Lunar.Telas.ContasReceber
                 {
                     GenericaDesktop.ShowAlerta("Selecione apenas um cliente para emissão ou impressão de boletos, pesquisa no campo de pesquisar clientes!");
                 }
+                btnImprimirBoleto.Enabled = true;
             }
             catch (Exception erro)
             {
@@ -1609,6 +1627,175 @@ namespace Lunar.Telas.ContasReceber
                 GenericaDesktop.ShowErro("Falha ao enviar mensagem: " + erro.Message);
             }
         }
+
+
+        private async void enviarBoletoENFPorWhatsAppNew()
+        {
+            try
+            {
+                String urlNFSe = "";
+                List<string> listaCaminhosFinal = new List<string>();
+                string IDcliente = "";
+                int idNotaFiscal = 0;
+                int vendaId = 0;
+                int osId = 0;
+                List<string> listaLinhasDigitaveis = new List<string>();
+                IList<ContaReceber> contaReceberAssociado = new List<ContaReceber>();
+                if (grid.SelectedItems.Count == 1)
+                {
+                    List<string> listaFaturas = new List<string>();
+
+                    foreach (var selectedItem in grid.SelectedItems)
+                    {
+                        var conta = selectedItem as ContaReceber;
+                        contaReceber = conta;
+                        if (conta.BoletoGerado == true)
+                        {
+                            string documento = conta.Documento;
+                            IDcliente = conta.Cliente.Id.ToString();
+                            contaReceberAssociado = new List<ContaReceber>();
+
+                            if (conta.Venda != null)
+                            {
+                                vendaId = conta.Venda.Id;
+                                contaReceberAssociado = ObterParcelasAssociadas(conta.Venda, null, IDcliente);
+                            }
+
+                            if (conta.OrdemServico != null)
+                            {
+                                osId = conta.OrdemServico.Id;
+                                contaReceberAssociado = ObterParcelasAssociadas(null, conta.OrdemServico, IDcliente);
+                                if (conta.OrdemServico.Nfse != null)
+                                {
+                                    urlNFSe = conta.OrdemServico.Nfse.UrlDanfe;
+                                    string caminhoNotaServico = await BaixarEPDFSalvarNaTempAsync(urlNFSe);
+                                    listaCaminhosFinal.Add(caminhoNotaServico);
+                                }
+                            }
+
+                            foreach (var receber in contaReceberAssociado)
+                            {
+                                listaFaturas.Add(receber.Id.ToString());
+
+                                if (receber.OrdemServico != null)
+                                {
+                                    if (receber.OrdemServico.Nfe != null)
+                                        idNotaFiscal = receber.OrdemServico.Nfe.Id;
+                                }
+                                else if (receber.Venda != null)
+                                {
+                                    if (receber.Venda.Nfe != null)
+                                        idNotaFiscal = receber.Venda.Nfe.Id;
+                                }
+                                if (receber.ContaBoleto != null)
+                                {
+                                    if (receber.ContaBoleto.Banco.Descricao.ToUpper().Contains("SICREDI"))
+                                    {
+                                        listaLinhasDigitaveis.Add(contaReceber.LinhaDigitavel);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Coleta o PDF dos boletos
+                    string localBoleto = ""; 
+                    if (contaReceber.BoletoGerado == true) 
+                    {
+                        if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
+                        {
+                            GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                            string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                            string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(listaFaturas.ToArray());
+
+                            // O método BaixarPDFAsync agora é aguardado assincronamente
+                            localBoleto = await BaixarPDFAsync(link, int.Parse(IDcliente));
+                        }
+                        IList<BoletoConfig> listaBoletoConfig = new List<BoletoConfig>();
+                        listaBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
+                        if (listaBoletoConfig.Count > 0)
+                        {
+                            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto);
+                            IList<string> listaCaminhosBoletos = new List<string>();
+                            listaCaminhosBoletos = await boletoSicrediManager.BaixarBoletosExistentesSicredi(listaLinhasDigitaveis.ToArray(), false);
+                            string outputFilePath = "";
+                            if (listaCaminhosBoletos.Count > 0)
+                            {
+                                string[] pdfPaths = listaCaminhosBoletos.ToArray();
+                                string tempDirectory = Path.GetTempPath();
+                                outputFilePath = Path.Combine(tempDirectory, "Boleto.pdf");
+                                CombinePdfs(pdfPaths, outputFilePath);
+                                localBoleto = outputFilePath;
+                            }
+                        }
+
+                        // Coleta nota fiscal se houver
+                        List<Tuple<string, string>> listaCaminhoNotasParaEnviarEmail = new List<Tuple<string, string>>();
+                        if (idNotaFiscal > 0)
+                        {
+                            Nfe nfe = new Nfe();
+                            nfe.Id = idNotaFiscal;
+                            nfe = (Nfe)Controller.getInstance().selecionar(nfe);
+
+                            var caminhos = coletarNotaFiscalPDFeXML(nfe);
+                            listaCaminhoNotasParaEnviarEmail.Add(caminhos);
+                        }
+                        String assuntoEmail = "Boleto " + Sessao.empresaFilialLogada.NomeFantasia;
+    
+                        if (listaCaminhoNotasParaEnviarEmail.Count > 0)
+                        {
+                            assuntoEmail = "Boleto e Nota Fiscal " + Sessao.empresaFilialLogada.NomeFantasia;
+                            foreach (var caminhoNota in listaCaminhoNotasParaEnviarEmail)
+                            {
+                                listaCaminhosFinal.Add(caminhoNota.Item1); // Adiciona o caminho do PDF da Nota Fiscal
+                                listaCaminhosFinal.Add(caminhoNota.Item2); // Adiciona o caminho do XML da Nota Fiscal
+                            }
+                        }
+                        listaCaminhosFinal.Add(localBoleto);
+
+                        bool retornoMensagem = false;
+                        if (!String.IsNullOrEmpty(Sessao.parametroSistema.TokenWhats))
+                        {
+                            string telefoneCompleto = "";
+                            if (contaReceber.Cliente.PessoaTelefone != null)
+                            {
+                                telefoneCompleto = EnviarMensagemWhatsapp.TratarTelefone(contaReceber.Cliente.PessoaTelefone.Ddd, contaReceber.Cliente.PessoaTelefone.Telefone);
+                            }
+                            FrmEnvioMensagem frmEnvioMensagem = new FrmEnvioMensagem(telefoneCompleto, capturarPrimeiroNomeParaMensagem(contaReceber.Cliente.RazaoSocial), true);
+                            if (frmEnvioMensagem.ShowDialog() == DialogResult.OK)
+                            {
+                                string escolha = frmEnvioMensagem.GetEscolha();
+                                string numero = frmEnvioMensagem.GetTelefone();
+                                string nome = frmEnvioMensagem.GetNome();
+                                string mensagem = frmEnvioMensagem.GetMensagem();
+                                EnviarMensagemWhatsapp enviarMsg = new EnviarMensagemWhatsapp();
+                                if (!String.IsNullOrEmpty(mensagem))
+                                    await enviarMsg.SendMessageAsync(numero, mensagem);
+                                foreach (string caminho in listaCaminhosFinal)
+                                {
+                                    await enviarMsg.SendMediaMessageAsync(numero, caminho);
+                                }
+                            }
+                        }
+                    }
+                    else
+                        GenericaDesktop.ShowAlerta("Essa parcela não possui boleto gerado pelo sistema Lunar!");
+                }
+                else if (grid.SelectedItems.Count > 1)
+                {
+                    GenericaDesktop.ShowAlerta("Selecione apenas 1 parcela da venda, o sistema irá capturar todas parcelas (da mesma venda) e nota fiscal para enviar no e-mail!");
+                }
+                else
+                    GenericaDesktop.ShowAlerta("Selecione pelo menos 1 parcela");
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowErro("Falha ao enviar mensagem: " + erro.Message);
+            }
+        }
+
+
+
         private string capturarPrimeiroNomeParaMensagem(string nomeCompleto)
         {
             if (string.IsNullOrWhiteSpace(nomeCompleto))
@@ -1637,7 +1824,8 @@ namespace Lunar.Telas.ContasReceber
         {
             string IDcliente = "";
             int idNotaFiscal = 0;
-
+            string notaServicoPdf = "";
+            IList<ContaReceber> contaReceberAssociado = new List<ContaReceber>();
             if (grid.SelectedItems.Count == 1)
             {
                 List<string> listaFaturas = new List<string>();
@@ -1650,7 +1838,7 @@ namespace Lunar.Telas.ContasReceber
                     {
                         string documento = conta.Documento;
                         IDcliente = conta.Cliente.Id.ToString();
-                        IList<ContaReceber> contaReceberAssociado = new List<ContaReceber>();
+                        contaReceberAssociado = new List<ContaReceber>();
 
                         if (conta.Venda != null)
                             contaReceberAssociado = ObterParcelasAssociadas(conta.Venda, null, IDcliente);
@@ -1666,6 +1854,8 @@ namespace Lunar.Telas.ContasReceber
                             {
                                 if (receber.OrdemServico.Nfe != null)
                                     idNotaFiscal = receber.OrdemServico.Nfe.Id;
+                                if (receber.OrdemServico.Nfse != null)
+                                    notaServicoPdf = receber.OrdemServico.Nfse.UrlDanfe;
                             }
                             else if (receber.Venda != null)
                             {
@@ -1675,56 +1865,196 @@ namespace Lunar.Telas.ContasReceber
                         }
                     }
                 }
-
-                if (!String.IsNullOrEmpty(contaReceber.Cliente.Email))
+                
+                if (!String.IsNullOrEmpty(contaReceber.Cliente.Email) && Sessao.parametroSistema.IntegracaoGalaxyPay == true)
                 {
-                    // Coleta o PDF dos boletos
-                    GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
-                    string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
-                    string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(listaFaturas.ToArray());
-
-                    // O método BaixarPDFAsync agora é aguardado assincronamente
-                    string localBoleto = await BaixarPDFAsync(link, int.Parse(IDcliente));
-
-                    // Coleta nota fiscal se houver
-                    List<Tuple<string, string>> listaCaminhoNotasParaEnviarEmail = new List<Tuple<string, string>>();
-                    if (idNotaFiscal > 0)
-                    {
-                        Nfe nfe = new Nfe();
-                        nfe.Id = idNotaFiscal;
-                        nfe = (Nfe)Controller.getInstance().selecionar(nfe);
-
-                        var caminhos = coletarNotaFiscalPDFeXML(nfe);
-                        listaCaminhoNotasParaEnviarEmail.Add(caminhos);
-                    }
-                    String assuntoEmail = "Boleto TXT Informática";
-                    List<string> listaCaminhosFinal = new List<string>();
-                    if (listaCaminhoNotasParaEnviarEmail.Count > 0)
-                    {
-                        assuntoEmail = "Boleto e Nota Fiscal TXT Informática";
-                        foreach (var caminhoNota in listaCaminhoNotasParaEnviarEmail)
-                        {
-                            listaCaminhosFinal.Add(caminhoNota.Item1); // Adiciona o caminho do PDF da Nota Fiscal
-                            listaCaminhosFinal.Add(caminhoNota.Item2); // Adiciona o caminho do XML da Nota Fiscal
-                        }
-                    }
-                    listaCaminhosFinal.Add(localBoleto);
-
-                    bool retornoEmail = false;
-                    if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.ServidorEmail))
-                        retornoEmail = generica.enviarEmail(contaReceber.Cliente.Email, assuntoEmail, "E-mail disparado via Lunar Software", "Prezado(a) Cliente, Segue em anexo.", listaCaminhosFinal);
-                    else
-                        retornoEmail = generica.enviarEmailPeloLunar(contaReceber.Cliente.Email, assuntoEmail, "E-mail disparado pelo sistema Lunar Software", "Prezado(a) Cliente, Segue em anexo.", listaCaminhosFinal);
-
-                    if (retornoEmail == true)
-                        GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+                    dispararEmailBoletosGalaxyPayCelCash(idNotaFiscal, listaFaturas, IDcliente, notaServicoPdf);
                 }
-                else
-                    GenericaDesktop.ShowAlerta("Cadastro do cliente não possui e-mail informado!");
+                IList<BoletoConfig> listaBoletoConfig = new List<BoletoConfig>();
+                listaBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
+                if (!String.IsNullOrEmpty(contaReceber.Cliente.Email) && listaBoletoConfig.Count > 0)
+                {
+                    dispararEmailBoletosSicredi(idNotaFiscal, contaReceberAssociado, IDcliente, notaServicoPdf);
+                }
             }
             else
             {
                 GenericaDesktop.ShowAlerta("Selecione apenas 1 parcela da venda, o sistema irá capturar todas parcelas e nota fiscal para enviar no e-mail!");
+            }
+        }
+
+        public async Task<string> BaixarEPDFSalvarNaTempAsync(string urlPdf)
+        {
+            try
+            {
+                // Cria uma instância do HttpClient para fazer a requisição
+                using (HttpClient client = new HttpClient())
+                {
+                    // Faz o download do PDF
+                    HttpResponseMessage response = await client.GetAsync(urlPdf);
+
+                    // Verifica se o status da resposta é sucesso
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Lê o conteúdo do PDF como byte array
+                        byte[] pdfBytes = await response.Content.ReadAsByteArrayAsync();
+
+                        // Gera o caminho para o arquivo na pasta temporária
+                        string tempPath = Path.Combine(Path.GetTempPath(), "NOTAFISCALSERVICO.pdf");
+
+                        // Salva o PDF no local especificado
+                        File.WriteAllBytes(tempPath, pdfBytes);
+
+                        // Retorna o caminho onde o arquivo foi salvo
+                        return tempPath;
+                    }
+                    else
+                    {
+                        throw new Exception($"Falha ao baixar o PDF. Status code: {response.StatusCode}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao baixar o PDF: {ex.Message}");
+                return null;
+            }
+        }
+        private async void dispararEmailBoletosGalaxyPayCelCash(int idNotaFiscal, List<string> listaFaturas, string IDcliente, string urlNFSe)
+        {
+            List<string> listaCaminhosFinal = new List<string>();
+            // Coleta o PDF dos boletos
+            GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+            string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+            string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(listaFaturas.ToArray());
+
+            // O método BaixarPDFAsync agora é aguardado assincronamente
+            string localBoleto = await BaixarPDFAsync(link, int.Parse(IDcliente));
+            if (!String.IsNullOrEmpty(urlNFSe))
+            {
+                string caminhoNotaServico = await BaixarEPDFSalvarNaTempAsync(urlNFSe);
+                listaCaminhosFinal.Add(caminhoNotaServico);
+            }
+
+            // Coleta nota fiscal se houver
+            List<Tuple<string, string>> listaCaminhoNotasParaEnviarEmail = new List<Tuple<string, string>>();
+            if (idNotaFiscal > 0)
+            {
+                Nfe nfe = new Nfe();
+                nfe.Id = idNotaFiscal;
+                nfe = (Nfe)Controller.getInstance().selecionar(nfe);
+
+                var caminhos = coletarNotaFiscalPDFeXML(nfe);
+                listaCaminhoNotasParaEnviarEmail.Add(caminhos);
+            }
+            String assuntoEmail = "Boleto " + Sessao.empresaFilialLogada.NomeFantasia;
+           
+            if (listaCaminhoNotasParaEnviarEmail.Count > 0)
+            {
+                assuntoEmail = "Boleto e Nota Fiscal " + Sessao.empresaFilialLogada.NomeFantasia;
+                foreach (var caminhoNota in listaCaminhoNotasParaEnviarEmail)
+                {
+                    listaCaminhosFinal.Add(caminhoNota.Item1); // Adiciona o caminho do PDF da Nota Fiscal
+                    listaCaminhosFinal.Add(caminhoNota.Item2); // Adiciona o caminho do XML da Nota Fiscal
+                }
+            }
+            listaCaminhosFinal.Add(localBoleto);
+
+            bool retornoEmail = false;
+            if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.ServidorEmail))
+                retornoEmail = generica.enviarEmail(contaReceber.Cliente.Email, assuntoEmail, "E-mail disparado via Lunar Software", "Prezado(a) Cliente, Segue em anexo.", listaCaminhosFinal);
+            else
+                retornoEmail = generica.enviarEmailPeloLunar(contaReceber.Cliente.Email, assuntoEmail, "E-mail disparado pelo sistema Lunar Software", "Prezado(a) Cliente, Segue em anexo.", listaCaminhosFinal);
+
+            if (retornoEmail == true)
+                GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+        }
+
+        private async void dispararEmailBoletosSicredi(int idNotaFiscal, IList<ContaReceber> listaReceber, string IDcliente, string urlNotaServico)
+        {
+            List<string> listaCaminhosFinal = new List<string>();
+            List<string> listaLinhasDigitaveis = new List<string>();
+            int vendaId = 0;
+            int osId = 0;
+            ContaBancaria conta = new ContaBancaria();
+            foreach(ContaReceber contaReceber in listaReceber)
+            {
+                listaLinhasDigitaveis.Add(contaReceber.LinhaDigitavel);
+                if (contaReceber.Venda != null)
+                    vendaId = contaReceber.Venda.Id;
+                if (contaReceber.OrdemServico != null)
+                    osId = contaReceber.OrdemServico.Id;
+                conta = contaReceber.ContaBoleto;
+            }
+            // Inicializa o gerenciador do Sicredi
+            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, conta);
+
+            // Baixa os boletos do Sicredi (PDF)
+            string caminhoBoleto = "";
+            IList<string> listaCaminhosBoletos = new List<string>();
+            listaCaminhosBoletos = await boletoSicrediManager.BaixarBoletosExistentesSicredi(listaLinhasDigitaveis.ToArray(), false);
+            string outputFilePath = "";
+            if (listaCaminhosBoletos.Count > 0)
+            {
+                string[] pdfPaths = listaCaminhosBoletos.ToArray();
+                string tempDirectory = Path.GetTempPath();
+                outputFilePath = Path.Combine(tempDirectory, "Boleto.pdf");
+                CombinePdfs(pdfPaths, outputFilePath);
+            }
+            if (!String.IsNullOrEmpty(urlNotaServico))
+            {
+                string caminhoNotaServico = await BaixarEPDFSalvarNaTempAsync(urlNotaServico);
+                listaCaminhosFinal.Add(caminhoNotaServico);
+            }
+            // Coleta nota fiscal se houver
+            List<Tuple<string, string>> listaCaminhoNotasParaEnviarEmail = new List<Tuple<string, string>>();
+            if (idNotaFiscal > 0)
+            {
+                Nfe nfe = new Nfe();
+                nfe.Id = idNotaFiscal;
+                nfe = (Nfe)Controller.getInstance().selecionar(nfe);
+
+                var caminhos = coletarNotaFiscalPDFeXML(nfe);
+                listaCaminhoNotasParaEnviarEmail.Add(caminhos);
+            }
+
+            // Define o assunto do e-mail
+            String assuntoEmail = "Boleto " + Sessao.empresaFilialLogada.NomeFantasia;
+           
+
+            // Se houver nota fiscal, adicionar ao assunto e à lista de arquivos
+            if (listaCaminhoNotasParaEnviarEmail.Count > 0)
+            {
+                assuntoEmail = "Boleto e Nota Fiscal " + Sessao.empresaFilialLogada.NomeFantasia;
+                foreach (var caminhoNota in listaCaminhoNotasParaEnviarEmail)
+                {
+                    listaCaminhosFinal.Add(caminhoNota.Item1); // PDF da Nota Fiscal
+                    listaCaminhosFinal.Add(caminhoNota.Item2); // XML da Nota Fiscal
+                }
+            }
+
+            // Adiciona o caminho do boleto Sicredi ao e-mail
+            listaCaminhosFinal.Add(outputFilePath);
+
+            // Dispara o e-mail
+            bool retornoEmail = false;
+            if (!String.IsNullOrEmpty(Sessao.parametroSistema.Email) && !String.IsNullOrEmpty(Sessao.parametroSistema.ServidorEmail))
+            {
+                retornoEmail = generica.enviarEmail(contaReceber.Cliente.Email, assuntoEmail, "E-mail disparado via Lunar Software", "Prezado(a) Cliente, Segue em anexo.", listaCaminhosFinal);
+            }
+            else
+            {
+                retornoEmail = generica.enviarEmailPeloLunar(contaReceber.Cliente.Email, assuntoEmail, "E-mail disparado pelo sistema Lunar Software", "Prezado(a) Cliente, Segue em anexo.", listaCaminhosFinal);
+            }
+
+            // Notifica o usuário sobre o resultado
+            if (retornoEmail == true)
+            {
+                GenericaDesktop.ShowInfo("E-mail enviado com sucesso!");
+            }
+            else
+            {
+                GenericaDesktop.ShowErro("Erro ao enviar o e-mail.");
             }
         }
 
@@ -1748,7 +2078,35 @@ namespace Lunar.Telas.ContasReceber
                 return caminhoParaSalvar;
             }
         }
+        public void CombinePdfs(string[] pdfPaths, string outputFilePath)
+        {
+            using (PdfDocument pdfDocument = new PdfDocument(new PdfWriter(outputFilePath)))
+            {
+                PdfMerger merger = new PdfMerger(pdfDocument);
 
+                foreach (string pdfPath in pdfPaths)
+                {
+                    if (File.Exists(pdfPath)) // Verifique se o arquivo PDF existe
+                    {
+                        using (PdfDocument sourceDocument = new PdfDocument(new PdfReader(pdfPath)))
+                        {
+                            if (sourceDocument.GetNumberOfPages() > 0) // Verifique se o PDF tem páginas
+                            {
+                                merger.Merge(sourceDocument, 1, sourceDocument.GetNumberOfPages());
+                            }
+                            else
+                            {
+                                Console.WriteLine($"O arquivo {pdfPath} não contém páginas.");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"O arquivo {pdfPath} não existe.");
+                    }
+                }
+            }
+        }
         private IList<ContaReceber> ObterParcelasAssociadas(Venda venda, OrdemServico ordemServico, string cliente)
         {
             IList<ContaReceber> listaReceber = new List<ContaReceber>();
@@ -1923,7 +2281,8 @@ namespace Lunar.Telas.ContasReceber
 
         private void btnEnviarWhats_Click(object sender, EventArgs e)
         {
-            enviarBoletoENFPorWhatsApp();
+            //enviarBoletoENFPorWhatsApp();
+            enviarBoletoENFPorWhatsAppNew();
         }
     }
 }

@@ -84,6 +84,7 @@
             this.lblSaldo = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnReceita = new Lunar.RJ_UI.Classes.RJButton();
             this.btnDespesa = new Lunar.RJ_UI.Classes.RJButton();
+            this.chkApenasReceitas = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).BeginInit();
@@ -92,6 +93,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasReceitas)).BeginInit();
             this.SuspendLayout();
             // 
             // autoLabel10
@@ -141,6 +143,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.chkApenasReceitas);
             this.panel3.Controls.Add(this.chkApenasDespesas);
             this.panel3.Controls.Add(this.chkApenasContasReceber);
             this.panel3.Controls.Add(this.chkApenasCaixaFisico);
@@ -233,6 +236,7 @@
             this.btnExcluir.TabIndex = 262;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Visible = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // sfDataPager1
@@ -983,6 +987,16 @@
             this.btnDespesa.UseVisualStyleBackColor = false;
             this.btnDespesa.Click += new System.EventHandler(this.btnDespesa_Click);
             // 
+            // chkApenasReceitas
+            // 
+            this.chkApenasReceitas.BeforeTouchSize = new System.Drawing.Size(160, 32);
+            this.chkApenasReceitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkApenasReceitas.Location = new System.Drawing.Point(929, 168);
+            this.chkApenasReceitas.Name = "chkApenasReceitas";
+            this.chkApenasReceitas.Size = new System.Drawing.Size(160, 32);
+            this.chkApenasReceitas.TabIndex = 275;
+            this.chkApenasReceitas.Text = "Apenas Receitas";
+            // 
             // FrmMovimentoCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1005,6 +1019,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasReceitas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1059,5 +1074,6 @@
         private MaterialSkin.Controls.MaterialButton btnRemoverMovimento;
         private MaterialSkin.Controls.MaterialButton btnTransferenciaConta;
         private MaterialSkin.Controls.MaterialButton btnEditarCobrador1;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasReceitas;
     }
 }

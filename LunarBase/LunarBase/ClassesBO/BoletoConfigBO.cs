@@ -88,5 +88,16 @@ namespace LunarBase.ClassesBO
             }
         }
 
+        public BoletoConfig selecionarBoletoConfigPorContaBancariaUnica(ContaBancaria contaBancaria)
+        {
+            try
+            {
+                return dao.selecionarBoletoConfigPorContaBancariaUnica(contaBancaria);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Falha ao selecionar boleto config! Erro: " + e.Message);
+            }
+        }
     }
 }

@@ -292,6 +292,7 @@ namespace Lunar.Telas.ContasPagar
             if (GenericaDesktop.ShowConfirmacao("Tem certeza que deseja excluir as parcelas selecionadas?"))
             {
                 int i = 0;
+                int cx = 0;
                 if (grid.SelectedItems.Count > 0)
                 {
                     foreach (var selectedItem in grid.SelectedItems)
@@ -303,11 +304,30 @@ namespace Lunar.Telas.ContasPagar
                             i++;
                         }
                         else
-                            GenericaDesktop.ShowAlerta("Não é possível excluir uma conta ja paga!");
+                        {
+                            CaixaController caixaController = new CaixaController();
+                            IList<Caixa> listaCaixa = new List<Caixa>();
+                            listaCaixa = caixaController.selecionarCaixaPorOrigem("CONTAPAGAR", conta.Id.ToString());
+                            if(listaCaixa.Count > 0)
+                            {
+                                if(GenericaDesktop.ShowConfirmacao("Parcelas Pagas serão removidas do caixa, deseja continuar?"))
+                                {
+                                    foreach (Caixa caixa in listaCaixa)
+                                    {
+                                        Controller.getInstance().excluir(caixa);
+                                        cx++;
+                                    }
+                                }
+                            }
+                        }
                     }
                     if (i > 0)
                     {
-                        GenericaDesktop.ShowInfo(i + " Contas a Pagar Excluída(s) com Sucesso!");
+                        String msgCaixa = cx + " Recebimento(s) Excluído(s) do caixa!";
+                        if (cx > 0)
+                            GenericaDesktop.ShowInfo(i + " Contas a Pagar Excluída(s) com Sucesso e " + msgCaixa);
+                        else
+                            GenericaDesktop.ShowInfo(i + " Contas a Pagar Excluída(s) com Sucesso!");
                         btnPesquisar.PerformClick();
                     }
 

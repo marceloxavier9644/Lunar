@@ -6,6 +6,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
+using NHibernate.Impl;
 using Npgsql;
 using System.Data;
 using System.Text.RegularExpressions;
@@ -93,7 +94,7 @@ namespace LunarImportador
 
         }
 
-        private void importar()
+        private async void importar()
         {
             string selectedDatabase = comboDestino.SelectedItem?.ToString();
             string firebirdDatabasePath = txtBancoOrigem.Text;
@@ -134,6 +135,17 @@ namespace LunarImportador
                     lblStatus.Visible = true;
                     Thread importarThread = new Thread(() => ImportarContasPagarSgbr(selectedDatabase, firebirdDatabasePath));
                     importarThread.Start();
+                }
+                if (chkGrupos.Checked == true)
+                {
+                    progressBar1.Visible = true;
+                    lblStatus.Visible = true;
+
+                    // Importar grupos de forma assíncrona
+                    await Task.Run(() => ImportarGrupoProdutosSgbr(selectedDatabase, firebirdDatabasePath));
+
+                    // Após a importação, atualizar os grupos no MySQL
+                    await Task.Run(() => AtualizarGrupoProdutosNoMySQL(selectedDatabase, firebirdDatabasePath));
                 }
             }
 
@@ -1134,14 +1146,16 @@ namespace LunarImportador
 
                     string mysqlQuery = @"
                         INSERT INTO ProdutoGrupo 
-                        (Id, Descricao, FlagExcluido, Empresa) 
+                        (Id, Descricao, FlagExcluido, Empresa, DataCadastro, OperadorCadastro, CaminhoImagem, Food) 
                         VALUES 
-                        (@Id, @Descricao, @FlagExcluido, 1)";
+                        (@Id, @Descricao, @FlagExcluido, 1, @DataCadastro, 1, @CaminhoImagem, 0)";
 
                     MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
                     mysqlCommand.Parameters.AddWithValue("@Id", produtoGrupo.Id);
                     mysqlCommand.Parameters.AddWithValue("@Descricao", produtoGrupo.Descricao);
                     mysqlCommand.Parameters.AddWithValue("@FlagExcluido", produtoGrupo.FlagExcluido);
+                    mysqlCommand.Parameters.AddWithValue("@DataCadastro", DateTime.Now);
+                    mysqlCommand.Parameters.AddWithValue("@CaminhoImagem", "");
 
                     mysqlCommand.ExecuteNonQuery();
                     UpdateUI(() =>
@@ -1168,6 +1182,107 @@ namespace LunarImportador
                 mysqlConnection.Close();
             }
         }
+
+        private void AtualizarGrupoProdutosNoMySQL(string database, string firebirdDatabasePath)
+        {
+            int i = 0;
+            UpdateUI(() => { lblStatus.Text = "Atualização de Grupos de Produtos"; });
+
+            // Conexão com o banco de dados Firebird
+            string firebirdConnectionString = $"User=SYSDBA;Password=masterkey;Database={firebirdDatabasePath};DataSource=localhost;Port=3050;Dialect=3;";
+            using (FbConnection firebirdConnection = new FbConnection(firebirdConnectionString))
+            {
+                // Conexão com o banco de dados MySQL
+                string mysqlConnectionString = $"Server=localhost;Database={database};User Id=marcelo;Password=mx123;";
+                using (MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString))
+                {
+                    try
+                    {
+                        firebirdConnection.Open();
+                        mysqlConnection.Open();
+
+                        // Obter a quantidade total de registros de produtos
+                        FbCommand firebirdCountCommand = new FbCommand("SELECT COUNT(*) FROM tEstoque Where tEstoque.Aplicacaoproduto <> 'SERVIÇOS'", firebirdConnection);
+                        int totalRegistros = (int)firebirdCountCommand.ExecuteScalar();
+
+                        // Configurar a ProgressBar
+                        UpdateUI(() =>
+                        {
+                            progressBar1.Minimum = 0;
+                            progressBar1.Maximum = totalRegistros;
+                            progressBar1.Value = 0;
+                        });
+
+                        // Leitura dos produtos do Firebird
+                        FbCommand firebirdCommand = new FbCommand("SELECT * FROM tEstoque Where aplicacaoproduto <> 'SERVIÇOS' order by controle", firebirdConnection);
+                        FbDataReader firebirdReader = firebirdCommand.ExecuteReader();
+
+                        while (firebirdReader.Read())
+                        {
+                            i++;
+
+                            // Obtenha o código do produto no Firebird
+                            int firebirdCodigoProduto;
+                            if (!int.TryParse(firebirdReader["controle"].ToString(), out firebirdCodigoProduto))
+                            {
+                                Console.WriteLine("Código de produto inválido no Firebird.");
+                                continue; // Pula este registro se o código for inválido
+                            }
+
+                            // Verifique e converta o grupo de produto para int
+                            int firebirdGrupoProduto;
+                            if (!int.TryParse(firebirdReader["codGrupo"].ToString(), out firebirdGrupoProduto))
+                            {
+                                Console.WriteLine("Grupo de produto inválido no Firebird.");
+                                continue; // Pula este registro se o grupo for inválido
+                            }
+
+                            // Agora busque o produto correspondente no MySQL
+                            string mysqlQuery = "SELECT Id FROM Produto WHERE Produto.Id = @CodigoFirebird";
+                            MySqlCommand mysqlSelectCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
+                            mysqlSelectCommand.Parameters.AddWithValue("@CodigoFirebird", firebirdCodigoProduto);
+
+                            object mysqlProdutoId = mysqlSelectCommand.ExecuteScalar();
+
+                            // Se o produto foi encontrado no MySQL, atualize o grupo do produto
+                            if (mysqlProdutoId != null)
+                            {
+                                string mysqlUpdateQuery = @"
+                        UPDATE Produto 
+                        SET ProdutoGrupo = @GrupoProdutoId 
+                        WHERE Id = @ProdutoId";
+
+                                MySqlCommand mysqlUpdateCommand = new MySqlCommand(mysqlUpdateQuery, mysqlConnection);
+                                mysqlUpdateCommand.Parameters.AddWithValue("@GrupoProdutoId", firebirdGrupoProduto); // O grupo de produto vindo do Firebird
+                                mysqlUpdateCommand.Parameters.AddWithValue("@ProdutoId", mysqlProdutoId);
+
+                                mysqlUpdateCommand.ExecuteNonQuery();
+                            }
+
+                            // Atualize a ProgressBar
+                            UpdateUI(() =>
+                            {
+                                progressBar1.Value += 1;
+                                lblStatus.Text = $"Produto {i} de {totalRegistros}";
+                            });
+                        }
+
+                        firebirdReader.Close();
+                        UpdateUI(() => { progressBar1.Value = 0; });
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao importar dados: " + ex.Message);
+                    }
+                    finally
+                    {
+                        firebirdConnection.Close();
+                        mysqlConnection.Close();
+                    }
+                }
+            }
+        }
+
 
         private void ImportarCondicionaisSgbr(string database, string firebirdDatabasePath)
         {

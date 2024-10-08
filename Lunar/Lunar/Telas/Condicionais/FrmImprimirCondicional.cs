@@ -153,7 +153,7 @@ namespace Lunar.Telas.Condicionais
             string vendedor = "";
             if (condicional.Vendedor != null)
                 vendedor = "Vendedor(a): " + condicional.Vendedor.RazaoSocial.Substring(0, condicional.Vendedor.RazaoSocial.IndexOf(" "));
-            ReportParameter[] p = new ReportParameter[10];
+            ReportParameter[] p = new ReportParameter[11];
             p[0] = (new ReportParameter("Empresa", condicional.Filial.NomeFantasia));
             p[1] = (new ReportParameter("CNPJ", cnpjFormatado));
             p[2] = (new ReportParameter("FoneEmpresa", foneEmp));
@@ -164,6 +164,7 @@ namespace Lunar.Telas.Condicionais
             p[7] = (new ReportParameter("Id", condicional.Id.ToString()));
             p[8] = (new ReportParameter("Data", condicional.Data.ToShortDateString() + " " + condicional.Data.ToShortTimeString()));
             p[9] = (new ReportParameter("logo", Sessao.parametroSistema.Logo));
+            p[10] = (new ReportParameter("Observacoes", condicional.Observacoes));
             reportViewer1.LocalReport.SetParameters(p);
 
             IList<CondicionalProduto> listaProdutos = new List<CondicionalProduto>();

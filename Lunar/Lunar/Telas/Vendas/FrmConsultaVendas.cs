@@ -64,6 +64,9 @@ namespace Lunar.Telas.Vendas
 
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
+            gridPagamento.DataSource = null;
+            gridPagamento.Refresh();
+
             Pessoa pessoaOjeto = new Pessoa();
             Form formBackground = new Form();
             try
@@ -411,11 +414,6 @@ namespace Lunar.Telas.Vendas
             else if (pessoa.Cnpj.Length < 11)
             {
                 GenericaDesktop.ShowAlerta("Para NFCe o cliente selecionado deve ter CPF preenchido corretamente");
-                validacao = false;
-            }
-            else if (pessoa.Cnpj.Length == 14)
-            {
-                GenericaDesktop.ShowAlerta("Em uma NFCe o cliente não pode ser pessoa jurídica, caso precise identificar a pessoa jurídica faça a emissão de uma NFe modelo 55");
                 validacao = false;
             }
             if (!String.IsNullOrEmpty(pessoa.RazaoSocial))
@@ -892,7 +890,6 @@ namespace Lunar.Telas.Vendas
         private void grid_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
         {
             tabControlAdv1.SelectedTab = tabProdutos;
-            //Ajuste fdfsdfsdfsdfsdfdfsdf
         }
 
         private void tabControlAdv1_SelectedIndexChanged(object sender, EventArgs e)
@@ -911,6 +908,15 @@ namespace Lunar.Telas.Vendas
                     IList<VendaItens> listaProdutosVenda = vendaItensController.selecionarProdutosPorVenda(venda.Id);
                     gridProduto.DataSource = listaProdutosVenda;
                 }
+                if(tabControlAdv1.SelectedTab == tabPagamento)
+                {
+                    venda = new Venda();
+                    venda = (Venda)grid.SelectedItem;
+                    gridPagamento.DataSource = null;
+                    VendaFormaPagamentoController vendaFormaPagamentoController = new VendaFormaPagamentoController();
+                    IList<VendaFormaPagamento> vendaFormaPagamentos = vendaFormaPagamentoController.selecionarVendaFormaPagamentoPorVenda(venda.Id);
+                    gridPagamento.DataSource = vendaFormaPagamentos;
+                }
             }
             catch
             {
@@ -924,6 +930,10 @@ namespace Lunar.Telas.Vendas
             venda = (Venda)grid.SelectedItem;
             IList<VendaItens> listaProdutosVenda = vendaItensController.selecionarProdutosPorVenda(venda.Id);
             gridProduto.DataSource = listaProdutosVenda;
+
+            VendaFormaPagamentoController vendaFormaPagamentoController = new VendaFormaPagamentoController();
+            IList<VendaFormaPagamento> listaFormaPagamento = vendaFormaPagamentoController.selecionarVendaFormaPagamentoPorVenda(venda.Id);
+            gridPagamento.DataSource = listaFormaPagamento;
         }
 
         private void btnGerarNfe_Click(object sender, EventArgs e)
@@ -1191,7 +1201,7 @@ namespace Lunar.Telas.Vendas
                 else
                 {
                     //Imprimir Ticket
-                    FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda);
+                    FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda, false);
                     frmImprimirTicket.ShowDialog();
                 }
             }

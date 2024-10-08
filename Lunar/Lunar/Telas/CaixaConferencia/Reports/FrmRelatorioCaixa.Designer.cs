@@ -35,6 +35,8 @@
             this.btnFechar = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.chkApenasReceitas = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            this.chkApenasDespesas = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.btnLimpar = new FontAwesome.Sharp.IconButton();
             this.autoLabel11 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaCobrador = new FontAwesome.Sharp.IconButton();
@@ -72,16 +74,16 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dsCaixa = new Lunar.Telas.CaixaConferencia.Reports.Dados.dsCaixa();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.chkApenasDespesas = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.panel1.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasReceitas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasCaixaFisico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCaixa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -107,11 +109,11 @@
             // autoLabel25
             // 
             this.autoLabel25.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel25.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel25.ForeColor = System.Drawing.Color.White;
             this.autoLabel25.Location = new System.Drawing.Point(12, 0);
             this.autoLabel25.Name = "autoLabel25";
-            this.autoLabel25.Size = new System.Drawing.Size(70, 35);
+            this.autoLabel25.Size = new System.Drawing.Size(67, 25);
             this.autoLabel25.TabIndex = 198;
             this.autoLabel25.Text = "Caixa";
             // 
@@ -148,6 +150,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.chkApenasReceitas);
             this.panel3.Controls.Add(this.chkApenasDespesas);
             this.panel3.Controls.Add(this.btnLimpar);
             this.panel3.Controls.Add(this.autoLabel11);
@@ -188,6 +191,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1024, 230);
             this.panel3.TabIndex = 1;
+            // 
+            // chkApenasReceitas
+            // 
+            this.chkApenasReceitas.BeforeTouchSize = new System.Drawing.Size(272, 32);
+            this.chkApenasReceitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkApenasReceitas.Location = new System.Drawing.Point(747, 149);
+            this.chkApenasReceitas.Name = "chkApenasReceitas";
+            this.chkApenasReceitas.Size = new System.Drawing.Size(272, 32);
+            this.chkApenasReceitas.TabIndex = 274;
+            this.chkApenasReceitas.Text = "Apenas Receitas (Sem Depósitos)";
+            // 
+            // chkApenasDespesas
+            // 
+            this.chkApenasDespesas.BeforeTouchSize = new System.Drawing.Size(272, 32);
+            this.chkApenasDespesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkApenasDespesas.Location = new System.Drawing.Point(747, 182);
+            this.chkApenasDespesas.Name = "chkApenasDespesas";
+            this.chkApenasDespesas.Size = new System.Drawing.Size(272, 32);
+            this.chkApenasDespesas.TabIndex = 273;
+            this.chkApenasDespesas.Text = "Apenas Despesas (Sem Depósitos)";
+            this.chkApenasDespesas.CheckStateChanged += new System.EventHandler(this.chkApenasDespesas_CheckStateChanged);
             // 
             // btnLimpar
             // 
@@ -305,13 +329,13 @@
             // 
             // chkApenasContasReceber
             // 
-            this.chkApenasContasReceber.BeforeTouchSize = new System.Drawing.Size(325, 32);
+            this.chkApenasContasReceber.BeforeTouchSize = new System.Drawing.Size(247, 32);
             this.chkApenasContasReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkApenasContasReceber.Location = new System.Drawing.Point(477, 182);
             this.chkApenasContasReceber.Name = "chkApenasContasReceber";
-            this.chkApenasContasReceber.Size = new System.Drawing.Size(325, 32);
+            this.chkApenasContasReceber.Size = new System.Drawing.Size(247, 32);
             this.chkApenasContasReceber.TabIndex = 266;
-            this.chkApenasContasReceber.Text = "Visualizar Apenas Recebimento de Notas";
+            this.chkApenasContasReceber.Text = "Apenas Recebimento de Notas";
             this.chkApenasContasReceber.CheckStateChanged += new System.EventHandler(this.chkApenasContasReceber_CheckStateChanged);
             // 
             // chkApenasCaixaFisico
@@ -806,17 +830,6 @@
             this.bindingSource1.DataMember = "Caixa";
             this.bindingSource1.DataSource = this.dsCaixa;
             // 
-            // chkApenasDespesas
-            // 
-            this.chkApenasDespesas.BeforeTouchSize = new System.Drawing.Size(160, 32);
-            this.chkApenasDespesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkApenasDespesas.Location = new System.Drawing.Point(792, 182);
-            this.chkApenasDespesas.Name = "chkApenasDespesas";
-            this.chkApenasDespesas.Size = new System.Drawing.Size(160, 32);
-            this.chkApenasDespesas.TabIndex = 273;
-            this.chkApenasDespesas.Text = "Apenas Despesas";
-            this.chkApenasDespesas.CheckStateChanged += new System.EventHandler(this.chkApenasDespesas_CheckStateChanged);
-            // 
             // FrmRelatorioCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -836,11 +849,12 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasReceitas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasContasReceber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasCaixaFisico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsCaixa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkApenasDespesas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -892,5 +906,6 @@
         private RJ_UI.Classes.RJTextBox txtCobrador;
         private FontAwesome.Sharp.IconButton btnLimpar;
         private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasDespesas;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv chkApenasReceitas;
     }
 }

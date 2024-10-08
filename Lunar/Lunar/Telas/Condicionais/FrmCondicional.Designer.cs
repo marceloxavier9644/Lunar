@@ -76,10 +76,12 @@
             this.autoLabel12 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtObservacoes = new System.Windows.Forms.TextBox();
+            this.autoLabel13 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtCodProduto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtTotalPeças = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnGravar = new Lunar.RJ_UI.Classes.RJButton();
             this.txtValorTotalTodosProdutos = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtCodProduto = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtAcrescimoItem = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtDescontoItem = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtQuantidadeItem = new Lunar.RJ_UI.Classes.RJTextBox();
@@ -193,7 +195,7 @@
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(0, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(975, 38);
+            this.panelTitleBar.Size = new System.Drawing.Size(1024, 38);
             this.panelTitleBar.TabIndex = 257;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
@@ -222,7 +224,7 @@
             this.btnFechar.IconColor = System.Drawing.Color.White;
             this.btnFechar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFechar.IconSize = 30;
-            this.btnFechar.Location = new System.Drawing.Point(934, 0);
+            this.btnFechar.Location = new System.Drawing.Point(983, 0);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(39, 41);
             this.btnFechar.TabIndex = 2;
@@ -329,7 +331,7 @@
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(21, 200);
+            this.autoLabel6.Location = new System.Drawing.Point(21, 290);
             this.autoLabel6.Name = "autoLabel6";
             this.autoLabel6.Size = new System.Drawing.Size(133, 16);
             this.autoLabel6.TabIndex = 269;
@@ -349,7 +351,7 @@
             this.btnPesquisaProduto.IconColor = System.Drawing.Color.SlateGray;
             this.btnPesquisaProduto.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnPesquisaProduto.IconSize = 38;
-            this.btnPesquisaProduto.Location = new System.Drawing.Point(929, 220);
+            this.btnPesquisaProduto.Location = new System.Drawing.Point(978, 310);
             this.btnPesquisaProduto.Name = "btnPesquisaProduto";
             this.btnPesquisaProduto.Size = new System.Drawing.Size(36, 34);
             this.btnPesquisaProduto.TabIndex = 11;
@@ -369,7 +371,7 @@
             this.btnExcluirProduto.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.btnExcluirProduto.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnExcluirProduto.IconSize = 30;
-            this.btnExcluirProduto.Location = new System.Drawing.Point(815, 275);
+            this.btnExcluirProduto.Location = new System.Drawing.Point(815, 365);
             this.btnExcluirProduto.Name = "btnExcluirProduto";
             this.btnExcluirProduto.Size = new System.Drawing.Size(34, 36);
             this.btnExcluirProduto.TabIndex = 18;
@@ -383,7 +385,7 @@
             this.autoLabel16.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel16.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel16.Location = new System.Drawing.Point(464, 260);
+            this.autoLabel16.Location = new System.Drawing.Point(464, 350);
             this.autoLabel16.Name = "autoLabel16";
             this.autoLabel16.Size = new System.Drawing.Size(71, 16);
             this.autoLabel16.TabIndex = 282;
@@ -395,7 +397,7 @@
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel15.Location = new System.Drawing.Point(317, 260);
+            this.autoLabel15.Location = new System.Drawing.Point(317, 350);
             this.autoLabel15.Name = "autoLabel15";
             this.autoLabel15.Size = new System.Drawing.Size(65, 16);
             this.autoLabel15.TabIndex = 281;
@@ -500,9 +502,9 @@
             this.gridProdutos.Columns.Add(gridTextColumn8);
             this.gridProdutos.Columns.Add(gridCheckBoxColumn1);
             this.gridProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridProdutos.Location = new System.Drawing.Point(13, 320);
+            this.gridProdutos.Location = new System.Drawing.Point(13, 420);
             this.gridProdutos.Name = "gridProdutos";
-            this.gridProdutos.Size = new System.Drawing.Size(952, 137);
+            this.gridProdutos.Size = new System.Drawing.Size(1001, 251);
             this.gridProdutos.Style.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.gridProdutos.Style.CellStyle.Font.Facename = "Montserrat";
             this.gridProdutos.Style.CellStyle.Font.Size = 14F;
@@ -516,7 +518,7 @@
             this.autoLabel9.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel9.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel9.Location = new System.Drawing.Point(609, 260);
+            this.autoLabel9.Location = new System.Drawing.Point(609, 350);
             this.autoLabel9.Name = "autoLabel9";
             this.autoLabel9.Size = new System.Drawing.Size(73, 16);
             this.autoLabel9.TabIndex = 279;
@@ -528,7 +530,7 @@
             this.autoLabel10.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel10.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel10.Location = new System.Drawing.Point(169, 260);
+            this.autoLabel10.Location = new System.Drawing.Point(169, 350);
             this.autoLabel10.Name = "autoLabel10";
             this.autoLabel10.Size = new System.Drawing.Size(46, 16);
             this.autoLabel10.TabIndex = 278;
@@ -540,7 +542,7 @@
             this.autoLabel11.Cursor = System.Windows.Forms.Cursors.Default;
             this.autoLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel11.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel11.Location = new System.Drawing.Point(22, 260);
+            this.autoLabel11.Location = new System.Drawing.Point(22, 350);
             this.autoLabel11.Name = "autoLabel11";
             this.autoLabel11.Size = new System.Drawing.Size(77, 16);
             this.autoLabel11.TabIndex = 277;
@@ -559,7 +561,7 @@
             this.btnConfirmaItem.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnConfirmaItem.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnConfirmaItem.IconSize = 38;
-            this.btnConfirmaItem.Location = new System.Drawing.Point(763, 275);
+            this.btnConfirmaItem.Location = new System.Drawing.Point(763, 365);
             this.btnConfirmaItem.Name = "btnConfirmaItem";
             this.btnConfirmaItem.Size = new System.Drawing.Size(46, 38);
             this.btnConfirmaItem.TabIndex = 17;
@@ -637,9 +639,9 @@
             this.panel1.Controls.Add(this.autoLabel12);
             this.panel1.Controls.Add(this.txtValorTotalTodosProdutos);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 482);
+            this.panel1.Location = new System.Drawing.Point(0, 696);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(975, 72);
+            this.panel1.Size = new System.Drawing.Size(1024, 72);
             this.panel1.TabIndex = 285;
             // 
             // autoLabel7
@@ -653,6 +655,55 @@
             this.autoLabel7.Size = new System.Drawing.Size(46, 16);
             this.autoLabel7.TabIndex = 287;
             this.autoLabel7.Text = "Peças";
+            // 
+            // txtObservacoes
+            // 
+            this.txtObservacoes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtObservacoes.Location = new System.Drawing.Point(13, 194);
+            this.txtObservacoes.MaxLength = 200;
+            this.txtObservacoes.Multiline = true;
+            this.txtObservacoes.Name = "txtObservacoes";
+            this.txtObservacoes.Size = new System.Drawing.Size(958, 93);
+            this.txtObservacoes.TabIndex = 287;
+            // 
+            // autoLabel13
+            // 
+            this.autoLabel13.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F);
+            this.autoLabel13.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel13.Location = new System.Drawing.Point(13, 175);
+            this.autoLabel13.Name = "autoLabel13";
+            this.autoLabel13.Size = new System.Drawing.Size(89, 16);
+            this.autoLabel13.TabIndex = 288;
+            this.autoLabel13.Text = "Observações";
+            // 
+            // txtCodProduto
+            // 
+            this.txtCodProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodProduto.BackColor = System.Drawing.Color.White;
+            this.txtCodProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodProduto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodProduto.BorderRadius = 8;
+            this.txtCodProduto.BorderSize = 2;
+            this.txtCodProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtCodProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodProduto.Location = new System.Drawing.Point(856, 350);
+            this.txtCodProduto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodProduto.Multiline = false;
+            this.txtCodProduto.Name = "txtCodProduto";
+            this.txtCodProduto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodProduto.PasswordChar = false;
+            this.txtCodProduto.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodProduto.PlaceholderText = "";
+            this.txtCodProduto.ReadOnly = false;
+            this.txtCodProduto.Size = new System.Drawing.Size(143, 37);
+            this.txtCodProduto.TabIndex = 286;
+            this.txtCodProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodProduto.Texts = "";
+            this.txtCodProduto.UnderlinedStyle = false;
+            this.txtCodProduto.Visible = false;
             // 
             // txtTotalPeças
             // 
@@ -693,7 +744,7 @@
             this.btnGravar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGravar.ForeColor = System.Drawing.Color.White;
-            this.btnGravar.Location = new System.Drawing.Point(745, 15);
+            this.btnGravar.Location = new System.Drawing.Point(794, 15);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(217, 45);
             this.btnGravar.TabIndex = 285;
@@ -728,33 +779,6 @@
             this.txtValorTotalTodosProdutos.Texts = "0,00";
             this.txtValorTotalTodosProdutos.UnderlinedStyle = false;
             // 
-            // txtCodProduto
-            // 
-            this.txtCodProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodProduto.BackColor = System.Drawing.Color.White;
-            this.txtCodProduto.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodProduto.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodProduto.BorderRadius = 8;
-            this.txtCodProduto.BorderSize = 2;
-            this.txtCodProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtCodProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodProduto.Location = new System.Drawing.Point(827, 177);
-            this.txtCodProduto.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodProduto.Multiline = false;
-            this.txtCodProduto.Name = "txtCodProduto";
-            this.txtCodProduto.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCodProduto.PasswordChar = false;
-            this.txtCodProduto.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtCodProduto.PlaceholderText = "";
-            this.txtCodProduto.ReadOnly = false;
-            this.txtCodProduto.Size = new System.Drawing.Size(94, 37);
-            this.txtCodProduto.TabIndex = 286;
-            this.txtCodProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCodProduto.Texts = "";
-            this.txtCodProduto.UnderlinedStyle = false;
-            this.txtCodProduto.Visible = false;
-            // 
             // txtAcrescimoItem
             // 
             this.txtAcrescimoItem.BackColor = System.Drawing.Color.White;
@@ -764,7 +788,7 @@
             this.txtAcrescimoItem.BorderSize = 2;
             this.txtAcrescimoItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtAcrescimoItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtAcrescimoItem.Location = new System.Drawing.Point(454, 276);
+            this.txtAcrescimoItem.Location = new System.Drawing.Point(454, 366);
             this.txtAcrescimoItem.Margin = new System.Windows.Forms.Padding(4);
             this.txtAcrescimoItem.Multiline = false;
             this.txtAcrescimoItem.Name = "txtAcrescimoItem";
@@ -791,7 +815,7 @@
             this.txtDescontoItem.BorderSize = 2;
             this.txtDescontoItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtDescontoItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDescontoItem.Location = new System.Drawing.Point(307, 276);
+            this.txtDescontoItem.Location = new System.Drawing.Point(307, 366);
             this.txtDescontoItem.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescontoItem.Multiline = false;
             this.txtDescontoItem.Name = "txtDescontoItem";
@@ -818,7 +842,7 @@
             this.txtQuantidadeItem.BorderSize = 2;
             this.txtQuantidadeItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtQuantidadeItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtQuantidadeItem.Location = new System.Drawing.Point(13, 276);
+            this.txtQuantidadeItem.Location = new System.Drawing.Point(13, 366);
             this.txtQuantidadeItem.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantidadeItem.Multiline = false;
             this.txtQuantidadeItem.Name = "txtQuantidadeItem";
@@ -845,7 +869,7 @@
             this.txtValorTotalItem.Enabled = false;
             this.txtValorTotalItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtValorTotalItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValorTotalItem.Location = new System.Drawing.Point(601, 276);
+            this.txtValorTotalItem.Location = new System.Drawing.Point(601, 366);
             this.txtValorTotalItem.Margin = new System.Windows.Forms.Padding(4);
             this.txtValorTotalItem.Multiline = false;
             this.txtValorTotalItem.Name = "txtValorTotalItem";
@@ -870,7 +894,7 @@
             this.txtValorUnitarioItem.BorderSize = 2;
             this.txtValorUnitarioItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtValorUnitarioItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValorUnitarioItem.Location = new System.Drawing.Point(160, 276);
+            this.txtValorUnitarioItem.Location = new System.Drawing.Point(160, 366);
             this.txtValorUnitarioItem.Margin = new System.Windows.Forms.Padding(4);
             this.txtValorUnitarioItem.Multiline = false;
             this.txtValorUnitarioItem.Name = "txtValorUnitarioItem";
@@ -899,7 +923,7 @@
             this.txtPesquisaProduto.BorderSize = 2;
             this.txtPesquisaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.txtPesquisaProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPesquisaProduto.Location = new System.Drawing.Point(13, 217);
+            this.txtPesquisaProduto.Location = new System.Drawing.Point(13, 307);
             this.txtPesquisaProduto.Margin = new System.Windows.Forms.Padding(4);
             this.txtPesquisaProduto.Multiline = false;
             this.txtPesquisaProduto.Name = "txtPesquisaProduto";
@@ -908,7 +932,7 @@
             this.txtPesquisaProduto.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtPesquisaProduto.PlaceholderText = "";
             this.txtPesquisaProduto.ReadOnly = false;
-            this.txtPesquisaProduto.Size = new System.Drawing.Size(909, 37);
+            this.txtPesquisaProduto.Size = new System.Drawing.Size(958, 37);
             this.txtPesquisaProduto.TabIndex = 10;
             this.txtPesquisaProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPesquisaProduto.Texts = "";
@@ -1044,7 +1068,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(975, 554);
+            this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.Controls.Add(this.autoLabel13);
+            this.Controls.Add(this.txtObservacoes);
             this.Controls.Add(this.txtCodProduto);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnExcluirProduto);
@@ -1155,5 +1181,7 @@
         private RJ_UI.Classes.RJButton btnGravar;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
         private RJ_UI.Classes.RJTextBox txtTotalPeças;
+        private System.Windows.Forms.TextBox txtObservacoes;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel13;
     }
 }

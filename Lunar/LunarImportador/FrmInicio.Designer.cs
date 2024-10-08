@@ -55,6 +55,7 @@
             chkIdProduto = new CheckBox();
             chkServicos = new CheckBox();
             chkVendas = new CheckBox();
+            chkGrupos = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
@@ -363,12 +364,25 @@
             chkVendas.Text = "Vendas";
             chkVendas.UseVisualStyleBackColor = true;
             // 
+            // chkGrupos
+            // 
+            chkGrupos.AutoSize = true;
+            chkGrupos.Checked = true;
+            chkGrupos.CheckState = CheckState.Checked;
+            chkGrupos.Location = new Point(89, 442);
+            chkGrupos.Name = "chkGrupos";
+            chkGrupos.Size = new Size(115, 19);
+            chkGrupos.TabIndex = 28;
+            chkGrupos.Text = "Grupos Produtos";
+            chkGrupos.UseVisualStyleBackColor = true;
+            // 
             // FrmInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(884, 608);
+            Controls.Add(chkGrupos);
             Controls.Add(chkVendas);
             Controls.Add(chkServicos);
             Controls.Add(chkIdProduto);
@@ -430,5 +444,6 @@
         private RadioButton radioLinkPro;
         private RadioButton radioSoftSystemCosmos;
         private CheckBox chkVendas;
+        private CheckBox chkGrupos;
     }
 }

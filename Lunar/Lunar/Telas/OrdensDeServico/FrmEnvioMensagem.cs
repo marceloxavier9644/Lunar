@@ -40,6 +40,20 @@ namespace Lunar.Telas.OrdensDeServico
             radioTecnicoCaminho.Visible = false;
         }
 
+        public FrmEnvioMensagem(String numeroTelefone, String nomeCliente, bool apenasEnviarSemOpcoesJaDefinidoAnteriorMente)
+        {
+            InitializeComponent();
+            txtNumeroCliente.Text = numeroTelefone;
+            txtNomeCliente.Text = nomeCliente;
+            nome = nomeCliente;
+            txtMensagem.Text = "";
+            txtMensagem.Focus();
+            radioPdfOs.Visible = false;
+            radioProdutoDisponivel.Visible = false;
+            radioTecnicoCaminho.Visible = false;
+            radioNotaEBoleto.Visible = false;
+        }
+
         public string GetEscolha()
         {
             return Escolha;

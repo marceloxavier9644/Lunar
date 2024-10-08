@@ -992,13 +992,11 @@ namespace Lunar.Telas.Cadastros.Produtos
                             if (form.showModalNovo(ref ncmObjeto) == DialogResult.OK)
                             {
                                 txtNCM.Texts = ((Ncm)ncmObjeto).NumeroNcm;
-                                txtCEST.Focus();
                             }
                             form.Dispose();
                             break;
                         case DialogResult.OK:
                             txtNCM.Texts = ((Ncm)ncmObjeto).NumeroNcm;
-                            txtCEST.Focus();
                             break;
                     }
 
@@ -1051,7 +1049,6 @@ namespace Lunar.Telas.Cadastros.Produtos
                             break;
                         case DialogResult.OK:
                             txtCEST.Texts = ((Cest)cestObjeto).NumeroCest;
-                            txtEstoque.Focus();
                             break;
                     }
 
@@ -1090,19 +1087,24 @@ namespace Lunar.Telas.Cadastros.Produtos
                         Form formBackground = new Form();
                         try
                         {
-                            using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Cest", "and Tabela.NCM like '%" + txtNCM.Texts + "%'"))
+                            using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Cest", "and Tabela.Ncm like '%" + txtNCM.Texts + "%'"))
                             {
+                                // Configurações do formBackground
                                 formBackground.StartPosition = FormStartPosition.Manual;
-                                formBackground.FormBorderStyle = FormBorderStyle.None;
                                 formBackground.Opacity = .50d;
                                 formBackground.BackColor = Color.Black;
+                                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
                                 formBackground.WindowState = FormWindowState.Maximized;
-                                formBackground.TopMost = true;
+                                formBackground.TopMost = false;
                                 formBackground.Location = this.Location;
                                 formBackground.ShowInTaskbar = false;
                                 formBackground.Show();
 
+                                // Associando o formBackground ao FrmPesquisaPadrao
                                 uu.Owner = formBackground;
+
+                                // Abrindo o modal de seleção de Cest
                                 switch (uu.showModal("Cest", "", ref cestObjeto))
                                 {
                                     case DialogResult.Ignore:
@@ -1111,26 +1113,22 @@ namespace Lunar.Telas.Cadastros.Produtos
                                         if (form.showModalNovo(ref cestObjeto) == DialogResult.OK)
                                         {
                                             txtCEST.Texts = ((Cest)cestObjeto).NumeroCest;
-                                            txtEstoque.Focus();
                                         }
                                         form.Dispose();
                                         break;
                                     case DialogResult.OK:
                                         txtCEST.Texts = ((Cest)cestObjeto).NumeroCest;
-                                        txtEstoque.Focus();
+                                        //txtEstoque.Focus();
                                         break;
                                 }
 
+                                // Após fechar o modal de seleção, o formBackground pode ser descartado
                                 formBackground.Dispose();
                             }
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
-                        }
-                        finally
-                        {
-                            formBackground.Dispose();
                         }
                     }
                 }
@@ -1145,7 +1143,6 @@ namespace Lunar.Telas.Cadastros.Produtos
                         if (form.showModalNovo(ref ncmObjeto) == DialogResult.OK)
                         {
                             txtNCM.Texts = ((Ncm)ncmObjeto).NumeroNcm;
-                            txtCEST.Focus();
                         }
                     }
                 }

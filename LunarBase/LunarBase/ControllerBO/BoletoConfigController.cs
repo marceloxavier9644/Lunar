@@ -41,6 +41,22 @@ namespace LunarBase.ControllerBO
                 Conexao.FechaConexaoBD();
             }
         }
-
+        public BoletoConfig selecionarBoletoConfigPorContaBancariaUnica(ContaBancaria contaBancaria)
+        {
+            BoletoConfigBO bo = new BoletoConfigBO();
+            Conexao.IniciaTransacao();
+            try
+            {
+                return bo.selecionarBoletoConfigPorContaBancariaUnica(contaBancaria);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                Conexao.FechaConexaoBD();
+            }
+        }
     }
 }

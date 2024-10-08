@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmImprimirCondicional));
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dsCondicional = new Lunar.Telas.Condicionais.dsCondicional();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -62,6 +63,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmImprimirCondicional";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Impressão de Condicional";

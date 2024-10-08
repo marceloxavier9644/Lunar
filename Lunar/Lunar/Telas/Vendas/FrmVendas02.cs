@@ -1802,6 +1802,11 @@ namespace Lunar.Telas.Vendas
                             btnDescontoItem.PerformClick();
                         break;
 
+                    case Keys.F12:
+                        FrmPDF fr = new FrmPDF("");
+                        fr.ShowDialog();
+                        break;
+
                     case Keys.Delete:
                         if (Sessao.permissoes.Contains("63"))
                         {
@@ -2690,6 +2695,8 @@ namespace Lunar.Telas.Vendas
                             limparCampos();
                         }
                         atualizarProximoNumeroNota();
+                        venda = new Venda();
+                        nfe = new Nfe();
                     }
                 }
                 catch (Exception erro)
@@ -2699,7 +2706,6 @@ namespace Lunar.Telas.Vendas
                 }
             }
         }
-
 
         private void carregarListaProdutos()
         {
@@ -3489,7 +3495,6 @@ namespace Lunar.Telas.Vendas
         {
             try
             {
-
                 IList<ContaReceber> lisRec = new List<ContaReceber>();
                 //Salva na tabela vendaItens
                 salvarProdutosVenda();
@@ -3541,7 +3546,7 @@ namespace Lunar.Telas.Vendas
                         if (listaConfiguracoesBoletos.Count > 0)
                         {
                             BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaConclusao.Id, 0, null);
-                            await boletoManager.GeraBoletosSicredi(vendaConclusao.Cliente);
+                            await boletoManager.GeraBoletosSicredi(vendaConclusao.Cliente,true);
                         }
                         else
                             GenericaDesktop.ShowAlerta("Conta escolhida não foi configurada para emissão de boletos!");
@@ -3577,7 +3582,7 @@ namespace Lunar.Telas.Vendas
                     }
                     else
                     {
-                        FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda);
+                        FrmImprimirTicketVenda frmImprimirTicket = new FrmImprimirTicketVenda(venda, true);
                         frmImprimirTicket.ShowDialog();
                     }
 
@@ -3624,6 +3629,7 @@ namespace Lunar.Telas.Vendas
                 NotificacaoService notificacaoService = new NotificacaoService();
                 await notificacaoService.NotificarVendaRealizadaAsync(vendaConclusao);
                 EsconderTabPagamento();
+                vendaConclusao = new Venda();
             }
             catch (Exception erro)
             {

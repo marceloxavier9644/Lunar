@@ -7,6 +7,7 @@ using Lunar.Telas.Vendas.RecebimentoVendas;
 using Lunar.Utils;
 using Lunar.Utils.ClassesRepeticoes;
 using Lunar.Utils.GalaxyPay_API;
+using Lunar.Utils.IntegracoesBancosBoletos;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -16,6 +17,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
@@ -1771,8 +1773,14 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         //Boleto
                         else if (formaPagamento.Id == 5)
                         {
+                            ContaBancaria contaBancaria = new ContaBancaria();
+                            contaBancaria.Id = int.Parse(dataRowView.Row["ContaBancaria"].ToString());
+                            contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                            BoletoConfigService boletoConfigService = new BoletoConfigService();
                             GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
                             Pessoa clienteBoleto = new Pessoa();
+                            int idVenda = 0;
+                            int idOs = 0;
                             if (listaCrediario.Count > 0)
                             {
                                 int c = 0;
@@ -1783,11 +1791,22 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     contaReceber.Concluido = true;
                                     contaReceber.Parcela = c.ToString();
                                     contaReceber.Documento = "OS" + ordemServico.Id + "/" + c;
+                                    idOs = ordemServico.Id;
                                     Controller.getInstance().salvar(contaReceber);
                                     lis.Add(contaReceber);
                                     clienteBoleto = contaReceber.Cliente;
                                 }
-                                gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
+                                if(Sessao.parametroSistema.IntegracaoGalaxyPay == true && !String.IsNullOrEmpty(Sessao.parametroSistema.TokenGalaxyPay))
+                                    gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
+                                var boletoConfig = boletoConfigService.GetBoletoConfigContaBancaria(contaBancaria);
+                                if (boletoConfig != null)
+                                {
+                                    if (boletoConfig.ContaBancaria.Banco.Descricao.Contains("SICREDI"))
+                                    {
+                                        BoletoSicrediManager boletoManager = new BoletoSicrediManager(idVenda, idOs, contaBancaria);
+                                        await boletoManager.GeraBoletosSicredi(ordemServico.Cliente, true);
+                                    }
+                                }
                             }
                         }
                         //Crediário

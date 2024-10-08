@@ -58,6 +58,13 @@ namespace Lunar.Telas.IntegracoesBancarias
                         case DialogResult.OK:
                             txtContaBancaria.Text = ((ContaBancaria)objeto).Descricao;
                             txtCodContaBancaria.Text = ((ContaBancaria)objeto).Id.ToString();
+                            string textoSicredi = "Usuário (Cód. Beneficiário + Cód. Cooperativa)";
+                            autoLabel8.Text = "Usuário";
+                            if (((ContaBancaria)objeto).Banco.Descricao.ToUpper().Contains("SICREDI"))
+                            {
+                                autoLabel8.Text = textoSicredi;
+                                autoLabel9.Text = "Código Gerado";
+                            }
                             IList<BoletoConfig> listaBoletoConfig = boletoConfigController.selecionarBoletoConfigPorContaBancaria(((ContaBancaria)objeto).Id);
                             if (listaBoletoConfig.Count > 0)
                             {

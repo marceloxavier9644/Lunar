@@ -604,7 +604,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>dsCondicional</DataSetName>
-            <Top>0.07056cm</Top>
+            <Top>2.45181cm</Top>
             <Left>0.34078cm</Left>
             <Height>1.8cm</Height>
             <Width>16.54937cm</Width>
@@ -631,7 +631,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Cliente1</rd:DefaultName>
-            <Top>3.47458cm</Top>
+            <Top>5.85583cm</Top>
             <Height>0.6cm</Height>
             <Width>17.22438cm</Width>
             <ZIndex>1</ZIndex>
@@ -646,7 +646,7 @@
             </Style>
           </Textbox>
           <Line Name="Line1">
-            <Top>3.43931cm</Top>
+            <Top>5.82056cm</Top>
             <Left>3.31766cm</Left>
             <Height>0cm</Height>
             <Width>10.49042cm</Width>
@@ -657,14 +657,57 @@
               </Border>
             </Style>
           </Line>
+          <Textbox Name="Observacoes">
+            <CanShrink>true</CanShrink>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>OBSERVAÇÕES:</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!Observacoes.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Observacoes</rd:DefaultName>
+            <Top>0.11289cm</Top>
+            <Left>0.34079cm</Left>
+            <Height>2.05521cm</Height>
+            <Width>16.54937cm</Width>
+            <ZIndex>3</ZIndex>
+            <Visibility>
+              <Hidden>=IIf(IsNothing(Parameters!Observacoes.Value) OR Parameters!Observacoes.Value = "", True, False)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>1.76042in</Height>
+        <Height>2.58334in</Height>
         <Style />
       </Body>
       <Width>6.78125in</Width>
       <Page>
         <PageHeader>
-          <Height>5.10356cm</Height>
+          <Height>4.98566cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -776,8 +819,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Cliente</rd:DefaultName>
-              <Top>3.52461cm</Top>
-              <Left>0.34078cm</Left>
+              <Top>3.42936cm</Top>
+              <Left>0.34077cm</Left>
               <Height>0.6cm</Height>
               <Width>16.54938cm</Width>
               <ZIndex>2</ZIndex>
@@ -1076,6 +1119,12 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="Observacoes">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1131,6 +1180,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>3</RowIndex>
           <ParameterName>logo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>Observacoes</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

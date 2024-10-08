@@ -1039,7 +1039,6 @@ namespace Lunar.Telas.Condicionais
         private void btnGravar_Click(object sender, EventArgs e)
         {
             set_Condicional();
-            this.Close();
         }
 
         private void set_Condicional()
@@ -1072,7 +1071,7 @@ namespace Lunar.Telas.Condicionais
                     {
                         if (vendedor.Id > 0)
                             condicional.Vendedor = vendedor;
-                        else 
+                        else
                             condicional.Vendedor = null;
                     }
                     condicional.Cliente = pessoa;
@@ -1081,7 +1080,7 @@ namespace Lunar.Telas.Condicionais
                     condicional.DataPrevisao = DateTime.Parse(txtDataPrevisao.Value.ToString());
                     condicional.Encerrado = false;
                     condicional.Filial = Sessao.empresaFilialLogada;
-                    condicional.Observacoes = "";
+                    condicional.Observacoes = txtObservacoes.Text;
                     try { condicional.QtdPeca = double.Parse(txtTotalPeças.Texts); } catch { condicional.QtdPeca = 0; }
                     condicional.ValorTotal = decimal.Parse(txtValorTotalTodosProdutos.Texts.Replace("R$ ", ""));
                     capturarProdutos();
@@ -1094,10 +1093,14 @@ namespace Lunar.Telas.Condicionais
                         FrmImprimirCondicional frmImprimirOrdem = new FrmImprimirCondicional(condicional);
                         frmImprimirOrdem.ShowDialog();
                     }
+                    this.Close();
                 }
             }
             else
+            {
                 GenericaDesktop.ShowErro("Você deve selecionar um cliente para realizar a Condicional!");
+                txtCliente.Focus();
+            }
         }
 
         private void capturarProdutos()
@@ -1156,6 +1159,7 @@ namespace Lunar.Telas.Condicionais
             txtCodCliente.Texts = condicional.Cliente.Id.ToString();
             txtDataAbertura.Value = condicional.Data;
             txtDataPrevisao.Value = condicional.DataPrevisao;
+            txtObservacoes.Text = condicional.Observacoes;
             if (condicional.Vendedor != null)
             {
                 txtVendedor.Texts = condicional.Vendedor.RazaoSocial;

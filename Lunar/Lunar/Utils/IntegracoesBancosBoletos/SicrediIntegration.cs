@@ -1,21 +1,14 @@
-﻿
-using iText.IO.Image;
-using iText.Kernel.Pdf;
+﻿using iText.Kernel.Pdf;
 using iText.Kernel.Utils;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
 using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.IntegracoesBancosBoletos;
+using LunarBase.Classes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using OpenAC.Net.Core.Extensions;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -28,7 +21,7 @@ public class SicrediIntegration
     private const string ProductionUrl = "https://api-parceiro.sicredi.com.br/auth/openapi/token";
 
     private const string SandboxBoletoUrl = "https://api-parceiro.sicredi.com.br/sb/cobranca/boleto/v1/boletos";
-    private const string ProductionBoletoUrl = "https://api-parceiro.sicredi.com.br/cobranca/boletos";
+    private const string ProductionBoletoUrl = "https://api-parceiro.sicredi.com.br/cobranca/boleto/v1/boletos";
 
     private const string SandboxBoletoUrlPDF = "https://api-parceiro.sicredi.com.br/sb/cobranca/boleto/v1/boletos/pdf";
     private const string ProductionBoletoUrlPDF = "https://api-parceiro.sicredi.com.br/cobranca/boleto/v1/boletos/pdf";
@@ -45,7 +38,9 @@ public class SicrediIntegration
     private string _refreshToken;
     private DateTime _tokenExpiration;
 
-    private const string xApiKey = "58ae06aa-759c-4e27-b9da-46be855eb3aa";
+    //private const string xApiKey = "58ae06aa-759c-4e27-b9da-46be855eb3aa"; // Homologacao
+    private const string xApiKey = "eec7d157-7430-4c1d-a26d-8ad1bec34e66"; // Produção
+
     private readonly string _username; // Beneficiário + Cooperativa
     private readonly string _password; // Código gerado no Internet Banking
 
@@ -146,7 +141,16 @@ public class SicrediIntegration
         request.AddHeader("x-api-key", xApiKey);
         request.AddHeader("Content-Type", "application/json");
         request.AddHeader("cooperativa", _cooperativa); 
-        request.AddHeader("posto", _posto); 
+        request.AddHeader("posto", _posto);
+        JsonSerializerSettings settings = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore, // Ignora valores nulos
+            Formatting = Formatting.Indented // Gera o JSON formatado
+        };
+
+        string jsonBoleto = JsonConvert.SerializeObject(boletoData, settings);
+        Logger logger = new Logger();
+        logger.WriteLog(jsonBoleto, "Log");
 
         request.AddJsonBody(boletoData); 
 
@@ -159,11 +163,12 @@ public class SicrediIntegration
             return boletoResponse;
         }
         GenericaDesktop.ShowErro($"Erro ao gerar boleto: {response.Content}");
+        logger.WriteLog("Erro Boleto Sicredi: " + response.Content, "Log");
         return null;
     }
 
 
-    public async Task<string[]> DownloadAndOpenBoletoPdfs(string[] linhasDigitaveis)
+    public async Task<string[]> DownloadAndOpenBoletoPdfs(string[] linhasDigitaveis, bool imprimirNaTela)
     {
         // Usar uma lista temporária para armazenar os caminhos dos PDFs
         List<string> pdfPaths = new List<string>();
@@ -225,24 +230,30 @@ public class SicrediIntegration
         // Verificar se há PDFs para combinar
         if (pdfPaths.Count > 1)
         {
-            string combinedPdfPath = Path.Combine(Path.GetTempPath(), "Boleto_Combinado.pdf");
-            CombinePdfs(pdfPaths.ToArray(), combinedPdfPath); 
-            FrmPDF frmPDF = new FrmPDF(combinedPdfPath);
-            frmPDF.ShowDialog();
+            string combinedPdfPath = Path.Combine(Path.GetTempPath(), "Boleto.pdf");
+            CombinePdfs(pdfPaths.ToArray(), combinedPdfPath);
+            if (imprimirNaTela == true)
+            {
+                FrmPDF frmPDF = new FrmPDF(combinedPdfPath);
+                frmPDF.ShowDialog();
+            }
         }
         else if (pdfPaths.Count == 1)
         {
             foreach (string pdfPath in pdfPaths)
             {
-                FrmPDF frmPDF = new FrmPDF(pdfPath);
-                frmPDF.ShowDialog();
+                if (imprimirNaTela == true)
+                {
+                    FrmPDF frmPDF = new FrmPDF(pdfPath);
+                    frmPDF.ShowDialog();
+                }
             }
         }
 
         return pdfPaths.ToArray();
     }
 
-    private void CombinePdfs(string[] pdfPaths, string outputFilePath)
+    public void CombinePdfs(string[] pdfPaths, string outputFilePath)
     {
         using (PdfDocument pdfDocument = new PdfDocument(new PdfWriter(outputFilePath)))
         {

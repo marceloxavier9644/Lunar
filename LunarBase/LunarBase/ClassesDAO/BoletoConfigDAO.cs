@@ -24,5 +24,10 @@ namespace LunarBase.ClassesDAO
             IList<BoletoConfig> retorno = Session.CreateQuery(sql).List<BoletoConfig>();
             return retorno;
         }
+        public BoletoConfig selecionarBoletoConfigPorContaBancariaUnica(ContaBancaria contaBancaria)
+        {
+            Session = Conexao.GetSession();
+            return Session.CreateQuery("from BoletoConfig as Tabela where Tabela.ContaBancaria = " + contaBancaria.Id + " and Tabela.FlagExcluido <> true").UniqueResult<BoletoConfig>();
+        }
     }
 }

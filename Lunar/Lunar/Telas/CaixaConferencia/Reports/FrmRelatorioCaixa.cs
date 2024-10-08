@@ -99,6 +99,10 @@ namespace Lunar.Telas.CaixaConferencia.Reports
                 {
                     sql = sql + "and Tabela.Tipo = 'S' and Tabela.TabelaOrigem <> 'DEPOSITO_BANCARIO' ";
                 }
+                if (chkApenasReceitas.Checked == true)
+                {
+                    sql = sql + "and Tabela.Tipo = 'E' and Tabela.TabelaOrigem <> 'DEPOSITO_BANCARIO' ";
+                }
                 if (!String.IsNullOrEmpty(txtCodCobrador.Texts))
                     sql = sql + "and Tabela.Cobrador = " + txtCodCobrador.Texts + " ";
                 Microsoft.Reporting.WinForms.ReportDataSource dsOrdem = new Microsoft.Reporting.WinForms.ReportDataSource();

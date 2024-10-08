@@ -464,7 +464,7 @@ namespace Lunar.Telas.ContasPagar
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (gridParcelas.RowCount > 0)
+            if (gridParcelas.View.Records.Count > 0)
             {
                 int i = 0;
                 var records = gridParcelas.View.Records;

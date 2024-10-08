@@ -116,32 +116,32 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
             };
 
             // Criar os dados do beneficiário final
-            var beneficiarioFinal = new BeneficiarioFinal
-            {
-                Documento = Sessao.empresaFilialLogada.Cnpj,  // CNPJ do beneficiário
-                TipoPessoa = pessoa.TipoPessoa == "PF" ? "PESSOA_FISICA" : "PESSOA_JURIDICA", // Tipo de pessoa (J - Jurídica, F - Física)
-                Nome = Sessao.empresaFilialLogada.RazaoSocial,
-                Logradouro = Sessao.empresaFilialLogada.Endereco.Logradouro,
-                NumeroEndereco = Sessao.empresaFilialLogada.Endereco.Numero,
-                Cidade = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao,
-                Uf = Sessao.empresaFilialLogada.Endereco.Cidade.Estado.Uf,
-                Cep = Sessao.empresaFilialLogada.Endereco.Cep,
-                Telefone = Sessao.empresaFilialLogada.DddPrincipal + GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.TelefonePrincipal),  // Telefone do beneficiário
-                Email = Sessao.empresaFilialLogada.Email,
+            //var beneficiarioFinal = new BeneficiarioFinal
+            //{
+            //    Documento = Sessao.empresaFilialLogada.Cnpj,  // CNPJ do beneficiário
+            //    TipoPessoa = "PESSOA_JURIDICA", // Tipo de pessoa (J - Jurídica, F - Física)
+            //    Nome = Sessao.empresaFilialLogada.RazaoSocial,
+            //    Logradouro = Sessao.empresaFilialLogada.Endereco.Logradouro,
+            //    NumeroEndereco = Sessao.empresaFilialLogada.Endereco.Numero,
+            //    Cidade = Sessao.empresaFilialLogada.Endereco.Cidade.Descricao,
+            //    Uf = Sessao.empresaFilialLogada.Endereco.Cidade.Estado.Uf,
+            //    Cep = Sessao.empresaFilialLogada.Endereco.Cep,
+            //    Telefone = Sessao.empresaFilialLogada.DddPrincipal + GenericaDesktop.RemoveCaracteres(Sessao.empresaFilialLogada.TelefonePrincipal),  // Telefone do beneficiário
+            //    Email = Sessao.empresaFilialLogada.Email,
                 
-            };
+            //};
 
             var boletoRequest = new BoletoRequest
             {
                 TipoCobranca = boletoConfig.TipoBoleto,  // Tipo de cobrança NORMAL OU HIBRIDO COM QRCODE
                 CodigoBeneficiario = boletoConfig.CodigoBeneficiario.Trim(), // 5 digitos para o sicredi  
                 Pagador = pagador,  // Informações do pagador
-                BeneficiarioFinal = beneficiarioFinal,  // Informações do beneficiário final
+                //BeneficiarioFinal = beneficiarioFinal,  // Informações do beneficiário final
                 Valor = valor,  // Valor do boleto
                 DataVencimento = vencimento,  // Data de vencimento do boleto
                 SeuNumero = numeroDocumento,  // Número do documento
                 //NossoNumero = nossoNumero,  // Nosso número do boleto
-                EspecieDocumento = "NOTA_PROMISSORIA",  // Tipo de documento
+                EspecieDocumento = "DUPLICATA_MERCANTIL_INDICACAO",  // Tipo de documento
                 //DiasProtestoAuto = 5,  // Dias automáticos para protesto (se houver)
                 //DiasNegativacaoAuto = 10,  // Dias automáticos para negativação (se houver)
                 //ValidadeAposVencimento = 30,  // Validade após vencimento
@@ -151,7 +151,7 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
                 TipoJuros = "PERCENTUAL",  //A - VALOR ou B - PERCENTUAL
                 Juros = boletoConfig.JuroMensal,
                 Multa = boletoConfig.Multa,
-                Informativo = new List<string> { "Pagamento preferencialmente na rede bancária ou correspondentes autorizados" },  // Informações adicionais
+                Informativo = new List<string> { "Pagamento preferencialmente na rede bancária ou correspondentes autorizados"},
             };
 
             return boletoRequest;

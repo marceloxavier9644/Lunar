@@ -321,7 +321,7 @@
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(13, 204);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(232, 26);
+            this.txtUsuario.Size = new System.Drawing.Size(283, 26);
             this.txtUsuario.TabIndex = 7;
             // 
             // autoLabel8
@@ -338,9 +338,9 @@
             // txtSenha
             // 
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.Location = new System.Drawing.Point(251, 204);
+            this.txtSenha.Location = new System.Drawing.Point(302, 204);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(196, 26);
+            this.txtSenha.Size = new System.Drawing.Size(145, 26);
             this.txtSenha.TabIndex = 8;
             this.txtSenha.UseSystemPasswordChar = true;
             // 
@@ -349,7 +349,7 @@
             this.autoLabel9.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel9.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel9.Location = new System.Drawing.Point(251, 185);
+            this.autoLabel9.Location = new System.Drawing.Point(302, 185);
             this.autoLabel9.Name = "autoLabel9";
             this.autoLabel9.Size = new System.Drawing.Size(46, 16);
             this.autoLabel9.TabIndex = 300;
@@ -420,6 +420,7 @@
             this.txtMensagemBoleto.Name = "txtMensagemBoleto";
             this.txtMensagemBoleto.Size = new System.Drawing.Size(775, 26);
             this.txtMensagemBoleto.TabIndex = 14;
+            this.txtMensagemBoleto.Visible = false;
             // 
             // autoLabel12
             // 
@@ -431,6 +432,7 @@
             this.autoLabel12.Size = new System.Drawing.Size(117, 16);
             this.autoLabel12.TabIndex = 307;
             this.autoLabel12.Text = "Mensagem Boleto";
+            this.autoLabel12.Visible = false;
             // 
             // txtPlanoContaTarifa
             // 

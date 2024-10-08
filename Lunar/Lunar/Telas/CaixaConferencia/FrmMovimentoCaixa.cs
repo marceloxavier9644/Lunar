@@ -410,7 +410,11 @@ namespace Lunar.Telas.CaixaConferencia
                 }
                 if (chkApenasDespesas.Checked == true)
                 {
-                    sql = sql + "and Tabela.Tipo = 'S' and Tabela.TabelaOrigem <> 'DEPOSITO_BANCARIO' ";
+                    sql = sql + "and Tabela.Tipo = 'S' and Tabela.TabelaOrigem <> 'DEPOSITO_BANCARIO' ";/*and Tabela.TabelaOrigem <> 'DEPOSITO_BANCARIO'*/
+                }
+                if (chkApenasReceitas.Checked == true)
+                {
+                    sql = sql + "and Tabela.Tipo = 'E' and Tabela.TabelaOrigem <> 'DEPOSITO_BANCARIO' ";
                 }
                 //MessageBox.Show(sql);
                 CaixaController caixaController = new CaixaController();

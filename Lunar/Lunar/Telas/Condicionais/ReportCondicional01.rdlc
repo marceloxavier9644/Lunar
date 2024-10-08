@@ -98,7 +98,7 @@
                                 <TextRun>
                                   <Value>CÓD</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -132,7 +132,7 @@
                                 <TextRun>
                                   <Value>PRODUTO</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -166,7 +166,7 @@
                                 <TextRun>
                                   <Value>UNIT.</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -200,7 +200,7 @@
                                 <TextRun>
                                   <Value>QTD</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -234,7 +234,7 @@
                                 <TextRun>
                                   <Value>TOTAL</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -273,7 +273,7 @@
                                 <TextRun>
                                   <Value>=Fields!CodProduto.Value</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -308,7 +308,7 @@
                                 <TextRun>
                                   <Value>=Fields!DescricaoProduto.Value</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -342,7 +342,7 @@
                                 <TextRun>
                                   <Value>=Fields!ValorUnitarioComDesconto.Value</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <Format>'R$' #,0.00</Format>
                                   </Style>
                                 </TextRun>
@@ -378,7 +378,7 @@
                                 <TextRun>
                                   <Value>=Fields!Quantidade.Value</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -412,7 +412,7 @@
                                 <TextRun>
                                   <Value>=Fields!ValorTotalComDesconto.Value</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <Format>'R$' #,0.00</Format>
                                   </Style>
                                 </TextRun>
@@ -1092,7 +1092,7 @@
         </PageHeader>
         <PageHeight>99cm</PageHeight>
         <PageWidth>21cm</PageWidth>
-        <LeftMargin>0.4cm</LeftMargin>
+        <LeftMargin>0.2cm</LeftMargin>
         <RightMargin>0.1cm</RightMargin>
         <TopMargin>0cm</TopMargin>
         <BottomMargin>0cm</BottomMargin>
@@ -1162,6 +1162,12 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="Observacoes">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1217,6 +1223,11 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>logo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>Observacoes</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
