@@ -37,10 +37,11 @@ public class SicrediIntegration
     private string _accessToken;
     private string _refreshToken;
     private DateTime _tokenExpiration;
+    private bool _isProduction;
 
     //private const string xApiKey = "58ae06aa-759c-4e27-b9da-46be855eb3aa"; // Homologacao
-    private const string xApiKey = "eec7d157-7430-4c1d-a26d-8ad1bec34e66"; // Produção
-
+    //private const string xApiKey = "eec7d157-7430-4c1d-a26d-8ad1bec34e66"; // Produção
+    private string xApiKey;
     private readonly string _username; // Beneficiário + Cooperativa
     private readonly string _password; // Código gerado no Internet Banking
 
@@ -51,6 +52,8 @@ public class SicrediIntegration
     // Construtor para configurar o ambiente
     public SicrediIntegration(bool isProduction, string username, string password, string cooperativa, string posto, string codigoBeneficiario)
     {
+        _isProduction = isProduction;
+        xApiKey = isProduction ? "eec7d157-7430-4c1d-a26d-8ad1bec34e66" : "58ae06aa-759c-4e27-b9da-46be855eb3aa";
         _apiUrl = isProduction ? ProductionUrl : SandboxUrl;
         _boletoUrl = isProduction ? ProductionBoletoUrl : SandboxBoletoUrl;
         _boletoUrlPDF = isProduction ? ProductionBoletoUrlPDF : SandboxBoletoUrlPDF;
@@ -93,7 +96,7 @@ public class SicrediIntegration
 
         // Mostrar erro de autenticação
         Console.WriteLine($"Erro de autenticação: {response.StatusCode}");
-        Console.WriteLine($"Resposta do servidor: {response.Content}");
+        GenericaDesktop.ShowAlerta($"Resposta do servidor sicredi: {response.Content}");
         return false;
     }
 
@@ -173,7 +176,7 @@ public class SicrediIntegration
         // Usar uma lista temporária para armazenar os caminhos dos PDFs
         List<string> pdfPaths = new List<string>();
         int i = 1;
-        foreach (var linhaDigitavel in linhasDigitaveis)
+        foreach (var linhaDigitavel  in linhasDigitaveis)
         {
             // Remover espaços e caracteres inesperados
             string cleanedLinhaDigitavel = linhaDigitavel.Trim().Replace(" ", "").Replace("-", "");

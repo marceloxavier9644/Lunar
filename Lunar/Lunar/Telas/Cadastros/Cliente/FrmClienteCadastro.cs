@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.ServiceModel;
@@ -64,13 +65,17 @@ namespace Lunar.Telas.Cadastros.Cliente
         {
             InitializeComponent();
             this.pessoa = new Pessoa();
+            carregarComboCaracteristicas();
         }
 
         public FrmClienteCadastro(Pessoa pessoa)
         {
             InitializeComponent();
             this.pessoa = pessoa;
+            carregarComboCaracteristicas();
             get_Pessoa(pessoa);
+
+
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -167,6 +172,26 @@ namespace Lunar.Telas.Cadastros.Cliente
             }
         }
 
+
+        private void carregarComboCaracteristicas()
+        {
+            PessoaCaracteristicaController caracteristicaController = new PessoaCaracteristicaController();
+            ObjetoPadrao caract = new PessoaCaracteristica();
+            IList<PessoaCaracteristica> listaVariacoes = caracteristicaController.selecionarTodasPessoaCaracteristica();
+           
+            //List<PessoaCaracteristica> listaVariacoes = listaVariacoesPadrao.Cast<PessoaCaracteristica>().ToList();
+            
+            // Configurando o sfComboBox
+            comboCaracteristica.DataSource = listaVariacoes;
+            comboCaracteristica.DisplayMember = "Descricao";
+            comboCaracteristica.ValueMember = "Id";
+
+            if (listaVariacoes.Count > 0)
+            {
+                comboCaracteristica.SelectedIndex = 0;
+                tabPerfil.TabVisible = true;
+            }
+        }
         private void txtCNPJ_Leave(object sender, EventArgs e)
         {
            
@@ -1280,7 +1305,7 @@ namespace Lunar.Telas.Cadastros.Cliente
 
             }
         }
-
+     
         private void get_Pessoa(Pessoa pessoa)
         {
             txtCodCliente.Texts = pessoa.Id.ToString();
@@ -1298,6 +1323,8 @@ namespace Lunar.Telas.Cadastros.Cliente
             get_EnderecoAdicional(pessoa);
             get_TelefoneAdicional(pessoa);
             get_Dependentes(pessoa);
+            carregarGridPerfil();
+
 
             txtCodCliente.TextAlign = HorizontalAlignment.Center;
             txtUsuarioCadastro.TextAlign = HorizontalAlignment.Center;
@@ -1852,6 +1879,97 @@ namespace Lunar.Telas.Cadastros.Cliente
             {
                 GenericaDesktop.ShowErro(erro.Message);
             }
+        }
+
+        private void btnAdicionarVariacao_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (comboCaracteristica.SelectedItem != null && !String.IsNullOrEmpty(txtDescricaoPerfil.Text))
+                {
+                    PessoaCaracteristica caracteristicaSelecionada = comboCaracteristica.SelectedItem as PessoaCaracteristica;
+
+                    if (caracteristicaSelecionada != null)
+                    {
+                        int idSelecionado = caracteristicaSelecionada.Id;
+                        string descricaoSelecionada = caracteristicaSelecionada.Descricao;
+
+                        PessoaPerfil pessoaPerfil = new PessoaPerfil();
+                        pessoaPerfil.PessoaCaracteristica = caracteristicaSelecionada;
+                        pessoaPerfil.Descricao = txtDescricaoPerfil.Text;
+
+                        Pessoa pessoa = new Pessoa();
+                        if (!String.IsNullOrEmpty(txtCodCliente.Texts))
+                        {
+                            pessoa.Id = int.Parse(txtCodCliente.Texts);
+                            pessoa = (Pessoa)Controller.getInstance().selecionar(pessoa);
+                            pessoaPerfil.Pessoa = pessoa;
+                        }
+                        else
+                            set_Pessoa();
+                        Controller.getInstance().salvar(pessoaPerfil);
+                        carregarGridPerfil();
+                        txtDescricaoPerfil.Text = "";
+
+                    }
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Preencha todos os campos");
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void carregarGridPerfil()
+        {
+            if (!String.IsNullOrEmpty(txtCodCliente.Texts))
+            {
+                PessoaPerfilController pessoaPerfilControllerController = new PessoaPerfilController();
+                IList<PessoaPerfil> listaPerfil = pessoaPerfilControllerController.selecionarPerfilPorPessoa(int.Parse(txtCodCliente.Texts));
+
+                if (listaPerfil.Count > 0)
+                {
+                    gridPerfilPessoa.DataSource = null;
+                    gridPerfilPessoa.DataSource = listaPerfil;
+                    gridPerfilPessoa.Refresh();
+                }
+                else
+                {
+                    gridPerfilPessoa.DataSource = null;
+                    gridPerfilPessoa.Refresh();
+                }
+            }
+        }
+
+        private void gridPerfilPessoa_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.Style.BackColor = Color.WhiteSmoke;
+            else
+                e.Style.BackColor = Color.White;
+        }
+
+        private void btnExcluirPerfil_Click(object sender, EventArgs e)
+        {
+            if (gridPerfilPessoa.SelectedItem != null)
+            {
+                var selectedRow = gridPerfilPessoa.SelectedItem;
+
+                if (selectedRow is PessoaPerfil perfil)
+                {
+                    if (GenericaDesktop.ShowConfirmacao("Deseja realmente excluir o perfil selecionado?"))
+                    {
+                        Controller.getInstance().excluir(perfil);
+                        carregarGridPerfil();
+                    }
+                }
+            }
+            else
+                GenericaDesktop.ShowAlerta("Primeiro você deve clicar na característica que deseja excluir!");
         }
     }
 }

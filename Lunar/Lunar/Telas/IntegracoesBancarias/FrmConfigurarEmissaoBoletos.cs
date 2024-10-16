@@ -146,6 +146,10 @@ namespace Lunar.Telas.IntegracoesBancarias
                 planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
                 boletoConfig.PlanoContaTarifa = planoConta;
             }
+            if (radioProducao.Checked == true)
+                boletoConfig.AmbienteProducao = true;
+            else
+                boletoConfig.AmbienteProducao = false;
 
             Controller.getInstance().salvar(boletoConfig);
             GenericaDesktop.ShowInfo("Registro salvo com Sucesso!");
@@ -192,6 +196,11 @@ namespace Lunar.Telas.IntegracoesBancarias
             {
                 radioHibrido.Checked = true; // Supondo que você tenha esse radio button no seu formulário
             }
+            if (boletoConfig.AmbienteProducao == true)
+                radioProducao.Checked = true;          
+            else
+                radioHomologacao.Checked = true; 
+     
 
             txtToken.Text = boletoConfig.Token;
             txtUsuario.Text = boletoConfig.Usuario;

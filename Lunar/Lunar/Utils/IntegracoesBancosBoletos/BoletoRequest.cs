@@ -107,7 +107,13 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
                 TipoPessoa = pessoa.TipoPessoa == "PF" ? "PESSOA_FISICA" : "PESSOA_JURIDICA", // Definir o tipo de pessoa (Física ou Jurídica)
                 Documento = GenericaDesktop.RemoveCaracteres(pessoa.Cnpj),  // Remover caracteres especiais do CNPJ ou CPF
                 Nome = pessoa.RazaoSocial,  // Nome ou Razão Social do pagador
-                Endereco = pessoa.EnderecoPrincipal.Logradouro + ", " + pessoa.EnderecoPrincipal.Numero + (string.IsNullOrEmpty(pessoa.EnderecoPrincipal.Complemento) ? "" : ", " + pessoa.EnderecoPrincipal.Complemento),
+
+                //ENDERECO COM NO MAXIMO 40 CARACTERES
+                Endereco = (pessoa.EnderecoPrincipal.Logradouro + ", " + pessoa.EnderecoPrincipal.Numero +
+           (string.IsNullOrEmpty(pessoa.EnderecoPrincipal.Complemento) ? "" : ", " + pessoa.EnderecoPrincipal.Complemento))
+           .Substring(0, Math.Min(40, (pessoa.EnderecoPrincipal.Logradouro + ", " + pessoa.EnderecoPrincipal.Numero +
+           (string.IsNullOrEmpty(pessoa.EnderecoPrincipal.Complemento) ? "" : ", " + pessoa.EnderecoPrincipal.Complemento)).Length)),
+
                 Cidade = pessoa.EnderecoPrincipal.Cidade.Descricao,
                 Uf = pessoa.EnderecoPrincipal.Cidade.Estado.Uf,
                 Cep = GenericaDesktop.RemoveCaracteres(pessoa.EnderecoPrincipal.Cep)

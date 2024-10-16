@@ -38,3 +38,8 @@ C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.sourceli
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.csproj.Up2Date
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.dll
 C:\Desenvolvimento\Lunar\LunarBase\LunarBase\obj\Debug\net472\LunarBase.pdb
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\System.Text.Encodings.Web.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\System.Text.Json.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\System.Threading.Tasks.Extensions.dll
+C:\Desenvolvimento\Lunar\LunarBase\LunarBase\bin\Debug\net472\System.ValueTuple.dll

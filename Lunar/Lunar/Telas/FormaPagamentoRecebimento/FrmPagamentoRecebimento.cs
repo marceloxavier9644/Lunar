@@ -1347,6 +1347,19 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 if (pessoaCobrador.Id > 0)
                                     caixa.Cobrador = pessoaCobrador;
                             }
+                            caixa.BandeiraCartao = bandeiraCartao;
+                            string tipoCartao = dataRowView.Row["tipoCartao"].ToString();
+                            if (tipoCartao.Equals("DÉBITO"))
+                            {
+                                caixa.CartaoDebito = true;
+                                caixa.CartaoCredito = false;
+                            }
+                            else
+                            {
+                                caixa.CartaoCredito = true;
+                                caixa.CartaoDebito = false;
+                            }
+                            caixa.ParcelasCartao = parcelamento.Parcelas;
                             Controller.getInstance().salvar(caixa);
                             //ordemServicoPagamento.AdquirenteCartao = adquirenteCartao;
                             //ordemServicoPagamento.AutorizacaoCartao = dataRowView.Row["AutorizacaoCartao"].ToString();
@@ -1390,6 +1403,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     if (pessoaCobrador.Id > 0)
                                         caixa.Cobrador = pessoaCobrador;
                                 }
+
                                 // ordemServicoPagamento.ContaBancaria = contaBancaria;
                                 Controller.getInstance().salvar(caixa);
                             }
@@ -1701,6 +1715,18 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 if (pessoaCobrador.Id > 0)
                                     caixa.Cobrador = pessoaCobrador;
                             }
+                            string tipoCartao = dataRowView.Row["tipoCartao"].ToString();
+                            if (tipoCartao.Equals("DÉBITO"))
+                            {
+                                caixa.CartaoDebito = true;
+                                caixa.CartaoCredito = false;
+                            }
+                            else
+                            {
+                                caixa.CartaoCredito = true;
+                                caixa.CartaoDebito = false;
+                            }
+                            caixa.ParcelasCartao = parcelamento.Parcelas;
                             Controller.getInstance().salvar(caixa);
                             ordemServicoPagamento.AdquirenteCartao = adquirenteCartao;
                             ordemServicoPagamento.AutorizacaoCartao = dataRowView.Row["AutorizacaoCartao"].ToString();
@@ -1803,7 +1829,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 {
                                     if (boletoConfig.ContaBancaria.Banco.Descricao.Contains("SICREDI"))
                                     {
-                                        BoletoSicrediManager boletoManager = new BoletoSicrediManager(idVenda, idOs, contaBancaria);
+                                        BoletoSicrediManager boletoManager = new BoletoSicrediManager(idVenda, idOs, contaBancaria, boletoConfig.AmbienteProducao);
                                         await boletoManager.GeraBoletosSicredi(ordemServico.Cliente, true);
                                     }
                                 }
@@ -2197,6 +2223,18 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                 if (pessoaCobrador.Id > 0)
                                     caixa.Cobrador = pessoaCobrador;
                             }
+                            string tipoCartao = dataRowView.Row["tipoCartao"].ToString();
+                            if (tipoCartao.Equals("DÉBITO"))
+                            {
+                                caixa.CartaoDebito = true;
+                                caixa.CartaoCredito = false;
+                            }
+                            else
+                            {
+                                caixa.CartaoCredito = true;
+                                caixa.CartaoDebito = false;
+                            }
+                            caixa.ParcelasCartao = parcelamento.Parcelas;
                             Controller.getInstance().salvar(caixa);
                             vendaPagamento.AdquirenteCartao = adquirenteCartao;
                             vendaPagamento.AutorizacaoCartao = dataRowView.Row["AutorizacaoCartao"].ToString();
@@ -2901,6 +2939,18 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             if (pessoaCobrador.Id > 0)
                                 caixa.Cobrador = pessoaCobrador;
                         }
+                        string tipoCartao = dataRowView.Row["tipoCartao"].ToString();
+                        if (tipoCartao.Equals("DÉBITO"))
+                        {
+                            caixa.CartaoDebito = true;
+                            caixa.CartaoCredito = false;
+                        }
+                        else
+                        {
+                            caixa.CartaoCredito = true;
+                            caixa.CartaoDebito = false;
+                        }
+                        caixa.ParcelasCartao = parcelamento.Parcelas;
                         Controller.getInstance().salvar(caixa);
                         listaRecebimentosCaixa.Add(caixa);
                     }
@@ -3253,6 +3303,18 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                         caixa.Usuario = Sessao.usuarioLogado;
                         caixa.Valor = decimal.Parse(dataRowView.Row["Valor"].ToString());
                         caixa.Pessoa = clienteLista;
+                        string tipoCartao = dataRowView.Row["tipoCartao"].ToString();
+                        if (tipoCartao.Equals("DÉBITO"))
+                        {
+                            caixa.CartaoDebito = true;
+                            caixa.CartaoCredito = false;
+                        }
+                        else
+                        {
+                            caixa.CartaoCredito = true;
+                            caixa.CartaoDebito = false;
+                        }
+                        caixa.ParcelasCartao = parcelamento.Parcelas;
                         Controller.getInstance().salvar(caixa);
                         listaRecebimentosCaixa.Add(caixa);
                     }
@@ -3866,6 +3928,18 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             if (pessoaCobrador.Id > 0)
                                 caixa.Cobrador = pessoaCobrador;
                         }
+                        string tipoCartao = dataRowView.Row["tipoCartao"].ToString();
+                        if (tipoCartao.Equals("DÉBITO"))
+                        {
+                            caixa.CartaoDebito = true;
+                            caixa.CartaoCredito = false;
+                        }
+                        else
+                        {
+                            caixa.CartaoCredito = true;
+                            caixa.CartaoDebito = false;
+                        }
+                        caixa.ParcelasCartao = parcelamento.Parcelas;
                         Controller.getInstance().salvar(caixa);
                     }
                     //PIX
@@ -4119,7 +4193,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                             uu.Owner = formBackground;
                             ContaBancaria contaBancaria = new ContaBancaria();
                             DateTime dataPix = new DateTime();
-                            switch (uu.showModalReceber(ref formaPagamento, ref valorRecebido, ref listaCrediario))
+                            switch (uu.showModalReceber(ref formaPagamento, ref valorRecebido, ref listaCrediario, ref contaBancaria))
                             {
                                 case DialogResult.Ignore:
                                     uu.Dispose();

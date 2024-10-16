@@ -23,6 +23,10 @@ namespace LunarBase.Classes
         private Pessoa pessoa;
         private Pessoa cobrador;
         private string observacoes;
+        private bool cartaoDebito;
+        private bool cartaoCredito;
+        private double parcelasCartao;
+        private BandeiraCartao bandeiraCartao;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -58,7 +62,22 @@ namespace LunarBase.Classes
         public virtual Pessoa Cobrador { get => cobrador; set => cobrador = value; }
         [Anotacao("Observacoes")]
         public virtual string Observacoes { get => observacoes; set => observacoes = value; }
-
+        [Anotacao("Cartão de Débito")]
+        public virtual bool CartaoDebito { get => cartaoDebito; set => cartaoDebito = value; }
+        [Anotacao("Cartão de Crédito")]
+        public virtual bool CartaoCredito { get => cartaoCredito; set => cartaoCredito = value; }
+        [Anotacao("Parcelas do Cartão")]
+        public virtual double ParcelasCartao { get => parcelasCartao; set => parcelasCartao = value; }
+        [Anotacao("Bandeira do Cartão")]
+        public virtual BandeiraCartao BandeiraCartao { get => bandeiraCartao; set => bandeiraCartao = value; }
+        
+        // Construtor
+        public Caixa()
+        {
+            cartaoDebito = false; // Valor padrão
+            cartaoCredito = false; // Valor padrão
+            parcelasCartao = 0; // Valor padrão
+        }
         public override string ToString()
         {
             return descricao;

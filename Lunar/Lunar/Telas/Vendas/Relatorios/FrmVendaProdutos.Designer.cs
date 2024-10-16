@@ -34,24 +34,28 @@
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn2 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVendaProdutos));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPesquisar = new Lunar.RJ_UI.Classes.RJButton();
-            this.txtDataInicial = new Syncfusion.WinForms.Input.SfDateTimeEdit();
-            this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtDataFinal = new Syncfusion.WinForms.Input.SfDateTimeEdit();
-            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.iconPesquisar = new FontAwesome.Sharp.IconButton();
-            this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtCodVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnPesquisaVender = new FontAwesome.Sharp.IconButton();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.txtCodVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
-            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtDataInicial = new Syncfusion.WinForms.Input.SfDateTimeEdit();
+            this.autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.iconPesquisar = new FontAwesome.Sharp.IconButton();
+            this.txtDataFinal = new Syncfusion.WinForms.Input.SfDateTimeEdit();
+            this.btnPesquisar = new Lunar.RJ_UI.Classes.RJButton();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            this.chkOrdemServico = new System.Windows.Forms.CheckBox();
+            this.btnExportarExcel = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnExportarExcel);
+            this.groupBox1.Controls.Add(this.chkOrdemServico);
             this.groupBox1.Controls.Add(this.autoLabel1);
             this.groupBox1.Controls.Add(this.txtCodVendedor);
             this.groupBox1.Controls.Add(this.btnPesquisaVender);
@@ -66,31 +70,101 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(999, 144);
+            this.groupBox1.Size = new System.Drawing.Size(999, 182);
             this.groupBox1.TabIndex = 245;
             this.groupBox1.TabStop = false;
             // 
-            // btnPesquisar
+            // autoLabel1
             // 
-            this.btnPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnPesquisar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnPesquisar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisar.BorderRadius = 8;
-            this.btnPesquisar.BorderSize = 2;
-            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(90)))));
-            this.btnPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnPesquisar.Location = new System.Drawing.Point(431, 52);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(77, 62);
-            this.btnPesquisar.TabIndex = 242;
-            this.btnPesquisar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnPesquisar.UseVisualStyleBackColor = false;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel1.Location = new System.Drawing.Point(308, 81);
+            this.autoLabel1.Name = "autoLabel1";
+            this.autoLabel1.Size = new System.Drawing.Size(51, 16);
+            this.autoLabel1.TabIndex = 251;
+            this.autoLabel1.Text = "Código";
+            // 
+            // txtCodVendedor
+            // 
+            this.txtCodVendedor.BackColor = System.Drawing.Color.White;
+            this.txtCodVendedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodVendedor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodVendedor.BorderRadius = 8;
+            this.txtCodVendedor.BorderSize = 2;
+            this.txtCodVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodVendedor.Location = new System.Drawing.Point(308, 101);
+            this.txtCodVendedor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodVendedor.Multiline = false;
+            this.txtCodVendedor.Name = "txtCodVendedor";
+            this.txtCodVendedor.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodVendedor.PasswordChar = false;
+            this.txtCodVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodVendedor.PlaceholderText = "";
+            this.txtCodVendedor.ReadOnly = false;
+            this.txtCodVendedor.Size = new System.Drawing.Size(93, 37);
+            this.txtCodVendedor.TabIndex = 4;
+            this.txtCodVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodVendedor.Texts = "";
+            this.txtCodVendedor.UnderlinedStyle = false;
+            this.txtCodVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodVendedor_KeyPress);
+            // 
+            // btnPesquisaVender
+            // 
+            this.btnPesquisaVender.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisaVender.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisaVender.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaVender.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaVender.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaVender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisaVender.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisaVender.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnPesquisaVender.IconColor = System.Drawing.Color.SlateGray;
+            this.btnPesquisaVender.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnPesquisaVender.IconSize = 38;
+            this.btnPesquisaVender.Location = new System.Drawing.Point(265, 104);
+            this.btnPesquisaVender.Name = "btnPesquisaVender";
+            this.btnPesquisaVender.Size = new System.Drawing.Size(36, 34);
+            this.btnPesquisaVender.TabIndex = 3;
+            this.btnPesquisaVender.UseVisualStyleBackColor = true;
+            this.btnPesquisaVender.Click += new System.EventHandler(this.btnPesquisaVender_Click);
+            // 
+            // autoLabel6
+            // 
+            this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel6.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel6.Location = new System.Drawing.Point(12, 80);
+            this.autoLabel6.Name = "autoLabel6";
+            this.autoLabel6.Size = new System.Drawing.Size(67, 16);
+            this.autoLabel6.TabIndex = 248;
+            this.autoLabel6.Text = "Vendedor";
+            // 
+            // txtVendedor
+            // 
+            this.txtVendedor.BackColor = System.Drawing.Color.White;
+            this.txtVendedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtVendedor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtVendedor.BorderRadius = 8;
+            this.txtVendedor.BorderSize = 2;
+            this.txtVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtVendedor.Location = new System.Drawing.Point(12, 100);
+            this.txtVendedor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtVendedor.Multiline = false;
+            this.txtVendedor.Name = "txtVendedor";
+            this.txtVendedor.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtVendedor.PasswordChar = false;
+            this.txtVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtVendedor.PlaceholderText = "";
+            this.txtVendedor.ReadOnly = false;
+            this.txtVendedor.Size = new System.Drawing.Size(246, 37);
+            this.txtVendedor.TabIndex = 2;
+            this.txtVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtVendedor.Texts = "";
+            this.txtVendedor.UnderlinedStyle = false;
+            this.txtVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVendedor_KeyPress);
             // 
             // txtDataInicial
             // 
@@ -118,33 +192,6 @@
             this.autoLabel4.TabIndex = 228;
             this.autoLabel4.Text = "Data Final";
             // 
-            // txtDataFinal
-            // 
-            this.txtDataFinal.AllowNull = true;
-            this.txtDataFinal.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtDataFinal.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
-            this.txtDataFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataFinal.Location = new System.Drawing.Point(208, 35);
-            this.txtDataFinal.Name = "txtDataFinal";
-            this.txtDataFinal.Size = new System.Drawing.Size(193, 35);
-            this.txtDataFinal.Style.BorderColor = System.Drawing.Color.Silver;
-            this.txtDataFinal.Style.FocusedBorderColor = System.Drawing.Color.White;
-            this.txtDataFinal.Style.HoverBorderColor = System.Drawing.Color.Silver;
-            this.txtDataFinal.TabIndex = 1;
-            this.txtDataFinal.Value = new System.DateTime(2022, 4, 2, 0, 0, 0, 0);
-            this.txtDataFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDataFinal_KeyPress);
-            // 
-            // autoLabel3
-            // 
-            this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel3.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel3.Location = new System.Drawing.Point(12, 18);
-            this.autoLabel3.Name = "autoLabel3";
-            this.autoLabel3.Size = new System.Drawing.Size(73, 16);
-            this.autoLabel3.TabIndex = 227;
-            this.autoLabel3.Text = "Data Inicial";
-            // 
             // iconPesquisar
             // 
             this.iconPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -166,6 +213,55 @@
             this.iconPesquisar.TabIndex = 5;
             this.iconPesquisar.UseVisualStyleBackColor = false;
             this.iconPesquisar.Click += new System.EventHandler(this.iconPesquisar_Click);
+            // 
+            // txtDataFinal
+            // 
+            this.txtDataFinal.AllowNull = true;
+            this.txtDataFinal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDataFinal.DateTimeEditingMode = Syncfusion.WinForms.Input.Enums.DateTimeEditingMode.Mask;
+            this.txtDataFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataFinal.Location = new System.Drawing.Point(208, 35);
+            this.txtDataFinal.Name = "txtDataFinal";
+            this.txtDataFinal.Size = new System.Drawing.Size(193, 35);
+            this.txtDataFinal.Style.BorderColor = System.Drawing.Color.Silver;
+            this.txtDataFinal.Style.FocusedBorderColor = System.Drawing.Color.White;
+            this.txtDataFinal.Style.HoverBorderColor = System.Drawing.Color.Silver;
+            this.txtDataFinal.TabIndex = 1;
+            this.txtDataFinal.Value = new System.DateTime(2022, 4, 2, 0, 0, 0, 0);
+            this.txtDataFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDataFinal_KeyPress);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnPesquisar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnPesquisar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisar.BorderRadius = 8;
+            this.btnPesquisar.BorderSize = 2;
+            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(90)))));
+            this.btnPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnPesquisar.Location = new System.Drawing.Point(431, 52);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(77, 62);
+            this.btnPesquisar.TabIndex = 242;
+            this.btnPesquisar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnPesquisar.UseVisualStyleBackColor = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel3.Location = new System.Drawing.Point(12, 18);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(73, 16);
+            this.autoLabel3.TabIndex = 227;
+            this.autoLabel3.Text = "Data Inicial";
             // 
             // grid
             // 
@@ -224,9 +320,9 @@
             this.grid.Columns.Add(gridNumericColumn1);
             this.grid.Columns.Add(gridNumericColumn2);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 144);
+            this.grid.Location = new System.Drawing.Point(0, 182);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(999, 517);
+            this.grid.Size = new System.Drawing.Size(999, 479);
             this.grid.Style.CellStyle.Font.Size = 10F;
             this.grid.Style.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.grid.Style.HeaderStyle.Font.Size = 12F;
@@ -234,97 +330,40 @@
             this.grid.Text = "Grid Parcelas";
             this.grid.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.grid_QueryRowStyle);
             // 
-            // btnPesquisaVender
+            // chkOrdemServico
             // 
-            this.btnPesquisaVender.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaVender.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaVender.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaVender.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaVender.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaVender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaVender.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaVender.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaVender.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaVender.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaVender.IconSize = 38;
-            this.btnPesquisaVender.Location = new System.Drawing.Point(265, 104);
-            this.btnPesquisaVender.Name = "btnPesquisaVender";
-            this.btnPesquisaVender.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaVender.TabIndex = 3;
-            this.btnPesquisaVender.UseVisualStyleBackColor = true;
-            this.btnPesquisaVender.Click += new System.EventHandler(this.btnPesquisaVender_Click);
+            this.chkOrdemServico.AutoSize = true;
+            this.chkOrdemServico.Checked = true;
+            this.chkOrdemServico.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkOrdemServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkOrdemServico.Location = new System.Drawing.Point(17, 150);
+            this.chkOrdemServico.Name = "chkOrdemServico";
+            this.chkOrdemServico.Size = new System.Drawing.Size(365, 24);
+            this.chkOrdemServico.TabIndex = 252;
+            this.chkOrdemServico.Text = "Incluir Produtos Vendidos em Ordem de Serviço";
+            this.chkOrdemServico.UseVisualStyleBackColor = true;
             // 
-            // autoLabel6
+            // btnExportarExcel
             // 
-            this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(12, 80);
-            this.autoLabel6.Name = "autoLabel6";
-            this.autoLabel6.Size = new System.Drawing.Size(67, 16);
-            this.autoLabel6.TabIndex = 248;
-            this.autoLabel6.Text = "Vendedor";
-            // 
-            // txtVendedor
-            // 
-            this.txtVendedor.BackColor = System.Drawing.Color.White;
-            this.txtVendedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtVendedor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtVendedor.BorderRadius = 8;
-            this.txtVendedor.BorderSize = 2;
-            this.txtVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtVendedor.Location = new System.Drawing.Point(12, 100);
-            this.txtVendedor.Margin = new System.Windows.Forms.Padding(4);
-            this.txtVendedor.Multiline = false;
-            this.txtVendedor.Name = "txtVendedor";
-            this.txtVendedor.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtVendedor.PasswordChar = false;
-            this.txtVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtVendedor.PlaceholderText = "";
-            this.txtVendedor.ReadOnly = false;
-            this.txtVendedor.Size = new System.Drawing.Size(246, 37);
-            this.txtVendedor.TabIndex = 2;
-            this.txtVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtVendedor.Texts = "";
-            this.txtVendedor.UnderlinedStyle = false;
-            this.txtVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVendedor_KeyPress);
-            // 
-            // txtCodVendedor
-            // 
-            this.txtCodVendedor.BackColor = System.Drawing.Color.White;
-            this.txtCodVendedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodVendedor.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodVendedor.BorderRadius = 8;
-            this.txtCodVendedor.BorderSize = 2;
-            this.txtCodVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodVendedor.Location = new System.Drawing.Point(308, 101);
-            this.txtCodVendedor.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodVendedor.Multiline = false;
-            this.txtCodVendedor.Name = "txtCodVendedor";
-            this.txtCodVendedor.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCodVendedor.PasswordChar = false;
-            this.txtCodVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtCodVendedor.PlaceholderText = "";
-            this.txtCodVendedor.ReadOnly = false;
-            this.txtCodVendedor.Size = new System.Drawing.Size(93, 37);
-            this.txtCodVendedor.TabIndex = 4;
-            this.txtCodVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCodVendedor.Texts = "";
-            this.txtCodVendedor.UnderlinedStyle = false;
-            this.txtCodVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodVendedor_KeyPress);
-            // 
-            // autoLabel1
-            // 
-            this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoLabel1.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel1.Location = new System.Drawing.Point(308, 81);
-            this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(51, 16);
-            this.autoLabel1.TabIndex = 251;
-            this.autoLabel1.Text = "Código";
+            this.btnExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportarExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportarExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExportarExcel.FlatAppearance.BorderSize = 0;
+            this.btnExportarExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExportarExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.IconChar = FontAwesome.Sharp.IconChar.FileExcel;
+            this.btnExportarExcel.IconColor = System.Drawing.Color.DarkGreen;
+            this.btnExportarExcel.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnExportarExcel.IconSize = 38;
+            this.btnExportarExcel.Location = new System.Drawing.Point(951, 140);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(36, 34);
+            this.btnExportarExcel.TabIndex = 253;
+            this.btnExportarExcel.UseVisualStyleBackColor = true;
+            this.btnExportarExcel.Visible = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
             // FrmVendaProdutos
             // 
@@ -362,5 +401,7 @@
         private FontAwesome.Sharp.IconButton btnPesquisaVender;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private RJ_UI.Classes.RJTextBox txtVendedor;
+        private System.Windows.Forms.CheckBox chkOrdemServico;
+        private FontAwesome.Sharp.IconButton btnExportarExcel;
     }
 }

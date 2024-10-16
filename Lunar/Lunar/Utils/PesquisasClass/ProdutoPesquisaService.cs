@@ -3,7 +3,6 @@ using Lunar.Telas.Vendas.Adicionais;
 using LunarBase.Classes;
 using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
-using LunarBase.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,7 +17,7 @@ namespace Lunar.Utils.PesquisasClass
         private ProdutoDAO produtoDAO;
         private ProdutoGradeController produtoGradeController;
         private ProdutoController produtoController;
-
+        string valorPesquisa = "";
         public ProdutoPesquisaService()
         {
             produtoDAO = new ProdutoDAO();
@@ -28,6 +27,9 @@ namespace Lunar.Utils.PesquisasClass
 
         public (Produto produto, ProdutoGrade grade) PesquisarProduto(string valor)
         {
+            this.valorPesquisa = valor;
+
+            //busca por codigo de barras
             IList<ProdutoResult> produtos = PesquisarProdutoPorCodigoDeBarras(valor);
             if (produtos.Count == 1)
             {
@@ -45,12 +47,10 @@ namespace Lunar.Utils.PesquisasClass
                     ProdutoGrade gradeSelecionada = SelecionarGrade(produtoEscolhido);
                     return (produtoEscolhido, gradeSelecionada);
                 }
-            }
-            else if (valor.StartsWith("2") && valor.Substring(6, 1).Equals("0") && valor.Substring(7, 1).Equals("0"))
-            {
-                ProcessarCodigoBarras(valor);
-                return (null, null);
-            }
+            }  
+            //Encerra a busca por codigo de barras
+
+            //Pesquisa por ID
             else if (ENumeroMenorQue5Digitos(valor))
             {
                 IList<Produto> produtosPorId = PesquisarProdutoPorId(Convert.ToInt32(valor));
@@ -59,14 +59,28 @@ namespace Lunar.Utils.PesquisasClass
                     return ManipularResultadoPesquisa(produtosPorId);
                 }
             }
+            //Pesquisa por Codigo de Balanca
+            else if (valor.StartsWith("2") && valor.Substring(6, 1).Equals("0") && valor.Substring(7, 1).Equals("0"))
+            {
+                ProcessarCodigoBarras(valor);
+                return (null, null);
+            }
+            //Pesquisa por Referencia
             else if (valor.StartsWith("/"))
             {
                 var produtosPorReferencia = PesquisarProdutoPorReferencia(valor);
                 return ManipularResultadoPesquisa(produtosPorReferencia);
             }
+            //Pesquisa por Descricao
             else
             {
-                var produtosPorDescricao = PesquisarProdutoPorDescricao(valor);
+                IList<Produto> produtosPorDescricao = new List<Produto>();
+                if (valor.Length > 3)
+                    produtosPorDescricao = PesquisarProdutoPorDescricao(valor);
+
+                //caso o usuario nao tenha inserido pelo menos 3 digitos o sistema vai entrar direto na tela de pesquisa e pesquisar por la, paginando
+                //assim passamos uma lista zerada e o sistema entra la..
+
                 return ManipularResultadoPesquisa(produtosPorDescricao);
             }
 
@@ -120,9 +134,29 @@ namespace Lunar.Utils.PesquisasClass
                 ProdutoGrade gradeSelecionada = SelecionarGrade(produtoSelecionado);
                 return (produtoSelecionado, gradeSelecionada);
             }
-            else if (produtos.Count > 1)
+            else if (produtos.Count > 1 && produtos.Count <= 100)
             {
                 Produto produtoEscolhido = SelecionarProduto(produtos);
+                if (produtoEscolhido != null)
+                {
+                    ProdutoGrade gradeSelecionada = SelecionarGrade(produtoEscolhido);
+                    return (produtoEscolhido, gradeSelecionada);
+                }
+            }
+            else if (produtos.Count > 100)
+            {
+                //joga apenas o nome pesquisa pra proxima tela controlar pesquisa paginando, this.valorPesquisa
+                Produto produtoEscolhido = SelecionarProdutoListaGrande();
+                if (produtoEscolhido != null)
+                {
+                    ProdutoGrade gradeSelecionada = SelecionarGrade(produtoEscolhido);
+                    return (produtoEscolhido, gradeSelecionada);
+                }
+            }
+            else if (produtos.Count ==0)
+            {
+                //joga apenas o nome pesquisa pra proxima tela controlar pesquisa paginando, this.valorPesquisa
+                Produto produtoEscolhido = SelecionarProdutoListaGrande();
                 if (produtoEscolhido != null)
                 {
                     ProdutoGrade gradeSelecionada = SelecionarGrade(produtoEscolhido);
@@ -188,6 +222,21 @@ namespace Lunar.Utils.PesquisasClass
             Produto produtoSelecionado = null;
 
             using (var formSelecionarProduto = new FrmPesquisaProduto(produtos))
+            {
+                if (formSelecionarProduto.showModal(ref produtoSelecionado) == DialogResult.OK)
+                {
+                    return produtoSelecionado;
+                }
+            }
+
+            return null;
+        }
+
+        public Produto SelecionarProdutoListaGrande()
+        {
+            Produto produtoSelecionado = null;
+
+            using (var formSelecionarProduto = new FrmPesquisaProduto(valorPesquisa))
             {
                 if (formSelecionarProduto.showModal(ref produtoSelecionado) == DialogResult.OK)
                 {

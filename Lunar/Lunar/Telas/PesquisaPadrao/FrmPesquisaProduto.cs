@@ -24,6 +24,8 @@ namespace Lunar.Telas.PesquisaPadrao
 
         public DialogResult showModal(ref Produto objeto)
         {
+            txtPesquisa.Focus();
+            txtPesquisa.Select();
             DialogResult = ShowDialog();
             try
             {
@@ -41,6 +43,8 @@ namespace Lunar.Telas.PesquisaPadrao
             InitializeComponent();
             this.valor = valor;
             PesquisarProdutoPorDescricaoPaginando(valor,0);
+            txtPesquisa.Focus();
+            txtPesquisa.Select();
         }
 
         public FrmPesquisaProduto(IList<Produto> lista)
@@ -71,12 +75,12 @@ namespace Lunar.Telas.PesquisaPadrao
             if (listaProdutos.Count == 0)
             {
                 GenericaDesktop.ShowAlerta("Nenhum registro encontrado!");
-                txtPesquisa.Texts = "";
-                txtPesquisa.Select();
             }
+            txtPesquisa.Texts = "";
+            txtPesquisa.Select();
         }
 
-       
+
         private void sfDataPager1_PageIndexChanged(object sender, Syncfusion.WinForms.DataPager.Events.PageIndexChangedEventArgs e)
         {
             PesquisarProdutoPorDescricaoPaginando(txtPesquisa.Texts.Trim(), e.NewPageIndex);

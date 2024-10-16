@@ -464,71 +464,77 @@ namespace Lunar.Telas.ContasPagar
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (gridParcelas.View.Records.Count > 0)
+            if (gridParcelas.View != null)
             {
-                int i = 0;
-                var records = gridParcelas.View.Records;
-                foreach (var record in records)
+                if (gridParcelas.View.Records != null)
                 {
-                    i++;
-                    var dataRowView = record.Data as DataRowView;
-                    ContaPagar contaPagar = new ContaPagar();
-                    if (editando == true)
+                    if (gridParcelas.View.Records.Count > 0)
                     {
-                        contaPagar = contaPagarEditando;
-                        contaPagar.Id = idEdicao;
-                    }
-
-                    Pessoa cliente = new Pessoa();
-                    cliente.Id = int.Parse(txtCodClienteFornecedor.Texts);
-                    cliente = (Pessoa)Controller.getInstance().selecionar(cliente);
-                    if (cliente != null)
-                    {
-                        contaPagar.Pessoa = cliente;
-                        //contaPagar. = cliente.Cnpj;
-                        contaPagar.DataOrigem = DateTime.Parse(txtDataEmissao.Value.ToString());
-                        if(editando == false)
-                            contaPagar.Descricao = "LANÇAMENTO DE CONTA A PAGAR " + i + " DE "+ records.Count;
-                        if (!String.IsNullOrEmpty(txtDescricao.Texts))
-                            contaPagar.Historico = txtDescricao.Texts;
-                        if (editando == false)
-                            contaPagar.NumeroDocumento = "CP" + txtNumeroDocumento.Texts + "/" + i;
-                        else
-                            contaPagar.NumeroDocumento = txtNumeroDocumento.Texts;
-                        EmpresaFilial empresaFilial = new EmpresaFilial();
-                        if (!String.IsNullOrEmpty(txtCodEmpresa.Texts))
+                        int i = 0;
+                        var records = gridParcelas.View.Records;
+                        foreach (var record in records)
                         {
-                            empresaFilial.Id = int.Parse(txtCodEmpresa.Texts);
-                            empresaFilial = (EmpresaFilial)empresaFilialController.selecionar(empresaFilial);
-                            contaPagar.EmpresaFilial = empresaFilial;
+                            i++;
+                            var dataRowView = record.Data as DataRowView;
+                            ContaPagar contaPagar = new ContaPagar();
+                            if (editando == true)
+                            {
+                                contaPagar = contaPagarEditando;
+                                contaPagar.Id = idEdicao;
+                            }
+
+                            Pessoa cliente = new Pessoa();
+                            cliente.Id = int.Parse(txtCodClienteFornecedor.Texts);
+                            cliente = (Pessoa)Controller.getInstance().selecionar(cliente);
+                            if (cliente != null)
+                            {
+                                contaPagar.Pessoa = cliente;
+                                //contaPagar. = cliente.Cnpj;
+                                contaPagar.DataOrigem = DateTime.Parse(txtDataEmissao.Value.ToString());
+                                if (editando == false)
+                                    contaPagar.Descricao = "LANÇAMENTO DE CONTA A PAGAR " + i + " DE " + records.Count;
+                                if (!String.IsNullOrEmpty(txtDescricao.Texts))
+                                    contaPagar.Historico = txtDescricao.Texts;
+                                if (editando == false)
+                                    contaPagar.NumeroDocumento = "CP" + txtNumeroDocumento.Texts + "/" + i;
+                                else
+                                    contaPagar.NumeroDocumento = txtNumeroDocumento.Texts;
+                                EmpresaFilial empresaFilial = new EmpresaFilial();
+                                if (!String.IsNullOrEmpty(txtCodEmpresa.Texts))
+                                {
+                                    empresaFilial.Id = int.Parse(txtCodEmpresa.Texts);
+                                    empresaFilial = (EmpresaFilial)empresaFilialController.selecionar(empresaFilial);
+                                    contaPagar.EmpresaFilial = empresaFilial;
+                                }
+                                else
+                                {
+                                    GenericaDesktop.ShowAlerta("Você não selecionou a sua empresa corretamente, a fatura será gravada para empresa logada " + Sessao.empresaFilialLogada.NomeFantasia);
+                                    contaPagar.EmpresaFilial = Sessao.empresaFilialLogada;
+                                }
+
+                                FormaPagamento formaPagamento = new FormaPagamento();
+                                formaPagamento.Id = int.Parse(txtCodFormaPagamento.Texts);
+                                formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
+                                contaPagar.FormaPagamento = formaPagamento;
+                                contaPagar.Pago = false;
+                                contaPagar.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
+                                contaPagar.DVenc = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
+                                contaPagar.NDup = i.ToString();
+
+                                PlanoConta planoConta = new PlanoConta();
+                                planoConta.Id = int.Parse(txtCodPlanoContas.Texts);
+                                planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
+                                contaPagar.PlanoConta = planoConta;
+
+                                Controller.getInstance().salvar(contaPagar);
+                            }
                         }
-                        else
-                        {
-                            GenericaDesktop.ShowAlerta("Você não selecionou a sua empresa corretamente, a fatura será gravada para empresa logada " + Sessao.empresaFilialLogada.NomeFantasia);
-                            contaPagar.EmpresaFilial = Sessao.empresaFilialLogada;
-                        }
-
-                        FormaPagamento formaPagamento = new FormaPagamento();
-                        formaPagamento.Id = int.Parse(txtCodFormaPagamento.Texts);
-                        formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
-                        contaPagar.FormaPagamento = formaPagamento;
-                        contaPagar.Pago = false;
-                        contaPagar.ValorTotal = decimal.Parse(dataRowView.Row["VALOR"].ToString());
-                        contaPagar.DVenc = DateTime.Parse(dataRowView.Row["VENCIMENTO"].ToString());
-                        contaPagar.NDup = i.ToString();
-
-                        PlanoConta planoConta = new PlanoConta();
-                        planoConta.Id = int.Parse(txtCodPlanoContas.Texts);
-                        planoConta = (PlanoConta)Controller.getInstance().selecionar(planoConta);
-                        contaPagar.PlanoConta = planoConta;
-
-                        Controller.getInstance().salvar(contaPagar);
+                        GenericaDesktop.ShowInfo("Lançamento efetuado com sucesso");
+                        limparCampos();
+                        if (editando == true)
+                            this.Close();
                     }
                 }
-                GenericaDesktop.ShowInfo("Lançamento efetuado com sucesso");
-                limparCampos();
-                if (editando == true)
-                    this.Close();
             }
         }
 

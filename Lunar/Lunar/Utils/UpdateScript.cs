@@ -1,9 +1,11 @@
 ﻿using LunarBase.Classes;
+using LunarBase.ClassesDAO;
 using LunarBase.ConexaoBD;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using NHibernate;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace Lunar.Utils
@@ -24,7 +26,8 @@ namespace Lunar.Utils
             string diretorioAtual = AppDomain.CurrentDomain.BaseDirectory;
             string nomeArquivo = "update.txt";
             string caminhoArquivo = Path.Combine(diretorioAtual, nomeArquivo);
-
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+            produtoDAO.CriarIndiceDescricao();
             if ((File.Exists(caminhoArquivo)))
             {
                 Logger logger = new Logger();
@@ -107,26 +110,13 @@ namespace Lunar.Utils
                         logger.WriteLog("SCRIPT ATUALIZACAO EXECUTADO COM SUCESSO", "LOG");
                         File.Delete(caminhoArquivo);
                     }
+
                     if (Sessao.parametroSistema.TipoCaixa == null)
                     {
                         Sessao.parametroSistema.TipoCaixa = "INDIVIDUAL";
                         Controller.getInstance().salvar(Sessao.parametroSistema);
                     }
-                    //if (!Properties.Settings.Default.Script)
-                    //{
-                    //    if (Sessao.usuarioLogado.GrupoUsuario.Id == 1)
-                    //    {
-                    //        // Faz a atualização das permissões
-                    //        // Sessao.usuarioLogado.GrupoUsuario.Permissoes = "OzE7MjszOzQ7NTs2Ozc7ODs5OzEwOzExOzEyOzEzOzE0OzE1OzE2OzE3OzMwOzMxOzMyOzMzOzM0OzM1OzM2OzM3OzM4OzM5OzQwOzQxOzQzOzQ0OzQ1OzYwOzYxOzYyOzYzOzY0OzY1OzY4OzY5OzcwOzcxOzcyOzEwMDsxMDE7MTAyOzEwMzsxMDQ7MTA1OzEwNjsxMDc7MTA4OzIwMDsyMDE7MjAyOzIwMzsyMDQ7MjA1OzIwNjsyMDc7MzAwOzMwMQ==";
-                    //        Sessao.usuarioLogado.GrupoUsuario.Permissoes = "OzE7MjszOzQ7NTs2Ozc7ODs5OzEwOzExOzEyOzEzOzE0OzE1OzE2OzE3OzMwOzMxOzMyOzMzOzM0OzM1OzM2OzM3OzM4OzM5OzQwOzQxOzQzOzQ0OzQ1OzYwOzYxOzYyOzYzOzY0OzY1OzY2OzY3OzY4OzY5OzcwOzcxOzcyOzEwMDsxMDE7MTAyOzEwMzsxMDQ7MTA1OzEwNjsxMDc7MTA4OzIwMDsyMDE7MjAyOzIwMzsyMDQ7MjA1OzIwNjsyMDc7MzAwOzMwMQ==";
-                    //        // Marca a configuração como atualizada
-                    //        Properties.Settings.Default.Script = true;
-                    //        Properties.Settings.Default.Save();
-
-                    //        // Salva a mudança no banco de dados
-                    //        Controller.getInstance().salvar(Sessao.usuarioLogado.GrupoUsuario);
-                    //    }
-                    //}
+             
                     GenericaDesktop ge = new GenericaDesktop();
                     ge.enviarEmailPeloLunar("marcelo.xs@hotmail.com", "Atualização Lunar 1.0.0.32", Sessao.empresaFilialLogada.NomeFantasia, Environment.MachineName + " Sistema atualizado em " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString() + " Pelo Usuário: " + Sessao.usuarioLogado.Login, null);
                 }
@@ -135,6 +125,81 @@ namespace Lunar.Utils
                     logger.WriteLog("ERRO SCRIPT ATUALIZACAO " + ex.Message, "LOG");
                     session.Transaction.Rollback();
                 }
+            }
+            // Verifica se a versão do sistema é 1.0.0.39 e executa as atualizações no caixa
+            VerificarVersaoEAtualizar();
+        }
+
+        private void VerificarVersaoEAtualizar()
+        {
+            string versaoAtual = ObterVersaoSistema(); // Método que obtém a versão do sistema
+            string pastaSistema = AppDomain.CurrentDomain.BaseDirectory; // Diretório do sistema
+            string pastaScripts = Path.Combine(pastaSistema, "Script"); // Caminho da pasta Script
+            string arquivoVersao = Path.Combine(pastaScripts, $"{versaoAtual}.txt"); // Arquivo com o número da versão
+
+            // Verifica se a pasta "Script" existe, caso contrário, cria a pasta
+            if (!Directory.Exists(pastaScripts))
+            {
+                Directory.CreateDirectory(pastaScripts);
+            }
+
+            // Verifica se o arquivo de versão já existe
+            if (File.Exists(arquivoVersao))
+            {
+                // O arquivo já existe, portanto, o update já foi feito
+                return;
+            }
+
+            // Caso o arquivo não exista, executa o script de atualização
+            ISession session = Conexao.GetSession(); // Cria uma nova sessão
+            try
+            {
+                session.BeginTransaction();
+
+                // Comandos de atualização do caixa
+                string updateCartaoDebito = "UPDATE caixa SET CARTAODEBITO = FALSE WHERE CARTAODEBITO IS NULL;";
+                string updateCartaoCredito = "UPDATE caixa SET CARTAOCREDITO = FALSE WHERE CARTAOCREDITO IS NULL;";
+                string updateParcelasCartao = "UPDATE caixa SET PARCELASCARTAO = 0 WHERE PARCELASCARTAO IS NULL;";
+
+                session.CreateSQLQuery(updateCartaoDebito).ExecuteUpdate();
+                session.CreateSQLQuery(updateCartaoCredito).ExecuteUpdate();
+                session.CreateSQLQuery(updateParcelasCartao).ExecuteUpdate();
+
+                session.Transaction.Commit();
+
+                // Após o sucesso do script, cria o arquivo de versão
+                File.WriteAllText(arquivoVersao, $"Versão {versaoAtual} aplicada em {DateTime.Now}");
+            }
+            catch (Exception ex)
+            {
+                Logger logger = new Logger();
+                logger.WriteLog("ERRO AO ATUALIZAR CAIXA 1.0.0.39: " + ex.Message, "LOG");
+                session.Transaction.Rollback();
+            }
+            finally
+            {
+                if (session.IsOpen)
+                {
+                    session.Close(); // Fechar a sessão se ela ainda estiver aberta
+                }
+            }
+        }
+
+        private string ObterVersaoSistema()
+        {
+            // Obtém o caminho do executável atual
+            string caminhoExecutavel = AppDomain.CurrentDomain.BaseDirectory + "Lunar.exe"; // Substitua 'SeuExecutavel.exe' pelo nome do seu executável
+
+            // Verifica se o arquivo existe
+            if (File.Exists(caminhoExecutavel))
+            {
+                // Obtém as informações de versão do arquivo
+                var versionInfo = FileVersionInfo.GetVersionInfo(caminhoExecutavel);
+                return versionInfo.FileVersion; // Retorna a versão do arquivo
+            }
+            else
+            {
+                return "0";
             }
         }
     }

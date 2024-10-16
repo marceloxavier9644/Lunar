@@ -140,20 +140,15 @@ namespace Lunar.Telas.Login
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            //Atualizar 
-            //  Controller.getInstanceAtualiza();
-            cadastrarEstadoCidades();
-            valoresPadraoBO.gerarValoresPadrao();
-            cadastrarNCM();
-            cadastrarCEST();
-            //cadastrarOrigemICMS(); JA ESTA EM VALORES PADROES
-            //cadastrarCSTICMS();
-            //cadastrarCSOSN();
-            cadastrarCFOP();
-            cadastrarCstPisCofins();
-            cadastrarCstIPI();
-            cadastrarANP();
-            cadastrarBancos();
+            //cadastrarEstadoCidades();
+            //valoresPadraoBO.gerarValoresPadrao();
+            //cadastrarNCM();
+            //cadastrarCEST();
+            //cadastrarCFOP();
+            //cadastrarCstPisCofins();
+            //cadastrarCstIPI();
+            //cadastrarANP();
+            //cadastrarBancos();
 
             //Selecionar o Parametro padrão e coloca em Sessão
             try

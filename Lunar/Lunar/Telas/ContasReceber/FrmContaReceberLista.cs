@@ -36,6 +36,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.Media.Protection.PlayReady;
@@ -1134,20 +1135,30 @@ namespace Lunar.Telas.ContasReceber
                                 if (boletoConfig.ContaBancaria.Banco.Descricao.ToUpper().Contains("SICREDI"))
                                 {
                                     DateTime dataAtual = dataInicial;
-                                    while (dataAtual <= dataFinal)
+                                    StringBuilder todasAsMensagens = new StringBuilder();
+                                    while (dataAtual.Date <= dataFinal.Date)
                                     {
                                         // Chama o método para consultar boletos liquidados na dataAtual
-                                        BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(0, 0, boletoConfig.ContaBancaria);
+                                        BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(0, 0, boletoConfig.ContaBancaria, boletoConfig.AmbienteProducao);
                                         string resultado = await boletoSicrediManager.ConsultarBoletosLiquidadosPorDiaAsync(dataAtual);
 
                                         // Exibe o resultado se houver boletos
                                         if (!string.IsNullOrEmpty(resultado))
                                         {
-                                            Console.WriteLine($"Boletos para {boletoConfig.CodigoBeneficiario} no dia {dataAtual.ToString("dd/MM/yyyy")}: {resultado}");
+                                            todasAsMensagens.AppendLine($"Boletos Liquidados no dia {dataAtual.ToString("dd/MM/yyyy")}: {resultado}");
                                         }
 
                                         // Incrementa a data para o próximo dia
                                         dataAtual = dataAtual.AddDays(1);
+                                    }
+
+                                    if (todasAsMensagens.Length > 0)
+                                    {
+                                        GenericaDesktop.ShowInfo(todasAsMensagens.ToString());
+                                    }
+                                    else
+                                    {
+                                        GenericaDesktop.ShowInfo("Nenhum boleto liquidado foi encontrado no período.");
                                     }
                                 }
                             }
@@ -1348,6 +1359,8 @@ namespace Lunar.Telas.ContasReceber
         {
             try
             {
+                bool ambienteProducao = false;
+                lblCalculando.Visible = true;
                 btnImprimirBoleto.Enabled = false;
                 Logger logger = new Logger();
                 if (!String.IsNullOrEmpty(txtCodCliente.Texts))
@@ -1424,22 +1437,33 @@ namespace Lunar.Telas.ContasReceber
                             }
 
                             // Verificar a plataforma para geração de boleto
-                            if (contaReceber.ContaBoleto.Banco.Descricao.Contains("SICREDI"))
+                            IList<BoletoConfig> listaBoletoConfig = new List<BoletoConfig>();
+                            listaBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
+                            if (listaBoletoConfig.Count > 0) 
                             {
-                                if (contaReceber.BoletoGerado)
+                                foreach (BoletoConfig boletoConfig in listaBoletoConfig)
                                 {
-                                    // Adicionar linha digitável do boleto gerado à lista
-                                    if (!string.IsNullOrEmpty(contaReceber.LinhaDigitavel))
+                                    if (boletoConfig.ContaBancaria.Banco.Descricao.Contains("SICREDI"))
                                     {
-                                        linhasDigitaveisSicredi.Add(contaReceber.LinhaDigitavel);
+                                        ambienteProducao = boletoConfig.AmbienteProducao;
+                                        if (contaReceber.BoletoGerado)
+                                        {
+                                            // Adicionar linha digitável do boleto gerado à lista
+                                            if (!string.IsNullOrEmpty(contaReceber.LinhaDigitavel))
+                                            {
+                                                linhasDigitaveisSicredi.Add(contaReceber.LinhaDigitavel);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            // Gerar o boleto Sicredi
+                                            lblCalculando.Text = "Gerando Boleto Sicredi";
+                                            BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto, boletoConfig.AmbienteProducao);
+                                            bool sucesso = await boletoManager.GeraBoletosSicredi(contaReceber.Cliente, true);
+                                            if (sucesso == true)
+                                                lblCalculando.Text = "Boleto Sicredi Gerado com Sucesso!";
+                                        }
                                     }
-                                }
-                                else
-                                {
-                                    // Gerar o boleto Sicredi
-                                    logger.WriteLog("Iniciando geração de boleto sicredi! ", "Log");
-                                    BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto);
-                                    bool sucesso = await boletoManager.GeraBoletosSicredi(contaReceber.Cliente, true);
                                 }
                             }
                             else if (contaReceber.ContaBoleto.Banco.Descricao == "GALAXYPAY" || contaReceber.ContaBoleto.Banco.Descricao == "CELCASH" || contaReceber.ContaBoleto.Descricao == "CELCASH")
@@ -1461,6 +1485,7 @@ namespace Lunar.Telas.ContasReceber
                                             IList<ContaReceber> listaCrediario = new List<ContaReceber> { contaReceber };
                                             GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
                                             Pessoa clienteBoleto = contaReceber.Cliente;
+                                            lblCalculando.Text = "Gerando Boleto CelCash";
                                             gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
                                         }
                                         else
@@ -1472,6 +1497,7 @@ namespace Lunar.Telas.ContasReceber
 
                                 if (arrayFatura.Length > 0)
                                 {
+                                    lblCalculando.Text = "Obtendo PDF Boleto CelCash";
                                     string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
                                     string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(arrayFatura);
                                     if (!String.IsNullOrEmpty(link))
@@ -1489,7 +1515,7 @@ namespace Lunar.Telas.ContasReceber
                         // Se houver boletos Sicredi já gerados, chamar o método para download
                         if (linhasDigitaveisSicredi.Count > 0)
                         {
-                            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contasSelecionadas.First().ContaBoleto);
+                            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contasSelecionadas.First().ContaBoleto, ambienteProducao);
                             string[] linhasDigitaveisArray = linhasDigitaveisSicredi.ToArray();
                             await boletoSicrediManager.BaixarBoletosExistentesSicredi(linhasDigitaveisArray, true);
                         }
@@ -1499,7 +1525,10 @@ namespace Lunar.Telas.ContasReceber
                 {
                     GenericaDesktop.ShowAlerta("Selecione apenas um cliente para emissão ou impressão de boletos, pesquisa no campo de pesquisar clientes!");
                 }
+                lblCalculando.Text = "Finalizado...";
+                lblCalculando.Visible = false;
                 btnImprimirBoleto.Enabled = true;
+                btnPesquisar.PerformClick();
             }
             catch (Exception erro)
             {
@@ -1715,7 +1744,7 @@ namespace Lunar.Telas.ContasReceber
                         listaBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
                         if (listaBoletoConfig.Count > 0)
                         {
-                            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto);
+                            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto, true);
                             IList<string> listaCaminhosBoletos = new List<string>();
                             listaCaminhosBoletos = await boletoSicrediManager.BaixarBoletosExistentesSicredi(listaLinhasDigitaveis.ToArray(), false);
                             string outputFilePath = "";
@@ -1987,7 +2016,7 @@ namespace Lunar.Telas.ContasReceber
                 conta = contaReceber.ContaBoleto;
             }
             // Inicializa o gerenciador do Sicredi
-            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, conta);
+            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, conta, true);
 
             // Baixa os boletos do Sicredi (PDF)
             string caminhoBoleto = "";

@@ -131,6 +131,21 @@ namespace LunarBase.ClassesDAO
             }
         }
 
+        public IList<PessoaContatoTelefone> SelecionarContatoClientesParaExportarCsv(string sql)
+        {
+            using (var session = Conexao.GetSession())
+            {
+                IList<PessoaContatoTelefone> retorno = session.CreateSQLQuery(sql)
+                    .AddScalar("Nome", NHibernateUtil.String)
+                    .AddScalar("Telefone", NHibernateUtil.String)
+                    .AddScalar("Email", NHibernateUtil.String)
+                    .SetResultTransformer(Transformers.AliasToBean(typeof(PessoaContatoTelefone)))
+                    .List<PessoaContatoTelefone>();
+
+                return retorno;
+            }
+        }
+
         public class PessoaConsulta
         {
             public int ID { get; set; }
@@ -138,6 +153,13 @@ namespace LunarBase.ClassesDAO
             public DateTime? UltimaCompra { get; set; }
             public decimal? TotalCompras { get; set; }
             public string Telefone { get; set; } // Para armazenar o telefone formatado (ddd + telefone)
+        }
+
+        public class PessoaContatoTelefone
+        {
+            public string Nome { get; set; }
+            public string Telefone { get; set; } 
+            public string Email { get; set; }
         }
     }
 }

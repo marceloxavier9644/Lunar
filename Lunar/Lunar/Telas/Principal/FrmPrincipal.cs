@@ -40,9 +40,13 @@ using Lunar.Utils.ClassesRepeticoes;
 using Lunar.Utils.ImportadorSistemas;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
+using LunarBase.ClassesDAO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Newtonsoft.Json;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using Syncfusion.XlsIO;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -53,6 +57,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static LunarBase.ClassesDAO.PessoaDAO;
 
 namespace Lunar.Telas.Principal
 {
@@ -104,6 +109,9 @@ namespace Lunar.Telas.Principal
 
             //lblCaption.Text = "Página Inicial - " + Sessao.usuarioLogado.Login;
         }
+
+
+   
 
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -399,7 +407,7 @@ namespace Lunar.Telas.Principal
 
         private void btnCliente_Click(object sender, EventArgs e)
         {
-            OpenChildForm(() => new FrmClienteLista(), sender);
+            dropMenuPessoa.Show(btnCliente, btnCliente.Width, 0);
         }
 
         private void btnProduto_Click(object sender, EventArgs e)
@@ -652,6 +660,11 @@ namespace Lunar.Telas.Principal
             dropMenuProduto.PrimaryColor = Color.FromArgb(37, 36, 81);
             dropMenuProduto.MenuItemTextColor = Color.White;
             dropMenuProduto.Cursor = Cursors.Hand;
+
+            dropMenuPessoa.IsMainMenu = true;
+            dropMenuPessoa.PrimaryColor = Color.FromArgb(37, 36, 81);
+            dropMenuPessoa.MenuItemTextColor = Color.White;
+            dropMenuPessoa.Cursor = Cursors.Hand;
 
             int w = Screen.PrimaryScreen.Bounds.Width;
             int h = Screen.PrimaryScreen.Bounds.Height;
@@ -1635,6 +1648,134 @@ namespace Lunar.Telas.Principal
                 GenericaDesktop.ShowAlerta("Usuário sem permissão para operar nessa tela (105)!");
             else
                 OpenChildForm(() => new FrmContaBancariaLista(), btnUtilitarios);
+        }
+
+        private void retornoBoletosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            FrmRetornoBoleto uu = new FrmRetornoBoleto();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            //formBackground.Left = Top = 0;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.Show();
+            uu.Owner = formBackground;
+            uu.ShowDialog();
+            formBackground.Dispose();
+            uu.Dispose();
+        }
+
+        private async void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            await MySQLBackup.ExportDatabase(Sessao.usuarioBanco, Sessao.senhaBanco, Sessao.servidor, Sessao.nomeBanco);
+        }
+
+        private void listaContatoTelefonesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PessoaDAO pessoaDAO = new PessoaDAO();
+            string sql = "SELECT p.RazaoSocial AS Nome, CONCAT('55', LPAD(pt.ddd, 2, '0'), RIGHT(pt.telefone, 9)) AS Telefone, p.Email " +
+                "FROM Pessoa p " +
+                "JOIN PessoaTelefone pt ON p.PESSOATELEFONE = pt.ID " +
+                "WHERE p.PESSOATELEFONE IS NOT NULL and p.Cliente = true;";
+
+            IList<PessoaContatoTelefone> lista = pessoaDAO.SelecionarContatoClientesParaExportarCsv(sql);
+
+            if (lista.Count > 0)
+            {
+                // Cria e configura o SaveFileDialog para salvar o arquivo Excel
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+                saveFileDialog.Title = "Salvar Arquivo Excel";
+                saveFileDialog.FileName = "contatos_clientes.xlsx";  // Nome padrão do arquivo
+
+                // Abre a caixa de diálogo para o usuário escolher o local para salvar o arquivo
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Cria o arquivo Excel
+                        using (ExcelPackage package = new ExcelPackage())
+                        {
+                            // Adiciona uma nova planilha ao arquivo
+                            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Contatos");
+
+                            // Escreve o cabeçalho
+                            worksheet.Cells[1, 1].Value = "nome";
+                            worksheet.Cells[1, 2].Value = "numero";
+                            worksheet.Cells[1, 3].Value = "e-mail";
+
+                            // Estilo do cabeçalho
+                            using (var range = worksheet.Cells[1, 1, 1, 3])
+                            {
+                                range.Style.Font.Bold = true;
+                                range.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                range.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
+                            }
+
+                            // Escreve os dados da lista nas linhas seguintes
+                            int row = 2; // Começa na segunda linha, pois a primeira é o cabeçalho
+                            foreach (var contato in lista)
+                            {
+                                worksheet.Cells[row, 1].Value = contato.Nome;
+                                worksheet.Cells[row, 2].Value = contato.Telefone;
+                                worksheet.Cells[row, 3].Value = contato.Email;
+                                row++;
+                            }
+
+                            // Ajusta o tamanho das colunas para caber o conteúdo
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+                            // Salva o arquivo no local escolhido pelo usuário
+                            FileInfo fi = new FileInfo(saveFileDialog.FileName);
+                            package.SaveAs(fi);
+                        }
+
+                        MessageBox.Show("Arquivo Excel salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao salvar o arquivo: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("A lista está vazia!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void toolStripCaracteristicaPessoa_Click(object sender, EventArgs e)
+        {
+            Form formBackground = new Form();
+            FrmCaracteristicaPessoa uu = new FrmCaracteristicaPessoa();
+            formBackground.StartPosition = FormStartPosition.Manual;
+            //formBackground.FormBorderStyle = FormBorderStyle.None;
+            formBackground.Opacity = .50d;
+            formBackground.BackColor = Color.Black;
+            formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            formBackground.WindowState = FormWindowState.Maximized;
+            formBackground.TopMost = false;
+            formBackground.Location = this.Location;
+            formBackground.ShowInTaskbar = false;
+            formBackground.ShowIcon = false;
+            formBackground.Show();
+            uu.Owner = formBackground;
+            uu.ShowDialog();
+            formBackground.Dispose();
+            uu.Dispose();
+        }
+
+        private void toolStripClienteFornecedor_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(() => new FrmClienteLista(), btnCliente);
         }
     }
 }

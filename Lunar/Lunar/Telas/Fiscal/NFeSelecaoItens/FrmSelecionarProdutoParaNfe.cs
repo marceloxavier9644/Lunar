@@ -1,6 +1,7 @@
 ﻿using Lunar.Telas.Cadastros.Produtos;
 using Lunar.Telas.PesquisaPadrao;
 using Lunar.Utils;
+using Lunar.Utils.PesquisasClass;
 using LunarBase.Classes;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
@@ -71,125 +72,7 @@ namespace Lunar.Telas.Fiscal.NFeSelecaoItens
         {
             if (e.KeyChar == 13)
             {
-                PesquisarProdutoPorDescricao(txtPesquisaProduto.Texts.Trim());
-            }
-        }
-
-        private void PesquisarProdutoPorDescricao(string valor)
-        {
-            txtQuantidade.TextAlign = HorizontalAlignment.Center;
-            txtValorUnitario.TextAlign = HorizontalAlignment.Center;
-            txtValorTotal.TextAlign = HorizontalAlignment.Center;
-
-            String valorAux = "";
-            valorAux = valor;
-
-            if (valor.Contains("*"))
-                valor = valor.Substring(valor.IndexOf("*") + 1);
-
-            listaProdutos = produtoController.selecionarProdutosComVariosFiltros(valor, Sessao.empresaFilialLogada);
-            if (listaProdutos.Count == 1)
-            {
-                foreach (Produto prod in listaProdutos)
-                {
-                    txtPesquisaProduto.Texts = prod.Descricao;
-                    txtCodProduto.Texts = prod.Id.ToString();
-                    txtQuantidade.Texts = "1";
-                    txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                    txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                    txtTotalComDesconto.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                    this.produto = prod;
-                    if (valorAux.Contains("*"))
-                        txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                    //if (prod.Ean.Equals(valor.Trim()))
-                    //    inserirItem(this.produto);
-                    else
-                    {
-                        txtQuantidade.Focus();
-                        txtQuantidade.Select();
-                    }
-                }
-            }
-            else if (listaProdutos.Count > 1)
-            {
-                Object produtoOjeto = new Produto();
-                Form formBackground = new Form();
-                try
-                {
-                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Produto", "and CONCAT(Tabela.Id, ' ', Tabela.Descricao, ' ', Tabela.Ean, ' ', Tabela.Referencia, ' ', Tabela.Ncm) like '%" + valor + "%'"))
-                    {
-                        formBackground.StartPosition = FormStartPosition.Manual;
-                        //formBackground.FormBorderStyle = FormBorderStyle.None;
-                        formBackground.Opacity = .50d;
-                        formBackground.BackColor = Color.Black;
-                        //formBackground.Left = Top = 0;
-                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-                        formBackground.WindowState = FormWindowState.Maximized;
-                        formBackground.TopMost = false;
-                        formBackground.Location = this.Location;
-                        formBackground.ShowInTaskbar = false;
-                        formBackground.Show();
-                        uu.Owner = formBackground;
-                        switch (uu.showModal("Produto", "", ref produtoOjeto))
-                        {
-                            case DialogResult.Ignore:
-                                uu.Dispose();
-                                FrmProdutoCadastro form = new FrmProdutoCadastro();
-                                if (form.showModalNovo(ref produtoOjeto, false) == DialogResult.OK)
-                                {
-                                    txtCodProduto.Texts = ((Produto)produtoOjeto).Id.ToString();
-                                    txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
-                                    txtQuantidade.Texts = "1";
-                                    txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    txtTotalComDesconto.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    this.produto = ((Produto)produtoOjeto);
-                                    if (valorAux.Contains("*"))
-                                        txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                                    else
-                                    {
-                                        txtQuantidade.Focus();
-                                        txtQuantidade.SelectAll();
-                                    }
-                                }
-                                form.Dispose();
-                                break;
-                            case DialogResult.OK:
-                                txtCodProduto.Texts = ((Produto)produtoOjeto).Id.ToString();
-                                txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
-                                txtQuantidade.Texts = "1";
-                                txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                txtTotalComDesconto.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                this.produto = ((Produto)produtoOjeto);
-                                if (valorAux.Contains("*"))
-                                    txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                                else
-                                {
-                                    txtQuantidade.Focus();
-                                    txtQuantidade.SelectAll();
-                                }
-                                break;
-                        }
-
-                        formBackground.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    formBackground.Dispose();
-                }
-                // GenericaDesktop.ShowInfo("Função de pesquisa extra em desenvolvimento...");
-            }
-            else
-            {
-                GenericaDesktop.ShowAlerta("Produto não encontrado");
-                txtPesquisaProduto.SelectAll();
+                pesquisarProduto();
             }
         }
 
@@ -353,7 +236,41 @@ namespace Lunar.Telas.Fiscal.NFeSelecaoItens
 
         private void btnPesquisarProduto_Click(object sender, EventArgs e)
         {
-            PesquisarProdutoPorDescricao(txtPesquisaProduto.Texts.Trim());
+            pesquisarProduto();
+        }
+
+        private void pesquisarProduto()
+        {
+            //PesquisarProduto(txtPesquisaProduto.Texts);
+            string valorPesquisa = txtPesquisaProduto.Texts.Trim(); // Captura o valor digitado no campo de texto
+
+            ProdutoPesquisaService produtoService = new ProdutoPesquisaService();
+            var resultado = produtoService.PesquisarProduto(valorPesquisa); // Chama o serviço de pesquisa
+
+            // Aqui você vai verificar o retorno
+            if (resultado.produto != null && resultado.grade != null)
+            {
+                Produto produto = resultado.produto;
+                ProdutoGrade grade = resultado.grade;
+                txtPesquisaProduto.Texts = produto.Descricao;
+                txtCodProduto.Texts = produto.Id.ToString();
+                txtQuantidade.Texts = "1";
+                txtValorUnitario.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                txtValorTotal.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                txtTotalComDesconto.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                txtCfop.Texts = produto.CfopVenda;
+                txtCsosn.Texts = produto.CstIcms;
+                this.produto = produto;
+                if (valorPesquisa.Contains("*"))
+                    txtQuantidade.Texts = valorPesquisa.Substring(0, valorPesquisa.IndexOf("*"));
+                txtQuantidade.Focus();
+                txtQuantidade.SelectAll();
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Produto não encontrados ou não selecionado!");
+                txtPesquisaProduto.Texts = "";
+            }
         }
 
         private void calculaTotaisProduto()
@@ -1134,6 +1051,43 @@ namespace Lunar.Telas.Fiscal.NFeSelecaoItens
         {
             if (tabControlAdv1.SelectedTab == tabPageAdv3)
                 txtPercentualMercadoriaDevolvida.Texts = "100";
+        }
+
+        private void txtCodProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                //PesquisarProduto(txtPesquisaProduto.Texts);
+                string valorPesquisa = txtCodProduto.Texts.Trim(); // Captura o valor digitado no campo de texto
+
+                ProdutoPesquisaService produtoService = new ProdutoPesquisaService();
+                var resultado = produtoService.PesquisarProduto(valorPesquisa); // Chama o serviço de pesquisa
+
+                // Aqui você vai verificar o retorno
+                if (resultado.produto != null && resultado.grade != null)
+                {
+                    Produto produto = resultado.produto;
+                    ProdutoGrade grade = resultado.grade;
+                    txtPesquisaProduto.Texts = produto.Descricao;
+                    txtCodProduto.Texts = produto.Id.ToString();
+                    txtQuantidade.Texts = "1";
+                    txtValorUnitario.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                    txtValorTotal.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                    txtTotalComDesconto.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                    txtCfop.Texts = produto.CfopVenda;
+                    txtCsosn.Texts = produto.CstIcms;
+                    this.produto = produto;
+                    if (valorPesquisa.Contains("*"))
+                        txtQuantidade.Texts = valorPesquisa.Substring(0, valorPesquisa.IndexOf("*"));
+                    txtQuantidade.Focus();
+                    txtQuantidade.SelectAll();
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Produto não encontrados ou não selecionado!");
+                    txtPesquisaProduto.Texts = "";
+                }
+            }
         }
     }
 }

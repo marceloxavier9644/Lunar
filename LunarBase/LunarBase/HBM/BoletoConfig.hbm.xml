@@ -18,6 +18,7 @@
 		<property name="Token" column="TOKEN" type="String" length="500"/>	
 		<property name="ContaPadrao" column="CONTAPADRAO" type="Boolean"/>
 		<property name="TipoBoleto" column="TIPOBOLETO" type="String" length="100"/>
+		<property name="AmbienteProducao" column="AMBIENTEPRODUCAO" type="Boolean"/>
 		
 		<many-to-one name="ContaBancaria" column="CONTABANCARIA" class="LunarBase.Classes.ContaBancaria" not-null="true" foreign-key="FK_BOLETOCONFIG_CONTABANCARIA" lazy="false"/>
 		<many-to-one name="PlanoContaTarifa" column="PLANOCONTATARIFA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_BOLETOCONFIG_PLANOCONTAS" lazy="false"/>

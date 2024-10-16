@@ -69,20 +69,29 @@ namespace LunarBase.ClassesDAO
             return retorno;
         }
 
-        public string selecionarMenorNota65Dia(string dataInicial, string dataFinal)
+        public int? selecionarMenorNota65Dia(string dataInicial, string dataFinal)
         {
             Session = Conexao.GetSession();
-            String sql = "Select MIN(Tabela.NNf) FROM Nfe as Tabela WHERE Tabela.FlagExcluido <> true and " +
-                         "Tabela.DataEmissao Between '" + dataInicial + "' and '" + dataFinal + "' and Tabela.TipoOperacao = 'S' and Tabela.Modelo = '65' and Tabela.NfeStatus = 1 order by Tabela.NNf";
-            return Session.CreateSQLQuery(sql).UniqueResult<string>();
+            String sql = "Select MIN(CAST(Tabela.NNf AS UNSIGNED)) FROM Nfe as Tabela WHERE Tabela.FlagExcluido <> true and " +
+                         "Tabela.DataEmissao Between '" + dataInicial + "' and '" + dataFinal + "' and Tabela.TipoOperacao = 'S' and Tabela.Modelo = '65' and Tabela.NfeStatus = 1";
+
+            // Retorna como objeto e converte manualmente
+            var resultado = Session.CreateSQLQuery(sql).UniqueResult<object>();
+
+            // Verifica se o resultado é nulo e tenta converter para int?
+            return resultado != null ? Convert.ToInt32(resultado) : (int?)null;
         }
 
-        public string selecionarMaiorNota65Dia(string dataInicial, string dataFinal)
+        public int? selecionarMaiorNota65Dia(string dataInicial, string dataFinal)
         {
             Session = Conexao.GetSession();
-            String sql = "Select MAX(Tabela.NNf) FROM Nfe as Tabela WHERE Tabela.FlagExcluido <> true and " +
-                         "Tabela.DataEmissao Between '" + dataInicial + "' and '" + dataFinal + "' and Tabela.TipoOperacao = 'S' and Tabela.Modelo = '65' and Tabela.NfeStatus = 1 order by Tabela.NNf";
-            return Session.CreateSQLQuery(sql).UniqueResult<string>();
+            String sql = "Select MAX(CAST(Tabela.NNf AS UNSIGNED)) FROM Nfe as Tabela WHERE Tabela.FlagExcluido <> true and " +
+                         "Tabela.DataEmissao Between '" + dataInicial + "' and '" + dataFinal + "' and Tabela.TipoOperacao = 'S' and Tabela.Modelo = '65' and Tabela.NfeStatus = 1 order by CAST(Tabela.NNf AS UNSIGNED)";
+            // Retorna como objeto e converte manualmente
+            var resultado = Session.CreateSQLQuery(sql).UniqueResult<object>();
+
+            // Verifica se o resultado é nulo e tenta converter para int?
+            return resultado != null ? Convert.ToInt32(resultado) : (int?)null;
         }
 
         public decimal selecionarSomaValorNota65Dia(string dataInicial, string dataFinal)

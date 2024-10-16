@@ -247,8 +247,8 @@ namespace LunarBase.Utilidades.NFSe
 
             if (string.IsNullOrEmpty(cliente.Email))
             {
-                cliente.Email = cliente.RazaoSocial.Replace(" ", "") + "@clientetxt.com.br";
-                ordemServico.Cliente.Email = cliente.RazaoSocial.Replace(" ", "") + "@clientetxt.com.br";
+                cliente.Email = cliente.RazaoSocial.ToLower().Replace(" ", "") + "@clientetxt.com.br";
+                ordemServico.Cliente.Email = cliente.RazaoSocial.Replace(" ", "") + "@cliente.com.br";
                 //Generica.ShowAlerta("E-mail do cliente é obrigatório.");
                 //return false;
             }

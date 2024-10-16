@@ -1,34 +1,25 @@
-﻿using Microsoft.SqlServer.Server;
+﻿using LunarBase.Anotations;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LunarBase.Classes
 {
+    [Serializable]
+    [Anotacao("Perfil")]
     public class PessoaPerfil : ObjetoPadrao
     {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public List<PessoaCaracteristica> Caracteristicas { get; set; }
+        private int id;
+        private string descricao;
+        private Pessoa pessoa;
+        private PessoaCaracteristica pessoaCaracteristica;
 
-        public PessoaPerfil(int id, string nome)
-        {
-            Id = id;
-            Nome = nome;
-            Caracteristicas = new List<PessoaCaracteristica>();
-        }
-
-        // Método para adicionar características ao perfil
-        public void AdicionarCaracteristica(Caracteristica caracteristica, string valor)
-        {
-            PessoaCaracteristica pessoaCaracteristica = new PessoaCaracteristica
-            {
-                Caracteristica = caracteristica,
-                Valor = valor
-            };
-            Caracteristicas.Add(pessoaCaracteristica);
-        }
+        [Anotacao("ID")]
+        public virtual int Id { get => id; set => id = value; }
+        [Anotacao("Descrição")]
+        public virtual string Descricao { get => descricao; set => descricao = value; }
+        [Anotacao("Pessoa")]
+        public virtual Pessoa Pessoa { get => pessoa; set => pessoa = value; }
+        [Anotacao("Caracteristica")]
+        public virtual PessoaCaracteristica PessoaCaracteristica { get => pessoaCaracteristica; set => pessoaCaracteristica = value; }
     }
 }

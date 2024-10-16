@@ -247,6 +247,18 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                             caixa.Pessoa = venda.Cliente;
                         caixa.ContaBancaria = null;
                         caixa.Concluido = false;
+                        caixa.BandeiraCartao = bandeiraCartao;
+                        if (tipoCartao.Equals("DÉBITO"))
+                        {
+                            caixa.CartaoDebito = true;
+                            caixa.CartaoCredito = false;
+                        }
+                        else
+                        {
+                            caixa.CartaoCredito = true;
+                            caixa.CartaoDebito = false;
+                        }
+                        caixa.ParcelasCartao = parcelamento.Parcelas;
                         Controller.getInstance().salvar(caixa);
 
                         this.DialogResult = DialogResult.OK;

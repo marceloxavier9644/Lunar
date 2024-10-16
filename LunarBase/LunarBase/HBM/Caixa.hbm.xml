@@ -14,6 +14,11 @@
 		<property name="Concluido" column="CONCLUIDO" type="Boolean"/>
 		<property name="Observacoes" column="OBSERVACOES" type="String" length="900"/>
 
+		<property name="CartaoDebito" column="CARTAODEBITO" type="Boolean"/>
+		<property name="CartaoCredito" column="CARTAOCREDITO" type="Boolean"/>
+		<property name="ParcelasCartao" column="PARCELASCARTAO" type="Double"/>
+		
+
 		<many-to-one name="FormaPagamento" column="FORMAPAGAMENTO" class="LunarBase.Classes.FormaPagamento" not-null="true" foreign-key="FK_CAIXA_FORMAPAGAMENTO" lazy="false"/>
 		<many-to-one name="PlanoConta" column="PLANOCONTA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_CAIXA_PLANOCONTA" lazy="false"/>
 		<many-to-one name="EmpresaFilial" column="EMPRESAFILIAL" class="LunarBase.Classes.EmpresaFilial" not-null="true" foreign-key="FK_CAIXA_EMPRESAFILIAL" lazy="false"/>
@@ -21,6 +26,7 @@
 		<many-to-one name="ContaBancaria" column="CONTABANCARIA" class="LunarBase.Classes.ContaBancaria" not-null="false" foreign-key="FK_CAIXA_CONTABANCARIA" lazy="false"/>
 		<many-to-one name="Pessoa" column="PESSOA" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_CAIXA_PESSOA" lazy="false"/>
 		<many-to-one name="Cobrador" column="COBRADOR" class="LunarBase.Classes.Pessoa" not-null="false" foreign-key="FK_CAIXA_COBRADOR" lazy="false"/>
+		<many-to-one name="BandeiraCartao" column="BANDEIRACARTAO" class="LunarBase.Classes.BandeiraCartao" not-null="false" foreign-key="FK_CAIXA_BANDEIRACARTAO" lazy="false"/>
 
 
 		<!-- Dados do objeto padrão -->

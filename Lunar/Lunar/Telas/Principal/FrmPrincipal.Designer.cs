@@ -57,6 +57,7 @@
             this.lblCaption = new System.Windows.Forms.Label();
             this.btnChildFormClose = new System.Windows.Forms.Button();
             this.dropMenuUtilitarios = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBalancoEstoque = new System.Windows.Forms.ToolStripMenuItem();
             this.cartõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adquirenteMaquinaCartãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +83,7 @@
             this.btnPlanoDecontas1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMovimentoCaixa = new System.Windows.Forms.ToolStripMenuItem();
             this.reciboAvulsoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.retornoBoletosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saldoContasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropMenuFiscal = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
             this.btnComprasFiscal = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,6 +99,7 @@
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aniversariantesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reativaçãoDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaContatoTelefonesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnComissoes = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,6 +123,9 @@
             this.btnSetor = new System.Windows.Forms.ToolStripMenuItem();
             this.variaçõesCaracterísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enviarProdutosBalançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropMenuPessoa = new Lunar.RJ_UI.Classes.RJDropdownMenu(this.components);
+            this.toolStripClienteFornecedor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripCaracteristicaPessoa = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -133,6 +139,7 @@
             this.dropMenuRelatorios.SuspendLayout();
             this.dropMenuVendas.SuspendLayout();
             this.dropMenuProduto.SuspendLayout();
+            this.dropMenuPessoa.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -623,6 +630,7 @@
             this.dropMenuUtilitarios.Font = new System.Drawing.Font("Verdana", 10F);
             this.dropMenuUtilitarios.IsMainMenu = false;
             this.dropMenuUtilitarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backupToolStripMenuItem,
             this.btnBalancoEstoque,
             this.cartõesToolStripMenuItem,
             this.EmpresaMenu,
@@ -637,7 +645,14 @@
             this.dropMenuUtilitarios.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuUtilitarios.Name = "rjDropdownMenu1";
             this.dropMenuUtilitarios.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 224);
+            this.dropMenuUtilitarios.Size = new System.Drawing.Size(311, 246);
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(310, 22);
+            this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
             // btnBalancoEstoque
             // 
@@ -741,12 +756,13 @@
             this.btnPlanoDecontas1,
             this.btnMovimentoCaixa,
             this.reciboAvulsoToolStripMenuItem,
+            this.retornoBoletosToolStripMenuItem,
             this.saldoContasToolStripMenuItem});
             this.dropMenuFinanceiro.MenuItemHeight = 25;
             this.dropMenuFinanceiro.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropMenuFinanceiro.Name = "rjDropdownMenu1";
             this.dropMenuFinanceiro.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropMenuFinanceiro.Size = new System.Drawing.Size(317, 246);
+            this.dropMenuFinanceiro.Size = new System.Drawing.Size(317, 268);
             // 
             // abrirCaixaToolStripMenuItem
             // 
@@ -833,6 +849,13 @@
             this.reciboAvulsoToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
             this.reciboAvulsoToolStripMenuItem.Text = "Recibo Avulso";
             this.reciboAvulsoToolStripMenuItem.Click += new System.EventHandler(this.reciboAvulsoToolStripMenuItem_Click);
+            // 
+            // retornoBoletosToolStripMenuItem
+            // 
+            this.retornoBoletosToolStripMenuItem.Name = "retornoBoletosToolStripMenuItem";
+            this.retornoBoletosToolStripMenuItem.Size = new System.Drawing.Size(316, 22);
+            this.retornoBoletosToolStripMenuItem.Text = "Retorno Boletos";
+            this.retornoBoletosToolStripMenuItem.Click += new System.EventHandler(this.retornoBoletosToolStripMenuItem_Click);
             // 
             // saldoContasToolStripMenuItem
             // 
@@ -952,7 +975,8 @@
             // 
             this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aniversariantesToolStripMenuItem1,
-            this.reativaçãoDeClientesToolStripMenuItem});
+            this.reativaçãoDeClientesToolStripMenuItem,
+            this.listaContatoTelefonesToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
@@ -960,16 +984,23 @@
             // aniversariantesToolStripMenuItem1
             // 
             this.aniversariantesToolStripMenuItem1.Name = "aniversariantesToolStripMenuItem1";
-            this.aniversariantesToolStripMenuItem1.Size = new System.Drawing.Size(233, 22);
+            this.aniversariantesToolStripMenuItem1.Size = new System.Drawing.Size(283, 22);
             this.aniversariantesToolStripMenuItem1.Text = "Aniversariantes";
             this.aniversariantesToolStripMenuItem1.Click += new System.EventHandler(this.aniversariantesToolStripMenuItem1_Click);
             // 
             // reativaçãoDeClientesToolStripMenuItem
             // 
             this.reativaçãoDeClientesToolStripMenuItem.Name = "reativaçãoDeClientesToolStripMenuItem";
-            this.reativaçãoDeClientesToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.reativaçãoDeClientesToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
             this.reativaçãoDeClientesToolStripMenuItem.Text = "Reativação de Clientes";
             this.reativaçãoDeClientesToolStripMenuItem.Click += new System.EventHandler(this.reativaçãoDeClientesToolStripMenuItem_Click);
+            // 
+            // listaContatoTelefonesToolStripMenuItem
+            // 
+            this.listaContatoTelefonesToolStripMenuItem.Name = "listaContatoTelefonesToolStripMenuItem";
+            this.listaContatoTelefonesToolStripMenuItem.Size = new System.Drawing.Size(283, 22);
+            this.listaContatoTelefonesToolStripMenuItem.Text = "Lista de Contatos (Telefones)";
+            this.listaContatoTelefonesToolStripMenuItem.Click += new System.EventHandler(this.listaContatoTelefonesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -1157,6 +1188,34 @@
             this.enviarProdutosBalançaToolStripMenuItem.Text = "Enviar Produtos Balança";
             this.enviarProdutosBalançaToolStripMenuItem.Click += new System.EventHandler(this.enviarProdutosBalançaToolStripMenuItem_Click);
             // 
+            // dropMenuPessoa
+            // 
+            this.dropMenuPessoa.CursorSelecionado = System.Windows.Forms.Cursors.Hand;
+            this.dropMenuPessoa.Font = new System.Drawing.Font("Verdana", 10F);
+            this.dropMenuPessoa.IsMainMenu = false;
+            this.dropMenuPessoa.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripClienteFornecedor,
+            this.toolStripCaracteristicaPessoa});
+            this.dropMenuPessoa.MenuItemHeight = 25;
+            this.dropMenuPessoa.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.dropMenuPessoa.Name = "rjDropdownMenu1";
+            this.dropMenuPessoa.PrimaryColor = System.Drawing.Color.Empty;
+            this.dropMenuPessoa.Size = new System.Drawing.Size(225, 70);
+            // 
+            // toolStripClienteFornecedor
+            // 
+            this.toolStripClienteFornecedor.Name = "toolStripClienteFornecedor";
+            this.toolStripClienteFornecedor.Size = new System.Drawing.Size(224, 22);
+            this.toolStripClienteFornecedor.Text = "Cliente/Fornecedor";
+            this.toolStripClienteFornecedor.Click += new System.EventHandler(this.toolStripClienteFornecedor_Click);
+            // 
+            // toolStripCaracteristicaPessoa
+            // 
+            this.toolStripCaracteristicaPessoa.Name = "toolStripCaracteristicaPessoa";
+            this.toolStripCaracteristicaPessoa.Size = new System.Drawing.Size(224, 22);
+            this.toolStripCaracteristicaPessoa.Text = "Característica Pessoa";
+            this.toolStripCaracteristicaPessoa.Click += new System.EventHandler(this.toolStripCaracteristicaPessoa_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1188,6 +1247,7 @@
             this.dropMenuRelatorios.ResumeLayout(false);
             this.dropMenuVendas.ResumeLayout(false);
             this.dropMenuProduto.ResumeLayout(false);
+            this.dropMenuPessoa.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1284,5 +1344,11 @@
         private System.Windows.Forms.ToolStripMenuItem contasBancáriasEConfiguraçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contaBancáriaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem configurarEmissãoDeBoletosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem retornoBoletosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaContatoTelefonesToolStripMenuItem;
+        private RJ_UI.Classes.RJDropdownMenu dropMenuPessoa;
+        private System.Windows.Forms.ToolStripMenuItem toolStripClienteFornecedor;
+        private System.Windows.Forms.ToolStripMenuItem toolStripCaracteristicaPessoa;
     }
 }

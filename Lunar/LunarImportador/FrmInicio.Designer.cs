@@ -37,6 +37,7 @@
             lblOrigem = new Label();
             label2 = new Label();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            radioCheef = new RadioButton();
             radioSoftSystemCosmos = new RadioButton();
             radioLinkPro = new RadioButton();
             radioSGBR = new RadioButton();
@@ -143,6 +144,7 @@
             gradientPanel1.Border3DStyle = Border3DStyle.Raised;
             gradientPanel1.BorderColor = Color.FromArgb(217, 217, 217);
             gradientPanel1.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel1.Controls.Add(radioCheef);
             gradientPanel1.Controls.Add(radioSoftSystemCosmos);
             gradientPanel1.Controls.Add(radioLinkPro);
             gradientPanel1.Controls.Add(radioSGBR);
@@ -152,6 +154,19 @@
             gradientPanel1.Name = "gradientPanel1";
             gradientPanel1.Size = new Size(820, 100);
             gradientPanel1.TabIndex = 15;
+            // 
+            // radioCheef
+            // 
+            radioCheef.AutoSize = true;
+            radioCheef.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            radioCheef.Location = new Point(588, 47);
+            radioCheef.Name = "radioCheef";
+            radioCheef.Size = new Size(67, 23);
+            radioCheef.TabIndex = 16;
+            radioCheef.TabStop = true;
+            radioCheef.Text = "Cheef";
+            radioCheef.UseVisualStyleBackColor = true;
+            radioCheef.CheckedChanged += radioCheef_CheckedChanged;
             // 
             // radioSoftSystemCosmos
             // 
@@ -375,6 +390,7 @@
             chkGrupos.TabIndex = 28;
             chkGrupos.Text = "Grupos Produtos";
             chkGrupos.UseVisualStyleBackColor = true;
+            chkGrupos.Visible = false;
             // 
             // FrmInicio
             // 
@@ -445,5 +461,6 @@
         private RadioButton radioSoftSystemCosmos;
         private CheckBox chkVendas;
         private CheckBox chkGrupos;
+        private RadioButton radioCheef;
     }
 }

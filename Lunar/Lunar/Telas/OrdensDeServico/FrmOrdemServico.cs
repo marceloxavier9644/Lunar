@@ -1933,6 +1933,7 @@ namespace Lunar.Telas.OrdensDeServico
         {
             if (!String.IsNullOrEmpty(txtCodServico.Texts))
             {
+                calculaTotalServico();
                 servico = new Servico();
                 servico.Id = int.Parse(txtCodServico.Texts);
                 servico = (Servico)Controller.getInstance().selecionar(servico);

@@ -84,7 +84,7 @@ namespace Lunar.Telas.Vendas.Adicionais
             generica.SoNumeroEVirgula(txtTotalComDesconto.Texts, e);
             if (e.KeyChar == 13)
             {
-                descontoEmValor();
+                btnConfirmar.PerformClick();
             }
         }
 

@@ -361,7 +361,7 @@ namespace Lunar.Telas.Fiscal
             }
             catch
             {
-                GenericaDesktop.ShowErro("Informe as datas corretamente, caso esteja correto solicite suporte para seu representante!");
+                //GenericaDesktop.ShowErro("Informe as datas corretamente, caso esteja correto solicite suporte para seu representante!");
             }
         }
         private void Pesquisar(string dataInicial, string dataFinal, string valorPesquisa, string modelo, string codStatus)

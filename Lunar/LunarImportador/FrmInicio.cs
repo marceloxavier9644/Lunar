@@ -112,7 +112,7 @@ namespace LunarImportador
                 return;
             }
 
-            // Importação de dados
+            // SGBR
             if (radioSGBR.Checked == true)
             {
                 if (chkClientes.Checked == true)
@@ -150,7 +150,7 @@ namespace LunarImportador
             }
 
             //LINK PRO
-            if(radioLinkPro.Checked == true)
+            if (radioLinkPro.Checked == true)
             {
                 if (chkProdutos.Checked == true)
                 {
@@ -190,6 +190,18 @@ namespace LunarImportador
                     progressBar1.Visible = true;
                     lblStatus.Visible = true;
                     Thread importarThread = new Thread(() => ImportarVendasSoftsystem(selectedDatabase, firebirdDatabasePath));
+                    importarThread.Start();
+                }
+            }
+
+            //Cheef
+            if (radioCheef.Checked == true)
+            {
+                if (chkProdutos.Checked == true)
+                {
+                    progressBar1.Visible = true;
+                    lblStatus.Visible = true;
+                    Thread importarThread = new Thread(() => ImportarProdutosCheef());
                     importarThread.Start();
                 }
             }
@@ -476,7 +488,7 @@ namespace LunarImportador
                 mysqlConnection.Close();
             }
         }
-        
+
         private void ImportarFornecedoresSgbr(string database, string firebirdDatabasePath)
         {
             int i = 0;
@@ -756,7 +768,7 @@ namespace LunarImportador
             else
             {
                 resultado.Ddd = "00"; // DDD padrão ou vazio caso não encontrado
-                if(telefone.Length > 9)
+                if (telefone.Length > 9)
                     resultado.Ddd = telefone.Substring(0, 2);
             }
 
@@ -813,7 +825,7 @@ namespace LunarImportador
                     i++;
                     Produto produto = new Produto();
                     //ID no SGBR
-                    
+
                     if (chkIdProduto.Checked == true)
                         produto.Id = int.Parse(firebirdReader["controle"].ToString());
                     else
@@ -1652,7 +1664,7 @@ namespace LunarImportador
 
         private void importarProdutosLinkProCervantes()
         {
-            connectionStringLinkPro = "Host="+txtBancoOrigem.Text.Trim()+ ";Port=5432;Username=postgres;Password=postgres;Database=InkDB";
+            connectionStringLinkPro = "Host=" + txtBancoOrigem.Text.Trim() + ";Port=5432;Username=postgres;Password=postgres;Database=InkDB";
             try
             {
                 //connectionStringLinkPro = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=InkDB";
@@ -1705,7 +1717,7 @@ namespace LunarImportador
                                         produto.Observacoes = produto_codigo + " SGBR";
                                         produto.AnoVeiculo = "";
                                         produto.CapacidadeTracao = "";
-                                        if(cest != "null" && cest != "Null" && cest != "NULL")
+                                        if (cest != "null" && cest != "Null" && cest != "NULL")
                                             produto.Cest = Generica.RemoveCaracteres(cest);
 
                                         produto.CfopVenda = Generica.RemoveCaracteres("");
@@ -1910,7 +1922,7 @@ namespace LunarImportador
                                         pessoa.Id = 0;
                                         pessoa.Cliente = true;
                                         pessoa.Email = reader["email"].ToString();
-                                        if(reader["cpf"].ToString() != "null")
+                                        if (reader["cpf"].ToString() != "null")
                                             pessoa.Cnpj = reader["cpf"].ToString();
                                         else
                                             pessoa.Cnpj = "";
@@ -1919,7 +1931,7 @@ namespace LunarImportador
                                         pessoa.ComissaoVendedor = 0;
                                         pessoa.ContatoTrabalho = "";
                                         pessoa.DataCadastro = DateTime.Now;
-                                        if(reader["data_nascimento"].ToString() == "Null") 
+                                        if (reader["data_nascimento"].ToString() == "Null")
                                             pessoa.DataNascimento = DateTime.Parse("1900-01-01 00:00:00");
                                         else
                                             pessoa.DataNascimento = DateTime.Parse(reader["data_nascimento"].ToString());
@@ -1954,7 +1966,7 @@ namespace LunarImportador
                                         pessoa.Transportadora = false;
                                         pessoa.Vendedor = false;
 
-                                       //Conecta com banco lunar
+                                        //Conecta com banco lunar
                                         string selectedDatabase = "";
                                         if (comboDestino.InvokeRequired)
                                         {
@@ -2010,7 +2022,7 @@ namespace LunarImportador
                                             if (cidade.Id > 0)
                                             {
                                                 endereco.Referencia = "";
-                                                if(reader["cep"].ToString() != "" || reader["cep"].ToString() != "Null")
+                                                if (reader["cep"].ToString() != "" || reader["cep"].ToString() != "Null")
                                                     endereco.Cep = reader["cep"].ToString();
                                                 else
                                                     endereco.Cep = "38610000";
@@ -2030,7 +2042,7 @@ namespace LunarImportador
 
 
                                         i++;
-                                        salvarClienteLinkProCervantes(mysqlConnectionString, pessoa,endereco,pessoaTelefone);
+                                        salvarClienteLinkProCervantes(mysqlConnectionString, pessoa, endereco, pessoaTelefone);
                                         //salvarProdutoLinkNoMysql(produto, estoque, produtoGrade, mysqlConnection);
                                         //lblStatus.Text = "Pessoa " + i + " de " + totalRecords;
                                     }
@@ -2210,7 +2222,7 @@ namespace LunarImportador
             }
         }
 
-        private void salvarProdutoLinkNoMysql(Produto produto,Estoque estoque,ProdutoGrade produtoGrade, MySqlConnection mysqlConnection)
+        private void salvarProdutoLinkNoMysql(Produto produto, Estoque estoque, ProdutoGrade produtoGrade, MySqlConnection mysqlConnection)
         {
             string mysqlQuery = @"
                 INSERT INTO Produto 
@@ -2230,7 +2242,7 @@ namespace LunarImportador
                 @PercentualCofins, @PercentualIcms, @PercentualIpi, @PercentualPis, @PercGlp, @PercGni, @PercGnn, @Pesavel, @PesoBrutoVeiculo, 
                 @PesoLiquidoVeiculo, @Placa, @PotenciaCv, @ProdutoSetor, @Referencia, @Renavam, @RestricaoVeiculo, 
                 @SolicitaNumeroSerie, @TipoCambio, @TipoEntrada, @TipoPintura, @TipoProduto, @TipoVeiculo, @UnidadeMedidaId, @ValorCusto, 
-                @ValorPartida, @ValorVenda, @Veiculo, @VeiculoNovo, 1,1, "+produto.GrupoFiscal.Id+", @GrupoProduto)";
+                @ValorPartida, @ValorVenda, @Veiculo, @VeiculoNovo, 1,1, " + produto.GrupoFiscal.Id + ", @GrupoProduto)";
 
             MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
             mysqlCommand.Parameters.AddWithValue("@Id", produto.Id);
@@ -2421,7 +2433,7 @@ namespace LunarImportador
                             (BalancoEstoque, Conciliado, DataEntradaSaida, Descricao, Entrada, FlagExcluido, Origem, Pessoa, Quantidade, QuantidadeInventario, Saida, EmpresaFilial, Produto) 
                         VALUES 
                             (@BalancoEstoque, @Conciliado, @DataEntradaSaida, @Descricao, @Entrada, @FlagExcluido, @Origem, @Pessoa, @Quantidade, @QuantidadeInventario, @Saida, 1, " + idProduto + ")";
-     
+
 
                 MySqlCommand mysqlCommandEstoque = new MySqlCommand(mysqlQueryEstoque, mysqlConnection);
                 mysqlCommandEstoque = new MySqlCommand(mysqlQueryEstoque, mysqlConnection);
@@ -2456,11 +2468,36 @@ namespace LunarImportador
         }
         public bool CodigoBarrasExiste(string codigoBarras)
         {
-            ProdutoCodigoBarrasController produtoCodigoBarrasController = new ProdutoCodigoBarrasController();
-            string sql = $"SELECT * FROM ProdutoCodigoBarras WHERE CodigoBarras = '{codigoBarras}' and FlagExcluido <> True";
-            IList<ProdutoCodigoBarras> resultado = produtoCodigoBarrasController.selecionarCodigoBarrasPorSQL(sql);
-            return resultado.Count > 0;
+            string selectedDatabase = "";
+            if (comboDestino.InvokeRequired)
+            {
+                // Se a chamada precisa ser feita na thread da UI, use Invoke
+                comboDestino.Invoke(new Action(() =>
+                {
+                    selectedDatabase = comboDestino.SelectedItem?.ToString();
+                    // Agora você pode usar selectedDatabase aqui
+                }));
+            }
+            else
+            {
+                // Caso contrário, faça o acesso diretamente
+                selectedDatabase = comboDestino.SelectedItem?.ToString();
+                // Agora você pode usar selectedDatabase aqui
+            }
+            string mysqlConnectionString = $"Server=localhost;Database={selectedDatabase};User Id=marcelo;Password=mx123;";
+            using (MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString))
+            {
+                mysqlConnection.Open();
+                string sql = "SELECT COUNT(*) FROM ProdutoCodigoBarras WHERE CodigoBarras = @CodigoBarras AND FlagExcluido <> True";
+                using (MySqlCommand mysqlCommandEstoque = new MySqlCommand(sql, mysqlConnection))
+                {
+                    mysqlCommandEstoque.Parameters.AddWithValue("@CodigoBarras", codigoBarras);
+                    int count = Convert.ToInt32(mysqlCommandEstoque.ExecuteScalar());
+                    return count > 0;
+                }
+            }
         }
+
 
         private void ImportarClientesSoftsystem(string database, string firebirdDatabasePath)
         {
@@ -2611,7 +2648,7 @@ namespace LunarImportador
                         pessoaTelefone = ProcessarTelefone(firebirdReader["ddd"].ToString() + firebirdReader["fone"].ToString());
                     if (!String.IsNullOrEmpty(firebirdReader["celular"].ToString()))
                         pessoaTelefoneCelular = ProcessarTelefone(firebirdReader["ddd"].ToString() + firebirdReader["celular"].ToString());
-                    
+
                     // Inserir dados no MySQL
                     string mysqlQuery = @"
                         INSERT INTO Pessoa 
@@ -2703,7 +2740,7 @@ namespace LunarImportador
                         mysqlCommandTelefone.Parameters.AddWithValue("@observacoes", "IMPORTADO SOFTSYSTEM");
                         mysqlCommandTelefone.Parameters.AddWithValue("@pessoa", pessoaId);
                         mysqlCommandTelefone.ExecuteNonQuery();
-                        if(pessoaTelefoneId == 0)
+                        if (pessoaTelefoneId == 0)
                             pessoaTelefoneId = mysqlCommandTelefone.LastInsertedId; // Define o telefone fixo como telefone principal
                     }
 
@@ -2813,7 +2850,7 @@ namespace LunarImportador
                     pessoa.ComissaoVendedor = 0;
                     pessoa.ContatoTrabalho = "";
                     pessoa.DataNascimento = new DateTime(1900, 1, 1); // Define a data padrão no cosmos nao tem data de abertura da empresa
-                    
+
                     pessoa.LimiteCredito = 0;
                     pessoa.LocalTrabalho = "";
                     pessoa.Mae = "";
@@ -3028,7 +3065,7 @@ namespace LunarImportador
         {
             ImportarGruposSoftsystem(database, firebirdDatabasePath);
             ImportarMarcasSoftsystem(database, firebirdDatabasePath);
-       
+
             int i = 0;
             UpdateUI(() => { lblStatus.Text = "Importação de Produtos"; });
             // Conexão com o banco de dados Firebird
@@ -3085,11 +3122,11 @@ namespace LunarImportador
                     produto.CorDenatran = "";
                     produto.CorMontadora = "";
                     produto.CstCofins = "99";
-                    if(produto.CfopVenda.Equals("5102"))
+                    if (produto.CfopVenda.Equals("5102"))
                         produto.CstIcms = "102";
                     if (produto.CfopVenda.Equals("5405"))
                         produto.CstIcms = "500";
-                    produto.CstIpi = "99"; 
+                    produto.CstIpi = "99";
                     produto.CstPis = "99";
                     if (!String.IsNullOrEmpty(firebirdReader["datacadastro"].ToString()))
                         produto.DataCadastro = DateTime.Parse(firebirdReader["datacadastro"].ToString());
@@ -3677,13 +3714,13 @@ namespace LunarImportador
 
                     MySqlCommand mysqlCommand = new MySqlCommand(mysqlQuery, mysqlConnection);
                     mysqlCommand.Parameters.AddWithValue("@Cancelado", venda.Cancelado);
-                    mysqlCommand.Parameters.AddWithValue("@ClienteId", venda.Cliente.Id);  
+                    mysqlCommand.Parameters.AddWithValue("@ClienteId", venda.Cliente.Id);
                     mysqlCommand.Parameters.AddWithValue("@Concluida", venda.Concluida);
                     mysqlCommand.Parameters.AddWithValue("@FlagExcluido", venda.FlagExcluido);
                     mysqlCommand.Parameters.AddWithValue("@Condicional", venda.Condicional != null ? venda.Condicional : (object)DBNull.Value);
                     mysqlCommand.Parameters.AddWithValue("@DataCadastro", venda.DataCadastro);
                     mysqlCommand.Parameters.AddWithValue("@DataVenda", venda.DataVenda);
-                    mysqlCommand.Parameters.AddWithValue("@EmpresaFilialId", venda.EmpresaFilial.Id); 
+                    mysqlCommand.Parameters.AddWithValue("@EmpresaFilialId", venda.EmpresaFilial.Id);
                     mysqlCommand.Parameters.AddWithValue("@EnderecoCliente", venda.EnderecoCliente);
                     mysqlCommand.Parameters.AddWithValue("@Nfe", venda.Nfe != null ? venda.Nfe : (object)DBNull.Value);
                     mysqlCommand.Parameters.AddWithValue("@NomeCliente", venda.NomeCliente);
@@ -3691,7 +3728,7 @@ namespace LunarImportador
                     mysqlCommand.Parameters.AddWithValue("@Observacoes", venda.Observacoes);
                     mysqlCommand.Parameters.AddWithValue("@OperadorCadastro", venda.OperadorCadastro);
                     mysqlCommand.Parameters.AddWithValue("@PessoaDependenteId", venda.PessoaDependente != null ? venda.PessoaDependente.Id : (object)DBNull.Value);
-                    mysqlCommand.Parameters.AddWithValue("@PlanoContaId", venda.PlanoConta.Id); 
+                    mysqlCommand.Parameters.AddWithValue("@PlanoContaId", venda.PlanoConta.Id);
                     mysqlCommand.Parameters.AddWithValue("@QrCodePix", venda.QrCodePix);
                     mysqlCommand.Parameters.AddWithValue("@Quantidade", venda.Quantidade);
                     mysqlCommand.Parameters.AddWithValue("@ValorAcrescimo", venda.ValorAcrescimo);
@@ -3728,5 +3765,277 @@ namespace LunarImportador
             }
         }
 
+
+        string connectionStringCheef = "";
+        private void ImportarProdutosCheef()
+        {
+            connectionStringCheef = "Server=localhost;Port=3306;Uid=root;Database=" + txtBancoOrigem.Text.Trim();
+
+            try
+            {
+                using (var connection = new MySqlConnection(connectionStringCheef))
+                {
+                    connection.Open();
+                    string countQuery = "SELECT COUNT(*) FROM produto p";
+
+                    int totalRecords;
+                    using (var countCommand = new MySqlCommand(countQuery, connection))
+                    {
+                        totalRecords = Convert.ToInt32(countCommand.ExecuteScalar());
+                        Console.WriteLine($"Número total de registros: {totalRecords}");
+                    }
+
+                    if (lblStatus.InvokeRequired)
+                    {
+                        lblStatus.Invoke(new Action(() => lblStatus.Text = "Conexão estabelecida"));
+                    }
+                    using (var command = new MySqlCommand("SELECT p.id_produto, p.descricao, p.inativo, p.estoque, " +
+                        "n.codigo as ncm, p.dt_cadastro, p.custo_medio, p.preco, c.codigo as cest, " +
+                        "p.cod_barra, p.id_tributo FROM produto p LEFT JOIN ncm n ON p.id_ncm = n.id_ncm " +
+                        "LEFT JOIN cest c ON p.id_cest = c.id_cest", connection))
+                    {
+                        command.CommandTimeout = 300; // Aumenta o tempo limite para 5 minutos
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                int rowIndex = 0;
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    try
+                                    {
+                                        rowIndex++;
+                                        // Exemplo de leitura de dados
+                                        var produto_codigo = reader["id_produto"].ToString();
+                                        var descricao = reader["descricao"].ToString();
+                                        var inativo = reader["inativo"].ToString();
+                                        var qtd_estoque = reader["estoque"].ToString();
+                                        var cod_ncm = reader["ncm"].ToString();
+                                        var preco_custo = reader["custo_medio"].ToString();
+                                        var preco_venda = reader["preco"].ToString();
+                                        var cest = reader["cest"].ToString();
+                                        var codigo_barra = reader["cod_barra"].ToString();
+                                        var idTributo = reader["id_tributo"].ToString(); 
+
+                                        Produto produto = new Produto();
+                                        if (chkIdProduto.Checked == true)
+                                            produto.Id = int.Parse(produto_codigo);
+                                        else
+                                            produto.Id = 0;
+                                        produto.Observacoes = produto_codigo + " Cheef";
+                                        produto.AnoVeiculo = "";
+                                        produto.CapacidadeTracao = "";
+                                        if (cest != "null" && cest != "Null" && cest != "NULL")
+                                            produto.Cest = Generica.RemoveCaracteres(cest);
+
+                                        produto.CfopVenda = Generica.RemoveCaracteres("");
+                                        produto.Chassi = "";
+                                        produto.CilindradaCc = "";
+                                        produto.CodAnp = "";
+                                        produto.CodSeloIpi = "";
+                                        produto.Combustivel = "";
+                                        produto.CondicaoProduto = "";
+                                        produto.ControlaEstoque = true;
+                                        produto.CorDenatran = "";
+                                        produto.CorMontadora = "";
+                                        produto.CstCofins = "99";
+                                        produto.GrupoFiscal = new GrupoFiscal();
+                                        if (idTributo.Equals("2"))
+                                        {
+                                            produto.CstIcms = "102";
+                                            produto.CfopVenda = "5102";
+                                            produto.GrupoFiscal.Id = 1;
+                                        }
+                                        else if (idTributo.Equals("1"))
+                                        {
+                                            produto.CstIcms = "500";
+                                            produto.CfopVenda = "5405";
+                                            produto.GrupoFiscal.Id = 2;
+                                        }
+                          
+                                        produto.CstIpi = "99";
+                                        produto.CstPis = "99";
+                                        produto.DataCadastro = DateTime.Now;
+                                        produto.Descricao = descricao;
+                                        produto.DistanciaEixo = "";
+                                        produto.Ean = codigo_barra;
+                                        produto.Ecommerce = false;
+                                        produto.EnqIpi = "999";
+                                        produto.EspecieVeiculo = "";
+
+                                        produto.FlagExcluido = false;
+                                        produto.Grade = false;
+                                        string grupoFiscal = "1";
+                                        produto.IdComplementar = "";
+                                        produto.KmEntrada = "";
+                                        produto.LotacaoVeiculo = "";
+                                        produto.Marca = null;
+                                        produto.MarcaModelo = "";
+                                        produto.Markup = "";
+                                        produto.ModeloVeiculo = "";
+                                        produto.Ncm = cod_ncm;
+                                        produto.NumeroMotor = "";
+                                        produto.OperadorCadastro = "1";
+                                        produto.OrigemIcms = "0";
+                                        produto.PercentualCofins = "0";
+                                        produto.PercentualIcms = "0";
+                                        produto.PercentualIpi = "0";
+                                        produto.PercentualPis = "0";
+                                        try { produto.PercGlp = double.Parse("0"); } catch { produto.PercGlp = 0; }
+                                        try { produto.PercGni = double.Parse("0"); } catch { produto.PercGni = 0; }
+                                        try { produto.PercGnn = double.Parse("0"); } catch { produto.PercGnn = 0; }
+                                        produto.Pesavel = false;
+                                        produto.PesoBrutoVeiculo = "";
+                                        produto.PesoLiquidoVeiculo = "";
+                                        produto.Placa = "";
+                                        produto.PotenciaCv = "";
+                                        produto.ProdutoSetor = null;
+                                        produto.ProdutoSubGrupo = null;
+                                        produto.Referencia = "";
+                                        produto.Renavam = "";
+                                        produto.RestricaoVeiculo = "";
+                                        produto.SolicitaNumeroSerie = false;
+                                        produto.TipoCambio = "";
+                                        produto.TipoEntrada = "";
+                                        produto.TipoPintura = "";
+                                        produto.TipoProduto = "REVENDA";
+                                        produto.TipoVeiculo = "";
+                                        string selectedDatabase = "";
+                                        if (comboDestino.InvokeRequired)
+                                        {
+                                            // Se a chamada precisa ser feita na thread da UI, use Invoke
+                                            comboDestino.Invoke(new Action(() =>
+                                            {
+                                                selectedDatabase = comboDestino.SelectedItem?.ToString();
+                                                // Agora você pode usar selectedDatabase aqui
+                                            }));
+                                        }
+                                        else
+                                        {
+                                            // Caso contrário, faça o acesso diretamente
+                                            selectedDatabase = comboDestino.SelectedItem?.ToString();
+                                            // Agora você pode usar selectedDatabase aqui
+                                        }
+                                        string mysqlConnectionString = $"Server=localhost;Database={selectedDatabase};User Id=marcelo;Password=mx123;";
+                                        MySqlConnection mysqlConnection = new MySqlConnection(mysqlConnectionString);
+
+                                        int unidadeMedida = ObterOuCriarUnidadeMedida(RemoverCedilha("PC"), mysqlConnection);
+                                        produto.UnidadeMedida = new UnidadeMedida();
+                                        produto.UnidadeMedida.Id = unidadeMedida;
+                                   
+
+                                        try { produto.ValorCusto = decimal.Parse(preco_custo); } catch { produto.ValorCusto = 0; }
+                                        produto.ValorPartida = 0;
+                                        try { produto.ValorVenda = decimal.Parse(preco_venda); } catch { produto.ValorVenda = 1; }
+                                        produto.Veiculo = false;
+                                        produto.VeiculoNovo = false;
+
+                                        ProdutoGrade produtoGrade = new ProdutoGrade();
+                                        produtoGrade.ValorVenda = produto.ValorVenda;
+                                        produtoGrade.DataCadastro = DateTime.Now;
+                                        produtoGrade.QuantidadeMedida = 1;
+                                        produtoGrade.Descricao = "PRINCIPAL";
+                                        produtoGrade.FlagExcluido = false;
+                                        produtoGrade.UnidadeMedida = new UnidadeMedida();
+                                        produtoGrade.UnidadeMedida.Id = 2;
+                                        produtoGrade.ValorVenda = produto.ValorVenda;
+                                        produtoGrade.Principal = true;
+
+                                        Estoque estoque = new Estoque();
+                                        try
+                                        {
+                                            if (double.Parse(qtd_estoque) > 0)
+                                            {
+                                                produto.Estoque = 0;
+                                                estoque.BalancoEstoque = null;
+                                                estoque.Conciliado = false;
+                                                estoque.DataEntradaSaida = DateTime.Now;
+                                                estoque.Descricao = "IMPORTACAO CHEEF";
+                                                estoque.Entrada = true;
+                                                estoque.FlagExcluido = false;
+                                                estoque.Origem = "CHEEF";
+                                                estoque.Pessoa = null;
+                                                estoque.Quantidade = double.Parse(qtd_estoque);
+                                                estoque.QuantidadeInventario = 0;
+                                                estoque.Saida = false;
+
+
+                                                //Grava estoque auxiliar ou apenas o contabil
+                                                if (chkSaldoEstoque.Checked == true)
+                                                    produto.EstoqueAuxiliar = double.Parse(qtd_estoque);
+                                                else
+                                                    produto.EstoqueAuxiliar = 0;
+                                            }
+                                        }
+                                        catch
+                                        {
+                                            produto.Estoque = 0;
+                                            produto.EstoqueAuxiliar = 0;
+                                        }
+                                        i++;
+                                        salvarProdutoLinkNoMysql(produto, estoque, produtoGrade, mysqlConnection);
+                                        if (lblStatus.InvokeRequired)
+                                        {
+                                            lblStatus.Invoke(new Action(() => lblStatus.Text = "Produto " + i + " de " + totalRecords));
+                                        }
+                                        
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine($"Erro ao ler a linha {rowIndex}: {ex.Message}");
+                                        // Talvez seja interessante parar o loop se um erro ocorrer
+                                        break;
+                                    }
+                                    if (lblStatus.InvokeRequired)
+                                    {
+                                        lblStatus.Invoke(new Action(() => lblStatus.Text = "Produtos Importados: " + i));
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nenhum dado encontrado.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao conectar ou executar a consulta: {ex.Message}");
+            }
+
+        }
+
+        private void radioCheef_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioCheef.Checked == true)
+            {
+                txtBancoOrigem.Enabled = true;
+                txtBancoOrigem.ReadOnly = false;
+                lblOrigem.Text = "Banco de Dados Origem(Digite o nome do banco em mysql do chef)";
+
+                chkClientes.Enabled = false;
+                chkContasAPagar.Enabled = false;
+                chkContasAReceber.Enabled = false;
+                chkGrupos.Enabled = false;
+                chkServicos.Enabled = false;
+                chkVendas.Enabled = false;
+            }
+            else 
+            {
+                txtBancoOrigem.ReadOnly = true;
+                lblOrigem.Text = "Banco de Dados Origem (Sistema Antigo do Cliente)";
+
+                chkClientes.Enabled = true;
+                chkContasAPagar.Enabled = true;
+                chkContasAReceber.Enabled = true;
+                chkGrupos.Enabled = true;
+                chkServicos.Enabled = true;
+                chkVendas.Enabled = true;
+            }
+        }
     }
 }

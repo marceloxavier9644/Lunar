@@ -825,24 +825,20 @@ namespace Lunar.Telas.Cadastros.Empresas
                 buscanfse = false,
                 receber90dias = false,
                 idprojeto = 20, //nfce
-                csc = new Csc
+                csc = new List<Csc> // Aqui estamos criando uma lista de Csc
                 {
-                    csc = Sessao.parametroSistema.CscNfce,
-                    codcsc = Sessao.parametroSistema.TokenNfce,
-                    tpamb = 1
+                    new Csc
+                    {
+                        csc = Sessao.parametroSistema.CscNfce,
+                        codcsc = Sessao.parametroSistema.TokenNfce,
+                        tpamb = 1
+                    }
                 },
                 certificado = new CertificadoNs
                 {
                     certificado = certificadoBase64,
                     senha = txtSenhaCertificado.Text
-                }
-        //        logotipo = !string.IsNullOrEmpty(Sessao.parametroSistema.Logo) && File.Exists(Sessao.parametroSistema.Logo)
-        //? new LogotipoNs
-        //{
-        //    arquivo = ConvertImageToBase64(Sessao.parametroSistema.Logo)
-        //}
-        //: null
-       
+                }    
             });
 
             var pessoa = new PessoaNs

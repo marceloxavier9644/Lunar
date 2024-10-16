@@ -40,11 +40,15 @@ namespace Lunar.Utils.OrganizacaoNF
                 this.chave = chave;
                 objetoNfe = new Nfe();
                 if (cliente != null)
-                    this.cliente = cliente;
+                {
+                    if(cliente.Id > 0)
+                        this.cliente = cliente;
+                }
                 objetoNfe = AlimentaObjetoNfe_1(valorProdutos, valorNota, valorDescontoTotal, numeroNfe);
                 if (venda != null)
                 {
                     venda.Nfe = objetoNfe;
+                    venda.ValorFinal = objetoNfe.VNf;
                     Controller.getInstance().salvar(venda);
                 }
                 if (ordemServico != null)
@@ -1271,7 +1275,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     pag = new TNFeInfNFePag
                     {
                         detPag = retornaPagamentoNFCe(listaFormaPag, listaFormaPagOs),
-                        vTroco = formatMoedaNf(troco)
+                        vTroco = troco > 0 ? formatMoedaNf(troco) : null
                     },
                     infAdic = new TNFeInfNFeInfAdic
                     {
@@ -1556,12 +1560,15 @@ namespace Lunar.Utils.OrganizacaoNF
                         }
                         else if (vendaFormaPagamento.FormaPagamento.CodigoSefaz.Equals("17"))
                         {
+                            //ajuste devido erro de troco, venda parece q tava arredondando valores com descontos
+                            if (vendaFormaPagamento.ValorRecebido > vendaFormaPagamento.Venda.ValorFinal)
+                                vendaFormaPagamento.ValorRecebido = vendaFormaPagamento.Venda.ValorFinal;
                             detPag = new TNFeInfNFePagDetPag[]
                                              {
                             new TNFeInfNFePagDetPag
                             {
                                 indPag = indPagamento,
-                                xPag = vendaFormaPagamento.FormaPagamento.Descricao,
+                                //xPag = vendaFormaPagamento.FormaPagamento.Descricao,
                                 tPag = vendaFormaPagamento.FormaPagamento.CodigoSefaz,
                                 vPag = formatMoedaNf(vendaFormaPagamento.ValorRecebido),
                                 card = new TNFeInfNFePagDetPagCard

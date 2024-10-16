@@ -19,8 +19,8 @@ namespace Lunar.Utils.OrganizacaoNF
         public bool receber90dias { get; set; } = false;
         public int idprojeto { get; set; }
         public CertificadoNs certificado { get; set; }
-        public Csc csc { get; set; }
-        //public LogotipoNs logotipo { get; set; }
+        public List<Csc> csc { get; set; }
+
     }
     public class CertificadoNs
     {

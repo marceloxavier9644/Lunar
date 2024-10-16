@@ -351,8 +351,9 @@ namespace Lunar.Utils.Sintegra
                         registro61.Modelo = nf65.Modelo;
                         registro61.Serie = nf65.Serie;
                         registro61.Subserie = "";
-                        registro61.NumInicial = int.Parse(nfeDAO.selecionarMenorNota65Dia(nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '23':'59':'59")));
-                        registro61.NumFinal = int.Parse(nfeDAO.selecionarMaiorNota65Dia(nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '23':'59':'59")));
+                        //registro61.NumInicial = long.Parse(nfeDAO.selecionarMenorNota65Dia(nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '23':'59':'59")));
+                        registro61.NumInicial = int.Parse(nfeDAO.selecionarMenorNota65Dia(nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '23':'59':'59")).ToString());
+                        registro61.NumFinal = int.Parse(nfeDAO.selecionarMaiorNota65Dia(nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '23':'59':'59")).ToString());
                         registro61.ValorTotal = nfeDAO.selecionarSomaValorNota65Dia(nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '23':'59':'59").Replace(".", ","));
                         registro61.ValorIcms = nfeDAO.selecionarSomaBaseCalcIcmsNota65Dia(nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '00':'00':'00"), nf65.DataEmissao.ToString("yyyy'-'MM'-'dd' '23':'59':'59"));
                         registro61.IsentaNaoTrib = 0;

@@ -77,7 +77,9 @@
     <None Remove="HBM\Parcelamento.hbm.xml" />
     <None Remove="HBM\PermissaoUsuario.hbm.xml" />
     <None Remove="HBM\Pessoa.hbm.xml" />
+    <None Remove="HBM\PessoaCaracteristica.hbm.xml" />
     <None Remove="HBM\PessoaDependente.hbm.xml" />
+    <None Remove="HBM\PessoaPerfil.hbm.xml" />
     <None Remove="HBM\PessoaPropriedade.hbm.xml" />
     <None Remove="HBM\PessoaReferenciaComercial.hbm.xml" />
     <None Remove="HBM\PessoaReferenciaPessoal.hbm.xml" />
@@ -94,6 +96,7 @@
     <None Remove="HBM\ProdutoTamanho.hbm" />
     <None Remove="HBM\Query.hbm.xml" />
     <None Remove="HBM\RegimeEmpresa.hbm.xml" />
+    <None Remove="HBM\RetornoBanco.hbm.xml" />
     <None Remove="HBM\Servico.hbm.xml" />
     <None Remove="HBM\Spc.hbm.xml" />
     <None Remove="HBM\TabelaPreco.hbm.xml" />
@@ -129,6 +132,8 @@
     <EmbeddedResource Include="HBM\Nfse.hbm.xml" />
     <EmbeddedResource Include="HBM\OsComissao.hbm.xml" />
     <EmbeddedResource Include="HBM\PermissaoUsuario.hbm.xml" />
+    <EmbeddedResource Include="HBM\PessoaCaracteristica.hbm.xml" />
+    <EmbeddedResource Include="HBM\PessoaPerfil.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoCaracteristica.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoCodigoBarras.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoGrade.hbm.xml" />
@@ -195,6 +200,7 @@
     <EmbeddedResource Include="HBM\ProdutoSetor.hbm.xml" />
     <EmbeddedResource Include="HBM\ProdutoSubGrupo.hbm.xml" />
     <EmbeddedResource Include="HBM\RegimeEmpresa.hbm.xml" />
+    <EmbeddedResource Include="HBM\RetornoBanco.hbm.xml" />
     <EmbeddedResource Include="HBM\Servico.hbm.xml" />
     <EmbeddedResource Include="HBM\Spc.hbm.xml" />
     <EmbeddedResource Include="HBM\TabelaPreco.hbm.xml" />
@@ -217,6 +223,7 @@
     <PackageReference Include="NHibernate" Version="5.5.2" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Net.WebSockets.Client" Version="4.3.2" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
     <PackageReference Include="ZXing.Net" Version="0.16.9" />
   </ItemGroup>
 
@@ -228,7 +235,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilidades\BoletoBancario_Juno\" />
     <Folder Include="Utilidades\NS_Integracao\" />
   </ItemGroup>
 

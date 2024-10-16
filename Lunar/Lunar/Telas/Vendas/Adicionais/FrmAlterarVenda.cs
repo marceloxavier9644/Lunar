@@ -284,13 +284,20 @@ namespace Lunar.Telas.Vendas.Adicionais
                 {
                     foreach(ContaReceber contaReceber in listaReceber)
                     {
-                        contaReceber.Cliente = cliente;
-                        Controller.getInstance().salvar(contaReceber);
+                        if (contaReceber.BoletoGerado == true)
+                        {
+                            GenericaDesktop.ShowAlerta("A fatura a receber possui boleto gerado, não é possivel alterar a fatura a receber! Mas a venda está sendo alterada!");
+                        }
+                        else
+                        {
+                            contaReceber.Cliente = cliente;
+                            Controller.getInstance().salvar(contaReceber);
+                        }
                     }
                 }
                 IList<Caixa> listaCaixa = new List<Caixa>();
                 CaixaController caixaController = new CaixaController();
-                listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.Venda = " + venda.Id);
+                listaCaixa = caixaController.selecionarCaixaPorSql("From Caixa Tabela Where Tabela.TabelaOrigem = 'VENDA' and Tabela.IdOrigem = '"+venda.Id+"'");
                 if (listaCaixa.Count > 0)
                 {
                     foreach (Caixa caixa in listaCaixa)
@@ -364,6 +371,17 @@ namespace Lunar.Telas.Vendas.Adicionais
             finally
             {
                 formBackground.Dispose();
+            }
+        }
+
+        private void btnRemoverNfe_Click(object sender, EventArgs e)
+        {          
+            if (venda.Nfe != null)
+                venda.Nfe = null;
+            if (GenericaDesktop.ShowConfirmacao("Deseja realmente excluir o vinculo ? "))
+            {
+                Controller.getInstance().salvar(venda);
+                GenericaDesktop.ShowInfo("Removido com Sucesso!");
             }
         }
     }

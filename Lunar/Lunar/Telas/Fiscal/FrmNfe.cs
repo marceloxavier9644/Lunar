@@ -216,7 +216,7 @@ namespace Lunar.Telas.Fiscal
                 row.SetField("BaseCalcICMSSTRet", nfeProduto.VBCSTRet.ToString("N2"));
                 row.SetField("ValorICMSRet", nfeProduto.VICMSSTRet.ToString("N2"));
                 row.SetField("PercentualFCPRet", nfeProduto.PFCPSTRet);
-                row.SetField("PercentualSTCons", "");
+                row.SetField("PercentualSTCons", nfeProduto.PST);
                 row.SetField("vFrete", nfeProduto.VFrete.ToString("N2"));
                 row.SetField("vOutro", nfeProduto.VOutro.ToString("N2"));
                 row.SetField("vSeguro", nfeProduto.VSeguro.ToString("N2"));
@@ -1051,6 +1051,7 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.TPag = "";
                     nfeProduto.UCom = produto.UnidadeMedida.Sigla;
                     nfeProduto.UTrib = produto.UnidadeMedida.Sigla;
+                    nfeProduto.PICMSST = dataRowViewXXX.Row["PercentualICMSST"].ToString();
                     nfeProduto.ValorAcrescimo = 0;
                     nfeProduto.ValorCofins = decimal.Parse(dataRowViewXXX.Row["ValorCOFINS"].ToString());
                     nfeProduto.ValorDesconto = descontoItem;
@@ -1095,7 +1096,7 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.Cest = produto.Cest;
                     nfeProduto.Cfop = dataRowViewXXX.Row["CfopVenda"].ToString().Trim();
                     nfeProduto.CProd = produto.Id.ToString();
-                    nfeProduto.Nfe = null;//
+                    nfeProduto.Nfe = null;
                     nfeProduto.VProd = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString()) * decimal.Parse(quantidade.ToString());
                     nfeProduto.QTrib = quantidade;
                     nfeProduto.VDesc = descontoItem;
@@ -1124,13 +1125,17 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.VBC = decimal.Parse(dataRowViewXXX.Row["BaseCalcICMS"].ToString().Trim());
                     nfeProduto.PICMS = dataRowViewXXX.Row["PercentualICMS"].ToString().Trim();
                     nfeProduto.VICMS = decimal.Parse(dataRowViewXXX.Row["ValorICMS"].ToString().Trim());
-
+                    nfeProduto.VUnCom = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString());
+                    nfeProduto.VUnTrib = decimal.Parse(dataRowViewXXX.Row["ValorUnitario"].ToString());
                     nfeProduto.CodAnp = produto.CodAnp;
                     nfeProduto.CodEnqIpi = produto.EnqIpi;
                     nfeProduto.CodSeloIpi = produto.CodSeloIpi;
                     nfeProduto.CstCofins = produto.CstCofins;
                     nfeProduto.CstIcms = dataRowViewXXX.Row["CstIcms"].ToString().Trim();
-                    nfeProduto.CstIpi = produto.CstIpi;
+                    if (decimal.Parse(txtValorIpi.Texts.Replace("R$ ", "")) > 0)
+                        nfeProduto.CstIpi = "99";
+                    else
+                        nfeProduto.CstIpi = produto.CstIpi;
                     nfeProduto.CstPis = produto.CstPis;
                     string orig = "0";
                     if (!String.IsNullOrEmpty(produto.OrigemIcms))
@@ -1140,6 +1145,7 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.TPag = "";
                     nfeProduto.UCom = produto.UnidadeMedida.Sigla;
                     nfeProduto.UTrib = produto.UnidadeMedida.Sigla;
+                    nfeProduto.PICMSST = dataRowViewXXX.Row["PercentualICMSST"].ToString();
                     nfeProduto.ValorAcrescimo = 0;
                     nfeProduto.ValorCofins = decimal.Parse(dataRowViewXXX.Row["ValorCOFINS"].ToString());
                     nfeProduto.ValorDesconto = descontoItem;
@@ -1152,6 +1158,8 @@ namespace Lunar.Telas.Fiscal
                     nfeProduto.VFrete = decimal.Parse(dataRowViewXXX.Row["vFrete"].ToString().Trim());
                     nfeProduto.VOutro = decimal.Parse(dataRowViewXXX.Row["vOutro"].ToString().Trim());
                     nfeProduto.VSeguro = decimal.Parse(dataRowViewXXX.Row["vSeguro"].ToString().Trim());
+                    nfeProduto.VipiDevolvido = decimal.Parse(dataRowViewXXX.Row["ValorIpiDevolvido"].ToString().Trim());
+                    nfeProduto.InfAdProd = dataRowViewXXX.Row["Observacao"].ToString();
                     nfeProduto.Nfe = nfe;
 
                     Controller.getInstance().salvar(nfeProduto);

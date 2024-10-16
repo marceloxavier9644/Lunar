@@ -4,6 +4,7 @@ using LunarBase.ClassesBO;
 using LunarBase.ConexaoBD;
 using LunarBase.Interface;
 using LunarBase.Utilidades;
+using Newtonsoft.Json.Linq;
 using NHibernate;
 using System.Windows;
 
@@ -11,6 +12,7 @@ namespace LunarBase.ControllerBO
 {
     public class Controller
     {
+        private Lazy<Conexao> conexaoLazy;
         private Conexao conexao;
         private ISession session;
         private static Controller instancia;

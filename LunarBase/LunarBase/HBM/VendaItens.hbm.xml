@@ -54,9 +54,15 @@
 		<property name="ValorAcrescimo" column="VALORACRESCIMO" type="decimal"/>
 		<property name="ValorFinal" column="VALORFINAL" type="decimal"/>
 
+		<property name="DataDevolucao" column="DATADEVOLUCAO" type="DateTime"/>
+		<property name="QuantidadeDevolvida" column="QUANTIDADEDEVOLVIDA" type="double"/>
+		<property name="ValorDevolvido" column="VALORDEVOLVIDO" type="decimal"/>
+
 		<many-to-one name="Venda" column="VENDA" class="LunarBase.Classes.Venda" not-null="false" foreign-key="FK_VENDAITEM_VENDA" lazy="false"/>
 		<many-to-one name="Produto" column="PRODUTO" class="LunarBase.Classes.Produto" not-null="true" foreign-key="FK_VENDAITEM_PRODUTO" lazy="false"/>
 		<many-to-one name="ProdutoGrade" column="PRODUTOGRADE" class="LunarBase.Classes.ProdutoGrade" not-null="true" foreign-key="FK_VENDAITEM_GRADE" lazy="false"/>
+		<many-to-one name="UsuarioDevolucao" column="USUARIODEVOLUCAO" class="LunarBase.Classes.Usuario" not-null="false" foreign-key="FK_VENDAITEM_USERDEVOLUCAO" lazy="false"/>
+
 
 		<!-- Dados do objeto padrão -->
 		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>

@@ -2303,6 +2303,7 @@
             this.txtCodProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodProduto.Texts = "";
             this.txtCodProduto.UnderlinedStyle = false;
+            this.txtCodProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodProduto_KeyPress);
             // 
             // txtPesquisaProduto
             // 

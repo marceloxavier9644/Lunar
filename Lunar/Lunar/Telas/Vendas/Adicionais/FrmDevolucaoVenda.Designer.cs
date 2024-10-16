@@ -35,19 +35,21 @@
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn3 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn4 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn5 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
+            Syncfusion.WinForms.DataGrid.GridNumericColumn gridNumericColumn6 = new Syncfusion.WinForms.DataGrid.GridNumericColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn4 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn5 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDevolucaoVenda));
             this.autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.gridProduto = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
             this.txtCodVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtVendedor = new Lunar.RJ_UI.Classes.RJTextBox();
             this.btnExcluirItem = new Lunar.RJ_UI.Classes.RJButton();
@@ -64,7 +66,7 @@
             this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel7.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel7.Location = new System.Drawing.Point(393, 21);
+            this.autoLabel7.Location = new System.Drawing.Point(558, 21);
             this.autoLabel7.Name = "autoLabel7";
             this.autoLabel7.Size = new System.Drawing.Size(85, 16);
             this.autoLabel7.TabIndex = 266;
@@ -75,7 +77,7 @@
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(202, 21);
+            this.autoLabel6.Location = new System.Drawing.Point(278, 21);
             this.autoLabel6.Name = "autoLabel6";
             this.autoLabel6.Size = new System.Drawing.Size(82, 16);
             this.autoLabel6.TabIndex = 264;
@@ -97,31 +99,11 @@
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel2.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel2.Location = new System.Drawing.Point(507, 82);
+            this.autoLabel2.Location = new System.Drawing.Point(630, 82);
             this.autoLabel2.Name = "autoLabel2";
             this.autoLabel2.Size = new System.Drawing.Size(51, 16);
             this.autoLabel2.TabIndex = 260;
             this.autoLabel2.Text = "Código";
-            // 
-            // btnPesquisaCliente
-            // 
-            this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisaCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
-            this.btnPesquisaCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisaCliente.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnPesquisaCliente.IconColor = System.Drawing.Color.SlateGray;
-            this.btnPesquisaCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnPesquisaCliente.IconSize = 38;
-            this.btnPesquisaCliente.Location = new System.Drawing.Point(464, 105);
-            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
-            this.btnPesquisaCliente.Size = new System.Drawing.Size(36, 34);
-            this.btnPesquisaCliente.TabIndex = 259;
-            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
-            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
             // 
             // autoLabel1
             // 
@@ -142,7 +124,7 @@
             this.gridProduto.AllowResizingColumns = true;
             this.gridProduto.AllowResizingHiddenColumns = true;
             this.gridProduto.AutoGenerateColumns = false;
-            this.gridProduto.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.AllCells;
+            this.gridProduto.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.ColumnHeader;
             gridTextColumn1.AllowEditing = false;
             gridTextColumn1.AllowFiltering = true;
             gridTextColumn1.AllowResizing = true;
@@ -181,12 +163,12 @@
             gridNumericColumn2.AllowFiltering = true;
             gridNumericColumn2.AllowResizing = true;
             gridNumericColumn2.CellStyle.Font.Size = 12F;
-            gridNumericColumn2.Format = "N2";
+            gridNumericColumn2.Format = "N";
             gridNumericColumn2.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            gridNumericColumn2.HeaderStyle.Font.Facename = "Montserrat";
-            gridNumericColumn2.HeaderStyle.Font.Size = 10F;
-            gridNumericColumn2.HeaderText = "Valor Unitário";
-            gridNumericColumn2.MappingName = "ValorProduto";
+            gridNumericColumn2.HeaderStyle.Font.Facename = "montserrat";
+            gridNumericColumn2.HeaderStyle.Font.Size = 12F;
+            gridNumericColumn2.HeaderText = "Qtd Devolvida";
+            gridNumericColumn2.MappingName = "QuantidadeDevolvida";
             gridNumericColumn3.AllowEditing = false;
             gridNumericColumn3.AllowFiltering = true;
             gridNumericColumn3.AllowResizing = true;
@@ -195,8 +177,8 @@
             gridNumericColumn3.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridNumericColumn3.HeaderStyle.Font.Facename = "Montserrat";
             gridNumericColumn3.HeaderStyle.Font.Size = 10F;
-            gridNumericColumn3.HeaderText = "Desconto";
-            gridNumericColumn3.MappingName = "ValorDesconto";
+            gridNumericColumn3.HeaderText = "Valor Unitário";
+            gridNumericColumn3.MappingName = "ValorProduto";
             gridNumericColumn4.AllowEditing = false;
             gridNumericColumn4.AllowFiltering = true;
             gridNumericColumn4.AllowResizing = true;
@@ -205,8 +187,8 @@
             gridNumericColumn4.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridNumericColumn4.HeaderStyle.Font.Facename = "Montserrat";
             gridNumericColumn4.HeaderStyle.Font.Size = 10F;
-            gridNumericColumn4.HeaderText = "Acréscimo";
-            gridNumericColumn4.MappingName = "ValorAcrescimo";
+            gridNumericColumn4.HeaderText = "Desconto";
+            gridNumericColumn4.MappingName = "ValorDesconto";
             gridNumericColumn5.AllowEditing = false;
             gridNumericColumn5.AllowFiltering = true;
             gridNumericColumn5.AllowResizing = true;
@@ -215,8 +197,18 @@
             gridNumericColumn5.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             gridNumericColumn5.HeaderStyle.Font.Facename = "Montserrat";
             gridNumericColumn5.HeaderStyle.Font.Size = 10F;
-            gridNumericColumn5.HeaderText = "Valor Total";
-            gridNumericColumn5.MappingName = "ValorFinal";
+            gridNumericColumn5.HeaderText = "Acréscimo";
+            gridNumericColumn5.MappingName = "ValorAcrescimo";
+            gridNumericColumn6.AllowEditing = false;
+            gridNumericColumn6.AllowFiltering = true;
+            gridNumericColumn6.AllowResizing = true;
+            gridNumericColumn6.CellStyle.Font.Size = 12F;
+            gridNumericColumn6.Format = "N2";
+            gridNumericColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridNumericColumn6.HeaderStyle.Font.Facename = "Montserrat";
+            gridNumericColumn6.HeaderStyle.Font.Size = 10F;
+            gridNumericColumn6.HeaderText = "Valor Total";
+            gridNumericColumn6.MappingName = "ValorFinal";
             gridTextColumn3.AllowEditing = false;
             gridTextColumn3.AllowFiltering = true;
             gridTextColumn3.AllowResizing = true;
@@ -244,6 +236,16 @@
             gridTextColumn5.HeaderStyle.Font.Size = 10F;
             gridTextColumn5.HeaderText = "UNID";
             gridTextColumn5.MappingName = "ProdutoGrade.UnidadeMedida.Sigla";
+            gridTextColumn6.AllowEditing = false;
+            gridTextColumn6.AllowFiltering = true;
+            gridTextColumn6.AllowResizing = true;
+            gridTextColumn6.CellStyle.Font.Size = 12F;
+            gridTextColumn6.Format = "N2";
+            gridTextColumn6.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            gridTextColumn6.HeaderStyle.Font.Facename = "montserrat";
+            gridTextColumn6.HeaderStyle.Font.Size = 10F;
+            gridTextColumn6.HeaderText = "Valor Devolvido";
+            gridTextColumn6.MappingName = "Valor Devolvido";
             this.gridProduto.Columns.Add(gridTextColumn1);
             this.gridProduto.Columns.Add(gridTextColumn2);
             this.gridProduto.Columns.Add(gridNumericColumn1);
@@ -251,25 +253,28 @@
             this.gridProduto.Columns.Add(gridNumericColumn3);
             this.gridProduto.Columns.Add(gridNumericColumn4);
             this.gridProduto.Columns.Add(gridNumericColumn5);
+            this.gridProduto.Columns.Add(gridNumericColumn6);
             this.gridProduto.Columns.Add(gridTextColumn3);
             this.gridProduto.Columns.Add(gridTextColumn4);
             this.gridProduto.Columns.Add(gridTextColumn5);
+            this.gridProduto.Columns.Add(gridTextColumn6);
             this.gridProduto.Location = new System.Drawing.Point(12, 207);
             this.gridProduto.Name = "gridProduto";
             this.gridProduto.SelectionMode = Syncfusion.WinForms.DataGrid.Enums.GridSelectionMode.Extended;
-            this.gridProduto.Size = new System.Drawing.Size(603, 260);
+            this.gridProduto.Size = new System.Drawing.Size(864, 299);
             this.gridProduto.Style.CellStyle.Font.Size = 10F;
             this.gridProduto.Style.HeaderStyle.FilterIconColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.gridProduto.Style.HeaderStyle.Font.Size = 12F;
             this.gridProduto.TabIndex = 267;
             this.gridProduto.Text = "Grid Parcelas";
+            this.gridProduto.CurrentCellValidating += new Syncfusion.WinForms.DataGrid.Events.CurrentCellValidatingEventHandler(this.gridProduto_CurrentCellValidating);
             // 
             // autoLabel8
             // 
             this.autoLabel8.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel8.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel8.Location = new System.Drawing.Point(507, 143);
+            this.autoLabel8.Location = new System.Drawing.Point(630, 143);
             this.autoLabel8.Name = "autoLabel8";
             this.autoLabel8.Size = new System.Drawing.Size(51, 16);
             this.autoLabel8.TabIndex = 273;
@@ -286,6 +291,29 @@
             this.autoLabel9.TabIndex = 270;
             this.autoLabel9.Text = "Vendedor";
             // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.BackColor = System.Drawing.Color.White;
+            this.btnConfirmar.BackgroundColor = System.Drawing.Color.White;
+            this.btnConfirmar.BorderColor = System.Drawing.Color.Navy;
+            this.btnConfirmar.BorderRadius = 8;
+            this.btnConfirmar.BorderSize = 2;
+            this.btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirmar.FlatAppearance.BorderSize = 0;
+            this.btnConfirmar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnConfirmar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.ForeColor = System.Drawing.Color.Navy;
+            this.btnConfirmar.Location = new System.Drawing.Point(716, 512);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(160, 42);
+            this.btnConfirmar.TabIndex = 274;
+            this.btnConfirmar.Text = "Confirmar [F5]";
+            this.btnConfirmar.TextColor = System.Drawing.Color.Navy;
+            this.btnConfirmar.UseVisualStyleBackColor = false;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
             // txtCodVendedor
             // 
             this.txtCodVendedor.BackColor = System.Drawing.Color.White;
@@ -296,7 +324,7 @@
             this.txtCodVendedor.Enabled = false;
             this.txtCodVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodVendedor.Location = new System.Drawing.Point(507, 163);
+            this.txtCodVendedor.Location = new System.Drawing.Point(630, 163);
             this.txtCodVendedor.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodVendedor.Multiline = false;
             this.txtCodVendedor.Name = "txtCodVendedor";
@@ -305,7 +333,7 @@
             this.txtCodVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCodVendedor.PlaceholderText = "";
             this.txtCodVendedor.ReadOnly = false;
-            this.txtCodVendedor.Size = new System.Drawing.Size(109, 37);
+            this.txtCodVendedor.Size = new System.Drawing.Size(245, 37);
             this.txtCodVendedor.TabIndex = 271;
             this.txtCodVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodVendedor.Texts = "";
@@ -330,7 +358,7 @@
             this.txtVendedor.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtVendedor.PlaceholderText = "";
             this.txtVendedor.ReadOnly = false;
-            this.txtVendedor.Size = new System.Drawing.Size(487, 37);
+            this.txtVendedor.Size = new System.Drawing.Size(610, 37);
             this.txtVendedor.TabIndex = 269;
             this.txtVendedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtVendedor.Texts = "";
@@ -350,13 +378,14 @@
             this.btnExcluirItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluirItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluirItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnExcluirItem.Location = new System.Drawing.Point(455, 473);
+            this.btnExcluirItem.Location = new System.Drawing.Point(550, 512);
             this.btnExcluirItem.Name = "btnExcluirItem";
             this.btnExcluirItem.Size = new System.Drawing.Size(160, 42);
             this.btnExcluirItem.TabIndex = 268;
             this.btnExcluirItem.Text = "Excluir Item [DEL]";
             this.btnExcluirItem.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnExcluirItem.UseVisualStyleBackColor = false;
+            this.btnExcluirItem.Click += new System.EventHandler(this.btnExcluirItem_Click);
             // 
             // txtDataVenda
             // 
@@ -368,7 +397,7 @@
             this.txtDataVenda.Enabled = false;
             this.txtDataVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataVenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDataVenda.Location = new System.Drawing.Point(393, 41);
+            this.txtDataVenda.Location = new System.Drawing.Point(558, 41);
             this.txtDataVenda.Margin = new System.Windows.Forms.Padding(4);
             this.txtDataVenda.Multiline = false;
             this.txtDataVenda.Name = "txtDataVenda";
@@ -377,7 +406,7 @@
             this.txtDataVenda.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtDataVenda.PlaceholderText = "";
             this.txtDataVenda.ReadOnly = false;
-            this.txtDataVenda.Size = new System.Drawing.Size(222, 37);
+            this.txtDataVenda.Size = new System.Drawing.Size(317, 37);
             this.txtDataVenda.TabIndex = 265;
             this.txtDataVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDataVenda.Texts = "";
@@ -393,7 +422,7 @@
             this.txtValorVenda.Enabled = false;
             this.txtValorVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorVenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValorVenda.Location = new System.Drawing.Point(202, 41);
+            this.txtValorVenda.Location = new System.Drawing.Point(278, 41);
             this.txtValorVenda.Margin = new System.Windows.Forms.Padding(4);
             this.txtValorVenda.Multiline = false;
             this.txtValorVenda.Name = "txtValorVenda";
@@ -402,7 +431,7 @@
             this.txtValorVenda.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtValorVenda.PlaceholderText = "";
             this.txtValorVenda.ReadOnly = false;
-            this.txtValorVenda.Size = new System.Drawing.Size(183, 37);
+            this.txtValorVenda.Size = new System.Drawing.Size(272, 37);
             this.txtValorVenda.TabIndex = 263;
             this.txtValorVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtValorVenda.Texts = "";
@@ -427,7 +456,7 @@
             this.txtNumeroVenda.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtNumeroVenda.PlaceholderText = "";
             this.txtNumeroVenda.ReadOnly = false;
-            this.txtNumeroVenda.Size = new System.Drawing.Size(182, 37);
+            this.txtNumeroVenda.Size = new System.Drawing.Size(258, 37);
             this.txtNumeroVenda.TabIndex = 261;
             this.txtNumeroVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNumeroVenda.Texts = "";
@@ -443,7 +472,7 @@
             this.txtCodCliente.Enabled = false;
             this.txtCodCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodCliente.Location = new System.Drawing.Point(507, 102);
+            this.txtCodCliente.Location = new System.Drawing.Point(630, 102);
             this.txtCodCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodCliente.Multiline = false;
             this.txtCodCliente.Name = "txtCodCliente";
@@ -452,7 +481,7 @@
             this.txtCodCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCodCliente.PlaceholderText = "";
             this.txtCodCliente.ReadOnly = false;
-            this.txtCodCliente.Size = new System.Drawing.Size(108, 37);
+            this.txtCodCliente.Size = new System.Drawing.Size(245, 37);
             this.txtCodCliente.TabIndex = 258;
             this.txtCodCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodCliente.Texts = "";
@@ -477,7 +506,7 @@
             this.txtCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCliente.PlaceholderText = "";
             this.txtCliente.ReadOnly = false;
-            this.txtCliente.Size = new System.Drawing.Size(446, 37);
+            this.txtCliente.Size = new System.Drawing.Size(611, 37);
             this.txtCliente.TabIndex = 256;
             this.txtCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCliente.Texts = "";
@@ -488,7 +517,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(633, 566);
+            this.ClientSize = new System.Drawing.Size(888, 566);
+            this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.autoLabel8);
             this.Controls.Add(this.txtCodVendedor);
             this.Controls.Add(this.autoLabel9);
@@ -502,7 +532,6 @@
             this.Controls.Add(this.autoLabel3);
             this.Controls.Add(this.txtNumeroVenda);
             this.Controls.Add(this.autoLabel2);
-            this.Controls.Add(this.btnPesquisaCliente);
             this.Controls.Add(this.txtCodCliente);
             this.Controls.Add(this.autoLabel1);
             this.Controls.Add(this.txtCliente);
@@ -529,7 +558,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private RJ_UI.Classes.RJTextBox txtNumeroVenda;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
-        private FontAwesome.Sharp.IconButton btnPesquisaCliente;
         private RJ_UI.Classes.RJTextBox txtCodCliente;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private RJ_UI.Classes.RJTextBox txtCliente;
@@ -539,5 +567,6 @@
         private RJ_UI.Classes.RJTextBox txtCodVendedor;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel9;
         private RJ_UI.Classes.RJTextBox txtVendedor;
+        private RJ_UI.Classes.RJButton btnConfirmar;
     }
 }

@@ -37,20 +37,35 @@ namespace Lunar.Telas.CaixaConferencia
 
             txtSaldoInicial.Text = saldo.ToString("N2");
         }
+
+        private bool _isLoadExecuted = false;
+        private bool _isUpdatingListBox = false;
         private void FrmAbrirCaixa_Load(object sender, EventArgs e)
         {
+            if (_isLoadExecuted)
+                return;
+
+            _isUpdatingListBox = true; // Desativa o evento temporariamente
+
             calcularSaldoInicial();
+
             CaixaAberturaController caixaAberturaController = new CaixaAberturaController();
             IList<CaixaAbertura> listaCaixa = new List<CaixaAbertura>();
-            if(Sessao.parametroSistema.TipoCaixa.Equals("INDIVIDUAL"))
+
+            if (Sessao.parametroSistema.TipoCaixa.Equals("INDIVIDUAL"))
                 listaCaixa = caixaAberturaController.selecionarAberturaCaixaPorUsuario(Sessao.usuarioLogado.Id);
             else
                 listaCaixa = caixaAberturaController.selecionarTodosCaixasAbertos();
+
             if (listaCaixa.Count > 0)
             {
                 listBox1.DataSource = listaCaixa;
                 listBox1.DisplayMember = "DataAbertura";
+
+                listBox1.SelectedIndex = -1;
             }
+            _isLoadExecuted = true;
+            _isUpdatingListBox = false; // Reativa o evento
         }
 
         private void btnAbrirCaixa_Click(object sender, EventArgs e)
@@ -113,12 +128,11 @@ namespace Lunar.Telas.CaixaConferencia
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItem != null)
+            if (!_isUpdatingListBox && listBox1.SelectedItem != null)
             {
                 CaixaAbertura caixaSelecionada = (CaixaAbertura)listBox1.SelectedItem;
                 txtDataAbertura.Value = caixaSelecionada.DataAbertura;
                 calcularSaldoInicial();
-                //MessageBox.Show("Data de Abertura: " + caixaSelecionada.DataAbertura.ToShortDateString());
             }
         }
 

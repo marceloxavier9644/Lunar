@@ -9,6 +9,9 @@ namespace LunarBase.Classes
         private int id;
         private Produto produto;
         private double quantidade;
+        private double quantidadeDevolvida;
+        private DateTime dataDevolucao;
+        private Usuario usuarioDevolucao;
         private string descricaoProduto;
         private string ncm;
         private string cest;
@@ -52,7 +55,7 @@ namespace LunarBase.Classes
         private decimal valorDesconto;
         private decimal valorAcrescimo;
         private decimal valorFinal;
-
+        private decimal valorDevolvido;
         private Venda venda;
         private EmpresaFilial empresaFilial;
         private ProdutoGrade produtoGrade;
@@ -143,6 +146,14 @@ namespace LunarBase.Classes
         public virtual double Quantidade { get => quantidade; set => quantidade = value; }
         [Anotacao("Grade")]
         public virtual ProdutoGrade ProdutoGrade { get => produtoGrade; set => produtoGrade = value; }
+        [Anotacao("Quantidade Devolvida")]
+        public virtual double QuantidadeDevolvida { get => quantidadeDevolvida; set => quantidadeDevolvida = value; }
+        [Anotacao("Data Devolucao")]
+        public virtual DateTime DataDevolucao { get => dataDevolucao; set => dataDevolucao = value; }
+        [Anotacao("Usuario Devolucao")]
+        public virtual Usuario UsuarioDevolucao { get => usuarioDevolucao; set => usuarioDevolucao = value; }
+        [Anotacao("Valor Devolvido")]
+        public virtual decimal ValorDevolvido { get => valorDevolvido; set => valorDevolvido = value; }
 
 
         //Contrutor para conseguir puxar SUM na consulta DAO

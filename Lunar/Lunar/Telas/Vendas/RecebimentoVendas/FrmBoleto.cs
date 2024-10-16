@@ -27,6 +27,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
         OrdemServico ordemservico = new OrdemServico();
         FormaPagamento fp = new FormaPagamento();
         IList<ContaReceber> listaBoletoReceber = new List<ContaReceber>();
+        ContaBancaria conta = new ContaBancaria();
         public DialogResult showModalNovo(ref object vendaFormaPagamento)
         {
             showModal = true;
@@ -38,7 +39,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
             return DialogResult;
         }
 
-        public DialogResult showModalReceber(ref FormaPagamento formaPagamento, ref decimal valorRecebido, ref IList<ContaReceber> listaBoletoReceber)
+        public DialogResult showModalReceber(ref FormaPagamento formaPagamento, ref decimal valorRecebido, ref IList<ContaReceber> listaBoletoReceber, ref ContaBancaria contaBancaria)
         {
             showModal = true;
             DialogResult = ShowDialog();
@@ -47,6 +48,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                 formaPagamento = this.fp;
                 listaBoletoReceber = this.listaBoletoReceber;
                 valorRecebido = this.valor;
+                contaBancaria = this.conta;
             }
             return DialogResult;
         }
@@ -212,6 +214,12 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                             formaPagamento = (FormaPagamento)Controller.getInstance().selecionar(formaPagamento);
                             this.fp = formaPagamento;
 
+                            ContaBancaria contaBancaria = new ContaBancaria();
+                            if(!String.IsNullOrEmpty(txtCodContaBancaria.Texts))
+                                contaBancaria.Id = int.Parse(txtCodContaBancaria.Texts);
+                            contaBancaria = (ContaBancaria)Controller.getInstance().selecionar(contaBancaria);
+                            this.conta = contaBancaria;
+
                             listaBoletoReceber = new List<ContaReceber>();
                             var records = gridParcelas.View.Records;
                             foreach (var record in records)
@@ -243,6 +251,7 @@ namespace Lunar.Telas.Vendas.RecebimentoVendas
                                 contaReceber.Cliente = ordemservico.Cliente;
                                 contaReceber.Origem = "ORDEMSERVICO";
                                 contaReceber.Concluido = false;
+                                contaReceber.ContaBoleto = contaBancaria;
                                 contaReceber.BoletoGerado = false; // vao ser gerados na proxima tela ao finalizar
                                 contaReceber.IdBoleto = "0";
                                 contaReceber.OrdemServico = ordemservico;

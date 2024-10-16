@@ -301,6 +301,8 @@ namespace Lunar.Telas.CaixaConferencia.Reports.Dados {
             
             private global::System.Data.DataColumn columnUsuarioId;
             
+            private global::System.Data.DataColumn columnTipoCartao;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public CaixaDataTable() {
@@ -424,6 +426,14 @@ namespace Lunar.Telas.CaixaConferencia.Reports.Dados {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TipoCartaoColumn {
+                get {
+                    return this.columnTipoCartao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,7 +469,7 @@ namespace Lunar.Telas.CaixaConferencia.Reports.Dados {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public CaixaRow AddCaixaRow(string Id, string Descricao, decimal Valor, string Tipo, string DataLancamento, string FormaPagamentoId, string FormaPagamento, string PlanoContaId, string PlanoConta, string ContaBancariaId, int UsuarioId) {
+            public CaixaRow AddCaixaRow(string Id, string Descricao, decimal Valor, string Tipo, string DataLancamento, string FormaPagamentoId, string FormaPagamento, string PlanoContaId, string PlanoConta, string ContaBancariaId, int UsuarioId, string TipoCartao) {
                 CaixaRow rowCaixaRow = ((CaixaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -472,7 +482,8 @@ namespace Lunar.Telas.CaixaConferencia.Reports.Dados {
                         PlanoContaId,
                         PlanoConta,
                         ContaBancariaId,
-                        UsuarioId};
+                        UsuarioId,
+                        TipoCartao};
                 rowCaixaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCaixaRow);
                 return rowCaixaRow;
@@ -506,6 +517,7 @@ namespace Lunar.Telas.CaixaConferencia.Reports.Dados {
                 this.columnPlanoConta = base.Columns["PlanoConta"];
                 this.columnContaBancariaId = base.Columns["ContaBancariaId"];
                 this.columnUsuarioId = base.Columns["UsuarioId"];
+                this.columnTipoCartao = base.Columns["TipoCartao"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -533,6 +545,8 @@ namespace Lunar.Telas.CaixaConferencia.Reports.Dados {
                 base.Columns.Add(this.columnContaBancariaId);
                 this.columnUsuarioId = new global::System.Data.DataColumn("UsuarioId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsuarioId);
+                this.columnTipoCartao = new global::System.Data.DataColumn("TipoCartao", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipoCartao);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -851,6 +865,22 @@ namespace Lunar.Telas.CaixaConferencia.Reports.Dados {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string TipoCartao {
+                get {
+                    try {
+                        return ((string)(this[this.tableCaixa.TipoCartaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'TipoCartao\' na tabela \'Caixa\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCaixa.TipoCartaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIdNull() {
                 return this.IsNull(this.tableCaixa.IdColumn);
             }
@@ -979,6 +1009,18 @@ namespace Lunar.Telas.CaixaConferencia.Reports.Dados {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetUsuarioIdNull() {
                 this[this.tableCaixa.UsuarioIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTipoCartaoNull() {
+                return this.IsNull(this.tableCaixa.TipoCartaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTipoCartaoNull() {
+                this[this.tableCaixa.TipoCartaoColumn] = global::System.Convert.DBNull;
             }
         }
         

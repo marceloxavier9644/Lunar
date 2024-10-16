@@ -1,5 +1,6 @@
 ﻿using LunarBase.Classes;
 using LunarBase.ConexaoBD;
+using LunarBase.Utilidades;
 using NHibernate.Transform;
 using System;
 using System.Collections.Generic;
@@ -87,5 +88,51 @@ namespace LunarBase.ClassesDAO
             String sql = "SELECT COUNT(*) FROM Produto as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.Descricao, ' ', Tabela.Referencia, ' ', Tabela.Ean) like '%" + valor + "%' and Tabela.FlagExcluido <> true ";
             return Session.CreateQuery(sql).UniqueResult<Int64>();
         }
+
+        public void CriarIndiceDescricao()
+        {
+            using (var session = Conexao.GetSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        // Verifica se o índice já existe
+                        string checkIndexQuery = $@"
+                    SELECT COUNT(*)
+                    FROM information_schema.statistics
+                    WHERE table_schema = '{Sessao.nomeBanco}'  -- Usa interpolação para o nome do banco
+                    AND table_name = 'Produto'
+                    AND index_name = 'idx_descricao'";
+
+                        var checkCommand = session.Connection.CreateCommand();
+                        checkCommand.CommandText = checkIndexQuery;
+                        var exists = Convert.ToInt32(checkCommand.ExecuteScalar()) > 0;
+
+                        if (!exists)
+                        {
+                            // Cria o índice se não existir
+                            string createIndexQuery = "CREATE INDEX idx_descricao ON Produto(Descricao)";
+                            var createCommand = session.Connection.CreateCommand();
+                            createCommand.CommandText = createIndexQuery;
+                            createCommand.ExecuteNonQuery();
+                            Console.WriteLine("Índice 'idx_descricao' criado com sucesso.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("O índice 'idx_descricao' já existe.");
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        Console.WriteLine("Erro ao criar índice: " + ex.Message);
+                    }
+                }
+            }
+        }
+
     }
 }

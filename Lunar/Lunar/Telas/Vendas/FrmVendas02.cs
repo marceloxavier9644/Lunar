@@ -12,6 +12,7 @@ using Lunar.Utils.ClassesRepeticoes;
 using Lunar.Utils.GalaxyPay_API;
 using Lunar.Utils.IntegracoesBancosBoletos;
 using Lunar.Utils.OrganizacaoNF;
+using Lunar.Utils.PesquisasClass;
 using Lunar.WSCorreios;
 using LunarBase.Classes;
 using LunarBase.ClassesBO;
@@ -20,6 +21,7 @@ using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using LunarBase.Utilidades.NFe40Modelo;
 using Newtonsoft.Json;
+using NHibernate.Mapping;
 using NSSuite_CSharp.src.JSON.NFe;
 using OpenQA.Selenium.Internal;
 using Syncfusion.Data;
@@ -854,312 +856,63 @@ namespace Lunar.Telas.Vendas
         {
             if (e.KeyChar == 13)
             {
-                PesquisarProduto(txtPesquisaProduto.Texts.Trim());
+                //PesquisarProduto(txtPesquisaProduto.Texts.Trim());
+                pesquisarProduto();
             }
         }
 
-        private void ProcessarCodigoBarras(string codigoBarras)
+        
+
+        private void pesquisarProduto()
         {
-            // Ignora o primeiro dígito verificador
-            string codigoProdutoComZeros = codigoBarras.Substring(1, 4); // Captura os 6 dígitos do código do produto
-            string codigoProduto = codigoProdutoComZeros.TrimStart('0');
-            string valorTotalString = codigoBarras.Substring(7, 5);
-            decimal valorTotal = Convert.ToDecimal(valorTotalString) / 100;
-            Produto produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(codigoProduto), Sessao.empresaFilialLogada); // Método para obter o produto pelo código
-
-            if (produto != null)
+            string valorAux = "";
+            string quantidade = "";
+            if (txtPesquisaProduto.Texts.Contains("*"))
             {
-                decimal quantidade = valorTotal / produto.ValorVenda;
-                if (quantidade.ToString().Length >= 6)
-                    txtPesquisaProduto.Texts = quantidade.ToString().Substring(0, 6) + "*" + codigoProduto;
-                else
-                    txtPesquisaProduto.Texts = quantidade.ToString() + "*" + codigoProduto;
-                PesquisarProduto(txtPesquisaProduto.Texts.Trim());
-                //MessageBox.Show($"Código do Produto: {codigoProduto}\nValor Total: {valorTotal:C}\nQuantidade: {quantidade}");
+                int indexAsterisco = txtPesquisaProduto.Texts.IndexOf("*");
+                quantidade = txtPesquisaProduto.Texts.Substring(0, indexAsterisco);
+                txtQuantidade.Texts = quantidade;
+
+                txtPesquisaProduto.Texts = txtPesquisaProduto.Texts.Substring(indexAsterisco + 1);
             }
-            else
+
+            string valorPesquisa = txtPesquisaProduto.Texts.Trim(); 
+
+            ProdutoPesquisaService produtoService = new ProdutoPesquisaService();
+            var resultado = produtoService.PesquisarProduto(valorPesquisa); // Chama o serviço de pesquisa
+
+            // Aqui você vai verificar o retorno
+            if (resultado.produto != null && resultado.grade != null)
             {
-                GenericaDesktop.ShowAlerta("Produto não encontrado");
-            }
-        }
-
-        private void PesquisarProduto(string valor)
-        {
-            txtQuantidade.TextAlign = HorizontalAlignment.Center;
-            txtValorUnitario.TextAlign = HorizontalAlignment.Center;
-            txtValorTotal.TextAlign = HorizontalAlignment.Center;
-
-            String valorAux = "";
-            valorAux = valor;
-
-            if (valor.Contains("*"))
-                valor = valor.Substring(valor.IndexOf("*") + 1);
-
-            //Verifica se é codigo de barras
-            if (IsNumericAndHasMoreThan7Digits(valor))
-            {
-                ProdutoDAO produtoDAO = new ProdutoDAO();
-                //Consulta para casos que produtograde podem ser null
-                //String sql = "SELECT p.Id AS ProdutoId, p.DESCRICAO AS ProdutoNome, pg.Id AS ProdutoGradeId, pg.Descricao AS DescricaoGrade, COALESCE(um.Descricao, p.UnidadeMedida) AS UnidadeMedida, COALESCE(pg.ValorVenda, p.ValorVenda) AS ValorVenda, COALESCE(pcb.CodigoBarras, (SELECT pcb2.CodigoBarras FROM ProdutoCodigoBarras pcb2 WHERE pcb2.Produto = p.Id LIMIT 1)) AS CodigoBarras FROM Produto p LEFT JOIN ProdutoGrade pg ON p.Id = pg.Produto LEFT JOIN ProdutoCodigoBarras pcb ON pg.Id = pcb.PRODUTOGRADE LEFT JOIN UnidadeMedida um ON pg.UnidadeMedida = um.Id WHERE (pcb.CodigoBarras = '" + valor+"' OR (pg.Id IS NULL AND pcb.CodigoBarras IS NULL AND p.Id IN (SELECT p2.Id FROM Produto p2 LEFT JOIN ProdutoCodigoBarras pcb2 ON p2.Id = pcb2.Produto WHERE pcb2.CodigoBarras = '"+valor+"'))) AND p.FlagExcluido = 0 AND (pg.FlagExcluido = 0 OR pg.FlagExcluido IS NULL) AND (pcb.FlagExcluido = 0 OR pcb.FlagExcluido IS NULL) AND (um.FlagExcluido = 0 OR um.FlagExcluido IS NULL);";
-
-                //Consulta para casos que todos itens tenha uma grade
-                String sql = "SELECT p.Id AS ProdutoId, p.DESCRICAO AS ProdutoNome, pg.Id AS ProdutoGradeId, pg.Descricao AS DescricaoGrade, COALESCE(um.Id, p.UnidadeMedida) AS UnidadeMedida, COALESCE(pg.ValorVenda, p.ValorVenda) AS ValorVenda, COALESCE(pcb.CodigoBarras, (SELECT pcb2.CodigoBarras FROM ProdutoCodigoBarras pcb2 WHERE pcb2.Produto = p.Id LIMIT 1)) AS CodigoBarras FROM Produto p JOIN ProdutoGrade pg ON p.Id = pg.Produto LEFT JOIN ProdutoCodigoBarras pcb ON pg.Id = pcb.ProdutoGrade LEFT JOIN UnidadeMedida um ON pg.UnidadeMedida = um.Id WHERE pcb.CodigoBarras = '" + valor + "' AND p.FlagExcluido = 0 AND pg.FlagExcluido = 0 AND (pcb.FlagExcluido = 0 OR pcb.FlagExcluido IS NULL) AND (um.FlagExcluido = 0 OR um.FlagExcluido IS NULL)";
-
-                ProdutoGradeController produtoGradeController = new ProdutoGradeController();
-                IList<ProdutoResult> lista = produtoDAO.selecionarProdutosPorSqlResult(sql);
-                if (lista.Count == 1)
-                {
-                    desbloquearCamposValorQuantidade();
-                    foreach (ProdutoResult prod in lista)
-                    {
-                        IList<ProdutoGrade> listaGrade = produtoGradeController.selecionarGradePorProduto(prod.ProdutoId);
-                        if (Sessao.parametroSistema.SelecionarGradeEan == true && listaGrade.Count > 1)
-                        {
-                            Produto produtoSel = new Produto();
-                            produtoSel.Id = prod.ProdutoId;
-                            produtoSel = (Produto)Controller.getInstance().selecionar(produtoSel);
-                            if (produtoSel.Grade == true)
-                            {
-                                ProdutoGrade produtoGrade = new ProdutoGrade();
-                                produtoGrade = selecionarGrade(produtoSel);
-
-                                if (produtoGrade != null)
-                                {
-                                    txtPesquisaProduto.Texts = produtoSel.Descricao;
-                                    txtQuantidade.Texts = "1";
-                                    txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                    txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                    this.produto = produtoSel;
-                                    this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
-                                    lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-
-                                    produto.GradePrincipal = produtoGrade;
-
-                                    inserirItem(this.produto);
-                                    txtQuantidade.Focus();
-                                    txtQuantidade.Select();
-                                }
-                            }
-                        }
-                        //1 Codigo de barras por grade, nao pergunta grade na tela de vendas se bipar o produto
-                        else
-                        {
-                            txtPesquisaProduto.Texts = prod.DescricaoGrade;
-                            txtQuantidade.Texts = "1";
-                            txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                            txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                            produto.Id = prod.ProdutoId;
-                            produto = (Produto)Controller.getInstance().selecionar(produto);
-                            UnidadeMedida unidadeMedida = new UnidadeMedida();
-                            unidadeMedida.Id = prod.UnidadeMedida;
-                            unidadeMedida = (UnidadeMedida)Controller.getInstance().selecionar(unidadeMedida);
-                            //lblUnidadeMedida.Text = unidadeMedida.Sigla;
-                            produto.UnidadeMedida = unidadeMedida;
-
-                            ProdutoGrade prdgrade = new ProdutoGrade();
-                            prdgrade.Id = int.Parse(prod.ProdutoGradeId.ToString());
-                            prdgrade = (ProdutoGrade)Controller.getInstance().selecionar(prdgrade);
-                            produto.GradePrincipal = prdgrade;
-
-
-                            if (valorAux.Contains("*"))
-                                txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                            if (prod.CodigoBarras.Equals(valor.Trim()))
-                                inserirItem(this.produto);
-                            else
-                            {
-                                txtQuantidade.Focus();
-                                txtQuantidade.Select();
-                            }
-                        }
-                    }
-                }
-                //Verificando se é um produto de balança
-                else if (valor.StartsWith("2") && valor.Substring(6, 1).Equals("0") && valor.Substring(7, 1).Equals("0"))
-                {
-                    ProcessarCodigoBarras(txtPesquisaProduto.Texts.Trim());
-                    return;
-                }
-            }
-            //Verifica se é Id do produto
-            else if (ENumeroMenorQue5Digitos(valor))
-            {
-                listaProdutos = new List<Produto>();
-                listaProdutos = produtoController.selecionarProdutosPorSql("From Produto Tabela Where Tabela.FlagExcluido = false and Tabela.Id = " + valor);
-                if (listaProdutos.Count > 0)
-                {
-                    desbloquearCamposValorQuantidade();
-                    foreach (Produto prod in listaProdutos)
-                    {
-                        if (prod.Veiculo == true)
-                        {
-                            FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
-                            frmProdutoCadastro.ShowDialog();
-                        }
-                        if (prod.Grade == true)
-                        {
-                            ProdutoGrade produtoGrade = new ProdutoGrade();
-                            produtoGrade = selecionarGrade(prod);
-
-                            if (produtoGrade != null)
-                            {
-                                txtPesquisaProduto.Texts = prod.Descricao;
-                                txtQuantidade.Texts = "1";
-                                txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                this.produto = prod;
-                                this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
-                                lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-
-                                produto.GradePrincipal = produtoGrade;
-
-                                //inserirItem(this.produto);
-                                txtQuantidade.Focus();
-                                txtQuantidade.Select();
-                            }
-                        }
-                        else
-                        {
-                            txtPesquisaProduto.Texts = prod.Descricao;
-                            txtQuantidade.Texts = "1";
-                            txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                            txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                            this.produto = prod;
-                            if (valorAux.Contains("*"))
-                                txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                            if (prod.Ean.Equals(valor.Trim()) || prod.Pesavel == true)
-                                inserirItem(this.produto);
-                            else
-                            {
-                                txtQuantidade.Focus();
-                                txtQuantidade.Select();
-                            }
-                        }
-                    }
-                }
+                Produto produto = resultado.produto;
+                ProdutoGrade grade = resultado.grade;
+                desbloquearCamposValorQuantidade();
+                txtPesquisaProduto.Texts = produto.Descricao;
+                txtPesquisaProduto.Texts = produto.Descricao;
+                if(String.IsNullOrEmpty(quantidade))
+                    txtQuantidade.Texts = "1";
+                txtValorUnitario.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                txtValorTotal.Texts = string.Format("{0:0.00}", grade.ValorVenda);
+                this.produto = produto;
+                this.produto.UnidadeMedida = grade.UnidadeMedida;
+                lblUnidadeMedida.Text = grade.UnidadeMedida.Sigla;
+                produto.GradePrincipal = grade;
+                if (valorPesquisa.Length == 13 && long.TryParse(valorPesquisa, out _))
+                    inserirItem(produto);
                 else
                 {
-                    //pode ser uma referencia, ai ele pesquisa por descricao e referencia
-                    PesquisarProdutoPorDescricao(valor);
-                }
-            }
-            //Pesquisa por descricao ou referencia
-            else if (valor.Contains("/"))
-            {
-                listaProdutos = new List<Produto>();
-                listaProdutos = produtoController.selecionarProdutosPorSql("From Produto Tabela Where Tabela.FlagExcluido = false and Tabela.Referencia = '" + valor.Replace("/", "") + "'");
-                if (listaProdutos.Count > 0)
-                {
-                    desbloquearCamposValorQuantidade();
-                    foreach (Produto prod in listaProdutos)
-                    {
-                        if (prod.Veiculo == true)
-                        {
-                            FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
-                            frmProdutoCadastro.ShowDialog();
-                        }
-                        if (prod.Grade == true)
-                        {
-                            ProdutoGrade produtoGrade = new ProdutoGrade();
-                            produtoGrade = selecionarGrade(prod);
-
-                            if (produtoGrade != null)
-                            {
-                                txtPesquisaProduto.Texts = prod.Descricao;
-                                txtQuantidade.Texts = "1";
-                                txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                this.produto = prod;
-                                this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
-                                lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-
-                                produto.GradePrincipal = produtoGrade;
-
-                                //inserirItem(this.produto);
-                                txtQuantidade.Focus();
-                                txtQuantidade.Select();
-                            }
-                        }
-                        else
-                        {
-                            txtPesquisaProduto.Texts = prod.Descricao;
-                            txtQuantidade.Texts = "1";
-                            txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                            txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                            this.produto = prod;
-                            if (valorAux.Contains("*"))
-                                txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                            if (prod.Ean.Equals(valor.Trim()))
-                                inserirItem(this.produto);
-                            else
-                            {
-                                txtQuantidade.Focus();
-                                txtQuantidade.Select();
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    //pode ser uma referencia, ai ele pesquisa por descricao e referencia
-                    PesquisarProdutoPorDescricao(valor);
+                    txtQuantidade.Focus();
+                    txtQuantidade.SelectAll();
                 }
             }
             else
             {
-                novaPesquisaProdutos();
+                GenericaDesktop.ShowAlerta("Produto não encontrados ou não selecionado!");
+                txtPesquisaProduto.Texts = "";
+                bloquearCamposValorQuantidade();
             }
         }
-
-        private ProdutoGrade selecionarGrade(Produto produto)
-        {
-            using (var formBackground = new Form())
-            {
-                formBackground.StartPosition = FormStartPosition.Manual;
-                formBackground.Opacity = .50d; // Define a opacidade
-                formBackground.BackColor = Color.Black; // Define a cor de fundo
-                formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width; // Define a largura
-                formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height; // Define a altura
-                formBackground.WindowState = FormWindowState.Maximized; // Maximiza a janela
-                formBackground.TopMost = true; // Garante que o formulário de fundo fique acima de outros
-                formBackground.ShowInTaskbar = false; // Não mostra na barra de tarefas
-                formBackground.Show(); // Exibe o formulário de fundo
-
-                using (var frmSelecionarGrade = new FrmSelecionarGrade(produto))
-                {
-                    frmSelecionarGrade.StartPosition = FormStartPosition.CenterParent; // Centraliza em relação ao formulário de fundo
-                    frmSelecionarGrade.FormBorderStyle = FormBorderStyle.FixedDialog; // Configura a borda do formulário
-                    if (frmSelecionarGrade.ShowDialog(formBackground) == DialogResult.OK)
-                    {
-                        var gradeSelecionada = frmSelecionarGrade.GradeSelecionada;
-                        if (gradeSelecionada != null)
-                        {
-                            return gradeSelecionada;
-                        }
-                    }
-                }
-                formBackground.Dispose();
-                return null;
-            }
-        }
-        public bool IsNumericAndHasMoreThan7Digits(string input)
-        {
-            // Verifica se a string não é nula ou vazia
-            if (string.IsNullOrWhiteSpace(input))
-                return false;
-
-            // Verifica se a string é composta apenas por dígitos e tem mais de 7 caracteres
-            return input.All(char.IsDigit) && input.Length > 7;
-        }
-        public bool ENumeroMenorQue5Digitos(string input)
-        {
-            // Verifica se a string não é nula ou vazia
-            if (string.IsNullOrWhiteSpace(input))
-                return false;
-
-            // Verifica se a string é composta apenas por dígitos e tem mais de 7 caracteres
-            return input.All(char.IsDigit) && input.Length <= 5;
-        }
+        
         private void bloquearCamposValorQuantidade()
         {
             txtQuantidade.Enabled = false;
@@ -1174,351 +927,6 @@ namespace Lunar.Telas.Vendas
             btnAdicionar.Enabled = true;
         }
 
-        private async void PesquisarProdutoPorDescricao(string valor)
-        {
-            txtQuantidade.TextAlign = HorizontalAlignment.Center;
-            txtValorUnitario.TextAlign = HorizontalAlignment.Center;
-            txtValorTotal.TextAlign = HorizontalAlignment.Center;
-
-            String valorAux = "";
-            valorAux = valor;
-
-            if (valor.Contains("*"))
-                valor = valor.Substring(valor.IndexOf("*") + 1);
-
-            lblCarregando.Visible = true;
-            listaProdutos = await Task.Run(() => produtoController.selecionarProdutosComVariosFiltros(valor, Sessao.empresaFilialLogada));
-            lblCarregando.Visible = false;
-
-            //listaProdutos = produtoController.selecionarProdutosComVariosFiltros(valor, Sessao.empresaFilialLogada);
-            if (listaProdutos.Count == 1)
-            {
-
-                desbloquearCamposValorQuantidade();
-                foreach (Produto prod in listaProdutos)
-                {
-                    if (prod.Veiculo == true)
-                    {
-                        FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
-                        frmProdutoCadastro.ShowDialog();
-                    }
-                    if (prod.Grade == true)
-                    {
-                        ProdutoGrade produtoGrade = new ProdutoGrade();
-                        produtoGrade = selecionarGrade(prod);
-
-                        if (produtoGrade != null)
-                        {
-                            txtPesquisaProduto.Texts = prod.Descricao;
-                            txtQuantidade.Texts = "1";
-                            txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                            txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                            this.produto = prod;
-                            this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
-                            lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-                            this.produto.GradePrincipal = produtoGrade;
-                            //inserirItem(this.produto);
-                            txtQuantidade.Focus();
-                            txtQuantidade.Select();
-                        }
-                    }
-                    else
-                    {
-                        txtPesquisaProduto.Texts = prod.Descricao;
-                        txtQuantidade.Texts = "1";
-                        txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                        txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                        this.produto = prod;
-                        if (valorAux.Contains("*"))
-                            txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                        if (prod.Ean.Equals(valor.Trim()))
-                            inserirItem(this.produto);
-                        else
-                        {
-                            txtQuantidade.Focus();
-                            txtQuantidade.Select();
-                        }
-                    }
-                }
-            }
-            else if (listaProdutos.Count > 1 && listaProdutos.Count < 50)
-            {
-                Object produtoOjeto = new Produto();
-                Form formBackground = new Form();
-                try
-                {
-                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao("Produto", "and CONCAT(Tabela.Id, ' ', Tabela.Descricao, ' ', Tabela.Ean, ' ', Tabela.Referencia) like '%" + valor + "%'"))
-                    {
-                        formBackground.StartPosition = FormStartPosition.Manual;
-                        //formBackground.FormBorderStyle = FormBorderStyle.None;
-                        formBackground.Opacity = .50d;
-                        formBackground.BackColor = Color.Black;
-                        //formBackground.Left = Top = 0;
-                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-                        formBackground.WindowState = FormWindowState.Maximized;
-                        formBackground.TopMost = false;
-                        formBackground.Location = this.Location;
-                        formBackground.ShowInTaskbar = false;
-                        formBackground.Show();
-                        uu.Owner = formBackground;
-                        switch (uu.showModal("Produto", "", ref produtoOjeto))
-                        {
-                            case DialogResult.Ignore:
-                                uu.Dispose();
-                                FrmProdutoCadastro form = new FrmProdutoCadastro();
-                                if (form.showModalNovo(ref produtoOjeto, false) == DialogResult.OK)
-                                {
-                                    desbloquearCamposValorQuantidade();
-                                    txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
-                                    txtQuantidade.Texts = "1";
-                                    txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    this.produto = ((Produto)produtoOjeto);
-                                    if (this.produto.Grade == true)
-                                    {
-                                        ProdutoGrade produtoGrade = new ProdutoGrade();
-                                        produtoGrade = selecionarGrade(produto);
-
-                                        if (produtoGrade != null)
-                                        {
-                                            txtPesquisaProduto.Texts = produto.Descricao;
-                                            txtQuantidade.Texts = "1";
-                                            txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                            txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                            this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
-                                            lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-                                            this.produto.GradePrincipal = produtoGrade;
-                                            //inserirItem(this.produto);
-                                            txtQuantidade.Focus();
-                                            txtQuantidade.Select();
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (valorAux.Contains("*"))
-                                            txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                                        if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()))
-                                            inserirItem(this.produto);
-                                        else
-                                        {
-                                            txtQuantidade.Focus();
-                                            txtQuantidade.SelectAll();
-                                        }
-                                        if (((Produto)produtoOjeto).Veiculo == true)
-                                        {
-                                            FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
-                                            frmProdutoCadastro.ShowDialog();
-                                        }
-                                    }
-                                }
-                                form.Dispose();
-                                break;
-                            case DialogResult.OK:
-
-                                desbloquearCamposValorQuantidade();
-                                txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
-
-                                Produto prod = ((Produto)produtoOjeto);
-                                if (prod.Grade == true)
-                                {
-                                    ProdutoGrade produtoGrade = new ProdutoGrade();
-                                    produtoGrade = selecionarGrade(prod);
-
-                                    if (produtoGrade != null)
-                                    {
-                                        txtPesquisaProduto.Texts = prod.Descricao;
-                                        txtQuantidade.Texts = "1";
-                                        txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                        txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                        this.produto = prod;
-                                        this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
-                                        lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-                                        this.produto.GradePrincipal = produtoGrade;
-                                        //inserirItem(this.produto);
-                                        txtQuantidade.Focus();
-                                        txtQuantidade.Select();
-                                    }
-                                }
-                                else
-                                {
-
-                                    txtQuantidade.Texts = "1";
-                                    txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    this.produto = ((Produto)produtoOjeto);
-                                    if (valorAux.Contains("*"))
-                                        txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                                    if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()) && !String.IsNullOrEmpty(valor))
-                                        inserirItem(this.produto);
-                                    else
-                                    {
-                                        txtQuantidade.Focus();
-                                        txtQuantidade.SelectAll();
-                                    }
-                                    if (((Produto)produtoOjeto).Veiculo == true)
-                                    {
-                                        FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
-                                        frmProdutoCadastro.ShowDialog();
-                                    }
-                                }
-                                break;
-                        }
-                        formBackground.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    formBackground.Dispose();
-                }
-                // GenericaDesktop.ShowInfo("Função de pesquisa extra em desenvolvimento...");
-            }
-            else if (listaProdutos.Count >= 50)
-            {
-                Object produtoOjeto = new Produto();
-                Form formBackground = new Form();
-                try
-                {
-                    using (FrmPesquisaPadrao uu = new FrmPesquisaPadrao(listaProdutos))
-                    {
-                        formBackground.StartPosition = FormStartPosition.Manual;
-                        //formBackground.FormBorderStyle = FormBorderStyle.None;
-                        formBackground.Opacity = .50d;
-                        formBackground.BackColor = Color.Black;
-                        //formBackground.Left = Top = 0;
-                        formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-                        formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-                        formBackground.WindowState = FormWindowState.Maximized;
-                        formBackground.TopMost = false;
-                        formBackground.Location = this.Location;
-                        formBackground.ShowInTaskbar = false;
-                        formBackground.Show();
-                        uu.Owner = formBackground;
-                        switch (uu.showModal("Produto", "", ref produtoOjeto))
-                        {
-                            case DialogResult.Ignore:
-                                uu.Dispose();
-                                FrmProdutoCadastro form = new FrmProdutoCadastro();
-                                if (form.showModalNovo(ref produtoOjeto, false) == DialogResult.OK)
-                                {
-                                    desbloquearCamposValorQuantidade();
-                                    txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
-                                    txtQuantidade.Texts = "1";
-                                    txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    this.produto = ((Produto)produtoOjeto);
-                                    if (this.produto.Grade == true)
-                                    {
-                                        ProdutoGrade produtoGrade = new ProdutoGrade();
-                                        produtoGrade = selecionarGrade(produto);
-
-                                        if (produtoGrade != null)
-                                        {
-                                            txtPesquisaProduto.Texts = produto.Descricao;
-                                            txtQuantidade.Texts = "1";
-                                            txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                            txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                            this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
-                                            lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-                                            this.produto.GradePrincipal = produtoGrade;
-                                            //inserirItem(this.produto);
-                                            txtQuantidade.Focus();
-                                            txtQuantidade.Select();
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (valorAux.Contains("*"))
-                                            txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                                        if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()))
-                                            inserirItem(this.produto);
-                                        else
-                                        {
-                                            txtQuantidade.Focus();
-                                            txtQuantidade.SelectAll();
-                                        }
-                                        if (((Produto)produtoOjeto).Veiculo == true)
-                                        {
-                                            FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
-                                            frmProdutoCadastro.ShowDialog();
-                                        }
-                                    }
-                                }
-                                form.Dispose();
-                                break;
-                            case DialogResult.OK:
-
-                                desbloquearCamposValorQuantidade();
-                                txtPesquisaProduto.Texts = ((Produto)produtoOjeto).Descricao;
-
-                                Produto prod = ((Produto)produtoOjeto);
-                                if (prod.Grade == true)
-                                {
-                                    ProdutoGrade produtoGrade = new ProdutoGrade();
-                                    produtoGrade = selecionarGrade(prod);
-
-                                    if (produtoGrade != null)
-                                    {
-                                        txtPesquisaProduto.Texts = prod.Descricao;
-                                        txtQuantidade.Texts = "1";
-                                        txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                        txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                                        this.produto = prod;
-                                        this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
-                                        lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-                                        this.produto.GradePrincipal = produtoGrade;
-                                        //inserirItem(this.produto);
-                                        txtQuantidade.Focus();
-                                        txtQuantidade.Select();
-                                    }
-                                }
-                                else
-                                {
-
-                                    txtQuantidade.Texts = "1";
-                                    txtValorUnitario.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    txtValorTotal.Texts = string.Format("{0:0.00}", ((Produto)produtoOjeto).ValorVenda);
-                                    this.produto = ((Produto)produtoOjeto);
-                                    if (valorAux.Contains("*"))
-                                        txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                                    if (((Produto)produtoOjeto).Ean.Equals(valor.Trim()) && !String.IsNullOrEmpty(valor))
-                                        inserirItem(this.produto);
-                                    else
-                                    {
-                                        txtQuantidade.Focus();
-                                        txtQuantidade.SelectAll();
-                                    }
-                                    if (((Produto)produtoOjeto).Veiculo == true)
-                                    {
-                                        FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(((Produto)produtoOjeto), false, true);
-                                        frmProdutoCadastro.ShowDialog();
-                                    }
-                                }
-                                break;
-                        }
-                        formBackground.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    formBackground.Dispose();
-                }
-            }
-            else
-            {
-                bloquearCamposValorQuantidade();
-                GenericaDesktop.ShowAlerta("Produto não encontrado");
-                txtPesquisaProduto.SelectAll();
-            }
-        }
         private void inserirItem(Produto produto)
         {
             txtQuantidade.TextAlign = HorizontalAlignment.Center;
@@ -3231,7 +2639,7 @@ namespace Lunar.Telas.Vendas
                                 }
                                 catch
                                 {
-                                    GenericaDesktop.ShowErro("Valor Inválido");
+                                    
                                 }
                                 break;
                         }
@@ -3316,12 +2724,13 @@ namespace Lunar.Telas.Vendas
             }
         }
 
-        private void ratearDescontoItens(decimal percentualDesconto)
+        private void ratearDescontoItens1(decimal percentualDesconto)
         {
             var records = gridProdutos.View.Records;
             int i = 1;
             decimal somarDescontoTotal = 0;
             decimal valorDescontoInformado = 0;
+            decimal somarValorItens = 0;
             foreach (var record in records)
             {
                 var dataRowView = record.Data as DataRowView;
@@ -3329,7 +2738,7 @@ namespace Lunar.Telas.Vendas
                 //    somaValorTotalDescontoItens = somaValorTotalDescontoItens + decimal.Parse(dataRowView.Row[7].ToString());
 
                 decimal descontoItem = (decimal.Parse(dataRowView.Row["ValorTotal"].ToString()) * percentualDesconto) / 100;
-                descontoItem = Math.Round(descontoItem, 2);
+                //descontoItem = Math.Round(descontoItem, 9);
                 gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["DescontoItem"].MappingName, descontoItem);
                 i++;
                 somarDescontoTotal = somarDescontoTotal + decimal.Parse(dataRowView.Row["DescontoItem"].ToString());
@@ -3357,6 +2766,72 @@ namespace Lunar.Telas.Vendas
                 }
             }
         }
+
+        private void ratearDescontoItens(decimal percentualDesconto)
+        {
+            var records = gridProdutos.View.Records;
+            decimal somarDescontoTotal = 0;
+            decimal valorDescontoInformado = 0;
+            int i = 1;
+
+            // Itera sobre os registros no grid
+            foreach (var record in records)
+            {
+                var dataRowView = record.Data as DataRowView; // Tenta converter para DataRowView
+
+                if (dataRowView != null) // Verifica se a conversão foi bem-sucedida
+                {
+                    decimal valorTotal = decimal.Parse(dataRowView.Row["ValorTotal"].ToString());
+                    decimal descontoItem = Math.Round((valorTotal * percentualDesconto) / 100, 2); // Arredonde para 2 casas decimais
+
+                    // Defina o desconto no grid
+                    gridProdutos.View.GetPropertyAccessProvider().SetValue(gridProdutos.GetRecordAtRowIndex(i), gridProdutos.Columns["DescontoItem"].MappingName, descontoItem);
+                    somarDescontoTotal += descontoItem; // Somar o desconto calculado
+                    i++;
+                }
+            }
+
+            // Lógica para verificar e ajustar o desconto informado
+            string descontoTexto = txtDesconto.Texts.Replace("R$ ", "").Trim(); // Remover R$ e espaços
+            descontoTexto = descontoTexto.Replace(".", "").Replace(",", "."); // Troca vírgula por ponto para compatibilidade
+
+            if (decimal.TryParse(descontoTexto, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal descontoInformadoDecimal))
+            {
+                // Compare os valores decimais
+                if (Math.Round(descontoInformadoDecimal, 2) != Math.Round(somarDescontoTotal, 2))
+                {
+                    // Se houve diferença, ajuste no último item
+                    decimal diferenca = Math.Round(descontoInformadoDecimal - somarDescontoTotal, 2); // Arredondar a diferença
+
+                    if (diferenca != 0) // Se houver diferença, faça o ajuste
+                    {
+                        // Captura o último índice e o último registro
+                        var lastIndex = i-1; // Pega o último índice baseado na iteração anterior
+                        var lastRecord = gridProdutos.GetRecordAtRowIndex(lastIndex); // Pega o último registro
+
+                        // Verifica se o lastRecord não é nulo
+                        if (lastRecord != null)
+                        {
+                            // Captura o valor atual do desconto diretamente usando GetValue
+                            var descontoAtual = (decimal)gridProdutos.View.GetPropertyAccessProvider().GetValue(lastRecord, gridProdutos.Columns["DescontoItem"].MappingName);
+                            Console.WriteLine($"Desconto Atual Antes do Ajuste: {descontoAtual}");
+
+                            // Ajusta o valor do desconto
+                            valorDescontoInformado = Math.Round(descontoAtual + diferenca, 2); // Ajuste
+                                                                                               // Atualiza o valor ajustado no grid
+                            gridProdutos.View.GetPropertyAccessProvider().SetValue(lastRecord, gridProdutos.Columns["DescontoItem"].MappingName, valorDescontoInformado);
+
+                            // Verifique o novo desconto
+                            Console.WriteLine($"Novo Desconto Ajustado: {valorDescontoInformado}");
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
 
         private void btnDescontoItem_Click(object sender, EventArgs e)
         {
@@ -3533,8 +3008,8 @@ namespace Lunar.Telas.Vendas
                         //Gerar boletos
                         if (cr.FormaPagamento.Id == 5)
                         {
-                            if(cr.ContaBoleto != null)
-                                listaConfiguracoesBoletos = boletoConfigController.selecionarBoletoConfigPorContaBancaria(cr.ContaBoleto.Id);
+                            if (cr.ContaBoleto != null)
+                                try { listaConfiguracoesBoletos = boletoConfigController.selecionarBoletoConfigPorContaBancaria(cr.ContaBoleto.Id); } catch { }
                             listaGerarBoleto.Add(cr);
                         }
                     }
@@ -3545,8 +3020,14 @@ namespace Lunar.Telas.Vendas
                             gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaGerarBoleto, vendaConclusao.Cliente);
                         if (listaConfiguracoesBoletos.Count > 0)
                         {
-                            BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaConclusao.Id, 0, null);
-                            await boletoManager.GeraBoletosSicredi(vendaConclusao.Cliente,true);
+                            foreach (BoletoConfig boletoConfig in listaConfiguracoesBoletos)
+                            {
+                                if (boletoConfig.ContaBancaria.Banco.Descricao.ToUpper().Contains("SICREDI"))
+                                {
+                                    BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaConclusao.Id, 0, null, boletoConfig.AmbienteProducao);
+                                    await boletoManager.GeraBoletosSicredi(vendaConclusao.Cliente, true);
+                                }
+                            }
                         }
                         else
                             GenericaDesktop.ShowAlerta("Conta escolhida não foi configurada para emissão de boletos!");
@@ -3755,114 +3236,7 @@ namespace Lunar.Telas.Vendas
 
         private void btnPesquisaProduto_Click(object sender, EventArgs e)
         {
-            //PesquisarProdutoPorDescricao(txtPesquisaProduto.Texts.Trim());
-            novaPesquisaProdutos();
-        }
-
-        private void novaPesquisaProdutos()
-        {
-            object produtoOjeto = new Produto();
-            Produto product = new Produto();
-            Form formBackground = new Form();
-            try
-            {
-                using (FrmPesquisaProduto uu = new FrmPesquisaProduto(txtPesquisaProduto.Texts))
-                {
-                    txtPesquisaProduto.Texts = "";
-                    formBackground.StartPosition = FormStartPosition.Manual;
-                    //formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Opacity = .50d;
-                    formBackground.BackColor = Color.Black;
-                    //formBackground.Left = Top = 0;
-                    formBackground.Width = Screen.PrimaryScreen.WorkingArea.Width;
-                    formBackground.Height = Screen.PrimaryScreen.WorkingArea.Height;
-                    formBackground.WindowState = FormWindowState.Maximized;
-                    formBackground.TopMost = false;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
-                    uu.Owner = formBackground;
-                    switch (uu.showModal(ref product))
-                    {
-                        case DialogResult.Ignore:
-                            uu.Dispose();
-                            FrmProdutoCadastro form = new FrmProdutoCadastro();
-                            Object produtoObj = new Produto();
-                            if (form.showModalNovo(ref produtoObj, false) == DialogResult.OK)
-                            {
-                                txtPesquisaProduto.Texts = ((Produto)produtoObj).Descricao;
-                                produto = ((Produto)produtoObj);
-                                desbloquearCamposValorQuantidade();
-                                puxarGradePorProduto(product);
-                            }
-                            form.Dispose();
-                            break;
-                        case DialogResult.OK:
-                            txtPesquisaProduto.Texts = product.Descricao;
-                            produto = product;
-                            desbloquearCamposValorQuantidade();
-                            puxarGradePorProduto(product);
-                            //txtPesquisaProduto.Focus();
-                            break;
-                    }
-                    formBackground.Dispose();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                formBackground.Dispose();
-            }
-        }
-
-        private void puxarGradePorProduto(Produto prod)
-        {
-            string valorAux = txtPesquisaProduto.Texts.Trim();
-            if (prod.Grade == true)
-            {
-                ProdutoGrade produtoGrade = new ProdutoGrade();
-                produtoGrade = selecionarGrade(prod);
-
-                if (produtoGrade != null)
-                {
-                    txtPesquisaProduto.Texts = prod.Descricao;
-                    txtQuantidade.Texts = "1";
-                    txtValorUnitario.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                    txtValorTotal.Texts = string.Format("{0:0.00}", produtoGrade.ValorVenda);
-                    this.produto = prod;
-                    this.produto.UnidadeMedida = produtoGrade.UnidadeMedida;
-                    lblUnidadeMedida.Text = produtoGrade.UnidadeMedida.Sigla;
-                    this.produto.GradePrincipal = produtoGrade;
-                    //inserirItem(this.produto);
-                    txtQuantidade.Focus();
-                    txtQuantidade.Select();
-                }
-            }
-            else
-            {
-
-                txtQuantidade.Texts = "1";
-                txtValorUnitario.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                txtValorTotal.Texts = string.Format("{0:0.00}", prod.ValorVenda);
-                this.produto = prod;
-                if (txtPesquisaProduto.Texts.Contains("*"))
-                    txtQuantidade.Texts = valorAux.Substring(0, valorAux.IndexOf("*"));
-                if (prod.Ean.Equals(txtPesquisaProduto.Texts.Trim()) && !String.IsNullOrEmpty(txtPesquisaProduto.Texts))
-                    inserirItem(this.produto);
-                else
-                {
-                    txtQuantidade.Focus();
-                    txtQuantidade.SelectAll();
-                }
-                if (prod.Veiculo == true)
-                {
-                    FrmProdutoCadastro frmProdutoCadastro = new FrmProdutoCadastro(prod, false, true);
-                    frmProdutoCadastro.ShowDialog();
-                }
-            }
+            pesquisarProduto();
         }
 
         private void btnImprimirRecibo_Click(object sender, EventArgs e)
@@ -4426,64 +3800,6 @@ namespace Lunar.Telas.Vendas
                 btnVoltar.PerformClick();
             }
         }
-
-
-        //    public async Task GeraBoletosSicredi(Pessoa pessoa, IList<ContaReceber> contasReceber, BoletoConfig boletoConfig)
-        //    {
-        //        var boletoService = new BoletoService();
-        //        var linhasDigitaveis = new List<string>(); 
-
-        //        SicrediIntegration sicredi = new SicrediIntegration(
-        //            isProduction: false,
-        //            username: boletoConfig.Usuario,
-        //            password: GenericaDesktop.Descriptografa(boletoConfig.Senha),
-        //            cooperativa: boletoConfig.Cooperativa,
-        //            posto: boletoConfig.Posto
-        //        );
-
-        //        // Autenticação
-        //        if (await sicredi.AuthenticateAsync())
-        //        {
-        //            foreach (ContaReceber contaReceber in contasReceber)
-        //            {
-        //                // Alimentar dados do boleto
-        //                var boletoRequest = boletoService.AlimentarDadosBoleto(pessoa, contaReceber.ValorParcela, contaReceber.Vencimento, contaReceber.Documento, contaReceber.Documento, boletoConfig);
-
-        //                // Chamada para gerar o boleto
-        //                var boletoResponse = await sicredi.CreateBoletoAsync(boletoRequest);
-        //                if (boletoResponse != null)
-        //                {
-        //                    Console.WriteLine("Boleto gerado com sucesso.");
-        //                    contaReceber.BoletoGerado = true;
-        //                    contaReceber.IdBoleto = boletoResponse.Txid;
-        //                    contaReceber.Txid = boletoResponse.Txid;
-        //                    contaReceber.QrCode = boletoResponse.QrCode;
-        //                    contaReceber.NossoNumero = boletoResponse.NossoNumero;
-        //                    contaReceber.CodigoBarras = boletoResponse.CodigoBarras;
-        //                    contaReceber.LinhaDigitavel = boletoResponse.LinhaDigitavel;
-        //                    Controller.getInstance().salvar(contaReceber);
-
-        //                    linhasDigitaveis.Add(boletoResponse.LinhaDigitavel);
-        //                }
-        //                else
-        //                {
-        //                    Console.WriteLine("Falha ao gerar o boleto.");
-        //                }
-        //            }
-
-        //            // Chamar método para baixar e abrir PDFs
-        //            if (linhasDigitaveis.Count > 0)
-        //            {
-        //                await sicredi.DownloadAndOpenBoletoPdfs(linhasDigitaveis.ToArray());
-        //            }
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Falha na autenticação.");
-        //        }
-        //    }
-        //}
-
 
     }
 }

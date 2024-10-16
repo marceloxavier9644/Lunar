@@ -67,9 +67,15 @@
             this.autoLabel13 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCodPlanoConta = new System.Windows.Forms.TextBox();
             this.btnPesquisaPlanoConta = new FontAwesome.Sharp.IconButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioProducao = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioHomologacao = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioTradicional)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioHibrido)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioProducao)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioHomologacao)).BeginInit();
             this.SuspendLayout();
             // 
             // autoLabel42
@@ -257,13 +263,13 @@
             // radioTradicional
             // 
             this.radioTradicional.BeforeTouchSize = new System.Drawing.Size(303, 27);
-            this.radioTradicional.Checked = true;
             this.radioTradicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioTradicional.Location = new System.Drawing.Point(13, 333);
             this.radioTradicional.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
             this.radioTradicional.Name = "radioTradicional";
             this.radioTradicional.Size = new System.Drawing.Size(303, 27);
             this.radioTradicional.TabIndex = 15;
+            this.radioTradicional.TabStop = false;
             this.radioTradicional.Text = "Boleto Tradicional (Codigo de Barras)";
             // 
             // radioHibrido
@@ -477,12 +483,49 @@
             this.btnPesquisaPlanoConta.UseVisualStyleBackColor = true;
             this.btnPesquisaPlanoConta.Click += new System.EventHandler(this.btnPesquisaPlanoConta_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioHomologacao);
+            this.groupBox1.Controls.Add(this.radioProducao);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(601, 333);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(187, 92);
+            this.groupBox1.TabIndex = 310;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ambiente";
+            // 
+            // radioProducao
+            // 
+            this.radioProducao.BeforeTouchSize = new System.Drawing.Size(137, 27);
+            this.radioProducao.Checked = true;
+            this.radioProducao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioProducao.Location = new System.Drawing.Point(6, 29);
+            this.radioProducao.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioProducao.Name = "radioProducao";
+            this.radioProducao.Size = new System.Drawing.Size(137, 27);
+            this.radioProducao.TabIndex = 311;
+            this.radioProducao.Text = "Produção";
+            // 
+            // radioHomologacao
+            // 
+            this.radioHomologacao.BeforeTouchSize = new System.Drawing.Size(137, 27);
+            this.radioHomologacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioHomologacao.Location = new System.Drawing.Point(6, 56);
+            this.radioHomologacao.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioHomologacao.Name = "radioHomologacao";
+            this.radioHomologacao.Size = new System.Drawing.Size(137, 27);
+            this.radioHomologacao.TabIndex = 312;
+            this.radioHomologacao.TabStop = false;
+            this.radioHomologacao.Text = "Homologação";
+            // 
             // FrmConfigurarEmissaoBoletos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 488);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnPesquisaPlanoConta);
             this.Controls.Add(this.txtCodPlanoConta);
             this.Controls.Add(this.txtPlanoContaTarifa);
@@ -526,6 +569,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioTradicional)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioHibrido)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radioProducao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioHomologacao)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,5 +617,8 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel13;
         private System.Windows.Forms.TextBox txtCodPlanoConta;
         private FontAwesome.Sharp.IconButton btnPesquisaPlanoConta;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioHomologacao;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioProducao;
     }
 }

@@ -208,10 +208,19 @@ namespace Lunar.Telas.Compras.Manifestos
             try
             {
                 string ultimaDataNotaBaixada = nfeController.selecionarUltimaDataNotaBaixada();
-                if (!String.IsNullOrEmpty(ultimaDataNotaBaixada))
-                    ultimaDataNotaBaixada = ultimaDataNotaBaixada.Replace("T", " ").Replace("-03:00", "");
+                DateTime primeiroDiaDoMes = DateTime.Now;
+                if (chkRetornarData.Checked == true)
+                {
+                    primeiroDiaDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                    ultimaDataNotaBaixada = primeiroDiaDoMes.ToShortDateString();
+                }
                 else
-                    ultimaDataNotaBaixada = DateTime.Now.AddMonths(-2).ToShortDateString();
+                {
+                    if (!String.IsNullOrEmpty(ultimaDataNotaBaixada))
+                        ultimaDataNotaBaixada = ultimaDataNotaBaixada.Replace("T", " ").Replace("-03:00", "");
+                    else
+                        ultimaDataNotaBaixada = DateTime.Now.AddMonths(-2).ToShortDateString();
+                }
 
                 DateTime ultDt = DateTime.Parse(ultimaDataNotaBaixada);
                 if (ultDt < DateTime.Now.AddMonths(-2))

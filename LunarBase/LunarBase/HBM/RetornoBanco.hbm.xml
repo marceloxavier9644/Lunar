@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="LunarBase" assembly="LunarBase">
+	<class name="LunarBase.Classes.RetornoBanco" table="retornobanco">
+		<id name="Id" column="ID" type="int">
+			<generator class="native" />
+		</id>
+		<property name="Descricao" column="DESCRICAO" type="String" length="300"/>
+		<property name="Cooperativa" column="COOPERATIVA" type="String" length="20"/>
+		<property name="CodigoBeneficiario" column="CODIGOBENEFICIARIO" type="String" length="20"/>
+		<property name="CooperativaPostoBeneficiario" column="COOPERATIVAPOSTOBENEFICIARIO" type="String" length="20"/>
+		<property name="NossoNumero" column="NOSSONUMERO" type="String" length="150"/>
+		<property name="SeuNumero" column="SEUNUMERO" type="String" length="60"/>
+		<property name="TipoCarteira" column="TIPOCARTEIRA" type="String" length="150"/>
+		<property name="DataPagamento" column="DATAPAGAMENTO" type="DateTime"/>
+		<property name="Valor" column="VALOR" type="decimal"/>
+		<property name="ValorLiquidado" column="VALORLIQUIDADO" type="decimal"/>
+		<property name="JurosLiquido" column="JUROSLIQUIDO" type="decimal"/>
+		<property name="DescontoLiquido" column="DESCONTOLIQUIDO" type="decimal"/>
+		<property name="MultaLiquida" column="MULTALIQUIDA" type="decimal"/>
+		<property name="AbatimentoLiquido" column="ABATIMENTOLIQUIDO" type="decimal"/>
+		<property name="TipoLiquidacao" column="TIPOLIQUIDACAO" type="String"/>
+
+		<many-to-one name="ContaReceber" column="CONTARECEBER" class="LunarBase.Classes.ContaReceber" not-null="false" foreign-key="FK_RETORNO_CONTARECEBER" lazy="false"/>
+
+		<!-- Dados do objeto padrão -->
+		<property name="DataCadastro" column="DATACADASTRO" type="DateTime"/>
+		<property name="DataAlteracao" column="DATAALTERACAO" type="DateTime"/>
+		<property name="DataExclusao" column="DATAEXCLUSAO" type="DateTime"/>
+		<property name="FlagExcluido" column="FLAGEXCLUIDO" type="Boolean"/>
+		<property name="OperadorCadastro" column="OPERADORCADASTRO" type="String" length="20"/>
+		<property name="OperadorAlteracao" column="OPERADORALTERACAO" type="String" length="20"/>
+		<property name="OperadorExclusao" column="OPERADOREXCLUSAO" type="String" length="20"/>
+		<!-- Final dos dados do objeto padrão -->
+	</class>
+</hibernate-mapping>

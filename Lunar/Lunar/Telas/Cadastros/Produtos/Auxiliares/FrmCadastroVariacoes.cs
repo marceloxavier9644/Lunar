@@ -108,6 +108,7 @@ namespace Lunar.Telas.Cadastros.Produtos.Auxiliares
             {
                 txtDescricaoVariacao.Texts = caracteristica.Descricao;
                 txtCodVariacao.Texts = caracteristica.Id.ToString();
+                txtOrdem.Texts = caracteristica.Ordem.ToString();
 
                 txtDescricaoVariacao.Tag = caracteristica;
                 editarVariacao = true;

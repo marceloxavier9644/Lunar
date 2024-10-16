@@ -446,6 +446,12 @@
     <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroTelefone.Designer.cs">
       <DependentUpon>FrmCadastroTelefone.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCaracteristicaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCaracteristicaPessoa.Designer.cs">
+      <DependentUpon>FrmCaracteristicaPessoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmImprimirFichaSimplificadaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -982,6 +988,12 @@
     <Compile Include="Telas\IntegracoesBancarias\FrmConfigurarEmissaoBoletos.Designer.cs">
       <DependentUpon>FrmConfigurarEmissaoBoletos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\IntegracoesBancarias\FrmRetornoBoleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\IntegracoesBancarias\FrmRetornoBoleto.Designer.cs">
+      <DependentUpon>FrmRetornoBoleto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\IntegracoesEcommerce\NuvemShopIntegration\FrmIntegracaoNuvemShop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1467,6 +1479,7 @@
     <Compile Include="Utils\MeuCrediarioIntegracao\MeuCrediario.cs" />
     <Compile Include="Utils\ClassesRepeticoes\FormModalHelper.cs" />
     <Compile Include="Utils\ClassesRepeticoes\ProdutoGradeHelper.cs" />
+    <Compile Include="Utils\MySQLBackup.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFCe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNFe.cs" />
     <Compile Include="Utils\OrganizacaoNF\EmitirNfe2.cs" />
@@ -1551,6 +1564,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCadastroTelefone.resx">
       <DependentUpon>FrmCadastroTelefone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmCaracteristicaPessoa.resx">
+      <DependentUpon>FrmCaracteristicaPessoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Cadastros\Cliente\PessoaAdicionais\FrmImprimirFichaSimplificadaCliente.resx">
       <DependentUpon>FrmImprimirFichaSimplificadaCliente.cs</DependentUpon>
@@ -1808,6 +1824,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\IntegracoesBancarias\FrmConfigurarEmissaoBoletos.resx">
       <DependentUpon>FrmConfigurarEmissaoBoletos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\IntegracoesBancarias\FrmRetornoBoleto.resx">
+      <DependentUpon>FrmRetornoBoleto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\IntegracoesEcommerce\NuvemShopIntegration\FrmIntegracaoNuvemShop.resx">
       <DependentUpon>FrmIntegracaoNuvemShop.cs</DependentUpon>
@@ -2620,6 +2639,9 @@
     </PackageReference>
     <PackageReference Include="Cquential.Microsoft.ReportViewer.DataVisualization">
       <Version>10.0.40219.1</Version>
+    </PackageReference>
+    <PackageReference Include="EPPlus">
+      <Version>7.4.1</Version>
     </PackageReference>
     <PackageReference Include="FirebirdSql.Data.FirebirdClient">
       <Version>9.1.1</Version>

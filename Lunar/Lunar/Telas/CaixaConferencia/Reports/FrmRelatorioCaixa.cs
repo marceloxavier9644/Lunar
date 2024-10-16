@@ -186,8 +186,20 @@ namespace Lunar.Telas.CaixaConferencia.Reports
                             tipoValor = "SAÍDA";
                             caixa.Valor = -(caixa.Valor);
                         }
+                        string tipoCartao = "";
 
-                        dsCaixa.Caixa.AddCaixaRow(caixa.Id.ToString(), caixa.Descricao, caixa.Valor, tipoValor, caixa.DataLancamento.ToShortDateString(), caixa.FormaPagamento.Id.ToString() + " - " + caixa.FormaPagamento.Descricao, caixa.FormaPagamento.Descricao, "", "", "", int.Parse(caixa.OperadorCadastro));
+                        if (caixa.CartaoDebito)
+                            tipoCartao = "DÉBITO";
+                        else if (caixa.CartaoCredito)
+                            tipoCartao = "CRÉDITO";
+
+                        if (caixa.ParcelasCartao > 0)
+                            tipoCartao += $" {caixa.ParcelasCartao}X";
+
+                        if (caixa.BandeiraCartao != null && !string.IsNullOrEmpty(caixa.BandeiraCartao.Descricao))
+                            tipoCartao += $" {caixa.BandeiraCartao.Descricao}";
+
+                        dsCaixa.Caixa.AddCaixaRow(caixa.Id.ToString(), caixa.Descricao, caixa.Valor, tipoValor, caixa.DataLancamento.ToShortDateString(), caixa.FormaPagamento.Id.ToString() + " - " + caixa.FormaPagamento.Descricao, caixa.FormaPagamento.Descricao, "", "", "", int.Parse(caixa.OperadorCadastro), tipoCartao);
                     }
                     this.reportViewer1.Visible = true;
                     this.reportViewer1.RefreshReport();

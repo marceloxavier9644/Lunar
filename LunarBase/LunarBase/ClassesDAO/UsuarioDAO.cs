@@ -20,7 +20,7 @@ namespace LunarBase.ClassesDAO
         public IList<Usuario> selecionarUsuarioComVariosFiltros(string valor)
         {
             Session = Conexao.GetSession();
-            String sql = "FROM Usuario as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.Login, ' ', Tabela.Email) like '%" + valor + "%' and Tabela.FlagExcluido <> true and Tabela.Id <> 1 order by Tabela.Login";
+            String sql = "FROM Usuario as Tabela WHERE CONCAT(Tabela.Id, ' ', Tabela.Login) like '%" + valor + "%' and Tabela.FlagExcluido <> true and Tabela.Id <> 1 order by Tabela.Login";
             IList<Usuario> retorno = Session.CreateQuery(sql).List<Usuario>();
             return retorno;
         }

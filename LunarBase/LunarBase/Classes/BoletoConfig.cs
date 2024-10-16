@@ -25,6 +25,7 @@ namespace LunarBase.Classes
         private string tipoBoleto;
         private ContaBancaria contaBancaria;
         private PlanoConta planoContaTarifa;
+        private Boolean ambienteProducao;
         public virtual int Id { get => id; set => id = value; }
         public virtual string Descricao { get => descricao; set => descricao = value; }
         public virtual string CodigoBeneficiario { get => codigoBeneficiario; set => codigoBeneficiario = value; }
@@ -42,5 +43,6 @@ namespace LunarBase.Classes
         public virtual string TipoBoleto { get => tipoBoleto; set => tipoBoleto = value; }
         public virtual ContaBancaria ContaBancaria { get => contaBancaria; set => contaBancaria = value; }
         public virtual PlanoConta PlanoContaTarifa { get => planoContaTarifa; set => planoContaTarifa = value; }
+        public virtual bool AmbienteProducao { get => ambienteProducao; set => ambienteProducao = value; }
     }
 }

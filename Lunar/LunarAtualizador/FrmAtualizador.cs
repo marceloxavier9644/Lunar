@@ -6,8 +6,10 @@ using LunarBase.Utilidades;
 using LunarBase.Utilidades.ZAPZAP;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
+using NSSuite_CSharp.src.JSON.CTe;
 using SharpCompress.Common;
 using SharpCompress.Readers;
+using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +21,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,6 +31,8 @@ namespace LunarAtualizador
 {
     public partial class FrmAtualizador : Form
     {
+        string versaoAtual = "";
+        string versaoNova = "";
         private static bool sairClicked = false;
         Logger logger = new Logger();
         string nomeDoComputador = "";
@@ -143,7 +148,7 @@ namespace LunarAtualizador
                 instanciaAtualizador = new FrmAtualizador();
             }
 
-            instanciaAtualizador.Show();
+            instanciaAtualizador.ShowDialog();
             instanciaAtualizador.WindowState = FormWindowState.Normal;
             instanciaAtualizador.BringToFront();
         }
@@ -185,7 +190,7 @@ namespace LunarAtualizador
             atualizar();
         }
 
-        private async void atualizar()
+        public async void atualizar()
         {
             try
             {
@@ -208,7 +213,7 @@ namespace LunarAtualizador
                 // btnVerificarAtualização.Enabled = false;
                 string caminhoParaExe = @"C:\Lunar\Lunar.exe";
                 FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
-                string versaoAtual = info.FileVersion;
+                versaoAtual = info.FileVersion;
 
                 if (VerificarNovaVersaoDisponivel(versaoAtual))
                 {
@@ -222,7 +227,8 @@ namespace LunarAtualizador
                     //progressBarAdv1.Value = 0;
                     await BaixarEAtualizarAsync();
 
-                    EnviarEmailAposAtualizacaoAsync();
+                    //Ver Nova versao
+                    //EnviarEmailAposAtualizacaoAsync();
                     //}
                 }
                 else
@@ -266,7 +272,7 @@ namespace LunarAtualizador
                 // btnVerificarAtualização.Enabled = false;
                 string caminhoParaExe = @"C:\Lunar\Lunar.exe";
                 FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
-                string versaoAtual = info.FileVersion;
+                versaoAtual = info.FileVersion;
 
                 if (VerificarNovaVersaoDisponivel(versaoAtual))
                 {
@@ -352,7 +358,7 @@ namespace LunarAtualizador
             //fim da atualização
 
             progressBarAdv1.Visible = false;
-            EnviarEmailAposAtualizacaoAsync();
+
             MessageBox.Show("Atualização concluída com sucesso!", "Atualização Concluída");
             btnVerificarAtualização.Enabled = true;
             this.ControlBox = true;
@@ -461,63 +467,59 @@ namespace LunarAtualizador
             return @"C:\Lunar\";
         }
 
-        //private static void DescompactarArquivoRar()
-        //{
-        //    using (Stream stream = File.OpenRead(@"C:\Lunar\Atu1.rar"))
-        //    {
-        //        var reader = ReaderFactory.Open(stream);
-
-        //        while (reader.MoveToNextEntry())
-        //        {
-        //            if (!reader.Entry.IsDirectory)
-        //            {
-        //                reader.WriteEntryToDirectory(@"C:\Lunar", new ExtractionOptions()
-        //                {
-        //                    ExtractFullPath = true,
-        //                    Overwrite = true
-        //                });
-        //            }
-        //        }
-        //    }
-        //    // Após a descompactação, execute o arquivo .bat
-        //    string caminhoBat = @"C:\Lunar\Atualizador\AtuAtualizador.bat";
-        //    Process.Start(caminhoBat);
-        //}
-
-        private static void DescompactarArquivoRar()
+     
+        private void DescompactarArquivoRar()
         {
+            string caminhoBat = "";
             string pastaDestino = @"C:\Lunar";
             string arquivoRar = @"C:\Lunar\Atu1.rar";
             string arquivoBat = @"C:\Lunar\AtuAtualizador.bat";
-
-            // Descompacta o arquivo RAR
-            using (Stream stream = File.OpenRead(arquivoRar))
+            try
             {
-                var reader = ReaderFactory.Open(stream);
-
-                while (reader.MoveToNextEntry())
+                // Descompacta o arquivo RAR
+                using (Stream stream = File.OpenRead(arquivoRar))
                 {
-                    if (!reader.Entry.IsDirectory)
+                    var reader = ReaderFactory.Open(stream);
+
+                    while (reader.MoveToNextEntry())
                     {
-                        reader.WriteEntryToDirectory(pastaDestino, new ExtractionOptions()
+                        if (!reader.Entry.IsDirectory)
                         {
-                            ExtractFullPath = true,
-                            Overwrite = true
-                        });
+                            reader.WriteEntryToDirectory(pastaDestino, new ExtractionOptions()
+                            {
+                                ExtractFullPath = true,
+                                Overwrite = true
+                            });
+                        }
                     }
                 }
-            }
 
-            // Verifica se o arquivo AtuAtualizador.bat existe após a descompactação
-            if (File.Exists(arquivoBat))
-            {
-                // Copia o arquivo AtuAtualizador.bat para a pasta C:\Lunar\Atualizador
-                try { File.Copy(arquivoBat, Path.Combine(pastaDestino, "Atualizador", Path.GetFileName(arquivoBat)), true); } catch { }
+                // Verifica se o arquivo AtuAtualizador.bat existe após a descompactação
+                if (File.Exists(arquivoBat))
+                {
+                    // Copia o arquivo AtuAtualizador.bat para a pasta C:\Lunar\Atualizador
+                    try { File.Copy(arquivoBat, Path.Combine(pastaDestino, "Atualizador", Path.GetFileName(arquivoBat)), true); } catch { }
+                }
+                // Após a descompactação, execute o arquivo .bat
+                caminhoBat = @"C:\Lunar\Atualizador\AtuAtualizador.bat";
+                if (File.Exists(caminhoBat))
+                {
+                    string caminhoParaExe = @"C:\Lunar\Lunar.exe";
+                    FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
+                    versaoNova = info.FileVersion;
+                    enviarEmailPeloLunar("marcelo.xs@hotmail.com", "Atualização de Sistema " + Sessao.cnpjRegistro, "Atualização ", "Sistema atualizado em " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString() + " CNPJ: " + Sessao.cnpjRegistro + "\n\nVersaoAtual: " + versaoAtual + "\n\nVersão Atualizada:" + versaoNova + " Computador: " + nomeDoComputador, null);
+                    Process.Start(caminhoBat);
+                }
             }
-            // Após a descompactação, execute o arquivo .bat
-            string caminhoBat = @"C:\Lunar\Atualizador\AtuAtualizador.bat";
-            if (File.Exists(caminhoBat))
-                Process.Start(caminhoBat);
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao descompactar arquivo, abra o atualizador do sistema Lunar e clique para atualizar!");
+                if (File.Exists(caminhoBat))
+                {
+                    enviarEmailPeloLunar("marcelo.xs@hotmail.com", "Erro na Atualização de Sistema " + Sessao.cnpjRegistro, "Atualização ", "Erro ao descompactar arquivo, arquivo baixado corrompido! em " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString() + " CNPJ: " + Sessao.cnpjRegistro + "\n\nVersaoAtual: " + versaoAtual + "\n\nVersão Atualizada:" + versaoNova + " Computador: " + nomeDoComputador, null);
+                    Process.Start(caminhoBat);
+                }
+            }
         }
 
 
@@ -692,7 +694,7 @@ namespace LunarAtualizador
                         {
                             string caminhoParaExe = @"C:\Lunar\Lunar.exe";
                             FileVersionInfo info = FileVersionInfo.GetVersionInfo(caminhoParaExe);
-                            string versaoAtual = info.FileVersion;
+                            versaoAtual = info.FileVersion;
 
                             if (VerificarNovaVersaoDisponivel(versaoAtual))
                             {
@@ -911,6 +913,49 @@ namespace LunarAtualizador
             {
                 // Relatar erro
                 //MessageBox.Show($"Erro ao enviar e-mail: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public bool enviarEmailPeloLunar(String emailDestino, String assuntoEmail, String tituloCorpoEmail, String corpoEmail, List<String> anexo)
+        {
+            try
+            {
+                MailMessage Email;
+                StringBuilder mensagemEmail = new StringBuilder();
+                Email = new MailMessage();
+                Email.To.Add(new MailAddress(emailDestino));
+                Email.From = new MailAddress("arquivosfiscais@lunarsoftware.com.br", "Lunar Atualizador");
+                Email.Subject = (assuntoEmail);
+                Email.IsBodyHtml = true;
+                mensagemEmail.Append("<span style=\"font-weight: bold; font-size: 18px\">" + tituloCorpoEmail + "</span><br />");
+                mensagemEmail.Append("<br />" + corpoEmail + "<br />");
+                Email.Body = mensagemEmail.ToString();
+                if (anexo != null)
+                {
+                    for (int i = 0; i < anexo.Count; i++)
+                    {
+                        Email.Attachments.Add(new Attachment(anexo[i]));
+                    }
+                }
+
+                SmtpClient cliente = new SmtpClient("smtp.lunarsoftware.com.br", 587);
+                using (cliente)
+                {
+                    cliente.Credentials = new System.Net.NetworkCredential("arquivosfiscais@lunarsoftware.com.br", "Arquivos@2024");
+                    if (Sessao.parametroSistema.AutenticacaoSsl == true)
+                        cliente.EnableSsl = true;
+                    else
+                        cliente.EnableSsl = false;
+
+                    cliente.Send(Email);
+                }
+                Email.Attachments.Clear();
+                return true;
+
+            }
+            catch (Exception erroEmail)
+            {
+                return false;
             }
         }
 

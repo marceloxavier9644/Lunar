@@ -553,6 +553,12 @@ namespace Lunar.Telas.CaixaConferencia
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            
+        }
+
+
+        private void excluirMovimento()
+        {
             if (Sessao.permissoes.Count > 0)
             {
                 // Habilitar ou desabilitar os controles com base nas permissões
@@ -968,7 +974,6 @@ namespace Lunar.Telas.CaixaConferencia
                     GenericaDesktop.ShowAlerta("Usuário sem permissão para excluir lançamentos de caixa! (203)");
             }
         }
-
         private void grid_QueryRowStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventArgs e)
         {
             if (e.RowIndex % 2 == 0)
@@ -1349,7 +1354,7 @@ namespace Lunar.Telas.CaixaConferencia
 
         private void btnRemoverMovimento_Click(object sender, EventArgs e)
         {
-            btnExcluir.PerformClick();
+            excluirMovimento();
         }
 
         private void btnEditarCobrador1_Click(object sender, EventArgs e)

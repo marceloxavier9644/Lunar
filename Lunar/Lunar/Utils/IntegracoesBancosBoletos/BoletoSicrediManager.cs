@@ -15,7 +15,7 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
         private readonly SicrediIntegration _sicrediIntegration;
         private readonly BoletoConfig _boletoConfig;
 
-        public BoletoSicrediManager(int vendaId, int osId, ContaBancaria contaBancaria)
+        public BoletoSicrediManager(int vendaId, int osId, ContaBancaria contaBancaria, bool ambienteProducao)
         {
             BoletoConfigController boletoConfigController = new BoletoConfigController();
             _boletoService = new BoletoService();
@@ -32,7 +32,7 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
             }
 
             _sicrediIntegration = new SicrediIntegration(
-                isProduction: true,
+                isProduction: ambienteProducao,
                 username: _boletoConfig.Usuario,
                 password: GenericaDesktop.Descriptografa(_boletoConfig.Senha),
                 cooperativa: _boletoConfig.Cooperativa,
@@ -116,7 +116,7 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
                     Console.WriteLine("Falha ao gerar o boleto.");
                 }
             }
-
+            await Task.Delay(2000);
             // Chamar método para baixar e abrir PDFs
             if (linhasDigitaveis.Count > 0)
             {
@@ -184,6 +184,7 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
 
         public async Task<string> ConsultarBoletosLiquidadosPorDiaAsync(DateTime data)
         {
+            RetornoBancoController retornoBancoController = new RetornoBancoController();
             string resultadoRetornado = "";
             // Formata a data para o formato esperado pela API
             string dia = data.ToString("dd/MM/yyyy");
@@ -203,13 +204,16 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
                 ContaReceberController contaReceberController = new ContaReceberController();
                 foreach (var boleto in resultado)
                 {
+                    ContaReceber contaReceberLocalizada = new ContaReceber();
                     IList<ContaReceber> listaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela Where Tabela.NossoNumero = '"+ boleto.NossoNumero+ "' and Tabela.Recebido = false");
                     if(listaReceber.Count > 0)
                     {
-                        foreach(ContaReceber contaReceber in listaReceber)
+
+                        foreach (ContaReceber contaReceber in listaReceber)
                         {
                             if (contaReceber.Recebido == false)
                             {
+                                contaReceberLocalizada = contaReceber;
                                 contaReceber.Recebido = true;
                                 contaReceber.ValorRecebido = boleto.ValorLiquidado;
                                 contaReceber.DataRecebimento = boleto.DataPagamento;
@@ -274,6 +278,37 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
                             }
                         }
                     }
+
+                    RetornoBanco retornoBanco = retornoBancoController.selecionarRetornoPorNossoNumero(boleto.NossoNumero);
+                    // Se não encontrar um retorno, cria um novo objeto
+                    if (retornoBanco == null)
+                    {
+                        retornoBanco = new RetornoBanco();
+                    }
+                    retornoBanco.AbatimentoLiquido = boleto.AbatimentoLiquido;
+                    retornoBanco.CodigoBeneficiario = boleto.CodigoBeneficiario;
+                    retornoBanco.Cooperativa = boleto.Cooperativa;
+                    retornoBanco.CooperativaPostoBeneficiario = boleto.CooperativaPostoBeneficiario;
+                    retornoBanco.DataPagamento = boleto.DataPagamento;
+                    retornoBanco.DescontoLiquido = boleto.DescontoLiquido;
+                    retornoBanco.Descricao = "RET.SICREDI";
+                    retornoBanco.JurosLiquido = boleto.JurosLiquido;
+                    retornoBanco.MultaLiquida = boleto.MultaLiquida;
+                    retornoBanco.NossoNumero = boleto.NossoNumero;
+                    retornoBanco.SeuNumero = boleto.SeuNumero;
+                    retornoBanco.TipoCarteira = boleto.TipoCarteira;
+                    retornoBanco.TipoLiquidacao = boleto.TipoLiquidacao;
+                    retornoBanco.Valor = boleto.Valor;
+                    retornoBanco.ValorLiquidado = boleto.ValorLiquidado;
+                    if (contaReceberLocalizada != null)
+                    {
+                        if (contaReceberLocalizada.Id > 0)
+                        {
+                            retornoBanco.ContaReceber = contaReceberLocalizada;
+                            retornoBanco.Descricao = "RET.SICREDI " + contaReceberLocalizada.Cliente.RazaoSocial;
+                        }
+                    }
+                    Controller.getInstance().salvar(retornoBanco);
                 }
                 if(somaTaxaBancaria > 0)
                 {

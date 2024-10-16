@@ -20,6 +20,8 @@ namespace Lunar.Telas.Fiscal
 {
     public partial class FrmInutilizar : Form
     {
+        VendaController vendaController = new VendaController();
+        OrdemServicoController ordemServicoController = new OrdemServicoController();
         Nfe nfe = new Nfe();
         NfeController nfeController = new NfeController();
         GenericaDesktop generica = new GenericaDesktop();
@@ -192,6 +194,19 @@ namespace Lunar.Telas.Fiscal
             nfStatus = (NfeStatus)Controller.getInstance().selecionar(nfStatus);
             nfe.NfeStatus = nfStatus;
             Controller.getInstance().salvar(nfe);
+
+            Venda venda = vendaController.selecionarVendaPorNF(nfe.Id);
+            if (venda != null)
+            {
+                venda.Nfe = null;
+                Controller.getInstance().salvar(venda);
+            }
+            OrdemServico ordemServico = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
+            if (ordemServico != null)
+            {
+                ordemServico.Nfe = null;
+                Controller.getInstance().salvar(ordemServico);
+            }
 
             if (!string.IsNullOrEmpty(xml))
             {

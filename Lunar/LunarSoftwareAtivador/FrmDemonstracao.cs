@@ -856,14 +856,21 @@ namespace LunarSoftwareAtivador
                 GenericaDesktop generica = new GenericaDesktop();
                 txtEndereco.Text = generica.RemoverAcentos(enderecoCep.Logradouro);
                 txtComplemento.Text = enderecoCep.Complemento;
-                Cidade cidade = new Cidade();
-                CidadeController cidadeController = new CidadeController();
-                cidade = cidadeController.selecionarCidadePorDescricao(generica.RemoverAcentos(enderecoCep.Localidade));
-                if (cidade != null)
+                try
                 {
-                    txtCidade.Text = cidade.Descricao;
-                    txtUf.Text = enderecoCep.Uf;
-                    txtBairro.Text = enderecoCep.Bairro;
+                    Cidade cidade = new Cidade();
+                    CidadeController cidadeController = new CidadeController();
+                    cidade = cidadeController.selecionarCidadePorDescricao(generica.RemoverAcentos(enderecoCep.Localidade));
+                    if (cidade != null)
+                    {
+                        txtCidade.Text = cidade.Descricao;
+                        txtUf.Text = enderecoCep.Uf;
+                        txtBairro.Text = enderecoCep.Bairro;
+                    }
+                }
+                catch
+                {
+
                 }
                 txtNumero.Focus();
             }

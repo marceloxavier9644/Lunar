@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Management;
@@ -27,7 +28,6 @@ namespace Lunar
     public partial class FrmLogin : Syncfusion.Windows.Forms.Office2007Form
     {
         Generica generica = new Generica();
-       
         Thread th;
         private string servidor = "";
         private string usuarioBanco = "";
@@ -556,19 +556,34 @@ namespace Lunar
         {
             if (e.KeyChar == 13)
             {
-                if (!String.IsNullOrEmpty(txtUsuario.Texts))
+                //btnLogin.Enabled devido ajuste de buscar usuario no banco, se nao fizer isso e logar rapidamente da erro, deve aguardar a busca
+                if (!String.IsNullOrEmpty(txtUsuario.Texts) && btnLogin.Enabled == true)
                     Login();
             }
         }
 
-        private void txtUsuario_Leave(object sender, EventArgs e)
+        private async void txtUsuario_Leave(object sender, EventArgs e)
         {
             try
             {
-                if (!String.IsNullOrEmpty(txtUsuario.Texts.Trim()) && String.IsNullOrEmpty(txtSenha.Texts))
+                if (!string.IsNullOrEmpty(txtUsuario.Texts.Trim()))
                 {
-                    UsuarioController usuarioController = new UsuarioController();
-                    IList<Usuario> listaUser = usuarioController.selecionarUsuarioComVariosFiltros(txtUsuario.Texts.Trim());
+                    btnLogin.Enabled = false;
+                    btnLogin.BackColor = Color.FromArgb(255, 255, 0, 0);
+                    lblStatus.Text = "Localizando usuário...";
+                    lblStatus.Visible = true;
+
+                    UsuarioController usuarioController = null;
+
+                    await Task.Run(() =>
+                    {
+                        usuarioController = new UsuarioController();
+                    });
+
+                    IList<Usuario> listaUser = await Task.Run(() =>
+                        usuarioController.selecionarUsuarioComVariosFiltros(txtUsuario.Texts.Trim())
+                    );
+
                     if (listaUser.Count == 1)
                     {
                         foreach (Usuario usuario in listaUser)
@@ -577,12 +592,24 @@ namespace Lunar
                             txtSenha.Focus();
                         }
                     }
+                    lblStatus.Visible = false;
                 }
             }
             catch (Exception erro)
             {
-                if(erro.Message.Contains("conexão"))
-                ShowMessage("Erro de conexão");
+                if (erro.Message.Contains("conexão"))
+                {
+                    ShowMessage("Erro de conexão");
+                }
+                else
+                {
+                    ShowMessage("Erro ao buscar usuário: " + erro.Message);
+                }
+            }
+            finally
+            {
+                btnLogin.BackColor = Color.FromArgb(255, 77, 35, 102);
+                btnLogin.Enabled = true;
             }
         }
 

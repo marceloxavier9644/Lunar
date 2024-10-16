@@ -56,6 +56,7 @@
             this.txtNumeroVenda = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCodCliente = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtCliente = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.btnRemoverNfe = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -540,12 +541,35 @@
             this.txtCliente.UnderlinedStyle = false;
             this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_KeyPress);
             // 
+            // btnRemoverNfe
+            // 
+            this.btnRemoverNfe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoverNfe.BackColor = System.Drawing.Color.White;
+            this.btnRemoverNfe.BackgroundColor = System.Drawing.Color.White;
+            this.btnRemoverNfe.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnRemoverNfe.BorderRadius = 8;
+            this.btnRemoverNfe.BorderSize = 2;
+            this.btnRemoverNfe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoverNfe.FlatAppearance.BorderSize = 0;
+            this.btnRemoverNfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverNfe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverNfe.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoverNfe.Location = new System.Drawing.Point(69, 419);
+            this.btnRemoverNfe.Name = "btnRemoverNfe";
+            this.btnRemoverNfe.Size = new System.Drawing.Size(136, 45);
+            this.btnRemoverNfe.TabIndex = 263;
+            this.btnRemoverNfe.Text = "Remover NFe";
+            this.btnRemoverNfe.TextColor = System.Drawing.Color.Black;
+            this.btnRemoverNfe.UseVisualStyleBackColor = false;
+            this.btnRemoverNfe.Click += new System.EventHandler(this.btnRemoverNfe_Click);
+            // 
             // FrmAlterarVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(632, 476);
+            this.Controls.Add(this.btnRemoverNfe);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.autoLabel8);
@@ -608,5 +632,6 @@
         private RJ_UI.Classes.RJTextBox txtVendedor;
         private RJ_UI.Classes.RJButton btnAlterar;
         private RJ_UI.Classes.RJButton btnCancelar;
+        private RJ_UI.Classes.RJButton btnRemoverNfe;
     }
 }

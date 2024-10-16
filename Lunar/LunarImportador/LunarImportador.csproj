@@ -7,6 +7,9 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
+
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+	
   </PropertyGroup>
 
   <ItemGroup>
