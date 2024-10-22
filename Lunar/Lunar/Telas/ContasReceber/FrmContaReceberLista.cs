@@ -12,6 +12,7 @@ using Lunar.Telas.VisualizadorPDF;
 using Lunar.Utils;
 using Lunar.Utils.GalaxyPay_API;
 using Lunar.Utils.IntegracoesBancosBoletos;
+using Lunar.Utils.IntegracoesBancosBoletos.BB;
 using Lunar.Utils.LunarChatIntegracao;
 using Lunar.WSCorreios;
 using LunarBase.Classes;
@@ -42,9 +43,11 @@ using System.Windows.Forms;
 using Windows.Media.Protection.PlayReady;
 using static Lunar.Utils.GalaxyPay_API.GalaxyPay_RetornoStatusBoletos;
 using static Lunar.Utils.GalaxyPay_API.GalaxyPayApiIntegracao;
+using static Lunar.Utils.IntegracoesBancosBoletos.BB.RetornoBoletoBB;
 using static Lunar.Utils.LunarChatIntegracao.LunarChatMensagem;
 using static LunarBase.Utilidades.ManifestoDownload;
 using Exception = System.Exception;
+using Task = System.Threading.Tasks.Task;
 
 namespace Lunar.Telas.ContasReceber
 {
@@ -1169,6 +1172,7 @@ namespace Lunar.Telas.ContasReceber
             }
         }
 
+
         private void btnImprimirBoleto_Click(object sender, EventArgs e)
         {
             gerarBoletoParcelasSelecionadas2();
@@ -1464,6 +1468,40 @@ namespace Lunar.Telas.ContasReceber
                                                 lblCalculando.Text = "Boleto Sicredi Gerado com Sucesso!";
                                         }
                                     }
+                                    else if(boletoConfig.ContaBancaria.Banco.Descricao.Contains("BB") || boletoConfig.ContaBancaria.Banco.Descricao.Contains("BANCO DO BRASIL"))
+                                    {
+                                        try
+                                        {
+                                            BBApiService bbApiService = new BBApiService(boletoConfig.AmbienteProducao, boletoConfig.IdToken, boletoConfig.Token);
+                                            RetornoBoletoBB response = await bbApiService.CriarBoletoBancoBrasilAsync(contaReceber.Cliente, contaReceber, boletoConfig);
+                                            GenericaDesktop.ShowInfo("Boleto gerado com sucesso!");
+                                            contaReceber.BoletoGerado = true;
+                                            contaReceber.LinhaDigitavel = response.linhaDigitavel;
+                                            contaReceber.NossoNumero = response.numero;
+                                            contaReceber.IdBoleto = "";
+                                            contaReceber.QrCode = response.qrCode.emv;
+                                            Controller.getInstance().salvar(contaReceber);
+                                            BbDetalheBoletoResponse boletoDetalheRet = await bbApiService.DetalharBoletoAsync(response.numero, int.Parse(boletoConfig.Convenio));
+                                            if (boletoDetalheRet != null)
+                                            {
+                                                FrmImprimirBoletoBB frmImprimirBoletoBB = new FrmImprimirBoletoBB(boletoDetalheRet, contaReceber.EmpresaFilial, response, boletoConfig);
+                                                frmImprimirBoletoBB.ShowDialog();
+                                            }
+                                        }
+                                        catch (ApiException apiEx)
+                                        {
+                                            // Exibir mensagens amigáveis para cada erro retornado pela API
+                                            foreach (var erro in apiEx.ApiError.erros)
+                                            {
+                                                MessageBox.Show($"Código: {erro.codigo}, Mensagem: {erro.mensagem}");
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            // Tratar outras exceções, se necessário
+                                            MessageBox.Show($"Ocorreu um erro inesperado: {ex.Message}");
+                                        }
+                                    }
                                 }
                             }
                             else if (contaReceber.ContaBoleto.Banco.Descricao == "GALAXYPAY" || contaReceber.ContaBoleto.Banco.Descricao == "CELCASH" || contaReceber.ContaBoleto.Descricao == "CELCASH")
@@ -1536,6 +1574,11 @@ namespace Lunar.Telas.ContasReceber
             }
         }
 
+
+        private void imprimirBoletoBB()
+        {
+
+        }
 
         private async void enviarBoletoENFPorWhatsApp()
         {

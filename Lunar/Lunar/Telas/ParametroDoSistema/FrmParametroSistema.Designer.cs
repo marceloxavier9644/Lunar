@@ -91,6 +91,19 @@
             this.txtJuro = new Lunar.RJ_UI.Classes.RJTextBox();
             this.txtMulta = new Lunar.RJ_UI.Classes.RJTextBox();
             this.tabOrdemServico = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtTokenHomologacaoNFSe = new System.Windows.Forms.TextBox();
+            this.autoLabel67 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtTokenProducaoNFSe = new System.Windows.Forms.TextBox();
+            this.autoLabel66 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtSenhaNfse = new System.Windows.Forms.TextBox();
+            this.autoLabel65 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtUsuarioNfse = new System.Windows.Forms.TextBox();
+            this.autoLabel64 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel63 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtSerieRps = new System.Windows.Forms.TextBox();
+            this.autoLabel62 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtNumeroRps = new System.Windows.Forms.TextBox();
             this.chkViasDiferentesOrdemServico = new System.Windows.Forms.CheckBox();
             this.chkSelecionarGradePorCodigoBarras = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -238,15 +251,9 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCancelar = new Lunar.RJ_UI.Classes.RJButton();
             this.btnConfirmar = new Lunar.RJ_UI.Classes.RJButton();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtNumeroRps = new System.Windows.Forms.TextBox();
-            this.autoLabel62 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.autoLabel63 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtSerieRps = new System.Windows.Forms.TextBox();
-            this.autoLabel64 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtUsuarioNfse = new System.Windows.Forms.TextBox();
-            this.txtSenhaNfse = new System.Windows.Forms.TextBox();
-            this.autoLabel65 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.radioRelatorioCaixaTermica = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioRelatorioCaixaA4 = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -263,6 +270,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkIntegracaoGalaxyPay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).BeginInit();
             this.tabOrdemServico.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioTermicaCondicional)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioA4Condicional)).BeginInit();
@@ -298,7 +306,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkMinutosPosVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).BeginInit();
             this.tabDashboardsApp.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioRelatorioCaixaTermica)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioRelatorioCaixaA4)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitleBar
@@ -1268,11 +1278,148 @@
             this.tabOrdemServico.Text = "O.S/Vendas";
             this.tabOrdemServico.ThemesEnabled = false;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.txtTokenHomologacaoNFSe);
+            this.groupBox5.Controls.Add(this.autoLabel67);
+            this.groupBox5.Controls.Add(this.txtTokenProducaoNFSe);
+            this.groupBox5.Controls.Add(this.autoLabel66);
+            this.groupBox5.Controls.Add(this.txtSenhaNfse);
+            this.groupBox5.Controls.Add(this.autoLabel65);
+            this.groupBox5.Controls.Add(this.txtUsuarioNfse);
+            this.groupBox5.Controls.Add(this.autoLabel64);
+            this.groupBox5.Controls.Add(this.autoLabel63);
+            this.groupBox5.Controls.Add(this.txtSerieRps);
+            this.groupBox5.Controls.Add(this.autoLabel62);
+            this.groupBox5.Controls.Add(this.txtNumeroRps);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(307, 74);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(519, 249);
+            this.groupBox5.TabIndex = 209;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Nota Fiscal de Serviço";
+            // 
+            // txtTokenHomologacaoNFSe
+            // 
+            this.txtTokenHomologacaoNFSe.Location = new System.Drawing.Point(6, 217);
+            this.txtTokenHomologacaoNFSe.Name = "txtTokenHomologacaoNFSe";
+            this.txtTokenHomologacaoNFSe.Size = new System.Drawing.Size(507, 26);
+            this.txtTokenHomologacaoNFSe.TabIndex = 219;
+            // 
+            // autoLabel67
+            // 
+            this.autoLabel67.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel67.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel67.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.autoLabel67.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel67.Location = new System.Drawing.Point(6, 194);
+            this.autoLabel67.Name = "autoLabel67";
+            this.autoLabel67.Size = new System.Drawing.Size(156, 20);
+            this.autoLabel67.TabIndex = 220;
+            this.autoLabel67.Text = "Token Homologação";
+            // 
+            // txtTokenProducaoNFSe
+            // 
+            this.txtTokenProducaoNFSe.Location = new System.Drawing.Point(6, 158);
+            this.txtTokenProducaoNFSe.Name = "txtTokenProducaoNFSe";
+            this.txtTokenProducaoNFSe.Size = new System.Drawing.Size(507, 26);
+            this.txtTokenProducaoNFSe.TabIndex = 217;
+            // 
+            // autoLabel66
+            // 
+            this.autoLabel66.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel66.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel66.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.autoLabel66.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel66.Location = new System.Drawing.Point(6, 135);
+            this.autoLabel66.Name = "autoLabel66";
+            this.autoLabel66.Size = new System.Drawing.Size(125, 20);
+            this.autoLabel66.TabIndex = 218;
+            this.autoLabel66.Text = "Token Produção";
+            // 
+            // txtSenhaNfse
+            // 
+            this.txtSenhaNfse.Location = new System.Drawing.Point(323, 106);
+            this.txtSenhaNfse.Name = "txtSenhaNfse";
+            this.txtSenhaNfse.Size = new System.Drawing.Size(190, 26);
+            this.txtSenhaNfse.TabIndex = 3;
+            this.txtSenhaNfse.UseSystemPasswordChar = true;
+            // 
+            // autoLabel65
+            // 
+            this.autoLabel65.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel65.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel65.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.autoLabel65.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel65.Location = new System.Drawing.Point(323, 83);
+            this.autoLabel65.Name = "autoLabel65";
+            this.autoLabel65.Size = new System.Drawing.Size(56, 20);
+            this.autoLabel65.TabIndex = 216;
+            this.autoLabel65.Text = "Senha";
+            // 
+            // txtUsuarioNfse
+            // 
+            this.txtUsuarioNfse.Location = new System.Drawing.Point(6, 106);
+            this.txtUsuarioNfse.Name = "txtUsuarioNfse";
+            this.txtUsuarioNfse.Size = new System.Drawing.Size(311, 26);
+            this.txtUsuarioNfse.TabIndex = 2;
+            // 
+            // autoLabel64
+            // 
+            this.autoLabel64.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel64.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel64.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.autoLabel64.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel64.Location = new System.Drawing.Point(6, 83);
+            this.autoLabel64.Name = "autoLabel64";
+            this.autoLabel64.Size = new System.Drawing.Size(64, 20);
+            this.autoLabel64.TabIndex = 214;
+            this.autoLabel64.Text = "Usuário";
+            // 
+            // autoLabel63
+            // 
+            this.autoLabel63.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel63.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel63.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.autoLabel63.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel63.Location = new System.Drawing.Point(267, 31);
+            this.autoLabel63.Name = "autoLabel63";
+            this.autoLabel63.Size = new System.Drawing.Size(46, 20);
+            this.autoLabel63.TabIndex = 213;
+            this.autoLabel63.Text = "Série";
+            // 
+            // txtSerieRps
+            // 
+            this.txtSerieRps.Location = new System.Drawing.Point(267, 54);
+            this.txtSerieRps.Name = "txtSerieRps";
+            this.txtSerieRps.Size = new System.Drawing.Size(246, 26);
+            this.txtSerieRps.TabIndex = 1;
+            // 
+            // autoLabel62
+            // 
+            this.autoLabel62.BackColor = System.Drawing.Color.Transparent;
+            this.autoLabel62.Cursor = System.Windows.Forms.Cursors.Default;
+            this.autoLabel62.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.autoLabel62.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel62.Location = new System.Drawing.Point(6, 31);
+            this.autoLabel62.Name = "autoLabel62";
+            this.autoLabel62.Size = new System.Drawing.Size(102, 20);
+            this.autoLabel62.TabIndex = 211;
+            this.autoLabel62.Text = "Número RPS";
+            // 
+            // txtNumeroRps
+            // 
+            this.txtNumeroRps.Location = new System.Drawing.Point(6, 54);
+            this.txtNumeroRps.Name = "txtNumeroRps";
+            this.txtNumeroRps.Size = new System.Drawing.Size(255, 26);
+            this.txtNumeroRps.TabIndex = 0;
+            // 
             // chkViasDiferentesOrdemServico
             // 
             this.chkViasDiferentesOrdemServico.AutoSize = true;
             this.chkViasDiferentesOrdemServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkViasDiferentesOrdemServico.Location = new System.Drawing.Point(16, 271);
+            this.chkViasDiferentesOrdemServico.Location = new System.Drawing.Point(16, 357);
             this.chkViasDiferentesOrdemServico.Name = "chkViasDiferentesOrdemServico";
             this.chkViasDiferentesOrdemServico.Size = new System.Drawing.Size(427, 22);
             this.chkViasDiferentesOrdemServico.TabIndex = 4;
@@ -1283,7 +1430,7 @@
             // 
             this.chkSelecionarGradePorCodigoBarras.AutoSize = true;
             this.chkSelecionarGradePorCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelecionarGradePorCodigoBarras.Location = new System.Drawing.Point(16, 243);
+            this.chkSelecionarGradePorCodigoBarras.Location = new System.Drawing.Point(16, 329);
             this.chkSelecionarGradePorCodigoBarras.Name = "chkSelecionarGradePorCodigoBarras";
             this.chkSelecionarGradePorCodigoBarras.Size = new System.Drawing.Size(810, 22);
             this.chkSelecionarGradePorCodigoBarras.TabIndex = 3;
@@ -1298,7 +1445,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(16, 73);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(285, 164);
+            this.groupBox3.Size = new System.Drawing.Size(285, 250);
             this.groupBox3.TabIndex = 208;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tipo Impressora Condicional e O.S";
@@ -2799,6 +2946,7 @@
             // 
             // tabCaixa
             // 
+            this.tabCaixa.Controls.Add(this.groupBox7);
             this.tabCaixa.Controls.Add(this.groupBox4);
             this.tabCaixa.Image = null;
             this.tabCaixa.ImageSize = new System.Drawing.Size(16, 16);
@@ -3484,100 +3632,41 @@
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
-            // groupBox5
+            // groupBox7
             // 
-            this.groupBox5.Controls.Add(this.txtSenhaNfse);
-            this.groupBox5.Controls.Add(this.autoLabel65);
-            this.groupBox5.Controls.Add(this.txtUsuarioNfse);
-            this.groupBox5.Controls.Add(this.autoLabel64);
-            this.groupBox5.Controls.Add(this.autoLabel63);
-            this.groupBox5.Controls.Add(this.txtSerieRps);
-            this.groupBox5.Controls.Add(this.autoLabel62);
-            this.groupBox5.Controls.Add(this.txtNumeroRps);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(307, 74);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(519, 163);
-            this.groupBox5.TabIndex = 209;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Nota Fiscal de Serviço";
+            this.groupBox7.Controls.Add(this.radioRelatorioCaixaTermica);
+            this.groupBox7.Controls.Add(this.radioRelatorioCaixaA4);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(295, 22);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(285, 90);
+            this.groupBox7.TabIndex = 211;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Tipo Impressora Relatório de Caixa";
             // 
-            // txtNumeroRps
+            // radioRelatorioCaixaTermica
             // 
-            this.txtNumeroRps.Location = new System.Drawing.Point(6, 54);
-            this.txtNumeroRps.Name = "txtNumeroRps";
-            this.txtNumeroRps.Size = new System.Drawing.Size(255, 26);
-            this.txtNumeroRps.TabIndex = 0;
+            this.radioRelatorioCaixaTermica.BeforeTouchSize = new System.Drawing.Size(137, 21);
+            this.radioRelatorioCaixaTermica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioRelatorioCaixaTermica.Location = new System.Drawing.Point(11, 33);
+            this.radioRelatorioCaixaTermica.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioRelatorioCaixaTermica.Name = "radioRelatorioCaixaTermica";
+            this.radioRelatorioCaixaTermica.Size = new System.Drawing.Size(137, 21);
+            this.radioRelatorioCaixaTermica.TabIndex = 0;
+            this.radioRelatorioCaixaTermica.TabStop = false;
+            this.radioRelatorioCaixaTermica.Text = " Térmica";
             // 
-            // autoLabel62
+            // radioRelatorioCaixaA4
             // 
-            this.autoLabel62.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel62.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel62.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.autoLabel62.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel62.Location = new System.Drawing.Point(6, 31);
-            this.autoLabel62.Name = "autoLabel62";
-            this.autoLabel62.Size = new System.Drawing.Size(102, 20);
-            this.autoLabel62.TabIndex = 211;
-            this.autoLabel62.Text = "Número RPS";
-            // 
-            // autoLabel63
-            // 
-            this.autoLabel63.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel63.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel63.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.autoLabel63.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel63.Location = new System.Drawing.Point(267, 31);
-            this.autoLabel63.Name = "autoLabel63";
-            this.autoLabel63.Size = new System.Drawing.Size(46, 20);
-            this.autoLabel63.TabIndex = 213;
-            this.autoLabel63.Text = "Série";
-            // 
-            // txtSerieRps
-            // 
-            this.txtSerieRps.Location = new System.Drawing.Point(267, 54);
-            this.txtSerieRps.Name = "txtSerieRps";
-            this.txtSerieRps.Size = new System.Drawing.Size(246, 26);
-            this.txtSerieRps.TabIndex = 1;
-            // 
-            // autoLabel64
-            // 
-            this.autoLabel64.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel64.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel64.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.autoLabel64.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel64.Location = new System.Drawing.Point(6, 83);
-            this.autoLabel64.Name = "autoLabel64";
-            this.autoLabel64.Size = new System.Drawing.Size(64, 20);
-            this.autoLabel64.TabIndex = 214;
-            this.autoLabel64.Text = "Usuário";
-            // 
-            // txtUsuarioNfse
-            // 
-            this.txtUsuarioNfse.Location = new System.Drawing.Point(6, 106);
-            this.txtUsuarioNfse.Name = "txtUsuarioNfse";
-            this.txtUsuarioNfse.Size = new System.Drawing.Size(311, 26);
-            this.txtUsuarioNfse.TabIndex = 2;
-            // 
-            // txtSenhaNfse
-            // 
-            this.txtSenhaNfse.Location = new System.Drawing.Point(323, 106);
-            this.txtSenhaNfse.Name = "txtSenhaNfse";
-            this.txtSenhaNfse.Size = new System.Drawing.Size(190, 26);
-            this.txtSenhaNfse.TabIndex = 3;
-            this.txtSenhaNfse.UseSystemPasswordChar = true;
-            // 
-            // autoLabel65
-            // 
-            this.autoLabel65.BackColor = System.Drawing.Color.Transparent;
-            this.autoLabel65.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoLabel65.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.autoLabel65.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel65.Location = new System.Drawing.Point(323, 83);
-            this.autoLabel65.Name = "autoLabel65";
-            this.autoLabel65.Size = new System.Drawing.Size(56, 20);
-            this.autoLabel65.TabIndex = 216;
-            this.autoLabel65.Text = "Senha";
+            this.radioRelatorioCaixaA4.BeforeTouchSize = new System.Drawing.Size(137, 21);
+            this.radioRelatorioCaixaA4.Checked = true;
+            this.radioRelatorioCaixaA4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioRelatorioCaixaA4.Location = new System.Drawing.Point(11, 60);
+            this.radioRelatorioCaixaA4.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioRelatorioCaixaA4.Name = "radioRelatorioCaixaA4";
+            this.radioRelatorioCaixaA4.Size = new System.Drawing.Size(137, 21);
+            this.radioRelatorioCaixaA4.TabIndex = 1;
+            this.radioRelatorioCaixaA4.Text = " A4";
             // 
             // FrmParametroSistema
             // 
@@ -3617,6 +3706,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkChequeContaReceber)).EndInit();
             this.tabOrdemServico.ResumeLayout(false);
             this.tabOrdemServico.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioTermicaCondicional)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioA4Condicional)).EndInit();
@@ -3658,8 +3749,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkDiasPosVenda)).EndInit();
             this.tabDashboardsApp.ResumeLayout(false);
             this.tabDashboardsApp.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radioRelatorioCaixaTermica)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioRelatorioCaixaA4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3883,5 +3975,12 @@
         private System.Windows.Forms.TextBox txtSerieRps;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel62;
         private System.Windows.Forms.TextBox txtNumeroRps;
+        private System.Windows.Forms.TextBox txtTokenHomologacaoNFSe;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel67;
+        private System.Windows.Forms.TextBox txtTokenProducaoNFSe;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel66;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioRelatorioCaixaTermica;
+        private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioRelatorioCaixaA4;
     }
 }

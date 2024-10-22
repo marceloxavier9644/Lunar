@@ -48,7 +48,12 @@ namespace Lunar.Utils.OrganizacaoNF
                 if (venda != null)
                 {
                     venda.Nfe = objetoNfe;
-                    venda.ValorFinal = objetoNfe.VNf;
+                    if (valorNota != venda.ValorFinal)
+                    {
+                        objetoNfe.VNf = venda.ValorFinal;
+                        objetoNfe = AlimentaObjetoNfe_1(venda.ValorProdutos, objetoNfe.VNf, venda.ValorDesconto, numeroNfe);
+                        Controller.getInstance().salvar(objetoNfe);
+                    }
                     Controller.getInstance().salvar(venda);
                 }
                 if (ordemServico != null)
@@ -1411,7 +1416,7 @@ namespace Lunar.Utils.OrganizacaoNF
                     pag = new TNFeInfNFePag
                     {
                         detPag = retornaPagamentoNFCe(listaFormaPag, listaFormaPagOs),
-                        vTroco = formatMoedaNf(troco)
+                        vTroco = troco > 0 ? formatMoedaNf(troco) : null
                     },
                     infAdic = new TNFeInfNFeInfAdic
                     {

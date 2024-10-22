@@ -275,5 +275,18 @@ namespace Lunar.Telas.Cadastros.Financeiro.Cartoes
         {
             selecionarParaEditar();
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedIndex >= 0)
+            {
+                adquirenteCartao = new AdquirenteCartao();
+                adquirenteCartao = (AdquirenteCartao)grid.SelectedItem;
+                if (GenericaDesktop.ShowConfirmacao("Deseja realmente excluir?"))
+                    Controller.getInstance().excluir(adquirenteCartao);
+            }
+            else
+                GenericaDesktop.ShowAlerta("Clique na linha que deseja excluir!");
+        }
     }
 }

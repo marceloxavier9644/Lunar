@@ -68,14 +68,18 @@
             this.txtCodPlanoConta = new System.Windows.Forms.TextBox();
             this.btnPesquisaPlanoConta = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioProducao = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.radioHomologacao = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.radioProducao = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
+            this.txtConvenio = new System.Windows.Forms.TextBox();
+            this.autoLabel14 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtVariacaoCarteira = new System.Windows.Forms.TextBox();
+            this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioTradicional)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioHibrido)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioProducao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioHomologacao)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioProducao)).BeginInit();
             this.SuspendLayout();
             // 
             // autoLabel42
@@ -168,7 +172,7 @@
             this.txtCodigoBeneficiario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoBeneficiario.Location = new System.Drawing.Point(13, 108);
             this.txtCodigoBeneficiario.Name = "txtCodigoBeneficiario";
-            this.txtCodigoBeneficiario.Size = new System.Drawing.Size(469, 26);
+            this.txtCodigoBeneficiario.Size = new System.Drawing.Size(232, 26);
             this.txtCodigoBeneficiario.TabIndex = 0;
             // 
             // autoLabel1
@@ -188,7 +192,7 @@
             this.txtMulta.Location = new System.Drawing.Point(488, 108);
             this.txtMulta.Name = "txtMulta";
             this.txtMulta.Size = new System.Drawing.Size(147, 26);
-            this.txtMulta.TabIndex = 1;
+            this.txtMulta.TabIndex = 2;
             this.txtMulta.Leave += new System.EventHandler(this.txtMulta_Leave);
             // 
             // autoLabel2
@@ -208,7 +212,7 @@
             this.txtJuro.Location = new System.Drawing.Point(641, 108);
             this.txtJuro.Name = "txtJuro";
             this.txtJuro.Size = new System.Drawing.Size(147, 26);
-            this.txtJuro.TabIndex = 2;
+            this.txtJuro.TabIndex = 3;
             this.txtJuro.Leave += new System.EventHandler(this.txtJuro_Leave);
             // 
             // autoLabel3
@@ -226,9 +230,10 @@
             // 
             this.txtNumeroCarteira.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumeroCarteira.Location = new System.Drawing.Point(13, 156);
+            this.txtNumeroCarteira.MaxLength = 30;
             this.txtNumeroCarteira.Name = "txtNumeroCarteira";
-            this.txtNumeroCarteira.Size = new System.Drawing.Size(186, 26);
-            this.txtNumeroCarteira.TabIndex = 3;
+            this.txtNumeroCarteira.Size = new System.Drawing.Size(188, 26);
+            this.txtNumeroCarteira.TabIndex = 4;
             // 
             // autoLabel4
             // 
@@ -244,17 +249,17 @@
             // txtIdentificacaoCliente
             // 
             this.txtIdentificacaoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdentificacaoCliente.Location = new System.Drawing.Point(205, 156);
+            this.txtIdentificacaoCliente.Location = new System.Drawing.Point(361, 156);
             this.txtIdentificacaoCliente.Name = "txtIdentificacaoCliente";
             this.txtIdentificacaoCliente.Size = new System.Drawing.Size(190, 26);
-            this.txtIdentificacaoCliente.TabIndex = 4;
+            this.txtIdentificacaoCliente.TabIndex = 6;
             // 
             // autoLabel5
             // 
             this.autoLabel5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel5.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel5.Location = new System.Drawing.Point(205, 137);
+            this.autoLabel5.Location = new System.Drawing.Point(361, 137);
             this.autoLabel5.Name = "autoLabel5";
             this.autoLabel5.Size = new System.Drawing.Size(146, 16);
             this.autoLabel5.TabIndex = 290;
@@ -268,7 +273,7 @@
             this.radioTradicional.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
             this.radioTradicional.Name = "radioTradicional";
             this.radioTradicional.Size = new System.Drawing.Size(303, 27);
-            this.radioTradicional.TabIndex = 15;
+            this.radioTradicional.TabIndex = 17;
             this.radioTradicional.TabStop = false;
             this.radioTradicional.Text = "Boleto Tradicional (Codigo de Barras)";
             // 
@@ -280,24 +285,24 @@
             this.radioHibrido.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
             this.radioHibrido.Name = "radioHibrido";
             this.radioHibrido.Size = new System.Drawing.Size(364, 27);
-            this.radioHibrido.TabIndex = 16;
+            this.radioHibrido.TabIndex = 18;
             this.radioHibrido.TabStop = false;
             this.radioHibrido.Text = "Boleto Híbrido (Codigo de Barras e QRCODE)";
             // 
             // txtCooperativa
             // 
             this.txtCooperativa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCooperativa.Location = new System.Drawing.Point(401, 156);
+            this.txtCooperativa.Location = new System.Drawing.Point(557, 156);
             this.txtCooperativa.Name = "txtCooperativa";
-            this.txtCooperativa.Size = new System.Drawing.Size(234, 26);
-            this.txtCooperativa.TabIndex = 5;
+            this.txtCooperativa.Size = new System.Drawing.Size(122, 26);
+            this.txtCooperativa.TabIndex = 7;
             // 
             // autoLabel6
             // 
             this.autoLabel6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel6.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel6.Location = new System.Drawing.Point(401, 137);
+            this.autoLabel6.Location = new System.Drawing.Point(557, 137);
             this.autoLabel6.Name = "autoLabel6";
             this.autoLabel6.Size = new System.Drawing.Size(81, 16);
             this.autoLabel6.TabIndex = 294;
@@ -306,17 +311,17 @@
             // txtPosto
             // 
             this.txtPosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPosto.Location = new System.Drawing.Point(641, 156);
+            this.txtPosto.Location = new System.Drawing.Point(685, 156);
             this.txtPosto.Name = "txtPosto";
-            this.txtPosto.Size = new System.Drawing.Size(147, 26);
-            this.txtPosto.TabIndex = 6;
+            this.txtPosto.Size = new System.Drawing.Size(103, 26);
+            this.txtPosto.TabIndex = 8;
             // 
             // autoLabel7
             // 
             this.autoLabel7.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel7.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel7.Location = new System.Drawing.Point(641, 137);
+            this.autoLabel7.Location = new System.Drawing.Point(685, 137);
             this.autoLabel7.Name = "autoLabel7";
             this.autoLabel7.Size = new System.Drawing.Size(42, 16);
             this.autoLabel7.TabIndex = 296;
@@ -327,8 +332,8 @@
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(13, 204);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(283, 26);
-            this.txtUsuario.TabIndex = 7;
+            this.txtUsuario.Size = new System.Drawing.Size(209, 26);
+            this.txtUsuario.TabIndex = 9;
             // 
             // autoLabel8
             // 
@@ -344,10 +349,10 @@
             // txtSenha
             // 
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.Location = new System.Drawing.Point(302, 204);
+            this.txtSenha.Location = new System.Drawing.Point(228, 204);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(145, 26);
-            this.txtSenha.TabIndex = 8;
+            this.txtSenha.Size = new System.Drawing.Size(219, 26);
+            this.txtSenha.TabIndex = 10;
             this.txtSenha.UseSystemPasswordChar = true;
             // 
             // autoLabel9
@@ -355,7 +360,7 @@
             this.autoLabel9.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.autoLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel9.ForeColor = System.Drawing.Color.Black;
-            this.autoLabel9.Location = new System.Drawing.Point(302, 185);
+            this.autoLabel9.Location = new System.Drawing.Point(228, 185);
             this.autoLabel9.Name = "autoLabel9";
             this.autoLabel9.Size = new System.Drawing.Size(46, 16);
             this.autoLabel9.TabIndex = 300;
@@ -374,7 +379,7 @@
             this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
             this.materialButton1.Size = new System.Drawing.Size(220, 36);
-            this.materialButton1.TabIndex = 17;
+            this.materialButton1.TabIndex = 19;
             this.materialButton1.Text = "Confirmar Configuração";
             this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.materialButton1.UseAccentColor = false;
@@ -387,7 +392,7 @@
             this.txtIdToken.Location = new System.Drawing.Point(13, 252);
             this.txtIdToken.Name = "txtIdToken";
             this.txtIdToken.Size = new System.Drawing.Size(382, 26);
-            this.txtIdToken.TabIndex = 12;
+            this.txtIdToken.TabIndex = 14;
             // 
             // autoLabel10
             // 
@@ -396,9 +401,9 @@
             this.autoLabel10.ForeColor = System.Drawing.Color.Black;
             this.autoLabel10.Location = new System.Drawing.Point(13, 233);
             this.autoLabel10.Name = "autoLabel10";
-            this.autoLabel10.Size = new System.Drawing.Size(62, 16);
+            this.autoLabel10.Size = new System.Drawing.Size(130, 16);
             this.autoLabel10.TabIndex = 303;
-            this.autoLabel10.Text = "ID Token";
+            this.autoLabel10.Text = "ID Token (Cliente ID)";
             // 
             // txtToken
             // 
@@ -406,7 +411,8 @@
             this.txtToken.Location = new System.Drawing.Point(401, 252);
             this.txtToken.Name = "txtToken";
             this.txtToken.Size = new System.Drawing.Size(387, 26);
-            this.txtToken.TabIndex = 13;
+            this.txtToken.TabIndex = 15;
+            this.txtToken.UseSystemPasswordChar = true;
             // 
             // autoLabel11
             // 
@@ -415,17 +421,18 @@
             this.autoLabel11.ForeColor = System.Drawing.Color.Black;
             this.autoLabel11.Location = new System.Drawing.Point(401, 233);
             this.autoLabel11.Name = "autoLabel11";
-            this.autoLabel11.Size = new System.Drawing.Size(46, 16);
+            this.autoLabel11.Size = new System.Drawing.Size(112, 16);
             this.autoLabel11.TabIndex = 305;
-            this.autoLabel11.Text = "Token";
+            this.autoLabel11.Text = "Token (Secret ID)";
             // 
             // txtMensagemBoleto
             // 
             this.txtMensagemBoleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMensagemBoleto.Location = new System.Drawing.Point(13, 300);
+            this.txtMensagemBoleto.MaxLength = 165;
             this.txtMensagemBoleto.Name = "txtMensagemBoleto";
             this.txtMensagemBoleto.Size = new System.Drawing.Size(775, 26);
-            this.txtMensagemBoleto.TabIndex = 14;
+            this.txtMensagemBoleto.TabIndex = 16;
             this.txtMensagemBoleto.Visible = false;
             // 
             // autoLabel12
@@ -447,7 +454,7 @@
             this.txtPlanoContaTarifa.Location = new System.Drawing.Point(453, 204);
             this.txtPlanoContaTarifa.Name = "txtPlanoContaTarifa";
             this.txtPlanoContaTarifa.Size = new System.Drawing.Size(230, 26);
-            this.txtPlanoContaTarifa.TabIndex = 9;
+            this.txtPlanoContaTarifa.TabIndex = 11;
             // 
             // autoLabel13
             // 
@@ -467,19 +474,19 @@
             this.txtCodPlanoConta.Location = new System.Drawing.Point(722, 204);
             this.txtCodPlanoConta.Name = "txtCodPlanoConta";
             this.txtCodPlanoConta.Size = new System.Drawing.Size(66, 26);
-            this.txtCodPlanoConta.TabIndex = 11;
+            this.txtCodPlanoConta.TabIndex = 13;
             // 
             // btnPesquisaPlanoConta
             // 
             this.btnPesquisaPlanoConta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisaPlanoConta.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlassChart;
-            this.btnPesquisaPlanoConta.IconColor = System.Drawing.Color.DimGray;
+            this.btnPesquisaPlanoConta.IconColor = System.Drawing.Color.IndianRed;
             this.btnPesquisaPlanoConta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnPesquisaPlanoConta.IconSize = 20;
             this.btnPesquisaPlanoConta.Location = new System.Drawing.Point(689, 204);
             this.btnPesquisaPlanoConta.Name = "btnPesquisaPlanoConta";
             this.btnPesquisaPlanoConta.Size = new System.Drawing.Size(27, 26);
-            this.btnPesquisaPlanoConta.TabIndex = 10;
+            this.btnPesquisaPlanoConta.TabIndex = 12;
             this.btnPesquisaPlanoConta.UseVisualStyleBackColor = true;
             this.btnPesquisaPlanoConta.Click += new System.EventHandler(this.btnPesquisaPlanoConta_Click);
             // 
@@ -495,6 +502,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ambiente";
             // 
+            // radioHomologacao
+            // 
+            this.radioHomologacao.BeforeTouchSize = new System.Drawing.Size(137, 27);
+            this.radioHomologacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioHomologacao.Location = new System.Drawing.Point(6, 56);
+            this.radioHomologacao.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
+            this.radioHomologacao.Name = "radioHomologacao";
+            this.radioHomologacao.Size = new System.Drawing.Size(137, 27);
+            this.radioHomologacao.TabIndex = 1;
+            this.radioHomologacao.TabStop = false;
+            this.radioHomologacao.Text = "Homologação";
+            // 
             // radioProducao
             // 
             this.radioProducao.BeforeTouchSize = new System.Drawing.Size(137, 27);
@@ -504,20 +523,47 @@
             this.radioProducao.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
             this.radioProducao.Name = "radioProducao";
             this.radioProducao.Size = new System.Drawing.Size(137, 27);
-            this.radioProducao.TabIndex = 311;
+            this.radioProducao.TabIndex = 0;
             this.radioProducao.Text = "Produção";
             // 
-            // radioHomologacao
+            // txtConvenio
             // 
-            this.radioHomologacao.BeforeTouchSize = new System.Drawing.Size(137, 27);
-            this.radioHomologacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioHomologacao.Location = new System.Drawing.Point(6, 56);
-            this.radioHomologacao.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(89)))), ((int)(((byte)(91)))));
-            this.radioHomologacao.Name = "radioHomologacao";
-            this.radioHomologacao.Size = new System.Drawing.Size(137, 27);
-            this.radioHomologacao.TabIndex = 312;
-            this.radioHomologacao.TabStop = false;
-            this.radioHomologacao.Text = "Homologação";
+            this.txtConvenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConvenio.Location = new System.Drawing.Point(251, 108);
+            this.txtConvenio.Name = "txtConvenio";
+            this.txtConvenio.Size = new System.Drawing.Size(232, 26);
+            this.txtConvenio.TabIndex = 1;
+            // 
+            // autoLabel14
+            // 
+            this.autoLabel14.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel14.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel14.Location = new System.Drawing.Point(251, 89);
+            this.autoLabel14.Name = "autoLabel14";
+            this.autoLabel14.Size = new System.Drawing.Size(64, 16);
+            this.autoLabel14.TabIndex = 312;
+            this.autoLabel14.Text = "Convênio";
+            // 
+            // txtVariacaoCarteira
+            // 
+            this.txtVariacaoCarteira.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVariacaoCarteira.Location = new System.Drawing.Point(207, 156);
+            this.txtVariacaoCarteira.MaxLength = 20;
+            this.txtVariacaoCarteira.Name = "txtVariacaoCarteira";
+            this.txtVariacaoCarteira.Size = new System.Drawing.Size(148, 26);
+            this.txtVariacaoCarteira.TabIndex = 5;
+            // 
+            // autoLabel15
+            // 
+            this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.ForeColor = System.Drawing.Color.Black;
+            this.autoLabel15.Location = new System.Drawing.Point(207, 137);
+            this.autoLabel15.Name = "autoLabel15";
+            this.autoLabel15.Size = new System.Drawing.Size(131, 16);
+            this.autoLabel15.TabIndex = 314;
+            this.autoLabel15.Text = "Variação da Carteira";
             // 
             // FrmConfigurarEmissaoBoletos
             // 
@@ -525,6 +571,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 488);
+            this.Controls.Add(this.txtVariacaoCarteira);
+            this.Controls.Add(this.autoLabel15);
+            this.Controls.Add(this.txtConvenio);
+            this.Controls.Add(this.autoLabel14);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnPesquisaPlanoConta);
             this.Controls.Add(this.txtCodPlanoConta);
@@ -570,8 +620,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radioTradicional)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioHibrido)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radioProducao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioHomologacao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioProducao)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -620,5 +670,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioHomologacao;
         private Syncfusion.Windows.Forms.Tools.RadioButtonAdv radioProducao;
+        private System.Windows.Forms.TextBox txtConvenio;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel14;
+        private System.Windows.Forms.TextBox txtVariacaoCarteira;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel15;
     }
 }

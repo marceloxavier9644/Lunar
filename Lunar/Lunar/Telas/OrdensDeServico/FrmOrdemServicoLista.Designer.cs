@@ -51,6 +51,7 @@
             this.btnImprimirDuplicatas = new Syncfusion.Windows.Forms.Tools.toolstripitem();
             this.btnImprimirDuplicataGrafica = new Syncfusion.Windows.Forms.Tools.toolstripitem();
             this.btnImprimirNumeroOS = new Syncfusion.Windows.Forms.Tools.toolstripitem();
+            this.btnImprimirNfse = new Syncfusion.Windows.Forms.Tools.toolstripitem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.autoLabel14 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnLimpar = new FontAwesome.Sharp.IconButton();
@@ -99,6 +100,7 @@
             this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnGerarNFSe = new Lunar.RJ_UI.Classes.RJButton();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnEnviarWhats = new Lunar.RJ_UI.Classes.RJButton();
             this.btnEntrada = new FontAwesome.Sharp.IconButton();
@@ -111,7 +113,6 @@
             this.btnEncerrar = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            this.btnImprimirNfse = new Syncfusion.Windows.Forms.Tools.toolstripitem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataEntregaFinal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataEntregaInicial)).BeginInit();
@@ -142,7 +143,7 @@
             this.btnImprimir1.DropDownPosition = Syncfusion.Windows.Forms.Tools.Position.Top;
             this.btnImprimir1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.btnImprimir1.Location = new System.Drawing.Point(529, 16);
+            this.btnImprimir1.Location = new System.Drawing.Point(568, 16);
             this.btnImprimir1.MinimumSize = new System.Drawing.Size(75, 23);
             this.btnImprimir1.Name = "btnImprimir1";
             office2016ColorfulSplitButtonRenderer1.SplitButton = this.btnImprimir1;
@@ -185,6 +186,13 @@
             this.btnImprimirNumeroOS.Name = "btnImprimirNumeroOS";
             this.btnImprimirNumeroOS.Size = new System.Drawing.Size(23, 23);
             this.btnImprimirNumeroOS.Text = "Imprimir Nº O.S";
+            // 
+            // btnImprimirNfse
+            // 
+            this.btnImprimirNfse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnImprimirNfse.Name = "btnImprimirNfse";
+            this.btnImprimirNfse.Size = new System.Drawing.Size(23, 23);
+            this.btnImprimirNfse.Text = "Imprimir Nota Serviço";
             // 
             // groupBox1
             // 
@@ -952,6 +960,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGerarNFSe);
             this.groupBox2.Controls.Add(this.linkLabel1);
             this.groupBox2.Controls.Add(this.btnEnviarWhats);
             this.groupBox2.Controls.Add(this.btnImprimir1);
@@ -969,6 +978,30 @@
             this.groupBox2.Size = new System.Drawing.Size(1121, 73);
             this.groupBox2.TabIndex = 160;
             this.groupBox2.TabStop = false;
+            // 
+            // btnGerarNFSe
+            // 
+            this.btnGerarNFSe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGerarNFSe.BackColor = System.Drawing.Color.White;
+            this.btnGerarNFSe.BackgroundColor = System.Drawing.Color.White;
+            this.btnGerarNFSe.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnGerarNFSe.BorderRadius = 8;
+            this.btnGerarNFSe.BorderSize = 2;
+            this.btnGerarNFSe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerarNFSe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnGerarNFSe.FlatAppearance.BorderSize = 2;
+            this.btnGerarNFSe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnGerarNFSe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGerarNFSe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarNFSe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnGerarNFSe.Location = new System.Drawing.Point(211, 16);
+            this.btnGerarNFSe.Name = "btnGerarNFSe";
+            this.btnGerarNFSe.Size = new System.Drawing.Size(132, 45);
+            this.btnGerarNFSe.TabIndex = 260;
+            this.btnGerarNFSe.Text = "Gerar NFS-e ";
+            this.btnGerarNFSe.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnGerarNFSe.UseVisualStyleBackColor = false;
+            this.btnGerarNFSe.Click += new System.EventHandler(this.btnGerarNFSe_Click);
             // 
             // linkLabel1
             // 
@@ -1041,9 +1074,9 @@
             this.btnGerarNFe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGerarNFe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGerarNFe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnGerarNFe.Location = new System.Drawing.Point(253, 16);
+            this.btnGerarNFe.Location = new System.Drawing.Point(349, 16);
             this.btnGerarNFe.Name = "btnGerarNFe";
-            this.btnGerarNFe.Size = new System.Drawing.Size(132, 45);
+            this.btnGerarNFe.Size = new System.Drawing.Size(99, 45);
             this.btnGerarNFe.TabIndex = 221;
             this.btnGerarNFe.Text = "Gerar NFe";
             this.btnGerarNFe.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
@@ -1065,9 +1098,9 @@
             this.btnGerarNFCe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGerarNFCe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGerarNFCe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnGerarNFCe.Location = new System.Drawing.Point(391, 16);
+            this.btnGerarNFCe.Location = new System.Drawing.Point(454, 16);
             this.btnGerarNFCe.Name = "btnGerarNFCe";
-            this.btnGerarNFCe.Size = new System.Drawing.Size(132, 45);
+            this.btnGerarNFCe.Size = new System.Drawing.Size(108, 45);
             this.btnGerarNFCe.TabIndex = 220;
             this.btnGerarNFCe.Text = "Gerar NFCe";
             this.btnGerarNFCe.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
@@ -1089,9 +1122,9 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnExcluir.Location = new System.Drawing.Point(667, 16);
+            this.btnExcluir.Location = new System.Drawing.Point(706, 16);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(132, 45);
+            this.btnExcluir.Size = new System.Drawing.Size(93, 45);
             this.btnExcluir.TabIndex = 218;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
@@ -1403,12 +1436,6 @@
             this.grid.QueryRowStyle += new Syncfusion.WinForms.DataGrid.Events.QueryRowStyleEventHandler(this.grid_QueryRowStyle);
             this.grid.CellDoubleClick += new Syncfusion.WinForms.DataGrid.Events.CellClickEventHandler(this.grid_CellDoubleClick);
             // 
-            // btnImprimirNfse
-            // 
-            this.btnImprimirNfse.Name = "btnImprimirNfse";
-            this.btnImprimirNfse.Size = new System.Drawing.Size(23, 23);
-            this.btnImprimirNfse.Text = "Imprimir Nota Serviço";
-            // 
             // FrmOrdemServicoLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1513,5 +1540,6 @@
         private RJ_UI.Classes.RJButton btnEnviarWhats;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private Syncfusion.Windows.Forms.Tools.toolstripitem btnImprimirNfse;
+        private RJ_UI.Classes.RJButton btnGerarNFSe;
     }
 }

@@ -1469,6 +1469,20 @@
     <Compile Include="Utils\ImportadorSistemas\FrmImportarCSV.Designer.cs">
       <DependentUpon>FrmImportarCSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\IntegracoesBancosBoletos\BB\BBApiService.cs" />
+    <Compile Include="Utils\IntegracoesBancosBoletos\BB\BBBoletoRequest.cs" />
+    <Compile Include="Utils\IntegracoesBancosBoletos\BB\dsBoletoBB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBoletoBB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\IntegracoesBancosBoletos\BB\FrmImprimirBoletoBB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\IntegracoesBancosBoletos\BB\FrmImprimirBoletoBB.Designer.cs">
+      <DependentUpon>FrmImprimirBoletoBB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\IntegracoesBancosBoletos\BB\RetornoBoletoBB.cs" />
     <Compile Include="Utils\IntegracoesBancosBoletos\BoletoConfigService.cs" />
     <Compile Include="Utils\IntegracoesBancosBoletos\BoletoLiquidado.cs" />
     <Compile Include="Utils\IntegracoesBancosBoletos\BoletoSicrediManager.cs" />
@@ -1660,6 +1674,7 @@
       <DependentUpon>FrmSaldoContas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\CaixaConferencia\Reports\RelatorioCaixa01.rdlc" />
+    <EmbeddedResource Include="Telas\CaixaConferencia\Reports\RelatorioCaixa01_Termica.rdlc" />
     <EmbeddedResource Include="Telas\Compras\FrmDesmembrarItem.resx">
       <DependentUpon>FrmDesmembrarItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -2048,6 +2063,11 @@
     <EmbeddedResource Include="Utils\ImportadorSistemas\FrmImportarCSV.resx">
       <DependentUpon>FrmImportarCSV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utils\IntegracoesBancosBoletos\BB\BoletoBB.rdlc" />
+    <EmbeddedResource Include="Utils\IntegracoesBancosBoletos\BB\FrmImprimirBoletoBB.resx">
+      <DependentUpon>FrmImprimirBoletoBB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\IntegracoesBancosBoletos\BB\teste.rdlc" />
     <None Include="app.config" />
     <None Include="Connected Services\consultaSPCBrasil\consultaWebService.wsdl" />
     <None Include="Connected Services\consultaSPCBrasil\consultaWebService.xsd">
@@ -2501,6 +2521,17 @@
     </None>
     <None Include="Telas\Vendas\Adicionais\dsVendas.xss">
       <DependentUpon>dsVendas.xsd</DependentUpon>
+    </None>
+    <None Include="Utils\IntegracoesBancosBoletos\BB\dsBoletoBB.xsc">
+      <DependentUpon>dsBoletoBB.xsd</DependentUpon>
+    </None>
+    <None Include="Utils\IntegracoesBancosBoletos\BB\dsBoletoBB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBoletoBB.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Utils\IntegracoesBancosBoletos\BB\dsBoletoBB.xss">
+      <DependentUpon>dsBoletoBB.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

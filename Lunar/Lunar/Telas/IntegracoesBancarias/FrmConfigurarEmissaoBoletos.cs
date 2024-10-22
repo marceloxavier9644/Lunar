@@ -150,6 +150,9 @@ namespace Lunar.Telas.IntegracoesBancarias
                 boletoConfig.AmbienteProducao = true;
             else
                 boletoConfig.AmbienteProducao = false;
+            boletoConfig.MensagemBoleto = txtMensagemBoleto.Text.Trim();
+            boletoConfig.VariacaoCarteira = txtVariacaoCarteira.Text.Trim();
+            boletoConfig.Convenio = txtConvenio.Text.Trim();
 
             Controller.getInstance().salvar(boletoConfig);
             GenericaDesktop.ShowInfo("Registro salvo com Sucesso!");
@@ -199,7 +202,10 @@ namespace Lunar.Telas.IntegracoesBancarias
             if (boletoConfig.AmbienteProducao == true)
                 radioProducao.Checked = true;          
             else
-                radioHomologacao.Checked = true; 
+                radioHomologacao.Checked = true;
+            txtMensagemBoleto.Text = boletoConfig.MensagemBoleto;
+            txtConvenio.Text = boletoConfig.Convenio;
+            txtVariacaoCarteira.Text = boletoConfig.VariacaoCarteira;
      
 
             txtToken.Text = boletoConfig.Token;

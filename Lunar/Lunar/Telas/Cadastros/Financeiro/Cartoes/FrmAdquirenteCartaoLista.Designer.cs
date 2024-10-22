@@ -51,6 +51,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsAdquirente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Adquirente)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -89,11 +90,11 @@
             // autoLabel1
             // 
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel1.ForeColor = System.Drawing.Color.Black;
             this.autoLabel1.Location = new System.Drawing.Point(21, 34);
             this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(67, 18);
+            this.autoLabel1.Size = new System.Drawing.Size(64, 16);
             this.autoLabel1.TabIndex = 211;
             this.autoLabel1.Text = "Pesquisa";
             // 
@@ -101,11 +102,11 @@
             // 
             this.autoLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.autoLabel15.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.autoLabel15.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoLabel15.ForeColor = System.Drawing.Color.Black;
             this.autoLabel15.Location = new System.Drawing.Point(265, 36);
             this.autoLabel15.Name = "autoLabel15";
-            this.autoLabel15.Size = new System.Drawing.Size(94, 18);
+            this.autoLabel15.Size = new System.Drawing.Size(90, 16);
             this.autoLabel15.TabIndex = 210;
             this.autoLabel15.Text = "Reg. por Pág.";
             // 
@@ -118,7 +119,7 @@
             this.txtRegistroPorPagina.BorderRadius = 8;
             this.txtRegistroPorPagina.BorderSize = 2;
             this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtRegistroPorPagina.Location = new System.Drawing.Point(257, 48);
             this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
@@ -128,8 +129,9 @@
             this.txtRegistroPorPagina.PasswordChar = false;
             this.txtRegistroPorPagina.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtRegistroPorPagina.PlaceholderText = "";
+            this.txtRegistroPorPagina.ReadOnly = false;
             this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 39);
+            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
             this.txtRegistroPorPagina.TabIndex = 209;
             this.txtRegistroPorPagina.Tag = "";
             this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -225,9 +227,9 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnEditar.Location = new System.Drawing.Point(181, 19);
+            this.btnEditar.Location = new System.Drawing.Point(305, 19);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(293, 45);
+            this.btnEditar.Size = new System.Drawing.Size(169, 45);
             this.btnEditar.TabIndex = 155;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
@@ -243,7 +245,7 @@
             this.txtPesquisa.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.txtPesquisa.BorderRadius = 8;
             this.txtPesquisa.BorderSize = 2;
-            this.txtPesquisa.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPesquisa.Location = new System.Drawing.Point(10, 48);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(4);
@@ -253,7 +255,8 @@
             this.txtPesquisa.PasswordChar = false;
             this.txtPesquisa.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtPesquisa.PlaceholderText = "";
-            this.txtPesquisa.Size = new System.Drawing.Size(239, 39);
+            this.txtPesquisa.ReadOnly = false;
+            this.txtPesquisa.Size = new System.Drawing.Size(239, 37);
             this.txtPesquisa.TabIndex = 153;
             this.txtPesquisa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPesquisa.Texts = "";
@@ -262,6 +265,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnExcluir);
             this.groupBox2.Controls.Add(this.btnExportarPDF);
             this.groupBox2.Controls.Add(this.btnExportarExcel);
             this.groupBox2.Controls.Add(this.btnNovo);
@@ -302,7 +306,7 @@
             this.grid.Columns.Add(gridTextColumn1);
             this.grid.Columns.Add(gridTextColumn2);
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grid.Location = new System.Drawing.Point(3, 16);
             this.grid.Name = "grid";
             this.grid.SelectionUnit = Syncfusion.WinForms.DataGrid.Enums.SelectionUnit.Cell;
@@ -341,6 +345,30 @@
             this.groupBox1.Size = new System.Drawing.Size(784, 100);
             this.groupBox1.TabIndex = 165;
             this.groupBox1.TabStop = false;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluir.BackColor = System.Drawing.Color.White;
+            this.btnExcluir.BackgroundColor = System.Drawing.Color.White;
+            this.btnExcluir.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluir.BorderRadius = 8;
+            this.btnExcluir.BorderSize = 2;
+            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluir.FlatAppearance.BorderSize = 2;
+            this.btnExcluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnExcluir.Location = new System.Drawing.Point(130, 19);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(169, 45);
+            this.btnExcluir.TabIndex = 218;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // FrmAdquirenteCartaoLista
             // 
@@ -389,5 +417,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private RJ_UI.Classes.RJButton btnExcluir;
     }
 }

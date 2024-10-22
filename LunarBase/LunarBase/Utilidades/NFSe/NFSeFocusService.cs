@@ -16,11 +16,11 @@ namespace LunarBase.Utilidades.NFSe
             // Definir client com base no ambiente
             if (ambienteProducao)
             {
-                client = new FocusNFSeClient("xhYFolRs9uanlrt57NakIlbgvOdn8pjM", false); // Chave produção
+                client = new FocusNFSeClient(Sessao.parametroSistema.TokenProducaoNfse, false); // Chave produção
             }
             else
             {
-                client = new FocusNFSeClient("SeI85jiSMPTjLG5KriiT81ty4aYzXs15", true);  // Chave homologação
+                client = new FocusNFSeClient(Sessao.parametroSistema.TokenHomologacaoNfse, true);  // Chave homologação
             }
         }
 

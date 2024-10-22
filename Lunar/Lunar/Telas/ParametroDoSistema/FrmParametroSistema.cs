@@ -219,6 +219,8 @@ namespace Lunar.Telas.ParametroDoSistema
             txtSerieRps.Text = parametro.SerieRps;
             txtUsuarioNfse.Text = parametro.UsuarioNfse;
             txtSenhaNfse.Text = parametro.SenhaNfse;
+            txtTokenProducaoNFSe.Text = parametro.TokenProducaoNfse;
+            txtTokenHomologacaoNFSe.Text = parametro.TokenHomologacaoNfse;
 
 
             //Whatsapp
@@ -331,6 +333,8 @@ namespace Lunar.Telas.ParametroDoSistema
             parametro.SerieRps = txtSerieRps.Text;
             parametro.UsuarioNfse = txtUsuarioNfse.Text;
             parametro.SenhaNfse = txtSenhaNfse.Text;
+            parametro.TokenProducaoNfse = txtTokenProducaoNFSe.Text;
+            parametro.TokenHomologacaoNfse = txtTokenHomologacaoNFSe.Text;
 
 
             if (!String.IsNullOrEmpty(txtCodTipoObjeto.Texts))
@@ -464,6 +468,11 @@ namespace Lunar.Telas.ParametroDoSistema
                 parametro.TipoImpressoraCondicional = "TERMICA";
             else
                 parametro.TipoImpressoraCondicional = "A4";
+
+            if (radioRelatorioCaixaTermica.Checked == true)
+                parametro.TipoImpressoraRelatorioCaixa = "TERMICA";
+            else
+                parametro.TipoImpressoraRelatorioCaixa = "A4";
 
             if (radioCaixaGeral.Checked == true)
                 parametro.TipoCaixa = "GERAL";

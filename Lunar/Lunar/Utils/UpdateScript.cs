@@ -156,14 +156,18 @@ namespace Lunar.Utils
             {
                 session.BeginTransaction();
 
-                // Comandos de atualização do caixa
+                // Comandos de atualização do caixa para versao 39
                 string updateCartaoDebito = "UPDATE caixa SET CARTAODEBITO = FALSE WHERE CARTAODEBITO IS NULL;";
                 string updateCartaoCredito = "UPDATE caixa SET CARTAOCREDITO = FALSE WHERE CARTAOCREDITO IS NULL;";
                 string updateParcelasCartao = "UPDATE caixa SET PARCELASCARTAO = 0 WHERE PARCELASCARTAO IS NULL;";
 
+                // Comandos de atualização dos parametros para versao 40 E 41
+                string updateParametro = "UPDATE parametrosistema SET TIPOIMPRESSORARELATORIOCAIXA = 'A4' WHERE TIPOIMPRESSORARELATORIOCAIXA IS NULL;";
+
                 session.CreateSQLQuery(updateCartaoDebito).ExecuteUpdate();
                 session.CreateSQLQuery(updateCartaoCredito).ExecuteUpdate();
                 session.CreateSQLQuery(updateParcelasCartao).ExecuteUpdate();
+                session.CreateSQLQuery(updateParametro).ExecuteUpdate();
 
                 session.Transaction.Commit();
 
@@ -173,7 +177,7 @@ namespace Lunar.Utils
             catch (Exception ex)
             {
                 Logger logger = new Logger();
-                logger.WriteLog("ERRO AO ATUALIZAR CAIXA 1.0.0.39: " + ex.Message, "LOG");
+                logger.WriteLog("ERRO AO ATUALIZAR PARAMETROS 1.0.0.41: " + ex.Message, "LOG");
                 session.Transaction.Rollback();
             }
             finally

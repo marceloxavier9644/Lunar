@@ -109,6 +109,18 @@ namespace Lunar.Telas.CaixaConferencia.Reports
                 //MessageBox.Show(sql);
                 dsOrdem.Name = "dsCaixa";
                 dsOrdem.Value = this.bindingSource1;
+
+                if (Sessao.parametroSistema.TipoImpressoraRelatorioCaixa.Equals("TERMICA"))
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.CaixaConferencia.Reports.RelatorioCaixa01_Termica.rdlc";
+                else
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "Lunar.Telas.CaixaConferencia.Reports.RelatorioCaixa01.rdlc";
+                // Defina o modo de exibição como "PrintLayout" (modo de impressão)
+                this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+
+                // Defina o zoom para 100%
+                this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
+                this.reportViewer1.ZoomPercent = 100;
+                //DataSource
                 this.reportViewer1.LocalReport.DataSources.Add(dsOrdem);
 
                 string cobradorSelecionado = "";
@@ -117,7 +129,7 @@ namespace Lunar.Telas.CaixaConferencia.Reports
                 ReportParameter[] p = new ReportParameter[5];
                 p[0] = (new ReportParameter("Empresa", Sessao.empresaFilialLogada.NomeFantasia));
                 p[1] = (new ReportParameter("Data", DateTime.Parse(txtDataInicial.Value.ToString()).ToShortDateString() + " a " + DateTime.Parse(txtDataFinal.Value.ToString()).ToShortDateString() + "\n" + cobradorSelecionado));
-                p[2] = (new ReportParameter("Usuario", user + " "));
+                p[2] = (new ReportParameter("Usuario", user));
                 p[3] = (new ReportParameter("PlanoConta", plano));
                 p[4] = (new ReportParameter("ContaBancaria", conta));
                 reportViewer1.LocalReport.SetParameters(p);

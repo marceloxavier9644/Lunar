@@ -6,19 +6,22 @@
 		</id>
 		<property name="Descricao" column="DESCRICAO" type="String"/>
 		<property name="CodigoBeneficiario" column="CODIGOBENEFICIARIO" type="String" length="20"/>
+		<property name="Convenio" column="CONVENIO" type="String" length="100"/>
 		<property name="Multa" column="MULTA" type="decimal"/>
 		<property name="JuroMensal" column="JUROMENSAL" type="decimal"/>
 		<property name="NumeroCarteira" column="NUMEROCARTEIRA" type="String" length="30"/>
+		<property name="VariacaoCarteira" column="VARIACAOCARTEIRA" type="String" length="20"/>
 		<property name="IdentificacaoCliente" column="IDENTIFICACAOCLIENTE" type="String" length="50"/>
 		<property name="Cooperativa" column="COOPERATIVA" type="String" length="10"/>
 		<property name="Posto" column="POSTO" type="String" length="10"/>
 		<property name="Usuario" column="USUARIO" type="String" length="100"/>
 		<property name="Senha" column="SENHA" type="String" length="100"/>
-		<property name="IdToken" column="IDTOKEN" type="String" length="100"/>
-		<property name="Token" column="TOKEN" type="String" length="500"/>	
+		<property name="IdToken" column="IDTOKEN" type="String" length="500"/>
+		<property name="Token" column="TOKEN" type="String" length="500"/>
 		<property name="ContaPadrao" column="CONTAPADRAO" type="Boolean"/>
 		<property name="TipoBoleto" column="TIPOBOLETO" type="String" length="100"/>
 		<property name="AmbienteProducao" column="AMBIENTEPRODUCAO" type="Boolean"/>
+		<property name="MensagemBoleto" column="MENSAGEMBOLETO" type="String" length="200"/>
 		
 		<many-to-one name="ContaBancaria" column="CONTABANCARIA" class="LunarBase.Classes.ContaBancaria" not-null="true" foreign-key="FK_BOLETOCONFIG_CONTABANCARIA" lazy="false"/>
 		<many-to-one name="PlanoContaTarifa" column="PLANOCONTATARIFA" class="LunarBase.Classes.PlanoConta" not-null="false" foreign-key="FK_BOLETOCONFIG_PLANOCONTAS" lazy="false"/>

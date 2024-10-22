@@ -49,7 +49,9 @@
 		<property name="AmbienteSpcBrasil" column="AMBIENTESPCBRASIL" type="String" length="80"/>
 
 		<property name="TipoImpressoraCondicional" column="TIPOIMPRESSORACONDICIONAL" type="String" length="20"/>
+		<property name="TipoImpressoraRelatorioCaixa" column="TIPOIMPRESSORARELATORIOCAIXA" type="String" length="20"/>
 		
+
 		<!-- Integração WhatsApp-->
 		<property name="EnvioNotasPorWhats" column="ENVIONOTASPORWHATS" type="Boolean"/>
 		<property name="EnvioAgradecimentoCompra" column="ENVIOAGRADECIMENTOCOMPRA" type="Boolean"/>
@@ -76,6 +78,9 @@
 		<property name="SerieRps" column="SERIERPS" type="String" length="25"/>
 		<property name="UsuarioNfse" column="USUARIONFSE" type="String" length="90"/>
 		<property name="SenhaNfse" column="SENHANFSE" type="String" length="50"/>
+
+		<property name="TokenProducaoNfse" column="TOKENPRODUCAONFSE" type="String" length="200"/>
+		<property name="TokenHomologacaoNfse" column="TOKENHOMOLOGACAONFSE" type="String" length="200"/>
 
 		<!--MESMO COM EAN DIFERENTE O SISTEMA PEDE PRA SELECIONAR A GRADE-->
 		<property name="SelecionarGradeEan" column="SELECIONARGRADEEAN" type="Boolean"/>

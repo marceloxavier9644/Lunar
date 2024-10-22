@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsBoletoBB" targetNamespace="http://tempuri.org/dsBoletoBB.xsd" xmlns:mstns="http://tempuri.org/dsBoletoBB.xsd" xmlns="http://tempuri.org/dsBoletoBB.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsBoletoBB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsBoletoBB" msprop:Generator_DataSetName="dsBoletoBB">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Boleto" msprop:Generator_RowEvHandlerName="BoletoRowChangeEventHandler" msprop:Generator_RowDeletedName="BoletoRowDeleted" msprop:Generator_RowDeletingName="BoletoRowDeleting" msprop:Generator_RowEvArgName="BoletoRowChangeEvent" msprop:Generator_TablePropName="Boleto" msprop:Generator_RowChangedName="BoletoRowChanged" msprop:Generator_RowChangingName="BoletoRowChanging" msprop:Generator_TableClassName="BoletoDataTable" msprop:Generator_RowClassName="BoletoRow" msprop:Generator_TableVarName="tableBoleto" msprop:Generator_UserTableName="Boleto">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

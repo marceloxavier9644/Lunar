@@ -90,9 +90,11 @@ namespace LunarBase.Classes
         private string serieRps;
         private string usuarioNfse;
         private string senhaNfse;
+        private string tokenProducaoNfse;
+        private string tokenHomologacaoNfse;
 
         private bool viaImpressaoOs;
-
+        private string tipoImpressoraRelatorioCaixa;
         private DateTime notificacaoPagar;
 
         public virtual int Id { get => id; set => id = value; }
@@ -170,5 +172,8 @@ namespace LunarBase.Classes
         public virtual string UsuarioNfse { get => usuarioNfse; set => usuarioNfse = value; }
         public virtual string SenhaNfse { get => senhaNfse; set => senhaNfse = value; }
         public virtual DateTime NotificacaoPagar { get => notificacaoPagar; set => notificacaoPagar = value; }
+        public virtual string TokenProducaoNfse { get => tokenProducaoNfse; set => tokenProducaoNfse = value; }
+        public virtual string TokenHomologacaoNfse { get => tokenHomologacaoNfse; set => tokenHomologacaoNfse = value; }
+        public virtual string TipoImpressoraRelatorioCaixa { get => tipoImpressoraRelatorioCaixa; set => tipoImpressoraRelatorioCaixa = value; }
     }
 }

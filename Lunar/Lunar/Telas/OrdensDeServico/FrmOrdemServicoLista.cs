@@ -2488,7 +2488,7 @@ namespace Lunar.Telas.OrdensDeServico
                 }
                 if(ordem.Nfse != null)
                 {
-
+                 
                 }
                 IList<ContaReceber> listaReceber = new List<ContaReceber>();
                 //IList<ContaReceber> listaReceberComBoleto = new List<ContaReceber>();
@@ -2623,6 +2623,11 @@ namespace Lunar.Telas.OrdensDeServico
             {
                 GenericaDesktop.ShowAlerta("Selecione uma ordem de serviço!");
             }
+        }
+
+        private async void btnGerarNFSe_Click(object sender, EventArgs e)
+        {
+           await EmitirNFSe();
         }
 
         // Cancelar NFSe

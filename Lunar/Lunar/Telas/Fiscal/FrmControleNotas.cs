@@ -1403,12 +1403,20 @@ namespace Lunar.Telas.Fiscal
                             ordemServico = ordemServicoController.selecionarOrdemServicoPorNfe(nfe.Id);
                         }
 
-                        //Verifica valores dos produtos
                         IList<NfeProduto> listaProdutos = nfeProdutoController.selecionarProdutosPorNfe(nfe.Id);
+                        decimal valorTotalItensSemDesconto = 0;
+                        decimal totalNota = nfe.VNf;
+                        decimal valorTotalItensComDesconto = 0;
+
                         foreach (NfeProduto nfeProduto in listaProdutos)
                         {
-                            totalNotaSemDesconto = totalNotaSemDesconto + (nfeProduto.ValorProduto * decimal.Parse(nfeProduto.QCom));
-                            totalDesconto = totalDesconto + nfeProduto.VDesc;
+                            // Calcula o total sem desconto
+                            valorTotalItensSemDesconto += (nfeProduto.ValorProduto * decimal.Parse(nfeProduto.QCom));
+
+                            // Soma os descontos
+                            totalDesconto += nfeProduto.VDesc;
+
+                            // Atualiza informações adicionais do produto
                             nfeProduto.Ncm = nfeProduto.Produto.Ncm;
                             nfeProduto.Cest = nfeProduto.Produto.Cest;
                             nfeProduto.Cfop = nfeProduto.Produto.CfopVenda;
@@ -1421,7 +1429,42 @@ namespace Lunar.Telas.Fiscal
                             Controller.getInstance().salvar(nfeProduto);
                         }
 
-                        totalNotaComDesconto = totalNotaSemDesconto - totalDesconto;
+                        // Calcula o total com desconto dos itens
+                        valorTotalItensComDesconto = valorTotalItensSemDesconto - totalDesconto;
+
+                        // Verifica se o total com desconto é diferente do total da nota
+                        decimal diferenca = valorTotalItensComDesconto - totalNota;
+
+                        // Se houver diferença, ajuste o desconto no último item
+                        if (diferenca != 0)
+                        {
+                            NfeProduto ultimoProduto = listaProdutos.Last();
+
+                            // Calcula o novo desconto ajustado no último produto
+                            decimal descontoAjustado = ultimoProduto.VDesc - Math.Abs(diferenca);
+
+                            // Garante que o desconto ajustado não seja maior que o valor total do produto
+                            decimal valorProdutoTotal = ultimoProduto.ValorProduto * decimal.Parse(ultimoProduto.QCom);
+
+                            if (descontoAjustado > valorProdutoTotal)
+                            {
+                                descontoAjustado = valorProdutoTotal;
+                            }
+                            else if (descontoAjustado < 0)
+                            {
+                                descontoAjustado = 0;
+                            }
+
+                            // Atualiza o desconto no último produto
+                            totalDesconto = totalDesconto - ultimoProduto.VDesc + descontoAjustado;
+                            ultimoProduto.VDesc = descontoAjustado;
+
+                            // Salva as alterações no último produto
+                            Controller.getInstance().salvar(ultimoProduto);
+                        }
+
+                        totalNotaSemDesconto = valorTotalItensSemDesconto;
+                        totalNotaComDesconto = valorTotalItensSemDesconto - totalDesconto;
                         nfe.VNf = totalNotaComDesconto;
                         //MessageBox.Show("NF COM DESC. " + totalNotaComDesconto.ToString("N2") + " " + "Total Desc: " + totalDesconto.ToString("N2"));
                         Controller.getInstance().salvar(nfe);

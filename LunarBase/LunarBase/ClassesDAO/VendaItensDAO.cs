@@ -46,6 +46,9 @@ namespace LunarBase.ClassesDAO
             public string Descricao { get; set; }
             public double Quantidade { get; set; }
             public decimal ValorTotal { get; set; }
+            public string NomeMarca { get; set; }
+            public string Grupo { get; set; }
+            public int CodVendedor { get; set; }
         }
     }
 }
