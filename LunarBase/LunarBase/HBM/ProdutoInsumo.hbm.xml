@@ -8,6 +8,7 @@
 		<property name="CustoUnitario" column="CUSTOUNITARIO" type="decimal"/>
 		<property name="CustoTotal" column="CUSTOTOTAL" type="decimal"/>
 		<property name="IdProdutoProduzido" column="IDPRODUTOPRODUZIDO" type="string" length ="50"/>
+		<property name="ProduzirNaVenda" column="PRODUZIRNAVENDA" type="Boolean"/>
 		
 		<many-to-one name="Produto" column="PRODUTO" class="LunarBase.Classes.Produto" not-null="true" foreign-key="FK_PRODUTOINSUMO_PRODUTO" lazy="false"/>
 

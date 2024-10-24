@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Lunar.Utils.IntegracoesBancosBoletos.BB
@@ -50,6 +51,57 @@ namespace Lunar.Utils.IntegracoesBancosBoletos.BB
             {
                 ApiError = apiError;
             }
+
+        }
+
+        public class RetornoListaBoletosBaixadosBB
+        {
+            [JsonProperty("indicadorContinuidade")]
+            public string IndicadorContinuidade { get; set; }
+
+            [JsonProperty("boletos")]
+            public List<BoletoBaixadoBB> Boletos { get; set; }
+        }
+        public class BoletoBaixadoBB
+        {
+            [JsonProperty("numeroBoletoBB")]
+            public string NumeroBoletoBB { get; set; }
+
+            [JsonProperty("dataRegistro")]
+            public string DataRegistro { get; set; }
+
+            [JsonProperty("dataVencimento")]
+            public string DataVencimento { get; set; }
+
+            [JsonProperty("valorOriginal")]
+            public decimal ValorOriginal { get; set; }
+
+            [JsonProperty("carteiraConvenio")]
+            public int CarteiraConvenio { get; set; }
+
+            [JsonProperty("variacaoCarteiraConvenio")]
+            public int VariacaoCarteiraConvenio { get; set; }
+
+            [JsonProperty("codigoEstadoTituloCobranca")]
+            public int CodigoEstadoTituloCobranca { get; set; }
+
+            [JsonProperty("estadoTituloCobranca")]
+            public string EstadoTituloCobranca { get; set; }
+
+            [JsonProperty("contrato")]
+            public long Contrato { get; set; }
+
+            [JsonProperty("dataMovimento")]
+            public string DataMovimento { get; set; }
+
+            [JsonProperty("dataCredito")]
+            public string DataCredito { get; set; }
+
+            [JsonProperty("valorAtual")]
+            public decimal ValorAtual { get; set; }
+
+            [JsonProperty("valorPago")]
+            public decimal ValorPago { get; set; }
         }
     }
 }

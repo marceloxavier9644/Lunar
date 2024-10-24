@@ -3017,14 +3017,14 @@ namespace Lunar.Telas.Vendas
                     {
                         //logo remover essa opcao do galaxy pay aqui por fora e transferir ela pra dentro da config de boletos!
                         if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
-                            gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaGerarBoleto, vendaConclusao.Cliente);
+                            gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaGerarBoleto, vendaConclusao.Cliente,null);
                         if (listaConfiguracoesBoletos.Count > 0)
                         {
                             foreach (BoletoConfig boletoConfig in listaConfiguracoesBoletos)
                             {
                                 if (boletoConfig.ContaBancaria.Banco.Descricao.ToUpper().Contains("SICREDI"))
                                 {
-                                    BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaConclusao.Id, 0, null, boletoConfig.AmbienteProducao);
+                                    BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaConclusao.Id, 0, null, boletoConfig.AmbienteProducao, null);
                                     await boletoManager.GeraBoletosSicredi(vendaConclusao.Cliente, true);
                                 }
                             }
@@ -3135,6 +3135,10 @@ namespace Lunar.Telas.Vendas
                     estoque.Descricao = descricaoEstoque;
                     estoque.Produto = produtoController.selecionarProdutoPorCodigoUnicoEFilial(int.Parse(dataRowView.Row["Codigo"].ToString()), Sessao.empresaFilialLogada);
                     prod = estoque.Produto;
+                    if(prod.TipoProduto.Equals("PRODUÇÃO PRÓPRIA"))
+                    {
+
+                    }
                     estoque.Saida = true;
                     estoque.DataEntradaSaida = DateTime.Now;
                     estoque.Quantidade = double.Parse(dataRowView.Row["QuantidadeBaixa"].ToString());

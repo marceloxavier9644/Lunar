@@ -317,7 +317,7 @@ namespace Lunar.Utils.GalaxyPay_API
             }
         }
 
-        public string GalaxyPay_GerarBoleto(Pessoa pessoa, ContaReceber contaReceber)
+        public string GalaxyPay_GerarBoleto(Pessoa pessoa, ContaReceber contaReceber, ContaBancaria contaBancaria)
         {
             int contagemOk = 0;
             try
@@ -390,6 +390,8 @@ namespace Lunar.Utils.GalaxyPay_API
                         {
                             contaReceber.IdBoleto = ret.Charge.galaxPayId.ToString();
                             contaReceber.BoletoGerado = true;
+                            
+                            //contaReceber.ContaBoleto = 
                             Controller.getInstance().salvar(contaReceber);
                             contagemOk++;
                         }

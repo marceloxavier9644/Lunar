@@ -21,7 +21,6 @@
           </Image>
           <Line Name="Line1">
             <Top>1.40229cm</Top>
-            <Left>0cm</Left>
             <Height>0cm</Height>
             <Width>18.26274cm</Width>
             <ZIndex>1</ZIndex>
@@ -243,7 +242,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>EnderecoPagador</rd:DefaultName>
-            <Top>2.26892cm</Top>
+            <Top>2.23717cm</Top>
             <Left>0.40217cm</Left>
             <Height>0.54708cm</Height>
             <Width>8.24146cm</Width>
@@ -566,7 +565,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>EnderecoPagador</rd:DefaultName>
-            <Top>4.00192cm</Top>
+            <Top>3.97017cm</Top>
             <Left>0.38305cm</Left>
             <Height>0.54708cm</Height>
             <Width>8.24146cm</Width>
@@ -872,7 +871,9 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -918,7 +919,9 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -952,7 +955,7 @@
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Left</TextAlign>
+                  <TextAlign>Center</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
@@ -985,14 +988,16 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>4.93298cm</Top>
             <Left>6.70581cm</Left>
             <Height>0.50299cm</Height>
-            <Width>1.9187cm</Width>
+            <Width>1.81872cm</Width>
             <ZIndex>36</ZIndex>
             <Style>
               <Border>
@@ -1472,7 +1477,7 @@
             <Source>Embedded</Source>
             <Value>bancodobrasilhorizontal</Value>
             <Sizing>Fit</Sizing>
-            <Top>7.39848cm</Top>
+            <Top>7.93823cm</Top>
             <Left>0.05394cm</Left>
             <Height>1.1825cm</Height>
             <Width>5.19182cm</Width>
@@ -1484,7 +1489,7 @@
             </Style>
           </Image>
           <Line Name="Line2">
-            <Top>8.63037cm</Top>
+            <Top>9.17012cm</Top>
             <Left>0.02219cm</Left>
             <Height>0cm</Height>
             <Width>18.26274cm</Width>
@@ -1497,7 +1502,7 @@
             </Style>
           </Line>
           <Line Name="Line15">
-            <Top>8.61273cm</Top>
+            <Top>9.15248cm</Top>
             <Left>5.30926cm</Left>
             <Height>-1.11125cm</Height>
             <Width>0cm</Width>
@@ -1529,7 +1534,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>7.78343cm</Top>
+            <Top>8.32318cm</Top>
             <Left>5.34454cm</Left>
             <Height>0.70584cm</Height>
             <Width>1.66921cm</Width>
@@ -1561,7 +1566,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.73268cm</Top>
+            <Top>9.27243cm</Top>
             <Left>0.26561cm</Left>
             <Height>0.50299cm</Height>
             <Width>4cm</Width>
@@ -1592,7 +1597,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>LinhaDigitavel</rd:DefaultName>
-            <Top>7.92454cm</Top>
+            <Top>8.46429cm</Top>
             <Left>7.01375cm</Left>
             <Height>0.6cm</Height>
             <Width>11.27119cm</Width>
@@ -1625,7 +1630,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NomePagador</rd:DefaultName>
-            <Top>9.10867cm</Top>
+            <Top>9.64842cm</Top>
             <Left>0.42436cm</Left>
             <Height>0.54708cm</Height>
             <Width>12.45295cm</Width>
@@ -1641,7 +1646,7 @@
             </Style>
           </Textbox>
           <Line Name="Line20">
-            <Top>8.73268cm</Top>
+            <Top>9.27243cm</Top>
             <Left>0.11744cm</Left>
             <Height>0.92307cm</Height>
             <Width>0cm</Width>
@@ -1655,7 +1660,7 @@
             </Style>
           </Line>
           <Line Name="Line21">
-            <Top>9.62102cm</Top>
+            <Top>10.16077cm</Top>
             <Left>0.02219cm</Left>
             <Height>0cm</Height>
             <Width>18.26274cm</Width>
@@ -1668,7 +1673,7 @@
             </Style>
           </Line>
           <Line Name="Line22">
-            <Top>8.66212cm</Top>
+            <Top>9.20187cm</Top>
             <Left>13.18496cm</Left>
             <Height>1.91997cm</Height>
             <Width>0cm</Width>
@@ -1700,7 +1705,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.6974cm</Top>
+            <Top>9.23715cm</Top>
             <Left>13.25552cm</Left>
             <Height>0.53826cm</Height>
             <Width>5.0103cm</Width>
@@ -1735,7 +1740,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>DataVencimento</rd:DefaultName>
-            <Top>9.07692cm</Top>
+            <Top>9.61667cm</Top>
             <Left>13.25552cm</Left>
             <Height>0.51082cm</Height>
             <Width>4.99767cm</Width>
@@ -1752,7 +1757,7 @@
             </Style>
           </Textbox>
           <Line Name="Line23">
-            <Top>8.63037cm</Top>
+            <Top>9.17012cm</Top>
             <Left>7.01375cm</Left>
             <Height>-1.11125cm</Height>
             <Width>0cm</Width>
@@ -1781,7 +1786,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>9.54493cm</Top>
+            <Top>10.11643cm</Top>
             <Left>0.24649cm</Left>
             <Height>0.50299cm</Height>
             <Width>4.96752cm</Width>
@@ -1797,7 +1802,6 @@
             </Style>
           </Textbox>
           <Textbox Name="NomePagador4">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -1814,7 +1818,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NomePagador</rd:DefaultName>
-            <Top>9.92092cm</Top>
+            <Top>10.46067cm</Top>
             <Left>0.40524cm</Left>
             <Height>0.54708cm</Height>
             <Width>8.24146cm</Width>
@@ -1829,19 +1833,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Line Name="Line31">
-            <Top>12.24302cm</Top>
-            <Left>0.02219cm</Left>
-            <Height>0cm</Height>
-            <Width>18.26274cm</Width>
-            <ZIndex>73</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-                <Width>0.7pt</Width>
-              </Border>
-            </Style>
-          </Line>
           <Textbox Name="Textbox24">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -1861,11 +1852,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>9.57668cm</Top>
+            <Top>10.14818cm</Top>
             <Left>9.00533cm</Left>
             <Height>0.50299cm</Height>
             <Width>3.89417cm</Width>
-            <ZIndex>74</ZIndex>
+            <ZIndex>73</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1877,11 +1868,11 @@
             </Style>
           </Textbox>
           <Line Name="Line32">
-            <Top>10.58767cm</Top>
+            <Top>11.12742cm</Top>
             <Left>13.19759cm</Left>
             <Height>1.64124cm</Height>
             <Width>0cm</Width>
-            <ZIndex>75</ZIndex>
+            <ZIndex>74</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -1910,11 +1901,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CpfPagador</rd:DefaultName>
-            <Top>9.92092cm</Top>
+            <Top>10.46067cm</Top>
             <Left>8.6467cm</Left>
             <Height>0.54708cm</Height>
             <Width>4.2528cm</Width>
-            <ZIndex>76</ZIndex>
+            <ZIndex>75</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1944,11 +1935,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>10.4304cm</Top>
+            <Top>10.97015cm</Top>
             <Left>13.2364cm</Left>
             <Height>0.53826cm</Height>
             <Width>5.02942cm</Width>
-            <ZIndex>77</ZIndex>
+            <ZIndex>76</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1978,11 +1969,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NossoNumero</rd:DefaultName>
-            <Top>10.81795cm</Top>
+            <Top>11.3577cm</Top>
             <Left>13.34222cm</Left>
             <Height>0.6cm</Height>
             <Width>4.92359cm</Width>
-            <ZIndex>78</ZIndex>
+            <ZIndex>77</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2012,11 +2003,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NossoNumero</rd:DefaultName>
-            <Top>9.9821cm</Top>
+            <Top>10.52185cm</Top>
             <Left>13.34222cm</Left>
             <Height>0.52439cm</Height>
             <Width>4.9236cm</Width>
-            <ZIndex>79</ZIndex>
+            <ZIndex>78</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2046,11 +2037,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>9.59455cm</Top>
+            <Top>10.1343cm</Top>
             <Left>13.2364cm</Left>
             <Height>0.53826cm</Height>
             <Width>5.02942cm</Width>
-            <ZIndex>80</ZIndex>
+            <ZIndex>79</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2062,11 +2053,11 @@
             </Style>
           </Textbox>
           <Line Name="Line33">
-            <Top>12.33827cm</Top>
+            <Top>11.92552cm</Top>
             <Left>0.11744cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>81</ZIndex>
+            <ZIndex>80</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2088,15 +2079,17 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>12.16106cm</Top>
+            <Top>11.74831cm</Top>
             <Left>0.26561cm</Left>
             <Height>0.50299cm</Height>
-            <Width>2.37949cm</Width>
-            <ZIndex>82</ZIndex>
+            <Width>2.55308cm</Width>
+            <ZIndex>81</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2108,11 +2101,11 @@
             </Style>
           </Textbox>
           <Line Name="Line34">
-            <Top>12.33827cm</Top>
-            <Left>2.79502cm</Left>
+            <Top>11.92552cm</Top>
+            <Left>2.95377cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>83</ZIndex>
+            <ZIndex>82</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2128,21 +2121,23 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Nr. do documento</Value>
+                    <Value>Carteira</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>12.16106cm</Top>
-            <Left>2.93966cm</Left>
+            <Top>11.74831cm</Top>
+            <Left>3.09841cm</Left>
             <Height>0.50299cm</Height>
-            <Width>3.46428cm</Width>
-            <ZIndex>84</ZIndex>
+            <Width>1.49881cm</Width>
+            <ZIndex>83</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2160,7 +2155,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!NumeroDocumento.Value</Value>
+                    <Value>=Parameters!Carteira.Value</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -2168,16 +2163,16 @@
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Left</TextAlign>
+                  <TextAlign>Center</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CpfPagador</rd:DefaultName>
-            <Top>12.47062cm</Top>
-            <Left>2.97141cm</Left>
+            <Top>12.05787cm</Top>
+            <Left>3.09841cm</Left>
             <Height>0.54708cm</Height>
-            <Width>3.43253cm</Width>
-            <ZIndex>85</ZIndex>
+            <Width>1.49881cm</Width>
+            <ZIndex>84</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2195,21 +2190,23 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Espécie Doc</Value>
+                    <Value>Espécie</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>12.16106cm</Top>
-            <Left>6.728cm</Left>
+            <Top>11.74831cm</Top>
+            <Left>4.91825cm</Left>
             <Height>0.50299cm</Height>
-            <Width>1.9187cm</Width>
-            <ZIndex>86</ZIndex>
+            <Width>1.4635cm</Width>
+            <ZIndex>85</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2227,7 +2224,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>DM</Value>
+                    <Value>R$</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -2235,16 +2232,16 @@
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Left</TextAlign>
+                  <TextAlign>Center</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CpfPagador</rd:DefaultName>
-            <Top>12.47062cm</Top>
-            <Left>7.28891cm</Left>
+            <Top>12.09893cm</Top>
+            <Left>4.95cm</Left>
             <Height>0.54708cm</Height>
-            <Width>0.81316cm</Width>
-            <ZIndex>87</ZIndex>
+            <Width>1.43175cm</Width>
+            <ZIndex>86</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2256,11 +2253,11 @@
             </Style>
           </Textbox>
           <Line Name="Line35">
-            <Top>12.33827cm</Top>
-            <Left>6.58336cm</Left>
+            <Top>11.92552cm</Top>
+            <Left>4.77361cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>88</ZIndex>
+            <ZIndex>87</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2270,11 +2267,11 @@
             </Style>
           </Line>
           <Line Name="Line36">
-            <Top>12.33827cm</Top>
-            <Left>8.68783cm</Left>
+            <Top>11.92552cm</Top>
+            <Left>6.59233cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>89</ZIndex>
+            <ZIndex>88</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2290,56 +2287,23 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Aceite</Value>
+                    <Value>Quantidade</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>12.16106cm</Top>
-            <Left>8.83247cm</Left>
-            <Height>0.50299cm</Height>
-            <Width>0.99266cm</Width>
-            <ZIndex>90</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="CpfPagador11">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>N</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
                 <Style>
-                  <TextAlign>Left</TextAlign>
+                  <TextAlign>Center</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>CpfPagador</rd:DefaultName>
-            <Top>12.47062cm</Top>
-            <Left>9.10058cm</Left>
-            <Height>0.54708cm</Height>
-            <Width>0.38983cm</Width>
-            <ZIndex>91</ZIndex>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>11.74831cm</Top>
+            <Left>6.76931cm</Left>
+            <Height>0.50299cm</Height>
+            <Width>1.81757cm</Width>
+            <ZIndex>89</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2351,11 +2315,11 @@
             </Style>
           </Textbox>
           <Line Name="Line37">
-            <Top>12.33827cm</Top>
-            <Left>9.95221cm</Left>
+            <Top>11.92552cm</Top>
+            <Left>8.71396cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>92</ZIndex>
+            <ZIndex>90</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2371,7 +2335,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Data Processamento</Value>
+                    <Value>(x) Valor</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -2381,46 +2345,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>12.16106cm</Top>
-            <Left>10.09685cm</Left>
+            <Top>11.74831cm</Top>
+            <Left>8.81979cm</Left>
             <Height>0.50299cm</Height>
-            <Width>2.82177cm</Width>
-            <ZIndex>93</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="CpfPagador12">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Parameters!DataProcessamento.Value</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>CpfPagador</rd:DefaultName>
-            <Top>12.47062cm</Top>
-            <Left>10.05804cm</Left>
-            <Height>0.54708cm</Height>
-            <Width>2.86057cm</Width>
-            <ZIndex>94</ZIndex>
+            <Width>4.10839cm</Width>
+            <ZIndex>91</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2432,11 +2361,11 @@
             </Style>
           </Textbox>
           <Line Name="Line38">
-            <Top>12.33827cm</Top>
+            <Top>12.70081cm</Top>
             <Left>13.20465cm</Left>
-            <Height>0.68874cm</Height>
+            <Height>0.86595cm</Height>
             <Width>0cm</Width>
-            <ZIndex>95</ZIndex>
+            <ZIndex>92</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2452,7 +2381,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>(=) Valor Pago</Value>
+                    <Value>(-) Desconto/Abatimento</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -2462,11 +2391,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>12.16106cm</Top>
+            <Top>12.70081cm</Top>
             <Left>13.2364cm</Left>
             <Height>0.50299cm</Height>
-            <Width>2.82177cm</Width>
-            <ZIndex>96</ZIndex>
+            <Width>3.38274cm</Width>
+            <ZIndex>93</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2496,11 +2425,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>11.23882cm</Top>
+            <Top>11.77857cm</Top>
             <Left>13.26814cm</Left>
             <Height>0.53826cm</Height>
             <Width>4.99768cm</Width>
-            <ZIndex>97</ZIndex>
+            <ZIndex>94</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2531,11 +2460,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NossoNumero</rd:DefaultName>
-            <Top>11.62637cm</Top>
+            <Top>12.13409cm</Top>
             <Left>13.26814cm</Left>
-            <Height>0.51082cm</Height>
+            <Height>0.51192cm</Height>
             <Width>4.99767cm</Width>
-            <ZIndex>98</ZIndex>
+            <ZIndex>95</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2547,25 +2476,12 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Line Name="Line40">
-            <Top>11.27145cm</Top>
-            <Left>13.24904cm</Left>
-            <Height>0cm</Height>
-            <Width>5.01679cm</Width>
-            <ZIndex>99</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-                <Width>0.7pt</Width>
-              </Border>
-            </Style>
-          </Line>
           <Line Name="Line41">
-            <Top>13.04945cm</Top>
-            <Left>0.06657cm</Left>
+            <Top>12.64601cm</Top>
+            <Left>0.04438cm</Left>
             <Height>0cm</Height>
             <Width>18.26274cm</Width>
-            <ZIndex>100</ZIndex>
+            <ZIndex>96</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -2574,11 +2490,11 @@
             </Style>
           </Line>
           <Line Name="Line39">
-            <Top>9.72252cm</Top>
+            <Top>10.26227cm</Top>
             <Left>0.13713cm</Left>
             <Height>0.79256cm</Height>
             <Width>0cm</Width>
-            <ZIndex>101</ZIndex>
+            <ZIndex>97</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2588,11 +2504,11 @@
             </Style>
           </Line>
           <Line Name="Line42">
-            <Top>10.51508cm</Top>
+            <Top>11.05483cm</Top>
             <Left>0.04438cm</Left>
             <Height>0cm</Height>
             <Width>18.26274cm</Width>
-            <ZIndex>102</ZIndex>
+            <ZIndex>98</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -2601,11 +2517,11 @@
             </Style>
           </Line>
           <Line Name="Line43">
-            <Top>10.59734cm</Top>
+            <Top>11.13709cm</Top>
             <Left>0.127cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>103</ZIndex>
+            <ZIndex>99</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2631,11 +2547,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>10.42013cm</Top>
-            <Left>0.27517cm</Left>
+            <Top>10.95988cm</Top>
+            <Left>0.21167cm</Left>
             <Height>0.50299cm</Height>
-            <Width>2.63877cm</Width>
-            <ZIndex>104</ZIndex>
+            <Width>2.70933cm</Width>
+            <ZIndex>100</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2647,11 +2563,11 @@
             </Style>
           </Textbox>
           <Line Name="Line44">
-            <Top>10.59734cm</Top>
-            <Left>2.80458cm</Left>
+            <Top>11.13709cm</Top>
+            <Left>2.99508cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>105</ZIndex>
+            <ZIndex>101</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2673,15 +2589,17 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>10.42013cm</Top>
-            <Left>2.94922cm</Left>
+            <Top>10.95988cm</Top>
+            <Left>3.13972cm</Left>
             <Height>0.50299cm</Height>
-            <Width>3.46428cm</Width>
-            <ZIndex>106</ZIndex>
+            <Width>3.34737cm</Width>
+            <ZIndex>102</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2707,16 +2625,16 @@
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Left</TextAlign>
+                  <TextAlign>Center</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CpfPagador</rd:DefaultName>
-            <Top>10.72969cm</Top>
-            <Left>2.98097cm</Left>
+            <Top>11.26944cm</Top>
+            <Left>3.17147cm</Left>
             <Height>0.54708cm</Height>
-            <Width>3.43253cm</Width>
-            <ZIndex>107</ZIndex>
+            <Width>3.31562cm</Width>
+            <ZIndex>103</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2744,11 +2662,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>10.42013cm</Top>
+            <Top>10.95988cm</Top>
             <Left>6.73756cm</Left>
             <Height>0.50299cm</Height>
             <Width>1.9187cm</Width>
-            <ZIndex>108</ZIndex>
+            <ZIndex>104</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2779,11 +2697,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CpfPagador</rd:DefaultName>
-            <Top>10.72969cm</Top>
+            <Top>11.26944cm</Top>
             <Left>7.29847cm</Left>
             <Height>0.54708cm</Height>
             <Width>0.81316cm</Width>
-            <ZIndex>109</ZIndex>
+            <ZIndex>105</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2795,11 +2713,11 @@
             </Style>
           </Textbox>
           <Line Name="Line45">
-            <Top>10.59734cm</Top>
+            <Top>11.13709cm</Top>
             <Left>6.59292cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>110</ZIndex>
+            <ZIndex>106</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2809,11 +2727,11 @@
             </Style>
           </Line>
           <Line Name="Line46">
-            <Top>10.59734cm</Top>
+            <Top>11.13709cm</Top>
             <Left>8.69739cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>111</ZIndex>
+            <ZIndex>107</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2839,11 +2757,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>10.42013cm</Top>
+            <Top>10.95988cm</Top>
             <Left>8.84203cm</Left>
             <Height>0.50299cm</Height>
             <Width>0.99266cm</Width>
-            <ZIndex>112</ZIndex>
+            <ZIndex>108</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2874,11 +2792,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CpfPagador</rd:DefaultName>
-            <Top>10.72969cm</Top>
+            <Top>11.26944cm</Top>
             <Left>9.11014cm</Left>
             <Height>0.54708cm</Height>
             <Width>0.38983cm</Width>
-            <ZIndex>113</ZIndex>
+            <ZIndex>109</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2890,11 +2808,11 @@
             </Style>
           </Textbox>
           <Line Name="Line47">
-            <Top>10.59734cm</Top>
+            <Top>11.13709cm</Top>
             <Left>9.96177cm</Left>
             <Height>0.68874cm</Height>
             <Width>0cm</Width>
-            <ZIndex>114</ZIndex>
+            <ZIndex>110</ZIndex>
             <Style>
               <Border>
                 <Color>#ffec66</Color>
@@ -2916,15 +2834,17 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>10.42013cm</Top>
+            <Top>10.95988cm</Top>
             <Left>10.10641cm</Left>
             <Height>0.50299cm</Height>
-            <Width>2.82177cm</Width>
-            <ZIndex>115</ZIndex>
+            <Width>2.90216cm</Width>
+            <ZIndex>111</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2955,11 +2875,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CpfPagador</rd:DefaultName>
-            <Top>10.72969cm</Top>
+            <Top>11.26944cm</Top>
             <Left>10.0676cm</Left>
             <Height>0.54708cm</Height>
-            <Width>2.86057cm</Width>
-            <ZIndex>116</ZIndex>
+            <Width>2.94097cm</Width>
+            <ZIndex>112</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2971,11 +2891,11 @@
             </Style>
           </Textbox>
           <Line Name="Line48">
-            <Top>11.30852cm</Top>
-            <Left>0.07613cm</Left>
+            <Top>11.81652cm</Top>
+            <Left>0.07614cm</Left>
             <Height>0cm</Height>
             <Width>18.26274cm</Width>
-            <ZIndex>117</ZIndex>
+            <ZIndex>113</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -2983,8 +2903,697 @@
               </Border>
             </Style>
           </Line>
+          <Textbox Name="CpfPagador17">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!DataProcessamento.Value</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CpfPagador</rd:DefaultName>
+            <Top>11.26245cm</Top>
+            <Left>0.31358cm</Left>
+            <Height>0.51526cm</Height>
+            <Width>2.60742cm</Width>
+            <ZIndex>114</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line31">
+            <Top>13.56676cm</Top>
+            <Left>13.16277cm</Left>
+            <Height>0cm</Height>
+            <Width>5.09042cm</Width>
+            <ZIndex>115</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>0.7pt</Width>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="NossoNumero7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!Desconto.Value</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NossoNumero</rd:DefaultName>
+            <Top>13.01956cm</Top>
+            <Left>13.30945cm</Left>
+            <Height>0.51192cm</Height>
+            <Width>4.99767cm</Width>
+            <ZIndex>116</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line40">
+            <Top>13.60204cm</Top>
+            <Left>13.19508cm</Left>
+            <Height>0.86595cm</Height>
+            <Width>0cm</Width>
+            <ZIndex>117</ZIndex>
+            <Style>
+              <Border>
+                <Color>#ffec66</Color>
+                <Style>Solid</Style>
+                <Width>5pt</Width>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox39">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(+) Juros/Multa</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>13.60204cm</Top>
+            <Left>13.22683cm</Left>
+            <Height>0.50299cm</Height>
+            <Width>3.38274cm</Width>
+            <ZIndex>118</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line49">
+            <Top>14.46799cm</Top>
+            <Left>13.1532cm</Left>
+            <Height>0cm</Height>
+            <Width>5.09042cm</Width>
+            <ZIndex>119</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>0.7pt</Width>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="NossoNumero8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!Juro.Value</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NossoNumero</rd:DefaultName>
+            <Top>13.92079cm</Top>
+            <Left>13.29988cm</Left>
+            <Height>0.51192cm</Height>
+            <Width>4.99767cm</Width>
+            <ZIndex>120</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line50">
+            <Top>14.46799cm</Top>
+            <Left>13.19508cm</Left>
+            <Height>0.86595cm</Height>
+            <Width>0cm</Width>
+            <ZIndex>121</ZIndex>
+            <Style>
+              <Border>
+                <Color>#ffec66</Color>
+                <Style>Solid</Style>
+                <Width>5pt</Width>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox40">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(=) Valor Cobrado</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>14.46799cm</Top>
+            <Left>13.22683cm</Left>
+            <Height>0.50299cm</Height>
+            <Width>3.38274cm</Width>
+            <ZIndex>122</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line51">
+            <Top>15.33394cm</Top>
+            <Left>13.1532cm</Left>
+            <Height>0cm</Height>
+            <Width>5.09042cm</Width>
+            <ZIndex>123</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>0.7pt</Width>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="NossoNumero9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!ValorCobrado.Value</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NossoNumero</rd:DefaultName>
+            <Top>14.78674cm</Top>
+            <Left>13.29988cm</Left>
+            <Height>0.51192cm</Height>
+            <Width>4.99767cm</Width>
+            <ZIndex>124</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line3">
+            <Top>16.30681cm</Top>
+            <Left>0.05394cm</Left>
+            <Height>0cm</Height>
+            <Width>18.26274cm</Width>
+            <ZIndex>125</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>0.7pt</Width>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox41">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Informações de Responsabilidade do Beneficiário</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>12.62631cm</Top>
+            <Height>0.50299cm</Height>
+            <Width>7.49191cm</Width>
+            <ZIndex>126</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="NossoNumero10">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!Informacoes.Value</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NossoNumero</rd:DefaultName>
+            <Top>13.13636cm</Top>
+            <Left>0.21167cm</Left>
+            <Height>2.99406cm</Height>
+            <Width>9.11356cm</Width>
+            <ZIndex>127</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>1pt</PaddingLeft>
+              <PaddingRight>1pt</PaddingRight>
+              <PaddingTop>1pt</PaddingTop>
+              <PaddingBottom>1pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox19">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Nome do Pagador / Endereço</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>16.30681cm</Top>
+            <Left>0.24342cm</Left>
+            <Height>0.50299cm</Height>
+            <Width>4cm</Width>
+            <ZIndex>128</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="NomePagador5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!NomePagador.Value</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NomePagador</rd:DefaultName>
+            <Top>16.6828cm</Top>
+            <Left>0.40217cm</Left>
+            <Height>0.54708cm</Height>
+            <Width>8.24146cm</Width>
+            <ZIndex>129</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="EnderecoPagador3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!EnderecoPagador.Value</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>EnderecoPagador</rd:DefaultName>
+            <Top>17.07113cm</Top>
+            <Left>0.40217cm</Left>
+            <Height>0.54708cm</Height>
+            <Width>8.24146cm</Width>
+            <ZIndex>130</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CepPagador3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!CepPagador.Value</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CepPagador</rd:DefaultName>
+            <Top>17.45946cm</Top>
+            <Left>0.40217cm</Left>
+            <Height>0.54708cm</Height>
+            <Width>8.24146cm</Width>
+            <ZIndex>131</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox21">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>CPF/CNPJ</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>16.30681cm</Top>
+            <Left>9.00226cm</Left>
+            <Height>0.50299cm</Height>
+            <Width>3.89417cm</Width>
+            <ZIndex>132</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CpfPagador7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!CpfPagador.Value</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CpfPagador</rd:DefaultName>
+            <Top>16.65105cm</Top>
+            <Left>8.62246cm</Left>
+            <Height>0.54708cm</Height>
+            <Width>4.27704cm</Width>
+            <ZIndex>133</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox42">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Beneficiário Final</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>18.11906cm</Top>
+            <Left>0.24649cm</Left>
+            <Height>0.50299cm</Height>
+            <Width>2.74859cm</Width>
+            <ZIndex>134</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox43">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>CPF / CNPJ</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>18.11906cm</Top>
+            <Left>10.17959cm</Left>
+            <Height>0.50299cm</Height>
+            <Width>2.74859cm</Width>
+            <ZIndex>135</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line52">
+            <Top>19.16431cm</Top>
+            <Left>0.05394cm</Left>
+            <Height>0cm</Height>
+            <Width>18.26274cm</Width>
+            <ZIndex>136</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+                <Width>0.7pt</Width>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox44">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Autenticação mecânica - Ficha de compensação</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>19.22608cm</Top>
+            <Left>12.67856cm</Left>
+            <Height>0.50299cm</Height>
+            <Width>5.55243cm</Width>
+            <ZIndex>137</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="Image2">
+            <Source>External</Source>
+            <Value>="file:\\\"&amp;Parameters!CodigoBarras.Value</Value>
+            <Sizing>Fit</Sizing>
+            <Top>19.24118cm</Top>
+            <Left>0.17139cm</Left>
+            <Height>1.30049cm</Height>
+            <Width>11.8357cm</Width>
+            <ZIndex>138</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Image Name="Image3">
+            <Source>External</Source>
+            <Value>="file:\\\" &amp; Parameters!QrCode.Value</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>13.19986cm</Top>
+            <Left>9.50162cm</Left>
+            <Height>2.56366cm</Height>
+            <Width>3.42656cm</Width>
+            <ZIndex>139</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
         </ReportItems>
-        <Height>6.20459in</Height>
+        <Height>8.26735in</Height>
         <Style />
       </Body>
       <Width>7.23253in</Width>
@@ -3093,11 +3702,53 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="Carteira">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Desconto">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Juro">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ValorCobrado">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Informacoes">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CodigoBarras">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="QrCode">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>4</NumberOfRows>
+      <NumberOfRows>6</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -3173,6 +3824,41 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>3</RowIndex>
           <ParameterName>DataProcessamento</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>Carteira</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>4</RowIndex>
+          <ParameterName>Desconto</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>4</RowIndex>
+          <ParameterName>Juro</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>4</RowIndex>
+          <ParameterName>ValorCobrado</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>4</RowIndex>
+          <ParameterName>Informacoes</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>5</RowIndex>
+          <ParameterName>CodigoBarras</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>5</RowIndex>
+          <ParameterName>QrCode</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

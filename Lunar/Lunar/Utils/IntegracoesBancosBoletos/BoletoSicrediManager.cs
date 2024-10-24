@@ -15,11 +15,11 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
         private readonly SicrediIntegration _sicrediIntegration;
         private readonly BoletoConfig _boletoConfig;
 
-        public BoletoSicrediManager(int vendaId, int osId, ContaBancaria contaBancaria, bool ambienteProducao)
+        public BoletoSicrediManager(int vendaId, int osId, ContaBancaria contaBancaria, bool ambienteProducao, ContaReceber contaReceberUnica)
         {
             BoletoConfigController boletoConfigController = new BoletoConfigController();
             _boletoService = new BoletoService();
-            _boletoConfig = LoadBoletoConfigVenda(boletoConfigController, vendaId, osId);
+            _boletoConfig = LoadBoletoConfigVenda(boletoConfigController, vendaId, osId, contaReceberUnica);
 
             // Verifica se a configuração do boleto foi carregada com sucesso
             if (_boletoConfig == null)
@@ -41,14 +41,16 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
             );
         }
 
-        private BoletoConfig LoadBoletoConfigVenda(BoletoConfigController boletoConfigController, int vendaId, int osId)
+        private BoletoConfig LoadBoletoConfigVenda(BoletoConfigController boletoConfigController, int vendaId, int osId, ContaReceber contaReceberUnica)
         {
             ContaReceberController contaReceberController = new ContaReceberController();
             ContaBancaria contaBoleto = new ContaBancaria();
-            if(vendaId > 0)
+            if (vendaId > 0)
                 _listaReceber = contaReceberController.selecionarContaReceberPorVenda(vendaId);
             else if (osId > 0)
                 _listaReceber = contaReceberController.selecionarContaReceberPorOrdemServico(osId);
+            else if (contaReceberUnica != null)
+                _listaReceber.Add(contaReceberUnica);
 
             if (_listaReceber.Count > 0)
             {
@@ -121,9 +123,10 @@ namespace Lunar.Utils.IntegracoesBancosBoletos
             if (linhasDigitaveis.Count > 0)
             {
                 await _sicrediIntegration.DownloadAndOpenBoletoPdfs(linhasDigitaveis.ToArray(), imprimirNaTela);
+                return true;
             }
-
-            return true;
+            else
+                return false;
         }
 
         // Novo método para passar diretamente as linhas digitáveis e chamar o PDF

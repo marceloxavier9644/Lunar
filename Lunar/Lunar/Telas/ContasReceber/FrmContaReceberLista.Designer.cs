@@ -52,7 +52,6 @@
             this.chkApenasSPC = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             this.btnLimpar = new FontAwesome.Sharp.IconButton();
             this.iconPesquisar = new FontAwesome.Sharp.IconButton();
-            this.btnPesquisar = new Lunar.RJ_UI.Classes.RJButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioPagas = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
             this.radioAbertas = new Syncfusion.Windows.Forms.Tools.RadioButtonAdv();
@@ -63,15 +62,11 @@
             this.txtVencimentoFinal = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtNumeroDocumento = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnPesquisaCliente = new FontAwesome.Sharp.IconButton();
-            this.txtCodCliente = new Lunar.RJ_UI.Classes.RJTextBox();
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.autoLabel15 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
             this.sfDataPager1 = new Syncfusion.WinForms.DataPager.SfDataPager();
-            this.txtCliente = new Lunar.RJ_UI.Classes.RJTextBox();
             this.lblCalculando = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.grid = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             this.panelTitleBar = new System.Windows.Forms.Panel();
@@ -80,13 +75,18 @@
             this.btnExportarPDF = new FontAwesome.Sharp.IconButton();
             this.btnExtratoCliente = new FontAwesome.Sharp.IconButton();
             this.btnImprimirBoleto = new FontAwesome.Sharp.IconButton();
+            this.btnEmail = new FontAwesome.Sharp.IconButton();
+            this.btnEnviarWhats = new Lunar.RJ_UI.Classes.RJButton();
             this.btnRetornoBoletos = new Lunar.RJ_UI.Classes.RJButton();
             this.btnParcial = new Lunar.RJ_UI.Classes.RJButton();
             this.btnNovaFatura = new Lunar.RJ_UI.Classes.RJButton();
             this.btnExcluir = new Lunar.RJ_UI.Classes.RJButton();
             this.btnReceber = new Lunar.RJ_UI.Classes.RJButton();
-            this.btnEmail = new FontAwesome.Sharp.IconButton();
-            this.btnEnviarWhats = new Lunar.RJ_UI.Classes.RJButton();
+            this.btnPesquisar = new Lunar.RJ_UI.Classes.RJButton();
+            this.txtNumeroDocumento = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCodCliente = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtRegistroPorPagina = new Lunar.RJ_UI.Classes.RJTextBox();
+            this.txtCliente = new Lunar.RJ_UI.Classes.RJTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasEscritorioCobranca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApenasSPC)).BeginInit();
@@ -190,28 +190,6 @@
             this.iconPesquisar.TabIndex = 243;
             this.iconPesquisar.UseVisualStyleBackColor = false;
             this.iconPesquisar.Click += new System.EventHandler(this.iconPesquisar_Click);
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnPesquisar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnPesquisar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisar.BorderRadius = 8;
-            this.btnPesquisar.BorderSize = 2;
-            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(90)))));
-            this.btnPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnPesquisar.Location = new System.Drawing.Point(656, 109);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(77, 62);
-            this.btnPesquisar.TabIndex = 242;
-            this.btnPesquisar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
-            this.btnPesquisar.UseVisualStyleBackColor = false;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // groupBox3
             // 
@@ -339,31 +317,6 @@
             this.autoLabel5.TabIndex = 233;
             this.autoLabel5.Text = "Nº Documento";
             // 
-            // txtNumeroDocumento
-            // 
-            this.txtNumeroDocumento.BackColor = System.Drawing.Color.White;
-            this.txtNumeroDocumento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtNumeroDocumento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtNumeroDocumento.BorderRadius = 8;
-            this.txtNumeroDocumento.BorderSize = 2;
-            this.txtNumeroDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroDocumento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNumeroDocumento.Location = new System.Drawing.Point(399, 77);
-            this.txtNumeroDocumento.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNumeroDocumento.Multiline = false;
-            this.txtNumeroDocumento.Name = "txtNumeroDocumento";
-            this.txtNumeroDocumento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtNumeroDocumento.PasswordChar = false;
-            this.txtNumeroDocumento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtNumeroDocumento.PlaceholderText = "";
-            this.txtNumeroDocumento.ReadOnly = false;
-            this.txtNumeroDocumento.Size = new System.Drawing.Size(248, 37);
-            this.txtNumeroDocumento.TabIndex = 232;
-            this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtNumeroDocumento.Texts = "";
-            this.txtNumeroDocumento.UnderlinedStyle = false;
-            this.txtNumeroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroDocumento_KeyPress);
-            // 
             // autoLabel2
             // 
             this.autoLabel2.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -395,31 +348,6 @@
             this.btnPesquisaCliente.UseVisualStyleBackColor = true;
             this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
             // 
-            // txtCodCliente
-            // 
-            this.txtCodCliente.BackColor = System.Drawing.Color.White;
-            this.txtCodCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodCliente.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCodCliente.BorderRadius = 8;
-            this.txtCodCliente.BorderSize = 2;
-            this.txtCodCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCodCliente.Location = new System.Drawing.Point(442, 20);
-            this.txtCodCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodCliente.Multiline = false;
-            this.txtCodCliente.Name = "txtCodCliente";
-            this.txtCodCliente.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCodCliente.PasswordChar = false;
-            this.txtCodCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtCodCliente.PlaceholderText = "";
-            this.txtCodCliente.ReadOnly = false;
-            this.txtCodCliente.Size = new System.Drawing.Size(89, 37);
-            this.txtCodCliente.TabIndex = 229;
-            this.txtCodCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCodCliente.Texts = "";
-            this.txtCodCliente.UnderlinedStyle = false;
-            this.txtCodCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodCliente_KeyPress);
-            // 
             // autoLabel1
             // 
             this.autoLabel1.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -442,33 +370,6 @@
             this.autoLabel15.TabIndex = 210;
             this.autoLabel15.Text = "Reg. por Pág.";
             // 
-            // txtRegistroPorPagina
-            // 
-            this.txtRegistroPorPagina.BackColor = System.Drawing.Color.White;
-            this.txtRegistroPorPagina.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtRegistroPorPagina.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtRegistroPorPagina.BorderRadius = 8;
-            this.txtRegistroPorPagina.BorderSize = 2;
-            this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRegistroPorPagina.Location = new System.Drawing.Point(539, 20);
-            this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
-            this.txtRegistroPorPagina.Multiline = false;
-            this.txtRegistroPorPagina.Name = "txtRegistroPorPagina";
-            this.txtRegistroPorPagina.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtRegistroPorPagina.PasswordChar = false;
-            this.txtRegistroPorPagina.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtRegistroPorPagina.PlaceholderText = "";
-            this.txtRegistroPorPagina.ReadOnly = false;
-            this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
-            this.txtRegistroPorPagina.TabIndex = 209;
-            this.txtRegistroPorPagina.Tag = "";
-            this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtRegistroPorPagina.Texts = "100";
-            this.txtRegistroPorPagina.UnderlinedStyle = false;
-            // 
             // sfDataPager1
             // 
             this.sfDataPager1.AccessibleName = "DataPager";
@@ -480,39 +381,13 @@
             this.sfDataPager1.TabIndex = 154;
             this.sfDataPager1.OnDemandLoading += new System.EventHandler<Syncfusion.WinForms.DataPager.Events.OnDemandLoadingEventArgs>(this.sfDataPager1_OnDemandLoading);
             // 
-            // txtCliente
-            // 
-            this.txtCliente.BackColor = System.Drawing.Color.White;
-            this.txtCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCliente.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.txtCliente.BorderRadius = 8;
-            this.txtCliente.BorderSize = 2;
-            this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCliente.Location = new System.Drawing.Point(7, 20);
-            this.txtCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCliente.Multiline = false;
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
-            this.txtCliente.PasswordChar = false;
-            this.txtCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtCliente.PlaceholderText = "";
-            this.txtCliente.ReadOnly = false;
-            this.txtCliente.Size = new System.Drawing.Size(385, 37);
-            this.txtCliente.TabIndex = 153;
-            this.txtCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCliente.Texts = "";
-            this.txtCliente.UnderlinedStyle = false;
-            this.txtCliente.Click += new System.EventHandler(this.txtCliente_Click);
-            this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_KeyPress);
-            // 
             // lblCalculando
             // 
             this.lblCalculando.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCalculando.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblCalculando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCalculando.ForeColor = System.Drawing.Color.Red;
-            this.lblCalculando.Location = new System.Drawing.Point(850, 589);
+            this.lblCalculando.Location = new System.Drawing.Point(258, 580);
             this.lblCalculando.Name = "lblCalculando";
             this.lblCalculando.Size = new System.Drawing.Size(175, 16);
             this.lblCalculando.TabIndex = 242;
@@ -870,6 +745,52 @@
             this.btnImprimirBoleto.UseVisualStyleBackColor = true;
             this.btnImprimirBoleto.Click += new System.EventHandler(this.btnImprimirBoleto_Click);
             // 
+            // btnEmail
+            // 
+            this.btnEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEmail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEmail.FlatAppearance.BorderSize = 0;
+            this.btnEmail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEmail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmail.IconChar = FontAwesome.Sharp.IconChar.Envelope;
+            this.btnEmail.IconColor = System.Drawing.Color.DarkSlateGray;
+            this.btnEmail.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnEmail.IconSize = 38;
+            this.btnEmail.Location = new System.Drawing.Point(216, 571);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(36, 34);
+            this.btnEmail.TabIndex = 247;
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
+            // btnEnviarWhats
+            // 
+            this.btnEnviarWhats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEnviarWhats.BackColor = System.Drawing.Color.White;
+            this.btnEnviarWhats.BackgroundColor = System.Drawing.Color.White;
+            this.btnEnviarWhats.BackgroundImage = global::Lunar.Properties.Resources.whatsapp_logo_icone;
+            this.btnEnviarWhats.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEnviarWhats.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnEnviarWhats.BorderRadius = 8;
+            this.btnEnviarWhats.BorderSize = 2;
+            this.btnEnviarWhats.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnviarWhats.FlatAppearance.BorderSize = 0;
+            this.btnEnviarWhats.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEnviarWhats.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEnviarWhats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnviarWhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviarWhats.ForeColor = System.Drawing.Color.Black;
+            this.btnEnviarWhats.Location = new System.Drawing.Point(133, 568);
+            this.btnEnviarWhats.Name = "btnEnviarWhats";
+            this.btnEnviarWhats.Size = new System.Drawing.Size(35, 37);
+            this.btnEnviarWhats.TabIndex = 259;
+            this.btnEnviarWhats.TextColor = System.Drawing.Color.Black;
+            this.btnEnviarWhats.UseVisualStyleBackColor = false;
+            this.btnEnviarWhats.Click += new System.EventHandler(this.btnEnviarWhats_Click);
+            // 
             // btnRetornoBoletos
             // 
             this.btnRetornoBoletos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -981,51 +902,130 @@
             this.btnReceber.UseVisualStyleBackColor = false;
             this.btnReceber.Click += new System.EventHandler(this.btnReceber_Click);
             // 
-            // btnEmail
+            // btnPesquisar
             // 
-            this.btnEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEmail.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnEmail.FlatAppearance.BorderSize = 0;
-            this.btnEmail.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEmail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmail.IconChar = FontAwesome.Sharp.IconChar.Envelope;
-            this.btnEmail.IconColor = System.Drawing.Color.DarkSlateGray;
-            this.btnEmail.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnEmail.IconSize = 38;
-            this.btnEmail.Location = new System.Drawing.Point(216, 571);
-            this.btnEmail.Name = "btnEmail";
-            this.btnEmail.Size = new System.Drawing.Size(36, 34);
-            this.btnEmail.TabIndex = 247;
-            this.btnEmail.UseVisualStyleBackColor = true;
-            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            this.btnPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnPesquisar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnPesquisar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisar.BorderRadius = 8;
+            this.btnPesquisar.BorderSize = 2;
+            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.btnPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(90)))));
+            this.btnPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnPesquisar.Location = new System.Drawing.Point(656, 109);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(77, 62);
+            this.btnPesquisar.TabIndex = 242;
+            this.btnPesquisar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(69)))));
+            this.btnPesquisar.UseVisualStyleBackColor = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // btnEnviarWhats
+            // txtNumeroDocumento
             // 
-            this.btnEnviarWhats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEnviarWhats.BackColor = System.Drawing.Color.White;
-            this.btnEnviarWhats.BackgroundColor = System.Drawing.Color.White;
-            this.btnEnviarWhats.BackgroundImage = global::Lunar.Properties.Resources.whatsapp_logo_icone;
-            this.btnEnviarWhats.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEnviarWhats.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.btnEnviarWhats.BorderRadius = 8;
-            this.btnEnviarWhats.BorderSize = 2;
-            this.btnEnviarWhats.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEnviarWhats.FlatAppearance.BorderSize = 0;
-            this.btnEnviarWhats.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEnviarWhats.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEnviarWhats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnviarWhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnviarWhats.ForeColor = System.Drawing.Color.Black;
-            this.btnEnviarWhats.Location = new System.Drawing.Point(133, 568);
-            this.btnEnviarWhats.Name = "btnEnviarWhats";
-            this.btnEnviarWhats.Size = new System.Drawing.Size(35, 37);
-            this.btnEnviarWhats.TabIndex = 259;
-            this.btnEnviarWhats.TextColor = System.Drawing.Color.Black;
-            this.btnEnviarWhats.UseVisualStyleBackColor = false;
-            this.btnEnviarWhats.Click += new System.EventHandler(this.btnEnviarWhats_Click);
+            this.txtNumeroDocumento.BackColor = System.Drawing.Color.White;
+            this.txtNumeroDocumento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtNumeroDocumento.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtNumeroDocumento.BorderRadius = 8;
+            this.txtNumeroDocumento.BorderSize = 2;
+            this.txtNumeroDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumeroDocumento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtNumeroDocumento.Location = new System.Drawing.Point(399, 77);
+            this.txtNumeroDocumento.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNumeroDocumento.Multiline = false;
+            this.txtNumeroDocumento.Name = "txtNumeroDocumento";
+            this.txtNumeroDocumento.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtNumeroDocumento.PasswordChar = false;
+            this.txtNumeroDocumento.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtNumeroDocumento.PlaceholderText = "";
+            this.txtNumeroDocumento.ReadOnly = false;
+            this.txtNumeroDocumento.Size = new System.Drawing.Size(248, 37);
+            this.txtNumeroDocumento.TabIndex = 232;
+            this.txtNumeroDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtNumeroDocumento.Texts = "";
+            this.txtNumeroDocumento.UnderlinedStyle = false;
+            this.txtNumeroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroDocumento_KeyPress);
+            // 
+            // txtCodCliente
+            // 
+            this.txtCodCliente.BackColor = System.Drawing.Color.White;
+            this.txtCodCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodCliente.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCodCliente.BorderRadius = 8;
+            this.txtCodCliente.BorderSize = 2;
+            this.txtCodCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCodCliente.Location = new System.Drawing.Point(442, 20);
+            this.txtCodCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodCliente.Multiline = false;
+            this.txtCodCliente.Name = "txtCodCliente";
+            this.txtCodCliente.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCodCliente.PasswordChar = false;
+            this.txtCodCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCodCliente.PlaceholderText = "";
+            this.txtCodCliente.ReadOnly = false;
+            this.txtCodCliente.Size = new System.Drawing.Size(89, 37);
+            this.txtCodCliente.TabIndex = 229;
+            this.txtCodCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodCliente.Texts = "";
+            this.txtCodCliente.UnderlinedStyle = false;
+            this.txtCodCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodCliente_KeyPress);
+            // 
+            // txtRegistroPorPagina
+            // 
+            this.txtRegistroPorPagina.BackColor = System.Drawing.Color.White;
+            this.txtRegistroPorPagina.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtRegistroPorPagina.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtRegistroPorPagina.BorderRadius = 8;
+            this.txtRegistroPorPagina.BorderSize = 2;
+            this.txtRegistroPorPagina.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtRegistroPorPagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegistroPorPagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRegistroPorPagina.Location = new System.Drawing.Point(539, 20);
+            this.txtRegistroPorPagina.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRegistroPorPagina.Multiline = false;
+            this.txtRegistroPorPagina.Name = "txtRegistroPorPagina";
+            this.txtRegistroPorPagina.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtRegistroPorPagina.PasswordChar = false;
+            this.txtRegistroPorPagina.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtRegistroPorPagina.PlaceholderText = "";
+            this.txtRegistroPorPagina.ReadOnly = false;
+            this.txtRegistroPorPagina.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtRegistroPorPagina.Size = new System.Drawing.Size(108, 37);
+            this.txtRegistroPorPagina.TabIndex = 209;
+            this.txtRegistroPorPagina.Tag = "";
+            this.txtRegistroPorPagina.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtRegistroPorPagina.Texts = "100";
+            this.txtRegistroPorPagina.UnderlinedStyle = false;
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.BackColor = System.Drawing.Color.White;
+            this.txtCliente.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCliente.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.txtCliente.BorderRadius = 8;
+            this.txtCliente.BorderSize = 2;
+            this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCliente.Location = new System.Drawing.Point(7, 20);
+            this.txtCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCliente.Multiline = false;
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.txtCliente.PasswordChar = false;
+            this.txtCliente.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.txtCliente.PlaceholderText = "";
+            this.txtCliente.ReadOnly = false;
+            this.txtCliente.Size = new System.Drawing.Size(385, 37);
+            this.txtCliente.TabIndex = 153;
+            this.txtCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCliente.Texts = "";
+            this.txtCliente.UnderlinedStyle = false;
+            this.txtCliente.Click += new System.EventHandler(this.txtCliente_Click);
+            this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_KeyPress);
             // 
             // FrmContaReceberLista
             // 

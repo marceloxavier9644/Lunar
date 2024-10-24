@@ -13,6 +13,7 @@ namespace LunarBase.Classes
         private double quantidade;
         private decimal custoTotal;
         private string idProdutoProduzido;
+        private bool produzirNaVenda;
 
         [Anotacao("ID")]
         public virtual int Id { get => id; set => id = value; }
@@ -26,5 +27,7 @@ namespace LunarBase.Classes
         public virtual decimal CustoTotal { get => custoTotal; set => custoTotal = value; }
         [Anotacao("ID Produto Produzido")]
         public virtual string IdProdutoProduzido { get => idProdutoProduzido; set => idProdutoProduzido = value; }
+        [Anotacao("Produzir na Venda")]
+        public virtual bool ProduzirNaVenda { get => produzirNaVenda; set => produzirNaVenda = value; }
     }
 }

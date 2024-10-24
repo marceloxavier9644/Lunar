@@ -430,11 +430,104 @@ namespace Lunar.Utils
             }
         }
 
-        public ConsultEmpresaNs consultarEmpresaPorCnpj_NS(string cnpjCont, string cnpj, string Uf)
+        //public ConsultEmpresaNs consultarEmpresaPorCnpj_NS(string cnpjCont, string cnpj, string Uf)
+        //{
+        //    try
+        //    {
+        //        String url = "https://nfe.ns.eti.br/util/conscad";
+        //        var requisicaoWeb = WebRequest.CreateHttp(url);
+        //        requisicaoWeb.Method = "POST";
+        //        requisicaoWeb.ContentType = "application/json";
+        //        requisicaoWeb.Headers.Add("x-auth-token", "VFhUIElORk9STUFUSUNBT3JQSEQ=");
+
+        //        using (var streamWriter = new StreamWriter(requisicaoWeb.GetRequestStream()))
+        //        {
+        //            string json = new JavaScriptSerializer().Serialize(new
+        //            {
+        //                CNPJCont = cnpjCont,
+        //                UF = Uf,
+        //                CNPJ = cnpj
+        //            });
+
+        //            streamWriter.Write(json);
+        //        }
+
+        //        var httpResponse = (HttpWebResponse)requisicaoWeb.GetResponse();
+        //        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+        //        {
+        //            var result = streamReader.ReadToEnd();
+        //            streamReader.Close();
+        //            var empresa = JsonConvert.DeserializeObject<ConsultEmpresaNs>(result);
+        //            return empresa;
+        //        }
+        //    }
+        //    catch (WebException webEx)
+        //    {
+        //        if (webEx.Response != null)
+        //        {
+        //            using (var streamReader = new StreamReader(webEx.Response.GetResponseStream()))
+        //            {
+        //                string errorResponse = streamReader.ReadToEnd();
+        //                //GenericaDesktop.ShowErro($"Erro de Requisição: {webEx.Message}\nResposta do Servidor: {errorResponse}");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            //GenericaDesktop.ShowErro($"Erro de Requisição: {webEx.Message}");
+        //        }
+
+        //        return null;
+        //    }
+        //    catch (Exception err)
+        //    {
+        //        GenericaDesktop.ShowErro(err.Message);
+        //        return null;
+        //    }
+        //}
+
+        public ConsultEmpresaNs ConsultarEmpresaPorCnpj_NS(string cnpjCont, string cnpj, string ufInicial)
         {
             try
             {
-                String url = "https://nfe.ns.eti.br/util/conscad";
+                // Lista de UFs, removemos a UF inicial da lista para evitar repetição
+                List<string> ufs = new List<string> { "SP", "RJ", "MG", "RS", "PR", "SC", "BA", "GO", "PE", "DF", "ES", "CE", "MT", "PA", "MS", "MA", "RN", "PB", "AM", "SE", "PI", "AL", "TO", "RO", "AP", "AC", "RR" };
+                ufs.Remove(ufInicial);  // Remove a UF inicial para não repetir
+
+                // Primeiro tenta consultar com a UF inicial
+                var empresa = FazerConsulta(cnpjCont, cnpj, ufInicial);
+                if (empresa != null && empresa.status == 200 && empresa.retConsCad.infCons.cStat != 259)
+                {
+                    // Retorno válido, empresa encontrada no estado inicial
+                    return empresa;
+                }
+
+                // Se o estado inicial não foi válido, tenta com os outros estados
+                foreach (var uf in ufs)
+                {
+                    empresa = FazerConsulta(cnpjCont, cnpj, uf);
+                    if (empresa != null && empresa.status == 200 && empresa.retConsCad.infCons.cStat != 259)
+                    {
+                        // Retorno válido, empresa encontrada
+                        return empresa;
+                    }
+                }
+
+                // Se nenhum estado retornou resultado válido
+                GenericaDesktop.ShowErro("CNPJ não encontrado como contribuinte em nenhum estado.");
+                return null;
+            }
+            catch (Exception err)
+            {
+                GenericaDesktop.ShowErro($"Erro ao consultar empresa: {err.Message}");
+                return null;
+            }
+        }
+
+        private ConsultEmpresaNs FazerConsulta(string cnpjCont, string cnpj, string uf)
+        {
+            try
+            {
+                string url = "https://nfe.ns.eti.br/util/conscad";
                 var requisicaoWeb = WebRequest.CreateHttp(url);
                 requisicaoWeb.Method = "POST";
                 requisicaoWeb.ContentType = "application/json";
@@ -445,7 +538,7 @@ namespace Lunar.Utils
                     string json = new JavaScriptSerializer().Serialize(new
                     {
                         CNPJCont = cnpjCont,
-                        UF = Uf,
+                        UF = uf,
                         CNPJ = cnpj
                     });
 
@@ -456,8 +549,15 @@ namespace Lunar.Utils
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
-                    streamReader.Close();
                     var empresa = JsonConvert.DeserializeObject<ConsultEmpresaNs>(result);
+
+                    // Validação do retorno
+                    if (empresa != null && empresa.status == -500)
+                    {
+                        GenericaDesktop.ShowErro($"Erro no servidor: {empresa.motivo ?? "Motivo não fornecido"}");
+                        return null;
+                    }
+
                     return empresa;
                 }
             }
@@ -468,22 +568,23 @@ namespace Lunar.Utils
                     using (var streamReader = new StreamReader(webEx.Response.GetResponseStream()))
                     {
                         string errorResponse = streamReader.ReadToEnd();
-                        //GenericaDesktop.ShowErro($"Erro de Requisição: {webEx.Message}\nResposta do Servidor: {errorResponse}");
+                        Console.WriteLine($"Erro de Requisição: {webEx.Message}\nResposta do Servidor: {errorResponse}");
                     }
                 }
                 else
                 {
-                    //GenericaDesktop.ShowErro($"Erro de Requisição: {webEx.Message}");
+                    GenericaDesktop.ShowErro($"Erro de Requisição: {webEx.Message}");
                 }
 
                 return null;
             }
             catch (Exception err)
             {
-                GenericaDesktop.ShowErro(err.Message);
+                GenericaDesktop.ShowErro($"Erro geral na consulta: {err.Message}");
                 return null;
             }
         }
+
 
 
         public SintegraConsultaCnpj consultaCNPJSintegraWS(String cnpj)

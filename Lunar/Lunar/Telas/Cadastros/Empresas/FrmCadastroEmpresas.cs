@@ -669,7 +669,7 @@ namespace Lunar.Telas.Cadastros.Empresas
                         if (Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()).Length == 14 && GenericaDesktop.validarCPFCNPJ(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim())))
                         {
                             ConsultEmpresaNs consulta = new ConsultEmpresaNs();
-                            consulta = generica.consultarEmpresaPorCnpj_NS("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
+                            consulta = generica.ConsultarEmpresaPorCnpj_NS("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
                             //SintegraConsultaCnpj consulta = new SintegraConsultaCnpj();
                            // consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
                             txtRazaoSocial.Texts = consulta.retConsCad.infCons.infCad[0].xNome;

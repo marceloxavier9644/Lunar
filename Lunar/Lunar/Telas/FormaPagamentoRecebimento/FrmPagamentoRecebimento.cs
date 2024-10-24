@@ -9,6 +9,7 @@ using Lunar.Utils.ClassesRepeticoes;
 using Lunar.Utils.GalaxyPay_API;
 using Lunar.Utils.IntegracoesBancosBoletos;
 using LunarBase.Classes;
+using LunarBase.ClassesBO;
 using LunarBase.ControllerBO;
 using LunarBase.Utilidades;
 using Syncfusion.WinForms.DataGrid.Interactivity;
@@ -1823,13 +1824,13 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     clienteBoleto = contaReceber.Cliente;
                                 }
                                 if(Sessao.parametroSistema.IntegracaoGalaxyPay == true && !String.IsNullOrEmpty(Sessao.parametroSistema.TokenGalaxyPay))
-                                    gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
+                                    gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto, contaBancaria);
                                 var boletoConfig = boletoConfigService.GetBoletoConfigContaBancaria(contaBancaria);
                                 if (boletoConfig != null)
                                 {
                                     if (boletoConfig.ContaBancaria.Banco.Descricao.Contains("SICREDI"))
                                     {
-                                        BoletoSicrediManager boletoManager = new BoletoSicrediManager(idVenda, idOs, contaBancaria, boletoConfig.AmbienteProducao);
+                                        BoletoSicrediManager boletoManager = new BoletoSicrediManager(idVenda, idOs, contaBancaria, boletoConfig.AmbienteProducao, null);
                                         await boletoManager.GeraBoletosSicredi(ordemServico.Cliente, true);
                                     }
                                 }
@@ -2339,7 +2340,7 @@ namespace Lunar.Telas.FormaPagamentoRecebimento
                                     lis.Add(contaReceber);
                                     clienteBoleto = contaReceber.Cliente;
                                 }
-                                gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
+                                gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto, null);
                             }
                         }
                         //Crediário

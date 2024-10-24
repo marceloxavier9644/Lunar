@@ -53,6 +53,7 @@ namespace Lunar.Telas.ContasReceber
 {
     public partial class FrmContaReceberLista : Form
     {
+        IList<ContaReceber> listaReceberBoleto = new List<ContaReceber>();
         BoletoConfigController boletoConfigController = new BoletoConfigController();
         private ToolTip toolTip1;
         ContaReceber contaReceber = new ContaReceber();
@@ -64,6 +65,7 @@ namespace Lunar.Telas.ContasReceber
         decimal juro = 0;
         decimal diasVencido = 0;
         GenericaDesktop generica = new GenericaDesktop();
+        private List<string> listaFaturaGalaxyPay = new List<string>();
         public FrmContaReceberLista()
         {
             InitializeComponent();
@@ -1085,84 +1087,19 @@ namespace Lunar.Telas.ContasReceber
                         lstBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
                         if (Sessao.parametroSistema.IntegracaoGalaxyPay == true)
                         {
-                            try
-                            {
-
-                                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
-                                GalaxyPay_Result retGalaxy = galaxyPayApiIntegracao.GalaxyPay_ListarTransacoes(dataInicial.ToString("yyyy-MM-dd"), dataFinal.ToString("yyyy-MM-dd"));
-                                if (retGalaxy != null)
-                                {
-                                    listaContaReceber = retGalaxy.ContasRecebidas;
-                                    if (listaContaReceber != null && listaContaReceber.Count > 0)
-                                    {
-                                        calculaTotalNotas();
-                                        sfDataPager1.DataSource = listaContaReceberCalculado;
-
-                                        int pageSize;
-                                        if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts) && int.TryParse(txtRegistroPorPagina.Texts, out pageSize))
-                                            sfDataPager1.PageSize = pageSize;
-                                        else
-                                            sfDataPager1.PageSize = 100;
-
-                                        grid.DataSource = sfDataPager1.PagedSource;
-                                        sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
-
-                                        this.grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
-                                        this.grid.AutoSizeController.Refresh();
-                                        grid.Refresh();
-
-                                        // Garantir que a célula atual está sendo atualizada corretamente
-                                        this.grid.BeginInvoke((Action)(() =>
-                                        {
-                                            this.grid.MoveToCurrentCell(new Syncfusion.WinForms.GridCommon.ScrollAxis.RowColumnIndex(1, 0));
-                                        }));
-
-                                        int w = Screen.PrimaryScreen.Bounds.Width;
-                                        int h = Screen.PrimaryScreen.Bounds.Height;
-                                        if (w == 1920 && h == 1080)
-                                        {
-                                            this.grid.View.Records.CollectionChanged += Records_CollectionChanged;
-                                        }
-                                    }
-                                }
-                            }
-                            catch
-                            {
-                                GenericaDesktop.ShowErro("Data Inválida");
-                            }
+                            retornoCelCash(dataInicial, dataFinal);
                         }
-                        else
+                        if(lstBoletoConfig.Count > 0)
                         {
                             foreach (var boletoConfig in lstBoletoConfig)
                             {
                                 if (boletoConfig.ContaBancaria.Banco.Descricao.ToUpper().Contains("SICREDI"))
                                 {
-                                    DateTime dataAtual = dataInicial;
-                                    StringBuilder todasAsMensagens = new StringBuilder();
-                                    while (dataAtual.Date <= dataFinal.Date)
-                                    {
-                                        // Chama o método para consultar boletos liquidados na dataAtual
-                                        BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(0, 0, boletoConfig.ContaBancaria, boletoConfig.AmbienteProducao);
-                                        string resultado = await boletoSicrediManager.ConsultarBoletosLiquidadosPorDiaAsync(dataAtual);
-
-                                        // Exibe o resultado se houver boletos
-                                        if (!string.IsNullOrEmpty(resultado))
-                                        {
-                                            todasAsMensagens.AppendLine($"Boletos Liquidados no dia {dataAtual.ToString("dd/MM/yyyy")}: {resultado}");
-                                        }
-
-                                        // Incrementa a data para o próximo dia
-                                        dataAtual = dataAtual.AddDays(1);
-                                    }
-
-                                    if (todasAsMensagens.Length > 0)
-                                    {
-                                        GenericaDesktop.ShowInfo(todasAsMensagens.ToString());
-                                    }
-                                    else
-                                    {
-                                        GenericaDesktop.ShowInfo("Nenhum boleto liquidado foi encontrado no período.");
-                                    }
+                                    retornoSicredi(dataInicial, dataFinal, boletoConfig);
+                                }
+                                if (boletoConfig.ContaBancaria.Banco.Descricao.ToUpper().Contains("BB") || boletoConfig.ContaBancaria.Banco.Descricao.ToUpper().Contains("BANCO DO BRASIL"))
+                                {
+                                    retornoBancoBrasil(dataInicial, dataFinal, boletoConfig);
                                 }
                             }
                         }
@@ -1172,9 +1109,173 @@ namespace Lunar.Telas.ContasReceber
             }
         }
 
+        private async void retornoBancoBrasil(DateTime dataInicial, DateTime dataFinal, BoletoConfig boletoConfig)
+        {
+            try
+            {
+                DateTime dataAtual = dataInicial;
+                StringBuilder todasAsMensagens = new StringBuilder();
 
+                BBApiService bBApiService = new BBApiService(boletoConfig.AmbienteProducao, boletoConfig.IdToken, boletoConfig.Token);
+                RetornoListaBoletosBaixadosBB listaBaixaBB = await bBApiService.ListarBoletosBancoBrasilAsync(boletoConfig.ContaBancaria.Agencia, boletoConfig.ContaBancaria.Conta, dataInicial.ToString("dd.MM.yyyy"), dataFinal.ToString("dd.MM.yyyy"));
+
+                // Exibe o resultado se houver boletos
+                if (listaBaixaBB != null)
+                {
+
+                    // Agora você pode acessar as propriedades do objetoma retornoBoletos
+                    //Console.WriteLine($"Indicador de Continuidade: {retornoBoletos.IndicadorContinuidade}");
+                    foreach (var boleto in listaBaixaBB.Boletos)
+                    {
+                        string nossoNumero = boleto.NumeroBoletoBB;
+                        IList<ContaReceber> ListaContaReceber = contaReceberController.selecionarContaReceberPorSql("From ContaReceber Tabela where Tabela.NossoNumero = '" + nossoNumero + "' and Tabela.FlagExcluido <> true");
+                        if(ListaContaReceber.Count > 0)
+                        {
+                            contaReceber.Recebido = true;
+                            contaReceber.ValorRecebido = boleto.ValorPago;
+                            if(contaReceber.ValorRecebido != contaReceber.ValorParcela)
+                            {
+                                decimal diferenca = contaReceber.ValorRecebido - contaReceber.ValorParcela;
+                                contaReceber.Juro = 0;
+                                contaReceber.Multa = 0;
+                                contaReceber.AcrescimoRecebidoBaixa = diferenca;
+                            }
+                            contaReceber.DataRecebimento = DateTime.Parse(boleto.DataMovimento);
+                            contaReceber.DescricaoRecebimento = "RETORNO BANCO DO BRASIL, SOLICITADO EM " + DateTime.Now.ToShortDateString();
+                            Controller.getInstance().salvar(contaReceber);
+
+                            RetornoBanco retornoBanco = new RetornoBanco();
+                            retornoBanco.AbatimentoLiquido = 0;
+                            retornoBanco.MultaLiquida = 0;
+                            retornoBanco.CodigoBeneficiario = "";
+                            retornoBanco.ContaReceber = contaReceber;
+                            retornoBanco.Cooperativa = "";
+                            retornoBanco.CooperativaPostoBeneficiario = "";
+                            retornoBanco.DataPagamento = DateTime.Parse(boleto.DataMovimento);
+                            retornoBanco.DescontoLiquido = 0;
+                            retornoBanco.Descricao = "RETORNO BANCO DO BRASIL, SOLICITADO EM " + DateTime.Now.ToShortDateString();
+                            retornoBanco.JurosLiquido = 0;
+                            retornoBanco.TipoLiquidacao = boleto.EstadoTituloCobranca;
+                            retornoBanco.Valor = boleto.ValorOriginal;
+                            retornoBanco.ValorLiquidado = boleto.ValorPago;
+                            Controller.getInstance().salvar(retornoBanco);
+
+                            Caixa caixa = new Caixa();
+                            caixa.Cobrador = null;
+                            caixa.Conciliado = true;
+                            caixa.Concluido = true;
+                            caixa.ContaBancaria = contaReceber.ContaBoleto;
+                            caixa.DataLancamento = contaReceber.DataRecebimento;
+                            caixa.Descricao = "REC. DE BOLETO - BB " + contaReceber.Documento + " " + contaReceber.Cliente.RazaoSocial;
+                            caixa.EmpresaFilial = Sessao.empresaFilialLogada;
+                            caixa.FormaPagamento = contaReceber.FormaPagamento;
+                            caixa.IdOrigem = contaReceber.Id.ToString();
+                            caixa.Pessoa = contaReceber.Cliente;
+                            caixa.PlanoConta = contaReceber.PlanoConta;
+                            caixa.TabelaOrigem = "CONTARECEBER";
+                            caixa.Tipo = "E";
+                            caixa.Usuario = Sessao.usuarioLogado;
+                            caixa.Valor = contaReceber.ValorRecebido;
+                            caixa.Observacoes = "RETORNO AUTOMÁTICO BANCO, PUXADO EM: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
+                            Controller.getInstance().salvar(caixa);
+
+                            todasAsMensagens.AppendLine($"Boleto Liquidado, Nosso Número: {nossoNumero}, Data de Lançamento: {caixa.DataLancamento:dd/MM/yyyy}, Valor: {caixa.Valor:C}");
+                        }
+                        Console.WriteLine($"Número do Boleto: {boleto.NumeroBoletoBB}, Valor Pago: {boleto.ValorPago}");
+                        
+                    }
+                }
+
+                // Incrementa a data para o próximo dia
+                dataAtual = dataAtual.AddDays(1);
+
+                if (todasAsMensagens.Length > 0)
+                {
+                    GenericaDesktop.ShowInfo(todasAsMensagens.ToString());
+                }
+                else
+                {
+                    GenericaDesktop.ShowInfo("Nenhum boleto liquidado foi encontrado no período.");
+                }
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowAlerta(erro.Message);
+            }
+        }
+
+        private async void retornoSicredi(DateTime dataInicial, DateTime dataFinal, BoletoConfig boletoConfig)
+        {
+            DateTime dataAtual = dataInicial;
+            StringBuilder todasAsMensagens = new StringBuilder();
+            while (dataAtual.Date <= dataFinal.Date)
+            {
+                // Chama o método para consultar boletos liquidados na dataAtual
+                BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(0, 0, boletoConfig.ContaBancaria, boletoConfig.AmbienteProducao, null);
+                string resultado = await boletoSicrediManager.ConsultarBoletosLiquidadosPorDiaAsync(dataAtual);
+
+                // Exibe o resultado se houver boletos
+                if (!string.IsNullOrEmpty(resultado))
+                {
+                    todasAsMensagens.AppendLine($"Boletos Liquidados no dia {dataAtual.ToString("dd/MM/yyyy")}: {resultado}");
+                }
+
+                // Incrementa a data para o próximo dia
+                dataAtual = dataAtual.AddDays(1);
+            }
+
+            if (todasAsMensagens.Length > 0)
+            {
+                GenericaDesktop.ShowInfo(todasAsMensagens.ToString());
+            }
+            else
+            {
+                GenericaDesktop.ShowInfo("Nenhum boleto liquidado foi encontrado no período.");
+            }
+        }
+        private void retornoCelCash(DateTime dataInicial, DateTime dataFinal)
+        {
+            GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+            GalaxyPay_Result retGalaxy = galaxyPayApiIntegracao.GalaxyPay_ListarTransacoes(dataInicial.ToString("yyyy-MM-dd"), dataFinal.ToString("yyyy-MM-dd"));
+            if (retGalaxy != null)
+            {
+                listaContaReceber = retGalaxy.ContasRecebidas;
+                if (listaContaReceber != null && listaContaReceber.Count > 0)
+                {
+                    calculaTotalNotas();
+                    sfDataPager1.DataSource = listaContaReceberCalculado;
+
+                    int pageSize;
+                    if (!String.IsNullOrEmpty(txtRegistroPorPagina.Texts) && int.TryParse(txtRegistroPorPagina.Texts, out pageSize))
+                        sfDataPager1.PageSize = pageSize;
+                    else
+                        sfDataPager1.PageSize = 100;
+
+                    grid.DataSource = sfDataPager1.PagedSource;
+                    sfDataPager1.OnDemandLoading += sfDataPager1_OnDemandLoading;
+
+                    this.grid.AutoSizeController.ResetAutoSizeWidthForAllColumns();
+                    this.grid.AutoSizeController.Refresh();
+                    grid.Refresh();
+
+                    // Garantir que a célula atual está sendo atualizada corretamente
+                    this.grid.BeginInvoke((Action)(() =>
+                    {
+                        this.grid.MoveToCurrentCell(new Syncfusion.WinForms.GridCommon.ScrollAxis.RowColumnIndex(1, 0));
+                    }));
+
+                    int w = Screen.PrimaryScreen.Bounds.Width;
+                    int h = Screen.PrimaryScreen.Bounds.Height;
+                    if (w == 1920 && h == 1080)
+                    {
+                        this.grid.View.Records.CollectionChanged += Records_CollectionChanged;
+                    }
+                }
+            }
+        }
         private void btnImprimirBoleto_Click(object sender, EventArgs e)
         {
+            //gera boleto para o banco especifico
             gerarBoletoParcelasSelecionadas2();
         }
         private void selecionarContaEmissaoBoleto()
@@ -1223,10 +1324,16 @@ namespace Lunar.Telas.ContasReceber
 
         ContaBancaria contaBoletoSelecionada = new ContaBancaria();
         ContaBancaria contaSelecionada = new ContaBancaria();
-        //private async void gerarBoletoParcelasSelecionadas()
+
+        //private async void gerarBoletoParcelasSelecionadas2()
         //{
         //    try
         //    {
+        //        bool ambienteProducao = false;
+        //        lblCalculando.Visible = true;
+        //        lblCalculando.Text = "Gerando Boleto, Comunicando com o Banco...";
+        //        btnImprimirBoleto.Enabled = false;
+        //        Logger logger = new Logger();
         //        if (!String.IsNullOrEmpty(txtCodCliente.Texts))
         //        {
         //            int vendaId = 0;
@@ -1256,43 +1363,118 @@ namespace Lunar.Telas.ContasReceber
 
         //            if (contasSelecionadas.Count > 0)
         //            {
+
         //                int iGalaxyPay = 0;
         //                List<string> linhasDigitaveisSicredi = new List<string>(); // Para armazenar as linhas digitáveis dos boletos Sicredi
+
+        //                // HashSet para rastrear vendas e OS já processadas
+        //                HashSet<int> vendasProcessadas = new HashSet<int>();
+        //                HashSet<int> osProcessadas = new HashSet<int>();
 
         //                foreach (ContaReceber contaReceber in contasSelecionadas)
         //                {
         //                    vendaId = contaReceber.Venda?.Id ?? 0;
         //                    osId = contaReceber.OrdemServico?.Id ?? 0;
+        //                    Console.WriteLine($"Processando conta: VendaId = {vendaId}, OsId = {osId}");
+        //                    // Verificar se a venda ou OS já foi processada
+        //                    if (vendasProcessadas.Contains(vendaId) || osProcessadas.Contains(osId))
+        //                    {
+        //                        // Se já foi processada, continuar para a próxima parcela
+        //                        continue;
+        //                    }
 
+        //                    // Adiciona a venda e OS ao conjunto de processados
+        //                    if (vendaId > 0)
+        //                        vendasProcessadas.Add(vendaId);
+        //                    if (osId > 0)
+        //                        osProcessadas.Add(osId);
+
+
+        //                    // Se a conta de boleto for null, tenta selecionar
         //                    if (contaReceber.ContaBoleto == null)
         //                    {
-        //                        selecionarContaEmissaoBoleto();
-        //                        if (contaSelecionada != null)
+        //                        if (contaBoletoSelecionada.Id == 0)
         //                        {
-        //                            if (contaSelecionada.Id > 0)
-        //                            {
-        //                                contaReceber.ContaBoleto = contaSelecionada;
-        //                                Controller.getInstance().salvar(contaReceber);
-        //                            }
+        //                            selecionarContaEmissaoBoleto();
+        //                            contaBoletoSelecionada = contaSelecionada; // Armazena a conta selecionada
+        //                        }
+
+        //                        // Se a conta selecionada não for nula e válida, atribui
+        //                        if (contaBoletoSelecionada != null && contaBoletoSelecionada.Id > 0)
+        //                        {
+        //                            contaReceber.ContaBoleto = contaBoletoSelecionada;
+        //                            Controller.getInstance().salvar(contaReceber);
         //                        }
         //                    }
 
         //                    // Verificar a plataforma para geração de boleto
-        //                    if (contaReceber.ContaBoleto.Banco.Descricao.Contains("SICREDI"))
+        //                    IList<BoletoConfig> listaBoletoConfig = new List<BoletoConfig>();
+        //                    listaBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
+        //                    if (listaBoletoConfig.Count > 0) 
         //                    {
-        //                        if (contaReceber.BoletoGerado)
+        //                        foreach (BoletoConfig boletoConfig in listaBoletoConfig)
         //                        {
-        //                            // Adicionar linha digitável do boleto gerado à lista
-        //                            if (!string.IsNullOrEmpty(contaReceber.LinhaDigitavel))
+        //                            if (boletoConfig.ContaBancaria.Banco.Descricao.Contains("SICREDI") && contaReceber.ContaBoleto.Id == boletoConfig.ContaBancaria.Id)
         //                            {
-        //                                linhasDigitaveisSicredi.Add(contaReceber.LinhaDigitavel);
+        //                                ambienteProducao = boletoConfig.AmbienteProducao;
+        //                                if (contaReceber.BoletoGerado)
+        //                                {
+        //                                    // Adicionar linha digitável do boleto gerado à lista
+        //                                    if (!string.IsNullOrEmpty(contaReceber.LinhaDigitavel))
+        //                                    {
+        //                                        linhasDigitaveisSicredi.Add(contaReceber.LinhaDigitavel);
+        //                                    }
+        //                                }
+        //                                else
+        //                                {
+        //                                    // Gerar o boleto Sicredi
+        //                                    lblCalculando.Text = "Gerando Boleto Sicredi";
+        //                                    BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto, boletoConfig.AmbienteProducao);
+        //                                    bool sucesso = await boletoManager.GeraBoletosSicredi(contaReceber.Cliente, true);
+        //                                    if (sucesso == true)
+        //                                        lblCalculando.Text = "Boleto Sicredi Gerado com Sucesso!";
+        //                                }
         //                            }
-        //                        }
-        //                        else
-        //                        {
-        //                            // Gerar o boleto Sicredi
-        //                            BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto);
-        //                            bool sucesso = await boletoManager.GeraBoletosSicredi(contaReceber.Cliente);
+        //                            else if ((boletoConfig.ContaBancaria.Banco.Descricao.Contains("BB") || boletoConfig.ContaBancaria.Banco.Descricao.Contains("BANCO DO BRASIL")) && contaReceber.ContaBoleto.Id == boletoConfig.ContaBancaria.Id)
+        //                            {
+        //                                try
+        //                                {
+        //                                    BBApiService bbApiService = new BBApiService(boletoConfig.AmbienteProducao, boletoConfig.IdToken, boletoConfig.Token);
+        //                                    RetornoBoletoBB response = await bbApiService.CriarBoletoBancoBrasilAsync(contaReceber.Cliente, contaReceber, boletoConfig);
+        //                                    if (response != null)
+        //                                    {
+        //                                        GenericaDesktop.ShowInfo("Boleto gerado com sucesso!");
+        //                                        contaReceber.BoletoGerado = true;
+        //                                        contaReceber.LinhaDigitavel = response.linhaDigitavel;
+        //                                        contaReceber.NossoNumero = response.numero;
+        //                                        contaReceber.IdBoleto = "";
+        //                                        contaReceber.QrCode = response.qrCode.emv;
+        //                                        Controller.getInstance().salvar(contaReceber);
+
+
+        //                                        BbDetalheBoletoResponse boletoDetalheRet = await bbApiService.DetalharBoletoAsync(response.numero, int.Parse(boletoConfig.Convenio));
+        //                                        if (boletoDetalheRet != null)
+        //                                        {
+        //                                            FrmImprimirBoletoBB frmImprimirBoletoBB = new FrmImprimirBoletoBB(boletoDetalheRet, contaReceber.EmpresaFilial, response, boletoConfig);
+        //                                            frmImprimirBoletoBB.ShowDialog();
+        //                                        }
+        //                                    }
+
+        //                                }
+        //                                catch (ApiException apiEx)
+        //                                {
+        //                                    // Exibir mensagens amigáveis para cada erro retornado pela API
+        //                                    foreach (var erro in apiEx.ApiError.erros)
+        //                                    {
+        //                                        MessageBox.Show($"Código: {erro.codigo}, Mensagem: {erro.mensagem}");
+        //                                    }
+        //                                }
+        //                                catch (Exception ex)
+        //                                {
+        //                                    // Tratar outras exceções, se necessário
+        //                                    MessageBox.Show($"Ocorreu um erro inesperado: {ex.Message}");
+        //                                }
+        //                            }
         //                        }
         //                    }
         //                    else if (contaReceber.ContaBoleto.Banco.Descricao == "GALAXYPAY" || contaReceber.ContaBoleto.Banco.Descricao == "CELCASH" || contaReceber.ContaBoleto.Descricao == "CELCASH")
@@ -1314,6 +1496,7 @@ namespace Lunar.Telas.ContasReceber
         //                                    IList<ContaReceber> listaCrediario = new List<ContaReceber> { contaReceber };
         //                                    GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
         //                                    Pessoa clienteBoleto = contaReceber.Cliente;
+        //                                    lblCalculando.Text = "Gerando Boleto CelCash";
         //                                    gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
         //                                }
         //                                else
@@ -1325,6 +1508,7 @@ namespace Lunar.Telas.ContasReceber
 
         //                        if (arrayFatura.Length > 0)
         //                        {
+        //                            lblCalculando.Text = "Obtendo PDF Boleto CelCash";
         //                            string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
         //                            string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(arrayFatura);
         //                            if (!String.IsNullOrEmpty(link))
@@ -1340,11 +1524,12 @@ namespace Lunar.Telas.ContasReceber
         //                }
 
         //                // Se houver boletos Sicredi já gerados, chamar o método para download
+
         //                if (linhasDigitaveisSicredi.Count > 0)
         //                {
-        //                    BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto);
+        //                    BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contasSelecionadas.First().ContaBoleto, ambienteProducao);
         //                    string[] linhasDigitaveisArray = linhasDigitaveisSicredi.ToArray();
-        //                    await boletoSicrediManager.BaixarBoletosExistentesSicredi(linhasDigitaveisArray);
+        //                    await boletoSicrediManager.BaixarBoletosExistentesSicredi(linhasDigitaveisArray, true);
         //                }
         //            }
         //        }
@@ -1352,227 +1537,16 @@ namespace Lunar.Telas.ContasReceber
         //        {
         //            GenericaDesktop.ShowAlerta("Selecione apenas um cliente para emissão ou impressão de boletos, pesquisa no campo de pesquisar clientes!");
         //        }
+        //        lblCalculando.Text = "Finalizado...";
+        //        lblCalculando.Visible = false;
+        //        btnImprimirBoleto.Enabled = true;
+        //        btnPesquisar.PerformClick();
         //    }
         //    catch (Exception erro)
         //    {
         //        GenericaDesktop.ShowAlerta(erro.Message);
         //    }
         //}
-
-        private async void gerarBoletoParcelasSelecionadas2()
-        {
-            try
-            {
-                bool ambienteProducao = false;
-                lblCalculando.Visible = true;
-                btnImprimirBoleto.Enabled = false;
-                Logger logger = new Logger();
-                if (!String.IsNullOrEmpty(txtCodCliente.Texts))
-                {
-                    int vendaId = 0;
-                    int osId = 0;
-                    // Inicializando array para boletos GalaxyPay
-                    string[] arrayFatura = new string[grid.SelectedItems.Count];
-
-                    // Verificar se há linhas selecionadas no grid
-                    var selectedRows = grid.SelectedItems;
-                    if (selectedRows.Count == 0)
-                    {
-                        MessageBox.Show("Selecione pelo menos uma parcela para gerar o boleto.");
-                        return;
-                    }
-
-                    List<ContaReceber> contasSelecionadas = new List<ContaReceber>();
-
-                    // Adicionar as contas selecionadas à lista
-                    foreach (var row in selectedRows)
-                    {
-                        ContaReceber contaReceber = row as ContaReceber;
-                        if (contaReceber != null)
-                        {
-                            contasSelecionadas.Add(contaReceber);
-                        }
-                    }
-
-                    if (contasSelecionadas.Count > 0)
-                    {
-
-                        int iGalaxyPay = 0;
-                        List<string> linhasDigitaveisSicredi = new List<string>(); // Para armazenar as linhas digitáveis dos boletos Sicredi
-
-                        // HashSet para rastrear vendas e OS já processadas
-                        HashSet<int> vendasProcessadas = new HashSet<int>();
-                        HashSet<int> osProcessadas = new HashSet<int>();
-
-                        foreach (ContaReceber contaReceber in contasSelecionadas)
-                        {
-                            vendaId = contaReceber.Venda?.Id ?? 0;
-                            osId = contaReceber.OrdemServico?.Id ?? 0;
-                            Console.WriteLine($"Processando conta: VendaId = {vendaId}, OsId = {osId}");
-                            // Verificar se a venda ou OS já foi processada
-                            if (vendasProcessadas.Contains(vendaId) || osProcessadas.Contains(osId))
-                            {
-                                // Se já foi processada, continuar para a próxima parcela
-                                continue;
-                            }
-
-                            // Adiciona a venda e OS ao conjunto de processados
-                            if (vendaId > 0)
-                                vendasProcessadas.Add(vendaId);
-                            if (osId > 0)
-                                osProcessadas.Add(osId);
-                            
-
-                            // Se a conta de boleto for null, tenta selecionar
-                            if (contaReceber.ContaBoleto == null)
-                            {
-                                if (contaBoletoSelecionada.Id == 0)
-                                {
-                                    selecionarContaEmissaoBoleto();
-                                    contaBoletoSelecionada = contaSelecionada; // Armazena a conta selecionada
-                                }
-
-                                // Se a conta selecionada não for nula e válida, atribui
-                                if (contaBoletoSelecionada != null && contaBoletoSelecionada.Id > 0)
-                                {
-                                    contaReceber.ContaBoleto = contaBoletoSelecionada;
-                                    Controller.getInstance().salvar(contaReceber);
-                                }
-                            }
-
-                            // Verificar a plataforma para geração de boleto
-                            IList<BoletoConfig> listaBoletoConfig = new List<BoletoConfig>();
-                            listaBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
-                            if (listaBoletoConfig.Count > 0) 
-                            {
-                                foreach (BoletoConfig boletoConfig in listaBoletoConfig)
-                                {
-                                    if (boletoConfig.ContaBancaria.Banco.Descricao.Contains("SICREDI"))
-                                    {
-                                        ambienteProducao = boletoConfig.AmbienteProducao;
-                                        if (contaReceber.BoletoGerado)
-                                        {
-                                            // Adicionar linha digitável do boleto gerado à lista
-                                            if (!string.IsNullOrEmpty(contaReceber.LinhaDigitavel))
-                                            {
-                                                linhasDigitaveisSicredi.Add(contaReceber.LinhaDigitavel);
-                                            }
-                                        }
-                                        else
-                                        {
-                                            // Gerar o boleto Sicredi
-                                            lblCalculando.Text = "Gerando Boleto Sicredi";
-                                            BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto, boletoConfig.AmbienteProducao);
-                                            bool sucesso = await boletoManager.GeraBoletosSicredi(contaReceber.Cliente, true);
-                                            if (sucesso == true)
-                                                lblCalculando.Text = "Boleto Sicredi Gerado com Sucesso!";
-                                        }
-                                    }
-                                    else if(boletoConfig.ContaBancaria.Banco.Descricao.Contains("BB") || boletoConfig.ContaBancaria.Banco.Descricao.Contains("BANCO DO BRASIL"))
-                                    {
-                                        try
-                                        {
-                                            BBApiService bbApiService = new BBApiService(boletoConfig.AmbienteProducao, boletoConfig.IdToken, boletoConfig.Token);
-                                            RetornoBoletoBB response = await bbApiService.CriarBoletoBancoBrasilAsync(contaReceber.Cliente, contaReceber, boletoConfig);
-                                            GenericaDesktop.ShowInfo("Boleto gerado com sucesso!");
-                                            contaReceber.BoletoGerado = true;
-                                            contaReceber.LinhaDigitavel = response.linhaDigitavel;
-                                            contaReceber.NossoNumero = response.numero;
-                                            contaReceber.IdBoleto = "";
-                                            contaReceber.QrCode = response.qrCode.emv;
-                                            Controller.getInstance().salvar(contaReceber);
-                                            BbDetalheBoletoResponse boletoDetalheRet = await bbApiService.DetalharBoletoAsync(response.numero, int.Parse(boletoConfig.Convenio));
-                                            if (boletoDetalheRet != null)
-                                            {
-                                                FrmImprimirBoletoBB frmImprimirBoletoBB = new FrmImprimirBoletoBB(boletoDetalheRet, contaReceber.EmpresaFilial, response, boletoConfig);
-                                                frmImprimirBoletoBB.ShowDialog();
-                                            }
-                                        }
-                                        catch (ApiException apiEx)
-                                        {
-                                            // Exibir mensagens amigáveis para cada erro retornado pela API
-                                            foreach (var erro in apiEx.ApiError.erros)
-                                            {
-                                                MessageBox.Show($"Código: {erro.codigo}, Mensagem: {erro.mensagem}");
-                                            }
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            // Tratar outras exceções, se necessário
-                                            MessageBox.Show($"Ocorreu um erro inesperado: {ex.Message}");
-                                        }
-                                    }
-                                }
-                            }
-                            else if (contaReceber.ContaBoleto.Banco.Descricao == "GALAXYPAY" || contaReceber.ContaBoleto.Banco.Descricao == "CELCASH" || contaReceber.ContaBoleto.Descricao == "CELCASH")
-                            {
-                                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
-                                if (contaReceber.BoletoGerado)
-                                {
-                                    arrayFatura[iGalaxyPay] = contaReceber.Id.ToString();
-                                    iGalaxyPay++;
-                                }
-                                else
-                                {
-                                    if (GenericaDesktop.ShowConfirmacao("Deseja gerar o boleto no CelCash?"))
-                                    {
-                                        string mensagem = "";
-                                        bool isValid = GenericaDesktop.ValidarClienteEmissaoBoleto(contaReceber.Cliente, out mensagem);
-                                        if (isValid)
-                                        {
-                                            IList<ContaReceber> listaCrediario = new List<ContaReceber> { contaReceber };
-                                            GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
-                                            Pessoa clienteBoleto = contaReceber.Cliente;
-                                            lblCalculando.Text = "Gerando Boleto CelCash";
-                                            gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto);
-                                        }
-                                        else
-                                        {
-                                            GenericaDesktop.ShowErro(mensagem);
-                                        }
-                                    }
-                                }
-
-                                if (arrayFatura.Length > 0)
-                                {
-                                    lblCalculando.Text = "Obtendo PDF Boleto CelCash";
-                                    string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
-                                    string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(arrayFatura);
-                                    if (!String.IsNullOrEmpty(link))
-                                    {
-                                        System.Diagnostics.Process.Start(link);
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Plataforma de geração de boleto desconhecida.");
-                            }
-                        }
-           
-                        // Se houver boletos Sicredi já gerados, chamar o método para download
-                        if (linhasDigitaveisSicredi.Count > 0)
-                        {
-                            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contasSelecionadas.First().ContaBoleto, ambienteProducao);
-                            string[] linhasDigitaveisArray = linhasDigitaveisSicredi.ToArray();
-                            await boletoSicrediManager.BaixarBoletosExistentesSicredi(linhasDigitaveisArray, true);
-                        }
-                    }
-                }
-                else
-                {
-                    GenericaDesktop.ShowAlerta("Selecione apenas um cliente para emissão ou impressão de boletos, pesquisa no campo de pesquisar clientes!");
-                }
-                lblCalculando.Text = "Finalizado...";
-                lblCalculando.Visible = false;
-                btnImprimirBoleto.Enabled = true;
-                btnPesquisar.PerformClick();
-            }
-            catch (Exception erro)
-            {
-                GenericaDesktop.ShowAlerta(erro.Message);
-            }
-        }
 
 
         private void imprimirBoletoBB()
@@ -1787,7 +1761,7 @@ namespace Lunar.Telas.ContasReceber
                         listaBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
                         if (listaBoletoConfig.Count > 0)
                         {
-                            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto, true);
+                            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto, true, contaReceber);
                             IList<string> listaCaminhosBoletos = new List<string>();
                             listaCaminhosBoletos = await boletoSicrediManager.BaixarBoletosExistentesSicredi(listaLinhasDigitaveis.ToArray(), false);
                             string outputFilePath = "";
@@ -2059,7 +2033,7 @@ namespace Lunar.Telas.ContasReceber
                 conta = contaReceber.ContaBoleto;
             }
             // Inicializa o gerenciador do Sicredi
-            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, conta, true);
+            BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(vendaId, osId, conta, true, null);
 
             // Baixa os boletos do Sicredi (PDF)
             string caminhoBoleto = "";
@@ -2356,5 +2330,374 @@ namespace Lunar.Telas.ContasReceber
             //enviarBoletoENFPorWhatsApp();
             enviarBoletoENFPorWhatsAppNew();
         }
+
+
+        private async void gerarBoletoParcelasSelecionadas2()
+        {
+            try
+            {
+                lblCalculando.Visible = true;
+                lblCalculando.Text = "Gerando Boleto, Comunicando com o Banco...";
+                btnImprimirBoleto.Enabled = false;
+
+                if (!String.IsNullOrEmpty(txtCodCliente.Texts))
+                {
+                    var contasSelecionadas = SelecionarContasSelecionadas();
+                    if (contasSelecionadas.Count == 0)
+                    {
+                        MessageBox.Show("Selecione pelo menos uma parcela para gerar o boleto.");
+                        return;
+                    }
+
+                    //Reseta as listas necessárias q vao ser alimentadas se os boletos ja estiverem emitidos
+                    listaFaturaGalaxyPay = new List<string>();
+                    listaReceberBoleto = new List<ContaReceber>();
+
+                    // Processamento das contas selecionadas
+                    await ProcessarContasSelecionadas(contasSelecionadas);
+                    await ImprimirBoletosSelecionadosAsync();
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("Selecione apenas um cliente para emissão ou impressão de boletos.");
+                }
+
+                lblCalculando.Text = "Finalizado...";
+                lblCalculando.Visible = false;
+                btnImprimirBoleto.Enabled = true;
+                btnPesquisar.PerformClick();
+            }
+            catch (Exception erro)
+            {
+                GenericaDesktop.ShowAlerta(erro.Message);
+            }
+        }
+
+        // Função para selecionar as contas que o usuário marcou
+        private List<ContaReceber> SelecionarContasSelecionadas()
+        {
+            var selectedRows = grid.SelectedItems;
+            List<ContaReceber> contasSelecionadas = new List<ContaReceber>();
+
+            foreach (var row in selectedRows)
+            {
+                ContaReceber contaReceber = row as ContaReceber;
+                if (contaReceber != null)
+                {
+                    contasSelecionadas.Add(contaReceber);
+                }
+            }
+            return contasSelecionadas;
+        }
+
+        // Função para processar as contas selecionadas
+        private async Task ProcessarContasSelecionadas(List<ContaReceber> contasSelecionadas)
+        {
+            HashSet<int> vendasProcessadas = new HashSet<int>();
+            HashSet<int> osProcessadas = new HashSet<int>();
+
+            foreach (ContaReceber contaReceber in contasSelecionadas)
+            {
+                if (contaReceber.BoletoGerado == false)
+                {
+                    int vendaId = contaReceber.Venda?.Id ?? 0;
+                    int osId = contaReceber.OrdemServico?.Id ?? 0;
+
+                    // Se já foi processada, pular
+                    if (vendasProcessadas.Contains(vendaId) || osProcessadas.Contains(osId))
+                    {
+                        continue;
+                    }
+
+                    vendasProcessadas.Add(vendaId);
+                    osProcessadas.Add(osId);
+
+                    // Seleciona a conta de boleto caso seja necessário
+                    await SelecionarContaBoletoSeNecessario(contaReceber);
+
+                    // Verificar a plataforma de boleto (BB, Sicredi, GalaxyPay)
+                    await GerarBoletoPorBanco(contaReceber, vendaId, osId);
+                }
+                listaReceberBoleto.Add(contaReceber);
+            }
+        }
+
+        // Função para selecionar a conta de boleto se for necessário
+        private async Task SelecionarContaBoletoSeNecessario(ContaReceber contaReceber)
+        {
+            if (contaReceber.ContaBoleto == null)
+            {
+                if (contaBoletoSelecionada.Id == 0)
+                {
+                    selecionarContaEmissaoBoleto();
+                    contaBoletoSelecionada = contaSelecionada;
+                }
+
+                if (contaBoletoSelecionada != null && contaBoletoSelecionada.Id > 0)
+                {
+                    contaReceber.ContaBoleto = contaBoletoSelecionada;
+                    Controller.getInstance().salvar(contaReceber);
+                }
+            }
+        }
+
+        // Função para gerar boletos por banco
+        private async Task GerarBoletoPorBanco(ContaReceber contaReceber, int vendaId, int osId)
+        {
+            IList<BoletoConfig> listaBoletoConfig = boletoConfigController.selecionarTodosBoletoConfig();
+
+            foreach (BoletoConfig boletoConfig in listaBoletoConfig)
+            {
+                if (boletoConfig.ContaBancaria.Banco.Descricao.Contains("SICREDI") && contaReceber.ContaBoleto.Id == boletoConfig.ContaBancaria.Id)
+                {
+                    await GerarBoletoSicredi(contaReceber, vendaId, osId, boletoConfig);
+                }
+                else if (boletoConfig.ContaBancaria.Banco.Descricao.Contains("BANCO DO BRASIL") && contaReceber.ContaBoleto.Id == boletoConfig.ContaBancaria.Id) 
+                {
+                    await GerarBoletoBancoBrasil(contaReceber, boletoConfig);
+                }
+                else if ((boletoConfig.ContaBancaria.Banco.Descricao.Contains("GALAXYPAY") || boletoConfig.ContaBancaria.Banco.Descricao.Contains("CELCASH")) && contaReceber.ContaBoleto.Id == boletoConfig.ContaBancaria.Id)
+                {
+                    await GerarBoletoGalaxyPay(contaReceber);
+                }
+            }
+        }
+
+        // Função específica para gerar boleto Sicredi
+        private async Task GerarBoletoSicredi(ContaReceber contaReceber, int vendaId, int osId, BoletoConfig boletoConfig)
+        {
+            // Verifique se o boleto já foi gerado
+            if (contaReceber.BoletoGerado)
+            {
+                await imprimirBoletosSicrediAsync(listaReceberBoleto);
+            }
+            else
+            {
+                lblCalculando.Text = "Gerando Boleto Sicredi...";
+                BoletoSicrediManager boletoManager = new BoletoSicrediManager(vendaId, osId, contaReceber.ContaBoleto, boletoConfig.AmbienteProducao, contaReceber);
+                bool sucesso = await boletoManager.GeraBoletosSicredi(contaReceber.Cliente, true);
+                if (sucesso)
+                {
+                    lblCalculando.Text = "Boleto Sicredi Gerado com Sucesso!";
+                }
+            }
+        }
+
+        // Função específica para gerar boleto Banco do Brasil
+        private async Task GerarBoletoBancoBrasil(ContaReceber contaReceber, BoletoConfig boletoConfig)
+        {
+            try
+            {
+                BBApiService bbApiService = new BBApiService(boletoConfig.AmbienteProducao, boletoConfig.IdToken, boletoConfig.Token);
+                RetornoBoletoBB response = await bbApiService.CriarBoletoBancoBrasilAsync(contaReceber.Cliente, contaReceber, boletoConfig);
+
+                if (response != null)
+                {
+                    GenericaDesktop.ShowInfo("Boleto gerado com sucesso!");
+                    contaReceber.BoletoGerado = true;
+                    contaReceber.LinhaDigitavel = response.linhaDigitavel;
+                    contaReceber.NossoNumero = response.numero;
+                    contaReceber.CodigoBarras = response.codigoBarraNumerico;
+                  
+                    // Salvar no banco de dados
+                    Controller.getInstance().salvar(contaReceber);
+                    listaReceberBoleto.Add(contaReceber);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Tratar erro
+                MessageBox.Show($"Ocorreu um erro ao gerar boleto BB: {ex.Message}");
+            }
+        }
+        private async Task GerarBoletoGalaxyPay(ContaReceber contaReceber)
+        {
+            // Inicializando array para boletos GalaxyPay
+            if (contaReceber.ContaBoleto.Banco.Descricao == "GALAXYPAY" || contaReceber.ContaBoleto.Banco.Descricao == "CELCASH" || contaReceber.ContaBoleto.Descricao == "CELCASH")
+            {
+                GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+                if (contaReceber.BoletoGerado)
+                {
+                    listaFaturaGalaxyPay.Add(contaReceber.Id.ToString());
+                }
+                else if (GenericaDesktop.ShowConfirmacao("Deseja gerar o boleto no CelCash?"))
+                {
+                    string mensagem = "";
+                    bool isValid = GenericaDesktop.ValidarClienteEmissaoBoleto(contaReceber.Cliente, out mensagem);
+                    if (isValid)
+                    {
+                        IList<ContaReceber> listaCrediario = new List<ContaReceber> { contaReceber };
+                        GerarBoletoGalaxyPay gerarBoleto = new GerarBoletoGalaxyPay();
+                        Pessoa clienteBoleto = contaReceber.Cliente;
+                        lblCalculando.Text = "Gerando Boleto CelCash";
+                        gerarBoleto.gerarBoletoAvulsoGalaxyPay(listaCrediario, clienteBoleto, contaReceber.ContaBoleto);
+                    }
+                    else
+                    {
+                        GenericaDesktop.ShowErro(mensagem);
+                    }
+                }
+                //Imprimir boletos que foram gerados anteriormente
+                if (listaFaturaGalaxyPay.Count > 0)
+                {
+                    lblCalculando.Text = "Obtendo PDF Boleto CelCash";
+                    string[] arrayFaturaGalaxyPay = listaFaturaGalaxyPay.ToArray();
+                    string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                    string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(arrayFaturaGalaxyPay);
+                    if (!String.IsNullOrEmpty(link))
+                    {
+                        System.Diagnostics.Process.Start(link);
+                    }
+                }
+            }
+        }
+
+
+        private async Task imprimirBoletosBancoBrasilAsync(List<ContaReceber> contasSelecionadas)
+        {
+            if (contasSelecionadas == null || !contasSelecionadas.Any())
+            {
+                GenericaDesktop.ShowAlerta("Nenhum boleto disponível para impressão.");
+                return;
+            }
+
+            var boletosBB = contasSelecionadas
+                .Where(c => c.ContaBoleto.Banco.Descricao.Contains("BANCO DO BRASIL") || c.ContaBoleto.Banco.Descricao.Contains("BB"))
+                .ToList();
+
+            if (boletosBB.Any())
+            {
+                FrmImprimirBoletoBB frmImprimirBoletosBB = new FrmImprimirBoletoBB(boletosBB);
+                string caminhoPDF = await frmImprimirBoletosBB.ImprimirBoletosAsync();
+                FrmPDF frmPDF = new FrmPDF(caminhoPDF);
+                frmPDF.Show();
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Nenhum boleto do Banco do Brasil disponível para impressão.");
+            }
+        }
+
+
+        private async Task imprimirBoletosSicrediAsync(IList<ContaReceber> contasSelecionadas)
+        {
+            // Verifica se há contas selecionadas
+            if (contasSelecionadas == null || !contasSelecionadas.Any())
+            {
+                GenericaDesktop.ShowAlerta("Nenhuma conta selecionada.");
+                return;
+            }
+
+            // Filtra as contas que têm boletos gerados
+            var contasComBoletosGerados = contasSelecionadas
+                .Where(c => c.BoletoGerado)
+                .ToList();
+
+            // Verifica se há boletos gerados
+            if (!contasComBoletosGerados.Any())
+            {
+                GenericaDesktop.ShowAlerta("Nenhum boleto disponível para impressão.");
+                return;
+            }
+
+            BoletoConfig boletoConfig = null;
+
+            // Inicializa a lista para as linhas digitáveis
+            List<string> linhasDigitaveisSicredi = new List<string>();
+
+            foreach (var conta in contasComBoletosGerados)
+            {
+                // Verifica se a conta é do SICREDI
+                if (conta.ContaBoleto.Banco.Descricao.Contains("SICREDI"))
+                {
+                    // Adiciona a linha digitável à lista
+                    linhasDigitaveisSicredi.Add(conta.LinhaDigitavel);
+
+                    // Se a configuração do boleto ainda não foi inicializada, faz isso agora
+                    if (boletoConfig == null)
+                    {
+                        boletoConfig = boletoConfigController.selecionarBoletoConfigPorContaBancariaUnica(conta.ContaBoleto);
+                    }
+                }
+                else
+                {
+                    GenericaDesktop.ShowAlerta("A conta selecionada não é do Banco SICREDI.");
+                    return;
+                }
+            }
+
+            // Se houver linhas digitáveis para processar
+            if (linhasDigitaveisSicredi.Count > 0)
+            {
+                BoletoSicrediManager boletoSicrediManager = new BoletoSicrediManager(
+                    contasComBoletosGerados.First().Venda?.Id ?? 0, // Pega o ID da primeira conta para evitar repetição
+                    contasComBoletosGerados.First().OrdemServico?.Id ?? 0, // Pega o ID da primeira conta para evitar repetição
+                    contasComBoletosGerados.First().ContaBoleto,
+                    boletoConfig.AmbienteProducao, null
+                );
+
+                // Converte a lista de linhas digitáveis para um array
+                string[] linhasDigitaveisArray = linhasDigitaveisSicredi.ToArray();
+
+                // Chama o método para baixar os boletos
+                await boletoSicrediManager.BaixarBoletosExistentesSicredi(linhasDigitaveisArray, true);
+            }
+            else
+            {
+                GenericaDesktop.ShowAlerta("Nenhuma linha digitável disponível para baixar.");
+            }
+        }
+
+        private async Task imprimirBoletosCelCashGalaxyPayAsync(IList<ContaReceber> contasSelecionadas)
+        {
+            GalaxyPayApiIntegracao galaxyPayApiIntegracao = new GalaxyPayApiIntegracao();
+            foreach (ContaReceber cr in contasSelecionadas)
+            {
+                listaFaturaGalaxyPay.Add(cr.Id.ToString());
+            }
+            if (listaFaturaGalaxyPay.Count > 0)
+            {
+                lblCalculando.Text = "Obtendo PDF Boleto CelCash";
+                string[] arrayFaturaGalaxyPay = listaFaturaGalaxyPay.ToArray();
+                string tokenAcessoGalaxyPay = galaxyPayApiIntegracao.GalaxyPay_TokenAcesso();
+                string link = galaxyPayApiIntegracao.GalaxyPay_ObterPDFLista(arrayFaturaGalaxyPay);
+                if (!String.IsNullOrEmpty(link))
+                {
+                    System.Diagnostics.Process.Start(link);
+                }
+            }
+        }
+
+        private async Task ImprimirBoletosSelecionadosAsync()
+        {
+            // Filtrar e imprimir boletos do Banco do Brasil
+            var boletosBB = listaReceberBoleto
+                .Where(c => c.ContaBoleto.Banco.Descricao.Contains("BANCO DO BRASIL") ||
+                             c.ContaBoleto.Banco.Descricao.Contains("BB"))
+                .ToList();
+
+            if (boletosBB.Any())
+            {
+                await imprimirBoletosBancoBrasilAsync(boletosBB);
+            }
+             var boletosSicredi = listaReceberBoleto
+                 .Where(c => c.ContaBoleto.Banco.Descricao.Contains("SICREDI"))
+                 .ToList();
+            
+             if (boletosSicredi.Any())
+             {
+                 await imprimirBoletosSicrediAsync(boletosSicredi);
+             }
+
+            var boletosGalaxtPay = listaReceberBoleto
+        .Where(c => c.ContaBoleto.Banco.Descricao.Contains("CELCASH") || c.ContaBoleto.Banco.Descricao.Contains("GALAXY"))
+        .ToList();
+
+            if (boletosSicredi.Any())
+            {
+                await imprimirBoletosCelCashGalaxyPayAsync(boletosGalaxtPay);
+            }
+        }
+
     }
 }

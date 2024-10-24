@@ -3363,7 +3363,8 @@ namespace Lunar.Telas.Cadastros.Produtos
                     Id = 0,  // O ID será definido apenas se estiver editando um item existente
                     CustoUnitario = decimal.Parse(txtCustoUnitarioInsumo.Texts),
                     Quantidade = double.Parse(txtQuantidadeInsumo.Texts),
-                    CustoTotal = decimal.Parse(txtCustoTotalInsumo.Texts)
+                    CustoTotal = decimal.Parse(txtCustoTotalInsumo.Texts),
+                    ProduzirNaVenda = true
                 };
 
                 if (editarInsumo)
@@ -3557,7 +3558,8 @@ namespace Lunar.Telas.Cadastros.Produtos
                         insumoExistente.CustoUnitario = insumoAtual.CustoUnitario;
                         insumoExistente.Quantidade = insumoAtual.Quantidade;
                         insumoExistente.CustoTotal = insumoAtual.CustoTotal;
-                        insumoExistente.Produto = insumoAtual.Produto; // Se necessário, defina o produto
+                        insumoExistente.Produto = insumoAtual.Produto; 
+                        insumoExistente.ProduzirNaVenda = chkProduzirNaVenda.Checked;
                         produtoInsumoController.salvar(insumoExistente);
                     }
                     else
@@ -3570,7 +3572,8 @@ namespace Lunar.Telas.Cadastros.Produtos
                             CustoUnitario = insumoAtual.CustoUnitario,
                             Quantidade = insumoAtual.Quantidade,
                             CustoTotal = insumoAtual.CustoTotal,
-                            IdProdutoProduzido = codigoProduto.ToString() 
+                            IdProdutoProduzido = codigoProduto.ToString(),
+                            ProduzirNaVenda = chkProduzirNaVenda.Checked
                         };
 
                         produtoInsumoController.salvar(novoInsumo);

@@ -346,6 +346,11 @@ namespace Lunar.Telas.Cadastros.Cliente
                     txtBairro.Texts = enderecoCep.Bairro;
                     cidadePrincipal = cidade;
                 }
+                else
+                {
+                    txtCidade.Texts = "";
+                    txtUF.Texts = "";
+                }
                 txtNumero.Focus();
             }
         }
@@ -1820,7 +1825,7 @@ namespace Lunar.Telas.Cadastros.Cliente
                             //consulta = generica.consultaCNPJSintegraWS(Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()));
                             ConsultEmpresaNs empr = new ConsultEmpresaNs();
                             //generica.consultarEmpresaPorCnpj_NS("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
-                            empr = generica.consultarEmpresaPorCnpj_NS("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
+                            empr = generica.ConsultarEmpresaPorCnpj_NS("28145398000173", Generica.RemoveCaracteres(txtCNPJ.Texts.Trim()), "MG");
 
                             if (empr != null && empr.retConsCad != null && empr.retConsCad.infCons != null && empr.retConsCad.infCons.infCad != null)
                             {

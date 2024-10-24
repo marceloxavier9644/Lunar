@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using LunarBase.Classes;
 using Newtonsoft.Json;
@@ -113,6 +114,69 @@ namespace Lunar.Utils.IntegracoesBancosBoletos.BB
             }
         }
 
+        //Listagem ou retorno de boletos
+        //Indicador de Situacao = Domínio: A - boletos em ser; B - boletos baixados, liquidados ou protestados
+        public async Task<RetornoListaBoletosBaixadosBB> ListarBoletosBancoBrasilAsync(string agenciaSemDigitoBeneficiario, string contaSemDigitoBeneficiario, string dataInicialOcorrencia, string dataFinalOcorrencia)
+        {
+            if (_ambienteProducao == false)
+            {
+                // agência e conta para homologação
+                agenciaSemDigitoBeneficiario = "452";
+                contaSemDigitoBeneficiario = "123873";
+            }
+
+            // Boletos baixados, liquidados ou protestados
+            string indicadorSituacao = "B";
+            contaSemDigitoBeneficiario = contaSemDigitoBeneficiario.TrimStart('0');
+            agenciaSemDigitoBeneficiario = agenciaSemDigitoBeneficiario.TrimStart('0');
+
+            // Obtém o token OAuth
+            string token = await GetOAuthTokenAsync();
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add(_gwStringAppKey, _gwAppKey);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                // Constrói a URL com os parâmetros de consulta
+                string url = $"{_apiUrl}/boletos?" +
+                             $"indicadorSituacao={indicadorSituacao}&" +
+                             $"agenciaBeneficiario={agenciaSemDigitoBeneficiario}&" +
+                             $"contaBeneficiario={contaSemDigitoBeneficiario}&" +
+                             $"dataInicioMovimento={dataInicialOcorrencia}&" +
+                             $"dataFimMovimento={dataFinalOcorrencia}";
+
+                try
+                {
+                    // Envia a requisição GET para a API
+                    var response = await client.GetAsync(url);
+
+                    // Verifica se a resposta foi bem-sucedida
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        var errorContent = await response.Content.ReadAsStringAsync();
+                        var apiError = JsonConvert.DeserializeObject<RetornoBoletoBB>(errorContent);
+                        throw new ApiException($"Erro ao listar boletos: {response.StatusCode}", apiError);
+                    }
+
+                    // Retorna o resultado em formato JSON
+                    var result = await response.Content.ReadAsStringAsync();
+                    //string pattern = @"(\d{2})\.(\d{2})\.(\d{4})";
+                    //string replacedResult = Regex.Replace(result, pattern, m => $"{m.Groups[1].Value}/{m.Groups[2].Value}/{m.Groups[3].Value}");
+                    RetornoListaBoletosBaixadosBB retornoBoletos = JsonConvert.DeserializeObject<RetornoListaBoletosBaixadosBB>(result);
+
+                    return retornoBoletos;
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception($"Erro na comunicação com a API: {ex.Message}", ex);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Erro ao listar boletos: {ex.Message}", ex);
+                }
+            }
+        }
 
 
         // Método para detalhar um boleto existente pelo número do título
@@ -174,8 +238,12 @@ namespace Lunar.Utils.IntegracoesBancosBoletos.BB
                     indicadorPermissaoRecebimentoParcial = "N",
                     numeroTituloBeneficiario = GenericaDesktop.RemoveCaracteres(contaReceber.Documento).PadLeft(15, '0'),
                     numeroTituloCliente = nossoNumero,
-                    textoCampoUtilizacaoBeneficiario = contaReceber.Origem,
-                    mensagemBloquetoOcorrencia = boletoConfig.MensagemBoleto,
+                    textoCampoUtilizacaoBeneficiario = "DOC: " + contaReceber.Documento,
+                    mensagemBloquetoOcorrencia = (boletoConfig.MensagemBoleto?.Trim() ?? "") +
+    (boletoConfig.JuroMensal > 0 ?
+    $" Juros Taxa Mensal {boletoConfig.JuroMensal.ToString("F2")}%. " : "") +
+    (boletoConfig.Multa > 0 ?
+    $" Multa de {boletoConfig.Multa.ToString("F2")}% após o vencimento." : "").Trim(),
                     desconto = new descontoRequest
                     {
                         tipo = 0,
@@ -213,7 +281,7 @@ namespace Lunar.Utils.IntegracoesBancosBoletos.BB
                         tipoInscricao = tipoInscricao,
                         numeroInscricao = numeroInscricao,
                         nome = cliente.RazaoSocial,
-                        endereco = cliente.EnderecoPrincipal.Logradouro,
+                        endereco = cliente.EnderecoPrincipal.Logradouro + ", " + cliente.EnderecoPrincipal.Numero + " " + cliente.EnderecoPrincipal.Complemento,
                         cep = long.Parse(GenericaDesktop.RemoveCaracteres(cliente.EnderecoPrincipal.Cep)),
                         cidade = cliente.EnderecoPrincipal.Cidade.Descricao,
                         bairro = cliente.EnderecoPrincipal.Bairro,
@@ -229,8 +297,12 @@ namespace Lunar.Utils.IntegracoesBancosBoletos.BB
                 // Chama o método de criação de boleto na API
                 RetornoBoletoBB boletoCriado = await CriarBoletoAsync(boletoRequest);
                 if (boletoCriado != null)
+                {
                     Console.WriteLine($"Boleto criado com sucesso: {boletoCriado.numero}");
-                return boletoCriado;  // Retorna a resposta do boleto criado
+                    return boletoCriado;
+                }
+                else
+                    return null;
             }
             catch (ArgumentException argEx)
             {

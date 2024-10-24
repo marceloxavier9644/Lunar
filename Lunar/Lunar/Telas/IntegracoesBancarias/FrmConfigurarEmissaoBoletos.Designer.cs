@@ -442,9 +442,9 @@
             this.autoLabel12.ForeColor = System.Drawing.Color.Black;
             this.autoLabel12.Location = new System.Drawing.Point(13, 281);
             this.autoLabel12.Name = "autoLabel12";
-            this.autoLabel12.Size = new System.Drawing.Size(117, 16);
+            this.autoLabel12.Size = new System.Drawing.Size(276, 16);
             this.autoLabel12.TabIndex = 307;
-            this.autoLabel12.Text = "Mensagem Boleto";
+            this.autoLabel12.Text = "Mensagem Boleto (Informações Beneficiário)";
             this.autoLabel12.Visible = false;
             // 
             // txtPlanoContaTarifa
